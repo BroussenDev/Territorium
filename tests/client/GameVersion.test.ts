@@ -106,14 +106,12 @@ describe("taggedGameVersion", () => {
     expect(taggedGameVersion("  v0.33.18\n")).toBe("v0.33.18");
   });
 
-  // The original untagged rendering, kept deliberately. The footer is the half
-  // that names the commit instead -- see composeGameVersion above, which turns
-  // this same input into "bf739f8".
-  it("renders the placeholder as-is on an untagged build", () => {
-    expect(taggedGameVersion("x.xx.xx")).toBe("vx.xx.xx");
-    expect(composeGameVersion("x.xx.xx", SHA)).not.toBe(
-      taggedGameVersion("x.xx.xx"),
-    );
+  // No placeholder under the logo: the label appears with the first release.
+  // The footer is the half that names the commit instead -- see
+  // composeGameVersion above, which turns this same input into "bf739f8".
+  it("shows nothing on an untagged build", () => {
+    expect(taggedGameVersion("x.xx.xx")).toBe("");
+    expect(composeGameVersion("x.xx.xx", SHA)).toBe("bf739f8");
   });
 });
 
@@ -155,9 +153,9 @@ describe("renderNavVersion", () => {
       "#game-version, .game-version-display",
     )) {
       expect(el.textContent).toBe(taggedGameVersion(version));
-      // Always a version, whatever version.txt holds when this runs: the
+      // A version or nothing, whatever version.txt holds when this runs: the
       // commit form has no leading v and this one always does.
-      expect(el.textContent).toMatch(/^v/);
+      expect(el.textContent).toMatch(/^(v|$)/);
     }
   });
 

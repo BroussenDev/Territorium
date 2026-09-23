@@ -68,9 +68,14 @@ export function currentGameVersion(): string {
  * to quote from. The footer is where the build's real identity belongs, and it
  * still names the commit on an untagged build, so nothing is lost -- it just
  * is not the first thing on the main menu.
+ *
+ * Territorium: an untagged build shows nothing rather than "vx.xx.xx". The
+ * server's deploy writes the latest GitHub release tag into version.txt, so
+ * the label appears with the first release.
  */
 export function taggedGameVersion(rawVersion: string): string {
   const trimmed = rawVersion.trim();
+  if (!VERSION_RE.test(trimmed)) return "";
   return trimmed.startsWith("v") ? trimmed : `v${trimmed}`;
 }
 
