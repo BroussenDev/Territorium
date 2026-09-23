@@ -1,151 +1,84 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="proprietary/images/OpenFrontLogoDark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="proprietary/images/OpenFrontLogo.svg">
-    <img src="proprietary/images/OpenFrontLogo.svg" alt="OpenFrontIO Logo" width="300">
+    <source media="(prefers-color-scheme: dark)" srcset="proprietary/images/TerritoriumLogo.svg">
+    <source media="(prefers-color-scheme: light)" srcset="proprietary/images/TerritoriumLogoLight.svg">
+    <img src="proprietary/images/TerritoriumLogoLight.svg" alt="Territorium" width="420">
   </picture>
 </p>
 
-[OpenFront.io](https://openfront.io/) is an online real-time strategy game focused on territorial control and alliance building. Players compete to expand their territory, build structures, and form strategic alliances in various maps based on real-world geography.
+<p align="center">
+  <strong>Conquiers le monde, une frontière à la fois.</strong><br>
+  Jeu de stratégie territoriale multijoueur en temps réel, directement dans le navigateur.
+</p>
 
-This is a fork/rewrite of WarFront.io. Credit to https://github.com/WarFrontIO.
+<p align="center">
+  <a href="https://www.gnu.org/licenses/agpl-3.0"><img src="https://img.shields.io/badge/Code-AGPL%20v3-10b981.svg" alt="License: AGPL v3"></a>
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/Assets-CC%20BY--SA%204.0-lightgrey.svg" alt="Assets: CC BY-SA 4.0"></a>
+  <img src="https://img.shields.io/badge/Node-22-339933.svg" alt="Node 22">
+</p>
 
-![CI](https://github.com/openfrontio/OpenFrontIO/actions/workflows/ci.yml/badge.svg)
-[![Crowdin](https://badges.crowdin.net/openfront-mls/localized.svg)](https://crowdin.com/project/openfront-mls)
-[![CLA assistant](https://cla-assistant.io/readme/badge/openfrontio/OpenFrontIO)](https://cla-assistant.io/openfrontio/OpenFrontIO)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Assets: CC BY-SA 4.0](https://img.shields.io/badge/Assets-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+---
 
-## License
+## ✨ Le jeu
 
-OpenFront source code is licensed under the **GNU Affero General Public License v3.0**
+- **Stratégie en temps réel** : étends ton territoire case par case et grignote les frontières de tes voisins.
+- **Alliances** : forme des pactes, trahis-les au bon moment.
+- **Cartes du monde réel** : Europe, Asie, Afrique, Amériques et bien d'autres.
+- **Économie et constructions** : villes, ports, défenses, missiles…
+- **Solo contre des bots** ou **multijoueur** en salon privé.
 
-Current copyright notices appear in:
+## 🚀 Démarrage rapide
 
-- Footer: "© OpenFront and Contributors"
-- Loading screen: "© OpenFront and Contributors"
-
-Modified versions must preserve these notices in reasonably visible locations.
-
-See the [LICENSE](LICENSE) for complete requirements.
-
-For asset licensing, see [LICENSE-ASSETS](LICENSE-ASSETS).  
-For license history, see [LICENSING.md](LICENSING.md).
-
-## 🌟 Features
-
-- **Real-time Strategy Gameplay**: Expand your territory and engage in strategic battles
-- **Alliance System**: Form alliances with other players for mutual defense
-- **Multiple Maps**: Play across various geographical regions including Europe, Asia, Africa, and more
-- **Resource Management**: Balance your expansion with defensive capabilities
-- **Cross-platform**: Play in any modern web browser
-
-## 📋 Prerequisites
-
-- [npm](https://www.npmjs.com/) (v10.9.2 or higher)
-- A modern web browser (Chrome, Firefox, Edge, etc.)
-
-## 🚀 Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/openfrontio/OpenFrontIO.git
-   cd OpenFrontIO
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm run inst
-   ```
-
-   Do NOT use `npm install` nor `npm i` but instead use our `npm run inst`. It runs the safer `npm ci --ignore-scripts` to install dependencies exactly according to the versions in `package-lock.json` and doesn't run scripts. This can prevent being hit by a supply chain attack.
-
-## 🎮 Running the Game
-
-### Development Mode
-
-Run both the client and server in development mode with live reloading:
+Prérequis : [Node.js 22](https://nodejs.org/) et npm.
 
 ```bash
-npm run dev
+git clone https://github.com/BroussenDev/Territorium.git
+cd Territorium
+npm run inst # installe les dépendances (npm ci) — ne pas utiliser npm install
+npm run dev  # client + serveur avec rechargement à chaud
 ```
 
-This will:
+Puis ouvre **http://localhost:9000**.
 
-- Start the webpack dev server for the client
-- Launch the game server with development settings
-- Open the game in your default browser (to disable this behavior, set `SKIP_BROWSER_OPEN=true` in your environment)
+> En local, les erreurs `404` / `ECONNREFUSED` vers `localhost:8787` dans les logs sont normales :
+> elles concernent l'API de comptes/cosmétiques, qui n'est pas incluse dans ce dépôt.
+> Le mode solo fonctionne sans elle.
 
-### Client Only
+## 🛠️ Commandes utiles
 
-To run just the client with hot reloading:
+| Commande                          | Rôle                                   |
+| --------------------------------- | -------------------------------------- |
+| `npm run dev`                     | Client + serveur en mode développement |
+| `npm test`                        | Toute la suite de tests (Vitest)       |
+| `npx vitest NomDuTest --run`      | Un seul fichier / motif de test        |
+| `npm run lint` / `npm run format` | Lint (Oxlint + ESLint) / Prettier      |
+| `npm run build-prod`              | Build de production                    |
 
-```bash
-npm run start:client
+## 🏗️ Structure du projet
+
+```
+src/core/     Simulation du jeu, déterministe (tourne dans un Web Worker)
+src/client/   Rendu (Pixi.js/WebGL) et interface (Lit + Tailwind CSS 4)
+src/server/   Serveur de jeu : salons, relais des actions (Node/Express/ws)
+resources/    Cartes, images, traductions (resources/lang/en.json)
+proprietary/  Identité visuelle et sons de Territorium
+tests/        Tests Vitest
 ```
 
-### Server Only
+La simulation tourne **sur chaque client** : le serveur ne fait que relayer les actions
+des joueurs (voir [docs/Architecture.md](docs/Architecture.md)).
 
-To run just the server with development settings:
+## 📜 Licence et crédits
 
-```bash
-npm run start:server-dev
-```
+Territorium est un fork d'[OpenFront](https://github.com/openfrontio/OpenFrontIO),
+lui-même issu de [WarFront.io](https://github.com/WarFrontIO). Merci à leurs équipes et contributeurs.
 
-### Connecting to staging or production backends
+- **Code** : [GNU AGPL v3.0](LICENSE). Toute version modifiée mise en ligne doit publier son code source.
+  Conformément à la section 7 de la licence, la mention **« © OpenFront and Contributors »**
+  reste visible dans le pied de page et sur l'écran de chargement.
+- **Assets du dossier `resources/`** : [CC BY-SA 4.0](LICENSE-ASSETS), attribution « OpenFront ».
+- **Dossier `proprietary/`** : logo, emblème et sons propres à Territorium (tous droits réservés) ;
+  police [Chakra Petch](proprietary/fonts/OFL.txt) sous licence SIL OFL 1.1.
+  Aucun asset propriétaire d'OpenFront n'est inclus.
 
-Sometimes it's useful to connect to production servers when replaying a game, testing user profiles, purchases, or login flow.
-
-> To replay a production game, make sure you're on the same commit that the game you want to replay was executed on, you can find the `gitCommit` value via `https://api.openfront.io/game/[gameId]`.
-> Unfinished games cannot be replayed on localhost.
-
-To connect to staging api servers:
-
-```bash
-npm run dev:staging
-```
-
-To connect to production api servers:
-
-```bash
-npm run dev:prod
-```
-
-## 🛠️ Development Tools
-
-- **Format code**:
-
-  ```bash
-  npm run format
-  ```
-
-- **Lint code with Oxlint and ESLint**:
-
-  ```bash
-  npm run lint
-  ```
-
-- **Lint and fix code with Oxlint and ESLint**:
-
-  ```bash
-  npm run lint:fix
-  ```
-
-- **Testing**
-  ```bash
-  npm test
-  ```
-
-## 🏗️ Project Structure
-
-- `/src/client` - Frontend game client
-- `/src/core` - Deterministic game simulation
-- `/src/server` - Backend game server
-- `/resources` - Static assets (images, maps, etc.)
-- `/zbin` - Compact binary wire format for zod schemas (self-contained, zod-only)
-
-## 🤝 Contributing
-
-Contributions and translations are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow, the approved-issue process, project governance, and translation info.
+Historique complet des licences : [LICENSING.md](LICENSING.md).

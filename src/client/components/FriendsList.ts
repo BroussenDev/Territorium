@@ -255,7 +255,7 @@ export class FriendsList extends LitElement {
       return html`
         <div class="flex items-center justify-center p-12">
           <div
-            class="w-10 h-10 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"
+            class="w-10 h-10 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"
           ></div>
         </div>
       `;
@@ -272,9 +272,9 @@ export class FriendsList extends LitElement {
   private renderTeamInfo(): TemplateResult {
     return html`
       <div
-        class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 flex items-center gap-3"
+        class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 flex items-center gap-3"
       >
-        <span class="text-blue-400 text-lg shrink-0">🛡️</span>
+        <span class="text-emerald-400 text-lg shrink-0">🛡️</span>
         <p class="text-sm text-white/80">
           ${translateText("friends.team_info")}
         </p>
@@ -286,7 +286,7 @@ export class FriendsList extends LitElement {
     return html`
       <div class="bg-white/5 rounded-xl border border-white/10 p-6">
         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="text-blue-400">➕</span>
+          <span class="text-emerald-400">➕</span>
           ${translateText("friends.add_friend")}
         </h3>
         <div class="flex flex-col sm:flex-row gap-3">
@@ -300,7 +300,7 @@ export class FriendsList extends LitElement {
             @keydown=${(e: KeyboardEvent) => {
               if (e.key === "Enter") void this.handleSend();
             }}
-            class="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-malibu-blue/50 focus:border-malibu-blue/50 transition-all font-mono text-sm"
+            class="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand/50 transition-all font-mono text-sm"
             placeholder=${translateText("friends.public_id_placeholder")}
             maxlength="200"
             ?disabled=${this.actionPending}
@@ -308,7 +308,7 @@ export class FriendsList extends LitElement {
           <button
             @click=${() => void this.handleSend()}
             ?disabled=${this.actionPending || this.addInput.trim().length === 0}
-            class="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors disabled:opacity-50 disabled:pointer-events-none"
+            class="px-4 py-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors disabled:opacity-50 disabled:pointer-events-none"
           >
             ${translateText("friends.send_request")}
           </button>
@@ -322,7 +322,7 @@ export class FriendsList extends LitElement {
     return html`
       <div class="bg-white/5 rounded-xl border border-white/10 p-6">
         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="text-blue-400">✉️</span>
+          <span class="text-emerald-400">✉️</span>
           ${translateText("friends.pending_requests")}
         </h3>
         ${this.incoming.length > 0
@@ -422,7 +422,7 @@ export class FriendsList extends LitElement {
     return html`
       <div class="bg-white/5 rounded-xl border border-white/10 p-6">
         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="text-blue-400">👥</span>
+          <span class="text-emerald-400">👥</span>
           ${translateText("friends.your_friends")}
           <span class="text-xs text-white/40 font-medium">
             (${this.friendsTotal})

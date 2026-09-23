@@ -178,7 +178,7 @@ export class CosmeticPreview extends LitElement {
         ${pack.product?.price
           ? html`<span
               data-pack-price
-              class="pt-0.5 text-sm font-bold leading-none text-blue-300"
+              class="pt-0.5 text-sm font-bold leading-none text-emerald-300"
               >${pack.product.price}</span
             >`
           : nothing}

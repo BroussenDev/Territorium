@@ -103,7 +103,7 @@ export class CustomCurrencyCard extends LitElement {
             >
             <span
               data-custom-currency-price
-              class="pt-0.5 text-sm font-bold leading-none text-blue-300"
+              class="pt-0.5 text-sm font-bold leading-none text-emerald-300"
               >${price}</span
             >
           </div>

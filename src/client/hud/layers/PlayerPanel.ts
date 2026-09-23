@@ -709,7 +709,7 @@ export class PlayerPanel extends LitElement implements Controller {
             ? html`<span class="text-amber-400"
                 >${translateText("player_panel.stopped")}</span
               >`
-            : html`<span class="text-blue-400"
+            : html`<span class="text-emerald-400"
                 >${translateText("player_panel.active")}</span
               >`}
         </div>

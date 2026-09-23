@@ -6,9 +6,9 @@ import { NavNotificationsController } from "./NavNotificationsController";
 const MOBILE_ITEM =
   "nav-menu-item block w-full text-left font-bold uppercase tracking-[0.05em] " +
   "text-white/70 transition-all duration-200 cursor-pointer " +
-  "hover:text-blue-600 hover:translate-x-2.5 " +
+  "hover:text-emerald-600 hover:translate-x-2.5 " +
   "hover:drop-shadow-[0_0_20px_rgba(37,99,235,0.5)] " +
-  "[&.active]:text-blue-600 [&.active]:translate-x-2.5 " +
+  "[&.active]:text-emerald-600 [&.active]:translate-x-2.5 " +
   "[&.active]:drop-shadow-[0_0_20px_rgba(37,99,235,0.5)] " +
   "text-[clamp(18px,2.8vh,32px)] py-[clamp(0.2rem,0.8vh,0.75rem)]";
 
@@ -82,12 +82,12 @@ export class MobileNavBar extends LitElement {
       >
         <!-- Logo + Menu -->
         <div
-          class="flex flex-col text-malibu-blue mb-4 ml-[clamp(0.2rem,0.4vw,0.4vh)]"
+          class="flex flex-col text-brand mb-4 ml-[clamp(0.2rem,0.4vw,0.4vh)]"
         >
           <div class="flex flex-col items-center gap-1">
             <img
-              src=${assetUrl("images/OpenFrontLogo.svg")}
-              alt="OpenFront"
+              src=${assetUrl("images/TerritoriumLogo.svg")}
+              alt="Territorium"
               class="w-auto h-auto max-w-[220px] max-h-[4.5rem]"
             />
             <div

@@ -1,0 +1,26 @@
+Territorium Brand Assets
+Copyright (c) 2026 BroussenDev
+All Rights Reserved.
+
+This directory holds Territorium's own brand assets. None of them come from
+OpenFront: the OpenFront proprietary assets that shipped here upstream have
+been removed and replaced.
+
+ALL RIGHTS RESERVED (images/, sounds/):
+- images/Favicon.svg, images/TerritoriumLogo.svg,
+  images/TerritoriumLogoLight.svg, images/Territorium.png,
+  images/TerritoriumMark.png — the Territorium name, emblem and logos
+- sounds/music/menu-theme.mp3, sounds/music/gameplay.mp3,
+  sounds/effects/game-start-alert.mp3 — original synthesized audio
+
+You may run, build and test the Territorium software containing these assets.
+You may NOT extract them for use in another project, or use the Territorium
+name or logos to identify another product, without written permission.
+
+THIRD-PARTY (fonts/):
+- fonts/ChakraPetch-Bold.ttf — "Chakra Petch", Copyright 2018 The Chakra
+  Petch Project Authors, licensed under the SIL Open Font License 1.1.
+  See fonts/OFL.txt.
+
+NO WARRANTY: THE ASSETS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED.

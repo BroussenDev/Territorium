@@ -787,7 +787,7 @@ export class ClanDetailView extends LitElement {
       buttons.push(html`
         <button
           @click=${() => window.showPage?.("page-account")}
-          class="flex-1 px-6 py-3 text-sm font-bold text-white uppercase tracking-wider bg-malibu-blue hover:bg-aquarius active:bg-malibu-blue/80 rounded-xl transition-all"
+          class="flex-1 px-6 py-3 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-xl transition-all"
         >
           ${translateText("clan_modal.sign_in_to_join")}
         </button>
@@ -806,7 +806,7 @@ export class ClanDetailView extends LitElement {
         <button
           @click=${() => this.handleJoin()}
           ?disabled=${this.actionPending}
-          class="flex-1 px-6 py-3 text-sm font-bold text-white uppercase tracking-wider bg-malibu-blue hover:bg-aquarius active:bg-malibu-blue/80 rounded-xl transition-all disabled:opacity-50 disabled:pointer-events-none"
+          class="flex-1 px-6 py-3 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-xl transition-all disabled:opacity-50 disabled:pointer-events-none"
         >
           ${translateText("clan_modal.join_clan")}
         </button>

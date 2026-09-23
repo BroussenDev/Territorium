@@ -241,11 +241,15 @@ export default defineConfig(({ mode }) => {
       cdnBase,
     ),
     desktopLogoImageUrl: buildAssetUrl(
-      "images/OpenFront.png",
+      "images/Territorium.png",
       assetManifest,
       cdnBase,
     ),
-    mobileLogoImageUrl: buildAssetUrl("images/OF.png", assetManifest, cdnBase),
+    mobileLogoImageUrl: buildAssetUrl(
+      "images/TerritoriumMark.png",
+      assetManifest,
+      cdnBase,
+    ),
   };
 
   // Vite's HTML transform replaces the source <script src="/src/client/Main.ts">

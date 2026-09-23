@@ -83,10 +83,10 @@ export class HelpModal extends BaseModal {
       <div
         dir=${textDirection()}
         class="prose prose-invert prose-sm max-w-none px-6 py-3
-          [&_a]:text-blue-400 [&_a:hover]:text-blue-300 transition-colors
+          [&_a]:text-emerald-400 [&_a:hover]:text-emerald-300 transition-colors
           [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-4 [&_h1]:text-white [&_h1]:border-b [&_h1]:border-white/10 [&_h1]:pb-2
-          [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-blue-200
-          [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-2 [&_h3]:text-blue-100
+          [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-emerald-200
+          [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-2 [&_h3]:text-emerald-100
           [&_ul]:ps-5 [&_ul]:list-disc [&_ul]:space-y-1
           [&_li]:text-gray-300 [&_li]:leading-relaxed
           [&_p]:text-gray-300 [&_p]:mb-3 [&_strong]:text-white [&_strong]:font-bold
@@ -107,7 +107,7 @@ export class HelpModal extends BaseModal {
               </p>
             </div>
             <button
-              class="shrink-0 hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-malibu-blue/20 text-aquarius border border-malibu-blue/30 shadow-[var(--shadow-malibu-blue)]"
+              class="shrink-0 hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-brand/20 text-brand-light border border-brand/30 shadow-[var(--shadow-brand)]"
               @click=${() =>
                 document.dispatchEvent(new CustomEvent("start-tutorial"))}
             >
@@ -117,7 +117,7 @@ export class HelpModal extends BaseModal {
 
           <!-- Video Tutorial Section -->
           <div class="flex items-center gap-3 mb-3">
-            <div class="text-blue-400">
+            <div class="text-emerald-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5"
@@ -137,7 +137,7 @@ export class HelpModal extends BaseModal {
               ${translateText("help_modal.video_tutorial")}
             </h3>
             <div
-              class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+              class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
             ></div>
           </div>
           <section
@@ -173,7 +173,7 @@ export class HelpModal extends BaseModal {
 
           <!-- Troubleshooting Section -->
           <div class="flex items-center gap-3 mb-3">
-            <div class="text-blue-400">
+            <div class="text-emerald-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -196,7 +196,7 @@ export class HelpModal extends BaseModal {
               ${translateText("main.troubleshooting")}
             </h3>
             <div
-              class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+              class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
             ></div>
           </div>
           <section>
@@ -206,7 +206,7 @@ export class HelpModal extends BaseModal {
               </p>
               <button
                 id="troubleshooting-button"
-                class="hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-malibu-blue/20 text-aquarius border border-malibu-blue/30 shadow-[var(--shadow-malibu-blue)]"
+                class="hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-brand/20 text-brand-light border border-brand/30 shadow-[var(--shadow-brand)]"
                 data-page="page-troubleshooting"
                 @click="${this.openTroubleshooting}"
                 data-i18n="main.go_to_troubleshooting"
@@ -220,10 +220,10 @@ export class HelpModal extends BaseModal {
           </section>
           <!-- Hotkeys Section -->
           <div class="flex items-center gap-3 mb-3">
-            <div class="text-blue-400">
+            <div class="text-emerald-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 text-blue-400"
+                class="w-5 h-5 text-emerald-400"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -249,7 +249,7 @@ export class HelpModal extends BaseModal {
               ${translateText("help_modal.hotkeys")}
             </h3>
             <div
-              class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+              class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
             ></div>
           </div>
           <section
@@ -515,7 +515,7 @@ export class HelpModal extends BaseModal {
           <!-- UI Interface Section -->
           <section class="mb-8 mt-8">
             <div class="flex items-center gap-3 mb-6">
-              <div class="text-blue-400">
+              <div class="text-emerald-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -538,7 +538,7 @@ export class HelpModal extends BaseModal {
                 ${translateText("help_modal.ui_section")}
               </h3>
               <div
-                class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+                class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
               ></div>
             </div>
 
@@ -549,7 +549,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3 shrink-0">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.ui_leaderboard")}</span
                   >
                   <img
@@ -572,7 +572,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3 shrink-0">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.ui_control")}</span
                   >
                   <img
@@ -599,7 +599,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3 shrink-0">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.ui_events")}</span
                   >
                   <div class="flex flex-col gap-2">
@@ -635,7 +635,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3 shrink-0">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.ui_options")}</span
                   >
                   <img
@@ -665,7 +665,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3 shrink-0">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.ui_playeroverlay")}</span
                   >
                   <img
@@ -687,7 +687,7 @@ export class HelpModal extends BaseModal {
           <!-- Radial Menu Section -->
           <section class="mb-8">
             <div class="flex items-center gap-3 mb-6">
-              <div class="text-blue-400">
+              <div class="text-emerald-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -709,7 +709,7 @@ export class HelpModal extends BaseModal {
                 ${translateText("help_modal.radial_title")}
               </h3>
               <div
-                class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+                class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
               ></div>
             </div>
 
@@ -796,7 +796,7 @@ export class HelpModal extends BaseModal {
           <!-- Info/Ally Panels Section -->
           <section class="mb-8">
             <div class="flex items-center gap-3 mb-6">
-              <div class="text-blue-400">
+              <div class="text-emerald-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -819,7 +819,7 @@ export class HelpModal extends BaseModal {
                 ${translateText("help_modal.info_title")}
               </h3>
               <div
-                class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+                class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
               ></div>
             </div>
 
@@ -830,7 +830,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.info_enemy_panel")}</span
                   >
                   <img
@@ -891,7 +891,7 @@ export class HelpModal extends BaseModal {
               >
                 <div class="flex flex-col items-center gap-3">
                   <span
-                    class="text-xs font-bold uppercase tracking-wider text-blue-300"
+                    class="text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >${translateText("help_modal.info_ally_panel")}</span
                   >
                   <img
@@ -938,7 +938,7 @@ export class HelpModal extends BaseModal {
           <!-- Build Menu Section -->
           <section class="mb-8">
             <div class="flex items-center gap-3 mb-6">
-              <div class="text-blue-400">
+              <div class="text-emerald-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -961,7 +961,7 @@ export class HelpModal extends BaseModal {
                 ${translateText("help_modal.build_menu_title")}
               </h3>
               <div
-                class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+                class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
               ></div>
             </div>
 
@@ -974,17 +974,17 @@ export class HelpModal extends BaseModal {
                 <thead class="bg-white/10">
                   <tr>
                     <th
-                      class="py-3 ps-4 text-start text-xs font-bold uppercase tracking-wider text-blue-300 w-[20%]"
+                      class="py-3 ps-4 text-start text-xs font-bold uppercase tracking-wider text-emerald-300 w-[20%]"
                     >
                       ${translateText("help_modal.build_name")}
                     </th>
                     <th
-                      class="py-3 text-start text-xs font-bold uppercase tracking-wider text-blue-300 w-[8%]"
+                      class="py-3 text-start text-xs font-bold uppercase tracking-wider text-emerald-300 w-[8%]"
                     >
                       ${translateText("help_modal.build_icon")}
                     </th>
                     <th
-                      class="py-3 text-start text-xs font-bold uppercase tracking-wider text-blue-300"
+                      class="py-3 text-start text-xs font-bold uppercase tracking-wider text-emerald-300"
                     >
                       ${translateText("help_modal.build_desc")}
                     </th>
@@ -1159,7 +1159,7 @@ export class HelpModal extends BaseModal {
           <!-- Player Icons Section -->
           <section class="mb-4">
             <div class="flex items-center gap-3 mb-6">
-              <div class="text-blue-400">
+              <div class="text-emerald-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -1181,7 +1181,7 @@ export class HelpModal extends BaseModal {
                 ${translateText("help_modal.player_icons")}
               </h3>
               <div
-                class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"
+                class="flex-1 h-px bg-gradient-to-r from-emerald-500/50 to-transparent"
               ></div>
             </div>
 

@@ -18,8 +18,10 @@
   "display": "standalone",
   "dir": "auto",
   "lang": "en",
-  "name": "OpenFront.io",
-  "short_name": "OpenFront",
+  "name": "Territorium",
+  "short_name": "Territorium",
   "start_url": "/",
-  "id": "/"
+  "id": "/",
+  "theme_color": "#0b1114",
+  "background_color": "#0b1114"
 }

@@ -860,7 +860,7 @@ export class UsernameInput extends LitElement {
         <button
           type="button"
           id="clan-tag-button"
-          class="flex h-full w-[7.25rem] items-center justify-between gap-0.5 rounded-lg bg-transparent px-1.5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-malibu-blue/60 ${invalid
+          class="flex h-full w-[7.25rem] items-center justify-between gap-0.5 rounded-lg bg-transparent px-1.5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 ${invalid
             ? "ring-2 ring-red-400/70"
             : this.clanMenuOpen
               ? "bg-white/10"
@@ -929,7 +929,7 @@ export class UsernameInput extends LitElement {
                       type="button"
                       class="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition-colors cursor-pointer ${clan.tag.toUpperCase() ===
                       active
-                        ? "bg-malibu-blue/25"
+                        ? "bg-brand/25"
                         : "hover:bg-white/10"}"
                       @click=${() => this.selectClan(clan.tag)}
                     >
@@ -944,7 +944,7 @@ export class UsernameInput extends LitElement {
                       ${clan.tag.toUpperCase() === active
                         ? html`<svg
                             viewBox="0 0 24 24"
-                            class="w-4 h-4 shrink-0 text-malibu-blue"
+                            class="w-4 h-4 shrink-0 text-brand"
                             aria-hidden="true"
                           >
                             <path
@@ -979,7 +979,7 @@ export class UsernameInput extends LitElement {
             placeholder=${translateText("username.tag")}
             minlength="${MIN_CLAN_TAG_LENGTH}"
             maxlength="${MAX_CLAN_TAG_LENGTH}"
-            class="w-full rounded-lg border border-white/15 bg-black/30 px-2 py-1.5 text-base font-semibold uppercase tracking-wider text-white placeholder-white/30 focus:border-malibu-blue/60 focus:outline-none"
+            class="w-full rounded-lg border border-white/15 bg-black/30 px-2 py-1.5 text-base font-semibold uppercase tracking-wider text-white placeholder-white/30 focus:border-brand/60 focus:outline-none"
           />
         </div>
         <div
@@ -996,7 +996,7 @@ export class UsernameInput extends LitElement {
             : null}
           <button
             type="button"
-            class="ml-auto rounded-lg px-2 py-1 text-sm text-malibu-blue hover:bg-malibu-blue/15 transition-colors cursor-pointer"
+            class="ml-auto rounded-lg px-2 py-1 text-sm text-brand hover:bg-brand/15 transition-colors cursor-pointer"
             @click=${this.openClanBrowser}
           >
             ${translateText("username.clan_browse")}
@@ -1035,7 +1035,7 @@ export class UsernameInput extends LitElement {
         <span class="min-w-0 truncate text-white ${NAME_TEXT}"
           >${this.verifiedName() ?? ""}</span
         >
-        ${verifiedBadge("w-5 h-5 sm:w-6 sm:h-6", "text-aquarius")}
+        ${verifiedBadge("w-5 h-5 sm:w-6 sm:h-6", "text-brand-light")}
       </div>
     `;
   }
@@ -1078,7 +1078,7 @@ export class UsernameInput extends LitElement {
         minlength="${MIN_USERNAME_LENGTH}"
         maxlength="${MAX_USERNAME_LENGTH}"
         aria-label=${translateText("username.enter_username")}
-        class="text-left text-white placeholder-white/50 transition-colors text-ellipsis hover:bg-white/5 focus:bg-white/5 focus:outline-none focus:ring-2 focus:ring-malibu-blue/60 ${NAME_BOX} ${NAME_TEXT}"
+        class="text-left text-white placeholder-white/50 transition-colors text-ellipsis hover:bg-white/5 focus:bg-white/5 focus:outline-none focus:ring-2 focus:ring-brand/60 ${NAME_BOX} ${NAME_TEXT}"
       />
     `;
   }
@@ -1097,7 +1097,7 @@ export class UsernameInput extends LitElement {
       <button
         type="button"
         class="group flex h-full w-full items-center justify-center gap-1.5 rounded-lg border px-2 transition-colors cursor-pointer select-none ${eligible
-          ? "border-malibu-blue/50 bg-malibu-blue/10 hover:border-malibu-blue/80 hover:bg-malibu-blue/20"
+          ? "border-brand/50 bg-brand/10 hover:border-brand/80 hover:bg-brand/20"
           : "border-white/10 bg-black/20 hover:border-white/25 hover:bg-black/35"}"
         title=${hint}
         aria-pressed="false"
@@ -1106,7 +1106,7 @@ export class UsernameInput extends LitElement {
         ${verifiedBadge(
           "w-5 h-5 transition-colors",
           eligible
-            ? "text-aquarius"
+            ? "text-brand-light"
             : "text-white/25 group-hover:text-white/45",
           null,
         )}

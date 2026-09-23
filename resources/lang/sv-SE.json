@@ -9,7 +9,7 @@
     "close": "Stäng"
   },
   "main": {
-    "title": "OpenFront (ALPHA)",
+    "title": "Territorium (ALPHA)",
     "join_discord": "Gå med i Discord!",
     "login_discord": "Logga in med Discord",
     "checking_login": "Kontrollerar inloggning...",
@@ -569,7 +569,7 @@
       "cursor": "Muspekare",
       "hand": "Hand",
       "radiation": "Radioaktivitet",
-      "openfront_qr": "OpenFront.io QR kod",
+      "openfront_qr": "Territorium QR kod",
       "openfront": "OpenFront",
       "t_rex": "T-Rex",
       "embelem": "Emblem",

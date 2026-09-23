@@ -458,7 +458,7 @@ export class TutorialPanel extends LitElement implements Controller {
     return html`
       ${step.manual
         ? html`<button
-            class="rounded bg-malibu-blue hover:bg-aquarius px-2 py-0.5 font-semibold text-white"
+            class="rounded bg-brand hover:bg-brand-light px-2 py-0.5 font-semibold text-white"
             @click=${() => this.progress.acknowledge()}
           >
             ${translateText("tutorial.got_it")}
@@ -466,7 +466,7 @@ export class TutorialPanel extends LitElement implements Controller {
         : nothing}
       ${goTo
         ? html`<button
-            class="rounded bg-malibu-blue hover:bg-aquarius px-2 py-0.5 font-semibold text-white"
+            class="rounded bg-brand hover:bg-brand-light px-2 py-0.5 font-semibold text-white"
             @click=${() => this.eventBus.emit(new GoToPlayerEvent(goTo))}
           >
             ${translateText("tutorial.go_to")}

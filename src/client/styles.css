@@ -7,37 +7,39 @@
 
 @theme {
   --default-ring-width: 3px;
-  --default-ring-color: var(--color-malibu-blue);
-  --font-display: "OpenFront", Inter, Arial, sans-serif;
+  --default-ring-color: var(--color-brand);
+  --font-display: "Territorium Display", Inter, Arial, sans-serif;
 
-  /* Openfront.io brand palette — see Openfront_Brand_Guidelines.pdf §4 */
-  --color-malibu-blue: #0084d1;
-  --color-aquarius: #3fa9f5;
+  /* Territorium brand palette — emerald territory, gold crown (see the
+     emblem in proprietary/images/Favicon.svg). */
+  --color-brand: #059669;
+  --color-brand-light: #10b981;
   --color-dawn-blue: #cccccc;
   --color-bright-white: #ffffff;
-  --color-bright-blue: #1e90ff;
+  --color-brand-bright: #34d399;
 
-  /* Openfront Masters sub-brand */
-  --color-cyber-yellow: #ffd700;
+  /* Gold accent */
+  --color-cyber-yellow: #fbbf24;
   --color-limestone: #999999;
 
   /* Background & decorative — not for standalone UI use */
-  --color-deep-navy: #0a1628;
-  --color-hex-cyan: #00c8ff;
+  --color-deep-navy: #0b1114;
+  --color-hex-cyan: #34d399;
   --color-frame-orange: #f97316;
 
   /* App-specific surface colors */
-  --color-surface: #0a1628;
+  --color-surface: #0b1114;
 
-  --shadow-malibu-blue: 0 0 15px rgba(0, 132, 209, 0.2);
-  --shadow-malibu-blue-soft: 0 0 12px rgba(0, 132, 209, 0.2);
-  --shadow-malibu-blue-strong: 0 0 15px rgba(0, 132, 209, 0.3);
-  --shadow-malibu-blue-pill: 0 0 6px rgba(0, 132, 209, 0.35);
-  --shadow-malibu-blue-ring-sm: 0 0 0 4px rgba(0, 132, 209, 0.2);
-  --shadow-malibu-blue-ring-lg: 0 0 0 6px rgba(0, 132, 209, 0.3);
-  --shadow-lobby-card-hover: 0 0 0 2px #0084d1, 0 0 20px rgba(0, 132, 209, 0.5);
+  --shadow-brand: 0 0 15px rgba(16, 185, 129, 0.2);
+  --shadow-brand-soft: 0 0 12px rgba(16, 185, 129, 0.2);
+  --shadow-brand-strong: 0 0 15px rgba(16, 185, 129, 0.3);
+  --shadow-brand-pill: 0 0 6px rgba(16, 185, 129, 0.35);
+  --shadow-brand-ring-sm: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  --shadow-brand-ring-lg: 0 0 0 6px rgba(16, 185, 129, 0.3);
+  --shadow-lobby-card-hover:
+    0 0 0 2px #10b981, 0 0 20px rgba(16, 185, 129, 0.5);
   --shadow-action-card-hover:
-    0 0 0 1px #0084d1, 0 0 12px rgba(0, 132, 209, 0.35);
+    0 0 0 1px #10b981, 0 0 12px rgba(16, 185, 129, 0.35);
 }
 
 @layer base {
@@ -174,7 +176,7 @@ body.page-open {
   padding: 15px 20px;
   font-size: 16px;
   cursor: pointer;
-  background-color: var(--color-malibu-blue);
+  background-color: var(--color-brand);
   color: white;
   border: none;
   border-radius: 8px;
@@ -184,7 +186,7 @@ body.page-open {
 }
 
 .start-game-button:not(:disabled):hover {
-  background-color: var(--color-aquarius);
+  background-color: var(--color-brand-light);
 }
 
 .start-game-button:disabled {
@@ -641,7 +643,7 @@ label.option-card:hover {
 /* News button glows blue while there is unread news. */
 news-button .active button {
   position: relative;
-  border-color: var(--color-malibu-blue) !important;
+  border-color: var(--color-brand) !important;
   border-width: 2px !important;
   box-shadow:
     0 0 0 1px rgba(37, 99, 235, 0.5),

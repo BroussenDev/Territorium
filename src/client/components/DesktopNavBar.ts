@@ -57,9 +57,9 @@ export class DesktopNavBar extends LitElement {
         <div class="flex flex-col items-center justify-center">
           <div class="h-8">
             <img
-              class="block h-full aspect-[1364/259]"
-              src=${assetUrl("images/OpenFrontLogo.svg")}
-              alt="OpenFront"
+              class="block h-full aspect-[403/64]"
+              src=${assetUrl("images/TerritoriumLogo.svg")}
+              alt="Territorium"
             />
           </div>
           <div
@@ -70,7 +70,7 @@ export class DesktopNavBar extends LitElement {
         <button
           class="nav-menu-item ${currentPage === "page-play"
             ? "active"
-            : ""} text-white/70 hover:text-malibu-blue  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-malibu-blue "
+            : ""} text-white/70 hover:text-brand  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-brand "
           data-page="page-play"
           data-i18n="main.play"
         ></button>
@@ -79,7 +79,7 @@ export class DesktopNavBar extends LitElement {
           <button
             class="nav-menu-item ${currentPage === "page-item-store"
               ? "active"
-              : ""} text-white/70 hover:text-malibu-blue  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-malibu-blue "
+              : ""} text-white/70 hover:text-brand  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-brand "
             data-page="page-item-store"
             data-i18n="main.store"
             @click=${this._notifications.onStoreClick}
@@ -98,17 +98,17 @@ export class DesktopNavBar extends LitElement {
         <button
           class="nav-menu-item ${currentPage === "page-inventory"
             ? "active"
-            : ""} text-white/70 hover:text-malibu-blue font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-malibu-blue"
+            : ""} text-white/70 hover:text-brand font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-brand"
           data-page="page-inventory"
           data-i18n="main.inventory"
         ></button>
         <button
-          class="nav-menu-item text-white/70 hover:text-malibu-blue  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-malibu-blue "
+          class="nav-menu-item text-white/70 hover:text-brand  font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-brand "
           data-page="page-leaderboard"
           data-i18n="main.leaderboard"
         ></button>
         <button
-          class="no-crazygames nav-menu-item text-white/70 hover:text-blue-500 font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-blue-500"
+          class="no-crazygames nav-menu-item text-white/70 hover:text-emerald-500 font-medium tracking-wider uppercase cursor-pointer transition-colors [&.active]:text-emerald-500"
           data-page="page-clan"
           data-i18n="main.clans"
         ></button>
