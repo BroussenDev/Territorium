@@ -34,6 +34,7 @@ const playlist = new MapPlaylist();
 let lobbyService: MasterLobbyService;
 
 const app = express();
+app.disable("x-powered-by");
 const server = http.createServer(app);
 
 const log = logger.child({ comp: "m" });
