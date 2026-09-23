@@ -1,13 +1,12 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { getCachedCosmetics, type InsufficientCurrency } from "../Cosmetics";
+import type { InsufficientCurrency } from "../Cosmetics";
 import { translateText } from "../Utils";
 import "./ConfirmDialog";
 
 /**
  * Shown when the player can't afford a cosmetic. Set `.info` to display it and
- * clear it on `@close`. Emeralds get a top-up button when the catalog sells
- * currency packs; medals are dismiss-only.
+ * clear it on `@close`. Emeralds get a top-up button; medals are dismiss-only.
  */
 @customElement("insufficient-currency-dialog")
 export class InsufficientCurrencyDialog extends LitElement {
@@ -24,11 +23,6 @@ export class InsufficientCurrencyDialog extends LitElement {
   render() {
     const info = this.info;
     if (!info) return nothing;
-    // No currency pack for sale: the store's packs tab is hidden, nothing to
-    // send the player to.
-    const canTopUp =
-      info.canTopUp &&
-      Object.keys(getCachedCosmetics()?.currencyPacks ?? {}).length > 0;
     return html`<confirm-dialog
       .heading=${translateText("store.insufficient_currency_title", {
         currency: info.currency,
@@ -41,8 +35,8 @@ export class InsufficientCurrencyDialog extends LitElement {
       variant="warning"
       .wide=${true}
       .showClose=${true}
-      .buttons=${canTopUp ? "confirmOnly" : "none"}
-      .confirmText=${canTopUp
+      .buttons=${info.canTopUp ? "confirmOnly" : "none"}
+      .confirmText=${info.canTopUp
         ? translateText("store.purchase_currency", { currency: info.currency })
         : ""}
       @cancel=${() => this.close()}

@@ -82,37 +82,16 @@ export class StoreModal extends BaseModal {
       // Affiliate mode: hide tabs, show only items associated with the code.
       return {};
     }
-    const tabs: { key: StoreTab; label: string }[] = [
-      { key: "packs", label: translateText("store.packs") },
-      { key: "subscriptions", label: translateText("store.subscriptions") },
-      { key: "bundles", label: translateText("store.bundles") },
-      { key: "cosmetics", label: translateText("store.cosmetics") },
-      { key: "effects", label: translateText("store.effects") },
-      { key: "tribes", label: translateText("store.tribes") },
-    ];
     return {
-      tabs: tabs.filter((tab) => this.shownTabs?.has(tab.key) ?? true),
+      tabs: [
+        { key: "packs", label: translateText("store.packs") },
+        { key: "subscriptions", label: translateText("store.subscriptions") },
+        { key: "bundles", label: translateText("store.bundles") },
+        { key: "cosmetics", label: translateText("store.cosmetics") },
+        { key: "effects", label: translateText("store.effects") },
+        { key: "tribes", label: translateText("store.tribes") },
+      ],
     };
-  }
-
-  // Tabs with nothing to show (no currency packs, no subscriptions...) are
-  // hidden. Until the catalog loads every tab is kept, so a deep link to one
-  // of them is still honoured.
-  private shownTabs: Set<StoreTab> | null = null;
-
-  private computeShownTabs(): Set<StoreTab> | null {
-    if (this.cosmetics === null) return null;
-    const shown = new Set<StoreTab>(["cosmetics"]);
-    for (const tab of [
-      "packs",
-      "subscriptions",
-      "bundles",
-      "effects",
-    ] as const) {
-      if (this.groupsForTab(tab).length > 0) shown.add(tab);
-    }
-    if (this.cosmetics.tribeNames !== undefined) shown.add("tribes");
-    return shown;
   }
 
   connectedCallback() {
@@ -168,13 +147,6 @@ export class StoreModal extends BaseModal {
     this.userMeResponse = userMeResponse;
     this.authSettled = true;
     this.cosmetics = await fetchCosmetics();
-    this.shownTabs = this.computeShownTabs();
-    const tabs = this.modalConfig().tabs ?? [];
-    if (tabs.length && !tabs.some((tab) => tab.key === this.activeTab)) {
-      // setActiveTab also rewrites the URL: only while the store is shown.
-      if (this.isOpen()) this.setActiveTab(tabs[0].key);
-      else this.activeTab = tabs[0].key;
-    }
     this.selectVisible(this.groupsForTab(this.activeTab));
     await this.refresh();
   }
