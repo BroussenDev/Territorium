@@ -347,6 +347,28 @@ describe("StoreModal cosmetic browser", () => {
     localStorage.clear();
   });
 
+  it("hides the tabs with nothing for sale and opens on cosmetics", async () => {
+    resolvedCatalog = [red, blue, flag];
+    store = document.createElement("store-modal") as StoreModal;
+    store.inline = true;
+    document.body.appendChild(store);
+    await store.updateComplete;
+    store.open();
+    await store.onUserMe(false);
+    await store.updateComplete;
+
+    // The tab bar lives in <o-modal>'s shadow root: read what it was given.
+    const modal = store.querySelector("o-modal") as unknown as {
+      tabs: { key: string }[];
+      activeTab: string;
+    };
+    expect(modal.tabs.map((tab) => tab.key)).toEqual(["cosmetics"]);
+    expect(modal.activeTab).toBe("cosmetics");
+    await vi.waitFor(() =>
+      expect(store!.querySelector("cosmetic-card")).toBeTruthy(),
+    );
+  });
+
   it("selects the first visible item and purchases the selected variant", async () => {
     const modal = await openStoreOnCosmetic("patterns");
     expect(card(modal, red.key)?.activeVariantKey).toBe(red.key);
