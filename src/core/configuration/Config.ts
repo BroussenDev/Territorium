@@ -55,6 +55,9 @@ declare global {
       // Environment-scoped and optional like stripePublishableKey: the
       // Grafana Faro collector URL. Absent keeps client telemetry off.
       faroCollectorUrl?: string;
+      // Environment-scoped and optional: the account API origin, when it
+      // isn't the default api.<jwtAudience>.
+      apiUrl?: string;
       // The rendering server's own id. Absent on a static page, which no
       // server rendered; ClientEnv.instanceId() then answers "".
       instanceId?: string;

@@ -153,6 +153,20 @@ describe("ServerEnv.jwtIssuer", () => {
     vi.stubEnv("DOMAIN", "openfront.io");
     expect(ServerEnv.jwtIssuer()).toBe("https://api.openfront.io");
   });
+
+  test("uses API_URL when set, without its trailing slash", () => {
+    vi.stubEnv("DOMAIN", "territorium.example");
+    vi.stubEnv("API_URL", "https://territorium.example/account-api/");
+    expect(ServerEnv.jwtIssuer()).toBe(
+      "https://territorium.example/account-api",
+    );
+  });
+
+  test("ignores an empty API_URL", () => {
+    vi.stubEnv("DOMAIN", "openfront.io");
+    vi.stubEnv("API_URL", "");
+    expect(ServerEnv.jwtIssuer()).toBe("https://api.openfront.io");
+  });
 });
 
 describe("ServerEnv.allowedFlares", () => {

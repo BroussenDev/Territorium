@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { getApiBase } from "../../src/client/ApiBase";
 import { ClientEnv, NoServerError } from "../../src/client/ClientEnv";
 import { GameEnv } from "../../src/core/configuration/Config";
 import { ServerList } from "../../src/core/ServerList";
@@ -73,6 +74,13 @@ describe("a page carrying only environment values", () => {
     expect(ClientEnv.jwtAudience()).toBe("openfront.io");
     expect(ClientEnv.turnstileSiteKey()).toBe("site-key");
     expect(ClientEnv.jwtIssuer()).toBe("https://api.openfront.io");
+  });
+
+  it("points the API at apiUrl when the page carries one", () => {
+    (window as any).BOOTSTRAP_CONFIG.apiUrl =
+      "https://openfront.io/account-api";
+    expect(ClientEnv.jwtIssuer()).toBe("https://openfront.io/account-api");
+    expect(getApiBase()).toBe("https://openfront.io/account-api");
   });
 
   it("reports no instance id rather than throwing", () => {

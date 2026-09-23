@@ -81,6 +81,14 @@ export class ServerEnv {
     if (!v) return undefined;
     return v;
   }
+  // Optional: where the account API lives, when it isn't the default
+  // api.<DOMAIN> (e.g. a path on the game's own domain). Environment-scoped,
+  // so it travels through BOOTSTRAP_CONFIG like the Faro URL.
+  static apiUrl(): string | undefined {
+    const v = process.env.API_URL?.trim().replace(/\/+$/, "");
+    if (!v) return undefined;
+    return v;
+  }
   static jwtAudience(): string {
     const v = process.env.DOMAIN;
     if (!v) {
@@ -106,6 +114,8 @@ export class ServerEnv {
     return process.env.CDN_BASE ?? "";
   }
   static jwtIssuer(): string {
+    const apiUrl = ServerEnv.apiUrl();
+    if (apiUrl !== undefined) return apiUrl;
     const audience = ServerEnv.jwtAudience();
     return audience === "localhost"
       ? "http://localhost:8787"

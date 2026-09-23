@@ -172,6 +172,8 @@ export class ClientEnv {
       stripePublishableKey: bc.stripePublishableKey,
       // Optional: absent keeps client telemetry off (see Telemetry.ts).
       faroCollectorUrl: bc.faroCollectorUrl,
+      // Optional: absent means the API is at the default api.<jwtAudience>.
+      apiUrl: bc.apiUrl,
       // Absent on a static page: only a server that renders the page knows
       // its own instance id. Empty means "none", and callers send it only
       // when it is there (the API ignores it either way).
@@ -197,6 +199,9 @@ export class ClientEnv {
   }
   static faroCollectorUrl(): string | undefined {
     return ClientEnv.get().faroCollectorUrl;
+  }
+  static apiUrl(): string | undefined {
+    return ClientEnv.get().apiUrl;
   }
   // Worker count of the server this page talks to: the server the API's list
   // picked, else the own cluster entry when the map was injected, else the
@@ -245,6 +250,8 @@ export class ClientEnv {
     return ClientEnv.get().gitCommit;
   }
   static jwtIssuer(): string {
+    const apiUrl = ClientEnv.apiUrl();
+    if (apiUrl !== undefined) return apiUrl;
     const audience = ClientEnv.jwtAudience();
     return audience === "localhost"
       ? "http://localhost:8787"
@@ -673,6 +680,8 @@ export interface ClientEnvValues {
   stripePublishableKey?: string;
   // Optional: absent keeps client telemetry off (Telemetry.ts).
   faroCollectorUrl?: string;
+  // Optional: absent means the API is at the default api.<jwtAudience>.
+  apiUrl?: string;
   // "" on a static page, which no server rendered.
   instanceId: string;
   gitCommit: string;
