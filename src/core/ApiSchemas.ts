@@ -858,6 +858,14 @@ export const NewsItemSchema = z.object({
   type: z.enum(["tournament", "tutorial", "announcement"]).or(z.string()),
   // Absent or empty means every platform.
   platforms: z.array(z.string()).optional(),
+  // Machine translations of title/description, keyed by game language code
+  // (resources/lang). A language without an entry shows the original text.
+  translations: z
+    .record(
+      z.string(),
+      z.object({ title: z.string(), description: z.string().optional() }),
+    )
+    .optional(),
 });
 export type NewsItem = z.infer<typeof NewsItemSchema>;
 

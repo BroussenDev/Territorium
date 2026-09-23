@@ -2,6 +2,7 @@ import newsItems from "../../../resources/news.json";
 import {
   filterNewsByPlatform,
   getVisibleNewsItems,
+  localizeNewsItem,
   NewsItem,
 } from "../../../src/client/components/NewsBox";
 
@@ -121,5 +122,31 @@ describe("NewsBox", () => {
       const items = getVisibleNewsItems(allItems);
       expect(items.some((i) => i.type === "announcement")).toBe(true);
     });
+  });
+});
+
+describe("localizeNewsItem", () => {
+  const item: NewsItem = {
+    id: "a",
+    title: "Bienvenue",
+    description: "Bon jeu",
+    type: "announcement",
+    translations: {
+      en: { title: "Welcome", description: "Have fun" },
+      de: { title: "Willkommen", description: "Viel Spaß" },
+      "pt-BR": { title: "Bem-vindo", description: "Divirta-se" },
+    },
+  };
+
+  test("picks the exact language, then its base, else the original", () => {
+    expect(localizeNewsItem(item, "en").title).toBe("Welcome");
+    expect(localizeNewsItem(item, "pt-BR").description).toBe("Divirta-se");
+    expect(localizeNewsItem(item, "de-CH").title).toBe("Willkommen");
+    expect(localizeNewsItem(item, "eo")).toBe(item);
+  });
+
+  test("an item without translations is shown as written", () => {
+    const plain: NewsItem = { id: "b", title: "Salut", type: "announcement" };
+    expect(localizeNewsItem(plain, "en")).toBe(plain);
   });
 });

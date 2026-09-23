@@ -5,7 +5,7 @@ import type { ClientPlatform } from "../../core/Schemas";
 import { getNews } from "../Api";
 import { clientPlatform } from "../ClientPlatform";
 import { renderMarkdown } from "../Markdown";
-import { translateText } from "../Utils";
+import { currentLanguage, translateText } from "../Utils";
 
 export type { NewsItem };
 
@@ -34,6 +34,20 @@ export function filterNewsByPlatform(
   return items.filter(
     (item) => !item.platforms?.length || item.platforms.includes(platform),
   );
+}
+
+// The item's title and description in the player's language: the exact
+// language first ("pt-BR"), then its base ("de-CH" -> "de"), else the text
+// as the admin wrote it.
+export function localizeNewsItem(item: NewsItem, lang: string): NewsItem {
+  const t =
+    item.translations?.[lang] ?? item.translations?.[lang.split("-")[0]];
+  if (!t) return item;
+  return {
+    ...item,
+    title: t.title,
+    description: item.description !== undefined ? t.description : undefined,
+  };
 }
 
 const typeLabelKeys: Record<string, string> = {
@@ -122,7 +136,10 @@ export class NewsBox extends LitElement {
   render() {
     if (this.items.length === 0) return nothing;
 
-    const item = this.items[this.activeIndex];
+    const item = localizeNewsItem(
+      this.items[this.activeIndex],
+      currentLanguage(),
+    );
 
     return html`
       <div

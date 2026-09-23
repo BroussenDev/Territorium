@@ -23,6 +23,7 @@ import { logger } from "./Logger";
 import { MapPlaylist } from "./MapPlaylist";
 import { MasterLobbyService } from "./MasterLobbyService";
 import { AdminSessions, NewsStore, registerNewsRoutes } from "./NewsAdmin";
+import { deeplTranslator } from "./NewsTranslator";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
 import { startPolling } from "./PollingLoop";
 import { renderAppShell } from "./RenderHtml";
@@ -162,6 +163,9 @@ registerNewsRoutes({
   ),
   sessions: new AdminSessions(),
   adminPassword: () => ServerEnv.adminPassword(),
+  translate: ServerEnv.deeplApiKey()
+    ? deeplTranslator(ServerEnv.deeplApiKey()!)
+    : null,
   log,
 });
 

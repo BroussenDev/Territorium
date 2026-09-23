@@ -361,6 +361,12 @@ export class ServerEnv {
     const v = process.env.NEWS_FILE;
     return v && v.length > 0 ? v : "data/news.json";
   }
+  // DeepL key used to translate the news feed when it is saved. Unset: the
+  // news are shown to everyone as written.
+  static deeplApiKey(): string | undefined {
+    const v = process.env.DEEPL_API_KEY;
+    return v && v.length > 0 ? v : undefined;
+  }
   static allowedFlares(): string[] | undefined {
     const raw = process.env.ALLOWED_FLARES;
     if (!raw) return undefined;

@@ -778,6 +778,10 @@
               (<code>**gras**</code>, <code>[lien](https://…)</code>).
               <span id="desc-key"></span>
             </div>
+            <div class="hint">
+              Écris dans ta langue : le titre et la description sont traduits
+              automatiquement dans toutes les langues du jeu à la publication.
+            </div>
             <label for="f-url">Lien (optionnel)</label>
             <input
               id="f-url"
@@ -931,7 +935,13 @@
             const platforms = item.platforms?.length
               ? item.platforms.join(", ")
               : "toutes plateformes";
-            meta.textContent = [item.url, platforms]
+            const langs = Object.keys(item.translations ?? {}).length;
+            const translated = item.descriptionTranslationKey
+              ? null
+              : langs > 0
+                ? `traduite en ${langs} langues`
+                : "non traduite";
+            meta.textContent = [item.url, platforms, translated]
               .filter(Boolean)
               .join(" · ");
             body.append(title, desc, meta);

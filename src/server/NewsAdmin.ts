@@ -7,6 +7,7 @@ import type { Logger } from "winston";
 import { z } from "zod";
 import { type NewsItem, NewsItemSchema } from "../core/ApiSchemas";
 import { ClientPlatformSchema } from "../core/Schemas";
+import { type TranslateFn, translateNews } from "./NewsTranslator";
 
 // The homepage news feed, edited from /admin.html. The upstream game read it
 // from a closed-source API; Territorium serves it from the master process
@@ -38,6 +39,16 @@ export const AdminNewsItemSchema = z.object({
     .optional(),
   type: z.enum(NEWS_TYPES),
   platforms: z.array(ClientPlatformSchema).optional(),
+  // Written by the server (see NewsTranslator), never by the admin page.
+  translations: z
+    .record(
+      z.string().regex(/^[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?$/),
+      z.object({
+        title: z.string().max(400),
+        description: z.string().max(2000).optional(),
+      }),
+    )
+    .optional(),
 });
 
 export const AdminNewsListSchema = z
@@ -144,9 +155,12 @@ export function registerNewsRoutes(opts: {
   store: NewsStore;
   sessions: AdminSessions;
   adminPassword: () => string | undefined;
+  // Translates saved news into every game language; null leaves them as is.
+  translate?: TranslateFn | null;
   log: Logger;
 }) {
   const { app, store, sessions, adminPassword, log } = opts;
+  const translate = opts.translate ?? null;
 
   app.get("/api/news", (_req, res) => {
     res.json(store.list());
@@ -205,7 +219,7 @@ export function registerNewsRoutes(opts: {
     res.json(store.list());
   });
 
-  app.put("/api/admin/news", requireAdmin, (req, res) => {
+  app.put("/api/admin/news", requireAdmin, async (req, res) => {
     const parsed = AdminNewsListSchema.safeParse(req.body);
     if (!parsed.success) {
       res.status(400).json({
@@ -218,7 +232,13 @@ export function registerNewsRoutes(opts: {
       return;
     }
     try {
-      const items = store.replace(parsed.data);
+      const translated = await translateNews(
+        parsed.data,
+        store.list(),
+        translate,
+        log,
+      );
+      const items = store.replace(translated);
       log.info(`News feed updated by admin (${items.length} items)`);
       res.json(items);
     } catch (error) {

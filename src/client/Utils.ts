@@ -488,6 +488,10 @@ function getCachedLangSelector(): LangSelector | null {
   return found;
 }
 
+/** The UI language the player picked (a resources/lang code such as "fr"). */
+export const currentLanguage = (): string =>
+  getCachedLangSelector()?.currentLang ?? "en";
+
 /** Language codes whose script reads right-to-left (resources/lang/metadata.json). */
 const RTL_LANGUAGES = new Set(["ar", "fa", "he"]);
 
