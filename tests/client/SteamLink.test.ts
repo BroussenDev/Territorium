@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { UserMeResponse } from "../../src/core/ApiSchemas";
 
 vi.mock("../../src/client/ClientEnv", () => ({
-  ClientEnv: { jwtAudience: () => "localhost" },
+  ClientEnv: { jwtAudience: () => "localhost", apiUrl: () => undefined },
 }));
 
 // redeemSteamLink is authenticated; Auth is only mocked because Api.ts

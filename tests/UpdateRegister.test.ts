@@ -111,18 +111,32 @@ printf '%s' "$CODE"
 
 const OK = { code: "200", body: '{"letter":"c","numWorkers":20}' };
 
-describe("update.sh register_identity", () => {
-  it("asks the registry who this host is and takes its answer", () => {
-    const r = runRegister([OK]);
-    expect(r.status).toBe(0);
-    expect(r.letter).toBe("c");
-    expect(r.numWorkers).toBe("20");
-    expect(r.requests).toEqual([
-      'https://api.openfront.io/cluster/register {"site":"openfront.io","host":"blue.openfront.io","cpus":32}',
-    ]);
-  });
+// update.sh requires jq on the host (it checks at startup) to build the
+// request and read the answer. Without it the happy paths can't run.
+const HAS_JQ = (() => {
+  try {
+    execFileSync("bash", ["-c", "command -v jq"], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+})();
 
-  it("retries an API it cannot reach, then succeeds", () => {
+describe("update.sh register_identity", () => {
+  it.skipIf(!HAS_JQ)(
+    "asks the registry who this host is and takes its answer",
+    () => {
+      const r = runRegister([OK]);
+      expect(r.status).toBe(0);
+      expect(r.letter).toBe("c");
+      expect(r.numWorkers).toBe("20");
+      expect(r.requests).toEqual([
+        'https://api.openfront.io/cluster/register {"site":"openfront.io","host":"blue.openfront.io","cpus":32}',
+      ]);
+    },
+  );
+
+  it.skipIf(!HAS_JQ)("retries an API it cannot reach, then succeeds", () => {
     const r = runRegister([{ code: "000" }, { code: "502" }, OK]);
     expect(r.status).toBe(0);
     expect(r.letter).toBe("c");
