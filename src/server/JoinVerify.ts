@@ -16,6 +16,9 @@ const JoinVerifyVerdictSchema = z.discriminatedUnion("status", [
 
 export type JoinVerifyResponse =
   | { status: "approved"; username: string; clanTag: string | null }
+  // 204: the join is allowed but the API does no name screening, so the
+  // locally screened identity (Censor.ts) stands.
+  | { status: "passed" }
   | { status: "rejected"; reason: string }
   | { status: "error"; reason: string };
 
@@ -117,6 +120,9 @@ export async function verifyJoin(
       },
       body: JSON.stringify({ ip, token: turnstileToken, username, clanTag }),
     });
+    if (response.status === 204) {
+      return { status: "passed" };
+    }
     if (!response.ok) {
       return {
         status: "error",

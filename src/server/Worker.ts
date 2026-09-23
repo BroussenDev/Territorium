@@ -591,6 +591,9 @@ export async function startWorker() {
                 username = verdict.username;
                 clanTag = verdict.clanTag;
                 break;
+              case "passed":
+                // Allowed, and the locally screened name stands.
+                break;
               case "rejected":
                 // Only reachable on first joins: re-admits omit the token,
                 // which the API always approves.

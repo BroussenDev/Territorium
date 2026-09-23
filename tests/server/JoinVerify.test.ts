@@ -100,6 +100,22 @@ describe("verifyJoin", () => {
     expect(JSON.parse(init.body).token).toBeNull();
   });
 
+  it("returns passed on a 204, leaving the identity to the local screen", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        status: 204,
+        json: async () => {
+          throw new SyntaxError("Unexpected end of JSON input");
+        },
+      }),
+    );
+    expect(await verifyJoin("ip", "tok", "xXblackxX", null)).toEqual({
+      status: "passed",
+    });
+  });
+
   it("returns error on a 4xx without retrying", async () => {
     const fetchMock = vi
       .fn()
