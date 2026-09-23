@@ -381,11 +381,11 @@
     "common": "Almindelig",
     "epic": "Episk",
     "free": "+{numFree} BONUS!",
-    "hard": "Plutonium",
+    "hard": "Smaragder",
     "legendary": "Legendarisk",
     "per_day": "/dag",
     "rare": "Sjælden",
-    "soft": "Caps",
+    "soft": "Medaljer",
     "uncommon": "Ualmindelig"
   },
   "difficulty": {

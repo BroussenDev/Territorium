@@ -6,7 +6,7 @@ import "./ConfirmDialog";
 
 /**
  * Shown when the player can't afford a cosmetic. Set `.info` to display it and
- * clear it on `@close`. Plutonium gets a top-up button; caps are dismiss-only.
+ * clear it on `@close`. Emeralds get a top-up button; medals are dismiss-only.
  */
 @customElement("insufficient-currency-dialog")
 export class InsufficientCurrencyDialog extends LitElement {

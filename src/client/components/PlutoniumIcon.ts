@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { assetUrl } from "../../core/AssetUrls";
+import { translateText } from "../Utils";
 
 const STYLE_ID = "plutonium-icon-styles";
 if (!document.getElementById(STYLE_ID)) {
@@ -14,10 +15,6 @@ if (!document.getElementById(STYLE_ID)) {
     @keyframes plutonium-pulse {
       0%, 100% { opacity: 0.45; transform: scale(1); }
       50%      { opacity: 1;    transform: scale(1.12); }
-    }
-    @keyframes plutonium-rotate {
-      0%   { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
   `;
   document.head.appendChild(style);
@@ -42,10 +39,10 @@ export class PlutoniumIcon extends LitElement {
           style="position:absolute; inset:-25%; pointer-events:none; background:radial-gradient(circle, rgba(34,197,94,0.5) 0%, rgba(34,197,94,0.22) 40%, transparent 68%); animation: plutonium-pulse 2s ease-in-out infinite; will-change: transform, opacity;"
         ></div>
         <img
-          src=${assetUrl("images/PlutoniumIcon.svg")}
-          alt="Plutonium"
+          src=${assetUrl("images/EmeraldIcon.svg")}
+          alt=${translateText("cosmetics.hard")}
           style="position:relative; width:${this.size}px; height:${this
-            .size}px; filter: drop-shadow(0 0 4px rgba(34,197,94,0.6)); animation: plutonium-rotate 7s linear infinite; will-change: transform;"
+            .size}px; filter: drop-shadow(0 0 4px rgba(34,197,94,0.6));"
           draggable="false"
         />
       </div>
