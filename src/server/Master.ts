@@ -22,6 +22,7 @@ import {
 import { logger } from "./Logger";
 import { MapPlaylist } from "./MapPlaylist";
 import { MasterLobbyService } from "./MasterLobbyService";
+import { AdminSessions, NewsStore, registerNewsRoutes } from "./NewsAdmin";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
 import { startPolling } from "./PollingLoop";
 import { renderAppShell } from "./RenderHtml";
@@ -149,6 +150,19 @@ app.get(
 app.use("/api", (_req, res, next) => {
   setNoStoreHeaders(res);
   next();
+});
+
+// Homepage news feed and the /admin.html panel that edits it.
+registerNewsRoutes({
+  app,
+  store: new NewsStore(
+    ServerEnv.newsFile(),
+    path.join(__dirname, "../../resources/news.json"),
+    log,
+  ),
+  sessions: new AdminSessions(),
+  adminPassword: () => ServerEnv.adminPassword(),
+  log,
 });
 
 // Start the master process

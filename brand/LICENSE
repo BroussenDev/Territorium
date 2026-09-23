@@ -1,0 +1,47 @@
+Territorium Brand Assets
+Copyright (c) 2026 BroussenDev
+All Rights Reserved.
+
+This directory holds Territorium's brand identity: its name, emblem, logos
+and original audio. None of these assets come from OpenFront; the
+OpenFront proprietary assets that shipped upstream were removed and are
+not part of this repository.
+
+The source code of Territorium is licensed under the GNU AGPL v3 (see
+/LICENSE). That license covers code only. It grants NO rights to the
+assets below, nor to the Territorium name.
+
+1. ASSETS - ALL RIGHTS RESERVED (images/, sounds/)
+   - images/Favicon.svg, images/TerritoriumEmblem.svg,
+     images/TerritoriumLogo.svg,
+     images/TerritoriumLogoLight.svg, images/Territorium.png,
+     images/TerritoriumMark.png: the Territorium emblem and logos
+   - sounds/music/menu-theme.mp3, sounds/music/gameplay.mp3,
+     sounds/effects/game-start-alert.mp3: original audio
+
+   You may run, build and test the official Territorium software
+   containing these assets. You may NOT copy, modify, redistribute or
+   extract them, or use them in any other project, product or service,
+   without prior written permission.
+
+2. NAME AND TRADEMARK
+   "Territorium" and the Territorium emblem and logos identify the
+   official game published by BroussenDev. You may NOT use them, or any
+   confusingly similar name or logo, to name, brand, advertise or
+   promote a fork, a modified version or any other product or service,
+   and you may not imply endorsement by Territorium.
+
+   Forks are welcome under the AGPL, but they must remove this directory,
+   ship their own assets and use their own name. Factual references
+   ("based on Territorium") are allowed.
+
+3. THIRD-PARTY (fonts/)
+   - fonts/ChakraPetch-Bold.ttf: "Chakra Petch", Copyright 2018 The
+     Chakra Petch Project Authors, licensed under the SIL Open Font
+     License 1.1. See fonts/OFL.txt. This font is NOT covered by
+     sections 1 and 2.
+
+Permission requests: contact@broussen.fr
+
+NO WARRANTY: THE ASSETS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED.

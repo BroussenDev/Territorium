@@ -2182,10 +2182,13 @@ export async function fetchTribeLeaderboard(): Promise<
   return { ...first, tribes: [...first.tribes, ...second.tribes] };
 }
 
+// Served by our own game server (src/server/NewsAdmin.ts, edited from
+// /admin.html), same origin as the page.
 export async function getNews(): Promise<NewsItem[]> {
   try {
-    const res = await fetch(`${getApiBase()}/news.json`, {
+    const res = await fetch("/api/news", {
       headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(10_000),
     });
     if (res.status !== 200) {
       console.warn("getNews: unexpected status", res.status);

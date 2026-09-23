@@ -1,5 +1,16 @@
 # License for OpenFront.io Project
 
+> **Territorium** is a fork of OpenFront.io. The history below is OpenFront's
+> and still applies to the code inherited from it. Territorium-specific notes:
+>
+> - Territorium's code stays under the **GNU AGPL v3**, including the Section 7
+>   additional terms: the notice "© OpenFront and Contributors" remains visible
+>   in the game's footer and loading screen.
+> - OpenFront's `/proprietary` assets were **removed**. Territorium's own brand
+>   assets live in `/brand` and are All Rights Reserved; the Territorium name
+>   and logos may not be used by forks (see `/brand/LICENSE`).
+> - `/resources` assets remain CC BY-SA 4.0 with attribution to OpenFront.
+
 ## Overview
 
 This document provides comprehensive licensing information for the OpenFront.io project, including its evolution from MIT to GPL to AGPL licensing, asset licensing terms, and proprietary content notices.

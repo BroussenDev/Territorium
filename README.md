@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="proprietary/images/TerritoriumLogo.svg">
-    <source media="(prefers-color-scheme: light)" srcset="proprietary/images/TerritoriumLogoLight.svg">
-    <img src="proprietary/images/TerritoriumLogoLight.svg" alt="Territorium" width="420">
+    <source media="(prefers-color-scheme: dark)" srcset="brand/images/TerritoriumLogo.svg">
+    <source media="(prefers-color-scheme: light)" srcset="brand/images/TerritoriumLogoLight.svg">
+    <img src="brand/images/TerritoriumLogoLight.svg" alt="Territorium" width="420">
   </picture>
 </p>
 
@@ -61,7 +61,7 @@ src/core/     Simulation du jeu, déterministe (tourne dans un Web Worker)
 src/client/   Rendu (Pixi.js/WebGL) et interface (Lit + Tailwind CSS 4)
 src/server/   Serveur de jeu : salons, relais des actions (Node/Express/ws)
 resources/    Cartes, images, traductions (resources/lang/en.json)
-proprietary/  Identité visuelle et sons de Territorium
+brand/        Identité visuelle et sons de Territorium
 tests/        Tests Vitest
 ```
 
@@ -77,8 +77,10 @@ lui-même issu de [WarFront.io](https://github.com/WarFrontIO). Merci à leurs �
   Conformément à la section 7 de la licence, la mention **« © OpenFront and Contributors »**
   reste visible dans le pied de page et sur l'écran de chargement.
 - **Assets du dossier `resources/`** : [CC BY-SA 4.0](LICENSE-ASSETS), attribution « OpenFront ».
-- **Dossier `proprietary/`** : logo, emblème et sons propres à Territorium (tous droits réservés) ;
-  police [Chakra Petch](proprietary/fonts/OFL.txt) sous licence SIL OFL 1.1.
+- **Dossier `brand/`** : nom, emblème, logos et sons de Territorium, **tous droits réservés**.
+  Le nom « Territorium » et ses logos ne peuvent pas être utilisés par un fork ou un autre projet
+  (voir [brand/LICENSE](brand/LICENSE)). Les forks sont les bienvenus sous AGPL, avec leur propre nom et leurs propres assets.
+  Police [Chakra Petch](brand/fonts/OFL.txt) sous licence SIL OFL 1.1.
   Aucun asset propriétaire d'OpenFront n'est inclus.
 
 Historique complet des licences : [LICENSING.md](LICENSING.md).

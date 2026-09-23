@@ -23,7 +23,7 @@
     "delete_account_confirm_button": "完全に削除",
     "delete_account_confirm_word": "DELETE",
     "delete_account_desc": "アカウントとすべてのデータを完全に削除します。",
-    "delete_account_failed": "削除に失敗しました。support@openfront.io までお問い合わせください",
+    "delete_account_failed": "削除に失敗しました。contact@broussen.fr までお問い合わせください",
     "delete_account_rate_limited": "アカウントの削除は一時的に利用できません。後でもう一度お試しください。",
     "delete_account_scheduled": "アカウントは24時間後に削除されます。削除を取り消す場合は、サポートにお問い合わせください。",
     "delete_account_title": "アカウントを削除",

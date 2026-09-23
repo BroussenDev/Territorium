@@ -24,26 +24,25 @@ export class GameStartingModal extends LitElement {
           ? "opacity-100 visible -translate-y-1/2"
           : "opacity-0 invisible -translate-y-[48%]"}"
       >
-        <div
-          class="text-base font-medium tracking-wider uppercase text-white/40 mb-3"
-        >
-          ${translateText("main.copyright")}
-        </div>
-        <a
-          href="https://github.com/openfrontio/OpenFrontIO/blob/main/CREDITS.md"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block mb-4 text-lg font-medium tracking-wider uppercase text-brand no-underline transition-colors duration-200 hover:text-brand-light"
-          >${translateText("game_starting_modal.credits")}</a
-        >
-        <p class="text-base text-white/40 mb-4">
-          ${translateText("game_starting_modal.code_license")}
-        </p>
         <p
           class="text-xl font-medium tracking-wider text-white bg-white/5 border border-white/10 px-4 py-3 rounded-xl"
         >
           ${translateText("game_starting_modal.title")}
         </p>
+        <!-- Kept visible (AGPL section 7(b) notice), but low-key. -->
+        <div class="mt-4 text-[11px] leading-relaxed text-white/35">
+          <div>${translateText("main.copyright")}</div>
+          <div>
+            ${translateText("game_starting_modal.code_license")} ·
+            <a
+              href="https://github.com/BroussenDev/Territorium/blob/main/CREDITS.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline decoration-white/20 transition-colors hover:text-white/70"
+              >${translateText("game_starting_modal.credits")}</a
+            >
+          </div>
+        </div>
       </div>
     `;
   }

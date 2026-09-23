@@ -340,6 +340,17 @@ export class ServerEnv {
   static adminBotHeader(): string {
     return "x-admin-bot-key";
   }
+  // Password for the /admin.html panel. Unset disables the admin routes.
+  static adminPassword(): string | undefined {
+    const v = process.env.ADMIN_PASSWORD;
+    return v && v.length > 0 ? v : undefined;
+  }
+  // Where the admin-managed news feed is persisted. Mount it on a volume in
+  // production, or edits are lost when the container is replaced.
+  static newsFile(): string {
+    const v = process.env.NEWS_FILE;
+    return v && v.length > 0 ? v : "data/news.json";
+  }
   static allowedFlares(): string[] | undefined {
     const raw = process.env.ALLOWED_FLARES;
     if (!raw) return undefined;
