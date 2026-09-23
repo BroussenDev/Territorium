@@ -1,5 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { buildAssetUrl, rewriteAssetsForCdn } from "../src/core/AssetUrls";
+import {
+  buildAssetUrl,
+  rewriteAssetsForCdn,
+  workerCdnBase,
+} from "../src/core/AssetUrls";
 
 describe("AssetUrls", () => {
   test("returns hashed URLs for direct asset matches", () => {
@@ -160,5 +164,27 @@ describe("rewriteAssetsForCdn", () => {
   test("does not match data-src or other custom attributes", () => {
     const html = `<img data-src="/assets/foo.png">`;
     expect(rewriteAssetsForCdn(html)).toBe(html);
+  });
+});
+
+describe("workerCdnBase", () => {
+  test("keeps a configured CDN base", () => {
+    expect(
+      workerCdnBase("https://cdn.example.com", "https://game.example.com"),
+    ).toBe("https://cdn.example.com");
+  });
+
+  test("falls back to the page origin so blob workers get absolute URLs", () => {
+    const base = workerCdnBase("", "https://game.example.com");
+    expect(base).toBe("https://game.example.com");
+    const url = buildAssetUrl(
+      "maps/world/manifest.json",
+      { "maps/world/manifest.json": "/_assets/maps/world/manifest.hash.json" },
+      base,
+    );
+    expect(() => new URL(url)).not.toThrow();
+    expect(url).toBe(
+      "https://game.example.com/_assets/maps/world/manifest.hash.json",
+    );
   });
 });

@@ -104,6 +104,16 @@ export function getCdnBase(): string {
   return globalThis.__CDN_BASE__ ?? "";
 }
 
+// The game worker is an inlined Blob, so its base URL is blob:… and a
+// root-relative "/_assets/..." can't be parsed by fetch() in there. With no
+// CDN (same-origin deploys, dev) hand it the page origin instead.
+export function workerCdnBase(
+  cdnBase: string = getCdnBase(),
+  origin: string = globalThis.location?.origin ?? "",
+): string {
+  return cdnBase !== "" ? cdnBase : origin;
+}
+
 export function assetUrl(path: string): string {
   return buildAssetUrl(path, getAssetManifest(), getCdnBase());
 }
