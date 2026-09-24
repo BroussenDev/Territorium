@@ -568,6 +568,20 @@ describe("StoreModal cosmetic browser", () => {
     expect(modal.querySelector("cosmetic-preview-modal")).toBeNull();
   });
 
+  it("does not re-render its catalog while closed", async () => {
+    const { store: modal } = await openEffectsStore();
+    modal.inline = true;
+    await modal.updateComplete;
+    modal.close();
+    await modal.updateComplete;
+
+    const render = vi.spyOn(modal, "render");
+    await modal.refresh();
+    await modal.updateComplete;
+    expect(render).not.toHaveBeenCalled();
+    render.mockRestore();
+  });
+
   it("previews an uncolored pattern with its catalog colors, not the palette placeholder", async () => {
     const base: ResolvedCosmetic = {
       ...red,

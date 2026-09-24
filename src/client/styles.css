@@ -107,6 +107,29 @@ body.in-game {
   overflow: hidden;
 }
 
+/* The match HUD. Leaving a match without a reload (Main.handleLeaveLobby)
+   restores the menu but leaves these mounted with their last state, which
+   kept the scoreboard over the home page; they only show while in-game. */
+body:not(.in-game)
+  :is(
+    #game-hud,
+    game-left-sidebar,
+    game-right-sidebar,
+    replay-panel,
+    player-panel,
+    build-menu,
+    emoji-table,
+    win-modal,
+    spawn-timer,
+    immunity-timer,
+    chat-modal,
+    player-info-overlay,
+    heads-up-message,
+    .column-picker-popover
+  ) {
+  display: none !important;
+}
+
 /* An inline page (store, settings, leaderboard, ...) is a modal rendered in
    the content area: lock the document so it scrolls inside the modal, and
    stack body children in a column so the content area gets the height left
@@ -125,6 +148,16 @@ body.page-open {
   animation: homeBackgroundDrift 50s ease-in-out infinite;
   transform-origin: center;
   will-change: transform;
+}
+
+/* The drift re-blends the full-screen emerald wash on every frame. Hold it
+   still behind the other pages, and drop the whole backdrop under a match,
+   where the map canvas covers it anyway. */
+body.page-open #background-layer {
+  animation-play-state: paused;
+}
+body.in-game #hex-grid {
+  display: none;
 }
 
 @keyframes homeBackgroundDrift {

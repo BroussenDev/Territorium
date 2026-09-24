@@ -117,6 +117,19 @@ export class StoreModal extends BaseModal {
     super.disconnectedCallback();
   }
 
+  protected shouldUpdate(changed: PropertyValues): boolean {
+    // Closed, the store stays mounted and hidden by CSS; re-rendering its
+    // whole catalog there made every return to the play page stutter. Only
+    // the closing render runs, to drop the preview and pack overlays, and
+    // open() renders it afresh anyway.
+    return (
+      !this.inline ||
+      !this.hasUpdated ||
+      this.isModalOpen ||
+      changed.has("isModalOpen")
+    );
+  }
+
   protected updated(changed: PropertyValues) {
     super.updated(changed);
     // The cards are nested components, so their purchase buttons only exist

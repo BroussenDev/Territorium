@@ -627,14 +627,6 @@ class Client {
 
     this.storeModal.refresh();
 
-    window.addEventListener("showPage", (e: any) => {
-      if (typeof e?.detail === "string" && e.detail === "page-play") {
-        setTimeout(() => {
-          this.storeModal.refresh();
-        }, 50);
-      }
-    });
-
     this.tokenLoginModal = document.querySelector(
       "token-login",
     ) as TokenLoginModal;
