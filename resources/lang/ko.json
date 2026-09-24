@@ -1323,15 +1323,20 @@
     "games": "게임",
     "loss_score": "패배 점수",
     "loss_score_tooltip": "클랜 참여도와 경기 난이도를 기반으로 한 가중치 손실",
+    "multiplayer_tab": "멀티플레이어",
     "no_data_yet": "아직 데이터 없음",
     "no_stats": "사용 가능한 통계 없음",
     "player": "플레이어",
     "rank": "순위",
     "ranked_2v2_tab": "팀",
     "ranked_no_stats": "이 순위표에서 아직 진행된 랭크전 경기가 없습니다",
-    "ranked_tab": "독주",
     "ratio": "비율",
     "refresh_time": "1시간마다 새로고침",
+    "solo_no_stats": "보드에 합류하려면 국가를 상대로 솔로 게임에서 승리하세요.",
+    "solo_points": "전철기",
+    "solo_points_tooltip": "솔로 승리 점수: Easy 1, Medium 2, Hard 3, Impossible 5",
+    "solo_rules": "국가 점수 점수에 대한 솔로 승리: 쉬움 1, 중간 2, 어려움 3, 불가능 5. 2분 미만의 게임이나 치트 옵션이 있는 게임은 계산에 포함되지 않으며 하루에 10번 이상 승리할 수도 없습니다.",
+    "solo_tab": "독주",
     "title": "리더보드",
     "tribes_boost": "부스트",
     "tribes_boost_tooltip": "부스트된 이름은 다른 플레이어의 게임에 더 자주 등장합니다",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "승/패",
     "win_score": "승점",
     "win_score_tooltip": "클랜 참여도와 경기 난이도를 기반으로 한 가중치 승리",
+    "wins": "승리",
     "your_ranking": "나의 순위"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\"은(는) {date}까지 선점되어 있습니다. 유지하려면 그전에 다시 구독하세요.",
     "clan_browse": "클랜 검색",
     "clan_clear": "태그 없음",
-    "clan_custom": "다른 태그",
     "clan_label": "클랜 태그",
     "clan_none_joined": "아직 클랜에 참가하지 않았습니다.",
     "clan_your_clans": "내 클랜",
@@ -2453,5 +2458,9 @@
     "you_won": "나의 승리!",
     "your_team": "우리팀이 승리했습니다!",
     "youtube_tutorial": "도움이 필요하신가요?"
+  },
+  "youtube_embed": {
+    "notice": "이 비디오는 YouTube에서 호스팅됩니다. 재생하면 IP 주소를 수신하는 Google 플레이어가 로드됩니다.",
+    "play": "비디오 재생"
   }
 }

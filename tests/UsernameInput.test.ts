@@ -181,30 +181,30 @@ describe("UsernameInput clan tag picker", () => {
     expect(el.getClanTag()).toBeNull();
   });
 
-  it("keeps the typed tag in the free-text field when it matches an own clan", async () => {
+  // Tags only come from the player's own clans: there is no free-text tag.
+  it("offers no free-text tag field", async () => {
     const el = await mount();
     await signIn(el, premiumUser([{ tag: "OF", name: "OpenFront Official" }]));
 
     q(el, "#clan-tag-button")!.click();
     await el.updateComplete;
 
-    // Typed a character at a time: the bug needed the bound value to *change*
-    // between renders, so "O" (not a clan, binds "O") then "OF" (a clan, used
-    // to bind "") is what made Lit write the field back to empty. Setting the
-    // final value in one go leaves the binding at "" throughout and passes
-    // either way.
-    const type = async (value: string) => {
-      const input = q<HTMLInputElement>(el, "#clan-tag-manual")!;
-      input.value = value;
-      input.dispatchEvent(new Event("input"));
-      await el.updateComplete;
-    };
-    await type("O");
-    expect(q<HTMLInputElement>(el, "#clan-tag-manual")!.value).toBe("O");
-    await type("OF");
+    expect(q(el, "#clan-tag-menu input")).toBeNull();
+    expect(el.textContent).not.toContain("username.clan_custom");
+  });
 
-    expect(q<HTMLInputElement>(el, "#clan-tag-manual")!.value).toBe("OF");
-    expect(el.getClanTag()).toBe("OF");
+  it("drops a stored made-up tag that belongs to no clan", async () => {
+    localStorage.setItem("username", "Someone");
+    localStorage.setItem("clanTag", "FAKE");
+    checkClanTagOwnership.mockResolvedValue({ tag: null, error: null });
+
+    const el = await mount();
+    await settle();
+    await el.updateComplete;
+
+    expect(el.getClanTag()).toBeNull();
+    expect(localStorage.getItem("clanTag")).toBe("");
+    expect(el.canPlay()).toBe(true);
   });
 
   it("closes the menu on Escape and on an outside pointerdown", async () => {
@@ -305,19 +305,16 @@ describe("UsernameInput clan tag picker", () => {
   });
 
   it("re-enables play after joining the clan whose tag was rejected", async () => {
-    const el = await mount();
-    await signIn(el, premiumUser());
-
-    // Typing a real clan the player isn't in blocks play and drops the tag.
+    // A stored tag of a real clan the player isn't in blocks play and drops
+    // the tag.
+    localStorage.setItem("username", "Someone");
+    localStorage.setItem("clanTag", "OF");
     checkClanTagOwnership.mockResolvedValue({
       tag: null,
       error: "username.tag_not_member",
     });
-    q(el, "#clan-tag-button")!.click();
-    await el.updateComplete;
-    const manual = q<HTMLInputElement>(el, "#clan-tag-manual")!;
-    manual.value = "OF";
-    manual.dispatchEvent(new Event("input"));
+    const el = await mount();
+    await signIn(el, premiumUser());
     await settle();
     await el.updateComplete;
     expect(el.canPlay()).toBe(false);
@@ -592,7 +589,7 @@ describe("UsernameInput clan tag picker", () => {
 
     q(el, "#clan-tag-button")!.click();
     await el.updateComplete;
-    q(el, "#clan-tag-manual")!.dispatchEvent(
+    q(el, "#clan-tag-menu")!.dispatchEvent(
       new PointerEvent("pointerdown", { bubbles: true, composed: true }),
     );
     await el.updateComplete;

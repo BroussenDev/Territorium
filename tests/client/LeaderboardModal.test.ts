@@ -51,6 +51,7 @@ vi.mock("../../src/client/Api", async () => {
     getApiBase: vi.fn(getApiBase),
     getUserMe: vi.fn(async () => false),
     isPageBoundsMessage,
+    fetchSoloLeaderboard: vi.fn(async () => ({ players: [] })),
     // Mirrors the control flow of the real fetchPlayerLeaderboard.
     fetchPlayerLeaderboard: vi.fn(async (page: number) => {
       const url = new URL(`${getApiBase()}/leaderboard/ranked`);
@@ -644,8 +645,9 @@ describe("LeaderboardModal", () => {
   describe("Modal Functionality", () => {
     it("should initialize with default state", () => {
       expect(modal).toBeTruthy();
+      // The solo board comes first: most games are played against nations.
       expect((modal as unknown as { activeTab: string }).activeTab).toBe(
-        "players",
+        "solo",
       );
     });
 

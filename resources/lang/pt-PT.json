@@ -1323,15 +1323,20 @@
     "games": "Jogos",
     "loss_score": "Pontuação de perda",
     "loss_score_tooltip": "Perdas ponderadas com base na participação do clã e na dificuldade da partida",
+    "multiplayer_tab": "Multijogador",
     "no_data_yet": "Ainda não há dados",
     "no_stats": "Nenhuma estatística disponível",
     "player": "Jogador",
     "rank": "Classificação",
     "ranked_2v2_tab": "Equipes",
     "ranked_no_stats": "Nenhum jogo classificado foi jogado nesta escada ainda",
-    "ranked_tab": "Solo",
     "ratio": "Rácio",
     "refresh_time": "Atualizado a cada 1 hora",
+    "solo_no_stats": "Ganha um jogo a solo contra as nações para entrar no tabuleiro.",
+    "solo_points": "Pontos",
+    "solo_points_tooltip": "Pontos de vitórias individuais: Fácil 1, Médio 2, Difícil 3, Impossível 5",
+    "solo_rules": "As vitórias individuais contra as nações marcam pontos: Fácil 1, Médio 2, Difícil 3, Impossível 5. Jogos com menos de 2 minutos ou com opções de batota não contam, nem mais de 10 vitórias por dia.",
+    "solo_tab": "Solo",
     "title": "Tabela de classificação",
     "tribes_boost": "Impulsos",
     "tribes_boost_tooltip": "Os nomes impulsionados aparecem com mais frequência nos jogos de outros jogadores",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Vitória/Perda",
     "win_score": "Pontuação de vitória",
     "win_score_tooltip": "Vitórias ponderadas com base na participação do clã e na dificuldade da partida",
+    "wins": "Vitórias",
     "your_ranking": "A sua classificação"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" está reservado para si até {date}. Inscreva-se novamente antes disso para o manter.",
     "clan_browse": "Procure clãs",
     "clan_clear": "Sem etiqueta",
-    "clan_custom": "Outra etiqueta",
     "clan_label": "Etiqueta do clã",
     "clan_none_joined": "Ainda não se juntou a um clã.",
     "clan_your_clans": "Os seus clãs",
@@ -2453,5 +2458,9 @@
     "you_won": "Venceu!",
     "your_team": "A sua equipa venceu!",
     "youtube_tutorial": "Precisa de ajuda?"
+  },
+  "youtube_embed": {
+    "notice": "Este vídeo está alojado no YouTube: reproduzi-lo carrega o leitor da Google, que recebe o seu endereço IP.",
+    "play": "Reproduza o vídeo"
   }
 }

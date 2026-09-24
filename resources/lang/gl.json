@@ -1323,15 +1323,20 @@
     "games": "Xogos",
     "loss_score": "Puntuación de perda",
     "loss_score_tooltip": "Perdas ponderadas en función da participación do clan e da dificultade do xogo",
+    "multiplayer_tab": "Multixogador",
     "no_data_yet": "Aínda non hai datos",
     "no_stats": "Non hai estatísticas dispoñibles",
     "player": "Xogador",
     "rank": "Rango",
     "ranked_2v2_tab": "Equipos",
     "ranked_no_stats": "Aínda non se xogou ningunha partida clasificada nesta escaleira",
-    "ranked_tab": "Solo",
     "ratio": "Ratio",
     "refresh_time": "Actualizado cada 1 hora",
+    "solo_no_stats": "Gaña unha partida en solitario contra as nacións para unirte ao taboleiro.",
+    "solo_points": "Puntos",
+    "solo_points_tooltip": "Puntos das vitorias en solitario: Fácil 1, Medio 2, Difícil 3, Imposible 5",
+    "solo_rules": "As vitorias en solitario contra as nacións marcan puntos: Fácil 1, Medio 2, Difícil 3, Imposible 5. Os xogos de menos de 2 minutos ou con opcións de trampas non contan, nin máis de 10 vitorias ao día.",
+    "solo_tab": "Solo",
     "title": "Taboleiro de clasificación",
     "tribes_boost": "Aumenta",
     "tribes_boost_tooltip": "Os nomes potenciados aparecen con máis frecuencia nos xogos doutros xogadores",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Vitoria/Perda",
     "win_score": "Puntuación de vitoria",
     "win_score_tooltip": "Vitorias ponderadas en función da participación do clan e da dificultade do xogo",
+    "wins": "Gaña",
     "your_ranking": "A túa clasificación"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" está reservado para ti ata o {date}. Volve a subscribirse antes para mantelo.",
     "clan_browse": "Explorar clans",
     "clan_clear": "Sen etiqueta",
-    "clan_custom": "Outra etiqueta",
     "clan_label": "Etiqueta de clan",
     "clan_none_joined": "Aínda non te uniste a ningún clan.",
     "clan_your_clans": "Os teus clans",
@@ -2453,5 +2458,9 @@
     "you_won": "Gañaches!",
     "your_team": "Gañou o teu equipo!",
     "youtube_tutorial": "Necesitas axuda?"
+  },
+  "youtube_embed": {
+    "notice": "Este vídeo está aloxado en YouTube: ao reproducilo carga o reprodutor de Google, que recibe o teu enderezo IP.",
+    "play": "Reproduce o vídeo"
   }
 }

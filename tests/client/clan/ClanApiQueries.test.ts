@@ -131,14 +131,15 @@ describe("checkClanTagOwnership", () => {
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
-  it("accepts a fictional tag (clan does not exist)", async () => {
+  // A tag always stands for a clan the player is in.
+  it("drops a made-up tag (clan does not exist)", async () => {
     vi.mocked(getUserMe).mockResolvedValue(userWithClans(["other"]));
     vi.stubGlobal(
       "fetch",
       vi.fn(() => Promise.resolve(status(404))),
     );
     await expect(checkClanTagOwnership("ABC")).resolves.toEqual({
-      tag: "ABC",
+      tag: null,
       error: null,
     });
   });
@@ -155,14 +156,14 @@ describe("checkClanTagOwnership", () => {
     });
   });
 
-  it("fails open on an inconclusive existence check (API unavailable)", async () => {
+  it("drops the tag on an inconclusive existence check (API unavailable)", async () => {
     vi.mocked(getUserMe).mockResolvedValue(false);
     vi.stubGlobal(
       "fetch",
       vi.fn(() => Promise.resolve(status(503))),
     );
     await expect(checkClanTagOwnership("ABC")).resolves.toEqual({
-      tag: "ABC",
+      tag: null,
       error: null,
     });
   });

@@ -1323,15 +1323,20 @@
     "games": "Partides",
     "loss_score": "Puntuació Derrotes",
     "loss_score_tooltip": "Victòries equilibrades basades en la participació del clan i la dificultat del partit",
+    "multiplayer_tab": "Multijugador",
     "no_data_yet": "Encara sense dades",
     "no_stats": "No hi ha estadístiques disponibles",
     "player": "Jugador",
     "rank": "Posició",
     "ranked_2v2_tab": "Equips",
     "ranked_no_stats": "Encara no s'ha jugat cap joc classificat en aquesta escala",
-    "ranked_tab": "en solitari",
     "ratio": "Ràtio",
     "refresh_time": "Es refresca cada hora",
+    "solo_no_stats": "Guanya una partida en solitari contra les nacions per unir-te al tauler.",
+    "solo_points": "Punts",
+    "solo_points_tooltip": "Punts de les victòries en solitari: Fàcil 1, Mitjà 2, Difícil 3, Impossible 5",
+    "solo_rules": "Les victòries en solitari contra les nacions obtenen punts: Fàcil 1, Mitjà 2, Difícil 3, Impossible 5. Els jocs de menys de 2 minuts o amb opcions de trampes no compten, ni més de 10 victòries al dia.",
+    "solo_tab": "en solitari",
     "title": "Taulell de classificació",
     "tribes_boost": "Augmenta",
     "tribes_boost_tooltip": "Els noms potenciats apareixen amb més freqüència als jocs d'altres jugadors",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Victòries/Derrotes",
     "win_score": "Puntuació Victòries",
     "win_score_tooltip": "Victòries equilibrades basades en la participació del clan i la dificultat del partit",
+    "wins": "Guanya",
     "your_ranking": "La teva posició"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" està reservat per a tu fins al {date}. Torna a subscriure't abans per mantenir-lo.",
     "clan_browse": "Explora els clans",
     "clan_clear": "Sense etiqueta",
-    "clan_custom": "Una altra etiqueta",
     "clan_label": "Etiqueta de clan",
     "clan_none_joined": "Encara no t'has unit a un clan.",
     "clan_your_clans": "Els teus clans",
@@ -2453,5 +2458,9 @@
     "you_won": "Has Guanyat!",
     "your_team": "El teu equip ha guanyat!",
     "youtube_tutorial": "Necessites ajuda?"
+  },
+  "youtube_embed": {
+    "notice": "Aquest vídeo està allotjat a YouTube: al reproduir-lo es carrega el reproductor de Google, que rep la teva adreça IP.",
+    "play": "Reprodueix el vídeo"
   }
 }

@@ -1323,15 +1323,20 @@
     "games": "Hry",
     "loss_score": "Skóre proher",
     "loss_score_tooltip": "Vážené prohry podle zapojení klanu a obtížnosti hry",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "Zatím žádná data",
     "no_stats": "Nejsou k dispozici žádné statistiky",
     "player": "Hráč",
     "rank": "Pořadí",
     "ranked_2v2_tab": "Týmy",
     "ranked_no_stats": "V tomto žebříčku zatím nebyly odehrány žádné hodnocené hry",
-    "ranked_tab": "Solo",
     "ratio": "Poměr",
     "refresh_time": "Aktualizováno 1× za hodinu",
+    "solo_no_stats": "Vyhrajte sólo hru proti národům a připojte se k herní desce.",
+    "solo_points": "Body",
+    "solo_points_tooltip": "Body ze sólo výher: Snadné 1, Střední 2, Těžké 3, Nemožné 5",
+    "solo_rules": "Sólové výhry proti národům získávají body: Snadné 1, Střední 2, Těžké 3, Impossible 5. Hry kratší než 2 minuty nebo s možností cheatu se nepočítají, ani více než 10 výher denně.",
+    "solo_tab": "Solo",
     "title": "Žebříček",
     "tribes_boost": "Zvýhodnění",
     "tribes_boost_tooltip": "Zvýhodněná jména se častěji objevují ve hrách ostatních hráčů",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Poměr výher/proher",
     "win_score": "Skóre výher",
     "win_score_tooltip": "Vážené výhry podle zapojení klanu a obtížnosti hry",
+    "wins": "Vyhrává",
     "your_ranking": "Vaše umístění"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "„{name}“ je pro vás rezervováno do {date}. Do té doby se znovu přihlaste k odběru, abyste si jej ponechali.",
     "clan_browse": "Procházet klany",
     "clan_clear": "Bez tagu",
-    "clan_custom": "Jiný tag",
     "clan_label": "Tag klanu",
     "clan_none_joined": "Zatím jste se nepřipojili k žádnému klanu.",
     "clan_your_clans": "Vaše klany",
@@ -2453,5 +2458,9 @@
     "you_won": "Vítězství!",
     "your_team": "Váš tým vyhrál!",
     "youtube_tutorial": "Potřebujete pomoc?"
+  },
+  "youtube_embed": {
+    "notice": "Toto video je hostováno na YouTube: jeho přehráváním se načte přehrávač Google, který obdrží vaši IP adresu.",
+    "play": "Přehrajte video"
   }
 }

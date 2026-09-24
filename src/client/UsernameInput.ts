@@ -2,7 +2,6 @@ import { html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { translateText } from "../client/Utils";
 import { UserMeResponse } from "../core/ApiSchemas";
-import { sanitizeClanTag } from "../core/Util";
 import {
   MAX_CLAN_TAG_LENGTH,
   MAX_USERNAME_LENGTH,
@@ -165,9 +164,6 @@ export class UsernameInput extends LitElement {
   @state() private clanTagOwnershipError: string = "";
   @state() private clanCheckPending: boolean = false;
   @state() private clanMenuOpen: boolean = false;
-  // What the picker's free-text field shows. Separate from clanTag so it can
-  // stay empty while a listed clan is selected (see toggleClanMenu).
-  @state() private clanDraft: string = "";
   private _isValid: boolean = true;
   private _lastValidatedLang: string | null = null;
 
@@ -263,17 +259,7 @@ export class UsernameInput extends LitElement {
 
   private toggleClanMenu = () => {
     this.clanMenuOpen = !this.clanMenuOpen;
-    if (this.clanMenuOpen) {
-      this.refreshMembership({ fresh: true });
-      // Tracked separately from clanTag so typing a tag that matches a listed
-      // clan doesn't blank the field mid-keystroke.
-      const active = this.clanTag.toUpperCase();
-      this.clanDraft = this.myClans().some(
-        (c) => c.tag.toUpperCase() === active,
-      )
-        ? ""
-        : this.clanTag;
-    }
+    if (this.clanMenuOpen) this.refreshMembership({ fresh: true });
   };
 
   // Bound for the element's lifetime rather than with the menu, so no stray
@@ -294,7 +280,6 @@ export class UsernameInput extends LitElement {
   // still runs, keeping getClanCheck() authoritative.
   private selectClan(tag: string | null) {
     this.clanTag = tag ?? "";
-    this.clanDraft = "";
     this.clanMenuOpen = false;
     this.validateAndStore();
     this.startClanCheck();
@@ -557,7 +542,6 @@ export class UsernameInput extends LitElement {
       return;
     }
     this.clanTag = "";
-    this.clanDraft = "";
     this.clanTagOwnershipError = "";
     this.validateAndStore();
     this.startClanCheck();
@@ -605,6 +589,12 @@ export class UsernameInput extends LitElement {
       if (gen === this.clanCheckGen) {
         this.clanTagOwnershipError = res.error ?? "";
         this.clanCheckPending = false;
+        // A made-up tag (from before tags had to be a clan's) is dropped
+        // quietly; a real clan's keeps its "join it" message.
+        if (res.tag === null && !res.error) {
+          this.clanTag = "";
+          this.validateAndStore();
+        }
         this.emitValidity();
       }
       return res.tag;
@@ -965,23 +955,6 @@ export class UsernameInput extends LitElement {
           : html`<div class="px-2 pt-1.5 pb-1 text-sm text-white/50">
               ${translateText("username.clan_none_joined")}
             </div>`}
-        <div class="mt-1.5 border-t border-white/10 pt-1.5">
-          <label
-            class="block px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-white/40"
-            for="clan-tag-manual"
-            >${translateText("username.clan_custom")}</label
-          >
-          <input
-            id="clan-tag-manual"
-            type="text"
-            .value=${this.clanDraft}
-            @input=${this.handleClanTagChange}
-            placeholder=${translateText("username.tag")}
-            minlength="${MIN_CLAN_TAG_LENGTH}"
-            maxlength="${MAX_CLAN_TAG_LENGTH}"
-            class="w-full rounded-lg border border-white/15 bg-black/30 px-2 py-1.5 text-base font-semibold uppercase tracking-wider text-white placeholder-white/30 focus:border-brand/60 focus:outline-none"
-          />
-        </div>
         <div
           class="mt-1.5 flex items-center gap-2 border-t border-white/10 pt-1.5"
         >
@@ -1153,33 +1126,6 @@ export class UsernameInput extends LitElement {
         >("clan-modal")
         ?.open({ tag });
     });
-  }
-
-  private handleClanTagChange(e: Event) {
-    const input = e.target as HTMLInputElement;
-    const originalValue = input.value;
-    const val = sanitizeClanTag(originalValue);
-    // Only show toast if characters were actually removed (not just uppercased)
-    if (originalValue.toUpperCase() !== val) {
-      input.value = val;
-      // Show toast when invalid characters are removed
-      window.dispatchEvent(
-        new CustomEvent("show-message", {
-          detail: {
-            message: translateText("username.tag_invalid_chars"),
-            color: "red",
-            duration: 2000,
-          },
-        }),
-      );
-    } else if (originalValue !== val) {
-      // Just update the input without toast if only case changed
-      input.value = val;
-    }
-    this.clanTag = val;
-    this.clanDraft = val;
-    this.validateAndStore();
-    this.startClanCheck();
   }
 
   private handleUsernameChange(e: Event) {

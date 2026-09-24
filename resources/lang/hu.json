@@ -1323,15 +1323,20 @@
     "games": "Játék",
     "loss_score": "Veszteség pontszám",
     "loss_score_tooltip": "Súlyozott veszteségek a klán részvétele és a mérkőzés nehézsége alapján",
+    "multiplayer_tab": "Többjátékos",
     "no_data_yet": "Még nincs adat",
     "no_stats": "Nem áll rendelkezésre statisztika",
     "player": "Játékos",
     "rank": "Rang",
     "ranked_2v2_tab": "Csapatok",
     "ranked_no_stats": "Ezen a ranglistán még nem játszottak rangsorolt ​​mérkőzéseket.",
-    "ranked_tab": "Szóló",
     "ratio": "Arány",
     "refresh_time": "Óránként frissül",
+    "solo_no_stats": "Nyerj egy egyéni játékot a nemzetek ellen, hogy csatlakozz a fórumhoz.",
+    "solo_points": "Pontok",
+    "solo_points_tooltip": "Pontok egyéni győzelmekből: könnyű 1, közepes 2, nehéz 3, lehetetlen 5",
+    "solo_rules": "Az egyéni győzelmek a nemzetek ellen pontokat szereznek: Könnyű 1, Közepes 2, Nehéz 3, Lehetetlen 5. A 2 percnél rövidebb vagy csalási lehetőséggel rendelkező játékok nem számítanak, és napi 10-nél több győzelem sem.",
+    "solo_tab": "Szóló",
     "title": "Toplista",
     "tribes_boost": "Kiemelések",
     "tribes_boost_tooltip": "A kiemelt nevek gyakrabban jelennek meg más játékosok játékaiban.",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Győzelem/Vereség",
     "win_score": "Nyerő pontszám",
     "win_score_tooltip": "Súlyozott győzelmek a klán részvétele és a mérkőzés nehézsége alapján",
+    "wins": "Győzelem",
     "your_ranking": "A helyezésed"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "A(z) \"{name}\" név {date}-ig van fenntartva a számodra. Hosszabbítsd meg előfizetésedet ez előtt az időpont előtt, hogy megtarthasd.",
     "clan_browse": "Klánok böngészése",
     "clan_clear": "Nincs címke",
-    "clan_custom": "Egyéb címke",
     "clan_label": "Kláncímke",
     "clan_none_joined": "Még nem csatlakoztál klánhoz.",
     "clan_your_clans": "A klánjaid",
@@ -2453,5 +2458,9 @@
     "you_won": "Nyertél!",
     "your_team": "A csapatod nyert!",
     "youtube_tutorial": "Segítségre van szükséged?"
+  },
+  "youtube_embed": {
+    "notice": "Ezt a videót a YouTube tárolja: lejátszása betölti a Google lejátszóját, amely megkapja az Ön IP-címét.",
+    "play": "Játssza le a videót"
   }
 }

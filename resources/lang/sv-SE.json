@@ -1323,15 +1323,20 @@
     "games": "Spel",
     "loss_score": "Förlustresultat",
     "loss_score_tooltip": "Viktade förluster baserat på klandeltagande och matchsvårighet",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "Inga data ännu",
     "no_stats": "Ingen statistik tillgänglig",
     "player": "Spelare",
     "rank": "Rang",
     "ranked_2v2_tab": "Lag",
     "ranked_no_stats": "Inga rankade spel har spelats på denna stege ännu",
-    "ranked_tab": "Solo",
     "ratio": "Förhållande",
     "refresh_time": "Uppdateras var 1 timme",
+    "solo_no_stats": "Vinn ett solospel mot nationerna för att gå med i brädet.",
+    "solo_points": "Poäng",
+    "solo_points_tooltip": "Poäng från solovinster: Lätt 1, Medium 2, Svårt 3, Omöjligt 5",
+    "solo_rules": "Ensamvinster mot nationerna får poäng: Lätt 1, Medium 2, Svårt 3, Omöjligt 5. Spel kortare än 2 minuter eller med fuskalternativ räknas inte, inte heller mer än 10 vinster per dag.",
+    "solo_tab": "Solo",
     "title": "Leaderboard",
     "tribes_boost": "Ökar",
     "tribes_boost_tooltip": "Boostade namn förekommer oftare i andra spelares spel",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Vinst/förlust",
     "win_score": "Vinn poäng",
     "win_score_tooltip": "Viktade vinster baserat på klandeltagande och matchsvårighet",
+    "wins": "Vinner",
     "your_ranking": "Din ranking"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" är reserverad för dig fram till {date}. Prenumerera igen innan dess för att behålla den.",
     "clan_browse": "Bläddra bland klaner",
     "clan_clear": "Ingen tagg",
-    "clan_custom": "Annan tagg",
     "clan_label": "Klantagg",
     "clan_none_joined": "Du har inte gått med i en klan än.",
     "clan_your_clans": "Dina klaner",
@@ -2453,5 +2458,9 @@
     "you_won": "Du vann!",
     "your_team": "Ditt lag vann!",
     "youtube_tutorial": "Behöver du hjälp?"
+  },
+  "youtube_embed": {
+    "notice": "Den här videon finns på YouTube: uppspelning av den laddar Googles spelare, som tar emot din IP-adress.",
+    "play": "Spela upp videon"
   }
 }

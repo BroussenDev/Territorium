@@ -1323,15 +1323,20 @@
     "games": "遊戲",
     "loss_score": "敗北積分",
     "loss_score_tooltip": "根據公會參與度和比賽難度加權計算敗北積分",
+    "multiplayer_tab": "多人遊戲",
     "no_data_yet": "目前尚無數據",
     "no_stats": "暫無遊戲生涯紀錄",
     "player": "玩家",
     "rank": "排名",
     "ranked_2v2_tab": "團隊",
     "ranked_no_stats": "尚未有排位對局在這段位上遊玩過",
-    "ranked_tab": "獨奏",
     "ratio": "比例",
     "refresh_time": "每小時刷新 1 次",
+    "solo_no_stats": "贏得一場與各國的單人遊戲即可加入董事會。",
+    "solo_points": "積分",
+    "solo_points_tooltip": "單人勝利分數：簡單 1、中 2、困難 3、不可能 5",
+    "solo_rules": "單人戰勝國家得分：簡單 1、中等 2、困難 3、不可能 5。短於 2 分鐘或帶有作弊選項的遊戲不計入在內，每天獲勝次數也不超過 10 次。",
+    "solo_tab": "獨奏",
     "title": "排行榜",
     "tribes_boost": "加成",
     "tribes_boost_tooltip": "加成過的部族名稱將會更常出現在其他玩家的對局中",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "勝 / 負",
     "win_score": "獲勝積分",
     "win_score_tooltip": "根據公會參與度和比賽難度加權獲勝積分",
+    "wins": "勝利",
     "your_ranking": "您的排名"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" 將保留給您直到 {date}。請在此之前重新訂閱以保留。",
     "clan_browse": "瀏覽公會",
     "clan_clear": "無標籤",
-    "clan_custom": "其他標籤",
     "clan_label": "公會標籤",
     "clan_none_joined": "您尚未加入公會。",
     "clan_your_clans": "您的公會",
@@ -2453,5 +2458,8 @@
     "you_won": "你獲勝了！",
     "your_team": "你的隊伍獲勝了！",
     "youtube_tutorial": "需要幫助嗎？"
+  },
+  "youtube_embed": {
+    "play": "播放影片"
   }
 }

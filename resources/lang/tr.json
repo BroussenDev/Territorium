@@ -1323,15 +1323,20 @@
     "games": "Oyunlar",
     "loss_score": "Kayıp Puanı",
     "loss_score_tooltip": "Klan katılımına ve maçın zorluğuna dayalı ağırlıklı kayıplar",
+    "multiplayer_tab": "Çok Oyunculu",
     "no_data_yet": "Henüz Veri Yok",
     "no_stats": "İstatistik yok",
     "player": "Oyuncu",
     "rank": "Rütbe",
     "ranked_2v2_tab": "Takımlar",
     "ranked_no_stats": "Bu sıralamada henüz sıralamalı oyun oynanmadı",
-    "ranked_tab": "Solo",
     "ratio": "Oran",
     "refresh_time": "1 saatte bir yenilenir",
+    "solo_no_stats": "Kurula katılmak için uluslara karşı tek başınıza bir oyun kazanın.",
+    "solo_points": "Puanlar",
+    "solo_points_tooltip": "Tek başına galibiyetlerden elde edilen puanlar: Kolay 1, Orta 2, Zor 3, İmkansız 5",
+    "solo_rules": "Ülkelere karşı tek başına galibiyet puanları: Kolay 1, Orta 2, Zor 3, İmkansız 5. 2 dakikadan kısa veya hile seçenekleri olan oyunlar sayılmaz ve günde 10'dan fazla galibiyet sayılmaz.",
+    "solo_tab": "Solo",
     "title": "Liderlik tablosu",
     "tribes_boost": "Takviyeler",
     "tribes_boost_tooltip": "Yükseltilmiş isimler diğer oyuncuların oyunlarında daha sık görünüyor",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Kazanma/Kaybetme",
     "win_score": "Kazanma Puanı",
     "win_score_tooltip": "Klan katılımına ve maçın zorluğuna göre ağırlıklı galibiyetler",
+    "wins": "galibiyet",
     "your_ranking": "Sıralamanız"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" {date} tarihine kadar size ayrılmıştır. Devam etmek için daha önce yeniden abone olun.",
     "clan_browse": "Klanlara göz atın",
     "clan_clear": "Etiket yok",
-    "clan_custom": "Diğer etiket",
     "clan_label": "Klan etiketi",
     "clan_none_joined": "Henüz bir klana katılmadınız.",
     "clan_your_clans": "Klanlarınız",
@@ -2453,5 +2458,9 @@
     "you_won": "Kazandın!",
     "your_team": "Takımınız kazandı!",
     "youtube_tutorial": "Yardım lazım mı?"
+  },
+  "youtube_embed": {
+    "notice": "Bu video YouTube'da barındırılmaktadır: oynatıldığında Google'ın IP adresinizi alan oynatıcısı yüklenir.",
+    "play": "Videoyu oynat"
   }
 }

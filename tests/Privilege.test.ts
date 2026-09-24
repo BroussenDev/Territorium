@@ -734,9 +734,11 @@ describe("PrivilegeCheckerImpl#resolveClanTag", () => {
     expect(result).toEqual({ tag: null, dropped: true });
   });
 
-  it("keeps a fictional tag matching no reserved clan", () => {
+  // A tag always stands for a clan the player belongs to: made-up tags are
+  // dropped too.
+  it("drops a made-up tag matching no clan", () => {
     const result = makeChecker(["OTHER"]).resolveClanTag("ABC", []);
-    expect(result).toEqual({ tag: "ABC", dropped: false });
+    expect(result).toEqual({ tag: null, dropped: true });
   });
 
   it("matches the reserved set case-insensitively", () => {
@@ -763,13 +765,15 @@ describe("FailOpenPrivilegeChecker#resolveClanTag", () => {
     expect(result).toEqual({ tag: "ABC", dropped: false });
   });
 
-  it("keeps a non-member's tag fail-open (no reserved set while infra is down)", () => {
+  // Membership comes from the account, so the rule holds while the
+  // cosmetics infra is down.
+  it("drops a non-member's tag", () => {
     const result = checker.resolveClanTag("ABC", ["other"]);
-    expect(result).toEqual({ tag: "ABC", dropped: false });
+    expect(result).toEqual({ tag: null, dropped: true });
   });
 
-  it("keeps an anonymous user's tag fail-open", () => {
+  it("drops an anonymous user's tag", () => {
     const result = checker.resolveClanTag("ABC", []);
-    expect(result).toEqual({ tag: "ABC", dropped: false });
+    expect(result).toEqual({ tag: null, dropped: true });
   });
 });

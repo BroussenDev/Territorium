@@ -1323,15 +1323,20 @@
     "games": "Ludoj",
     "loss_score": "Malvenko Poentoj",
     "loss_score_tooltip": "Ponditaj malvenkoj laŭ klana partopreno kaj luda malfacileco",
+    "multiplayer_tab": "Plurludanto",
     "no_data_yet": "Ankoraŭ Neniu Datumo",
     "no_stats": "Neniu statistiko disponebla",
     "player": "Ludanto",
     "rank": "Rango",
     "ranked_2v2_tab": "Teamoj",
     "ranked_no_stats": "Neniuj vicigitaj ludoj ankoraŭ estis luditaj sur ĉi tiu ŝtupetaro",
-    "ranked_tab": "Solo",
     "ratio": "Rilatumo",
     "refresh_time": "Aktualiĝanta ĉiuhore",
+    "solo_no_stats": "Gajnu solludon kontraŭ la nacioj por aliĝi al la estraro.",
+    "solo_points": "Punktoj",
+    "solo_points_tooltip": "Poentoj de solludaj venkoj: Facila 1, Meza 2, Malmola 3, Neebla 5",
+    "solo_rules": "Solludaj venkoj kontraŭ la nacioj gajnas poentojn: Facila 1, Meza 2, Malfacila 3, Neebla 5. Ludoj pli mallongaj ol 2 minutoj aŭ kun trompopcioj ne kalkulas, nek pli ol 10 venkoj tage.",
+    "solo_tab": "Solo",
     "title": "Ĉampionejo",
     "tribes_boost": "Akceloj",
     "tribes_boost_tooltip": "Plifortigitaj nomoj aperas pli ofte en la ludoj de aliaj ludantoj",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Venko/Malvenko",
     "win_score": "Venko Poentoj",
     "win_score_tooltip": "Ponditaj venkoj laŭ klana partopreno kaj luda malfacileco",
+    "wins": "Venkoj",
     "your_ranking": "Via Rango"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" estas rezervita por vi ĝis {date}. Reabonu antaŭe por konservi ĝin.",
     "clan_browse": "Foliumi klanojn",
     "clan_clear": "Neniu etikedo",
-    "clan_custom": "Alia etikedo",
     "clan_label": "Klano-etikedo",
     "clan_none_joined": "Vi ankoraŭ ne aliĝis al klano.",
     "clan_your_clans": "Viaj klanoj",
@@ -2453,5 +2458,9 @@
     "you_won": "Vi venkis!",
     "your_team": "Via teamo venkis!",
     "youtube_tutorial": "Ĉu vi bezonas helpon?"
+  },
+  "youtube_embed": {
+    "notice": "Ĉi tiu video estas gastigita ĉe Jutubo: ludi ĝin ŝargas la ludilon de Guglo, kiu ricevas vian IP-adreson.",
+    "play": "Ludu la videon"
   }
 }

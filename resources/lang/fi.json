@@ -1323,15 +1323,20 @@
     "games": "Pelit",
     "loss_score": "Tappiopisteet",
     "loss_score_tooltip": "Painotetut tappiot klaanin osallistumisen ja ottelun vaikeusasteen perusteella",
+    "multiplayer_tab": "Moninpeli",
     "no_data_yet": "Ei vielä dataa",
     "no_stats": "Ei tilastoja saatavilla",
     "player": "Pelaaja",
     "rank": "Sijoitus",
     "ranked_2v2_tab": "Joukkueet",
     "ranked_no_stats": "Tällä ladderilla ei ole vielä pelattu ranking-pelejä",
-    "ranked_tab": "Yksin",
     "ratio": "Suhde",
     "refresh_time": "Päivitetään 1 tunnin välein",
+    "solo_no_stats": "Voita yksinpeli kansoja vastaan ​​liittyäksesi pöytään.",
+    "solo_points": "Pisteet",
+    "solo_points_tooltip": "Pisteet soolovoitoista: helppo 1, keskitaso 2, kova 3, mahdoton 5",
+    "solo_rules": "Yksin voittaa kansakuntien pisteitä: Helppo 1, Keskitaso 2, Kova 3, Mahdoton 5. Alle 2 minuuttia kestävät pelit tai huijausvaihtoehdot eivät laske, eikä enempää kuin 10 voittoa päivässä.",
+    "solo_tab": "Yksin",
     "title": "Tulostaulukko",
     "tribes_boost": "Tehostaa",
     "tribes_boost_tooltip": "Tehostetut nimet näkyvät useammin muiden pelaajien peleissä",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Voitto/tappio",
     "win_score": "Voita Pisteet",
     "win_score_tooltip": "Painotetut voitot klaanin osallistumisen ja ottelun vaikeusasteen perusteella",
+    "wins": "Voittoja",
     "your_ranking": "Sijoituksesi"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" on varattu sinulle {date} asti. Tilaa uudelleen ennen sitä säilyttääksesi sen.",
     "clan_browse": "Selaa klaaneja",
     "clan_clear": "Ei tagia",
-    "clan_custom": "Muu tag",
     "clan_label": "Klaanin tunniste",
     "clan_none_joined": "Et ole vielä liittynyt klaaniin.",
     "clan_your_clans": "Sinun klaanisi",
@@ -2453,5 +2458,9 @@
     "you_won": "Sinä voitit!",
     "your_team": "Joukkueesi voitti!",
     "youtube_tutorial": "Tarvitsetko apua?"
+  },
+  "youtube_embed": {
+    "notice": "Tätä videota isännöi YouTube: sen toistaminen lataa Googlen soittimen, joka saa IP-osoitteesi.",
+    "play": "Toista video"
   }
 }

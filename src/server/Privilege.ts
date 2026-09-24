@@ -21,21 +21,17 @@ export type ClanTagResolution = {
 };
 
 /**
- * The clan-tag ownership rule:
- *   - member of the clan             -> keep the tag
- *   - not a member, tag not reserved -> fictional tag, keep it
- *   - otherwise                      -> drop it (impersonation)
- * `reservedTags` is every registered tag (uppercase).
+ * The clan-tag ownership rule: a player wears a tag only as a member of that
+ * clan. Any other tag, a real clan's or a made-up one, is dropped: a tag in
+ * game always stands for a clan the player belongs to.
  */
 function decideClanTag(
   censoredTag: string | null,
   ownedClanTags: string[],
-  reservedTags: Set<string>,
 ): ClanTagResolution {
   if (censoredTag === null) return { tag: null, dropped: false };
   const tag = censoredTag.toUpperCase();
-  const isMember = ownedClanTags.some((t) => t.toUpperCase() === tag);
-  if (isMember || !reservedTags.has(tag)) {
+  if (ownedClanTags.some((t) => t.toUpperCase() === tag)) {
     return { tag: censoredTag, dropped: false };
   }
   return { tag: null, dropped: true };
@@ -49,7 +45,7 @@ export interface PrivilegeChecker {
   isAllowed(flares: string[], refs: PlayerCosmeticRefs): CosmeticResult;
   /**
    * Decide whether a player may wear the given clan tag. Members keep their
-   * tag; impersonated or unverifiable tags are dropped. `ownedClanTags` are
+   * tag; every other tag is dropped. `ownedClanTags` are
    * the tags the player belongs to.
    */
   resolveClanTag(
@@ -71,7 +67,7 @@ export class PrivilegeCheckerImpl implements PrivilegeChecker {
     censoredTag: string | null,
     ownedClanTags: string[],
   ): ClanTagResolution {
-    return decideClanTag(censoredTag, ownedClanTags, this.reservedClanTags);
+    return decideClanTag(censoredTag, ownedClanTags);
   }
 
   isAllowed(flares: string[], refs: PlayerCosmeticRefs): CosmeticResult {
@@ -264,14 +260,13 @@ export class FailOpenPrivilegeChecker implements PrivilegeChecker {
     };
   }
 
-  // No reserved-tag list while cosmetics infra is unavailable (e.g. during
-  // development), so ownership can't be verified. Fail open and keep the tag
-  // rather than blocking everyone whenever the API service is down.
+  // Membership comes from the account, not the cosmetics infra, so the rule
+  // holds even while that is unavailable.
   resolveClanTag(
     censoredTag: string | null,
     ownedClanTags: string[],
   ): ClanTagResolution {
-    return { tag: censoredTag, dropped: false };
+    return decideClanTag(censoredTag, ownedClanTags);
   }
 }
 

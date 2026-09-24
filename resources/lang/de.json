@@ -1323,15 +1323,20 @@
     "games": "Spiele",
     "loss_score": "Niederlagenpunkte",
     "loss_score_tooltip": "Gewichtete Niederlagen basierend auf Clan Beteiligung und Spielschwierigkeit",
+    "multiplayer_tab": "Mehrspieler",
     "no_data_yet": "Noch keine Daten hier",
     "no_stats": "Keine Statistiken verfügbar",
     "player": "Spieler",
     "rank": "Rang",
     "ranked_2v2_tab": "Mannschaften",
     "ranked_no_stats": "Auf dieser Rangliste wurden noch keine gewerteten Spiele gespielt",
-    "ranked_tab": "Solo",
     "ratio": "Verhältnis",
     "refresh_time": "Aktualisiert jede Stunde",
+    "solo_no_stats": "Gewinnen Sie ein Einzelspiel gegen die Nationen, um dem Spielbrett beizutreten.",
+    "solo_points": "Punkte",
+    "solo_points_tooltip": "Punkte aus Solosiegen: Einfach 1, Mittel 2, Schwer 3, Unmöglich 5",
+    "solo_rules": "Solosiege gegen die Nationen bringen Punkte: Leicht 1, Mittel 2, Schwer 3, Unmöglich 5. Spiele, die kürzer als 2 Minuten sind oder Cheat-Optionen enthalten, zählen nicht, ebenso wenig wie mehr als 10 Siege pro Tag.",
+    "solo_tab": "Solo",
     "title": "Rangliste",
     "tribes_boost": "Boosts",
     "tribes_boost_tooltip": "Geboostete Namen erscheinen öfter in den Spielen anderer Spieler",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Sieg/Niederlage",
     "win_score": "Siegpunkte",
     "win_score_tooltip": "Gewichtete Siege basierend auf Clan Beteiligung und Spielschwierigkeit",
+    "wins": "Siege",
     "your_ranking": "Dein Ranking:"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "‚{name}‘ ist bis {date} für dich reserviert. Abonniere vorher erneut, um es zu behalten.",
     "clan_browse": "Clans durchsuchen",
     "clan_clear": "Kein Kürzel",
-    "clan_custom": "Anderes Kürzel",
     "clan_label": "Clankürzel",
     "clan_none_joined": "Du bist noch keinem Clan beigetreten.",
     "clan_your_clans": "Deine Clans",
@@ -2453,5 +2458,9 @@
     "you_won": "Du hast gewonnen!",
     "your_team": "Dein Team hat gewonnen!",
     "youtube_tutorial": "Brauchst du Hilfe?"
+  },
+  "youtube_embed": {
+    "notice": "Dieses Video wird auf YouTube gehostet: Beim Abspielen wird der Player von Google geladen, der Ihre IP-Adresse erhält.",
+    "play": "Spielen Sie das Video ab"
   }
 }

@@ -192,10 +192,9 @@ export async function checkClanTagOwnership(
 
   const exists = await fetchClanExists(tag);
   if (exists === true) return { tag: null, error: "username.tag_not_member" };
-  // Tag doesn't exist (fictional) or the check was inconclusive (API
-  // unavailable, e.g. during development) — fail open and keep the tag;
-  // the server re-checks authoritatively.
-  return { tag, error: null };
+  // A made-up tag, or one that can't be checked: a tag always stands for a
+  // clan the player is in, so it goes (the server drops it at join anyway).
+  return { tag: null, error: null };
 }
 
 export type ClanMemberSort =

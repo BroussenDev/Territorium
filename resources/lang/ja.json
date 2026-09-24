@@ -1323,15 +1323,20 @@
     "games": "試合数",
     "loss_score": "敗北スコア",
     "loss_score_tooltip": "参加しているクランとマッチの難易度を元に計算されたスコア。",
+    "multiplayer_tab": "マルチプレイヤー",
     "no_data_yet": "まだデータはありません。",
     "no_stats": "利用可能な統計はありません。",
     "player": "プレイヤー",
     "rank": "ランク",
     "ranked_2v2_tab": "チーム",
     "ranked_no_stats": "このリーダーボードではランクマッチがまだ行われていません",
-    "ranked_tab": "ソロ",
     "ratio": "勝敗比",
     "refresh_time": "1時間ごとに更新",
+    "solo_no_stats": "各国とのソロゲームに勝利してボードに加わります。",
+    "solo_points": "ポイント",
+    "solo_points_tooltip": "ソロ勝利によるポイント: Easy 1、Medium 2、Hard 3、Impossible 5",
+    "solo_rules": "国家に対するソロ勝利のスコアポイント: Easy 1、Medium 2、Hard 3、Impossible 5。2 分未満のゲームやチートオプションを使用したゲームはカウントされず、1 日あたり 10 回以上の勝利もカウントされません。",
+    "solo_tab": "ソロ",
     "title": "リーダーボード",
     "tribes_boost": "ブースト",
     "tribes_boost_tooltip": "ブーストされた部族名はより多く登場します",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "勝利 / 敗北",
     "win_score": "勝利スコア",
     "win_score_tooltip": "参加しているクランとマッチの難易度を元に計算されたスコア。",
+    "wins": "勝利",
     "your_ranking": "あなたのランキング"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" の名前は、 {date}まであなたに予約されています。期限の前に再登録すると引き続きその名前を利用できます。",
     "clan_browse": "クランを探す",
     "clan_clear": "タグなし",
-    "clan_custom": "その他のタグ",
     "clan_label": "クランタグ",
     "clan_none_joined": "まだクランに参加してません。",
     "clan_your_clans": "あなたのクラン",
@@ -2453,5 +2458,9 @@
     "you_won": "勝利！",
     "your_team": "あなたのチームの勝利！",
     "youtube_tutorial": "ヘルプが必要ですか？"
+  },
+  "youtube_embed": {
+    "notice": "このビデオは YouTube でホストされています。再生すると Google のプレーヤーがロードされ、IP アドレスが受信されます。",
+    "play": "ビデオを再生する"
   }
 }

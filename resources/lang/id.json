@@ -1323,15 +1323,20 @@
     "games": "Permainan",
     "loss_score": "Skor Kekalahan",
     "loss_score_tooltip": "Kerugian dihitung berdasarkan partisipasi klan dan kesulitan pertandingan",
+    "multiplayer_tab": "Multipemain",
     "no_data_yet": "Data belum tersedia",
     "no_stats": "Statistik tidak tersedia",
     "player": "Pemain",
     "rank": "Peringkat",
     "ranked_2v2_tab": "Tim",
     "ranked_no_stats": "Belum ada permainan berperingkat yang dimainkan di tangga ini",
-    "ranked_tab": "Solo",
     "ratio": "Rasio",
     "refresh_time": "Diperbarui setiap 1 jam",
+    "solo_no_stats": "Menangkan permainan solo melawan negara-negara untuk bergabung dengan dewan.",
+    "solo_points": "Poin",
+    "solo_points_tooltip": "Poin dari kemenangan solo: Mudah 1, Sedang 2, Sulit 3, Tidak Mungkin 5",
+    "solo_rules": "Kemenangan solo melawan negara-negara mencetak poin: Mudah 1, Sedang 2, Sulit 3, Tidak Mungkin 5. Permainan yang berdurasi kurang dari 2 menit atau dengan opsi curang tidak dihitung, dan tidak lebih dari 10 kemenangan sehari.",
+    "solo_tab": "Solo",
     "title": "Papan Peringkat",
     "tribes_boost": "Meningkatkan",
     "tribes_boost_tooltip": "Nama yang diboost lebih sering muncul di permainan pemain lain",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Menang/Kalah",
     "win_score": "Skor Kemenangan",
     "win_score_tooltip": "Kemenangan dihitung berdasarkan bobot partisipasi klan dan tingkat kesulitan pertandingan",
+    "wins": "Menang",
     "your_ranking": "Peringkat Anda"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" disediakan untuk Anda hingga {date}. Berlangganan kembali sebelum itu untuk menyimpannya.",
     "clan_browse": "Telusuri klan",
     "clan_clear": "Tanpa tanda",
-    "clan_custom": "Label lainnya",
     "clan_label": "Tanda klan",
     "clan_none_joined": "Anda belum bergabung dengan klan.",
     "clan_your_clans": "Klan Anda",
@@ -2453,5 +2458,9 @@
     "you_won": "Anda Menang!",
     "your_team": "Tim Anda menang!",
     "youtube_tutorial": "Butuh bantuan?"
+  },
+  "youtube_embed": {
+    "notice": "Video ini dihosting di YouTube: memutarnya memuat pemutar Google, yang menerima alamat IP Anda.",
+    "play": "Putar videonya"
   }
 }

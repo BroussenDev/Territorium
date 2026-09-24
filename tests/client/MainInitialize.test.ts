@@ -77,12 +77,6 @@ vi.mock("../../src/client/BootInterrupts", () => ({
   runBootInterrupt: async () => {},
 }));
 
-// Injects a third-party script and polls; nothing under test needs it.
-vi.mock("../../src/client/Admiral", () => ({
-  loadAdmiral: vi.fn(),
-  onAdmiralMeasured: vi.fn(),
-}));
-
 // adGatekeeper.start() would install a poll interval and DOM bait.
 // HomepagePromos (also in Main's graph) reads canShowAds and nothing else.
 vi.mock("../../src/client/AdGatekeeper", () => ({
@@ -237,9 +231,9 @@ describe("Client.initialize() booted from Main.ts module scope", () => {
   it("runs the signed-out boot: onUserMe(false) and the missing-version warn", () => {
     // renderNavVersion() === 0 branch (line 411).
     expect(warnSpy).toHaveBeenCalledWith("Game version element not found");
-    // userAuth() === false → onUserMe(false) (line 735), which flips the ad
-    // entitlement on for a signed-out web player.
-    expect(window.adsEnabled).toBe(true);
+    // userAuth() === false → onUserMe(false), which keeps ads off: Territorium
+    // loads no ad or tracking tags for anyone.
+    expect(window.adsEnabled).toBe(false);
   });
 
   it("clears the stale achievements.pushed record", () => {

@@ -1323,15 +1323,20 @@
     "games": "Parties",
     "loss_score": "Score de Défaite",
     "loss_score_tooltip": "Défaites pondérées en fonction de la participation du clan et de la difficulté du match",
+    "multiplayer_tab": "Multijoueur",
     "no_data_yet": "Pas encore de données",
     "no_stats": "Aucune statistique disponible",
     "player": "Joueur",
     "rank": "Rang",
     "ranked_2v2_tab": "Équipes",
     "ranked_no_stats": "Aucune partie classée n’a encore été jouée dans ce classement",
-    "ranked_tab": "Solo",
     "ratio": "Ratio",
     "refresh_time": "Actualisé toutes les heures",
+    "solo_no_stats": "Gagnez une partie solo contre les nations pour entrer dans le classement.",
+    "solo_points": "Points",
+    "solo_points_tooltip": "Points des victoires en solo : Facile 1, Moyen 2, Difficile 3, Impossible 5",
+    "solo_rules": "Les victoires en solo contre les nations rapportent des points : Facile 1, Moyen 2, Difficile 3, Impossible 5. Les parties de moins de 2 minutes ou avec des options de triche ne comptent pas, ni plus de 10 victoires par jour.",
+    "solo_tab": "Solo",
     "title": "Classement",
     "tribes_boost": "Mises en avant",
     "tribes_boost_tooltip": "Les noms mis en avant apparaissent plus souvent dans les parties des autres joueurs",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Victoires/Défaites",
     "win_score": "Score de Victoire",
     "win_score_tooltip": "Gains pondérés en fonction de la participation du clan et de la difficulté du match",
+    "wins": "Victoires",
     "your_ranking": "Votre classement"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "« {name} » vous est réservé jusqu’au {date}. Réabonnez-vous avant cette date pour le conserver.",
     "clan_browse": "Parcourir les clans",
     "clan_clear": "Aucun tag",
-    "clan_custom": "Autre tag",
     "clan_label": "Tag de Clan",
     "clan_none_joined": "Vous n'avez pas encore rejoint de clan.",
     "clan_your_clans": "Vos clans",
@@ -2453,5 +2458,9 @@
     "you_won": "Vous avez gagné !",
     "your_team": "Votre équipe a gagné !",
     "youtube_tutorial": "Besoin d'aide ?"
+  },
+  "youtube_embed": {
+    "notice": "Cette vidéo est hébergée sur YouTube : la lire charge le lecteur de Google, qui reçoit alors votre adresse IP.",
+    "play": "Lire la vidéo"
   }
 }

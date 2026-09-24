@@ -6,12 +6,14 @@ import "./components/leaderboard/LeaderboardClanTable";
 import type { LeaderboardClanTable } from "./components/leaderboard/LeaderboardClanTable";
 import "./components/leaderboard/LeaderboardPlayerList";
 import type { LeaderboardPlayerList } from "./components/leaderboard/LeaderboardPlayerList";
+import "./components/leaderboard/LeaderboardSoloTable";
+import type { LeaderboardSoloTable } from "./components/leaderboard/LeaderboardSoloTable";
 import "./components/leaderboard/LeaderboardTribeTable";
 import type { LeaderboardTribeTable } from "./components/leaderboard/LeaderboardTribeTable";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { translateText } from "./Utils";
 
-const TAB_KEYS = ["players", "players2v2", "clans", "tribes"] as const;
+const TAB_KEYS = ["solo", "players", "players2v2", "clans", "tribes"] as const;
 
 // Tab key -> ladder. "players" predates the 2v2 ladder and stays the 1v1 tab
 // so existing `#modal=leaderboard&tab=players` links keep working. Both tabs
@@ -28,6 +30,8 @@ export class LeaderboardModal extends BaseModal {
   @state()
   private clanDateRange: { start: string; end: string } | null = null;
 
+  @query("leaderboard-solo-table")
+  private soloTable?: LeaderboardSoloTable;
   @query("leaderboard-player-list")
   private playerList?: LeaderboardPlayerList;
   @query("leaderboard-clan-table")
@@ -41,9 +45,10 @@ export class LeaderboardModal extends BaseModal {
   protected modalConfig() {
     return {
       tabs: [
+        { key: "solo", label: translateText("leaderboard_modal.solo_tab") },
         {
           key: "players",
-          label: translateText("leaderboard_modal.ranked_tab"),
+          label: translateText("leaderboard_modal.multiplayer_tab"),
         },
         {
           key: "players2v2",
@@ -61,6 +66,7 @@ export class LeaderboardModal extends BaseModal {
 
   private tabComponent(tab: string) {
     if (this.rankedTypeFor(tab) !== null) return this.playerList;
+    if (tab === "solo") return this.soloTable;
     if (tab === "clans") return this.clanTable;
     return this.tribeTable;
   }
@@ -153,6 +159,9 @@ export class LeaderboardModal extends BaseModal {
   protected renderBody() {
     return html`
       <div class="flex-1 min-h-0 h-full">
+        <leaderboard-solo-table
+          class=${this.activeTab === "solo" ? "h-full" : "hidden"}
+        ></leaderboard-solo-table>
         <leaderboard-player-list
           class=${this.rankedTypeFor(this.activeTab) !== null
             ? "h-full"

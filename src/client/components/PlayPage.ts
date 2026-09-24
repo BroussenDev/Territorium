@@ -101,7 +101,7 @@ export class PlayPage extends LitElement {
                 aria-hidden="true"
               ></div>
               <territorium-emblem
-                class="hidden sm:block relative shrink-0 w-16 lg:w-24"
+                class="hidden sm:block relative shrink-0 w-20 lg:w-28 drop-shadow-[0_8px_24px_rgb(16_185_129_/_0.25)]"
               ></territorium-emblem>
               <div class="relative flex-1 min-w-0 flex flex-col gap-4">
                 <p

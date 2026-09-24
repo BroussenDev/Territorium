@@ -1323,15 +1323,20 @@
     "games": "Igre",
     "loss_score": "Poeni gubitaka",
     "loss_score_tooltip": "Prilagođeni gubici na osnovu učešća klana i težine meča",
+    "multiplayer_tab": "Multiplaier",
     "no_data_yet": "Još nema podataka",
     "no_stats": "Nema dostupnih statistika",
     "player": "Igrač",
     "rank": "Rang",
     "ranked_2v2_tab": "Timovi",
     "ranked_no_stats": "Na ovoj listi još nije odigrana nijedna rangirana igra",
-    "ranked_tab": "Solo",
     "ratio": "Odnos",
     "refresh_time": "Osvežava se na svakih 1 sat",
+    "solo_no_stats": "Osvojite solo igru protiv nacija da biste se pridružili odboru.",
+    "solo_points": "Poeni",
+    "solo_points_tooltip": "Poeni iz solo pobeda: Lako 1, Srednje 2, Teško 3, Nemoguće 5",
+    "solo_rules": "Solo pobede protiv nacija ostvaruju poene: Lako 1, Srednje 2, Teško 3, Nemoguće 5. Igre kraće od 2 minuta ili sa opcijama varanja se ne računaju, niti više od 10 pobeda dnevno.",
+    "solo_tab": "Solo",
     "title": "Rang-lista",
     "tribes_boost": "Pojačanja",
     "tribes_boost_tooltip": "Pojačana imena se češće pojavljuju u igrama drugih igrača",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Pobede/Gubici",
     "win_score": "Poeni pobeda",
     "win_score_tooltip": "Ponderisane pobede na osnovu učešća klana i težine meča",
+    "wins": "Pobeđuje",
     "your_ranking": "Vaš rang"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "Nadimak „{name}” je rezervisan za vas do {date}. Obnovite pretplatu pre tog datuma da biste ga zadržali.",
     "clan_browse": "Pretraži klanove",
     "clan_clear": "Nema oznake",
-    "clan_custom": "Druga oznaka",
     "clan_label": "Oznaka klana",
     "clan_none_joined": "Nisi se pridružio klanu još.",
     "clan_your_clans": "Tvoji klanovi",
@@ -2453,5 +2458,9 @@
     "you_won": "Pobedio si!",
     "your_team": "Tvoj tim je pobedio!",
     "youtube_tutorial": "Potrebna pomoć?"
+  },
+  "youtube_embed": {
+    "notice": "Ovaj video se nalazi na IouTube-u: kada ga reprodukujete, učitava se Google plejer, koji prima vašu IP adresu.",
+    "play": "Pusti video"
   }
 }

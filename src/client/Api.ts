@@ -34,6 +34,8 @@ import {
   PutUsernameResponseSchema,
   RankedLeaderboardResponse,
   RankedLeaderboardResponseSchema,
+  SoloLeaderboardResponse,
+  SoloLeaderboardResponseSchema,
   SteamFinalizeResponseSchema,
   SteamOrderResolution,
   StreamsFeedSchema,
@@ -2231,6 +2233,32 @@ export async function fetchTribeLeaderboard(): Promise<
   if (second === false) return first;
 
   return { ...first, tribes: [...first.tribes, ...second.tribes] };
+}
+
+export async function fetchSoloLeaderboard(): Promise<
+  SoloLeaderboardResponse | false
+> {
+  try {
+    const res = await fetch(`${getApiBase()}/leaderboard/solo`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      console.warn("fetchSoloLeaderboard: unexpected status", res.status);
+      return false;
+    }
+    const parsed = SoloLeaderboardResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn(
+        "fetchSoloLeaderboard: Zod validation failed",
+        parsed.error.toString(),
+      );
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchSoloLeaderboard: request failed", err);
+    return false;
+  }
 }
 
 // Served by our own game server (src/server/NewsAdmin.ts, edited from

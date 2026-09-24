@@ -1323,15 +1323,20 @@
     "games": "Zawody sportowe",
     "loss_score": "Wynik straty",
     "loss_score_tooltip": "Ważone straty oparte na udziale klanu i trudności meczu",
+    "multiplayer_tab": "Tryb wieloosobowy",
     "no_data_yet": "Brak danych",
     "no_stats": "Brak dostępnych statystyk",
     "player": "Odtwarzacz",
     "rank": "Stopień",
     "ranked_2v2_tab": "Zespoły",
     "ranked_no_stats": "Na tej drabince nie rozegrano jeszcze żadnych gier rankingowych",
-    "ranked_tab": "Solo",
     "ratio": "Stosunek",
     "refresh_time": "Odświeżane co 1 godzinę",
+    "solo_no_stats": "Wygraj grę solo przeciwko narodom, aby dołączyć do planszy.",
+    "solo_points": "Zwrotnica",
+    "solo_points_tooltip": "Punkty za zwycięstwa solo: Łatwe 1, Średnie 2, Trudne 3, Niemożliwe 5",
+    "solo_rules": "Solo wygrywa z narodami, zdobywając punkty: Łatwy 1, Średni 2, Trudny 3, Niemożliwy 5. Gry krótsze niż 2 minuty lub z opcjami oszukiwania nie liczą się, ani więcej niż 10 zwycięstw dziennie.",
+    "solo_tab": "Solo",
     "title": "Tabela liderów",
     "tribes_boost": "Zwiększa",
     "tribes_boost_tooltip": "Wzmocnione nazwy pojawiają się częściej w grach innych graczy",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Wygrana/przegrana",
     "win_score": "Wygraj wynik",
     "win_score_tooltip": "Ważone zwycięstwa w oparciu o udział klanu i trudność meczu",
+    "wins": "Wygrywa",
     "your_ranking": "Twój ranking"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "„{name}” jest dla Ciebie zarezerwowane do {date}. Zasubskrybuj ponownie wcześniej, aby ją zachować.",
     "clan_browse": "Przeglądaj klany",
     "clan_clear": "Brak tagu",
-    "clan_custom": "Inny znacznik",
     "clan_label": "Etykieta klanu",
     "clan_none_joined": "Nie dołączyłeś jeszcze do klanu.",
     "clan_your_clans": "Twoje klany",
@@ -2453,5 +2458,9 @@
     "you_won": "Wygrałeś!",
     "your_team": "Twoja drużyna wygrała!",
     "youtube_tutorial": "Potrzebujesz pomocy?"
+  },
+  "youtube_embed": {
+    "notice": "Ten film wideo znajduje się na YouTube: odtworzenie go powoduje załadowanie odtwarzacza Google, który otrzymuje Twój adres IP.",
+    "play": "Odtwórz wideo"
   }
 }

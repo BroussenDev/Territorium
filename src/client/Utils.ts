@@ -18,7 +18,10 @@ import type { LangSelector } from "./LangSelector";
 import { pagePin } from "./PagePin";
 import { Platform } from "./Platform";
 
-export const TUTORIAL_VIDEO_URL = "https://www.youtube.com/embed/7J5zwb_s_Cg";
+// youtube-nocookie: YouTube's privacy-enhanced player, and only loaded once
+// the player clicks play (see <youtube-embed>).
+export const TUTORIAL_VIDEO_URL =
+  "https://www.youtube-nocookie.com/embed/7J5zwb_s_Cg";
 
 // The desktop shell cannot embed YouTube inside Electron, so it bundles the
 // same tutorial and serves it under a reserved prefix of its app:// scheme

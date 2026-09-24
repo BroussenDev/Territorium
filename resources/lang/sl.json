@@ -1323,15 +1323,20 @@
     "games": "igre",
     "loss_score": "Rezultat izgube",
     "loss_score_tooltip": "Ponderirane izgube na podlagi udeležbe klana in težavnosti tekme",
+    "multiplayer_tab": "Igra za več igralcev",
     "no_data_yet": "Podatkov še ni",
     "no_stats": "Statistika ni na voljo",
     "player": "Igralec",
     "rank": "Rank",
     "ranked_2v2_tab": "Ekipe",
     "ranked_no_stats": "Na tej lestvici še ni bila odigrana nobena uvrščena igra",
-    "ranked_tab": "Solo",
     "ratio": "Razmerje",
     "refresh_time": "Osvežuje se vsako 1 uro",
+    "solo_no_stats": "Zmagajte v samostojni igri proti narodom, da se pridružite deski.",
+    "solo_points": "Točke",
+    "solo_points_tooltip": "Točke iz solo zmag: enostavno 1, srednje 2, težko 3, nemogoče 5",
+    "solo_rules": "Solo zmage proti narodom prinašajo točke: Easy 1, Medium 2, Hard 3, Impossible 5. Igre, krajše od 2 minut ali z možnostmi goljufanja, ne štejejo, niti več kot 10 zmag na dan.",
+    "solo_tab": "Solo",
     "title": "Lestvica najboljših",
     "tribes_boost": "Okrepi",
     "tribes_boost_tooltip": "Okrepljena imena se pogosteje pojavljajo v igrah drugih igralcev",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Zmaga/izguba",
     "win_score": "Win Score",
     "win_score_tooltip": "Ponderirane zmage na podlagi udeležbe klana in težavnosti tekme",
+    "wins": "Zmaga",
     "your_ranking": "Vaša uvrstitev"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" je rezerviran za vas do {date}. Pred tem se znova naročite, da ga obdržite.",
     "clan_browse": "Brskajte po klanih",
     "clan_clear": "Brez oznake",
-    "clan_custom": "Druga oznaka",
     "clan_label": "Oznaka klana",
     "clan_none_joined": "Nisi se še pridružil klanu.",
     "clan_your_clans": "Vaši klani",
@@ -2453,5 +2458,9 @@
     "you_won": "Zmagal si!",
     "your_team": "Vaša ekipa je zmagala!",
     "youtube_tutorial": "Potrebujete pomoč?"
+  },
+  "youtube_embed": {
+    "notice": "Ta video gostuje na YouTubu: predvajanje naloži Googlov predvajalnik, ki prejme vaš naslov IP.",
+    "play": "Predvajaj video"
   }
 }

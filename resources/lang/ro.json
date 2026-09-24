@@ -1323,15 +1323,20 @@
     "games": "Jocuri",
     "loss_score": "Scor înfrângere",
     "loss_score_tooltip": "Înfrângeri ponderate în funcție de participarea clanului și dificultatea meciului",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "Nu există încă date",
     "no_stats": "Nu există statistici disponibile",
     "player": "Jucător",
     "rank": "Rang",
     "ranked_2v2_tab": "Echipe",
     "ranked_no_stats": "Nici un meci clasat nu a fost jucat pe această scară",
-    "ranked_tab": "Solo",
     "ratio": "Rată",
     "refresh_time": "Reîmprospătat la fiecare 1 oră",
+    "solo_no_stats": "Câștigă un joc solo împotriva națiunilor pentru a te alătura bordului.",
+    "solo_points": "Puncte",
+    "solo_points_tooltip": "Puncte din câștigurile solo: ușor 1, mediu 2, greu 3, imposibil 5",
+    "solo_rules": "Câștigurile solo împotriva națiunilor obțin puncte: Ușor 1, Mediu 2, Greu 3, Imposibil 5. Jocurile mai scurte de 2 minute sau cu opțiuni de cheat nu contează și nici mai mult de 10 victorii pe zi.",
+    "solo_tab": "Solo",
     "title": "Clasament",
     "tribes_boost": "Amplificări",
     "tribes_boost_tooltip": "Numele mărite apar mai des în jocurile altor jucători",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Câștiguri/Pierderi",
     "win_score": "Scor victorie",
     "win_score_tooltip": "Victorii ponderate în funcție de participarea clanului și dificultatea meciului",
+    "wins": "Câștigă",
     "your_ranking": "Rangul tău"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "„{name}„ vă este rezervat până la {date}. Re subscrieți înainte de a o păstra.",
     "clan_browse": "Caută clanuri",
     "clan_clear": "Nici o etichetă",
-    "clan_custom": "Altă etichetă",
     "clan_label": "Tag eticheta clan",
     "clan_none_joined": "Nu te-ai alăturat încă unei clanuri.",
     "clan_your_clans": "Clanurile tale",
@@ -2453,5 +2458,9 @@
     "you_won": "Ai câștigat!",
     "your_team": "Echipa ta a câștigat!",
     "youtube_tutorial": "Ai nevoie de ajutor?"
+  },
+  "youtube_embed": {
+    "notice": "Acest videoclip este găzduit pe YouTube: redarea acestuia încarcă playerul Google, care primește adresa dvs. IP.",
+    "play": "Redați videoclipul"
   }
 }

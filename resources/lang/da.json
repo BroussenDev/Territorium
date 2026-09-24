@@ -1323,15 +1323,20 @@
     "games": "Spil",
     "loss_score": "Nederlags-score",
     "loss_score_tooltip": "Vægtede nederlag baseret på klandeltagelse og kampens sværhedsgrad",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "Ingen Data Endnu",
     "no_stats": "Ingen statistikker tilgængelige",
     "player": "Spiller",
     "rank": "Rang",
     "ranked_2v2_tab": "Hold",
     "ranked_no_stats": "Ingen rangerede spil er blevet spillet på denne stige endnu",
-    "ranked_tab": "Solo",
     "ratio": "Ratio",
     "refresh_time": "Opdateres hver time",
+    "solo_no_stats": "Vind et solospil mod nationerne for at komme med på brættet.",
+    "solo_points": "Points",
+    "solo_points_tooltip": "Point fra solo-sejre: Let 1, Medium 2, Svært 3, Umuligt 5",
+    "solo_rules": "Solo-sejre mod nationerne scorer point: Let 1, Medium 2, Svært 3, Umuligt 5. Spil kortere end 2 minutter eller med snydemuligheder tæller ikke, og heller ikke mere end 10 sejre om dagen.",
+    "solo_tab": "Solo",
     "title": "Rangliste",
     "tribes_boost": "Boosts",
     "tribes_boost_tooltip": "Boostrede navne vises oftere i andre spilleres spil",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Sejre/Nederlag",
     "win_score": "Sejrscore",
     "win_score_tooltip": "Vægtede sejre baseret på klandeltagelse og kampens sværhedsgrad",
+    "wins": "Vinder",
     "your_ranking": "Din placering"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" er reserveret til dig indtil {date}. Gentilmeld inden da for at beholde den.",
     "clan_browse": "Gennemse klaner",
     "clan_clear": "Intet mærke",
-    "clan_custom": "Andet tag",
     "clan_label": "Klan tag",
     "clan_none_joined": "Du har ikke sluttet dig til en klan endnu.",
     "clan_your_clans": "Dine klaner",
@@ -2453,5 +2458,9 @@
     "you_won": "Du Vandt!",
     "your_team": "Dit hold vandt!",
     "youtube_tutorial": "Brug for hjælp?"
+  },
+  "youtube_embed": {
+    "notice": "Denne video er hostet på YouTube: afspilning af den indlæser Googles afspiller, som modtager din IP-adresse.",
+    "play": "Afspil videoen"
   }
 }

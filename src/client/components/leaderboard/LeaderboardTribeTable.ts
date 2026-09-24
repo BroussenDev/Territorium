@@ -30,7 +30,8 @@ export function formatWindowDate(value: string): string | null {
   return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
-function rankStyle(rank: number): { color: string; icon: string } {
+// The rank badge's colours: crown and medals for the podium.
+export function rankStyle(rank: number): { color: string; icon: string } {
   if (rank === 1) {
     return {
       color: "text-yellow-400 bg-yellow-400/10 ring-1 ring-yellow-400/20",

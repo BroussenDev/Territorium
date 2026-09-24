@@ -691,7 +691,7 @@ export async function startWorker() {
 
         // Enforce clan tag ownership: a player can wear a tag only if they're
         // a member; a real clan they're not in (or an unverifiable tag) is
-        // dropped to prevent impersonation. Fictional tags pass through.
+        // dropped, so a tag always stands for a clan the player is in.
         const resolution = privilegeRefresher
           .get()
           .resolveClanTag(clanTag, ownedClanTags);

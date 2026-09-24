@@ -11,6 +11,8 @@ import { UserSettings } from "../core/game/UserSettings";
 import { BaseModal } from "./components/BaseModal";
 import "./components/Difficulties";
 import { modalHeader } from "./components/ui/ModalHeader";
+import "./components/YoutubeEmbed";
+import type { YoutubeEmbed } from "./components/YoutubeEmbed";
 import { Platform } from "./Platform";
 import { TroubleshootingModal } from "./TroubleshootingModal";
 
@@ -19,7 +21,7 @@ export class HelpModal extends BaseModal {
   protected routerName = "help";
 
   @state() private keybinds: Record<string, string> = this.getKeybinds();
-  @query("#tutorial-video-iframe") private videoIframe?: HTMLIFrameElement;
+  @query("#tutorial-video-embed") private videoEmbed?: YoutubeEmbed;
   @query("#tutorial-video-player") private videoPlayer?: HTMLVideoElement;
 
   private getKeybinds(): Record<string, string> {
@@ -156,17 +158,14 @@ export class HelpModal extends BaseModal {
                       controls
                       preload="metadata"
                     ></video>`
-                  : html`<iframe
-                      id="tutorial-video-iframe"
+                  : html`<youtube-embed
+                      id="tutorial-video-embed"
                       class="absolute top-0 left-0 w-full h-full"
-                      src="${this.isModalOpen ? TUTORIAL_VIDEO_URL : ""}"
-                      title="${translateText(
+                      .src=${TUTORIAL_VIDEO_URL}
+                      .videoTitle=${translateText(
                         "help_modal.video_tutorial_title",
-                      )}"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowfullscreen
-                    ></iframe>`
+                      )}
+                    ></youtube-embed>`
               }
             </div>
           </section>
@@ -1297,17 +1296,11 @@ export class HelpModal extends BaseModal {
 
   protected onOpen(): void {
     this.keybinds = this.getKeybinds();
-    // Restore the video src when modal opens
-    if (this.videoIframe) {
-      this.videoIframe.src = TUTORIAL_VIDEO_URL;
-    }
   }
 
   protected onClose(): void {
-    // Clear the iframe src to stop video playback
-    if (this.videoIframe) {
-      this.videoIframe.src = "";
-    }
+    // Back to the placeholder, which stops the video.
+    this.videoEmbed?.reset();
     // The desktop <video> keeps its src -- the file is local, so unlike the
     // YouTube iframe there is nothing to unload; pausing is enough.
     this.videoPlayer?.pause();

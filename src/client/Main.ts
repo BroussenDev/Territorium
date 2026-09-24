@@ -18,8 +18,6 @@ import { UserSettings } from "../core/game/UserSettings";
 import "./AccountModal";
 import { claimAccountNameIfMissing } from "./AccountNameClaim";
 import "./AccountSettingsModal";
-import { adGatekeeper } from "./AdGatekeeper";
-import { loadAdmiral, onAdmiralMeasured } from "./Admiral";
 import { getUserMe, invalidateUserMe } from "./Api";
 import {
   getDesktopSessionState,
@@ -680,26 +678,10 @@ class Client {
       } else {
         updateAccountNavButton(userMeResponse);
       }
-      const isAdFree =
-        userMeResponse !== false && userMeResponse.player?.adfree === true;
-      window.adsEnabled =
-        !isAdFree && !crazyGamesSDK.isOnCrazyGames() && !isDesktopShell();
-      // Ad-eligible users only: paid/adfree users must never load Admiral (its
-      // adblock popup fires autonomously once the payload runs). Start watching
-      // adblock state; once a blocker is ever detected the in-game ad is
-      // suppressed forever (persisted) — those users are highly ad-sensitive.
-      if (window.adsEnabled) {
-        loadAdmiral();
-        // Admiral's read is more reliable than our DOM bait, so use it as a
-        // fast initial signal. A blocker that whitelists this site still shows
-        // ads, so "blocked" means adblocking AND not whitelisted.
-        onAdmiralMeasured((res) => {
-          adGatekeeper.seed(
-            res.adblocking === true && res.whitelisted !== true,
-          );
-        });
-        adGatekeeper.start();
-      }
+      // Territorium shows no ads: no ad network, adblock detector or other
+      // third-party tag ever loads, so nothing tracks players without their
+      // consent (GDPR / ePrivacy).
+      window.adsEnabled = false;
       // Before the dispatch: <username-input> reads this store when it picks
       // the lapse notice's wording, and the record has to be current by then.
       const grantStoreBefore = parseSteamGrantStore(

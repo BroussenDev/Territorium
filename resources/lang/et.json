@@ -1323,15 +1323,20 @@
     "games": "Mängud",
     "loss_score": "Kaotuspunktid",
     "loss_score_tooltip": "Kaotuste kaalutud arv, arvestades klani osalust ning mängu raskust",
+    "multiplayer_tab": "Mitmikmäng",
     "no_data_yet": "Andmeid veel pole",
     "no_stats": "Statistika puudub",
     "player": "Mängija",
     "rank": "Asetus",
     "ranked_2v2_tab": "Meeskonnad",
     "ranked_no_stats": "Sellel redelil pole veel järjestatud mänge mängitud",
-    "ranked_tab": "Solo",
     "ratio": "Suhe",
     "refresh_time": "Värskendatakse iga ühe tunni tagant",
+    "solo_no_stats": "Lauaga liitumiseks võida soolomäng rahvuste vastu.",
+    "solo_points": "Punktid",
+    "solo_points_tooltip": "Punktid soolovõitudelt: lihtne 1, keskmine 2, raske 3, võimatu 5",
+    "solo_rules": "Üksi võidab rahvuste vastu punkte: lihtne 1, keskmine 2, raske 3, võimatu 5. Mängud, mis on lühemad kui 2 minutit või petmisvõimalustega, ei lähe arvesse ega ka rohkem kui 10 võitu päevas.",
+    "solo_tab": "Solo",
     "title": "Edetabel",
     "tribes_boost": "Tugevdab",
     "tribes_boost_tooltip": "Tugevdatud nimed ilmuvad teiste mängijate mängudes sagedamini",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Võit/Kaotus",
     "win_score": "Võidupunktid",
     "win_score_tooltip": "Võitude kaalutud arv, arvestades klani osalust ning mängu raskust",
+    "wins": "Võidab",
     "your_ranking": "Sinu asetus"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" on teile reserveeritud kuni {date}. Selle säilitamiseks tellige uuesti enne seda.",
     "clan_browse": "Sirvige klanne",
     "clan_clear": "Silt puudub",
-    "clan_custom": "Muu silt",
     "clan_label": "Klanni silt",
     "clan_none_joined": "Sa pole veel klanniga liitunud.",
     "clan_your_clans": "Teie klannid",
@@ -2453,5 +2458,9 @@
     "you_won": "Sa võitsid!",
     "your_team": "Sinu tiim võitis!",
     "youtube_tutorial": "Vajad abi?"
+  },
+  "youtube_embed": {
+    "notice": "Seda videot hostitakse YouTube'is: selle esitamisel laaditakse Google'i pleier, mis saab teie IP-aadressi.",
+    "play": "Esita video"
   }
 }

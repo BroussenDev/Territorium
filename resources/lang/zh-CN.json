@@ -1323,15 +1323,20 @@
     "games": "游戏场数",
     "loss_score": "败者积分",
     "loss_score_tooltip": "加权败场数基于军团参与度和比赛难度计算",
+    "multiplayer_tab": "多人游戏",
     "no_data_yet": "暂无数据",
     "no_stats": "暂无统计数据",
     "player": "玩家",
     "rank": "排名",
     "ranked_2v2_tab": "团队",
     "ranked_no_stats": "此天梯上尚未进行任何排名游戏",
-    "ranked_tab": "独奏",
     "ratio": "比率",
     "refresh_time": "每 1 小时刷新一次",
+    "solo_no_stats": "赢得一场与各国的单人游戏即可加入董事会。",
+    "solo_points": "积分",
+    "solo_points_tooltip": "单人胜利得分：简单 1、中等 2、困难 3、不可能 5",
+    "solo_rules": "单人战胜国家得分：简单 1、中等 2、困难 3、不可能 5。短于 2 分钟或带有作弊选项的游戏不计入在内，每天获胜次数也不超过 10 次。",
+    "solo_tab": "独奏",
     "title": "排行榜",
     "tribes_boost": "提升",
     "tribes_boost_tooltip": "提升后的名字会更频繁地出现在其他玩家的游戏中",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "胜负比",
     "win_score": "胜者积分",
     "win_score_tooltip": "加权胜场数基于军团参与度和比赛难度计算",
+    "wins": "胜利",
     "your_ranking": "你的排名"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "“{name}”为您保留至{date}。在此之前重新订阅以保留它。",
     "clan_browse": "浏览氏族",
     "clan_clear": "无标签",
-    "clan_custom": "其他标签",
     "clan_label": "部落标签",
     "clan_none_joined": "您还没有加入部落。",
     "clan_your_clans": "你的氏族",
@@ -2453,5 +2458,9 @@
     "you_won": "你获胜了！",
     "your_team": "你的队伍获胜了！",
     "youtube_tutorial": "需要帮助吗？"
+  },
+  "youtube_embed": {
+    "notice": "该视频托管在 YouTube 上：播放时会加载 Google 播放器，该播放器会接收您的 IP 地址。",
+    "play": "播放视频"
   }
 }

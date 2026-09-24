@@ -575,6 +575,27 @@ export type TribeLeaderboardResponse = z.infer<
   typeof TribeLeaderboardResponseSchema
 >;
 
+// GET /leaderboard/solo — public, the top 100 players by points from
+// singleplayer wins (Easy 1, Medium 2, Hard 3, Impossible 5). Only wins
+// played with nations on and no cheat options score, a few a day at most.
+export const SoloLeaderboardEntrySchema = z.object({
+  rank: z.number(),
+  publicId: z.string(),
+  // Account display name; null when never set (show the public id).
+  username: z.string().nullable(),
+  points: z.number(),
+  wins: z.number(),
+  games: z.number(),
+});
+export type SoloLeaderboardEntry = z.infer<typeof SoloLeaderboardEntrySchema>;
+
+export const SoloLeaderboardResponseSchema = z.object({
+  players: SoloLeaderboardEntrySchema.array(),
+});
+export type SoloLeaderboardResponse = z.infer<
+  typeof SoloLeaderboardResponseSchema
+>;
+
 // GET /public/tribe/:name — the public stats page for one custom tribe name.
 // No auth; the name goes URL-encoded in the path and lookup is case- and
 // whitespace-insensitive (the response carries the canonical display form).

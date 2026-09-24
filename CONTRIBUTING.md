@@ -28,8 +28,8 @@ your assets under CC BY-SA 4.0, like the rest of the project.
 ## Development setup
 
 ```bash
-npm run inst   # install dependencies (npm ci --ignore-scripts)
-npm run dev    # client + server with hot reload, on http://localhost:9000
+npm run inst # install dependencies (npm ci --ignore-scripts)
+npm run dev  # client + server with hot reload, on http://localhost:9000
 npm test
 ```
 

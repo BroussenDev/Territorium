@@ -1323,15 +1323,19 @@
     "games": "Spellen",
     "loss_score": "Verlies Score",
     "loss_score_tooltip": "Gewogen verliezen gebaseerd op clan deelname en match moeilijkheid",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "Nog geen gegevens",
     "no_stats": "Geen statistieken beschikbaar",
     "player": "Speler",
     "rank": "Rang",
     "ranked_2v2_tab": "Teams",
     "ranked_no_stats": "Op deze ladder zijn nog geen competitieve spellen gespeeld",
-    "ranked_tab": "Solo",
     "ratio": "Verhouding",
     "refresh_time": "Elk 1 uur ververst",
+    "solo_no_stats": "Win een solospel tegen de landen om op het bord te komen.",
+    "solo_points": "Punten",
+    "solo_rules": "Solo overwinningen tegen de landen scoren punten: Makkelijk 1, Medium 2, Moeilijk 3, Onmogelijk 5. Spellen korter dan 2 minuten of met cheat-opties tellen niet mee, en ook niet meer dan 10 overwinningen per dag.",
+    "solo_tab": "Solo",
     "title": "Klassement",
     "tribes_boost": "Boosts",
     "tribes_boost_tooltip": "Gebooste namen verschijnen vaker in spellen van andere spelers",
@@ -1349,6 +1353,7 @@
     "win_loss_ratio": "Win/Loss",
     "win_score": "Win Score",
     "win_score_tooltip": "Gewogen overwinningen gebaseerd op clan deelname en match moeilijkheid",
+    "wins": "wint",
     "your_ranking": "Jou ranking"
   },
   "main": {
@@ -2404,7 +2409,6 @@
     "claim_reserved": "\"{name}\" is voor jou gereserveerd tot {date}. Herabonneer om het te bewaren.",
     "clan_browse": "Bekijk clans",
     "clan_clear": "Geen tag",
-    "clan_custom": "Andere tag",
     "clan_label": "Clan-tag",
     "clan_none_joined": "Je bent nog geen clan toegetreden.",
     "clan_your_clans": "Jouw clans",
@@ -2453,5 +2457,9 @@
     "you_won": "Je hebt gewonnen!",
     "your_team": "Je team heeft gewonnen!",
     "youtube_tutorial": "Wat hulp nodig?"
+  },
+  "youtube_embed": {
+    "notice": "Deze video wordt gehost op YouTube: als u deze afspeelt, wordt de speler van Google geladen, die uw IP-adres ontvangt.",
+    "play": "Speel de video af"
   }
 }

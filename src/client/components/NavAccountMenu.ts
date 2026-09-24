@@ -373,7 +373,7 @@ export class NavAccountMenu extends LitElement {
     `;
   }
 
-  // Avatar / spinner / person icon / email badge, shared by both triggers.
+  // Avatar / spinner / person icon / signed-in dot, shared by both triggers.
   // `ids` is populated for the desktop instance only — NavAccountButton and
   // CrazyGamesAccountButton drive that one by id — while the data-account-*
   // hooks are what both instances are updated through.
@@ -414,26 +414,14 @@ export class NavAccountMenu extends LitElement {
         <path d="M20 21a8 8 0 0 0-16 0" />
         <path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" />
       </svg>
+      <!-- Signed in by email: a small dot on the icon's corner, not a second
+           icon inside the first. -->
       <span
         id=${ifDefined(id("nav-account-email-badge"))}
         data-account-email-badge
-        class="hidden ${opts.badgeClass} w-4 h-4 rounded-full bg-slate-900/80 border border-white/20 flex items-center justify-center"
+        class="hidden ${opts.badgeClass} w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0b1114]"
         aria-hidden="true"
-      >
-        <svg
-          class="w-2.5 h-2.5 text-white/80"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M4 6h16v12H4z" />
-          <path d="m4 7 8 6 8-6" />
-        </svg>
-      </span>
+      ></span>
     `;
   }
 
@@ -453,11 +441,13 @@ export class NavAccountMenu extends LitElement {
         data-i18n-aria-label="main.account"
         data-i18n-title="main.account"
       >
-        ${this.renderIdentityIcons({
-          ids: true,
-          iconClass: "w-5 h-5",
-          badgeClass: "absolute bottom-1 right-1",
-        })}
+        <span class="relative flex items-center justify-center w-8 h-8">
+          ${this.renderIdentityIcons({
+            ids: true,
+            iconClass: "w-5 h-5",
+            badgeClass: "absolute bottom-1 right-1",
+          })}
+        </span>
         <span
           id="nav-account-signin-text"
           data-account-signin-text
@@ -487,7 +477,7 @@ export class NavAccountMenu extends LitElement {
           ${this.renderIdentityIcons({
             ids: false,
             iconClass: "w-7 h-7",
-            badgeClass: "absolute -bottom-0.5 -right-0.5",
+            badgeClass: "absolute bottom-0 right-0",
           })}
         </span>
         <!-- The sign-in label is desktop-only; on the top bar the icon alone is

@@ -21,6 +21,7 @@ import {
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
+import "../../components/YoutubeEmbed";
 import { Controller } from "../../Controller";
 import {
   fetchCosmetics,
@@ -226,14 +227,13 @@ export class WinModal extends LitElement implements Controller {
                 controls
                 preload="metadata"
               ></video>`
-            : html`<iframe
-                class="absolute top-0 left-0 w-full h-full rounded-sm"
-                src="${this.isVisible ? TUTORIAL_VIDEO_URL : ""}"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>`}
+            : this.isVisible
+              ? html`<youtube-embed
+                  class="absolute top-0 left-0 w-full h-full"
+                  .src=${TUTORIAL_VIDEO_URL}
+                  .videoTitle=${translateText("win_modal.youtube_tutorial")}
+                ></youtube-embed>`
+              : ""}
         </div>
       </div>
     `;

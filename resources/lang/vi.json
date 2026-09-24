@@ -1323,15 +1323,20 @@
     "games": "Số trận",
     "loss_score": "Điểm thua",
     "loss_score_tooltip": "Điểm thua được tính theo mức độ tham gia của clan và độ khó của trận đấu",
+    "multiplayer_tab": "Nhiều người chơi",
     "no_data_yet": "Chưa có dữ liệu",
     "no_stats": "Không có thống kê",
     "player": "Người chơi",
     "rank": "Xếp hạng",
     "ranked_2v2_tab": "Đội",
     "ranked_no_stats": "Chưa có trận đấu xếp hạng nào diễn ra trên bảng xếp hạng này",
-    "ranked_tab": "Một mình",
     "ratio": "Tỷ lệ",
     "refresh_time": "Cập nhật 1 giờ một lần",
+    "solo_no_stats": "Giành chiến thắng trong trận đấu solo với các quốc gia để tham gia hội đồng quản trị.",
+    "solo_points": "Điểm",
+    "solo_points_tooltip": "Điểm từ chiến thắng solo: Dễ 1, Trung bình 2, Khó 3, Không thể 5",
+    "solo_rules": "Chiến thắng một mình trước điểm số của các quốc gia: Dễ 1, Trung bình 2, Khó 3, Không thể 5. Các trò chơi ngắn hơn 2 phút hoặc có tùy chọn gian lận không được tính và cũng không tính quá 10 trận thắng mỗi ngày.",
+    "solo_tab": "Một mình",
     "title": "Bảng xếp hạng",
     "tribes_boost": "Mức quảng bá",
     "tribes_boost_tooltip": "Tên được quảng bá sẽ xuất hiện thường xuyên hơn trong trò chơi của những người chơi khác",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Thắng/Thua",
     "win_score": "Điểm Thắng",
     "win_score_tooltip": "Điểm thắng được tính theo mức độ tham gia của clan và độ khó của trận đấu",
+    "wins": "Thắng",
     "your_ranking": "Xếp hạng của bạn"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "Tên '{name}' được giữ cho bạn đến hết {date}. Hãy đăng ký lại trước thời hạn đó để giữ nó.",
     "clan_browse": "Xem các clan",
     "clan_clear": "Không có tag",
-    "clan_custom": "Tag khác",
     "clan_label": "Tag Clan",
     "clan_none_joined": "Bạn chưa tham gia clan nào.",
     "clan_your_clans": "Clan của bạn",
@@ -2453,5 +2458,9 @@
     "you_won": "Bạn đã thắng!",
     "your_team": "Đội của bạn đã thắng!",
     "youtube_tutorial": "Cần trợ giúp?"
+  },
+  "youtube_embed": {
+    "notice": "Video này được lưu trữ trên YouTube: phát video này sẽ tải trình phát của Google, trình phát này sẽ nhận địa chỉ IP của bạn.",
+    "play": "Phát video"
   }
 }

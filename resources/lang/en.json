@@ -1323,15 +1323,20 @@
     "games": "Games",
     "loss_score": "Loss Score",
     "loss_score_tooltip": "Weighted losses based on clan participation and match difficulty",
+    "multiplayer_tab": "Multiplayer",
     "no_data_yet": "No Data Yet",
     "no_stats": "No stats available",
     "player": "Player",
     "rank": "Rank",
     "ranked_2v2_tab": "Teams",
     "ranked_no_stats": "No ranked games have been played on this ladder yet",
-    "ranked_tab": "Solo",
     "ratio": "Ratio",
     "refresh_time": "Refreshed every 1 hour",
+    "solo_no_stats": "Win a solo game against the nations to join the board.",
+    "solo_points": "Points",
+    "solo_points_tooltip": "Points from solo wins: Easy 1, Medium 2, Hard 3, Impossible 5",
+    "solo_rules": "Solo wins against the nations score points: Easy 1, Medium 2, Hard 3, Impossible 5. Games shorter than 2 minutes or with cheat options don't count, nor more than 10 wins a day.",
+    "solo_tab": "Solo",
     "title": "Leaderboard",
     "tribes_boost": "Boosts",
     "tribes_boost_tooltip": "Boosted names appear more often in other players' games",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Win/Loss",
     "win_score": "Win Score",
     "win_score_tooltip": "Weighted wins based on clan participation and match difficulty",
+    "wins": "Wins",
     "your_ranking": "Your Ranking"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" is reserved for you until {date}. Resubscribe before then to keep it.",
     "clan_browse": "Browse clans",
     "clan_clear": "No tag",
-    "clan_custom": "Other tag",
     "clan_label": "Clan tag",
     "clan_none_joined": "You haven't joined a clan yet.",
     "clan_your_clans": "Your clans",
@@ -2453,5 +2458,9 @@
     "you_won": "You Won!",
     "your_team": "Your team won!",
     "youtube_tutorial": "Need some help?"
+  },
+  "youtube_embed": {
+    "notice": "This video is hosted on YouTube: playing it loads Google's player, which receives your IP address.",
+    "play": "Play the video"
   }
 }

@@ -1323,15 +1323,20 @@
     "games": "Giochi",
     "loss_score": "Punteggio di sconfitta",
     "loss_score_tooltip": "Perdite ponderate in base alla partecipazione del clan e alla difficoltà della partita",
+    "multiplayer_tab": "Multigiocatore",
     "no_data_yet": "Nessun dato ancora",
     "no_stats": "Nessuna statistica disponibile",
     "player": "Giocatore",
     "rank": "Rango",
     "ranked_2v2_tab": "Squadre",
     "ranked_no_stats": "In questa classifica non è stata ancora giocata alcuna partita classificata",
-    "ranked_tab": "Solo",
     "ratio": "Rapporto",
     "refresh_time": "Aggiornato ogni 1 ora",
+    "solo_no_stats": "Vinci una partita in solitario contro le nazioni per unirti al tabellone.",
+    "solo_points": "Punti",
+    "solo_points_tooltip": "Punti dalle vittorie in solitario: Facile 1, Medio 2, Difficile 3, Impossibile 5",
+    "solo_rules": "Le vittorie in solitario contro le nazioni danno punti: Facile 1, Medio 2, Difficile 3, Impossibile 5. Le partite di durata inferiore a 2 minuti o con opzioni cheat non contano, né più di 10 vittorie al giorno.",
+    "solo_tab": "Solo",
     "title": "Classifica",
     "tribes_boost": "Aumenta",
     "tribes_boost_tooltip": "I nomi potenziati appaiono più spesso nei giochi degli altri giocatori",
@@ -1349,6 +1354,7 @@
     "win_loss_ratio": "Vittoria/Sconfitta",
     "win_score": "Vinci il punteggio",
     "win_score_tooltip": "Vittorie ponderate in base alla partecipazione al clan e alla difficoltà della partita",
+    "wins": "Vince",
     "your_ranking": "La tua classifica"
   },
   "main": {
@@ -2404,7 +2410,6 @@
     "claim_reserved": "\"{name}\" è riservato per te fino al {date}. Abbonati nuovamente prima di allora per mantenerlo.",
     "clan_browse": "Sfoglia i clan",
     "clan_clear": "Nessuna etichetta",
-    "clan_custom": "Altra etichetta",
     "clan_label": "Etichetta del clan",
     "clan_none_joined": "Non ti sei ancora unito a un clan.",
     "clan_your_clans": "I tuoi clan",
@@ -2453,5 +2458,9 @@
     "you_won": "Hai vinto!",
     "your_team": "La tua squadra ha vinto!",
     "youtube_tutorial": "Hai bisogno di aiuto?"
+  },
+  "youtube_embed": {
+    "notice": "Questo video è ospitato su YouTube: riprodundolo si carica il player di Google, che riceve il tuo indirizzo IP.",
+    "play": "Riproduci il video"
   }
 }
