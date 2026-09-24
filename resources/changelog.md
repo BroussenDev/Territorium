@@ -1,5 +1,28 @@
 # Territorium — Changelog
 
+## v0.0.4
+
+💳 **Payments**
+
+- Emeralds bought with money now go through Mollie: card and the other methods Mollie offers, on its secure checkout page.
+- Before paying you tick a box to get your emeralds right away (this waives the 14-day withdrawal right), and an order confirmation arrives by email.
+
+📊 **Stats**
+
+- Your profile's Stats and Games tabs now fill in: wins, losses, per-mode stats and your game history.
+- The end-of-game screen shows how many medals the game earned you.
+- The end-of-game buttons wait 5 seconds, so you get a look at the three featured items before leaving.
+
+🧭 **Menus**
+
+- New top bar: Play, Store, Inventory, Leaderboard and Clans with icons, the version next to the logo, and a clear highlight on the current page.
+- The Upcoming lobbies button is bigger and easier to spot.
+
+🌍 **Languages and legal**
+
+- Every text in the game, including the home page tagline, is now translated into every available language (Toki Pona excepted).
+- New legal notice, terms of use, terms of sale and privacy policy.
+
 ## v0.0.3
 
 🛒 **Store**
@@ -18,6 +41,19 @@
 
 - Create your own clan from the Clans menu, with its tag, name, description and open or request-only entry.
 - Members, requests, bans, roles, donations to the clan treasury and the clan's game history all work.
+- Member lists show each player's account name.
+- Clan map: every map of the public rotation belongs to the clan with the most wins on it over 30 days, with region groups and held / free / mine filters.
+- Clan search shows the popular clans before you type.
+
+🏠 **Home page**
+
+- Territorium's own look: an emblem that claims its tiles one by one, green surfaces and a play rail with Solo, Tutorial, Create, Join and Ranked.
+
+✨ **More**
+
+- Sixteen new nuke, warship, train and railroad effects.
+- Emeralds can be bought with money from the Emeralds tab: pick any amount, 20 emeralds per euro or dollar.
+- The clan menu next to your name now opens above the announcements.
 
 ## v0.0.2
 

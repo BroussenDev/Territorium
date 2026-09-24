@@ -1,16 +1,10 @@
 {
-  "lang": {
-    "en": "Romanian",
-    "lang_code": "ro",
-    "native": "Română",
-    "svg": "ro"
-  },
   "account_modal": {
     "cancel_subscription": "Anulează",
     "cancel_subscription_confirm": "Anulați abonamentul? Acesta va rămâne activ până la sfârșitul perioadei de facturare curente.",
     "cancel_subscription_confirm_steam": "Abonamentul tău rămâne activ până la {date}. Abonamentele la Steam nu pot fi reactivate odată ce au fost anulate — pentru a te abona din nou ai cumpăra unul nou.",
     "cancel_subscription_confirm_steam_no_date": "Abonamentul tău rămâne activ până la sfârșitul perioadei pentru care ai plătit. Abonamentele Steam nu pot fi reactivate odată ce au fost anulate - pentru a te abona din nou vei cumpăra unul nou.",
-    "cancel_subscription_failed": "Nu s-a putut anula abonamentul. Vă rugăm să încercați din nou sau să folosiți opțiunea „Gestionare”.",
+    "cancel_subscription_failed": "Anularea abonamentului a eșuat. Vă rugăm să încercați din nou sau să vă gestionați facturarea pe site-ul web Territorium.",
     "cancel_subscription_success": "Abonamentul a fost anulat. Accesul rămâne activ până la sfârșitul perioadei de facturare.",
     "cancel_subscription_success_steam": "Anulat — activ până la {date}.",
     "cancel_subscription_success_steam_no_date": "Anulat — activ până la sfârșitul perioadei pentru care ai plătit.",
@@ -83,9 +77,9 @@
     "reward_daily": "Recompensă pentru abonament zilnic",
     "reward_signup_bonus": "Bonus înscriere în abonament",
     "sign_in_desc": "Autentifică-te pentru a salva statisticile și progresul",
-    "sub_granted_ends_on": "Accesul gratuit încheie {date}",
-    "sub_granted_from_purchase": "Inclus gratuit cu achiziția de Steam. Nu este facturat și nu se înnoiește așa că nu este nimic de gestionat sau anulat.",
     "sub_granted_indefinite": "Acces gratuit acordat contului dvs. Nu este facturat, deci nu este nimic de administrat sau anulat.",
+    "sub_granted_perks_end_on": "{tier} beneficii se încheie {date}",
+    "sub_paid_with_currency": "Plătit cu medalii sau smaralde. Nu se reînnoiește de la sine: cumpără din nou {tier} în magazin pentru a adăuga 30 de zile.",
     "sub_price_monthly": "{price}/mo",
     "sub_renews_on": "Se reînnoiește {date}",
     "sub_status_active": "Activ",
@@ -290,6 +284,17 @@
     "confirm_disband": "Sigur dorești să desființezi clanul [{tag}] {name}? Această acțiune nu poate fi anulată.",
     "confirm_kick": "Sigur dorești să dai afară acest membru?",
     "confirm_transfer": "Transferă rolul de lider către {name}",
+    "create_clan": "Creați un clan",
+    "create_clan_desc": "Deveniți liderul său, iar membrii pot purta eticheta înaintea numelui lor în jocuri.",
+    "create_error_already_leader": "Deja conduci un clan. Transferați-l sau desființați-l mai întâi.",
+    "create_error_description": "Descrierea este limitată la 200 de caractere.",
+    "create_error_name": "Numele are nevoie de 3 până la 35 de caractere.",
+    "create_error_tag": "Eticheta are nevoie de 2 până la 5 litere sau cifre.",
+    "create_error_tag_taken": "Un alt clan folosește deja această etichetă.",
+    "create_error_too_many": "Ești deja în 5 clanuri. Lasă unul mai întâi.",
+    "create_submit": "Creați un clan",
+    "create_tag_hint": "2 până la 5 litere sau cifre. Numai membrii îl pot purta.",
+    "create_tag_label": "Etichetă",
     "danger_zone": "Zonă periculoasă",
     "demote": "Retrogradează",
     "deny": "Respinge",
@@ -309,6 +314,7 @@
     "donate_insufficient": "Nu sunt destule {currency}.",
     "donate_invalid_amount": "Introduceți un număr întreg mai mare decât 0",
     "donate_irreversible": "Donațiile sunt permanente și nerambursabile. Moneda oferită clanului nu vă poate fi niciodată returnată.",
+    "donate_irreversible_hard": "Smaraldele sunt moneda premium. Odată donate, acestea nu pot fi rambursate, retrase sau mutate înapoi în contul dvs.",
     "donate_not_member": "Trebuie să fii un membru al clanului pentru a dona.",
     "donate_submitting": "Se donează…",
     "donate_subtitle": "Mutați moneda din contul dvs. în trezoreria clanului.",
@@ -372,8 +378,6 @@
     "leave_clan": "Părăsește Clanul",
     "left_clan": "Ai părăsit clanul.",
     "manage_clan": "Administrați",
-    "map_coming_soon": "În curând",
-    "map_frame_title": "Harta teritoriului clanului",
     "member_banned": "Jucător banat.",
     "member_count": "{count, plural, one {# membru} other {# membri}}",
     "member_demoted": "Membru retrogradat.",
@@ -396,6 +400,7 @@
     "pending_applications": "Aplicații în așteptare",
     "pending_requests_count": "{count, plural, one {# în aşteptarea solicitării} few {# cereri în aşteptare} other {# cereri în aşteptare}}",
     "per_page": "Pe pagină",
+    "popular_clans": "Clanuri populare",
     "promote": "Promovați",
     "request_approved": "Cerere aprobată!",
     "request_denied": "Cerere refuzată.",
@@ -443,6 +448,20 @@
     "tab_game_history": "Istoricul partidelor",
     "tab_map": "Harta",
     "tab_overview": "Rezumat",
+    "territory_count": "{count, plural, one {# hartă} other {# hărți}}",
+    "territory_empty_filter": "Nicio hartă nu se potrivește cu acest filtru.",
+    "territory_explain": "Fiecare hartă este un teritoriu. Aparține clanului cu cele mai multe câștiguri publice în ultimele 30 de zile, iar lobby-urile mai mari contează pentru mai mult. Joacă sub eticheta clanului tău pentru a lua hărți și a le ține.",
+    "territory_filter_all": "Toate hărțile",
+    "territory_filter_free": "Nerevendicat",
+    "territory_filter_held": "Susținut",
+    "territory_filter_mine": "Clanurile mele",
+    "territory_held_label": "hărți deținute",
+    "territory_leaders": "Conducerea clanurilor",
+    "territory_mine_label": "deținute de clanurile tale",
+    "territory_no_leaders": "Niciun clan nu deține încă o hartă. Câștigă un joc public sub eticheta clanului tău pentru a-l lua pe primul.",
+    "territory_title": "Teritoriile clanurilor",
+    "territory_unclaimed": "Nerevendicat",
+    "territory_wins": "{count, plural, one {# victorie} other {# câștigă}}",
     "title": "Clanuri",
     "transfer_leadership": "Transferă funcția de lider",
     "transfer_warning": "Acest lucru va face membrul selectat noul lider. Veți deveni un membru obișnuit. Această acțiune nu poate fi anulată.",
@@ -536,6 +555,7 @@
     "legendary": "Legendar",
     "pack_includes": "Include:",
     "pack_more_items": "+{count} mai mult",
+    "pattern_preview": "Previzualizare model",
     "per_day": "/zi",
     "public_lobbies": "Lobby-uri publice",
     "public_lobbies_info": "Găzduiește lobby-uri personalizate care sunt listate public pentru ca oricine să se alăture.",
@@ -543,6 +563,8 @@
     "search": "Caută...",
     "signup_bonus": "Bonus la Înregistrare",
     "soft": "Medalii",
+    "subscription_days": "30 de zile",
+    "subscription_days_info": "Durează 30 de zile de la cumpărare. Cumpărați din nou același nivel pentru a adăuga încă 30 de zile.",
     "type_crown": "Coroana",
     "type_effect": "{type} Efectul",
     "type_flag": "Steagul",
@@ -574,6 +596,13 @@
     "supporting": "Suportă {name} ({code})",
     "title": "Ajută un Creator",
     "unsupport": "Ne suport"
+  },
+  "crowns": {
+    "couronne_emeraude": "Coroana de smarald",
+    "couronne_glace": "Coroana de gheață",
+    "couronne_pixel": "Coroana pixelilor",
+    "diademe_braise": "Diadem de jar",
+    "laurier": "Coroana de laur"
   },
   "desktop_gate": {
     "back_to_game": "Înapoi la joc",
@@ -677,6 +706,16 @@
     "easy": "Ușor",
     "hard": "Greu",
     "impossible": "Imposibil",
+    "info": "{smarts}, {troops}",
+    "info_label": "Afișați detalii despre dificultate",
+    "info_note_hard": "(Această dificultate este folosită în jocurile publice HvN)",
+    "info_note_medium": "(Această dificultate este folosită în jocurile publice FFA)",
+    "info_smarts_easy": "Prost",
+    "info_smarts_hard": "Inteligent",
+    "info_smarts_impossible": "Foarte inteligent",
+    "info_smarts_medium": "Medie",
+    "info_troops": "{percent}% din numărul maxim de trupe ale unui om",
+    "info_troops_same": "aceleași trupe max ca un om",
     "medium": "Mediu"
   },
   "discord_user_header": {
@@ -703,11 +742,37 @@
     "veryfast": "Foarte rapid"
   },
   "effects": {
+    "anneau_glacial": "Inel de îngheț",
+    "armada_jade": "Jade Armada",
+    "aurore_boreale": "Aurora Nordică",
+    "bastion_emeraude": "Bastionul de Smarald",
+    "braises_rouges": "Jaracul Roșu",
+    "cendres_du_neant": "Void Ashes",
+    "citadelle_royale": "Cetatea Regală",
+    "coque_d_acier": "Cocă de oțel",
+    "couronne_de_sang": "Coroana de sânge",
+    "express_or": "Golden Express",
+    "flotte_corsaire": "Flota Corsair",
+    "flotte_royale": "Flota Regală",
     "nukeType": {
       "atom": "Atom",
       "hydro": "Hidrogen",
       "mirvWarhead": "MIRV"
     },
+    "onde_abyssale": "Val abisal",
+    "onde_jade": "Valul de Jad",
+    "orient_express": "Orient Express",
+    "pluie_d_etoiles": "Cădere de stele",
+    "rails_de_lave": "Sine de lavă",
+    "rails_dores": "Sinele de Aur",
+    "rails_neon": "Sine de neon",
+    "sillage_aurore": "Aurora Wake",
+    "sillage_braise": "Ember Wake",
+    "sillage_jade": "Jade Wake",
+    "spirale_toxique": "Spirala Toxica",
+    "supernova": "Supernova",
+    "traceur_plasma": "Trasorul cu plasmă",
+    "train_arc_en_ciel": "Trenul Curcubeu",
     "type": {
       "nukeExplosion": "Explozie de bombă nucleară",
       "nukeTrail": "Urme de bombă nucleară",
@@ -716,7 +781,10 @@
       "train": "Tren",
       "transportShipTrail": "Urme barcă",
       "warship": "Nave de război"
-    }
+    },
+    "vaisseau_fantome": "Nava fantomă",
+    "vapeur_ecarlate": "Scarlet Steam",
+    "voie_emeraude": "Linia de smarald"
   },
   "error_modal": {
     "connection_error": "Eroare de conexiune!",
@@ -726,6 +794,7 @@
     "crashed": "Jocul a încetat să funcționeze!",
     "desync_notice": "Ești desincronizat de alți jucători. Ceea ce vezi poate diferi de alți jucători.",
     "login_failed": "Autentificare eșuată. Te rugăm să încerci mai târziu.",
+    "login_token_consumed": "Acest link de conectare a fost deja folosit. Probabil că v-ați conectat deja — verificați altă filă.",
     "paste_discord": "Te rugăm să pui următoarele în raportul de eroare pe Discord:",
     "spawn_failed": {
       "description": "Selecția automată a locului de apariție a eșuat. Nu puteți juca acest meci.",
@@ -780,6 +849,23 @@
     "live": "ÎN DIRECT",
     "minimize": "Micșorează",
     "open_on_twitch": "Deschide {channel} pe Twitch"
+  },
+  "flags": {
+    "chevron_royal": "Chevron regal",
+    "echiquier": "Tablă de şah",
+    "etendard_emeraude": "Standard Smarald",
+    "nuit_etoilee": "Noapte înstelată",
+    "pionnier": "Pionier",
+    "pixel_territoire": "Teritoriul Pixel",
+    "tierce_braise": "Ember Tierce"
+  },
+  "free_play": {
+    "account": "Contul dvs., statisticile, prietenii și produsele cosmetice",
+    "ad_free_steam": "Niciodată nicio reclamă în aplicația Steam",
+    "custom_lobbies": "Lobby-uri personalizate private cu prietenii",
+    "free_heading": "Jocul gratuit include",
+    "full_game": "Jocul complet: fiecare hartă și mod, online și single-player",
+    "ranked": "Joc clasat, cu limita zilnică de meciuri gratuite"
   },
   "friends": {
     "accept": "Acceptă",
@@ -1198,6 +1284,12 @@
     "lobby_creator": "Șters de creatorul de lobby",
     "match_cancelled": "Meciul a fost anulat: un jucător nu a reușit să se conecteze. Nu ai pierdut niciun ELO."
   },
+  "lang": {
+    "en": "Romanian",
+    "lang_code": "ro",
+    "native": "Română",
+    "svg": "ro"
+  },
   "leaderboard": {
     "allies": "Aliați",
     "betrayals": "Trădări",
@@ -1235,9 +1327,9 @@
     "no_stats": "Nu există statistici disponibile",
     "player": "Jucător",
     "rank": "Rang",
-    "ranked_2v2_tab": "2v2 Clasat",
+    "ranked_2v2_tab": "Echipe",
     "ranked_no_stats": "Nici un meci clasat nu a fost jucat pe această scară",
-    "ranked_tab": "1v1 Clasat",
+    "ranked_tab": "Solo",
     "ratio": "Rată",
     "refresh_time": "Reîmprospătat la fiecare 1 oră",
     "title": "Clasament",
@@ -1271,6 +1363,7 @@
     "inventory": "Inventar",
     "join": "Alătură-te camerei",
     "leaderboard": "Clasament",
+    "legal_notice": "Aviz legal",
     "login_discord": "Conectează-te cu Discord",
     "login_google": "Conectează-te cu Google",
     "login_steam": "Conectează-te cu Steam",
@@ -1283,12 +1376,12 @@
     "sign_in": "Autentificare",
     "solo": "Solo",
     "store": "Magazin",
+    "tagline": "Cucerește lumea, câte o graniță pe rând.",
     "terms_of_service": "Termenii de utilizare",
     "title": "Territorium (ALPHA)",
     "troubleshooting": "Rezolvarea problemelor",
     "tutorial": "Tutorial",
-    "user_avatar_alt": "Avatarul lui {username}",
-    "wiki": "Wiki"
+    "user_avatar_alt": "Avatarul lui {username}"
   },
   "map": {
     "achiran": "Achiran",
@@ -1316,6 +1409,7 @@
     "branchingpaths": "Căi de ramificare",
     "britannia": "Britanie",
     "britanniaclassic": "Britania (Clasic)",
+    "canaryislands": "Insulele Canare",
     "capecod": "Cod Capului",
     "caribbean": "Caraibe",
     "caspiansea": "Marea Caspică",
@@ -1378,6 +1472,7 @@
     "montreal": "Montreal",
     "morethanluck": "Mai mult decât Noroc",
     "newyorkcity": "New York City",
+    "newzealand": "Noua Zeelandă",
     "niledelta": "Delta Nilului",
     "northamerica": "America de Nord",
     "northwestpassage": "Pasajul de nord-vest",
@@ -1386,8 +1481,10 @@
     "pangaea": "Pangeea",
     "passage": "Pasaj",
     "pluto": "Pluto",
+    "pulicatlake": "Lacul Pulicat",
     "qingchina": "Qing China",
     "random": "Aleatoare",
+    "riodejaneiro": "Rio de Janeiro",
     "russia": "Rusia",
     "sanfrancisco": "San Francisco",
     "scandinavia": "Scandinavia",
@@ -1732,6 +1829,7 @@
     "water_nukes": "Bombe nucleare de apă"
   },
   "public_lobby": {
+    "browse_all": "Răsfoiți toate lobby-urile",
     "connecting": "Conectarea la lobby...",
     "invite_friends": "Invită prieteni",
     "join_timeout": "Nu ai intrat în joc la timp.",
@@ -1812,6 +1910,12 @@
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
   },
+  "steam_grant": {
+    "ended_body": "Luna {tier} care a venit cu achiziția dvs. Steam s-a încheiat. Nimic nu a fost taxat și nimic nu va fi. Păstrați jocul complet: fiecare hartă și mod, joc online, clasat cu limita zilnică gratuită și lobby-uri personalizate cu prietenii. Aplicația Steam rămâne fără reclame. Dacă doriți înapoi avantajele {tier}, vă puteți abona oricând din magazin.",
+    "ended_heading": "Luna Steam inclusă s-a încheiat",
+    "welcome_body": "Achiziția dvs. pe Steam include {tier} până la {date}. Ai plătit o singură dată, pe Steam: nimic nu este facturat și nimic nu se reînnoiește. Când se termină, păstrați jocul complet, fiecare hartă și mod, iar aplicația Steam rămâne fără reclame. Doar beneficiile {tier} se opresc.",
+    "welcome_heading": "Inclus cu achiziția dvs. Steam"
+  },
   "steam_handoff": {
     "launched": "Deschideți acest lobby în aplicația Steam. Dacă nu se întâmplă nimic, asigurați-vă că Steam rulează.",
     "open_in_steam": "Deschideți în Steam",
@@ -1859,10 +1963,8 @@
     "default_name": "Jucător Steam"
   },
   "steam_wishlist": {
-    "cta": "Adaugă acum în lista de dorințe",
-    "on_steam": "Territorium pe Steam",
-    "release": "Disponibil Q3 2026",
-    "title": "Lista de dorințe Territorium pe Steam!"
+    "buy_cta": "Cumpărați pe Steam",
+    "buy_on_steam": "Cumpărați Territorium pe Steam"
   },
   "store": {
     "already_owned": "Deții deja acest obiect. Nimic nu a fost taxat.",
@@ -1888,11 +1990,13 @@
     "confirm_subscribe_over_grant": "Dorești să începi acum un abonament plătit de tip {tier}? Accesul tău gratuit se încheie imediat: {days, plural, one {# zi rămasă} other {# zile rămase}} nu se rambursează și nu se adaugă la perioada plătită.",
     "confirm_subscribe_over_grant_no_days": "Începe un abonament plătit {tier} acum? Accesul tău gratuit se încheie imediat, iar timpul rămas nu este rambursat și nu este adăugat la timpul tău plătit.",
     "confirm_tier_change_steam": "Abonează-te la {tier} acum? Noul tău nivel începe imediat la prețul maxim, iar restul lunii tale nu este rambursat.",
+    "confirm_tier_switch_currency": "Treci la {tier}? O nouă perioadă de 30 de zile începe acum și zilele rămase din abonamentul curent se pierd.",
     "confirm_upgrade": "Faceți upgrade la {tier}? Veți fi taxat acum diferența pro ratat.",
     "cosmetics": "Cosmeticele",
     "crowns": "Coroanele",
     "currency_pack_purchase_success": "Pachetul valutar cumpărat cu succes!",
     "custom_amount": "Alege suma",
+    "custom_currency_purchase_success": "Achiziție de smarald reușită!",
     "effects": "Efectele",
     "flags": "Steagurile",
     "insufficient_currency_body": "Ai nevoie de {amount, number} {currency} pentru a cumpăra {item}.",
@@ -1908,15 +2012,18 @@
     "no_subscriptions": "Nu sunt disponibile abonamente. Reveniți mai târziu pentru elemente noi.",
     "no_tribes": "Nu ai cumpărat încă nici un trib.",
     "pack_already_owned": "Dețineți deja {items}. Nimic nu a fost taxat.",
+    "pack_debt": "Soldul tău de smarald este {debt} îndatorat. Decontează-l înainte de a cumpăra.",
     "pack_no_items": "Niciunul dintre elementele acestui pachet nu este disponibil momentan.",
     "pack_owned": "Deținute",
     "pack_partially_owned": "Deja propriul {items}",
     "pack_unavailable": "Acest pachet nu mai este disponibil.",
     "packs": "Pachete",
     "patterns": "Skin-uri",
+    "pay": "Plată",
     "pay_amount": "Plătește %{amount}",
     "pay_with_card": "Plătește cu cardul",
     "pending_provider_transaction": "Încă aveți o achiziție {provider} în așteptare. Terminați sau anulați-o, apoi încercați din nou.",
+    "plutonium_amount": "Suma de smarald",
     "preview_cosmetic": "Previzualizare în joc",
     "preview_error": "Încărcarea previzualizării în joc a eșuat.",
     "preview_salvo_count": "{count, plural, one {Singur (x#)} few {Salvo (x#)} other {Salvo (x#)}}",
@@ -1929,6 +2036,7 @@
     "purchase_pending": "Achiziția este încă în curs de procesare. Va apărea în scurt timp în contul dvs. - verificați istoricul comenzilor dacă nu este.",
     "purchase_success": "Achiziție reușită: {name}",
     "purchase_tribe_button": "Cumpărați",
+    "sale_terms": "Condiții de vânzare",
     "steam_overlay_cancelled": "Achiziție anulată. Nu ați fost taxată.",
     "steam_overlay_waiting": "Aprobă achiziția de la Steam suprapusă pentru a continua.",
     "subscribe_heading": "Abonamentul Tău",
@@ -1940,6 +2048,7 @@
     "tier_change_unavailable_steam": "Pentru a schimba nivelul de pe Steam, anulează abonamentul din setările contului tău de Steam și abonează-te la noul nivel după încheierea lunii curente.",
     "title": "Magazin",
     "tribe_boost_button": "Potențare",
+    "tribe_boost_confirm": "Boost „{name}” pentru {price} Smaralde? Va apărea mai des în jocurile altor jucători în următoarele {days} zile.",
     "tribe_boost_count": "1 impuls",
     "tribe_boost_count_plural": "{count} Potențări",
     "tribe_boost_failed": "Potențare eșuată. Te rugăm să încerci mai târziu.",
@@ -1971,6 +2080,8 @@
     "tribes_login_required": "Autentifică-te pentru a cumpăra și gestiona numele tribului.",
     "tribes_purchase_description": "Numele tău este atribuit unui robot trib în jocuri cu mai mulți jucători. Devine în direct imediat.",
     "tribes_purchase_heading": "Cumpără un nume de Trib",
+    "withdrawal_waiver": "Îmi doresc smaraldele imediat și renunț la dreptul meu de retragere de 14 zile.",
+    "withdrawal_waiver_needed": "Bifați mai întâi căsuța de sub preț: smaraldele sunt livrate imediat ce plătiți, astfel încât achiziția nu poate fi retrasă ulterior.",
     "your_tribes_heading": "Numele tribului tău"
   },
   "streaming_now": {
@@ -1983,6 +2094,11 @@
     "browse": "Vezi abonamentele",
     "none": "Nu aveți un abonament activ",
     "title": "Abonamentul Tău"
+  },
+  "subscriptions": {
+    "seigneur": "Doamne",
+    "souverain": "Suveran",
+    "vassal": "Vasal"
   },
   "team_colors": {
     "blue": "Albastru",
@@ -2295,6 +2411,8 @@
     "enter_username": "Introdu numele tău de utilizator",
     "invalid_chars": "Numele de utilizator poate conține doar litere, numere, spații și caracterul subliniere.",
     "lapse_notice": "Abonamentul vostru s-a terminat, astfel încât nu mai jucați ca „{name}”. Rămâne rezervat pentru tine până când {date} - se reabonează înainte de a o păstra. După ce cineva o poate lua.",
+    "lapse_notice_after_grant": "Luna de acces premium care a venit cu achiziția dvs. Steam s-a încheiat, așa că nu mai jucați ca „{name}”. Păstrați jocul complet gratuit; doar beneficiile premium se opresc. Numele vă rămâne rezervat până la {date} — abonați-vă înainte de atunci pentru a-l păstra. După aceea oricine îl poate lua.",
+    "lapse_notice_after_grant_at_risk": "Luna de acces premium care a venit cu achiziția dvs. Steam s-a încheiat, așa că nu mai jucați ca „{name}”, iar numele nu mai este rezervat. Păstrați jocul complet gratuit. Un alt jucător poate lua numele în orice moment - abonați-vă acum pentru a-l păstra.",
     "lapse_notice_at_risk": "Nu mai joci ca \"{name}\" și nu mai este rezervat. Un alt jucător îl poate lua în orice moment — te rugăm să te reînscrii acum pentru a-l păstra.",
     "not_string": "Numele de utilizator trebuie să fie un șir.",
     "tag": "ETICHETĂ",
@@ -2318,12 +2436,12 @@
   },
   "win_modal": {
     "died": "Ai murit",
-    "discord_description": "Conectează-te cu alți jucători, descoperă funcții noi și câștigă premii!",
     "exit": "Închide jocul",
-    "join_discord": "Alătură-te comunității noastre de Discord!",
-    "join_server": "Intră pe Server",
     "keep": "Continuă să joci",
     "match_cancelled": "Meciul a fost anulat - nu toți jucătorii au apărut",
+    "medals_earned": "medalii câștigate în acest joc",
+    "medals_none": "medalii: acest joc nu a plătit niciuna (prea scurt, nu sunt suficienți jucători conectați sau s-a atins plafonul zilnic)",
+    "medals_pending": "Numărând medaliile pe care le-ai câștigat...",
     "nation_won": "Națiunea {nation} a câștigat!",
     "new_lobby": "Lobby Nou",
     "other_team": "Echipa {team} a câștigat!",

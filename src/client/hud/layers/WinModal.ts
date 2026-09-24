@@ -7,11 +7,17 @@ import {
   translateText,
   TUTORIAL_VIDEO_URL,
 } from "../../../client/Utils";
+import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
-import { RankedType } from "../../../core/game/Game";
+import { GameType, RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
-import { getUserMe } from "../../Api";
+import {
+  fetchMyGameResult,
+  getUserMe,
+  invalidateUserMe,
+  MyGameResult,
+} from "../../Api";
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
@@ -30,6 +36,8 @@ import { GameView } from "../../view";
 
 @customElement("win-modal")
 export class WinModal extends LitElement implements Controller {
+  static readonly CLOSE_DELAY_SECONDS = 5;
+
   public game: GameView;
   public eventBus: EventBus;
 
@@ -46,6 +54,21 @@ export class WinModal extends LitElement implements Controller {
 
   @state()
   private patternContent: TemplateResult | null = null;
+
+  // Seconds before the buttons that close the modal respond: the end of a
+  // game is when the three store items get a look, so the modal isn't
+  // dismissed before they have even loaded.
+  @state()
+  private closeCountdown = 0;
+
+  // What the finished game paid: "pending" while the API hasn't recorded it
+  // yet, null when there is nothing to show (singleplayer, signed out, the
+  // API never answered).
+  @state()
+  private gameResult: MyGameResult | "pending" | null = null;
+
+  private countdownTimer: ReturnType<typeof setInterval> | null = null;
+  private resultRequested = false;
 
   private _title: string;
 
@@ -71,14 +94,16 @@ export class WinModal extends LitElement implements Controller {
           ${this._title || ""}
         </h2>
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
-          ${this.innerHtml()}
+          ${this.renderGameResult()} ${this.innerHtml()}
         </div>
         <div class="mt-4 flex justify-between gap-2.5 shrink-0">
           <o-button
             variant="primary"
             width="block"
             class="flex-1"
-            translationKey="win_modal.exit"
+            data-win-exit
+            .title=${this.withCountdown(translateText("win_modal.exit"))}
+            ?disable=${this.closeCountdown > 0}
             @click=${this._handleExit}
           ></o-button>
           ${this.isRankedGame
@@ -87,7 +112,10 @@ export class WinModal extends LitElement implements Controller {
                   variant="primary"
                   width="block"
                   class="flex-1"
-                  translationKey="win_modal.requeue"
+                  .title=${this.withCountdown(
+                    translateText("win_modal.requeue"),
+                  )}
+                  ?disable=${this.closeCountdown > 0}
                   @click=${this._handleRequeue}
                 ></o-button>
               `
@@ -96,14 +124,84 @@ export class WinModal extends LitElement implements Controller {
             variant="primary"
             width="block"
             class="flex-1"
-            .title=${this.game?.myPlayer()?.isAlive()
-              ? translateText("win_modal.keep")
-              : translateText("win_modal.spectate")}
+            .title=${this.withCountdown(
+              this.game?.myPlayer()?.isAlive()
+                ? translateText("win_modal.keep")
+                : translateText("win_modal.spectate"),
+            )}
+            ?disable=${this.closeCountdown > 0}
             @click=${this.hide}
           ></o-button>
         </div>
       </div>
     `;
+  }
+
+  private withCountdown(label: string): string {
+    return this.closeCountdown > 0
+      ? `${label} (${this.closeCountdown})`
+      : label;
+  }
+
+  private renderGameResult() {
+    if (this.gameResult === null) return null;
+    if (this.gameResult === "pending") {
+      return html`<div
+        data-win-medals
+        class="mb-4 rounded-sm bg-black/30 p-3 text-center text-white/70"
+      >
+        ${translateText("win_modal.medals_pending")}
+      </div>`;
+    }
+    return html`<div
+      data-win-medals
+      class="mb-4 flex items-center justify-center gap-3 rounded-sm border border-amber-300/30 bg-amber-400/10 p-3"
+    >
+      <img src=${assetUrl("images/MedalIcon.svg")} alt="" class="size-8" />
+      <span class="text-2xl font-bold text-amber-200"
+        >+${this.gameResult.soft.toLocaleString()}</span
+      >
+      <span class="text-white/80"
+        >${this.gameResult.soft > 0
+          ? translateText("win_modal.medals_earned")
+          : translateText("win_modal.medals_none")}</span
+      >
+    </div>`;
+  }
+
+  // Asks the API what the finished game paid. The game server posts the game
+  // once the winner vote resolves, so the answer takes a few seconds: poll.
+  private async loadGameResult() {
+    if (this.resultRequested) return;
+    this.resultRequested = true;
+    const config = this.game.config().gameConfig();
+    if (config.gameType === GameType.Singleplayer) return;
+    const me = await getUserMe().catch(() => false as const);
+    if (!me) return;
+    this.gameResult = "pending";
+    for (let attempt = 0; attempt < 12; attempt++) {
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+      const result = await fetchMyGameResult(this.game.gameID());
+      if (result) {
+        this.gameResult = result;
+        // The balance in the menus changed.
+        if (result.soft > 0) invalidateUserMe();
+        return;
+      }
+    }
+    this.gameResult = null;
+  }
+
+  private startCloseCountdown() {
+    if (this.countdownTimer !== null) clearInterval(this.countdownTimer);
+    this.closeCountdown = WinModal.CLOSE_DELAY_SECONDS;
+    this.countdownTimer = setInterval(() => {
+      this.closeCountdown--;
+      if (this.closeCountdown <= 0 && this.countdownTimer !== null) {
+        clearInterval(this.countdownTimer);
+        this.countdownTimer = null;
+      }
+    }, 1000);
   }
 
   innerHtml() {
@@ -213,6 +311,7 @@ export class WinModal extends LitElement implements Controller {
     this.isRankedGame =
       this.game.config().gameConfig().rankedType !== undefined;
     this.isVisible = true;
+    this.startCloseCountdown();
     this.requestUpdate();
     try {
       await this.loadPatternContent();
@@ -269,6 +368,7 @@ export class WinModal extends LitElement implements Controller {
     const updates = this.game.updatesSinceLastTick();
     const winUpdates = updates?.[GameUpdateType.Win] ?? [];
     winUpdates.forEach((wu) => {
+      if (wu.winner !== undefined) void this.loadGameResult();
       if (wu.winner === undefined) {
         // Match cancelled (e.g. a ranked 2v2 that didn't fill or fully
         // spawn): the game ends with no winner. Still vote the result to the

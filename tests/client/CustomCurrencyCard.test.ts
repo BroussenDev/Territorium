@@ -40,8 +40,15 @@ describe("CustomCurrencyCard", () => {
     card = undefined;
   });
 
-  async function buyAmount(amount: number) {
+  async function buyAmount(amount: number, waive = true) {
     await card!.updateComplete;
+    if (waive) {
+      const waiver = card!.querySelector<HTMLInputElement>(
+        "[data-withdrawal-waiver] input",
+      )!;
+      waiver.checked = true;
+      waiver.dispatchEvent(new Event("change"));
+    }
     const numberInput = card!.querySelector<HTMLInputElement>(
       'input[type="number"]',
     )!;
@@ -126,8 +133,21 @@ describe("CustomCurrencyCard", () => {
         kind: "custom_currency",
         hardAmount: 240,
         currency: "usd",
+        withdrawalWaiver: true,
       }),
     );
+  });
+
+  // Immediate delivery of digital content needs the buyer's express waiver
+  // of the 14-day withdrawal right (Code de la consommation, L221-28 13°).
+  it("asks for the withdrawal waiver before any checkout", async () => {
+    await buyAmount(240, false);
+    await vi.waitFor(() =>
+      expect(showInGameAlert).toHaveBeenCalledWith(
+        "store.withdrawal_waiver_needed",
+      ),
+    );
+    expect(startPurchase).not.toHaveBeenCalled();
   });
 
   it("prices 20 emeralds per euro or dollar", async () => {

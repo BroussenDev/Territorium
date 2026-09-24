@@ -60,7 +60,15 @@ export class Footer extends LitElement {
         </div>
 
         <div class="flex flex-col items-center gap-1 px-4">
-          <div class="text-xs flex items-center justify-center gap-4">
+          <div
+            class="text-xs flex flex-wrap items-center justify-center gap-x-4 gap-y-1"
+          >
+            <a
+              href="/terms-of-service.html#mentions"
+              data-i18n="main.legal_notice"
+              target="_blank"
+              class="hover:text-white transition-colors"
+            ></a>
             <a
               href="/terms-of-service.html"
               data-i18n="main.terms_of_service"

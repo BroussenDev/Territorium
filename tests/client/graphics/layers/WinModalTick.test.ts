@@ -172,11 +172,43 @@ describe("WinModal tick win handling", () => {
     await modal!.updateComplete;
 
     expect(modal!.isVisible).toBe(true);
-    const exit = modal!.querySelector(
-      "o-button[translationKey='win_modal.exit']",
-    );
+    const exit = modal!.querySelector("o-button[data-win-exit]");
     expect(exit).not.toBeNull();
     expect(exit!.parentElement!.classList.contains("hidden")).toBe(false);
+  });
+
+  it("holds the closing buttons for a few seconds so the store items get a look", async () => {
+    vi.stubGlobal(
+      "ResizeObserver",
+      class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+      },
+    );
+    vi.useFakeTimers();
+    try {
+      setup(makeGame({ winner: ["team", "Blue"], myTeam: "Blue" }));
+      document.body.appendChild(modal!);
+      void modal!.show();
+      await modal!.updateComplete;
+
+      const exit = () =>
+        modal!.querySelector("o-button[data-win-exit]") as HTMLElement;
+      expect(exit().hasAttribute("disable")).toBe(true);
+      expect(exit().title).toBe("win_modal.exit (5)");
+
+      await vi.advanceTimersByTimeAsync(4000);
+      await modal!.updateComplete;
+      expect(exit().title).toBe("win_modal.exit (1)");
+
+      await vi.advanceTimersByTimeAsync(1000);
+      await modal!.updateComplete;
+      expect(exit().hasAttribute("disable")).toBe(false);
+      expect(exit().title).toBe("win_modal.exit");
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("ignores a player win whose winner is not a known player", () => {

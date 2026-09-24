@@ -1,10 +1,4 @@
 {
-  "lang": {
-    "en": "French",
-    "lang_code": "fr",
-    "native": "Français",
-    "svg": "fr"
-  },
   "account_modal": {
     "cancel_subscription": "Annuler",
     "cancel_subscription_confirm": "Résilier votre abonnement ? Vous pourriez perdre l'accès immédiatement.",
@@ -83,8 +77,8 @@
     "reward_daily": "Récompense quotidienne de l'abonnement",
     "reward_signup_bonus": "Bonus de souscription à un abonnement",
     "sign_in_desc": "Connectez-vous pour enregistrer vos statistiques et progrès",
-    "sub_granted_ends_on": "L'accès gratuit prend fin le {date}",
     "sub_granted_indefinite": "Accès gratuit accordé à votre compte. Ce n'est pas facturé, il n'y a donc rien à gérer ou à annuler.",
+    "sub_granted_perks_end_on": "{tier} fin des avantages {date}",
     "sub_paid_with_currency": "Payé en médailles ou en émeraudes. Il ne se renouvelle pas tout seul : rachetez {tier} dans la boutique pour ajouter 30 jours.",
     "sub_price_monthly": "{price}/mois",
     "sub_renews_on": "Renouvellement le {date}",
@@ -561,6 +555,7 @@
     "legendary": "Légendaire",
     "pack_includes": "Inclut :",
     "pack_more_items": "+ {count} autres",
+    "pattern_preview": "Aperçu du motif",
     "per_day": "/jour",
     "public_lobbies": "Créer des salons publics",
     "public_lobbies_info": "Hébergez des salons personnalisés publics que tout le monde peut rejoindre.",
@@ -601,6 +596,13 @@
     "supporting": "Soutien de {name} ({code})",
     "title": "Soutenir un créateur",
     "unsupport": "Retirer le soutien"
+  },
+  "crowns": {
+    "couronne_emeraude": "Couronne d'émeraude",
+    "couronne_glace": "Couronne de glace",
+    "couronne_pixel": "Couronne pixel",
+    "diademe_braise": "Diadème de braise",
+    "laurier": "Couronne de laurier"
   },
   "desktop_gate": {
     "back_to_game": "Retour au jeu",
@@ -704,6 +706,16 @@
     "easy": "Facile",
     "hard": "Difficile",
     "impossible": "Impossible",
+    "info": "{smarts}, {troops}",
+    "info_label": "Afficher les détails de la difficulté",
+    "info_note_hard": "(Cette difficulté est utilisée dans les jeux publics HvN)",
+    "info_note_medium": "(Cette difficulté est utilisée dans les jeux publics FFA)",
+    "info_smarts_easy": "Peu futé",
+    "info_smarts_hard": "Malin",
+    "info_smarts_impossible": "Très malin",
+    "info_smarts_medium": "Moyen",
+    "info_troops": "{percent}% des troupes maximales d'un humain",
+    "info_troops_same": "les mêmes troupes maximales qu'un humain",
     "medium": "Moyen"
   },
   "discord_user_header": {
@@ -837,6 +849,23 @@
     "live": "EN DIRECT",
     "minimize": "Réduire",
     "open_on_twitch": "Ouvrir {channel} dans Twitch"
+  },
+  "flags": {
+    "chevron_royal": "Chevron royal",
+    "echiquier": "Échiquier",
+    "etendard_emeraude": "Étendard d'émeraude",
+    "nuit_etoilee": "Nuit étoilée",
+    "pionnier": "Pionnier",
+    "pixel_territoire": "Territoire pixel",
+    "tierce_braise": "Tiercé de braise"
+  },
+  "free_play": {
+    "account": "Votre compte, vos statistiques, vos amis et vos cosmétiques",
+    "ad_free_steam": "Aucune publicité dans l'application Steam, jamais",
+    "custom_lobbies": "Lobbies privés personnalisés entre amis",
+    "free_heading": "Jouer gratuitement comprend",
+    "full_game": "Le jeu complet : toutes les cartes et tous les modes, en ligne et en solo",
+    "ranked": "Jeu classé, avec la limite de matchs quotidiens gratuits"
   },
   "friends": {
     "accept": "Accepter",
@@ -1255,6 +1284,12 @@
     "lobby_creator": "Expulsé par le créateur du lobby",
     "match_cancelled": "Partie annulée : un joueur n’a pas réussi à se connecter. Vous n’avez pas perdu d'ELO."
   },
+  "lang": {
+    "en": "French",
+    "lang_code": "fr",
+    "native": "Français",
+    "svg": "fr"
+  },
   "leaderboard": {
     "allies": "Alliés",
     "betrayals": "Trahisons",
@@ -1328,6 +1363,7 @@
     "inventory": "Inventaire",
     "join": "Rejoindre un salon",
     "leaderboard": "Classement",
+    "legal_notice": "Mentions légales",
     "login_discord": "Se connecter avec Discord",
     "login_google": "Se connecter avec Google",
     "login_steam": "Se connecter avec Steam",
@@ -1345,8 +1381,7 @@
     "title": "Territorium (ALPHA)",
     "troubleshooting": "Dépannage",
     "tutorial": "Tutoriel",
-    "user_avatar_alt": "Avatar de {username}",
-    "wiki": "Wiki"
+    "user_avatar_alt": "Avatar de {username}"
   },
   "map": {
     "achiran": "Achiran",
@@ -1374,6 +1409,7 @@
     "branchingpaths": "Ramifications",
     "britannia": "Grande-Bretagne",
     "britanniaclassic": "Grande-Bretagne (Classique)",
+    "canaryislands": "Îles Canaries",
     "capecod": "Cap Cod",
     "caribbean": "Caraïbes",
     "caspiansea": "Mer Caspienne",
@@ -1436,6 +1472,7 @@
     "montreal": "Montréal",
     "morethanluck": "Cinq Feuilles",
     "newyorkcity": "New York City",
+    "newzealand": "Nouvelle-Zélande",
     "niledelta": "Delta du Nil",
     "northamerica": "Amérique du Nord",
     "northwestpassage": "Passage du Nord-Ouest",
@@ -1444,8 +1481,10 @@
     "pangaea": "Pangée",
     "passage": "Passage",
     "pluto": "Pluton",
+    "pulicatlake": "Lac Pulicat",
     "qingchina": "Chine de Qing",
     "random": "Aléatoire",
+    "riodejaneiro": "Rio de Janeiro",
     "russia": "Russie",
     "sanfrancisco": "San Francisco",
     "scandinavia": "Scandinavie",
@@ -1790,6 +1829,7 @@
     "water_nukes": "Bombes à eau"
   },
   "public_lobby": {
+    "browse_all": "Parcourir tous les salons",
     "connecting": "Connexion au lobby...",
     "invite_friends": "Inviter des amis",
     "join_timeout": "Vous n'êtes pas entré dans la partie à temps.",
@@ -1870,6 +1910,12 @@
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
   },
+  "steam_grant": {
+    "ended_body": "Le mois de {tier} qui accompagnait votre achat Steam est terminé. Rien n'a été facturé et rien ne le sera. Vous conservez le jeu complet : chaque carte et mode, le jeu en ligne, le classement avec la limite quotidienne gratuite et les salons personnalisés avec vos amis. L'application Steam reste sans publicité. Si vous souhaitez récupérer les avantages {tier}, vous pouvez vous abonner depuis la boutique à tout moment.",
+    "ended_heading": "Votre mois Steam inclus est terminé",
+    "welcome_body": "Votre achat Steam comprend {tier} jusqu'à {date}. Vous avez payé une seule fois, sur Steam : rien n'est facturé et rien ne se renouvelle. À la fin, vous conservez le jeu complet, chaque carte et mode, et l'application Steam reste sans publicité. Seuls les avantages {tier} s'arrêtent.",
+    "welcome_heading": "Inclus avec votre achat Steam"
+  },
   "steam_handoff": {
     "launched": "Ouverture de ce salon dans l’application Steam. Si rien ne se passe, assurez-vous que Steam est lancé.",
     "open_in_steam": "Ouvrir dans Steam",
@@ -1917,10 +1963,8 @@
     "default_name": "Joueur Steam"
   },
   "steam_wishlist": {
-    "cta": "Ajouter à la liste de souhaits",
-    "on_steam": "Territorium sur Steam",
-    "release": "Disponible au 3ᵉ trimestre 2026",
-    "title": "Ajoutez Territorium à votre liste de souhaits sur Steam !"
+    "buy_cta": "Acheter sur Steam",
+    "buy_on_steam": "Acheter Territorium sur Steam"
   },
   "store": {
     "already_owned": "Vous possédez déjà cet article. Aucun montant n’a été débité.",
@@ -1975,6 +2019,7 @@
     "pack_unavailable": "Ce pack n’est plus disponible.",
     "packs": "Émeraudes",
     "patterns": "Skins",
+    "pay": "Payer",
     "pay_amount": "Payer {amount}",
     "pay_with_card": "Payer par carte bancaire",
     "pending_provider_transaction": "Vous avez encore un achat {provider} en attente. Terminez ou annulez-le, puis réessayez.",
@@ -1991,6 +2036,7 @@
     "purchase_pending": "Votre achat est toujours en cours de traitement. Il apparaîtra sur votre compte sous peu — vérifiez votre historique d'achats si ce n'est pas le cas.",
     "purchase_success": "Achat réussit : {name}",
     "purchase_tribe_button": "Acheter",
+    "sale_terms": "Conditions de vente",
     "steam_overlay_cancelled": "Achat annulé. Vous n'avez pas été facturé.",
     "steam_overlay_waiting": "Confirmez l’achat dans l’interface Steam pour continuer.",
     "subscribe_heading": "S'abonner",
@@ -2034,6 +2080,8 @@
     "tribes_login_required": "Connectez-vous pour acheter et gérer des noms de tribu.",
     "tribes_purchase_description": "Votre nom est attribué à une tribu contrôlée par un bot dans de vraies parties multijoueur. Il apparaît immédiatement en jeu.",
     "tribes_purchase_heading": "Acheter un nom de tribu",
+    "withdrawal_waiver": "Je veux recevoir mes émeraudes tout de suite et je renonce à mon droit de rétractation de 14 jours.",
+    "withdrawal_waiver_needed": "Cochez d'abord la case sous le prix : les émeraudes sont livrées dès le paiement, l'achat ne peut donc plus être annulé ensuite.",
     "your_tribes_heading": "Vos noms de tribu"
   },
   "streaming_now": {
@@ -2046,6 +2094,11 @@
     "browse": "Voir les abonnements",
     "none": "Vous n’avez pas d'abonnement actif.",
     "title": "Votre abonnement"
+  },
+  "subscriptions": {
+    "seigneur": "Seigneur",
+    "souverain": "Souverain",
+    "vassal": "Vassal"
   },
   "team_colors": {
     "blue": "Bleu",
@@ -2358,6 +2411,8 @@
     "enter_username": "Entrez votre nom d'utilisateur",
     "invalid_chars": "Le pseudonyme peut seulement contenir des lettres, chiffres, espaces et des tirets.",
     "lapse_notice": "Votre abonnement a pris fin, vous ne jouez donc plus sous le nom « {name} ». Il vous reste réservé jusqu’au {date}. Réabonnez-vous avant cette date pour le conserver. Passé ce délai, n’importe quel joueur pourra l’utiliser.",
+    "lapse_notice_after_grant": "Le mois d'accès premium fourni avec votre achat Steam est terminé, vous ne jouez donc plus en tant que \"{name}\". Vous conservez le jeu complet gratuitement ; seuls les avantages premium s’arrêtent. Le nom vous reste réservé jusqu'au {date} — abonnez-vous avant pour le conserver. Après cela, tout le monde peut le prendre.",
+    "lapse_notice_after_grant_at_risk": "Le mois d'accès premium fourni avec votre achat Steam est terminé, vous ne jouez donc plus en tant que \"{name}\" et le nom n'est plus réservé. Vous conservez le jeu complet gratuitement. Un autre joueur peut prendre le nom à tout moment – ​​abonnez-vous maintenant pour le conserver.",
     "lapse_notice_at_risk": "Vous ne jouez plus sous le nom « {name} » et celui-ci n’est plus réservé. Un autre joueur peut l’utiliser à tout moment. Réabonnez-vous maintenant pour le conserver.",
     "not_string": "Le nom d'utilisateur doit être une chaîne de caractères.",
     "tag": "TAG",
@@ -2381,12 +2436,12 @@
   },
   "win_modal": {
     "died": "Vous êtes mort·e.",
-    "discord_description": "Parlez avec des joueurs, découvrez de nouvelles fonctionnalités et gagnez des prix !",
     "exit": "Quitter la partie",
-    "join_discord": "Rejoignez notre communauté Discord !",
-    "join_server": "Rejoindre le Serveur",
     "keep": "Continuer à jouer",
     "match_cancelled": "Partie annulée : Certains joueurs ne sont pas apparus",
+    "medals_earned": "médailles gagnées pendant cette partie",
+    "medals_none": "médaille : cette partie n'en rapporte pas (trop courte, pas assez de joueurs connectés, ou plafond du jour atteint)",
+    "medals_pending": "Calcul des médailles gagnées…",
     "nation_won": "La nation {nation} a gagné !",
     "new_lobby": "Nouveau salon",
     "other_team": "L'équipe {team} a gagné !",
@@ -2398,26 +2453,5 @@
     "you_won": "Vous avez gagné !",
     "your_team": "Votre équipe a gagné !",
     "youtube_tutorial": "Besoin d'aide ?"
-  },
-  "flags": {
-    "chevron_royal": "Chevron royal",
-    "echiquier": "Échiquier",
-    "etendard_emeraude": "Étendard d'émeraude",
-    "nuit_etoilee": "Nuit étoilée",
-    "pionnier": "Pionnier",
-    "pixel_territoire": "Territoire pixel",
-    "tierce_braise": "Tiercé de braise"
-  },
-  "crowns": {
-    "couronne_emeraude": "Couronne d'émeraude",
-    "couronne_glace": "Couronne de glace",
-    "couronne_pixel": "Couronne pixel",
-    "diademe_braise": "Diadème de braise",
-    "laurier": "Couronne de laurier"
-  },
-  "subscriptions": {
-    "seigneur": "Seigneur",
-    "souverain": "Souverain",
-    "vassal": "Vassal"
   }
 }

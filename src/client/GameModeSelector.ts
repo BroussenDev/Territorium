@@ -887,26 +887,50 @@ export class GameModeSelector extends LitElement {
         <button
           @click=${this.openDetailedView}
           ?disabled=${!this.inputValid}
-          class="group/upcoming flex w-full items-center justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.04] py-1.5 pl-2.5 pr-1.5 transition-colors hover:border-brand/50 hover:bg-brand/15 ${this
+          class="group/upcoming flex w-full items-center gap-3 rounded-xl border border-emerald-400/35 bg-gradient-to-r from-emerald-500/25 to-emerald-500/[0.06] p-2 pr-3 text-left shadow-[0_10px_28px_-16px_rgba(16,185,129,0.9)] transition-colors hover:border-emerald-300/70 hover:from-emerald-500/35 focus-visible:outline-2 focus-visible:outline-emerald-300 ${this
             .inputValid
             ? ""
             : DISABLED}"
         >
           <span
-            class="truncate text-sm font-bold uppercase tracking-widest text-white/70 group-hover/upcoming:text-white"
-            >${translateText("public_lobby.upcoming")}</span
+            class="grid size-10 shrink-0 place-items-center rounded-lg bg-emerald-500 text-white shadow-[inset_0_-2px_0_rgba(0,0,0,0.2)]"
           >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-5"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="13" r="8" />
+              <path d="M12 9v4l2 2" />
+              <path d="M5 3 2 6" />
+              <path d="m22 6-3-3" />
+            </svg>
+          </span>
+          <span class="flex min-w-0 flex-1 flex-col leading-tight">
+            <span
+              class="truncate text-base font-bold uppercase tracking-wide text-white"
+              >${translateText("public_lobby.upcoming")}</span
+            >
+            <span
+              class="truncate text-xs font-semibold text-emerald-200/80 group-hover/upcoming:text-emerald-100"
+              >${count > 0
+                ? translateText("public_lobby.see_all", { count })
+                : translateText("public_lobby.browse_all")}</span
+            >
+          </span>
           <span
-            class="flex shrink-0 items-center gap-0.5 rounded bg-brand py-0.5 pl-2 pr-1 text-xs font-bold uppercase tracking-wider text-white group-hover/upcoming:bg-brand-light"
+            class="grid size-8 shrink-0 place-items-center rounded-full bg-white/10 text-white transition-transform group-hover/upcoming:translate-x-0.5 group-hover/upcoming:bg-emerald-500"
           >
-            ${count > 0
-              ? translateText("public_lobby.see_all", { count })
-              : nothing}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              class="size-4"
+              class="size-5"
               aria-hidden="true"
             >
               <path

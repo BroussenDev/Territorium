@@ -139,6 +139,42 @@ export async function fetchPublicPlayerProfile(
   }
 }
 
+const MyGameResultSchema = z.object({
+  gameId: z.string(),
+  won: z.boolean(),
+  // Medals the game paid; 0 when it paid nothing (too short, too few
+  // signed-in players, daily cap reached).
+  soft: z.number().int().min(0),
+});
+export type MyGameResult = z.infer<typeof MyGameResultSchema>;
+
+// GET /users/@me/games/:gameId — what a finished multiplayer game gave the
+// signed-in player. The API only knows the game once the game server has
+// posted it, a few seconds after the winner is settled: null until then, and
+// on any error, so callers poll.
+export async function fetchMyGameResult(
+  gameId: string,
+): Promise<MyGameResult | null> {
+  try {
+    const userAuthResult = await userAuth();
+    if (!userAuthResult) return null;
+    const res = await fetch(
+      `${getApiBase()}/users/@me/games/${encodeURIComponent(gameId)}`,
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${userAuthResult.jwt}`,
+        },
+      },
+    );
+    if (res.status !== 200) return null;
+    const parsed = MyGameResultSchema.safeParse(await res.json());
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
+}
+
 // GET /public/player/:publicId/games — keyset-paginated personal game history.
 // Public (no auth). `filter` (mode bucket) and `type` (game-type split) are
 // orthogonal; `cursor` is the opaque token from the previous response's
@@ -1461,7 +1497,14 @@ export async function createCustomCurrencyCheckout(
 // dead button.
 export type PaymentsCheckoutRequest = (
   | { kind: "currency_pack"; packName: string }
-  | { kind: "custom_currency"; hardAmount: number; currency?: "eur" | "usd" }
+  | {
+      kind: "custom_currency";
+      hardAmount: number;
+      currency?: "eur" | "usd";
+      // The buyer asked for immediate delivery and waived the withdrawal
+      // right (required by French consumer law for digital content).
+      withdrawalWaiver?: boolean;
+    }
   | { kind: "subscription_tier"; tierName: string }
 ) & { provider: PaymentsProvider; handoffs?: PaymentsHandoff[] };
 

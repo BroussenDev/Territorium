@@ -1,10 +1,4 @@
 {
-  "lang": {
-    "en": "Dutch",
-    "lang_code": "nl",
-    "native": "Nederlands",
-    "svg": "nl"
-  },
   "account_modal": {
     "cancel_subscription": "Annuleer",
     "cancel_subscription_confirm": "Uw abonnement annuleren? Je kunt de toegang onmiddellijk verliezen.",
@@ -83,9 +77,9 @@
     "reward_daily": "Dagelijkse abonnement beloningen",
     "reward_signup_bonus": "Abonnement aanmeldingsbonus",
     "sign_in_desc": "Meld je aan om statistieken en voortgang op te slaan",
-    "sub_granted_ends_on": "Gratis toegang eindigt {date}",
-    "sub_granted_from_purchase": "Gratis meegeleverd bij je Steam aankoop. Het is niet gefactureerd en word niet vernieuwd, dus er is niets om te beheren of te annuleren.",
     "sub_granted_indefinite": "Gratis toegang verleend aan uw account. Er is geen rekening mee gekoppelt, dus er is niets om te beheren of te annuleren.",
+    "sub_granted_perks_end_on": "{tier} voordelen eindigen op {date}",
+    "sub_paid_with_currency": "Betaald met medailles of smaragden. Het wordt niet vanzelf verlengd: koop {tier} opnieuw in de winkel om 30 dagen toe te voegen.",
     "sub_price_monthly": "{price}/maand",
     "sub_renews_on": "Hernieuwt op {date}",
     "sub_status_active": "Actief",
@@ -290,6 +284,17 @@
     "confirm_disband": "Weet u zeker dat u [{tag}] {name} wilt ontbinden? Dit kan niet ongedaan worden gemaakt.",
     "confirm_kick": "Weet je zeker dat je dit lid wilt verwijderen?",
     "confirm_transfer": "Leiding overdragen aan {name}",
+    "create_clan": "Creëer een clan",
+    "create_clan_desc": "Jij wordt de leider en leden kunnen in games de tag voor hun naam dragen.",
+    "create_error_already_leader": "Je leidt al een clan. Breng het eerst over of ontbind het.",
+    "create_error_description": "De beschrijving is beperkt tot 200 tekens.",
+    "create_error_name": "De naam heeft 3 tot 35 tekens nodig.",
+    "create_error_tag": "De tag heeft 2 tot 5 letters of cijfers nodig.",
+    "create_error_tag_taken": "Een andere clan gebruikt deze tag al.",
+    "create_error_too_many": "Je zit al in 5 clans. Laat er eerst één achter.",
+    "create_submit": "Creëer een clan",
+    "create_tag_hint": "2 tot 5 letters of cijfers. Alleen leden kunnen het dragen.",
+    "create_tag_label": "Label",
     "danger_zone": "Gevarenzone",
     "demote": "Degraderen",
     "deny": "Afwijzen",
@@ -309,6 +314,7 @@
     "donate_insufficient": "Niet genoeg {currency}.",
     "donate_invalid_amount": "Voer een heel getal groter dan 0 in.",
     "donate_irreversible": "Donaties zijn permanent en niet terugbetaalbaar. Valuta gegeven aan de clan kan nooit aan u worden teruggegeven.",
+    "donate_irreversible_hard": "Smaragden zijn de premiumvaluta. Eenmaal gedoneerd kunnen ze niet worden terugbetaald, ingetrokken of teruggezet naar uw account.",
     "donate_not_member": "Je moet een clan lid zijn om te kunnen doneren.",
     "donate_submitting": "Doneren…",
     "donate_subtitle": "Verplaats de valuta van je account naar de clan treasury.",
@@ -372,8 +378,6 @@
     "leave_clan": "Clan Verlaten",
     "left_clan": "Je hebt de clan verlaten.",
     "manage_clan": "Beheren",
-    "map_coming_soon": "Binnenkort",
-    "map_frame_title": "Clan territorium kaart",
     "member_banned": "Speler verbannen.",
     "member_count": "{count, plural, one{# lid} other{# leden}}",
     "member_demoted": "Lid gedegradeerd.",
@@ -396,6 +400,7 @@
     "pending_applications": "Openstaande aanmeldingen",
     "pending_requests_count": "{count, plural, one {# openstaande aanvraag} other {# openstaande aanvragen}}",
     "per_page": "Per pagina",
+    "popular_clans": "Populaire clans",
     "promote": "Promoveren",
     "request_approved": "Aanvraag goedgekeurd!",
     "request_denied": "Aanvraag geweigerd.",
@@ -443,6 +448,20 @@
     "tab_game_history": "Spel Geschiedenis",
     "tab_map": "Kaart",
     "tab_overview": "Overzicht",
+    "territory_count": "{count, plural, one {# kaart} other {# kaarten}}",
+    "territory_empty_filter": "Geen enkele kaart komt overeen met dit filter.",
+    "territory_explain": "Elke kaart is een territorium. Het behoort tot de clan met de meeste publieke overwinningen van de afgelopen 30 dagen, en grotere lobby's tellen voor meer. Speel onder je clantag om kaarten te pakken en vast te houden.",
+    "territory_filter_all": "Alle kaarten",
+    "territory_filter_free": "Niet geclaimd",
+    "territory_filter_held": "Gehouden",
+    "territory_filter_mine": "Mijn clans",
+    "territory_held_label": "kaarten gehouden",
+    "territory_leaders": "Leidende clans",
+    "territory_mine_label": "in handen van uw clans",
+    "territory_no_leaders": "Er is nog geen clan die een kaart heeft. Win een openbaar spel onder jouw clantag om de eerste te winnen.",
+    "territory_title": "Clanterritoria",
+    "territory_unclaimed": "Niet geclaimd",
+    "territory_wins": "{count, plural, one {# overwinning} other {# wint}}",
     "title": "Clans",
     "transfer_leadership": "Leiderschap Overdragen",
     "transfer_warning": "Dit maakt het geselecteerde lid tot de nieuwe leider. Jij wordt een normaal lid. Deze actie kan niet ongedaan worden gemaakt.",
@@ -536,6 +555,7 @@
     "legendary": "Legendarisch",
     "pack_includes": "Bevat:",
     "pack_more_items": "+{count} meer",
+    "pattern_preview": "Patroonvoorbeeld",
     "per_day": "/dag",
     "public_lobbies": "Creëer openbare lobbies",
     "public_lobbies_info": "Host aangepaste lobby's die openbaar worden vermeld voor iedereen om toe te treden.",
@@ -543,6 +563,8 @@
     "search": "Zoeken...",
     "signup_bonus": "Aanmeldbonus",
     "soft": "Medailles",
+    "subscription_days": "30 dagen",
+    "subscription_days_info": "Duur 30 dagen vanaf aankoop. Koop hetzelfde niveau opnieuw om 30 extra dagen toe te voegen.",
     "type_crown": "Kroon",
     "type_effect": "{type} Effect",
     "type_flag": "Vlag",
@@ -574,6 +596,13 @@
     "supporting": "{name} aan het ondersteunen ({code})",
     "title": "Ondersteun een Maker",
     "unsupport": "Niet ondersteunen"
+  },
+  "crowns": {
+    "couronne_emeraude": "Smaragdgroene Kroon",
+    "couronne_glace": "IJskroon",
+    "couronne_pixel": "Pixelkroon",
+    "diademe_braise": "Sintel diadeem",
+    "laurier": "Lauwerkrans"
   },
   "desktop_gate": {
     "back_to_game": "Terug naar spel",
@@ -677,6 +706,16 @@
     "easy": "Makkelijk",
     "hard": "Moeilijk",
     "impossible": "Onmogelijk",
+    "info": "{smarts}, {troops}",
+    "info_label": "Toon moeilijkheidsdetails",
+    "info_note_hard": "(Deze moeilijkheidsgraad wordt gebruikt in openbare HvN-spellen)",
+    "info_note_medium": "(Deze moeilijkheidsgraad wordt gebruikt in openbare FFA-spellen)",
+    "info_smarts_easy": "Dom",
+    "info_smarts_hard": "Slim",
+    "info_smarts_impossible": "Heel slim",
+    "info_smarts_medium": "Gemiddeld",
+    "info_troops": "{percent}% van de maximale troepen van een mens",
+    "info_troops_same": "dezelfde maximale troepen als een mens",
     "medium": "Gemiddeld"
   },
   "discord_user_header": {
@@ -703,11 +742,37 @@
     "veryfast": "Heel snel"
   },
   "effects": {
+    "anneau_glacial": "Vorstring",
+    "armada_jade": "Jade Armada",
+    "aurore_boreale": "Noorderlicht",
+    "bastion_emeraude": "Smaragdgroene bastion",
+    "braises_rouges": "Rode Sintels",
+    "cendres_du_neant": "Leegte as",
+    "citadelle_royale": "Koninklijke Citadel",
+    "coque_d_acier": "Stalen romp",
+    "couronne_de_sang": "Bloedkroon",
+    "express_or": "Gouden Express",
+    "flotte_corsaire": "Corsair-vloot",
+    "flotte_royale": "Koninklijke vloot",
     "nukeType": {
       "atom": "Atoom",
       "hydro": "Waterstof",
       "mirvWarhead": "MIRV"
     },
+    "onde_abyssale": "Abyssale golf",
+    "onde_jade": "Jade Golf",
+    "orient_express": "Oriënt-Express",
+    "pluie_d_etoiles": "Sterrenval",
+    "rails_de_lave": "Lava-rails",
+    "rails_dores": "Gouden rails",
+    "rails_neon": "Neonrails",
+    "sillage_aurore": "Aurora Wakker",
+    "sillage_braise": "Ember Wakker",
+    "sillage_jade": "Jade Wakker",
+    "spirale_toxique": "Giftige spiraal",
+    "supernova": "Supernova",
+    "traceur_plasma": "Plasma-tracer",
+    "train_arc_en_ciel": "Regenboog trein",
     "type": {
       "nukeExplosion": "Kernbom Explosie",
       "nukeTrail": "Kernbom Spoor",
@@ -716,7 +781,10 @@
       "train": "Trein",
       "transportShipTrail": "Boot Spoor",
       "warship": "Oorlogsschip"
-    }
+    },
+    "vaisseau_fantome": "Spookschip",
+    "vapeur_ecarlate": "Scharlaken stoom",
+    "voie_emeraude": "Smaragdgroene lijn"
   },
   "error_modal": {
     "connection_error": "Verbindingsfout!",
@@ -726,6 +794,7 @@
     "crashed": "Spel gecrasht!",
     "desync_notice": "Je bent niet meer gesynchroniseerd met andere spelers. Wat je ziet kan verschillen van andere spelers.",
     "login_failed": "Inloggen is mislukt. probeer het later opnieuw.",
+    "login_token_consumed": "Deze inloglink werd al gebruikt. Je bent waarschijnlijk al ingelogd. Controleer een ander tabblad.",
     "paste_discord": "Plak het volgende in je bug report op Discord:",
     "spawn_failed": {
       "description": "Automatische plaatsing startpositie is mislukt. Je kunt dit spel niet meespelen.",
@@ -780,6 +849,23 @@
     "live": "LIVE",
     "minimize": "Minimaliseren",
     "open_on_twitch": "Open {channel} op Twitch"
+  },
+  "flags": {
+    "chevron_royal": "Koninklijke Chevron",
+    "echiquier": "Schaakbord",
+    "etendard_emeraude": "Smaragd standaard",
+    "nuit_etoilee": "Sterrennacht",
+    "pionnier": "Pionier",
+    "pixel_territoire": "Pixelterritorium",
+    "tierce_braise": "Ember Tierce"
+  },
+  "free_play": {
+    "account": "Je account, statistieken, vrienden en cosmetica",
+    "ad_free_steam": "Geen advertenties in de Steam-app, ooit",
+    "custom_lobbies": "Privé-lobby's op maat met vrienden",
+    "free_heading": "Gratis spelen omvat",
+    "full_game": "De volledige game: elke kaart en modus, online en singleplayer",
+    "ranked": "Gerangschikt spel, met de gratis dagelijkse wedstrijdlimiet"
   },
   "friends": {
     "accept": "Accepteren",
@@ -1090,7 +1176,7 @@
     "radial_title": "Radiale menu",
     "table_action": "Actie",
     "table_key": "Sneltoets",
-    "troubleshooting_desc": "",
+    "troubleshooting_desc": "Als je prestatieproblemen, crashes of andere problemen ervaart tijdens het spelen van Territorium, bezoek dan onze pagina Probleemoplossing voor hulp bij het diagnosticeren en oplossen van veelvoorkomende problemen:",
     "ui_attack_ratio": "Aanvalsverhouding - Het aantal troepen dat wordt gebruikt wanneer je aanvalt. Je kunt de aanvalsverhouding aanpassen met de schuifbalk. Gebruik je bij een aanval meer aanvallende troepen dan er verdedigende troepen zijn, dan verlies je er minder dan wanneer je met minder troepen aanvalt. Dit effect gaat niet verder dan verhoudingen van 2:1.",
     "ui_control": "Controlepaneel",
     "ui_control_desc": "Het controlepaneel bevat de volgende elementen:",
@@ -1198,6 +1284,12 @@
     "lobby_creator": "Verwijderd door lobby maker",
     "match_cancelled": "Wedstrijd geannuleerd: een speler kon geen verbinding maken. Je hebt geen ELO verloren."
   },
+  "lang": {
+    "en": "Dutch",
+    "lang_code": "nl",
+    "native": "Nederlands",
+    "svg": "nl"
+  },
   "leaderboard": {
     "allies": "Bondgenoten",
     "betrayals": "Aantal verraadacties",
@@ -1235,9 +1327,9 @@
     "no_stats": "Geen statistieken beschikbaar",
     "player": "Speler",
     "rank": "Rang",
-    "ranked_2v2_tab": "2v2 Competitief",
+    "ranked_2v2_tab": "Teams",
     "ranked_no_stats": "Op deze ladder zijn nog geen competitieve spellen gespeeld",
-    "ranked_tab": "1v1 Competitief",
+    "ranked_tab": "Solo",
     "ratio": "Verhouding",
     "refresh_time": "Elk 1 uur ververst",
     "title": "Klassement",
@@ -1271,6 +1363,7 @@
     "inventory": "Inventaris",
     "join": "Lobby toetreden",
     "leaderboard": "Klassement",
+    "legal_notice": "Juridische mededeling",
     "login_discord": "Login met Discord",
     "login_google": "Log in met Google",
     "login_steam": "Log in met Steam",
@@ -1283,12 +1376,12 @@
     "sign_in": "Aanmelden",
     "solo": "Solo",
     "store": "Winkel",
+    "tagline": "Verover de wereld, grens voor grens.",
     "terms_of_service": "Servicevoorwaarden",
     "title": "Territorium (ALFA)",
     "troubleshooting": "Problemen oplossen",
     "tutorial": "Tutorial",
-    "user_avatar_alt": "Avatar van {username}",
-    "wiki": "Wiki"
+    "user_avatar_alt": "Avatar van {username}"
   },
   "map": {
     "achiran": "Achiran",
@@ -1316,6 +1409,7 @@
     "branchingpaths": "Vertakkende paden",
     "britannia": "Groot-Brittanië",
     "britanniaclassic": "Britannia (Klassiek)",
+    "canaryislands": "Canarische Eilanden",
     "capecod": "Cape Cod",
     "caribbean": "Caribisch gebied",
     "caspiansea": "Caspische zee",
@@ -1378,6 +1472,7 @@
     "montreal": "Montreal",
     "morethanluck": "Meer dan geluk",
     "newyorkcity": "New York City",
+    "newzealand": "Nieuw-Zeeland",
     "niledelta": "Nijl delta",
     "northamerica": "Noord-Amerika",
     "northwestpassage": "Noord-west Passage",
@@ -1386,8 +1481,10 @@
     "pangaea": "Pangea",
     "passage": "Passage",
     "pluto": "Pluto",
+    "pulicatlake": "Het Pulicat-meer",
     "qingchina": "Qing China",
     "random": "Willekeurig",
+    "riodejaneiro": "Rio de Janeiro",
     "russia": "Rusland",
     "sanfrancisco": "San Francisco",
     "scandinavia": "Scandinavië",
@@ -1732,6 +1829,7 @@
     "water_nukes": "Water Kernbommen"
   },
   "public_lobby": {
+    "browse_all": "Blader door alle lobby's",
     "connecting": "Verbinden met lobby...",
     "invite_friends": "Vrienden uitnodigen",
     "join_timeout": "Je hebt niet op tijd deelgenomen aan het spel.",
@@ -1812,6 +1910,12 @@
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
   },
+  "steam_grant": {
+    "ended_body": "De maand {tier} die bij je Steam-aankoop hoorde, is geëindigd. Er is niets in rekening gebracht en er zal ook niets in rekening worden gebracht. Je behoudt de volledige game: elke kaart en modus, online spelen, gerangschikt met de gratis dagelijkse limiet en aangepaste lobby's met vrienden. De Steam-app blijft advertentievrij. Als u de voordelen van {tier} terug wilt, kunt u zich op elk gewenst moment in de winkel abonneren.",
+    "ended_heading": "Je inbegrepen Steam-maand is afgelopen",
+    "welcome_body": "Je Steam-aankoop omvat {tier} tot {date}. Je hebt één keer betaald, op Steam: er wordt niets gefactureerd en niets wordt verlengd. Als het eindigt, behoud je het volledige spel, elke kaart en modus, en blijft de Steam-app reclamevrij. Alleen de voordelen van {tier} stoppen.",
+    "welcome_heading": "Inbegrepen bij je Steam-aankoop"
+  },
   "steam_handoff": {
     "launched": "Openen van deze lobby in de Steam app. Als er niets gebeurt, zorg ervoor dat Steam actief is.",
     "open_in_steam": "Openen in Steam",
@@ -1859,10 +1963,8 @@
     "default_name": "Steam speler"
   },
   "steam_wishlist": {
-    "cta": "Zet nu op je verlanglijst",
-    "on_steam": "Territorium op steam",
-    "release": "Beschikbaar Q3 2026",
-    "title": "Zet Territorium op je Steam verlanglijst!"
+    "buy_cta": "Koop op Steam",
+    "buy_on_steam": "Koop Territorium op Steam"
   },
   "store": {
     "already_owned": "Je bezit dit item al. Er is niets in rekening gebracht.",
@@ -1888,11 +1990,13 @@
     "confirm_subscribe_over_grant": "Een betaald {tier} abbonement nu starten? Je gratis toegang eindigt onmiddelijk: de {days, plural, one {# dag resterend} other {# dagen resterend}} erop zijn niet terugbetaald en worden niet toegevoegd aan je betaalde tijd.",
     "confirm_subscribe_over_grant_no_days": "Een betaald {tier} abonnement nu starten? Je gratis toegang eindigt onmiddellijk, en de resterende tijd wordt niet terugbetaald en niet toegevoegd aan je betaalde tijd.",
     "confirm_tier_change_steam": "Nu abonneren op {tier}? Je nieuwe rang begint onmiddellijk tegen de volle prijs, en de rest van je huidige maand wordt niet terugbetaald.",
+    "confirm_tier_switch_currency": "Overschakelen naar {tier}? Er gaat nu een nieuwe periode van 30 dagen in en de resterende dagen van uw huidige abonnement gaan verloren.",
     "confirm_upgrade": "Upgrade naar {tier}? Je zult nu het afgeschreven verschil in rekening brengen.",
     "cosmetics": "Cosmetica",
     "crowns": "Kronen",
     "currency_pack_purchase_success": "Aankoop valutapakket geslaagd!",
     "custom_amount": "Kies aantal",
+    "custom_currency_purchase_success": "Emerald-aankoop succesvol!",
     "effects": "Effecten",
     "flags": "Vlaggen",
     "insufficient_currency_body": "Je hebt {amount, number} meer {currency} nodig om {item} te kopen.",
@@ -1908,15 +2012,18 @@
     "no_subscriptions": "Geen abonnementen beschikbaar. Controleer later voor nieuwe items.",
     "no_tribes": "Je hebt nog geen stam namen gekocht.",
     "pack_already_owned": "Je hebt {items} al. Er is niets in rekening gebracht.",
+    "pack_debt": "Uw Emerald-saldo heeft een schuld van {debt}. Regel het voordat u koopt.",
     "pack_no_items": "Geen van de items van deze bundel zijn momenteel beschikbaar.",
     "pack_owned": "In bezit",
     "pack_partially_owned": "Al in bezit {items}",
     "pack_unavailable": "Deze bundel is niet langer beschikbaar.",
     "packs": "Pakketten",
     "patterns": "Skins",
+    "pay": "Betalen",
     "pay_amount": "Betaal {amount}",
     "pay_with_card": "Betaal met kaart",
     "pending_provider_transaction": "Je hebt nog een {provider} aankoop in de wacht. Voltooi of annuleer deze en probeer het opnieuw.",
+    "plutonium_amount": "Smaragdgroene hoeveelheid",
     "preview_cosmetic": "In-Game voorbeeld",
     "preview_error": "Kon in-game voorbeeld niet laden.",
     "preview_salvo_count": "{count, plural, one {Één (x#)} other {Salvo (x#)}}",
@@ -1929,6 +2036,7 @@
     "purchase_pending": "Uw aankoop wordt nog steeds verwerkt. Het verschijnt binnenkort op uw account - bekijk uw bestelgeschiedenis als dit niet het geval is.",
     "purchase_success": "Aankoop geslaagd: {name}",
     "purchase_tribe_button": "Koop",
+    "sale_terms": "Verkoopvoorwaarden",
     "steam_overlay_cancelled": "Aankoop geannuleerd. Er zijn geen kosten in rekening gebracht.",
     "steam_overlay_waiting": "Bevestig de aankoop in de Steam overlay om door te gaan.",
     "subscribe_heading": "Abonnement starten",
@@ -1940,6 +2048,7 @@
     "tier_change_unavailable_steam": "Om van niveau te wisselen op Steam, annuleer je abonnement in je Steam account instellingen en meld je aan op de nieuwe rang na afloop van je huidige maand.",
     "title": "Winkel",
     "tribe_boost_button": "Boost",
+    "tribe_boost_confirm": "Boost \"{name}\" voor {price} Smaragden? Het zal de komende {days} dagen vaker verschijnen in de spellen van andere spelers.",
     "tribe_boost_count": "1 boost",
     "tribe_boost_count_plural": "{count} boosts",
     "tribe_boost_failed": "Boost mislukt. Probeer het opnieuw.",
@@ -1971,6 +2080,8 @@
     "tribes_login_required": "Log in om stamnamen te kopen en te beheren.",
     "tribes_purchase_description": "Je naam wordt toegewezen aan een bot stam in echte multiplayer games. Het gaat direct live.",
     "tribes_purchase_heading": "Koop een stam naam",
+    "withdrawal_waiver": "Ik wil mijn smaragden meteen en doe afstand van mijn herroepingsrecht van 14 dagen.",
+    "withdrawal_waiver_needed": "Vink eerst het vakje onder de prijs aan: smaragden worden geleverd zodra je betaalt, de aankoop kan dus achteraf niet meer worden herroepen.",
     "your_tribes_heading": "Jou stam namen"
   },
   "streaming_now": {
@@ -1983,6 +2094,11 @@
     "browse": "Blader door abonnementen",
     "none": "Je hebt geen actief abonnement.",
     "title": "Jouw Abonnement"
+  },
+  "subscriptions": {
+    "seigneur": "Heer",
+    "souverain": "Soeverein",
+    "vassal": "Vazal"
   },
   "team_colors": {
     "blue": "Blauw",
@@ -2295,6 +2411,8 @@
     "enter_username": "Voer je gebruikersnaam in",
     "invalid_chars": "Gebruikersnaam mag alleen letters, cijfers, spaties, onderstrepingstekens, koppeltekens en punten bevatten.",
     "lapse_notice": "Je abonnement is geëindigd, dus je speelt niet langer als \"{name}\". Het blijft gereserveerd voor je tot {date} - opnieuw abonneren voor die datum om het te bewaren. Daarna kan iedereen het gebruiken.",
+    "lapse_notice_after_grant": "De maand premiumtoegang die bij je Steam-aankoop is geleverd, is afgelopen, dus je speelt niet langer als \"{name}\". Je behoudt het volledige spel kosteloos; alleen de premiumvoordelen stoppen. De naam blijft voor u gereserveerd tot {date}. Schrijf u vóór die tijd in om deze te behouden. Daarna kan iedereen het meenemen.",
+    "lapse_notice_after_grant_at_risk": "De maand premiumtoegang die bij je Steam-aankoop is geleverd, is afgelopen, dus je speelt niet langer als \"{name}\" en de naam is niet langer gereserveerd. Je behoudt de volledige game kosteloos. Een andere speler kan de naam op elk moment overnemen. Schrijf je nu in om deze te behouden.",
     "lapse_notice_at_risk": "Je speelt niet langer zoals \"{name}\", en het is niet langer gereserveerd. Een andere speler kan het op elk moment gebruiken — meld je nu opnieuw aan om het te behouden.",
     "not_string": "Gebruikersnaam moet een tekenreeks zijn.",
     "tag": "TAG",
@@ -2318,12 +2436,12 @@
   },
   "win_modal": {
     "died": "Je bent dood",
-    "discord_description": "Maak contact met spelers, ontdek nieuwe functies en win prijzen!",
     "exit": "Verlaat spel",
-    "join_discord": "Word lid van onze Discord-gemeenschap!",
-    "join_server": "Word lid van server",
     "keep": "Blijf spelen",
     "match_cancelled": "Wedstrijd geannuleerd — niet alle spelers zijn geplaatst",
+    "medals_earned": "medailles verdiend dit spel",
+    "medals_none": "medailles: deze game heeft niets uitbetaald (te kort, niet genoeg aangemelde spelers of dagelijkse limiet bereikt)",
+    "medals_pending": "De medailles tellen die je hebt verdiend...",
     "nation_won": "Natie {nation} heeft gewonnen!",
     "new_lobby": "Nieuwe Lobby",
     "other_team": "{team} team heeft gewonnen!",

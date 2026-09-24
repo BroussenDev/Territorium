@@ -1,10 +1,4 @@
 {
-  "lang": {
-    "en": "Korean",
-    "lang_code": "ko",
-    "native": "한국어",
-    "svg": "kr"
-  },
   "account_modal": {
     "cancel_subscription": "취소",
     "cancel_subscription_confirm": "구독을 해지하시겠습니까? 즉시 이용 혜택이 중단될 수 있습니다.",
@@ -83,9 +77,9 @@
     "reward_daily": "일일 구독 보상",
     "reward_signup_bonus": "구독 가입 보너스",
     "sign_in_desc": "통계와 진행 상황을 저장하려면 로그인하세요",
-    "sub_granted_ends_on": "무료 이용 종료: {date}",
-    "sub_granted_from_purchase": "Steam 구매 시 무료로 제공됩니다. 청구되지 않으며 갱신되지 않으므로 관리하거나 취소할 필요가 없습니다.",
     "sub_granted_indefinite": "계정에 무료 이용 권한이 부여되었습니다. 청구되지 않으므로 관리하거나 취소할 필요가 없습니다.",
+    "sub_granted_perks_end_on": "{tier} 혜택 종료 {date}",
+    "sub_paid_with_currency": "메달이나 에메랄드로 지급됩니다. 자동으로 갱신되지는 않습니다. 30일을 추가하려면 매장에서 {tier}를 다시 구매하세요.",
     "sub_price_monthly": "{price}/월",
     "sub_renews_on": "{date}에 갱신됨",
     "sub_status_active": "활성",
@@ -290,6 +284,17 @@
     "confirm_disband": "[{tag}] {name} 클랜을 해산하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
     "confirm_kick": "이 멤버를 추방하시겠습니까?",
     "confirm_transfer": "{name}에게 클랜장 위임",
+    "create_clan": "클랜 만들기",
+    "create_clan_desc": "당신은 리더가 되고, 회원들은 게임에서 자신의 이름 앞에 태그를 달 수 있습니다.",
+    "create_error_already_leader": "귀하는 이미 클랜을 이끌고 있습니다. 먼저 양도하거나 해체하세요.",
+    "create_error_description": "설명은 200자로 제한됩니다.",
+    "create_error_name": "이름은 3~35자여야 합니다.",
+    "create_error_tag": "태그에는 2~5자의 문자 또는 숫자가 필요합니다.",
+    "create_error_tag_taken": "다른 클랜이 이미 이 태그를 사용하고 있습니다.",
+    "create_error_too_many": "귀하는 이미 5개의 클랜에 속해 있습니다. 먼저 하나를 남겨주세요.",
+    "create_submit": "클랜 생성",
+    "create_tag_hint": "2~5개의 문자 또는 숫자. 회원만 착용 가능합니다.",
+    "create_tag_label": "꼬리표",
     "danger_zone": "위험 설정",
     "demote": "강등",
     "deny": "거절",
@@ -309,6 +314,7 @@
     "donate_insufficient": "{currency}이(가) 부족합니다.",
     "donate_invalid_amount": "0보다 큰 정수를 입력해 주세요.",
     "donate_irreversible": "기부는 영구적이며 환불되지 않습니다. 클랜에 기부한 재화는 어떠한 경우에도 돌려받을 수 없습니다.",
+    "donate_irreversible_hard": "에메랄드는 프리미엄 통화입니다. 기부한 후에는 환불, 인출 또는 귀하의 계정으로 다시 이동할 수 없습니다.",
     "donate_not_member": "클랜 멤버만 기부할 수 있습니다.",
     "donate_submitting": "기부 중…",
     "donate_subtitle": "계정의 재화를 클랜 금고로 이전합니다.",
@@ -372,8 +378,6 @@
     "leave_clan": "클랜 나가기",
     "left_clan": "클랜을 나갔습니다.",
     "manage_clan": "관리",
-    "map_coming_soon": "출시 예정",
-    "map_frame_title": "클랜 영토 지도",
     "member_banned": "플레이어가 차단되었습니다.",
     "member_count": "{count, plural, other {#명}}",
     "member_demoted": "멤버가 강등되었습니다.",
@@ -396,6 +400,7 @@
     "pending_applications": "대기 중인 신청",
     "pending_requests_count": "{count, plural, other {대기 중인 요청 #개}}",
     "per_page": "페이지당",
+    "popular_clans": "인기 클랜",
     "promote": "승급",
     "request_approved": "요청이 승인되었습니다!",
     "request_denied": "요청 거절됨.",
@@ -443,6 +448,20 @@
     "tab_game_history": "게임 기록",
     "tab_map": "지도",
     "tab_overview": "개요",
+    "territory_count": "{count, plural, one {# 지도} other {# 지도}}",
+    "territory_empty_filter": "이 필터와 일치하는 지도가 없습니다.",
+    "territory_explain": "모든 지도는 영토입니다. 지난 30일 동안 가장 많은 공개 승리를 거둔 클랜에 속하며, 로비가 클수록 더 많은 승리를 거둘 수 있습니다. 클랜 태그로 플레이하여 지도를 획득하고 보유하세요.",
+    "territory_filter_all": "모든 지도",
+    "territory_filter_free": "청구되지 않은",
+    "territory_filter_held": "유지된",
+    "territory_filter_mine": "내 클랜",
+    "territory_held_label": "지도 보유",
+    "territory_leaders": "주요 클랜",
+    "territory_mine_label": "당신의 클랜이 보유하고 있습니다",
+    "territory_no_leaders": "아직 지도를 보유하고 있는 클랜이 없습니다. 클랜 태그로 공개 게임에서 승리하여 첫 번째 게임을 차지하세요.",
+    "territory_title": "클랜 영토",
+    "territory_unclaimed": "청구되지 않은",
+    "territory_wins": "{count, plural, one {# 승리} other {# 승리}}",
     "title": "클랜",
     "transfer_leadership": "파티장 양도",
     "transfer_warning": "선택한 멤버가 새로운 클랜장이 됩니다. 본인은 일반 멤버가 됩니다. 이 작업은 되돌릴 수 없습니다.",
@@ -536,6 +555,7 @@
     "legendary": "전설",
     "pack_includes": "포함 내역:",
     "pack_more_items": "외 {count}개",
+    "pattern_preview": "패턴 미리보기",
     "per_day": "/일",
     "public_lobbies": "공개 로비",
     "public_lobbies_info": "누구나 참여할 수 있도록 공개 목록에 표시되는 커스텀 로비를 생성합니다.",
@@ -543,6 +563,8 @@
     "search": "검색...",
     "signup_bonus": "가입 보너스",
     "soft": "메달",
+    "subscription_days": "30일",
+    "subscription_days_info": "구매일로부터 30일간 지속됩니다. 30일을 더 추가하려면 동일한 등급을 다시 구매하세요.",
     "type_crown": "왕관",
     "type_effect": "{type} 효과",
     "type_flag": "국기",
@@ -574,6 +596,13 @@
     "supporting": "{name} ({code}) 후원 중",
     "title": "크리에이터 후원",
     "unsupport": "후원 취소"
+  },
+  "crowns": {
+    "couronne_emeraude": "에메랄드 크라운",
+    "couronne_glace": "아이스 크라운",
+    "couronne_pixel": "픽셀 크라운",
+    "diademe_braise": "엠버 왕관",
+    "laurier": "월계관"
   },
   "desktop_gate": {
     "back_to_game": "게임으로 돌아가기",
@@ -677,6 +706,16 @@
     "easy": "쉬움",
     "hard": "어려움",
     "impossible": "불지옥",
+    "info": "{smarts}, {troops}",
+    "info_label": "난이도 세부정보 표시",
+    "info_note_hard": "(이 난이도는 공개 HvN 게임에서 사용됩니다)",
+    "info_note_medium": "(이 난이도는 공개 FFA 게임에서 사용됩니다)",
+    "info_smarts_easy": "멍청한",
+    "info_smarts_hard": "똑똑한",
+    "info_smarts_impossible": "매우 똑똑하다",
+    "info_smarts_medium": "평균",
+    "info_troops": "인간 최대 병력의 {percent}%",
+    "info_troops_same": "인간과 동일한 최대 병력",
     "medium": "보통"
   },
   "discord_user_header": {
@@ -703,11 +742,37 @@
     "veryfast": "매우 빠름"
   },
   "effects": {
+    "anneau_glacial": "프로스트 링",
+    "armada_jade": "제이드 아르마다",
+    "aurore_boreale": "북극광",
+    "bastion_emeraude": "에메랄드 요새",
+    "braises_rouges": "붉은 불씨",
+    "cendres_du_neant": "공허의 재",
+    "citadelle_royale": "왕실 성채",
+    "coque_d_acier": "강철 선체",
+    "couronne_de_sang": "블러드 크라운",
+    "express_or": "골든 익스프레스",
+    "flotte_corsaire": "해적 함대",
+    "flotte_royale": "왕립 함대",
     "nukeType": {
       "atom": "원자폭탄",
       "hydro": "수소폭탄",
       "mirvWarhead": "다탄두 미사일"
     },
+    "onde_abyssale": "심연의 파도",
+    "onde_jade": "제이드 웨이브",
+    "orient_express": "오리엔트 익스프레스",
+    "pluie_d_etoiles": "별똥별",
+    "rails_de_lave": "용암 레일",
+    "rails_dores": "골든 레일",
+    "rails_neon": "네온 레일",
+    "sillage_aurore": "오로라 웨이크",
+    "sillage_braise": "엠버 웨이크",
+    "sillage_jade": "제이드 웨이크",
+    "spirale_toxique": "독성 나선",
+    "supernova": "초신성",
+    "traceur_plasma": "플라즈마 트레이서",
+    "train_arc_en_ciel": "무지개열차",
     "type": {
       "nukeExplosion": "핵폭발 효과",
       "nukeTrail": "핵미사일 궤적",
@@ -716,7 +781,10 @@
       "train": "열차 효과",
       "transportShipTrail": "수송선 항적",
       "warship": "군함"
-    }
+    },
+    "vaisseau_fantome": "유령선",
+    "vapeur_ecarlate": "스칼렛 스팀",
+    "voie_emeraude": "에메랄드 라인"
   },
   "error_modal": {
     "connection_error": "연결 오류!",
@@ -726,6 +794,7 @@
     "crashed": "게임이 튕겼습니다!",
     "desync_notice": "다른 플레이어와 동기화되지 않았습니다. 보이는 것이 다른 플레이어와 다를 수 있습니다.",
     "login_failed": "로그인에 실패했습니다. 나중에 다시 시도해 주세요.",
+    "login_token_consumed": "이 로그인 링크는 이미 사용되었습니다. 이미 로그인되어 있을 것입니다. 다른 탭을 확인하세요.",
     "paste_discord": "디스코드의 버그 보고서에 다음을 붙여넣어 주세요:",
     "spawn_failed": {
       "description": "자동 시작 지점 선택에 실패했습니다. 이 게임을 플레이할 수 없습니다.",
@@ -780,6 +849,23 @@
     "live": "생방송",
     "minimize": "최소화",
     "open_on_twitch": "Twitch에서 {channel} 채널 열기"
+  },
+  "flags": {
+    "chevron_royal": "로얄 쉐브론",
+    "echiquier": "체스판",
+    "etendard_emeraude": "에메랄드 스탠다드",
+    "nuit_etoilee": "별이 빛나는 밤",
+    "pionnier": "개척자",
+    "pixel_territoire": "픽셀 영역",
+    "tierce_braise": "엠버 티어스"
+  },
+  "free_play": {
+    "account": "귀하의 계정, 통계, 친구 및 화장품",
+    "ad_free_steam": "Steam 앱에는 광고가 전혀 없습니다.",
+    "custom_lobbies": "친구들과 함께하는 비공개 맞춤형 로비",
+    "free_heading": "무료 플레이에는 다음이 포함됩니다.",
+    "full_game": "정식 게임: 모든 맵과 모드, 온라인 및 싱글 플레이어",
+    "ranked": "무료 일일 매치 제한이 있는 순위 플레이"
   },
   "friends": {
     "accept": "수락",
@@ -1090,7 +1176,7 @@
     "radial_title": "방사 메뉴",
     "table_action": "동작",
     "table_key": "키",
-    "troubleshooting_desc": "오픈프론트 플레이 중 성능 문제, 충돌 또는 기타 문제가 발생하는 경우, 일반적인 문제의 진단 및 해결에 대한 도움을 받으려면 문제 해결 페이지를 방문하세요.",
+    "troubleshooting_desc": "Territorium을 플레이하는 동안 성능 문제, 충돌 또는 기타 문제가 발생하는 경우 문제 해결 페이지를 방문하여 일반적인 문제를 진단하고 해결하는 데 도움을 받으십시오.",
     "ui_attack_ratio": "공격 비율 - 공격 시 사용할 병력의 비율을 나타냅니다. 슬라이더로 공격 비율을 조절할 수 있습니다. 공격군이 방어군보다 많으면 공격 중 손실되는 병력이 줄어들고, 적으면 공격군이 더 큰 피해를 입게 됩니다. 이 효과는 최대 2:1 비율까지만 적용됩니다.",
     "ui_control": "제어판",
     "ui_control_desc": "컨트롤 패널에는 다음과 같은 요소들이 포함되어 있습니다:",
@@ -1110,7 +1196,7 @@
     "ui_wilderness": "무주지",
     "ui_your_team": "나의 팀:",
     "video_tutorial": "동영상 튜토리얼",
-    "video_tutorial_title": "오픈프론트 튜토리얼"
+    "video_tutorial_title": "영토 튜토리얼"
   },
   "host_modal": {
     "anonymous_players": "익명 플레이어",
@@ -1198,6 +1284,12 @@
     "lobby_creator": "로비 생성자가 추방했습니다",
     "match_cancelled": "경기 취소됨: 한 플레이어의 연결이 실패했습니다. ELO 점수는 차감되지 않았습니다."
   },
+  "lang": {
+    "en": "Korean",
+    "lang_code": "ko",
+    "native": "한국어",
+    "svg": "kr"
+  },
   "leaderboard": {
     "allies": "동맹",
     "betrayals": "배신",
@@ -1235,9 +1327,9 @@
     "no_stats": "사용 가능한 통계 없음",
     "player": "플레이어",
     "rank": "순위",
-    "ranked_2v2_tab": "2v2 랭크전",
+    "ranked_2v2_tab": "팀",
     "ranked_no_stats": "이 순위표에서 아직 진행된 랭크전 경기가 없습니다",
-    "ranked_tab": "1대1 승급전",
+    "ranked_tab": "독주",
     "ratio": "비율",
     "refresh_time": "1시간마다 새로고침",
     "title": "리더보드",
@@ -1271,6 +1363,7 @@
     "inventory": "보관함",
     "join": "로비 입장",
     "leaderboard": "순위표",
+    "legal_notice": "법적 고지",
     "login_discord": "디스코드로 로그인하기",
     "login_google": "Google로 로그인",
     "login_steam": "Steam으로 로그인",
@@ -1283,12 +1376,12 @@
     "sign_in": "로그인",
     "solo": "혼자 하기",
     "store": "상점",
+    "tagline": "한 번에 한 국경씩 세계를 정복하세요.",
     "terms_of_service": "서비스 이용 약관",
-    "title": "오픈 프론트 (시험판)",
+    "title": "테리토리움(ALPHA)",
     "troubleshooting": "문제 해결하기",
     "tutorial": "튜토리얼",
-    "user_avatar_alt": "{username}의 프사",
-    "wiki": "위키"
+    "user_avatar_alt": "{username}의 프사"
   },
   "map": {
     "achiran": "아치란",
@@ -1316,6 +1409,7 @@
     "branchingpaths": "갈림길",
     "britannia": "브리튼 제도",
     "britanniaclassic": "브리타니아 (클래식)",
+    "canaryislands": "카나리아 제도",
     "capecod": "케이프코드",
     "caribbean": "카리브해",
     "caspiansea": "카스피해",
@@ -1378,6 +1472,7 @@
     "montreal": "몬트리올",
     "morethanluck": "행운 그 너머",
     "newyorkcity": "뉴욕",
+    "newzealand": "뉴질랜드",
     "niledelta": "나일강 삼각주",
     "northamerica": "북미",
     "northwestpassage": "북서항로",
@@ -1386,8 +1481,10 @@
     "pangaea": "판게아",
     "passage": "통로",
     "pluto": "명왕성",
+    "pulicatlake": "풀리카트 호수",
     "qingchina": "청나라",
     "random": "무작위",
+    "riodejaneiro": "리우데자네이루",
     "russia": "러시아",
     "sanfrancisco": "샌프란시스코",
     "scandinavia": "스칸디나비아",
@@ -1732,6 +1829,7 @@
     "water_nukes": "수몰 폭탄"
   },
   "public_lobby": {
+    "browse_all": "모든 로비 찾아보기",
     "connecting": "로비에 연결 중...",
     "invite_friends": "친구 초대",
     "join_timeout": "제시간 안에 게임에 참여하지 못했습니다.",
@@ -1812,6 +1910,12 @@
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
   },
+  "steam_grant": {
+    "ended_body": "Steam 구매 시 제공되는 {tier} 달이 종료되었습니다. 청구된 금액이 없으며 앞으로도 청구되지 않습니다. 모든 지도와 모드, 온라인 플레이, 무료 일일 제한 순위, 친구들과의 맞춤형 로비 등 전체 게임을 그대로 즐길 수 있습니다. Steam 앱은 광고 없이 유지됩니다. {tier} 혜택을 다시 받고 싶다면 언제든지 스토어에서 구독할 수 있습니다.",
+    "ended_heading": "포함된 Steam 월이 종료되었습니다",
+    "welcome_body": "Steam 구매에는 {tier}부터 {date}까지가 포함됩니다. Steam에서 한 번만 결제하면 요금이 청구되거나 갱신되지 않습니다. 종료 후에도 전체 게임, 모든 맵 및 모드가 유지되며 Steam 앱은 광고 없이 유지됩니다. {tier} 혜택만 중단됩니다.",
+    "welcome_heading": "Steam 구매에 포함됨"
+  },
   "steam_handoff": {
     "launched": "Steam 앱에서 이 로비를 여는 중입니다. 아무 반응이 없다면 Steam이 실행 중인지 확인하세요.",
     "open_in_steam": "Steam에서 열기",
@@ -1859,10 +1963,8 @@
     "default_name": "Steam 플레이어"
   },
   "steam_wishlist": {
-    "cta": "지금 찜하기",
-    "on_steam": "Steam에서의 Territorium",
-    "release": "2026년 3분기 출시 예정",
-    "title": "Steam에서 Territorium를 찜하세요!"
+    "buy_cta": "Steam에서 구매",
+    "buy_on_steam": "Steam에서 Territorium 구매"
   },
   "store": {
     "already_owned": "이미 보유 중인 아이템입니다. 금액이 청구되지 않았습니다.",
@@ -1888,11 +1990,13 @@
     "confirm_subscribe_over_grant": "지금 유료 {tier} 구독을 시작하시겠습니까? 무료 이용은 즉시 종료되며 남은 {days, plural, other {#일}}은 환불되지 않고 유료 기간에 추가되지 않습니다.",
     "confirm_subscribe_over_grant_no_days": "지금 유료 {tier} 구독을 시작하시겠습니까? 무료 이용은 즉시 종료되며 남은 기간은 환불되지 않고 유료 기간에 추가되지 않습니다.",
     "confirm_tier_change_steam": "지금 {tier}에 구독하시겠습니까? 새 등급은 정가로 즉시 시작되며, 이번 달 남은 기간은 환불되지 않습니다.",
+    "confirm_tier_switch_currency": "{tier}로 전환하시겠습니까? 이제 새로운 30일 기간이 시작되며 현재 구독에 남은 일수가 손실됩니다.",
     "confirm_upgrade": "{tier}(으)로 업그레이드하시겠습니까? 지금 일할 계산된 차액이 청구됩니다.",
     "cosmetics": "치장 아이템",
     "crowns": "왕관",
     "currency_pack_purchase_success": "재화 팩 구매 성공!",
     "custom_amount": "수량 선택",
+    "custom_currency_purchase_success": "에메랄드 구매 성공!",
     "effects": "효과",
     "flags": "국기",
     "insufficient_currency_body": "{item}을(를) 구매하려면 {currency} {amount, number}개가 더 필요합니다.",
@@ -1908,15 +2012,18 @@
     "no_subscriptions": "이용 가능한 구독 상품이 없습니다. 나중에 새로운 아이템을 확인해 보세요.",
     "no_tribes": "아직 부족 이름을 구매하지 않았습니다.",
     "pack_already_owned": "이미 {items}을(를) 보유하고 있습니다. 금액이 청구되지 않았습니다.",
+    "pack_debt": "귀하의 에메랄드 잔액은 {debt} 부채입니다. 구매하기 전에 해결하십시오.",
     "pack_no_items": "현재 이 번들의 아이템 중 이용 가능한 항목이 없습니다.",
     "pack_owned": "소유함",
     "pack_partially_owned": "이미 {items} 보유 중",
     "pack_unavailable": "이 번들은 더 이상 이용할 수 없습니다.",
     "packs": "묶음",
     "patterns": "스킨",
+    "pay": "지불하다",
     "pay_amount": "{amount} 결제",
     "pay_with_card": "카드로 결제",
     "pending_provider_transaction": "대기 중인 {provider} 구매 내역이 있습니다. 완료하거나 취소한 후 다시 시도하세요.",
+    "plutonium_amount": "에메랄드 금액",
     "preview_cosmetic": "인게임 미리보기",
     "preview_error": "인게임 미리보기를 불러오지 못했습니다.",
     "preview_salvo_count": "{count, plural, other {일제사격 (x#)}}",
@@ -1929,6 +2036,7 @@
     "purchase_pending": "구매 처리가 진행 중입니다. 곧 계정에 반영됩니다 — 반영되지 않으면 주문 내역을 확인해 보세요.",
     "purchase_success": "구매가 완료되었습니다: {name}",
     "purchase_tribe_button": "구매",
+    "sale_terms": "판매 조건",
     "steam_overlay_cancelled": "구매가 취소되었습니다. 금액이 청구되지 않았습니다.",
     "steam_overlay_waiting": "계속하려면 Steam 오버레이에서 구매를 승인하세요.",
     "subscribe_heading": "구독 시작",
@@ -1940,6 +2048,7 @@
     "tier_change_unavailable_steam": "Steam에서 등급을 변경하려면 Steam 계정 설정에서 구독을 취소한 후 이번 달 이용 기간이 종료되면 새 등급으로 다시 구독하세요.",
     "title": "상점",
     "tribe_boost_button": "부스트",
+    "tribe_boost_confirm": "{price} 에메랄드를 위해 \"{name}\"을 부스트하시겠습니까? 앞으로 {days}일 동안 다른 플레이어의 게임에 더 자주 나타날 것입니다.",
     "tribe_boost_count": "부스트 1회",
     "tribe_boost_count_plural": "부스트 {count}회",
     "tribe_boost_failed": "부스트하지 못했습니다. 다시 시도해 주세요.",
@@ -1971,6 +2080,8 @@
     "tribes_login_required": "부족 이름을 구매하고 관리하려면 로그인하세요.",
     "tribes_purchase_description": "실제 멀티플레이어 게임의 봇 부족에 지정한 이름이 부여됩니다. 즉시 적용됩니다.",
     "tribes_purchase_heading": "부족 이름 구매",
+    "withdrawal_waiver": "나는 즉시 에메랄드를 원하며 14일의 철회 권리를 포기합니다.",
+    "withdrawal_waiver_needed": "가격 아래의 상자를 먼저 선택하세요. 결제 즉시 에메랄드가 배송되므로 나중에 구매를 취소할 수 없습니다.",
     "your_tribes_heading": "내 부족 이름"
   },
   "streaming_now": {
@@ -1983,6 +2094,11 @@
     "browse": "구독 상품 둘러보기",
     "none": "활성화된 구독이 없습니다.",
     "title": "내 구독"
+  },
+  "subscriptions": {
+    "seigneur": "주님",
+    "souverain": "주권자",
+    "vassal": "가신"
   },
   "team_colors": {
     "blue": "파랑",
@@ -2012,7 +2128,7 @@
     "browser": "브라우저",
     "canvas_2d_no_gpu": "캔버스 2D (GPU 없음)",
     "charging": "충전",
-    "chromium_tip": "오픈프론트는 크로미움 기반 브라우저에서 가장 잘 작동합니다.",
+    "chromium_tip": "Territorium은 Chromium 기반 브라우저에서 가장 잘 실행됩니다.",
     "copied_to_clipboard": "클립보드에 정보가 복사되었습니다! 도움이 필요하시면 저희 디스코드에 자유롭게 공유해주세요.",
     "device_pixel_ratio": "장치 픽셀 비율",
     "environment": "환경",
@@ -2295,6 +2411,8 @@
     "enter_username": "사용자 이름을 입력하세요",
     "invalid_chars": "사용자명에는 문자, 숫자, 공백, 밑줄, 하이픈, 마침표만 사용할 수 있습니다.",
     "lapse_notice": "구독이 종료되어 더 이상 \"{name}\"(으)로 플레이할 수 없습니다. {date}까지는 계속 선점 상태로 유지되므로, 유지하려면 그전에 다시 구독하세요. 그 이후에는 누구나 차지할 수 있습니다.",
+    "lapse_notice_after_grant": "Steam 구매 시 제공되는 프리미엄 액세스 월이 종료되어 더 이상 \"{name}\"로 플레이할 수 없습니다. 전체 게임을 무료로 이용할 수 있습니다. 프리미엄 혜택만 중단됩니다. 이름은 {date}까지 예약되어 있습니다. 그 이름을 유지하려면 그 전에 구독하세요. 그 이후에는 누구든지 가져갈 수 있습니다.",
+    "lapse_notice_after_grant_at_risk": "Steam 구매 시 제공되는 프리미엄 액세스 월이 종료되었으므로 더 이상 \"{name}\"로 플레이할 수 없으며 이름도 더 이상 예약되지 않습니다. 전체 게임을 무료로 이용할 수 있습니다. 다른 플레이어가 언제든지 이름을 사용할 수 있습니다. 이름을 유지하려면 지금 구독하세요.",
     "lapse_notice_at_risk": "더 이상 \"{name}\"(으)로 플레이할 수 없으며 선점도 해제되었습니다. 언제든지 다른 플레이어가 차지할 수 있습니다 — 유지하려면 지금 다시 구독하세요.",
     "not_string": "사용자 이름은 문자열이어야 합니다.",
     "tag": "태그",
@@ -2318,12 +2436,12 @@
   },
   "win_modal": {
     "died": "죽었습니다",
-    "discord_description": "플레이어와 연결하고, 새로운 기능을 발견하고, 상품을 획득하세요!",
     "exit": "게임 나가기",
-    "join_discord": "저희 디스코드 커뮤니티에 참여하세요!",
-    "join_server": "서버 참가",
     "keep": "계속 플레이하기",
     "match_cancelled": "매치 취소됨 — 모든 플레이어가 스폰하지 않았습니다",
+    "medals_earned": "이번 게임에서 획득한 메달",
+    "medals_none": "메달: 이 게임은 어떤 것도 지불하지 않았습니다(너무 짧거나, 로그인한 플레이어가 충분하지 않거나, 일일 한도에 도달했습니다).",
+    "medals_pending": "획득한 메달을 세어보세요…",
     "nation_won": "{nation} 국가가 승리했습니다!",
     "new_lobby": "새 로비",
     "other_team": "{team} 팀이 이겼습니다!",

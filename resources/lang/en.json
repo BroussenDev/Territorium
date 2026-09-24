@@ -1363,6 +1363,7 @@
     "inventory": "Inventory",
     "join": "Join Lobby",
     "leaderboard": "Leaderboard",
+    "legal_notice": "Legal notice",
     "login_discord": "Login with Discord",
     "login_google": "Login with Google",
     "login_steam": "Login with Steam",
@@ -1828,6 +1829,7 @@
     "water_nukes": "Water Nukes"
   },
   "public_lobby": {
+    "browse_all": "Browse all lobbies",
     "connecting": "Connecting to lobby...",
     "invite_friends": "Invite Friends",
     "join_timeout": "You didn't enter the game in time.",
@@ -2017,6 +2019,7 @@
     "pack_unavailable": "This bundle is no longer available.",
     "packs": "Packs",
     "patterns": "Skins",
+    "pay": "Pay",
     "pay_amount": "Pay {amount}",
     "pay_with_card": "Pay with card",
     "pending_provider_transaction": "You still have a {provider} purchase waiting. Finish or cancel it, then try again.",
@@ -2033,6 +2036,7 @@
     "purchase_pending": "Your purchase is still being processed. It will appear in your account shortly — check your order history if it doesn't.",
     "purchase_success": "Purchase succeeded: {name}",
     "purchase_tribe_button": "Purchase",
+    "sale_terms": "Terms of sale",
     "steam_overlay_cancelled": "Purchase cancelled. You haven't been charged.",
     "steam_overlay_waiting": "Approve the purchase in the Steam overlay to continue.",
     "subscribe_heading": "Start Subscription",
@@ -2076,6 +2080,8 @@
     "tribes_login_required": "Log in to buy and manage tribe names.",
     "tribes_purchase_description": "Your name gets assigned to a bot tribe in real multiplayer games. It goes live right away.",
     "tribes_purchase_heading": "Buy a Tribe Name",
+    "withdrawal_waiver": "I want my emeralds right away and waive my 14-day right of withdrawal.",
+    "withdrawal_waiver_needed": "Tick the box under the price first: emeralds are delivered as soon as you pay, so the purchase can't be withdrawn afterwards.",
     "your_tribes_heading": "Your Tribe Names"
   },
   "streaming_now": {
@@ -2433,6 +2439,9 @@
     "exit": "Exit Game",
     "keep": "Keep Playing",
     "match_cancelled": "Match cancelled — not all players spawned",
+    "medals_earned": "medals earned this game",
+    "medals_none": "medals: this game didn't pay any (too short, not enough signed-in players, or daily cap reached)",
+    "medals_pending": "Counting the medals you earned…",
     "nation_won": "Nation {nation} has won!",
     "new_lobby": "New Lobby",
     "other_team": "{team} team has won!",

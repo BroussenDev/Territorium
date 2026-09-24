@@ -22,28 +22,259 @@
       h2 {
         color: #34d399;
         margin-top: 32px;
+        font-size: 1.15rem;
       }
       a {
         color: #34d399;
       }
+      .updated {
+        color: #8b98a0;
+        font-size: 0.9rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      th {
+        color: #fff;
+      }
     </style>
   </head>
   <body>
+    <p class="updated">Dernière mise à jour : 24 septembre 2026</p>
     <h1>Politique de confidentialité</h1>
     <p>
-      Ce document est en cours de rédaction. Territorium est un projet en
-      développement, basé sur le code open source d'OpenFront.
+      Cette page explique quelles données personnelles Territorium utilise,
+      pourquoi, combien de temps, avec qui elles sont partagées et comment
+      exercer vos droits, conformément au Règlement général sur la protection
+      des données (RGPD) et à la loi Informatique et Libertés.
+    </p>
+
+    <h2>1. Responsable du traitement</h2>
+    <p>
+      Bastien Vanhoutte, entrepreneur individuel, éditeur de Territorium (voir
+      les <a href="/terms-of-service.html#mentions">mentions légales</a>).
+      Contact pour toute question sur vos données :
+      <a href="mailto:contact@broussen.fr">contact@broussen.fr</a>.
+    </p>
+
+    <h2>2. Données utilisées, finalités et bases légales</h2>
+    <table>
+      <tr>
+        <th>Données</th>
+        <th>Pourquoi</th>
+        <th>Base légale</th>
+        <th>Durée</th>
+      </tr>
+      <tr>
+        <td>
+          Compte : adresse e-mail, identifiant Google ou Discord et e-mail
+          associé si vous les utilisez, identifiant public, pseudonyme, dates de
+          création et de dernière connexion
+        </td>
+        <td>Créer votre compte, vous connecter, vous identifier en jeu</td>
+        <td>Exécution du contrat (CGU)</td>
+        <td>
+          Jusqu'à la suppression du compte. Un compte invité sans rien à
+          conserver est effacé automatiquement environ 24 heures après la fin de
+          sa dernière session.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Jeu : parties jouées, résultats, statistiques, classements, clans,
+          tribus, amis, objets, solde de médailles et d'émeraudes, historique
+          des gains et dépenses
+        </td>
+        <td>
+          Faire fonctionner le jeu, afficher vos statistiques et les
+          classements, attribuer les récompenses
+        </td>
+        <td>Exécution du contrat (CGU)</td>
+        <td>
+          Jusqu'à la suppression du compte. Les enregistrements de parties
+          (replays) peuvent garder le pseudo affiché pendant la partie, sans
+          lien avec votre compte après sa suppression.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Achats : numéro de commande, nombre d'émeraudes, montant, devise,
+          référence Mollie du paiement, date du paiement et de la renonciation
+          au droit de rétractation, e-mail et identifiant public
+        </td>
+        <td>
+          Traiter vos achats, vous envoyer la confirmation de commande, gérer
+          les réclamations
+        </td>
+        <td>
+          Exécution du contrat (CGV), puis obligation légale (comptabilité)
+        </td>
+        <td>
+          10 ans à compter de la vente (article L123-22 du Code de commerce),
+          même après la suppression du compte
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Données techniques : adresse IP, type de navigateur, pages demandées,
+          jeton anti-robot
+        </td>
+        <td>
+          Sécurité : lutte contre les robots, la triche, les abus et les
+          attaques, limitation du nombre de requêtes, diagnostic des pannes
+        </td>
+        <td>Intérêt légitime (sécuriser le Service)</td>
+        <td>
+          14 jours au plus dans les journaux du serveur ; les compteurs
+          anti-abus ne sont gardés qu'en mémoire, quelques minutes à une heure
+        </td>
+      </tr>
+      <tr>
+        <td>E-mails échangés avec nous</td>
+        <td>Répondre à vos demandes et réclamations</td>
+        <td>Intérêt légitime</td>
+        <td>3 ans après le dernier échange</td>
+      </tr>
+    </table>
+    <p>
+      Territorium ne vend pas vos données, n'affiche pas de publicité, n'utilise
+      aucun outil de mesure d'audience ou de suivi publicitaire et ne vous
+      envoie pas d'e-mails commerciaux. Aucune décision produisant des effets
+      juridiques n'est prise sur le seul fondement d'un traitement automatisé.
+    </p>
+
+    <h2>3. Ce que voient les autres joueurs</h2>
+    <p>
+      Votre pseudonyme, votre tag de clan, votre drapeau, vos objets cosmétiques
+      équipés, vos statistiques, votre historique de parties et votre place dans
+      les classements sont visibles par les autres joueurs, notamment sur votre
+      profil public. Votre adresse e-mail ne l'est jamais.
+    </p>
+
+    <h2>4. Destinataires et sous-traitants</h2>
+    <p>
+      Vos données sont traitées par l'éditeur, sur son propre serveur situé en
+      France. Certains services externes interviennent :
+    </p>
+    <ul>
+      <li>
+        <strong>IONOS SE</strong> (Allemagne), qui achemine les e-mails que nous
+        vous envoyons (liens de connexion, confirmations de commande) : il
+        reçoit votre adresse e-mail et le contenu du message.
+      </li>
+      <li>
+        <strong>Mollie B.V.</strong> (Pays-Bas), prestataire de paiement : il
+        reçoit le montant et la référence de la commande et collecte lui-même
+        vos coordonnées de paiement, que Territorium ne voit jamais. Mollie agit
+        en tant que responsable de traitement pour ses propres obligations
+        (lutte contre la fraude et le blanchiment) :
+        <a href="https://www.mollie.com/fr/privacy"
+          >sa politique de confidentialité</a
+        >.
+      </li>
+      <li>
+        <strong>Cloudflare, Inc.</strong> (Turnstile), pour vérifier que vous
+        n'êtes pas un robot quand vous rejoignez une partie : il reçoit votre
+        adresse IP et des informations techniques sur votre navigateur.
+      </li>
+      <li>
+        <strong>Google</strong> et <strong>Discord</strong>, seulement si vous
+        choisissez de vous connecter avec eux : ils nous transmettent votre
+        identifiant et votre adresse e-mail vérifiée.
+      </li>
+    </ul>
+    <p>
+      Cloudflare, Google et Discord peuvent traiter des données aux États-Unis.
+      Ces transferts sont encadrés par le cadre de protection des données
+      UE–États-Unis (Data Privacy Framework) ou par les clauses contractuelles
+      types de la Commission européenne. Vos données peuvent aussi être
+      communiquées aux autorités lorsque la loi l'impose.
+    </p>
+
+    <h2>5. Cookies et stockage local</h2>
+    <p>
+      Territorium n'utilise que des traceurs strictement nécessaires au Service,
+      qui ne demandent pas votre consentement (article 82 de la loi Informatique
+      et Libertés) :
+    </p>
+    <ul>
+      <li>
+        un cookie de session sécurisé, qui garde votre connexion jusqu'à 30
+        jours ;
+      </li>
+      <li>
+        le stockage local de votre navigateur, pour vos réglages (langue,
+        graphismes, raccourcis clavier…) et votre identifiant de joueur ;
+      </li>
+      <li>
+        le module anti-robot Cloudflare Turnstile, utilisé uniquement pour la
+        sécurité.
+      </li>
+    </ul>
+    <p>
+      Vous pouvez effacer ces données depuis les réglages de votre navigateur ;
+      vous serez alors déconnecté et vos réglages reviendront à leurs valeurs
+      par défaut.
+    </p>
+
+    <h2>6. Sécurité</h2>
+    <p>
+      Les échanges sont chiffrés (HTTPS). La connexion se fait sans mot de
+      passe, par lien à usage unique ou via Google ou Discord. L'accès au
+      serveur et à l'administration est restreint à l'éditeur.
+    </p>
+
+    <h2>7. Mineurs</h2>
+    <p>
+      Si vous avez moins de 15 ans, vous devez avoir l'accord d'un de vos
+      parents (ou de la personne qui exerce l'autorité parentale) pour créer un
+      compte. Un parent peut demander à tout moment la suppression du compte de
+      son enfant en écrivant à
+      <a href="mailto:contact@broussen.fr">contact@broussen.fr</a>.
+    </p>
+
+    <h2>8. Vos droits</h2>
+    <p>
+      Vous pouvez à tout moment accéder à vos données, les rectifier, les
+      effacer, en demander la portabilité, en limiter le traitement ou vous
+      opposer à un traitement fondé sur l'intérêt légitime. Vous pouvez aussi
+      définir des directives sur le sort de vos données après votre décès. Vous
+      pouvez supprimer vous-même votre compte depuis ses réglages ; pour le
+      reste, écrivez à
+      <a href="mailto:contact@broussen.fr">contact@broussen.fr</a> depuis
+      l'adresse liée à votre compte. Nous répondons dans un délai d'un mois.
     </p>
     <p>
-      Pour toute question, ouvrez une issue sur
-      <a href="https://github.com/BroussenDev/Territorium/issues">GitHub</a>.
+      Si vous estimez que vos droits ne sont pas respectés, vous pouvez
+      introduire une réclamation auprès de la CNIL (3 place de Fontenoy, TSA
+      80715, 75334 Paris Cedex 07,
+      <a href="https://www.cnil.fr/fr/plaintes">www.cnil.fr</a>).
     </p>
-    <h2>Privacy Policy</h2>
+
+    <h2>9. Modifications</h2>
     <p>
-      This document is being drafted. Territorium is a game in development,
-      based on the open source OpenFront codebase. For any question, please open
-      an issue on
-      <a href="https://github.com/BroussenDev/Territorium/issues">GitHub</a>.
+      Cette politique peut évoluer avec le jeu. En cas de changement important,
+      les joueurs ayant un compte en sont informés.
+    </p>
+
+    <h2 id="en">In English</h2>
+    <p>
+      Territorium keeps only what it needs to run the game: your account (email,
+      or Google/Discord identifier), game data and stats, purchase records (kept
+      10 years for accounting) and short-lived technical logs (14 days). No ads,
+      no analytics, no data sales. Payments go through Mollie, bot checks
+      through Cloudflare Turnstile. You can delete your account in its settings,
+      and exercise your GDPR rights at
+      <a href="mailto:contact@broussen.fr">contact@broussen.fr</a>.
     </p>
   </body>
 </html>

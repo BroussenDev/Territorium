@@ -1,16 +1,10 @@
 {
-  "lang": {
-    "en": "Tiếng Anh",
-    "lang_code": "vi",
-    "native": "Tiếng Việt",
-    "svg": "vn"
-  },
   "account_modal": {
     "cancel_subscription": "Huỷ",
     "cancel_subscription_confirm": "Hủy gói định kỳ? Gói đăng ký sẽ vẫn hoạt động cho đến hết kỳ thanh toán hiện tại.",
     "cancel_subscription_confirm_steam": "Gói định kỳ của bạn vẫn có hiệu lực đến {date}. Gói định kỳ trên Steam không thể kích hoạt lại sau khi hủy — để đăng ký lại, bạn cần mua một gói mới.",
     "cancel_subscription_confirm_steam_no_date": "Gói định kỳ của bạn vẫn có hiệu lực cho đến hết kỳ hạn bạn đã thanh toán. Gói định kỳ trên Steam không thể kích hoạt lại sau khi hủy — để đăng ký lại, bạn cần mua một gói mới.",
-    "cancel_subscription_failed": "Không thể hủy gói định kỳ. Vui lòng thử lại hoặc sử dụng Quản lý.",
+    "cancel_subscription_failed": "Không thể hủy đăng ký. Vui lòng thử lại hoặc quản lý thanh toán của bạn trên trang web Territorium.",
     "cancel_subscription_success": "Đã hủy gói định kỳ. Bạn vẫn có quyền truy cập cho đến hết kỳ thanh toán.",
     "cancel_subscription_success_steam": "Đã hủy — vẫn có hiệu lực đến {date}.",
     "cancel_subscription_success_steam_no_date": "Đã hủy — vẫn có hiệu lực đến hết kỳ hạn bạn đã thanh toán.",
@@ -83,9 +77,9 @@
     "reward_daily": "Phần thưởng hằng ngày cho người đăng ký",
     "reward_signup_bonus": "Phần thưởng khi đăng ký gói",
     "sign_in_desc": "Đăng nhập để lưu lại thống kê và tiến độ của bạn",
-    "sub_granted_ends_on": "Quyền truy cập miễn phí kết thúc vào {date}",
-    "sub_granted_from_purchase": "Được tặng kèm miễn phí khi bạn mua trên Steam. Không bị tính phí và không tự gia hạn, vì vậy không có gì để quản lý hoặc hủy.",
     "sub_granted_indefinite": "Quyền truy cập miễn phí đã được cấp cho tài khoản của bạn. Không bị tính phí, vì vậy không có gì để quản lý hoặc hủy.",
+    "sub_granted_perks_end_on": "{tier} đặc quyền kết thúc {date}",
+    "sub_paid_with_currency": "Được trả bằng huy chương hoặc ngọc lục bảo. Nó không tự gia hạn: mua lại {tier} trong cửa hàng để thêm 30 ngày.",
     "sub_price_monthly": "{price}/tháng",
     "sub_renews_on": "Gia hạn vào {date}",
     "sub_status_active": "Đang hoạt động",
@@ -290,6 +284,17 @@
     "confirm_disband": "Bạn có chắc muốn giải tán clan [{tag}] {name} không? Thao tác này không thể hoàn tác.",
     "confirm_kick": "Bạn có chắc muốn đuổi thành viên này không?",
     "confirm_transfer": "Chuyển chức bang chủ cho {name}",
+    "create_clan": "Tạo một bang hội",
+    "create_clan_desc": "Bạn trở thành người lãnh đạo và các thành viên có thể đeo thẻ trước tên của họ trong trò chơi.",
+    "create_error_already_leader": "Bạn đã lãnh đạo một clan. Chuyển hoặc giải tán nó trước.",
+    "create_error_description": "Mô tả được giới hạn ở 200 ký tự.",
+    "create_error_name": "Tên cần 3 đến 35 ký tự.",
+    "create_error_tag": "Thẻ cần có từ 2 đến 5 chữ cái hoặc số.",
+    "create_error_tag_taken": "Một clan khác đã sử dụng thẻ này.",
+    "create_error_too_many": "Bạn đã ở trong 5 gia tộc. Để lại một cái trước.",
+    "create_submit": "Tạo bang hội",
+    "create_tag_hint": "2 đến 5 chữ cái hoặc số. Chỉ có thành viên mới có thể mặc nó.",
+    "create_tag_label": "Nhãn",
     "danger_zone": "Vùng nguy hiểm",
     "demote": "Hạ chức",
     "deny": "Từ chối",
@@ -309,6 +314,7 @@
     "donate_insufficient": "Không đủ {currency}.",
     "donate_invalid_amount": "Nhập một số nguyên lớn hơn 0.",
     "donate_irreversible": "Các khoản ủng hộ là vĩnh viễn và không được hoàn lại. Số tiền đã ủng hộ cho clan sẽ không thể được trả lại cho bạn.",
+    "donate_irreversible_hard": "Ngọc lục bảo là loại tiền tệ cao cấp. Sau khi quyên góp, số tiền đó không thể được hoàn lại, rút ​​hoặc chuyển trở lại tài khoản của bạn.",
     "donate_not_member": "Bạn phải là thành viên của clan để ủng hộ.",
     "donate_submitting": "Đang ủng hộ…",
     "donate_subtitle": "Chuyển tiền từ tài khoản của bạn vào quỹ của clan.",
@@ -372,8 +378,6 @@
     "leave_clan": "Rời khỏi Clan",
     "left_clan": "Bạn đã rời khỏi clan.",
     "manage_clan": "Quản lý",
-    "map_coming_soon": "Sắp có",
-    "map_frame_title": "Bản đồ lãnh thổ của Clan",
     "member_banned": "Người chơi đã bị cấm.",
     "member_count": "{count, plural, one {# thành viên} other {# thành viên}}",
     "member_demoted": "Đã giáng cấp thành viên.",
@@ -396,6 +400,7 @@
     "pending_applications": "Yêu cầu tham gia đang chờ xử lý",
     "pending_requests_count": "{count, plural, one {# yêu cầu đang chờ} other {# yêu cầu đang chờ}}",
     "per_page": "Mỗi trang",
+    "popular_clans": "Gia tộc nổi tiếng",
     "promote": "Thăng cấp",
     "request_approved": "Yêu cầu đã được chấp nhận!",
     "request_denied": "Yêu cầu đã bị từ chối.",
@@ -443,6 +448,20 @@
     "tab_game_history": "Lịch sử trận đấu",
     "tab_map": "Bản đồ",
     "tab_overview": "Tổng quan",
+    "territory_count": "{count, plural, one {# bản đồ} other {# bản đồ}}",
+    "territory_empty_filter": "Không có bản đồ nào phù hợp với bộ lọc này.",
+    "territory_explain": "Mỗi bản đồ là một lãnh thổ. Nó thuộc về bang hội có nhiều chiến thắng công khai nhất trong 30 ngày qua và số lượng vận động hành lang lớn hơn sẽ được tính nhiều hơn. Chơi theo thẻ bang hội của bạn để lấy bản đồ và giữ chúng.",
+    "territory_filter_all": "Tất cả bản đồ",
+    "territory_filter_free": "Chưa được xác nhận",
+    "territory_filter_held": "Cầm",
+    "territory_filter_mine": "Gia tộc của tôi",
+    "territory_held_label": "bản đồ được tổ chức",
+    "territory_leaders": "Gia tộc dẫn đầu",
+    "territory_mine_label": "được tổ chức bởi gia tộc của bạn",
+    "territory_no_leaders": "Chưa có bang hội nào nắm giữ bản đồ. Chiến thắng một trò chơi công khai dưới thẻ bang hội của bạn để giành lấy trò chơi đầu tiên.",
+    "territory_title": "Lãnh thổ bang hội",
+    "territory_unclaimed": "Chưa được xác nhận",
+    "territory_wins": "{count, plural, one {# thắng} other {# thắng}}",
     "title": "Clan",
     "transfer_leadership": "Chuyển chức bang chủ",
     "transfer_warning": "Thao tác này sẽ chuyển thành viên được chọn thành thủ lĩnh mới. Bạn sẽ trở thành một thành viên thường. Hành động này không thể hoàn tác.",
@@ -536,6 +555,7 @@
     "legendary": "Huyền thoại",
     "pack_includes": "Bao gồm:",
     "pack_more_items": "+{count}",
+    "pattern_preview": "Xem trước mẫu",
     "per_day": "/ngày",
     "public_lobbies": "Phòng công khai",
     "public_lobbies_info": "Tạo phòng tùy chỉnh công khai để bất kỳ ai cũng có thể tham gia.",
@@ -543,6 +563,8 @@
     "search": "Tìm kiếm...",
     "signup_bonus": "Phần thưởng đăng ký",
     "soft": "Huy chương",
+    "subscription_days": "30 ngày",
+    "subscription_days_info": "Kéo dài 30 ngày kể từ ngày mua. Mua lại cùng một cấp độ để thêm 30 ngày nữa.",
     "type_crown": "Vương miệng",
     "type_effect": "Hiệu ứng {type}",
     "type_flag": "Cờ",
@@ -574,6 +596,13 @@
     "supporting": "Đang ủng hộ {name} ({code})",
     "title": "Ủng hộ Người sáng tạo",
     "unsupport": "Hủy ủng hộ"
+  },
+  "crowns": {
+    "couronne_emeraude": "Vương miện ngọc lục bảo",
+    "couronne_glace": "Vương miện băng",
+    "couronne_pixel": "Vương miện pixel",
+    "diademe_braise": "Vương miện Ember",
+    "laurier": "Vòng nguyệt quế"
   },
   "desktop_gate": {
     "back_to_game": "Quay lại game",
@@ -677,6 +706,16 @@
     "easy": "Dễ",
     "hard": "Khó",
     "impossible": "Cực khó",
+    "info": "{smarts}, {troops}",
+    "info_label": "Hiển thị chi tiết khó khăn",
+    "info_note_hard": "(Độ khó này được sử dụng trong các trò chơi HvN công khai)",
+    "info_note_medium": "(Khó khăn này được sử dụng trong các trò chơi FFA công khai)",
+    "info_smarts_easy": "Câm",
+    "info_smarts_hard": "Thông minh",
+    "info_smarts_impossible": "Rất thông minh",
+    "info_smarts_medium": "Trung bình",
+    "info_troops": "{percent}% số quân tối đa của con người",
+    "info_troops_same": "số quân tối đa giống như con người",
     "medium": "Trung bình"
   },
   "discord_user_header": {
@@ -703,11 +742,37 @@
     "veryfast": "Rất nhanh"
   },
   "effects": {
+    "anneau_glacial": "Nhẫn băng giá",
+    "armada_jade": "Ngọc Armada",
+    "aurore_boreale": "Đèn phía Bắc",
+    "bastion_emeraude": "Pháo đài ngọc lục bảo",
+    "braises_rouges": "Than hồng đỏ",
+    "cendres_du_neant": "Tro tàn",
+    "citadelle_royale": "Hoàng Thành",
+    "coque_d_acier": "Vỏ thép",
+    "couronne_de_sang": "Vương miện máu",
+    "express_or": "Golden Express",
+    "flotte_corsaire": "Hạm đội Corsair",
+    "flotte_royale": "Hạm đội Hoàng gia",
     "nukeType": {
       "atom": "Tên lửa bom nguyên tử",
       "hydro": "Tên lửa bom nhiệt hạch (bom hydro)",
       "mirvWarhead": "MIRV"
     },
+    "onde_abyssale": "Sóng Địa Ngục",
+    "onde_jade": "Sóng Ngọc",
+    "orient_express": "Phương Đông Express",
+    "pluie_d_etoiles": "Sao rơi",
+    "rails_de_lave": "Đường ray dung nham",
+    "rails_dores": "Đường ray vàng",
+    "rails_neon": "Đường ray neon",
+    "sillage_aurore": "Đánh thức cực quang",
+    "sillage_braise": "ember đánh thức",
+    "sillage_jade": "Ngọc Thức",
+    "spirale_toxique": "xoắn ốc độc hại",
+    "supernova": "siêu tân tinh",
+    "traceur_plasma": "Máy đánh dấu huyết tương",
+    "train_arc_en_ciel": "Chuyến tàu cầu vồng",
     "type": {
       "nukeExplosion": "Vụ nổ tên lửa",
       "nukeTrail": "Đường bay tên lửa",
@@ -716,7 +781,10 @@
       "train": "Tàu hoả",
       "transportShipTrail": "Đường đi của tàu",
       "warship": "Tàu chiến"
-    }
+    },
+    "vaisseau_fantome": "Con Tàu Ma",
+    "vapeur_ecarlate": "hơi đỏ tươi",
+    "voie_emeraude": "Dòng ngọc lục bảo"
   },
   "error_modal": {
     "connection_error": "Lỗi kết nối!",
@@ -726,6 +794,7 @@
     "crashed": "Trò chơi đã bị lỗi!",
     "desync_notice": "Bạn đã mất đồng bộ với những người chơi khác. Những gì bạn thấy có thể khác với những người chơi khác.",
     "login_failed": "Đăng nhập thất bại, vui lòng thử lại.",
+    "login_token_consumed": "Liên kết đăng nhập này đã được sử dụng. Có thể bạn đã đăng nhập — hãy kiểm tra tab khác.",
     "paste_discord": "Vui lòng dán nội dung sau vào báo cáo lỗi của bạn trên Discord:",
     "spawn_failed": {
       "description": "Tự động chọn điểm hồi sinh thất bại. Bạn không thể chơi trận này.",
@@ -780,6 +849,23 @@
     "live": "LIVE",
     "minimize": "Thu nhỏ",
     "open_on_twitch": "Mở {channel} trên Twitch"
+  },
+  "flags": {
+    "chevron_royal": "Hoàng gia Chevron",
+    "echiquier": "Bàn cờ",
+    "etendard_emeraude": "Tiêu chuẩn ngọc lục bảo",
+    "nuit_etoilee": "Đêm đầy sao",
+    "pionnier": "Tiên phong",
+    "pixel_territoire": "Lãnh thổ pixel",
+    "tierce_braise": "Ember Tierce"
+  },
+  "free_play": {
+    "account": "Tài khoản, số liệu thống kê, bạn bè và mỹ phẩm của bạn",
+    "ad_free_steam": "Không bao giờ có quảng cáo trong ứng dụng Steam",
+    "custom_lobbies": "Hành lang tùy chỉnh riêng tư với bạn bè",
+    "free_heading": "Chơi miễn phí bao gồm",
+    "full_game": "Trò chơi đầy đủ: mọi bản đồ và chế độ, trực tuyến và chơi đơn",
+    "ranked": "Chơi xếp hạng, với giới hạn trận đấu miễn phí hàng ngày"
   },
   "friends": {
     "accept": "Chấp nhận",
@@ -1198,6 +1284,12 @@
     "lobby_creator": "Đã bị cấm bởi người tạo phòng",
     "match_cancelled": "Trận đấu đã bị hủy: một người chơi không kết nối được. Bạn không bị mất điểm ELO."
   },
+  "lang": {
+    "en": "Tiếng Anh",
+    "lang_code": "vi",
+    "native": "Tiếng Việt",
+    "svg": "vn"
+  },
   "leaderboard": {
     "allies": "Số đồng minh",
     "betrayals": "Số lần phản bội",
@@ -1235,9 +1327,9 @@
     "no_stats": "Không có thống kê",
     "player": "Người chơi",
     "rank": "Xếp hạng",
-    "ranked_2v2_tab": "Đấu xếp hạng 2v2",
+    "ranked_2v2_tab": "Đội",
     "ranked_no_stats": "Chưa có trận đấu xếp hạng nào diễn ra trên bảng xếp hạng này",
-    "ranked_tab": "Đấu xếp hạng 1v1",
+    "ranked_tab": "Một mình",
     "ratio": "Tỷ lệ",
     "refresh_time": "Cập nhật 1 giờ một lần",
     "title": "Bảng xếp hạng",
@@ -1271,6 +1363,7 @@
     "inventory": "Kho đồ",
     "join": "Tham gia phòng",
     "leaderboard": "Bảng xếp hạng",
+    "legal_notice": "Thông báo pháp lý",
     "login_discord": "Đăng nhập bằng Discord",
     "login_google": "Đăng nhập bằng Google",
     "login_steam": "Đăng nhập bằng Steam",
@@ -1283,12 +1376,12 @@
     "sign_in": "Đăng nhập",
     "solo": "Chơi đơn",
     "store": "Cửa hàng",
+    "tagline": "Chinh phục thế giới, từng biên giới một.",
     "terms_of_service": "Điều Khoản Dịch Vụ",
     "title": "Territorium (ALPHA)",
     "troubleshooting": "Khắc phục sự cố",
     "tutorial": "Hướng dẫn",
-    "user_avatar_alt": "Ảnh đại diện của {username}",
-    "wiki": "Wiki"
+    "user_avatar_alt": "Ảnh đại diện của {username}"
   },
   "map": {
     "achiran": "Achiran",
@@ -1316,6 +1409,7 @@
     "branchingpaths": "Các đường phân nhánh",
     "britannia": "Quần đảo Anh",
     "britanniaclassic": "Quần đảo Anh (Classic)",
+    "canaryislands": "Quần đảo Canary",
     "capecod": "Bán đảo Cape Cod",
     "caribbean": "Vùng Caribe",
     "caspiansea": "Biển Caspi",
@@ -1378,6 +1472,7 @@
     "montreal": "Montreal",
     "morethanluck": "Hơn cả May mắn",
     "newyorkcity": "Thành phố New York",
+    "newzealand": "New Zealand",
     "niledelta": "Đồng bằng sông Nile",
     "northamerica": "Bắc Mỹ",
     "northwestpassage": "Hành lang Tây Bắc",
@@ -1386,8 +1481,10 @@
     "pangaea": "Pangaea",
     "passage": "Hành lang",
     "pluto": "Sao Diêm Vương",
+    "pulicatlake": "Hồ Pulicat",
     "qingchina": "Nhà Thanh",
     "random": "Ngẫu nhiên",
+    "riodejaneiro": "Rio de Janeiro",
     "russia": "Nga",
     "sanfrancisco": "San Francisco",
     "scandinavia": "Scandinavia",
@@ -1732,6 +1829,7 @@
     "water_nukes": "Bom nước"
   },
   "public_lobby": {
+    "browse_all": "Duyệt qua tất cả các hành lang",
     "connecting": "Đang kết nối tới phòng...",
     "invite_friends": "Mời bạn bè",
     "join_timeout": "Bạn đã không vào trận kịp thời.",
@@ -1812,6 +1910,12 @@
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
   },
+  "steam_grant": {
+    "ended_body": "Tháng {tier} đi kèm với giao dịch mua Steam của bạn đã kết thúc. Không có gì đã bị tính phí và sẽ không có gì. Bạn giữ toàn bộ trò chơi: mọi bản đồ và chế độ, chơi trực tuyến, xếp hạng với giới hạn miễn phí hàng ngày và hành lang tùy chỉnh với bạn bè. Ứng dụng Steam không có quảng cáo. Nếu muốn nhận lại các đặc quyền {tier}, bạn có thể đăng ký từ cửa hàng bất cứ lúc nào.",
+    "ended_heading": "Tháng Steam kèm theo của bạn đã kết thúc",
+    "welcome_body": "Giao dịch mua Steam của bạn bao gồm {tier} cho đến {date}. Bạn đã thanh toán một lần trên Steam: không có gì bị tính phí và không có gì được gia hạn. Khi trò chơi kết thúc, bạn vẫn giữ nguyên toàn bộ trò chơi, mọi bản đồ và chế độ, đồng thời ứng dụng Steam không có quảng cáo. Chỉ có {tier} đặc quyền dừng lại.",
+    "welcome_heading": "Đi kèm với giao dịch mua Steam của bạn"
+  },
   "steam_handoff": {
     "launched": "Đang mở phòng này trong Steam. Nếu không có gì xảy ra, hãy đảm bảo Steam đang chạy.",
     "open_in_steam": "Mở trong Steam",
@@ -1859,10 +1963,8 @@
     "default_name": "Người chơi Steam"
   },
   "steam_wishlist": {
-    "cta": "Thêm vào Danh sách ước",
-    "on_steam": "Territorium trên Steam",
-    "release": "Phát hành vào Quý 3 năm 2026",
-    "title": "Thêm Territorium vào Danh sách ước trên Steam!"
+    "buy_cta": "Mua trên Steam",
+    "buy_on_steam": "Mua Territorium trên Steam"
   },
   "store": {
     "already_owned": "Bạn đã sở hữu vật phẩm này rồi. Không có khoản phí nào được tính.",
@@ -1888,11 +1990,13 @@
     "confirm_subscribe_over_grant": "Bắt đầu đăng ký {tier} ngay bây giờ? Quyền truy cập miễn phí của bạn sẽ kết thúc ngay lập tức: {days, plural, one {# ngày còn lại sẽ} other {# ngày còn lại sẽ}} không được hoàn lại và không được cộng vào thời gian trả phí của bạn.",
     "confirm_subscribe_over_grant_no_days": "Bắt đầu đăng ký {tier} ngay bây giờ? Quyền truy cập miễn phí của bạn sẽ kết thúc ngay lập tức, và thời gian còn lại sẽ không được hoàn lại và không được cộng vào thời gian trả phí của bạn.",
     "confirm_tier_change_steam": "Đăng ký {tier} ngay? Gói mới của bạn sẽ có hiệu lực ngay với giá đầy đủ và phần còn lại của tháng hiện tại sẽ không được hoàn lại tiền.",
+    "confirm_tier_switch_currency": "Chuyển sang {tier}? Khoảng thời gian 30 ngày mới bắt đầu ngay bây giờ và số ngày còn lại của đăng ký hiện tại của bạn sẽ bị mất.",
     "confirm_upgrade": "Nâng cấp lên gói {tier}? Bạn sẽ chỉ phải thanh toán phần chênh lệch theo tỷ lệ ngay bây giờ.",
     "cosmetics": "Vật trang trí",
     "crowns": "Vương miện",
     "currency_pack_purchase_success": "Mua gói tiền tệ thành công!",
     "custom_amount": "Chọn số lượng",
+    "custom_currency_purchase_success": "Mua ngọc lục bảo thành công!",
     "effects": "Hiệu ứng",
     "flags": "Cờ",
     "insufficient_currency_body": "Bạn cần thêm {amount, number} {currency} để mua {item}.",
@@ -1908,15 +2012,18 @@
     "no_subscriptions": "Hiện không có Gói định kỳ. Hãy quay lại sau để xem các gói mới.",
     "no_tribes": "Bạn chưa mua tên bộ tộc nào.",
     "pack_already_owned": "Bạn đã sở hữu {items}. Không có khoản phí nào được tính.",
+    "pack_debt": "Số dư Emerald của bạn đang nợ {debt}. Giải quyết nó trước khi mua.",
     "pack_no_items": "Hiện tại không có vật phẩm nào trong combo này có sẵn.",
     "pack_owned": "Đã sở hữu",
     "pack_partially_owned": "Đã sửa hữu {items}",
     "pack_unavailable": "Combo này không còn nữa.",
     "packs": "Gói",
     "patterns": "Skin",
+    "pay": "Chi trả",
     "pay_amount": "Thanh toán {amount}",
     "pay_with_card": "Trả bằng thẻ",
     "pending_provider_transaction": "Bạn vẫn còn một giao dịch qua {provider} đang chờ xử lý. Hãy hoàn tất hoặc hủy nó, sau đó thử lại.",
+    "plutonium_amount": "Lượng ngọc lục bảo",
     "preview_cosmetic": "Xem trước trong game",
     "preview_error": "Không thể tải bản xem trước trong game.",
     "preview_salvo_count": "{count, plural, one {Bắn (x#)} other {Bắn hàng loạt (x#)}}",
@@ -1929,6 +2036,7 @@
     "purchase_pending": "Giao dịch của bạn vẫn đang được xử lý. Sản phẩm sẽ sớm xuất hiện trong tài khoản — hãy kiểm tra lịch sử đơn hàng nếu không thấy.",
     "purchase_success": "Mua thành công: {name}",
     "purchase_tribe_button": "Mua",
+    "sale_terms": "Điều khoản bán hàng",
     "steam_overlay_cancelled": "Đã hủy giao dịch. Bạn chưa bị tính phí.",
     "steam_overlay_waiting": "Hãy phê duyệt giao dịch trong giao diện Steam để tiếp tục.",
     "subscribe_heading": "Bắt đầu Gói định kỳ",
@@ -1940,6 +2048,7 @@
     "tier_change_unavailable_steam": "Để đổi cấp độ trên Steam, hãy hủy gói định kỳ trong cài đặt tài khoản Steam của bạn và đăng ký cấp độ mới sau khi tháng hiện tại kết thúc.",
     "title": "Cửa hàng",
     "tribe_boost_button": "Quảng bá",
+    "tribe_boost_confirm": "Tăng \"{name}\" cho {price} Ngọc lục bảo? Nó sẽ xuất hiện thường xuyên hơn trong trò chơi của người chơi khác trong {days} ngày tiếp theo.",
     "tribe_boost_count": "1 lần quảng bá",
     "tribe_boost_count_plural": "{count} lần quảng bá",
     "tribe_boost_failed": "Quảng bá thất bại. Vui lòng thử lại.",
@@ -1971,6 +2080,8 @@
     "tribes_login_required": "Đăng nhập để mua và quản lý tên bộ tộc.",
     "tribes_purchase_description": "Tên của bạn sẽ được gán cho một bộ tộc trong các trận đấu nhiều người chơi. Tên sẽ được sử dụng ngay lập tức.",
     "tribes_purchase_heading": "Mua một tên bộ tộc",
+    "withdrawal_waiver": "Tôi muốn ngọc lục bảo của mình ngay lập tức và từ bỏ quyền rút tiền trong 14 ngày.",
+    "withdrawal_waiver_needed": "Trước tiên, hãy đánh dấu vào ô bên dưới giá: ngọc lục bảo sẽ được giao ngay khi bạn thanh toán, vì vậy giao dịch mua sau đó không thể rút lại được.",
     "your_tribes_heading": "Tên bộ tộc của bạn"
   },
   "streaming_now": {
@@ -1983,6 +2094,11 @@
     "browse": "Xem các gói định kỳ",
     "none": "Bạn không có gói định kỳ đang hoạt động.",
     "title": "Gói định kỳ của bạn"
+  },
+  "subscriptions": {
+    "seigneur": "Chúa ơi",
+    "souverain": "có chủ quyền",
+    "vassal": "chư hầu"
   },
   "team_colors": {
     "blue": "Xanh dương",
@@ -2295,6 +2411,8 @@
     "enter_username": "Nhập tên của bạn",
     "invalid_chars": "Tên chỉ có thể chứa các chữ cái, chữ số, khoảng trắng, dấu gạch dưới, dấu gạch ngang và dấu chấm.",
     "lapse_notice": "Gói định kỳ của bạn đã kết thúc, nên bạn không còn chơi với tên '{name}' nữa. Tên này vẫn được giữ cho bạn đến hết {date} — hãy đăng ký lại trước thời hạn đó để giữ nó. Sau đó thì ai cũng có thể lấy.",
+    "lapse_notice_after_grant": "Tháng truy cập cao cấp đi kèm với giao dịch mua Steam của bạn đã kết thúc, vì vậy bạn không còn chơi với tư cách \"{name}\" nữa. Bạn giữ toàn bộ trò chơi miễn phí; chỉ có các đặc quyền cao cấp mới dừng lại. Tên vẫn dành riêng cho bạn cho đến {date} — hãy đăng ký trước đó để giữ nó. Sau đó bất cứ ai cũng có thể lấy nó.",
+    "lapse_notice_after_grant_at_risk": "Tháng quyền truy cập cao cấp đi kèm với giao dịch mua Steam của bạn đã kết thúc, do đó bạn không còn chơi với tên \"{name}\" nữa và tên không còn được bảo lưu. Bạn giữ toàn bộ trò chơi miễn phí. Người chơi khác có thể lấy tên này bất kỳ lúc nào — đăng ký ngay để giữ tên đó.",
     "lapse_notice_at_risk": "Bạn không còn chơi với tên '{name}' nữa và tên này cũng không còn được giữ chỗ. Người chơi khác có thể lấy nó bất cứ lúc nào — hãy đăng ký lại ngay để giữ nó.",
     "not_string": "Tên phải là một chuỗi ký tự.",
     "tag": "TAG",
@@ -2318,12 +2436,12 @@
   },
   "win_modal": {
     "died": "Bạn đã chết",
-    "discord_description": "Kết nối với người chơi, khám phá các tính năng mới và giành giải thưởng!",
     "exit": "Thoát Trận Đấu",
-    "join_discord": "Tham gia Cộng đồng Discord của chúng tôi!",
-    "join_server": "Tham gia máy chủ",
     "keep": "Tiếp tục Chơi",
     "match_cancelled": "Trận đấu đã bị hủy — có người chơi đã không spawn",
+    "medals_earned": "huy chương kiếm được trong trò chơi này",
+    "medals_none": "huy chương: trò chơi này không trả bất kỳ khoản nào (quá ngắn, không đủ người chơi đăng nhập hoặc đạt đến giới hạn hàng ngày)",
+    "medals_pending": "Đếm số huy chương bạn kiếm được…",
     "nation_won": "Quốc gia {nation} đã thắng!",
     "new_lobby": "Phòng mới",
     "other_team": "Đội {team} đã chiến thắng!",

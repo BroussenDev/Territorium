@@ -37,7 +37,7 @@ describe("Inventory navigation", () => {
     const mobile = await mount(new MobileNavBar());
     expect(
       desktop.querySelector(
-        '[data-page="page-inventory"][data-i18n="main.inventory"]',
+        '[data-page="page-inventory"] [data-i18n="main.inventory"]',
       ),
     ).toBeTruthy();
     expect(mobile.querySelector('[data-page="page-inventory"]')).toBeTruthy();

@@ -61,6 +61,8 @@ export function formatCheckoutPrice(
 export class CustomCurrencyCard extends LitElement {
   /** Always a clamped integer in [MIN_PLUTONIUM, MAX_PLUTONIUM]. */
   @state() private amount = 100;
+  /** Express request for immediate delivery, waiving the withdrawal right. */
+  @state() private waived = false;
 
   createRenderRoot() {
     return this;
@@ -84,12 +86,19 @@ export class CustomCurrencyCard extends LitElement {
   }
 
   private buy = async () => {
-    // Rail-agnostic: startPurchase picks Stripe or Steam and performs the
-    // handoff itself, so there is no URL to navigate to here.
+    // French consumer law: digital content is only delivered at once, without
+    // a 14-day withdrawal period, if the buyer expressly asks for it.
+    if (!this.waived) {
+      await showInGameAlert(translateText("store.withdrawal_waiver_needed"));
+      return;
+    }
+    // Rail-agnostic: startPurchase picks the web rail (Mollie) or Steam and
+    // performs the handoff itself, so there is no URL to navigate to here.
     const outcome = await startPurchase({
       kind: "custom_currency",
       hardAmount: this.amount,
       currency: this.currency,
+      withdrawalWaiver: true,
     });
     const message = purchaseOutcomeMessage(
       outcome,
@@ -167,10 +176,39 @@ export class CustomCurrencyCard extends LitElement {
           />
         </div>
 
-        <div data-cosmetic-action class="mt-auto w-full px-3 pb-3 pt-2">
+        <label
+          data-withdrawal-waiver
+          class="flex w-full cursor-pointer items-start gap-1.5 px-3 text-left text-[10px] leading-snug text-white/70"
+        >
+          <input
+            type="checkbox"
+            class="mt-0.5 shrink-0 accent-green-500"
+            .checked=${this.waived}
+            @change=${(e: Event) =>
+              (this.waived = (e.target as HTMLInputElement).checked)}
+          />
+          <span
+            >${translateText("store.withdrawal_waiver")}
+            <a
+              href="/terms-of-service.html#cgv"
+              target="_blank"
+              rel="noopener"
+              class="underline hover:text-white"
+              >${translateText("store.sale_terms")}</a
+            ></span
+          >
+        </label>
+
+        <div
+          data-cosmetic-action
+          class="mt-auto w-full px-3 pb-3 pt-2 transition-opacity ${this.waived
+            ? ""
+            : "opacity-50"}"
+        >
           <purchase-button
             class="block w-full"
             .dollarPrice=${price}
+            .dollarLabelKey=${"store.pay"}
             .onPurchaseDollar=${this.buy}
           ></purchase-button>
         </div>

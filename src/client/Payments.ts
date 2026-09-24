@@ -257,7 +257,12 @@ async function awaitSteamAuthorization(
 /** What to buy. The rail is chosen by {@link paymentsProvider}, not here. */
 export type PurchaseRequest =
   | { kind: "currency_pack"; packName: string }
-  | { kind: "custom_currency"; hardAmount: number; currency?: CheckoutCurrency }
+  | {
+      kind: "custom_currency";
+      hardAmount: number;
+      currency?: CheckoutCurrency;
+      withdrawalWaiver?: boolean;
+    }
   | { kind: "subscription_tier"; tierName: string };
 
 /** What a custom amount is charged in; the card picks it from the language. */
@@ -292,7 +297,8 @@ function defaultNavigate(url: string): void {
 
 // Rails are proper nouns, so they are interpolated rather than translated.
 function providerName(provider: PaymentsProvider): string {
-  return provider === "steam" ? "Steam" : "Stripe";
+  // The web rail keeps its wire name "stripe", but Territorium's is Mollie.
+  return provider === "steam" ? "Steam" : "Mollie";
 }
 
 function error(message: string, refetchCatalog = false): PurchaseError {
