@@ -232,7 +232,7 @@ describe("Client.initialize() booted from Main.ts module scope", () => {
     // listener, join-lobby listener and slider wiring are all in place.
     await vi.waitFor(() => expect(mocks.userAuth).toHaveBeenCalled());
     await new Promise((resolve) => setTimeout(resolve, 25));
-  }, 20_000);
+  }, 60_000);
 
   it("runs the signed-out boot: onUserMe(false) and the missing-version warn", () => {
     // renderNavVersion() === 0 branch (line 411).

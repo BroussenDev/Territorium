@@ -323,6 +323,13 @@ export default defineConfig(({ mode }) => {
       globals: true,
       environment: "jsdom",
       setupFiles: "./tests/setup.ts",
+      // One jsdom worker per core oversubscribes the machine: module imports
+      // alone took tens of seconds and tests that pass on their own timed out.
+      // Half the cores keeps the run as fast, and the timeouts only bound a
+      // real hang.
+      maxWorkers: "50%",
+      testTimeout: 30_000,
+      hookTimeout: 60_000,
       // Git worktrees live inside the repo, so their tests match the default
       // glob and run against that worktree's own (often stale) source and
       // node_modules. Anyone with a worktree checked out sees failures that
