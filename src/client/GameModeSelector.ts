@@ -62,9 +62,9 @@ import { isReplayShellHost } from "./VersionedReplay";
 // rail beside them: Solo grows into the rail's tall tile, the multiplayer
 // cards become a left-aligned list with icons.
 const PRIMARY_ACTION =
-  "bg-brand hover:bg-brand-light active:bg-brand/80 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:flex-col lg:gap-3 lg:!text-3xl lg:font-display lg:font-bold lg:tracking-[0.12em] lg:bg-[linear-gradient(160deg,var(--color-brand-light),var(--color-brand)_55%,#04694c)] lg:hover:brightness-110";
+  "solo-tile bg-brand hover:bg-brand-light active:bg-brand/80 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:flex-col lg:gap-3 lg:!text-3xl lg:font-display lg:font-bold lg:tracking-[0.12em] lg:bg-[linear-gradient(160deg,#10b981,#059669_55%,#047857)] lg:hover:brightness-110";
 const SECONDARY_ACTION =
-  "bg-surface hover:brightness-[1.08] active:brightness-[0.95] hover:scale-105 hover:shadow-[var(--shadow-action-card-hover)] lg:hover:scale-100 lg:justify-start lg:gap-3 lg:px-4 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold lg:bg-surface/90 lg:border lg:border-white/10 lg:hover:border-brand/60";
+  "bg-surface hover:brightness-[1.08] active:brightness-[0.95] hover:scale-105 hover:shadow-[var(--shadow-action-card-hover)] lg:hover:scale-100 lg:justify-start lg:gap-3 lg:px-4 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold lg:bg-surface/90 lg:border lg:border-emerald-400/15 lg:hover:border-brand/60";
 const DISABLED = "opacity-50 cursor-not-allowed pointer-events-none";
 /** Tutorial card: the panel's gold, dark text for contrast. */
 const TUTORIAL_ACTION =

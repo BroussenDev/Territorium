@@ -219,18 +219,25 @@
   <body
     class="select-none font-sans min-h-screen bg-surface transition-opacity duration-300 ease-in-out flex flex-row flex-wrap content-start"
   >
-    <div id="hex-grid" class="fixed inset-0 -z-50 pointer-events-none">
+    <div
+      id="hex-grid"
+      class="fixed inset-0 -z-50 pointer-events-none bg-surface"
+    >
       <div
         id="background-layer"
-        class="absolute inset-x-0 top-0 -bottom-[4cm] bg-cover opacity-35 [filter:hue-rotate(-55deg)_saturate(0.85)_brightness(0.9)]"
+        class="absolute inset-x-0 top-0 -bottom-[4cm] bg-cover opacity-30 [filter:grayscale(1)_contrast(1.3)_brightness(0.7)]"
         style="
           background-image: var(--background-image-url);
           background-position: center top;
         "
       ></div>
+      <!-- Emerald wash: land turns territory green, sea stays night. -->
+      <div class="absolute inset-0 bg-emerald-500 mix-blend-color"></div>
+      <!-- Tile mesh: the map reads as the game's territory tiles. -->
+      <div class="territory-mesh absolute inset-0 opacity-45"></div>
       <!-- Vignette: keeps the map glow behind the menu, fades the edges. -->
       <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_35%,rgba(16,185,129,0.10)_0%,transparent_45%,rgba(11,17,20,0.85)_100%)]"
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(16,185,129,0.12)_0%,transparent_45%,rgba(6,16,12,0.9)_100%)]"
       ></div>
       <div
         class="absolute inset-0 bg-center bg-no-repeat bg-contain hidden lg:block"

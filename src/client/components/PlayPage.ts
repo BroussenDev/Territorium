@@ -6,6 +6,7 @@ import "./NavAccountMenu";
 import "./NavUtilityIcons";
 import "./NewsBox";
 import "./StreamingNow";
+import "./TerritoriumEmblem";
 
 @customElement("play-page")
 export class PlayPage extends LitElement {
@@ -87,26 +88,46 @@ export class PlayPage extends LitElement {
             class="lg:hidden h-[calc(env(safe-area-inset-top)+56px)] -mb-4"
           ></div>
 
-          <!-- Left column: news banner + identity row, stacked tight. -->
+          <!-- Left column: the hero (emblem, tagline, identity row) over the
+               news banner. -->
           <div class="flex flex-col gap-2 min-w-0">
-            <news-box></news-box>
-
-            <!-- Identity row: username over the currently selected cosmetic background. -->
-            <div
-              class="relative bg-surface border-y border-white/10 overflow-visible flex items-center sm:min-h-[60px] sm:flex-1 sm:z-20 sm:border-y-0 sm:rounded-xl"
+            <section
+              class="relative overflow-hidden flex items-center gap-6 lg:gap-8 sm:rounded-2xl sm:border sm:border-emerald-400/15 sm:bg-[linear-gradient(115deg,#0f2a21_0%,var(--color-ink)_65%)] sm:px-6 sm:py-5 lg:px-8"
             >
-              <!-- Selected skin/pattern fills the bubble like the player's territory in game. -->
-              <cosmetic-background
-                class="absolute inset-0 z-0 overflow-hidden sm:rounded-xl pointer-events-none"
-              ></cosmetic-background>
+              <!-- Tile mesh fading in from the right edge, echoing the backdrop. -->
               <div
-                class="relative z-10 flex h-full w-full min-w-0 items-center bg-surface/80 p-1 sm:rounded-xl"
-              >
-                <username-input
-                  class="flex-1 min-w-0 h-10 sm:h-[50px]"
-                ></username-input>
+                class="hidden sm:block territory-mesh absolute inset-y-0 right-0 w-2/3 bg-emerald-500/10 [mask-image:linear-gradient(to_left,#000,transparent)] pointer-events-none"
+                aria-hidden="true"
+              ></div>
+              <territorium-emblem
+                class="hidden sm:block relative shrink-0 w-16 lg:w-24"
+              ></territorium-emblem>
+              <div class="relative flex-1 min-w-0 flex flex-col gap-4">
+                <p
+                  class="hidden sm:block font-display font-bold text-white text-2xl lg:text-[2.1rem] leading-tight tracking-wide text-balance"
+                  data-i18n="main.tagline"
+                ></p>
+
+                <!-- Identity row: username over the currently selected cosmetic background. -->
+                <div
+                  class="relative bg-surface border-y border-white/10 overflow-visible flex items-center sm:min-h-[60px] sm:z-20 sm:border sm:border-emerald-400/20 sm:rounded-xl"
+                >
+                  <!-- Selected skin/pattern fills the bubble like the player's territory in game. -->
+                  <cosmetic-background
+                    class="absolute inset-0 z-0 overflow-hidden sm:rounded-xl pointer-events-none"
+                  ></cosmetic-background>
+                  <div
+                    class="relative z-10 flex h-full w-full min-w-0 items-center bg-surface/80 p-1 sm:rounded-xl"
+                  >
+                    <username-input
+                      class="flex-1 min-w-0 h-10 sm:h-[50px]"
+                    ></username-input>
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
+
+            <news-box></news-box>
           </div>
 
           <!-- Right column: Streaming Now (desktop only), stretched to the left column's
