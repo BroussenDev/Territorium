@@ -30,38 +30,37 @@ export class Footer extends LitElement {
 
   render() {
     return html`
+      <!-- One row at lg: repo and build on the left, legal in the middle,
+           language on the right. Stacked and centred below that. -->
       <footer
-        class="[.in-game_&]:hidden bg-zinc-900/90 backdrop-blur-md flex flex-col items-center justify-center gap-1 pt-1 pb-3 text-white/50 w-full border-t border-white/10 shrink-0 relative z-50 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-0"
+        class="[.in-game_&]:hidden bg-zinc-900/90 backdrop-blur-md flex flex-col items-center justify-center gap-2 pt-3 pb-3 text-white/50 w-full border-t border-white/10 shrink-0 relative z-50 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-6 lg:px-8"
       >
         <div
-          class="flex w-full flex-col items-center gap-1 lg:col-start-2 lg:w-auto"
+          class="flex items-center justify-center gap-3 lg:justify-self-start"
         >
-          <div
-            class="flex items-center justify-center gap-4 lg:gap-6 pt-2 w-full relative"
+          <a
+            href="https://github.com/BroussenDev/Territorium"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="opacity-60 hover:opacity-100 transition-opacity"
           >
-            <a
-              href="https://github.com/BroussenDev/Territorium"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="opacity-60 hover:opacity-100 hover:scale-110 transition-all"
-            >
-              <img
-                src=${assetUrl("icons/github-mark-white.svg")}
-                data-i18n-alt="main.github"
-                class="h-6 w-6 lg:h-7 lg:w-7 object-contain pointer-events-none"
-                draggable="false"
-              />
-            </a>
-          </div>
+            <img
+              src=${assetUrl("icons/github-mark-white.svg")}
+              data-i18n-alt="main.github"
+              class="h-5 w-5 object-contain pointer-events-none"
+              draggable="false"
+            />
+          </a>
           <!-- The nav bar shows the game version alone so it reads the same
                across web and Steam; the full string, shell version included,
                lives down here where a player can quote it in a bug report. -->
-          <div class="footer-version text-xs mt-1 lg:mt-2 text-center px-4">
+          <div class="footer-version text-xs text-center">
             ${this.versionLabel}
           </div>
-          <div
-            class="text-xs mt-1 lg:mt-2 flex items-center justify-center gap-4 px-4"
-          >
+        </div>
+
+        <div class="flex flex-col items-center gap-1 px-4">
+          <div class="text-xs flex items-center justify-center gap-4">
             <a
               href="/terms-of-service.html"
               data-i18n="main.terms_of_service"
@@ -78,7 +77,7 @@ export class Footer extends LitElement {
           <!-- Kept visible (AGPL section 7(b) notice), but low-key. -->
           <span
             data-i18n="main.copyright"
-            class="text-[10px] text-white/30 px-4 text-center"
+            class="text-[10px] text-white/30 text-center"
           ></span>
         </div>
 
@@ -86,7 +85,7 @@ export class Footer extends LitElement {
              document.querySelector("lang-selector"), so a second one would
              shadow it. -->
         <lang-selector
-          class="absolute right-4 top-3 lg:top-1/2 lg:-translate-y-1/2"
+          class="absolute right-4 top-3 lg:static lg:justify-self-end"
         ></lang-selector>
       </footer>
     `;

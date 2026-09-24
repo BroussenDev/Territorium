@@ -58,14 +58,26 @@ import {
 } from "./Utils";
 import { isReplayShellHost } from "./VersionedReplay";
 
+// At lg the action cards leave the rows under the lobbies and stack into a
+// rail beside them: Solo grows into the rail's tall tile, the multiplayer
+// cards become a left-aligned list with icons.
 const PRIMARY_ACTION =
-  "bg-brand hover:bg-brand-light active:bg-brand/80 hover:scale-y-105 hover:scale-x-[1.01]";
+  "bg-brand hover:bg-brand-light active:bg-brand/80 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:flex-col lg:gap-3 lg:!text-3xl lg:font-display lg:font-bold lg:tracking-[0.12em] lg:bg-[linear-gradient(160deg,var(--color-brand-light),var(--color-brand)_55%,#04694c)] lg:hover:brightness-110";
 const SECONDARY_ACTION =
-  "bg-surface hover:brightness-[1.08] active:brightness-[0.95] hover:scale-105 hover:shadow-[var(--shadow-action-card-hover)]";
+  "bg-surface hover:brightness-[1.08] active:brightness-[0.95] hover:scale-105 hover:shadow-[var(--shadow-action-card-hover)] lg:hover:scale-100 lg:justify-start lg:gap-3 lg:px-4 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold lg:bg-surface/90 lg:border lg:border-white/10 lg:hover:border-brand/60";
 const DISABLED = "opacity-50 cursor-not-allowed pointer-events-none";
 /** Tutorial card: the panel's gold, dark text for contrast. */
 const TUTORIAL_ACTION =
-  "bg-cyber-yellow hover:bg-yellow-300 active:bg-cyber-yellow/80 !text-gray-900 hover:scale-y-105 hover:scale-x-[1.01]";
+  "bg-cyber-yellow hover:bg-yellow-300 active:bg-cyber-yellow/80 !text-gray-900 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold";
+
+// Heroicons (outline, 24px), shown beside the action labels in the lg rail.
+const ICON_FLAG =
+  "M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5";
+const ICON_PLUS = "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z";
+const ICON_ENTER =
+  "M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25";
+const ICON_TROPHY =
+  "M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0";
 
 /** The Tutorial card shows beside Solo until the player has played this many games. */
 const TUTORIAL_CARD_MAX_GAMES = 5;
@@ -663,54 +675,68 @@ export class GameModeSelector extends LitElement {
 
     // DOM is in phone order; sm+ places the same elements onto a grid and
     // reading-flow keeps focus order following the rows (Chromium only).
+    // sm..lg: lobbies on top, two rows of action cards below. lg+: the action
+    // cards move into a third column, a rail as tall as the lobbies.
     return html`
       <div
-        class="flex flex-col gap-4 w-full px-4 pb-4 mx-auto sm:px-0 sm:pb-0 sm:grid sm:grid-cols-[2fr_1fr] sm:grid-rows-[auto_min(24rem,40vh)_auto_auto] desktop:sm:grid-rows-[auto_40vh_auto_auto] sm:[reading-flow:grid-rows]"
+        class="flex flex-col gap-4 w-full px-4 pb-4 mx-auto sm:px-0 sm:pb-0 sm:grid sm:grid-cols-[2fr_1fr] sm:grid-rows-[auto_min(24rem,40vh)_auto] desktop:sm:grid-rows-[auto_40vh_auto] lg:grid-cols-[2fr_1fr_minmax(15rem,17rem)] lg:grid-rows-[auto_min(34rem,max(24rem,58vh))] desktop:lg:grid-rows-[auto_min(34rem,max(24rem,58vh))] sm:[reading-flow:grid-rows]"
       >
         <ios-add-to-home-screen-banner
-          class="no-crazygames [&:empty]:hidden sm:col-span-2 sm:row-start-1"
+          class="no-crazygames [&:empty]:hidden sm:col-span-2 lg:col-span-3 sm:row-start-1"
         ></ios-add-to-home-screen-banner>
 
-        <div class="flex gap-4 h-14 sm:col-span-2 sm:row-start-3">
-          <div class="flex-[2]">
+        <div
+          class="flex flex-col gap-4 sm:col-span-2 sm:row-start-3 lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:min-h-0"
+        >
+          <div class="flex gap-4 h-14 lg:flex-col lg:gap-2 lg:h-auto lg:flex-1">
+            <div class="flex-[2] lg:flex-1">
+              ${this.renderSmallActionCard(
+                translateText("main.solo"),
+                this.openSinglePlayerModal,
+                PRIMARY_ACTION,
+                undefined,
+                false,
+                ICON_FLAG,
+              )}
+            </div>
+            ${getGamesPlayed() < TUTORIAL_CARD_MAX_GAMES
+              ? html`<div class="flex-1 lg:flex-none lg:h-12">
+                  ${this.renderSmallActionCard(
+                    translateText("main.tutorial"),
+                    this.startTutorial,
+                    TUTORIAL_ACTION,
+                  )}
+                </div>`
+              : nothing}
+          </div>
+          <div
+            class="grid grid-cols-3 gap-4 h-14 lg:grid-cols-1 lg:auto-rows-[3.5rem] lg:gap-2 lg:h-auto"
+          >
             ${this.renderSmallActionCard(
-              translateText("main.solo"),
-              this.openSinglePlayerModal,
-              PRIMARY_ACTION,
+              translateText("main.create"),
+              this.openHostLobby,
+              SECONDARY_ACTION,
+              undefined,
+              true,
+              ICON_PLUS,
+            )}
+            ${this.renderSmallActionCard(
+              translateText("main.join"),
+              this.openJoinLobby,
+              SECONDARY_ACTION,
+              this.hostedLobbyCount(),
+              true,
+              ICON_ENTER,
+            )}
+            ${this.renderSmallActionCard(
+              translateText("mode_selector.ranked_title"),
+              this.openRankedMenu,
+              SECONDARY_ACTION,
+              undefined,
+              true,
+              ICON_TROPHY,
             )}
           </div>
-          ${getGamesPlayed() < TUTORIAL_CARD_MAX_GAMES
-            ? html`<div class="flex-1">
-                ${this.renderSmallActionCard(
-                  translateText("main.tutorial"),
-                  this.startTutorial,
-                  TUTORIAL_ACTION,
-                )}
-              </div>`
-            : nothing}
-        </div>
-        <div class="grid grid-cols-3 gap-4 h-14 sm:col-span-2 sm:row-start-4">
-          ${this.renderSmallActionCard(
-            translateText("main.create"),
-            this.openHostLobby,
-            SECONDARY_ACTION,
-            undefined,
-            true,
-          )}
-          ${this.renderSmallActionCard(
-            translateText("mode_selector.ranked_title"),
-            this.openRankedMenu,
-            SECONDARY_ACTION,
-            undefined,
-            true,
-          )}
-          ${this.renderSmallActionCard(
-            translateText("main.join"),
-            this.openJoinLobby,
-            SECONDARY_ACTION,
-            this.hostedLobbyCount(),
-            true,
-          )}
         </div>
 
         ${heroSlot
@@ -913,6 +939,8 @@ export class GameModeSelector extends LitElement {
     // the solo card is never gated (see openSinglePlayerModal) and must never
     // show as disabled here.
     gated: boolean = false,
+    // Heroicon path; only drawn in the lg rail, where the cards have room.
+    icon?: string,
   ) {
     const blocked =
       gated &&
@@ -933,10 +961,25 @@ export class GameModeSelector extends LitElement {
             ? "opacity-50 cursor-not-allowed"
             : ""}"
       >
+        ${icon
+          ? html`<svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="hidden lg:block shrink-0 ${bgClass === PRIMARY_ACTION
+                ? "size-12 opacity-90"
+                : "size-5 text-brand-bright"}"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d=${icon} />
+            </svg>`
+          : nothing}
         ${title}
         ${badge
           ? html`<span
-              class="absolute -top-2 -right-2 min-w-[1.375rem] h-[1.375rem] px-1.5 flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold tracking-normal"
+              class="absolute -top-2 -right-2 lg:static lg:ml-auto min-w-[1.375rem] h-[1.375rem] px-1.5 flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold tracking-normal"
               >${badge}</span
             >`
           : nothing}
