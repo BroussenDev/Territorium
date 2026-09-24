@@ -1167,10 +1167,18 @@ export type PurchaseWithCurrencyResult =
   | { ok: false; code: "failed" };
 
 // POST /shop/purchase — buy a single cosmetic for hard or soft currency. The
-// only spend path that takes soft currency. Any error means no debit and no
-// grant. Callers invalidate the cached /users/@me on success.
+// only spend path that takes soft currency. Also buys currency packs ("pack")
+// and 30-day subscription periods ("subscription"). Any error means no debit
+// and no grant. Callers invalidate the cached /users/@me on success.
 export async function purchaseWithCurrency(
-  cosmeticType: "pattern" | "skin" | "flag" | "crown" | "effect",
+  cosmeticType:
+    | "pattern"
+    | "skin"
+    | "flag"
+    | "crown"
+    | "effect"
+    | "pack"
+    | "subscription",
   cosmeticName: string,
   currencyType: "hard" | "soft",
   colorPaletteName?: string,

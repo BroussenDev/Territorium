@@ -538,15 +538,9 @@ export class StoreModal extends BaseModal {
   }
 
   private renderPackGrid(): TemplateResult {
-    // The custom-amount card is always purchasable (priced inline server-side,
-    // no catalog entry), and follows the fixed packs at the end of the grid.
-    // On BOTH rails: the Steam rail sells custom amounts since OPE-337, so
-    // there is no longer a rail on which this card is a dead button.
+    // Territorium sells fixed packs only: emeralds are bought with medals.
     return this.renderBrowser(this.visibleGroups, {
       emptyTranslationKey: "store.no_packs",
-      trailingContent: html`<custom-currency-card
-        class="block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48"
-      ></custom-currency-card>`,
       gridClass:
         "flex flex-wrap items-stretch justify-center content-start gap-4 p-4 sm:p-8",
       cardClass: "block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48",

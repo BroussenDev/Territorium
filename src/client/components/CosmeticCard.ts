@@ -356,8 +356,8 @@ export class CosmeticCard extends LitElement {
     const subscription = this.activeResolved.cosmetic as Subscription;
     const perks = [
       {
-        label: translateText("cosmetics.verified_name"),
-        info: translateText("cosmetics.verified_name_info"),
+        label: translateText("cosmetics.subscription_days"),
+        info: translateText("cosmetics.subscription_days_info"),
       },
     ];
     if (subscription.unlimitedRanked) {

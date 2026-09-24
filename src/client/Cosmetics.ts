@@ -351,6 +351,19 @@ export async function purchaseCosmetic(
   const c = resolved.cosmetic;
   const colorPaletteName = resolved.colorPalette?.name;
 
+  // Subscriptions and currency packs priced in medals or emeralds are paid
+  // from the wallet; only the dollar price goes through a checkout.
+  if (
+    (resolved.type === "subscription" || resolved.type === "pack") &&
+    method !== "dollar"
+  ) {
+    return purchaseListingWithCurrency(
+      resolved.type,
+      c as Subscription | Pack,
+      method,
+    );
+  }
+
   if (resolved.type === "subscription") {
     const sub = c as Subscription;
     const userMe = await getUserMe();
@@ -532,16 +545,10 @@ export async function purchaseCosmetic(
     return;
   }
 
-  // Currency purchase (hard or soft) — not valid for subscriptions.
-  if (resolved.type === "subscription") {
-    console.error(
-      "purchaseCosmetic: currency purchase not supported for subscriptions",
-    );
-    return;
-  }
-  // ResolvedCosmetic isn't a discriminated union, so the guard above doesn't
-  // narrow cosmetic's type. Subscriptions are excluded by the runtime check.
-  const priced = c as Pattern | Flag | Pack;
+  // ResolvedCosmetic isn't a discriminated union, so the currency branch at
+  // the top doesn't narrow cosmetic's type: subscriptions and currency packs
+  // never reach this point.
+  const priced = c as Pattern | Flag;
   const price =
     method === "hard" ? (priced.priceHard ?? 0) : (priced.priceSoft ?? 0);
   const userMe = await getUserMe();
@@ -676,6 +683,94 @@ export async function purchaseCosmetic(
   );
   invalidateUserMe();
   window.location.reload();
+}
+
+/**
+ * Buys a currency pack or a 30-day subscription period with medals or
+ * emeralds. Buying the tier already held adds 30 days to it; any other tier
+ * starts a fresh period now and drops the rest of the current one, so that
+ * asks first.
+ */
+async function purchaseListingWithCurrency(
+  type: "subscription" | "pack",
+  listing: Subscription | Pack,
+  method: "hard" | "soft",
+): Promise<PurchaseResult> {
+  const userMe = await getUserMe();
+  if (userMe === false) {
+    await showInGameAlert(translateText("store.login_required"));
+    return;
+  }
+  const isSub = type === "subscription";
+  const itemName = isSub
+    ? translateCosmetic("subscriptions", listing.name)
+    : (listing as Pack).displayName;
+  const currentTier = userMe.player.subscription?.tier ?? null;
+  if (isSub && currentTier !== null && currentTier !== listing.name) {
+    const confirmed = await showInGameConfirm(
+      translateText("store.confirm_tier_switch_currency", { tier: itemName }),
+      {
+        heading: translateText("account_modal.change_tier"),
+        variant: "warning",
+      },
+    );
+    if (!confirmed) return;
+  }
+
+  const price =
+    (method === "hard" ? listing.priceHard : listing.priceSoft) ?? 0;
+  const balanceOf = (me: UserMeResponse) =>
+    method === "hard"
+      ? (me.player.currency?.hard ?? 0)
+      : (me.player.currency?.soft ?? 0);
+  const insufficient = (available: number): InsufficientCurrency => ({
+    currency: translateText(
+      method === "hard" ? "cosmetics.hard" : "cosmetics.soft",
+    ),
+    shortfall: Math.max(1, price - available),
+    item: itemName,
+    canTopUp: method === "hard",
+  });
+  const balance = balanceOf(userMe);
+  if (balance < 0) {
+    await showInGameAlert(debtMessage(-balance));
+    return;
+  }
+  if (balance < price) return insufficient(balance);
+
+  const result = await purchaseWithCurrency(type, listing.name, method);
+  if (!result.ok) {
+    if (result.code === "insufficient_balance") {
+      const fresh = await broadcastFreshUserMe();
+      if (fresh !== false) {
+        const available = balanceOf(fresh);
+        const outcome = balanceOutcome(available, price);
+        if (outcome === "shortfall") return insufficient(available);
+        if (outcome === "debt") {
+          await showInGameAlert(debtMessage(-available));
+          return;
+        }
+      }
+    } else if (result.code === "debt") {
+      await broadcastFreshUserMe();
+      await showInGameAlert(
+        translateText("store.pack_debt", { debt: result.debt }),
+      );
+      return;
+    }
+    await showInGameAlert(translateText("store.purchase_failed"));
+    return;
+  }
+  // The new balance, subscription and its signup bonus reward all come with
+  // the fresh profile.
+  await broadcastFreshUserMe();
+  await showInGameAlert(
+    translateText(
+      isSub
+        ? "store.subscription_purchase_success"
+        : "store.currency_pack_purchase_success",
+    ),
+  );
 }
 
 /**
@@ -1292,18 +1387,19 @@ export function resolveCosmetics(
   const grantIsCurrent = isGrantedSubscription(currentSub);
   for (const [subKey, sub] of Object.entries(cosmetics.subscriptions ?? {})) {
     const key = `subscription:${subKey}`;
-    // A listing with no Stripe `product` block cannot render a price, so it
-    // falls to "blocked" — and the subscriptions tab lists only purchasable
-    // and owned, so a blocked tier is not shown at all. (Currency packs hit
-    // this and were fixed by never gating on `product`; subscriptions still
-    // do. OPE-441 is the real fix.)
-    const canBeSold = Boolean(sub.product);
+    // A listing with neither a Stripe `product` block nor a medal/emerald
+    // price cannot render a price, so it falls to "blocked" — and the
+    // subscriptions tab lists only purchasable and owned, so a blocked tier
+    // is not shown at all.
+    const canBeSold =
+      Boolean(sub.product) ||
+      (sub.priceSoft ?? 0) > 0 ||
+      (sub.priceHard ?? 0) > 0;
     // ...which is why the grant demotion below is conditional on it. Taking
     // "owned" away from a tier we then cannot sell would make the card
-    // VANISH from the store, and a card that disappears is a worse failure
-    // than the dead "Subscribed" box this change exists to remove. Not
-    // reachable today — every live tier carries a product — and this is not
-    // the PR to introduce it.
+    // VANISH from the store. A tier paid with currency also has no billing
+    // provider, so it reads as a grant here and stays buyable: buying it
+    // again adds 30 days.
     const isCurrentTier = subKey === currentSubTier;
     const demoteGrant = grantIsCurrent && isCurrentTier && canBeSold;
     const isCurrent = flares.includes(key) || (isCurrentTier && !demoteGrant);

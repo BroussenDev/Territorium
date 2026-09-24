@@ -13,7 +13,6 @@ import { showInGameAlert, showInGameConfirm } from "../InGameModal";
 import { STEAM_TIER_CHANGE_IN_APP } from "../SubscriptionPolicy";
 import { translateText } from "../Utils";
 import "./baseComponents/Button";
-import { renderFreePlayPerks } from "./FreePlayPerks";
 import "./PlutoniumIcon";
 
 // The Steam-rail launch policies (S1 tier change, S2 cancel) live in
@@ -294,14 +293,11 @@ export class SubscriptionPanel extends LitElement {
       `;
     }
     return html`
-      <div class="flex flex-col gap-3">
-        <p class="text-[11px] text-center text-white/40 leading-snug">
-          ${translateText("account_modal.sub_granted_from_purchase", {
-            tier: tierName,
-          })}
-        </p>
-        ${renderFreePlayPerks("free_play.after_grant_heading")}
-      </div>
+      <p class="text-[11px] text-center text-white/40 leading-snug">
+        ${translateText("account_modal.sub_paid_with_currency", {
+          tier: tierName,
+        })}
+      </p>
     `;
   }
 

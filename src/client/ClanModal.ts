@@ -9,6 +9,7 @@ import "./components/clan/ClanBansView";
 import "./components/clan/ClanBrowseView";
 import type { BrowseState } from "./components/clan/ClanBrowseView";
 import "./components/clan/ClanCard";
+import "./components/clan/ClanCreateView";
 import "./components/clan/ClanDetailView";
 import "./components/clan/ClanDonationsView";
 import "./components/clan/ClanGameHistoryView";
@@ -70,6 +71,7 @@ export class ClanModal extends BaseModal {
   @state() private signedOut = false;
 
   @state() private myClans: ClanInfo[] = [];
+  @state() private creatingClan = false;
   @state() private myPendingRequests: {
     tag: string;
     name: string;
@@ -356,6 +358,7 @@ export class ClanModal extends BaseModal {
     this.activeTab = "my-clans";
     this.previousListTab = "my-clans";
     this.view = "list";
+    this.creatingClan = false;
     this.selectedClan = null;
     this.selectedClanTag = "";
     this.myRole = null;
@@ -791,8 +794,23 @@ export class ClanModal extends BaseModal {
         window.showPage?.("page-account");
       }, translateText("clan_modal.sign_in_for_clans"));
     }
+    if (this.creatingClan) {
+      return html`<clan-create-view
+        @create-cancelled=${() => (this.creatingClan = false)}
+        @clan-created=${(e: CustomEvent<{ clan: ClanInfo }>) =>
+          this.onClanCreated(e.detail.clan)}
+      ></clan-create-view>`;
+    }
     const hasClans = this.myClans.length > 0;
     const hasRequests = this.myPendingRequests.length > 0;
+    // A player leads at most one clan.
+    const canCreate = ![...this.myClanRoles.values()].includes("leader");
+    const createButton = html`<button
+      @click=${() => (this.creatingClan = true)}
+      class="px-6 py-2 text-sm font-bold text-brand-light uppercase tracking-wider bg-brand/10 hover:bg-brand/20 border border-brand/30 rounded-lg transition-all"
+    >
+      ${translateText("clan_modal.create_clan")}
+    </button>`;
 
     if (!hasClans && !hasRequests) {
       return html`
@@ -800,18 +818,24 @@ export class ClanModal extends BaseModal {
           <p class="text-white/40 text-sm mb-4">
             ${translateText("clan_modal.no_clans")}
           </p>
-          <button
-            @click=${() => this.setActiveTab("browse")}
-            class="px-6 py-2 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-lg transition-all"
-          >
-            ${translateText("clan_modal.browse")}
-          </button>
+          <div class="flex flex-wrap justify-center gap-3">
+            <button
+              @click=${() => this.setActiveTab("browse")}
+              class="px-6 py-2 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-lg transition-all"
+            >
+              ${translateText("clan_modal.browse")}
+            </button>
+            ${createButton}
+          </div>
         </div>
       `;
     }
 
     return html`
       <div class="space-y-3">
+        ${canCreate
+          ? html`<div class="flex justify-end">${createButton}</div>`
+          : ""}
         ${hasRequests ? this.renderPendingRequestsButton() : ""}
         ${this.myClans.map(
           (clan) => html`
@@ -825,6 +849,17 @@ export class ClanModal extends BaseModal {
         )}
       </div>
     `;
+  }
+
+  private onClanCreated(clan: ClanInfo) {
+    this.creatingClan = false;
+    this.myClans = [...this.myClans, clan];
+    this.myClanRoles = new Map([
+      ...this.myClanRoles,
+      [clan.tag, "leader" as ClanRole],
+    ]);
+    this.selectedClan = clan;
+    this.openDetail(clan.tag);
   }
 
   private renderPendingRequestsButton() {

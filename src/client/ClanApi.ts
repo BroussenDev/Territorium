@@ -280,6 +280,44 @@ export async function joinClan(
   }
 }
 
+const CREATE_CLAN_ERRORS: Record<string, string> = {
+  TAG_INVALID: "clan_modal.create_error_tag",
+  NAME_INVALID: "clan_modal.create_error_name",
+  DESCRIPTION_INVALID: "clan_modal.create_error_description",
+  TAG_TAKEN: "clan_modal.create_error_tag_taken",
+  ALREADY_LEADER: "clan_modal.create_error_already_leader",
+  TOO_MANY_CLANS: "clan_modal.create_error_too_many",
+};
+
+// POST /clans — found a clan; the caller becomes its leader.
+export async function createClan(body: {
+  tag: string;
+  name: string;
+  description: string;
+  isOpen: boolean;
+}): Promise<ClanInfo | { error: string }> {
+  try {
+    const res = await clanFetch("/clans", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const json = await res.json().catch(() => ({}));
+      const code = (json as { code?: string }).code ?? "";
+      return { error: CREATE_CLAN_ERRORS[code] ?? "clan_modal.error_failed" };
+    }
+    const parsed = ClanInfoSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn("createClan: Zod validation failed", parsed.error);
+      return { error: "clan_modal.error_failed" };
+    }
+    return parsed.data;
+  } catch {
+    return { error: "clan_modal.error_network" };
+  }
+}
+
 export async function leaveClan(
   tag: string,
 ): Promise<true | { error: string }> {

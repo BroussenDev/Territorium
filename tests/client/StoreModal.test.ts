@@ -663,22 +663,17 @@ describe("StoreModal cosmetic browser", () => {
 
     expect(modal.querySelector("[data-store-browser]")).toBeTruthy();
     expect(modal.querySelector("[data-store-grid]")).toBeTruthy();
-    expect(modal.querySelector("[data-store-grid] custom-currency-card")).toBe(
-      modal.querySelector("custom-currency-card"),
-    );
+    // Territorium sells fixed packs only: no custom-amount card.
+    expect(modal.querySelector("custom-currency-card")).toBeNull();
     expect(modal.querySelector("[data-store-grid]")?.className).toMatch(
       /flex-wrap/,
     );
-    for (const el of [
-      card(modal, pack.key),
-      modal.querySelector("custom-currency-card"),
-    ]) {
-      // Half-width (minus the gap) below sm so phones fit two per row, as the
-      // cosmetics and effects grids already do; a fixed w-48 from sm up.
-      expect(el?.className).toContain("w-[calc(50%-0.5rem)]");
-      expect(el?.className).toContain("sm:w-48");
-      expect(el?.className).not.toMatch(/h-full/);
-    }
+    // Half-width (minus the gap) below sm so phones fit two per row, as the
+    // cosmetics and effects grids already do; a fixed w-48 from sm up.
+    const packCard = card(modal, pack.key);
+    expect(packCard?.className).toContain("w-[calc(50%-0.5rem)]");
+    expect(packCard?.className).toContain("sm:w-48");
+    expect(packCard?.className).not.toMatch(/h-full/);
     expect(card(modal, pack.key)?.state).toBe("focused");
     expect(purchaseButton(modal, pack.key).closest("cosmetic-card")).toBe(
       card(modal, pack.key),
@@ -988,15 +983,13 @@ describe("StoreModal on the Steam rail", () => {
     localStorage.clear();
   });
 
-  it("offers the custom-amount card on the web", async () => {
-    const modal = await openStoreOnTab("packs");
-    expect(modal.querySelector("custom-currency-card")).toBeTruthy();
-  });
-
-  it("offers the custom-amount card on Steam too", async () => {
+  it("offers no custom-amount card, on the web or on Steam", async () => {
+    let modal = await openStoreOnTab("packs");
+    expect(modal.querySelector("custom-currency-card")).toBeNull();
+    store?.remove();
     installSteamShell();
-    const modal = await openStoreOnTab("packs");
-    expect(modal.querySelector("custom-currency-card")).toBeTruthy();
+    modal = await openStoreOnTab("packs");
+    expect(modal.querySelector("custom-currency-card")).toBeNull();
   });
 
   // REQUIRED, not an optimisation: the main process parks authorizations and

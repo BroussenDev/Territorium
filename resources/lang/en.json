@@ -77,9 +77,9 @@
     "reward_daily": "Daily subscription reward",
     "reward_signup_bonus": "Subscription signup bonus",
     "sign_in_desc": "Sign in to save your stats and progress",
-    "sub_granted_from_purchase": "Included with your Steam purchase, paid for once on Steam. It isn't billed and doesn't renew, so there's nothing to manage or cancel. When it ends you keep the full game at no charge; only the {tier} perks stop.",
     "sub_granted_indefinite": "Free access granted to your account. It isn't billed, so there's nothing to manage or cancel.",
     "sub_granted_perks_end_on": "{tier} perks end {date}",
+    "sub_paid_with_currency": "Paid with medals or emeralds. It doesn't renew on its own: buy {tier} again in the store to add 30 days.",
     "sub_price_monthly": "{price}/mo",
     "sub_renews_on": "Renews {date}",
     "sub_status_active": "Active",
@@ -284,6 +284,17 @@
     "confirm_disband": "Are you sure you want to disband [{tag}] {name}? This cannot be undone.",
     "confirm_kick": "Are you sure you want to kick this member?",
     "confirm_transfer": "Transfer leadership to {name}",
+    "create_clan": "Create a clan",
+    "create_clan_desc": "You become its leader, and members can wear its tag before their name in games.",
+    "create_error_already_leader": "You already lead a clan. Transfer or disband it first.",
+    "create_error_description": "The description is limited to 200 characters.",
+    "create_error_name": "The name needs 3 to 35 characters.",
+    "create_error_tag": "The tag needs 2 to 5 letters or numbers.",
+    "create_error_tag_taken": "Another clan already uses this tag.",
+    "create_error_too_many": "You are already in 5 clans. Leave one first.",
+    "create_submit": "Create clan",
+    "create_tag_hint": "2 to 5 letters or numbers. Only members can wear it.",
+    "create_tag_label": "Tag",
     "danger_zone": "Danger Zone",
     "demote": "Demote",
     "deny": "Deny",
@@ -539,6 +550,8 @@
     "search": "Search...",
     "signup_bonus": "Signup bonus",
     "soft": "Medals",
+    "subscription_days": "30 days",
+    "subscription_days_info": "Lasts 30 days from purchase. Buy the same tier again to add 30 more days.",
     "type_crown": "Crown",
     "type_effect": "{type} Effect",
     "type_flag": "Flag",
@@ -570,6 +583,13 @@
     "supporting": "Supporting {name} ({code})",
     "title": "Support a Creator",
     "unsupport": "Unsupport"
+  },
+  "crowns": {
+    "couronne_emeraude": "Emerald Crown",
+    "couronne_glace": "Ice Crown",
+    "couronne_pixel": "Pixel Crown",
+    "diademe_braise": "Ember Diadem",
+    "laurier": "Laurel Wreath"
   },
   "desktop_gate": {
     "back_to_game": "Back to Game",
@@ -709,11 +729,24 @@
     "veryfast": "Very Fast"
   },
   "effects": {
+    "bastion_emeraude": "Emerald Bastion",
+    "braises_rouges": "Red Embers",
+    "citadelle_royale": "Royal Citadel",
+    "express_or": "Golden Express",
+    "flotte_corsaire": "Corsair Fleet",
     "nukeType": {
       "atom": "Atom",
       "hydro": "Hydrogen",
       "mirvWarhead": "MIRV"
     },
+    "onde_jade": "Jade Wave",
+    "rails_neon": "Neon Rails",
+    "sillage_aurore": "Aurora Wake",
+    "sillage_braise": "Ember Wake",
+    "sillage_jade": "Jade Wake",
+    "spirale_toxique": "Toxic Spiral",
+    "supernova": "Supernova",
+    "traceur_plasma": "Plasma Tracer",
     "type": {
       "nukeExplosion": "Nuke Explosion",
       "nukeTrail": "Nuke Trail",
@@ -788,10 +821,18 @@
     "minimize": "Minimize",
     "open_on_twitch": "Open {channel} on Twitch"
   },
+  "flags": {
+    "chevron_royal": "Royal Chevron",
+    "echiquier": "Chessboard",
+    "etendard_emeraude": "Emerald Standard",
+    "nuit_etoilee": "Starry Night",
+    "pionnier": "Pioneer",
+    "pixel_territoire": "Pixel Territory",
+    "tierce_braise": "Ember Tierce"
+  },
   "free_play": {
     "account": "Your account, stats, friends and cosmetics",
     "ad_free_steam": "No ads in the Steam app, ever",
-    "after_grant_heading": "After it ends, you still get",
     "custom_lobbies": "Private custom lobbies with friends",
     "free_heading": "Playing for free includes",
     "full_game": "The full game: every map and mode, online and single-player",
@@ -1257,9 +1298,9 @@
     "no_stats": "No stats available",
     "player": "Player",
     "rank": "Rank",
-    "ranked_2v2_tab": "2v2 Ranked",
+    "ranked_2v2_tab": "Teams",
     "ranked_no_stats": "No ranked games have been played on this ladder yet",
-    "ranked_tab": "1v1 Ranked",
+    "ranked_tab": "Solo",
     "ratio": "Ratio",
     "refresh_time": "Refreshed every 1 hour",
     "title": "Leaderboard",
@@ -1918,6 +1959,7 @@
     "confirm_subscribe_over_grant": "Start a paid {tier} subscription now? Your free access ends immediately: the {days, plural, one {# day left on it is} other {# days left on it are}} not refunded and not added to your paid time.",
     "confirm_subscribe_over_grant_no_days": "Start a paid {tier} subscription now? Your free access ends immediately, and the time left on it is not refunded and not added to your paid time.",
     "confirm_tier_change_steam": "Subscribe to {tier} now? Your new tier starts immediately at full price, and the rest of your current month is not refunded.",
+    "confirm_tier_switch_currency": "Switch to {tier}? A new 30-day period starts now and the days left on your current subscription are lost.",
     "confirm_upgrade": "Upgrade to {tier}? You'll be charged the prorated difference now.",
     "cosmetics": "Cosmetics",
     "crowns": "Crowns",
@@ -2017,6 +2059,11 @@
     "browse": "Browse Subscriptions",
     "none": "You don't have an active subscription.",
     "title": "Your Subscription"
+  },
+  "subscriptions": {
+    "seigneur": "Lord",
+    "souverain": "Sovereign",
+    "vassal": "Vassal"
   },
   "team_colors": {
     "blue": "Blue",

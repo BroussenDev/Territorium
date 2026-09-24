@@ -188,7 +188,7 @@ describe("subscription-panel", () => {
     });
 
     it("says what the subscription actually is", () => {
-      expect(text()).toContain("account_modal.sub_granted_from_purchase");
+      expect(text()).toContain("account_modal.sub_paid_with_currency");
     });
 
     // The forum complaint in one line: "ends" read as the game ending. The
@@ -199,26 +199,11 @@ describe("subscription-panel", () => {
       );
     });
 
-    it("lists what the player keeps once the month ends", () => {
-      expect(text()).toContain("free_play.after_grant_heading");
-      expect(text()).toContain("free_play.full_game");
-      // Only the desktop build is ad-free for everyone; the website is not.
+    // A period paid with medals or emeralds has no billing rail and no
+    // free-play fallback to advertise.
+    it("does not list Steam free-play perks", () => {
+      expect(text()).not.toContain("free_play.after_grant_heading");
       expect(text()).not.toContain("free_play.ad_free_steam");
-    });
-
-    it("promises ad-free play only inside the desktop shell", async () => {
-      (window as unknown as { openfrontDesktop?: unknown }).openfrontDesktop = {
-        steam: {},
-      };
-      try {
-        el.sub = granted();
-        el.requestUpdate();
-        await el.updateComplete;
-        expect(text()).toContain("free_play.ad_free_steam");
-      } finally {
-        delete (window as unknown as { openfrontDesktop?: unknown })
-          .openfrontDesktop;
-      }
     });
 
     // Not a link — the desktop build must not hand over a route to a payment
@@ -253,7 +238,7 @@ describe("subscription-panel", () => {
       el.sub = sub({ provider: null, currentPeriodEnd: null });
       await el.updateComplete;
       expect(text()).toContain("account_modal.sub_granted_indefinite");
-      expect(text()).not.toContain("account_modal.sub_granted_from_purchase");
+      expect(text()).not.toContain("account_modal.sub_paid_with_currency");
       expect(text()).not.toContain("account_modal.sub_granted_perks_end_on");
       expect(text()).not.toContain("free_play.after_grant_heading");
       expect(text()).not.toContain("account_modal.cancel_subscription");
@@ -310,7 +295,7 @@ describe("subscription-panel", () => {
 
     it("renews rather than ending", () => {
       expect(text()).toContain("account_modal.sub_renews_on");
-      expect(text()).not.toContain("account_modal.sub_granted_from_purchase");
+      expect(text()).not.toContain("account_modal.sub_paid_with_currency");
     });
   });
 
