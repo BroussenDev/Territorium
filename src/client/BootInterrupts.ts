@@ -443,9 +443,12 @@ export function claimPromptStringsReady(
  * The same precondition for the two Steam grant notices. Each is one-shot and
  * records itself shown before opening, so a key echoed back would spend the
  * only explanation a buyer ever gets on a string nobody can read.
+ *
+ * The bodies take {tier} and {date}: probe with placeholders so every page
+ * load doesn't log an ICU "variable was not provided" warning.
  */
 export function steamGrantStringsReady(
-  translate: (key: string) => string,
+  translate: (key: string, params?: Record<string, string | number>) => string,
 ): boolean {
   return (
     [
@@ -454,7 +457,7 @@ export function steamGrantStringsReady(
       BOOT_INTERRUPT_KEYS.grantEndedBody,
       BOOT_INTERRUPT_KEYS.grantEndedHeading,
     ] as string[]
-  ).every((key) => translate(key) !== key);
+  ).every((key) => translate(key, { tier: "", date: "" }) !== key);
 }
 
 /**

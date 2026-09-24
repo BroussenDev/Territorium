@@ -13,6 +13,7 @@ import {
   nextBootInterrupt,
   parseClaimPromptStore,
   runBootInterrupt,
+  steamGrantStringsReady,
   USERNAME_FORM_HASH,
   type BootInterrupt,
   type BootInterruptInputs,
@@ -678,6 +679,31 @@ describe("claimPromptStringsReady", () => {
         k === BOOT_INTERRUPT_KEYS.temporaryBody ? k : `t(${k})`,
       ),
     ).toBe(true);
+  });
+});
+
+describe("steamGrantStringsReady", () => {
+  it("is not ready while a grant string still echoes its key", () => {
+    expect(
+      steamGrantStringsReady((k: string) =>
+        k === BOOT_INTERRUPT_KEYS.grantEndedBody ? k : `t(${k})`,
+      ),
+    ).toBe(false);
+  });
+
+  // The bodies interpolate {tier} and {date}; probing without them made the
+  // ICU formatter warn on every page load.
+  it("probes with every variable the bodies interpolate", () => {
+    const calls: (Record<string, string | number> | undefined)[] = [];
+    expect(
+      steamGrantStringsReady((k, params) => {
+        calls.push(params);
+        return `t(${k})`;
+      }),
+    ).toBe(true);
+    for (const params of calls) {
+      expect(params).toMatchObject({ tier: "", date: "" });
+    }
   });
 });
 
