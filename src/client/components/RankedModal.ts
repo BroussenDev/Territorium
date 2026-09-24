@@ -1,103 +1,63 @@
 import { html } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { UserMeResponse } from "../../core/ApiSchemas";
+import {
+  RankedStatus,
+  RankedTier,
+  RankedTiers,
+  UserMeResponse,
+} from "../../core/ApiSchemas";
 import { responseHasLinkedIdentity } from "../AccountIdentity";
-import { getUserMe } from "../Api";
-import { userAuth } from "../Auth";
-import { crazyGamesSDK } from "../CrazyGamesSDK";
+import { fetchRankedStatus, getUserMe } from "../Api";
 import { translateText } from "../Utils";
 import { BaseModal } from "./BaseModal";
+import { TIER_MIN_ELO, tierEmblem, tierLabel } from "./ranked/RankedTier";
 import { modalHeader } from "./ui/ModalHeader";
 
+// Medals each tier earns when a season closes. Mirrors the API's
+// SEASON_MEDALS.
+const SEASON_MEDALS: Record<RankedTier, number> = {
+  bronze: 100,
+  silver: 200,
+  gold: 400,
+  platinum: 700,
+  diamond: 1000,
+  master: 1500,
+  legend: 2500,
+};
+
+const PLACEMENT_GAMES = 5;
+
+// The "Ranked" hub: the season, where the player stands in it, the tiers
+// and the button that joins the free-for-all queue.
 @customElement("ranked-modal")
 export class RankedModal extends BaseModal {
   protected routerName = "ranked";
 
-  @state() private elo: number | string = "...";
-  @state() private elo2v2: number | string = "...";
-  @state() private userMeResponse: UserMeResponse | false = false;
-  @state() private errorMessage: string | null = null;
-  // CrazyGames players authenticate through the SDK, not a linked
-  // Discord/Google/email account, so track that separately for ranked.
-  @state() private crazyGamesSignedIn = false;
-
-  // Eligible to see/play ranked: a linked account or a signed-in CrazyGames one.
-  private isRankedEligible(): boolean {
-    return (
-      responseHasLinkedIdentity(this.userMeResponse) || this.crazyGamesSignedIn
-    );
-  }
+  @state() private userMe: UserMeResponse | false | null = null;
+  @state() private status: RankedStatus | null = null;
+  @state() private loadFailed = false;
 
   constructor() {
     super();
     this.id = "page-ranked";
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener(
-      "userMeResponse",
-      this.handleUserMeResponse as EventListener,
-    );
+  createRenderRoot() {
+    return this;
   }
 
-  disconnectedCallback() {
-    document.removeEventListener(
-      "userMeResponse",
-      this.handleUserMeResponse as EventListener,
-    );
-    super.disconnectedCallback();
-  }
-
-  private handleUserMeResponse = (
-    event: CustomEvent<UserMeResponse | false>,
-  ) => {
-    this.errorMessage = null;
-    this.userMeResponse = event.detail;
-    this.updateElo();
-  };
-
-  private updateElo() {
-    if (this.errorMessage) {
-      this.elo = translateText("map_component.error");
-      this.elo2v2 = translateText("map_component.error");
-      return;
-    }
-
-    if (this.isRankedEligible()) {
-      const leaderboard = this.userMeResponse
-        ? this.userMeResponse.player.leaderboard
-        : undefined;
-      const noElo = translateText("matchmaking_modal.no_elo");
-      this.elo = leaderboard?.oneVone?.elo ?? noElo;
-      this.elo2v2 = leaderboard?.twoVtwo?.elo ?? noElo;
-    }
+  private signedIn(): boolean {
+    return this.userMe !== null && responseHasLinkedIdentity(this.userMe);
   }
 
   protected override async onOpen(): Promise<void> {
-    this.elo = "...";
-    this.elo2v2 = "...";
-    this.errorMessage = null;
-
-    try {
-      const userMe = await getUserMe();
-      this.userMeResponse = userMe;
-      this.crazyGamesSignedIn =
-        crazyGamesSDK.isOnCrazyGames() &&
-        (await crazyGamesSDK.getUserProfile()) !== null;
-    } catch (error) {
-      console.error("Failed to fetch user profile for ranked modal", error);
-      this.userMeResponse = false;
-      this.errorMessage = translateText("map_component.error");
-      this.elo = translateText("map_component.error");
-      this.elo2v2 = translateText("map_component.error");
-    } finally {
-      this.updateElo();
-    }
-  }
-
-  createRenderRoot() {
-    return this;
+    this.loadFailed = false;
+    this.userMe = null;
+    this.userMe = await getUserMe();
+    if (!this.signedIn()) return;
+    const status = await fetchRankedStatus();
+    this.status = status === false ? null : status;
+    this.loadFailed = status === false;
   }
 
   protected renderHeaderSlot() {
@@ -110,92 +70,188 @@ export class RankedModal extends BaseModal {
 
   protected renderBody() {
     return html`
-      <div class="custom-scrollbar p-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          ${this.renderCard(
-            translateText("mode_selector.ranked_1v1_title"),
-            this.errorMessage ??
-              (this.isRankedEligible()
-                ? translateText("matchmaking_modal.elo", { elo: this.elo })
-                : translateText("mode_selector.ranked_title")),
-            () => this.handleRanked("1v1"),
-          )}
-          ${this.renderCard(
-            translateText("mode_selector.ranked_2v2_title"),
-            this.errorMessage ??
-              (this.isRankedEligible()
-                ? translateText("matchmaking_modal.elo", { elo: this.elo2v2 })
-                : translateText("mode_selector.ranked_title")),
-            () => this.handleRanked("2v2"),
-          )}
-          ${this.renderDisabledCard(
-            translateText("mode_selector.coming_soon"),
-            "",
-          )}
-          ${this.renderDisabledCard(
-            translateText("mode_selector.coming_soon"),
-            "",
-          )}
-        </div>
-        <p class="mt-6 text-xs text-white/60 leading-relaxed text-center">
-          ${translateText("mode_selector.ranked_pairing_note")}
-        </p>
-      </div>
-    `;
-  }
-
-  private renderCard(title: string, subtitle: string, onClick: () => void) {
-    return html`
-      <button
-        @click=${onClick}
-        class="flex flex-col w-full h-28 sm:h-32 rounded-2xl bg-brand border-0 transition-all duration-200 hover:bg-brand-light hover:scale-[1.03] hover:shadow-[var(--shadow-action-card-hover)] active:bg-brand/80 active:scale-[0.98] p-6 items-center justify-center gap-3"
-      >
-        <div class="flex flex-col items-center gap-1 text-center">
-          <h3
-            class="text-lg sm:text-xl font-bold text-white uppercase tracking-widest leading-tight"
-          >
-            ${title}
-          </h3>
-          <p
-            class="text-xs text-white/80 uppercase tracking-wider whitespace-pre-line leading-tight"
-          >
-            ${subtitle}
-          </p>
-        </div>
-      </button>
-    `;
-  }
-
-  private renderDisabledCard(title: string, subtitle: string) {
-    return html`
-      <div
-        class="group relative isolate flex flex-col w-full h-28 sm:h-32 overflow-hidden rounded-2xl bg-slate-900/40 backdrop-blur-md border-0 shadow-none p-6 items-center justify-center gap-3 opacity-50 cursor-not-allowed"
-      >
-        <div class="flex flex-col items-center gap-1 text-center">
-          <h3
-            class="text-lg sm:text-xl font-bold text-white/60 uppercase tracking-widest leading-tight"
-          >
-            ${title}
-          </h3>
-          <p
-            class="text-xs text-white/40 uppercase tracking-wider whitespace-pre-line leading-tight"
-          >
-            ${subtitle}
-          </p>
+      <div class="custom-scrollbar p-4 sm:p-6 flex flex-col gap-5">
+        ${this.renderStanding()}
+        <div class="grid gap-5 md:grid-cols-[1fr_16rem]">
+          ${this.renderRules()} ${this.renderTiers()}
         </div>
       </div>
     `;
   }
 
-  private async handleRanked(mode: "1v1" | "2v2") {
-    if ((await userAuth()) === false) {
-      this.close();
-      window.showPage?.("page-account");
-      return;
+  private renderSeason() {
+    const season = this.status?.season;
+    if (!season) return "";
+    const ends = new Date(season.endsAt).toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "long",
+    });
+    return html`<p class="text-sm text-white/60">
+      ${translateText("ranked.season_ends", {
+        season: season.number,
+        date: ends,
+      })}
+    </p>`;
+  }
+
+  private renderStanding() {
+    if (this.userMe === null) {
+      return this.renderLoadingSpinner();
     }
+    if (!this.signedIn()) {
+      return html`
+        <section
+          class="rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
+        >
+          <p class="flex-1 text-white/80">
+            ${translateText("ranked.login_required")}
+          </p>
+          <button
+            class="px-6 py-3 rounded-xl bg-brand hover:bg-brand-light text-white font-bold transition-colors"
+            @click=${() => {
+              this.close();
+              window.showPage?.("page-account");
+            }}
+          >
+            ${translateText("ranked.log_in")}
+          </button>
+        </section>
+      `;
+    }
+    const s = this.status;
+    return html`
+      <section
+        class="rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col sm:flex-row items-center gap-5"
+      >
+        <div class="flex items-center gap-4 flex-1 min-w-0">
+          ${s?.tier ? tierEmblem(s.tier, 64) : this.placementEmblem()}
+          <div class="flex flex-col gap-1 min-w-0">
+            ${this.renderSeason()}
+            ${s === null
+              ? html`<p class="text-white/60">
+                  ${this.loadFailed
+                    ? translateText("map_component.error")
+                    : translateText("common.loading")}
+                </p>`
+              : s.tier
+                ? html`<p class="text-2xl font-bold text-white">
+                      ${tierLabel(s.tier)}
+                    </p>
+                    <p class="text-sm text-white/70">
+                      ${translateText("ranked.standing", {
+                        elo: s.elo,
+                        rank: s.rank ?? "-",
+                      })}
+                    </p>`
+                : html`<p class="text-xl font-bold text-white">
+                      ${translateText("ranked.placement_progress", {
+                        done: PLACEMENT_GAMES - s.placementLeft,
+                        total: PLACEMENT_GAMES,
+                      })}
+                    </p>
+                    <p class="text-sm text-white/70">
+                      ${translateText("ranked.placement_hint")}
+                    </p>`}
+            ${s && s.games > 0
+              ? html`<p class="text-xs text-white/50">
+                  ${translateText("ranked.record", {
+                    games: s.games,
+                    wins: s.wins,
+                  })}
+                </p>`
+              : ""}
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 w-full sm:w-auto">
+          <button
+            class="px-8 py-4 rounded-xl bg-brand hover:bg-brand-light active:scale-[0.98] text-white text-lg font-bold transition-all"
+            @click=${() =>
+              document.dispatchEvent(
+                new CustomEvent("open-matchmaking", {
+                  detail: { mode: "ffa" },
+                }),
+              )}
+          >
+            ${translateText("ranked.play")}
+          </button>
+          <button
+            class="px-4 py-2 rounded-xl text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            @click=${() => {
+              this.close();
+              window.location.hash = "modal=leaderboard&tab=ranked";
+            }}
+          >
+            ${translateText("ranked.see_leaderboard")}
+          </button>
+        </div>
+      </section>
+    `;
+  }
 
-    document.dispatchEvent(
-      new CustomEvent("open-matchmaking", { detail: { mode } }),
-    );
+  // Until the placement games are played the tier stays hidden.
+  private placementEmblem() {
+    return html`<div
+      class="w-16 h-16 shrink-0 rounded-full border-2 border-dashed border-white/30 flex items-center justify-center text-2xl font-bold text-white/50"
+    >
+      ?
+    </div>`;
+  }
+
+  private renderRules() {
+    const rules = [
+      "ranked.rule_format",
+      "ranked.rule_players",
+      "ranked.rule_cosmetics",
+      "ranked.rule_elo",
+      "ranked.rule_placement",
+      "ranked.rule_season",
+    ];
+    return html`
+      <section class="rounded-2xl bg-black/20 border border-white/5 p-5">
+        <h3 class="text-white font-bold mb-3">
+          ${translateText("ranked.rules_title")}
+        </h3>
+        <ul class="flex flex-col gap-2 text-sm text-white/70 list-disc pl-5">
+          ${rules.map((key) => html`<li>${translateText(key)}</li>`)}
+        </ul>
+      </section>
+    `;
+  }
+
+  private renderTiers() {
+    const current = this.status?.tier ?? null;
+    return html`
+      <section class="rounded-2xl bg-black/20 border border-white/5 p-4">
+        <h3 class="text-white font-bold mb-3">
+          ${translateText("ranked.tiers_title")}
+        </h3>
+        <ol class="flex flex-col-reverse gap-1">
+          ${RankedTiers.map(
+            (tier) => html`
+              <li
+                class="flex items-center gap-3 rounded-lg px-2 py-1.5 ${tier ===
+                current
+                  ? "bg-white/10"
+                  : ""}"
+              >
+                ${tierEmblem(tier, 28)}
+                <span class="flex-1 text-sm font-bold text-white"
+                  >${tierLabel(tier)}</span
+                >
+                <span class="text-xs text-white/50 text-right">
+                  ${tier === "legend"
+                    ? translateText("ranked.legend_rule")
+                    : `${TIER_MIN_ELO[tier]}+`}
+                  <br />
+                  ${translateText("ranked.tier_medals", {
+                    medals: SEASON_MEDALS[tier],
+                  })}
+                </span>
+              </li>
+            `,
+          )}
+        </ol>
+      </section>
+    `;
   }
 }

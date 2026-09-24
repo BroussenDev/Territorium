@@ -235,8 +235,8 @@ declare global {
     "kick-player": CustomEvent;
     toggle_game_start_timer: CustomEvent;
     "join-changed": CustomEvent;
-    "open-matchmaking": CustomEvent<{ mode?: "1v1" | "2v2" } | undefined>;
-    "matchmaking-requeue": CustomEvent<{ mode?: "1v1" | "2v2" } | undefined>;
+    "open-matchmaking": CustomEvent<{ mode?: "ffa" } | undefined>;
+    "matchmaking-requeue": CustomEvent<{ mode?: "ffa" } | undefined>;
     userMeResponse: CustomEvent<UserMeResponse | false>;
     "session-cleared": CustomEvent;
     "leave-lobby": CustomEvent;
@@ -1236,14 +1236,13 @@ class Client {
     }
   }
 
-  // Returns the requeue mode ("/?requeue" = 1v1, "/?requeue=2v2" = 2v2), or
-  // null when the URL has no requeue param.
-  private consumeRequeueUrl(): "1v1" | "2v2" | null {
+  // "ffa" when the URL carries the requeue param ("/?requeue"), else null.
+  private consumeRequeueUrl(): "ffa" | null {
     const searchParams = new URLSearchParams(window.location.search);
     if (!searchParams.has("requeue")) {
       return null;
     }
-    const mode = searchParams.get("requeue") === "2v2" ? "2v2" : "1v1";
+    const mode = "ffa";
 
     searchParams.delete("requeue");
     const newUrl =
@@ -1791,24 +1790,19 @@ class Client {
   // dispatch with no open modal (the player closed it mid-wait) stays a
   // no-op — don't force them back into a queue they left.
   private handleMatchmakingRequeue(
-    event: CustomEvent<{ mode?: "1v1" | "2v2" } | undefined>,
+    event: CustomEvent<{ mode?: "ffa" } | undefined>,
   ) {
     if (this.matchmakingModal?.requeue()) {
       return;
     }
     if (event.detail?.mode !== undefined) {
-      window.location.href =
-        event.detail.mode === "2v2" ? "/?requeue=2v2" : "/?requeue";
+      window.location.href = "/?requeue";
     }
   }
 
-  private handleOpenMatchmaking(
-    event: CustomEvent<{ mode?: "1v1" | "2v2" } | undefined>,
-  ) {
+  // Ranked is one queue, the free-for-all: the event's mode is not needed.
+  private handleOpenMatchmaking() {
     if (!this.matchmakingModal) return;
-    // Always set the mode: dispatchers without a detail (homepage button,
-    // requeue URL) mean 1v1 and must reset a lingering 2v2 selection.
-    this.matchmakingModal.mode = event.detail?.mode === "2v2" ? "2v2" : "1v1";
     this.matchmakingModal.open();
   }
 

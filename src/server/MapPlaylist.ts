@@ -518,6 +518,43 @@ export class MapPlaylist {
     } satisfies GameConfig;
   }
 
+  // Ranked free-for-all (the "Ranked game" button): the matched players only,
+  // no nations and no tribes, on a fixed pool of mid-sized maps so a rating
+  // reflects play rather than map luck. Small matches get the compact map.
+  public getRankedFfaConfig(players: number): GameConfig {
+    const maps = [
+      GameMapType.Europe,
+      GameMapType.EuropeClassic,
+      GameMapType.Asia,
+      GameMapType.Africa,
+      GameMapType.Australia,
+      GameMapType.France,
+      GameMapType.Italia,
+      GameMapType.Japan,
+    ];
+    const isCompact = players <= 6;
+    return {
+      donateGold: false,
+      donateTroops: false,
+      gameMap: maps[Math.floor(Math.random() * maps.length)],
+      maxPlayers: players,
+      gameType: GameType.Public,
+      gameMapSize: isCompact ? GameMapSize.Compact : GameMapSize.Normal,
+      difficulty: Difficulty.Medium, // Doesn't matter, nations are disabled
+      rankedType: RankedType.FFA,
+      infiniteGold: false,
+      infiniteTroops: false,
+      maxTimerValue: isCompact ? 15 : 20,
+      instantBuild: false,
+      randomSpawn: false,
+      nations: "disabled",
+      gameMode: GameMode.FFA,
+      bots: 0,
+      spawnImmunityDuration: 30 * 10,
+      disabledUnits: [],
+    } satisfies GameConfig;
+  }
+
   public get2v2Config(): GameConfig {
     const maps = [
       GameMapType.Australia, // 40%

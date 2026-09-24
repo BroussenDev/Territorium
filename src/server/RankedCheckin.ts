@@ -24,7 +24,7 @@ import { ServerEnv } from "./ServerEnv";
 // Games already assigned or running are untouched by this: the gate only
 // decides whether to make a NEW offer.
 
-export type RankedMode = "1v1" | "2v2";
+export type RankedMode = "1v1" | "2v2" | "ffa";
 
 // How long a single check-in may hang before we abort and come round again.
 // The endpoint is a long poll, so a request pending for most of this is the
@@ -219,7 +219,13 @@ export async function rankedCheckinPass(
         );
       }
       const baseConfig =
-        mode === "2v2" ? playlist.get2v2Config() : playlist.get1v1Config();
+        mode === "ffa"
+          ? playlist.getRankedFfaConfig(
+              parsed.success ? parsed.data.players.length : 16,
+            )
+          : mode === "2v2"
+            ? playlist.get2v2Config()
+            : playlist.get1v1Config();
       const game = gm.createGame(
         gameId,
         parsed.success
@@ -243,14 +249,17 @@ export async function rankedCheckinPass(
   }
 }
 
+// The queues Territorium's API runs: only the ranked free-for-all for now.
+export const RANKED_MODES: readonly RankedMode[] = ["ffa"];
+
 /**
  * Start the ranked check-in loops for this worker. One check-in serves
- * exactly one queue, so a host serving both modes runs one long-poll loop per
- * mode — over a single shared gate, so a drain is announced once.
+ * exactly one queue, so a host serving several modes runs one long-poll loop
+ * per mode — over a single shared gate, so a drain is announced once.
  */
 export function startRankedCheckinLoops(deps: RankedCheckinDeps): void {
   const gate = new RankedCheckinGate(deps.isActive, deps.log);
-  for (const mode of ["1v1", "2v2"] as const) {
+  for (const mode of RANKED_MODES) {
     startPolling(
       async () => rankedCheckinPass(mode, gate, deps),
       CHECKIN_INTERVAL_MS + Math.random() * CHECKIN_JITTER_MS,

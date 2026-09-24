@@ -34,6 +34,7 @@ import {
   Intent,
   LobbyAccent,
   PartialGameRecord,
+  PlayerCosmetics,
   PlayerLiveStats,
   PlayerRecord,
   PlayerReport,
@@ -813,15 +814,29 @@ export class GameServer {
     return this.desync.count();
   }
 
+  // Ranked games show a player's name and clan tag, nothing bought: every
+  // cosmetic but the verified-name check is left out of the start info.
+  private shownCosmetics(c: Client): PlayerCosmetics | undefined {
+    if (this.gameConfig.rankedType === undefined || c.cosmetics === undefined) {
+      return c.cosmetics;
+    }
+    return c.cosmetics.verified ? { verified: true } : {};
+  }
+
   // Matchmade ranked games (1v1/2v2) must start with full attendance: the
   // roster freezes at start(), so a game missing a player would run
   // short-handed only to be voided by the sim (2v2) or hand out a walkover
   // the absent player never contested (1v1). Called at the start deadline;
   // cancels the game and returns true when a matched player never connected.
   public cancelShortHandedMatch(): boolean {
-    // Explicitly 1v1/2v2 only — a future ranked type must opt in rather
-    // than inherit pre-start cancellation.
+    // Explicitly opted-in types only — a future ranked type must opt in
+    // rather than inherit pre-start cancellation. A ranked free-for-all
+    // starts with whoever made it, as long as there is someone to play.
     const rankedType = this.gameConfig.rankedType;
+    if (rankedType === RankedType.FFA) {
+      if (this.playerCount() >= 2) return false;
+      return this.cancelMatch();
+    }
     if (
       rankedType !== RankedType.OneVOne &&
       rankedType !== RankedType.TwoVTwo
@@ -832,10 +847,14 @@ export class GameServer {
     if (expected === undefined || this.playerCount() >= expected) {
       return false;
     }
+    return this.cancelMatch();
+  }
+
+  private cancelMatch(): boolean {
     this.log.info("cancelling matchmade game, missing players at deadline", {
       gameID: this.id,
       connected: this.playerCount(),
-      expected,
+      expected: this.gameConfig.maxPlayers,
     });
     for (const c of [...this.clients.active()]) {
       this.kickClient(c.clientID, KICK_REASON_MATCH_CANCELLED);
@@ -1050,7 +1069,7 @@ export class GameServer {
         username: c.username,
         clanTag: c.clanTag ?? null,
         clientID: c.clientID,
-        cosmetics: c.cosmetics,
+        cosmetics: this.shownCosmetics(c),
         isLobbyCreator: this.lobbyCreatorID === c.clientID,
         friends: friendsFor(c),
         teamIndex: this.matchmakingTeamIndex(c),

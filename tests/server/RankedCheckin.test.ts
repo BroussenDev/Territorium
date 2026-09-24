@@ -32,6 +32,10 @@ function makeDeps(
     playlist: {
       get1v1Config: vi.fn().mockReturnValue({ gameMap: "Europe" }),
       get2v2Config: vi.fn().mockReturnValue({ gameMap: "Europe" }),
+      getRankedFfaConfig: vi.fn().mockImplementation((n: number) => ({
+        gameMap: "Europe",
+        maxPlayers: n,
+      })),
     } as any,
     workerId: 0,
     log,
@@ -281,5 +285,40 @@ describe("rankedCheckinPass", () => {
     await rankedCheckinPass("1v1", gate, deps);
 
     expect(deps.log.error).not.toHaveBeenCalled();
+  });
+});
+
+describe("ranked free-for-all check-in", () => {
+  beforeEach(() => {
+    vi.stubEnv("GAME_ENV", "prod");
+    vi.stubEnv("INSTANCE_LETTER", "a");
+    vi.stubEnv("NUM_WORKERS", "4");
+    vi.stubEnv("DOMAIN", "openfront.io");
+    vi.stubEnv("API_KEY", "test-key");
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("hosts the matched players, sized to the match", async () => {
+    const players = ["p1", "p2", "p3", "p4", "p5"];
+    const fetchFn = okFetch({ assignment: { players } });
+    const deps = makeDeps(() => true, fetchFn);
+    const gate = new RankedCheckinGate(deps.isActive, deps.log);
+    await rankedCheckinPass("ffa", gate, deps);
+
+    const [, init] = vi.mocked(fetchFn).mock.calls[0];
+    expect(JSON.parse(String((init as RequestInit).body)).mode).toBe("ffa");
+    expect(deps.playlist.getRankedFfaConfig).toHaveBeenCalledWith(5);
+    const [, config] = vi.mocked(deps.gm.createGame).mock.calls[0];
+    expect(config).toMatchObject({ maxPlayers: 5, allowedPublicIds: players });
+  });
+
+  it("creates nothing while the queue has no match", async () => {
+    const deps = makeDeps(() => true, okFetch({ assignment: null }));
+    const gate = new RankedCheckinGate(deps.isActive, deps.log);
+    await rankedCheckinPass("ffa", gate, deps);
+    expect(deps.gm.createGame).not.toHaveBeenCalled();
   });
 });

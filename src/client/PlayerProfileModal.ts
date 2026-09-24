@@ -13,6 +13,11 @@ import "./components/baseComponents/stats/PlayerStatsTree";
 import { BaseModal } from "./components/BaseModal";
 import "./components/clan/ClanCard";
 import "./components/PlayerName";
+import {
+  seasonBadgeChip,
+  tierEmblem,
+  tierLabel,
+} from "./components/ranked/RankedTier";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { usernameText } from "./components/ui/UsernameText";
 import { verifiedBadge } from "./components/ui/VerifiedBadge";
@@ -33,6 +38,9 @@ export class PlayerProfileModal extends BaseModal {
   @state() private staffRole: PlayerProfile["role"] = undefined;
   @state() private statsTree: PlayerStatsTree | null = null;
   @state() private clans: NonNullable<PlayerProfile["clans"]> = [];
+  @state() private ranked: PlayerProfile["ranked"] = undefined;
+  @state() private seasonBadges: NonNullable<PlayerProfile["seasonBadges"]> =
+    [];
   @state() private loading = false;
   private openedFrom: ProfileOrigin | null = null;
   // Mirrors the account modal's Games tab: keep the accumulated history list +
@@ -225,9 +233,54 @@ export class PlayerProfileModal extends BaseModal {
       return this.renderNotFound();
     }
     return html`
+      ${this.renderRanked()}
       <player-stats-tree-view
         .statsTree=${this.statsTree}
       ></player-stats-tree-view>
+    `;
+  }
+
+  // This season's ranked standing and the badges of finished seasons.
+  private renderRanked() {
+    const r = this.ranked;
+    if (!r && this.seasonBadges.length === 0) return nothing;
+    return html`
+      <section
+        class="mb-6 rounded-2xl bg-white/5 border border-white/10 p-4 flex flex-col gap-3"
+      >
+        ${r
+          ? html`<div class="flex items-center gap-3">
+              ${r.tier ? tierEmblem(r.tier, 44) : nothing}
+              <div class="flex flex-col">
+                <span class="text-white font-bold">
+                  ${r.tier
+                    ? tierLabel(r.tier)
+                    : translateText("ranked.placement_progress", {
+                        done: 5 - r.placementLeft,
+                        total: 5,
+                      })}
+                </span>
+                <span class="text-xs text-white/60">
+                  ${r.tier
+                    ? translateText("ranked.standing", {
+                        elo: r.elo,
+                        rank: r.rank ?? "-",
+                      })
+                    : nothing}
+                  ${translateText("ranked.record", {
+                    games: r.games,
+                    wins: r.wins,
+                  })}
+                </span>
+              </div>
+            </div>`
+          : nothing}
+        ${this.seasonBadges.length > 0
+          ? html`<div class="flex flex-wrap gap-2">
+              ${this.seasonBadges.map((b) => seasonBadgeChip(b.season, b.tier))}
+            </div>`
+          : nothing}
+      </section>
     `;
   }
 
@@ -278,6 +331,8 @@ export class PlayerProfileModal extends BaseModal {
     this.staffRole = undefined;
     this.statsTree = null;
     this.clans = [];
+    this.ranked = undefined;
+    this.seasonBadges = [];
     this.gameHistoryCache = null;
     this.gamesScrollTop = 0;
     this.restoreGamesScrollAfterOpen = false;
@@ -299,6 +354,8 @@ export class PlayerProfileModal extends BaseModal {
     this.username = profile === false ? null : (profile.username ?? null);
     this.staffRole = profile === false ? undefined : profile.role;
     this.clans = profile === false ? [] : (profile.clans ?? []);
+    this.ranked = profile === false ? undefined : profile.ranked;
+    this.seasonBadges = profile === false ? [] : (profile.seasonBadges ?? []);
   }
 
   // Intentionally preserves publicId/statsTree/history cache/scroll: the page

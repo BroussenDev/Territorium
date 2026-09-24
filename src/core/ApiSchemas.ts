@@ -596,6 +596,85 @@ export type SoloLeaderboardResponse = z.infer<
   typeof SoloLeaderboardResponseSchema
 >;
 
+// Ranked free-for-all tiers, lowest first. "legend" is no rating band: it is
+// held by the season's top five masters.
+export const RankedTiers = [
+  "bronze",
+  "silver",
+  "gold",
+  "platinum",
+  "diamond",
+  "master",
+  "legend",
+] as const;
+export const RankedTierSchema = z.enum(RankedTiers);
+export type RankedTier = z.infer<typeof RankedTierSchema>;
+
+// Monthly seasons: the number and when it closes (UTC).
+export const RankedSeasonSchema = z.object({
+  number: z.number().int().min(1),
+  endsAt: z.iso.datetime(),
+});
+
+// GET /ranked/me — the season and where the signed-in player stands in it.
+// tier and rank are null until the placement games are played.
+export const RankedStatusSchema = z.object({
+  season: RankedSeasonSchema,
+  elo: z.number(),
+  peak: z.number(),
+  games: z.number(),
+  wins: z.number(),
+  placementLeft: z.number(),
+  tier: RankedTierSchema.nullable(),
+  rank: z.number().nullable(),
+});
+export type RankedStatus = z.infer<typeof RankedStatusSchema>;
+
+// GET /leaderboard/ranked-ffa — public, the season's top 100 placed players.
+export const RankedFfaLeaderboardEntrySchema = z.object({
+  rank: z.number(),
+  publicId: z.string(),
+  username: z.string().nullable(),
+  elo: z.number(),
+  tier: RankedTierSchema,
+  games: z.number(),
+  wins: z.number(),
+});
+export type RankedFfaLeaderboardEntry = z.infer<
+  typeof RankedFfaLeaderboardEntrySchema
+>;
+
+export const RankedFfaLeaderboardResponseSchema = z.object({
+  season: RankedSeasonSchema,
+  players: RankedFfaLeaderboardEntrySchema.array(),
+});
+export type RankedFfaLeaderboardResponse = z.infer<
+  typeof RankedFfaLeaderboardResponseSchema
+>;
+
+// A finished season's badge: the tier held when it closed.
+export const SeasonBadgeSchema = z.object({
+  season: z.number().int().min(1),
+  tier: RankedTierSchema,
+  rank: z.number(),
+});
+export type SeasonBadge = z.infer<typeof SeasonBadgeSchema>;
+
+// POST /matchmaking/ffa — a searching player's heartbeat: the queue, or the
+// game once matched.
+export const RankedQueueStateSchema = z.union([
+  z.object({ gameId: z.string() }),
+  z.object({
+    count: z.number(),
+    min: z.number(),
+    max: z.number(),
+    lowMin: z.number(),
+    startsIn: z.number().nullable(),
+    lowIn: z.number(),
+  }),
+]);
+export type RankedQueueState = z.infer<typeof RankedQueueStateSchema>;
+
 // GET /public/tribe/:name — the public stats page for one custom tribe name.
 // No auth; the name goes URL-encoded in the path and lookup is case- and
 // whitespace-insensitive (the response carries the canonical display form).
@@ -682,6 +761,7 @@ const RecentRankedStatsSchema = z.object({
   all: PlayerRecentStatsSchema,
   [RankedType.OneVOne]: PlayerRecentStatsSchema.optional(),
   [RankedType.TwoVTwo]: PlayerRecentStatsSchema.optional(),
+  [RankedType.FFA]: PlayerRecentStatsSchema.optional(),
 });
 
 export const PlayerRecentStatsTreeSchema = z.object({
@@ -736,6 +816,10 @@ export const PlayerProfileSchema = z.object({
       }),
     )
     .optional(),
+  // This season's ranked standing (absent before a first ranked game) and
+  // the badges of past seasons, newest first.
+  ranked: RankedStatusSchema.optional(),
+  seasonBadges: SeasonBadgeSchema.array().optional(),
 });
 export type PlayerProfile = z.infer<typeof PlayerProfileSchema>;
 

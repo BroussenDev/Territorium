@@ -10,7 +10,7 @@ import {
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
-import { GameType, RankedType } from "../../../core/game/Game";
+import { GameType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
   fetchMyGameResult,
@@ -339,12 +339,7 @@ export class WinModal extends LitElement implements Controller {
     // page teardown).
     document.dispatchEvent(
       new CustomEvent("matchmaking-requeue", {
-        detail: {
-          mode:
-            this.game.config().gameConfig().rankedType === RankedType.TwoVTwo
-              ? ("2v2" as const)
-              : ("1v1" as const),
-        },
+        detail: { mode: "ffa" as const },
       }),
     );
   }

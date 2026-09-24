@@ -142,6 +142,8 @@ export enum GameMode {
 export enum RankedType {
   OneVOne = "1v1",
   TwoVTwo = "2v2",
+  // Matchmade free-for-all between signed-in players, rated by placement.
+  FFA = "ffa",
 }
 
 export const isGameMode = (value: unknown): value is GameMode =>

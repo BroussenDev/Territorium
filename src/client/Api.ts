@@ -32,8 +32,14 @@ import {
   PutCreatorResponseSchema,
   PutUsernameResponse,
   PutUsernameResponseSchema,
+  RankedFfaLeaderboardResponse,
+  RankedFfaLeaderboardResponseSchema,
   RankedLeaderboardResponse,
   RankedLeaderboardResponseSchema,
+  RankedQueueState,
+  RankedQueueStateSchema,
+  RankedStatus,
+  RankedStatusSchema,
   SoloLeaderboardResponse,
   SoloLeaderboardResponseSchema,
   SteamFinalizeResponseSchema,
@@ -2258,6 +2264,88 @@ export async function fetchSoloLeaderboard(): Promise<
   } catch (err) {
     console.error("fetchSoloLeaderboard: request failed", err);
     return false;
+  }
+}
+
+// GET /leaderboard/ranked-ffa — public, the ranked season's top 100.
+export async function fetchRankedFfaLeaderboard(): Promise<
+  RankedFfaLeaderboardResponse | false
+> {
+  try {
+    const res = await fetch(`${getApiBase()}/leaderboard/ranked-ffa`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      console.warn("fetchRankedFfaLeaderboard: unexpected status", res.status);
+      return false;
+    }
+    const parsed = RankedFfaLeaderboardResponseSchema.safeParse(
+      await res.json(),
+    );
+    if (!parsed.success) {
+      console.warn(
+        "fetchRankedFfaLeaderboard: Zod validation failed",
+        parsed.error.toString(),
+      );
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchRankedFfaLeaderboard: request failed", err);
+    return false;
+  }
+}
+
+// GET /ranked/me — the signed-in player's standing this season.
+export async function fetchRankedStatus(): Promise<RankedStatus | false> {
+  try {
+    const res = await fetch(`${getApiBase()}/ranked/me`, {
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (!res.ok) return false;
+    const parsed = RankedStatusSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn("fetchRankedStatus: Zod validation failed", parsed.error);
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchRankedStatus: request failed", err);
+    return false;
+  }
+}
+
+// POST /matchmaking/ffa — joins the ranked queue or keeps a place in it; a
+// player who stops polling for ~10 s drops out. "login_required": guests and
+// banned accounts can't play ranked.
+export async function pollRankedQueue(): Promise<
+  RankedQueueState | "login_required" | false
+> {
+  try {
+    const res = await fetch(`${getApiBase()}/matchmaking/ffa`, {
+      method: "POST",
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (res.status === 401 || res.status === 403) return "login_required";
+    if (!res.ok) return false;
+    const parsed = RankedQueueStateSchema.safeParse(await res.json());
+    return parsed.success ? parsed.data : false;
+  } catch (err) {
+    console.error("pollRankedQueue: request failed", err);
+    return false;
+  }
+}
+
+// DELETE /matchmaking/ffa — leaves the ranked queue.
+export async function leaveRankedQueue(): Promise<void> {
+  try {
+    await fetch(`${getApiBase()}/matchmaking/ffa`, {
+      method: "DELETE",
+      headers: { Authorization: await getAuthHeader() },
+      keepalive: true,
+    });
+  } catch (err) {
+    console.error("leaveRankedQueue: request failed", err);
   }
 }
 

@@ -16,11 +16,14 @@ interface LadderState {
   hasMore: boolean;
 }
 
-const RANKED_TYPES = Object.values(RankedType);
+// The public Elo ladders one page request returns. The ranked free-for-all
+// has its own board (LeaderboardRankedTable) and stays empty here.
+const RANKED_TYPES = [RankedType.OneVOne, RankedType.TwoVTwo] as const;
 
 const emptyLadders = (): Record<RankedType, LadderState> => ({
   [RankedType.OneVOne]: { entries: [], userEntry: null, hasMore: true },
   [RankedType.TwoVTwo]: { entries: [], userEntry: null, hasMore: true },
+  [RankedType.FFA]: { entries: [], userEntry: null, hasMore: false },
 });
 
 const toPlayerEntry = (

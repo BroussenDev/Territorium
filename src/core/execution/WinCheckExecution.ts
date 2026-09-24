@@ -90,7 +90,9 @@ export class WinCheckExecution implements Execution {
       return;
     }
 
-    if (this.mg.config().gameConfig().rankedType === RankedType.OneVOne) {
+    // Matchmade games are human-only: the last one still connected wins.
+    const rankedType = this.mg.config().gameConfig().rankedType;
+    if (rankedType === RankedType.OneVOne || rankedType === RankedType.FFA) {
       const humans = sorted.filter(
         (p) => p.type() === PlayerType.Human && !p.isDisconnected(),
       );

@@ -92,6 +92,23 @@ describe("GameServer - short-handed matchmade game cancellation", () => {
     expect(game.cancelShortHandedMatch()).toBe(false);
   });
 
+  it("starts a ranked free-for-all with whoever came, if two or more", () => {
+    const game = makeRankedGame(RankedType.FFA, 8);
+    expect(game.joinClient(makeClient("c1", "p1"))).toBe("joined");
+    expect(game.joinClient(makeClient("c2", "p2"))).toBe("joined");
+
+    expect(game.cancelShortHandedMatch()).toBe(false);
+    expect(game.phase()).not.toBe(GamePhase.Finished);
+  });
+
+  it("cancels a ranked free-for-all nobody else came to", () => {
+    const game = makeRankedGame(RankedType.FFA, 8);
+    expect(game.joinClient(makeClient("c1", "p1"))).toBe("joined");
+
+    expect(game.cancelShortHandedMatch()).toBe(true);
+    expect(game.phase()).toBe(GamePhase.Finished);
+  });
+
   it("does not cancel non-ranked games, even short-handed", () => {
     const game = makeGame({
       config: { gameType: GameType.Public, maxPlayers: 4 },

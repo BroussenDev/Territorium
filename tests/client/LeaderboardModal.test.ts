@@ -645,9 +645,9 @@ describe("LeaderboardModal", () => {
   describe("Modal Functionality", () => {
     it("should initialize with default state", () => {
       expect(modal).toBeTruthy();
-      // The solo board comes first: most games are played against nations.
+      // The ranked season board comes first.
       expect((modal as unknown as { activeTab: string }).activeTab).toBe(
-        "solo",
+        "ranked",
       );
     });
 
