@@ -13,6 +13,8 @@ import {
   ClanInfoSchema,
   type ClanLeaderboardResponse,
   ClanLeaderboardResponseSchema,
+  type ClanMapResponse,
+  ClanMapResponseSchema,
   type ClanMembersResponse,
   ClanMembersResponseSchema,
   type ClanRequestsResponse,
@@ -38,11 +40,13 @@ export type {
   ClanGamesResponse,
   ClanInfo,
   ClanJoinRequest,
+  ClanMapResponse,
   ClanMember,
   ClanMembersResponse,
   ClanMemberStats,
   ClanMemberWL,
   ClanRequestsResponse,
+  ClanTerritoryContender,
 } from "../core/ClanApiSchemas";
 
 async function clanFetch(
@@ -90,6 +94,24 @@ export async function fetchClanLeaderboard(): Promise<
     return parsed.data;
   } catch (err) {
     console.warn("fetchClanLeaderboard: request failed", err);
+    return false;
+  }
+}
+
+export async function fetchClanMap(): Promise<ClanMapResponse | false> {
+  try {
+    const res = await fetch(`${getApiBase()}/public/clans/map`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) return false;
+    const parsed = ClanMapResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn("fetchClanMap: Zod validation failed", parsed.error);
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.warn("fetchClanMap: request failed", err);
     return false;
   }
 }

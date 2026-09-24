@@ -257,8 +257,11 @@ async function awaitSteamAuthorization(
 /** What to buy. The rail is chosen by {@link paymentsProvider}, not here. */
 export type PurchaseRequest =
   | { kind: "currency_pack"; packName: string }
-  | { kind: "custom_currency"; hardAmount: number }
+  | { kind: "custom_currency"; hardAmount: number; currency?: CheckoutCurrency }
   | { kind: "subscription_tier"; tierName: string };
+
+/** What a custom amount is charged in; the card picks it from the language. */
+export type CheckoutCurrency = "eur" | "usd";
 
 export type PurchaseOutcome =
   // Navigation to the rail has been triggered; the page is going away.

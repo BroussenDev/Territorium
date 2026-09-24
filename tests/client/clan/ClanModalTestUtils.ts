@@ -62,6 +62,12 @@ export function clanApiMockFactory() {
     denyClanRequest: vi.fn(),
     withdrawClanRequest: vi.fn(),
     fetchClanLeaderboard: vi.fn(),
+    fetchClanMap: vi.fn(async () => ({
+      start: "2026-01-01T00:00:00.000Z",
+      end: "2026-01-31T00:00:00.000Z",
+      territories: [],
+      clans: [],
+    })),
     banClanMember: vi.fn(async () => true),
     unbanClanMember: vi.fn(async () => true),
     fetchClanBans: vi.fn(async () => ({

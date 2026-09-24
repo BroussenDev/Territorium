@@ -1461,7 +1461,7 @@ export async function createCustomCurrencyCheckout(
 // dead button.
 export type PaymentsCheckoutRequest = (
   | { kind: "currency_pack"; packName: string }
-  | { kind: "custom_currency"; hardAmount: number }
+  | { kind: "custom_currency"; hardAmount: number; currency?: "eur" | "usd" }
   | { kind: "subscription_tier"; tierName: string }
 ) & { provider: PaymentsProvider; handoffs?: PaymentsHandoff[] };
 

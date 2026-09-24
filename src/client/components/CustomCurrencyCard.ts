@@ -1,19 +1,61 @@
 import { html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { showInGameAlert } from "../InGameModal";
-import { purchaseOutcomeMessage, startPurchase } from "../Payments";
-import { translateText } from "../Utils";
+import {
+  type CheckoutCurrency,
+  purchaseOutcomeMessage,
+  startPurchase,
+} from "../Payments";
+import { currentLanguage, translateText } from "../Utils";
 import "./PlutoniumIcon";
 import "./PurchaseButton";
 
-// Fixed rate: 20 plutonium = $1.00 (5 cents each). Bounds and rate are
-// enforced server-side. For the redirect flow these are display-only, but
-// the inline flow seeds Stripe Elements with the client-computed amount —
-// a server rate that diverges from this one trips the amount guard in
-// InlineCheckoutSession.confirmInner, which hands the purchase back to the
-// redirect flow rather than confirming a price the tile never displayed.
+// Fixed rate: 20 emeralds = 1.00 € or $1.00 (5 cents each). Bounds and rate
+// are enforced server-side; here they are display-only, since checkout
+// redirects to the payment page, which shows the amount actually charged.
 const MIN_PLUTONIUM = 20;
 const MAX_PLUTONIUM = 2000;
+const CENTS_PER_PLUTONIUM = 5;
+
+// Languages of euro-area countries: they pay in euros, everyone else in
+// dollars.
+const EURO_LANGUAGES = new Set([
+  "ca",
+  "de",
+  "de-CH",
+  "el",
+  "eo",
+  "es",
+  "et",
+  "fi",
+  "fr",
+  "gl",
+  "it",
+  "nl",
+  "pt-PT",
+  "sk",
+  "sl",
+]);
+
+export function checkoutCurrency(lang: string): CheckoutCurrency {
+  return EURO_LANGUAGES.has(lang) ? "eur" : "usd";
+}
+
+/** "5,00 €" in French, "$5.00" in English. */
+export function formatCheckoutPrice(
+  cents: number,
+  currency: CheckoutCurrency,
+  lang: string,
+): string {
+  try {
+    return new Intl.NumberFormat(lang, {
+      style: "currency",
+      currency: currency.toUpperCase(),
+    }).format(cents / 100);
+  } catch {
+    return `${(cents / 100).toFixed(2)} ${currency.toUpperCase()}`;
+  }
+}
 
 @customElement("custom-currency-card")
 export class CustomCurrencyCard extends LitElement {
@@ -29,8 +71,8 @@ export class CustomCurrencyCard extends LitElement {
     return Math.min(MAX_PLUTONIUM, Math.max(MIN_PLUTONIUM, Math.floor(value)));
   }
 
-  private get priceDollars(): string {
-    return (this.amount / 20).toFixed(2);
+  private get currency(): CheckoutCurrency {
+    return checkoutCurrency(currentLanguage());
   }
 
   private onSlider(e: Event) {
@@ -47,6 +89,7 @@ export class CustomCurrencyCard extends LitElement {
     const outcome = await startPurchase({
       kind: "custom_currency",
       hardAmount: this.amount,
+      currency: this.currency,
     });
     const message = purchaseOutcomeMessage(
       outcome,
@@ -56,7 +99,11 @@ export class CustomCurrencyCard extends LitElement {
   };
 
   render() {
-    const price = `$${this.priceDollars}`;
+    const price = formatCheckoutPrice(
+      this.amount * CENTS_PER_PLUTONIUM,
+      this.currency,
+      currentLanguage(),
+    );
     // Mirrors cosmetic-card: the name leads, the artwork box is square, and
     // the width comes from the host so the card shrinks with the grid on
     // phones instead of overflowing it.
@@ -125,15 +172,6 @@ export class CustomCurrencyCard extends LitElement {
             class="block w-full"
             .dollarPrice=${price}
             .onPurchaseDollar=${this.buy}
-            .inlineCheckout=${{
-              request: {
-                kind: "custom_currency" as const,
-                hardAmount: this.amount,
-              },
-              // Same fixed rate as priceDollars: 5 cents per plutonium.
-              amountCents: this.amount * 5,
-              successMessageKey: "store.custom_currency_purchase_success",
-            }}
           ></purchase-button>
         </div>
       </article>

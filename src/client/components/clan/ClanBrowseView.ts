@@ -96,9 +96,9 @@ export class ClanBrowseView extends LitElement {
       ? Math.ceil(this.browseData.total / this.browseData.limit)
       : 0;
     const pendingTags = new Set(this.myPendingRequests.map((r) => r.tag));
-    const filtered = (this.browseData?.results ?? []).filter(
-      (clan) => !this.myClanRoles.has(clan.tag),
-    );
+    // The player's own clans stay listed, tagged with their role, so the
+    // list is never empty just because the only clans are theirs.
+    const clans = this.browseData?.results ?? [];
 
     return html`
       <div class="space-y-4">
@@ -128,16 +128,24 @@ export class ClanBrowseView extends LitElement {
               ${this.errorMsg}
             </p>`
           : ""}
+        ${this.searchQuery.trim() === "" && clans.length > 0
+          ? html`<h3
+              class="text-xs font-bold text-white/40 uppercase tracking-wider"
+            >
+              ${translateText("clan_modal.popular_clans")}
+            </h3>`
+          : ""}
 
         <div class="space-y-3">
-          ${filtered.length === 0 && this.browseData
+          ${clans.length === 0 && this.browseData
             ? html`<p class="text-white/40 text-sm text-center py-8">
                 ${translateText("clan_modal.no_results")}
               </p>`
-            : filtered.map(
+            : clans.map(
                 (clan) =>
                   html`<clan-card
                     .clan=${clan}
+                    .clanRole=${this.myClanRoles.get(clan.tag)}
                     ?pending=${pendingTags.has(clan.tag)}
                   ></clan-card>`,
               )}

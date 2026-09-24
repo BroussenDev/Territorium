@@ -663,8 +663,9 @@ describe("StoreModal cosmetic browser", () => {
 
     expect(modal.querySelector("[data-store-browser]")).toBeTruthy();
     expect(modal.querySelector("[data-store-grid]")).toBeTruthy();
-    // Territorium sells fixed packs only: no custom-amount card.
-    expect(modal.querySelector("custom-currency-card")).toBeNull();
+    // The real-money custom-amount card follows the medal-priced packs.
+    const cards = modal.querySelectorAll("[data-store-grid] > *");
+    expect(cards[cards.length - 1]?.tagName).toBe("CUSTOM-CURRENCY-CARD");
     expect(modal.querySelector("[data-store-grid]")?.className).toMatch(
       /flex-wrap/,
     );
@@ -983,13 +984,13 @@ describe("StoreModal on the Steam rail", () => {
     localStorage.clear();
   });
 
-  it("offers no custom-amount card, on the web or on Steam", async () => {
+  it("offers the custom-amount card, on the web and on Steam", async () => {
     let modal = await openStoreOnTab("packs");
-    expect(modal.querySelector("custom-currency-card")).toBeNull();
+    expect(modal.querySelector("custom-currency-card")).toBeTruthy();
     store?.remove();
     installSteamShell();
     modal = await openStoreOnTab("packs");
-    expect(modal.querySelector("custom-currency-card")).toBeNull();
+    expect(modal.querySelector("custom-currency-card")).toBeTruthy();
   });
 
   // REQUIRED, not an optimisation: the main process parks authorizations and

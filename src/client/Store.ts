@@ -538,9 +538,13 @@ export class StoreModal extends BaseModal {
   }
 
   private renderPackGrid(): TemplateResult {
-    // Territorium sells fixed packs only: emeralds are bought with medals.
+    // Fixed packs are bought with medals; the custom-amount card that follows
+    // them sells emeralds for real money (€ or $, by language).
     return this.renderBrowser(this.visibleGroups, {
       emptyTranslationKey: "store.no_packs",
+      trailingContent: html`<custom-currency-card
+        class="block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48"
+      ></custom-currency-card>`,
       gridClass:
         "flex flex-wrap items-stretch justify-center content-start gap-4 p-4 sm:p-8",
       cardClass: "block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48",

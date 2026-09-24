@@ -89,14 +89,15 @@ export class PlayPage extends LitElement {
           ></div>
 
           <!-- Left column: the hero (emblem, tagline, identity row) over the
-               news banner. -->
+               news banner. The hero must not clip and must sit above the
+               banner: the clan tag menu drops down out of it. -->
           <div class="flex flex-col gap-2 min-w-0">
             <section
-              class="relative overflow-hidden flex items-center gap-6 lg:gap-8 sm:rounded-2xl sm:border sm:border-emerald-400/15 sm:bg-[linear-gradient(115deg,#0f2a21_0%,var(--color-ink)_65%)] sm:px-6 sm:py-5 lg:px-8"
+              class="relative z-30 flex items-center gap-6 lg:gap-8 sm:rounded-2xl sm:border sm:border-emerald-400/15 sm:bg-[linear-gradient(115deg,#0f2a21_0%,var(--color-ink)_65%)] sm:px-6 sm:py-5 lg:px-8"
             >
               <!-- Tile mesh fading in from the right edge, echoing the backdrop. -->
               <div
-                class="hidden sm:block territory-mesh absolute inset-y-0 right-0 w-2/3 bg-emerald-500/10 [mask-image:linear-gradient(to_left,#000,transparent)] pointer-events-none"
+                class="hidden sm:block territory-mesh absolute inset-y-0 right-0 w-2/3 rounded-r-2xl bg-emerald-500/10 [mask-image:linear-gradient(to_left,#000,transparent)] pointer-events-none"
                 aria-hidden="true"
               ></div>
               <territorium-emblem

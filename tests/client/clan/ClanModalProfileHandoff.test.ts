@@ -8,7 +8,6 @@ import {
   flushAsync,
   getElState,
   setState,
-  stubGameEnv,
   stubLocalStorage,
   utilsMockFactory,
   virtualizerMockFactory,
@@ -259,8 +258,7 @@ describe("ClanModal — player-profile handoff", () => {
   });
 
   it("mounts the map only while open on the Map tab", async () => {
-    stubGameEnv("dev");
-    // Closed: nothing is framed, so the map page isn't polling in the background.
+    // Closed: nothing mounted, so no board is fetched in the background.
     expect(modal.querySelector("clan-map-view")).toBeNull();
 
     modal.open({ tab: "map" });
@@ -272,17 +270,6 @@ describe("ClanModal — player-profile handoff", () => {
     await flushAsync(modal);
     expect(modal.querySelector("clan-map-view")).toBeNull();
     expect(getElState(modal, "activeTab")).toBe("my-clans");
-  });
-
-  it("shows Coming Soon on the Map tab in prod", async () => {
-    stubGameEnv("prod");
-    modal.open({ tab: "map" });
-    await flushAsync(modal);
-    expect(getElState(modal, "activeTab")).toBe("map");
-    // The map hasn't shipped to prod: the iframe (and its API polling)
-    // never mounts.
-    expect(modal.querySelector("clan-map-view")).toBeNull();
-    expect(modal.textContent).toContain("clan_modal.map_coming_soon");
   });
 
   it("offers a Donations tab on the clan detail", async () => {

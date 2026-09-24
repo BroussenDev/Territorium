@@ -32,6 +32,40 @@ export type ClanLeaderboardResponse = z.infer<
   typeof ClanLeaderboardResponseSchema
 >;
 
+// Clan map: each game map is a territory held by the clan with the most
+// lobby-weighted wins on it over the last 30 days. Unclaimed maps are absent.
+export const ClanTerritoryContenderSchema = z.object({
+  tag: RequiredClanTagSchema,
+  name: z.string(),
+  wins: z.number(),
+  games: z.number(),
+  score: z.number(),
+});
+export type ClanTerritoryContender = z.infer<
+  typeof ClanTerritoryContenderSchema
+>;
+
+export const ClanMapResponseSchema = z.object({
+  start: z.iso.datetime(),
+  end: z.iso.datetime(),
+  territories: z
+    .object({
+      map: z.string(),
+      holder: ClanTerritoryContenderSchema,
+      contenders: ClanTerritoryContenderSchema.array(),
+    })
+    .array(),
+  clans: z
+    .object({
+      tag: RequiredClanTagSchema,
+      name: z.string(),
+      territories: z.number(),
+      score: z.number(),
+    })
+    .array(),
+});
+export type ClanMapResponse = z.infer<typeof ClanMapResponseSchema>;
+
 export const ClanInfoSchema = z.object({
   name: z.string().max(35),
   tag: RequiredClanTagSchema,

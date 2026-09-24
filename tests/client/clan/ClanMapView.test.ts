@@ -1,53 +1,84 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  authMockFactory,
+  clanApiMockFactory,
   flushAsync,
   utilsMockFactory,
 } from "./ClanModalTestUtils";
 
-vi.mock("../../../src/client/Api", () => ({
-  getAudience: vi.fn(() => "openfront.dev"),
-}));
-vi.mock("../../../src/client/Auth", () => authMockFactory());
+vi.mock("../../../src/client/ClanApi", () => clanApiMockFactory());
 vi.mock("../../../src/client/Utils", () => utilsMockFactory());
 
-import { getAudience } from "../../../src/client/Api";
-import { userAuth } from "../../../src/client/Auth";
+import { fetchClanMap } from "../../../src/client/ClanApi";
 import {
+  buildTerritories,
+  clanColor,
   ClanMapView,
-  clanMapOrigin,
 } from "../../../src/client/components/clan/ClanMapView";
+import type { ClanMapResponse } from "../../../src/core/ClanApiSchemas";
+import { maps } from "../../../src/core/game/Game";
 
 const asMock = (fn: unknown) => fn as ReturnType<typeof vi.fn>;
-const MAP_ORIGIN = "https://clanmap.openfront.dev";
 
-describe("clanMapOrigin", () => {
-  it("targets the clanmap subdomain of the audience", () => {
-    expect(clanMapOrigin()).toBe(MAP_ORIGIN);
+const contender = (tag: string, wins: number) => ({
+  tag,
+  name: `Clan ${tag}`,
+  wins,
+  games: wins + 1,
+  score: wins,
+});
+
+const board: ClanMapResponse = {
+  start: "2026-08-25T00:00:00.000Z",
+  end: "2026-09-24T00:00:00.000Z",
+  territories: [
+    {
+      map: "Europe",
+      holder: contender("NRD", 3),
+      contenders: [contender("NRD", 3), contender("SUD", 1)],
+    },
+    { map: "Africa", holder: contender("SUD", 2), contenders: [] },
+  ],
+  clans: [
+    { tag: "NRD", name: "Clan NRD", territories: 1, score: 3 },
+    { tag: "SUD", name: "Clan SUD", territories: 1, score: 2 },
+  ],
+};
+
+describe("buildTerritories", () => {
+  it("lists every map in the public rotation with its holder", () => {
+    const list = buildTerritories(board);
+    const rotation = maps.filter((m) => m.multiplayerFrequency > 0);
+    expect(list.length).toBe(rotation.length);
+    expect(list.find((t) => t.map.type === "Europe")?.holder?.tag).toBe("NRD");
+    expect(list.find((t) => t.map.type === "Africa")?.holder?.tag).toBe("SUD");
+    expect(list.filter((t) => t.holder).length).toBe(2);
   });
 
-  it("targets the local worker in the localhost audience", () => {
-    asMock(getAudience).mockReturnValueOnce("localhost");
-    expect(clanMapOrigin()).toBe("http://clanmap.localhost:8787");
+  it("leaves every map unclaimed without a board", () => {
+    expect(buildTerritories(null).every((t) => t.holder === null)).toBe(true);
+  });
+});
+
+describe("clanColor", () => {
+  it("gives a clan the same colour every time", () => {
+    expect(clanColor("NRD")).toBe(clanColor("NRD"));
+    expect(clanColor("NRD")).not.toBe(clanColor("SUD"));
   });
 });
 
 describe("ClanMapView", () => {
   let view: ClanMapView;
-  let frame: HTMLIFrameElement;
-  let postMessage: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
     if (!customElements.get("clan-map-view")) {
       customElements.define("clan-map-view", ClanMapView);
     }
+    asMock(fetchClanMap).mockResolvedValue(board);
     view = document.createElement("clan-map-view") as ClanMapView;
+    view.myClanTags = ["SUD"];
     document.body.appendChild(view);
     await flushAsync(view);
-    frame = view.querySelector("iframe")!;
-    postMessage = vi.fn();
-    frame.contentWindow!.postMessage = postMessage as never;
   });
 
   afterEach(() => {
@@ -55,79 +86,47 @@ describe("ClanMapView", () => {
     vi.clearAllMocks();
   });
 
-  function ready(init: Partial<MessageEventInit> = {}) {
-    window.dispatchEvent(
-      new MessageEvent("message", {
-        origin: MAP_ORIGIN,
-        source: frame.contentWindow,
-        data: { type: "clanmap:ready" },
-        ...init,
-      }),
-    );
-  }
+  const tile = (map: string) =>
+    view.querySelector<HTMLButtonElement>(`[data-map="${map}"]`)!;
+  const chip = (key: string) =>
+    Array.from(view.querySelectorAll("button")).find(
+      (b) => b.textContent?.trim() === key,
+    )!;
 
-  it("frames the map page with fullscreen allowed", () => {
-    expect(frame.getAttribute("src")).toBe(`${MAP_ORIGIN}/`);
-    expect(frame.getAttribute("allow")).toBe("fullscreen");
-    expect(frame.hasAttribute("sandbox")).toBe(false);
-  });
-
-  it("answers clanmap:ready with the JWT, targeted at the map origin", async () => {
-    ready();
-    await flushAsync();
-
-    expect(userAuth).toHaveBeenCalled();
-    expect(postMessage).toHaveBeenCalledWith(
-      { type: "clanmap:auth", jwt: "test-token" },
-      MAP_ORIGIN,
+  it("colours held maps and leaves free ones disabled", () => {
+    expect(tile("Europe").textContent).toContain("[NRD]");
+    expect(tile("Europe").disabled).toBe(false);
+    expect(tile("World").disabled).toBe(true);
+    expect(tile("World").textContent).toContain(
+      "clan_modal.territory_unclaimed",
     );
   });
 
-  it("stays silent for a signed-out viewer", async () => {
-    asMock(userAuth).mockResolvedValueOnce(false);
-    ready();
-    await flushAsync();
-
-    expect(postMessage).not.toHaveBeenCalled();
+  it("fires clan-select with the holder when a held map is clicked", () => {
+    const selected = vi.fn();
+    view.addEventListener("clan-select", (e) =>
+      selected((e as CustomEvent<{ tag: string }>).detail.tag),
+    );
+    tile("Europe").click();
+    expect(selected).toHaveBeenCalledWith("NRD");
   });
 
-  it("ignores messages from another origin", async () => {
-    ready({ origin: "https://evil.example" });
-    await flushAsync();
-
-    expect(userAuth).not.toHaveBeenCalled();
-    expect(postMessage).not.toHaveBeenCalled();
+  it("filters down to the player's own territories", async () => {
+    chip("clan_modal.territory_filter_mine").click();
+    await flushAsync(view);
+    const shown = Array.from(view.querySelectorAll("[data-map]")).map((el) =>
+      el.getAttribute("data-map"),
+    );
+    expect(shown).toEqual(["Africa"]);
   });
 
-  it("ignores messages from a window other than its own frame", async () => {
-    ready({ source: window });
-    await flushAsync();
-
-    expect(userAuth).not.toHaveBeenCalled();
-    expect(postMessage).not.toHaveBeenCalled();
-  });
-
-  it("ignores other message types", async () => {
-    ready({ data: { type: "clanmap:other" } });
-    await flushAsync();
-
-    expect(postMessage).not.toHaveBeenCalled();
-  });
-
-  it("fullscreens the frame element on request", () => {
-    const request = vi.fn(() => Promise.resolve());
-    frame.requestFullscreen = request as never;
-
-    view.enterFullscreen();
-
-    expect(request).toHaveBeenCalledTimes(1);
-  });
-
-  it("stops listening once removed", async () => {
+  it("shows an error when the board can't load", async () => {
     view.remove();
-    ready();
-    await flushAsync();
-
-    expect(userAuth).not.toHaveBeenCalled();
+    asMock(fetchClanMap).mockResolvedValue(false);
+    view = document.createElement("clan-map-view") as ClanMapView;
+    document.body.appendChild(view);
+    await flushAsync(view);
+    expect(view.textContent).toContain("clan_modal.error_loading");
+    expect(view.querySelector("[data-map]")).toBeNull();
   });
 });

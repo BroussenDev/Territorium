@@ -1,6 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import "../../src/client/components/CustomCurrencyCard";
-import type { CustomCurrencyCard } from "../../src/client/components/CustomCurrencyCard";
+import {
+  checkoutCurrency,
+  type CustomCurrencyCard,
+  formatCheckoutPrice,
+} from "../../src/client/components/CustomCurrencyCard";
 import { startPurchase } from "../../src/client/Payments";
 
 vi.mock("../../src/client/Payments", async (importOriginal) => ({
@@ -121,7 +125,18 @@ describe("CustomCurrencyCard", () => {
       expect(startPurchase).toHaveBeenCalledWith({
         kind: "custom_currency",
         hardAmount: 240,
+        currency: "usd",
       }),
+    );
+  });
+
+  it("prices 20 emeralds per euro or dollar", async () => {
+    await card!.updateComplete;
+    expect(
+      card!.querySelector("[data-custom-currency-price]")?.textContent?.trim(),
+    ).toBe("$5.00");
+    expect(card!.querySelector(".purchase-sparkle-btn")?.textContent).toContain(
+      "$5.00",
     );
   });
 
@@ -171,6 +186,24 @@ describe("CustomCurrencyCard", () => {
       expect(showInGameAlert).toHaveBeenCalledWith(
         "store.checkout_rail_unavailable",
       ),
+    );
+  });
+});
+
+describe("checkout currency", () => {
+  it("charges euro-area languages in euros and the rest in dollars", () => {
+    expect(checkoutCurrency("fr")).toBe("eur");
+    expect(checkoutCurrency("de")).toBe("eur");
+    expect(checkoutCurrency("pt-PT")).toBe("eur");
+    expect(checkoutCurrency("en")).toBe("usd");
+    expect(checkoutCurrency("pt-BR")).toBe("usd");
+    expect(checkoutCurrency("ja")).toBe("usd");
+  });
+
+  it("formats the price the way the language writes money", () => {
+    expect(formatCheckoutPrice(500, "usd", "en")).toBe("$5.00");
+    expect(formatCheckoutPrice(1250, "eur", "fr").replace(/\s/g, " ")).toBe(
+      "12,50 €",
     );
   });
 });

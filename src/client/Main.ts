@@ -16,6 +16,7 @@ import { toWireGameStartInfo } from "../core/Util";
 import { GameEnv } from "../core/configuration/Config";
 import { UserSettings } from "../core/game/UserSettings";
 import "./AccountModal";
+import { claimAccountNameIfMissing } from "./AccountNameClaim";
 import "./AccountSettingsModal";
 import { adGatekeeper } from "./AdGatekeeper";
 import { loadAdmiral, onAdmiralMeasured } from "./Admiral";
@@ -42,6 +43,7 @@ import "./ChangeUsernameModal";
 import "./ClanModal";
 import { joinLobby, type JoinLobbyResult } from "./ClientGameRunner";
 import {
+  broadcastFreshUserMe,
   getPlayerCosmeticsRefs,
   handlePurchaseReturn,
   translateCosmetic,
@@ -729,6 +731,15 @@ class Client {
           ),
         () => localStorage.getItem(LAPSE_NOTICE_KEY),
       );
+      // A generated Anon… name is not the player's choice; never claim it.
+      void claimAccountNameIfMissing(
+        userMeResponse,
+        localStorage.getItem("usernameIsGenerated") === "true"
+          ? null
+          : localStorage.getItem("username"),
+      ).then((claimed) => {
+        if (claimed) void broadcastFreshUserMe();
+      });
       // Re-read, not `grantStore`: a lapse notice that carried the grant
       // sign-off marked it shown from inside the dispatch above.
       const grantStoreAfterDispatch = parseSteamGrantStore(
