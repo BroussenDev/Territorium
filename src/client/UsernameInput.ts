@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit";
+import { html, LitElement, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { translateText } from "../client/Utils";
 import { UserMeResponse } from "../core/ApiSchemas";
@@ -464,7 +464,7 @@ export class UsernameInput extends LitElement {
     const player = this.userMe === false ? undefined : this.userMe?.player;
     const status = player?.usernameStatus;
     if (accountNameHeld(this.userMe)) {
-      // Subscribed, but someone else holds the bare name: they display as
+      // Verified, but someone else holds the bare name: they display as
       // base.disc and cannot play with the check until they rename. Say so,
       // then offer the form (spec, 10 Sept 2026).
       const rename = await showInGameConfirm(
@@ -481,22 +481,18 @@ export class UsernameInput extends LitElement {
       return;
     }
     if (status === "premium" || status === "indefinite") {
-      // Subscribed but no usable name yet (never set, or TEMPORARY####):
+      // Verified but no usable name yet (never set, or TEMPORARY####):
       // send them straight to the username form.
       window.location.hash = "modal=change-username";
-      return;
     }
-    const goStore = await showInGameConfirm(
-      translateText("username.verified_sub_required"),
-      {
-        heading: translateText("username.verified_heading"),
-        variant: "warning",
-        confirmText: translateText("username.verified_sub_required_confirm"),
-      },
-    );
-    if (goStore) {
-      window.location.hash = "modal=store&tab=subscriptions";
-    }
+  }
+
+  // Verification is granted by the Territorium team, so the toggle only shows
+  // for verified players; for anyone else it could never turn on.
+  private canUseVerified(): boolean {
+    const status =
+      this.userMe === false ? undefined : this.userMe?.player?.usernameStatus;
+    return status === "premium" || status === "indefinite";
   }
 
   /**
@@ -992,7 +988,9 @@ export class UsernameInput extends LitElement {
       <div class="no-crazygames shrink-0 h-full max-h-[44px]">
         ${this.verifiedActive
           ? this.renderUseCustomButton()
-          : this.renderUseVerifiedButton()}
+          : this.canUseVerified()
+            ? this.renderUseVerifiedButton()
+            : nothing}
       </div>
     `;
   }

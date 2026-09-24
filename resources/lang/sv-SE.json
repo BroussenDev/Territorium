@@ -1700,6 +1700,8 @@
     "loading": "Laddar profil...",
     "no_clans": "Den här spelaren är inte i några klaner.",
     "not_found": "Spelarprofilen hittades inte",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Dela profil",
     "title": "Spelarprofil",
     "view": "Visa profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Användarnamnet måste innehålla minst {min} tecken.",
     "verified_active_hint": "Du spelar under ditt verifierade kontonamn.",
     "verified_heading": "Verifierat namn",
-    "verified_held_body": "\"{name}\" innehas av en annan prenumerant, så du visas som \"{name}\" med ett nummer och kan inte spela med den verifierade checken under den. Ändra ditt namn till ett du kan hålla?",
+    "verified_held_body": "\"{name}\" har redan tagits av en annan verifierad spelare, så du visas som \"{name}\" med ett nummer och kan inte spela med det verifierade märket under det. Ändra ditt namn till ett du kan hålla?",
     "verified_held_confirm": "Byt namn",
-    "verified_held_hint": "\"{name}\" innehas av en annan prenumerant. Ändra ditt namn för att spela med den verifierade checken.",
+    "verified_held_hint": "\"{name}\" har redan tagits av en annan verifierad spelare. Ändra ditt namn för att spela med det verifierade märket.",
     "verified_player": "Verifierad spelare",
-    "verified_sub_required": "Du behöver ett aktivt abonnemang för att spela under ditt verifierade namn.",
-    "verified_sub_required_confirm": "Se butik",
     "verified_use": "Använd verifierad",
     "verified_use_custom": "Växla tillbaka till ett anpassat namn",
     "verified_use_hint": "Spela under ditt verifierade kontonamn"

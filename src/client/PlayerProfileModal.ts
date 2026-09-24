@@ -30,6 +30,7 @@ export class PlayerProfileModal extends BaseModal {
 
   @state() private publicId: string | null = null;
   @state() private username: string | null = null;
+  @state() private staffRole: PlayerProfile["role"] = undefined;
   @state() private statsTree: PlayerStatsTree | null = null;
   @state() private clans: NonNullable<PlayerProfile["clans"]> = [];
   @state() private loading = false;
@@ -67,6 +68,17 @@ export class PlayerProfileModal extends BaseModal {
             ${usernameText(this.username)}
             ${isVerifiedUsername(this.username)
               ? verifiedBadge("w-5 h-5")
+              : nothing}
+            ${this.staffRole
+              ? html`<span
+                  class="shrink-0 rounded-md border px-2 py-0.5 text-xs font-semibold ${this
+                    .staffRole === "admin"
+                    ? "border-red-400/50 bg-red-500/15 text-red-300"
+                    : "border-emerald-400/50 bg-emerald-500/15 text-emerald-300"}"
+                  >${translateText(
+                    `player_profile.role_${this.staffRole}`,
+                  )}</span
+                >`
               : nothing}
           </span>`
         : undefined,
@@ -263,6 +275,7 @@ export class PlayerProfileModal extends BaseModal {
     this.openedFrom = null;
     this.publicId = publicId;
     this.username = null;
+    this.staffRole = undefined;
     this.statsTree = null;
     this.clans = [];
     this.gameHistoryCache = null;
@@ -284,6 +297,7 @@ export class PlayerProfileModal extends BaseModal {
     this.loading = false;
     this.statsTree = profile === false ? null : profile.stats;
     this.username = profile === false ? null : (profile.username ?? null);
+    this.staffRole = profile === false ? undefined : profile.role;
     this.clans = profile === false ? [] : (profile.clans ?? []);
   }
 

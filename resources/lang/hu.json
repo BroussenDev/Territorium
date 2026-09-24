@@ -1700,6 +1700,8 @@
     "loading": "Profil betöltése...",
     "no_clans": "Ez a játékos nem tagja egyetlen klánnak sem.",
     "not_found": "A játékosprofil nem található",
+    "role_admin": "Admin",
+    "role_mod": "Moderátor",
     "share": "Profil megosztása",
     "title": "Játékos Profil",
     "view": "Profil Megtekintése"
@@ -2429,12 +2431,10 @@
     "too_short": "A felhasználónévnek legalább {min} karakter hosszúnak kell lennie.",
     "verified_active_hint": "Az ellenőrzött fiókneveddel játszol.",
     "verified_heading": "Hitelesített név",
-    "verified_held_body": "A \"{name}\" nevet már egy másik felhasználó használja, ezért te \"{name}\" néven, egy számmal kiegészítve jelensz meg, és nem használhatod a név alatti hitelesítési jelzést. Megváltoztatod a nevedet egy olyanra, amelyet használhatsz?",
+    "verified_held_body": "A „{name}”-t már elfoglalta egy másik ellenőrzött játékos, így Ön „{name}”-ként jelenik meg egy számmal, és nem játszhat az alatta lévő ellenőrzött jelvénnyel. Módosítod a nevedet olyanra, amelyet megtarthatsz?",
     "verified_held_confirm": "Név módosítása",
-    "verified_held_hint": "A(z) \"{name}\" nevet már egy másik előfizető használja. Változtasd meg a nevedet, ha a hitelesítést jelző pipával szeretnél játszani.",
+    "verified_held_hint": "A „{name}”-t már elfoglalta egy másik ellenőrzött játékos. Változtasd meg a nevedet, hogy az ellenőrzött jelvénnyel játssz.",
     "verified_player": "Hitelesített játékos",
-    "verified_sub_required": "A hitelesített neveden való játékhoz aktív előfizetésre van szükséged.",
-    "verified_sub_required_confirm": "Áruház meglátogatása",
     "verified_use": "Használja az ellenőrzöttet",
     "verified_use_custom": "Váltás vissza egyéni névre",
     "verified_use_hint": "Játssz az ellenőrzött fiókneveddel"

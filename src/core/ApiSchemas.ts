@@ -715,6 +715,9 @@ export const PlayerProfileSchema = z.object({
   // parse it — compare players by publicId only. Optional so responses from
   // an API without the field still parse.
   username: z.string().nullable().optional(),
+  // Staff role, shown as a chip beside the name. Absent for regular players
+  // and from an API without the field.
+  role: z.enum(["admin", "mod"]).optional(),
   stats: PlayerStatsTreeSchema,
   // Clans this player belongs to, tag-ordered. Optional so responses from an
   // API without the field still parse (→ no clans shown).

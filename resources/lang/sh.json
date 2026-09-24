@@ -1700,6 +1700,8 @@
     "loading": "Učitavanje profila...",
     "no_clans": "Ovaj igrač nije ni u jednom klanu.",
     "not_found": "Profil igrača nije pronađen",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Podeli profil",
     "title": "Profil igrača",
     "view": "Prikaži profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Korisničko ime mora imati minimum {min} karaktera.",
     "verified_active_hint": "Igraš sa verifikovanim imenom naloga.",
     "verified_heading": "Verifikovano ime",
-    "verified_held_body": "Nadimak „{name}” već koristi drugi pretplatnik, pa se prikazujete kao „{name}” sa brojem i ne možete igrati sa verifikacionom kvačicom. Želite li da promenite ime u ono koje možete zadržati?",
+    "verified_held_body": "„{name}“ je već preuzeo drugi verifikovani igrač, tako da ste prikazani kao „{name}“ sa brojem i ne možete da igrate sa verifikovanom značkom ispod. Da promenite svoje ime u neko koje možete da držite?",
     "verified_held_confirm": "Promeni ime",
-    "verified_held_hint": "Nadimak „{name}” već koristi drugi pretplatnik. Promenite ime da biste igrali sa verifikacionom kvačicom.",
+    "verified_held_hint": "„{name}“ je već preuzeo drugi verifikovani igrač. Promenite svoje ime da biste igrali sa verifikovanom značkom.",
     "verified_player": "Verifikovan igrač",
-    "verified_sub_required": "Potrebna vam je aktivna pretplata da biste igrali pod verifikovanim imenom.",
-    "verified_sub_required_confirm": "Vidi prodavnicu",
     "verified_use": "Koristi verifikovano ime",
     "verified_use_custom": "Vrati se na prilagođeno ime",
     "verified_use_hint": "Igraj pod verifikovanim imenom naloga"

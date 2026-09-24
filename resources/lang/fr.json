@@ -1700,6 +1700,8 @@
     "loading": "Chargement du profil...",
     "no_clans": "Ce joueur n'appartient à aucun clan.",
     "not_found": "Profil de joueur introuvable",
+    "role_admin": "Administrateur",
+    "role_mod": "Modérateur",
     "share": "Partager le profil",
     "title": "Profil de joueur",
     "view": "Voir le profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Le nom d'utilisateur doit comporter au moins {min} caractères.",
     "verified_active_hint": "Vous jouez avec le pseudo vérifié de votre compte.",
     "verified_heading": "Nom vérifié",
-    "verified_held_body": "« {name} » est utilisé par un autre abonné. Vous apparaissez donc sous le nom « {name} » suivi d’un numéro et ne pouvez pas jouer avec le badge vérifié associé. Voulez-vous choisir un nom que vous pouvez réserver ?",
+    "verified_held_body": "« {name} » est déjà pris par un autre joueur vérifié : vous apparaissez donc sous « {name} » suivi d'un numéro, sans le badge vérifié. Choisir un nom que vous pouvez garder ?",
     "verified_held_confirm": "Changer de nom",
-    "verified_held_hint": "« {name} » est utilisé par un autre abonné. Changez votre nom pour jouer avec le badge vérifié.",
+    "verified_held_hint": "« {name} » est déjà pris par un autre joueur vérifié. Changez de nom pour jouer avec le badge vérifié.",
     "verified_player": "Joueur vérifié",
-    "verified_sub_required": "Vous avez besoin d'un abonnement actif pour jouer avec votre nom vérifié.",
-    "verified_sub_required_confirm": "Voir la boutique",
     "verified_use": "Utiliser le pseudo vérifié",
     "verified_use_custom": "Revenir à un pseudo personnalisé",
     "verified_use_hint": "Jouer avec votre pseudo de compte vérifié"

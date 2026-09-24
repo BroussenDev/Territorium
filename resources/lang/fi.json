@@ -1700,6 +1700,8 @@
     "loading": "Ladataan profiilia...",
     "no_clans": "Tämä pelaaja ei kuulu yhteenkään klaaniin.",
     "not_found": "Pelaajaprofiilia ei löydy",
+    "role_admin": "Admin",
+    "role_mod": "Moderaattori",
     "share": "Jaa profiili",
     "title": "Pelaajan profiili",
     "view": "Näytä profiili"
@@ -2429,12 +2431,10 @@
     "too_short": "Käyttäjänimen on oltava vähintään {min} merkkiä pitkä.",
     "verified_active_hint": "Pelaat vahvistetulla tilinimelläsi.",
     "verified_heading": "Vahvistettu nimi",
-    "verified_held_body": "\"{name}\" on toisen tilaajan hallussa, joten sinut näytetään numerolla \"{name}\" etkä voi pelata sen alla olevalla vahvistetulla sekillä. Vaihdatko nimesi sellaiseksi, jonka voit pitää?",
+    "verified_held_body": "\"{name}\" on jo toisen vahvistetun pelaajan käytössä, joten sinut näytetään numerolla \"{name}\" etkä voi pelata vahvistetulla merkillä sen alla. Vaihdatko nimesi sellaiseksi, jonka voit pitää?",
     "verified_held_confirm": "Vaihda nimi",
-    "verified_held_hint": "\"{name}\" on toisen tilaajan hallussa. Vaihda nimesi pelataksesi vahvistetulla sekillä.",
+    "verified_held_hint": "\"{name}\" on jo toisen vahvistetun pelaajan käytössä. Vaihda nimesi pelataksesi vahvistetulla merkillä.",
     "verified_player": "Vahvistettu pelaaja",
-    "verified_sub_required": "Tarvitset aktiivisen tilauksen pelataksesi vahvistetulla nimelläsi.",
-    "verified_sub_required_confirm": "Näytä kauppa",
     "verified_use": "Käytä vahvistettua",
     "verified_use_custom": "Vaihda takaisin mukautettuun nimeen",
     "verified_use_hint": "Pelaa vahvistetulla tilinimelläsi"

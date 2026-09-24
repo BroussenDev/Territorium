@@ -1700,6 +1700,8 @@
     "loading": "Načítání profilu...",
     "no_clans": "Tento hráč není v žádném klanu.",
     "not_found": "Profil hráče nebyl nalezen",
+    "role_admin": "Admin",
+    "role_mod": "Moderátor",
     "share": "Sdílet profil",
     "title": "Profil hráče",
     "view": "Zobrazit profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Uživatelské jméno musí mít alespoň {min} charakterů.",
     "verified_active_hint": "Hrajete pod ověřeným jménem svého účtu.",
     "verified_heading": "Ověřené jméno",
-    "verified_held_body": "„{name}“ je v držení jiného předplatitele, takže se zobrazujete jako „{name}“ s číslem a nemůžete si hrát s ověřeným šekem pod ním. Změnit své jméno na takové, které můžete držet?",
+    "verified_held_body": "„{name}“ již získal jiný ověřený hráč, takže se zobrazujete jako „{name}“ s číslem a nemůžete hrát s ověřeným odznakem pod ním. Změnit své jméno na takové, které můžete držet?",
     "verified_held_confirm": "Změňte jméno",
-    "verified_held_hint": "„{name}“ je v držení jiného účastníka. Chcete-li hrát s ověřeným šekem, změňte si jméno.",
+    "verified_held_hint": "\"{name}\" již získal jiný ověřený hráč. Změňte si jméno, abyste mohli hrát s ověřeným odznakem.",
     "verified_player": "Ověřený hráč",
-    "verified_sub_required": "Abyste mohli hrát pod svým ověřeným jménem, potřebujete aktivní předplatné.",
-    "verified_sub_required_confirm": "Zobrazit obchod",
     "verified_use": "Použít ověřené jméno",
     "verified_use_custom": "Přepnout zpět na vlastní jméno",
     "verified_use_hint": "Hrát pod ověřeným jménem svého účtu"

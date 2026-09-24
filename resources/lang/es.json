@@ -1700,6 +1700,8 @@
     "loading": "Cargando perfil...",
     "no_clans": "Este jugador no está en ningún clan.",
     "not_found": "Perfil del jugador no encontrado",
+    "role_admin": "Administrador",
+    "role_mod": "Moderador",
     "share": "Compartir perfil",
     "title": "Perfil del jugador",
     "view": "Ver perfil"
@@ -2429,12 +2431,10 @@
     "too_short": "El nombre de usuario tiene que tener al menos {min} carácteres.",
     "verified_active_hint": "Estás jugando con el nombre de tu cuenta verificada.",
     "verified_heading": "Nombre verificado",
-    "verified_held_body": "\"{name}\" está en manos de otro suscriptor, por lo que apareces como \"{name}\" con un número y no puedes jugar con el cheque verificado debajo. ¿Cambiar tu nombre por uno que puedas conservar?",
+    "verified_held_body": "\"{name}\" ya está en manos de otro jugador verificado, por lo que apareces como \"{name}\" con un número y no puedes jugar con la insignia de verificado debajo. ¿Cambiar tu nombre por uno que puedas conservar?",
     "verified_held_confirm": "Cambiar nombre",
-    "verified_held_hint": "\"{name}\" está en manos de otro suscriptor. Cambia tu nombre para jugar con el cheque verificado.",
+    "verified_held_hint": "\"{name}\" ya está en manos de otro jugador verificado. Cambia tu nombre para jugar con la insignia verificada.",
     "verified_player": "Jugador verificado",
-    "verified_sub_required": "Necesitas una suscripción activa para jugar con tu nombre verificado.",
-    "verified_sub_required_confirm": "Ver tienda",
     "verified_use": "Usar verificado",
     "verified_use_custom": "Volver a un nombre personalizado",
     "verified_use_hint": "Juega con el nombre de tu cuenta verificada"

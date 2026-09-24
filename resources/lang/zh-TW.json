@@ -1700,6 +1700,8 @@
     "loading": "正在載入個人檔案……",
     "no_clans": "這位玩家尚未加入任何公會。",
     "not_found": "未找到個人檔案",
+    "role_admin": "管理員",
+    "role_mod": "版主",
     "share": "分享個人檔案",
     "title": "玩家個人檔案",
     "view": "查看個人檔案"
@@ -2429,12 +2431,10 @@
     "too_short": "使用者名稱長度必須至少為 {min} 個字元。",
     "verified_active_hint": "您正在信任帳號下遊玩。",
     "verified_heading": "已驗證名稱",
-    "verified_held_body": "\"{name}\" 目前正被另一個訂閱者使用中，所以您將以 \"{name}\" 加上數字顯示，且無法以已驗證遊玩。更改您的名稱至可用的名稱？",
+    "verified_held_body": "「{name}」已被另一位已驗證玩家使用，因此您會顯示為「{name}」加一串數字，且無法帶著已驗證徽章遊玩。要改成一個您可以保留的名稱嗎？",
     "verified_held_confirm": "更改名稱",
-    "verified_held_hint": "\"{name}\" 目前正被另一個訂閱者使用中。更改您的名稱才能以已驗證身分遊玩。",
+    "verified_held_hint": "「{name}」已被另一位經過驗證的玩家佔用。更改您的姓名即可使用經過驗證的徽章進行遊戲。",
     "verified_player": "已驗證玩家",
-    "verified_sub_required": "您需要有效的訂閱才能在您已驗證的名稱下遊玩。",
-    "verified_sub_required_confirm": "查看商店",
     "verified_use": "使用已認證名稱",
     "verified_use_custom": "切換回自訂的名稱",
     "verified_use_hint": "在您已驗證的帳號名稱下遊玩"

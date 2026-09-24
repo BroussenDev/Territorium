@@ -1700,6 +1700,8 @@
     "loading": "Nalaganje profila ...",
     "no_clans": "Ta igralec ni v nobenem klanu.",
     "not_found": "Profil igralca ni bil najden",
+    "role_admin": "Skrbnik",
+    "role_mod": "Moderator",
     "share": "Skupna raba profila",
     "title": "Profil igralca",
     "view": "Ogled profila"
@@ -2429,12 +2431,10 @@
     "too_short": "Uporabniško ime mora biti dolgo vsaj {min} znakov.",
     "verified_active_hint": "Igrate pod svojim preverjenim imenom računa.",
     "verified_heading": "Preverjeno ime",
-    "verified_held_body": "»{name}« ima drug naročnik, zato ste prikazani kot »{name}« s številko in ne morete igrati s preverjenim čekom pod njo. Spremenite svoje ime v ime, ki ga lahko obdržite?",
+    "verified_held_body": "»{name}« je že zasedel drug preverjen igralec, zato ste prikazani kot »{name}« s številko in ne morete igrati z značko preverjeno pod njo. Spremenite svoje ime v ime, ki ga lahko obdržite?",
     "verified_held_confirm": "Spremeni ime",
-    "verified_held_hint": "»{name}« ima drug naročnik. Spremenite svoje ime in igrajte s preverjenim čekom.",
+    "verified_held_hint": "\"{name}\" je že prevzel drug preverjen igralec. Spremenite svoje ime, če želite igrati s preverjeno značko.",
     "verified_player": "Preverjen igralec",
-    "verified_sub_required": "Za igranje pod preverjenim imenom potrebujete aktivno naročnino.",
-    "verified_sub_required_confirm": "Ogled trgovine",
     "verified_use": "Uporabite preverjeno",
     "verified_use_custom": "Preklopite nazaj na ime po meri",
     "verified_use_hint": "Igrajte pod imenom potrjenega računa"

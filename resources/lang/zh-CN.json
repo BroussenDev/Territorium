@@ -1700,6 +1700,8 @@
     "loading": "正在加载个人资料...",
     "no_clans": "该玩家不属于任何部落。",
     "not_found": "未找到玩家资料",
+    "role_admin": "管理员",
+    "role_mod": "版主",
     "share": "分享个人资料",
     "title": "球员简介",
     "view": "查看资料"
@@ -2429,12 +2431,10 @@
     "too_short": "用户名最少包含 {min} 个字符。",
     "verified_active_hint": "您正在使用经过验证的帐户名进行游戏。",
     "verified_heading": "已验证姓名",
-    "verified_held_body": "“{name}”由另一位订户持有，因此您显示为带有数字的“{name}”，并且无法使用其下经过验证的支票。把你的名字改成你能记住的名字？",
+    "verified_held_body": "“{name}”已被另一位已验证玩家使用，因此您会显示为“{name}”加一串数字，且无法带着已验证徽章进行游戏。要改成一个您可以保留的名字吗？",
     "verified_held_confirm": "更改姓名",
-    "verified_held_hint": "“{name}”由另一个订阅者持有。更改您的姓名以使用经过验证的支票。",
+    "verified_held_hint": "“{name}”已被另一位经过验证的玩家占用。更改您的姓名即可使用经过验证的徽章进行游戏。",
     "verified_player": "已验证玩家",
-    "verified_sub_required": "您需要有效的订阅才能以经过验证的名称进行游戏。",
-    "verified_sub_required_confirm": "查看商店",
     "verified_use": "使用已验证",
     "verified_use_custom": "切换回自定义名称",
     "verified_use_hint": "使用您已验证的帐户名进行游戏"

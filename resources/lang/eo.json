@@ -1700,6 +1700,8 @@
     "loading": "Ŝarĝante profilon...",
     "no_clans": "Ĉi tiu ludanto ne estas en iuj klanoj.",
     "not_found": "Ludanta profilo ne trovita",
+    "role_admin": "Admin",
+    "role_mod": "Moderiganto",
     "share": "Kunhavigi Profilon",
     "title": "Ludanta Profilo",
     "view": "Rigardu Profilon"
@@ -2429,12 +2431,10 @@
     "too_short": "La uzantnomo devas havi almenaŭ {min} signojn.",
     "verified_active_hint": "Vi ludas sub via kontrolita kontonomo.",
     "verified_heading": "Verkita nomo",
-    "verified_held_body": "\"{name}\" estas tenita de alia abonanto, do vi estas montrata kiel \"{name}\" kun nombro kaj ne povas ludi kun la kontrolita ĉeko sub ĝi. Ŝanĝi vian nomon al unu kiun vi povas teni?",
+    "verified_held_body": "\"{name}\" jam estas prenita de alia kontrolita ludanto, do vi estas montrata kiel \"{name}\" kun nombro kaj ne povas ludi kun la kontrolita insigno sub ĝi. Ŝanĝi vian nomon al unu kiun vi povas teni?",
     "verified_held_confirm": "Ŝanĝi nomon",
-    "verified_held_hint": "\"{name}\" estas tenita de alia abonanto. Ŝanĝu vian nomon por ludi kun la kontrolita ĉeko.",
+    "verified_held_hint": "\"{name}\" jam estas prenita de alia kontrolita ludanto. Ŝanĝu vian nomon por ludi kun la kontrolita insigno.",
     "verified_player": "Kontrolita ludanto",
-    "verified_sub_required": "Vi bezonas aktivan abonon por ludi sub via kontrolita nomo.",
-    "verified_sub_required_confirm": "Rigardu vendejon",
     "verified_use": "Uzo kontrolita",
     "verified_use_custom": "Reiru al propra nomo",
     "verified_use_hint": "Ludu sub via kontrolita kontonomo"

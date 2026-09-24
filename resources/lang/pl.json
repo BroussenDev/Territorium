@@ -1700,6 +1700,8 @@
     "loading": "Ładowanie profilu...",
     "no_clans": "Ten gracz nie należy do żadnego klanu.",
     "not_found": "Nie znaleziono profilu gracza",
+    "role_admin": "Administrator",
+    "role_mod": "Moderator",
     "share": "Udostępnij profil",
     "title": "Profil gracza",
     "view": "Zobacz profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Nazwa użytkownika musi mieć co najmniej {min} znaków.",
     "verified_active_hint": "Grasz pod zweryfikowaną nazwą konta.",
     "verified_heading": "Zweryfikowana nazwa",
-    "verified_held_body": "„{name}” jest trzymane przez innego subskrybenta, więc jesteś wyświetlany jako „{name}” z numerem i nie możesz grać, mając pod nim zweryfikowany czek. Zmienić imię i nazwisko na takie, które możesz trzymać?",
+    "verified_held_body": "„{name}” jest już zajęte przez innego zweryfikowanego gracza, więc jesteś wyświetlany jako „{name}” z numerem i nie możesz grać, mając pod nim zweryfikowaną odznakę. Zmienić imię i nazwisko na takie, które możesz trzymać?",
     "verified_held_confirm": "Zmień nazwę",
-    "verified_held_hint": "„{name}” jest w posiadaniu innego abonenta. Zmień swoje imię i nazwisko, aby grać zweryfikowanym czekiem.",
+    "verified_held_hint": "„{name}” jest już zajęte przez innego zweryfikowanego gracza. Zmień swoje imię i nazwisko, aby grać ze zweryfikowaną odznaką.",
     "verified_player": "Zweryfikowany gracz",
-    "verified_sub_required": "Aby grać pod zweryfikowaną nazwą, potrzebujesz aktywnej subskrypcji.",
-    "verified_sub_required_confirm": "Zobacz sklep",
     "verified_use": "Użyj zweryfikowanego",
     "verified_use_custom": "Wróć do nazwy niestandardowej",
     "verified_use_hint": "Graj pod zweryfikowaną nazwą konta"

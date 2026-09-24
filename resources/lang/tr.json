@@ -1700,6 +1700,8 @@
     "loading": "Profil yükleniyor...",
     "no_clans": "Bu oyuncu hiçbir klanda yer almıyor.",
     "not_found": "Oyuncu profili bulunamadı",
+    "role_admin": "Yönetici",
+    "role_mod": "Moderatör",
     "share": "Profili Paylaş",
     "title": "Oyuncu Profili",
     "view": "Profili Görüntüle"
@@ -2429,12 +2431,10 @@
     "too_short": "Kullanıcı adı en az {min} karakter uzunluğunda olmalıdır.",
     "verified_active_hint": "Doğrulanmış hesap adınızla oynuyorsunuz.",
     "verified_heading": "Doğrulanmış ad",
-    "verified_held_body": "\"{name}\" başka bir abonenin elinde olduğundan, bir sayıyla birlikte \"{name}\" olarak gösterilirsiniz ve altındaki doğrulanmış çekle oynayamazsınız. Adını tutabileceğin bir adla değiştirmek ister misin?",
+    "verified_held_body": "\"{name}\" zaten başka bir doğrulanmış oyuncu tarafından alınmış olduğundan bir sayıyla birlikte \"{name}\" olarak gösterilirsiniz ve altındaki doğrulanmış rozetle oynayamazsınız. Adını tutabileceğin bir adla değiştirmek ister misin?",
     "verified_held_confirm": "Adı değiştir",
-    "verified_held_hint": "\"{name}\" başka bir aboneye ait. Doğrulanmış çekle oynamak için adınızı değiştirin.",
+    "verified_held_hint": "\"{name}\" zaten başka bir doğrulanmış oyuncu tarafından alınmış. Doğrulanmış rozetle oynamak için adınızı değiştirin.",
     "verified_player": "Doğrulanmış oyuncu",
-    "verified_sub_required": "Doğrulanmış adınızla oynamak için aktif bir aboneliğe ihtiyacınız var.",
-    "verified_sub_required_confirm": "Mağazayı görüntüle",
     "verified_use": "Doğrulanmış olanı kullan",
     "verified_use_custom": "Özel bir isme geri dönün",
     "verified_use_hint": "Doğrulanmış hesap adınızla oynayın"

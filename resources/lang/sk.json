@@ -1700,6 +1700,8 @@
     "loading": "Načítava sa profil...",
     "no_clans": "Tento hráč nie je v žiadnom klane.",
     "not_found": "Profil hráča sa nenašiel",
+    "role_admin": "Admin",
+    "role_mod": "Moderátor",
     "share": "Zdieľať profil",
     "title": "Profil hráča",
     "view": "Zobraziť profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Používateľské meno musí byť aspoň {min} znakov dlhé.",
     "verified_active_hint": "Hráte pod overeným názvom účtu.",
     "verified_heading": "Overené meno",
-    "verified_held_body": "„{name}“ má iný predplatiteľ, takže sa zobrazujete ako „{name}“ s číslom a nemôžete hrať s overeným šekom pod ním. Zmeniť si meno na také, ktoré môžeš držať?",
+    "verified_held_body": "„{name}“ už získal iný overený hráč, takže sa zobrazujete ako „{name}“ s číslom a nemôžete hrať s overeným odznakom pod ním. Zmeniť si meno na také, ktoré môžeš držať?",
     "verified_held_confirm": "Zmeniť meno",
-    "verified_held_hint": "„{name}“ má iný predplatiteľ. Ak chcete hrať s overeným šekom, zmeňte si meno.",
+    "verified_held_hint": "\"{name}\" už získal iný overený hráč. Ak chcete hrať s overeným odznakom, zmeňte si meno.",
     "verified_player": "Overený hráč",
-    "verified_sub_required": "Ak chcete hrať pod vaším overeným menom, potrebujete aktívny odber.",
-    "verified_sub_required_confirm": "Zobraziť obchod",
     "verified_use": "Používať overené",
     "verified_use_custom": "Prepnúť späť na vlastný názov",
     "verified_use_hint": "Hrajte pod overeným názvom účtu"

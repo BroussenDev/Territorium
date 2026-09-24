@@ -1700,6 +1700,8 @@
     "loading": "Profilul se încarcă...",
     "no_clans": "Acest jucător nu este în niciun clan.",
     "not_found": "Profilul jucătorului nu a fost găsit",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Distribuie profilul",
     "title": "Profilul Jucătorului",
     "view": "Vezi Profilul"
@@ -2429,12 +2431,10 @@
     "too_short": "Numele de utilizator trebuie să conțină cel puțin {min} caractere.",
     "verified_active_hint": "Te joci sub numele tău de cont verificat.",
     "verified_heading": "Utilizator verificat",
-    "verified_held_body": "„{name}„ este deținut de un alt abonat, așa că sunteți afișat ca \"{name}\" cu un număr și nu se poate juca cu verificarea verificată sub acesta. Schimbați numele pe unul pe care îl puteți deține?",
+    "verified_held_body": "„{name}” este deja preluat de un alt jucător verificat, așa că ești afișat ca „{name}” cu un număr și nu poți juca cu insigna verificată sub acesta. Îți schimbi numele într-unul pe care îl poți ține?",
     "verified_held_confirm": "Schimbă nume de utilizator",
-    "verified_held_hint": "„{name}„ este deținut de un alt abonat. Schimbă numele pentru a juca cu verificarea verificată.",
+    "verified_held_hint": "„{name}” este deja preluat de un alt jucător verificat. Schimbați-vă numele pentru a juca cu insigna verificată.",
     "verified_player": "Jucător verificat",
-    "verified_sub_required": "Ai nevoie de un abonament activ pentru a juca sub numele tău verificat.",
-    "verified_sub_required_confirm": "Vizitează magazinul",
     "verified_use": "Utilizare verificată",
     "verified_use_custom": "Comută înapoi la un nume personalizat",
     "verified_use_hint": "Joacă sub numele tău de cont verificat"

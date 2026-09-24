@@ -710,14 +710,21 @@ describe("UsernameInput verified name", () => {
     expect(el.isVerified()).toBe(false);
   });
 
-  it("renders the free-text field and an off-state toggle when ineligible", async () => {
+  // Verification is granted by the team: a player it hasn't verified gets no
+  // toggle that could never turn on.
+  it("renders the free-text field and no toggle for an unverified player", async () => {
     const el = await mount();
     await signIn(el, {
-      player: { username: null, usernameBase: null, usernameStatus: "none" },
+      player: {
+        username: "Ryan.1234",
+        usernameBase: "Ryan",
+        usernameStatus: "unclaimed",
+      },
     } as unknown as UserMeResponse);
 
     expect(el.isVerified()).toBe(false);
-    expect(q(el, TOGGLE)).not.toBeNull();
+    expect(el.querySelector('input[type="text"]')).not.toBeNull();
+    expect(q(el, TOGGLE)).toBeNull();
     expect(q(el, CHANGE)).toBeNull();
   });
 

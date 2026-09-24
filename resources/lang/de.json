@@ -1700,6 +1700,8 @@
     "loading": "Lade Profil...",
     "no_clans": "Dieser Spieler ist in keinen Clans.",
     "not_found": "Spielerprofil nicht gefunden",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Profil teilen",
     "title": "Spielerprofil",
     "view": "Profil ansehen"
@@ -2429,12 +2431,10 @@
     "too_short": "Benutzername muss mindestens {min} Zeichen lang sein.",
     "verified_active_hint": "Sie spielen unter Ihrem verifizierten Kontonamen.",
     "verified_heading": "Verifizierter Name",
-    "verified_held_body": "\"{name}\" wird von einem anderen Abonnenten gehalten, daher wirst du als \"{name}\" mit einer Zahl angezeigt und kannst nicht mit dem verifizierten Häkchen darunter spielen. Möchtest du deinen Namen in einen ändern, den du halten kannst?",
+    "verified_held_body": "„{name}“ ist bereits von einem anderen verifizierten Spieler vergeben, daher wird Ihnen als „{name}“ mit einer Nummer angezeigt und Sie können nicht mit dem verifizierten Abzeichen darunter spielen. Ändern Sie Ihren Namen in einen Namen, den Sie tragen können?",
     "verified_held_confirm": "Den Namen ändern",
-    "verified_held_hint": "\"{name}\" wird von einem anderen Abonnenten gehalten. Ändere deinen Namen, um mit dem verifizierten Häkchen spielen zu können.",
+    "verified_held_hint": "„{name}“ ist bereits von einem anderen verifizierten Spieler vergeben. Ändern Sie Ihren Namen, um mit dem verifizierten Abzeichen zu spielen.",
     "verified_player": "Verifizierter Spieler",
-    "verified_sub_required": "Du benötigst ein aktives Abonnement, um unter deinem verifizierten Namen zu spielen.",
-    "verified_sub_required_confirm": "Shop besuchen",
     "verified_use": "Verifizierung verwenden",
     "verified_use_custom": "Zu einem eigenen Namen zurückkehren",
     "verified_use_hint": "Sie spielen unter Ihrem verifizierten Kontonamen"

@@ -1700,6 +1700,8 @@
     "loading": "Caricamento profilo...",
     "no_clans": "Questo giocatore non fa parte di nessun clan.",
     "not_found": "Profilo giocatore non trovato",
+    "role_admin": "Admin",
+    "role_mod": "Moderatore",
     "share": "Condividi profilo",
     "title": "Profilo del giocatore",
     "view": "Visualizza profilo"
@@ -2429,12 +2431,10 @@
     "too_short": "Il nome utente deve essere di almeno {min} caratteri.",
     "verified_active_hint": "Stai giocando con il nome del tuo account verificato.",
     "verified_heading": "Nome verificato",
-    "verified_held_body": "\"{name}\" è posseduto da un altro abbonato, quindi vieni mostrato come \"{name}\" con un numero e non puoi giocare con il segno di spunta verificato sotto di esso. Cambiare il tuo nome con uno che puoi tenere?",
+    "verified_held_body": "\"{name}\" è già occupato da un altro giocatore verificato, quindi vieni mostrato come \"{name}\" con un numero e non puoi giocare con il badge verificato sotto. Cambiare il tuo nome con uno che puoi tenere?",
     "verified_held_confirm": "Cambia nome",
-    "verified_held_hint": "\"{name}\" è detenuto da un altro abbonato. Cambia il tuo nome per giocare con l'assegno verificato.",
+    "verified_held_hint": "\"{name}\" è già stato preso da un altro giocatore verificato. Cambia il tuo nome per giocare con il badge verificato.",
     "verified_player": "Giocatore verificato",
-    "verified_sub_required": "Hai bisogno di un abbonamento attivo per giocare con il tuo nome verificato.",
-    "verified_sub_required_confirm": "Visualizza il negozio",
     "verified_use": "Usa verificato",
     "verified_use_custom": "Torna a un nome personalizzato",
     "verified_use_hint": "Gioca con il nome del tuo account verificato"

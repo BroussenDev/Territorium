@@ -1700,6 +1700,8 @@
     "loading": "Cargando perfil...",
     "no_clans": "Este xogador non está en ningún clan.",
     "not_found": "Non se atopou o perfil do xogador",
+    "role_admin": "Admin",
+    "role_mod": "Moderador",
     "share": "Compartir perfil",
     "title": "Perfil do xogador",
     "view": "Ver perfil"
@@ -2429,12 +2431,10 @@
     "too_short": "O nome de usuario debe ter polo menos {min} caracteres.",
     "verified_active_hint": "Estás xogando co nome da túa conta verificada.",
     "verified_heading": "Nome verificado",
-    "verified_held_body": "\"{name}\" está en mans doutro subscritor, polo que móstrase como \"{name}\" cun número e non pode xogar coa verificación verificada debaixo del. Cambiar o teu nome por un que poidas manter?",
+    "verified_held_body": "\"{name}\" xa o tomou outro xogador verificado, polo que aparecerás como \"{name}\" cun número e non podes xogar coa insignia verificada debaixo del. Cambiar o teu nome por un que poidas manter?",
     "verified_held_confirm": "Cambiar o nome",
-    "verified_held_hint": "\"{name}\" está en mans doutro subscritor. Cambia o teu nome para xogar coa verificación verificada.",
+    "verified_held_hint": "\"{name}\" xa foi tomado por outro xogador verificado. Cambia o teu nome para xogar coa insignia verificada.",
     "verified_player": "Xogador verificado",
-    "verified_sub_required": "Necesitas unha subscrición activa para xogar co teu nome verificado.",
-    "verified_sub_required_confirm": "Ver tenda",
     "verified_use": "Usar verificado",
     "verified_use_custom": "Cambia de novo a un nome personalizado",
     "verified_use_hint": "Xoga co nome da túa conta verificada"

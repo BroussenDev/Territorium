@@ -1700,6 +1700,8 @@
     "loading": "Memuat profil...",
     "no_clans": "Pemain ini tidak ada dalam klan mana pun.",
     "not_found": "Profil pemain tidak ditemukan",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Bagikan Profil",
     "title": "Profil Pemain",
     "view": "Lihat Profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Nama pengguna harus memiliki panjang minimal {min} karakter.",
     "verified_active_hint": "Anda bermain dengan nama akun terverifikasi Anda.",
     "verified_heading": "Nama terverifikasi",
-    "verified_held_body": "\"{name}\" dipegang oleh pelanggan lain, sehingga Anda ditampilkan sebagai \"{name}\" dengan nomor dan tidak dapat bermain dengan cek terverifikasi di bawahnya. Ubah nama Anda menjadi nama yang dapat Anda pegang?",
+    "verified_held_body": "\"{name}\" sudah diambil oleh pemain terverifikasi lainnya, jadi Anda ditampilkan sebagai \"{name}\" dengan nomor dan tidak dapat bermain dengan lencana terverifikasi di bawahnya. Ubah nama Anda menjadi nama yang dapat Anda pegang?",
     "verified_held_confirm": "Ganti nama",
-    "verified_held_hint": "\"{name}\" dipegang oleh pelanggan lain. Ubah nama Anda untuk bermain dengan cek terverifikasi.",
+    "verified_held_hint": "\"{name}\" sudah diambil oleh pemain terverifikasi lainnya. Ubah nama Anda untuk bermain dengan lencana terverifikasi.",
     "verified_player": "Pemain terverifikasi",
-    "verified_sub_required": "Anda memerlukan langganan aktif untuk bermain dengan nama terverifikasi Anda.",
-    "verified_sub_required_confirm": "Lihat toko",
     "verified_use": "Gunakan terverifikasi",
     "verified_use_custom": "Beralih kembali ke nama khusus",
     "verified_use_hint": "Mainkan dengan nama akun terverifikasi Anda"

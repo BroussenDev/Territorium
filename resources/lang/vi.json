@@ -1700,6 +1700,8 @@
     "loading": "Đang tải trang cá nhân...",
     "no_clans": "Người chơi này không thuộc bất kì clan nào.",
     "not_found": "Không tìm thấy trang cá nhân của người chơi",
+    "role_admin": "Quản trị viên",
+    "role_mod": "Điều hành viên",
     "share": "Chia sẻ Trang cá nhân",
     "title": "Trang cá nhân của Người chơi",
     "view": "Xem Trang cá nhân"
@@ -2429,12 +2431,10 @@
     "too_short": "Tên phải dài ít nhất {min} ký tự.",
     "verified_active_hint": "Bạn đang chơi dưới tên tài khoản đã được xác minh của bạn.",
     "verified_heading": "Tên đã xác minh",
-    "verified_held_body": "Tên '{name}' đang được một người đăng ký khác giữ, nên bạn sẽ hiển thị là '{name}' kèm thêm số và không thể chơi với dấu tích xác minh bên dưới. Đổi tên sang một cái bạn có thể giữ nhé?",
+    "verified_held_body": "\"{name}\" đã được một người chơi khác đã xác minh sử dụng, vì vậy bạn được hiển thị là \"{name}\" kèm theo một số và không thể chơi với huy hiệu đã được xác minh bên dưới nó. Đổi tên thành tên bạn có thể giữ được?",
     "verified_held_confirm": "Đổi tên",
-    "verified_held_hint": "Tên '{name}' đang được một người đăng ký khác giữ. Hãy đổi tên để chơi với dấu tích xác minh.",
+    "verified_held_hint": "\"{name}\" đã được người chơi khác đã xác minh sử dụng. Thay đổi tên của bạn để chơi với huy hiệu đã được xác minh.",
     "verified_player": "Người chơi đã xác minh",
-    "verified_sub_required": "Bạn cần có gói định kỳ đang hoạt động để chơi bằng tên đã xác minh.",
-    "verified_sub_required_confirm": "Xem cửa hàng",
     "verified_use": "Sử dụng tên đã xác minh",
     "verified_use_custom": "Đổi lại về tên tuỳ chỉnh",
     "verified_use_hint": "Chơi dưới tên tài khoản đã được xác minh của bạn"

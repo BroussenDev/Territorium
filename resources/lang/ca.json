@@ -1700,6 +1700,8 @@
     "loading": "S'està carregant el perfil...",
     "no_clans": "Aquest jugador no forma part de cap clan.",
     "not_found": "No s'ha trobat el perfil del jugador",
+    "role_admin": "Admin",
+    "role_mod": "Moderador",
     "share": "Comparteix el perfil",
     "title": "Perfil del jugador",
     "view": "Veure perfil"
@@ -2429,12 +2431,10 @@
     "too_short": "El nom d'usuari ha de ser d'almenys {min} caràcters de llargada.",
     "verified_active_hint": "Estàs jugant amb el nom del teu compte verificat.",
     "verified_heading": "Nom verificat",
-    "verified_held_body": "\"{name}\" el té un altre subscriptor, de manera que se us mostra com \"{name}\" amb un número i no podeu jugar amb el xec verificat que hi ha sota. Canvies el teu nom per un que puguis mantenir?",
+    "verified_held_body": "\"{name}\" ja l'ha agafat un altre jugador verificat, de manera que se us mostra com \"{name}\" amb un número i no podeu jugar amb la insígnia verificada a sota. Canvies el teu nom per un que puguis mantenir?",
     "verified_held_confirm": "Canvia el nom",
-    "verified_held_hint": "\"{name}\" el té un altre subscriptor. Canvia el teu nom per jugar amb el xec verificat.",
+    "verified_held_hint": "\"{name}\" ja l'ha pres un altre jugador verificat. Canvia el teu nom per jugar amb la insígnia verificada.",
     "verified_player": "Jugador verificat",
-    "verified_sub_required": "Necessites una subscripció activa per jugar amb el teu nom verificat.",
-    "verified_sub_required_confirm": "Veure botiga",
     "verified_use": "Ús verificat",
     "verified_use_custom": "Torneu a un nom personalitzat",
     "verified_use_hint": "Juga amb el nom del teu compte verificat"

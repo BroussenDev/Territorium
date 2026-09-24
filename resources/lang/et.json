@@ -1700,6 +1700,8 @@
     "loading": "Profiili laadimine...",
     "no_clans": "See mängija pole üheski klannis.",
     "not_found": "Mängija profiili ei leitud",
+    "role_admin": "Admin",
+    "role_mod": "Moderaator",
     "share": "Jaga profiili",
     "title": "Mängija profiil",
     "view": "Vaata profiili"
@@ -2429,12 +2431,10 @@
     "too_short": "Kasutajanimi peab olema vähemalt {min} tähte pikk.",
     "verified_active_hint": "Mängid oma kinnitatud konto nime all.",
     "verified_heading": "Kinnitatud nimi",
-    "verified_held_body": "„{name}” on mõne teise tellija käes, seega kuvatakse teid numbriga „{name}” ja te ei saa selle all oleva kinnitatud tšekiga mängida. Kas muudate oma nime selliseks, mida saate hoida?",
+    "verified_held_body": "\"{name}\" on juba mõne teise kinnitatud mängija poolt hõivatud, seega kuvatakse teid numbriga \"{name}\" ja te ei saa selle all oleva kinnitatud märgiga mängida. Kas muudate oma nime selliseks, mida saate hoida?",
     "verified_held_confirm": "Muuda nime",
-    "verified_held_hint": "\"{name}\" on mõne teise tellija käes. Kinnitatud tšekiga mängimiseks muutke oma nime.",
+    "verified_held_hint": "\"{name}\" on juba mõne teise kinnitatud mängija poolt hõivatud. Kinnitatud märgiga mängimiseks muutke oma nime.",
     "verified_player": "Kinnitatud mängija",
-    "verified_sub_required": "Kinnitatud nime all mängimiseks vajate aktiivset tellimust.",
-    "verified_sub_required_confirm": "Vaata poodi",
     "verified_use": "Kasuta kontrollitud",
     "verified_use_custom": "Lülitage tagasi kohandatud nimele",
     "verified_use_hint": "Mängige oma kinnitatud konto nime all"

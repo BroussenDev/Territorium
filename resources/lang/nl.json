@@ -1699,6 +1699,8 @@
     "loading": "Profiel laden...",
     "no_clans": "Deze speler is niet in een clan.",
     "not_found": "Speler profiel niet gevonden",
+    "role_admin": "Beheerder",
+    "role_mod": "Moderator",
     "share": "Deel profiel",
     "title": "Speler profiel",
     "view": "Bekijk profiel"
@@ -2428,12 +2430,10 @@
     "too_short": "Gebruikersnaam moet minstens {min} tekens lang zijn.",
     "verified_active_hint": "Je speelt onder je geverifieerde accountnaam.",
     "verified_heading": "Geverifieerde naam",
-    "verified_held_body": "\"{name}\" is in bezit door een andere abonnee, dus je bent weergegeven als \"{name}\" met een nummer en kan niet spelen met de geverifieerde vink erin. Je naam veranderen naar een naam die je kan gebruiken?",
+    "verified_held_body": "\"{name}\" is al bezet door een andere geverifieerde speler, dus je wordt weergegeven als \"{name}\" met een nummer en je kunt niet spelen met de geverifieerde badge eronder. Uw naam wijzigen in een naam die u kunt vasthouden?",
     "verified_held_confirm": "Verander naam",
-    "verified_held_hint": "\"{name}\" is in bezit van een andere abonnee. Verander je naam om met het vinkje te spelen.",
+    "verified_held_hint": "\"{name}\" is al bezet door een andere geverifieerde speler. Verander je naam om met de geverifieerde badge te spelen.",
     "verified_player": "Geverifieerde speler",
-    "verified_sub_required": "Je hebt een actief abonnement nodig om onder je geverifieerde naam te spelen.",
-    "verified_sub_required_confirm": "Bekijk winkel",
     "verified_use": "Gebruik geverifieerd",
     "verified_use_custom": "Ga terug naar een aangepaste naam",
     "verified_use_hint": "Speel onder je geverifieerde accountnaam"

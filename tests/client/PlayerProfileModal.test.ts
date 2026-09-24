@@ -131,6 +131,36 @@ describe("public player profile route", () => {
     expect(window.location.hash).toBe("");
   });
 
+  it("shows a staff role beside the name, and none for a regular player", async () => {
+    fetchPublicPlayerProfileMock.mockResolvedValue({
+      createdAt: "2026-01-01T00:00:00.000Z",
+      username: "Bastien",
+      role: "mod",
+      stats: statsTree,
+    });
+    history.replaceState(null, "", "/#modal=profile&publicID=staff-player");
+    expect(modalRouter.routeFromHash()).toBe(true);
+
+    await vi.waitFor(async () => {
+      await modal.updateComplete;
+      expect(modal.textContent).toContain("player_profile.role_mod");
+    });
+
+    fetchPublicPlayerProfileMock.mockResolvedValue({
+      createdAt: "2026-01-01T00:00:00.000Z",
+      username: "Alice.1234",
+      stats: statsTree,
+    });
+    history.replaceState(null, "", "/#modal=profile&publicID=regular-player");
+    expect(modalRouter.routeFromHash()).toBe(true);
+
+    await vi.waitFor(async () => {
+      await modal.updateComplete;
+      expect(modal.textContent).toContain("Alice");
+    });
+    expect(modal.textContent).not.toContain("player_profile.role_");
+  });
+
   it("shows not-found when the profile fetch fails", async () => {
     fetchPublicPlayerProfileMock.mockResolvedValue(false);
     history.replaceState(null, "", "/#modal=profile&publicID=missing");

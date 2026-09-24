@@ -1700,6 +1700,8 @@
     "loading": "Indlæser profil...",
     "no_clans": "Denne spiller er ikke i nogen klaner.",
     "not_found": "Spillerprofil ikke fundet",
+    "role_admin": "Admin",
+    "role_mod": "Moderator",
     "share": "Del profil",
     "title": "Spillerprofil",
     "view": "Se profil"
@@ -2429,12 +2431,10 @@
     "too_short": "Brugernavn skal bestå af mindst {min} tegn.",
     "verified_active_hint": "Du spiller under dit verificerede kontonavn.",
     "verified_heading": "Bekræftet navn",
-    "verified_held_body": "\"{name}\" holdes af en anden abonnent, så du vises som \"{name}\" med et nummer og kan ikke spille med den verificerede check under den. Vil du ændre dit navn til et, du kan beholde?",
+    "verified_held_body": "\"{name}\" er allerede taget af en anden verificeret spiller, så du bliver vist som \"{name}\" med et nummer og kan ikke spille med det verificerede badge under det. Vil du ændre dit navn til et, du kan beholde?",
     "verified_held_confirm": "Skift navn",
-    "verified_held_hint": "\"{name}\" ejes af en anden abonnent. Skift dit navn for at spille med den verificerede check.",
+    "verified_held_hint": "\"{name}\" er allerede taget af en anden bekræftet spiller. Skift dit navn for at spille med det bekræftede badge.",
     "verified_player": "Verificeret spiller",
-    "verified_sub_required": "Du skal have et aktivt abonnement for at spille under dit bekræftede navn.",
-    "verified_sub_required_confirm": "Se butik",
     "verified_use": "Brug verificeret",
     "verified_use_custom": "Skift tilbage til et brugerdefineret navn",
     "verified_use_hint": "Spil under dit verificerede kontonavn"
