@@ -116,6 +116,33 @@ body.page-open {
   flex-wrap: nowrap;
 }
 
+/* Home page world-map backdrop: a slow drift/zoom so it reads as alive
+   rather than a static wallpaper. Scaled up so the pan never reveals an
+   edge, and the fixed #hex-grid ancestor clips the overscan. */
+#background-layer {
+  animation: homeBackgroundDrift 50s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes homeBackgroundDrift {
+  0% {
+    transform: scale(1.08) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.16) translate(-1.5%, 1%);
+  }
+  100% {
+    transform: scale(1.08) translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #background-layer {
+    animation: none;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

@@ -243,7 +243,7 @@ export default defineConfig(({ mode }) => {
       cdnBase,
     ),
     backgroundImageUrl: buildAssetUrl(
-      "images/background.webp",
+      "images/home-background.webp",
       assetManifest,
       cdnBase,
     ),
