@@ -1,4 +1,5 @@
 import {
+  applyHiddenName,
   FailOpenPrivilegeChecker,
   PrivilegeCheckerImpl,
   resolveVerifiedJoin,
@@ -775,5 +776,35 @@ describe("FailOpenPrivilegeChecker#resolveClanTag", () => {
   it("drops an anonymous user's tag", () => {
     const result = checker.resolveClanTag("ABC", []);
     expect(result).toEqual({ tag: null, dropped: true });
+  });
+});
+
+describe("applyHiddenName", () => {
+  it("replaces the name and drops the clan tag", () => {
+    expect(
+      applyHiddenName({ username: "RealName", clanTag: "ABC" }, "Renard482"),
+    ).toEqual({ username: "Renard482", clanTag: null });
+  });
+
+  it("keeps the identity without a hidden name", () => {
+    const identity = { username: "RealName", clanTag: "ABC" };
+    expect(applyHiddenName(identity, null)).toBe(identity);
+    expect(applyHiddenName(identity, undefined)).toBe(identity);
+  });
+
+  it("strips the verified badge through resolveVerifiedJoin", () => {
+    const { username } = applyHiddenName(
+      { username: "RealName", clanTag: null },
+      "Renard482",
+    );
+    const cosmetics = { verified: true };
+    expect(
+      resolveVerifiedJoin(cosmetics, username, {
+        username: "RealName",
+        usernameBase: "RealName",
+        usernameStatus: "premium",
+      }),
+    ).toBe("custom");
+    expect(cosmetics).toEqual({});
   });
 });

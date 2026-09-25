@@ -7,7 +7,11 @@ import {
 } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { CosmeticPack } from "../../core/CosmeticSchemas";
-import { ResolvedCosmetic } from "../Cosmetics";
+import {
+  packDescription,
+  packDisplayName,
+  ResolvedCosmetic,
+} from "../Cosmetics";
 import { translateText } from "../Utils";
 import "./CosmeticCard";
 import { cosmeticTypeLabel } from "./CosmeticPresentation";
@@ -99,7 +103,7 @@ export class PackContentsDialog extends LitElement {
       <div
         data-pack-contents
         role="dialog"
-        aria-label=${pack.displayName}
+        aria-label=${packDisplayName(pack)}
         class="relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-surface p-6 shadow-2xl"
       >
         <button
@@ -111,10 +115,12 @@ export class PackContentsDialog extends LitElement {
           ×
         </button>
         <h2 class="mb-1 pr-8 text-lg font-bold text-white">
-          ${pack.displayName}
+          ${packDisplayName(pack)}
         </h2>
         ${pack.description
-          ? html`<p class="mb-4 text-sm text-white/60">${pack.description}</p>`
+          ? html`<p class="mb-4 text-sm text-white/60">
+              ${packDescription(pack)}
+            </p>`
           : html`<div class="mb-4"></div>`}
         ${items.length === 0
           ? html`<p class="py-6 text-center text-sm text-white/50">

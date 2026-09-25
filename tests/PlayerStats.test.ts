@@ -21,6 +21,7 @@ function player(
     name: () => id,
     displayName: () => (clanTag === null ? id : `[${clanTag}] ${id}`),
     clanTag: () => clanTag,
+    cosmetics: {},
     numTilesOwned: () => tiles,
     gold: () => BigInt(tiles),
     tradeGold: () => 0,

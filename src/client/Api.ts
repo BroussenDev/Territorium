@@ -9,8 +9,11 @@ import {
   ClaimAllRewardsResponseSchema,
   ClaimRewardResponse,
   ClaimRewardResponseSchema,
+  CreatorDashboard,
+  CreatorDashboardSchema,
   GetMyTribeNamesResponse,
   GetMyTribeNamesResponseSchema,
+  HiddenNameResponseSchema,
   NewsItemSchema,
   PaymentsCheckoutResponse,
   PaymentsCheckoutResponseSchema,
@@ -723,6 +726,115 @@ export async function clearCreatorCode(): Promise<ClearCreatorCodeResult> {
   } catch (e) {
     console.error("clearCreatorCode: request failed", e);
     return { ok: false, code: "failed" };
+  }
+}
+
+// GET /users/@me/creator/dashboard — the caller's creator page, or null when
+// they aren't a partnered creator (404) or the request failed.
+export async function getCreatorDashboard(): Promise<CreatorDashboard | null> {
+  try {
+    const response = await fetch(
+      `${getApiBase()}/users/@me/creator/dashboard`,
+      { headers: { Authorization: await getAuthHeader() } },
+    );
+    if (response.status === 401) {
+      await logOut();
+      return null;
+    }
+    if (!response.ok) return null;
+    const parsed = CreatorDashboardSchema.safeParse(await response.json());
+    if (!parsed.success) {
+      console.error("getCreatorDashboard: Zod validation failed", parsed.error);
+      return null;
+    }
+    return parsed.data;
+  } catch (e) {
+    console.error("getCreatorDashboard: request failed", e);
+    return null;
+  }
+}
+
+export type CreatorPayoutResult =
+  | { ok: true; dashboard: CreatorDashboard }
+  | {
+      ok: false;
+      code:
+        | "below_minimum"
+        | "already_requested"
+        | "terminated"
+        | "rate_limited"
+        | "failed";
+    };
+
+// POST /users/@me/creator/payouts {currency} — asks for everything available
+// in that currency. Paid by hand by an admin, so it only files a request.
+export async function requestCreatorPayout(
+  currency: string,
+): Promise<CreatorPayoutResult> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/creator/payouts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+      },
+      body: JSON.stringify({ currency }),
+    });
+    if (response.status === 401) {
+      await logOut();
+      return { ok: false, code: "failed" };
+    }
+    if (response.status === 429) return { ok: false, code: "rate_limited" };
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      const reason: unknown = body?.reason;
+      if (
+        reason === "below_minimum" ||
+        reason === "already_requested" ||
+        reason === "terminated"
+      ) {
+        return { ok: false, code: reason };
+      }
+      return { ok: false, code: "failed" };
+    }
+    const parsed = CreatorDashboardSchema.safeParse(await response.json());
+    if (!parsed.success) {
+      console.error(
+        "requestCreatorPayout: Zod validation failed",
+        parsed.error,
+      );
+      return { ok: false, code: "failed" };
+    }
+    return { ok: true, dashboard: parsed.data };
+  } catch (e) {
+    console.error("requestCreatorPayout: request failed", e);
+    return { ok: false, code: "failed" };
+  }
+}
+
+// POST /users/@me/hidden-name draws a new random fake name; DELETE turns it
+// off. Returns the new name (null when off), or undefined on failure.
+// Invalidates the cached /users/@me so the next join uses it.
+export async function setHiddenName(
+  enabled: boolean,
+): Promise<string | null | undefined> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/hidden-name`, {
+      method: enabled ? "POST" : "DELETE",
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (response.status === 401) {
+      await logOut();
+      return undefined;
+    }
+    if (!response.ok) return undefined;
+    const parsed = HiddenNameResponseSchema.safeParse(await response.json());
+    if (!parsed.success) return undefined;
+    invalidateUserMe();
+    return parsed.data.name;
+  } catch (e) {
+    console.error("setHiddenName: request failed", e);
+    return undefined;
   }
 }
 

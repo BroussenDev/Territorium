@@ -1,5 +1,32 @@
 # Territorium — Changelog
 
+## v0.1.1
+
+🛍️ **Store**
+
+- 22 new items: 5 patterns (Battlements, Cross, Lattice, Braid, Mosaic), 3 palettes (Copper, Ruby, Glacier), 5 flags, 3 crowns and 4 effects.
+- Two new packs: Ruby Empire and Golden Dawn.
+- Every item, pack and emerald pack name is now translated into every language.
+
+🎥 **Creators**
+
+- New "Support a creator" button in the store header, next to your currencies. Enter a creator's code and part of your real-money purchases goes to them, at no extra cost to you.
+- Creators get a creator space in their account: their share, supporters, sales, balances and withdrawals.
+- Creators also get every perk of the top subscription.
+
+🕶️ **Hidden name**
+
+- Seigneur and Souverain subscribers (and creators) can play under a random fake name, without clan tag or badge. Handy for streaming. Turn it on, draw another name or turn it off from the name bar on the home page.
+
+📅 **Challenges**
+
+- Daily, weekly and monthly challenges, and ranked seasons, now reset at midnight French time.
+
+✨ **More**
+
+- The verified badge no longer shows over the map during a game. It stays in the in-game scoreboard.
+- The clan map and the clan leaderboard only count public games.
+
 ## v0.1.0
 
 🎯 **Map objectives**

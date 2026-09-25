@@ -23,9 +23,19 @@ import {
 // component, and every caller gets the same answer.
 
 /** Which branch of the precedence produced the name. */
-export type PlayerNameSource = "verified" | "stored" | "persona" | "generated";
+export type PlayerNameSource =
+  | "hidden"
+  | "verified"
+  | "stored"
+  | "persona"
+  | "generated";
 
 export interface PlayerNameInputs {
+  /**
+   * The random fake name the account plays under (a Seigneur, Souverain or
+   * creator perk), or null when turned off. Wins over everything else.
+   */
+  hiddenName?: string | null;
   /**
    * The account's bare name when the player is eligible to play verified, else
    * null. See accountVerifiedName.
@@ -77,6 +87,14 @@ export function accountVerifiedName(
   if (!player.username || isTemporaryUsername(player.usernameBase)) return null;
   if (player.username !== player.usernameBase) return null;
   return player.username;
+}
+
+// The fake name the account joins games under, or null when it has none.
+export function accountHiddenName(
+  userMe: UserMeResponse | false | null,
+): string | null {
+  if (userMe === null || userMe === false) return null;
+  return userMe.player.hiddenName?.name ?? null;
 }
 
 // An entitled player whose bare name someone else holds: they display as
@@ -416,6 +434,10 @@ export function resolvePlayerName(
 ): ResolvedPlayerName {
   const { verifiedName, verifiedOptIn, storedName, persona, generatedName } =
     inputs;
+
+  if (inputs.hiddenName) {
+    return { name: inputs.hiddenName, source: "hidden", verified: false };
+  }
 
   if (verifiedOptIn && verifiedName !== null) {
     return { name: verifiedName, source: "verified", verified: true };

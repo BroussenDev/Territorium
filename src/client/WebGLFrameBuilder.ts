@@ -691,7 +691,9 @@ export class WebGLFrameBuilder {
       displayName: p.displayName(),
       flag: flagUrl,
       crown: crownUrl,
-      verified: p.cosmetics.verified === true,
+      // No verified badge over the map: it would single out streamers on
+      // the battlefield. The in-game scoreboard shows it instead.
+      verified: false,
       color: p.territoryColor().toHex(),
     };
   }

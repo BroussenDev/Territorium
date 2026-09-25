@@ -271,6 +271,20 @@ export class FailOpenPrivilegeChecker implements PrivilegeChecker {
 }
 
 /**
+ * A player with a hidden name (a Seigneur, Souverain or creator perk) joins
+ * under it, without a clan tag: either would give them away. The client
+ * already sends the hidden name; this also covers an older or tampered one.
+ * The name comes from the API, which draws it from its own word list.
+ */
+export function applyHiddenName(
+  identity: { username: string; clanTag: string | null },
+  hiddenName: string | null | undefined,
+): { username: string; clanTag: string | null } {
+  if (!hiddenName) return identity;
+  return { username: hiddenName, clanTag: null };
+}
+
+/**
  * Decide whether a join keeps the verified check.
  *
  * `cosmetics.verified` on the join message is INTENT ("play under my account

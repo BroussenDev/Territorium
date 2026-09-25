@@ -31,7 +31,7 @@ import type { GameServer } from "./GameServer";
 import { isSteamAuthenticated, planJoinVerify, verifyJoin } from "./JoinVerify";
 import { getUserMe, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
-import { resolveVerifiedJoin } from "./Privilege";
+import { applyHiddenName, resolveVerifiedJoin } from "./Privilege";
 
 import { MapPlaylist } from "./MapPlaylist";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
@@ -676,6 +676,10 @@ export async function startWorker() {
           accountUsername = result.response.player;
           trusted = result.response.player.trustTier === "trusted";
           queuePriority = result.response.player.queuePriority === true;
+          ({ username, clanTag } = applyHiddenName(
+            { username, clanTag },
+            result.response.player.hiddenName?.name,
+          ));
 
           if (allowedFlares !== undefined) {
             const allowed =

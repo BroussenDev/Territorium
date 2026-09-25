@@ -10,12 +10,13 @@ import {
   validateClanTag,
   validateUsername,
 } from "../core/validations/username";
-import { getUserMe, invalidateUserMe } from "./Api";
+import { getUserMe, invalidateUserMe, setHiddenName } from "./Api";
 import { checkClanTagOwnership } from "./ClanApi";
 import { verifiedBadge } from "./components/ui/VerifiedBadge";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { showInGameAlert, showInGameConfirm } from "./InGameModal";
 import {
+  accountHiddenName,
   accountNameHeld,
   accountVerifiedName,
   clampUsername,
@@ -132,6 +133,8 @@ export class UsernameInput extends LitElement {
   // Playing under the account's verified bare name (sub-only). The free-form
   // name stays in baseUsername/localStorage so unchecking restores it.
   @state() private verifiedActive: boolean = false;
+  // A hidden-name request is in flight (turning it on, off or rerolling).
+  @state() private hiddenNameBusy: boolean = false;
   private userMe: UserMeResponse | false | null = null;
   // The raw Steam persona, once it lands. Kept alongside the free-form name so
   // resolution sees the same inputs the seed did (see resolvedName).
@@ -505,6 +508,7 @@ export class UsernameInput extends LitElement {
    */
   public resolvedName(): ResolvedPlayerName {
     return resolvePlayerName({
+      hiddenName: accountHiddenName(this.userMe),
       verifiedName: this.verifiedName(),
       verifiedOptIn: this.verifiedActive,
       storedName: this.baseUsername,
@@ -528,6 +532,12 @@ export class UsernameInput extends LitElement {
       validateClanTag(this.clanTag).isValid
       ? this.clanTag
       : null;
+  }
+
+  // The clan tag a join sends: none under a hidden name, which would give the
+  // player away. The game server drops it too.
+  public joinClanTag(): string | null {
+    return accountHiddenName(this.userMe) ? null : this.getClanTag();
   }
 
   public clearClanTag(expectedTag?: string): void {
@@ -978,6 +988,20 @@ export class UsernameInput extends LitElement {
   // Name field. Verified play swaps the free-text input for a badge-led chip so
   // the state reads as "this is my account name", not "the input broke".
   private renderNameControl() {
+    const hidden = accountHiddenName(this.userMe);
+    if (hidden !== null) {
+      return html`
+        ${this.renderHiddenChip(hidden)}
+        <div class="no-crazygames shrink-0 h-full max-h-[44px] flex gap-1.5">
+          ${this.renderHiddenButton("reroll")} ${this.renderHiddenButton("off")}
+        </div>
+      `;
+    }
+    const canHide =
+      this.userMe !== null &&
+      this.userMe !== false &&
+      this.userMe.player.hiddenName !== null &&
+      this.userMe.player.hiddenName !== undefined;
     return html`
       ${this.verifiedActive
         ? this.renderVerifiedChip()
@@ -992,7 +1016,85 @@ export class UsernameInput extends LitElement {
             ? this.renderUseVerifiedButton()
             : nothing}
       </div>
+      ${canHide
+        ? html`<div class="no-crazygames shrink-0 h-full max-h-[44px]">
+            ${this.renderHiddenButton("on")}
+          </div>`
+        : nothing}
     `;
+  }
+
+  // Playing under a random fake name: shown in place of the name field, which
+  // keeps the player's own name for when they turn it off.
+  private renderHiddenChip(name: string) {
+    return html`
+      <div
+        class="flex items-center gap-1.5 ${NAME_BOX}"
+        title=${translateText("username.hidden_active_hint")}
+      >
+        <span class="min-w-0 truncate text-white/90 italic ${NAME_TEXT}"
+          >${name}</span
+        >
+      </div>
+    `;
+  }
+
+  private renderHiddenButton(action: "on" | "off" | "reroll") {
+    const label = translateText(`username.hidden_${action}`);
+    return html`
+      <button
+        type="button"
+        class="flex h-full aspect-square items-center justify-center rounded-lg border border-white/15 bg-black/25 text-white/70 transition-colors hover:border-white/30 hover:bg-black/40 hover:text-white cursor-pointer disabled:opacity-50 disabled:cursor-wait"
+        title=${label}
+        aria-label=${label}
+        ?disabled=${this.hiddenNameBusy}
+        @click=${() => this.changeHiddenName(action !== "off")}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          ${action === "reroll"
+            ? html`<path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+                <path d="M21 3v6h-6"></path>`
+            : action === "on"
+              ? html`<path
+                    d="M9.9 4.24A9.1 9.1 0 0 1 12 4c7 0 10 8 10 8a13.2 13.2 0 0 1-1.67 2.68"
+                  ></path>
+                  <path
+                    d="M6.61 6.61A13.5 13.5 0 0 0 2 12s3 8 10 8a9.7 9.7 0 0 0 5.39-1.61"
+                  ></path>
+                  <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
+                  <path d="m2 2 20 20"></path>`
+              : html`<path
+                    d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle>`}
+        </svg>
+      </button>
+    `;
+  }
+
+  // Turning it on again draws a new name, so "reroll" is the same request.
+  private async changeHiddenName(enabled: boolean) {
+    if (this.hiddenNameBusy) return;
+    this.hiddenNameBusy = true;
+    try {
+      const result = await setHiddenName(enabled);
+      if (result === undefined) {
+        void showInGameAlert(translateText("username.hidden_failed"));
+        return;
+      }
+      await this.refreshUserMe();
+    } finally {
+      this.hiddenNameBusy = false;
+    }
   }
 
   private renderVerifiedChip() {

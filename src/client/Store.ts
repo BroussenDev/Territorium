@@ -14,6 +14,7 @@ import "./components/CosmeticCard";
 import { cosmeticSelectionLabel } from "./components/CosmeticPresentation";
 import { isPreviewableCosmetic } from "./components/CosmeticPreviewBubble";
 import "./components/CosmeticPreviewModal";
+import type { CreatorChangedDetail } from "./components/CreatorCodePanel";
 import "./components/CurrencyDisplay";
 import "./components/CustomCurrencyCard";
 import "./components/EffectsGrid";
@@ -23,6 +24,7 @@ import "./components/PackContentsDialog";
 import { ProgressiveList } from "./components/ProgressiveList";
 import "./components/PurchaseButton";
 import { alignPurchaseRows } from "./components/PurchaseButton";
+import "./components/SupportCreatorDialog";
 import "./components/TribesPanel";
 import { modalHeader } from "./components/ui/ModalHeader";
 import {
@@ -83,6 +85,7 @@ export class StoreModal extends BaseModal {
   private visibleGroups: readonly (readonly ResolvedCosmetic[])[] = [];
   /** The bundle whose contents dialog is open, if any. */
   private openedPack: ResolvedCosmetic | null = null;
+  @state() private supportCreatorOpen = false;
   private readonly pages = new ProgressiveList(this);
 
   protected modalConfig() {
@@ -178,6 +181,11 @@ export class StoreModal extends BaseModal {
         ? undefined
         : this.userMeResponse.player.currency;
     const discount = shopDiscountPercent(this.userMeResponse);
+    // Undefined when signed out or when the API predates creator codes.
+    const creator =
+      this.userMeResponse === false
+        ? undefined
+        : this.userMeResponse.player.creator;
     return modalHeader({
       title: translateText("store.title"),
       onBack: () => this.close(),
@@ -192,6 +200,41 @@ export class StoreModal extends BaseModal {
                 percent: discount,
               })}</span
             >`
+          : ""}
+        ${creator !== undefined
+          ? html`<button
+              type="button"
+              data-support-creator-button
+              class="flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold transition-colors cursor-pointer ${creator
+                ? "border-rose-300/50 bg-rose-400/15 text-rose-100 hover:bg-rose-400/25"
+                : "border-white/20 bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"}"
+              title=${creator
+                ? translateText("creator_code.supporting", {
+                    name: creator.displayName,
+                    code: creator.code,
+                  })
+                : translateText("store.support_creator")}
+              @click=${() => (this.supportCreatorOpen = true)}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-4 w-4"
+                fill=${creator ? "currentColor" : "none"}
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3.1 4.5 6.9 4.5c2.1 0 3.6 1.1 5.1 2.9 1.5-1.8 3-2.9 5.1-2.9 3.8 0 6 3.9 4.5 7.3C19.5 16.4 12 21 12 21Z"
+                ></path>
+              </svg>
+              <span class="hidden sm:inline"
+                >${creator
+                  ? creator.displayName
+                  : translateText("store.support_creator")}</span
+              >
+            </button>`
           : ""}
         ${currency
           ? html`<currency-display
@@ -660,6 +703,17 @@ export class StoreModal extends BaseModal {
             this.requestUpdate();
           }}
         ></cosmetic-preview-modal>`
+      : ""}
+    ${this.supportCreatorOpen && this.userMeResponse !== false
+      ? html`<support-creator-dialog
+          .creator=${this.userMeResponse.player.creator}
+          @close=${() => (this.supportCreatorOpen = false)}
+          @creator-changed=${(e: CustomEvent<CreatorChangedDetail>) => {
+            if (this.userMeResponse === false) return;
+            this.userMeResponse.player.creator = e.detail.creator;
+            this.requestUpdate();
+          }}
+        ></support-creator-dialog>`
       : ""}`;
   }
 

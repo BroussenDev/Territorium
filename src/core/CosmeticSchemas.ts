@@ -514,6 +514,8 @@ export const SubscriptionSchema = CosmeticSchema.extend({
   shopDiscountPercent: z.number().int().min(0).max(100).optional(),
   // Whether subscribers get a gold frame on the leaderboards and profile.
   goldFrame: z.boolean().optional(),
+  // Whether subscribers can play under a random fake name (for streamers).
+  hiddenName: z.boolean().optional(),
   // The exclusive cosmetic ("crown:<name>", ...) the tier gives once per
   // account, on the first subscription.
   giftFlare: z.string().optional(),

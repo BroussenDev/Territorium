@@ -1,4 +1,4 @@
-import { LitElement, html, nothing } from "lit";
+import { LitElement, TemplateResult, html, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { UserSettings } from "../../core/game/UserSettings";
@@ -11,11 +11,14 @@ import {
 import { type ColumnId, type StatsTableKind } from "../StatsConstants";
 import { translateText } from "../Utils";
 import type { GameView } from "../view";
+import { verifiedBadge } from "./ui/VerifiedBadge";
 
 export interface StatsRow {
   key: string;
   name: string;
   clanTag?: string | null;
+  /** Plays under a verified account name: badge next to the name. */
+  verified?: boolean;
   values: ReadonlyMap<ColumnId, number>;
   emphasized?: boolean;
   pinned?: boolean;
@@ -243,6 +246,7 @@ export abstract class StatsTable extends LitElement {
     index: number,
     text: string,
     borderClass: string,
+    badge: TemplateResult | null = null,
   ) {
     return html`
       <div
@@ -251,7 +255,11 @@ export abstract class StatsTable extends LitElement {
         ]} tabular-nums ${index > 0 ? DIVIDER_CLASS : ""} ${borderClass}"
         role="cell"
       >
-        <span class="block w-full truncate">${text}</span>
+        ${badge === null
+          ? html`<span class="block w-full truncate">${text}</span>`
+          : html`<span class="flex w-full min-w-0 items-center gap-1">
+              <span class="truncate">${text}</span>${badge}
+            </span>`}
       </div>
     `;
   }
@@ -286,6 +294,9 @@ export abstract class StatsTable extends LitElement {
                 game,
               ),
               borderClass,
+              column.id === "player" && row.verified === true
+                ? verifiedBadge("w-3 h-3")
+                : null,
             ),
         )}
         <div

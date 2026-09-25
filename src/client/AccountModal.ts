@@ -25,6 +25,7 @@ import { BaseModal } from "./components/BaseModal";
 import "./components/CopyButton";
 import "./components/CreatorCodePanel";
 import type { CreatorChangedDetail } from "./components/CreatorCodePanel";
+import "./components/CreatorDashboardPanel";
 import "./components/CurrencyDisplay";
 import "./components/Difficulties";
 import "./components/FriendsList";
@@ -268,8 +269,8 @@ export class AccountModal extends BaseModal {
             </div>
           </div>
         </div>
-        ${this.renderRewardsPanel()} ${this.renderCreatorCodePanel()}
-        ${this.renderDesktopLinkGateAction()}
+        ${this.renderRewardsPanel()} ${this.renderCreatorDashboardPanel()}
+        ${this.renderCreatorCodePanel()} ${this.renderDesktopLinkGateAction()}
       </div>
     `;
   }
@@ -417,6 +418,15 @@ export class AccountModal extends BaseModal {
       .rewards=${rewards}
       @rewards-changed=${this.handleRewardsChanged}
     ></rewards-panel>`;
+  }
+
+  // Only for partnered creators (their own code and earnings).
+  private renderCreatorDashboardPanel(): TemplateResult | "" {
+    const account = this.userMeResponse?.player?.creatorAccount;
+    if (!account) return "";
+    return html`<creator-dashboard-panel
+      .code=${account.code}
+    ></creator-dashboard-panel>`;
   }
 
   // Not rendered on the CrazyGames account branch (renderCrazyGamesAccount) —

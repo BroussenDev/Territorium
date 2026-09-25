@@ -517,7 +517,7 @@ export async function purchaseCosmetic(
         moneyPrice !== null &&
         !(await showInGameConfirm(translateText("store.withdrawal_waiver"), {
           variant: "warning",
-          heading: (c as Pack).displayName,
+          heading: packDisplayName(c as Pack),
           confirmText: `${translateText("store.pay")} ${moneyPrice}`,
         }))
       ) {
@@ -729,7 +729,7 @@ async function purchaseListingWithCurrency(
   const isSub = type === "subscription";
   const itemName = isSub
     ? translateCosmetic("subscriptions", listing.name)
-    : (listing as Pack).displayName;
+    : packDisplayName(listing as Pack);
   const currentTier = userMe.player.subscription?.tier ?? null;
   if (isSub && currentTier !== null && currentTier !== listing.name) {
     const confirmed = await showInGameConfirm(
@@ -820,7 +820,7 @@ async function purchasePack(
   const insufficient = (balance: number): InsufficientCurrency => ({
     currency: translateText("cosmetics.hard"),
     shortfall: price - balance,
-    item: pack.displayName,
+    item: packDisplayName(pack),
     canTopUp: true,
   });
   const balance = userMe.player.currency?.hard ?? 0;
@@ -838,7 +838,9 @@ async function purchasePack(
   const result = await purchaseCosmeticPack(pack.name);
   if (result.ok) {
     await showInGameAlert(
-      translateText("store.purchase_success", { name: pack.displayName }),
+      translateText("store.purchase_success", {
+        name: packDisplayName(pack),
+      }),
     );
     invalidateUserMe();
     window.location.reload();
@@ -943,6 +945,12 @@ export function subscriptionPerks(
     perks.push({
       label: translateText("cosmetics.gold_frame"),
       info: translateText("cosmetics.gold_frame_info"),
+    });
+  }
+  if (subscription.hiddenName) {
+    perks.push({
+      label: translateText("cosmetics.hidden_name"),
+      info: translateText("cosmetics.hidden_name_info"),
     });
   }
   if (subscription.giftFlare) {
@@ -1778,6 +1786,22 @@ export async function getPlayerCosmetics(
   }
 
   return result;
+}
+
+// Packs are named and described in French in the catalog. A translation
+// under cosmetic_packs / currency_packs wins, so each language reads its own.
+export function packDisplayName(pack: Pack | CosmeticPack): string {
+  const prefix = "items" in pack ? "cosmetic_packs" : "currency_packs";
+  return translatedOr(`${prefix}.${pack.name}`, pack.displayName);
+}
+
+export function packDescription(pack: CosmeticPack): string {
+  return translatedOr(`cosmetic_packs.${pack.name}_desc`, pack.description);
+}
+
+function translatedOr(key: string, fallback: string): string {
+  const translation = translateText(key);
+  return translation === key ? fallback : translation;
 }
 
 export function translateCosmetic(prefix: string, name: string): string {

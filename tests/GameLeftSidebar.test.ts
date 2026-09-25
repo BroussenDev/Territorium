@@ -44,6 +44,7 @@ describe("GameLeftSidebar", () => {
       name: () => "Player 1",
       displayName: () => "Player 1",
       clanTag: () => null,
+      cosmetics: {},
       numTilesOwned: () => 10,
       gold: () => 100n,
       tradeGold: () => 0,

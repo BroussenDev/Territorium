@@ -1,5 +1,9 @@
 import { CosmeticPack, Pack } from "../../core/CosmeticSchemas";
-import { ResolvedCosmetic, translateCosmetic } from "../Cosmetics";
+import {
+  packDisplayName,
+  ResolvedCosmetic,
+  translateCosmetic,
+} from "../Cosmetics";
 import { translateText } from "../Utils";
 
 export function cosmeticDisplayName(resolved: ResolvedCosmetic): string {
@@ -17,7 +21,7 @@ export function cosmeticDisplayName(resolved: ResolvedCosmetic): string {
     return translateCosmetic("territory_patterns.pattern", cosmetic.name);
   }
   if (resolved.type === "pack" || resolved.type === "cosmeticPack") {
-    const name = (cosmetic as Pack | CosmeticPack).displayName ?? "";
+    const name = packDisplayName(cosmetic as Pack | CosmeticPack);
     return name.replace(/(^|[\s-])\p{L}/gu, (match) =>
       match.toLocaleUpperCase(),
     );

@@ -333,6 +333,19 @@ export const UserMeResponseSchema = z.object({
       })
       .nullable()
       .optional(),
+    // Set when the caller is a partnered creator (their own code, not the one
+    // they support). Optional so an older API is tolerated.
+    creatorAccount: z
+      .object({
+        code: z.string(),
+        status: z.enum(["active", "suspended", "terminated"]),
+        sharePercent: z.number(),
+      })
+      .nullable()
+      .optional(),
+    // The fake name the player joins games under. Null when their tier
+    // doesn't allow it; `name: null` when allowed but turned off.
+    hiddenName: z.object({ name: z.string().nullable() }).nullable().optional(),
   }),
 });
 export type UserMeResponse = z.infer<typeof UserMeResponseSchema>;
@@ -458,6 +471,47 @@ export const PutCreatorResponseSchema = z.object({
   }),
 });
 export type PutCreatorResponse = z.infer<typeof PutCreatorResponseSchema>;
+
+// GET /users/@me/creator/dashboard — a partnered creator's own page. Shares
+// are held `holdDays` (refunds, chargebacks) before they can be withdrawn;
+// balances are per currency.
+export const CreatorBalanceSchema = z.object({
+  currency: z.string(),
+  heldCents: z.number(),
+  availableCents: z.number(),
+  requestedCents: z.number(),
+  paidCents: z.number(),
+});
+export type CreatorBalance = z.infer<typeof CreatorBalanceSchema>;
+
+export const CreatorDashboardSchema = z.object({
+  code: z.string(),
+  displayName: z.string(),
+  status: z.enum(["active", "suspended", "terminated"]),
+  sharePercent: z.number(),
+  holdDays: z.number(),
+  minPayoutCents: z.number(),
+  supporters: z.number(),
+  sales: z.number(),
+  balances: CreatorBalanceSchema.array(),
+  payouts: z
+    .object({
+      id: z.string(),
+      currency: z.string(),
+      amountCents: z.number(),
+      status: z.enum(["requested", "paid", "rejected"]),
+      requestedAt: z.iso.datetime(),
+      processedAt: z.iso.datetime().nullable(),
+    })
+    .array(),
+});
+export type CreatorDashboard = z.infer<typeof CreatorDashboardSchema>;
+
+// POST / DELETE /users/@me/hidden-name — the new fake name, or null when
+// turned off.
+export const HiddenNameResponseSchema = z.object({
+  name: z.string().nullable(),
+});
 
 // Custom tribe names — text names a player buys with hard currency that get
 // assigned to bots ("tribes") in real games. Names go live right away; review

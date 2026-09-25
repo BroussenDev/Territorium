@@ -1440,7 +1440,7 @@ class Client {
       }),
       turnstileToken: await this.getTurnstileToken(lobby),
       playerName: resolvedName.name,
-      playerClanTag: this.usernameInput?.getClanTag() ?? null,
+      playerClanTag: this.usernameInput?.joinClanTag() ?? null,
       clanTagCheck: this.usernameInput?.getClanCheck(),
       playerRole,
       gameStartInfo:

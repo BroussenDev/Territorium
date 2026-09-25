@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  accountHiddenName,
   accountNameHeld,
   accountVerifiedName,
   clampUsername,
@@ -822,5 +823,37 @@ describe("lapseNoticeDue against a marker from before and after the write", () =
     // What announceLapse stores, the moment before it opens its alert.
     const afterWrite = lapseNoticeMarker(verifiedClaimGrace(lapsed, NOW)!);
     expect(lapseNoticeDue(lapsed, afterWrite, NOW)).toBe(false);
+  });
+});
+
+describe("hidden name", () => {
+  it("wins over the verified name, without the badge", () => {
+    expect(
+      resolvePlayerName(
+        inputs({
+          hiddenName: "Renard482",
+          verifiedName: "RyanTheGreat",
+          verifiedOptIn: true,
+          storedName: "MyCoolName",
+        }),
+      ),
+    ).toEqual({ name: "Renard482", source: "hidden", verified: false });
+  });
+
+  it("is ignored when turned off", () => {
+    expect(
+      resolvePlayerName(inputs({ hiddenName: null, storedName: "MyCoolName" }))
+        .name,
+    ).toBe("MyCoolName");
+  });
+
+  it("reads the account's hidden name", () => {
+    const me = player();
+    expect(accountHiddenName(me)).toBeNull();
+    me.player.hiddenName = { name: null };
+    expect(accountHiddenName(me)).toBeNull();
+    me.player.hiddenName = { name: "Renard482" };
+    expect(accountHiddenName(me)).toBe("Renard482");
+    expect(accountHiddenName(false)).toBeNull();
   });
 });

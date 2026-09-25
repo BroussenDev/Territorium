@@ -2,8 +2,9 @@ import { PlayerStats } from "../src/client/hud/layers/PlayerStats";
 import type { GameView, PlayerView } from "../src/client/view";
 import { UserSettings } from "../src/core/game/UserSettings";
 
-function player(id: string, tiles: number): PlayerView {
+function player(id: string, tiles: number, verified = false): PlayerView {
   return {
+    cosmetics: { verified },
     id: () => id,
     smallID: () => 0,
     name: () => id,
@@ -62,6 +63,20 @@ describe("StatsTable virtualization", () => {
 
   afterEach(() => {
     document.body.innerHTML = "";
+  });
+
+  it("badges verified players next to their name, and only them", async () => {
+    const el = await mount(
+      gameWith([player("alice", 20, true), player("bob", 10)], null),
+    );
+    const rows = [
+      ...el.querySelectorAll(".stats-table-scroll .stats-table-row"),
+    ];
+    const badged = rows.map(
+      (row) => row.querySelector('svg[role="img"]') !== null,
+    );
+    expect(badged).toEqual([true, false]);
+    el.remove();
   });
 
   it("renders only a window of rows for large player lists", async () => {
