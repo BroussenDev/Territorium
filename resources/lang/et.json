@@ -183,7 +183,7 @@
     "minutes": "{minutes}m",
     "monthly": "Sel kuul",
     "public_only": "Nende väljakutsete puhul lähevad arvesse ainult avalikud mitme mängijaga mängud. Medalid makstakse kohe pärast väljakutse sooritamist.",
-    "scope_game": "ühes mängus",
+    "scope_game": "Ühes mängus",
     "solo_board": "Parimad ajad",
     "solo_bots": "{n} robotid",
     "solo_checking": "Teie viimast võitu kontrollitakse…",

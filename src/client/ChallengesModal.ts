@@ -236,7 +236,7 @@ export class ChallengesModal extends BaseModal {
             </ul>
             ${this.renderSoloMine(c)}
             <button
-              class="self-start px-8 py-3 rounded-xl bg-brand hover:bg-brand-light active:scale-[0.98] text-white text-lg font-bold transition-all disabled:opacity-60"
+              class="w-full sm:w-auto sm:self-start px-8 py-3 rounded-xl bg-brand hover:bg-brand-light active:scale-[0.98] text-white text-lg font-bold transition-all disabled:opacity-60"
               ?disabled=${this.starting}
               @click=${() => this.playSolo(c)}
             >
@@ -357,9 +357,15 @@ export class ChallengesModal extends BaseModal {
               ${translateText(`challenges.task_${task}`, { n: c.target })}
             </span>
             ${conditions.length > 0
-              ? html`<span class="text-xs text-white/60"
-                  >${conditions.join(", ")}</span
-                >`
+              ? html`<span class="mt-1 flex flex-wrap gap-1">
+                  ${conditions.map(
+                    (condition) =>
+                      html`<span
+                        class="rounded-md bg-white/10 px-1.5 py-0.5 text-xs text-white/70"
+                        >${condition}</span
+                      >`,
+                  )}
+                </span>`
               : ""}
           </div>
           ${medals(c.medals)}
