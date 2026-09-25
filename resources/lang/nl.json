@@ -1668,7 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% goud, +{troops}% troepen",
-    "held": "Doelen {held}/{total}"
+    "held": "Doelen {held}/{total}",
+    "zone_label": "Doel {letter}"
   },
   "overtime": {
     "first_place": "1e: {name} ({pct}%)",

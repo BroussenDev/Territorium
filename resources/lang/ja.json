@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% ゴールド、+{troops}% 軍隊",
-    "held": "目標 {held}/{total}"
+    "held": "目標 {held}/{total}",
+    "zone_label": "目標{letter}"
   },
   "overtime": {
     "first_place": "1位: {name} ({pct}%)",

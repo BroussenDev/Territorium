@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% oro, +{troops}% trupoj",
-    "held": "Celoj {held}/{total}"
+    "held": "Celoj {held}/{total}",
+    "zone_label": "Celo {letter}"
   },
   "overtime": {
     "first_place": "unua: {name} ({pct}%)",

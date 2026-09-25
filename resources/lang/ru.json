@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% золота, +{troops}% войск",
-    "held": "Цели {held}/{total}"
+    "held": "Цели {held}/{total}",
+    "zone_label": "Цель {letter}"
   },
   "overtime": {
     "first_place": "1-й: {name} ({pct}%)",

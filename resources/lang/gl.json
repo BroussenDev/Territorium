@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% de ouro, +{troops}% de tropas",
-    "held": "Obxectivos {held}/{total}"
+    "held": "Obxectivos {held}/{total}",
+    "zone_label": "Obxectivo {letter}"
   },
   "overtime": {
     "first_place": "1º: {name} ({pct}%)",

@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% χρυσός, +{troops}% στρατεύματα",
-    "held": "Στόχοι {held}/{total}"
+    "held": "Στόχοι {held}/{total}",
+    "zone_label": "Στόχος {letter}"
   },
   "overtime": {
     "first_place": "1η: {name} ({pct}%)",

@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% kultaa, +{troops}% joukkoja",
-    "held": "Tavoitteet {held}/{total}"
+    "held": "Tavoitteet {held}/{total}",
+    "zone_label": "Tavoite {letter}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

@@ -284,11 +284,16 @@ export class MapRenderer {
     this.renderer?.updateNukeTelegraphs(data);
   }
 
-  /** Update spawn phase overlay (tile highlights + breathing rings). */
   updateObjectives(zones: ObjectiveZone[]): void {
     this.renderer?.updateObjectives(zones);
   }
 
+  /** 1 while the objective zones should stand out, fading to 0. */
+  setObjectiveHighlight(highlight: number): void {
+    this.renderer?.setObjectiveHighlight(highlight);
+  }
+
+  /** Update spawn phase overlay (tile highlights + breathing rings). */
   updateSpawnOverlay(inSpawnPhase: boolean, centers: SpawnCenter[]): void {
     this.renderer?.updateSpawnOverlay(inSpawnPhase, centers);
   }

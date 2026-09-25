@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% trupa",
-    "held": "Ciljevi {held}/{total}"
+    "held": "Ciljevi {held}/{total}",
+    "zone_label": "Cilj {letter}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

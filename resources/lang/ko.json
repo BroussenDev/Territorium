@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "금 +{gold}%, 병력 +{troops}%",
-    "held": "목표 {held}/{total}"
+    "held": "목표 {held}/{total}",
+    "zone_label": "목표 {letter}"
   },
   "overtime": {
     "first_place": "1위: {name} ({pct}%)",

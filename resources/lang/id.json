@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% emas, +{troops}% pasukan",
-    "held": "Tujuan {held}/{total}"
+    "held": "Tujuan {held}/{total}",
+    "zone_label": "Tujuan {letter}"
   },
   "overtime": {
     "first_place": "Pertama: {name} ({pct}%)",

@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% złota, +{troops}% żołnierzy",
-    "held": "Cele {held}/{total}"
+    "held": "Cele {held}/{total}",
+    "zone_label": "Cel {letter}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

@@ -9,11 +9,14 @@ uniform vec3 uHolderColor;
 uniform float uHeld;      // 1 when someone holds the zone
 uniform vec3 uCapColor;
 uniform float uProgress;  // capture progress, 0..1
-uniform float uTime;      // seconds, for the contested pulse
+uniform float uTime;      // seconds, for the contested pulse and the ping
+uniform float uHighlight; // 1 while the zones should stand out, fades to 0
 
 out vec4 fragColor;
 
 const float PI = 3.14159265;
+// Free zones, their ping and their labels: gold reads as a map event.
+const vec3 GOLD = vec3(1.0, 0.8, 0.25);
 
 // 1 inside [inner, outer], antialiased over one screen pixel.
 float band(float d, float inner, float outer) {
@@ -31,12 +34,27 @@ vec4 over(vec4 top, vec4 under) {
 
 void main() {
   float d = length(vWorld);
-  vec3 base = mix(vec3(1.0), uHolderColor, uHeld);
+  vec3 base = mix(GOLD, uHolderColor, uHeld);
   bool contested = uProgress > 0.0;
 
   // Tint inside the zone.
   float inside = 1.0 - smoothstep(uRadius - uPx, uRadius + uPx, d);
-  vec4 c = vec4(base, inside * mix(0.10, 0.22, uHeld));
+  vec4 c = vec4(base, inside * mix(0.12, 0.22, uHeld));
+
+  // While highlighted: a soft gold glow around the zone and a ping that
+  // grows out of the ring every two seconds (reach must match the quad
+  // extent in ObjectivePass).
+  if (uHighlight > 0.0) {
+    float reach = max(uRadius * 0.8, 28.0 * uPx);
+    float outside = smoothstep(uRadius - uPx, uRadius + uPx, d);
+    float glow = outside * (1.0 - smoothstep(uRadius, uRadius + reach * 0.5, d));
+    c = over(vec4(GOLD, glow * 0.25 * uHighlight), c);
+    float phase = fract(uTime * 0.5);
+    float r = uRadius + reach * phase;
+    float w = max(0.8, 3.0 * uPx);
+    float ping = band(d, r - w, r) * (1.0 - phase) * uHighlight;
+    c = over(vec4(GOLD, ping * 0.9), c);
+  }
 
   // Edge ring, dashed while nobody holds the zone; pulses while contested.
   float ringW = max(1.0, 2.0 * uPx);

@@ -67,6 +67,10 @@ const SMALL_PLAYER_GLOW_GRACE_SECONDS = 60;
 // The set is a visual aid, not tick-critical, so rescan ~once a second
 // (10 ticks) instead of every tick.
 const SMALL_PLAYER_GLOW_RESCAN_TICKS = 10;
+// Objective zones stand out (gold ping, bigger names with the bonus) during
+// the spawn phase and this many seconds of play, then fade back.
+const OBJECTIVE_HIGHLIGHT_SECONDS = 300;
+const OBJECTIVE_HIGHLIGHT_FADE_SECONDS = 10;
 
 // The effect-palette block order: index = block (rows block·MAX_TRAIL_COLORS …).
 // trail.frag.glsl picks its block from the trail tile's nuke bit — block 0 =
@@ -254,6 +258,7 @@ export class WebGLFrameBuilder {
     this.effectPalette.fill(0);
     this.lastSpawnTile.clear();
     this.lastObjectives = [];
+    this.lastObjectiveHighlight = -1;
     this.localPlayerSmallID = 0;
     this.skinsInitialized = false;
   }
@@ -305,6 +310,7 @@ export class WebGLFrameBuilder {
   private glowRescanTick = 0;
 
   private lastObjectives: readonly ObjectiveState[] = [];
+  private lastObjectiveHighlight = -1;
 
   update(gameView: GameView): void {
     this.syncPlayers(gameView);
@@ -503,6 +509,22 @@ export class WebGLFrameBuilder {
    */
   private syncObjectives(gameView: GameView): void {
     const objectives = gameView.objectives();
+    if (objectives.length > 0) {
+      const highlight = gameView.inSpawnPhase()
+        ? 1
+        : Math.min(
+            1,
+            Math.max(
+              0,
+              (OBJECTIVE_HIGHLIGHT_SECONDS - gameView.elapsedGameSeconds()) /
+                OBJECTIVE_HIGHLIGHT_FADE_SECONDS,
+            ),
+          );
+      if (highlight !== this.lastObjectiveHighlight) {
+        this.lastObjectiveHighlight = highlight;
+        this.view.setObjectiveHighlight(highlight);
+      }
+    }
     if (objectives === this.lastObjectives) return;
     this.lastObjectives = objectives;
     const color = (smallID: number): [number, number, number] | null => {
@@ -513,6 +535,7 @@ export class WebGLFrameBuilder {
       return [c.r / 255, c.g / 255, c.b / 255];
     };
     const zones: ObjectiveZone[] = objectives.map((o) => ({
+      id: o.id,
       x: gameView.x(o.tile),
       y: gameView.y(o.tile),
       radius: o.radius,

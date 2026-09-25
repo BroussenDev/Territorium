@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% altın, +{troops}% birlik",
-    "held": "Hedefler {held}/{total}"
+    "held": "Hedefler {held}/{total}",
+    "zone_label": "Hedef {letter}"
   },
   "overtime": {
     "first_place": "1.: {name} (%{pct})",

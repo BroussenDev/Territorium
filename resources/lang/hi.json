@@ -1669,7 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% सोना, +{troops}% सैनिक",
-    "held": "उद्देश्य {held}/{total}"
+    "held": "उद्देश्य {held}/{total}",
+    "zone_label": "उद्देश्य {letter}"
   },
   "overtime": {
     "first_place": "पहला: {name} ({pct}%)",

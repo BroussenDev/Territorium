@@ -1668,7 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% ذهب، +{troops}% قوات",
-    "held": "الأهداف {held}/{total}"
+    "held": "الأهداف {held}/{total}",
+    "zone_label": "الهدف {letter}"
   },
   "overtime": {
     "first_place": "الأول: {name} ({pct}%)",
