@@ -3,7 +3,9 @@
  * most of a zone's land for CAPTURE_SECONDS takes it; while held, a zone adds
  * a small gold and troop-growth bonus to its holder (see Config.ts). The
  * holder keeps it until someone else captures it, so it can be defended by
- * retaking the ground before the capture completes.
+ * retaking the ground before the capture completes. One player's bonus counts
+ * at most half the zones (objectiveBonusCap): holding more denies them to the
+ * others but pays nothing extra, so a leader cannot snowball on them.
  *
  * Shared by the sim (ObjectiveExecution) and the client, which reads the
  * same states from GameUpdateType.Objectives.
@@ -28,6 +30,14 @@ export interface ObjectiveState {
   capturer: number;
   /** Seconds of capture so far, up to OBJECTIVE_CAPTURE_SECONDS. */
   progress: number;
+}
+
+/**
+ * Most zones whose bonus one player collects: half of them, rounded up (2 of
+ * 3 or 4, 3 of 5 or 6).
+ */
+export function objectiveBonusCap(numObjectives: number): number {
+  return Math.ceil(numObjectives / 2);
 }
 
 /** How many objectives a map gets: more on bigger maps. */

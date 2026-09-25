@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% सोना, +{troops}% सैनिक",
+    "bonus_max": "+{gold}% सोना, +{troops}% सैनिक (अधिकतम)",
+    "cap_hint": "आपका बोनस अधिकतम {max} उद्देश्यों तक गिना जाता है। ज़्यादा रखने से वे बस आपके प्रतिद्वंद्वियों के हाथ नहीं लगते।",
     "held": "उद्देश्य {held}/{total}",
     "zone_label": "उद्देश्य {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "नवगठित सहयोगियों पर आकस्मिक परमाणु हमलों को रोकता है।",
     "nuke_alliance_safety_duration": "{count, plural, one {1 टिक (0.1s)} other {{count} टिक ({seconds}s)}}",
     "nuke_alliance_safety_label": "मित्रवत-अग्नि सुरक्षा",
+    "objective_labels_desc": "खेल के दौरान मानचित्र के उद्देश्यों के ऊपर सुनहरे नाम दिखाता है।",
+    "objective_labels_label": "उद्देश्यों के नाम",
     "off": "बंद",
     "on": "पर",
     "open_settings_desc": "गेमप्ले, ग्राफिक्स, ऑडियो और कीबाइंड सेटिंग्स",

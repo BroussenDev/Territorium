@@ -1668,6 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% ذهب، +{troops}% قوات",
+    "bonus_max": "+{gold}% ذهب، +{troops}% قوات (الحد الأقصى)",
+    "cap_hint": "تُحتسب مكافأتك على {max} أهداف كحد أقصى. الاحتفاظ بالمزيد يحرم منافسيك منها فقط.",
     "held": "الأهداف {held}/{total}",
     "zone_label": "الهدف {letter}"
   },
@@ -2440,6 +2442,8 @@
     "nuke_alliance_safety_desc": "يمنع الضربات النووية العرضية على الحلفاء المشكلين حديثًا.",
     "nuke_alliance_safety_duration": "{count, plural, one {علامة واحدة (0.1 ثانية)} other {{count} علامات التجزئة ({seconds}s)}}",
     "nuke_alliance_safety_label": "السلامة من الحرائق الصديقة للحلفاء",
+    "objective_labels_desc": "عرض الأسماء الذهبية فوق أهداف الخريطة أثناء اللعب.",
+    "objective_labels_label": "أسماء الأهداف",
     "off": "إيقاف",
     "on": "على",
     "open_settings_desc": "إعدادات اللعب والرسومات والصوت وربط المفاتيح",

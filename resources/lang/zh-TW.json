@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% 金幣，+{troops}% 兵力",
+    "bonus_max": "+{gold}% 金幣，+{troops}% 兵力（上限）",
+    "cap_hint": "獎勵最多計算 {max} 個目標。佔領更多只能讓對手得不到它們。",
     "held": "目標{held}/{total}",
     "zone_label": "目標{letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "防止意外核打擊在新結盟的盟友。",
     "nuke_alliance_safety_duration": "{count, plural, other {{count} tick（{seconds}秒）}}",
     "nuke_alliance_safety_label": "防止誤擊盟友",
+    "objective_labels_desc": "在遊戲中於地圖目標上方顯示金色名稱。",
+    "objective_labels_label": "目標名稱",
     "off": "離開",
     "on": "在",
     "open_settings_desc": "遊戲、圖形、聲音及快捷鍵設定",

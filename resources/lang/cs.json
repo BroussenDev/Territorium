@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% vojáků",
+    "bonus_max": "+{gold}% zlata, +{troops}% vojáků (max.)",
+    "cap_hint": "Váš bonus se počítá nejvýše za {max} cíle. Držet jich víc je jen odepře vašim soupeřům.",
     "held": "Cíle {held}/{total}",
     "zone_label": "Cíl {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Zabraňuje nechtěným jaderným útokům na nově vzniklé spojence.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tik (0,1 s)} other {{count} tiků ({seconds} s)}}",
     "nuke_alliance_safety_label": "Ochrana spojenců před přátelskou palbou",
+    "objective_labels_desc": "Zobrazí zlaté názvy nad cíli na mapě během hry.",
+    "objective_labels_label": "Názvy cílů",
     "off": "Vypnuto",
     "on": "Zapnuto",
     "open_settings_desc": "Nastavení hry, grafiky, zvuku a kláves",

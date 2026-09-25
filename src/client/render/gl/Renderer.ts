@@ -200,6 +200,7 @@ export class GPURenderer {
 
   // Alt-view: affiliation recoloring (space hold)
   private altView = false;
+  private objectiveLabels = true;
   // Grid-view: coordinate grid overlay (M toggle)
   private gridView = false;
 
@@ -1112,6 +1113,10 @@ export class GPURenderer {
     this.objectivePass.setHighlight(highlight);
   }
 
+  setObjectiveLabels(visible: boolean): void {
+    this.objectiveLabels = visible;
+  }
+
   updateSpawnOverlay(inSpawnPhase: boolean, centers: SpawnCenter[]): void {
     this.inSpawnPhase = inSpawnPhase;
     this.spawnOverlayPass.update(centers);
@@ -1407,7 +1412,9 @@ export class GPURenderer {
     if (pe.name && !this.altView)
       this.namePass.draw(cam, this.nightCompositePass.getAmbient());
     // Objective names sit above the zones, on top of player names.
-    if (!this.altView) this.objectivePass.drawLabels(cam, zoom);
+    if (this.objectiveLabels && !this.altView) {
+      this.objectivePass.drawLabels(cam, zoom);
+    }
 
     // World text (attack-troop labels, popups, ghost cost) draws on top of
     // player names so attack callouts aren't hidden behind a centered name.

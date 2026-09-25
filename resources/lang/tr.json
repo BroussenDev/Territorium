@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% altın, +{troops}% birlik",
+    "bonus_max": "+{gold}% altın, +{troops}% birlik (maks.)",
+    "cap_hint": "Bonusun en fazla {max} hedef için sayılır. Daha fazlasını tutmak onları yalnızca rakiplerinden uzak tutar.",
     "held": "Hedefler {held}/{total}",
     "zone_label": "Hedef {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Yeni oluşturulan müttefiklere kazara yapılan nükleer saldırıları önler.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 onay işareti (0,1 saniye)} other {{count} tıklamalar ({seconds}s)}}",
     "nuke_alliance_safety_label": "Müttefik dostu yangın güvenliği",
+    "objective_labels_desc": "Oyun sırasında harita hedeflerinin üzerinde altın renkli adları gösterir.",
+    "objective_labels_label": "Hedef adları",
     "off": "Kapalı",
     "on": "Açık",
     "open_settings_desc": "Oynanış, grafikler, ses ve tuş atama ayarları",

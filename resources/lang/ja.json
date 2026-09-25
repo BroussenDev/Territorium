@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% ゴールド、+{troops}% 軍隊",
+    "bonus_max": "+{gold}% ゴールド、+{troops}% 軍隊（最大）",
+    "cap_hint": "ボーナスの対象は最大{max}か所の目標です。それ以上保持しても、ライバルに渡さない効果しかありません。",
     "held": "目標 {held}/{total}",
     "zone_label": "目標{letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "新しく同盟を結んだ国家への核攻撃を誤って行うのを防ぎます。",
     "nuke_alliance_safety_duration": "{count, plural, other {{count}ティック（{seconds}秒）}}",
     "nuke_alliance_safety_label": "同盟国への誤射防止",
+    "objective_labels_desc": "ゲーム中、マップの目標の上に金色の名前を表示します。",
+    "objective_labels_label": "目標名",
     "off": "オフ",
     "on": "オン",
     "open_settings_desc": "ゲームプレイ、グラフィック、オーディオ、キー割り当ての設定",

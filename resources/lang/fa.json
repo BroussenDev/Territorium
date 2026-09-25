@@ -1668,6 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% طلا، +{troops}% سرباز",
+    "bonus_max": "+{gold}% طلا، +{troops}% سرباز (حداکثر)",
+    "cap_hint": "پاداش شما حداکثر برای {max} هدف حساب می‌شود. نگه داشتن بیشتر فقط آن‌ها را از رقبایتان می‌گیرد.",
     "held": "اهداف {held}/{total}",
     "zone_label": "هدف {letter}"
   },
@@ -2440,6 +2442,8 @@
     "nuke_alliance_safety_desc": "جلوگیری از حملات اتمی تصادفی بر متحدان جدید.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 تیک (0.1s)} other {{count} تیک ({seconds}s)}}",
     "nuke_alliance_safety_label": "محافظت در برابر شلیک اشتباهی به متحد",
+    "objective_labels_desc": "نام‌های طلایی را بالای هدف‌های نقشه در طول بازی نشان می‌دهد.",
+    "objective_labels_label": "نام هدف‌ها",
     "off": "خاموش",
     "on": "روشن",
     "open_settings_desc": "تنظیمات گیم‌پلی، گرافیک، صدا و کلیدها",

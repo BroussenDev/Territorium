@@ -11,6 +11,7 @@ import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
   OBJECTIVE_GOLD_PER_TICK,
   OBJECTIVE_TROOP_GROWTH_PERCENT,
+  objectiveBonusCap,
 } from "../../../core/game/Objectives";
 import {
   USER_SETTINGS_CHANGED_EVENT,
@@ -71,6 +72,8 @@ export class ControlPanel extends LitElement implements Controller {
 
   @state()
   private _objectivesHeld = 0;
+  @state()
+  private _objectivesRewarded = 0;
   @state()
   private _objectivesTotal = 0;
 
@@ -153,6 +156,7 @@ export class ControlPanel extends LitElement implements Controller {
     this.troopRate = config.troopIncreaseRate(player) * 10;
     this._objectivesTotal = this.game.objectives().length;
     this._objectivesHeld = player.objectivesHeld();
+    this._objectivesRewarded = player.objectivesRewarded();
 
     const helpEnabled = new UserSettings().helpMessages();
 
@@ -517,8 +521,11 @@ export class ControlPanel extends LitElement implements Controller {
   private renderObjectives() {
     if (this._objectivesTotal === 0) return html``;
     const held = this._objectivesHeld;
+    const rewarded = this._objectivesRewarded;
+    const cap = objectiveBonusCap(this._objectivesTotal);
     return html`
       <div
+        title=${translateText("objectives.cap_hint", { max: cap })}
         class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border text-xs font-medium ${held >
         0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
@@ -533,10 +540,13 @@ export class ControlPanel extends LitElement implements Controller {
         >
         ${held > 0
           ? html`<span class="ml-auto tabular-nums"
-              >${translateText("objectives.bonus", {
-                gold: Number(OBJECTIVE_GOLD_PER_TICK) * held,
-                troops: OBJECTIVE_TROOP_GROWTH_PERCENT * held,
-              })}</span
+              >${translateText(
+                rewarded >= cap ? "objectives.bonus_max" : "objectives.bonus",
+                {
+                  gold: Number(OBJECTIVE_GOLD_PER_TICK) * rewarded,
+                  troops: OBJECTIVE_TROOP_GROWTH_PERCENT * rewarded,
+                },
+              )}</span
             >`
           : ""}
       </div>

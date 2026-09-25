@@ -508,6 +508,10 @@ export class UserSettingModal extends BaseModal {
     );
   }
 
+  private toggleObjectiveLabels() {
+    this.userSettings.toggleObjectiveLabels();
+  }
+
   // A slider handler writes the setting and stops. AudioMixer follows
   // USER_SETTINGS_CHANGED_EVENT for that key, which reaches the menu theme on
   // this page and a running game's music alike — no volume event, no bus, and
@@ -1738,6 +1742,15 @@ export class UserSettingModal extends BaseModal {
         id="attacking-troops-overlay-toggle"
         .checked=${this.userSettings.attackingTroopsOverlay()}
         @change=${this.toggleAttackingTroopsOverlay}
+      ></setting-toggle>
+
+      <!-- Map objective names -->
+      <setting-toggle
+        label="${translateText("user_setting.objective_labels_label")}"
+        description="${translateText("user_setting.objective_labels_desc")}"
+        id="objective-labels-toggle"
+        .checked=${this.userSettings.objectiveLabels()}
+        @change=${this.toggleObjectiveLabels}
       ></setting-toggle>
 
       <!-- ⚔️ Attack Ratio -->

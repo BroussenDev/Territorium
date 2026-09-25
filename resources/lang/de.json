@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% Gold, +{troops}% Truppen",
+    "bonus_max": "+{gold}% Gold, +{troops}% Truppen (max.)",
+    "cap_hint": "Dein Bonus zählt höchstens {max} Ziele. Mehr zu halten nimmt sie nur deinen Rivalen weg.",
     "held": "Ziele {held}/{total}",
     "zone_label": "Ziel {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Verhindert versehentliche Atomangriffe auf neu gebildete Verbündete.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 Ticker (0.1s)} other {{count} Ticks ({seconds}s)}}",
     "nuke_alliance_safety_label": "Sicherheit für Verbündete",
+    "objective_labels_desc": "Zeigt die goldenen Namen über den Kartenzielen während des Spiels.",
+    "objective_labels_label": "Zielnamen",
     "off": "Aus",
     "on": "An",
     "open_settings_desc": "Spiele, Grafiken, Audio- und Tastatureinstellungen",

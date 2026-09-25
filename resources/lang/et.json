@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% kulda, +{troops}% sõdureid",
+    "bonus_max": "+{gold}% kulda, +{troops}% sõdureid (max)",
+    "cap_hint": "Sinu boonus arvestab kõige rohkem {max} eesmärki. Rohkemate hoidmine võtab need lihtsalt rivaalidelt ära.",
     "held": "Eesmärgid {held}/{total}",
     "zone_label": "Eesmärk {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Hoiab ära juhuslikud tuumalöögid vastloodud liitlastele.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 linnuke (0,1 s)} other {{count} linnuke ({seconds}s)}}",
     "nuke_alliance_safety_label": "Liitlassõbralik-tuleohutus",
+    "objective_labels_desc": "Näitab mängu ajal kaardi eesmärkide kohal kuldseid nimesid.",
+    "objective_labels_label": "Eesmärkide nimed",
     "off": "Väljas",
     "on": "Sees",
     "open_settings_desc": "Mängu, graafika, heli ja klahvide seadistused",

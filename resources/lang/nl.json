@@ -1668,6 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% goud, +{troops}% troepen",
+    "bonus_max": "+{gold}% goud, +{troops}% troepen (max.)",
+    "cap_hint": "Je bonus telt maximaal {max} doelen. Meer vasthouden houdt ze alleen weg bij je rivalen.",
     "held": "Doelen {held}/{total}",
     "zone_label": "Doel {letter}"
   },
@@ -2440,6 +2442,8 @@
     "nuke_alliance_safety_desc": "Voorkomt dat je per ongeluk een nucleaire aanval uitvoert op nieuw gevormde bondgenoten.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tick (0,1s)} other {{count} ticks ({seconds}s)}}",
     "nuke_alliance_safety_label": "Bondgenoot friendly-fire beveiliging",
+    "objective_labels_desc": "Toont de gouden namen boven de kaartdoelen tijdens het spel.",
+    "objective_labels_label": "Namen van doelen",
     "off": "Uit",
     "on": "Aan",
     "open_settings_desc": "Spelverloop, grafisch, geluid en sneltoetsinstellingen",

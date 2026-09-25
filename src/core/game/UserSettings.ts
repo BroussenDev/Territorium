@@ -434,6 +434,15 @@ export class UserSettings {
     );
   }
 
+  /** Gold names above the map objective zones. */
+  objectiveLabels() {
+    return this.getBool("settings.objectiveLabels", true);
+  }
+
+  toggleObjectiveLabels() {
+    this.setBool("settings.objectiveLabels", !this.objectiveLabels());
+  }
+
   cursorCostLabel() {
     const legacy = this.getBool("settings.ghostPricePill", true);
     return this.getBool("settings.cursorCostLabel", legacy);

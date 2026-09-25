@@ -56,6 +56,7 @@ import {
   GameUpdateType,
   PlayerUpdate,
 } from "./GameUpdates";
+import { objectiveBonusCap } from "./Objectives";
 import { ReadonlyTileSet, TileSet } from "./TileSet";
 import {
   bumpTraversalGeneration,
@@ -878,6 +879,13 @@ export class PlayerImpl implements Player {
   // Ticks spent continuously below the doomsday-clock bar (0 when not marked or dead).
   objectivesHeld(): number {
     return this.mg.objectivesHeldBy(this.smallID());
+  }
+
+  objectivesRewarded(): number {
+    return Math.min(
+      this.objectivesHeld(),
+      objectiveBonusCap(this.mg.objectives().length),
+    );
   }
 
   doomsdayClockTicks(): number {

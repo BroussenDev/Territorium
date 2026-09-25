@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "금 +{gold}%, 병력 +{troops}%",
+    "bonus_max": "금 +{gold}%, 병력 +{troops}% (최대)",
+    "cap_hint": "보너스는 최대 {max}개의 목표까지만 적용됩니다. 더 많이 차지하면 경쟁자에게 넘어가지 않게 할 뿐입니다.",
     "held": "목표 {held}/{total}",
     "zone_label": "목표 {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "새로 맺은 동맹에 대한 실수에 의한 핵 공격을 방지합니다.",
     "nuke_alliance_safety_duration": "{count, plural, other {{count}틱 ({seconds}초)}}",
     "nuke_alliance_safety_label": "동맹 아군 오사 방지",
+    "objective_labels_desc": "게임 중 지도 목표 위에 금색 이름을 표시합니다.",
+    "objective_labels_label": "목표 이름",
     "off": "끔",
     "on": "켜짐 ",
     "open_settings_desc": "게임 플레이, 그래픽, 오디오 및 단축키 설정",

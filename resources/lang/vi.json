@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% vàng, +{troops}% quân",
+    "bonus_max": "+{gold}% vàng, +{troops}% quân (tối đa)",
+    "cap_hint": "Phần thưởng của bạn chỉ tính tối đa {max} mục tiêu. Giữ nhiều hơn chỉ để đối thủ không có được chúng.",
     "held": "Mục tiêu {held}/{total}",
     "zone_label": "Mục tiêu {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Ngăn vô tình tấn công hạt nhân vào các đồng minh mới thành lập.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tick (0.1 giây)} other {{count} tick ({seconds} giây)}}",
     "nuke_alliance_safety_label": "Bảo vệ đồng minh khỏi hỏa lực phe mình",
+    "objective_labels_desc": "Hiển thị tên màu vàng phía trên các mục tiêu trên bản đồ trong trận đấu.",
+    "objective_labels_label": "Tên mục tiêu",
     "off": "Tắt",
     "on": "Bật",
     "open_settings_desc": "Cài đặt lối chơi, đồ họa, âm thanh và phím tắt",

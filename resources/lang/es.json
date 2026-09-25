@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% oro, +{troops}% tropas",
+    "bonus_max": "+{gold}% oro, +{troops}% tropas (máx.)",
+    "cap_hint": "Tu bonificación cuenta como máximo {max} objetivos. Tener más solo se los quita a tus rivales.",
     "held": "Objetivos {held}/{total}",
     "zone_label": "Objetivo {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Previene ataques nucleares accidentales contra aliados recién formados.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tic (0,1 s)} other {{count} tics ({seconds}s)}}",
     "nuke_alliance_safety_label": "Seguridad contra incendios amiga de los aliados",
+    "objective_labels_desc": "Muestra los nombres dorados sobre los objetivos del mapa durante la partida.",
+    "objective_labels_label": "Nombres de los objetivos",
     "off": "Apagado",
     "on": "encendido",
     "open_settings_desc": "Configuración de jugabilidad, gráficos, audio y combinación de teclas",

@@ -1668,6 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% vojakov",
+    "bonus_max": "+{gold}% zlata, +{troops}% vojakov (najv.)",
+    "cap_hint": "Vaš bonus šteje največ {max} cilje. Če jih držite več, jih le odvzamete tekmecem.",
     "held": "Cilji {held}/{total}",
     "zone_label": "Cilj {letter}"
   },
@@ -2440,6 +2442,8 @@
     "nuke_alliance_safety_desc": "Preprečuje nenamerne jedrske napade na novo ustanovljene zaveznike.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tik (0,1 s)} other {{count} kljukic ({seconds}s)}}",
     "nuke_alliance_safety_label": "Ally prijazna protipožarna varnost",
+    "objective_labels_desc": "Prikaže zlata imena nad cilji na zemljevidu med igro.",
+    "objective_labels_label": "Imena ciljev",
     "off": "Izklop",
     "on": "Vklop",
     "open_settings_desc": "Nastavitve igranja, grafike, zvoka in vezave tipk",

@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% oro, +{troops}% trupoj",
+    "bonus_max": "+{gold}% oro, +{troops}% trupoj (maks.)",
+    "cap_hint": "Via gratifiko kalkulas maksimume {max} celojn. Teni pli nur senigas viajn rivalojn je ili.",
     "held": "Celoj {held}/{total}",
     "zone_label": "Celo {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Malhelpas hazardajn atombombojn kontraŭ lastatempe formitaj aliancanoj.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tiktako (0.1s)} other {{count} tiktakoj ({seconds}s)}}",
     "nuke_alliance_safety_label": "Alianca amikfajra sekureco",
+    "objective_labels_desc": "Montras la orajn nomojn super la celoj de la mapo dum la ludo.",
+    "objective_labels_label": "Nomoj de celoj",
     "off": "Malŝaltita",
     "on": "Ŝaltita",
     "open_settings_desc": "Ludado, grafikaĵoj, aŭdaj kaj klavbindaj agordoj",

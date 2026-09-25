@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% d'or, +{troops}% de tropes",
+    "bonus_max": "+{gold}% d'or, +{troops}% de tropes (màx.)",
+    "cap_hint": "La teva bonificació compta com a màxim {max} objectius. Tenir-ne més només els treu als teus rivals.",
     "held": "Objectius {held}/{total}",
     "zone_label": "Objectiu {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Evita atacs nuclears accidentals contra aliats recentment formats.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 marca (0,1 s)} other {{count} ticks ({seconds}s)}}",
     "nuke_alliance_safety_label": "Aliat a la seguretat contra el foc",
+    "objective_labels_desc": "Mostra els noms daurats sobre els objectius del mapa durant la partida.",
+    "objective_labels_label": "Noms dels objectius",
     "off": "Desactivat",
     "on": "Activat",
     "open_settings_desc": "Configuració de joc, gràfics, àudio i combinació de tecles",

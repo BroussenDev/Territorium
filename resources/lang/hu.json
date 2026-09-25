@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% arany, +{troops}% csapatok",
+    "bonus_max": "+{gold}% arany, +{troops}% csapatok (max.)",
+    "cap_hint": "A bónuszod legfeljebb {max} célt számít. Ha többet tartasz, azzal csak a riválisaidtól veszed el őket.",
     "held": "Célok {held}/{total}",
     "zone_label": "Cél {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Megakadályozza az újonnan szerzett szövetségesek elleni véletlen nukleáris csapásokat.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tick (0,1 mp)} other {{count} tick ({seconds} mp)}}",
     "nuke_alliance_safety_label": "Baráti tűz elleni védelem",
+    "objective_labels_desc": "Megjeleníti az arany neveket a térkép céljai felett játék közben.",
+    "objective_labels_label": "Célok nevei",
     "off": "Ki",
     "on": "Be",
     "open_settings_desc": "Játékmenet, grafika, hang és billentyűkiosztás beállításai",

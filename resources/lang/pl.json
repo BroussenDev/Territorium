@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% złota, +{troops}% żołnierzy",
+    "bonus_max": "+{gold}% złota, +{troops}% żołnierzy (maks.)",
+    "cap_hint": "Twój bonus liczy się za maksymalnie {max} cele. Trzymanie większej liczby jedynie odbiera je rywalom.",
     "held": "Cele {held}/{total}",
     "zone_label": "Cel {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Zapobiega przypadkowym atakom nuklearnym na nowo utworzonych sojuszników.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 takt (0,1 s)} other {{count} tyknięć ({seconds}s)}}",
     "nuke_alliance_safety_label": "Przyjazne dla sojuszników bezpieczeństwo przeciwpożarowe",
+    "objective_labels_desc": "Pokazuje złote nazwy nad celami na mapie podczas gry.",
+    "objective_labels_label": "Nazwy celów",
     "off": "Wyłączone",
     "on": "Włączone",
     "open_settings_desc": "Ustawienia rozgrywki, grafiki, dźwięku i skrótów klawiszowych",

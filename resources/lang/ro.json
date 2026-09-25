@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% aur, +{troops}% trupe",
+    "bonus_max": "+{gold}% aur, +{troops}% trupe (max.)",
+    "cap_hint": "Bonusul tău contează cel mult {max} obiective. Dacă ții mai multe, doar le iei de la rivali.",
     "held": "Obiective {held}/{total}",
     "zone_label": "Obiectiv {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Previne greva accidentală a aliaților nou formați.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tick (0,1s)} few {{count} tick-uri ({seconds}s)} other {{count} tick-uri ({seconds}s)}}",
     "nuke_alliance_safety_label": "Protecție împotriva incendiilor prietenoasă",
+    "objective_labels_desc": "Afișează numele aurii deasupra obiectivelor hărții în timpul jocului.",
+    "objective_labels_label": "Numele obiectivelor",
     "off": "Dezactivat",
     "on": "Activat",
     "open_settings_desc": "Setări pentru joc, grafică, audio și taste",

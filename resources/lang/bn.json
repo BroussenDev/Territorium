@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% স্বর্ণ, +{troops}% সৈন্য",
+    "bonus_max": "+{gold}% স্বর্ণ, +{troops}% সৈন্য (সর্বোচ্চ)",
+    "cap_hint": "আপনার বোনাস সর্বোচ্চ {max}টি উদ্দেশ্য পর্যন্ত গণনা হয়। বেশি ধরে রাখলে শুধু প্রতিদ্বন্দ্বীরা সেগুলো পায় না।",
     "held": "উদ্দেশ্য {held}/{total}",
     "zone_label": "উদ্দেশ্য {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "নবগঠিত মিত্রদের উপর দুর্ঘটনাজনিত পরমাণু হামলা প্রতিরোধ করে।",
     "nuke_alliance_safety_duration": "{count, plural, one {1 টিক (0.1s)} other {{count} টিক ({seconds}s)}}",
     "nuke_alliance_safety_label": "মিত্র বন্ধুত্বপূর্ণ-আগুন নিরাপত্তা",
+    "objective_labels_desc": "খেলার সময় মানচিত্রের উদ্দেশ্যগুলোর উপরে সোনালি নাম দেখায়।",
+    "objective_labels_label": "উদ্দেশ্যের নাম",
     "off": "বন্ধ",
     "on": "চালু",
     "open_settings_desc": "গেমপ্লে, গ্রাফিক্স, অডিও এবং কীবাইন্ড সেটিংস",

@@ -771,6 +771,14 @@ async function createClientGame(
       { signal: graphicsListenerAbort.signal },
     );
 
+    // Gold names above the map objectives, toggled live from the settings.
+    view.setObjectiveLabels(userSettings.objectiveLabels());
+    globalThis.addEventListener(
+      `${USER_SETTINGS_CHANGED_EVENT}:settings.objectiveLabels`,
+      () => view.setObjectiveLabels(userSettings.objectiveLabels()),
+      { signal: graphicsListenerAbort.signal },
+    );
+
     // Re-resolve settings and copy them onto the renderer's live object in
     // place (passes hold a reference to it, so they pick the change up).
     const regenerateRenderSettings = (): void => {

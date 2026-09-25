@@ -1,5 +1,41 @@
 # Territorium — Changelog
 
+## v0.1.0
+
+🎯 **Map objectives**
+
+- A few round zones appear on the map in every solo, private and public game (a checkbox when you create the game turns them off). Ranked, 1v1, 2v2 and the daily solo race don't have them.
+- Hold most of a zone's land for 15 seconds to capture it. Each zone you hold gives +15% worker gold and +5% troop growth, until someone takes it from you.
+- Your bonus counts at most half the zones (2 of 3 or 4, 3 of 5 or 6). Holding more keeps them from your rivals but pays nothing extra.
+- Each zone has a gold name ("◆ Objective A"). For the first five minutes, zones pulse and show their bonus. You can hide the names in the settings (Objective Names).
+- The control panel shows how many zones you hold and your bonus.
+
+🏆 **Ranked seasons**
+
+- Ranked is now a free-for-all of 8 to 16 signed-in players on a fixed pool of maps, with no bots, nations or cosmetics.
+- The ranked hub shows the current season, your tier and Elo, your placement games and the tier list.
+- The leaderboard has a Ranked tab. Profiles show your standing this season and the badges from past seasons.
+
+📅 **Challenges**
+
+- New Challenges page: daily, weekly and monthly challenges, with progress bars and medal rewards.
+- The solo race of the day: everyone plays the same map from the same start. The fastest win ranks first, and the server replays each win to check it.
+
+📊 **Leaderboard and profiles**
+
+- New Solo tab that ranks signed-in players by their solo wins against nations. The old ranked tab is now Multiplayer.
+- Profiles show an Admin or Moderator badge for staff.
+
+🔒 **Privacy**
+
+- No more third-party ad script. YouTube videos load (without cookies) only when you click them.
+
+✨ **More**
+
+- Only clan members can wear the clan tag.
+- The in-game scoreboard and HUD no longer stay on the home page after you leave a game.
+- The home page is lighter: the closed store no longer redraws in the background.
+
 ## v0.0.4
 
 💳 **Payments**

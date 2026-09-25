@@ -6,6 +6,7 @@ import {
   forEachTileInZone,
   OBJECTIVE_CAPTURE_SECONDS,
   OBJECTIVE_GOLD_PER_TICK,
+  objectiveBonusCap,
   objectiveCount,
   objectiveRadius,
   ObjectiveState,
@@ -34,6 +35,13 @@ describe("placeObjectives", () => {
     expect(objectiveRadius(10_000)).toBe(5);
     expect(objectiveRadius(651_761)).toBe(13);
     expect(objectiveRadius(10_000_000)).toBe(16);
+  });
+
+  it("caps one player's bonus at half the zones, rounded up", () => {
+    expect(objectiveBonusCap(3)).toBe(2);
+    expect(objectiveBonusCap(4)).toBe(2);
+    expect(objectiveBonusCap(5)).toBe(3);
+    expect(objectiveBonusCap(6)).toBe(3);
   });
 
   it("places the same zones for the same seed, on land and apart", async () => {
@@ -209,6 +217,32 @@ describe("ObjectiveExecution", () => {
     const ratio = config.troopIncreaseRate(a) / config.troopIncreaseRate(b);
     expect(ratio).toBeGreaterThan(1.04);
     expect(ratio).toBeLessThan(1.06);
+  });
+
+  it("pays no bonus for zones held beyond the cap", async () => {
+    const { game, players } = await build();
+    const [a] = players;
+    const config = game.config();
+    const baseGold = config.goldAdditionRate(a);
+
+    for (const zone of game.objectives()) takeZone(game, a, zone);
+    runSeconds(game, OBJECTIVE_CAPTURE_SECONDS + 1);
+    a.setTroops(10_000);
+
+    // a takes all three zones but is paid for two of them.
+    expect(a.objectivesHeld()).toBe(3);
+    expect(a.objectivesRewarded()).toBe(2);
+    expect(config.goldAdditionRate(a) - baseGold).toBe(
+      OBJECTIVE_GOLD_PER_TICK * 2n,
+    );
+
+    // Same land and troops: dropping the third zone costs nothing, dropping
+    // a second one does.
+    const troops = config.troopIncreaseRate(a);
+    game.objectives()[2].holder = 0;
+    expect(config.troopIncreaseRate(a)).toBe(troops);
+    game.objectives()[1].holder = 0;
+    expect(config.troopIncreaseRate(a)).toBeLessThan(troops);
   });
 
   it("does not let a teammate take the zone from its holder", async () => {

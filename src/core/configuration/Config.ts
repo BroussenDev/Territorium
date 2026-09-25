@@ -1079,7 +1079,7 @@ export class Config {
     }
 
     toAdd *=
-      1 + (OBJECTIVE_TROOP_GROWTH_PERCENT * player.objectivesHeld()) / 100;
+      1 + (OBJECTIVE_TROOP_GROWTH_PERCENT * player.objectivesRewarded()) / 100;
 
     if (player.type() === PlayerType.Nation) {
       switch (this._gameConfig.difficulty) {
@@ -1111,7 +1111,7 @@ export class Config {
     } else {
       baseRate = 100n;
     }
-    baseRate += OBJECTIVE_GOLD_PER_TICK * BigInt(player.objectivesHeld());
+    baseRate += OBJECTIVE_GOLD_PER_TICK * BigInt(player.objectivesRewarded());
     return BigInt(Math.floor(Number(baseRate) * multiplier));
   }
 

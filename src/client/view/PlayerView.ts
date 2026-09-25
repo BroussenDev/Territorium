@@ -27,6 +27,7 @@ import {
   AttackUpdate,
   PlayerUpdate,
 } from "../../core/game/GameUpdates";
+import { objectiveBonusCap } from "../../core/game/Objectives";
 import { UserSettings } from "../../core/game/UserSettings";
 import { PlayerState, PlayerStatic, PlayerTypeEnum } from "../render/types";
 import { themeProvider } from "../theme/ThemeProvider";
@@ -684,6 +685,12 @@ export class PlayerView {
   }
   objectivesHeld(): number {
     return this.game.objectivesHeldBy(this.smallID());
+  }
+  objectivesRewarded(): number {
+    return Math.min(
+      this.objectivesHeld(),
+      objectiveBonusCap(this.game.objectives().length),
+    );
   }
   doomsdayClockTicks(): number {
     return this.inDoomsdayClock()

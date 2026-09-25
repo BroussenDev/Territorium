@@ -1668,6 +1668,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% золота, +{troops}% військ",
+    "bonus_max": "+{gold}% золота, +{troops}% військ (макс.)",
+    "cap_hint": "Бонус враховує щонайбільше {max} цілей. Утримуючи більше, ви лише забираєте їх у суперників.",
     "held": "Цілі {held}/{total}",
     "zone_label": "Мета {letter}"
   },
@@ -2440,6 +2442,8 @@
     "nuke_alliance_safety_desc": "Запобігає випадковим ядерним ударам по нових союзниках.",
     "nuke_alliance_safety_duration": "{count, plural, one {{count} тік ({seconds} с)} few {{count} тіки ({seconds} с)} many {{count} тіків ({seconds} с)} other {{count} тіків ({seconds} с)}}",
     "nuke_alliance_safety_label": "Захист союзників від дружнього вогню",
+    "objective_labels_desc": "Показує золоті назви над цілями на мапі під час гри.",
+    "objective_labels_label": "Назви цілей",
     "off": "Вимкнено",
     "on": "Увімкнено",
     "open_settings_desc": "Налаштування ігроладу, графіки, звуку та керування",

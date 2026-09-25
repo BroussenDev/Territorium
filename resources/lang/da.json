@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% guld, +{troops}% tropper",
+    "bonus_max": "+{gold}% guld, +{troops}% tropper (maks.)",
+    "cap_hint": "Din bonus tæller højst {max} mål. Holder du flere, tager du dem kun fra dine rivaler.",
     "held": "Mål {held}/{total}",
     "zone_label": "Mål {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Forhindrer utilsigtede atomangreb på nydannede allierede.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 flueben (0,1s)} other {{count} flueben ({seconds}s)}}",
     "nuke_alliance_safety_label": "Allieret venlig-brandsikkerhed",
+    "objective_labels_desc": "Viser de gyldne navne over kortets mål under spillet.",
+    "objective_labels_label": "Målnavne",
     "off": "Fra",
     "on": "Til",
     "open_settings_desc": "Indstillinger for gameplay, grafik, lyd og tastebinding",

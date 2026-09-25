@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold}% злато, +{troops}% војници",
+    "bonus_max": "+{gold}% злато, +{troops}% војници (макс.)",
+    "cap_hint": "Вашиот бонус брои најмногу {max} цели. Ако држите повеќе, само ги одземате од соперниците.",
     "held": "Цели {held}/{total}",
     "zone_label": "Цел {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Спречува случајни нуклеарни напади врз новоформираните сојузници.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 штиклирање (0,1 с)} other {{count} крлежи ({seconds}s)}}",
     "nuke_alliance_safety_label": "Сојузник-пријателска безбедност од пожари",
+    "objective_labels_desc": "Ги прикажува златните имиња над целите на картата за време на играта.",
+    "objective_labels_label": "Имиња на целите",
     "off": "Исклучено",
     "on": "Вклучено",
     "open_settings_desc": "Поставки за игра, графика, аудио и тастатурата",

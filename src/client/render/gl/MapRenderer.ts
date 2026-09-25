@@ -38,6 +38,7 @@ import type { RenderSettings } from "./RenderSettings";
 
 export class MapRenderer {
   private renderer: GPURenderer | null = null;
+  private objectiveLabels = true;
   private resizeObs: ResizeObserver | null = null;
   // Stored layer data for context-restore re-creation.
   private storedLayers: MapLayer[] = [];
@@ -99,6 +100,8 @@ export class MapRenderer {
       this.raf,
       this.caf,
     );
+
+    this.renderer.setObjectiveLabels(this.objectiveLabels);
 
     const rect = this.canvas.getBoundingClientRect();
     if (rect.width > 0) this.renderer.resize(rect.width, rect.height);
@@ -291,6 +294,12 @@ export class MapRenderer {
   /** 1 while the objective zones should stand out, fading to 0. */
   setObjectiveHighlight(highlight: number): void {
     this.renderer?.setObjectiveHighlight(highlight);
+  }
+
+  /** Show or hide the gold names above the objective zones. */
+  setObjectiveLabels(visible: boolean): void {
+    this.objectiveLabels = visible;
+    this.renderer?.setObjectiveLabels(visible);
   }
 
   /** Update spawn phase overlay (tile highlights + breathing rings). */

@@ -1669,6 +1669,8 @@
   },
   "objectives": {
     "bonus": "+{gold} % or, +{troops} % troupes",
+    "bonus_max": "+{gold} % or, +{troops} % troupes (max)",
+    "cap_hint": "Votre bonus compte au plus {max} objectifs. En tenir plus les garde hors de portée de vos rivaux.",
     "held": "Objectifs {held}/{total}",
     "zone_label": "Objectif {letter}"
   },
@@ -2441,6 +2443,8 @@
     "nuke_alliance_safety_desc": "Empêche les frappes de bombes accidentelles sur les nouveaux alliés.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 tick (0.1s)} other {{count} ticks ({seconds}s)}}",
     "nuke_alliance_safety_label": "Protection contre les tirs amis entre alliés",
+    "objective_labels_desc": "Affiche les noms dorés au-dessus des objectifs de la carte pendant la partie.",
+    "objective_labels_label": "Noms des objectifs",
     "off": "Désactivé",
     "on": "Activé",
     "open_settings_desc": "Paramètres de jeu, graphiques, audio et raccourcis clavier",

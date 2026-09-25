@@ -613,6 +613,8 @@ export interface Player {
   doomsdayClockTicks(): number;
   /** Map objectives this player holds (see Objectives.ts). */
   objectivesHeld(): number;
+  /** Held objectives that pay a bonus, capped by objectiveBonusCap. */
+  objectivesRewarded(): number;
   enterDoomsdayClock(): void;
   clearDoomsdayClock(): void;
   largestClusterBoundingBox: { min: Cell; max: Cell } | null;
