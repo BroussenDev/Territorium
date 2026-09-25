@@ -32,7 +32,7 @@ import { createGame } from "../../src/core/game/GameImpl";
 import { GameUpdateType, HashUpdate } from "../../src/core/game/GameUpdates";
 import { createNationsForGame } from "../../src/core/game/NationCreation";
 import { loadTerrainMap } from "../../src/core/game/TerrainMapLoader";
-import { GameRunner } from "../../src/core/GameRunner";
+import { GameRunner, gameSeed } from "../../src/core/GameRunner";
 import { PseudoRandom } from "../../src/core/PseudoRandom";
 import {
   GameRecord,
@@ -174,7 +174,7 @@ async function main(): Promise<void> {
     mapLoader,
     false,
   );
-  const random = new PseudoRandom(simpleHash(gameStart.gameID));
+  const random = new PseudoRandom(simpleHash(gameSeed(gameStart)));
   const humans = gameStart.players.map(
     (p) =>
       new PlayerInfo(
@@ -210,7 +210,7 @@ async function main(): Promise<void> {
     game,
     new Executor(
       game,
-      gameStart.gameID,
+      gameSeed(gameStart),
       undefined,
       gameStart.tribes?.map((t) => t.name),
     ),

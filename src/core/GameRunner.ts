@@ -32,6 +32,12 @@ import { PseudoRandom } from "./PseudoRandom";
 import { ClientID, GameStartInfo, Turn } from "./Schemas";
 import { simpleHash } from "./Util";
 
+// What seeds a game's randomness: the config's seed when set, else the
+// gameID.
+export function gameSeed(gameStart: GameStartInfo): string {
+  return gameStart.config.seed ?? gameStart.gameID;
+}
+
 export async function createGameRunner(
   gameStart: GameStartInfo,
   clientID: ClientID | undefined,
@@ -45,7 +51,8 @@ export async function createGameRunner(
     mapLoader,
     false, // Worker never renders layers — skip image loading to save memory.
   );
-  const random = new PseudoRandom(simpleHash(gameStart.gameID));
+  const seed = gameSeed(gameStart);
+  const random = new PseudoRandom(simpleHash(seed));
 
   const humans = gameStart.players.map((p) => {
     return new PlayerInfo(
@@ -81,7 +88,7 @@ export async function createGameRunner(
     game,
     new Executor(
       game,
-      gameStart.gameID,
+      seed,
       clientID,
       gameStart.tribes?.map((t) => t.name),
     ),

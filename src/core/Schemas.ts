@@ -553,6 +553,10 @@ export const GameConfigSchema = z.object({
       startingGold: zb.uint({ max: 1000000000 }).nullable().optional(),
     })
     .optional(),
+  // Seeds the game's randomness (spawns, nations, bots) in place of the
+  // gameID, so games with the same seed start the same way: the daily solo
+  // challenge gives every player the same start.
+  seed: z.string().max(64).optional(),
 });
 
 export const TeamSchema = z.string();

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { base64urlToUuid } from "./Base64";
-import { ClanTagSchema } from "./Schemas";
+import { ClanTagSchema, GameConfigSchema } from "./Schemas";
 import { BigIntStringSchema, PlayerStatsSchema } from "./StatsSchemas";
 import {
   Difficulty,
@@ -651,6 +651,74 @@ export const RankedFfaLeaderboardResponseSchema = z.object({
 export type RankedFfaLeaderboardResponse = z.infer<
   typeof RankedFfaLeaderboardResponseSchema
 >;
+
+// GET /challenges — the running daily, weekly and monthly challenges. A
+// multiplayer challenge counts what the player does in public games; the
+// daily solo challenge is one seeded singleplayer game everyone races to win
+// in the fewest ticks. progress and mine are the caller's (zero and null for
+// guests).
+export const ChallengePeriodSchema = z.enum(["daily", "weekly", "monthly"]);
+export type ChallengePeriod = z.infer<typeof ChallengePeriodSchema>;
+
+export const SoloBoardEntrySchema = z.object({
+  rank: z.number(),
+  publicId: z.string(),
+  username: z.string().nullable(),
+  ticks: z.number(),
+});
+export type SoloBoardEntry = z.infer<typeof SoloBoardEntrySchema>;
+
+const ChallengeBaseSchema = z.object({
+  id: z.string(),
+  period: ChallengePeriodSchema,
+  endsAt: z.iso.datetime(),
+  medals: z.number(),
+});
+
+export const MultiChallengeSchema = ChallengeBaseSchema.extend({
+  kind: z.literal("multi"),
+  // An unknown template (a newer API) still shows, with a generic label.
+  template: z.string(),
+  mode: z.enum(["any", "ffa", "team"]),
+  scope: z.enum(["total", "game"]),
+  target: z.number(),
+  progress: z.number(),
+  completed: z.boolean(),
+});
+export type MultiChallenge = z.infer<typeof MultiChallengeSchema>;
+
+export const SoloChallengeSchema = ChallengeBaseSchema.extend({
+  kind: z.literal("solo"),
+  config: GameConfigSchema,
+  placeMedals: z.number().array(),
+  board: SoloBoardEntrySchema.array(),
+  players: z.number(),
+  mine: z
+    .object({
+      bestTicks: z.number().nullable(),
+      checking: z.boolean(),
+      rejected: z.boolean(),
+      rank: z.number().nullable(),
+    })
+    .nullable(),
+});
+export type SoloChallenge = z.infer<typeof SoloChallengeSchema>;
+
+export const ChallengesResponseSchema = z.object({
+  challenges: z
+    .discriminatedUnion("kind", [MultiChallengeSchema, SoloChallengeSchema])
+    .array(),
+  // Yesterday's solo challenge and its podium.
+  lastSolo: z
+    .object({
+      id: z.string(),
+      config: GameConfigSchema,
+      settled: z.boolean(),
+      board: SoloBoardEntrySchema.array(),
+    })
+    .nullable(),
+});
+export type ChallengesResponse = z.infer<typeof ChallengesResponseSchema>;
 
 // A finished season's badge: the tier held when it closed.
 export const SeasonBadgeSchema = z.object({

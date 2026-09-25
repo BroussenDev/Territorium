@@ -3,6 +3,8 @@ import streamsFallback from "resources/streams.json";
 import { z } from "zod";
 import type { NewsItem, StreamsFeed } from "../core/ApiSchemas";
 import {
+  ChallengesResponse,
+  ChallengesResponseSchema,
   ClaimAllRewardsResponse,
   ClaimAllRewardsResponseSchema,
   ClaimRewardResponse,
@@ -2311,6 +2313,30 @@ export async function fetchRankedStatus(): Promise<RankedStatus | false> {
     return parsed.data;
   } catch (err) {
     console.error("fetchRankedStatus: request failed", err);
+    return false;
+  }
+}
+
+// GET /challenges — the running daily, weekly and monthly challenges, with
+// the caller's progress when signed in.
+export async function fetchChallenges(): Promise<ChallengesResponse | false> {
+  try {
+    const auth = await getAuthHeader();
+    const res = await fetch(`${getApiBase()}/challenges`, {
+      headers: auth === "" ? {} : { Authorization: auth },
+    });
+    if (!res.ok) {
+      console.warn("fetchChallenges: unexpected status", res.status);
+      return false;
+    }
+    const parsed = ChallengesResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn("fetchChallenges: Zod validation failed", parsed.error);
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchChallenges: request failed", err);
     return false;
   }
 }

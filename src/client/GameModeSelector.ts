@@ -73,6 +73,7 @@ const TUTORIAL_ACTION =
 // Heroicons (outline, 24px), shown beside the action labels in the lg rail.
 const ICON_FLAG =
   "M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5";
+const ICON_BOLT = "m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z";
 const ICON_PLUS = "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z";
 const ICON_ENTER =
   "M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25";
@@ -699,6 +700,16 @@ export class GameModeSelector extends LitElement {
                 ICON_FLAG,
               )}
             </div>
+            <div class="flex-1 lg:flex-none lg:h-14">
+              ${this.renderSmallActionCard(
+                translateText("challenges.title"),
+                this.openChallenges,
+                SECONDARY_ACTION,
+                undefined,
+                true,
+                ICON_BOLT,
+              )}
+            </div>
             ${getGamesPlayed() < TUTORIAL_CARD_MAX_GAMES
               ? html`<div class="flex-1 lg:flex-none lg:h-12">
                   ${this.renderSmallActionCard(
@@ -835,6 +846,11 @@ export class GameModeSelector extends LitElement {
     if (this.blockedFromApiAction()) return;
     if (!this.validateUsername()) return;
     window.showPage?.("page-ranked");
+  };
+
+  private openChallenges = () => {
+    if (!this.validateUsername()) return;
+    window.showPage?.("page-challenges");
   };
 
   private openDetailedView = () => {

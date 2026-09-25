@@ -28,6 +28,7 @@ import { setNoStoreHeaders } from "./NoStoreHeaders";
 import { startPolling } from "./PollingLoop";
 import { renderAppShell } from "./RenderHtml";
 import { ServerEnv } from "./ServerEnv";
+import { startSoloVerifier } from "./SoloVerifier";
 import { applyStaticAssetCacheControl } from "./StaticAssetCache";
 
 const playlist = new MapPlaylist();
@@ -291,6 +292,12 @@ export async function startMaster() {
       }
       applyCheckinState(result, (active) => lobbyService.setActive(active));
     }, CHECKIN_INTERVAL_MS);
+  }
+
+  // Replay the daily solo challenge's claimed wins (SoloVerifier.ts) on
+  // deployed servers: they hold the key the API knows game servers by.
+  if (ServerEnv.env() !== GameEnv.Dev && ServerEnv.apiKey() !== "") {
+    startSoloVerifier();
   }
 }
 

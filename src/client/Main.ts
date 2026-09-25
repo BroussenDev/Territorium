@@ -166,6 +166,7 @@ import {
   installSafariPinchZoomBlocker,
 } from "./utilities/DisableSafariPinchZoom";
 
+import "./ChallengesModal";
 import "./components/DesktopNavBar";
 import "./components/DetailedGameViewModal";
 import "./components/Footer";
@@ -436,6 +437,10 @@ class Client {
     modalRouter.register("ranked", {
       tag: "ranked-modal",
       pageId: "page-ranked",
+    });
+    modalRouter.register("challenges", {
+      tag: "challenges-modal",
+      pageId: "page-challenges",
     });
     modalRouter.register("detailed-view", {
       tag: "detailed-view-modal",
