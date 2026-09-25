@@ -873,6 +873,8 @@
     "ignore": "উপেক্ষা করুন",
     "missile_intercepted": "SAM বাধাপ্রাপ্ত {unit}",
     "no_boats_available": "কোন নৌকা উপলব্ধ নেই, সর্বোচ্চ {max}",
+    "objective_captured": "আপনি একটি মানচিত্রের উদ্দেশ্য ক্যাপচার করেছেন: আপনি এটি ধরে রাখার সময় আরও সোনা এবং সৈন্য বৃদ্ধি।",
+    "objective_lost": "{name} আপনার মানচিত্রের উদ্দেশ্যগুলির একটি নিয়েছে৷",
     "received_gold_from_captured_ship": "{name} থেকে বন্দী জাহাজ থেকে {gold} স্বর্ণ প্রাপ্ত",
     "received_gold_from_conquest": "জয় করেছেন {name}, পেয়েছেন {gold} সোনা",
     "received_gold_from_player": "{name} থেকে {gold} স্বর্ণ পেয়েছেন",
@@ -994,6 +996,7 @@
     "max_timer": "খেলার দৈর্ঘ্য (মিনিট)",
     "mins_placeholder": "মিনিট",
     "nations": "জাতি: ",
+    "objectives": "মানচিত্র উদ্দেশ্য",
     "options": "অপশন",
     "overtime": "ওভারটাইম পরে (মিনিট)",
     "random_spawn": "এলোমেলো স্পন",
@@ -1663,6 +1666,10 @@
     "tournament": "টুর্নামেন্ট",
     "tutorial": "টিউটোরিয়াল",
     "warning": "সতর্কতা"
+  },
+  "objectives": {
+    "bonus": "+{gold}% স্বর্ণ, +{troops}% সৈন্য",
+    "held": "উদ্দেশ্য {held}/{total}"
   },
   "overtime": {
     "first_place": "১ম: {name} ({pct}%)",

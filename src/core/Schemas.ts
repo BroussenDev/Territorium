@@ -557,6 +557,9 @@ export const GameConfigSchema = z.object({
   // gameID, so games with the same seed start the same way: the daily solo
   // challenge gives every player the same start.
   seed: z.string().max(64).optional(),
+  // Capturable map objectives (see Objectives.ts). Absent means off, so
+  // configs from before the option keep playing the same way.
+  objectives: z.boolean().optional(),
 });
 
 export const TeamSchema = z.string();

@@ -682,6 +682,9 @@ export class PlayerView {
   isDecaying(): boolean {
     return this.state.isDecaying;
   }
+  objectivesHeld(): number {
+    return this.game.objectivesHeldBy(this.smallID());
+  }
   doomsdayClockTicks(): number {
     return this.inDoomsdayClock()
       ? this.game.ticks() - this.state.markedDoomsdayClockTick

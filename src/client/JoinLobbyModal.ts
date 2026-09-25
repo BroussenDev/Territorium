@@ -894,6 +894,11 @@ export class JoinLobbyModal extends BaseModal {
         label: translateText("game_settings.water_nukes"),
         value: enabled,
       });
+    if (c.objectives)
+      items.push({
+        label: translateText("game_settings.objectives"),
+        value: enabled,
+      });
     if (c.doomsdayClock?.enabled)
       items.push({
         label: translateText("game_settings.doomsday_clock"),

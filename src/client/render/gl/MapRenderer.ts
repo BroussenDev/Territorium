@@ -30,6 +30,7 @@ import type {
   TerrainRect,
   UnitState,
 } from "../types";
+import type { ObjectiveZone } from "./passes/ObjectivePass";
 import type { SpawnCenter } from "./passes/SpawnOverlayPass";
 import type { AttackTroopLabel } from "./passes/WorldTextPass";
 import { GPURenderer } from "./Renderer";
@@ -284,6 +285,10 @@ export class MapRenderer {
   }
 
   /** Update spawn phase overlay (tile highlights + breathing rings). */
+  updateObjectives(zones: ObjectiveZone[]): void {
+    this.renderer?.updateObjectives(zones);
+  }
+
   updateSpawnOverlay(inSpawnPhase: boolean, centers: SpawnCenter[]): void {
     this.renderer?.updateSpawnOverlay(inSpawnPhase, centers);
   }

@@ -14,13 +14,22 @@ import {
   TRAIL_EFFECT_TYPES,
 } from "../core/CosmeticSchemas";
 import { PlayerType } from "../core/game/Game";
+import {
+  OBJECTIVE_CAPTURE_SECONDS,
+  type ObjectiveState,
+} from "../core/game/Objectives";
 import { decodePatternData } from "../core/PatternDecoder";
 import { getCachedCosmetics } from "./Cosmetics";
 import { buildTerrainRowSpans } from "./render/frame/derive/TerrainRowSpans";
 import { uploadFrameData } from "./render/frame/Upload";
 // Type-only: a value import would pull GPURenderer and its `.glsl?raw` shader
 // imports into any non-Vite consumer (e.g. the Node perf harness).
-import type { MapRenderer, PlayerStatic, SpawnCenter } from "./render/gl";
+import type {
+  MapRenderer,
+  ObjectiveZone,
+  PlayerStatic,
+  SpawnCenter,
+} from "./render/gl";
 import {
   DEFAULT_NUKE_EXPLOSION_COLOR,
   MAX_NUKE_EXPLOSION_COLORS,
@@ -244,6 +253,7 @@ export class WebGLFrameBuilder {
     // texture starts zeroed, so the mirror must too or nothing re-uploads.
     this.effectPalette.fill(0);
     this.lastSpawnTile.clear();
+    this.lastObjectives = [];
     this.localPlayerSmallID = 0;
     this.skinsInitialized = false;
   }
@@ -294,12 +304,15 @@ export class WebGLFrameBuilder {
   private readonly highlightSetBuf = new Uint8Array(PALETTE_SIZE);
   private glowRescanTick = 0;
 
+  private lastObjectives: readonly ObjectiveState[] = [];
+
   update(gameView: GameView): void {
     this.syncPlayers(gameView);
     this.syncPlayerEffects(gameView);
     this.syncPlayerSpawns(gameView);
     this.syncLocalPlayer(gameView);
     this.syncSpawnOverlay(gameView);
+    this.syncObjectives(gameView);
     this.syncSmallPlayerGlow(gameView);
     this.syncTerrainDeltas(gameView);
     this.syncNukeImpacts(gameView);
@@ -482,6 +495,32 @@ export class WebGLFrameBuilder {
       });
     }
     this.view.updateSpawnOverlay(inSpawnPhase, centers);
+  }
+
+  /**
+   * Map objective zones, pushed when GameView gets a new objectives state
+   * (it replaces the array on each Objectives update).
+   */
+  private syncObjectives(gameView: GameView): void {
+    const objectives = gameView.objectives();
+    if (objectives === this.lastObjectives) return;
+    this.lastObjectives = objectives;
+    const color = (smallID: number): [number, number, number] | null => {
+      if (smallID === 0) return null;
+      const p = gameView.playerBySmallID(smallID);
+      if (!p.isPlayer()) return null;
+      const c = p.territoryColor().toRgb();
+      return [c.r / 255, c.g / 255, c.b / 255];
+    };
+    const zones: ObjectiveZone[] = objectives.map((o) => ({
+      x: gameView.x(o.tile),
+      y: gameView.y(o.tile),
+      radius: o.radius,
+      holder: color(o.holder),
+      capturer: color(o.capturer) ?? [1, 1, 1],
+      progress: o.progress / OBJECTIVE_CAPTURE_SECONDS,
+    }));
+    this.view.updateObjectives(zones);
   }
 
   /**

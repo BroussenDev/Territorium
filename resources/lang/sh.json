@@ -873,6 +873,8 @@
     "ignore": "Ignoriši",
     "missile_intercepted": "PVO Raketa je presretnuta {unit}",
     "no_boats_available": "Nema slobodnih brodova, maksimum {max}",
+    "objective_captured": "Zauzeli ste cilj na mapi: više zlata i rast trupa dok ga držite.",
+    "objective_lost": "{name} je uzeo jedan od ciljeva vaše karte.",
     "received_gold_from_captured_ship": "Primi {gold} zlatnika od osvojenog brod od igrača {name}",
     "received_gold_from_conquest": "Porazili ste igrača {name}, osvojili ste {gold} zlatnika",
     "received_gold_from_player": "Dobili ste {gold} zlatnika od igrača {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Dužina igre (minuti)",
     "mins_placeholder": "Minuti",
     "nations": "Nacije: ",
+    "objectives": "Ciljevi mape",
     "options": "Opcije",
     "overtime": "Produžeci nakon (minuta)",
     "random_spawn": "Nasumičan spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNIR",
     "tutorial": "TUTORIJAL",
     "warning": "UPOZORENJE"
+  },
+  "objectives": {
+    "bonus": "+{gold}% zlata, +{troops}% trupa",
+    "held": "Ciljevi {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

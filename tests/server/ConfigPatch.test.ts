@@ -35,6 +35,7 @@ const EDITABLE: { [K in keyof GameConfig]?: GameConfig[K] } = {
   trusted: true,
   doomsdayClock: { enabled: true, speed: "fast" },
   overtime: { enabled: true, startMinutes: 20 },
+  objectives: true,
   anonymizeNames: true,
   nameReveals: ["c1000000"],
   nameRevealPublicIds: ["pub-b"],

@@ -873,6 +873,8 @@
     "ignore": "تجاهل",
     "missile_intercepted": "تم اعتراض SAM {unit}",
     "no_boats_available": "لا توجد قوارب متاحة، بحد أقصى {max}",
+    "objective_captured": "لقد استوليت على هدف على الخريطة: ذهب أكثر ونمو أسرع للقوات ما دمت تحتفظ به.",
+    "objective_lost": "{name} أخذ أحد أهداف خريطتك.",
     "received_gold_from_captured_ship": "تم استلام {gold} ذهب من السفينة التي تم الاستيلاء عليها من {name}",
     "received_gold_from_conquest": "غزا {name}، وحصل على {gold} ذهب",
     "received_gold_from_player": "تم استلام {gold} ذهب من {name}",
@@ -994,6 +996,7 @@
     "max_timer": "مدة المباراة (دقائق)",
     "mins_placeholder": "دقيقة",
     "nations": "الأمم: ",
+    "objectives": "أهداف الخريطة",
     "options": "خيارات",
     "overtime": "الوقت الإضافي بعد (دقائق)",
     "random_spawn": "تفرخ عشوائي",
@@ -1662,6 +1665,10 @@
     "tournament": "البطولة",
     "tutorial": "تعليمي",
     "warning": "تحذير"
+  },
+  "objectives": {
+    "bonus": "+{gold}% ذهب، +{troops}% قوات",
+    "held": "الأهداف {held}/{total}"
   },
   "overtime": {
     "first_place": "الأول: {name} ({pct}%)",

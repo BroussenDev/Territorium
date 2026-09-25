@@ -873,6 +873,8 @@
     "ignore": "Ignore",
     "missile_intercepted": "SAM intercepted {unit}",
     "no_boats_available": "No boats available, max {max}",
+    "objective_captured": "You captured a map objective: more gold and troop growth while you hold it.",
+    "objective_lost": "{name} took one of your map objectives.",
     "received_gold_from_captured_ship": "Received {gold} gold from ship captured from {name}",
     "received_gold_from_conquest": "Conquered {name}, received {gold} gold",
     "received_gold_from_player": "Received {gold} gold from {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Game length (minutes)",
     "mins_placeholder": "Mins",
     "nations": "Nations: ",
+    "objectives": "Map objectives",
     "options": "Options",
     "overtime": "Overtime after (minutes)",
     "random_spawn": "Random spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TOURNAMENT",
     "tutorial": "TUTORIAL",
     "warning": "WARNING"
+  },
+  "objectives": {
+    "bonus": "+{gold}% gold, +{troops}% troops",
+    "held": "Objectives {held}/{total}"
   },
   "overtime": {
     "first_place": "1st: {name} ({pct}%)",

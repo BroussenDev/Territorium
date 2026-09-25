@@ -873,6 +873,8 @@
     "ignore": "अनदेखा करना",
     "missile_intercepted": "सैम ने इंटरसेप्ट किया {unit}",
     "no_boats_available": "कोई नाव उपलब्ध नहीं, अधिकतम {max}",
+    "objective_captured": "आपने एक मानचित्र उद्देश्य पर कब्जा कर लिया है: जब आप इसे पकड़ते हैं तो अधिक सोना और सेना की वृद्धि होती है।",
+    "objective_lost": "{name} ने आपके मानचित्र उद्देश्यों में से एक लिया।",
     "received_gold_from_captured_ship": "{name} से पकड़े गए जहाज से {gold} सोना प्राप्त हुआ",
     "received_gold_from_conquest": "{name} पर विजय प्राप्त की, {gold} सोना प्राप्त किया",
     "received_gold_from_player": "{name} से {gold} सोना प्राप्त किया",
@@ -994,6 +996,7 @@
     "max_timer": "खेल की लंबाई (मिनट)",
     "mins_placeholder": "मिनट",
     "nations": "राष्ट्र:",
+    "objectives": "मानचित्र उद्देश्य",
     "options": "विकल्प",
     "overtime": "ओवरटाइम के बाद (मिनट)",
     "random_spawn": "यादृच्छिक स्पॉन",
@@ -1663,6 +1666,10 @@
     "tournament": "टूर्नामेंट",
     "tutorial": "ट्यूटोरियल",
     "warning": "चेतावनी"
+  },
+  "objectives": {
+    "bonus": "+{gold}% सोना, +{troops}% सैनिक",
+    "held": "उद्देश्य {held}/{total}"
   },
   "overtime": {
     "first_place": "पहला: {name} ({pct}%)",

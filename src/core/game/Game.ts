@@ -11,6 +11,7 @@ import {
   UnitUpdate,
 } from "./GameUpdates";
 import { MotionPlanRecord } from "./MotionPlans";
+import { ObjectiveState } from "./Objectives";
 import { RailNetwork } from "./RailNetwork";
 import { Stats } from "./Stats";
 import { ReadonlyTileSet } from "./TileSet";
@@ -610,6 +611,8 @@ export interface Player {
   isDecaying(): boolean;
   markRotted(): void;
   doomsdayClockTicks(): number;
+  /** Map objectives this player holds (see Objectives.ts). */
+  objectivesHeld(): number;
   enterDoomsdayClock(): void;
   clearDoomsdayClock(): void;
   largestClusterBoundingBox: { min: Cell; max: Cell } | null;
@@ -881,6 +884,10 @@ export interface Game extends GameMap {
   ): Array<{ unit: Unit; distSquared: number }>;
 
   addExecution(...exec: Execution[]): void;
+  // Map objectives (see Objectives.ts), empty unless the option is on.
+  objectives(): ObjectiveState[];
+  setObjectives(objectives: ObjectiveState[]): void;
+  objectivesHeldBy(smallID: number): number;
   displayMessage(
     message: string,
     type: MessageType,

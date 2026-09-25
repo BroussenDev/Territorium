@@ -873,6 +873,8 @@
     "ignore": "Игнорировать",
     "missile_intercepted": "Перехвачена ракета «{unit}»",
     "no_boats_available": "Нет доступных судов, максимум — {max}",
+    "objective_captured": "Вы захватили цель на карте: больше золота и прироста войск, пока вы её удерживаете.",
+    "objective_lost": "{name} взял одну из целей вашей карты.",
     "received_gold_from_captured_ship": "Получено {gold} ед. золота с корабля, захваченного у {name}",
     "received_gold_from_conquest": "Завоёвано {name}, получено {gold} ед. золота",
     "received_gold_from_player": "Получено {gold} ед. золота от {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Продолжительность игры (минуты)",
     "mins_placeholder": "Минуты",
     "nations": "Нации: ",
+    "objectives": "Цели карты",
     "options": "Опции",
     "overtime": "Начало овертайма (минуты)",
     "random_spawn": "Случайное появление",
@@ -1663,6 +1666,10 @@
     "tournament": "ТУРНИР",
     "tutorial": "ОБУЧЕНИЕ",
     "warning": "ВНИМАНИЕ"
+  },
+  "objectives": {
+    "bonus": "+{gold}% золота, +{troops}% войск",
+    "held": "Цели {held}/{total}"
   },
   "overtime": {
     "first_place": "1-й: {name} ({pct}%)",

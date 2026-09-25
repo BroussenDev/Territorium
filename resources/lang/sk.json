@@ -873,6 +873,8 @@
     "ignore": "Ignorovať",
     "missile_intercepted": "SAM zachytený {unit}",
     "no_boats_available": "Nie sú k dispozícii žiadne člny, max {max}",
+    "objective_captured": "Obsadili ste cieľ na mape: viac zlata a rast jednotiek, kým ho držíte.",
+    "objective_lost": "{name} vzal jeden z vašich cieľov na mape.",
     "received_gold_from_captured_ship": "Získané {gold} zlata z lode zajatej z {name}",
     "received_gold_from_conquest": "Pokoril {name}, získal {gold} zlata",
     "received_gold_from_player": "Prijatých {gold} zlata z {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Dĺžka hry (minúty)",
     "mins_placeholder": "Min",
     "nations": "národy:",
+    "objectives": "Ciele mapy",
     "options": "Možnosti",
     "overtime": "Predĺženie po (min.)",
     "random_spawn": "Náhodný spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNAJ",
     "tutorial": "TUTORIAL",
     "warning": "POZOR"
+  },
+  "objectives": {
+    "bonus": "+{gold}% zlata, +{troops}% vojakov",
+    "held": "Ciele {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

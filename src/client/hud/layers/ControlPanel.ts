@@ -9,6 +9,10 @@ import { GameMode, GameType, Gold } from "../../../core/game/Game";
 import { TileRef } from "../../../core/game/GameMap";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
+  OBJECTIVE_GOLD_PER_TICK,
+  OBJECTIVE_TROOP_GROWTH_PERCENT,
+} from "../../../core/game/Objectives";
+import {
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
 } from "../../../core/game/UserSettings";
@@ -64,6 +68,11 @@ export class ControlPanel extends LitElement implements Controller {
   @state()
   private _goldGainPulseId: number = 0;
   private _goldGainTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  @state()
+  private _objectivesHeld = 0;
+  @state()
+  private _objectivesTotal = 0;
 
   @state()
   private _tutorialHighlight: TutorialHighlight | null = null;
@@ -142,6 +151,8 @@ export class ControlPanel extends LitElement implements Controller {
       .map((a) => a.troops)
       .reduce((a, b) => a + b, 0);
     this.troopRate = config.troopIncreaseRate(player) * 10;
+    this._objectivesTotal = this.game.objectives().length;
+    this._objectivesHeld = player.objectivesHeld();
 
     const helpEnabled = new UserSettings().helpMessages();
 
@@ -502,9 +513,39 @@ export class ControlPanel extends LitElement implements Controller {
     `;
   }
 
+  /** Map objectives held and their bonus; only when the game has them. */
+  private renderObjectives() {
+    if (this._objectivesTotal === 0) return html``;
+    const held = this._objectivesHeld;
+    return html`
+      <div
+        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border text-xs font-medium ${held >
+        0
+          ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
+          : "border-gray-600 text-white/70"}"
+      >
+        <span aria-hidden="true">◆</span>
+        <span
+          >${translateText("objectives.held", {
+            held,
+            total: this._objectivesTotal,
+          })}</span
+        >
+        ${held > 0
+          ? html`<span class="ml-auto tabular-nums"
+              >${translateText("objectives.bonus", {
+                gold: Number(OBJECTIVE_GOLD_PER_TICK) * held,
+                troops: OBJECTIVE_TROOP_GROWTH_PERCENT * held,
+              })}</span
+            >`
+          : ""}
+      </div>
+    `;
+  }
+
   private renderDesktop() {
     return html`
-      ${this.renderNotification()}
+      ${this.renderNotification()} ${this.renderObjectives()}
       <!-- Row 1: troop rate | troop bar | gold -->
       <div class="flex gap-1.5 items-center mb-1">
         <!-- Troop rate -->
@@ -598,7 +639,7 @@ export class ControlPanel extends LitElement implements Controller {
 
   private renderMobile() {
     return html`
-      ${this.renderNotification()}
+      ${this.renderNotification()} ${this.renderObjectives()}
       <div class="flex gap-2 items-center">
         <!-- Gold -->
         <div

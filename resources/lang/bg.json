@@ -873,6 +873,8 @@
     "ignore": "Игнориране",
     "missile_intercepted": "Противоракетната установка прихвана {unit}",
     "no_boats_available": "Няма свободни кораби, максимум {max}",
+    "objective_captured": "Превзехте цел на картата: повече злато и растеж на войските, докато я държите.",
+    "objective_lost": "{name} взе една от целите на вашата карта.",
     "received_gold_from_captured_ship": "Получи {gold} злато от лодка на {name}, превзета от теб",
     "received_gold_from_conquest": "Превзе {name}, получи {gold} злато",
     "received_gold_from_player": "Получи {gold} злато от {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Продължителност на играта (в минути)",
     "mins_placeholder": "Минути",
     "nations": "Нации: ",
+    "objectives": "Цели на картата",
     "options": "Опции",
     "overtime": "Допълнително време (в минути)",
     "random_spawn": "Случайно появяване",
@@ -1663,6 +1666,10 @@
     "tournament": "ТУРНИР",
     "tutorial": "НАРЪЧНИК",
     "warning": "ВНИМАНИЕ"
+  },
+  "objectives": {
+    "bonus": "+{gold}% злато, +{troops}% войски",
+    "held": "Цели {held}/{total}"
   },
   "overtime": {
     "first_place": "1-ви: {name} ({pct}%)",

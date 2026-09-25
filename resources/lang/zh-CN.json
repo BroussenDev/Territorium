@@ -873,6 +873,8 @@
     "ignore": "忽略",
     "missile_intercepted": "已拦截导弹 {unit}",
     "no_boats_available": "无可用船，最多 {max} 个",
+    "objective_captured": "你占领了一个地图目标：在占领它的同时获得更多的黄金和部队增长。",
+    "objective_lost": "{name} 夺走了你的一个地图目标。",
     "received_gold_from_captured_ship": "捕获了 {name} 的商船，获得 {gold} 黄金",
     "received_gold_from_conquest": "征服了 {name} 并获得 {gold} 黄金",
     "received_gold_from_player": "已从 {name} 收到 {gold} 黄金",
@@ -994,6 +996,7 @@
     "max_timer": "游戏时长（分钟）",
     "mins_placeholder": "分钟",
     "nations": "国家：",
+    "objectives": "地图目标",
     "options": "选项",
     "overtime": "加时赛结束后（分钟）",
     "random_spawn": "随机生成",
@@ -1663,6 +1666,10 @@
     "tournament": "锦标赛",
     "tutorial": "教程",
     "warning": "警告"
+  },
+  "objectives": {
+    "bonus": "+{gold}% 金币，+{troops}% 兵力",
+    "held": "目标{held}/{total}"
   },
   "overtime": {
     "first_place": "第一：{name}（{pct}%）",

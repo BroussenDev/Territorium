@@ -873,6 +873,8 @@
     "ignore": "Ignoreeri",
     "missile_intercepted": "Rakett tõkestatud {unit}",
     "no_boats_available": "Laevu pole rohkem saadaval, maks. {max}",
+    "objective_captured": "Vallutasite kaardieesmärgi: rohkem kulda ja vägede kasvu, kuni seda hoiate.",
+    "objective_lost": "{name} võttis ühe teie kaardiobjektidest.",
     "received_gold_from_captured_ship": "Teenisid {gold} kulda kaubalaevast, mis üle võtsid {name}'lt",
     "received_gold_from_conquest": "Vallutasid {name} ja said {gold} kulda",
     "received_gold_from_player": "Said {gold} kulda {name}'lt",
@@ -994,6 +996,7 @@
     "max_timer": "Mängu pikkus (minutid)",
     "mins_placeholder": "min",
     "nations": "Rahvused: ",
+    "objectives": "Kaardi eesmärgid",
     "options": "Valikud",
     "overtime": "Lisatund pärast (minutit)",
     "random_spawn": "Juhuslik kudemine",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNIIR",
     "tutorial": "ÕPETUS",
     "warning": "HOIATUS"
+  },
+  "objectives": {
+    "bonus": "+{gold}% kulda, +{troops}% sõdureid",
+    "held": "Eesmärgid {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

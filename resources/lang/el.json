@@ -873,6 +873,8 @@
     "ignore": "Παράβλεψη",
     "missile_intercepted": "Η SAM αναχαιτίστηκε {unit}",
     "no_boats_available": "Δεν υπάρχουν διαθέσιμα σκάφη, μέγιστο {max}",
+    "objective_captured": "Καταλάβατε έναν στόχο του χάρτη: περισσότερο χρυσό και αύξηση στρατευμάτων όσο τον κρατάτε.",
+    "objective_lost": "{name} πήρε έναν από τους στόχους του χάρτη σας.",
     "received_gold_from_captured_ship": "Έλαβε {gold} χρυσό από πλοίο που καταλήφθηκε από {name}",
     "received_gold_from_conquest": "Κατέκτησε {name}, έλαβε {gold} χρυσό",
     "received_gold_from_player": "Έλαβε {gold} χρυσό από {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Διάρκεια παιχνιδιού (λεπτά)",
     "mins_placeholder": "Mins",
     "nations": "Έθνη: ",
+    "objectives": "Στόχοι χάρτη",
     "options": "Επιλογές",
     "overtime": "Παράταση μετά (λεπτά)",
     "random_spawn": "Τυχαία ωοτοκία",
@@ -1663,6 +1666,10 @@
     "tournament": "ΤΟΥΡΝΟΥΑ",
     "tutorial": "ΦΡΟΝΤΙΣΤΗΡΙΟ",
     "warning": "ΠΡΟΕΙΔΟΠΟΙΗΣΗ"
+  },
+  "objectives": {
+    "bonus": "+{gold}% χρυσός, +{troops}% στρατεύματα",
+    "held": "Στόχοι {held}/{total}"
   },
   "overtime": {
     "first_place": "1η: {name} ({pct}%)",

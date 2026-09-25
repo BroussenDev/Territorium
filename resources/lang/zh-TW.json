@@ -873,6 +873,7 @@
     "ignore": "忽略",
     "missile_intercepted": "已攔截飛彈 {unit}",
     "no_boats_available": "沒有可用的運輸船，最多 {max} 個",
+    "objective_lost": "{name} 奪走了你的一個地圖目標。",
     "received_gold_from_captured_ship": "擄獲了 {name} 的商船，獲得 {gold} 黃金",
     "received_gold_from_conquest": "征服了 {name} 並獲得 {gold} 黃金",
     "received_gold_from_player": "已從 {name} 收到 {gold} 黃金",
@@ -887,7 +888,8 @@
     "trade_ship_captured": "你的商船已被 {name} 擄獲",
     "unit_destroyed": "你的 {unit} 已被摧毀",
     "unit_voluntarily_deleted": "單位已自毀",
-    "wants_to_renew_alliance": "{name} 想與你續簽盟約"
+    "wants_to_renew_alliance": "{name} 想與你續簽盟約",
+    "objective_captured": "你佔領了一個地圖目標：佔領期間獲得更多金幣和兵力成長。"
   },
   "featured_stream": {
     "expand": "展開",
@@ -994,6 +996,7 @@
     "max_timer": "遊戲時長（分鐘）",
     "mins_placeholder": "分鐘",
     "nations": "國家： ",
+    "objectives": "地圖目標",
     "options": "設定",
     "overtime": "延長賽開始於（分鐘）",
     "random_spawn": "隨機出生點",
@@ -1663,6 +1666,10 @@
     "tournament": "錦標賽",
     "tutorial": "教學",
     "warning": "警告"
+  },
+  "objectives": {
+    "bonus": "+{gold}% 金幣，+{troops}% 兵力",
+    "held": "目標{held}/{total}"
   },
   "overtime": {
     "first_place": "第 1 名：{name}（{pct}%）",

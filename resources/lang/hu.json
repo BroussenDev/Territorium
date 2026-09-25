@@ -873,6 +873,8 @@
     "ignore": "Figyelmen kívül hagy",
     "missile_intercepted": "Elfogott rakéta {unit}",
     "no_boats_available": "Nincsenek elérhető hajók, max. {max}",
+    "objective_captured": "Elfoglaltál egy térképcélt: több arany és csapatnövekedés, amíg tartod.",
+    "objective_lost": "{name} elvette az egyik térképcélját.",
     "received_gold_from_captured_ship": "{name} hajójából zsákmányoltál {gold} aranyat",
     "received_gold_from_conquest": "Meghódítottad {name}-t, {gold} aranyat kaptál",
     "received_gold_from_player": "{gold} aranyat küldött neked {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Játékidő (perc)",
     "mins_placeholder": "Perc",
     "nations": "Nemzetek: ",
+    "objectives": "Térképcélok",
     "options": "Beállítások",
     "overtime": "Hosszabbítás (perc)",
     "random_spawn": "Véletlenszerű spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "BAJNOKSÁG",
     "tutorial": "BEMUTATÓ",
     "warning": "FIGYELEM"
+  },
+  "objectives": {
+    "bonus": "+{gold}% arany, +{troops}% csapatok",
+    "held": "Célok {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

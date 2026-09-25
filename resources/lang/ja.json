@@ -873,6 +873,8 @@
     "ignore": "無視",
     "missile_intercepted": "ミサイルが{unit}を迎撃しました",
     "no_boats_available": "輸送船をこれ以上出せません、最大は{max}隻までです",
+    "objective_captured": "マップ目標を占領しました。保持している間、ゴールドと兵力の増加量が増えます。",
+    "objective_lost": "{name} がマップ目標の 1 つを奪いました。",
     "received_gold_from_captured_ship": "{name} から捕獲した船から資金{gold}を獲得しました",
     "received_gold_from_conquest": "{name}を征服して、{gold}ゴールドを獲得しました",
     "received_gold_from_player": "{name}から{gold}の資金を受け取りました",
@@ -994,6 +996,7 @@
     "max_timer": "ゲーム時間（分）",
     "mins_placeholder": "分",
     "nations": "国家： ",
+    "objectives": "マップ目標",
     "options": "オプション",
     "overtime": "延長戦（分）",
     "random_spawn": "ランダムスポーン",
@@ -1663,6 +1666,10 @@
     "tournament": "トーナメント",
     "tutorial": "チュートリアル",
     "warning": "警告"
+  },
+  "objectives": {
+    "bonus": "+{gold}% ゴールド、+{troops}% 軍隊",
+    "held": "目標 {held}/{total}"
   },
   "overtime": {
     "first_place": "1位: {name} ({pct}%)",

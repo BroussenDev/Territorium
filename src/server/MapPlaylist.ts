@@ -483,6 +483,7 @@ export class MapPlaylist {
         this.getSpawnImmunityDuration(playerTeams, startingGold),
       disabledUnits,
       waterNukes: isWaterNukes ? true : undefined,
+      objectives: true,
       disableClanTags: mode === GameMode.FFA ? true : undefined,
     } satisfies GameConfig;
   }

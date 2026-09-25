@@ -876,6 +876,10 @@ export class PlayerImpl implements Player {
   }
 
   // Ticks spent continuously below the doomsday-clock bar (0 when not marked or dead).
+  objectivesHeld(): number {
+    return this.mg.objectivesHeldBy(this.smallID());
+  }
+
   doomsdayClockTicks(): number {
     return this.inDoomsdayClock()
       ? this.mg.ticks() - this.markedDoomsdayClockTick

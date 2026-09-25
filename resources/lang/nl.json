@@ -873,6 +873,8 @@
     "ignore": "Negeren",
     "missile_intercepted": "Raket onderschepte {unit}",
     "no_boats_available": "Geen boten beschikbaar, max. {max}",
+    "objective_captured": "Je hebt een kaartdoel veroverd: meer goud en troepengroei zolang je het vasthoudt.",
+    "objective_lost": "{name} heeft een van je kaartdoelen genomen.",
     "received_gold_from_captured_ship": "{gold} Goud ontvangen van veroverd schip van {name}",
     "received_gold_from_conquest": "Veroverde {name}, ontvangen {gold} goud",
     "received_gold_from_player": "{gold} Goud ontvangen van {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Spellengte (minuten)",
     "mins_placeholder": "Min",
     "nations": "Naties: ",
+    "objectives": "Kaartdoelen",
     "options": "Opties",
     "overtime": "Overtijd na (minuten)",
     "random_spawn": "Willekeurige startpositie",
@@ -1662,6 +1665,10 @@
     "tournament": "TOURNOOI",
     "tutorial": "HANDLEIDING",
     "warning": "WAARSCHUWING"
+  },
+  "objectives": {
+    "bonus": "+{gold}% goud, +{troops}% troepen",
+    "held": "Doelen {held}/{total}"
   },
   "overtime": {
     "first_place": "1e: {name} ({pct}%)",

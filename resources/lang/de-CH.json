@@ -873,6 +873,8 @@
     "ignore": "Ignoriere",
     "missile_intercepted": "Raggete abgfange {unit}",
     "no_boats_available": "Kei Boot verfüegbar, max. {max}",
+    "objective_captured": "Sie haben ein Kartenziel erobert: mehr Gold und Truppenwachstum, solange Sie es halten.",
+    "objective_lost": "{name} hat Ihnen ein Kartenziel abgenommen.",
     "received_gold_from_captured_ship": "{gold} Gold vo emne Schiff erhalten, wo von {name} erbeutet worde isch",
     "received_gold_from_conquest": "Du hesch {name} erobert und {gold} Gold erhaute",
     "received_gold_from_player": "{gold} Gold vo {name} erhaute",
@@ -994,6 +996,7 @@
     "max_timer": "Spieldauer (Minuten)",
     "mins_placeholder": "Min",
     "nations": "Nationen: ",
+    "objectives": "Kartenziele",
     "options": "Optionen",
     "overtime": "Verlängerung nach (Minuten)",
     "random_spawn": "Zufälliger Spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNIER",
     "tutorial": "TUTORIAL",
     "warning": "WARNUNG"
+  },
+  "objectives": {
+    "bonus": "+{gold}% Gold, +{troops}% Truppen",
+    "held": "Ziele {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

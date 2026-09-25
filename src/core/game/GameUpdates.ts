@@ -17,6 +17,7 @@ import {
   WarshipState,
 } from "./Game";
 import { TileRef } from "./GameMap";
+import { ObjectiveState } from "./Objectives";
 
 export interface GameUpdateViewData {
   tick: number;
@@ -106,6 +107,7 @@ export enum GameUpdateType {
   SpawnPhaseEnd,
   GamePaused,
   DonateEvent,
+  Objectives,
 }
 
 export type GameUpdate =
@@ -131,7 +133,14 @@ export type GameUpdate =
   | EmbargoUpdate
   | SpawnPhaseEndUpdate
   | GamePausedUpdate
-  | DonateEventUpdate;
+  | DonateEventUpdate
+  | ObjectivesUpdate;
+
+/** Every map objective's state, sent whenever any of them changes. */
+export interface ObjectivesUpdate {
+  type: GameUpdateType.Objectives;
+  objectives: ObjectiveState[];
+}
 
 export interface BonusEventUpdate {
   type: GameUpdateType.BonusEvent;

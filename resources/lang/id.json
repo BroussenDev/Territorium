@@ -873,6 +873,8 @@
     "ignore": "Abaikan",
     "missile_intercepted": "Rudal dicegat {unit}",
     "no_boats_available": "Tidak ada kapal yang tersedia, maksmial {max}",
+    "objective_captured": "Anda mendapatkan tujuan peta: lebih banyak emas dan pertumbuhan pasukan saat Anda memegangnya.",
+    "objective_lost": "{name} mengambil salah satu tujuan peta Anda.",
     "received_gold_from_captured_ship": "Menerima {gold} emas dari kapal yang di tawan dari {name}",
     "received_gold_from_conquest": "Menaklukan {name}, mendapatkan {gold} emas",
     "received_gold_from_player": "Menerima {gold} emas dari {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Durasi permainan (menit)",
     "mins_placeholder": "menit",
     "nations": "Bangsa:",
+    "objectives": "Tujuan peta",
     "options": "Pilihan",
     "overtime": "Perpanjangan waktu setelahnya (menit)",
     "random_spawn": "Pemijahan acak",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNAMEN",
     "tutorial": "TUTORIAL",
     "warning": "PERINGATAN"
+  },
+  "objectives": {
+    "bonus": "+{gold}% emas, +{troops}% pasukan",
+    "held": "Tujuan {held}/{total}"
   },
   "overtime": {
     "first_place": "Pertama: {name} ({pct}%)",

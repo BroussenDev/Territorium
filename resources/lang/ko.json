@@ -873,6 +873,8 @@
     "ignore": "무시하기",
     "missile_intercepted": "{unit} 요격됨",
     "no_boats_available": "배를 사용할 수 없습니다. 최대 {max}대",
+    "objective_captured": "지도 목표를 점령했습니다. 보유하는 동안 금과 병력 증가량이 늘어납니다.",
+    "objective_lost": "{name}님이 지도 목표 하나를 빼앗았습니다.",
     "received_gold_from_captured_ship": "{name}에게서 나포한 함선으로부터 {gold} 금을 받았습니다",
     "received_gold_from_conquest": "{name}을 정복하여 {gold} 금을 획득했습니다",
     "received_gold_from_player": "{name}님으로부터 금 {gold}개를 받았습니다",
@@ -994,6 +996,7 @@
     "max_timer": "게임 시간 (분)",
     "mins_placeholder": "분",
     "nations": "국가: ",
+    "objectives": "지도 목표",
     "options": "옵션",
     "overtime": "연장전 시작 (분)",
     "random_spawn": "무작위 스폰",
@@ -1663,6 +1666,10 @@
     "tournament": "토너먼트",
     "tutorial": "튜토리얼",
     "warning": "경고"
+  },
+  "objectives": {
+    "bonus": "금 +{gold}%, 병력 +{troops}%",
+    "held": "목표 {held}/{total}"
   },
   "overtime": {
     "first_place": "1위: {name} ({pct}%)",

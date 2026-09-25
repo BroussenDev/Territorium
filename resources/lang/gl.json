@@ -873,6 +873,8 @@
     "ignore": "Ignorar",
     "missile_intercepted": "SAM interceptado {unit}",
     "no_boats_available": "Non hai barcos dispoñibles, máximo {max}",
+    "objective_captured": "Capturaches un obxectivo do mapa: máis ouro e crecemento de tropas mentres o mantés.",
+    "objective_lost": "{name} tomou un dos teus obxectivos do mapa.",
     "received_gold_from_captured_ship": "Recibiuse {gold} de ouro do barco capturado desde {name}",
     "received_gold_from_conquest": "Conquistou {name}, recibiu {gold} de ouro",
     "received_gold_from_player": "Recibiuse {gold} de ouro de {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Duración do xogo (minutos)",
     "mins_placeholder": "Mins",
     "nations": "Nacións:",
+    "objectives": "Obxectivos do mapa",
     "options": "Opcións",
     "overtime": "Hora extra despois (minutos)",
     "random_spawn": "Desova aleatoria",
@@ -1663,6 +1666,10 @@
     "tournament": "TORNEO",
     "tutorial": "TUTORIAL",
     "warning": "AVISO"
+  },
+  "objectives": {
+    "bonus": "+{gold}% de ouro, +{troops}% de tropas",
+    "held": "Obxectivos {held}/{total}"
   },
   "overtime": {
     "first_place": "1º: {name} ({pct}%)",

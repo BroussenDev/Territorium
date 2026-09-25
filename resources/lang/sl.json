@@ -872,6 +872,8 @@
     "ignore": "Prezri",
     "missile_intercepted": "SAM prestrežen {unit}",
     "no_boats_available": "Ni čolnov na voljo, največ {max}",
+    "objective_captured": "Zajeli ste cilj zemljevida: več zlata in rast čete, medtem ko ga držite.",
+    "objective_lost": "{name} je zavzel enega od vaših ciljev zemljevida.",
     "received_gold_from_captured_ship": "Prejeto {gold} zlata z ladje, zajete iz {name}",
     "received_gold_from_conquest": "Osvojen {name}, prejet {gold} zlata",
     "received_gold_from_player": "Prejeto {gold} zlata od {name}",
@@ -993,6 +995,7 @@
     "max_timer": "Dolžina igre (minute)",
     "mins_placeholder": "Min",
     "nations": "Narodi:",
+    "objectives": "Cilji zemljevida",
     "options": "Možnosti",
     "overtime": "Podaljšek po (minutah)",
     "random_spawn": "Naključno drstenje",
@@ -1662,6 +1665,10 @@
     "tournament": "TURNIR",
     "tutorial": "VODNIK",
     "warning": "OPOZORILO"
+  },
+  "objectives": {
+    "bonus": "+{gold}% zlata, +{troops}% vojakov",
+    "held": "Cilji {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

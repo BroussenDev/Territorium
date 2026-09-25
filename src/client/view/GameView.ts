@@ -23,6 +23,7 @@ import {
   MotionPlanRecord,
   unpackMotionPlans,
 } from "../../core/game/MotionPlans";
+import { ObjectiveState } from "../../core/game/Objectives";
 import { TerrainMapData } from "../../core/game/TerrainMapLoader";
 import { TerraNulliusImpl } from "../../core/game/TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "../../core/game/UnitGrid";
@@ -224,6 +225,19 @@ export class GameView implements GameMap {
     return this._map.isOnEdgeOfMap(ref);
   }
 
+  /** Map objectives, empty unless the option is on (see Objectives.ts). */
+  public objectives(): ObjectiveState[] {
+    return this._objectives;
+  }
+
+  public objectivesHeldBy(smallID: number): number {
+    let held = 0;
+    for (const o of this._objectives) {
+      if (o.holder === smallID) held++;
+    }
+    return held;
+  }
+
   public updatesSinceLastTick(): GameUpdates | null {
     return this.lastUpdate?.updates ?? null;
   }
@@ -323,6 +337,11 @@ export class GameView implements GameMap {
     }
     if (gu.updates[GameUpdateType.Win].length > 0) {
       this._gameOver = true;
+    }
+    const objectivesUpdates = gu.updates[GameUpdateType.Objectives];
+    if (objectivesUpdates.length > 0) {
+      this._objectives =
+        objectivesUpdates[objectivesUpdates.length - 1].objectives;
     }
 
     const myDisplayName = formatPlayerDisplayName(
@@ -1143,6 +1162,7 @@ export class GameView implements GameMap {
   // Set once the sim has decided the game (WinUpdate). Play may go on for
   // those who stay, but the server archives the record at that point.
   private _gameOver = false;
+  private _objectives: ObjectiveState[] = [];
   gameOver(): boolean {
     return this._gameOver;
   }

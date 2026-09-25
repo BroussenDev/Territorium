@@ -873,6 +873,8 @@
     "ignore": "Игнорирај",
     "missile_intercepted": "SAM пресретнат {unit}",
     "no_boats_available": "Нема достапни чамци, максимум {max}",
+    "objective_captured": "Освоивте цел на картата: повеќе злато и раст на трупите додека ја држите.",
+    "objective_lost": "{name} зеде една од вашите цели на картата.",
     "received_gold_from_captured_ship": "Доби {gold} злато од брод заробен од {name}",
     "received_gold_from_conquest": "Освои {name}, доби {gold} злато",
     "received_gold_from_player": "Доби {gold} злато од {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Должина на играта (минути)",
     "mins_placeholder": "мин",
     "nations": "Нации:",
+    "objectives": "Цели на картата",
     "options": "Опции",
     "overtime": "Прекувремено по (минути)",
     "random_spawn": "Случаен мрест",
@@ -1663,6 +1666,10 @@
     "tournament": "ТУРНИР",
     "tutorial": "УПАТСТВО",
     "warning": "ПРЕДУПРЕДУВАЊЕ"
+  },
+  "objectives": {
+    "bonus": "+{gold}% злато, +{troops}% војници",
+    "held": "Цели {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

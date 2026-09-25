@@ -873,6 +873,8 @@
     "ignore": "התעלם",
     "missile_intercepted": "SAM יורט {unit}",
     "no_boats_available": "אין סירות זמינות, מקסימום {max}",
+    "objective_captured": "תפסת מטרה במפה: יותר זהב וגידול חיילים בזמן שאתה מחזיק בה.",
+    "objective_lost": "{name} לקח את אחד ממטרות המפה שלך.",
     "received_gold_from_captured_ship": "קיבל {gold} זהב מספינה שנלכדה מ{name}",
     "received_gold_from_conquest": "כבש {name}, קיבל {gold} זהב",
     "received_gold_from_player": "קיבל {gold} זהב מ{name}",
@@ -994,6 +996,7 @@
     "max_timer": "אורך המשחק (דקות)",
     "mins_placeholder": "דקות",
     "nations": "אומות:",
+    "objectives": "מטרות מפה",
     "options": "אפשרויות",
     "overtime": "הארכה לאחר (דקות)",
     "random_spawn": "שרצים אקראי",
@@ -1663,6 +1666,10 @@
     "tournament": "טוּרנִיר",
     "tutorial": "שֶׁל מוֹרֶה",
     "warning": "אַזהָרָה"
+  },
+  "objectives": {
+    "bonus": "+{gold}% זהב, +{troops}% חיילים",
+    "held": "יעדים {held}/{total}"
   },
   "overtime": {
     "first_place": "1: {name} ({pct}%)",

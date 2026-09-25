@@ -19,6 +19,10 @@ import {
   UnitInfo,
   UnitType,
 } from "../game/Game";
+import {
+  OBJECTIVE_GOLD_PER_TICK,
+  OBJECTIVE_TROOP_GROWTH_PERCENT,
+} from "../game/Objectives";
 import { UserSettings } from "../game/UserSettings";
 import { GameConfig, TeamCountConfig } from "../Schemas";
 import { NukeType } from "../StatsSchemas";
@@ -420,6 +424,10 @@ export class Config {
   }
   waterNukes(): boolean {
     return this._gameConfig.waterNukes ?? false;
+  }
+
+  objectives(): boolean {
+    return this._gameConfig.objectives ?? false;
   }
   isRandomSpawn(): boolean {
     return this._gameConfig.randomSpawn;
@@ -1070,6 +1078,9 @@ export class Config {
       toAdd *= 0.5;
     }
 
+    toAdd *=
+      1 + (OBJECTIVE_TROOP_GROWTH_PERCENT * player.objectivesHeld()) / 100;
+
     if (player.type() === PlayerType.Nation) {
       switch (this._gameConfig.difficulty) {
         case Difficulty.Easy:
@@ -1100,6 +1111,7 @@ export class Config {
     } else {
       baseRate = 100n;
     }
+    baseRate += OBJECTIVE_GOLD_PER_TICK * BigInt(player.objectivesHeld());
     return BigInt(Math.floor(Number(baseRate) * multiplier));
   }
 

@@ -873,6 +873,8 @@
     "ignore": "نادیده گرفتن",
     "missile_intercepted": "موشک رهگیری شده {unit}",
     "no_boats_available": "قایقی در دسترس نیست؛ حداکثر ظرفیت: {max}",
+    "objective_captured": "شما یک هدف نقشه را گرفتید: طلا و رشد نیرو بیشتر در حالی که آن را در دست دارید.",
+    "objective_lost": "{name} یکی از اهداف نقشه شما را گرفت.",
     "received_gold_from_captured_ship": "از کشتی توقیف شده از {name} طلا دریافت شد. {gold}",
     "received_gold_from_conquest": "{name} تسخیر شد، {gold} طلا دریافت کردید",
     "received_gold_from_player": "مقدار {gold} طلا از {name} دریافت شده",
@@ -994,6 +996,7 @@
     "max_timer": "مدت زمان بازی (دقیقه)",
     "mins_placeholder": "دقیقه‌ها",
     "nations": "ملت ها: ",
+    "objectives": "اهداف نقشه",
     "options": "تنظیمات",
     "overtime": "وقت اضافه پس از (دقیقه)",
     "random_spawn": "اسپاون تصادفی",
@@ -1662,6 +1665,10 @@
     "tournament": "تورنمنت",
     "tutorial": "آموزشی",
     "warning": "هشدار"
+  },
+  "objectives": {
+    "bonus": "+{gold}% طلا، +{troops}% سرباز",
+    "held": "اهداف {held}/{total}"
   },
   "overtime": {
     "first_place": "اول: {name} ({pct}٪)",

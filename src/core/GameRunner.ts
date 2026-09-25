@@ -2,6 +2,7 @@ import { placeName, placeSpawnName } from "../client/hud/NameBoxCalculator";
 import { Config } from "./configuration/Config";
 import { DoomsdayClockExecution } from "./execution/DoomsdayClockExecution";
 import { Executor } from "./execution/ExecutionManager";
+import { ObjectiveExecution } from "./execution/ObjectiveExecution";
 import { RecomputeRailClusterExecution } from "./execution/RecomputeRailClusterExecution";
 import { SpawnTimerExecution } from "./execution/SpawnTimerExecution";
 import { WinCheckExecution } from "./execution/WinCheckExecution";
@@ -95,6 +96,9 @@ export async function createGameRunner(
     callBack,
   );
   gr.init();
+  if (config.objectives()) {
+    game.addExecution(new ObjectiveExecution(simpleHash(seed)));
+  }
   return gr;
 }
 

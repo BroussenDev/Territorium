@@ -873,6 +873,8 @@
     "ignore": "Sivuuta",
     "missile_intercepted": "SAM siepannut {unit}",
     "no_boats_available": "Ei veneitä saatavilla, max {max}",
+    "objective_captured": "Valtasit karttatavoitteen: enemmän kultaa ja joukkojen kasvua, kun pidät sitä.",
+    "objective_lost": "{name} otti yhden karttakohteistasi.",
     "received_gold_from_captured_ship": "Sai {gold} kultaa vuodesta {name} valloitetulta alukselta",
     "received_gold_from_conquest": "Voitti {name}, sai {gold} kultaa",
     "received_gold_from_player": "Sai {gold} kultaa kohteesta {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Pelin pituus (minuuttia)",
     "mins_placeholder": "Min",
     "nations": "Kansakunnat:",
+    "objectives": "Kartan tavoitteet",
     "options": "Vaihtoehdot",
     "overtime": "Jatkoaika jälkeen (minuuttia)",
     "random_spawn": "Satunnainen kuteminen",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNAUS",
     "tutorial": "OPETUSOHJE",
     "warning": "VAROITUS"
+  },
+  "objectives": {
+    "bonus": "+{gold}% kultaa, +{troops}% joukkoja",
+    "held": "Tavoitteet {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

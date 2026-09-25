@@ -873,6 +873,8 @@
     "ignore": "Ignorera",
     "missile_intercepted": "SAM avlyssnat {unit}",
     "no_boats_available": "Inga båtar tillgängliga, max {max}",
+    "objective_captured": "Du erövrade ett kartmål: mer guld och trupptillväxt medan du håller det.",
+    "objective_lost": "{name} tog ett av dina kartmål.",
     "received_gold_from_captured_ship": "Fick {gold} guld från fartyg som fångats från {name}",
     "received_gold_from_conquest": "Erövrade {name}, fick {gold} guld",
     "received_gold_from_player": "Fick {gold} guld från {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Spellängd (minuter)",
     "mins_placeholder": "Mins",
     "nations": "Nationer:",
+    "objectives": "Kartmål",
     "options": "Alternativ",
     "overtime": "Övertid efter (minuter)",
     "random_spawn": "Slumpmässigt spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNERING",
     "tutorial": "HANDLEDNING",
     "warning": "VARNING"
+  },
+  "objectives": {
+    "bonus": "+{gold}% guld, +{troops}% trupper",
+    "held": "Mål {held}/{total}"
   },
   "overtime": {
     "first_place": "1:a: {name} ({pct}%)",

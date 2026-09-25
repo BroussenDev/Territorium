@@ -873,6 +873,8 @@
     "ignore": "Bỏ qua",
     "missile_intercepted": "Bệ phóng SAM đã đánh chặn {unit}",
     "no_boats_available": "Không có tàu có sẵn, tối đa {max}",
+    "objective_captured": "Bạn đã chiếm được một mục tiêu trên bản đồ: thêm vàng và tăng trưởng quân khi còn giữ nó.",
+    "objective_lost": "{name} đã lấy một trong các mục tiêu bản đồ của bạn.",
     "received_gold_from_captured_ship": "Đã nhận {gold} vàng từ con tàu chiếm được của {name}",
     "received_gold_from_conquest": "Đã chinh phục {name} và nhận được {gold} vàng",
     "received_gold_from_player": "Đã nhận {gold} vàng từ {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Thời lượng trận (phút)",
     "mins_placeholder": "Phút",
     "nations": "Quốc gia: ",
+    "objectives": "Mục tiêu bản đồ",
     "options": "Tùy chọn",
     "overtime": "Quá giờ sau X (phút)",
     "random_spawn": "Spawn ngẫu nhiên",
@@ -1663,6 +1666,10 @@
     "tournament": "GIẢI ĐẤU",
     "tutorial": "HƯỚNG DẪN",
     "warning": "CẢNH BÁO"
+  },
+  "objectives": {
+    "bonus": "+{gold}% vàng, +{troops}% quân",
+    "held": "Mục tiêu {held}/{total}"
   },
   "overtime": {
     "first_place": "Top 1: {name} ({pct}%)",

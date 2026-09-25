@@ -42,6 +42,7 @@ import {
 import { GameMap, TileRef } from "./GameMap";
 import { GameUpdate, GameUpdateType } from "./GameUpdates";
 import { MotionPlanRecord, packMotionPlans } from "./MotionPlans";
+import { ObjectiveState } from "./Objectives";
 import { PlayerImpl } from "./PlayerImpl";
 import { RailNetwork } from "./RailNetwork";
 import { createRailNetwork } from "./RailNetworkImpl";
@@ -94,6 +95,7 @@ export class GameImpl implements Game {
   private _nextUnitID = 1;
 
   private updates: GameUpdates = createGameUpdatesMap();
+  private _objectives: ObjectiveState[] = [];
   private tileUpdatePairs: number[] = [];
   /** [smallID, tilesOwned, gold, troops] quads — see PlayerImpl.toUpdate. */
   private playerStatsQuads: number[] = [];
@@ -664,6 +666,22 @@ export class GameImpl implements Game {
 
   addExecution(...exec: Execution[]) {
     this.unInitExecs.push(...exec);
+  }
+
+  objectives(): ObjectiveState[] {
+    return this._objectives;
+  }
+
+  setObjectives(objectives: ObjectiveState[]): void {
+    this._objectives = objectives;
+  }
+
+  objectivesHeldBy(smallID: number): number {
+    let held = 0;
+    for (const o of this._objectives) {
+      if (o.holder === smallID) held++;
+    }
+    return held;
   }
 
   removeExecution(exec: Execution) {

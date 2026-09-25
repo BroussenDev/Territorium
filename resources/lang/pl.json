@@ -873,6 +873,8 @@
     "ignore": "Ignoruj",
     "missile_intercepted": "SAM przechwycił {unit}",
     "no_boats_available": "Brak dostępnych łodzi, maks. {max}",
+    "objective_captured": "Zdobyłeś cel na mapie: więcej złota i wzrost liczby żołnierzy, gdy go trzymasz.",
+    "objective_lost": "{name} zajął jeden z celów na mapie.",
     "received_gold_from_captured_ship": "Otrzymano {gold} złota ze statku przechwyconego z {name}",
     "received_gold_from_conquest": "Zdobyto {name}, otrzymano {gold} złota",
     "received_gold_from_player": "Otrzymano {gold} złota od {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Długość gry (minuty)",
     "mins_placeholder": "Min",
     "nations": "Narody:",
+    "objectives": "Cele mapy",
     "options": "Opcje",
     "overtime": "Dogrywka po (minutach)",
     "random_spawn": "Losowe spawnowanie",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNIEJ",
     "tutorial": "SEMINARIUM",
     "warning": "OSTRZEŻENIE"
+  },
+  "objectives": {
+    "bonus": "+{gold}% złota, +{troops}% żołnierzy",
+    "held": "Cele {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

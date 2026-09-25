@@ -873,6 +873,8 @@
     "ignore": "Ignori",
     "missile_intercepted": "Misilo interkaptis {unit}",
     "no_boats_available": "Neniu boato disponebla, maksimume {max}",
+    "objective_captured": "Vi kaptis mapan celon: pli da oro kaj trup-kresko dum vi tenas ĝin.",
+    "objective_lost": "{name} prenis unu el viaj mapceloj.",
     "received_gold_from_captured_ship": "Ricevis {gold} da oro kaptante komercan ŝipon de {name}",
     "received_gold_from_conquest": "Konkeris {name}, ricevis {gold} da oro",
     "received_gold_from_player": "Ricevis {gold} da oro de {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Daŭro de la ludo (minutoj)",
     "mins_placeholder": "Min",
     "nations": "Nacioj: ",
+    "objectives": "Mapceloj",
     "options": "Opcioj",
     "overtime": "Kromlaboro post (minutoj)",
     "random_spawn": "Hazarda generado",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNIRO",
     "tutorial": "LERNILO",
     "warning": "AVERTO"
+  },
+  "objectives": {
+    "bonus": "+{gold}% oro, +{troops}% trupoj",
+    "held": "Celoj {held}/{total}"
   },
   "overtime": {
     "first_place": "unua: {name} ({pct}%)",

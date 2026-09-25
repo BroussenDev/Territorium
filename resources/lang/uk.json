@@ -873,6 +873,8 @@
     "ignore": "Ігнорувати",
     "missile_intercepted": "Перехоплено ракету «{unit}»",
     "no_boats_available": "Немає доступних суден, максимум — {max}",
+    "objective_captured": "Ви захопили ціль на карті: більше золота та зростання військ, поки ви її тримаєте.",
+    "objective_lost": "{name} взяв одну з ваших цілей на карті.",
     "received_gold_from_captured_ship": "Отримано {gold} од. золота з корабля, захопленого у {name}",
     "received_gold_from_conquest": "Завойовано {name}, отримано {gold} од. золота",
     "received_gold_from_player": "Отримано {gold} од. золота від {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Тривалість гри (хвилини)",
     "mins_placeholder": "Хвилини",
     "nations": "Нації: ",
+    "objectives": "Цілі на карті",
     "options": "Опції",
     "overtime": "Початок овертайму (хвилини)",
     "random_spawn": "Випадкове породження",
@@ -1662,6 +1665,10 @@
     "tournament": "ТУРНІР",
     "tutorial": "ПОСІБНИК",
     "warning": "УВАГА"
+  },
+  "objectives": {
+    "bonus": "+{gold}% золота, +{troops}% військ",
+    "held": "Цілі {held}/{total}"
   },
   "overtime": {
     "first_place": "1-й: {name} ({pct}%)",

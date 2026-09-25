@@ -26,6 +26,7 @@ const COPIED_KEYS = [
   "trusted",
   "doomsdayClock",
   "overtime",
+  "objectives",
   "anonymizeNames",
   "nameReveals",
   "nameRevealPublicIds",

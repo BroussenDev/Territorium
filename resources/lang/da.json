@@ -873,6 +873,8 @@
     "ignore": "Ignorér",
     "missile_intercepted": "Missil opsnappet {unit}",
     "no_boats_available": "Ingen både tilgængelige, maks. {max}",
+    "objective_captured": "Du har erobret et kortmål: mere guld og troppevækst, mens du holder det.",
+    "objective_lost": "{name} tog et af dine kortmål.",
     "received_gold_from_captured_ship": "Modtog {gold} guld fra skib erobret fra {name}",
     "received_gold_from_conquest": "Erobrede {name}, modtog {gold} guld",
     "received_gold_from_player": "Modtog {gold} guld fra {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Spillelængde (minutter)",
     "mins_placeholder": "min",
     "nations": "Nationer: ",
+    "objectives": "Kortmål",
     "options": "Valgmuligheder",
     "overtime": "Overarbejde efter (minutter)",
     "random_spawn": "Tilfældig spawn",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNERING",
     "tutorial": "TUTORIAL",
     "warning": "ADVARSEL"
+  },
+  "objectives": {
+    "bonus": "+{gold}% guld, +{troops}% tropper",
+    "held": "Mål {held}/{total}"
   },
   "overtime": {
     "first_place": "1.: {name} ({pct}%)",

@@ -873,6 +873,8 @@
     "ignore": "Ignoră",
     "missile_intercepted": "Racheta a interceptat {unit}",
     "no_boats_available": "Nu sunt disponibile bărci, maxim {max}",
+    "objective_captured": "Ai capturat un obiectiv al hărții: mai mult aur și creșterea trupelor în timp ce îl ții.",
+    "objective_lost": "{name} a luat unul dintre obiectivele hărții tale.",
     "received_gold_from_captured_ship": "Ai primit {gold} aur de la nava capturată de la {name}",
     "received_gold_from_conquest": "Cucerit {name}, primit {gold} aur",
     "received_gold_from_player": "Ai primit {gold} aur de la {name}",
@@ -994,6 +996,7 @@
     "max_timer": "Durata jocului (minute)",
     "mins_placeholder": "Minute",
     "nations": "Națiune: ",
+    "objectives": "Obiective pe hartă",
     "options": "Opțiunile",
     "overtime": "Mai mult timp după (minute)",
     "random_spawn": "Start aleatoriu",
@@ -1663,6 +1666,10 @@
     "tournament": "TURNAȚIE",
     "tutorial": "TUTORIALE",
     "warning": "ATENŢIE"
+  },
+  "objectives": {
+    "bonus": "+{gold}% aur, +{troops}% trupe",
+    "held": "Obiective {held}/{total}"
   },
   "overtime": {
     "first_place": "1st: {name} ({pct}%)",
