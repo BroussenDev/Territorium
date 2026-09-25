@@ -94,6 +94,7 @@ const SAM_RADIUS_GHOST_TYPES = new Set([
   "City",
   "Atom Bomb",
   "Hydrogen Bomb",
+  "EMP Bomb",
 ]);
 
 /** Subset for build-button hover — excludes City/Silo (SAM radii irrelevant). */
@@ -101,6 +102,7 @@ const SAM_RADIUS_HIGHLIGHT_TYPES = new Set([
   "SAM Launcher",
   "Atom Bomb",
   "Hydrogen Bomb",
+  "EMP Bomb",
 ]);
 
 const GRID_VIEW_KEY = "renderer:grid_view_enabled";

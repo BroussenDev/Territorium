@@ -704,6 +704,20 @@ export class Config {
           cost: () => 0n,
         };
         break;
+      case UnitType.EMPBomb:
+        info = {
+          cost: this.costWrapper(() => 1_500_000, UnitType.EMPBomb),
+        };
+        break;
+      case UnitType.Radar:
+        info = {
+          cost: this.costWrapper(
+            (numUnits: number) => Math.min(1_000_000, (numUnits + 1) * 250_000),
+            UnitType.Radar,
+          ),
+          constructionDuration: this.instantBuild() ? 0 : 5 * 10,
+        };
+        break;
       default:
         assertNever(type);
     }
@@ -1123,6 +1137,8 @@ export class Config {
         return { inner: 12, outer: 30 };
       case UnitType.HydrogenBomb:
         return { inner: 80, outer: 100 };
+      case UnitType.EMPBomb:
+        return { inner: 20, outer: 20 };
     }
     throw new Error(`Unknown nuke type: ${unitType}`);
   }
@@ -1135,6 +1151,7 @@ export class Config {
     switch (unitType) {
       case UnitType.AtomBomb:
       case UnitType.HydrogenBomb:
+      case UnitType.EMPBomb:
         return 10;
       case UnitType.MIRV:
         return 15;
@@ -1150,6 +1167,24 @@ export class Config {
 
   defaultNukeTargetableRange(): number {
     return 150;
+  }
+
+  /** Ticks an EMP keeps enemy structures disabled (15 s). */
+  empDisableTicks(): number {
+    return 15 * 10;
+  }
+
+  /**
+   * Ticks after an EMP hit during which a structure can't be disabled again
+   * (the 15 s outage plus 30 s of immunity), so EMPs can't chain-lock it.
+   */
+  empImmunityTicks(): number {
+    return 45 * 10;
+  }
+
+  /** Radius, in tiles, in which a radar spots enemy ships and missiles. */
+  radarRange(): number {
+    return 100;
   }
 
   defaultSamRange(): number {

@@ -7,6 +7,7 @@ import { MirvExecution } from "./MIRVExecution";
 import { MissileSiloExecution } from "./MissileSiloExecution";
 import { NukeExecution } from "./NukeExecution";
 import { PortExecution } from "./PortExecution";
+import { RadarExecution } from "./RadarExecution";
 import { SAMLauncherExecution } from "./SAMLauncherExecution";
 import { WarshipExecution } from "./WarshipExecution";
 
@@ -104,7 +105,8 @@ export class ConstructionExecution implements Execution {
     const player = this.player;
     switch (this.constructionType) {
       case UnitType.AtomBomb:
-      case UnitType.HydrogenBomb: {
+      case UnitType.HydrogenBomb:
+      case UnitType.EMPBomb: {
         const count = this.amount ?? 1;
         for (let i = 0; i < count; i++) {
           // NukeExecution staggers same-tick launches per silo itself.
@@ -150,6 +152,9 @@ export class ConstructionExecution implements Execution {
       case UnitType.Factory:
         this.mg.addExecution(new FactoryExecution(this.structure!));
         break;
+      case UnitType.Radar:
+        this.mg.addExecution(new RadarExecution(this.structure!));
+        break;
       default:
         console.warn(
           `unit type ${this.constructionType} cannot be constructed`,
@@ -166,6 +171,7 @@ export class ConstructionExecution implements Execution {
       case UnitType.SAMLauncher:
       case UnitType.City:
       case UnitType.Factory:
+      case UnitType.Radar:
         return true;
       default:
         return false;

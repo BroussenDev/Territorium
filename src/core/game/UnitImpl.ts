@@ -36,6 +36,9 @@ export class UnitImpl implements Unit {
   private _destroyer: Player | undefined = undefined;
   private _lastSetSafeFromPirates: number; // Only for trade ships
   private _underConstruction: boolean = false;
+  // EMP outage and the immunity that follows it.
+  private _disabledUntil: Tick = 0;
+  private _empImmuneUntil: Tick = 0;
   private _lastOwner: PlayerImpl | null = null;
   private _troops: number;
   // Number of missiles in cooldown, if empty all missiles are ready.
@@ -172,6 +175,7 @@ export class UnitImpl implements Unit {
       lastPos: this._lastTile,
       health: this.hasHealth() ? Number(this._health) : undefined,
       underConstruction: this._underConstruction,
+      disabled: this.isDisabled() || undefined,
       targetUnitId: this._targetUnit?.id() ?? undefined,
       targetTile: this.targetTile() ?? undefined,
       missileTimerQueue: this._missileTimerQueue,
@@ -529,6 +533,24 @@ export class UnitImpl implements Unit {
       this._owner._myUnitsVersion++; // unitsOwned() weighs under-construction units differently
       this.mg.addUpdate(this.toUpdate());
     }
+  }
+
+  isDisabled(): boolean {
+    return this.mg.ticks() < this._disabledUntil;
+  }
+
+  disabledUntil(): Tick {
+    return this._disabledUntil;
+  }
+
+  disable(untilTick: Tick, immuneUntilTick: Tick): boolean {
+    if (this.mg.ticks() < this._empImmuneUntil) {
+      return false;
+    }
+    this._disabledUntil = untilTick;
+    this._empImmuneUntil = immuneUntilTick;
+    this.mg.addUpdate(this.toUpdate());
+    return true;
   }
 
   hash(): number {

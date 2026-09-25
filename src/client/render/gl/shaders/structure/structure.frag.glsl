@@ -30,7 +30,7 @@ uniform float uLocalPlayerID;
 in vec2  vLocalPos;
 in vec2  vAtlasUV;
 flat in float vOwnerID;
-flat in float vUnderConstruction;
+flat in float vUnderConstruction; // 0 = normal, 1 = building, 2 = EMP-disabled
 flat in float vMarkedForDeletion;
 flat in float vZoom;
 flat in float vAtlasIdx;
@@ -114,7 +114,8 @@ float sdPolygon(vec2 p, float R, float n, float rot) {
 }
 
 // Per-structure-type shape SDF.
-// Atlas indices: 0=City, 1=Port, 2=Factory, 3=DefensePost, 4=SAM, 5=Silo
+// Atlas indices: 0=City, 1=Port, 2=Factory, 3=DefensePost, 4=SAM, 5=Silo,
+// 6=Radar
 float shapeSDF(vec2 p, float R) {
   if (vAtlasIdx < 0.5)
     return length(p) - R;                     // City → circle
@@ -126,7 +127,9 @@ float shapeSDF(vec2 p, float R) {
     return sdPolygon(p, R, 8.0, 0.0);         // Defense Post → octagon (flat top)
   if (vAtlasIdx < 4.5)
     return sdPolygon(p, R, 4.0, 0.0);         // SAM Launcher → square (flat sides)
-  return sdPolygon(p, R, 3.0, PI * 0.5);      // Missile Silo → triangle (vertex up)
+  if (vAtlasIdx < 5.5)
+    return sdPolygon(p, R, 3.0, PI * 0.5);    // Missile Silo → triangle (vertex up)
+  return sdPolygon(p, R, 4.0, PI * 0.25);     // Radar → diamond (vertex up)
 }
 
 void main() {
@@ -145,15 +148,18 @@ void main() {
 
   float borderMask = 1.0 - smoothstep(-fw, fw, sdf + borderWidth);
 
+  bool building = vUnderConstruction > 0.5 && vUnderConstruction < 1.5;
+  bool disabled = vUnderConstruction > 1.5;
+
   // Player color
   vec4 fillColor;
   vec4 borderColor;
 
-  if (uAltView != 0 && vUnderConstruction < 0.5) {
+  if (uAltView != 0 && !building) {
     vec3 ac = texelFetch(uAffiliation, ivec2(int(vOwnerID), 1), 0).rgb;
     fillColor = vec4(darken(ac, uFillDarken), 1.0);
     borderColor = vec4(darken(ac, uBorderDarken), 1.0);
-  } else if (vUnderConstruction > 0.5) {
+  } else if (building) {
     fillColor = vec4(198.0/255.0, 198.0/255.0, 198.0/255.0, 1.0);
     borderColor = vec4(127.0/255.0, 127.0/255.0, 127.0/255.0, 1.0);
   } else {
@@ -177,7 +183,7 @@ void main() {
   // buyers should see what they paid for. The border keeps the player color
   // so ownership stays readable. Skipped for alt view and construction gray.
   bool effectActive = false;
-  if (uAltView == 0 && vUnderConstruction < 0.5) {
+  if (uAltView == 0 && !building) {
     int effOwner = int(vOwnerID + 0.5);
     if ((effOwner == int(uHoverOwner + 0.5) ||
          effOwner == int(uLocalPlayerID)) && effOwner > 0) {
@@ -187,6 +193,14 @@ void main() {
         effectActive = true;
       }
     }
+  }
+
+  // EMP: electric-blue shape with a slow pulse while the structure is out.
+  if (disabled) {
+    float pulse = 0.5 + 0.5 * sin(uTime * 6.0);
+    vec3 emp = vec3(0.35, 0.75, 1.0);
+    fillColor.rgb = mix(darken(fillColor.rgb, 0.5), emp, 0.55 + 0.25 * pulse);
+    borderColor.rgb = mix(emp, vec3(1.0), 0.3 * pulse);
   }
 
   vec4 bgColor = mix(borderColor, fillColor, borderMask);

@@ -30,6 +30,8 @@ export type SoundEffect =
   | "build-train-station"
   | "transport-ship"
   | "nuke-warning"
+  | "radar-ping"
+  | "emp-hit"
   | "spawn"
   | "game-start"
   | "victory"
@@ -65,6 +67,8 @@ export const soundEffectUrls: ReadonlyMap<SoundEffect, string> = new Map([
   ["build-train-station", assetUrl("sounds/effects/build-train-station.mp3")],
   ["transport-ship", assetUrl("sounds/effects/transport-ship.mp3")],
   ["nuke-warning", assetUrl("sounds/effects/nuke-warning.mp3")],
+  ["radar-ping", assetUrl("sounds/effects/radar-ping.wav")],
+  ["emp-hit", assetUrl("sounds/effects/emp-hit.wav")],
   ["spawn", assetUrl("sounds/effects/spawn.mp3")],
   ["game-start", assetUrl("sounds/effects/game-start.mp3")],
   ["victory", assetUrl("sounds/effects/victory.mp3")],
@@ -102,6 +106,7 @@ const CUE_CATEGORY: Record<SoundEffect, Exclude<CueCategory, "ambience">> = {
   // Alerts — things the player needs to know, which is why they stay audible
   // when the window is unfocused unless that is turned off.
   "nuke-warning": "alerts",
+  "radar-ping": "alerts",
   "alliance-suggested": "alerts",
   "alliance-accepted": "alerts",
   "alliance-declined": "alerts",
@@ -113,6 +118,7 @@ const CUE_CATEGORY: Record<SoundEffect, Exclude<CueCategory, "ambience">> = {
   "atom-hit": "effects",
   "hydrogen-launch": "effects",
   "hydrogen-hit": "effects",
+  "emp-hit": "effects",
   "mirv-launch": "effects",
   "ka-ching": "effects",
   conquered: "effects",

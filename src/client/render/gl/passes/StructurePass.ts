@@ -2,7 +2,7 @@
  * StructurePass — GPU-rendered structures with icon sprites.
  *
  * Renders a filled circle in player color with a white icon overlay,
- * sampled from a pre-built 6-column sprite atlas (generate-sprite-atlases.mjs).
+ * sampled from a pre-built 7-column sprite atlas (generate-sprite-atlases.mjs).
  *
  * Two LODs based on zoom:
  *   - zoom > 0.5: full icon with circle background
@@ -21,6 +21,7 @@ import {
   UT_FACTORY,
   UT_MISSILE_SILO,
   UT_PORT,
+  UT_RADAR,
   UT_SAM_LAUNCHER,
 } from "../../types";
 import { DynamicInstanceBuffer } from "../DynamicBuffer";
@@ -53,6 +54,7 @@ const STRUCTURE_ORDER = [
   UT_DEFENSE_POST,
   UT_SAM_LAUNCHER,
   UT_MISSILE_SILO,
+  UT_RADAR,
 ] as const;
 
 const ATLAS_COLS = STRUCTURE_ORDER.length;
@@ -61,7 +63,8 @@ const ATLAS_COLS = STRUCTURE_ORDER.length;
 // Instance data layout
 // ---------------------------------------------------------------------------
 
-// Per-instance: x, y, ownerID, underConstruction, atlasIdx, markedForDeletion
+// Per-instance: x, y, ownerID, state (0 = normal, 1 = under construction,
+// 2 = disabled by an EMP), atlasIdx, markedForDeletion
 const FLOATS_PER_INSTANCE = 6;
 const BYTES_PER_INSTANCE = FLOATS_PER_INSTANCE * 4;
 
@@ -320,7 +323,11 @@ export class StructurePass {
       this.instanceBuf.float32[off + 0] = x;
       this.instanceBuf.float32[off + 1] = y;
       this.instanceBuf.float32[off + 2] = unit.ownerID;
-      this.instanceBuf.float32[off + 3] = unit.underConstruction ? 1 : 0;
+      this.instanceBuf.float32[off + 3] = unit.underConstruction
+        ? 1
+        : unit.disabled
+          ? 2
+          : 0;
       this.instanceBuf.float32[off + 4] = atlasIdx;
       this.instanceBuf.float32[off + 5] =
         unit.markedForDeletion !== false ? 1 : 0;

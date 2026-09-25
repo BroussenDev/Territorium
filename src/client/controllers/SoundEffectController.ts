@@ -32,6 +32,10 @@ const STATION_CAPABLE_TYPES = new Set<UnitType>([
   UnitType.Port,
 ]);
 
+// A fleet crossing several radars can raise a few contacts in a row; ping at
+// most once every two seconds.
+const RADAR_PING_SOUND_INTERVAL_TICKS = 20;
+
 const NUKE_INBOUND_MESSAGES = new Set<MessageType>([
   MessageType.NUKE_INBOUND,
   MessageType.HYDROGEN_BOMB_INBOUND,
@@ -41,6 +45,7 @@ const NUKE_INBOUND_MESSAGES = new Set<MessageType>([
 export class SoundEffectController implements Controller {
   private lastMirvHitSoundTick = -Infinity;
   private lastNukeWarningSoundTick = -Infinity;
+  private lastRadarPingSoundTick = -Infinity;
   private lastTrainStationSoundTick = -Infinity;
   // A train station is a flag on an existing structure, not a unit — play the
   // build sound on the false→true edge only, so structures that already have
@@ -108,6 +113,28 @@ export class SoundEffectController implements Controller {
       this.lastNukeWarningSoundTick = tick;
       this.emit("nuke-warning");
     }
+
+    for (const e of updates[GameUpdateType.DisplayEvent] ?? []) {
+      if (e.playerID !== myPlayer.smallID()) continue;
+      const tick = this.game.ticks();
+      if (e.messageType === MessageType.RADAR_CONTACT) {
+        if (
+          tick - this.lastRadarPingSoundTick >=
+          RADAR_PING_SOUND_INTERVAL_TICKS
+        ) {
+          this.lastRadarPingSoundTick = tick;
+          this.emit("radar-ping");
+        }
+      } else if (e.message === "events_display.emp_inbound") {
+        if (
+          tick - this.lastNukeWarningSoundTick >=
+          NUKE_WARNING_SOUND_INTERVAL_TICKS
+        ) {
+          this.lastNukeWarningSoundTick = tick;
+          this.emit("nuke-warning");
+        }
+      }
+    }
   }
 
   private handleUnit(unit: UnitView): void {
@@ -126,6 +153,9 @@ export class SoundEffectController implements Controller {
         break;
       case UnitType.HydrogenBomb:
         this.onNukeDetonation(unit, "hydrogen-hit");
+        break;
+      case UnitType.EMPBomb:
+        this.onNukeDetonation(unit, "emp-hit");
         break;
     }
   }
@@ -153,6 +183,9 @@ export class SoundEffectController implements Controller {
       case UnitType.MIRV:
         this.emit("mirv-launch");
         break;
+      case UnitType.EMPBomb:
+        this.emit("atom-launch");
+        break;
       case UnitType.Warship:
         if (unit.owner() === myPlayer) this.emit("build-warship");
         break;
@@ -170,6 +203,9 @@ export class SoundEffectController implements Controller {
         break;
       case UnitType.MissileSilo:
         if (unit.owner() === myPlayer) this.emit("silo-built");
+        break;
+      case UnitType.Radar:
+        if (unit.owner() === myPlayer) this.emit("sam-built");
         break;
       case UnitType.Factory:
         if (unit.owner() === myPlayer) this.emit("build-factory");

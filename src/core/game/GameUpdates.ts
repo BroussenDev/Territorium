@@ -206,6 +206,7 @@ export interface UnitUpdate {
   targetTile?: TileRef; // Only for nukes
   health?: number;
   underConstruction?: boolean;
+  disabled?: boolean; // Structures hit by an EMP
   missileTimerQueue: number[];
   level: number;
   hasTrainStation: boolean;

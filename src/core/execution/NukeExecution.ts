@@ -21,15 +21,26 @@ import { listNukeBreakAlliance } from "./Util";
 
 const SPRITE_RADIUS = 16;
 
+// Structures an EMP knocks out for a while.
+const EMP_TARGETS = [
+  UnitType.DefensePost,
+  UnitType.SAMLauncher,
+  UnitType.MissileSilo,
+  UnitType.Port,
+  UnitType.Radar,
+] as const;
+
 export class NukeExecution implements Execution {
   private active = true;
   private mg: Game;
   private nuke: Unit | null = null;
   private tilesToDestroyCache: Set<TileRef> | undefined;
   private pathFinder: ParabolaUniversalPathFinder;
+  // After an EMP lands: the structures it disabled and the tick they recover.
+  private empRecovery: { units: Unit[]; until: number } | null = null;
 
   constructor(
-    private nukeType: NukeType,
+    private nukeType: NukeType | UnitType.EMPBomb,
     private player: Player,
     private dst: TileRef,
     private src?: TileRef | null,
@@ -183,6 +194,10 @@ export class NukeExecution implements Execution {
   }
 
   tick(ticks: number): void {
+    if (this.empRecovery !== null) {
+      this.tickEmpRecovery();
+      return;
+    }
     if (this.nuke === null) {
       const spawn = this.player.canBuild(this.nukeType, this.dst);
       if (spawn === false) {
@@ -215,7 +230,11 @@ export class NukeExecution implements Execution {
       });
       this.nuke.updateNukeState({ waitTicks: this.waitTicks });
       this.recordMotionPlan(ticks);
-      if (this.nuke.type() !== UnitType.MIRVWarhead) {
+      // EMPs skip friendly structures, so they never break an alliance.
+      if (
+        this.nuke.type() !== UnitType.MIRVWarhead &&
+        this.nukeType !== UnitType.EMPBomb
+      ) {
         this.maybeBreakAlliances();
       }
       if (this.mg.hasOwner(this.dst)) {
@@ -238,10 +257,26 @@ export class NukeExecution implements Execution {
             MessageType.HYDROGEN_BOMB_INBOUND,
             target.id(),
           );
+        } else if (
+          this.nukeType === UnitType.EMPBomb &&
+          target !== this.player &&
+          !this.player.isFriendly(target, true)
+        ) {
+          this.mg.displayMessage(
+            "events_display.emp_inbound",
+            MessageType.EMP_INBOUND,
+            target.id(),
+            undefined,
+            { name: this.player.displayName() },
+            this.nuke.id(),
+            this.player.id(),
+          );
         }
 
-        // Record stats
-        this.mg.stats().bombLaunch(this.player, target, this.nukeType);
+        // Record stats (EMPs have no bomb stats entry)
+        if (this.nukeType !== UnitType.EMPBomb) {
+          this.mg.stats().bombLaunch(this.player, target, this.nukeType);
+        }
       }
 
       // after sending a nuke set the missilesilo on cooldown
@@ -371,6 +406,11 @@ export class NukeExecution implements Execution {
     if (this.nuke === null) {
       throw new Error("Not initialized");
     }
+    if (this.nukeType === UnitType.EMPBomb) {
+      this.detonateEmp(this.nuke);
+      return;
+    }
+    const nukeType = this.nukeType;
 
     const mg = this.mg;
     const config = mg.config();
@@ -412,7 +452,7 @@ export class NukeExecution implements Execution {
         const numTilesLeft = tilesBeforeNuke - i;
         player.removeTroops(
           config.nukeDeathFactor(
-            this.nukeType,
+            nukeType,
             player.troops(),
             numTilesLeft,
             maxTroops,
@@ -421,7 +461,7 @@ export class NukeExecution implements Execution {
         for (const attack of outgoingAttacks) {
           const attackTroops = attack.troops();
           const deaths = config.nukeDeathFactor(
-            this.nukeType,
+            nukeType,
             attackTroops,
             numTilesLeft,
             maxTroops,
@@ -431,7 +471,7 @@ export class NukeExecution implements Execution {
         for (const unit of transportShips) {
           const unitTroops = transportShipTroops.get(unit) ?? unit.troops();
           const deaths = config.nukeDeathFactor(
-            this.nukeType,
+            nukeType,
             unitTroops,
             numTilesLeft,
             maxTroops,
@@ -453,6 +493,7 @@ export class NukeExecution implements Execution {
         type === UnitType.HydrogenBomb ||
         type === UnitType.MIRVWarhead ||
         type === UnitType.MIRV ||
+        type === UnitType.EMPBomb ||
         type === UnitType.SAMMissile
       ) {
         continue;
@@ -495,6 +536,77 @@ export class NukeExecution implements Execution {
     this.mg
       .stats()
       .bombLand(this.player, this.target(), this.nuke.type() as NukeType);
+  }
+
+  /**
+   * An EMP destroys nothing: it disables the enemy structures in its radius
+   * for empDisableTicks. A structure hit recently is immune and ignores it.
+   */
+  private detonateEmp(nuke: Unit) {
+    const mg = this.mg;
+    const config = mg.config();
+    const radius = config.nukeMagnitudes(UnitType.EMPBomb).outer;
+    const now = mg.ticks();
+    const until = now + config.empDisableTicks();
+    const immuneUntil = now + config.empImmunityTicks();
+
+    const disabled: Unit[] = [];
+    const disabledPerPlayer = new Map<Player, number>();
+    for (const { unit } of mg.nearbyUnits(this.dst, radius, EMP_TARGETS)) {
+      const owner = unit.owner();
+      if (owner === this.player || this.player.isFriendly(owner, true)) {
+        continue;
+      }
+      if (!unit.disable(until, immuneUntil)) {
+        continue;
+      }
+      disabled.push(unit);
+      disabledPerPlayer.set(owner, (disabledPerPlayer.get(owner) ?? 0) + 1);
+    }
+
+    for (const [victim, count] of disabledPerPlayer) {
+      mg.displayMessage(
+        "events_display.emp_hit",
+        MessageType.EMP_INBOUND,
+        victim.id(),
+        undefined,
+        {
+          name: this.player.displayName(),
+          count,
+          seconds: config.empDisableTicks() / 10,
+        },
+        undefined,
+        this.player.id(),
+      );
+    }
+    mg.displayMessage(
+      "events_display.emp_hit_attacker",
+      MessageType.CAPTURED_ENEMY_UNIT,
+      this.player.id(),
+      undefined,
+      { count: disabled.length },
+    );
+
+    nuke.setReachedTarget();
+    nuke.delete(false);
+    // Stay alive until the structures recover so clients redraw them.
+    this.empRecovery = { units: disabled, until };
+    if (disabled.length === 0) {
+      this.active = false;
+    }
+  }
+
+  private tickEmpRecovery() {
+    const recovery = this.empRecovery!;
+    if (this.mg.ticks() < recovery.until) {
+      return;
+    }
+    for (const unit of recovery.units) {
+      if (unit.isActive()) {
+        unit.touch();
+      }
+    }
+    this.active = false;
   }
 
   private redrawBuildings(range: number) {

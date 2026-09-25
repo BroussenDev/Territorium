@@ -19,6 +19,9 @@ import { assertNever } from "../Util";
 import { FlatBinaryHeap } from "./utils/FlatBinaryHeap"; // adjust path if needed
 
 const malusForRetreat = 25;
+const DEFENSE_POST_TYPES = [UnitType.DefensePost] as const;
+// A defense post knocked out by an EMP gives no defense bonus.
+const isNotDisabled = (unit: { isDisabled(): boolean }) => !unit.isDisabled();
 export class AttackExecution implements Execution {
   private active: boolean = true;
   private toConquer = new FlatBinaryHeap();
@@ -333,15 +336,16 @@ export class AttackExecution implements Execution {
   ): AttackLogicInput {
     const defender = this.target.isPlayer() ? this.target : null;
     // Same test as scanning nearbyUnits() for a post owned by the defender
-    // (active, not under construction, within range), without building a
-    // result array per conquered tile — this runs for every tile of every
-    // attack on the map.
+    // (active, not under construction, not disabled by an EMP, within range),
+    // without building a result array per conquered tile — this runs for
+    // every tile of every attack on the map.
     const defenderHasDefensePost =
       defender !== null &&
-      this.mg.hasUnitNearby(
+      this.mg.anyUnitNearby(
         tile,
         this.mg.config().defensePostRange(),
-        UnitType.DefensePost,
+        DEFENSE_POST_TYPES,
+        isNotDisabled,
         defender.id(),
       );
     return {

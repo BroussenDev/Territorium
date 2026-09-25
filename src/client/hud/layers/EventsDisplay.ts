@@ -48,6 +48,8 @@ const TIER_1_TYPES: ReadonlySet<MessageType> = new Set([
   MessageType.NUKE_INBOUND,
   MessageType.HYDROGEN_BOMB_INBOUND,
   MessageType.MIRV_INBOUND,
+  MessageType.EMP_INBOUND,
+  MessageType.RADAR_CONTACT,
   MessageType.NUKE_DETONATED,
   MessageType.NAVAL_INVASION_INBOUND,
   MessageType.ATTACK_REQUEST,
@@ -217,6 +219,7 @@ export class EventsDisplay extends LitElement implements Controller {
         event.type === MessageType.NUKE_INBOUND ||
         event.type === MessageType.HYDROGEN_BOMB_INBOUND ||
         event.type === MessageType.MIRV_INBOUND ||
+        event.type === MessageType.EMP_INBOUND ||
         event.type === MessageType.NAVAL_INVASION_INBOUND;
       const unitGone =
         isInboundWarning &&
@@ -259,7 +262,8 @@ export class EventsDisplay extends LitElement implements Controller {
     let params = event.params ?? {};
     if (
       (event.message === "events_display.missile_intercepted" ||
-        event.message === "events_display.unit_destroyed") &&
+        event.message === "events_display.unit_destroyed" ||
+        event.message === "events_display.radar_contact") &&
       typeof params.unit === "string" &&
       params.unit.startsWith("unit_type.")
     ) {

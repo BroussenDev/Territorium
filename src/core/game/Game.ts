@@ -211,6 +211,9 @@ export enum UnitType {
   MIRVWarhead = "MIRV Warhead",
   Train = "Train",
   Factory = "Factory",
+  // Appended last so replays and wire indices of older types stay stable.
+  EMPBomb = "EMP Bomb",
+  Radar = "Radar",
 }
 
 export enum TrainType {
@@ -224,12 +227,14 @@ export const Nukes = unitTypeGroup([
   UnitType.HydrogenBomb,
   UnitType.MIRVWarhead,
   UnitType.MIRV,
+  UnitType.EMPBomb,
 ] as const);
 
 export const BuildableAttacks = unitTypeGroup([
   UnitType.AtomBomb,
   UnitType.HydrogenBomb,
   UnitType.MIRV,
+  UnitType.EMPBomb,
   UnitType.Warship,
 ] as const);
 
@@ -240,6 +245,7 @@ export const Structures = unitTypeGroup([
   UnitType.MissileSilo,
   UnitType.Port,
   UnitType.Factory,
+  UnitType.Radar,
 ] as const);
 
 export const BuildMenus = unitTypeGroup([
@@ -320,6 +326,13 @@ export interface UnitParamsMap {
   [UnitType.SAMLauncher]: Record<string, never>;
 
   [UnitType.City]: Record<string, never>;
+
+  [UnitType.EMPBomb]: {
+    targetTile?: number;
+    trajectory: TrajectoryTile[];
+  };
+
+  [UnitType.Radar]: Record<string, never>;
 }
 
 // Type helper to get params type for a specific unit type
@@ -560,6 +573,12 @@ export interface Unit {
   // Construction phase on structures
   isUnderConstruction(): boolean;
   setUnderConstruction(underConstruction: boolean): void;
+
+  // EMP: a disabled structure does nothing until the given tick.
+  isDisabled(): boolean;
+  disabledUntil(): Tick;
+  /** Returns false when the structure is still immune from a recent EMP. */
+  disable(untilTick: Tick, immuneUntilTick: Tick): boolean;
 
   // Upgradable Structures
   level(): number;
@@ -1063,6 +1082,9 @@ export enum MessageType {
   DONATION_RECEIVED,
   CHAT,
   RENEW_ALLIANCE,
+  // Appended last so older message indices stay stable.
+  EMP_INBOUND,
+  RADAR_CONTACT,
 }
 
 // Message categories used for filtering events in the EventsDisplay
@@ -1098,6 +1120,8 @@ export const MESSAGE_TYPE_CATEGORIES: Record<MessageType, MessageCategory> = {
   [MessageType.DONATION_SENT]: MessageCategory.TRADE,
   [MessageType.DONATION_RECEIVED]: MessageCategory.TRADE,
   [MessageType.CHAT]: MessageCategory.CHAT,
+  [MessageType.EMP_INBOUND]: MessageCategory.NUKE,
+  [MessageType.RADAR_CONTACT]: MessageCategory.ATTACK,
 } as const;
 
 /**

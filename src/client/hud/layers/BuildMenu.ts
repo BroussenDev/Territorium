@@ -28,6 +28,7 @@ import { renderNumber } from "../../Utils";
 import { GameView } from "../../view";
 const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
 const cityIcon = assetUrl("images/CityIconWhite.svg");
+const empIcon = assetUrl("images/EmpIconWhite.svg");
 const factoryIcon = assetUrl("images/FactoryIconWhite.svg");
 const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 const mirvIcon = assetUrl("images/MIRVIcon.svg");
@@ -35,6 +36,7 @@ const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 const portIcon = assetUrl("images/PortIcon.svg");
+const radarIcon = assetUrl("images/RadarIconWhite.svg");
 const samlauncherIcon = assetUrl("images/SamLauncherIconWhite.svg");
 const shieldIcon = assetUrl("images/ShieldIconWhite.svg");
 
@@ -67,6 +69,13 @@ export const buildTable: BuildItemDisplay[][] = [
       icon: hydrogenBombIcon,
       description: "build_menu.desc.hydrogen_bomb",
       key: "unit_type.hydrogen_bomb",
+      countable: false,
+    },
+    {
+      unitType: UnitType.EMPBomb,
+      icon: empIcon,
+      description: "build_menu.desc.emp_bomb",
+      key: "unit_type.emp_bomb",
       countable: false,
     },
     {
@@ -116,6 +125,13 @@ export const buildTable: BuildItemDisplay[][] = [
       icon: factoryIcon,
       description: "build_menu.desc.factory",
       key: "unit_type.factory",
+      countable: true,
+    },
+    {
+      unitType: UnitType.Radar,
+      icon: radarIcon,
+      description: "build_menu.desc.radar",
+      key: "unit_type.radar",
       countable: true,
     },
   ],
@@ -393,7 +409,8 @@ export class BuildMenu extends LitElement implements Controller {
     } else if (buildableUnit.canBuild) {
       const rocketDirectionUp =
         buildableUnit.type === UnitType.AtomBomb ||
-        buildableUnit.type === UnitType.HydrogenBomb
+        buildableUnit.type === UnitType.HydrogenBomb ||
+        buildableUnit.type === UnitType.EMPBomb
           ? this.uiState.rocketDirectionUp
           : undefined;
       this.eventBus.emit(

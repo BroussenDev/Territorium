@@ -1335,6 +1335,26 @@ export class UserSettingModal extends BaseModal {
         @change=${this.handleKeybindChange}
       ></setting-keybind>
 
+      <setting-keybind
+        action="buildEmpBomb"
+        label=${translateText("user_setting.build_emp_bomb")}
+        description=${translateText("user_setting.build_emp_bomb_desc")}
+        defaultKey=${this.defaultKeybinds.buildEmpBomb}
+        .value=${this.getKeyValue("buildEmpBomb")}
+        .display=${this.getKeyChar("buildEmpBomb")}
+        @change=${this.handleKeybindChange}
+      ></setting-keybind>
+
+      <setting-keybind
+        action="buildRadar"
+        label=${translateText("user_setting.build_radar")}
+        description=${translateText("user_setting.build_radar_desc")}
+        defaultKey=${this.defaultKeybinds.buildRadar}
+        .value=${this.getKeyValue("buildRadar")}
+        .display=${this.getKeyChar("buildRadar")}
+        @change=${this.handleKeybindChange}
+      ></setting-keybind>
+
       <h2
         class="text-emerald-200 text-xl font-bold mt-8 mb-3 border-b border-white/10 pb-2"
       >

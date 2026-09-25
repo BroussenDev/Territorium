@@ -37,9 +37,13 @@ import {
 import { UIState } from "../UIState";
 import { GameView } from "../view";
 
-/** True for nuke types (AtomBomb, HydrogenBomb): ghost is preserved after placement so user can place multiple or keep selection (Enter/key confirm). */
+/** True for nuke types (AtomBomb, HydrogenBomb, EMPBomb): ghost is preserved after placement so user can place multiple or keep selection (Enter/key confirm). */
 export function shouldPreserveGhostAfterBuild(unitType: UnitType): boolean {
-  return unitType === UnitType.AtomBomb || unitType === UnitType.HydrogenBomb;
+  return (
+    unitType === UnitType.AtomBomb ||
+    unitType === UnitType.HydrogenBomb ||
+    unitType === UnitType.EMPBomb
+  );
 }
 
 // tSamIntercept value used to flag an untargetable (impassable) destination:
@@ -328,7 +332,11 @@ export class BuildPreviewController implements Controller {
       return;
     }
     const type = this.ghostUnit.buildableUnit.type;
-    if (type !== UnitType.AtomBomb && type !== UnitType.HydrogenBomb) {
+    if (
+      type !== UnitType.AtomBomb &&
+      type !== UnitType.HydrogenBomb &&
+      type !== UnitType.EMPBomb
+    ) {
       this.clearNukeTrajectory();
       return;
     }
@@ -346,7 +354,11 @@ export class BuildPreviewController implements Controller {
     const silos = myPlayer
       .units(UnitType.MissileSilo)
       .filter(
-        (u) => u.isActive() && !u.isInCooldown() && !u.isUnderConstruction(),
+        (u) =>
+          u.isActive() &&
+          !u.isInCooldown() &&
+          !u.isUnderConstruction() &&
+          !u.isDisabled(),
       );
     if (silos.length === 0) {
       this.clearNukeTrajectory();
@@ -373,6 +385,7 @@ export class BuildPreviewController implements Controller {
     // launch (NukeExecution.maybeBreakAlliances), so their SAMs will intercept.
     // Teammates have no such exception (a strike never breaks a team).
     // listNukeBreakAlliance is the same function the sim uses there.
+    // An EMP never breaks an alliance.
     const teammateIds = new Set<number>();
     for (const p of this.game.players()) {
       if (myPlayer.isOnSameTeam(p)) teammateIds.add(p.smallID());
@@ -380,7 +393,7 @@ export class BuildPreviewController implements Controller {
     const allyIds = new Set<number>();
     for (const a of myPlayer.allies()) allyIds.add(a.smallID());
     const betrayedIds: ReadonlySet<number> =
-      allyIds.size > 0
+      allyIds.size > 0 && type !== UnitType.EMPBomb
         ? listNukeBreakAlliance({
             game: this.game,
             targetTile: tileRef,
@@ -454,6 +467,7 @@ export class BuildPreviewController implements Controller {
       }
       case UnitType.AtomBomb:
       case UnitType.HydrogenBomb:
+      case UnitType.EMPBomb:
         rangeRadius = this.game.config().nukeMagnitudes(u.type).outer;
         break;
       case UnitType.Factory:
@@ -551,7 +565,9 @@ export class BuildPreviewController implements Controller {
 
       const isNuke = unitType === UnitType.AtomBomb;
       const rocketDirectionUp =
-        unitType === UnitType.AtomBomb || unitType === UnitType.HydrogenBomb
+        unitType === UnitType.AtomBomb ||
+        unitType === UnitType.HydrogenBomb ||
+        unitType === UnitType.EMPBomb
           ? this.uiState.rocketDirectionUp
           : undefined;
       this.eventBus.emit(

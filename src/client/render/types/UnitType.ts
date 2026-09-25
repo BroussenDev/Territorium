@@ -21,6 +21,7 @@ export const UT_SAM_MISSILE = "SAMMissile" as const;
 export const UT_SHELL = "Shell" as const;
 export const UT_MIRV_WARHEAD = "MIRV Warhead" as const;
 export const UT_TRAIN = "Train" as const;
+export const UT_EMP_BOMB = "EMP Bomb" as const;
 
 // Structures
 export const UT_CITY = "City" as const;
@@ -29,6 +30,7 @@ export const UT_FACTORY = "Factory" as const;
 export const UT_DEFENSE_POST = "Defense Post" as const;
 export const UT_SAM_LAUNCHER = "SAM Launcher" as const;
 export const UT_MISSILE_SILO = "Missile Silo" as const;
+export const UT_RADAR = "Radar" as const;
 
 // ---------------------------------------------------------------------------
 // Derived sets
@@ -41,12 +43,14 @@ export const STRUCTURE_TYPES: ReadonlySet<string> = new Set([
   UT_DEFENSE_POST,
   UT_SAM_LAUNCHER,
   UT_MISSILE_SILO,
+  UT_RADAR,
 ]);
 
 export const NUKE_TYPES: ReadonlySet<string> = new Set([
   UT_ATOM_BOMB,
   UT_HYDROGEN_BOMB,
   UT_MIRV,
+  UT_EMP_BOMB,
 ]);
 
 /** Nuke types whose rendered position is interpolated lastPos→pos each render
@@ -57,6 +61,7 @@ export const SMOOTHED_NUKE_TYPES: ReadonlySet<string> = new Set([
   UT_HYDROGEN_BOMB,
   UT_MIRV,
   UT_MIRV_WARHEAD,
+  UT_EMP_BOMB,
 ]);
 
 /** Blast radii (in tiles) matching upstream DefaultConfig.nukeMagnitudes(). */
@@ -66,6 +71,7 @@ export const NUKE_MAGNITUDES: Readonly<
   [UT_ATOM_BOMB]: { inner: 12, outer: 30 },
   [UT_HYDROGEN_BOMB]: { inner: 80, outer: 100 },
   [UT_MIRV_WARHEAD]: { inner: 12, outer: 18 },
+  [UT_EMP_BOMB]: { inner: 20, outer: 20 },
 };
 
 // ---------------------------------------------------------------------------
@@ -90,4 +96,6 @@ export const ALL_UNIT_TYPES = [
   UT_SAM_LAUNCHER,
   UT_MISSILE_SILO,
   UT_TRAIN,
+  UT_EMP_BOMB,
+  UT_RADAR,
 ] as const;

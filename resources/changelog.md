@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.2
+
+⚡ **EMP bomb**
+
+- A new missile fired from a missile silo, for 1,500,000 gold (fixed price). Hotkey: `-`.
+- It does no damage and takes no land. On impact it disables every enemy defense post, SAM launcher, missile silo, port and radar within 20 tiles for 15 seconds. Disabled structures pulse electric blue.
+- A disabled SAM doesn't fire, a disabled silo can't launch, a disabled port sends no ships and a disabled defense post gives no defense bonus.
+- Once a structure recovers, it is immune to EMPs for 30 seconds, so it can't be kept down forever.
+- Your own and your allies' structures are never affected. SAM launchers can shoot an EMP down like any other missile.
+
+📡 **Radar**
+
+- A new structure: 250,000 gold for the first, +250,000 for each one you own, capped at 1,000,000. It takes 5 seconds to build. Hotkey: `=`.
+- It sweeps twice per second and spots enemy boats, warships and missiles within 100 tiles. You get a message and a sonar ping, once per unit. Your own and allied units are ignored.
+- An EMP blinds a radar while it is disabled.
+
 ## v0.1.1
 
 🛍️ **Store**

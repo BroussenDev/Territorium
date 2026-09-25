@@ -142,6 +142,8 @@ export class StatsImpl implements Stats {
     value: BigIntLike,
   ): void {
     const type = unitTypeToBombUnit[nukeType];
+    // Guards the wire schema against a bomb type it doesn't know.
+    if (type === undefined) return;
     const p = this._makePlayerStats(player);
     if (p === undefined) return;
     p.bombs ??= { [type]: [0n] };

@@ -230,7 +230,12 @@ class SAMTargetingSystem {
     const nukes = this.mg.nearbyUnits(
       samTile,
       detectionRange,
-      [UnitType.AtomBomb, UnitType.HydrogenBomb, UnitType.MIRVWarhead],
+      [
+        UnitType.AtomBomb,
+        UnitType.HydrogenBomb,
+        UnitType.MIRVWarhead,
+        UnitType.EMPBomb,
+      ],
       this.isTargetableNearbyUnit,
     );
 
@@ -344,6 +349,11 @@ export class SAMLauncherExecution implements Execution {
       return;
     }
 
+    // An EMP keeps the launcher from firing; its missiles still reload.
+    if (this.sam.isDisabled()) {
+      return;
+    }
+
     this.pseudoRandom ??= new PseudoRandom(this.sam.id());
 
     // No nuke in flight anywhere: nothing to target, skip the grid query. Every SAM ran it every
@@ -356,7 +366,8 @@ export class SAMLauncherExecution implements Execution {
     if (
       this.mg.unitCount(UnitType.AtomBomb) === 0 &&
       this.mg.unitCount(UnitType.HydrogenBomb) === 0 &&
-      this.mg.unitCount(UnitType.MIRVWarhead) === 0
+      this.mg.unitCount(UnitType.MIRVWarhead) === 0 &&
+      this.mg.unitCount(UnitType.EMPBomb) === 0
     ) {
       return;
     }

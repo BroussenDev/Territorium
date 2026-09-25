@@ -1589,6 +1589,7 @@ export class PlayerImpl implements Player {
         return this.nukeSpawn(targetTile, unitType);
       case UnitType.AtomBomb:
       case UnitType.HydrogenBomb:
+      case UnitType.EMPBomb:
         return this.nukeSpawn(targetTile, unitType);
       case UnitType.MIRVWarhead:
         return targetTile;
@@ -1610,6 +1611,7 @@ export class PlayerImpl implements Player {
       case UnitType.SAMLauncher:
       case UnitType.City:
       case UnitType.Factory:
+      case UnitType.Radar:
         return this.landBasedStructureSpawn(targetTile, validTiles);
       default:
         assertNever(unitType);
@@ -1639,9 +1641,11 @@ export class PlayerImpl implements Player {
 
     // Prevent launching nukes that would hit teammate structures (only in team games).
     // Disabled after game-over so players can nuke teammates in the aftergame.
+    // EMPs skip friendly structures, so they can't hurt a teammate.
     if (
       config.gameConfig().gameMode === GameMode.Team &&
       nukeType !== UnitType.MIRV &&
+      nukeType !== UnitType.EMPBomb &&
       !gameOver
     ) {
       const magnitude = config.nukeMagnitudes(nukeType);
@@ -1656,10 +1660,14 @@ export class PlayerImpl implements Player {
       }
     }
 
-    // only get missilesilos that are not on cooldown and not under construction
+    // only get missilesilos that are not on cooldown, not under construction
+    // and not disabled by an EMP
     const readySilos = this.units(UnitType.MissileSilo).filter(
       (silo) =>
-        silo.isActive() && !silo.isInCooldown() && !silo.isUnderConstruction(),
+        silo.isActive() &&
+        !silo.isInCooldown() &&
+        !silo.isUnderConstruction() &&
+        !silo.isDisabled(),
     );
     readySilos.sort(
       (a, b) =>
@@ -1703,6 +1711,7 @@ export class PlayerImpl implements Player {
       (port) =>
         port.isActive() &&
         !port.isUnderConstruction() &&
+        !port.isDisabled() &&
         tileComponent !== null &&
         this.mg.hasWaterComponent(port.tile(), tileComponent),
     );

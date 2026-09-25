@@ -18,12 +18,14 @@ import {
   atomBombIcon,
   cityIcon,
   defensePostIcon,
+  empBombIcon,
   factoryIcon,
   goldCoinIcon,
   hydrogenBombIcon,
   mirvIcon,
   missileSiloIcon,
   portIcon,
+  radarIcon,
   samLauncherIcon,
   warshipIcon,
 } from "../HotbarIcons";
@@ -43,6 +45,7 @@ export class UnitDisplay extends LitElement implements Controller {
   private _port = 0;
   private _defensePost = 0;
   private _samLauncher = 0;
+  private _radar = 0;
   private allDisabled = false;
   private _hoveredUnit: PlayerBuildableUnitType | null = null;
   private tutorialHighlight: PlayerBuildableUnitType | null = null;
@@ -96,6 +99,7 @@ export class UnitDisplay extends LitElement implements Controller {
       case UnitType.AtomBomb:
       case UnitType.HydrogenBomb:
       case UnitType.MIRV:
+      case UnitType.EMPBomb:
         return (
           this.cost(item) <= (player?.gold() ?? 0n) &&
           (player?.units(UnitType.MissileSilo).length ?? 0) > 0
@@ -123,6 +127,7 @@ export class UnitDisplay extends LitElement implements Controller {
     this._samLauncher = player.totalUnitLevels(UnitType.SAMLauncher);
     this._factories = player.totalUnitLevels(UnitType.Factory);
     this._warships = player.totalUnitLevels(UnitType.Warship);
+    this._radar = player.totalUnitLevels(UnitType.Radar);
     this.requestUpdate();
   }
 
@@ -213,6 +218,20 @@ export class UnitDisplay extends LitElement implements Controller {
             "mirv",
             this.keybinds["buildMIRV"]?.key ?? "0",
           )}
+          ${this.renderUnitItem(
+            empBombIcon,
+            null,
+            UnitType.EMPBomb,
+            "emp_bomb",
+            this.keybinds["buildEmpBomb"]?.key ?? "-",
+          )}
+          ${this.renderUnitItem(
+            radarIcon,
+            this._radar,
+            UnitType.Radar,
+            "radar",
+            this.keybinds["buildRadar"]?.key ?? "=",
+          )}
         </div>
       </div>
     `;
@@ -295,6 +314,7 @@ export class UnitDisplay extends LitElement implements Controller {
             switch (unitType) {
               case UnitType.AtomBomb:
               case UnitType.HydrogenBomb:
+              case UnitType.EMPBomb:
                 this.eventBus?.emit(
                   new ToggleStructureEvent([
                     UnitType.MissileSilo,
