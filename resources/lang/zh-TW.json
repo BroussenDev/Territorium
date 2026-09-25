@@ -605,6 +605,8 @@
     "per_day": "/天",
     "public_lobbies": "公開大廳",
     "public_lobbies_info": "創建任何人都可加入的公開自訂大廳。",
+    "queue_priority": "優先排隊",
+    "queue_priority_info": "優先進入排位賽，並可佔用公開大廳保留到開局前最後幾秒的席位。",
     "rare": "稀有",
     "search": "搜尋……",
     "signup_bonus": "註冊獎勵",

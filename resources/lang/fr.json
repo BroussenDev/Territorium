@@ -605,6 +605,8 @@
     "per_day": "/jour",
     "public_lobbies": "Créer des salons publics",
     "public_lobbies_info": "Hébergez des salons personnalisés publics que tout le monde peut rejoindre.",
+    "queue_priority": "File prioritaire",
+    "queue_priority_info": "Passez en premier dans les parties classées et prenez les places que les salons publics gardent jusqu'aux dernières secondes.",
     "rare": "Rare",
     "search": "Rechercher...",
     "signup_bonus": "Bonus d'inscription",

@@ -2,7 +2,13 @@ import type { PropertyValues, TemplateResult } from "lit";
 import { html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { isGrantedSubscription, UserMeResponse } from "../core/ApiSchemas";
-import { CosmeticPack, Cosmetics, Product } from "../core/CosmeticSchemas";
+import {
+  CosmeticPack,
+  Cosmetics,
+  Pack,
+  Product,
+} from "../core/CosmeticSchemas";
+import { packMoneyPrice } from "./CheckoutPrice";
 import { BaseModal } from "./components/BaseModal";
 import "./components/CosmeticCard";
 import { cosmeticSelectionLabel } from "./components/CosmeticPresentation";
@@ -413,6 +419,12 @@ export class StoreModal extends BaseModal {
       (resolved.type === "pack" || resolved.type === "subscription")
         ? (priced?.product ?? null)
         : null;
+    // Money-priced emerald packs check out through Mollie's page, like the
+    // custom amount, never the inline card form.
+    const moneyPrice =
+      isPurchasable && resolved.type === "pack"
+        ? packMoneyPrice(resolved.cosmetic as Pack)
+        : null;
     const priceHard = isPurchasable ? priced?.priceHard : undefined;
     const priceSoft = isPurchasable ? priced?.priceSoft : undefined;
     const purchase = (method: "dollar" | "hard" | "soft") =>
@@ -422,7 +434,10 @@ export class StoreModal extends BaseModal {
     // which are recurring and not a PaymentIntent — keeps the redirect flow,
     // which is also what an unparseable price degrades to.
     const amountCents =
-      resolved.type === "pack" && product !== null && priced?.name !== undefined
+      resolved.type === "pack" &&
+      moneyPrice === null &&
+      product !== null &&
+      priced?.name !== undefined
         ? priceStringToCents(product.price)
         : null;
     const inlineCheckout =
@@ -440,18 +455,23 @@ export class StoreModal extends BaseModal {
     // alignPurchaseRows() once the grid has laid out.
     return html`<purchase-button
       .product=${product}
+      .dollarPrice=${moneyPrice ?? ""}
+      .dollarLabelKey=${moneyPrice
+        ? "store.pay"
+        : resolved.type === "subscription" && userHasSubscription
+          ? "store.switch_button"
+          : ""}
       .inlineCheckout=${inlineCheckout}
       .priceHard=${priceHard ?? null}
       .priceSoft=${priceSoft ?? null}
       .rarity=${priced?.rarity ?? "common"}
       .itemName=${cosmeticSelectionLabel(resolved)}
-      .dollarLabelKey=${resolved.type === "subscription" && userHasSubscription
-        ? "store.switch_button"
-        : ""}
       .priceSuffix=${resolved.type === "subscription"
         ? translateText("store.price_per_month")
         : ""}
-      .onPurchaseDollar=${product ? () => purchase("dollar") : undefined}
+      .onPurchaseDollar=${product || moneyPrice
+        ? () => purchase("dollar")
+        : undefined}
       .onPurchaseHard=${priceHard !== undefined
         ? () => purchase("hard")
         : undefined}
@@ -551,8 +571,9 @@ export class StoreModal extends BaseModal {
   }
 
   private renderPackGrid(): TemplateResult {
-    // Fixed packs are bought with medals; the custom-amount card that follows
-    // them sells emeralds for real money (€ or $, by language).
+    // Fixed packs are bought with medals, or with real money when they carry
+    // a priceCents (with a bonus); the custom-amount card that follows them
+    // sells any amount of emeralds for real money (€ or $, by language).
     return this.renderBrowser(this.visibleGroups, {
       emptyTranslationKey: "store.no_packs",
       trailingContent: html`<custom-currency-card

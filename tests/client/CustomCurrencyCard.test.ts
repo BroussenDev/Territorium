@@ -117,10 +117,10 @@ describe("CustomCurrencyCard", () => {
     await card!.updateComplete;
     expect(numberInput.value).toBe("20");
 
-    rangeInput.value = "2001";
+    rangeInput.value = "5001";
     rangeInput.dispatchEvent(new Event("input"));
     await card!.updateComplete;
-    expect(numberInput.value).toBe("2000");
+    expect(numberInput.value).toBe("5000");
   });
 
   // The rail-agnostic checkout identifies this purchase by amount, and

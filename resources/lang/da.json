@@ -605,6 +605,8 @@
     "per_day": "/dag",
     "public_lobbies": "Offentlige lobbyer",
     "public_lobbies_info": "Vær vært for tilpassede lobbyer, der er offentligt opført, så alle kan deltage.",
+    "queue_priority": "Kø-prioritet",
+    "queue_priority_info": "Kom først ind i rangerede spil, og tag de pladser, som offentlige lobbyer holder tilbage til lige før start.",
     "rare": "Sjælden",
     "search": "Søg...",
     "signup_bonus": "Tilmeldingsbonus",

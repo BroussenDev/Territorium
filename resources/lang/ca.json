@@ -605,6 +605,8 @@
     "per_day": "/dia",
     "public_lobbies": "Vestíbuls públics",
     "public_lobbies_info": "Allotja vestíbuls personalitzats que es mostren públicament perquè tothom s'hi uneixi.",
+    "queue_priority": "Cua prioritària",
+    "queue_priority_info": "Entra primer a les partides classificatòries i ocupa les places que les sales públiques reserven fins als últims segons.",
     "rare": "Rar",
     "search": "Cerca...",
     "signup_bonus": "Bonificació d'inscripció",

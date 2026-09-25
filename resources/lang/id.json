@@ -605,6 +605,8 @@
     "per_day": "/hari",
     "public_lobbies": "Lobi publik",
     "public_lobbies_info": "Selenggarakan lobi khusus yang terdaftar secara publik agar siapa pun dapat bergabung.",
+    "queue_priority": "Prioritas antrean",
+    "queue_priority_info": "Masuk ke permainan peringkat lebih dulu, dan ambil kursi yang disimpan lobi publik sampai sesaat sebelum dimulai.",
     "rare": "Langka",
     "search": "Mencari...",
     "signup_bonus": "Bonus pendaftaran",

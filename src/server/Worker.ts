@@ -642,6 +642,7 @@ export async function startWorker() {
         let friends: string[] = [];
         let ownedClanTags: string[] = [];
         let trusted = false;
+        let queuePriority = false;
         let accountUsername:
           | {
               username?: string | null;
@@ -674,6 +675,7 @@ export async function startWorker() {
           ownedClanTags = result.response.player.clans?.map((c) => c.tag) ?? [];
           accountUsername = result.response.player;
           trusted = result.response.player.trustTier === "trusted";
+          queuePriority = result.response.player.queuePriority === true;
 
           if (allowedFlares !== undefined) {
             const allowed =
@@ -758,6 +760,7 @@ export async function startWorker() {
           clientMsg.spectator === true,
           trusted,
           clientMsg.platform,
+          queuePriority,
         );
 
         const joinResult = gm.joinClient(client, clientMsg.gameID);

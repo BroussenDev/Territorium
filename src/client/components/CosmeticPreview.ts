@@ -11,6 +11,7 @@ import {
   Subscription,
 } from "../../core/CosmeticSchemas";
 import { PlayerPattern } from "../../core/Schemas";
+import { packMoneyPrice } from "../CheckoutPrice";
 import { ResolvedCosmetic } from "../Cosmetics";
 import { translateText } from "../Utils";
 import "./CapIcon";
@@ -165,6 +166,7 @@ export class CosmeticPreview extends LitElement {
         : html`<cap-icon class="block shrink-0" .size=${80}></cap-icon>`;
       const colorClass = isHard ? "text-green-400" : "text-amber-700";
       const currencyKey = isHard ? "cosmetics.hard" : "cosmetics.soft";
+      const price = packMoneyPrice(pack) ?? pack.product?.price;
       return html`<div
         class="relative flex h-full w-full flex-col items-center justify-center gap-0.5 overflow-visible text-center"
       >
@@ -175,11 +177,11 @@ export class CosmeticPreview extends LitElement {
         <span class="text-[10px] font-bold leading-none text-white/50 uppercase"
           >${translateText(currencyKey)}</span
         >
-        ${pack.product?.price
+        ${price
           ? html`<span
               data-pack-price
               class="pt-0.5 text-sm font-bold leading-none text-emerald-300"
-              >${pack.product.price}</span
+              >${price}</span
             >`
           : nothing}
         ${pack.bonusAmount > 0
@@ -246,6 +248,14 @@ export class CosmeticPreview extends LitElement {
                 class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
                 ><span class="text-green-400">✓</span> ${translateText(
                   "cosmetics.public_lobbies",
+                )}</span
+              >`
+            : nothing}
+          ${subscription.queuePriority
+            ? html`<span
+                class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
+                ><span class="text-green-400">✓</span> ${translateText(
+                  "cosmetics.queue_priority",
                 )}</span
               >`
             : nothing}

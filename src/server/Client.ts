@@ -36,5 +36,8 @@ export class Client {
     public readonly trusted: boolean = false,
     // Client-reported and unverified; metric dimension only.
     public readonly platform: ClientPlatform | "unknown" = "unknown",
+    // The API's queuePriority entitlement (top subscription): may take the
+    // seats a public lobby holds back. Anonymous joins never have it.
+    public readonly queuePriority: boolean = false,
   ) {}
 }

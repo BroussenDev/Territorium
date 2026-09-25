@@ -1,6 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { GameEnv } from "../../src/core/configuration/Config";
 import { GameType } from "../../src/core/game/Game";
+import {
+  PRIORITY_SEATS_OPEN_MS,
+  prioritySeats,
+} from "../../src/server/GameServer";
 import { ServerEnv } from "../../src/server/ServerEnv";
 import {
   cid,
@@ -107,6 +111,61 @@ describe("GameServer.joinClient — environment guards", () => {
         expect.stringContaining("cannot add client, game full"),
         expect.objectContaining({ clientID: cid("c") }),
       );
+    });
+  });
+
+  describe("priority seats (public lobbies)", () => {
+    const fill = (game: ReturnType<typeof makeGame>, n: number) => {
+      for (let i = 0; i < n; i++) {
+        expect(game.joinClient(makeClient({ clientID: cid(`f${i}`) }))).toBe(
+          "joined",
+        );
+      }
+    };
+
+    it("sizes the reserve at a tenth of the lobby, at least one", () => {
+      expect(prioritySeats(2)).toBe(0);
+      expect(prioritySeats(4)).toBe(1);
+      expect(prioritySeats(19)).toBe(1);
+      expect(prioritySeats(20)).toBe(2);
+      expect(prioritySeats(100)).toBe(10);
+    });
+
+    it("holds the last seats for priority players until the lobby is about to start", () => {
+      const game = makeGame({
+        config: { gameType: GameType.Public, maxPlayers: 10 },
+        startsAt: Date.now() + 60_000,
+      });
+      fill(game, 9);
+      const regular = makeClient({ clientID: cid("regular") });
+      expect(game.joinClient(regular)).toBe("rejected");
+      expect(mockWsOf(regular).sent()).toContainEqual({
+        type: "error",
+        error: "full-lobby",
+      });
+      const vip = makeClient({ clientID: cid("vip"), queuePriority: true });
+      expect(game.joinClient(vip)).toBe("joined");
+      expect(game.numClients()).toBe(10);
+    });
+
+    it("opens the held seats to everyone in the final seconds", () => {
+      const game = makeGame({
+        config: { gameType: GameType.Public, maxPlayers: 10 },
+        startsAt: Date.now() + 60_000,
+      });
+      fill(game, 9);
+      vi.setSystemTime(Date.now() + 60_000 - PRIORITY_SEATS_OPEN_MS);
+      expect(game.joinClient(makeClient({ clientID: cid("late") }))).toBe(
+        "joined",
+      );
+    });
+
+    it("holds nothing back in private lobbies", () => {
+      const game = makeGame({
+        config: { gameType: GameType.Private, maxPlayers: 10 },
+      });
+      fill(game, 10);
+      expect(game.numClients()).toBe(10);
     });
   });
 

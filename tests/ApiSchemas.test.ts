@@ -664,6 +664,34 @@ describe("UserMeResponseSchema unlimitedRanked", () => {
   });
 });
 
+describe("UserMeResponseSchema queuePriority", () => {
+  const basePlayer = {
+    publicId: "p1",
+    adfree: false,
+    unlimitedRanked: false,
+    canCreatePublicLobbies: false,
+    achievements: { singleplayerMap: [] },
+    friends: [],
+    subscription: null,
+  };
+
+  it("is optional: an API without the perk still parses", () => {
+    const result = UserMeResponseSchema.safeParse({
+      user: {},
+      player: basePlayer,
+    });
+    expect(result.success && result.data.player.queuePriority).toBeUndefined();
+  });
+
+  it("carries the priority of a top-tier subscriber", () => {
+    const result = UserMeResponseSchema.safeParse({
+      user: {},
+      player: { ...basePlayer, queuePriority: true },
+    });
+    expect(result.success && result.data.player.queuePriority).toBe(true);
+  });
+});
+
 describe("claim response schemas", () => {
   it("coerces claim balances from bigint strings to numbers", () => {
     const result = ClaimRewardResponseSchema.safeParse({

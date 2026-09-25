@@ -605,6 +605,8 @@
     "per_day": "/deň",
     "public_lobbies": "Verejné lobby",
     "public_lobbies_info": "Hostite vlastné lobby, ktoré sú verejne uvedené, aby sa k nim mohol pripojiť ktokoľvek.",
+    "queue_priority": "Prednosť v rade",
+    "queue_priority_info": "Do hodnotených hier sa dostanete ako prví a obsadíte miesta, ktoré si verejné lobby držia až do posledných sekúnd.",
     "rare": "Zriedkavé",
     "search": "Hľadať...",
     "signup_bonus": "Bonus za registráciu",

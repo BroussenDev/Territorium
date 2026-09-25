@@ -1506,7 +1506,13 @@ export async function createCustomCurrencyCheckout(
 // upgrade path: the inline flow degrades to the redirect flow, never to a
 // dead button.
 export type PaymentsCheckoutRequest = (
-  | { kind: "currency_pack"; packName: string }
+  | {
+      kind: "currency_pack";
+      packName: string;
+      // Money-priced packs (priceCents): as for custom_currency below.
+      currency?: "eur" | "usd";
+      withdrawalWaiver?: boolean;
+    }
   | {
       kind: "custom_currency";
       hardAmount: number;

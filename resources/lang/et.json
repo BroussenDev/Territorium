@@ -605,6 +605,8 @@
     "per_day": "/päev",
     "public_lobbies": "Avalikud lobid",
     "public_lobbies_info": "Korraldage kohandatud fuajeed, mis on avalikult loetletud, et igaüks saaks nendega liituda.",
+    "queue_priority": "Järjekorra eelistus",
+    "queue_priority_info": "Pääsed esimesena reitingumängudesse ja saad kohad, mida avalikud ootesaalid hoiavad kuni vahetult enne algust.",
     "rare": "Harv",
     "search": "Otsi...",
     "signup_bonus": "Registreerumisboonus",

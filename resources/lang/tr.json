@@ -605,6 +605,8 @@
     "per_day": "/gün",
     "public_lobbies": "Kamu lobileri",
     "public_lobbies_info": "Herkesin katılabileceği, herkese açık olarak listelenen özel lobilere ev sahipliği yapın.",
+    "queue_priority": "Sıra önceliği",
+    "queue_priority_info": "Dereceli oyunlara önce girin ve herkese açık lobilerin başlamadan hemen öncesine kadar ayırdığı yerleri alın.",
     "rare": "Nadir",
     "search": "Aramak...",
     "signup_bonus": "Kayıt bonusu",

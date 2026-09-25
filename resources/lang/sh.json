@@ -605,6 +605,8 @@
     "per_day": "/dan",
     "public_lobbies": "Javne partije",
     "public_lobbies_info": "Kreiraj prilagodljive partije koje su javno dostupne bilo kome.",
+    "queue_priority": "Prednost u redu",
+    "queue_priority_info": "Prvi ulaziš u rangirane igre i zauzimaš mesta koja javni lobiji čuvaju do poslednjih sekundi.",
     "rare": "Retko",
     "search": "Pretraži...",
     "signup_bonus": "Bonus za Prijavu",

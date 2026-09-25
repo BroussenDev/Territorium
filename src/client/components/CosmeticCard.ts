@@ -372,6 +372,12 @@ export class CosmeticCard extends LitElement {
         info: translateText("cosmetics.public_lobbies_info"),
       });
     }
+    if (subscription.queuePriority) {
+      perks.push({
+        label: translateText("cosmetics.queue_priority"),
+        info: translateText("cosmetics.queue_priority_info"),
+      });
+    }
     return perks;
   }
 

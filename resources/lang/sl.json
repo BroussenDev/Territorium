@@ -604,6 +604,8 @@
     "per_day": "/dan",
     "public_lobbies": "Javni lobiji",
     "public_lobbies_info": "Gostite lobije po meri, ki so javno objavljeni, da se lahko kdorkoli pridruži.",
+    "queue_priority": "Prednost v vrsti",
+    "queue_priority_info": "V rangirane igre pridete prvi in zasedete mesta, ki jih javne čakalnice zadržijo do zadnjih sekund.",
     "rare": "Redko",
     "search": "Iskanje ...",
     "signup_bonus": "Bonus za prijavo",

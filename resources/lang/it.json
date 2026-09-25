@@ -605,6 +605,8 @@
     "per_day": "/giorno",
     "public_lobbies": "Lobby pubbliche",
     "public_lobbies_info": "Ospita lobby personalizzate elencate pubblicamente a cui chiunque possa partecipare.",
+    "queue_priority": "Coda prioritaria",
+    "queue_priority_info": "Entri per primo nelle partite classificate e prendi i posti che le lobby pubbliche tengono da parte fino a pochi secondi dall'inizio.",
     "rare": "Raro",
     "search": "Ricerca...",
     "signup_bonus": "Bonus di iscrizione",

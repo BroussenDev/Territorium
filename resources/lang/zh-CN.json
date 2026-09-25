@@ -605,6 +605,8 @@
     "per_day": "/天",
     "public_lobbies": "公共大厅",
     "public_lobbies_info": "托管公开列出的自定义大厅，供任何人加入。",
+    "queue_priority": "优先排队",
+    "queue_priority_info": "优先进入排位赛，并可占用公开大厅保留到开局前最后几秒的席位。",
     "rare": "稀有",
     "search": "搜索...",
     "signup_bonus": "开卡奖励",

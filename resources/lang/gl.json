@@ -605,6 +605,8 @@
     "per_day": "/día",
     "public_lobbies": "Lobbies públicos",
     "public_lobbies_info": "Aloxa lobbys personalizados que aparecen na lista pública para que calquera se una.",
+    "queue_priority": "Cola prioritaria",
+    "queue_priority_info": "Entra primeiro nas partidas clasificatorias e ocupa as prazas que as salas públicas reservan ata os últimos segundos.",
     "rare": "Raro",
     "search": "Busca...",
     "signup_bonus": "Bonificación de inscrición",

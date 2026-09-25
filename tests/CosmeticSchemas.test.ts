@@ -12,6 +12,7 @@ import {
   isNukeExplosionEffect,
   isTrailEffect,
   NukeExplosionAttributesSchema,
+  PackSchema,
   SubscriptionSchema,
   TrailEffectAttributesSchema,
 } from "../src/core/CosmeticSchemas";
@@ -1259,6 +1260,65 @@ describe("SubscriptionSchema canCreatePublicLobbies", () => {
       SubscriptionSchema.safeParse({ ...base, canCreatePublicLobbies: "yes" })
         .success,
     ).toBe(false);
+  });
+});
+
+describe("SubscriptionSchema queuePriority", () => {
+  const base = {
+    name: "souverain",
+    product: null,
+    rarity: "legendary",
+    description: "Top tier",
+    priceMonthly: 0,
+    dailySoftCurrency: 300,
+    dailyHardCurrency: 8,
+    hardCurrencySignupBonus: 200,
+    unlimitedRanked: false,
+    canCreatePublicLobbies: false,
+  };
+
+  it("is optional, so an older catalog still parses", () => {
+    const result = SubscriptionSchema.safeParse(base);
+    expect(result.success).toBe(true);
+    if (result.success) expect(result.data.queuePriority).toBeUndefined();
+  });
+
+  it("carries the flag when present and rejects a non-boolean", () => {
+    const result = SubscriptionSchema.safeParse({
+      ...base,
+      queuePriority: true,
+    });
+    expect(result.success && result.data.queuePriority).toBe(true);
+    expect(
+      SubscriptionSchema.safeParse({ ...base, queuePriority: "yes" }).success,
+    ).toBe(false);
+  });
+});
+
+describe("PackSchema priceCents", () => {
+  const medals = {
+    name: "coffre",
+    product: null,
+    rarity: "rare",
+    displayName: "Coffre d'émeraudes",
+    currency: "hard",
+    amount: 150,
+    bonusAmount: 15,
+    priceSoft: 1800,
+  };
+
+  it("leaves medal packs without a money price", () => {
+    const result = PackSchema.safeParse(medals);
+    expect(result.success && result.data.priceCents).toBeUndefined();
+  });
+
+  it("accepts a whole positive price in cents only", () => {
+    const paid = { ...medals, priceSoft: undefined, priceCents: 999 };
+    const result = PackSchema.safeParse(paid);
+    expect(result.success && result.data.priceCents).toBe(999);
+    for (const priceCents of [9.99, 0, -100, "999"]) {
+      expect(PackSchema.safeParse({ ...paid, priceCents }).success).toBe(false);
+    }
   });
 });
 

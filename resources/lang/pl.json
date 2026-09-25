@@ -605,6 +605,8 @@
     "per_day": "/dzień",
     "public_lobbies": "Lobby publiczne",
     "public_lobbies_info": "Hostuj niestandardowe lobby, które są publicznie dostępne i każdy może do nich dołączyć.",
+    "queue_priority": "Pierwszeństwo w kolejce",
+    "queue_priority_info": "Wchodzisz pierwszy do gier rankingowych i zajmujesz miejsca, które publiczne poczekalnie trzymają do ostatnich sekund.",
     "rare": "Rzadki",
     "search": "Szukaj...",
     "signup_bonus": "Bonus za rejestrację",

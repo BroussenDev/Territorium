@@ -605,6 +605,8 @@
     "per_day": "/ngày",
     "public_lobbies": "Phòng công khai",
     "public_lobbies_info": "Tạo phòng tùy chỉnh công khai để bất kỳ ai cũng có thể tham gia.",
+    "queue_priority": "Ưu tiên hàng chờ",
+    "queue_priority_info": "Vào trận xếp hạng trước và nhận những chỗ mà sảnh công khai giữ lại cho đến ngay trước khi bắt đầu.",
     "rare": "Hiếm",
     "search": "Tìm kiếm...",
     "signup_bonus": "Phần thưởng đăng ký",

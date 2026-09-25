@@ -605,6 +605,8 @@
     "per_day": "/nap",
     "public_lobbies": "Publikus váróterem",
     "public_lobbies_info": "Hozz létre egyedi várótermeket, amelyek nyilvánosan megjelennek, így bárki csatlakozhat hozzájuk.",
+    "queue_priority": "Elsőbbség a sorban",
+    "queue_priority_info": "Elsőként jutsz be a rangsorolt játékokba, és megkapod a helyeket, amelyeket a nyilvános lobbik az utolsó másodpercekig visszatartanak.",
     "rare": "Ritka",
     "search": "Keresés...",
     "signup_bonus": "Regisztrációs bónusz",

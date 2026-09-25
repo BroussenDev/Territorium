@@ -605,6 +605,8 @@
     "per_day": "/일",
     "public_lobbies": "공개 로비",
     "public_lobbies_info": "누구나 참여할 수 있도록 공개 목록에 표시되는 커스텀 로비를 생성합니다.",
+    "queue_priority": "대기열 우선권",
+    "queue_priority_info": "랭크 게임에 먼저 들어가고, 공개 로비가 시작 직전까지 남겨 두는 자리를 차지할 수 있습니다.",
     "rare": "레어",
     "search": "검색...",
     "signup_bonus": "가입 보너스",

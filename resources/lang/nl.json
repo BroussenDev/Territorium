@@ -605,6 +605,8 @@
     "per_day": "/dag",
     "public_lobbies": "Creëer openbare lobbies",
     "public_lobbies_info": "Host aangepaste lobby's die openbaar worden vermeld voor iedereen om toe te treden.",
+    "queue_priority": "Voorrang in de wachtrij",
+    "queue_priority_info": "Kom als eerste in ranked potjes en neem de plekken die openbare lobby's vrijhouden tot vlak voor de start.",
     "rare": "Zeldzaam",
     "search": "Zoeken...",
     "signup_bonus": "Aanmeldbonus",

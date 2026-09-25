@@ -605,6 +605,8 @@
     "per_day": "/dag",
     "public_lobbies": "Offentliga lobbyer",
     "public_lobbies_info": "Var värd för anpassade lobbyer som är offentligt listade för alla att gå med.",
+    "queue_priority": "Köprioritet",
+    "queue_priority_info": "Kom först in i rankade matcher och ta platserna som offentliga lobbyer håller undan till strax före start.",
     "rare": "Sällsynt",
     "search": "Söka...",
     "signup_bonus": "Registreringsbonus",

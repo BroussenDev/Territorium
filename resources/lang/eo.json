@@ -605,6 +605,8 @@
     "per_day": "/tago",
     "public_lobbies": "Publikaj vestibloj",
     "public_lobbies_info": "Gastigu kutimajn vestiblojn, kiuj estas publike listigitaj por ke iu ajn aliĝu.",
+    "queue_priority": "Prioritato en atendovico",
+    "queue_priority_info": "Eniru unue en rangajn ludojn kaj prenu la lokojn, kiujn publikaj atendejoj rezervas ĝis tuj antaŭ la komenco.",
     "rare": "Malofta",
     "search": "Serĉu...",
     "signup_bonus": "Gratifiko de registriĝo",

@@ -456,6 +456,9 @@ export const PackSchema = CosmeticSchema.extend({
   currency: z.enum(["hard", "soft"]),
   amount: z.number().int().positive(),
   bonusAmount: z.number().int().nonnegative(),
+  // Sold for real money (Mollie): the price in cents, the same number in
+  // euros and dollars. Absent on packs bought with medals.
+  priceCents: z.number().int().positive().optional(),
 });
 
 // One member of a cosmetic pack: a reference to a cosmetic elsewhere in the
@@ -501,6 +504,9 @@ export const SubscriptionSchema = CosmeticSchema.extend({
   // Whether this tier lets subscribers list custom lobbies publicly
   // (advertised on the store tile).
   canCreatePublicLobbies: z.boolean(),
+  // Whether this tier moves subscribers ahead in waiting lists (ranked
+  // queue, public lobby seats). Optional: older catalogs don't carry it.
+  queuePriority: z.boolean().optional(),
 });
 
 // Schema for resources/cosmetics/cosmetics.json

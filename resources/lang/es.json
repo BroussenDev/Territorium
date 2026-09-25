@@ -605,6 +605,8 @@
     "per_day": "/día",
     "public_lobbies": "Lobbies públicos",
     "public_lobbies_info": "Organice salas de espera personalizadas que estén listadas públicamente para que cualquiera pueda unirse.",
+    "queue_priority": "Cola prioritaria",
+    "queue_priority_info": "Entra primero en las partidas clasificatorias y ocupa las plazas que las salas públicas reservan hasta los últimos segundos.",
     "rare": "raro",
     "search": "Buscar...",
     "signup_bonus": "Bono de registro",

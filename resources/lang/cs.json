@@ -605,6 +605,8 @@
     "per_day": "/den",
     "public_lobbies": "Veřejné lobby",
     "public_lobbies_info": "Hostujte vlastní veřejná lobby, ke kterým se může připojit kdokoli.",
+    "queue_priority": "Přednost ve frontě",
+    "queue_priority_info": "Do hodnocených her se dostanete jako první a obsadíte místa, která si veřejné lobby drží až do posledních sekund.",
     "rare": "Vzácné",
     "search": "Hledat...",
     "signup_bonus": "Bonus za registraci",

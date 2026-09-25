@@ -605,6 +605,8 @@
     "per_day": "/Tag",
     "public_lobbies": "Öffentliche Lobbys",
     "public_lobbies_info": "Hosten Sie benutzerdefinierte Lobbys, die öffentlich aufgeführt sind und jedem beitreten können.",
+    "queue_priority": "Warteschlangen-Vorrang",
+    "queue_priority_info": "Du kommst zuerst in Ranglistenspiele und bekommst die Plätze, die öffentliche Lobbys bis kurz vor dem Start zurückhalten.",
     "rare": "Selten",
     "search": "Suchen...",
     "signup_bonus": "Anmeldebonus",

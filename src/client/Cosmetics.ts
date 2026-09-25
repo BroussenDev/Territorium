@@ -34,6 +34,7 @@ import {
   purchaseCosmeticPack,
   purchaseWithCurrency,
 } from "./Api";
+import { checkoutCurrency, packMoneyPrice } from "./CheckoutPrice";
 import { showInGameAlert, showInGameConfirm } from "./InGameModal";
 import {
   classifyPurchaseReturn,
@@ -42,7 +43,7 @@ import {
   startPurchase,
 } from "./Payments";
 import { STEAM_TIER_CHANGE_IN_APP } from "./SubscriptionPolicy";
-import { translateText } from "./Utils";
+import { currentLanguage, translateText } from "./Utils";
 
 export const TEMP_FLARE_OFFSET = 1 * 60 * 1000; // 1 minute
 
@@ -508,9 +509,30 @@ export async function purchaseCosmetic(
     // and gating on it is what made those unbuyable.
     if (resolved.type === "pack" || resolved.type === "subscription") {
       const isPack = resolved.type === "pack";
+      // A money-priced emerald pack is delivered as soon as it's paid, so
+      // (French consumer law) the buyer must first expressly waive the
+      // 14-day withdrawal right, as with the custom amount's checkbox.
+      const moneyPrice = isPack ? packMoneyPrice(c as Pack) : null;
+      if (
+        moneyPrice !== null &&
+        !(await showInGameConfirm(translateText("store.withdrawal_waiver"), {
+          variant: "warning",
+          heading: (c as Pack).displayName,
+          confirmText: `${translateText("store.pay")} ${moneyPrice}`,
+        }))
+      ) {
+        return;
+      }
       const outcome = await startPurchase(
         isPack
-          ? { kind: "currency_pack", packName: c.name }
+          ? moneyPrice !== null
+            ? {
+                kind: "currency_pack",
+                packName: c.name,
+                currency: checkoutCurrency(currentLanguage()),
+                withdrawalWaiver: true,
+              }
+            : { kind: "currency_pack", packName: c.name }
           : { kind: "subscription_tier", tierName: c.name },
       );
       if (outcome.outcome === "completed") {

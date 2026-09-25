@@ -80,6 +80,14 @@ import {
 // to play and missed it; after this they are taken to have come to watch.
 const LATE_JOIN_GRACE_MS = 5_000;
 
+// A public lobby holds back its last seats (a tenth, at least one) for
+// players with queue priority, then opens them to everyone this long before
+// it starts so no seat is left empty. Out-of-game only: the match is the same.
+export const PRIORITY_SEATS_OPEN_MS = 10_000;
+export function prioritySeats(maxPlayers: number): number {
+  return maxPlayers < 4 ? 0 : Math.max(1, Math.floor(maxPlayers / 10));
+}
+
 export type JoinResult =
   | "joined"
   | "kicked"
@@ -537,11 +545,7 @@ export class GameServer {
 
     // Spectators take no slot: they never spawn, so a full lobby is still
     // watchable and a caster can never displace a player.
-    if (
-      !client.spectator &&
-      this.gameConfig.maxPlayers &&
-      this.playerCount() >= this.gameConfig.maxPlayers
-    ) {
+    if (!client.spectator && this.playerCount() >= this.seatLimit(client)) {
       this.log.debug(`cannot add client, game full`, {
         clientID: client.clientID,
       });
@@ -1216,6 +1220,21 @@ export class GameServer {
   // ONE definition of who the allowlist admits, shared by every path that can
   // put someone in (or seat someone into) this game — joinClient and the lobby
   // Play/Spectate toggle. Admins bypass it so moderation can reach any lobby.
+  // How many players may be seated when this client asks for a seat: every
+  // seat for a priority player, fewer for the others while a public lobby
+  // still holds its priority seats back (see prioritySeats).
+  private seatLimit(client: Client): number {
+    const max = this.gameConfig.maxPlayers;
+    if (!max) return Infinity;
+    const reserved =
+      this.isPublic() &&
+      !client.queuePriority &&
+      !this.gameConfig.allowedPublicIds?.length &&
+      (this.startsAt === undefined ||
+        this.startsAt - Date.now() > PRIORITY_SEATS_OPEN_MS);
+    return reserved ? max - prioritySeats(max) : max;
+  }
+
   private passesAllowlist(client: Client): boolean {
     const allowed = this.gameConfig.allowedPublicIds;
     if (allowed === undefined || allowed.length === 0) return true;
@@ -1244,8 +1263,7 @@ export class GameServer {
       if (this.stage === "started" || this.ended) return;
       if (!this.passesAllowlist(client)) return;
       if (!this.passesTrustGate(client)) return;
-      const max = this.gameConfig.maxPlayers;
-      if (max !== undefined && this.playerCount() >= max) return;
+      if (this.playerCount() >= this.seatLimit(client)) return;
     }
     client.spectator = spectator;
     // The lobby list is derived from this flag, so everyone's view of who is

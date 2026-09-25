@@ -605,6 +605,8 @@
     "per_day": "/dia",
     "public_lobbies": "Criar lobbies públicos",
     "public_lobbies_info": "Hospedar lobbies personalizados que estão listados publicamente para que qualquer um entre.",
+    "queue_priority": "Fila prioritária",
+    "queue_priority_info": "Entre primeiro nas partidas ranqueadas e ocupe as vagas que as salas públicas guardam até os últimos segundos.",
     "rare": "Raro",
     "search": "Procurar...",
     "signup_bonus": "Bónus de registo",

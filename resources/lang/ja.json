@@ -605,6 +605,8 @@
     "per_day": "/日",
     "public_lobbies": "公開ロビーを作成",
     "public_lobbies_info": "誰でも参加できる公開カスタムロビーを作成します。",
+    "queue_priority": "優先マッチング",
+    "queue_priority_info": "ランク戦に優先的に参加でき、公開ロビーが開始直前まで確保している席にも入れます。",
     "rare": "レア",
     "search": "検索…",
     "signup_bonus": "新規登録ボーナス",

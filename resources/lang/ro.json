@@ -605,6 +605,8 @@
     "per_day": "/zi",
     "public_lobbies": "Lobby-uri publice",
     "public_lobbies_info": "Găzduiește lobby-uri personalizate care sunt listate public pentru ca oricine să se alăture.",
+    "queue_priority": "Prioritate la coadă",
+    "queue_priority_info": "Intri primul în jocurile clasate și ocupi locurile pe care lobby-urile publice le păstrează până în ultimele secunde.",
     "rare": "Rar",
     "search": "Caută...",
     "signup_bonus": "Bonus la Înregistrare",

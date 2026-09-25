@@ -605,6 +605,8 @@
     "per_day": "/day",
     "public_lobbies": "Public lobbies",
     "public_lobbies_info": "Host custom lobbies that are publicly listed for anyone to join.",
+    "queue_priority": "Queue priority",
+    "queue_priority_info": "Get into ranked games first, and take the seats public lobbies keep back until just before they start.",
     "rare": "Rare",
     "search": "Search...",
     "signup_bonus": "Signup bonus",

@@ -605,6 +605,8 @@
     "per_day": "/päivä",
     "public_lobbies": "Julkiset aulat",
     "public_lobbies_info": "Isännöi mukautettuja auloja, jotka on listattu julkisesti, jotta kuka tahansa voi liittyä.",
+    "queue_priority": "Jonon etuoikeus",
+    "queue_priority_info": "Pääset ensimmäisenä rankattuihin peleihin ja saat paikat, joita julkiset aulat pitävät varattuina juuri ennen alkua asti.",
     "rare": "Harvinainen",
     "search": "Haku...",
     "signup_bonus": "Ilmoittautumisbonus",

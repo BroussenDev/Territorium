@@ -136,6 +136,45 @@ describe("purchaseCosmetic dollar path", () => {
     expect(alertMock).not.toHaveBeenCalled();
   });
 
+  // Territorium's money-priced emerald packs (priceCents) are delivered at
+  // once, so the withdrawal right is waived in a confirm before checkout.
+  describe("a money-priced pack", () => {
+    const moneyPack = () =>
+      resolved({
+        cosmetic: {
+          name: "coffre_royal",
+          displayName: "Coffre royal",
+          product: null,
+          rarity: "epic",
+          currency: "hard",
+          amount: 200,
+          bonusAmount: 40,
+          priceCents: 999,
+        } as unknown as Pack,
+        key: "pack:coffre_royal",
+      });
+
+    it("asks for the waiver, then checks out with it and a currency", async () => {
+      await purchaseCosmetic(moneyPack(), "dollar");
+      expect(confirmMock).toHaveBeenCalledWith(
+        "store.withdrawal_waiver",
+        expect.objectContaining({ heading: "Coffre royal" }),
+      );
+      expect(startPurchaseMock).toHaveBeenCalledWith({
+        kind: "currency_pack",
+        packName: "coffre_royal",
+        currency: expect.stringMatching(/^(eur|usd)$/),
+        withdrawalWaiver: true,
+      });
+    });
+
+    it("checks nothing out when the buyer declines the waiver", async () => {
+      confirmMock.mockResolvedValueOnce(false);
+      await purchaseCosmetic(moneyPack(), "dollar");
+      expect(startPurchaseMock).not.toHaveBeenCalled();
+    });
+  });
+
   it("buys a subscription tier by name", async () => {
     await purchaseCosmetic(
       resolved({
