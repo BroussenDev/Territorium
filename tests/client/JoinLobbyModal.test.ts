@@ -19,8 +19,27 @@ vi.mock("../../src/client/DesktopPresence", () => ({
   },
 }));
 
+vi.mock("../../src/client/Api", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../../src/client/Api")>()),
+  getApiBase: vi.fn(() => "https://api.test"),
+}));
+
+vi.mock("../../src/client/InGameModal", () => ({
+  showInGameAlert: vi.fn(async () => true),
+  showInGameConfirm: vi.fn(async () => true),
+}));
+
+import { ClientEnv } from "../../src/client/ClientEnv";
+import { showInGameConfirm } from "../../src/client/InGameModal";
 import { JoinLobbyModal } from "../../src/client/JoinLobbyModal";
-import { GameMode, GameType } from "../../src/core/game/Game";
+import {
+  Difficulty,
+  GameMapSize,
+  GameMapType,
+  GameMode,
+  GameType,
+} from "../../src/core/game/Game";
+import { createPartialGameRecord } from "../../src/core/Util";
 
 describe("JoinLobbyModal server time offset", () => {
   let nowMs = 0;
@@ -132,6 +151,113 @@ describe("JoinLobbyModal spectate link", () => {
     await (modal as any).handleUrlJoin("AbCd1234", true);
     expect((modal as any).checkArchivedGame).toHaveBeenCalledWith("AbCd1234");
     expect((modal as any).showMessage).not.toHaveBeenCalled();
+  });
+});
+
+describe("JoinLobbyModal replay of an archived game", () => {
+  const BUILD = "a".repeat(40);
+  const OTHER = "b".repeat(40);
+
+  const record = (over: Record<string, unknown> = {}) => ({
+    ...createPartialGameRecord(
+      "AbCd1234",
+      {
+        gameMap: GameMapType.World,
+        gameMapSize: GameMapSize.Compact,
+        gameType: GameType.Singleplayer,
+        gameMode: GameMode.FFA,
+        difficulty: Difficulty.Medium,
+        bots: 0,
+        nations: "disabled",
+        donateGold: false,
+        donateTroops: false,
+        infiniteGold: false,
+        infiniteTroops: false,
+        instantBuild: false,
+        randomSpawn: true,
+      },
+      [
+        {
+          clientID: "clientAA",
+          username: "Racer",
+          clanTag: null,
+          persistentID: null,
+          stats: {},
+        },
+      ],
+      [{ turnNumber: 0, intents: [] }],
+      0,
+      60_000,
+      undefined,
+    ),
+    gitCommit: BUILD,
+    ...over,
+  });
+
+  const check = async (archived: unknown) => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response(JSON.stringify(archived))),
+    );
+    const modal = new JoinLobbyModal();
+    (modal as any).redirectToVersionedShell = vi.fn(async () => false);
+    const joins: CustomEvent[] = [];
+    modal.addEventListener("join-lobby", (e) => joins.push(e as CustomEvent));
+    const result = await (modal as any).checkArchivedGame("AbCd1234");
+    return { result, joins };
+  };
+
+  beforeEach(() => {
+    vi.spyOn(ClientEnv, "gitCommit").mockReturnValue(BUILD);
+    vi.mocked(showInGameConfirm).mockClear();
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
+  it("plays a record of this build straight away", async () => {
+    const { result, joins } = await check(record());
+    expect(result).toBe("success");
+    expect(showInGameConfirm).not.toHaveBeenCalled();
+    expect(joins[0].detail.gameRecord.info.gameID).toBe("AbCd1234");
+  });
+
+  it("says the replay wasn't recorded when the record has no moves", async () => {
+    const noTurns: Record<string, unknown> = record();
+    delete noTurns.turns;
+    const { result, joins } = await check(noTurns);
+    expect(result).toBe("replay_unavailable");
+    expect(joins).toHaveLength(0);
+  });
+
+  it("offers to watch a record of another build anyway", async () => {
+    vi.mocked(showInGameConfirm).mockResolvedValueOnce(true);
+    const { result, joins } = await check(record({ gitCommit: OTHER }));
+    expect(showInGameConfirm).toHaveBeenCalledWith(
+      "private_lobby.replay_other_version",
+      expect.objectContaining({ variant: "warning" }),
+    );
+    expect(result).toBe("success");
+    expect(joins).toHaveLength(1);
+  });
+
+  it("stays put when the player declines another build's replay", async () => {
+    vi.mocked(showInGameConfirm).mockResolvedValueOnce(false);
+    const { result, joins } = await check(record({ gitCommit: OTHER }));
+    expect(result).toBe("declined");
+    expect(joins).toHaveLength(0);
+  });
+
+  it("treats a record without a commit as another build", async () => {
+    vi.mocked(showInGameConfirm).mockResolvedValueOnce(true);
+    const noCommit: Record<string, unknown> = record();
+    delete noCommit.gitCommit;
+    const { result, joins } = await check(noCommit);
+    expect(showInGameConfirm).toHaveBeenCalledTimes(1);
+    expect(result).toBe("success");
+    expect(joins[0].detail.gameRecord.info.gameID).toBe("AbCd1234");
   });
 });
 

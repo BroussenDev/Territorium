@@ -66,6 +66,7 @@ export type PlayerGameHistoryCache = {
   modeFilter: ModeKey;
   games: PublicPlayerGame[];
   nextCursor: string | null;
+  historyDays: number | null;
 };
 
 @customElement("player-game-history-view")
@@ -79,6 +80,8 @@ export class PlayerGameHistoryView extends LitElement {
 
   @state() private games: PublicPlayerGame[] = [];
   @state() private nextCursor: string | null = null;
+  // How many days back this player's history reaches, as the API reports it.
+  @state() private historyDays: number | null = null;
   @state() private loading = false;
   // Distinct from `loading` because it controls the inline footer spinner
   // rather than replacing the whole list with a centred spinner.
@@ -107,6 +110,7 @@ export class PlayerGameHistoryView extends LitElement {
     if (this.cachedState && this.cachedState.publicId === this.publicId) {
       this.games = this.cachedState.games;
       this.nextCursor = this.cachedState.nextCursor;
+      this.historyDays = this.cachedState.historyDays;
       this.typeFilter = this.cachedState.typeFilter;
       this.modeFilter = this.cachedState.modeFilter;
       this.appendFailed = false;
@@ -203,6 +207,7 @@ export class PlayerGameHistoryView extends LitElement {
     }
     this.games = append ? [...this.games, ...res.results] : res.results;
     this.nextCursor = res.nextCursor;
+    this.historyDays = res.historyDays ?? null;
     this.dispatchEvent(
       new CustomEvent<PlayerGameHistoryCache>("history-updated", {
         detail: {
@@ -211,6 +216,7 @@ export class PlayerGameHistoryView extends LitElement {
           modeFilter: this.modeFilter,
           games: this.games,
           nextCursor: this.nextCursor,
+          historyDays: this.historyDays,
         },
         bubbles: true,
         composed: true,
@@ -363,6 +369,7 @@ export class PlayerGameHistoryView extends LitElement {
           <p class="text-white/40 text-sm">
             ${translateText("clan_modal.history_empty")}
           </p>
+          ${this.renderHistoryWindow("mt-2 text-xs text-white/30")}
         </div>
       `;
     }
@@ -402,11 +409,23 @@ export class PlayerGameHistoryView extends LitElement {
     `;
   }
 
+  // How far back this player's games are kept, so an end to the list (or an
+  // empty one) doesn't read as missing games.
+  private renderHistoryWindow(classes: string): TemplateResult | string {
+    if (this.historyDays === null) return "";
+    return html`<p data-history-window class=${classes}>
+      ${translateText("account_modal.games_history_window", {
+        days: this.historyDays,
+      })}
+    </p>`;
+  }
+
   private renderScrollFooter(): TemplateResult {
     if (this.nextCursor === null) {
       return html`
         <div class="text-center text-[11px] text-white/30 py-3 select-none">
           ${translateText("clan_modal.history_end_of_history")}
+          ${this.renderHistoryWindow("mt-1")}
         </div>
       `;
     }

@@ -1227,6 +1227,51 @@ describe("SubscriptionSchema unlimitedRanked", () => {
   });
 });
 
+describe("SubscriptionSchema perks outside the match", () => {
+  const base = {
+    name: "souverain",
+    product: null,
+    rarity: "legendary",
+    description: "Top tier",
+    priceMonthly: 0,
+    dailySoftCurrency: 300,
+    dailyHardCurrency: 8,
+    hardCurrencySignupBonus: 200,
+    unlimitedRanked: false,
+    canCreatePublicLobbies: false,
+  };
+
+  it("leaves every perk optional", () => {
+    expect(SubscriptionSchema.safeParse(base).success).toBe(true);
+  });
+
+  it("reads the discount, history window, gold frame and gift", () => {
+    const result = SubscriptionSchema.safeParse({
+      ...base,
+      historyDays: 365,
+      shopDiscountPercent: 15,
+      goldFrame: true,
+      giftFlare: "crown:couronne_souveraine",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data).toMatchObject({
+        historyDays: 365,
+        shopDiscountPercent: 15,
+        goldFrame: true,
+        giftFlare: "crown:couronne_souveraine",
+      });
+    }
+  });
+
+  it("rejects a discount over 100%", () => {
+    expect(
+      SubscriptionSchema.safeParse({ ...base, shopDiscountPercent: 120 })
+        .success,
+    ).toBe(false);
+  });
+});
+
 describe("SubscriptionSchema canCreatePublicLobbies", () => {
   const base = {
     name: "gold",

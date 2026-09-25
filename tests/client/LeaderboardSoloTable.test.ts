@@ -61,6 +61,35 @@ describe("LeaderboardSoloTable", () => {
     expect(el.textContent).toContain("leaderboard_modal.solo_rules");
   });
 
+  it("frames the names of top-tier subscribers in gold", async () => {
+    await render({
+      players: [
+        {
+          rank: 1,
+          publicId: "aB3xK9zQ",
+          username: "Alice",
+          points: 12,
+          wins: 4,
+          games: 9,
+          goldFrame: true,
+        },
+        {
+          rank: 2,
+          publicId: "zZ9yY8xX",
+          username: "Bob",
+          points: 3,
+          wins: 3,
+          games: 3,
+        },
+      ],
+    });
+    const rows = Array.from(el.querySelectorAll("tbody tr"));
+    expect(rows[0].querySelector("[data-gold-frame]")?.textContent).toContain(
+      "Alice",
+    );
+    expect(rows[1].querySelector("[data-gold-frame]")).toBeNull();
+  });
+
   it("explains how to get on an empty board", async () => {
     await render({ players: [] });
     expect(el.textContent).toContain("leaderboard_modal.solo_no_stats");

@@ -5,6 +5,7 @@ import { fetchRankedFfaLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
 import { tierEmblem, tierLabel } from "../ranked/RankedTier";
+import { goldFramed } from "./GoldFrame";
 import { rankStyle } from "./LeaderboardTribeTable";
 
 // The ranked free-for-all board: this season's top 100 placed players.
@@ -160,13 +161,17 @@ export class LeaderboardRankedTable extends LitElement {
                       </div>
                     </td>
                     <td class="py-3 px-4 wrap-break-words">
-                      <player-name
-                        class="min-w-0"
-                        .username=${player.username}
-                        .publicId=${player.publicId}
-                        .nameClass=${"font-bold text-white hover:underline truncate text-left"}
-                        .onNameClick=${() => this.openProfile(player.publicId)}
-                      ></player-name>
+                      ${goldFramed(
+                        player.goldFrame,
+                        html`<player-name
+                          class="min-w-0"
+                          .username=${player.username}
+                          .publicId=${player.publicId}
+                          .nameClass=${"font-bold text-white hover:underline truncate text-left"}
+                          .onNameClick=${() =>
+                            this.openProfile(player.publicId)}
+                        ></player-name>`,
+                      )}
                     </td>
                     <td class="py-3 px-2">
                       <span class="flex items-center gap-2 text-white/90">

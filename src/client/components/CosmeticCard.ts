@@ -1,7 +1,11 @@
 import { html, LitElement, nothing, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { Subscription } from "../../core/CosmeticSchemas";
-import { ResolvedCosmetic, translateCosmetic } from "../Cosmetics";
+import {
+  ResolvedCosmetic,
+  subscriptionPerks,
+  translateCosmetic,
+} from "../Cosmetics";
 import { isDesktopShell } from "../DesktopShell";
 import { translateText } from "../Utils";
 import "./CosmeticInfo";
@@ -354,31 +358,13 @@ export class CosmeticCard extends LitElement {
   private subscriptionPerks(): Array<{ label: string; info: string }> {
     if (this.activeResolved.type !== "subscription") return [];
     const subscription = this.activeResolved.cosmetic as Subscription;
-    const perks = [
+    return [
       {
         label: translateText("cosmetics.subscription_days"),
         info: translateText("cosmetics.subscription_days_info"),
       },
+      ...subscriptionPerks(subscription),
     ];
-    if (subscription.unlimitedRanked) {
-      perks.push({
-        label: translateText("cosmetics.unlimited_ranked"),
-        info: translateText("cosmetics.unlimited_ranked_info"),
-      });
-    }
-    if (subscription.canCreatePublicLobbies) {
-      perks.push({
-        label: translateText("cosmetics.public_lobbies"),
-        info: translateText("cosmetics.public_lobbies_info"),
-      });
-    }
-    if (subscription.queuePriority) {
-      perks.push({
-        label: translateText("cosmetics.queue_priority"),
-        info: translateText("cosmetics.queue_priority_info"),
-      });
-    }
-    return perks;
   }
 
   render() {

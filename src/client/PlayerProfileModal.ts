@@ -12,6 +12,7 @@ import type { PlayerGameHistoryCache } from "./components/baseComponents/stats/P
 import "./components/baseComponents/stats/PlayerStatsTree";
 import { BaseModal } from "./components/BaseModal";
 import "./components/clan/ClanCard";
+import { goldFramed } from "./components/leaderboard/GoldFrame";
 import "./components/PlayerName";
 import {
   seasonBadgeChip,
@@ -36,6 +37,7 @@ export class PlayerProfileModal extends BaseModal {
   @state() private publicId: string | null = null;
   @state() private username: string | null = null;
   @state() private staffRole: PlayerProfile["role"] = undefined;
+  @state() private goldFrame = false;
   @state() private statsTree: PlayerStatsTree | null = null;
   @state() private clans: NonNullable<PlayerProfile["clans"]> = [];
   @state() private ranked: PlayerProfile["ranked"] = undefined;
@@ -73,7 +75,7 @@ export class PlayerProfileModal extends BaseModal {
         ? html`<span
             class="text-white text-xl lg:text-2xl font-bold tracking-wide break-words hyphens-auto min-w-0 inline-flex items-center gap-2"
           >
-            ${usernameText(this.username)}
+            ${goldFramed(this.goldFrame, usernameText(this.username))}
             ${isVerifiedUsername(this.username)
               ? verifiedBadge("w-5 h-5")
               : nothing}
@@ -329,6 +331,7 @@ export class PlayerProfileModal extends BaseModal {
     this.publicId = publicId;
     this.username = null;
     this.staffRole = undefined;
+    this.goldFrame = false;
     this.statsTree = null;
     this.clans = [];
     this.ranked = undefined;
@@ -353,6 +356,7 @@ export class PlayerProfileModal extends BaseModal {
     this.statsTree = profile === false ? null : profile.stats;
     this.username = profile === false ? null : (profile.username ?? null);
     this.staffRole = profile === false ? undefined : profile.role;
+    this.goldFrame = profile !== false && profile.goldFrame === true;
     this.clans = profile === false ? [] : (profile.clans ?? []);
     this.ranked = profile === false ? undefined : profile.ranked;
     this.seasonBadges = profile === false ? [] : (profile.seasonBadges ?? []);

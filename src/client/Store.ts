@@ -26,6 +26,7 @@ import { alignPurchaseRows } from "./components/PurchaseButton";
 import "./components/TribesPanel";
 import { modalHeader } from "./components/ui/ModalHeader";
 import {
+  discountedPrice,
   fetchCosmetics,
   findPackItem,
   groupCosmeticVariants,
@@ -33,6 +34,7 @@ import {
   purchaseCosmetic,
   resolveCosmetics,
   ResolvedCosmetic,
+  shopDiscountPercent,
 } from "./Cosmetics";
 import {
   priceStringToCents,
@@ -175,11 +177,22 @@ export class StoreModal extends BaseModal {
       this.userMeResponse === false
         ? undefined
         : this.userMeResponse.player.currency;
+    const discount = shopDiscountPercent(this.userMeResponse);
     return modalHeader({
       title: translateText("store.title"),
       onBack: () => this.close(),
       ariaLabel: translateText("common.back"),
       rightContent: html`<div class="flex items-center gap-4">
+        ${discount > 0
+          ? html`<span
+              data-store-discount
+              class="rounded-full border border-amber-300/50 bg-amber-400/15 px-2.5 py-1 text-xs font-bold text-amber-200"
+              title=${translateText("store.subscriber_discount_info")}
+              >${translateText("store.subscriber_discount", {
+                percent: discount,
+              })}</span
+            >`
+          : ""}
         ${currency
           ? html`<currency-display
               .hard=${currency.hard}
@@ -425,7 +438,18 @@ export class StoreModal extends BaseModal {
       isPurchasable && resolved.type === "pack"
         ? packMoneyPrice(resolved.cosmetic as Pack)
         : null;
-    const priceHard = isPurchasable ? priced?.priceHard : undefined;
+    // Subscribers pay less in emeralds for cosmetics and bundles; emerald
+    // packs and subscriptions keep their price, and medal prices never move.
+    const listPriceHard = isPurchasable ? priced?.priceHard : undefined;
+    const priceHard =
+      listPriceHard !== undefined &&
+      resolved.type !== "pack" &&
+      resolved.type !== "subscription"
+        ? discountedPrice(
+            listPriceHard,
+            shopDiscountPercent(this.userMeResponse),
+          )
+        : listPriceHard;
     const priceSoft = isPurchasable ? priced?.priceSoft : undefined;
     const purchase = (method: "dollar" | "hard" | "soft") =>
       purchaseCosmetic(resolved, method);
@@ -463,6 +487,9 @@ export class StoreModal extends BaseModal {
           : ""}
       .inlineCheckout=${inlineCheckout}
       .priceHard=${priceHard ?? null}
+      .listPriceHard=${priceHard !== listPriceHard
+        ? (listPriceHard ?? null)
+        : null}
       .priceSoft=${priceSoft ?? null}
       .rarity=${priced?.rarity ?? "common"}
       .itemName=${cosmeticSelectionLabel(resolved)}

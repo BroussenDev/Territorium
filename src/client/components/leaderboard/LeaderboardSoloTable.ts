@@ -4,6 +4,7 @@ import { SoloLeaderboardResponse } from "../../../core/ApiSchemas";
 import { fetchSoloLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
+import { goldFramed } from "./GoldFrame";
 import { rankStyle } from "./LeaderboardTribeTable";
 
 // The solo board: players ranked by points from singleplayer wins against
@@ -182,14 +183,17 @@ export class LeaderboardSoloTable extends LitElement {
                         </div>
                       </td>
                       <td class="py-3 px-4 wrap-break-words">
-                        <player-name
-                          class="min-w-0"
-                          .username=${player.username}
-                          .publicId=${player.publicId}
-                          .nameClass=${"font-bold text-white hover:underline truncate text-left"}
-                          .onNameClick=${() =>
-                            this.openProfile(player.publicId)}
-                        ></player-name>
+                        ${goldFramed(
+                          player.goldFrame,
+                          html`<player-name
+                            class="min-w-0"
+                            .username=${player.username}
+                            .publicId=${player.publicId}
+                            .nameClass=${"font-bold text-white hover:underline truncate text-left"}
+                            .onNameClick=${() =>
+                              this.openProfile(player.publicId)}
+                          ></player-name>`,
+                        )}
                       </td>
                       <td class="py-3 px-2 text-right font-mono text-white/80">
                         ${player.wins.toLocaleString()}

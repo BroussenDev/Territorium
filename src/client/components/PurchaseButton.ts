@@ -222,6 +222,11 @@ export class PurchaseButton extends LitElement {
   @property({ type: Number })
   priceHard: number | null = null;
 
+  /** The emerald price before the subscriber discount, struck through next
+   * to `priceHard` when higher. */
+  @property({ type: Number })
+  listPriceHard: number | null = null;
+
   @property({ type: Number })
   priceSoft: number | null = null;
 
@@ -382,6 +387,16 @@ export class PurchaseButton extends LitElement {
         }}
       >
         <plutonium-icon .size=${20} style="margin-top:3px"></plutonium-icon>
+        ${this.listPriceHard !== null && this.listPriceHard > this.priceHard!
+          ? html`<s
+              data-list-price
+              class="text-xs font-semibold text-white/40"
+              aria-label=${translateText("store.list_price", {
+                price: this.listPriceHard.toLocaleString(),
+              })}
+              >${this.listPriceHard.toLocaleString()}</s
+            >`
+          : nothing}
         ${this.priceHard!.toLocaleString()}
       </button>
     `;

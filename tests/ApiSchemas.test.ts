@@ -20,6 +20,7 @@ import {
   PutUsernameResponseSchema,
   RankedLeaderboardEntrySchema,
   RewardSchema,
+  SoloLeaderboardEntrySchema,
   TribeLeaderboardResponseSchema,
   TribeNameSchema,
   TribeStatsResponseSchema,
@@ -689,6 +690,66 @@ describe("UserMeResponseSchema queuePriority", () => {
       player: { ...basePlayer, queuePriority: true },
     });
     expect(result.success && result.data.player.queuePriority).toBe(true);
+  });
+});
+
+describe("subscriber perks outside the match", () => {
+  const basePlayer = {
+    publicId: "p1",
+    adfree: false,
+    unlimitedRanked: false,
+    canCreatePublicLobbies: false,
+    achievements: { singleplayerMap: [] },
+    friends: [],
+    subscription: null,
+  };
+
+  it("carries the shop discount, optional for an older API", () => {
+    const parse = (player: object) =>
+      UserMeResponseSchema.safeParse({ user: {}, player });
+    const without = parse(basePlayer);
+    expect(without.success && without.data.player.shopDiscountPercent).toBe(
+      undefined,
+    );
+    const withDiscount = parse({ ...basePlayer, shopDiscountPercent: 15 });
+    expect(
+      withDiscount.success && withDiscount.data.player.shopDiscountPercent,
+    ).toBe(15);
+    expect(parse({ ...basePlayer, shopDiscountPercent: 150 }).success).toBe(
+      false,
+    );
+  });
+
+  it("marks gold-framed players on the leaderboards and profile", () => {
+    const entry = SoloLeaderboardEntrySchema.safeParse({
+      rank: 1,
+      publicId: "aB3xK9zQ",
+      username: "Alice",
+      points: 12,
+      wins: 4,
+      games: 9,
+      goldFrame: true,
+    });
+    expect(entry.success && entry.data.goldFrame).toBe(true);
+    const profile = PlayerProfileSchema.safeParse({
+      createdAt: "2024-01-15T12:00:00.000Z",
+      stats: {},
+      goldFrame: true,
+    });
+    expect(profile.success && profile.data.goldFrame).toBe(true);
+  });
+
+  it("says how far back a player's game history reaches", () => {
+    const page = (historyDays?: number) =>
+      PublicPlayerGamesResponseSchema.safeParse({
+        results: [],
+        nextCursor: null,
+        historyDays,
+      });
+    const year = page(365);
+    expect(year.success && year.data.historyDays).toBe(365);
+    expect(page(undefined).success).toBe(true);
+    expect(page(0).success).toBe(false);
   });
 });
 

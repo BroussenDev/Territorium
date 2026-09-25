@@ -81,6 +81,30 @@ describe("PurchaseButton", () => {
     }
   });
 
+  it("strikes through the regular price under a subscriber discount", async () => {
+    button = document.createElement("purchase-button") as PurchaseButton;
+    button.priceHard = 90;
+    button.listPriceHard = 100;
+    button.onPurchaseHard = vi.fn(async () => undefined);
+    document.body.appendChild(button);
+    await button.updateComplete;
+
+    const hard = button.querySelector(".purchase-sparkle-btn-hard")!;
+    expect(hard.querySelector("s[data-list-price]")?.textContent).toBe("100");
+    expect(hard.textContent).toContain("90");
+  });
+
+  it("shows no struck price when nothing is discounted", async () => {
+    button = document.createElement("purchase-button") as PurchaseButton;
+    button.priceHard = 100;
+    button.listPriceHard = 100;
+    button.onPurchaseHard = vi.fn(async () => undefined);
+    document.body.appendChild(button);
+    await button.updateComplete;
+
+    expect(button.querySelector("s[data-list-price]")).toBeNull();
+  });
+
   it("clears busy state and reports a synchronous purchase throw", async () => {
     vi.mocked(showInGameAlert).mockClear();
     vi.spyOn(console, "error").mockImplementation(() => undefined);

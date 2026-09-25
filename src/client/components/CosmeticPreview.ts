@@ -12,7 +12,7 @@ import {
 } from "../../core/CosmeticSchemas";
 import { PlayerPattern } from "../../core/Schemas";
 import { packMoneyPrice } from "../CheckoutPrice";
-import { ResolvedCosmetic } from "../Cosmetics";
+import { ResolvedCosmetic, subscriptionPerks } from "../Cosmetics";
 import { translateText } from "../Utils";
 import "./CapIcon";
 import { cosmeticDisplayName } from "./CosmeticPresentation";
@@ -235,30 +235,13 @@ export class CosmeticPreview extends LitElement {
                 >
               </div>`
             : nothing}
-          ${subscription.unlimitedRanked
-            ? html`<span
+          ${subscriptionPerks(subscription).map(
+            (perk) =>
+              html`<span
                 class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
-                ><span class="text-green-400">✓</span> ${translateText(
-                  "cosmetics.unlimited_ranked",
-                )}</span
-              >`
-            : nothing}
-          ${subscription.canCreatePublicLobbies
-            ? html`<span
-                class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
-                ><span class="text-green-400">✓</span> ${translateText(
-                  "cosmetics.public_lobbies",
-                )}</span
-              >`
-            : nothing}
-          ${subscription.queuePriority
-            ? html`<span
-                class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
-                ><span class="text-green-400">✓</span> ${translateText(
-                  "cosmetics.queue_priority",
-                )}</span
-              >`
-            : nothing}
+                ><span class="text-green-400">✓</span> ${perk.label}</span
+              >`,
+          )}
         </div>
       </div>`;
     }

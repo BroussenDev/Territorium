@@ -8,6 +8,7 @@ import { RankedType } from "../../../core/game/Game";
 import { fetchPlayerLeaderboard, getUserMe } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
+import { goldFramed } from "./GoldFrame";
 
 /** One ranked ladder's loaded rows. */
 interface LadderState {
@@ -37,6 +38,7 @@ const toPlayerEntry = (
   wins: entry.wins,
   losses: entry.losses,
   winRate: entry.total > 0 ? entry.wins / entry.total : 0,
+  goldFrame: entry.goldFrame,
 });
 
 @customElement("leaderboard-player-list")
@@ -376,12 +378,15 @@ export class LeaderboardPlayerList extends LitElement {
         </td>
         <td class="py-3 px-4">
           <div class="flex items-center gap-2">
-            <player-name
-              .username=${player.accountUsername}
-              .publicId=${player.playerId}
-              .nameClass=${"font-bold text-emerald-300 truncate text-base hover:underline"}
-              .onNameClick=${() => this.openProfile(player.playerId)}
-            ></player-name>
+            ${goldFramed(
+              player.goldFrame,
+              html`<player-name
+                .username=${player.accountUsername}
+                .publicId=${player.playerId}
+                .nameClass=${"font-bold text-emerald-300 truncate text-base hover:underline"}
+                .onNameClick=${() => this.openProfile(player.playerId)}
+              ></player-name>`,
+            )}
           </div>
         </td>
         <td class="py-3 px-4 text-right">

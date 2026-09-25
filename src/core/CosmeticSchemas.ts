@@ -507,6 +507,16 @@ export const SubscriptionSchema = CosmeticSchema.extend({
   // Whether this tier moves subscribers ahead in waiting lists (ranked
   // queue, public lobby seats). Optional: older catalogs don't carry it.
   queuePriority: z.boolean().optional(),
+  // Days of game history (list and replays) the tier keeps; 0 or absent
+  // means the base window.
+  historyDays: z.number().int().nonnegative().optional(),
+  // Percent off emerald prices of cosmetics and cosmetic packs.
+  shopDiscountPercent: z.number().int().min(0).max(100).optional(),
+  // Whether subscribers get a gold frame on the leaderboards and profile.
+  goldFrame: z.boolean().optional(),
+  // The exclusive cosmetic ("crown:<name>", ...) the tier gives once per
+  // account, on the first subscription.
+  giftFlare: z.string().optional(),
 });
 
 // Schema for resources/cosmetics/cosmetics.json

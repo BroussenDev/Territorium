@@ -571,13 +571,16 @@ export async function purchaseCosmetic(
   // the top doesn't narrow cosmetic's type: subscriptions and currency packs
   // never reach this point.
   const priced = c as Pattern | Flag;
-  const price =
-    method === "hard" ? (priced.priceHard ?? 0) : (priced.priceSoft ?? 0);
   const userMe = await getUserMe();
   if (userMe === false) {
     await showInGameAlert(translateText("store.login_required"));
     return;
   }
+  // Subscribers pay less in emeralds; medal prices never move.
+  const price =
+    method === "hard"
+      ? discountedPrice(priced.priceHard ?? 0, shopDiscountPercent(userMe))
+      : (priced.priceSoft ?? 0);
   const balance =
     method === "hard"
       ? (userMe.player.currency?.hard ?? 0)
@@ -813,9 +816,10 @@ async function purchasePack(
     await showInGameAlert(translateText("store.login_required"));
     return;
   }
+  const price = discountedPrice(pack.priceHard, shopDiscountPercent(userMe));
   const insufficient = (balance: number): InsufficientCurrency => ({
     currency: translateText("cosmetics.hard"),
-    shortfall: pack.priceHard - balance,
+    shortfall: price - balance,
     item: pack.displayName,
     canTopUp: true,
   });
@@ -827,7 +831,7 @@ async function purchasePack(
     await showInGameAlert(debtMessage(-balance));
     return;
   }
-  if (balance < pack.priceHard) {
+  if (balance < price) {
     return insufficient(balance);
   }
 
@@ -851,7 +855,7 @@ async function purchasePack(
         return;
       }
       const available = fresh.player.currency?.hard ?? 0;
-      const outcome = balanceOutcome(available, pack.priceHard);
+      const outcome = balanceOutcome(available, price);
       if (outcome === "debt") {
         await showInGameAlert(debtMessage(-available));
         return;
@@ -895,7 +899,63 @@ async function purchasePack(
  * The translated name of the cosmetic a flare refers to: "<type>:<name>",
  * or "pattern:<name>:<palette>" for a coloured pattern ("Camo (Crimson)").
  */
-function flareDisplayName(flare: string): string {
+/** A subscription tier's perks beyond its currency, as store-tile lines:
+ * a short label and the longer explanation behind its info bubble. */
+export function subscriptionPerks(
+  subscription: Subscription,
+): Array<{ label: string; info: string }> {
+  const perks: Array<{ label: string; info: string }> = [];
+  if (subscription.unlimitedRanked) {
+    perks.push({
+      label: translateText("cosmetics.unlimited_ranked"),
+      info: translateText("cosmetics.unlimited_ranked_info"),
+    });
+  }
+  if (subscription.canCreatePublicLobbies) {
+    perks.push({
+      label: translateText("cosmetics.public_lobbies"),
+      info: translateText("cosmetics.public_lobbies_info"),
+    });
+  }
+  if (subscription.queuePriority) {
+    perks.push({
+      label: translateText("cosmetics.queue_priority"),
+      info: translateText("cosmetics.queue_priority_info"),
+    });
+  }
+  const discount = subscription.shopDiscountPercent ?? 0;
+  if (discount > 0) {
+    perks.push({
+      label: translateText("cosmetics.shop_discount", { percent: discount }),
+      info: translateText("cosmetics.shop_discount_info", {
+        percent: discount,
+      }),
+    });
+  }
+  const days = subscription.historyDays ?? 0;
+  if (days > 0) {
+    perks.push({
+      label: translateText("cosmetics.history_days", { days }),
+      info: translateText("cosmetics.history_days_info", { days }),
+    });
+  }
+  if (subscription.goldFrame) {
+    perks.push({
+      label: translateText("cosmetics.gold_frame"),
+      info: translateText("cosmetics.gold_frame_info"),
+    });
+  }
+  if (subscription.giftFlare) {
+    const name = flareDisplayName(subscription.giftFlare);
+    perks.push({
+      label: translateText("cosmetics.subscription_gift", { name }),
+      info: translateText("cosmetics.subscription_gift_info", { name }),
+    });
+  }
+  return perks;
+}
+
+export function flareDisplayName(flare: string): string {
   const [type, name, palette] = flare.split(":");
   const prefix = {
     pattern: "territory_patterns.pattern",
@@ -1006,6 +1066,19 @@ export async function resolveFlagUrl(
 export async function getCosmeticsHash(): Promise<string | null> {
   await fetchCosmetics();
   return __cosmeticsHash;
+}
+
+/** Percent the player's subscription takes off emerald prices of cosmetics
+ * and cosmetic packs (0 without one, or signed out). */
+export function shopDiscountPercent(userMe: UserMeResponse | false): number {
+  return userMe === false ? 0 : (userMe.player.shopDiscountPercent ?? 0);
+}
+
+/** An emerald price with the subscriber discount taken off, rounded in the
+ * player's favour — the same figure the API charges. */
+export function discountedPrice(price: number, percent: number): number {
+  if (percent <= 0) return price;
+  return price - Math.ceil((price * percent) / 100);
 }
 
 export function cosmeticRelationship(

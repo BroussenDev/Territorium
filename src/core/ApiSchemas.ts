@@ -194,6 +194,9 @@ export const UserMeResponseSchema = z.object({
     // (ranked queue, the seats a public lobby holds back). Absent on an API
     // without the perk, which reads as false.
     queuePriority: z.boolean().optional(),
+    // Percent the player's subscription takes off emerald prices of
+    // cosmetics and cosmetic packs. Absent reads as none.
+    shopDiscountPercent: z.number().int().min(0).max(100).optional(),
     // Account trust as computed by the API. "untrusted" means new, unlinked or
     // banned, never an accusation. null when the API's computation failed;
     // absent on an API that predates the field. Both read as untrusted.
@@ -590,6 +593,8 @@ export const SoloLeaderboardEntrySchema = z.object({
   points: z.number(),
   wins: z.number(),
   games: z.number(),
+  // True when the player's subscription frames their row in gold.
+  goldFrame: z.boolean().optional(),
 });
 export type SoloLeaderboardEntry = z.infer<typeof SoloLeaderboardEntrySchema>;
 
@@ -643,6 +648,8 @@ export const RankedFfaLeaderboardEntrySchema = z.object({
   tier: RankedTierSchema,
   games: z.number(),
   wins: z.number(),
+  // True when the player's subscription frames their row in gold.
+  goldFrame: z.boolean().optional(),
 });
 export type RankedFfaLeaderboardEntry = z.infer<
   typeof RankedFfaLeaderboardEntrySchema
@@ -892,6 +899,8 @@ export const PlayerProfileSchema = z.object({
   // the badges of past seasons, newest first.
   ranked: RankedStatusSchema.optional(),
   seasonBadges: SeasonBadgeSchema.array().optional(),
+  // True when the player's subscription frames their profile in gold.
+  goldFrame: z.boolean().optional(),
 });
 export type PlayerProfile = z.infer<typeof PlayerProfileSchema>;
 
@@ -941,6 +950,9 @@ export const PublicPlayerGamesResponseSchema = z.object({
   // parameter to fetch the next page; never construct or parse it. `null`
   // means the server has no more rows to serve.
   nextCursor: z.string().nullable(),
+  // How many days back the player's history reaches (longer for some
+  // subscriptions). Absent on an API that predates it.
+  historyDays: z.number().int().positive().optional(),
 });
 export type PublicPlayerGamesResponse = z.infer<
   typeof PublicPlayerGamesResponseSchema
@@ -958,6 +970,8 @@ export const PlayerLeaderboardEntrySchema = z.object({
   wins: z.number(),
   losses: z.number(),
   winRate: z.number(),
+  // True when the player's subscription frames their row in gold.
+  goldFrame: z.boolean().optional(),
 });
 export type PlayerLeaderboardEntry = z.infer<
   typeof PlayerLeaderboardEntrySchema
@@ -981,6 +995,8 @@ export const RankedLeaderboardEntrySchema = z.object({
   // Account username (null = never set). The client displays
   // `accountUsername ?? public_id`.
   accountUsername: z.string().nullable(),
+  // True when the player's subscription frames their row in gold.
+  goldFrame: z.boolean().optional(),
 });
 export type RankedLeaderboardEntry = z.infer<
   typeof RankedLeaderboardEntrySchema

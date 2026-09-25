@@ -30,6 +30,7 @@ import {
 } from "../core/game/Game";
 import { getApiBase } from "./Api";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { showInGameConfirm } from "./InGameModal";
 import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
 import { ensureServerList, redirectToGameVersion } from "./ServerList";
@@ -652,6 +653,16 @@ export class JoinLobbyModal extends BaseModal {
             translateText("private_lobby.version_mismatch"),
             "red",
           );
+          return;
+        case "replay_unavailable":
+          this.resetTrackingState();
+          this.showMessage(
+            translateText("private_lobby.replay_unavailable"),
+            "red",
+          );
+          return;
+        case "declined":
+          this.resetTrackingState();
           return;
         case "error":
           this.resetTrackingState();
@@ -1320,6 +1331,16 @@ export class JoinLobbyModal extends BaseModal {
             "red",
           );
           return;
+        case "replay_unavailable":
+          this.resetTrackingState();
+          this.showMessage(
+            translateText("private_lobby.replay_unavailable"),
+            "red",
+          );
+          return;
+        case "declined":
+          this.resetTrackingState();
+          return;
         case "error":
           this.resetTrackingState();
           this.showMessage(translateText("private_lobby.error"), "red");
@@ -1415,7 +1436,13 @@ export class JoinLobbyModal extends BaseModal {
   private async checkArchivedGame(
     lobbyId: string,
   ): Promise<
-    "success" | "redirected" | "not_found" | "version_mismatch" | "error"
+    | "success"
+    | "redirected"
+    | "not_found"
+    | "version_mismatch"
+    | "replay_unavailable"
+    | "declined"
+    | "error"
   > {
     const archiveResponse = await fetch(`${getApiBase()}/game/${lobbyId}`, {
       method: "GET",
@@ -1432,13 +1459,24 @@ export class JoinLobbyModal extends BaseModal {
     }
 
     const archiveData = await archiveResponse.json();
-    const parsed = GameRecordSchema.safeParse(archiveData);
+    // Games archived before their moves were kept have nothing to replay:
+    // say so rather than blaming the version.
+    if (!Array.isArray(archiveData?.turns)) {
+      return "replay_unavailable";
+    }
+    // A record without a commit (client-archived games of older builds) can't
+    // be proven to match this build, so it goes through the mismatch path.
+    const recordCommit: unknown = archiveData.gitCommit;
+    const parsed = GameRecordSchema.safeParse({
+      ...archiveData,
+      gitCommit: recordCommit ?? "DEV",
+    });
     if (!parsed.success) {
       return "version_mismatch";
     }
 
     const gitCommit = ClientEnv.gitCommit();
-    if (gitCommit !== "DEV" && parsed.data.gitCommit !== gitCommit) {
+    if (gitCommit !== "DEV" && recordCommit !== gitCommit) {
       const safeLobbyId = this.sanitizeForLog(lobbyId);
       console.warn(
         `Git commit hash mismatch for game ${safeLobbyId}`,
@@ -1447,7 +1485,19 @@ export class JoinLobbyModal extends BaseModal {
       if (await this.redirectToVersionedShell(lobbyId)) {
         return "redirected";
       }
-      return "version_mismatch";
+      // No shell of that build to hand off to. The replay checks the
+      // simulation's hashes as it goes and stops with a desync notice if
+      // this build plays the moves differently, so let the player try.
+      const watch = await showInGameConfirm(
+        translateText("private_lobby.replay_other_version"),
+        {
+          variant: "warning",
+          confirmText: translateText("private_lobby.replay_watch_anyway"),
+        },
+      );
+      if (!watch) {
+        return "declined";
+      }
     }
 
     // If the modal closes as part of joining the replay, do not leave/reset URL
