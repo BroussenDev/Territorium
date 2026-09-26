@@ -21,6 +21,8 @@ function ctx(overrides: Partial<TutorialContext> = {}): TutorialContext {
     cityCost: null,
     cityDisabled: false,
     cities: 0,
+    upgraded: false,
+    objectivesExist: false,
     portDisabled: false,
     ports: 0,
     defensePostDisabled: false,
@@ -37,6 +39,8 @@ function ctx(overrides: Partial<TutorialContext> = {}): TutorialContext {
     hydrogenDisabled: false,
     mirvDisabled: false,
     samDisabled: false,
+    radarDisabled: false,
+    empDisabled: false,
     ...overrides,
   };
 }
@@ -155,8 +159,11 @@ describe("TutorialProgress", () => {
       hydrogenDisabled: true,
       mirvDisabled: true,
       samDisabled: true,
+      radarDisabled: true,
+      empDisabled: true,
     });
-    expect(p.total(c)).toBe(TUTORIAL_STEPS.length - 17);
+    // Objectives are off by default in ctx(), so that step is skipped too.
+    expect(p.total(c)).toBe(TUTORIAL_STEPS.length - 21);
 
     settle(p, c);
     settle(p, c);
@@ -174,6 +181,24 @@ describe("TutorialProgress", () => {
     settle(p, c);
     expect(p.finished()).toBe(true);
     expect(p.current()).toBeNull();
+  });
+
+  it("points at the objectives after the city when the map has them", () => {
+    const first = TUTORIAL_STEPS.findIndex((s) => s.id === "buy_city");
+    const p = new TutorialProgress(TUTORIAL_STEPS.slice(first));
+    const c = ctx({ cities: 1, objectivesExist: true });
+    settle(p, c);
+    expect(p.current()?.id).toBe("objectives");
+    expect(p.current()?.highlight).toBe("objectives");
+    for (let i = 0; i < 50; i++) p.update(c);
+    expect(p.current()?.id).toBe("objectives");
+    p.acknowledge();
+    settle(p, c);
+    expect(p.current()?.id).toBe("propose_alliance");
+
+    const q = new TutorialProgress(TUTORIAL_STEPS.slice(first));
+    settle(q, ctx({ cities: 1 }));
+    expect(q.current()?.id).toBe("propose_alliance");
   });
 
   it("asks for an alliance after the city, then explains traitors", () => {
@@ -231,6 +256,11 @@ describe("TutorialProgress", () => {
     p.acknowledge();
     settle(p, ctx({ factories: 1 }));
 
+    expect(p.current()?.id).toBe("upgrade_city");
+    p.update(ctx({ factories: 1 }));
+    expect(p.stepDone()).toBe(false);
+    settle(p, ctx({ factories: 1, upgraded: true }));
+
     expect(p.current()?.id).toBe("send_boat");
     settle(p, ctx({ factories: 1, boatSent: true }));
 
@@ -265,6 +295,8 @@ describe("TutorialProgress", () => {
       ["hydrogen_info", "hydrogen"],
       ["mirv_info", "mirv"],
       ["sam_info", "sam"],
+      ["radar_info", "radar"],
+      ["emp_info", "emp"],
     ]) {
       expect(p.current()?.id).toBe(id);
       expect(p.current()?.highlight).toBe(highlight);
@@ -312,13 +344,14 @@ describe("TutorialProgress step counter", () => {
     const p = new TutorialProgress();
     // Pre-spawn ticks (nothing spawned yet) must not freeze the counter.
     p.update(ctx({ botsExist: false, nationsExist: false }));
-    const before = ctx({ hasSpawned: true });
+    const before = ctx({ hasSpawned: true, objectivesExist: true });
     p.update(before);
     const total = p.total(before);
     expect(total).toBe(TUTORIAL_STEPS.length);
 
     const after = ctx({
       hasSpawned: true,
+      objectivesExist: true,
       botsExist: false,
       nationsExist: false,
     });

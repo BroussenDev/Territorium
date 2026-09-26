@@ -1,5 +1,22 @@
 # Territorium — Changelog
 
+## v0.1.6
+
+📖 **New Help page**
+
+- The Help page is rewritten from scratch, with fresh screenshots of today's game: the basics, the control panel, the radial menu on your land and on another country, the player panel, every building and weapon (radar and EMP included), building upgrades and map objectives.
+- The SAM launcher and missile silo descriptions now give the real numbers: a 70-tile range (about 100 once upgraded) and a 9-second reload.
+
+🎓 **New tutorial**
+
+- Every step of the in-game tutorial is rewritten.
+- New steps: the map objectives (when the map has them), upgrading your first city, the radar and the EMP bomb.
+
+🏁 **End of game**
+
+- After an early defeat, the end screen now gives three tips for your next game instead of a video.
+- Territorium's name is now spelled the same way in every language.
+
 ## v0.1.5
 
 🏗️ **Building upgrades**

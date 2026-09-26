@@ -524,8 +524,9 @@ export class ControlPanel extends LitElement implements Controller {
     return html`
       <div
         title=${this.objectivesHint()}
-        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border text-xs font-medium ${held >
-        0
+        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border text-xs font-medium ${this.tutorialHighlightClass(
+          "objectives",
+        )} ${held > 0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
           : "border-gray-600 text-white/70"}"
       >
@@ -552,8 +553,9 @@ export class ControlPanel extends LitElement implements Controller {
     return html`
       <div
         title=${this.objectivesHint()}
-        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border leading-tight ${held >
-        0
+        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border leading-tight ${this.tutorialHighlightClass(
+          "objectives",
+        )} ${held > 0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
           : "border-gray-600 text-white/70"}"
         translate="no"

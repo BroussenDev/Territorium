@@ -42,6 +42,16 @@ const UNIT_NAME_KEYS: Partial<Record<UnitType, string>> = {
   [UnitType.MissileSilo]: "missile_silo",
   [UnitType.AtomBomb]: "atom_bomb",
 };
+/** Structures the upgrade step accepts, as the structure card offers them. */
+const UPGRADABLE_TYPES = [
+  UnitType.City,
+  UnitType.Factory,
+  UnitType.Port,
+  UnitType.MissileSilo,
+  UnitType.SAMLauncher,
+  UnitType.Radar,
+];
+
 /** Ticks the "you're ready" message stays up before the panel closes. */
 const COMPLETE_LINGER_TICKS = 50;
 
@@ -64,6 +74,7 @@ const TOUCH_TEXT_STEPS = new Set([
   "attack_wilderness",
   "buy_city",
   "propose_alliance",
+  "upgrade_city",
   "buy_factory",
   "send_boat",
   "buy_port",
@@ -350,6 +361,10 @@ export class TutorialPanel extends LitElement implements Controller {
       cityCost: this.costs.get(UnitType.City) ?? null,
       cityDisabled: this.game.config().isUnitDisabled(UnitType.City),
       cities: player.units(UnitType.City).length,
+      upgraded: player
+        .units(...UPGRADABLE_TYPES)
+        .some((u) => u.isActive() && u.level() > 1),
+      objectivesExist: this.game.objectives().length > 0,
       portDisabled: this.game.config().isUnitDisabled(UnitType.Port),
       ports: player.units(UnitType.Port).length,
       defensePostDisabled: this.game
@@ -376,6 +391,8 @@ export class TutorialPanel extends LitElement implements Controller {
         .isUnitDisabled(UnitType.HydrogenBomb),
       mirvDisabled: this.game.config().isUnitDisabled(UnitType.MIRV),
       samDisabled: this.game.config().isUnitDisabled(UnitType.SAMLauncher),
+      radarDisabled: this.game.config().isUnitDisabled(UnitType.Radar),
+      empDisabled: this.game.config().isUnitDisabled(UnitType.EMPBomb),
     };
   }
 

@@ -75,6 +75,8 @@ export class UnitDisplay extends LitElement implements Controller {
       hydrogen: UnitType.HydrogenBomb,
       mirv: UnitType.MIRV,
       sam: UnitType.SAMLauncher,
+      radar: UnitType.Radar,
+      emp: UnitType.EMPBomb,
     };
     this.eventBus.on(TutorialHighlightEvent, (e) => {
       this.tutorialHighlight = (e.target && highlightUnits[e.target]) ?? null;

@@ -1,11 +1,9 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import {
-  DESKTOP_TUTORIAL_VIDEO_URL,
   getGamesPlayed,
   homeHref,
   translateText,
-  TUTORIAL_VIDEO_URL,
 } from "../../../client/Utils";
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
@@ -21,7 +19,6 @@ import {
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
-import "../../components/YoutubeEmbed";
 import { Controller } from "../../Controller";
 import {
   fetchCosmetics,
@@ -30,7 +27,6 @@ import {
 } from "../../Cosmetics";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
 import { isDesktopShell } from "../../DesktopShell";
-import { Platform } from "../../Platform";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
@@ -207,34 +203,24 @@ export class WinModal extends LitElement implements Controller {
 
   innerHtml() {
     if (!this.isWin && getGamesPlayed() < 3) {
-      return this.renderYoutubeTutorial();
+      return this.renderTips();
     }
     return this.renderPatternButton();
   }
 
-  renderYoutubeTutorial() {
+  renderTips() {
+    const tips = ["tip_wilderness", "tip_cities", "tip_alliances"];
     return html`
-      <div class="text-center mb-6 bg-black/30 p-2.5 rounded-sm">
-        <h3 class="text-xl font-semibold text-white mb-3">
-          ${translateText("win_modal.youtube_tutorial")}
+      <div class="text-left mb-6 bg-black/30 p-3 rounded-sm">
+        <h3 class="text-xl font-semibold text-white mb-3 text-center">
+          ${translateText("win_modal.tips_title")}
         </h3>
-        <!-- 56.25% = 9:16 -->
-        <div class="relative w-full pb-[56.25%]">
-          ${Platform.isElectron
-            ? html`<video
-                class="absolute top-0 left-0 w-full h-full rounded-sm"
-                src="${this.isVisible ? DESKTOP_TUTORIAL_VIDEO_URL : ""}"
-                controls
-                preload="metadata"
-              ></video>`
-            : this.isVisible
-              ? html`<youtube-embed
-                  class="absolute top-0 left-0 w-full h-full"
-                  .src=${TUTORIAL_VIDEO_URL}
-                  .videoTitle=${translateText("win_modal.youtube_tutorial")}
-                ></youtube-embed>`
-              : ""}
-        </div>
+        <ul class="list-disc pl-5 space-y-1.5 text-white/90 text-sm">
+          ${tips.map((t) => html`<li>${translateText(`win_modal.${t}`)}</li>`)}
+        </ul>
+        <p class="mt-3 text-xs text-white/60 text-center">
+          ${translateText("win_modal.tips_help")}
+        </p>
       </div>
     `;
   }

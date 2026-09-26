@@ -18,6 +18,9 @@ export type TutorialHighlight =
   | "hydrogen"
   | "mirv"
   | "sam"
+  | "radar"
+  | "emp"
+  | "objectives"
   | "tribes"
   | "nation";
 
@@ -48,6 +51,10 @@ export interface TutorialContext {
   cityCost: bigint | null;
   cityDisabled: boolean;
   cities: number;
+  /** One of our structures is above level 1. */
+  upgraded: boolean;
+  /** The game has map objectives. */
+  objectivesExist: boolean;
   portDisabled: boolean;
   ports: number;
   defensePostDisabled: boolean;
@@ -66,6 +73,8 @@ export interface TutorialContext {
   hydrogenDisabled: boolean;
   mirvDisabled: boolean;
   samDisabled: boolean;
+  radarDisabled: boolean;
+  empDisabled: boolean;
 }
 
 export interface TutorialStep {
@@ -132,6 +141,13 @@ export const TUTORIAL_STEPS: readonly TutorialStep[] = [
     applies: (c) => !c.cityDisabled,
     isDone: (c) => c.cities > 0,
   },
+  // Points at the objectives chip beside the attack slider.
+  {
+    id: "objectives",
+    highlight: "objectives",
+    applies: (c) => c.objectivesExist,
+    manual: true,
+  },
   // Marks the nearest nation with the target crosshair; done once the
   // nation accepts (nations may decline — Skip is the way past that).
   {
@@ -158,6 +174,14 @@ export const TUTORIAL_STEPS: readonly TutorialStep[] = [
     id: "factory_info",
     applies: (c) => !c.factoryDisabled,
     manual: true,
+  },
+  // An upgrade costs what one more city would, so the earn-gold text holds
+  // it until then; done once any structure of ours is above level 1.
+  {
+    id: "upgrade_city",
+    unit: UnitType.City,
+    applies: (c) => !c.cityDisabled,
+    isDone: (c) => c.upgraded,
   },
   // Boats are free, so no earn-gold gating; done once one of ours is afloat.
   {
@@ -237,6 +261,18 @@ export const TUTORIAL_STEPS: readonly TutorialStep[] = [
     id: "sam_info",
     highlight: "sam",
     applies: (c) => !c.samDisabled,
+    manual: true,
+  },
+  {
+    id: "radar_info",
+    highlight: "radar",
+    applies: (c) => !c.radarDisabled,
+    manual: true,
+  },
+  {
+    id: "emp_info",
+    highlight: "emp",
+    applies: (c) => !c.siloDisabled && !c.empDisabled,
     manual: true,
   },
 ];

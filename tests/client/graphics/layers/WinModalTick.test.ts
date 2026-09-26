@@ -12,7 +12,6 @@ vi.mock("../../../../src/client/Utils", () => ({
   getGamesPlayed: vi.fn(() => 10),
   isInIframe: vi.fn(() => false),
   homeHref: vi.fn(() => "/"),
-  TUTORIAL_VIDEO_URL: "https://example.com/tutorial",
 }));
 
 vi.mock("../../../../src/client/Api", () => ({
