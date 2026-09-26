@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.7
+
+🥁 **Original music**
+
+- New menu theme and new in-game music, composed for Territorium: war drums, military snare, timpani, strings, brass and choir.
+- Both tracks loop without a gap. The music volume slider controls them as before; sound effects are unchanged.
+
+⏳ **New loading screen**
+
+- The game now starts on a full loading screen with the Territorium emblem and a gameplay tip.
+- 16 tips cover attacking, trade, buildings, upgrades, objectives, bombs and alliances. They change every few seconds, or on "Next tip".
+
+☢️ **MIRV icon**
+
+- The MIRV icon has been redrawn: a clean silhouette that stays readable at every size.
+
 ## v0.1.6
 
 📖 **New Help page**

@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kod licenciran pod AGPL-3.0 (bez garancije)",
     "credits": "Zasluge",
+    "next_tip": "Sledeći savet",
+    "tip_label": "Savet",
+    "tips": {
+      "alliance": "Saveznici ne mogu da napadaju jedni druge i mogu da šalju jedni drugima trupe i zlato. Jak sused je često korisniji kao saveznik nego kao neprijatelj.",
+      "attack_ratio": "Napadnite sa više trupa nego što ima branilac i gubite manje svojih. Prednost prestaje da raste preko 2 prema 1.",
+      "boat": "Čamci prevoze trupe preko vode. Koristite ih da sletite na obalu do koje ne možete doći kopnom.",
+      "city": "Gradovi podižu maksimalnu populaciju. Izgradite ga kada vam ponestane zemlje za zauzimanje.",
+      "coast": "Mrešćenje pored mora se kasnije isplati: obale vam omogućavaju da gradite luke i šaljete čamce.",
+      "defense": "Odbrambeni stubovi usporavaju napade na obližnje granice i čine da napadač izgubi više vojnika.",
+      "emp": "EMP ne uništava ništa, ali isključuje neprijateljske odbrambene položaje, SAM-ove, silose, portove i radare na 15 sekundi. Udarite pre nego što napadnete.",
+      "factory": "Fabrike povezuju vaše gradove i luke železnicom. Vozovi zarađuju zlato za svaku zgradu koju posete, i više kod vaših komšija.",
+      "frames": "Okvir oko zgrade pokazuje njen nivo: bronza na 2, srebro na 3, zlato na 4.",
+      "mirv": "MIRV se deli u roj bojevih glava na ogromnom području i pogađa samo igrača na koga ste ciljali.",
+      "objectives": "Svaki cilj mape koji imate daje +15% zlata i +5% trupa. Posedujte veći deo njene zone na 15 sekundi da biste je uhvatili.",
+      "radar": "Radar uočava neprijateljske čamce, ratne brodove i projektile unutar 100 pločica, tako da vidite da dolazi invazija.",
+      "sam": "SAM lanseri obaraju projektile u dometu. Svaki SAM nivo dodaje raketu spremnu za ispaljivanje i veći domet.",
+      "trade": "Luke samostalno trguju sa drugim zemljama, a obe strane zarađuju zlato. Napad na igrača zaustavlja vašu trgovinu sa njim na 5 minuta.",
+      "traitor": "Raskid saveza čini vas izdajnikom na 30 sekundi: vaša odbrana pada za polovinu i drugi igrači vam manje veruju.",
+      "upgrade": "Kliknite na jednu od svojih zgrada da otvorite njenu karticu i nadogradite je. Svaki grad, luka ili fabrički nivo se računa kao još jedna zgrada."
+    },
     "title": "Partija počinje..."
   },
   "game_timer": {

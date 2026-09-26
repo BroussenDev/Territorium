@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Mã nguồn được cấp phép theo AGPL-3.0 (không kèm bảo hành)",
     "credits": "Trang ghi công",
+    "next_tip": "Mẹo tiếp theo",
+    "tip_label": "Mẹo",
+    "tips": {
+      "alliance": "Các đồng minh không thể tấn công lẫn nhau và có thể gửi quân và vàng cho nhau. Một người hàng xóm mạnh mẽ thường có ích với tư cách là đồng minh hơn là kẻ thù.",
+      "attack_ratio": "Tấn công với nhiều quân hơn quân phòng thủ và bạn sẽ mất ít quân hơn. Lợi thế không còn tăng lên khi tỷ số 2:1 đã qua.",
+      "boat": "Thuyền chở quân vượt sông. Sử dụng chúng để hạ cánh trên bờ biển mà bạn không thể đến được bằng đường bộ.",
+      "city": "Các thành phố tăng dân số tối đa của bạn. Xây dựng một cái khi bạn hết đất để lấy.",
+      "coast": "Sinh sản bên cạnh biển sẽ mang lại lợi ích sau: bờ biển cho phép bạn xây dựng cảng và gửi thuyền.",
+      "defense": "Các chốt phòng thủ làm chậm các cuộc tấn công vào biên giới gần đó và khiến kẻ tấn công mất nhiều quân hơn.",
+      "emp": "EMP không phá hủy được gì mà chỉ tắt các chốt phòng thủ, SAM, hầm chứa, cảng và radar của đối phương trong 15 giây. Tấn công ngay trước khi bạn tấn công.",
+      "factory": "Các nhà máy liên kết các thành phố và cảng của bạn bằng đường sắt. Xe lửa kiếm được vàng cho mỗi tòa nhà mà họ ghé thăm và hơn thế nữa ở những tòa nhà hàng xóm của bạn.",
+      "frames": "Khung xung quanh tòa nhà thể hiện đẳng cấp của nó: đồng ở mức 2, bạc ở mức 3, vàng từ 4.",
+      "mirv": "MIRV chia thành một đám đầu đạn trên một khu vực rộng lớn và chỉ bắn trúng người chơi mà bạn nhắm tới.",
+      "objectives": "Mỗi mục tiêu trên bản đồ bạn nắm giữ sẽ mang lại +15% vàng và +5% quân lính. Sở hữu hầu hết vùng của nó trong 15 giây để chiếm được nó.",
+      "radar": "Radar phát hiện thuyền, tàu chiến và tên lửa của đối phương trong phạm vi 100 ô, do đó bạn thấy một cuộc xâm lược sắp xảy ra.",
+      "sam": "Bệ phóng SAM bắn hạ tên lửa trong tầm bắn. Mỗi cấp độ SAM bổ sung thêm một tên lửa sẵn sàng khai hỏa và có tầm bắn xa hơn.",
+      "trade": "Các cảng tự mình buôn bán với các nước khác và cả hai bên đều kiếm được vàng. Tấn công người chơi sẽ dừng giao dịch của bạn với họ trong 5 phút.",
+      "traitor": "Phá vỡ một liên minh sẽ khiến bạn trở thành kẻ phản bội trong 30 giây: khả năng phòng thủ của bạn giảm một nửa và những người chơi khác ít tin tưởng bạn hơn.",
+      "upgrade": "Nhấp vào một trong các tòa nhà của bạn để mở thẻ và nâng cấp nó. Mỗi cấp độ thành phố, cảng hoặc nhà máy được tính là một tòa nhà nữa."
+    },
     "title": "Trận đấu đang bắt đầu..."
   },
   "game_timer": {

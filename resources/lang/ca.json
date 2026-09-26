@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Codi llicenciat sota l'AGPL-3.0 (sense garantia)",
     "credits": "Crèdits",
+    "next_tip": "Següent consell",
+    "tip_label": "Consell",
+    "tips": {
+      "alliance": "Els aliats no es poden atacar entre ells i es poden enviar tropes i or. Un veí fort és sovint més útil com a aliat que com a enemic.",
+      "attack_ratio": "Ataca amb més tropes de les que té el defensor i perds menys de les teves. L'avantatge deixa de créixer més enllà del 2 a 1.",
+      "boat": "Els vaixells porten tropes a través de l'aigua. Utilitzeu-los per aterrar en una costa a la qual no podeu arribar per terra.",
+      "city": "Les ciutats augmenten la teva població màxima. Construeix-ne un quan et quedis sense terra per agafar.",
+      "coast": "La posta al costat del mar paga els seus fruits més tard: les costes et permeten construir ports i enviar vaixells.",
+      "defense": "Els llocs de defensa frenen els atacs a les fronteres properes i fan que l'atacant perdi més tropes.",
+      "emp": "Un EMP no destrueix res, però desactiva els llocs de defensa enemics, els SAM, les sitges, els ports i els radars durant 15 segons. Golpea just abans d'atacar.",
+      "factory": "Les fàbriques uneixen les vostres ciutats i ports per ferrocarril. Els trens guanyen or per cada edifici que visiten i més amb els dels teus veïns.",
+      "frames": "El marc que envolta un edifici mostra el seu nivell: bronze a 2, plata a 3, or a 4.",
+      "mirv": "Un MIRV es divideix en un eixam d'ogives sobre una àrea enorme i només colpeja el jugador al qual vas apuntar.",
+      "objectives": "Cada objectiu del mapa que tens dóna +15% d'or i +5% de tropes. Posseeix la major part de la seva zona durant 15 segons per capturar-la.",
+      "radar": "Un radar detecta vaixells, vaixells de guerra i míssils enemics dins de 100 fitxes, de manera que veuràs com s'acosta una invasió.",
+      "sam": "Els llançadors SAM enderroquen míssils al seu abast. Cada nivell SAM afegeix un míssil llest per disparar i més abast.",
+      "trade": "Els ports comercian amb altres països pel seu compte i ambdues parts guanyen or. Atacar un jugador atura el teu comerç amb ell durant 5 minuts.",
+      "traitor": "Trencar una aliança et converteix en un traïdor durant 30 segons: la teva defensa es redueix a la meitat i els altres jugadors confien menys en tu.",
+      "upgrade": "Feu clic a un dels vostres edificis per obrir la seva targeta i actualitzar-la. Cada nivell de ciutat, port o fàbrica compta com un edifici més."
+    },
     "title": "Iniciant la partida..."
   },
   "game_timer": {

@@ -299,6 +299,21 @@ body.in-game #hex-grid {
   opacity: 0.7;
 }
 
+/* The loading screen's progress line: the load has no measurable progress,
+   so a segment keeps sweeping across instead. */
+.loading-sweep {
+  animation: loadingSweep 1.4s ease-in-out infinite;
+}
+
+@keyframes loadingSweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #background-layer,
   .emblem-tile,
@@ -306,6 +321,12 @@ body.in-game #hex-grid {
   .emblem-capital-halo,
   .emblem-frontier-fill {
     animation: none;
+  }
+
+  .loading-sweep {
+    animation: none;
+    width: 100%;
+    opacity: 0.5;
   }
 }
 

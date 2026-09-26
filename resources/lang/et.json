@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kood litsentseeritud AGPL-3.0 alusel (garantiid ei ole)",
     "credits": "Krediit",
+    "next_tip": "Järgmine näpunäide",
+    "tip_label": "Näpunäide",
+    "tips": {
+      "alliance": "Liitlased ei saa üksteist rünnata ja võivad saata üksteisele vägesid ja kulda. Tugev naaber on sageli kasulikum liitlasena kui vaenlasena.",
+      "attack_ratio": "Rünna rohkemate vägedega kui kaitsjal on ja sa kaotad vähem omasid. Eelis ei kasva enam kui 2:1.",
+      "boat": "Paadid veavad vägesid üle vee. Kasutage neid maandumiseks rannikule, kuhu maad mööda ei pääse.",
+      "city": "Linnad suurendavad teie rahvaarvu maksimaalselt. Ehitage üks, kui maa saab otsa, mida võtta.",
+      "coast": "Mere ääres kudemine tasub end hiljem ära: rannikud võimaldavad ehitada sadamaid ja saata paate.",
+      "defense": "Kaitsepostid aeglustavad rünnakuid lähedal asuvatele piiridele ja sunnivad ründajat kaotama rohkem vägesid.",
+      "emp": "EMP ei hävita midagi, vaid lülitab 15 sekundiks välja vaenlase kaitsepostid, SAM-id, silod, pordid ja radarid. Lööge vahetult enne ründamist.",
+      "factory": "Tehased ühendavad teie linnu ja sadamaid raudteega. Rongid teenivad kulda iga hoone eest, mida nad külastavad, ja rohkemgi teie naabrite juures.",
+      "frames": "Hoonet ümbritsev raam näitab selle taset: pronks 2, hõbe 3, kuld 4.",
+      "mirv": "MIRV jaguneb tohutul alal lõhkepeade sülemiks ja tabab ainult mängijat, kelle poole sihisite.",
+      "objectives": "Iga teie kaardi eesmärk annab +15% kulda ja +5% sõdureid. Selle jäädvustamiseks omage suuremat osa selle tsoonist 15 sekundiks.",
+      "radar": "Radar tuvastab vaenlase paate, sõjalaevu ja rakette 100 plaadi raadiuses, nii et näete sissetungi lähenemas.",
+      "sam": "SAM-i kanderaketid tulistavad alla rakette. Iga SAM-i tase lisab tulistamisvalmis raketi ja rohkem laskekaugust.",
+      "trade": "Sadamad kauplevad teiste riikidega iseseisvalt ja mõlemad pooled teenivad kulda. Mängija ründamine peatab teie tehingu temaga 5 minutiks.",
+      "traitor": "Alliansi katkestamine teeb sinust 30 sekundiks reeturi: sinu kaitsevõime langeb poole võrra ja teised mängijad usaldavad sind vähem.",
+      "upgrade": "Klõpsake ühel oma hoonetest, et avada selle kaart ja seda uuendada. Iga linna, sadama või tehase taset loetakse veel üheks hooneks."
+    },
     "title": "Mäng algab..."
   },
   "game_timer": {

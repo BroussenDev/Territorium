@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Codice concesso in licenza con AGPL-3.0 (nessuna garanzia)",
     "credits": "Crediti",
+    "next_tip": "Prossimo consiglio",
+    "tip_label": "Consiglio",
+    "tips": {
+      "alliance": "Gli alleati non possono attaccarsi a vicenda e possono scambiarsi truppe e oro. Un vicino forte è spesso più utile come alleato che come nemico.",
+      "attack_ratio": "Attacca con più truppe di quelle del difensore e ne perderai meno. Il vantaggio smette di crescere oltre il 2 a 1.",
+      "boat": "Le barche trasportano le truppe sull'acqua. Usali per atterrare su una costa che non puoi raggiungere via terra.",
+      "city": "Le città aumentano la tua popolazione massima. Costruiscine uno quando finisci la terra da prendere.",
+      "coast": "La deposizione delle uova vicino al mare ripaga in seguito: le coste consentono di costruire porti e inviare barche.",
+      "defense": "Le postazioni di difesa rallentano gli attacchi ai confini vicini e fanno perdere più truppe all'attaccante.",
+      "emp": "Un EMP non distrugge nulla, ma spegne le postazioni di difesa, i SAM, i silos, i porti e i radar nemici per 15 secondi. Colpisci subito prima di attaccare.",
+      "factory": "Le fabbriche collegano le tue città e i tuoi porti tramite ferrovia. I treni guadagnano oro per ogni edificio che visitano e altro ancora da quello dei tuoi vicini.",
+      "frames": "La cornice attorno ad un edificio ne indica il livello: bronzo a 2, argento a 3, oro a 4.",
+      "mirv": "Un MIRV si divide in uno sciame di testate su un'area vasta e colpisce solo il giocatore a cui hai mirato.",
+      "objectives": "Ogni obiettivo della mappa che possiedi fornisce +15% di oro e +5% di truppe. Possiedi la maggior parte della sua zona per 15 secondi per catturarlo.",
+      "radar": "Un radar individua barche, navi da guerra e missili nemici entro 100 tessere, quindi vedi l'arrivo di un'invasione.",
+      "sam": "I lanciatori SAM abbattono i missili nel loro raggio d'azione. Ogni livello SAM aggiunge un missile pronto a sparare e una maggiore portata.",
+      "trade": "I porti commerciano autonomamente con altri paesi ed entrambe le parti guadagnano oro. Attaccare un giocatore interrompe il tuo scambio con lui per 5 minuti.",
+      "traitor": "Rompere un'alleanza ti rende un traditore per 30 secondi: la tua difesa si riduce della metà e gli altri giocatori si fidano meno di te.",
+      "upgrade": "Fai clic su uno dei tuoi edifici per aprire la sua scheda e potenziarlo. Ogni livello di città, porto o fabbrica conta come un edificio in più."
+    },
     "title": "La partita sta iniziando..."
   },
   "game_timer": {

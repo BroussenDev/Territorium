@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Code licensed under AGPL-3.0 (no warranty)",
     "credits": "Credits",
+    "next_tip": "Next tip",
+    "tip_label": "Tip",
+    "tips": {
+      "alliance": "Allies can't attack each other and can send each other troops and gold. A strong neighbour is often more useful as an ally than as an enemy.",
+      "attack_ratio": "Attack with more troops than the defender has and you lose fewer of your own. The advantage stops growing past 2 to 1.",
+      "boat": "Boats carry troops across water. Use them to land on a coast you can't reach by land.",
+      "city": "Cities raise your maximum population. Build one when you run out of land to take.",
+      "coast": "Spawning next to the sea pays off later: coasts let you build ports and send boats.",
+      "defense": "Defense posts slow down attacks on nearby borders and make the attacker lose more troops.",
+      "emp": "An EMP destroys nothing, but switches off enemy defense posts, SAMs, silos, ports and radars for 15 seconds. Strike right before you attack.",
+      "factory": "Factories link your cities and ports by rail. Trains earn gold for every building they visit, and more at your neighbours'.",
+      "frames": "The frame around a building shows its level: bronze at 2, silver at 3, gold from 4.",
+      "mirv": "A MIRV splits into a swarm of warheads over a huge area, and only hits the player you aimed at.",
+      "objectives": "Each map objective you hold gives +15% gold and +5% troops. Own most of its zone for 15 seconds to capture it.",
+      "radar": "A radar spots enemy boats, warships and missiles within 100 tiles, so you see an invasion coming.",
+      "sam": "SAM launchers shoot down missiles in range. Each SAM level adds a missile ready to fire and more range.",
+      "trade": "Ports trade with other countries on their own, and both sides earn gold. Attacking a player stops your trade with them for 5 minutes.",
+      "traitor": "Breaking an alliance makes you a traitor for 30 seconds: your defense drops by half and other players trust you less.",
+      "upgrade": "Click one of your buildings to open its card and upgrade it. Each city, port or factory level counts as one more building."
+    },
     "title": "Game is Starting..."
   },
   "game_timer": {

@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Código licenciado ao abrigo da AGPL-3.0 (sem garantia)",
     "credits": "Créditos",
+    "next_tip": "Próxima dica",
+    "tip_label": "Dica",
+    "tips": {
+      "alliance": "Os aliados não se podem atacar uns aos outros e podem enviar tropas e ouro uns aos outros. Um vizinho forte é, muitas vezes, mais útil como aliado do que como inimigo.",
+      "attack_ratio": "Ataque com mais tropas do que o defensor tem e perderá menos tropas. A vantagem deixa de crescer para além de 2-1.",
+      "boat": "Os barcos transportam tropas através da água. Use-os para aterrar numa costa que não pode alcançar por terra.",
+      "city": "As cidades aumentam a sua população máxima. Construa um quando ficar sem terreno para ocupar.",
+      "coast": "A desova perto do mar compensa mais tarde: as costas permitem construir portos e enviar barcos.",
+      "defense": "Os postos de defesa abrandam os ataques nas fronteiras próximas e fazem com que o atacante perca mais tropas.",
+      "emp": "Um EMP não destrói nada, mas desliga os postos de defesa inimigos, SAMs, silos, portos e radares durante 15 segundos. Ataque imediatamente antes de atacar.",
+      "factory": "As fábricas ligam as suas cidades e portos por via férrea. Os comboios ganham ouro por cada edifício que visitam e muito mais pelos seus vizinhos.",
+      "frames": "A moldura em torno de um edifício mostra o seu nível: bronze no 2, prata no 3, ouro no 4.",
+      "mirv": "Um MIRV divide-se num enxame de ogivas sobre uma área enorme e atinge apenas o jogador que apontaste.",
+      "objectives": "Cada objetivo do mapa que possua dá +15% de ouro e +5% de tropas. Domina a maior parte da sua zona durante 15 segundos para a capturar.",
+      "radar": "Um radar localiza barcos, navios de guerra e mísseis inimigos num raio de 100 blocos, para que vejas uma invasão a chegar.",
+      "sam": "Os lançadores SAM abatem mísseis ao alcance. Cada nível SAM acrescenta um míssil pronto a disparar e mais alcance.",
+      "trade": "Os portos negoceiam com outros países por conta própria e ambos os lados ganham ouro. Atacar um jogador interrompe a sua negociação com ele durante 5 minutos.",
+      "traitor": "Quebrar uma aliança faz de si um traidor durante 30 segundos: a sua defesa cai para metade e os outros jogadores confiam menos em si.",
+      "upgrade": "Clique num dos seus edifícios para abrir o seu cartão e atualizá-lo. Cada nível de cidade, porto ou fábrica conta como mais um edifício."
+    },
     "title": "O jogo está a começar..."
   },
   "game_timer": {

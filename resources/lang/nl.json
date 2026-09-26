@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Code gelicenseerd onder AGPL-3.0 (geen garantie)",
     "credits": "Credits",
+    "next_tip": "Volgende tip",
+    "tip_label": "Tip",
+    "tips": {
+      "alliance": "Bondgenoten kunnen elkaar niet aanvallen en kunnen elkaar troepen en goud sturen. Een sterke buur is vaak nuttiger als bondgenoot dan als vijand.",
+      "attack_ratio": "Val aan met meer troepen dan de verdediger heeft en je verliest minder van je eigen troepen. Het voordeel stopt met groeien voorbij 2 tegen 1.",
+      "boat": "Boten vervoeren troepen over het water. Gebruik ze om te landen op een kust die je over land niet kunt bereiken.",
+      "city": "Steden verhogen uw maximale bevolking. Bouw er een als je geen land meer hebt om in te nemen.",
+      "coast": "Paaien aan zee loont later: kusten laten je havens bouwen en boten sturen.",
+      "defense": "Verdedigingsposten vertragen aanvallen op nabijgelegen grenzen en zorgen ervoor dat de aanvaller meer troepen verliest.",
+      "emp": "Een EMP vernietigt niets, maar schakelt vijandelijke verdedigingsposten, SAM's, silo's, havens en radars gedurende 15 seconden uit. Sla vlak voordat je aanvalt.",
+      "factory": "Fabrieken verbinden uw steden en havens per spoor. Treinen verdienen goud voor elk gebouw dat ze bezoeken, en meer bij je buren.",
+      "frames": "Het frame rond een gebouw geeft het niveau aan: brons op 2, zilver op 3, goud vanaf 4.",
+      "mirv": "Een MIRV splitst zich in een zwerm kernkoppen over een enorm gebied en raakt alleen de speler waarop je mikt.",
+      "objectives": "Elk kaartdoel dat je bezit levert +15% goud en +5% troepen op. Bezit het grootste deel van zijn zone gedurende 15 seconden om het te veroveren.",
+      "radar": "Een radar signaleert vijandelijke boten, oorlogsschepen en raketten binnen 100 tegels, dus je ziet een invasie aankomen.",
+      "sam": "SAM-lanceerinrichtingen schieten raketten binnen bereik neer. Elk SAM-niveau voegt een raket toe die gereed is om te vuren en een groter bereik.",
+      "trade": "Havens handelen op eigen kracht met andere landen, en beide partijen verdienen goud. Als je een speler aanvalt, wordt je ruil met hem gedurende 5 minuten stopgezet.",
+      "traitor": "Als je een alliantie verbreekt, ben je voor 30 seconden een verrader: je verdediging daalt met de helft en andere spelers vertrouwen je minder.",
+      "upgrade": "Klik op een van je gebouwen om de bijbehorende kaart te openen en deze te upgraden. Elk stad-, haven- of fabrieksniveau telt als één gebouw extra."
+    },
     "title": "Spel gaat starten..."
   },
   "game_timer": {

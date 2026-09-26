@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kód je licencován pod AGPL-3.0 (bez záruky)",
     "credits": "Poděkování",
+    "next_tip": "Další tip",
+    "tip_label": "Tip",
+    "tips": {
+      "alliance": "Spojenci na sebe nemohou útočit a mohou si navzájem posílat vojáky a zlato. Silný soused je často užitečnější jako spojenec než jako nepřítel.",
+      "attack_ratio": "Zaútočte s více vojáky, než má obránce, a ztratíte méně svých. Výhoda přestane růst přes 2:1.",
+      "boat": "Lodě přepravují vojáky přes vodu. Použijte je k přistání na pobřeží, kam se po souši nedostanete.",
+      "city": "Města zvýší vaši maximální populaci. Postavte si jeden, když vám dojde pozemek, který můžete zabrat.",
+      "coast": "Tření u moře se vyplatí později: pobřeží vám umožní stavět přístavy a posílat lodě.",
+      "defense": "Obranná stanoviště zpomalují útoky na blízké hranice a způsobují, že útočník ztrácí více vojáků.",
+      "emp": "EMP nic nezničí, ale na 15 sekund vypne nepřátelská obranná stanoviště, SAM, sila, přístavy a radary. Úder těsně před útokem.",
+      "factory": "Továrny spojují vaše města a přístavy železnicí. Vlaky vydělávají zlato za každou budovu, kterou navštíví, a další u vašich sousedů.",
+      "frames": "Rám kolem budovy ukazuje její úroveň: bronz na 2, stříbro na 3, zlato na 4.",
+      "mirv": "MIRV se rozdělí na roj hlavic na obrovské ploše a zasáhne pouze hráče, na kterého jste zamířili.",
+      "objectives": "Každý cíl mapy, který držíte, dává +15 % zlata a +5 % vojáků. Vlastni většinu jeho zóny na 15 sekund, abys ji zachytil.",
+      "radar": "Radar zaznamená nepřátelské čluny, válečné lodě a střely na vzdálenost 100 dílků, takže vidíte, že se blíží invaze.",
+      "sam": "Odpalovací zařízení SAM sestřelují rakety v dosahu. Každá úroveň SAM přidává střelu připravenou ke střelbě a větší dostřel.",
+      "trade": "Přístavy obchodují s jinými zeměmi samy a obě strany vydělávají zlato. Útok na hráče zastaví váš obchod s ním na 5 minut.",
+      "traitor": "Rozbitím aliance se na 30 sekund stanete zrádcem: vaše obrana klesne na polovinu a ostatní hráči vám méně věří.",
+      "upgrade": "Kliknutím na jednu ze svých budov otevřete její kartu a vylepšete ji. Každá úroveň města, přístavu nebo továrny se počítá jako jedna další budova."
+    },
     "title": "Hra začíná..."
   },
   "game_timer": {

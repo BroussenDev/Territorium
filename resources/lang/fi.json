@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Koodi lisensoitu AGPL-3.0:lla (ei takuuta)",
     "credits": "Krediitit",
+    "next_tip": "Seuraava vinkki",
+    "tip_label": "Vinkki",
+    "tips": {
+      "alliance": "Liittolaiset eivät voi hyökätä toisiaan vastaan ja voivat lähettää toisilleen joukkoja ja kultaa. Vahva naapuri on usein hyödyllisempi liittolaisena kuin vihollisena.",
+      "attack_ratio": "Hyökkää enemmän joukkoja kuin puolustajalla on ja menetät vähemmän omiasi. Etu lakkaa kasvamasta 2:sta 1:een.",
+      "boat": "Veneet kuljettavat joukkoja veden yli. Käytä niitä laskeutuessasi rannikolle, johon et pääse maalla.",
+      "city": "Kaupungit kasvattavat enimmäisväestöäsi. Rakenna sellainen, kun maasi loppuu.",
+      "coast": "Kutu meren äärellä maksaa myöhemmin: rannikoilla voi rakentaa satamia ja lähettää veneitä.",
+      "defense": "Puolustusasemat hidastavat hyökkäyksiä lähirajoilla ja saavat hyökkääjän menettämään lisää joukkoja.",
+      "emp": "EMP ei tuhoa mitään, mutta sammuttaa vihollisen puolustusasemat, SAM:t, siilot, portit ja tutkat 15 sekunniksi. Lyö juuri ennen hyökkäämistä.",
+      "factory": "Tehtaat yhdistävät kaupunkisi ja satamasi rautateitse. Junat ansaitsevat kultaa jokaisesta rakennuksesta, jossa he vierailevat, ja enemmän naapureistasi.",
+      "frames": "Rakennusta ympäröivä kehys näyttää sen tason: pronssia 2, hopea 3, kulta 4.",
+      "mirv": "MIRV jakautuu taistelukärkien parviksi valtavalla alueella ja osuu vain siihen pelaajaan, johon tähtäsit.",
+      "objectives": "Jokainen karttatavoite antaa +15% kultaa ja +5% joukkoja. Omista suurin osa vyöhykkeestä 15 sekuntia vangitaksesi sen.",
+      "radar": "Tutka havaitsee vihollisen veneitä, sota-aluksia ja ohjuksia 100 ruudun säteellä, joten näet hyökkäyksen tulossa.",
+      "sam": "SAM-laukaisimet ampuvat alas ohjuksia kantamalla. Jokainen SAM-taso lisää ampumaan valmiin ohjuksen ja lisää kantamaa.",
+      "trade": "Satamat käyvät kauppaa muiden maiden kanssa yksin, ja molemmat osapuolet ansaitsevat kultaa. Pelaajaa vastaan hyökkääminen keskeyttää kaupankäynnin hänen kanssaan 5 minuutiksi.",
+      "traitor": "Liiton rikkominen tekee sinusta petturin 30 sekunniksi: puolustus putoaa puoleen ja muut pelaajat luottavat sinuun vähemmän.",
+      "upgrade": "Napsauta jotakin rakennuksistasi avataksesi sen kortin ja päivittääksesi sen. Jokainen kaupunki, satama tai tehdastaso lasketaan yhdeksi lisärakennukseksi."
+    },
     "title": "Peli alkaa..."
   },
   "game_timer": {

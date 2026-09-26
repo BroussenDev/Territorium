@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Licență cod sursă: AGPL-3.0 (fără garanție)",
     "credits": "Credite",
+    "next_tip": "Următorul sfat",
+    "tip_label": "Sfat",
+    "tips": {
+      "alliance": "Aliații nu se pot ataca unii pe alții și se pot trimite reciproc trupe și aur. Un vecin puternic este adesea mai util ca aliat decât ca inamic.",
+      "attack_ratio": "Atacă cu mai multe trupe decât are apărătorul și le pierzi mai puține. Avantajul încetează să crească peste 2 la 1.",
+      "boat": "Bărcile transportă trupe peste apă. Folosiți-le pentru a ateriza pe o coastă la care nu puteți ajunge pe uscat.",
+      "city": "Orașele îți ridică populația maximă. Construiți unul când rămâneți fără teren de luat.",
+      "coast": "Depunerea pe lângă mare dă roade mai târziu: coastele vă permit să construiți porturi și să trimiteți bărci.",
+      "defense": "Posturile de apărare încetinesc atacurile la granițele din apropiere și îl fac pe atacator să piardă mai multe trupe.",
+      "emp": "Un EMP nu distruge nimic, dar oprește posturile de apărare inamice, SAM-urile, silozurile, porturile și radarele timp de 15 secunde. Loviți chiar înainte de a ataca.",
+      "factory": "Fabricile vă leagă orașele și porturile pe calea ferată. Trenurile câștigă aur pentru fiecare clădire pe care o vizitează și mai mult la vecinii tăi.",
+      "frames": "Rama din jurul unei clădiri arată nivelul acesteia: bronz la 2, argint la 3, aur la 4.",
+      "mirv": "Un MIRV se împarte într-un roi de focoase pe o zonă imensă și lovește doar jucătorul pe care l-ai vizat.",
+      "objectives": "Fiecare obiectiv pe hartă pe care îl dețineți oferă +15% aur și +5% trupe. Dețineți cea mai mare parte a zonei sale timp de 15 secunde pentru a o captura.",
+      "radar": "Un radar observă bărci inamice, nave de război și rachete în decurs de 100 de plăci, așa că vedeți o invazie care se apropie.",
+      "sam": "Lansatoarele SAM doboară rachete în raza de acțiune. Fiecare nivel SAM adaugă o rachetă gata de tragere și mai multă rază de acțiune.",
+      "trade": "Porturile fac comerț cu alte țări pe cont propriu și ambele părți câștigă aur. Atacul unui jucător vă oprește schimbul cu el timp de 5 minute.",
+      "traitor": "Ruperea unei alianțe te face trădător timp de 30 de secunde: apărarea ta scade la jumătate, iar alți jucători au mai puțină încredere în tine.",
+      "upgrade": "Faceți clic pe una dintre clădirile dvs. pentru a-și deschide cardul și pentru a o îmbunătăți. Fiecare oraș, port sau nivel de fabrică contează ca încă o clădire."
+    },
     "title": "Începe jocul..."
   },
   "game_timer": {

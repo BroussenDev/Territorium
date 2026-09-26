@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kod AGPL-3.0 altında lisanslanmıştır (garanti yok)",
     "credits": "Atıflar",
+    "next_tip": "Sonraki ipucu",
+    "tip_label": "İpucu",
+    "tips": {
+      "alliance": "Müttefikler birbirlerine saldıramazlar ve birbirlerine birlik ve altın gönderebilirler. Güçlü bir komşu çoğu zaman düşmandan ziyade müttefik olarak daha faydalıdır.",
+      "attack_ratio": "Savunan tarafın sahip olduğundan daha fazla birlikle saldırırsanız daha az asker kaybedersiniz. Avantaj 2'ye 1'in üzerine çıkmayı bırakıyor.",
+      "boat": "Tekneler birlikleri su üzerinde taşıyor. Karadan ulaşamayacağınız bir sahile inmek için bunları kullanın.",
+      "city": "Şehirler maksimum nüfusunuzu artırır. Alacak araziniz kalmadığında bir tane inşa edin.",
+      "coast": "Deniz kenarında yumurtlamak daha sonra karşılığını verir: kıyılar limanlar inşa etmenize ve tekne göndermenize olanak tanır.",
+      "defense": "Savunma direkleri yakındaki sınırlara yapılan saldırıları yavaşlatır ve saldırganın daha fazla asker kaybetmesine neden olur.",
+      "emp": "Bir EMP hiçbir şeyi yok etmez ancak düşman savunma direklerini, SAM'leri, siloları, limanları ve radarları 15 saniyeliğine kapatır. Saldırmadan hemen önce saldırın.",
+      "factory": "Fabrikalar şehirlerinizi ve limanlarınızı demiryoluyla birbirine bağlar. Trenler ziyaret ettikleri her bina için, komşularınızda ise daha fazla altın kazanır.",
+      "frames": "Bir binanın etrafındaki çerçeve onun seviyesini gösterir: 2'de bronz, 3'te gümüş, 4'te altın.",
+      "mirv": "MIRV, geniş bir alanda savaş başlıklarına bölünür ve yalnızca hedeflediğiniz oyuncuyu vurur.",
+      "objectives": "Sahip olduğunuz her harita hedefi +%15 altın ve +%5 birlik verir. Onu ele geçirmek için 15 saniye boyunca bölgesinin büyük bir kısmına sahip olun.",
+      "radar": "Bir radar, 100 karo içindeki düşman teknelerini, savaş gemilerini ve füzelerini tespit eder, böylece bir istilanın yaklaştığını görürsünüz.",
+      "sam": "SAM rampaları menzildeki füzeleri vuruyor. Her SAM seviyesi, ateş etmeye hazır bir füze ve daha fazla menzil ekler.",
+      "trade": "Limanlar diğer ülkelerle kendi başlarına ticaret yapıyor ve her iki taraf da altın kazanıyor. Bir oyuncuya saldırmak, onunla olan ticaretinizi 5 dakika süreyle durdurur.",
+      "traitor": "Bir ittifakı bozmak sizi 30 saniye boyunca hain yapar: savunmanız yarı yarıya düşer ve diğer oyuncular size daha az güvenir.",
+      "upgrade": "Binalarınızdan birine tıklayarak kartını açın ve onu yükseltin. Her şehir, liman veya fabrika seviyesi bir bina daha sayılır."
+    },
     "title": "Oyun Başlıyor..."
   },
   "game_timer": {

@@ -1091,7 +1091,27 @@
   "game_starting_modal": {
     "code_license": "Code sous licence AGPL-3.0 (sans garantie)",
     "credits": "Crédits",
-    "title": "La partie est en train de commencer..."
+    "next_tip": "Astuce suivante",
+    "tip_label": "Astuce",
+    "tips": {
+      "alliance": "Les alliés ne peuvent pas s'attaquer et peuvent s'envoyer des troupes et de l'or. Un voisin puissant est souvent plus utile en allié qu'en ennemi.",
+      "attack_ratio": "Attaquez avec plus de troupes que le défenseur et vous en perdrez moins. L'avantage cesse de grandir au-delà de 2 contre 1.",
+      "boat": "Les bateaux transportent des troupes par la mer. Servez-vous-en pour débarquer sur une côte que vous ne pouvez pas atteindre par la terre.",
+      "city": "Les villes augmentent votre population maximale. Construisez-en une quand vous n'avez plus de terres à prendre.",
+      "coast": "Apparaître au bord de la mer paie plus tard : les côtes permettent de construire des ports et d'envoyer des bateaux.",
+      "defense": "Les postes de défense ralentissent les attaques sur les frontières proches et font perdre plus de troupes à l'assaillant.",
+      "emp": "Une bombe IEM ne détruit rien, mais coupe les postes de défense, SAM, silos, ports et radars ennemis pendant 15 secondes. Frappez juste avant d'attaquer.",
+      "factory": "Les usines relient vos villes et vos ports par le rail. Les trains rapportent de l'or pour chaque bâtiment desservi, et davantage chez vos voisins.",
+      "frames": "Le cadre autour d'un bâtiment indique son niveau : bronze au niveau 2, argent au 3, or à partir du 4.",
+      "mirv": "Un MIRV se divise en une pluie d'ogives sur une immense zone, et ne touche que le joueur visé.",
+      "objectives": "Chaque objectif de la carte que vous tenez rapporte +15 % d'or et +5 % de troupes. Occupez la majeure partie de sa zone pendant 15 secondes pour le capturer.",
+      "radar": "Un radar repère les bateaux, navires de guerre et missiles ennemis à 100 cases, pour voir venir une invasion.",
+      "sam": "Les lanceurs de SAM abattent les missiles à leur portée. Chaque niveau ajoute un missile prêt à tirer et de la portée.",
+      "trade": "Les ports commercent d'eux-mêmes avec les autres pays et les deux camps gagnent de l'or. Attaquer un joueur coupe votre commerce avec lui pendant 5 minutes.",
+      "traitor": "Rompre une alliance fait de vous un traître pendant 30 secondes : votre défense est réduite de moitié et les autres joueurs se méfient de vous.",
+      "upgrade": "Cliquez sur un de vos bâtiments pour ouvrir sa fiche et l'améliorer. Chaque niveau de ville, de port ou d'usine compte comme un bâtiment de plus."
+    },
+    "title": "La partie commence…"
   },
   "game_timer": {
     "one_minute_remaining": "Une minute restante !"

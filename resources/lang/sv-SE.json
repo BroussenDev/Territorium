@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kod licensierad under AGPL-3.0 (ingen garanti)",
     "credits": "Krediter",
+    "next_tip": "Nästa tips",
+    "tip_label": "Tips",
+    "tips": {
+      "alliance": "Allierade kan inte attackera varandra och kan skicka trupper och guld till varandra. En stark granne är ofta mer användbar som allierad än som fiende.",
+      "attack_ratio": "Attackera med fler trupper än vad försvararen har och du förlorar färre av dina egna. Fördelen slutar växa över 2 till 1.",
+      "boat": "Båtar bär trupper över vattnet. Använd dem för att landa på en kust som du inte kan nå landvägen.",
+      "city": "Städer ökar din maximala befolkning. Bygg en när du får slut på mark att ta.",
+      "coast": "Att leka bredvid havet lönar sig senare: kuster låter dig bygga hamnar och skicka båtar.",
+      "defense": "Försvarsposter bromsar attacker mot närliggande gränser och gör att angriparen förlorar fler trupper.",
+      "emp": "En EMP förstör ingenting, men stänger av fiendens försvarsposter, SAM, silos, hamnar och radar i 15 sekunder. Slå precis innan du attackerar.",
+      "factory": "Fabriker länkar samman dina städer och hamnar med järnväg. Tåg tjänar guld för varje byggnad de besöker, och mer hos dina grannar.",
+      "frames": "Ramen runt en byggnad visar dess nivå: brons vid 2, silver vid 3, guld från 4.",
+      "mirv": "En MIRV delar sig i en svärm av stridsspetsar över ett enormt område, och träffar bara spelaren du siktade på.",
+      "objectives": "Varje kartmål du har ger +15% guld och +5% trupper. Äg större delen av sin zon i 15 sekunder för att fånga den.",
+      "radar": "En radar upptäcker fiendens båtar, krigsfartyg och missiler inom 100 brickor, så du ser en invasion komma.",
+      "sam": "SAM-raketer skjuter ner missiler inom räckhåll. Varje SAM-nivå lägger till en missil redo att avfyras och mer räckvidd.",
+      "trade": "Hamnar handlar med andra länder på egen hand, och båda sidor tjänar guld. Att attackera en spelare stoppar din handel med dem i 5 minuter.",
+      "traitor": "Att bryta en allians gör dig till en förrädare i 30 sekunder: ditt försvar sjunker med hälften och andra spelare litar mindre på dig.",
+      "upgrade": "Klicka på en av dina byggnader för att öppna dess kort och uppgradera det. Varje stad, hamn eller fabriksnivå räknas som en byggnad till."
+    },
     "title": "Spelet startar..."
   },
   "game_timer": {

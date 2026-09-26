@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kode berlisensi AGPL-3.0 (tanpa garansi)",
     "credits": "Kredit",
+    "next_tip": "Kiat selanjutnya",
+    "tip_label": "Kiat",
+    "tips": {
+      "alliance": "Sekutu tidak bisa menyerang satu sama lain dan bisa saling mengirim pasukan dan emas. Tetangga yang kuat seringkali lebih berguna sebagai sekutu dibandingkan sebagai musuh.",
+      "attack_ratio": "Serang dengan lebih banyak pasukan daripada yang dimiliki bek dan Anda akan kehilangan lebih sedikit pasukan Anda. Keunggulannya berhenti tumbuh melewati 2 banding 1.",
+      "boat": "Perahu membawa pasukan melintasi perairan. Gunakan mereka untuk mendarat di pantai yang tidak dapat Anda capai melalui darat.",
+      "city": "Kota meningkatkan populasi maksimum Anda. Bangun satu ketika Anda kehabisan lahan untuk diambil.",
+      "coast": "Pemijahan di tepi laut akan membuahkan hasil nanti: pantai memungkinkan Anda membangun pelabuhan dan mengirim perahu.",
+      "defense": "Pos pertahanan memperlambat serangan di perbatasan terdekat dan membuat penyerang kehilangan lebih banyak pasukan.",
+      "emp": "EMP tidak menghancurkan apa pun, tetapi mematikan pos pertahanan musuh, SAM, silo, pelabuhan, dan radar selama 15 detik. Serang tepat sebelum Anda menyerang.",
+      "factory": "Pabrik menghubungkan kota dan pelabuhan Anda dengan kereta api. Kereta api mendapatkan emas untuk setiap bangunan yang mereka kunjungi, dan lebih banyak lagi di bangunan tetangga Anda.",
+      "frames": "Bingkai di sekeliling bangunan menunjukkan levelnya: perunggu di level 2, perak di level 3, emas di level 4.",
+      "mirv": "MIRV terbagi menjadi segerombolan hulu ledak di area yang luas, dan hanya mengenai pemain yang Anda bidik.",
+      "objectives": "Setiap objektif peta yang Anda pegang memberikan +15% emas dan +5% pasukan. Miliki sebagian besar zonanya selama 15 detik untuk menangkapnya.",
+      "radar": "Radar mendeteksi kapal musuh, kapal perang, dan rudal dalam jarak 100 ubin, sehingga Anda melihat invasi datang.",
+      "sam": "Peluncur SAM menembak jatuh rudal dalam jangkauannya. Setiap level SAM menambahkan rudal yang siap ditembakkan dan jangkauan yang lebih jauh.",
+      "trade": "Pelabuhan berdagang sendiri dengan negara lain, dan kedua belah pihak mendapatkan emas. Menyerang pemain menghentikan perdagangan Anda dengan mereka selama 5 menit.",
+      "traitor": "Menghancurkan aliansi membuat Anda menjadi pengkhianat selama 30 detik: pertahanan Anda turun setengahnya dan pemain lain kurang mempercayai Anda.",
+      "upgrade": "Klik salah satu bangunan Anda untuk membuka kartunya dan meningkatkannya. Setiap tingkat kota, pelabuhan, atau pabrik dihitung sebagai satu bangunan lagi."
+    },
     "title": "Memulai Permainan..."
   },
   "game_timer": {

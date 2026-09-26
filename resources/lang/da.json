@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kode licenseret under AGPL-3.0 (ingen garanti)",
     "credits": "Kreditter",
+    "next_tip": "Næste tip",
+    "tip_label": "Tip",
+    "tips": {
+      "alliance": "Allierede kan ikke angribe hinanden og kan sende hinanden tropper og guld. En stærk nabo er ofte mere nyttig som en allieret end som en fjende.",
+      "attack_ratio": "Angreb med flere tropper, end forsvareren har, og du mister færre af dine egne. Fordelen holder op med at vokse forbi 2 til 1.",
+      "boat": "Både fører tropper over vandet. Brug dem til at lande på en kyst, du ikke kan nå til lands.",
+      "city": "Byer øger din maksimale befolkning. Byg en, når du løber tør for jord at tage.",
+      "coast": "Gydning ved siden af havet betaler sig senere: kyster giver dig mulighed for at bygge havne og sende både.",
+      "defense": "Forsvarsposter bremser angreb på nærliggende grænser og får angriberen til at miste flere tropper.",
+      "emp": "En EMP ødelægger intet, men slukker fjendens forsvarsposter, SAM'er, siloer, havne og radarer i 15 sekunder. Slå lige før du angriber.",
+      "factory": "Fabrikker forbinder dine byer og havne med jernbane. Tog tjener guld for hver bygning, de besøger, og mere hos dine naboer.",
+      "frames": "Rammen omkring en bygning viser dens niveau: bronze på 2, sølv på 3, guld fra 4.",
+      "mirv": "En MIRV deler sig i en sværm af sprænghoveder over et enormt område, og rammer kun den spiller, du sigtede mod.",
+      "objectives": "Hvert kortmål, du har, giver +15% guld og +5% tropper. Eje det meste af sin zone i 15 sekunder for at fange den.",
+      "radar": "En radar opdager fjendtlige både, krigsskibe og missiler inden for 100 fliser, så du ser en invasion komme.",
+      "sam": "SAM-raketter skyder missiler ned inden for rækkevidde. Hvert SAM-niveau tilføjer et missil klar til at skyde og mere rækkevidde.",
+      "trade": "Havne handler med andre lande på egen hånd, og begge sider tjener guld. At angribe en spiller stopper din handel med dem i 5 minutter.",
+      "traitor": "At bryde en alliance gør dig til en forræder i 30 sekunder: Dit forsvar falder til det halve, og andre spillere stoler mindre på dig.",
+      "upgrade": "Klik på en af dine bygninger for at åbne dets kort og opgradere det. Hver by, havn eller fabriksniveau tæller som en bygning mere."
+    },
     "title": "Spillet Starter..."
   },
   "game_timer": {

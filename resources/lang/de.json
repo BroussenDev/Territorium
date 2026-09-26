@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Code lizenziert unter AGPL-3.0 (ohne Gewährleistung)",
     "credits": "Credits",
+    "next_tip": "Nächster Tipp",
+    "tip_label": "Tipp",
+    "tips": {
+      "alliance": "Verbündete können einander nicht angreifen und sich gegenseitig Truppen und Gold schicken. Ein starker Nachbar ist als Verbündeter oft nützlicher als als Feind.",
+      "attack_ratio": "Greifen Sie mit mehr Truppen an, als der Verteidiger hat, und Sie verlieren weniger eigene Truppen. Der Vorteil wächst nicht mehr über 2 zu 1 hinaus.",
+      "boat": "Boote transportieren Truppen über das Wasser. Benutzen Sie sie, um an einer Küste zu landen, die Sie auf dem Landweg nicht erreichen können.",
+      "city": "Städte erhöhen Ihre maximale Bevölkerung. Bauen Sie eins, wenn Ihnen das Land ausgeht.",
+      "coast": "Das Laichen am Meer zahlt sich später aus: An den Küsten kann man Häfen bauen und Boote schicken.",
+      "defense": "Verteidigungsposten verlangsamen Angriffe auf nahegelegene Grenzen und führen dazu, dass der Angreifer mehr Truppen verliert.",
+      "emp": "Ein EMP zerstört nichts, schaltet aber feindliche Verteidigungsposten, SAMs, Silos, Häfen und Radargeräte für 15 Sekunden aus. Schlagen Sie zu, bevor Sie angreifen.",
+      "factory": "Fabriken verbinden Ihre Städte und Häfen per Bahn. Züge verdienen Gold für jedes Gebäude, das sie besuchen, und noch mehr bei Ihren Nachbarn.",
+      "frames": "Der Rahmen um ein Gebäude zeigt dessen Level an: Bronze bei 2, Silber bei 3, Gold bei 4.",
+      "mirv": "Ein MIRV teilt sich über ein riesiges Gebiet in einen Schwarm Sprengköpfe auf und trifft nur den Spieler, auf den Sie gezielt haben.",
+      "objectives": "Für jedes Kartenziel, das Sie halten, erhalten Sie +15 % Gold und +5 % Truppen. Besitzen Sie 15 Sekunden lang den größten Teil seiner Zone, um es einzunehmen.",
+      "radar": "Ein Radar erkennt feindliche Boote, Kriegsschiffe und Raketen im Umkreis von 100 Feldern, sodass Sie eine bevorstehende Invasion erkennen können.",
+      "sam": "SAM-Werfer schießen Raketen in Reichweite ab. Jede SAM-Stufe fügt eine schussbereite Rakete und mehr Reichweite hinzu.",
+      "trade": "Häfen handeln selbstständig mit anderen Ländern und beide Seiten verdienen Gold. Wenn Sie einen Spieler angreifen, wird Ihr Handel mit ihm für 5 Minuten gestoppt.",
+      "traitor": "Wenn Sie eine Allianz brechen, werden Sie 30 Sekunden lang zum Verräter: Ihre Verteidigung sinkt um die Hälfte und andere Spieler vertrauen Ihnen weniger.",
+      "upgrade": "Klicken Sie auf eines Ihrer Gebäude, um dessen Karte zu öffnen und es zu verbessern. Jede Stadt-, Hafen- oder Fabrikebene zählt als ein weiteres Gebäude."
+    },
     "title": "Das Spiel startet..."
   },
   "game_timer": {

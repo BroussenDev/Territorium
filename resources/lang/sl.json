@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Koda licencirana pod AGPL-3.0 (brez garancije)",
     "credits": "Krediti",
+    "next_tip": "Naslednji nasvet",
+    "tip_label": "Nasvet",
+    "tips": {
+      "alliance": "Zavezniki ne morejo napadati drug drugega in si lahko pošiljajo vojake in zlato. Močan sosed je pogosto bolj koristen kot zaveznik kot sovražnik.",
+      "attack_ratio": "Napadite z več enotami, kot jih ima branilec, in izgubili boste manj svojih. Prednost neha naraščati čez 2 proti 1.",
+      "boat": "Čolni prevažajo vojake po vodi. Uporabite jih za pristanek na obali, ki je ne morete doseči po kopnem.",
+      "city": "Mesta povečajo vaše največje število prebivalcev. Zgradite ga, ko vam zmanjka zemlje.",
+      "coast": "Drstenje ob morju se kasneje izplača: obale vam omogočajo gradnjo pristanišč in pošiljanje čolnov.",
+      "defense": "Obrambne postojanke upočasnijo napade na bližnje meje in povzročijo, da napadalec izgubi več vojakov.",
+      "emp": "EMP ne uniči ničesar, vendar za 15 sekund izklopi sovražnikove obrambne postojanke, SAM-e, silose, pristanišča in radarje. Udarite tik preden napadete.",
+      "factory": "Tovarne povezujejo vaša mesta in pristanišča z železnico. Vlaki zaslužijo zlato za vsako stavbo, ki jo obiščejo, in več pri vaših sosedih.",
+      "frames": "Okvir okoli stavbe prikazuje njeno raven: bronasta na 2, srebrna na 3, zlata na 4.",
+      "mirv": "MIRV se razdeli na roj bojnih glav na ogromnem območju in zadene le igralca, na katerega ste ciljali.",
+      "objectives": "Vsak cilj zemljevida, ki ga držite, daje +15 % zlata in +5 % vojakov. Zavzemite večino svojega območja za 15 sekund, da ga ujamete.",
+      "radar": "Radar opazi sovražne čolne, vojaške ladje in izstrelke znotraj 100 ploščic, tako da vidite, da se bliža invazija.",
+      "sam": "Lansirniki SAM sestrelijo rakete v dosegu. Vsaka raven SAM doda raketo, pripravljeno na izstrelitev, in večji doseg.",
+      "trade": "Pristanišča sama trgujejo z drugimi državami in obe strani zaslužita zlato. Napad na igralca ustavi vašo trgovino z njim za 5 minut.",
+      "traitor": "Če prekinete zavezništvo, postanete izdajalec za 30 sekund: vaša obramba se zmanjša za polovico in drugi igralci vam manj zaupajo.",
+      "upgrade": "Kliknite eno od svojih zgradb, da odprete njeno kartico in jo nadgradite. Vsaka raven mesta, pristanišča ali tovarne šteje kot ena zgradba več."
+    },
     "title": "Igra se začenja..."
   },
   "game_timer": {

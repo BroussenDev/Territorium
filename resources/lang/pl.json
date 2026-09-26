@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kod licencjonowany zgodnie z AGPL-3.0 (bez gwarancji)",
     "credits": "Autorzy",
+    "next_tip": "Następna wskazówka",
+    "tip_label": "Wskazówka",
+    "tips": {
+      "alliance": "Sojusznicy nie mogą atakować się nawzajem i mogą wysyłać sobie nawzajem wojska i złoto. Silny sąsiad jest często bardziej przydatny jako sojusznik niż jako wróg.",
+      "attack_ratio": "Atakuj większą liczbą żołnierzy, niż ma obrońca, a stracisz mniej swoich. Przewaga przestaje rosnąć powyżej 2 do 1.",
+      "boat": "Łodzie przewożą żołnierzy przez wodę. Wykorzystaj je, aby wylądować na wybrzeżu, do którego nie można dotrzeć drogą lądową.",
+      "city": "Miasta zwiększają maksymalną populację. Zbuduj taki, gdy zabraknie Ci ziemi do wzięcia.",
+      "coast": "Tarło nad morzem opłaca się później: na wybrzeżach można budować porty i wysyłać łodzie.",
+      "defense": "Posterunki obronne spowalniają ataki na pobliskie granice i sprawiają, że atakujący traci więcej żołnierzy.",
+      "emp": "EMP niczego nie niszczy, ale wyłącza posterunki obronne wroga, SAM, silosy, porty i radary na 15 sekund. Uderz tuż przed atakiem.",
+      "factory": "Fabryki łączą Twoje miasta i porty koleją. Pociągi zarabiają złoto za każdy odwiedzany budynek, a jeszcze więcej u sąsiadów.",
+      "frames": "Ramka wokół budynku pokazuje jego poziom: brązowy na 2, srebrny na 3, złoty na 4.",
+      "mirv": "MIRV dzieli się na rój głowic bojowych na ogromnym obszarze i uderza tylko w gracza, w którego celowałeś.",
+      "objectives": "Każdy cel na mapie, który posiadasz, daje +15% złota i +5% żołnierzy. Zdobądź większość jego strefy na 15 sekund, aby ją przejąć.",
+      "radar": "Radar wykrywa wrogie łodzie, okręty wojenne i rakiety w promieniu 100 pól, więc widzisz nadchodzącą inwazję.",
+      "sam": "Wyrzutnie SAM zestrzeliwują rakiety w zasięgu. Każdy poziom SAM dodaje rakietę gotową do wystrzelenia i większy zasięg.",
+      "trade": "Porty samodzielnie handlują z innymi krajami i obie strony zarabiają na złocie. Zaatakowanie gracza zatrzymuje handel z nim na 5 minut.",
+      "traitor": "Zerwanie sojuszu czyni cię zdrajcą na 30 sekund: twoja obrona spada o połowę, a inni gracze mniej ci ufają.",
+      "upgrade": "Kliknij jeden ze swoich budynków, aby otworzyć jego kartę i ulepszyć ją. Każde miasto, port lub poziom fabryki liczy się jako jeszcze jeden budynek."
+    },
     "title": "Gra się rozpoczyna..."
   },
   "game_timer": {

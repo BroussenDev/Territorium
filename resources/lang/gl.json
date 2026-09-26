@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Código licenciado baixo AGPL-3.0 (sen garantía)",
     "credits": "Créditos",
+    "next_tip": "Seguinte consello",
+    "tip_label": "Consello",
+    "tips": {
+      "alliance": "Os aliados non poden atacarse uns aos outros e poden enviarse tropas e ouro. Un veciño forte adoita ser máis útil como aliado que como inimigo.",
+      "attack_ratio": "Ataca con máis tropas das que ten o defensor e perderás menos dos teus. A vantaxe deixa de crecer despois de 2 a 1.",
+      "boat": "Os barcos levan tropas a través da auga. Utilízaos para aterrar nunha costa á que non podes chegar por terra.",
+      "city": "As cidades elevan a túa máxima poboación. Constrúe un cando quede sen terra para tomar.",
+      "coast": "O desove xunto ao mar paga a súa recompensa despois: as costas permítenche construír portos e enviar barcos.",
+      "defense": "Os postos de defensa retardan os ataques nas fronteiras próximas e fan que o atacante perda máis tropas.",
+      "emp": "Un EMP non destrúe nada, pero apaga os postos de defensa inimigos, SAM, silos, portos e radares durante 15 segundos. Golpea xusto antes de atacar.",
+      "factory": "As fábricas conectan as túas cidades e portos por ferrocarril. Os trens gañan ouro por cada edificio que visitan, e máis cos teus veciños.",
+      "frames": "O cadro arredor dun edificio mostra o seu nivel: bronce no 2, prata no 3, ouro no 4.",
+      "mirv": "Un MIRV divídese nun enxame de oxivas sobre unha área enorme e só golpea ao xogador ao que apuntaches.",
+      "objectives": "Cada obxectivo do mapa que tes dá +15% de ouro e +5% de tropas. Posúe a maior parte da súa zona durante 15 segundos para capturala.",
+      "radar": "Un radar detecta barcos, buques de guerra e mísiles inimigos dentro de 100 fichas, polo que ves chegar unha invasión.",
+      "sam": "Os lanzadores SAM derriban mísiles ao alcance. Cada nivel SAM engade un mísil listo para disparar e máis alcance.",
+      "trade": "Os portos comercian con outros países por conta propia, e ambos os dous lados gañan ouro. Atacar a un xogador detén o teu intercambio con el durante 5 minutos.",
+      "traitor": "Romper unha alianza convértete nun traidor durante 30 segundos: a túa defensa cae á metade e os demais xogadores confían menos en ti.",
+      "upgrade": "Fai clic nun dos teus edificios para abrir a súa tarxeta e mellorala. Cada nivel de cidade, porto ou fábrica conta como un edificio máis."
+    },
     "title": "A partida está a comezar..."
   },
   "game_timer": {

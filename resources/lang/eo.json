@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "Kodo licencita sub AGPL-3.0 (neniu garantio)",
     "credits": "Agnoskoj",
+    "next_tip": "Sekva konsileto",
+    "tip_label": "Konsileto",
+    "tips": {
+      "alliance": "Aliancanoj ne povas ataki unu la alian kaj povas sendi unu la alian trupojn kaj oron. Forta najbaro estas ofte pli utila kiel aliancano ol kiel malamiko.",
+      "attack_ratio": "Atako kun pli da trupoj ol la defendanto havas kaj vi perdas malpli da propraj. La avantaĝo ĉesas kreski preter 2 ĝis 1.",
+      "boat": "Boatoj portas soldatojn trans akvon. Uzu ilin por alteriĝi sur marbordon, kiun vi ne povas atingi per tero.",
+      "city": "Urboj altigas vian maksimuman loĝantaron. Konstruu unu kiam vi elĉerpas teron por preni.",
+      "coast": "Generado apud la maro pagas poste: marbordoj permesas konstrui havenojn kaj sendi boatojn.",
+      "defense": "Defendpostenoj bremsas atakojn sur proksimaj limoj kaj igas la atakanton perdi pli da soldatoj.",
+      "emp": "EMP detruas nenion, sed malŝaltas malamikajn defendajn postenojn, SAMojn, silojn, havenojn kaj radarojn dum 15 sekundoj. Batu tuj antaŭ ol vi atakas.",
+      "factory": "Fabrikoj ligas viajn urbojn kaj havenojn per fervojo. Trajnoj gajnas oron por ĉiu konstruaĵo kiun ili vizitas, kaj pli ĉe viaj najbaroj.",
+      "frames": "La kadro ĉirkaŭ konstruaĵo montras ĝian nivelon: bronzo ĉe 2, arĝento ĉe 3, oro de 4.",
+      "mirv": "MIRV disiĝas en svarmon de eksplodiloj super grandega areo, kaj nur trafas la ludanton, kiun vi celis.",
+      "objectives": "Ĉiu mapcelo, kiun vi tenas, donas +15% oron kaj +5% soldatojn. Posedu la plej grandan parton de ĝia zono dum 15 sekundoj por kapti ĝin.",
+      "radar": "Radaro ekvidas malamikajn boatojn, batalŝipojn kaj misilojn ene de 100 kaheloj, do vi vidas invadon venanta.",
+      "sam": "SAM-lanĉiloj malflugigas misilojn en intervalo. Ĉiu SAM-nivelo aldonas misilon pretan pafi kaj pli da atingo.",
+      "trade": "Havenoj komercas kun aliaj landoj memstare, kaj ambaŭ flankoj gajnas oron. Ataki ludanton ĉesigas vian komercon kun ili dum 5 minutoj.",
+      "traitor": "Rompi aliancon igas vin perfidulo dum 30 sekundoj: via defendo malpliiĝas je duono kaj aliaj ludantoj malpli fidas vin.",
+      "upgrade": "Alklaku unu el viaj konstruaĵoj por malfermi ĝian karton kaj ĝisdatigi ĝin. Ĉiu urbo, haveno aŭ fabriknivelo validas kiel unu plia konstruaĵo."
+    },
     "title": "Ludo komenciĝas..."
   },
   "game_timer": {

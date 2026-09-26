@@ -1091,6 +1091,26 @@
   "game_starting_modal": {
     "code_license": "AGPL-3.0 licenc alatt álló kód (garancia nélkül)",
     "credits": "Kreditek",
+    "next_tip": "Következő tipp",
+    "tip_label": "Tipp",
+    "tips": {
+      "alliance": "A szövetségesek nem támadhatják meg egymást, és küldhetnek egymásnak csapatokat és aranyat. Az erős szomszéd gyakran hasznosabb szövetségesként, mint ellenségként.",
+      "attack_ratio": "Támadj több csapattal, mint amennyi a védőé, és kevesebbet veszítesz a sajátodból. Az előny nem nő 2-től 1-ig.",
+      "boat": "A hajók csapatokat szállítanak a vízen. Használja őket, hogy leszálljon egy olyan parton, amelyet nem ér el szárazföldön.",
+      "city": "A városok növelik a lakosság maximális számát. Építs egyet, ha elfogy a birtokod.",
+      "coast": "A tenger melletti ívás később kifizetődik: a partok lehetővé teszik a kikötők építését és a hajók küldését.",
+      "defense": "A védelmi állások lelassítják a közeli határok elleni támadásokat, és több csapatot veszítenek el a támadótól.",
+      "emp": "Az EMP semmit sem pusztít el, de 15 másodpercre kikapcsolja az ellenséges védelmi állásokat, SAM-eket, silókat, portokat és radarokat. Üss közvetlenül a támadás előtt.",
+      "factory": "A gyárak vasúton kötik össze városait és kikötőit. A vonatok aranyat keresnek minden épületért, amelyet meglátogatnak, és még többet a szomszédainál.",
+      "frames": "Az épület körüli keret mutatja a szintet: bronz a 2, ezüst a 3, arany a 4.",
+      "mirv": "Egy MIRV egy hatalmas területen robbanófejek rajra szakad, és csak azt a játékost találja el, akire célzott.",
+      "objectives": "Minden birtokolt térképcél +15% aranyat és +5% csapatot ad. Legyen birtokában a zóna nagy része 15 másodpercig, hogy megörökítse.",
+      "radar": "Egy radar ellenséges hajókat, hadihajókat és rakétákat észlel 100 lapkán belül, tehát inváziót látunk közeledni.",
+      "sam": "A SAM hordozórakéták hatótávolságon belül lőnek le rakétákat. Minden SAM szint egy tüzelésre kész rakétát és nagyobb hatótávolságot ad.",
+      "trade": "A kikötők önállóan kereskednek más országokkal, és mindkét fél aranyat keres. Ha megtámad egy játékost, az 5 percre leállítja vele a kereskedést.",
+      "traitor": "Egy szövetség feltörése 30 másodpercre árulóvá tesz: a védekezés a felére csökken, és a többi játékos kevésbé bízik benned.",
+      "upgrade": "Kattintson az egyik épületére a kártya megnyitásához és frissítéséhez. Minden város, kikötő vagy gyár szintje eggyel több épületnek számít."
+    },
     "title": "A játék indul..."
   },
   "game_timer": {
