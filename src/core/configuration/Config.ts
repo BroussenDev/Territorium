@@ -860,6 +860,25 @@ export class Config {
     if (typeof m === "number" && m > 0) return m * 60 * 10;
     return 300 * 10; // 5 minutes.
   }
+  peaceDuration(): Tick {
+    return 3 * 60 * 10; // 3 minutes.
+  }
+  peaceRequestDuration(): Tick {
+    return 15 * 10;
+  }
+  // Before the same player can be asked again after saying no (or not
+  // answering).
+  peaceRejectCooldown(): Tick {
+    return 60 * 10;
+  }
+  // Before either side can propose again once a treaty ran its course.
+  peaceEndCooldown(): Tick {
+    return 30 * 10;
+  }
+  // Before a perjurer can propose peace to their victim again.
+  perjuryPeaceCooldown(): Tick {
+    return 10 * 60 * 10;
+  }
   temporaryEmbargoDuration(): Tick {
     return 300 * 10; // 5 minutes.
   }

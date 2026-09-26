@@ -210,6 +210,16 @@ export class TransportShipExecution implements Execution {
       this.retreatDst = null;
     }
 
+    // Peace signed while the boat was at sea: it turns back.
+    if (
+      this.target.isPlayer() &&
+      this.attacker.isAtPeaceWith(this.target) &&
+      !this.boat.transportShipState().isRetreating
+    ) {
+      this.boat.updateTransportShipState({ isRetreating: true });
+      this.retreatDst = null;
+    }
+
     if (this.boat.transportShipState().isRetreating) {
       // Resolve retreat destination once, based on current boat location when retreat begins.
       this.retreatDst ??= this.attacker.bestTransportShipSpawn(

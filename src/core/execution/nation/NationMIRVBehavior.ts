@@ -269,6 +269,8 @@ export class NationMIRVBehavior {
   // MIRV Execution Methods
   private maybeSendMIRV(enemy: Player): void {
     if (this.player === null) throw new Error("not initialized");
+    // Nations keep their treaties.
+    if (this.player.isAtPeaceWith(enemy)) return;
 
     this.emojiBehavior.maybeSendAttackEmoji(enemy);
 

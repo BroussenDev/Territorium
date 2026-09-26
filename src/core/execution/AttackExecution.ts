@@ -269,8 +269,13 @@ export class AttackExecution implements Execution {
       return;
     }
 
-    if (targetPlayer && this._owner.isFriendly(targetPlayer)) {
-      // In this case a new alliance was created AFTER the attack started.
+    if (
+      targetPlayer &&
+      (this._owner.isFriendly(targetPlayer) ||
+        this._owner.isAtPeaceWith(targetPlayer))
+    ) {
+      // In this case a new alliance or peace treaty was signed AFTER the
+      // attack started.
       this.retreat();
       return;
     }

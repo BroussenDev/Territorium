@@ -92,6 +92,7 @@ export class MirvExecution implements Execution {
         if (alliance !== null) {
           this.player.breakAlliance(alliance);
         }
+        this.mg.breakPeace(this.player, this.targetPlayer);
         if (this.targetPlayer !== this.player) {
           this.targetPlayer.updateRelation(this.player, -100);
           this.player.updateRelation(this.targetPlayer, -100);

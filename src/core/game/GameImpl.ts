@@ -24,6 +24,8 @@ import {
   MessageType,
   MutableAlliance,
   Nation,
+  PeaceRequest,
+  PeaceTreaty,
   Player,
   PlayerID,
   PlayerInfo,
@@ -34,6 +36,7 @@ import {
   TeamGameSpawnAreas,
   TerrainType,
   TerraNullius,
+  Tick,
   Trios,
   Unit,
   UnitInfo,
@@ -43,6 +46,7 @@ import { GameMap, TileRef } from "./GameMap";
 import { GameUpdate, GameUpdateType } from "./GameUpdates";
 import { MotionPlanRecord, packMotionPlans } from "./MotionPlans";
 import { ObjectiveState } from "./Objectives";
+import { PeaceRequestImpl, PeaceTreatyImpl } from "./PeaceImpl";
 import { PlayerImpl } from "./PlayerImpl";
 import { RailNetwork } from "./RailNetwork";
 import { createRailNetwork } from "./RailNetworkImpl";
@@ -90,6 +94,10 @@ export class GameImpl implements Game {
   _terraNullius: TerraNulliusImpl;
 
   allianceRequests: AllianceRequestImpl[] = [];
+  peaceRequests: PeaceRequestImpl[] = [];
+  private _peaceTreaties: PeaceTreatyImpl[] = [];
+  // "from>to" smallIDs -> first tick `from` may propose peace to `to` again.
+  private peaceCooldowns = new Map<string, Tick>();
 
   private nextPlayerID = 1;
   private _nextUnitID = 1;
@@ -450,6 +458,227 @@ export class GameImpl implements Game {
       request: request.toUpdate(),
       accepted: false,
     });
+  }
+
+  createPeaceRequest(
+    requestor: Player,
+    recipient: Player,
+  ): PeaceRequest | null {
+    if (!requestor.canProposePeace(recipient)) {
+      return null;
+    }
+    const theirs = this.peaceRequests.find(
+      (r) => r.requestor() === recipient && r.recipient() === requestor,
+    );
+    if (theirs !== undefined) {
+      // Proposing peace to someone who is proposing it to you signs it.
+      theirs.accept();
+      return null;
+    }
+    const request = new PeaceRequestImpl(
+      requestor,
+      recipient,
+      this._ticks,
+      this,
+    );
+    this.peaceRequests.push(request);
+    this.addUpdate(request.toUpdate());
+    this.displayMessage(
+      "events_display.peace_request_sent",
+      MessageType.ALLIANCE_REQUEST,
+      requestor.id(),
+      undefined,
+      { name: recipient.displayName() },
+      undefined,
+      recipient.id(),
+    );
+    return request;
+  }
+
+  acceptPeaceRequest(request: PeaceRequestImpl) {
+    this.removePeaceRequest(request, true);
+    const requestor = request.requestor();
+    const recipient = request.recipient();
+
+    this._peaceTreaties.push(
+      new PeaceTreatyImpl(
+        requestor,
+        recipient,
+        this._ticks,
+        this._ticks + this._config.peaceDuration(),
+      ),
+    );
+
+    // Land attacks and boats between the two turn back on their own (see
+    // AttackExecution and TransportShipExecution); missiles in flight are
+    // called off here.
+    this.cancelMissilesBetween(requestor, recipient);
+    if (requestor.hasEmbargoAgainst(recipient)) {
+      requestor.endTemporaryEmbargo(recipient);
+    }
+    if (recipient.hasEmbargoAgainst(requestor)) {
+      recipient.endTemporaryEmbargo(requestor);
+    }
+    requestor.updateRelation(recipient, 30);
+    recipient.updateRelation(requestor, 30);
+
+    for (const [player, other] of [
+      [requestor, recipient],
+      [recipient, requestor],
+    ]) {
+      this.displayMessage(
+        "events_display.peace_signed",
+        MessageType.ALLIANCE_ACCEPTED,
+        player.id(),
+        undefined,
+        { name: other.displayName() },
+        undefined,
+        other.id(),
+      );
+    }
+  }
+
+  rejectPeaceRequest(request: PeaceRequestImpl) {
+    this.removePeaceRequest(request, false);
+    const requestor = request.requestor();
+    const recipient = request.recipient();
+    this.setPeaceCooldown(
+      requestor,
+      recipient,
+      this._config.peaceRejectCooldown(),
+    );
+    this.displayMessage(
+      "events_display.peace_rejected",
+      MessageType.ALLIANCE_REJECTED,
+      requestor.id(),
+      undefined,
+      { name: recipient.displayName() },
+      undefined,
+      recipient.id(),
+    );
+  }
+
+  private removePeaceRequest(request: PeaceRequestImpl, accepted: boolean) {
+    this.peaceRequests = this.peaceRequests.filter((r) => r !== request);
+    this.addUpdate({
+      type: GameUpdateType.PeaceRequestReply,
+      request: request.toUpdate(),
+      accepted,
+    });
+  }
+
+  peaceTreaties(): PeaceTreaty[] {
+    return this._peaceTreaties;
+  }
+
+  peaceTreatyBetween(a: Player, b: Player): PeaceTreatyImpl | null {
+    return this._peaceTreaties.find((t) => t.involves(a, b)) ?? null;
+  }
+
+  expirePeace(treaty: PeaceTreaty) {
+    if (!this._peaceTreaties.includes(treaty as PeaceTreatyImpl)) return;
+    this._peaceTreaties = this._peaceTreaties.filter((t) => t !== treaty);
+    const a = treaty.requestor();
+    const b = treaty.recipient();
+    const cooldown = this._config.peaceEndCooldown();
+    this.setPeaceCooldown(a, b, cooldown);
+    this.setPeaceCooldown(b, a, cooldown);
+    for (const [player, other] of [
+      [a, b],
+      [b, a],
+    ]) {
+      this.displayMessage(
+        "events_display.peace_expired",
+        MessageType.ALLIANCE_EXPIRED,
+        player.id(),
+        undefined,
+        { name: other.displayName() },
+        undefined,
+        other.id(),
+      );
+    }
+  }
+
+  breakPeace(breaker: Player, other: Player) {
+    const treaty = this.peaceTreatyBetween(breaker, other);
+    if (treaty === null) return;
+    this._peaceTreaties = this._peaceTreaties.filter((t) => t !== treaty);
+    // Perjury costs what betraying an ally costs, on the same terms.
+    if (!other.isTraitor() && !other.isDisconnected()) {
+      breaker.markTraitor();
+    }
+    other.updateRelation(breaker, -100);
+    this.setPeaceCooldown(breaker, other, this._config.perjuryPeaceCooldown());
+    this.displayMessage(
+      "events_display.peace_broken",
+      MessageType.ALLIANCE_BROKEN,
+      null,
+      undefined,
+      { breaker: breaker.displayName(), victim: other.displayName() },
+      undefined,
+      breaker.id(),
+    );
+  }
+
+  removePeaceByPlayerSilently(player: Player) {
+    this._peaceTreaties = this._peaceTreaties.filter(
+      (t) => t.requestor() !== player && t.recipient() !== player,
+    );
+    for (const r of this.peaceRequests.filter(
+      (r) => r.requestor() === player || r.recipient() === player,
+    )) {
+      r.cancel();
+    }
+  }
+
+  cancelPeaceRequest(request: PeaceRequestImpl) {
+    this.removePeaceRequest(request, false);
+  }
+
+  peaceCooldownUntil(from: Player, to: Player): Tick {
+    return this.peaceCooldowns.get(this.peaceCooldownKey(from, to)) ?? 0;
+  }
+
+  private setPeaceCooldown(from: Player, to: Player, duration: Tick) {
+    const key = this.peaceCooldownKey(from, to);
+    const until = this._ticks + duration;
+    // Never shorten a longer ban: a perjury outlasts a later refusal.
+    if ((this.peaceCooldowns.get(key) ?? 0) < until) {
+      this.peaceCooldowns.set(key, until);
+    }
+  }
+
+  private peaceCooldownKey(from: Player, to: Player): string {
+    return `${from.smallID()}>${to.smallID()}`;
+  }
+
+  private cancelMissilesBetween(a: Player, b: Player) {
+    for (const [launcher, target] of [
+      [a, b],
+      [b, a],
+    ]) {
+      for (const unit of launcher.units([
+        UnitType.AtomBomb,
+        UnitType.HydrogenBomb,
+        UnitType.EMPBomb,
+        UnitType.MIRV,
+        UnitType.MIRVWarhead,
+      ])) {
+        if (!unit.isActive() || unit.reachedTarget()) continue;
+        const targetTile = unit.targetTile();
+        // A MIRV keeps the player it was fired at even if the aimed tile
+        // changes hands mid-flight.
+        const aimedAt =
+          unit.type() === UnitType.MIRV && unit.targetPlayer()
+            ? unit.targetPlayer()
+            : targetTile !== undefined
+              ? this.owner(targetTile)
+              : null;
+        if (aimedAt === target) {
+          unit.delete(false);
+        }
+      }
+    }
   }
 
   hasPlayer(id: PlayerID): boolean {

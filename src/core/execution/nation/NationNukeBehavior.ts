@@ -753,6 +753,14 @@ export class NationNukeBehavior {
     targetPlayer: Player,
     waitTicks = 0,
   ) {
+    // Nations keep their treaties.
+    const owner = this.game.owner(tile);
+    if (
+      this.player.isAtPeaceWith(targetPlayer) ||
+      (owner.isPlayer() && this.player.isAtPeaceWith(owner))
+    ) {
+      return;
+    }
     const tick = this.game.ticks();
     this.recentlySentNukes.push([tick, tile, nukeType]);
     if (nukeType === UnitType.AtomBomb) {

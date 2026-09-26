@@ -449,6 +449,26 @@ export interface MutableAlliance extends Alliance {
   agreedToExtend(player: Player): boolean;
 }
 
+// A peace treaty: two players who are not allies agree not to attack each
+// other for a while. Unlike an alliance it shares nothing and grants no
+// passage; it only stops the fighting.
+export interface PeaceRequest {
+  accept(): void;
+  reject(): void;
+  requestor(): Player;
+  recipient(): Player;
+  createdAt(): Tick;
+  status(): "pending" | "accepted" | "rejected";
+}
+
+export interface PeaceTreaty {
+  requestor(): Player;
+  recipient(): Player;
+  createdAt(): Tick;
+  expiresAt(): Tick;
+  other(player: Player): Player;
+}
+
 export class PlayerInfo {
   public readonly displayName: string;
 
@@ -748,6 +768,13 @@ export interface Player {
   createAllianceRequest(recipient: Player): AllianceRequest | null;
   betrayals(): number;
 
+  // Peace treaties
+  incomingPeaceRequests(): PeaceRequest[];
+  outgoingPeaceRequest(): PeaceRequest | null;
+  peaceTreatyWith(other: Player): PeaceTreaty | null;
+  isAtPeaceWith(other: Player): boolean;
+  canProposePeace(other: Player): boolean;
+
   // Targeting
   canTarget(other: Player): boolean;
   target(other: Player): void;
@@ -848,6 +875,17 @@ export interface Game extends GameMap {
 
   // Alliances
   expireAlliance(alliance: Alliance): void;
+
+  // Peace treaties
+  createPeaceRequest(requestor: Player, recipient: Player): PeaceRequest | null;
+  peaceTreaties(): PeaceTreaty[];
+  expirePeace(treaty: PeaceTreaty): void;
+  /** Ends the treaty as perjury by `breaker`. No-op when not at peace. */
+  breakPeace(breaker: Player, other: Player): void;
+  /** Drops every treaty and pending request of a player who left the game. */
+  removePeaceByPlayerSilently(player: Player): void;
+  /** First tick at which `from` may propose peace to `to` again. */
+  peaceCooldownUntil(from: Player, to: Player): Tick;
 
   // Immunity timer
   isSpawnImmunityActive(): boolean;
@@ -1052,6 +1090,9 @@ export interface PlayerInteraction {
   canDonateTroops: boolean;
   canEmbargo: boolean;
   allianceInfo?: AllianceInfo;
+  canProposePeace: boolean;
+  // Set while the two players are at peace.
+  peaceExpiresAt?: Tick;
 }
 
 export interface EmojiMessage {

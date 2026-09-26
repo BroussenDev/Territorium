@@ -188,6 +188,9 @@ export class NukeExecution implements Execution {
         this.player.breakAlliance(alliance);
       }
       if (attackedPlayer !== this.player) {
+        this.mg.breakPeace(this.player, attackedPlayer);
+      }
+      if (attackedPlayer !== this.player) {
         attackedPlayer.updateRelation(this.player, -100);
       }
     }
@@ -230,6 +233,17 @@ export class NukeExecution implements Execution {
       });
       this.nuke.updateNukeState({ waitTicks: this.waitTicks });
       this.recordMotionPlan(ticks);
+      // Firing any missile, EMPs included, at a player you are at peace
+      // with breaks the treaty.
+      if (
+        this.nuke.type() !== UnitType.MIRVWarhead &&
+        this.mg.hasOwner(this.dst)
+      ) {
+        const aimedAt = this.mg.owner(this.dst);
+        if (aimedAt.isPlayer()) {
+          this.mg.breakPeace(this.player, aimedAt);
+        }
+      }
       // EMPs skip friendly structures, so they never break an alliance.
       if (
         this.nuke.type() !== UnitType.MIRVWarhead &&

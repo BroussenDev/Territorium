@@ -26,6 +26,8 @@ import {
   Gold,
   MAX_UPGRADE_AMOUNT,
   MutableAlliance,
+  PeaceRequest,
+  PeaceTreaty,
   Player,
   PlayerBuildable,
   PlayerBuildableUnitType,
@@ -920,6 +922,44 @@ export class PlayerImpl implements Player {
 
   betrayals(): number {
     return this._betrayalCount;
+  }
+
+  incomingPeaceRequests(): PeaceRequest[] {
+    return this.mg.peaceRequests.filter((r) => r.recipient() === this);
+  }
+
+  outgoingPeaceRequest(): PeaceRequest | null {
+    return this.mg.peaceRequests.find((r) => r.requestor() === this) ?? null;
+  }
+
+  peaceTreatyWith(other: Player): PeaceTreaty | null {
+    if (other === this) return null;
+    return this.mg.peaceTreatyBetween(this, other);
+  }
+
+  isAtPeaceWith(other: Player): boolean {
+    return this.peaceTreatyWith(other) !== null;
+  }
+
+  canProposePeace(other: Player): boolean {
+    if (other === this || !this.isAlive() || !other.isAlive()) {
+      return false;
+    }
+    if (this.isDisconnected() || other.isDisconnected()) {
+      return false;
+    }
+    if (this.isFriendly(other) || this.isAtPeaceWith(other)) {
+      return false;
+    }
+    // Answering their proposal is always allowed: it signs the treaty.
+    if (this.incomingPeaceRequests().some((r) => r.requestor() === other)) {
+      return true;
+    }
+    // One proposal at a time.
+    if (this.outgoingPeaceRequest() !== null) {
+      return false;
+    }
+    return this.mg.ticks() >= this.mg.peaceCooldownUntil(this, other);
   }
 
   createAllianceRequest(recipient: Player): AllianceRequest | null {
@@ -1944,6 +1984,11 @@ export class PlayerImpl implements Player {
     player: Player,
     treatAFKFriendly: boolean = false,
   ): boolean {
+    // A treaty has to be broken on purpose (BreakPeaceExecution) before an
+    // attack can go out, so a stray click never costs a perjury.
+    if (this.isAtPeaceWith(player)) {
+      return false;
+    }
     if (this.type() !== PlayerType.Human) {
       // Only human attackers respect PVP immunity
       return !this.isFriendly(player, treatAFKFriendly);

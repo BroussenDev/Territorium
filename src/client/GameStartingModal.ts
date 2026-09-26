@@ -20,6 +20,7 @@ export const LOADING_TIPS = [
   "mirv",
   "traitor",
   "alliance",
+  "peace",
   "boat",
 ] as const;
 

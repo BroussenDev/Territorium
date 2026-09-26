@@ -98,6 +98,15 @@ export class PlayerExecution implements Execution {
       }
     }
 
+    for (const treaty of this.mg.peaceTreaties()) {
+      if (
+        treaty.requestor() === this.player &&
+        treaty.expiresAt() <= this.mg.ticks()
+      ) {
+        this.mg.expirePeace(treaty);
+      }
+    }
+
     for (const embargo of this.player.getEmbargoes()) {
       if (
         embargo.isTemporary &&
@@ -766,5 +775,6 @@ export class PlayerExecution implements Execution {
     });
 
     this.player.removeAllAlliances();
+    this.mg.removePeaceByPlayerSilently(this.player);
   }
 }

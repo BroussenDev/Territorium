@@ -108,6 +108,8 @@ export enum GameUpdateType {
   GamePaused,
   DonateEvent,
   Objectives,
+  PeaceRequest,
+  PeaceRequestReply,
 }
 
 export type GameUpdate =
@@ -134,7 +136,9 @@ export type GameUpdate =
   | SpawnPhaseEndUpdate
   | GamePausedUpdate
   | DonateEventUpdate
-  | ObjectivesUpdate;
+  | ObjectivesUpdate
+  | PeaceRequestUpdate
+  | PeaceRequestReplyUpdate;
 
 /** Every map objective's state, sent whenever any of them changes. */
 export interface ObjectivesUpdate {
@@ -314,6 +318,19 @@ export interface AllianceExpiredUpdate {
   type: GameUpdateType.AllianceExpired;
   player1ID: number;
   player2ID: number;
+}
+
+export interface PeaceRequestUpdate {
+  type: GameUpdateType.PeaceRequest;
+  requestorID: number;
+  recipientID: number;
+  createdAt: Tick;
+}
+
+export interface PeaceRequestReplyUpdate {
+  type: GameUpdateType.PeaceRequestReply;
+  request: PeaceRequestUpdate;
+  accepted: boolean;
 }
 
 export interface AllianceExtensionUpdate {

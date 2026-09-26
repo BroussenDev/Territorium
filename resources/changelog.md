@@ -1,5 +1,20 @@
 # Territorium — Changelog
 
+## v0.1.8
+
+🏳️ **Peace treaties**
+
+- Two players at war can now sign peace without becoming allies. Right-click an enemy (or open their player panel) and choose the white flag. They get 15 seconds to sign or refuse.
+- Once signed, neither side can attack the other for 3 minutes: land attacks turn back, boats sail home and missiles in flight between you are called off. Trade embargoes between you are lifted.
+- Breaking the peace is perjury. It costs what betraying an ally costs (traitor mark, half defense for 30 seconds), every player is told, and you cannot offer peace to your victim again for 10 minutes. Firing a missile or an EMP at a player you are at peace with breaks it too.
+- After a refusal, you must wait 60 seconds before asking that player again. When a peace runs out, either side can offer a new one after 30 seconds. You can only have one proposal waiting at a time.
+- Nations weigh each offer: they refuse traitors, keep pressing a war they are winning, and gladly accept peace from a stronger player. Tribes accept every offer.
+- The player panel shows how long the peace has left, and the timer ring on the "Break peace" button in the radial menu shows it too.
+
+🪙 **Territorium coin**
+
+- The Territorium coin now sits under the radial menu when you right-click a country. It is a visual test for now.
+
 ## v0.1.7
 
 🥁 **Original music**

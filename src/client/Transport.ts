@@ -81,6 +81,18 @@ export class SendAllianceRejectIntentEvent implements GameEvent {
   constructor(public readonly requestor: PlayerView) {}
 }
 
+export class SendPeaceRequestIntentEvent implements GameEvent {
+  constructor(public readonly recipient: PlayerView) {}
+}
+
+export class SendPeaceRejectIntentEvent implements GameEvent {
+  constructor(public readonly requestor: PlayerView) {}
+}
+
+export class SendBreakPeaceIntentEvent implements GameEvent {
+  constructor(public readonly recipient: PlayerView) {}
+}
+
 export class SendAllianceExtensionIntentEvent implements GameEvent {
   constructor(public readonly recipient: PlayerView) {}
 }
@@ -291,6 +303,15 @@ export class Transport {
     );
     this.subscribe(SendBreakAllianceIntentEvent, (e) =>
       this.onBreakAllianceRequestUIEvent(e),
+    );
+    this.subscribe(SendPeaceRequestIntentEvent, (e) =>
+      this.sendIntent({ type: "peaceRequest", recipient: e.recipient.id() }),
+    );
+    this.subscribe(SendPeaceRejectIntentEvent, (e) =>
+      this.sendIntent({ type: "peaceReject", requestor: e.requestor.id() }),
+    );
+    this.subscribe(SendBreakPeaceIntentEvent, (e) =>
+      this.sendIntent({ type: "breakPeace", recipient: e.recipient.id() }),
     );
     this.subscribe(SendSpawnIntentEvent, (e) => this.onSendSpawnIntentEvent(e));
     this.subscribe(SendAttackIntentEvent, (e) => this.onSendAttackIntent(e));

@@ -54,7 +54,10 @@ export type Intent =
   | KickPlayerIntent
   | TogglePauseIntent
   | UpdateGameConfigIntent
-  | ToggleGameStartTimer;
+  | ToggleGameStartTimer
+  | PeaceRequestIntent
+  | PeaceRejectIntent
+  | BreakPeaceIntent;
 
 export type AttackIntent = z.infer<typeof AttackIntentSchema>;
 export type CancelAttackIntent = z.infer<typeof CancelAttackIntentSchema>;
@@ -65,6 +68,9 @@ export type CancelBoatIntent = z.infer<typeof CancelBoatIntentSchema>;
 export type AllianceRequestIntent = z.infer<typeof AllianceRequestIntentSchema>;
 export type AllianceRejectIntent = z.infer<typeof AllianceRejectIntentSchema>;
 export type BreakAllianceIntent = z.infer<typeof BreakAllianceIntentSchema>;
+export type PeaceRequestIntent = z.infer<typeof PeaceRequestIntentSchema>;
+export type PeaceRejectIntent = z.infer<typeof PeaceRejectIntentSchema>;
+export type BreakPeaceIntent = z.infer<typeof BreakPeaceIntentSchema>;
 export type TargetPlayerIntent = z.infer<typeof TargetPlayerIntentSchema>;
 export type EmojiIntent = z.infer<typeof EmojiIntentSchema>;
 export type DonateGoldIntent = z.infer<typeof DonateGoldIntentSchema>;
@@ -657,6 +663,22 @@ export const BreakAllianceIntentSchema = z.object({
   recipient: MappedID,
 });
 
+// Proposing peace to a player who is proposing it to you signs the treaty.
+export const PeaceRequestIntentSchema = z.object({
+  type: z.literal("peaceRequest"),
+  recipient: MappedID,
+});
+
+export const PeaceRejectIntentSchema = z.object({
+  type: z.literal("peaceReject"),
+  requestor: MappedID,
+});
+
+export const BreakPeaceIntentSchema = z.object({
+  type: z.literal("breakPeace"),
+  recipient: MappedID,
+});
+
 export const TargetPlayerIntentSchema = z.object({
   type: z.literal("targetPlayer"),
   target: MappedID,
@@ -796,6 +818,9 @@ export const IntentSchema = z.discriminatedUnion("type", [
   TogglePauseIntentSchema,
   UpdateGameConfigIntentSchema,
   ToggleGameStartTimerIntentSchema,
+  PeaceRequestIntentSchema,
+  PeaceRejectIntentSchema,
+  BreakPeaceIntentSchema,
 ]);
 
 // StampedIntent = Intent with server-stamped clientID (used in turns and execution)

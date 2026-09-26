@@ -278,6 +278,8 @@ export class GameRunner {
         canDonateTroops: player.canDonateTroops(other),
         canEmbargo: !player.hasEmbargoAgainst(other),
         allianceInfo: player.allianceInfo(other) ?? undefined,
+        canProposePeace: player.canProposePeace(other),
+        peaceExpiresAt: player.peaceTreatyWith(other)?.expiresAt(),
       };
     }
 

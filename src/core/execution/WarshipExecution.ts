@@ -276,6 +276,7 @@ export class WarshipExecution implements Execution {
       if (
         unit === this.warship ||
         unit.owner() === owner ||
+        // Also holds fire on a player it is at peace with.
         !owner.canAttackPlayer(unit.owner(), true) ||
         this.alreadySentShell.has(unit) ||
         (unit.type() === UnitType.Warship &&

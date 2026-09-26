@@ -26,9 +26,11 @@ import {
   PlayerReportedEvent,
   SendAllianceRequestIntentEvent,
   SendBreakAllianceIntentEvent,
+  SendBreakPeaceIntentEvent,
   SendEmbargoAllIntentEvent,
   SendEmbargoIntentEvent,
   SendEmojiIntentEvent,
+  SendPeaceRequestIntentEvent,
   SendTargetPlayerIntentEvent,
 } from "../../Transport";
 import { UIState } from "../../UIState";
@@ -57,6 +59,7 @@ const targetIcon = assetUrl("images/TargetIconWhite.svg");
 const startTradingIcon = assetUrl("images/TradingIconWhite.svg");
 const traitorIcon = assetUrl("images/TraitorIconLightRed.svg");
 const breakAllianceIcon = assetUrl("images/TraitorIconWhite.svg");
+const whiteFlagIcon = assetUrl("images/WhiteFlagIconWhite.svg");
 
 @customElement("player-panel")
 export class PlayerPanel extends LitElement implements Controller {
@@ -75,6 +78,7 @@ export class PlayerPanel extends LitElement implements Controller {
   @state() public isVisible: boolean = false;
   @state() private allianceExpiryText: string | null = null;
   @state() private allianceExpirySeconds: number | null = null;
+  @state() private peaceExpirySeconds: number | null = null;
   @state() private otherProfile: PlayerProfile | null = null;
   @state() private suppressNextHide: boolean = false;
   @state() private moderationTarget: PlayerView | null = null;
@@ -177,6 +181,11 @@ export class PlayerPanel extends LitElement implements Controller {
           this.allianceExpirySeconds = null;
           this.allianceExpiryText = null;
         }
+        const peaceExpiresAt = this.actions?.interaction?.peaceExpiresAt;
+        this.peaceExpirySeconds =
+          peaceExpiresAt !== undefined && peaceExpiresAt > this.g.ticks()
+            ? Math.floor((peaceExpiresAt - this.g.ticks()) / 10)
+            : null;
       }
       // Keep repainting while the panel is visible so live values (e.g. the
       // alliance countdowns) keep updating even after the local player dies.
@@ -240,6 +249,18 @@ export class PlayerPanel extends LitElement implements Controller {
   ) {
     e.stopPropagation();
     this.eventBus.emit(new SendBreakAllianceIntentEvent(myPlayer, other));
+    this.hide();
+  }
+
+  private handleProposePeaceClick(e: Event, other: PlayerView) {
+    e.stopPropagation();
+    this.eventBus.emit(new SendPeaceRequestIntentEvent(other));
+    this.hide();
+  }
+
+  private handleBreakPeaceClick(e: Event, other: PlayerView) {
+    e.stopPropagation();
+    this.eventBus.emit(new SendBreakPeaceIntentEvent(other));
     this.hide();
   }
 
@@ -819,6 +840,26 @@ export class PlayerPanel extends LitElement implements Controller {
     `;
   }
 
+  private renderPeaceExpiry() {
+    if (this.peaceExpirySeconds === null) return html``;
+    return html`
+      <div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-base">
+        <div class="flex items-center gap-1.5 font-semibold text-zinc-300">
+          <img src=${whiteFlagIcon} alt="" aria-hidden="true" class="size-4" />
+          ${translateText("player_panel.peace_time_remaining")}
+        </div>
+        <div class="text-right font-semibold">
+          <span
+            class="inline-flex items-center rounded-full px-2 py-0.5 text-[14px] font-bold ${this.getExpiryColorClass(
+              this.peaceExpirySeconds,
+            )}"
+            >${renderDuration(this.peaceExpirySeconds)}</span
+          >
+        </div>
+      </div>
+    `;
+  }
+
   private renderActions(my: PlayerView, other: PlayerView) {
     const myPlayer = this.g.myPlayer();
     const canDonateGold = this.actions?.interaction?.canDonateGold;
@@ -832,6 +873,8 @@ export class PlayerPanel extends LitElement implements Controller {
     const canBreakAlliance = this.actions?.interaction?.canBreakAlliance;
     const canTarget = this.actions?.interaction?.canTarget;
     const canEmbargo = this.actions?.interaction?.canEmbargo;
+    const atPeace = this.actions?.interaction?.peaceExpiresAt !== undefined;
+    const canProposePeace = this.actions?.interaction?.canProposePeace;
 
     return html`
       <div class="flex flex-col gap-2.5">
@@ -932,6 +975,27 @@ export class PlayerPanel extends LitElement implements Controller {
                       type: "indigo",
                     })
                   : ""}
+                ${atPeace
+                  ? actionButton({
+                      onClick: (e: MouseEvent) =>
+                        this.handleBreakPeaceClick(e, other),
+                      icon: breakAllianceIcon,
+                      iconAlt: "Break Peace",
+                      title: translateText("player_panel.break_peace_title"),
+                      label: translateText("player_panel.break_peace"),
+                      type: "red",
+                    })
+                  : canProposePeace
+                    ? actionButton({
+                        onClick: (e: MouseEvent) =>
+                          this.handleProposePeaceClick(e, other),
+                        icon: whiteFlagIcon,
+                        iconAlt: "Peace",
+                        title: translateText("player_panel.propose_peace"),
+                        label: translateText("player_panel.propose_peace"),
+                        type: "normal",
+                      })
+                    : ""}
               </div>
             `}
         ${other === my
@@ -1129,6 +1193,9 @@ export class PlayerPanel extends LitElement implements Controller {
 
                     <!-- Alliance time remaining -->
                     ${this.renderAllianceExpiry()}
+
+                    <!-- Peace time remaining -->
+                    ${this.renderPeaceExpiry()}
                     ${!isSpectator
                       ? html`
                           <ui-divider></ui-divider>

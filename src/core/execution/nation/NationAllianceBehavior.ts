@@ -46,6 +46,44 @@ export class NationAllianceBehavior {
     }
   }
 
+  handlePeaceRequests() {
+    for (const req of this.player.incomingPeaceRequests()) {
+      if (this.getPeaceDecision(req.requestor())) {
+        req.accept();
+      } else {
+        req.reject();
+      }
+    }
+  }
+
+  private getPeaceDecision(otherPlayer: Player): boolean {
+    if (this.isConfused()) {
+      return this.random.chance(2);
+    }
+    // A traitor's word is worth little.
+    if (otherPlayer.isTraitor()) {
+      return false;
+    }
+    // Peace with a stronger player is always welcome.
+    if (this.isAlliancePartnerThreat(otherPlayer)) {
+      return true;
+    }
+    // Keep pressing an attack that is going well.
+    const attacking = this.player
+      .outgoingAttacks()
+      .some((a) => a.target() === otherPlayer);
+    if (attacking && this.player.troops() > otherPlayer.troops() * 1.5) {
+      return false;
+    }
+    // Happy to stop a war the other side started.
+    if (
+      this.player.incomingAttacks().some((a) => a.attacker() === otherPlayer)
+    ) {
+      return true;
+    }
+    return this.player.relation(otherPlayer) >= Relation.Neutral;
+  }
+
   handleAllianceExtensionRequests() {
     if (this.game.config().disableAlliances()) return;
 

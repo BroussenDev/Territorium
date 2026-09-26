@@ -40,6 +40,7 @@ const infoIcon = assetUrl("images/InfoIcon.svg");
 const swordIcon = assetUrl("images/SwordIconWhite.svg");
 const targetIcon = assetUrl("images/TargetIconWhite.svg");
 const traitorIcon = assetUrl("images/TraitorIconWhite.svg");
+const whiteFlagIcon = assetUrl("images/WhiteFlagIconWhite.svg");
 const xIcon = assetUrl("images/XIcon.svg");
 
 export interface MenuElementParams {
@@ -106,6 +107,7 @@ export const COLORS = {
   infoEmoji: "#fbbf24",
   trade: "#0891b2",
   embargo: "#7c3aed",
+  peace: "#14b8a6",
   tooltip: {
     cost: "#f59e0b",
     count: "#94a3b8",
@@ -279,6 +281,39 @@ const allyBreakElement: MenuElement = {
       params.selected!,
     );
     params.closeMenu();
+  },
+};
+
+const peaceRequestElement: MenuElement = {
+  id: "peace_request",
+  name: "peace",
+  disabled: (params: MenuElementParams) =>
+    !params.playerActions?.interaction?.canProposePeace,
+  color: COLORS.peace,
+  icon: whiteFlagIcon,
+  action: (params: MenuElementParams) => {
+    params.playerActionHandler.handleProposePeace(params.selected!);
+    params.closeMenu();
+  },
+};
+
+// Stands where the boat button is: no boat can land on a player at peace.
+// The timer ring shows how long the treaty still runs.
+const peaceBreakElement: MenuElement = {
+  id: "peace_break",
+  name: "break peace",
+  disabled: () => false,
+  color: COLORS.breakAlly,
+  icon: traitorIcon,
+  action: (params: MenuElementParams) => {
+    params.playerActionHandler.handleBreakPeace(params.selected!);
+    params.closeMenu();
+  },
+  timerFraction: (params: MenuElementParams): number => {
+    const expiresAt = params.playerActions?.interaction?.peaceExpiresAt;
+    if (expiresAt === undefined) return 1;
+    const remaining = Math.max(0, expiresAt - params.game.ticks());
+    return Math.min(1, remaining / params.game.config().peaceDuration());
   },
 };
 
@@ -791,6 +826,15 @@ export const rootMenuElement: MenuElement = {
     const inExtensionWindow =
       params.playerActions.interaction?.allianceInfo?.inExtensionWindow;
 
+    const atPeace =
+      params.playerActions.interaction?.peaceExpiresAt !== undefined;
+    // Peace is for enemies: never for allies, teammates or tribeless land.
+    const canTalkPeace =
+      !atPeace &&
+      !isFriendlyTarget(params) &&
+      params.selected !== null &&
+      !params.game.inSpawnPhase();
+
     // After game-over, nukes can target teammates in multiplayer (nukeSpawn allows it,
     // but not in singleplayer). Show the attack submenu so mobile users can access
     // nukes in the aftergame.
@@ -807,8 +851,13 @@ export const rootMenuElement: MenuElement = {
       ...(isOwnTerritory
         ? [deleteUnitElement, allyRequestElement, buildMenuElement]
         : [
-            isAllied && !isDisconnected ? allyBreakElement : boatMenuElement,
+            isAllied && !isDisconnected
+              ? allyBreakElement
+              : atPeace
+                ? peaceBreakElement
+                : boatMenuElement,
             inExtensionWindow ? allyExtendElement : allyRequestElement,
+            canTalkPeace ? peaceRequestElement : null,
             showDonateInsteadOfAttack
               ? donateGoldRadialElement
               : attackMenuElement,

@@ -6,11 +6,13 @@ import {
   SendAttackIntentEvent,
   SendBoatAttackIntentEvent,
   SendBreakAllianceIntentEvent,
+  SendBreakPeaceIntentEvent,
   SendDeleteUnitIntentEvent,
   SendDonateGoldIntentEvent,
   SendDonateTroopsIntentEvent,
   SendEmbargoIntentEvent,
   SendEmojiIntentEvent,
+  SendPeaceRequestIntentEvent,
   SendSpawnIntentEvent,
   SendTargetPlayerIntentEvent,
 } from "../../Transport";
@@ -62,6 +64,14 @@ export class PlayerActionHandler {
 
   handleBreakAlliance(player: PlayerView, recipient: PlayerView) {
     this.eventBus.emit(new SendBreakAllianceIntentEvent(player, recipient));
+  }
+
+  handleProposePeace(recipient: PlayerView) {
+    this.eventBus.emit(new SendPeaceRequestIntentEvent(recipient));
+  }
+
+  handleBreakPeace(recipient: PlayerView) {
+    this.eventBus.emit(new SendBreakPeaceIntentEvent(recipient));
   }
 
   handleTargetPlayer(targetId: string | null) {

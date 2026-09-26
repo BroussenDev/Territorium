@@ -8,6 +8,8 @@ import {
   AllianceRequestUpdate,
   BrokeAllianceUpdate,
   GameUpdateType,
+  PeaceRequestReplyUpdate,
+  PeaceRequestUpdate,
 } from "../../../core/game/GameUpdates";
 import { Controller } from "../../Controller";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
@@ -16,6 +18,8 @@ import {
   SendAllianceExtensionIntentEvent,
   SendAllianceRejectIntentEvent,
   SendAllianceRequestIntentEvent,
+  SendPeaceRejectIntentEvent,
+  SendPeaceRequestIntentEvent,
 } from "../../Transport";
 import { UIState } from "../../UIState";
 import { getMessageTypeClasses, translateText } from "../../Utils";
@@ -34,6 +38,7 @@ interface ActionableEvent {
   }[];
   priority?: number;
   allianceID?: number;
+  peaceRequest?: boolean;
   duration?: Tick;
   requestorID: number;
 }
@@ -60,6 +65,11 @@ export class ActionableEvents extends LitElement implements Controller {
     [
       GameUpdateType.AllianceExtension,
       this.onAllianceExtensionEvent.bind(this),
+    ],
+    [GameUpdateType.PeaceRequest, this.onPeaceRequestEvent.bind(this)],
+    [
+      GameUpdateType.PeaceRequestReply,
+      this.onPeaceRequestReplyEvent.bind(this),
     ],
   ] as const;
 
@@ -120,6 +130,8 @@ export class ActionableEvents extends LitElement implements Controller {
         (event.duration === undefined ||
           this.game.ticks() - event.createdAt < event.duration) &&
         (event.type !== MessageType.ALLIANCE_REQUEST ||
+          // Peace cards leave on their own reply update.
+          event.peaceRequest === true ||
           // We remove Alliance Requests if the requestor is dead.
           ((
             this.game.playerBySmallID(event.requestorID) as PlayerView
@@ -273,8 +285,73 @@ export class ActionableEvents extends LitElement implements Controller {
       (event) =>
         !(
           event.type === MessageType.ALLIANCE_REQUEST &&
+          !event.peaceRequest &&
           event.focusID === requestorID
         ),
+    );
+    if (remaining.length !== this.events.length) {
+      this.events = remaining;
+      this.requestUpdate();
+    }
+  }
+
+  private onPeaceRequestEvent(update: PeaceRequestUpdate) {
+    const myPlayer = this.game.myPlayer();
+    if (!myPlayer || update.recipientID !== myPlayer.smallID()) {
+      return;
+    }
+    const requestor = this.game.playerBySmallID(
+      update.requestorID,
+    ) as PlayerView;
+
+    this.eventBus.emit(new PlaySoundEffectEvent("alliance-suggested"));
+    this.addEvent({
+      description: translateText("events_display.request_peace", {
+        name: requestor.displayName(),
+      }),
+      buttons: [
+        {
+          text: translateText("events_display.focus"),
+          className: "btn-gray",
+          action: () => this.eventBus.emit(new GoToPlayerEvent(requestor)),
+          preventClose: true,
+        },
+        {
+          text: translateText("events_display.accept_peace"),
+          className: "btn",
+          action: () => {
+            this.eventBus.emit(new PlaySoundEffectEvent("alliance-accepted"));
+            // Offering peace back to the one who asked signs the treaty.
+            this.eventBus.emit(new SendPeaceRequestIntentEvent(requestor));
+          },
+        },
+        {
+          text: translateText("events_display.reject_peace"),
+          className: "btn-info",
+          action: () => {
+            this.eventBus.emit(new PlaySoundEffectEvent("alliance-declined"));
+            this.eventBus.emit(new SendPeaceRejectIntentEvent(requestor));
+          },
+        },
+      ],
+      type: MessageType.ALLIANCE_REQUEST,
+      createdAt: this.game.ticks(),
+      priority: 0,
+      duration: this.game.config().peaceRequestDuration(),
+      focusID: update.requestorID,
+      requestorID: update.requestorID,
+      peaceRequest: true,
+    });
+  }
+
+  private onPeaceRequestReplyEvent(update: PeaceRequestReplyUpdate) {
+    const myPlayer = this.game.myPlayer();
+    if (!myPlayer || update.request.recipientID !== myPlayer.smallID()) {
+      return;
+    }
+    const requestorID = update.request.requestorID;
+    const remaining = this.events.filter(
+      (event) => !(event.peaceRequest && event.requestorID === requestorID),
     );
     if (remaining.length !== this.events.length) {
       this.events = remaining;

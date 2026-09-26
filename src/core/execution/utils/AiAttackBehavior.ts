@@ -152,6 +152,8 @@ export class AiAttackBehavior {
     const troops = Math.min(this.player.troops() / 5, cap);
     if (troops < 1) return;
 
+    if (owner.isPlayer() && this.player.isAtPeaceWith(owner)) return;
+
     // Hard & Impossible: don't attack if we'd send less than 20% of target's troops
     if (owner.isPlayer() && this.isAttackTooWeak(troops, owner)) {
       return;
@@ -766,6 +768,7 @@ export class AiAttackBehavior {
   }
 
   forceSendAttack(target: Player | TerraNullius) {
+    if (target.isPlayer() && this.player.isAtPeaceWith(target)) return;
     this.game.addExecution(
       new AttackExecution(
         this.player.troops() / 2,
@@ -776,6 +779,8 @@ export class AiAttackBehavior {
   }
 
   sendAttack(target: Player | TerraNullius, force = false): boolean {
+    // AIs keep their treaties.
+    if (target.isPlayer() && this.player.isAtPeaceWith(target)) return false;
     if (!force && !this.shouldAttack(target)) return false;
 
     if (target.isPlayer()) {

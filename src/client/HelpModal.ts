@@ -629,6 +629,7 @@ export class HelpModal extends BaseModal {
               "radial_attack",
               "radial_boat",
               "info_alliance",
+              "info_peace",
               "radial_info",
             ]),
             "max-w-[160px]",
@@ -643,6 +644,7 @@ export class HelpModal extends BaseModal {
                 "info_target",
                 "info_trade",
                 "info_alliance",
+                "info_peace",
               ])}`,
             "max-w-[220px]",
           )}

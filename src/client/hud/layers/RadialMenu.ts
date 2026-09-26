@@ -12,6 +12,12 @@ import {
   TooltipKey,
 } from "./RadialMenuElements";
 const backIcon = assetUrl("images/BackIconWhite.svg");
+const coinIcon = assetUrl("images/TerritoriumCoinWhite.svg");
+
+// The Territorium coin sits under the main ring when the menu opens on a
+// country, and gets out of the way while a submenu is open.
+const COIN_SIZE = 36;
+const COIN_GAP = 10;
 
 function resolveColor(
   item: MenuElement,
@@ -71,6 +77,8 @@ export class RadialMenu implements Controller {
 
   private anchorX = 0;
   private anchorY = 0;
+
+  private coinVisible = false;
 
   private menuGroups: Map<
     number,
@@ -222,6 +230,31 @@ export class RadialMenu implements Controller {
       .attr("x", -this.centerButtonIconSize / 2)
       .attr("y", -this.centerButtonIconSize / 2)
       .style("pointer-events", "none");
+
+    container
+      .append("image")
+      .attr("class", "radial-menu-coin")
+      .attr("xlink:href", coinIcon)
+      .attr("width", COIN_SIZE)
+      .attr("height", COIN_SIZE)
+      .attr("x", -COIN_SIZE / 2)
+      .attr("y", this.getOuterRadiusForLevel(0) + COIN_GAP)
+      .style("opacity", 0)
+      .style("pointer-events", "none")
+      .style("filter", "drop-shadow(0 2px 3px rgb(0 0 0 / 0.5))");
+  }
+
+  private updateCoin() {
+    const visible =
+      this.isVisible && this.currentLevel === 0 && !!this.params?.selected;
+    if (visible === this.coinVisible) return;
+    this.coinVisible = visible;
+    this.menuElement
+      .select<SVGImageElement>(".radial-menu-coin")
+      .interrupt()
+      .transition()
+      .duration(this.config.menuTransitionDuration * (visible ? 0.8 : 0.4))
+      .style("opacity", visible ? 1 : 0);
   }
 
   private createTooltipElement() {
@@ -699,6 +732,7 @@ export class RadialMenu implements Controller {
     this.menuStack.push(this.currentMenuItems);
     this.currentMenuItems = children;
     this.currentLevel++;
+    this.updateCoin();
 
     this.clampAndSetMenuPositionForLevel(this.currentLevel);
     this.renderMenuItems(this.currentMenuItems, this.currentLevel);
@@ -800,6 +834,7 @@ export class RadialMenu implements Controller {
     if (this.currentLevel === 0) {
       this.updateCenterButtonState("default");
     }
+    this.updateCoin();
   }
 
   private clearSelectedItemHoverState() {
@@ -880,9 +915,9 @@ export class RadialMenu implements Controller {
     this.anchorY = y;
 
     this.menuElement.style("display", "block");
-    this.clampAndSetMenuPositionForLevel(this.currentLevel);
-
     this.isVisible = true;
+    this.updateCoin();
+    this.clampAndSetMenuPositionForLevel(this.currentLevel);
 
     this.renderMenuItems(this.currentMenuItems, this.currentLevel);
     this.onCenterButtonHover(true);
@@ -899,6 +934,7 @@ export class RadialMenu implements Controller {
 
     this.menuElement.style("display", "none");
     this.isVisible = false;
+    this.updateCoin();
     this.selectedItemId = null;
     this.hideTooltip();
 
@@ -1038,6 +1074,7 @@ export class RadialMenu implements Controller {
 
   public setParams(params: MenuElementParams) {
     this.params = params;
+    this.updateCoin();
   }
 
   public getDefaultCenterIconSize(): number {
@@ -1378,6 +1415,11 @@ export class RadialMenu implements Controller {
   private clampAndSetMenuPositionForLevel(level: number) {
     const outerRadius = this.getOuterRadiusForLevel(level);
     const margin = Math.max(outerRadius, this.config.centerButtonSize) + 10;
+    // Keep the coin on screen too when the menu opens near the bottom edge.
+    const marginBottom =
+      level === 0 && this.coinVisible
+        ? outerRadius + COIN_GAP + COIN_SIZE + 10
+        : margin;
 
     const vw = window.innerWidth;
     const vh = window.innerHeight;
@@ -1388,9 +1430,9 @@ export class RadialMenu implements Controller {
         ? vw / 2
         : Math.min(Math.max(this.anchorX, margin), vw - margin);
     const clampedY =
-      2 * margin > vh
+      margin + marginBottom > vh
         ? vh / 2
-        : Math.min(Math.max(this.anchorY, margin), vh - margin);
+        : Math.min(Math.max(this.anchorY, margin), vh - marginBottom);
 
     const svgSel = this.menuElement.select("svg");
     svgSel.style("top", `${clampedY}px`).style("left", `${clampedX}px`);

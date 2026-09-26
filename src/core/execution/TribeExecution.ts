@@ -70,6 +70,11 @@ export class TribeExecution implements Execution {
       req.accept();
     }
 
+    // Tribes take any peace offered too.
+    for (const req of this.tribe.incomingPeaceRequests()) {
+      req.accept();
+    }
+
     // Accept all alliance extension requests
     for (const alliance of this.tribe.alliances()) {
       // Alliance expiration tracked by Events Panel, only human ally can click Request to Renew
