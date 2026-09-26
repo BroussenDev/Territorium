@@ -11,6 +11,11 @@
 
 - A structure hit by an EMP is now shown in steady red for as long as it is disabled, instead of pulsing.
 
+🛡️ **Reports and game history**
+
+- Player reports now reach the moderation team, who review each one with the game's replay.
+- Your game history and replays are kept for 30 days (subscribers keep theirs longer, as before). A game that is under review is kept until the review is done.
+
 ## v0.1.2
 
 ⚡ **EMP bomb**
