@@ -1,5 +1,16 @@
 # Territorium — Changelog
 
+## v0.1.4
+
+⚡ **EMP bomb**
+
+- An EMP now bursts on impact: a white flash, then a ring of blue lightning and crackling sparks that spreads over its whole 20-tile reach. An EMP shot down by a SAM explodes like any other intercepted missile.
+
+🧱 **Control panel**
+
+- The build bar is split into four trays (economy, defense, navy, missiles) and fills the panel's width. Each tile shows its hotkey in the corner and how many you own under the icon, or the price for missiles. The building you're placing is framed in gold.
+- On computers, the map objectives now sit next to the attack slider instead of taking a row of their own.
+
 ## v0.1.3
 
 🧱 **Build bar**

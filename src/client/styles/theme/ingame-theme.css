@@ -86,6 +86,42 @@ unit-display .bg-gray-800\/90 {
   border: 1px solid var(--tr-gold-line);
 }
 
+/* Build bar: each group (economy, defense, navy, missiles) is a dark
+   inset tray; tiles light up emerald on hover and gold when picked. */
+unit-display .hotbar-group {
+  background-color: var(--tr-ink);
+  border-color: var(--tr-emerald-line);
+}
+
+unit-display .hotbar-tile:hover {
+  background-color: var(--tr-emerald-wash);
+  border-color: var(--tr-emerald-line);
+}
+
+unit-display .hotbar-tile-selected,
+unit-display .hotbar-tile-selected:hover {
+  border-color: var(--tr-gold);
+  background: linear-gradient(
+    180deg,
+    rgba(251, 191, 36, 0.28),
+    rgba(251, 191, 36, 0.08)
+  );
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.35);
+}
+
+unit-display .hotbar-tile-selected .hotbar-key {
+  color: var(--tr-gold-light);
+}
+
+unit-display .hotbar-price {
+  color: var(--tr-gold-light);
+}
+
+control-panel .objectives-chip {
+  font-family: var(--tr-display);
+  letter-spacing: 0.02em;
+}
+
 /* ---------------------------------------------------------------------------
  * Leaderboard (left sidebar)
  * ------------------------------------------------------------------------- */

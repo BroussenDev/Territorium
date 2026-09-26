@@ -26,13 +26,17 @@ type RGB = readonly [number, number, number];
 // SAM interception keeps the classic white ring (color fields go unused there).
 const WHITE: RGB = [1, 1, 1];
 
+// The EMP bomb's detonation. Unlike the rings, its quad spans the full blast
+// from the first frame (the shader animates the front from the lifetime).
+const STYLE_EMP_BURST = 4;
+
 interface ActiveShockwave {
   x: number;
   y: number;
   startMs: number;
   durationMs: number;
   maxRadius: number;
-  style: number; // 0 = classic ring (SAM + no-cosmetic nuke), 1 = EMP, 2 = sparkles, 3 = embers
+  style: number; // 0 = classic ring (SAM + no-cosmetic nuke), 1 = EMP pulse cosmetic, 2 = sparkles, 3 = embers, 4 = EMP bomb burst
   colors: readonly RGB[]; // 1..MAX_NUKE_EXPLOSION_COLORS palette, never empty
   speed: number; // crackle-animation multiplier (effect pace vs the default)
   transitionSpeed: number; // palette step rate (colors/s); 0 = static, <0 = reverse
@@ -236,6 +240,26 @@ export class FxShockwavePass {
     });
   }
 
+  // An EMP bomb reaching its target: a flash, forked lightning out to an
+  // electric front, then a fading static field. No cosmetic: the colors are
+  // fixed so an EMP always reads as an EMP.
+  pushEmpBurst(x: number, y: number): void {
+    const fx = this.settings.fx;
+    this.active.push({
+      x,
+      y,
+      startMs: this.timeFn(),
+      durationMs: fx.empBurstDurationMs,
+      maxRadius: fx.empBurstRadius,
+      style: STYLE_EMP_BURST,
+      colors: [WHITE],
+      speed: 1,
+      transitionSpeed: 0,
+      thickness: 0,
+      cell: 0,
+    });
+  }
+
   // -------------------------------------------------------------------------
   // Tick
   // -------------------------------------------------------------------------
@@ -265,7 +289,8 @@ export class FxShockwavePass {
       const off = i * SHOCKWAVE_FLOATS;
       data[off + 0] = sw.x;
       data[off + 1] = sw.y;
-      data[off + 2] = t * sw.maxRadius;
+      data[off + 2] =
+        sw.style === STYLE_EMP_BURST ? sw.maxRadius : t * sw.maxRadius;
       data[off + 3] = 1 - t;
       data[off + 4] = sw.style;
       // Pad unused slots with the last palette color (see layout note above).

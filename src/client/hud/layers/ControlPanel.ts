@@ -521,11 +521,9 @@ export class ControlPanel extends LitElement implements Controller {
   private renderObjectives() {
     if (this._objectivesTotal === 0) return html``;
     const held = this._objectivesHeld;
-    const rewarded = this._objectivesRewarded;
-    const cap = objectiveBonusCap(this._objectivesTotal);
     return html`
       <div
-        title=${translateText("objectives.cap_hint", { max: cap })}
+        title=${this.objectivesHint()}
         class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border text-xs font-medium ${held >
         0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
@@ -540,22 +538,65 @@ export class ControlPanel extends LitElement implements Controller {
         >
         ${held > 0
           ? html`<span class="ml-auto tabular-nums"
-              >${translateText(
-                rewarded >= cap ? "objectives.bonus_max" : "objectives.bonus",
-                {
-                  gold: Number(OBJECTIVE_GOLD_PER_TICK) * rewarded,
-                  troops: OBJECTIVE_TROOP_GROWTH_PERCENT * rewarded,
-                },
-              )}</span
+              >${this.objectivesBonus()}</span
             >`
           : ""}
       </div>
     `;
   }
 
+  /** The desktop's objectives chip, beside the attack slider. */
+  private renderObjectivesChip() {
+    if (this._objectivesTotal === 0) return html``;
+    const held = this._objectivesHeld;
+    return html`
+      <div
+        title=${this.objectivesHint()}
+        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border leading-tight ${held >
+        0
+          ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
+          : "border-gray-600 text-white/70"}"
+        translate="no"
+      >
+        <span class="text-xs font-bold whitespace-nowrap"
+          ><span aria-hidden="true">◆</span> ${translateText(
+            "objectives.held",
+            {
+              held,
+              total: this._objectivesTotal,
+            },
+          )}</span
+        >
+        ${held > 0
+          ? html`<span class="text-[10px] tabular-nums whitespace-nowrap"
+              >${this.objectivesBonus()}</span
+            >`
+          : ""}
+      </div>
+    `;
+  }
+
+  private objectivesHint(): string {
+    return translateText("objectives.cap_hint", {
+      max: objectiveBonusCap(this._objectivesTotal),
+    });
+  }
+
+  private objectivesBonus(): string {
+    const rewarded = this._objectivesRewarded;
+    const cap = objectiveBonusCap(this._objectivesTotal);
+    return translateText(
+      rewarded >= cap ? "objectives.bonus_max" : "objectives.bonus",
+      {
+        gold: Number(OBJECTIVE_GOLD_PER_TICK) * rewarded,
+        troops: OBJECTIVE_TROOP_GROWTH_PERCENT * rewarded,
+      },
+    );
+  }
+
   private renderDesktop() {
     return html`
-      ${this.renderNotification()} ${this.renderObjectives()}
+      ${this.renderNotification()}
       <!-- Row 1: troop rate | troop bar | gold -->
       <div class="flex gap-1.5 items-center mb-1">
         <!-- Troop rate -->
@@ -641,8 +682,9 @@ export class ControlPanel extends LitElement implements Controller {
           .value=${String(Math.round(this.attackRatio * 100))}
           @input=${(e: Event) => this.handleRatioSliderInput(e)}
           @pointerup=${(e: Event) => this.handleRatioSliderPointerUp(e)}
-          class="flex-1 h-1.5 accent-brand-light cursor-pointer"
+          class="flex-1 min-w-0 h-1.5 accent-brand-light cursor-pointer"
         />
+        ${this.renderObjectivesChip()}
       </div>
     `;
   }

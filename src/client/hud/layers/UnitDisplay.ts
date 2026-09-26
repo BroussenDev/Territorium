@@ -144,108 +144,122 @@ export class UnitDisplay extends LitElement implements Controller {
     if (this.allDisabled) {
       return null;
     }
+    const config = this.game.config();
+
+    const groups = this.groups()
+      .map((group) =>
+        group.filter(([, , unitType]) => !config.isUnitDisabled(unitType)),
+      )
+      .filter((group) => group.length > 0);
 
     return html`
-      <div class="border-t border-white/10 p-0.5 w-full">
-        <div class="grid grid-rows-1 grid-flow-col gap-0.5 w-fit mx-auto">
-          ${this.renderUnitItem(
-            cityIcon,
-            this._cities,
-            UnitType.City,
-            "city",
-            this.keybinds["buildCity"]?.key ?? "1",
-          )}
-          ${this.renderUnitItem(
-            factoryIcon,
-            this._factories,
-            UnitType.Factory,
-            "factory",
-            this.keybinds["buildFactory"]?.key ?? "2",
-          )}
-          ${this.renderUnitItem(
-            portIcon,
-            this._port,
-            UnitType.Port,
-            "port",
-            this.keybinds["buildPort"]?.key ?? "3",
-          )}
-          ${this.renderDivider()}
-          ${this.renderUnitItem(
-            defensePostIcon,
-            this._defensePost,
-            UnitType.DefensePost,
-            "defense_post",
-            this.keybinds["buildDefensePost"]?.key ?? "4",
-          )}
-          ${this.renderUnitItem(
-            missileSiloIcon,
-            this._missileSilo,
-            UnitType.MissileSilo,
-            "missile_silo",
-            this.keybinds["buildMissileSilo"]?.key ?? "5",
-          )}
-          ${this.renderUnitItem(
-            samLauncherIcon,
-            this._samLauncher,
-            UnitType.SAMLauncher,
-            "sam_launcher",
-            this.keybinds["buildSamLauncher"]?.key ?? "6",
-          )}
-          ${this.renderUnitItem(
-            radarIcon,
-            this._radar,
-            UnitType.Radar,
-            "radar",
-            this.keybinds["buildRadar"]?.key ?? "V",
-          )}
-          ${this.renderDivider()}
-          ${this.renderUnitItem(
-            warshipIcon,
-            this._warships,
-            UnitType.Warship,
-            "warship",
-            this.keybinds["buildWarship"]?.key ?? "7",
-          )}
-          ${this.renderDivider()}
-          ${this.renderUnitItem(
-            atomBombIcon,
-            null,
-            UnitType.AtomBomb,
-            "atom_bomb",
-            this.keybinds["buildAtomBomb"]?.key ?? "8",
-          )}
-          ${this.renderUnitItem(
-            hydrogenBombIcon,
-            null,
-            UnitType.HydrogenBomb,
-            "hydrogen_bomb",
-            this.keybinds["buildHydrogenBomb"]?.key ?? "9",
-          )}
-          ${this.renderUnitItem(
-            empBombIcon,
-            null,
-            UnitType.EMPBomb,
-            "emp_bomb",
-            this.keybinds["buildEmpBomb"]?.key ?? "X",
-          )}
-          ${this.renderUnitItem(
-            mirvIcon,
-            null,
-            UnitType.MIRV,
-            "mirv",
-            this.keybinds["buildMIRV"]?.key ?? "0",
+      <div class="border-t border-white/10 px-1 py-1 w-full">
+        <div class="flex items-stretch gap-1.5 w-full">
+          ${groups.map(
+            (group) => html`
+              <div
+                style="flex: ${group.length} 1 0"
+                class="hotbar-group flex gap-0.5 p-0.5 rounded-md border border-white/10 bg-black/25"
+              >
+                ${group.map(([icon, count, unitType, key, bind, fallback]) =>
+                  this.renderUnitItem(
+                    icon,
+                    count,
+                    unitType,
+                    key,
+                    this.keybinds[bind]?.key ?? fallback,
+                  ),
+                )}
+              </div>
+            `,
           )}
         </div>
       </div>
     `;
   }
 
-  // Thin rule between the economy, defense, navy and missile groups.
-  private renderDivider() {
-    return html`<div
-      class="w-px self-stretch my-1 mx-0.5 bg-white/15"
-      aria-hidden="true"
-    ></div>`;
+  // The build bar's groups, in the build menu's order: economy, defense,
+  // navy and missiles. Each entry: icon, count owned (null for missiles),
+  // unit, translation key, keybind name and default key.
+  private groups(): [
+    string,
+    number | null,
+    PlayerBuildableUnitType,
+    string,
+    string,
+    string,
+  ][][] {
+    return [
+      [
+        [cityIcon, this._cities, UnitType.City, "city", "buildCity", "1"],
+        [
+          factoryIcon,
+          this._factories,
+          UnitType.Factory,
+          "factory",
+          "buildFactory",
+          "2",
+        ],
+        [portIcon, this._port, UnitType.Port, "port", "buildPort", "3"],
+      ],
+      [
+        [
+          defensePostIcon,
+          this._defensePost,
+          UnitType.DefensePost,
+          "defense_post",
+          "buildDefensePost",
+          "4",
+        ],
+        [
+          missileSiloIcon,
+          this._missileSilo,
+          UnitType.MissileSilo,
+          "missile_silo",
+          "buildMissileSilo",
+          "5",
+        ],
+        [
+          samLauncherIcon,
+          this._samLauncher,
+          UnitType.SAMLauncher,
+          "sam_launcher",
+          "buildSamLauncher",
+          "6",
+        ],
+        [radarIcon, this._radar, UnitType.Radar, "radar", "buildRadar", "V"],
+      ],
+      [
+        [
+          warshipIcon,
+          this._warships,
+          UnitType.Warship,
+          "warship",
+          "buildWarship",
+          "7",
+        ],
+      ],
+      [
+        [
+          atomBombIcon,
+          null,
+          UnitType.AtomBomb,
+          "atom_bomb",
+          "buildAtomBomb",
+          "8",
+        ],
+        [
+          hydrogenBombIcon,
+          null,
+          UnitType.HydrogenBomb,
+          "hydrogen_bomb",
+          "buildHydrogenBomb",
+          "9",
+        ],
+        [empBombIcon, null, UnitType.EMPBomb, "emp_bomb", "buildEmpBomb", "X"],
+        [mirvIcon, null, UnitType.MIRV, "mirv", "buildMIRV", "0"],
+      ],
+    ];
   }
 
   private renderUnitItem(
@@ -255,9 +269,6 @@ export class UnitDisplay extends LitElement implements Controller {
     structureKey: string,
     hotkey: string,
   ) {
-    if (this.game.config().isUnitDisabled(unitType)) {
-      return html``;
-    }
     const selected = this.uiState.ghostStructure === unitType;
     const hovered = this._hoveredUnit === unitType;
     const displayHotkey = hotkey
@@ -267,7 +278,7 @@ export class UnitDisplay extends LitElement implements Controller {
 
     return html`
       <div
-        class="flex flex-col items-center relative"
+        class="flex flex-col items-center relative flex-1 min-w-0"
         @mouseenter=${() => {
           this._hoveredUnit = unitType;
           this.requestUpdate();
@@ -307,12 +318,13 @@ export class UnitDisplay extends LitElement implements Controller {
             `
           : null}
         <div
-          class="${this.canBuild(unitType)
+          class="hotbar-tile relative flex flex-col items-center w-full h-[2.6rem] pt-2.5 rounded border cursor-pointer text-white transition-colors ${selected
+            ? "hotbar-tile-selected border-amber-300 bg-amber-300/15"
+            : "border-transparent hover:bg-white/10"} ${this.canBuild(unitType)
             ? ""
-            : "opacity-40"} border border-slate-500 rounded-sm px-0.5 pb-0.5 flex items-center gap-0.5 cursor-pointer
-             ${selected ? "hover:bg-gray-400/10" : "hover:bg-gray-800"}
-             rounded-sm text-white ${selected ? "bg-slate-400/20" : ""}
-             ${this.tutorialHighlight === unitType ? "tutorial-highlight" : ""}"
+            : "opacity-40"} ${this.tutorialHighlight === unitType
+            ? "tutorial-highlight"
+            : ""}"
           @click=${() => {
             if (selected) {
               this.uiState.ghostStructure = null;
@@ -343,17 +355,34 @@ export class UnitDisplay extends LitElement implements Controller {
           @mouseleave=${() =>
             this.eventBus?.emit(new ToggleStructureEvent(null))}
         >
-          ${html`<div class="ml-0.5 text-[10px] relative -top-1 text-gray-400">
-            ${displayHotkey}
-          </div>`}
-          <div class="flex items-center gap-0.5 pt-0.5">
-            <img src=${icon} alt=${structureKey} class="align-middle size-5" />
-            ${number !== null
-              ? html`<span class="text-xs">${renderNumber(number)}</span>`
-              : null}
-          </div>
+          <span
+            class="hotbar-key absolute top-0.5 left-1 text-[9px] font-bold leading-none text-gray-400"
+            >${displayHotkey}</span
+          >
+          <img src=${icon} alt=${structureKey} class="size-5" />
+          ${this.renderTileFooter(unitType, number)}
         </div>
       </div>
     `;
+  }
+
+  // Under the icon: how many you own, or a missile's price.
+  private renderTileFooter(unitType: UnitType, number: number | null) {
+    if (number !== null) {
+      return html`<span
+        class="mt-0.5 text-[10px] font-bold leading-none tabular-nums ${number >
+        0
+          ? "text-white"
+          : "text-white/35"}"
+        >${renderNumber(number)}</span
+      >`;
+    }
+    const cost = this.cost(unitType);
+    return cost > 0n
+      ? html`<span
+          class="hotbar-price mt-0.5 text-[9px] font-bold leading-none tabular-nums text-yellow-300"
+          >${renderNumber(cost)}</span
+        >`
+      : null;
   }
 }

@@ -9,11 +9,12 @@
  */
 
 import type { Config } from "../../../../../core/configuration/Config";
-import type {
-  AttackRingInput,
-  ConquestFx,
-  DeadUnitFx,
-  RendererConfig,
+import {
+  type AttackRingInput,
+  type ConquestFx,
+  type DeadUnitFx,
+  type RendererConfig,
+  UT_EMP_BOMB,
 } from "../../../types";
 import type { RenderSettings } from "../../RenderSettings";
 import { FxAttackRingPass } from "./FxAttackRingPass";
@@ -64,6 +65,16 @@ export class FxPass {
     const typeName = unit.unitType;
     const x = unit.pos % this.mapW;
     const y = (unit.pos - x) / this.mapW;
+
+    if (typeName === UT_EMP_BOMB) {
+      if (unit.reachedTarget) {
+        this.shockwavePass.pushEmpBurst(x, y);
+      } else {
+        this.spritePass.spawnFxForUnit(unit, now);
+        this.shockwavePass.pushSAMShockwave(x, y);
+      }
+      return;
+    }
 
     const nukeRadius = nukeExplosionRadius(this.settings.fx, typeName);
     if (nukeRadius !== undefined) {

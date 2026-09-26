@@ -257,6 +257,8 @@
     "nukeRadiusAtom": 70,
     "nukeRadiusHydro": 160,
     "nukeRadiusMirv": 70,
+    "empBurstRadius": 24,
+    "empBurstDurationMs": 1400,
     "debrisDensity": 1
   },
   "nukeTrajectory": {

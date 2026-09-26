@@ -10,6 +10,7 @@ import type { Config } from "../../../../../core/configuration/Config";
 import type { ConquestFx, DeadUnitFx, RendererConfig } from "../../../types";
 import {
   STRUCTURE_TYPES,
+  UT_EMP_BOMB,
   UT_SHELL,
   UT_TRAIN,
   UT_WARSHIP,
@@ -358,6 +359,12 @@ export class FxSpritePass {
       } else {
         this.pushFx(x, y, FX_SAM_EXPLOSION, now);
       }
+      return;
+    }
+
+    // Shot down by a SAM; a detonation is the shockwave pass's EMP burst.
+    if (typeName === UT_EMP_BOMB) {
+      if (!unit.reachedTarget) this.pushFx(x, y, FX_SAM_EXPLOSION, now);
       return;
     }
 

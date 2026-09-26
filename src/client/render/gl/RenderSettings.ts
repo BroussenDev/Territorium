@@ -317,6 +317,9 @@ export interface RenderSettings {
     nukeRadiusAtom: number;
     nukeRadiusHydro: number;
     nukeRadiusMirv: number;
+    /** EMP detonation: visual radius (world tiles; gameplay radius is 20). */
+    empBurstRadius: number;
+    empBurstDurationMs: number;
     /** Multiplier on the nuke debris sprite count (1 = default scatter). */
     debrisDensity: number;
   };

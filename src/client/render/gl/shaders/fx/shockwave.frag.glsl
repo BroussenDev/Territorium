@@ -6,7 +6,7 @@ uniform float uTime;      // seconds — animates procedural styles
 
 in vec2  vLocalPos;
 flat in float vAlpha;   // 1 - lifetime progress (fades out over the effect)
-flat in float vStyle;   // 0 = classic ring, 1 = EMP pulse, 2 = sparkles, 3 = embers
+flat in float vStyle;   // 0 = classic ring, 1 = EMP pulse, 2 = sparkles, 3 = embers, 4 = EMP burst
 flat in vec3  vColor0;  // cosmetic: palette color 0
 flat in vec3  vColor1;  // cosmetic: palette color 1
 flat in vec3  vColor2;  // cosmetic: palette color 2 (pads repeat the last color)
@@ -40,6 +40,16 @@ float vnoise(float x) {
   float f = fract(x);
   float u = f * f * (3.0 - 2.0 * f);
   return mix(hash11(i), hash11(i + 1.0), u);
+}
+float vnoise2(vec2 p) {
+  vec2 i = floor(p);
+  vec2 f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  float a = hash11(dot(i, vec2(127.1, 311.7)));
+  float b = hash11(dot(i + vec2(1.0, 0.0), vec2(127.1, 311.7)));
+  float c = hash11(dot(i + vec2(0.0, 1.0), vec2(127.1, 311.7)));
+  float d = hash11(dot(i + vec2(1.0, 1.0), vec2(127.1, 311.7)));
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
 }
 
 // Classic expanding white ring (SAM, and nuke style 0).
@@ -211,9 +221,78 @@ void emberScatter() {
   fragColor = vec4(col, a);
 }
 
+// EMP bomb detonation (style 4). The quad spans the whole blast from the start
+// (vRadius stays constant), so progress comes from the lifetime: a white
+// flash, forked lightning crackling out to a jagged electric front, and a
+// static field inside it that dies out. Bolts re-roll ~14 times a second,
+// which is what makes them read as lightning rather than spokes.
+void empBurst(float dist) {
+  const float TAU = 6.28318;
+  float t = 1.0 - vAlpha;
+  float front = 1.0 - pow(1.0 - t, 3.0); // fast out, slow settle
+  float R = max(vRadius, 0.001);
+  float ang = atan(vLocalPos.y, vLocalPos.x);
+
+  // White flash at the point of impact, gone within the first third.
+  float flash = exp(-dist * 7.0) * (1.0 - smoothstep(0.0, 0.3, t)) * 1.6;
+
+  // Jagged front, about two tiles thick, flickering along its length.
+  float n = vnoise(ang * 7.0 + uTime * 9.0)
+          + 0.5 * vnoise(ang * 19.0 - uTime * 15.0);
+  float ringR = front * (0.93 + 0.05 * n);
+  float halfW = (0.8 + 1.4 * vnoise(ang * 11.0 + uTime * 25.0)) / R;
+  float ring = (1.0 - smoothstep(0.0, halfW, abs(dist - ringR)))
+             * (1.0 - smoothstep(0.6, 1.0, t));
+
+  // Forked bolts from the center to just behind the front.
+  float seed = floor(uTime * 14.0);
+  float bolts = 0.0;
+  for (int i = 0; i < 7; i++) {
+    float fi = float(i);
+    float a0 = (fi + hash11(seed * 7.13 + fi * 13.7)) * (TAU / 7.0);
+    float len = ringR * (0.7 + 0.3 * hash11(seed * 3.31 + fi * 5.9));
+    float wander = (vnoise(dist * 9.0 + fi * 31.0 + seed * 1.7) - 0.5) * 0.9
+                 + (vnoise(dist * 27.0 + fi * 17.0 + seed * 2.3) - 0.5) * 0.3;
+    float d = mod(ang - a0 - wander * 0.7 + 3.14159, TAU) - 3.14159;
+    float across = abs(d) * dist * R; // world tiles off the bolt
+    float core = 1.0 - smoothstep(0.1, 0.5, across);
+    float halo = (1.0 - smoothstep(0.0, 2.5, across)) * 0.3;
+    bolts += (core + halo) * (1.0 - smoothstep(len - 0.05, len, dist));
+  }
+  bolts *= (0.65 + 0.35 * hash11(seed * 9.7))
+         * (1.0 - smoothstep(0.4, 0.8, t));
+
+  // Static field behind the front, crackling and dying out.
+  vec2 world = vLocalPos * R; // tiles from the impact
+  float crackle = vnoise2(world * 0.7 + vec2(uTime * 7.0, -uTime * 5.0));
+  float field = (1.0 - smoothstep(ringR - 0.05, ringR, dist))
+              * (0.07 + 0.2 * pow(crackle, 4.0))
+              * (1.0 - smoothstep(0.35, 1.0, t));
+
+  // Last sparks: a sparse scatter of round glints blinking out as the field
+  // fades, one candidate per 2-tile cell.
+  vec2 cid = floor(world / 2.0);
+  float h = hash11(dot(cid, vec2(157.0, 113.0)) + seed * 0.37);
+  float glint = 1.0 - smoothstep(0.15, 0.6, length(world - (cid + 0.5) * 2.0));
+  float spark = step(0.95, h) * glint * step(dist, ringR)
+              * smoothstep(0.3, 0.5, t) * (1.0 - smoothstep(0.75, 1.0, t));
+
+  float glow = flash + ring * 1.1 + bolts + field + spark;
+  if (glow < 0.01) discard;
+
+  vec3 blue = vec3(0.30, 0.72, 1.00);
+  vec3 violet = vec3(0.56, 0.46, 1.00);
+  vec3 white = vec3(0.93, 0.97, 1.00);
+  vec3 col = mix(blue, violet, 0.35 * vnoise(ang * 3.0 + uTime * 2.0));
+  col = mix(col, white, clamp(flash + 0.5 * ring + 0.7 * bolts + spark, 0.0, 1.0) * 0.85);
+  fragColor = vec4(col, clamp(glow, 0.0, 1.0));
+}
+
 void main() {
   float dist = length(vLocalPos);
-  if (vStyle > 2.5) {
+  if (vStyle > 3.5) {
+    empBurst(dist);
+  } else if (vStyle > 2.5) {
     emberScatter();
   } else if (vStyle > 1.5) {
     sparkles();

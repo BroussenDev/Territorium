@@ -434,6 +434,16 @@ export function buildTree(s: RenderSettings, d: RenderSettings): DebugNode[] {
       slider(s.fx, "nukeRadiusHydro", d.fx, 10, 400, 5, "Hydrogen Bomb Radius"),
       slider(s.fx, "nukeRadiusMirv", d.fx, 10, 400, 5, "MIRV Warhead Radius"),
       slider(s.fx, "debrisDensity", d.fx, 0, 4, 0.1, "Debris Density ×"),
+      slider(s.fx, "empBurstRadius", d.fx, 5, 100, 1, "EMP Burst Radius"),
+      slider(
+        s.fx,
+        "empBurstDurationMs",
+        d.fx,
+        300,
+        5000,
+        100,
+        "EMP Burst Duration",
+      ),
     ]),
 
     folder("Nuke Trajectory", [
