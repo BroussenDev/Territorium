@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Ellenőrzési hiba: {code}. Kérjük, frissítsd az oldalt, és próbáld újra."
   },
+  "event_history": {
+    "empty": "Még nem történt semmi.",
+    "filter_all": "Minden",
+    "filter_attack": "Támadások",
+    "filter_chat": "Csevegés",
+    "filter_diplomacy": "Diplomácia",
+    "filter_nuke": "Rakéták",
+    "filter_trade": "Kereskedelem",
+    "hours_ago": "{n} órája",
+    "just_now": "épp most",
+    "minutes_ago": "{n} perce",
+    "seconds_ago": "{n} mp-e",
+    "title": "Eseménytörténet"
+  },
   "events_display": {
     "about_to_expire": "A szövetséged hamarosan lejár a következő játékossal: {name}!",
     "accept_alliance": "Elfogad",
@@ -953,6 +967,7 @@
     "no_boats_available": "Nincsenek elérhető hajók, max. {max}",
     "objective_captured": "Elfoglaltál egy térképcélt: több arany és csapatnövekedés, amíg tartod.",
     "objective_lost": "{name} elvette az egyik térképcélját.",
+    "objectives_revealed": "{count} célpont jelent meg a térképen!",
     "peace_broken": "{breaker} felbontotta a békét {victim}-vel! Hamis eskü.",
     "peace_expired": "A {name}-vel kötött béke lejárt.",
     "peace_rejected": "{name} megtagadta a békeszerződésedet.",
@@ -1112,13 +1127,13 @@
       "factory": "A gyárak vasúton kötik össze városait és kikötőit. A vonatok aranyat keresnek minden épületért, amelyet meglátogatnak, és még többet a szomszédainál.",
       "frames": "Az épület körüli keret mutatja a szintet: bronz a 2, ezüst a 3, arany a 4.",
       "mirv": "Egy MIRV egy hatalmas területen robbanófejek rajra szakad, és csak azt a játékost találja el, akire célzott.",
-      "objectives": "Minden birtokolt térképcél +15% aranyat és +5% csapatot ad. Legyen birtokában a zóna nagy része 15 másodpercig, hogy megörökítse.",
-      "peace": "Egy háború elvesztése? Írjon alá egy békeszerződést: három perc támadások nélkül, szövetség nélkül. Aki megszegi, azt minden játékos előtt árulónak minősítik.",
+      "objectives": "A térképcélok egy perccel a játék után jelennek meg. Mindegyik kezében tartva +15% aranyat és +5% katonát ad: 15 másodpercig birtokolja a zónája nagy részét, hogy elfoglalja.",
+      "peace": "Egy háború elvesztése? Kínálj békét a játékosnak, akivel harcolsz: három perc támadások nélkül, szövetség nélkül. Aki megszegi, azt minden játékos előtt árulónak minősítik.",
       "radar": "Egy radar ellenséges hajókat, hadihajókat és rakétákat észlel 100 lapkán belül, tehát inváziót látunk közeledni.",
       "sam": "A SAM hordozórakéták hatótávolságon belül lőnek le rakétákat. Minden SAM szint egy tüzelésre kész rakétát és nagyobb hatótávolságot ad.",
       "trade": "A kikötők önállóan kereskednek más országokkal, és mindkét fél aranyat keres. Ha megtámad egy játékost, az 5 percre leállítja vele a kereskedést.",
       "traitor": "Egy szövetség feltörése 30 másodpercre árulóvá tesz: a védekezés a felére csökken, és a többi játékos kevésbé bízik benned.",
-      "upgrade": "Kattintson az egyik épületére a kártya megnyitásához és frissítéséhez. Minden város, kikötő vagy gyár szintje eggyel több épületnek számít."
+      "upgrade": "Kattintson az egyik épületre a frissítéshez: egy nagyobb város több embert, egy nagyobb kikötő több hajót és egy nagyobb gyár több vonatot küld. Minden épületnek van egy maximális szintje."
     },
     "title": "A játék indul..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Kézfogás – szövetség kérése. A szövetségesek nem támadhatják meg egymást, és küldhetnek egymásnak csapatokat és aranyat.",
     "info_chat": "Gyors chat – válasszon egy kategóriát és egy kifejezést; ha megnevez egy játékost, válassza ki, hogy kit, majd küldje el.",
     "info_emoji": "Emoji – gyors hangulatjel küldése a játékosnak.",
-    "info_peace": "Fehér zászló – ajánlj fel békeszerződést az ellenségnek. Az aláírás után egyikőtök sem támadhatja meg a másikat 3 percig, és a folyamatban lévő támadások leállnak. Aki megszegi, azt árulónak jelölik, és minden játékosnak megmondják.",
+    "info_peace": "Fehér zászló – ajánlj fel békeszerződést egy játékosnak, akivel háborúban állsz (harcol most vagy az utolsó 2 percben). Az aláírás után egyikőtök sem támadhatja meg a másikat 3 percig, és a folyamatban lévő támadások leállnak. Aki megszegi, azt árulónak jelölik, és minden játékosnak megmondják.",
     "info_target": "Célpont – jelöld ki ezt a játékost az összes szövetségesednek, hogy együtt tervezhess támadást.",
     "info_trade": "Kereskedelem – állítsa le vagy indítsa újra a kereskedelmi hajók küldését ehhez a játékoshoz. A kereskedés akkor kezdődik újra, amikor mindketten megengedik.",
     "objectives_bonus": "Minden célod +15% aranyat és +5% csapatot ad.",
     "objectives_cap": "Csak a célok fele számít bele a bónuszba (2 a 4-ből, 3 az 5-ből vagy a 6-ból), így senki sem nyer azzal, ha mindegyiket megtartja.",
     "objectives_capture": "A zóna nagy részének birtoklása 15 másodpercig a rögzítéshez. A gyűrű megtelik, miközben tartja.",
-    "objectives_desc": "Egyes játékok célokat helyeznek el a térképen. Mindegyik egy olyan zóna, amelyet érdemes megtartani az egész játék során.",
+    "objectives_desc": "Egyes játékok célokat helyeznek el a térképen. Egy perccel a játékban jelennek meg, egy bejelentéssel, így senki sem tudja elsietni őket az elejétől fogva. Mindegyik egy olyan zóna, amelyet érdemes megtartani az egész játék során.",
     "objectives_title": "Térképcélok",
     "objectives_where": "Egyedi, privát és nyilvános játékokban jelennek meg; rangsorolt, 1v1, 2v2 és a napi versenynek nincs. A játék készítője kikapcsolhatja őket.",
     "objectives_zone": "Egy cél a térképen",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Saját csapat:",
     "upgrades_card": "Szerkezeti kártya",
     "upgrades_desc": "Kattints az egyik épületedre a kártya megnyitásához: a szintre, a következő szintre és a frissítés gombra.",
-    "upgrades_economy": "Városok, kikötők és gyárak: nincs korlátozás és nincs várakozás. Minden szint egy további épületnek számít.",
-    "upgrades_frames": "A korszerűsített épületek keretet kapnak a térképen: bronz a 2. szinten, ezüst a 3. szinten, arany a 4. szinten.",
+    "upgrades_economy": "A városok, kikötők és gyárak azonnal felmennek az 5. szintre. Egy város minden szintjén több ember tartózkodik, egy kikötő több kereskedelmi hajót küld és több hadihajót javít egyszerre, egy gyár több vonatot küld.",
+    "upgrades_frames": "A korszerűsített épületek keretet kapnak a térképen: bronz a 2. szinten, ezüst a 3. szinten, arany a 4. és smaragd az 5. szinten.",
     "upgrades_military": "A SAM-ok az 5. szintig mennek (+1 rakéta készenlét és több hatótávolság szintenként), a silók és radarok a 3. szintig. Minden új szint feloldódik a játék előrehaladtával: a kártya mutatja a visszaszámlálást.",
     "upgrades_ranked": "A rangsorolt játékokban a szintek alacsonyabbak (SAM 3, siló és radar 2), és később oldódnak fel.",
     "upgrades_title": "Épület korszerűsítése"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% arany, +{troops}% csapatok (max.)",
     "cap_hint": "A bónuszod legfeljebb {max} célt számít. Ha többet tartasz, azzal csak a riválisaidtól veszed el őket.",
     "held": "Célok {held}/{total}",
+    "reveal_in": "Célpontok {time} múlva",
     "zone_label": "Cél {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kirúgod {name} felhasználót?\n\nNem fog tudni újra csatlakozni ehhez a játékhoz.",
     "kicked": "Kirúgva",
     "moderation": "Moderáció",
+    "peace_needs_war": "Csak annak a játékosnak ajánlhat békét, akivel háborúban áll",
     "peace_time_remaining": "A béke véget ér",
     "propose_peace": "Békét ajánlani",
     "report": "Jelentés",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rakéták {from} → {to}",
+    "gain_population": "Maximális lakosság +{from} → +{to}",
     "gain_range": "Hatótáv {from} → {to}",
-    "gain_stack": "Úgy számít, mint még egy ilyen típusú épület",
+    "gain_repairs": "Hadihajó-javító dokkok {from} → {to}",
+    "gain_trade_ships": "Kereskedelmi hajók ×{from} → ×{to}",
+    "gain_trains": "Elküldött vonatok ×{from} → ×{to}",
     "level": "{level}. szint",
     "level_of": "{level}. szint / {max}",
     "locked": "{level}. szint elérhető ennyi idő múlva: {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "A silód készen áll! Nyomja meg a {key} gombot, majd kattintson a szomszéd földjére atombomba indításához.",
       "mirv_info": "MIRV: robbanófejek esője egyetlen ellenség felett. A végső fegyver.",
       "no_coast": "Még nincs tengerpartja. A tenger megnyitja a hajókat, a kikötőket és a kereskedelmet: terjesszen, amíg el nem éri a partot.",
-      "objectives": "Ennek a térképnek vannak céljai: ragyogó zónák, amelyeket érdemes megtartani. Legyen birtokában az egyiknek 15 másodpercre, hogy elfoglalhassa, +15% aranyért és +5% csapatért. Ez a számláló azt mutatja, hogy mennyit tartasz.",
+      "objectives": "Ennek a térképnek céljai vannak: izzó zónák, amelyek a játék egy perce után megjelennek. Legyen birtokában az egyiknek 15 másodpercre, hogy elfoglalhassa, +15% aranyért és +5% csapatért. Ez a számláló mutatja a megjelenésig hátralévő időt, majd azt, hogy mennyit tart.",
       "port_info_ships": "A kikötők kereskedelmi hajókat küldenek más országokba, és minden utazás aranyat ér.",
       "port_info_warships": "A kikötők hadihajókat is építenek.",
       "propose_alliance": "Egy erős szomszéd jobb barátnak. Kattintson a jobb gombbal a célt tartalmazó nemzetre, és kérjen szövetséget.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Egy áruló 30 másodpercre elveszíti védekezésének felét. Gondosan válassza ki a pillanatot.",
       "troop_rate": "Ilyen gyorsan nőnek a csapataid. Lelassul, és narancssárgává válik, ha túlléped a maximum felét.",
       "troops": "Ezek a te csapataid. Minden támadás elkölt belőlük, ezért hagyjon nekik időt a támadások között, hogy újra felnőjenek.",
-      "upgrade_city": "Az épületek korszerűsíthetők. Kattintson a városára a kártya megnyitásához, majd nyomja meg a Frissítés gombot: minden szint egy további városnak számít."
+      "upgrade_city": "Az épületek korszerűsíthetők. Kattintson a városára a kártya megnyitásához, majd nyomja meg a Frissítés gombot: minden szinten több embernek ad helyet, egészen az 5. szintig."
     },
     "step_counter": "{current}./{total} lépés",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Egy erős szomszéd jobb barátnak. Koppintson a célponttal rendelkező nemzetre, majd érintse meg a kézfogást, hogy szövetséget kérjen.",
       "send_boat": "Csónakok viszik a csapatokat a vízen. Érintsen meg egy ellenséges partot a tengeren a radiális menü megnyitásához, majd válassza ki a hajót.",
       "spawn": "Üdvözöljük a Territoriumban! Érintse meg bárhol a térképet a kiindulási hely kiválasztásához. Később jól jön egy partvonal.",
-      "upgrade_city": "Az épületek korszerűsíthetők. Koppintson a városára a kártya megnyitásához, majd koppintson a Frissítés lehetőségre: minden szint egy további városnak számít."
+      "upgrade_city": "Az épületek korszerűsíthetők. Koppintson a városra a kártya megnyitásához, majd koppintson a Frissítés lehetőségre: minden szinten több embernek ad helyet, egészen az 5. szintig."
     },
     "title": "Ismertető"
   },

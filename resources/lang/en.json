@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Verification error: {code}. Please refresh and try again."
   },
+  "event_history": {
+    "empty": "Nothing has happened yet.",
+    "filter_all": "All",
+    "filter_attack": "Attacks",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomacy",
+    "filter_nuke": "Missiles",
+    "filter_trade": "Trade",
+    "hours_ago": "{n} h ago",
+    "just_now": "just now",
+    "minutes_ago": "{n} min ago",
+    "seconds_ago": "{n}s ago",
+    "title": "Event history"
+  },
   "events_display": {
     "about_to_expire": "Your alliance with {name} is about to expire!",
     "accept_alliance": "Accept",
@@ -953,6 +967,7 @@
     "no_boats_available": "No boats available, max {max}",
     "objective_captured": "You captured a map objective: more gold and troop growth while you hold it.",
     "objective_lost": "{name} took one of your map objectives.",
+    "objectives_revealed": "{count} objectives have appeared on the map!",
     "peace_broken": "{breaker} broke the peace with {victim}! Perjury.",
     "peace_expired": "The peace with {name} has expired.",
     "peace_rejected": "{name} refused your peace treaty.",
@@ -1112,13 +1127,13 @@
       "factory": "Factories link your cities and ports by rail. Trains earn gold for every building they visit, and more at your neighbours'.",
       "frames": "The frame around a building shows its level: bronze at 2, silver at 3, gold from 4.",
       "mirv": "A MIRV splits into a swarm of warheads over a huge area, and only hits the player you aimed at.",
-      "objectives": "Each map objective you hold gives +15% gold and +5% troops. Own most of its zone for 15 seconds to capture it.",
-      "peace": "Losing a war? Sign a peace treaty: three minutes without attacks, with no alliance needed. Anyone who breaks it is marked as a traitor in front of all players.",
+      "objectives": "Map objectives appear one minute into the game. Each one you hold gives +15% gold and +5% troops: own most of its zone for 15 seconds to capture it.",
+      "peace": "Losing a war? Offer peace to the player you're fighting: three minutes without attacks, with no alliance needed. Anyone who breaks it is marked as a traitor in front of all players.",
       "radar": "A radar spots enemy boats, warships and missiles within 100 tiles, so you see an invasion coming.",
       "sam": "SAM launchers shoot down missiles in range. Each SAM level adds a missile ready to fire and more range.",
       "trade": "Ports trade with other countries on their own, and both sides earn gold. Attacking a player stops your trade with them for 5 minutes.",
       "traitor": "Breaking an alliance makes you a traitor for 30 seconds: your defense drops by half and other players trust you less.",
-      "upgrade": "Click one of your buildings to open its card and upgrade it. Each city, port or factory level counts as one more building."
+      "upgrade": "Click one of your buildings to upgrade it: a bigger city holds more people, a bigger port sends more ships and a bigger factory sends more trains. Every building has a maximum level."
     },
     "title": "Game is Starting..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Handshake - ask for an alliance. Allies can't attack each other and can send each other troops and gold.",
     "info_chat": "Quick chat - pick a category and a phrase; if it names a player, pick who, then send.",
     "info_emoji": "Emoji - send a quick emoji to the player.",
-    "info_peace": "White flag - offer a peace treaty to an enemy. Once signed, neither of you can attack the other for 3 minutes and attacks in progress stop. Whoever breaks it is marked as a traitor and every player is told.",
+    "info_peace": "White flag - offer a peace treaty to a player you are at war with (fighting now, or in the last 2 minutes). Once signed, neither of you can attack the other for 3 minutes and attacks in progress stop. Whoever breaks it is marked as a traitor and every player is told.",
     "info_target": "Target - mark this player for all your allies, to plan an attack together.",
     "info_trade": "Trade - stop or restart sending trade ships to this player. Trade starts again when you both allow it.",
     "objectives_bonus": "Each objective you hold gives +15% gold and +5% troops.",
     "objectives_cap": "Only up to half of the objectives count toward your bonus (2 of 4, 3 of 5 or 6), so no one wins just by holding them all.",
     "objectives_capture": "Own most of the zone for 15 seconds to capture it. The ring fills up while you hold it.",
-    "objectives_desc": "Some games place objectives on the map. Each one is a zone worth holding for the whole game.",
+    "objectives_desc": "Some games place objectives on the map. They appear one minute into the game, with an announcement, so no one can rush them from the start. Each one is a zone worth holding for the whole game.",
     "objectives_title": "Map objectives",
     "objectives_where": "They appear in solo, private and public games; ranked, 1v1, 2v2 and the daily race have none. The game's creator can turn them off.",
     "objectives_zone": "An objective on the map",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Your team:",
     "upgrades_card": "Structure card",
     "upgrades_desc": "Click one of your buildings to open its card: its level, what the next level brings and the upgrade button.",
-    "upgrades_economy": "Cities, ports and factories: no limit and no wait. Each level counts as one more building.",
-    "upgrades_frames": "Upgraded buildings get a frame on the map: bronze at level 2, silver at 3, gold from 4.",
+    "upgrades_economy": "Cities, ports and factories go up to level 5, right away. Each level of a city holds more people, a port sends more trade ships and repairs more warships at once, a factory sends more trains.",
+    "upgrades_frames": "Upgraded buildings get a frame on the map: bronze at level 2, silver at 3, gold at 4 and emerald at 5.",
     "upgrades_military": "SAMs go up to level 5 (+1 missile ready and more range per level), silos and radars up to level 3. Each new level unlocks as the game goes on: the card shows the countdown.",
     "upgrades_ranked": "In ranked games levels are lower (SAM 3, silo and radar 2) and unlock later.",
     "upgrades_title": "Building upgrades"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% gold, +{troops}% troops (max)",
     "cap_hint": "Your bonus counts at most {max} objectives. Holding more keeps them from your rivals.",
     "held": "Objectives {held}/{total}",
+    "reveal_in": "Objectives in {time}",
     "zone_label": "Objective {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nThey won't be able to rejoin this game.",
     "kicked": "Already kicked",
     "moderation": "Moderation",
+    "peace_needs_war": "You can only offer peace to a player you are at war with",
     "peace_time_remaining": "Peace Ends In",
     "propose_peace": "Offer Peace",
     "report": "Report",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Missiles {from} → {to}",
+    "gain_population": "Max population +{from} → +{to}",
     "gain_range": "Range {from} → {to}",
-    "gain_stack": "Works like one more building of this type",
+    "gain_repairs": "Warship repair docks {from} → {to}",
+    "gain_trade_ships": "Trade ships ×{from} → ×{to}",
+    "gain_trains": "Trains sent ×{from} → ×{to}",
     "level": "Level {level}",
     "level_of": "Level {level} / {max}",
     "locked": "Level {level} available in {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Your silo is ready! Press {key}, then click a neighbor's land to launch an atom bomb.",
       "mirv_info": "MIRV: a rain of warheads over a single enemy. The ultimate weapon.",
       "no_coast": "You have no coastline yet. The sea opens up boats, ports and trade: expand until you reach the coast.",
-      "objectives": "This map has objectives: glowing zones worth holding. Own most of one for 15 seconds to capture it, for +15% gold and +5% troops. This counter shows how many you hold.",
+      "objectives": "This map has objectives: glowing zones that appear one minute into the game. Own most of one for 15 seconds to capture it, for +15% gold and +5% troops. This counter shows the time left before they appear, then how many you hold.",
       "port_info_ships": "Ports send trade ships to other countries, and every trip earns you gold.",
       "port_info_warships": "Ports also build warships.",
       "propose_alliance": "A strong neighbor is better as a friend. Right-click the nation with the target and ask for an alliance.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "A traitor loses half of their defense for 30 seconds. Choose your moment carefully.",
       "troop_rate": "This is how fast your troops grow. It slows down, and turns orange, once you pass half of your maximum.",
       "troops": "These are your troops. Every attack spends some of them, so give them time to regrow between attacks.",
-      "upgrade_city": "Buildings can be upgraded. Click your city to open its card, then press Upgrade: each level counts as one more city."
+      "upgrade_city": "Buildings can be upgraded. Click your city to open its card, then press Upgrade: each level makes room for more people, up to level 5."
     },
     "step_counter": "Step {current} of {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "A strong neighbor is better as a friend. Tap the nation with the target, then tap the handshake to ask for an alliance.",
       "send_boat": "Boats carry your troops across the water. Tap an enemy coast across the sea to open the radial menu, then pick the boat.",
       "spawn": "Welcome to Territorium! Tap anywhere on the map to pick your starting spot. A coastline will come in handy later.",
-      "upgrade_city": "Buildings can be upgraded. Tap your city to open its card, then tap Upgrade: each level counts as one more city."
+      "upgrade_city": "Buildings can be upgraded. Tap your city to open its card, then tap Upgrade: each level makes room for more people, up to level 5."
     },
     "title": "Tutorial"
   },

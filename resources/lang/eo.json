@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Konfirmeraro: {code}. Bonvolu refreŝigi kaj provi denove."
   },
+  "event_history": {
+    "empty": "Nenio ankoraŭ okazis.",
+    "filter_all": "Ĉiuj",
+    "filter_attack": "Atakoj",
+    "filter_chat": "Babilejo",
+    "filter_diplomacy": "Diplomatio",
+    "filter_nuke": "Misiloj",
+    "filter_trade": "Komerco",
+    "hours_ago": "antaŭ {n} h",
+    "just_now": "ĵus",
+    "minutes_ago": "antaŭ {n} min",
+    "seconds_ago": "antaŭ {n} s",
+    "title": "Eventhistorio"
+  },
   "events_display": {
     "about_to_expire": "Via alianco kun {name} baldaŭ eksvalidiĝos!",
     "accept_alliance": "Akcepti",
@@ -953,6 +967,7 @@
     "no_boats_available": "Neniu boato disponebla, maksimume {max}",
     "objective_captured": "Vi kaptis mapan celon: pli da oro kaj trup-kresko dum vi tenas ĝin.",
     "objective_lost": "{name} prenis unu el viaj mapceloj.",
+    "objectives_revealed": "{count} celoj aperis sur la mapo!",
     "peace_broken": "{breaker} rompis la pacon kun {victim}! Falsĵuro.",
     "peace_expired": "La paco kun {name} eksvalidiĝis.",
     "peace_rejected": "{name} rifuzis vian packontrakton.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabrikoj ligas viajn urbojn kaj havenojn per fervojo. Trajnoj gajnas oron por ĉiu konstruaĵo kiun ili vizitas, kaj pli ĉe viaj najbaroj.",
       "frames": "La kadro ĉirkaŭ konstruaĵo montras ĝian nivelon: bronzo ĉe 2, arĝento ĉe 3, oro de 4.",
       "mirv": "MIRV disiĝas en svarmon de eksplodiloj super grandega areo, kaj nur trafas la ludanton, kiun vi celis.",
-      "objectives": "Ĉiu mapcelo, kiun vi tenas, donas +15% oron kaj +5% soldatojn. Posedu la plej grandan parton de ĝia zono dum 15 sekundoj por kapti ĝin.",
-      "peace": "Perdi militon? Subskribu packontrakton: tri minutojn sen atakoj, sen alianco necesa. Ĉiu, kiu rompas ĝin, estas markita kiel perfidulo antaŭ ĉiuj ludantoj.",
+      "objectives": "Mapceloj aperas unu minuton en la ludo. Ĉiu, kiun vi tenas, donas +15% oron kaj +5% trupoj: posedu la plej grandan parton de ĝia zono dum 15 sekundoj por kapti ĝin.",
+      "peace": "Perdi militon? Oferu pacon al la ludanto, kiun vi batalas: tri minutojn sen atakoj, sen alianco necesa. Ĉiu, kiu rompas ĝin, estas markita kiel perfidulo antaŭ ĉiuj ludantoj.",
       "radar": "Radaro ekvidas malamikajn boatojn, batalŝipojn kaj misilojn ene de 100 kaheloj, do vi vidas invadon venanta.",
       "sam": "SAM-lanĉiloj malflugigas misilojn en intervalo. Ĉiu SAM-nivelo aldonas misilon pretan pafi kaj pli da atingo.",
       "trade": "Havenoj komercas kun aliaj landoj memstare, kaj ambaŭ flankoj gajnas oron. Ataki ludanton ĉesigas vian komercon kun ili dum 5 minutoj.",
       "traitor": "Rompi aliancon igas vin perfidulo dum 30 sekundoj: via defendo malpliiĝas je duono kaj aliaj ludantoj malpli fidas vin.",
-      "upgrade": "Alklaku unu el viaj konstruaĵoj por malfermi ĝian karton kaj ĝisdatigi ĝin. Ĉiu urbo, haveno aŭ fabriknivelo validas kiel unu plia konstruaĵo."
+      "upgrade": "Alklaku unu el viaj konstruaĵoj por altgradigi ĝin: pli granda urbo enhavas pli da homoj, pli granda haveno sendas pli da ŝipoj kaj pli granda fabriko sendas pli da trajnoj. Ĉiu konstruaĵo havas maksimuman nivelon."
     },
     "title": "Ludo komenciĝas..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Manpremo - petu aliancon. Aliancanoj ne povas ataki unu la alian kaj povas sendi unu la alian trupojn kaj oron.",
     "info_chat": "Rapida babilejo - elektu kategorion kaj frazon; se ĝi nomas ludanton, elektu kiu, tiam sendu.",
     "info_emoji": "Emoji - sendu rapidan emoji al la ludanto.",
-    "info_peace": "Blanka flago - ofertu packontrakton al malamiko. Unufoje subskribite, neniu el vi povas ataki la alian dum 3 minutoj kaj atakoj en progreso ĉesas. Kiu ajn rompas ĝin, estas markita kiel perfidulo kaj ĉiu ludanto estas rakontita.",
+    "info_peace": "Blanka flago - ofertu packontrakton al ludanto kun kiu vi militas (batalante nun aŭ en la lastaj 2 minutoj). Unufoje subskribite, neniu el vi povas ataki la alian dum 3 minutoj kaj atakoj en progreso ĉesas. Kiu ajn rompas ĝin, estas markita kiel perfidulo kaj ĉiu ludanto estas rakontita.",
     "info_target": "Celo - marku ĉi tiun ludanton por ĉiuj viaj aliancanoj, por plani atakon kune.",
     "info_trade": "Komerco - ĉesu aŭ rekomencu sendi komercajn ŝipojn al ĉi tiu ludanto. Komerco denove komenciĝas kiam vi ambaŭ permesas ĝin.",
     "objectives_bonus": "Ĉiu celo, kiun vi tenas, donas +15% oron kaj +5% soldatojn.",
     "objectives_cap": "Nur ĝis duono de la celoj kalkulas al via bonuso (2 el 4, 3 el 5 aŭ 6), do neniu gajnas nur tenante ilin ĉiujn.",
     "objectives_capture": "Posedu la plej grandan parton de la zono dum 15 sekundoj por kapti ĝin. La ringo pleniĝas dum vi tenas ĝin.",
-    "objectives_desc": "Iuj ludoj metas celojn sur la mapo. Ĉiu estas zono, kiu valoras por la tuta ludo.",
+    "objectives_desc": "Iuj ludoj metas celojn sur la mapo. Ili aperas unu minuton en la ludon, kun anonco, do neniu povas rapidi ilin de la komenco. Ĉiu estas zono, kiu valoras por la tuta ludo.",
     "objectives_title": "Mapceloj",
     "objectives_where": "Ili aperas en solludaj, privataj kaj publikaj ludoj; rangigita, 1v1, 2v2 kaj la ĉiutaga vetkuro havas neniun. La kreinto de la ludo povas malŝalti ilin.",
     "objectives_zone": "Objektivo sur la mapo",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Via teamo:",
     "upgrades_card": "Karto de strukturo",
     "upgrades_desc": "Alklaku unu el viaj konstruaĵoj por malfermi ĝian karton: ĝian nivelon, kion alportas la sekva nivelo kaj la butonon de ĝisdatigo.",
-    "upgrades_economy": "Urboj, havenoj kaj fabrikoj: sen limo kaj sen atendo. Ĉiu nivelo validas kiel unu plia konstruaĵo.",
-    "upgrades_frames": "Plibonigitaj konstruaĵoj ricevas kadron sur la mapo: bronzo ĉe nivelo 2, arĝento ĉe 3, oro de 4.",
+    "upgrades_economy": "Urboj, havenoj kaj fabrikoj supreniras al la nivelo 5, tuj. Ĉiu nivelo de urbo enhavas pli da homoj, haveno sendas pli da komercaj ŝipoj kaj riparas pli da batalŝipoj samtempe, fabriko sendas pli da trajnoj.",
+    "upgrades_frames": "Plibonigitaj konstruaĵoj ricevas kadron sur la mapo: bronzo ĉe nivelo 2, arĝento ĉe 3, oro ĉe 4 kaj smeraldo ĉe 5.",
     "upgrades_military": "SAM-oj supreniras al nivelo 5 (+1 misilo preta kaj pli da gamo por nivelo), siloj kaj radaroj ĝis nivelo 3. Ĉiu nova nivelo malŝlosiĝas dum la ludo daŭras: la karto montras la retronombradon.",
     "upgrades_ranked": "En rangigitaj ludoj, niveloj estas pli malaltaj (SAM 3, silo kaj radaro 2) kaj malŝlosas poste.",
     "upgrades_title": "Konstruaj ĝisdatigoj"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% oro, +{troops}% trupoj (maks.)",
     "cap_hint": "Via gratifiko kalkulas maksimume {max} celojn. Teni pli nur senigas viajn rivalojn je ili.",
     "held": "Celoj {held}/{total}",
+    "reveal_in": "Celoj post {time}",
     "zone_label": "Celo {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Ĉu forpeli {name}?\n\nRi ne povos reeniri la ludon.",
     "kicked": "Jam forpelita",
     "moderation": "Administri",
+    "peace_needs_war": "Vi povas nur oferti pacon al ludanto kun kiu vi militas",
     "peace_time_remaining": "Paco Finiĝas En",
     "propose_peace": "Proponu Pacon",
     "report": "Raporto",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Raketoj {from} → {to}",
+    "gain_population": "Maksimuma loĝantaro +{from} → +{to}",
     "gain_range": "Atingopovo {from} → {to}",
-    "gain_stack": "Kalkuliĝas kiel unu plia konstruaĵo de ĉi tiu tipo",
+    "gain_repairs": "Ripardokoj de batalŝipo {from} → {to}",
+    "gain_trade_ships": "Komercaj ŝipoj ×{from} → ×{to}",
+    "gain_trains": "Trajnoj senditaj ×{from} → ×{to}",
     "level": "Nivelo {level}",
     "level_of": "Nivelo {level} / {max}",
     "locked": "Nivelo {level} disponebla post {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Via silo estas preta! Premu {key}, tiam alklaku la teron de najbaro por lanĉi atombombon.",
       "mirv_info": "MIRV: pluvo de eksplodiloj super ununura malamiko. La finfina armilo.",
       "no_coast": "Vi ankoraŭ ne havas marbordon. La maro malfermas boatojn, havenojn kaj komercon: ekspansiiĝi ĝis vi atingos la marbordon.",
-      "objectives": "Ĉi tiu mapo havas celojn: ardantaj zonoj indaj teni. Posedu la plej grandan parton de unu dum 15 sekundoj por kapti ĝin, por +15% oro kaj +5% trupoj. Ĉi tiu nombrilo montras kiom vi tenas.",
+      "objectives": "Ĉi tiu mapo havas celojn: ardaj zonoj, kiuj aperas unu minuton en la ludo. Posedu la plej grandan parton de unu dum 15 sekundoj por kapti ĝin, por +15% oro kaj +5% trupoj. Ĉi tiu nombrilo montras la tempon restantan antaŭ ol ili aperas, tiam kiom vi tenas.",
       "port_info_ships": "Havenoj sendas komercajn ŝipojn al aliaj landoj, kaj ĉiu vojaĝo gajnas al vi oron.",
       "port_info_warships": "Havenoj ankaŭ konstruas batalŝipojn.",
       "propose_alliance": "Forta najbaro estas pli bona kiel amiko. Dekstre alklaku la nacion kun la celo kaj petu aliancon.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Perfidulo perdas duonon de ilia defendo dum 30 sekundoj. Elektu vian momenton zorge.",
       "troop_rate": "Tiel rapide kreskas viaj trupoj. Ĝi malrapidiĝas, kaj fariĝas oranĝa, post kiam vi preterpasas duonon de via maksimumo.",
       "troops": "Ĉi tiuj estas viaj trupoj. Ĉiu atako elspezas kelkajn el ili, do donu al ili tempon por rekreski inter atakoj.",
-      "upgrade_city": "Konstruaĵoj povas esti ĝisdatigitaj. Alklaku vian urbon por malfermi ĝian karton, tiam premu Altgradigi: ĉiu nivelo validas kiel unu plia urbo."
+      "upgrade_city": "Konstruaĵoj povas esti ĝisdatigitaj. Alklaku vian urbon por malfermi ĝian karton, tiam premu Altgradigi: ĉiu nivelo faras lokon por pli da homoj, ĝis la nivelo 5."
     },
     "step_counter": "Paŝo {current} de {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Forta najbaro estas pli bona kiel amiko. Frapu la nacion kun la celo, tiam frapu la manpremon por peti aliancon.",
       "send_boat": "Boatoj portas viajn trupojn trans la akvon. Frapu malamikan marbordon trans la maron por malfermi la radialan menuon, tiam elektu la boaton.",
       "spawn": "Bonvenon al Territorium! Frapu ie ajn sur la mapo por elekti vian komencan lokon. Marbordo utilos poste.",
-      "upgrade_city": "Konstruaĵoj povas esti ĝisdatigitaj. Frapu vian urbon por malfermi ĝian karton, tiam frapeti Altgradigi: ĉiu nivelo validas kiel unu plia urbo."
+      "upgrade_city": "Konstruaĵoj povas esti ĝisdatigitaj. Frapu vian urbon por malfermi ĝian karton, tiam frapeti Altgradigi: ĉiu nivelo faras lokon por pli da homoj, ĝis la nivelo 5."
     },
     "title": "Lernilo"
   },

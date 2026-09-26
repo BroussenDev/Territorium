@@ -221,7 +221,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
             src=${icon}
             class="w-3 h-3 lg:w-4 lg:h-4 object-contain shrink-0"
           />
-          <span>${player.totalUnitLevels(type)}</span>
+          <span>${player.structureCount(type)}</span>
         </div>`
       : "";
   }

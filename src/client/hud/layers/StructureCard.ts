@@ -44,9 +44,12 @@ const TYPES = Object.keys(CARD_TYPES) as UnitType[];
 const PICK_RADIUS = 2;
 const CARD_WIDTH = 264;
 
-/** Frame tier by level: bronze at 2, silver at 3, gold from 4. */
-export function levelTier(level: number): "" | "bronze" | "silver" | "gold" {
-  if (level >= 4) return "gold";
+/** Frame tier by level: bronze at 2, silver at 3, gold at 4, emerald at 5. */
+export function levelTier(
+  level: number,
+): "" | "bronze" | "silver" | "gold" | "emerald" {
+  if (level >= 5) return "emerald";
+  if (level === 4) return "gold";
   if (level === 3) return "silver";
   if (level === 2) return "bronze";
   return "";
@@ -60,9 +63,9 @@ function clock(seconds: number): string {
 
 /**
  * Clicking one of your own upgradable structures opens this card: its level,
- * what the next level brings, and an Upgrade button with the price. Military
- * structures show their level cap, and a countdown while the next level is
- * still locked.
+ * what the next level brings, and an Upgrade button with the price. Every
+ * structure shows its level cap; military ones count down while the next
+ * level is still locked.
  */
 @customElement("structure-card")
 export class StructureCard extends LitElement implements Controller {
@@ -212,8 +215,33 @@ export class StructureCard extends LitElement implements Controller {
             to: config.radarRange(next),
           }),
         ];
+      case UnitType.City:
+        return [
+          translateText("structure_card.gain_population", {
+            from: renderNumber(config.cityTroopIncrease() * level),
+            to: renderNumber(config.cityTroopIncrease() * next),
+          }),
+        ];
+      case UnitType.Port:
+        return [
+          translateText("structure_card.gain_trade_ships", {
+            from: level,
+            to: next,
+          }),
+          translateText("structure_card.gain_repairs", {
+            from: level,
+            to: next,
+          }),
+        ];
+      case UnitType.Factory:
+        return [
+          translateText("structure_card.gain_trains", {
+            from: level,
+            to: next,
+          }),
+        ];
       default:
-        return [translateText("structure_card.gain_stack")];
+        return [];
     }
   }
 

@@ -58,7 +58,6 @@ import { SmallPlayerGlowPass } from "./passes/SmallPlayerGlowPass";
 import type { SpawnCenter } from "./passes/SpawnOverlayPass";
 import { SpawnOverlayPass } from "./passes/SpawnOverlayPass";
 import { SpiralRibbonPass } from "./passes/SpiralRibbonPass";
-import { StructureLevelPass } from "./passes/StructureLevelPass";
 import { StructurePass } from "./passes/StructurePass";
 import { TerrainPass } from "./passes/TerrainPass";
 import { TerritoryPass } from "./passes/TerritoryPass";
@@ -133,7 +132,6 @@ export class GPURenderer {
   private lightmapPass: LightmapPass;
   private nightCompositePass: NightCompositePass;
   private structurePass: StructurePass;
-  private structureLevelPass: StructureLevelPass;
   private unitPass: UnitPass;
   private namePass: NamePass;
   private fxPass: FxPass;
@@ -576,7 +574,6 @@ export class GPURenderer {
       this.effectTex,
       this.settings,
     );
-    this.structureLevelPass = new StructureLevelPass(gl, header, this.settings);
     this.unitPass = new UnitPass(
       gl,
       header,
@@ -957,7 +954,6 @@ export class GPURenderer {
   updateStructures(units: Map<number, UnitState>): void {
     this.lastStructures = units;
     this.structurePass.updateStructures(units);
-    this.structureLevelPass.updateStructures(units);
     this.samRadiusPass.updateStructures(units);
     this.unitPass.setStructures(units);
     const posts: { x: number; y: number; ownerID: number }[] = [];
@@ -1144,7 +1140,6 @@ export class GPURenderer {
   }
   setHighlightStructureTypes(unitTypes: string[] | null): void {
     this.structurePass.setHighlightTypes(unitTypes);
-    this.structureLevelPass.setHighlightTypes(unitTypes);
     this.samHighlightVisible =
       unitTypes !== null &&
       unitTypes.some((t) => SAM_RADIUS_HIGHLIGHT_TYPES.has(t));
@@ -1389,7 +1384,6 @@ export class GPURenderer {
     this.nukeTrajectoryPass.draw(cam);
     this.crosshairPass.draw(cam);
     if (pe.structure) this.structurePass.draw(cam, zoom);
-    if (pe.structure) this.structureLevelPass.draw(cam, zoom);
     // Small-player glow draws after structures so buildings can't hide it.
     this.smallPlayerGlowPass.draw(cam);
     if (pe.bar) this.barPass.draw(cam);
@@ -1526,7 +1520,6 @@ export class GPURenderer {
     this.samRadiusPass.dispose();
     this.crosshairPass.dispose();
     this.structurePass.dispose();
-    this.structureLevelPass.dispose();
     this.unitPass.dispose();
     this.namePass.dispose();
     this.fxPass.dispose();

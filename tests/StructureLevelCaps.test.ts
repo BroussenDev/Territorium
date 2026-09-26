@@ -46,7 +46,7 @@ function advanceTo(minutes: number) {
   executeTicks(game, minutes * MINUTE - game.elapsedGameSeconds() * 10);
 }
 
-describe("Military structure levels", () => {
+describe("Structure levels", () => {
   test("SAM levels unlock at 5, 10, 15 and 20 minutes, up to level 5", async () => {
     await start();
     const sam = build(UnitType.SAMLauncher, 0);
@@ -117,12 +117,43 @@ describe("Military structure levels", () => {
     expect(maxed.canUpgrade).toBe(false);
   });
 
-  test("economy structures upgrade right away, without a cap", async () => {
+  test("economy structures upgrade right away, up to level 5", async () => {
     await start();
     const city = build(UnitType.City, 0);
-    expect(game.config().maxStructureLevel(UnitType.City)).toBe(Infinity);
+    const factory = build(UnitType.Factory, 1);
+    expect(player.upgradesLeft(city)).toBe(4);
     upgrade(city, 8);
-    expect(city.level()).toBe(9);
+    upgrade(factory, 8);
+    expect(city.level()).toBe(5);
+    expect(factory.level()).toBe(5);
+    expect(player.canUpgradeUnit(city)).toBe(false);
+  });
+
+  test("economy caps are the same in ranked games", async () => {
+    await start({ rankedType: RankedType.FFA });
+    const config = game.config();
+    for (const type of [UnitType.City, UnitType.Port, UnitType.Factory]) {
+      expect(config.maxStructureLevel(type)).toBe(5);
+      expect(config.structureLevelUnlockSeconds(type, 5)).toBe(0);
+    }
+  });
+
+  test("each city level adds to the max population", async () => {
+    await start();
+    const city = build(UnitType.City, 0);
+    const before = game.config().maxTroops(player);
+    upgrade(city, 2);
+    expect(city.level()).toBe(3);
+    expect(game.config().maxTroops(player) - before).toBe(
+      2 * game.config().cityTroopIncrease(),
+    );
+  });
+
+  test("structures that can't be upgraded have no cap", async () => {
+    await start();
+    expect(game.config().maxStructureLevel(UnitType.DefensePost)).toBe(
+      Infinity,
+    );
   });
 
   test("each radar level adds 25 tiles of range", async () => {

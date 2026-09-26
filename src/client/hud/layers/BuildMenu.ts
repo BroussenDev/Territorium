@@ -395,7 +395,7 @@ export class BuildMenu extends LitElement implements Controller {
       return "?";
     }
 
-    return player.totalUnitLevels(item.unitType).toString();
+    return player.structureCount(item.unitType).toString();
   }
 
   public sendBuildOrUpgrade(buildableUnit: BuildableUnit, tile: TileRef): void {

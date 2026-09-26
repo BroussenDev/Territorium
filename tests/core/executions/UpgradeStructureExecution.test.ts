@@ -50,11 +50,11 @@ describe("UpgradeStructureExecution", () => {
 
     expect(city.level()).toBe(1);
 
-    const execution = new UpgradeStructureExecution(player, city.id(), 5);
+    const execution = new UpgradeStructureExecution(player, city.id(), 3);
     game.addExecution(execution);
     game.executeNextTick();
 
-    expect(city.level()).toBe(6);
+    expect(city.level()).toBe(4);
   });
 
   it("stops upgrading early if player cannot afford remaining amounts", async () => {
@@ -144,17 +144,19 @@ describe("UpgradeStructureExecution", () => {
       .buildableUnits(landTile!)
       .find((b) => b.type === UnitType.City)!;
     expect(bu.canUpgrade).toBe(city.id());
-    expect(bu.upgradeCosts).toHaveLength(MAX_UPGRADE_AMOUNT);
+    // Capped by the city's level cap (5), not MAX_UPGRADE_AMOUNT.
+    expect(bu.upgradeCosts).toHaveLength(4);
+    expect(MAX_UPGRADE_AMOUNT).toBeGreaterThan(4);
     // First step is the currently-displayed single cost; city costs escalate
-    // per level, so the x5 total must exceed a naive cost * 5.
+    // per level, so the x4 total must exceed a naive cost * 4.
     expect(bu.upgradeCosts![0]).toBe(bu.cost);
-    expect(bu.upgradeCosts![4]).toBeGreaterThan(bu.cost * 5n);
+    expect(bu.upgradeCosts![3]).toBeGreaterThan(bu.cost * 4n);
 
     const goldBefore = player.gold();
-    game.addExecution(new UpgradeStructureExecution(player, city.id(), 5));
+    game.addExecution(new UpgradeStructureExecution(player, city.id(), 4));
     game.executeNextTick();
 
-    expect(city.level()).toBe(6);
-    expect(goldBefore - player.gold()).toBe(bu.upgradeCosts![4]);
+    expect(city.level()).toBe(5);
+    expect(goldBefore - player.gold()).toBe(bu.upgradeCosts![3]);
   });
 });

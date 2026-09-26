@@ -44,6 +44,7 @@ vi.mock("../../../../src/client/Utils", () => ({
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { EventsDisplay } from "../../../../src/client/hud/layers/EventsDisplay";
+import { EventBus } from "../../../../src/core/EventBus";
 import { GameUpdateType } from "../../../../src/core/game/GameUpdates";
 
 describe("EventsDisplay resolves player names via focusPlayerID", () => {
@@ -56,6 +57,7 @@ describe("EventsDisplay resolves player names via focusPlayerID", () => {
 
   beforeEach(() => {
     ed = new EventsDisplay();
+    ed.eventBus = new EventBus();
     (ed as unknown as { game: unknown }).game = {
       myPlayer: () => myPlayer,
       playerBySmallID: (id: number) =>

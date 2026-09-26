@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Lỗi xác minh: {code}. Vui lòng làm mới lại và thử lại."
   },
+  "event_history": {
+    "empty": "Chưa có gì xảy ra cả.",
+    "filter_all": "Tất cả",
+    "filter_attack": "Tấn công",
+    "filter_chat": "Trò chuyện",
+    "filter_diplomacy": "Ngoại giao",
+    "filter_nuke": "Tên lửa",
+    "filter_trade": "Buôn bán",
+    "hours_ago": "{n} giờ trước",
+    "just_now": "vừa xong",
+    "minutes_ago": "{n} phút trước",
+    "seconds_ago": "{n} giây trước",
+    "title": "Lịch sử sự kiện"
+  },
   "events_display": {
     "about_to_expire": "Liên minh giữa bạn và {name} sắp hết hiệu lực!",
     "accept_alliance": "Chấp nhận",
@@ -953,6 +967,7 @@
     "no_boats_available": "Không có tàu có sẵn, tối đa {max}",
     "objective_captured": "Bạn đã chiếm được một mục tiêu trên bản đồ: thêm vàng và tăng trưởng quân khi còn giữ nó.",
     "objective_lost": "{name} đã lấy một trong các mục tiêu bản đồ của bạn.",
+    "objectives_revealed": "{count} mục tiêu đã xuất hiện trên bản đồ!",
     "peace_broken": "{breaker} đã phá vỡ hòa bình với {victim}! Khai man.",
     "peace_expired": "Sự bình yên với {name} đã hết hạn.",
     "peace_rejected": "{name} từ chối hiệp ước hòa bình của bạn.",
@@ -1112,13 +1127,13 @@
       "factory": "Các nhà máy liên kết các thành phố và cảng của bạn bằng đường sắt. Xe lửa kiếm được vàng cho mỗi tòa nhà mà họ ghé thăm và hơn thế nữa ở những tòa nhà hàng xóm của bạn.",
       "frames": "Khung xung quanh tòa nhà thể hiện đẳng cấp của nó: đồng ở mức 2, bạc ở mức 3, vàng từ 4.",
       "mirv": "MIRV chia thành một đám đầu đạn trên một khu vực rộng lớn và chỉ bắn trúng người chơi mà bạn nhắm tới.",
-      "objectives": "Mỗi mục tiêu trên bản đồ bạn nắm giữ sẽ mang lại +15% vàng và +5% quân lính. Sở hữu hầu hết vùng của nó trong 15 giây để chiếm được nó.",
-      "peace": "Thất bại trong một cuộc chiến? Ký hiệp ước hòa bình: ba phút không tấn công, không cần liên minh. Bất cứ ai phá vỡ nó đều bị coi là kẻ phản bội trước mặt tất cả người chơi.",
+      "objectives": "Mục tiêu bản đồ xuất hiện sau một phút của trò chơi. Mỗi người bạn nắm giữ sẽ nhận được +15% vàng và +5% quân: sở hữu hầu hết khu vực của nó trong 15 giây để chiếm được nó.",
+      "peace": "Thất bại trong một cuộc chiến? Mang lại hòa bình cho người chơi mà bạn đang chiến đấu: ba phút không tấn công, không cần liên minh. Bất cứ ai phá vỡ nó đều bị coi là kẻ phản bội trước mặt tất cả người chơi.",
       "radar": "Radar phát hiện thuyền, tàu chiến và tên lửa của đối phương trong phạm vi 100 ô, do đó bạn thấy một cuộc xâm lược sắp xảy ra.",
       "sam": "Bệ phóng SAM bắn hạ tên lửa trong tầm bắn. Mỗi cấp độ SAM bổ sung thêm một tên lửa sẵn sàng khai hỏa và có tầm bắn xa hơn.",
       "trade": "Các cảng tự mình buôn bán với các nước khác và cả hai bên đều kiếm được vàng. Tấn công người chơi sẽ dừng giao dịch của bạn với họ trong 5 phút.",
       "traitor": "Phá vỡ một liên minh sẽ khiến bạn trở thành kẻ phản bội trong 30 giây: khả năng phòng thủ của bạn giảm một nửa và những người chơi khác ít tin tưởng bạn hơn.",
-      "upgrade": "Nhấp vào một trong các tòa nhà của bạn để mở thẻ và nâng cấp nó. Mỗi cấp độ thành phố, cảng hoặc nhà máy được tính là một tòa nhà nữa."
+      "upgrade": "Nhấp vào một trong các tòa nhà của bạn để nâng cấp nó: một thành phố lớn hơn chứa được nhiều người hơn, một cảng lớn hơn gửi nhiều tàu hơn và một nhà máy lớn hơn gửi nhiều tàu hơn. Mỗi tòa nhà đều có mức tối đa."
     },
     "title": "Trận đấu đang bắt đầu..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Bắt tay - yêu cầu liên minh. Các đồng minh không thể tấn công lẫn nhau và có thể gửi quân và vàng cho nhau.",
     "info_chat": "Trò chuyện nhanh - chọn danh mục và cụm từ; nếu nó nêu tên một người chơi, hãy chọn người, sau đó gửi.",
     "info_emoji": "Biểu tượng cảm xúc - gửi biểu tượng cảm xúc nhanh cho người chơi.",
-    "info_peace": "Cờ trắng - đề nghị một hiệp ước hòa bình với kẻ thù. Sau khi đã ký, cả hai bạn đều không thể tấn công người kia trong 3 phút và các cuộc tấn công đang diễn ra sẽ dừng lại. Ai phá vỡ nó sẽ bị coi là kẻ phản bội và mọi người chơi đều bị báo cáo.",
+    "info_peace": "Cờ trắng - đưa ra một hiệp ước hòa bình cho người chơi mà bạn đang có chiến tranh (đang chiến đấu hoặc trong 2 phút cuối). Sau khi đã ký, cả hai bạn đều không thể tấn công người kia trong 3 phút và các cuộc tấn công đang diễn ra sẽ dừng lại. Ai phá vỡ nó sẽ bị coi là kẻ phản bội và mọi người chơi đều bị báo cáo.",
     "info_target": "Mục tiêu - đánh dấu người chơi này cho tất cả đồng minh của bạn để cùng nhau lên kế hoạch tấn công.",
     "info_trade": "Giao dịch - dừng hoặc bắt đầu lại việc gửi tàu buôn bán cho người chơi này. Giao dịch bắt đầu lại khi cả hai bạn cho phép.",
     "objectives_bonus": "Mỗi mục tiêu bạn nắm giữ mang lại +15% vàng và +5% quân lính.",
     "objectives_cap": "Chỉ tối đa một nửa số mục tiêu được tính vào phần thưởng của bạn (2 trên 4, 3 trên 5 hoặc 6), vì vậy không ai chiến thắng chỉ bằng cách nắm giữ tất cả.",
     "objectives_capture": "Sở hữu hầu hết khu vực trong 15 giây để chiếm được nó. Chiếc nhẫn sẽ đầy khi bạn giữ nó.",
-    "objectives_desc": "Một số trò chơi đặt mục tiêu trên bản đồ. Mỗi người là một khu vực đáng để giữ trong toàn bộ trò chơi.",
+    "objectives_desc": "Một số trò chơi đặt mục tiêu trên bản đồ. Họ xuất hiện sau một phút trong trò chơi, kèm theo một thông báo, vì vậy không ai có thể thúc giục họ ngay từ đầu. Mỗi người là một khu vực đáng để giữ trong toàn bộ trò chơi.",
     "objectives_title": "Mục tiêu bản đồ",
     "objectives_where": "Họ xuất hiện trong các trò chơi solo, riêng tư và công cộng; xếp hạng, 1v1, 2v2 và cuộc đua hàng ngày không có. Người tạo trò chơi có thể tắt chúng đi.",
     "objectives_zone": "Mục tiêu trên bản đồ",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Đội của bạn:",
     "upgrades_card": "Thẻ cấu trúc",
     "upgrades_desc": "Nhấp vào một trong các tòa nhà của bạn để mở thẻ của nó: cấp độ của nó, cấp độ tiếp theo mang lại những gì và nút nâng cấp.",
-    "upgrades_economy": "Thành phố, bến cảng và nhà máy: không giới hạn và không phải chờ đợi. Mỗi cấp độ được tính là thêm một tòa nhà.",
-    "upgrades_frames": "Các tòa nhà được nâng cấp sẽ có khung trên bản đồ: đồng ở cấp 2, bạc ở cấp 3, vàng từ 4.",
+    "upgrades_economy": "Các thành phố, bến cảng và nhà máy lên cấp 5 ngay lập tức. Mỗi cấp độ của một thành phố chứa được nhiều người hơn, một cảng gửi nhiều tàu buôn hơn và sửa chữa nhiều tàu chiến hơn cùng một lúc, một nhà máy gửi thêm nhiều chuyến tàu hơn.",
+    "upgrades_frames": "Các tòa nhà được nâng cấp sẽ có một khung trên bản đồ: đồng ở cấp 2, bạc ở cấp 3, vàng ở cấp 4 và ngọc lục bảo ở cấp 5.",
     "upgrades_military": "SAM tăng lên cấp 5 (+1 tên lửa sẵn sàng và tầm bắn nhiều hơn cho mỗi cấp), hầm chứa và radar lên cấp 3. Mỗi cấp độ mới sẽ mở khóa khi trò chơi tiếp tục: thẻ hiển thị đồng hồ đếm ngược.",
     "upgrades_ranked": "Trong trò chơi xếp hạng, cấp độ thấp hơn (SAM 3, silo và radar 2) và mở khóa sau.",
     "upgrades_title": "Nâng cấp tòa nhà"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% vàng, +{troops}% quân (tối đa)",
     "cap_hint": "Phần thưởng của bạn chỉ tính tối đa {max} mục tiêu. Giữ nhiều hơn chỉ để đối thủ không có được chúng.",
     "held": "Mục tiêu {held}/{total}",
+    "reveal_in": "Mục tiêu sau {time}",
     "zone_label": "Mục tiêu {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Đuổi {name}?\n\nHọ sẽ không thể tham gia lại trận đấu này.",
     "kicked": "Đã bị đuổi",
     "moderation": "Kiểm duyệt",
+    "peace_needs_war": "Bạn chỉ có thể mang lại hòa bình cho người chơi mà bạn đang gây chiến",
     "peace_time_remaining": "Hòa bình kết thúc ở",
     "propose_peace": "Cung cấp hòa bình",
     "report": "Báo cáo",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Tên lửa {from} → {to}",
+    "gain_population": "Dân số tối đa +{from} → +{to}",
     "gain_range": "Tầm bắn {from} → {to}",
-    "gain_stack": "Tính như thêm một công trình cùng loại",
+    "gain_repairs": "Bến sửa chữa tàu chiến {from} → {to}",
+    "gain_trade_ships": "Tàu buôn ×{from} → ×{to}",
+    "gain_trains": "Chuyến tàu đã gửi ×{from} → ×{to}",
     "level": "Cấp {level}",
     "level_of": "Cấp {level} / {max}",
     "locked": "Cấp {level} mở sau {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Silo của bạn đã sẵn sàng! Nhấn {key}, sau đó bấm vào đất nhà hàng xóm để phóng bom nguyên tử.",
       "mirv_info": "MIRV: một cơn mưa đầu đạn tấn công một kẻ thù. Vũ khí tối thượng.",
       "no_coast": "Bạn chưa có bờ biển. Biển mở ra thuyền bè, bến cảng và thương mại: mở rộng cho đến khi bạn đến được bờ biển.",
-      "objectives": "Bản đồ này có mục tiêu: các khu vực phát sáng đáng nắm giữ. Sở hữu hầu hết một con trong 15 giây để bắt nó, với giá +15% vàng và +5% quân. Bộ đếm này hiển thị số lượng bạn giữ.",
+      "objectives": "Bản đồ này có các mục tiêu: các vùng phát sáng xuất hiện sau một phút của trò chơi. Sở hữu hầu hết một con trong 15 giây để bắt nó, với giá +15% vàng và +5% quân. Bộ đếm này hiển thị thời gian còn lại trước khi chúng xuất hiện, sau đó bạn giữ được bao nhiêu.",
       "port_info_ships": "Các bến cảng gửi tàu buôn đến các quốc gia khác và mỗi chuyến đi đều giúp bạn kiếm được vàng.",
       "port_info_warships": "Các cảng cũng đóng tàu chiến.",
       "propose_alliance": "Một người hàng xóm mạnh mẽ sẽ tốt hơn như một người bạn. Nhấp chuột phải vào quốc gia có mục tiêu và yêu cầu liên minh.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Kẻ phản bội mất một nửa khả năng phòng thủ trong 30 giây. Chọn thời điểm của bạn một cách cẩn thận.",
       "troop_rate": "Đây là cách quân đội của bạn phát triển nhanh chóng. Nó chậm lại và chuyển sang màu cam khi bạn vượt quá một nửa mức tối đa của mình.",
       "troops": "Đây là quân đội của bạn. Mỗi cuộc tấn công đều tiêu tốn một ít chúng, vì vậy hãy cho chúng thời gian để mọc lại giữa các lần tấn công.",
-      "upgrade_city": "Các tòa nhà có thể được nâng cấp. Nhấp vào thành phố của bạn để mở thẻ, sau đó nhấn Nâng cấp: mỗi cấp độ được tính là một thành phố nữa."
+      "upgrade_city": "Các tòa nhà có thể được nâng cấp. Nhấp vào thành phố của bạn để mở thẻ, sau đó nhấn Nâng cấp: mỗi cấp sẽ có chỗ cho nhiều người hơn, tối đa là cấp 5."
     },
     "step_counter": "Bước {current}/{total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Một người hàng xóm mạnh mẽ sẽ tốt hơn như một người bạn. Nhấn vào quốc gia có mục tiêu, sau đó nhấn vào cái bắt tay để yêu cầu liên minh.",
       "send_boat": "Thuyền chở quân của bạn trên mặt nước. Chạm vào bờ biển của kẻ thù trên biển để mở menu xuyên tâm, sau đó chọn thuyền.",
       "spawn": "Chào mừng đến với Territorium! Nhấn vào bất cứ nơi nào trên bản đồ để chọn điểm xuất phát của bạn. Một bờ biển sẽ có ích sau này.",
-      "upgrade_city": "Các tòa nhà có thể được nâng cấp. Nhấn vào thành phố của bạn để mở thẻ, sau đó nhấn Nâng cấp: mỗi cấp độ được tính là một thành phố nữa."
+      "upgrade_city": "Các tòa nhà có thể được nâng cấp. Nhấn vào thành phố của bạn để mở thẻ, sau đó nhấn Nâng cấp: mỗi cấp sẽ có chỗ cho nhiều người hơn, tối đa cấp 5."
     },
     "title": "Hướng dẫn"
   },

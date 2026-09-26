@@ -32,6 +32,7 @@ import {
   renderTroops,
   translateText,
 } from "../../Utils";
+import { HistoryEntryEvent } from "./EventHistory";
 
 interface GameEvent {
   description: string;
@@ -50,6 +51,7 @@ const TIER_1_TYPES: ReadonlySet<MessageType> = new Set([
   MessageType.MIRV_INBOUND,
   MessageType.EMP_INBOUND,
   MessageType.RADAR_CONTACT,
+  MessageType.OBJECTIVES_REVEALED,
   MessageType.NUKE_DETONATED,
   MessageType.NAVAL_INVASION_INBOUND,
   MessageType.ATTACK_REQUEST,
@@ -247,6 +249,16 @@ export class EventsDisplay extends LitElement implements Controller {
   private addEvent(event: GameEvent) {
     this.events = [...this.events, event];
     this.requestUpdate();
+    this.eventBus.emit(
+      new HistoryEntryEvent(
+        event.description,
+        event.type,
+        event.createdAt,
+        event.unsafeDescription === true,
+        event.focusID,
+        event.unitView,
+      ),
+    );
   }
 
   // The core simulation runs identically for every client and has no notion

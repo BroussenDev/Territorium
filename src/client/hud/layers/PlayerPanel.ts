@@ -875,6 +875,7 @@ export class PlayerPanel extends LitElement implements Controller {
     const canEmbargo = this.actions?.interaction?.canEmbargo;
     const atPeace = this.actions?.interaction?.peaceExpiresAt !== undefined;
     const canProposePeace = this.actions?.interaction?.canProposePeace;
+    const atWar = this.actions?.interaction?.atWar;
 
     return html`
       <div class="flex flex-col gap-2.5">
@@ -985,17 +986,21 @@ export class PlayerPanel extends LitElement implements Controller {
                       label: translateText("player_panel.break_peace"),
                       type: "red",
                     })
-                  : canProposePeace
-                    ? actionButton({
+                  : canBreakAlliance
+                    ? ""
+                    : actionButton({
                         onClick: (e: MouseEvent) =>
                           this.handleProposePeaceClick(e, other),
                         icon: whiteFlagIcon,
                         iconAlt: "Peace",
-                        title: translateText("player_panel.propose_peace"),
+                        // Greyed out outside a war, or while waiting.
+                        title: atWar
+                          ? translateText("player_panel.propose_peace")
+                          : translateText("player_panel.peace_needs_war"),
                         label: translateText("player_panel.propose_peace"),
                         type: "normal",
-                      })
-                    : ""}
+                        disabled: !canProposePeace,
+                      })}
               </div>
             `}
         ${other === my

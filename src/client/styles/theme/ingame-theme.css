@@ -175,13 +175,61 @@ game-right-sidebar
 
 /* ---------------------------------------------------------------------------
  * Radial menu. Action colours (attack red, ally green, build gold…) carry
- * meaning, so they stay; the theme only swaps the neutral navy for emerald
- * night and frames every slice with a gold seam.
+ * meaning, so they stay; the theme swaps the neutral navy for emerald night,
+ * frames every slice with a gold seam and rings the whole menu with a gold
+ * dial. Disabled slices are hatched (RadialMenu draws the shading).
  * ------------------------------------------------------------------------- */
 
 .radial-menu-container .menu-item-path {
   stroke: var(--tr-gold-line);
   stroke-width: 1.25px;
+  transition: stroke 120ms;
+}
+
+.radial-menu-container .menu-item-path:not(.is-disabled):hover {
+  stroke: var(--tr-gold);
+  stroke-width: 2px;
+}
+
+.radial-menu-container .menu-item-path.is-disabled {
+  stroke: rgba(231, 239, 233, 0.14);
+}
+
+/* RadialMenu toggles pointer-events on every path of a level, hence
+   !important: the decoration must never catch a click. */
+.radial-menu-container .menu-item-sheen,
+.radial-menu-container .menu-dial,
+.radial-menu-container .menu-dial * {
+  pointer-events: none !important;
+}
+
+.radial-menu-container .menu-dial-ring {
+  fill: none;
+  stroke: var(--tr-gold-line);
+  stroke-width: 1px;
+}
+
+.radial-menu-container .menu-dial-ticks {
+  fill: none;
+  stroke: rgba(251, 191, 36, 0.6);
+  stroke-width: 1px;
+}
+
+.radial-menu-container .menu-dial-diamond {
+  fill: var(--tr-gold);
+  stroke: var(--tr-night-solid);
+  stroke-width: 1px;
+}
+
+.radial-menu-container .menu-dial-inner {
+  fill: none;
+  stroke: var(--tr-emerald-line);
+  stroke-width: 1px;
+}
+
+.radial-menu-container .center-button-ring {
+  stroke: var(--tr-gold-line);
+  stroke-width: 1px;
 }
 
 .radial-menu-container .menu-item-path[fill="#1e3a5f"],
@@ -203,6 +251,12 @@ game-right-sidebar
   background: var(--tr-night) !important;
   border: 1px solid var(--tr-gold-line);
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+.radial-tooltip .title {
+  font-family: var(--tr-display);
+  letter-spacing: 0.03em;
+  color: var(--tr-gold-light);
 }
 
 /* ---------------------------------------------------------------------------
@@ -236,8 +290,8 @@ win-modal .bg-black\/30 {
 
 /* ---------------------------------------------------------------------------
  * Structure card: opens on a click on one of your buildings. The icon frame
- * follows the building's level: bronze at 2, silver at 3, gold from 4, the
- * same metals as the frame drawn on the map.
+ * follows the building's level: bronze at 2, silver at 3, gold at 4 and
+ * emerald at 5, the same colours as the frame drawn on the map.
  * ------------------------------------------------------------------------- */
 
 structure-card .structure-card {
@@ -283,6 +337,11 @@ structure-card .structure-card-icon.gold {
   box-shadow: 0 0 10px rgba(251, 191, 36, 0.55);
 }
 
+structure-card .structure-card-icon.emerald {
+  border-color: var(--tr-emerald-bright);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+}
+
 structure-card .structure-card-name {
   font-family: var(--tr-display);
   font-size: 15px;
@@ -317,6 +376,10 @@ structure-card .structure-card-pips i.silver {
 
 structure-card .structure-card-pips i.gold {
   background-color: var(--tr-gold);
+}
+
+structure-card .structure-card-pips i.emerald {
+  background-color: var(--tr-emerald-bright);
 }
 
 structure-card .structure-card-close {

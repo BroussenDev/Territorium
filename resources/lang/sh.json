@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Greška pri verifikaciji: {code}. Osvežite stranicu i pokušajte ponovo."
   },
+  "event_history": {
+    "empty": "Ništa se još nije dogodilo.",
+    "filter_all": "Sve",
+    "filter_attack": "Napadi",
+    "filter_chat": "Čet",
+    "filter_diplomacy": "Diplomatija",
+    "filter_nuke": "Projektili",
+    "filter_trade": "Trgovina",
+    "hours_ago": "pre {n} h",
+    "just_now": "upravo sada",
+    "minutes_ago": "pre {n} min",
+    "seconds_ago": "pre {n} s",
+    "title": "Istorija događaja"
+  },
   "events_display": {
     "about_to_expire": "Vaš savez sa igračem {name} će uskoro isteći!",
     "accept_alliance": "Prihvati",
@@ -953,6 +967,7 @@
     "no_boats_available": "Nema slobodnih brodova, maksimum {max}",
     "objective_captured": "Zauzeli ste cilj na mapi: više zlata i rast trupa dok ga držite.",
     "objective_lost": "{name} je uzeo jedan od ciljeva vaše karte.",
+    "objectives_revealed": "{count} ciljevi su se pojavili na mapi!",
     "peace_broken": "{breaker} je prekinuo mir sa {victim}! krivokletstvo.",
     "peace_expired": "Mir sa {name} je istekao.",
     "peace_rejected": "{name} odbio vaš mirovni sporazum.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabrike povezuju vaše gradove i luke železnicom. Vozovi zarađuju zlato za svaku zgradu koju posete, i više kod vaših komšija.",
       "frames": "Okvir oko zgrade pokazuje njen nivo: bronza na 2, srebro na 3, zlato na 4.",
       "mirv": "MIRV se deli u roj bojevih glava na ogromnom području i pogađa samo igrača na koga ste ciljali.",
-      "objectives": "Svaki cilj mape koji imate daje +15% zlata i +5% trupa. Posedujte veći deo njene zone na 15 sekundi da biste je uhvatili.",
-      "peace": "Izgubiti rat? Potpišite mirovni sporazum: tri minuta bez napada, bez potrebe za savezom. Svako ko ga prekrši označava se kao izdajnik pred svim igračima.",
+      "objectives": "Ciljevi mape se pojavljuju jedan minut u igri. Svaki od njih koji držite daje +15% zlata i +5% trupa: posedujete većinu svoje zone na 15 sekundi da biste je osvojili.",
+      "peace": "Izgubiti rat? Ponudite mir igraču protiv koga se borite: tri minuta bez napada, bez potrebe za savezom. Svako ko ga prekrši označava se kao izdajnik pred svim igračima.",
       "radar": "Radar uočava neprijateljske čamce, ratne brodove i projektile unutar 100 pločica, tako da vidite da dolazi invazija.",
       "sam": "SAM lanseri obaraju projektile u dometu. Svaki SAM nivo dodaje raketu spremnu za ispaljivanje i veći domet.",
       "trade": "Luke samostalno trguju sa drugim zemljama, a obe strane zarađuju zlato. Napad na igrača zaustavlja vašu trgovinu sa njim na 5 minuta.",
       "traitor": "Raskid saveza čini vas izdajnikom na 30 sekundi: vaša odbrana pada za polovinu i drugi igrači vam manje veruju.",
-      "upgrade": "Kliknite na jednu od svojih zgrada da otvorite njenu karticu i nadogradite je. Svaki grad, luka ili fabrički nivo se računa kao još jedna zgrada."
+      "upgrade": "Kliknite na jednu od svojih zgrada da biste je nadogradili: veći grad drži više ljudi, veća luka šalje više brodova, a veća fabrika šalje više vozova. Svaka zgrada ima maksimalan nivo."
     },
     "title": "Partija počinje..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Rukovanje - zatražite savez. Saveznici ne mogu da napadaju jedni druge i mogu da šalju jedni drugima trupe i zlato.",
     "info_chat": "Brzo ćaskanje - izaberite kategoriju i frazu; ako imenuje igrača, izaberite koga, a zatim pošaljite.",
     "info_emoji": "Emodži - pošaljite brzi emodži igraču.",
-    "info_peace": "Bela zastava - ponudite mirovni sporazum neprijatelju. Jednom potpisan, niko od vas ne može napadati drugog 3 minuta i napadi u toku prestaju. Ko ga pokvari označen je kao izdajnik i svakom igraču se kaže.",
+    "info_peace": "Bela zastava - ponudite mirovni sporazum igraču sa kojim ste u ratu (borite se sada ili u poslednja 2 minuta). Jednom potpisan, niko od vas ne može napadati drugog 3 minuta i napadi u toku prestaju. Ko ga pokvari označen je kao izdajnik i svakom igraču se kaže.",
     "info_target": "Meta - označite ovog igrača za sve svoje saveznike, da zajedno planirate napad.",
     "info_trade": "Trgovina - zaustavite ili ponovo pokrenite slanje trgovačkih brodova ovom igraču. Trgovina počinje ponovo kada to oboje dozvolite.",
     "objectives_bonus": "Svaki cilj koji imate daje +15% zlata i +5% trupa.",
     "objectives_cap": "Samo do polovine ciljeva se računa u vaš bonus (2 od 4, 3 od 5 ili 6), tako da niko ne dobija samo ako ih sve zadrži.",
     "objectives_capture": "Posedujte veći deo zone na 15 sekundi da biste je uhvatili. Prsten se puni dok ga držite.",
-    "objectives_desc": "Neke igre postavljaju ciljeve na mapu. Svaka od njih je zona koju vredi držati tokom cele utakmice.",
+    "objectives_desc": "Neke igre postavljaju ciljeve na mapu. Pojavljuju se jedan minut u igri, uz najavu, tako da niko ne može da ih požuruje od početka. Svaka od njih je zona koju vredi držati tokom cele utakmice.",
     "objectives_title": "Ciljevi mape",
     "objectives_where": "Pojavljuju se u solo, privatnim i javnim igrama; rangirani, 1v1, 2v2 i dnevna trka nemaju nijedan. Kreator igre može da ih isključi.",
     "objectives_zone": "Cilj na mapi",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Vaš tim:",
     "upgrades_card": "Struktura kartice",
     "upgrades_desc": "Kliknite na jednu od svojih zgrada da otvorite njenu karticu: njen nivo, šta donosi sledeći nivo i dugme za nadogradnju.",
-    "upgrades_economy": "Gradovi, luke i fabrike: bez ograničenja i bez čekanja. Svaki nivo se računa kao još jedna zgrada.",
-    "upgrades_frames": "Nadograđene zgrade dobijaju okvir na mapi: bronza na nivou 2, srebro na 3, zlato na nivou 4.",
+    "upgrades_economy": "Gradovi, luke i fabrike se podižu na nivo 5, odmah. Svaki nivo grada drži više ljudi, luka šalje više trgovačkih brodova i popravlja više ratnih brodova odjednom, fabrika šalje više vozova.",
+    "upgrades_frames": "Nadograđene zgrade dobijaju okvir na mapi: bronza na nivou 2, srebro na 3, zlato na 4 i smaragd na 5.",
     "upgrades_military": "SAM-ovi idu do nivoa 5 (+1 raketa spremna i veći domet po nivou), silosi i radari do nivoa 3. Svaki novi nivo se otključava kako igra ide: kartica pokazuje odbrojavanje.",
     "upgrades_ranked": "U rangiranim igrama nivoi su niži (SAM 3, silos i radar 2) i otključavaju se kasnije.",
     "upgrades_title": "Nadogradnje zgrada"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% zlata, +{troops}% trupa (maks.)",
     "cap_hint": "Tvoj bonus se računa za najviše {max} ciljeva. Držanje više ih samo uskraćuje tvojim rivalima.",
     "held": "Ciljevi {held}/{total}",
+    "reveal_in": "Ciljevi za {time}",
     "zone_label": "Cilj {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Izbaciti {name}?\n\nNeće moći ponovo da se pridruže ovoj igri.",
     "kicked": "Već izbačen",
     "moderation": "Moderacija",
+    "peace_needs_war": "Možete ponuditi mir samo igraču sa kojim ste u ratu",
     "peace_time_remaining": "Mir se završava",
     "propose_peace": "Ponudi mir",
     "report": "Prijavi",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rakete {from} → {to}",
+    "gain_population": "Maksimalna populacija +{from} → +{to}",
     "gain_range": "Domet {from} → {to}",
-    "gain_stack": "Računa se kao još jedna zgrada ove vrste",
+    "gain_repairs": "Dokovi za popravku ratnih brodova {from} → {to}",
+    "gain_trade_ships": "Trgovački brodovi ×{from} → ×{to}",
+    "gain_trains": "Vozovi poslati ×{from} → ×{to}",
     "level": "Nivo {level}",
     "level_of": "Nivo {level} / {max}",
     "locked": "Nivo {level} dostupan za {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Vaš silos je spreman! Pritisnite {key}, a zatim kliknite na zemlju suseda da biste pokrenuli atomsku bombu.",
       "mirv_info": "MIRV: kiša bojevih glava nad jednim neprijateljem. Vrhunsko oružje.",
       "no_coast": "Još nemate obalu. More otvara čamce, luke i trgovinu: širite se dok ne stignete do obale.",
-      "objectives": "Ova mapa ima ciljeve: svetleće zone koje vredi držati. Posedujte većinu jednog na 15 sekundi da biste ga uhvatili, za +15% zlata i +5% trupa. Ovaj brojač pokazuje koliko ih držite.",
+      "objectives": "Ova mapa ima ciljeve: svetleće zone koje se pojavljuju jedan minut u igri. Posedujte većinu jednog na 15 sekundi da biste ga uhvatili, za +15% zlata i +5% trupa. Ovaj brojač pokazuje preostalo vreme pre nego što se pojave, a zatim koliko ih imate.",
       "port_info_ships": "Luke šalju trgovačke brodove u druge zemlje, a svako putovanje vam donosi zlato.",
       "port_info_warships": "Luke takođe grade ratne brodove.",
       "propose_alliance": "Jak komšija je bolji kao prijatelj. Kliknite desnim tasterom miša na naciju sa metom i zatražite savez.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Izdajnik gubi polovinu odbrane na 30 sekundi. Pažljivo odaberite trenutak.",
       "troop_rate": "Ovako brzo rastu vaše trupe. Usporava i postaje narandžasta kada pređete polovinu svog maksimuma.",
       "troops": "Ovo su tvoje trupe. Svaki napad troši neke od njih, pa im dajte vremena da ponovo porastu između napada.",
-      "upgrade_city": "Zgrade se mogu nadograditi. Kliknite na svoj grad da otvorite njegovu karticu, a zatim pritisnite Nadogradi: svaki nivo se računa kao još jedan grad."
+      "upgrade_city": "Zgrade se mogu nadograditi. Kliknite na svoj grad da biste otvorili njegovu karticu, a zatim pritisnite Nadogradi: svaki nivo daje mesta za više ljudi, do nivoa 5."
     },
     "step_counter": "Korak {current} od {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Jak komšija je bolji kao prijatelj. Dodirnite naciju sa metom, a zatim dodirnite stisak ruke da biste zatražili savez.",
       "send_boat": "Čamci nose vaše trupe preko vode. Dodirnite neprijateljsku obalu preko mora da otvorite radijalni meni, a zatim izaberite čamac.",
       "spawn": "Dobrodošli u Territorium! Dodirnite bilo gde na mapi da biste izabrali početnu tačku. Obala će vam dobro doći kasnije.",
-      "upgrade_city": "Zgrade se mogu nadograditi. Dodirnite svoj grad da biste otvorili njegovu karticu, a zatim dodirnite Nadogradi: svaki nivo se računa kao još jedan grad."
+      "upgrade_city": "Zgrade se mogu nadograditi. Dodirnite svoj grad da biste otvorili njegovu karticu, a zatim dodirnite Nadogradi: svaki nivo daje mesta za više ljudi, do nivoa 5."
     },
     "title": "Tutorijal"
   },

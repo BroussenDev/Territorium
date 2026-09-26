@@ -189,6 +189,7 @@ export class NukeExecution implements Execution {
       }
       if (attackedPlayer !== this.player) {
         this.mg.breakPeace(this.player, attackedPlayer);
+        this.mg.recordHostility(this.player, attackedPlayer);
       }
       if (attackedPlayer !== this.player) {
         attackedPlayer.updateRelation(this.player, -100);
@@ -242,6 +243,7 @@ export class NukeExecution implements Execution {
         const aimedAt = this.mg.owner(this.dst);
         if (aimedAt.isPlayer()) {
           this.mg.breakPeace(this.player, aimedAt);
+          this.mg.recordHostility(this.player, aimedAt);
         }
       }
       // EMPs skip friendly structures, so they never break an alliance.

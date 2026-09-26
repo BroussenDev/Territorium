@@ -36,6 +36,7 @@ vi.mock("../../../../src/client/Utils", () => ({
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { EventsDisplay } from "../../../../src/client/hud/layers/EventsDisplay";
+import { EventBus } from "../../../../src/core/EventBus";
 import { GameUpdateType } from "../../../../src/core/game/GameUpdates";
 import { UserSettings } from "../../../../src/core/game/UserSettings";
 
@@ -67,6 +68,7 @@ describe("EventsDisplay emoji setting (#4430)", () => {
   beforeEach(() => {
     resetSettings();
     ed = new EventsDisplay();
+    ed.eventBus = new EventBus();
     (ed as unknown as { game: unknown }).game = {
       myPlayer: () => myPlayer,
       playerBySmallID: (id: number) => (id === 1 ? myPlayer : sender),

@@ -773,6 +773,8 @@ export interface Player {
   outgoingPeaceRequest(): PeaceRequest | null;
   peaceTreatyWith(other: Player): PeaceTreaty | null;
   isAtPeaceWith(other: Player): boolean;
+  /** At war: an attack runs between the two, or a recent hostile act. */
+  isAtWarWith(other: Player): boolean;
   canProposePeace(other: Player): boolean;
 
   // Targeting
@@ -886,6 +888,10 @@ export interface Game extends GameMap {
   removePeaceByPlayerSilently(player: Player): void;
   /** First tick at which `from` may propose peace to `to` again. */
   peaceCooldownUntil(from: Player, to: Player): Tick;
+  /** Notes a hostile act between two players (land taken, missile fired). */
+  recordHostility(a: Player, b: Player): void;
+  /** Tick of the last hostile act between two players, or null. */
+  lastHostilityBetween(a: Player, b: Player): Tick | null;
 
   // Immunity timer
   isSpawnImmunityActive(): boolean;
@@ -1091,6 +1097,8 @@ export interface PlayerInteraction {
   canEmbargo: boolean;
   allianceInfo?: AllianceInfo;
   canProposePeace: boolean;
+  // Peace can only be offered while at war.
+  atWar: boolean;
   // Set while the two players are at peace.
   peaceExpiresAt?: Tick;
 }
@@ -1128,6 +1136,7 @@ export enum MessageType {
   // Appended last so older message indices stay stable.
   EMP_INBOUND,
   RADAR_CONTACT,
+  OBJECTIVES_REVEALED,
 }
 
 // Message categories used for filtering events in the EventsDisplay
@@ -1165,6 +1174,7 @@ export const MESSAGE_TYPE_CATEGORIES: Record<MessageType, MessageCategory> = {
   [MessageType.CHAT]: MessageCategory.CHAT,
   [MessageType.EMP_INBOUND]: MessageCategory.NUKE,
   [MessageType.RADAR_CONTACT]: MessageCategory.ATTACK,
+  [MessageType.OBJECTIVES_REVEALED]: MessageCategory.ATTACK,
 } as const;
 
 /**

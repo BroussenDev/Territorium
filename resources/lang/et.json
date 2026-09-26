@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Kinnitusviga: {code}. Värskendage ja proovige uuesti."
   },
+  "event_history": {
+    "empty": "Midagi pole veel juhtunud.",
+    "filter_all": "Kõik",
+    "filter_attack": "Rünnakud",
+    "filter_chat": "Vestlus",
+    "filter_diplomacy": "Diplomaatia",
+    "filter_nuke": "Raketid",
+    "filter_trade": "Kaubandus",
+    "hours_ago": "{n} h tagasi",
+    "just_now": "just praegu",
+    "minutes_ago": "{n} min tagasi",
+    "seconds_ago": "{n} s tagasi",
+    "title": "Sündmuse ajalugu"
+  },
   "events_display": {
     "about_to_expire": "Su liiduleping {name}'ga on aegumas!",
     "accept_alliance": "Nõustu",
@@ -953,6 +967,7 @@
     "no_boats_available": "Laevu pole rohkem saadaval, maks. {max}",
     "objective_captured": "Vallutasite kaardieesmärgi: rohkem kulda ja vägede kasvu, kuni seda hoiate.",
     "objective_lost": "{name} võttis ühe teie kaardiobjektidest.",
+    "objectives_revealed": "{count} eesmärki on kaardile ilmunud!",
     "peace_broken": "{breaker} rikkus rahu kasutajaga {victim}! Valevande andmine.",
     "peace_expired": "Rahu kasutajaga {name} on aegunud.",
     "peace_rejected": "{name} keeldus teie rahulepingust.",
@@ -1112,13 +1127,13 @@
       "factory": "Tehased ühendavad teie linnu ja sadamaid raudteega. Rongid teenivad kulda iga hoone eest, mida nad külastavad, ja rohkemgi teie naabrite juures.",
       "frames": "Hoonet ümbritsev raam näitab selle taset: pronks 2, hõbe 3, kuld 4.",
       "mirv": "MIRV jaguneb tohutul alal lõhkepeade sülemiks ja tabab ainult mängijat, kelle poole sihisite.",
-      "objectives": "Iga teie kaardi eesmärk annab +15% kulda ja +5% sõdureid. Selle jäädvustamiseks omage suuremat osa selle tsoonist 15 sekundiks.",
-      "peace": "Kaotada sõda? Kirjutage alla rahulepingule: kolm minutit ilma rünnakuteta, ilma liiduta. Igaüks, kes selle rikub, märgitakse kõigi mängijate ees reeturiks.",
+      "objectives": "Kaardi eesmärgid ilmuvad mängu minuti jooksul. Iga teie käes olev üksus annab +15% kulda ja +5% sõdureid: omage suuremat osa selle tsoonist 15 sekundiks, et see hõivata.",
+      "peace": "Kaotada sõda? Paku rahu mängijale, kellega võitled: kolm minutit ilma rünnakuteta, ilma liiduta. Igaüks, kes selle rikub, märgitakse kõigi mängijate ees reeturiks.",
       "radar": "Radar tuvastab vaenlase paate, sõjalaevu ja rakette 100 plaadi raadiuses, nii et näete sissetungi lähenemas.",
       "sam": "SAM-i kanderaketid tulistavad alla rakette. Iga SAM-i tase lisab tulistamisvalmis raketi ja rohkem laskekaugust.",
       "trade": "Sadamad kauplevad teiste riikidega iseseisvalt ja mõlemad pooled teenivad kulda. Mängija ründamine peatab teie tehingu temaga 5 minutiks.",
       "traitor": "Alliansi katkestamine teeb sinust 30 sekundiks reeturi: sinu kaitsevõime langeb poole võrra ja teised mängijad usaldavad sind vähem.",
-      "upgrade": "Klõpsake ühel oma hoonetest, et avada selle kaart ja seda uuendada. Iga linna, sadama või tehase taset loetakse veel üheks hooneks."
+      "upgrade": "Selle uuendamiseks klõpsake ühel oma hoonetest: suurem linn mahutab rohkem inimesi, suurem sadam saadab rohkem laevu ja suurem tehas saadab rohkem ronge. Igal hoonel on maksimaalne tase."
     },
     "title": "Mäng algab..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Käepigistus – küsi liitu. Liitlased ei saa üksteist rünnata ja võivad saata üksteisele vägesid ja kulda.",
     "info_chat": "Kiirvestlus – valige kategooria ja fraas; kui see nimetab mängija, valige kes ja saatke.",
     "info_emoji": "Emotikonid – saatke mängijale kiire emotikon.",
-    "info_peace": "Valge lipp – paku vaenlasele rahulepingut. Pärast allkirjastamist ei saa kumbki teist 3 minuti jooksul rünnata ja pooleliolevad rünnakud peatuvad. Kes selle rikub, märgitakse reeturiks ja igale mängijale räägitakse sellest.",
+    "info_peace": "Valge lipp – paku rahulepingut mängijale, kellega oled sõjas (võitleb praegu või viimase 2 minuti jooksul). Pärast allkirjastamist ei saa kumbki teist 3 minuti jooksul rünnata ja pooleliolevad rünnakud peatuvad. Kes selle rikub, märgitakse reeturiks ja igale mängijale räägitakse sellest.",
     "info_target": "Sihtmärk – märkige see mängija kõigi oma liitlaste jaoks, et koos rünnakut planeerida.",
     "info_trade": "Kauple – lõpeta või alusta uuesti kaubalaevade saatmist sellele mängijale. Kauplemine algab uuesti, kui te mõlemad seda lubate.",
     "objectives_bonus": "Iga teie käes olev eesmärk annab +15% kulda ja +5% sõdureid.",
     "objectives_cap": "Teie boonusesse lähevad arvesse ainult kuni pooled eesmärkidest (2 4-st, 3 5-st või 6-st), nii et keegi ei võida ainult neid kõiki hoides.",
     "objectives_capture": "Selle jäädvustamiseks omage suuremat osa tsoonist 15 sekundiks. Sõrmus täitub, kui seda hoiate.",
-    "objectives_desc": "Mõned mängud panevad kaardile eesmärgid. Igaüks neist on tsoon, mida tasub hoida kogu mängu vältel.",
+    "objectives_desc": "Mõned mängud panevad kaardile eesmärgid. Nad ilmuvad mängu minuti jooksul koos teatega, nii et keegi ei saa neid algusest peale kiirustada. Igaüks neist on tsoon, mida tasub hoida kogu mängu vältel.",
     "objectives_title": "Kaardi eesmärgid",
     "objectives_where": "Need esinevad soolo-, era- ja avalikes mängudes; paremusjärjestuses, 1v1, 2v2 ja igapäevasel võistlusel pole ühtegi. Mängu looja saab need välja lülitada.",
     "objectives_zone": "Eesmärk kaardil",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Sinu tiim:",
     "upgrades_card": "Struktuurikaart",
     "upgrades_desc": "Klõpsake ühel oma hoonetest, et avada selle kaart: selle tase, mida järgmine tase toob ja uuendamise nupp.",
-    "upgrades_economy": "Linnad, sadamad ja tehased: pole piiranguid ega ootamist. Iga taset loetakse veel üheks hooneks.",
-    "upgrades_frames": "Täiustatud hooned saavad kaardil raami: 2. tasemel pronks, 3. hõbe, 4. kuld.",
+    "upgrades_economy": "Linnad, sadamad ja tehased tõusevad kohe 5. tasemele. Linna igal tasandil mahub rohkem inimesi, sadam saadab rohkem kaubalaevu ja remondib korraga rohkem sõjalaevu, tehas saadab rohkem ronge.",
+    "upgrades_frames": "Täiustatud hooned saavad kaardil raami: 2. tasemel pronks, 3. hõbe, 4. kuld ja 5. smaragd.",
     "upgrades_military": "SAM-id tõusevad 5. tasemele (+1 raketi valmisolek ja rohkem lennuulatust taseme kohta), silohoidlad ja radarid kuni 3. tasemeni. Iga uus tase avaneb mängu edenedes: kaart näitab pöördloendust.",
     "upgrades_ranked": "Järjestusmängudes on tasemed madalamad (SAM 3, silo ja radar 2) ja avanevad hiljem.",
     "upgrades_title": "Hoonete uuendused"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% kulda, +{troops}% sõdureid (max)",
     "cap_hint": "Sinu boonus arvestab kõige rohkem {max} eesmärki. Rohkemate hoidmine võtab need lihtsalt rivaalidelt ära.",
     "held": "Eesmärgid {held}/{total}",
+    "reveal_in": "Eesmärgid {time} pärast",
     "zone_label": "Eesmärk {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kas visata välja {name}?\n\nNad ei saa siia mängu tagasi tulla.",
     "kicked": "Juba välja visatud",
     "moderation": "Modereerimine",
+    "peace_needs_war": "Saate pakkuda rahu ainult mängijale, kellega olete sõjas",
     "peace_time_remaining": "Rahu lõpeb",
     "propose_peace": "Paku rahu",
     "report": "Teata",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Raketid {from} → {to}",
+    "gain_population": "Maksimaalne rahvaarv +{from} → +{to}",
     "gain_range": "Ulatus {from} → {to}",
-    "gain_stack": "Loeb ühe sama tüüpi hoonena rohkem",
+    "gain_repairs": "Sõjalaevade remondidokid {from} → {to}",
+    "gain_trade_ships": "Kaubalaevad ×{from} → ×{to}",
+    "gain_trains": "Saadetud rongid ×{from} → ×{to}",
     "level": "Tase {level}",
     "level_of": "Tase {level} / {max}",
     "locked": "Tase {level} saadaval {time} pärast",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Teie silohoidla on valmis! Vajutage {key}, seejärel klõpsake aatomipommi käivitamiseks naabri maad.",
       "mirv_info": "MIRV: lõhkepeade vihm ühe vaenlase kohal. Ülim relv.",
       "no_coast": "Teil pole veel rannajoont. Meri avab paadid, sadamad ja kaubanduse: laienege, kuni jõuate rannikule.",
-      "objectives": "Sellel kaardil on eesmärgid: helendavad tsoonid, mida tasub hoida. Omandage enamus ühest 15 sekundiks, et see jäädvustada, +15% kulla ja +5% sõdurite eest. See loendur näitab, kui palju teil on.",
+      "objectives": "Sellel kaardil on eesmärgid: helendavad tsoonid, mis ilmuvad mängu minuti jooksul. Omandage enamus ühest 15 sekundiks, et see jäädvustada, +15% kulla ja +5% sõdurite eest. See loendur näitab aega, mis on jäänud enne nende ilmumist, ja seejärel seda, kui palju teil on käes.",
       "port_info_ships": "Sadamad saadavad kaubalaevu teistesse riikidesse ja iga reis teenib teile kulda.",
       "port_info_warships": "Sadamad ehitavad ka sõjalaevu.",
       "propose_alliance": "Tugev naaber on parem kui sõber. Paremklõpsake sihtmärgiga riiki ja küsige liitu.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Reetur kaotab poole oma kaitsevõimest 30 sekundiks. Valige oma hetk hoolikalt.",
       "troop_rate": "Nii kiiresti teie väed kasvavad. See aeglustub ja muutub oranžiks, kui ületate poole maksimumist.",
       "troops": "Need on teie väed. Iga rünnak kulutab osa neist, seega andke neile rünnakute vahel aega uuesti kasvada.",
-      "upgrade_city": "Hooneid saab uuendada. Klõpsake oma linnal, et avada selle kaart, ja seejärel vajutage nuppu Upgrade: iga taset loetakse veel üheks linnaks."
+      "upgrade_city": "Hooneid saab uuendada. Kaardi avamiseks klõpsake oma linnal, seejärel vajutage Täienda: igal tasemel on ruumi rohkematele inimestele kuni 5. tasemeni."
     },
     "step_counter": "Samm {current}/{total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Tugev naaber on parem kui sõber. Puudutage sihtmärgiga riiki, seejärel puudutage liidu taotlemiseks käepigistust.",
       "send_boat": "Paadid kannavad teie vägesid üle vee. Radiaalmenüü avamiseks puudutage üle mere vaenlase rannikut, seejärel valige paat.",
       "spawn": "Tere tulemast Territoriumi! Puudutage mis tahes kohta kaardil, et valida stardikoht. Rannajoon tuleb hiljem kasuks.",
-      "upgrade_city": "Hooneid saab uuendada. Puudutage oma linna, et avada selle kaart, seejärel puudutage Upgrade: iga taset loetakse veel üheks linnaks."
+      "upgrade_city": "Hooneid saab uuendada. Puudutage oma linna, et avada selle kaart, seejärel puudutage valikut Upgrade: igal tasemel on ruumi rohkematele inimestele kuni 5. tasemeni."
     },
     "title": "Õpetus"
   },

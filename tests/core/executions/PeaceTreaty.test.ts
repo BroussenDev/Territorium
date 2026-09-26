@@ -38,6 +38,15 @@ function tick(n = 1) {
   }
 }
 
+// Peace can only be offered between players at war.
+function war(...players: Player[]) {
+  for (const a of players) {
+    for (const b of players) {
+      if (a !== b) game.recordHostility(a, b);
+    }
+  }
+}
+
 function sign(a: Player, b: Player) {
   game.addExecution(new PeaceRequestExecution(a, b.id()));
   tick();
@@ -80,6 +89,7 @@ describe("Peace treaty", () => {
       game.addExecution(new PlayerExecution(p));
     }
     tick();
+    war(p1, p2, p3);
   });
 
   test("proposing back signs the treaty, for both sides", () => {
@@ -204,6 +214,9 @@ describe("Peace treaty", () => {
     expect(p1.canProposePeace(p2)).toBe(false);
     expect(p2.canProposePeace(p1)).toBe(false);
     tick(game.config().peaceEndCooldown());
+    // The war ended with the treaty: it takes a new fight to talk again.
+    expect(p1.canProposePeace(p2)).toBe(false);
+    war(p1, p2);
     expect(p1.canProposePeace(p2)).toBe(true);
     expect(p2.canProposePeace(p1)).toBe(true);
   });
@@ -244,9 +257,58 @@ describe("Peace treaty", () => {
     expect(p2.canProposePeace(p1)).toBe(true);
 
     tick(game.config().perjuryPeaceCooldown() - 2);
+    war(p1, p2);
     expect(p1.canProposePeace(p2)).toBe(false);
     tick(2);
     expect(p1.canProposePeace(p2)).toBe(true);
+  });
+
+  test("can only be offered to a player you are at war with", async () => {
+    await newGame("plains");
+    claim(p1, 0, 0, 9, 9);
+    claim(p2, 10, 0, 19, 9);
+    for (const p of [p1, p2]) {
+      game.addExecution(new PlayerExecution(p));
+    }
+    tick();
+    expect(p1.isAtWarWith(p2)).toBe(false);
+    expect(p1.canProposePeace(p2)).toBe(false);
+    game.addExecution(new PeaceRequestExecution(p1, p2.id()));
+    tick();
+    expect(p2.incomingPeaceRequests()).toEqual([]);
+
+    // An attack under way is a war, for both sides.
+    game.addExecution(new AttackExecution(100, p2, p1.id()));
+    tick();
+    expect(p1.isAtWarWith(p2)).toBe(true);
+    expect(p1.canProposePeace(p2)).toBe(true);
+    expect(p2.canProposePeace(p1)).toBe(true);
+  });
+
+  test("the war lasts 2 minutes after the last hostile act", () => {
+    const window = game.config().warWindow();
+    tick(window);
+    expect(p1.isAtWarWith(p2)).toBe(true);
+    tick();
+    expect(p1.isAtWarWith(p2)).toBe(false);
+    expect(p1.canProposePeace(p2)).toBe(false);
+
+    // Taking a tile from the other side starts it again.
+    p2.conquer(game.ref(9, 5));
+    expect(p1.isAtWarWith(p2)).toBe(true);
+    expect(p2.isAtWarWith(p1)).toBe(true);
+    expect(p1.isAtWarWith(p3)).toBe(false);
+  });
+
+  test("a proposal can still be signed once the fighting has stopped", () => {
+    tick(game.config().warWindow() - 5);
+    game.addExecution(new PeaceRequestExecution(p1, p2.id()));
+    tick(10);
+    expect(p2.isAtWarWith(p1)).toBe(false);
+    expect(p2.canProposePeace(p1)).toBe(true);
+    game.addExecution(new PeaceRequestExecution(p2, p1.id()));
+    tick();
+    expect(p1.isAtPeaceWith(p2)).toBe(true);
   });
 
   test("breaking a peace that does not exist does nothing", () => {
@@ -281,6 +343,7 @@ describe("Peace treaty and missiles", () => {
     claim(p1, 5, 5, 15, 15);
     claim(p2, 180, 180, 190, 190);
     claim(p3, 5, 180, 15, 190);
+    war(p1, p2, p3);
     for (const p of [p1, p2, p3]) {
       game.addExecution(new PlayerExecution(p));
     }
@@ -360,6 +423,7 @@ describe("Peace treaty with AI players", () => {
     // Let the tribe settle in before offering.
     tick(100);
 
+    war(p1, tribe);
     game.addExecution(new PeaceRequestExecution(p1, tribe.id()));
     tick(100);
     expect(p1.isAtPeaceWith(tribe)).toBe(true);
@@ -376,6 +440,7 @@ describe("Peace treaty with AI players", () => {
     );
     tick(100);
 
+    war(p1, p2, nation);
     game.addExecution(new PeaceRequestExecution(p1, nation.id()));
     tick(100);
     expect(p1.isAtPeaceWith(nation)).toBe(true);

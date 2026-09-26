@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Verifizierungsfehler: {code}. Bitte aktualisieren Sie und versuchen Sie es erneut."
   },
+  "event_history": {
+    "empty": "Es ist noch nichts passiert.",
+    "filter_all": "Alle",
+    "filter_attack": "Angriffe",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomatie",
+    "filter_nuke": "Raketen",
+    "filter_trade": "Handel",
+    "hours_ago": "vor {n} Std.",
+    "just_now": "grad eben",
+    "minutes_ago": "vor {n} Min.",
+    "seconds_ago": "vor {n} s",
+    "title": "Ereignisverlauf"
+  },
   "events_display": {
     "about_to_expire": "Dini Allianz mit {name} louft gli ab!",
     "accept_alliance": "Akzeptiere",
@@ -953,6 +967,7 @@
     "no_boats_available": "Kei Boot verfüegbar, max. {max}",
     "objective_captured": "Sie haben ein Kartenziel erobert: mehr Gold und Truppenwachstum, solange Sie es halten.",
     "objective_lost": "{name} hat Ihnen ein Kartenziel abgenommen.",
+    "objectives_revealed": "{count} Ziele sind auf der Karte erschienen!",
     "peace_broken": "{breaker} hat mit {victim} den Frieden gebrochen! Meineid.",
     "peace_expired": "Der Frieden mit {name} ist abgelaufen.",
     "peace_rejected": "{name} lehnte Ihren Friedensvertrag ab.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabriken verbinden Ihre Städte und Häfen per Bahn. Züge verdienen Gold für jedes Gebäude, das sie besuchen, und noch mehr bei Ihren Nachbarn.",
       "frames": "Der Rahmen um ein Gebäude zeigt dessen Level an: Bronze bei 2, Silber bei 3, Gold bei 4.",
       "mirv": "Ein MIRV teilt sich über ein riesiges Gebiet in einen Schwarm Sprengköpfe auf und trifft nur den Spieler, auf den Sie gezielt haben.",
-      "objectives": "Für jedes Kartenziel, das Sie halten, erhalten Sie +15 % Gold und +5 % Truppen. Besitzen Sie 15 Sekunden lang den grössten Teil seiner Zone, um es einzunehmen.",
-      "peace": "Einen Krieg verlieren? Unterzeichnen Sie einen Friedensvertrag: drei Minuten ohne Angriffe, ohne dass ein Bündnis erforderlich ist. Wer es bricht, wird vor allen Spielern als Verräter markiert.",
+      "objectives": "Kartenziele erscheinen eine Minute nach Spielbeginn. Jeder, den Sie halten, gibt +15 % Gold und +5 % Truppen: Besitzen Sie 15 Sekunden lang den grössten Teil seiner Zone, um ihn zu erobern.",
+      "peace": "Einen Krieg verlieren? Bieten Sie dem Spieler, gegen den Sie kämpfen, Frieden: drei Minuten ohne Angriffe, ohne dass eine Allianz erforderlich ist. Wer es bricht, wird vor allen Spielern als Verräter markiert.",
       "radar": "Ein Radar erkennt feindliche Boote, Kriegsschiffe und Raketen im Umkreis von 100 Feldern, sodass Sie eine bevorstehende Invasion erkennen können.",
       "sam": "SAM-Werfer schiessen Raketen in Reichweite ab. Jede SAM-Stufe fügt eine schussbereite Rakete und mehr Reichweite hinzu.",
       "trade": "Häfen handeln selbstständig mit anderen Ländern und beide Seiten verdienen Gold. Wenn Sie einen Spieler angreifen, wird Ihr Handel mit ihm für 5 Minuten gestoppt.",
       "traitor": "Wenn Sie eine Allianz brechen, werden Sie 30 Sekunden lang zum Verräter: Ihre Verteidigung sinkt um die Hälfte und andere Spieler vertrauen Ihnen weniger.",
-      "upgrade": "Klicken Sie auf eines Ihrer Gebäude, um dessen Karte zu öffnen und es zu verbessern. Jede Stadt-, Hafen- oder Fabrikebene zählt als ein weiteres Gebäude."
+      "upgrade": "Klicken Sie auf eines Ihrer Gebäude, um es zu verbessern: Eine grössere Stadt fasst mehr Menschen, ein grösserer Hafen schickt mehr Schiffe und eine grössere Fabrik schickt mehr Züge. Jedes Gebäude hat ein maximales Level."
     },
     "title": "s Spiel startet..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Händedruck – um ein Bündnis bitten. Verbündete können einander nicht angreifen und sich gegenseitig Truppen und Gold schicken.",
     "info_chat": "Schneller Chat – wählen Sie eine Kategorie und einen Begriff aus; Wenn ein Spieler benannt wird, wählen Sie ihn aus und senden Sie ihn.",
     "info_emoji": "Emoji – Senden Sie ein schnelles Emoji an den Spieler.",
-    "info_peace": "Weisse Flagge – bieten Sie einem Feind einen Friedensvertrag an. Nach der Unterzeichnung kann 3 Minuten lang keiner von euch den anderen angreifen und laufende Angriffe werden gestoppt. Wer es bricht, wird als Verräter markiert und jedem Spieler mitgeteilt.",
+    "info_peace": "Weisse Flagge – bieten Sie einem Spieler, mit dem Sie Krieg führen (jetzt oder in den letzten 2 Minuten), einen Friedensvertrag an. Nach der Unterzeichnung kann 3 Minuten lang keiner von euch den anderen angreifen und laufende Angriffe werden gestoppt. Wer es bricht, wird als Verräter markiert und jedem Spieler mitgeteilt.",
     "info_target": "Ziel – markieren Sie diesen Spieler für alle Ihre Verbündeten, um gemeinsam einen Angriff zu planen.",
     "info_trade": "Handel – Stoppen Sie das Senden von Handelsschiffen an diesen Spieler oder starten Sie es erneut. Der Handel beginnt erneut, wenn Sie beide es zulassen.",
     "objectives_bonus": "Jedes von Ihnen gehaltene Ziel bringt +15 % Gold und +5 % Truppen.",
     "objectives_cap": "Nur bis zur Hälfte der Ziele zählen für Ihren Bonus (2 von 4, 3 von 5 oder 6), sodass niemand gewinnt, der einfach alle erreicht.",
     "objectives_capture": "Besitzen Sie 15 Sekunden lang den grössten Teil der Zone, um sie zu erobern. Der Ring füllt sich, während Sie ihn halten.",
-    "objectives_desc": "Bei manchen Spielen werden Ziele auf der Karte platziert. Jede Zone ist eine Zone, die es wert ist, während des gesamten Spiels gehalten zu werden.",
+    "objectives_desc": "Bei manchen Spielen werden Ziele auf der Karte platziert. Sie erscheinen eine Minute nach Spielbeginn mit einer Ankündigung, sodass niemand sie von Anfang an überstürzen kann. Jede Zone ist eine Zone, die es wert ist, während des gesamten Spiels gehalten zu werden.",
     "objectives_title": "Kartenziele",
     "objectives_where": "Sie treten in Solo-, privaten und öffentlichen Spielen auf; Rangliste, 1v1, 2v2 und das tägliche Rennen haben keine. Der Ersteller des Spiels kann sie deaktivieren.",
     "objectives_zone": "Ein Ziel auf der Karte",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Dis Team:",
     "upgrades_card": "Strukturkarte",
     "upgrades_desc": "Klicken Sie auf eines Ihrer Gebäude, um dessen Karte zu öffnen: sein Level, was das nächste Level bringt und die Upgrade-Schaltfläche.",
-    "upgrades_economy": "Städte, Häfen und Fabriken: keine Grenzen und keine Wartezeiten. Jede Ebene zählt als ein weiteres Gebäude.",
-    "upgrades_frames": "Aufgerüstete Gebäude erhalten einen Rahmen auf der Karte: Bronze ab Stufe 2, Silber ab Stufe 3, Gold ab Stufe 4.",
+    "upgrades_economy": "Städte, Häfen und Fabriken steigen sofort auf Level 5 auf. Jede Ebene einer Stadt beherbergt mehr Menschen, ein Hafen schickt mehr Handelsschiffe und repariert mehr Kriegsschiffe gleichzeitig, eine Fabrik schickt mehr Züge.",
+    "upgrades_frames": "Aufgewertete Gebäude erhalten einen Rahmen auf der Karte: Bronze auf Stufe 2, Silber auf Stufe 3, Gold auf Stufe 4 und Smaragd auf Stufe 5.",
     "upgrades_military": "SAMs steigen bis Level 5 (+1 raketenbereit und mehr Reichweite pro Level), Silos und Radare bis Level 3. Jedes neue Level wird im Laufe des Spiels freigeschaltet: Die Karte zeigt den Countdown an.",
     "upgrades_ranked": "In Ranglistenspielen sind die Level niedriger (SAM 3, Silo und Radar 2) und werden später freigeschaltet.",
     "upgrades_title": "Gebäude-Upgrades"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% Gold, +{troops}% Truppen (max.)",
     "cap_hint": "Dein Bonus zählt höchstens {max} Ziele. Mehr zu halten nimmt sie nur deinen Rivalen weg.",
     "held": "Ziele {held}/{total}",
+    "reveal_in": "Ziel in {time}",
     "zone_label": "Ziel {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nSie werde däm Spiel nid wieder biträtte chönne.",
     "kicked": "Scho kickt",
     "moderation": "Moderation",
+    "peace_needs_war": "Sie können nur einem Spieler Frieden anbieten, mit dem Sie im Krieg sind",
     "peace_time_remaining": "Frieden endet in",
     "propose_peace": "Biete Frieden an",
     "report": "Bericht",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Raketen {from} → {to}",
+    "gain_population": "Maximale Bevölkerung +{from} → +{to}",
     "gain_range": "Reichweite {from} → {to}",
-    "gain_stack": "Zählt wie ein weiteres Gebäude dieser Art",
+    "gain_repairs": "Reparaturdocks für Kriegsschiffe {from} → {to}",
+    "gain_trade_ships": "Handelsschiffe ×{from} → ×{to}",
+    "gain_trains": "Züge gesendet ×{from} → ×{to}",
     "level": "Stufe {level}",
     "level_of": "Stufe {level} / {max}",
     "locked": "Stufe {level} verfügbar in {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Ihr Silo ist fertig! Drücken Sie {key} und klicken Sie dann auf das Land eines Nachbarn, um eine Atombombe abzufeuern.",
       "mirv_info": "MIRV: ein Regen von Sprengköpfen über einem einzelnen Feind. Die ultimative Waffe.",
       "no_coast": "Sie haben noch keine Küste. Das Meer eröffnet Boote, Häfen und Handel: Erweitern Sie sich, bis Sie die Küste erreichen.",
-      "objectives": "Diese Karte hat Ziele: leuchtende Zonen, die es wert sind, gehalten zu werden. Besitzen Sie 15 Sekunden lang den grössten Teil davon, um es zu erobern, und erhalten Sie +15 % Gold und +5 % Truppen. Dieser Zähler zeigt an, wie viele Sie besitzen.",
+      "objectives": "Diese Karte hat Ziele: leuchtende Zonen, die eine Minute nach Spielbeginn erscheinen. Besitzen Sie 15 Sekunden lang den grössten Teil davon, um es zu erobern, und erhalten Sie +15 % Gold und +5 % Truppen. Dieser Zähler zeigt die verbleibende Zeit bis zum Erscheinen und wie viele Sie besitzen.",
       "port_info_ships": "Häfen schicken Handelsschiffe in andere Länder und jede Reise bringt Ihnen Gold ein.",
       "port_info_warships": "Häfen bauen auch Kriegsschiffe.",
       "propose_alliance": "Ein starker Nachbar ist besser als Freund. Klicken Sie mit der rechten Maustaste auf die Nation mit dem Ziel und bitten Sie um eine Allianz.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Ein Verräter verliert 30 Sekunden lang die Hälfte seiner Verteidigung. Wählen Sie Ihren Moment sorgfältig aus.",
       "troop_rate": "So schnell wachsen Ihre Truppen. Es verlangsamt sich und wird orange, sobald Sie die Hälfte Ihres Maximums erreicht haben.",
       "troops": "Das sind deine Truppen. Jeder Angriff verbraucht einen Teil davon, also geben Sie ihnen zwischen den Angriffen Zeit, nachzuwachsen.",
-      "upgrade_city": "Gebäude können aufgewertet werden. Klicken Sie auf Ihre Stadt, um deren Karte zu öffnen, und drücken Sie dann auf „Upgrade“. Jedes Level zählt als eine weitere Stadt."
+      "upgrade_city": "Gebäude können aufgewertet werden. Klicken Sie auf Ihre Stadt, um deren Karte zu öffnen, und klicken Sie dann auf „Upgrade“. Jede Ebene schafft Platz für mehr Personen, bis zu Ebene 5."
     },
     "step_counter": "Schritt {current} von {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Ein starker Nachbar ist besser als Freund. Tippen Sie auf die Nation mit dem Ziel und dann auf den Handschlag, um um ein Bündnis zu bitten.",
       "send_boat": "Boote transportieren Ihre Truppen über das Wasser. Tippen Sie auf eine feindliche Küste auf der anderen Seite des Meeres, um das Radialmenü zu öffnen, und wählen Sie dann das Boot aus.",
       "spawn": "Willkommen bei Territorium! Tippen Sie irgendwo auf der Karte, um Ihren Startpunkt auszuwählen. Eine Küstenlinie wird sich später als nützlich erweisen.",
-      "upgrade_city": "Gebäude können aufgewertet werden. Tippen Sie auf Ihre Stadt, um deren Karte zu öffnen, und tippen Sie dann auf „Upgrade“: Jedes Level zählt als eine weitere Stadt."
+      "upgrade_city": "Gebäude können aufgewertet werden. Tippen Sie auf Ihre Stadt, um ihre Karte zu öffnen, und tippen Sie dann auf „Upgrade“: Jede Ebene schafft Platz für mehr Menschen, bis zu Ebene 5."
     },
     "title": "Anleitung"
   },

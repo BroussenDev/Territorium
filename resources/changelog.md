@@ -1,5 +1,38 @@
 # Territorium — Changelog
 
+## v0.1.9
+
+🏳️ **Peace only between enemies**
+
+- You can now only offer peace to a player you are at war with: one of you is attacking the other, or you fought in the last 2 minutes (land taken, attack launched, missile fired or perjury). Otherwise the white flag is greyed out.
+- A proposal you received can still be signed after the fighting has stopped.
+
+🔔 **Event history**
+
+- A bell next to the timer, top right, opens the history of your game: who attacked you, who fired a missile at you, who you signed peace or an alliance with, trade, chat… Each line shows how long ago it happened ("2 min ago").
+- Filter by attacks, missiles, diplomacy, trade or chat. Click a line to go to the player or the unit. A badge counts what you haven't seen yet.
+
+🎯 **Objectives appear after one minute**
+
+- Map objectives are now hidden for the first minute of the game, so no one can rush them from their spawn. The control panel counts down to them.
+- When they appear, every player gets an announcement and a sound.
+
+🏗️ **Real building upgrades**
+
+- Levels are no longer written on the map. An upgraded building shows its frame instead: bronze at level 2, silver at 3, gold at 4 and a new emerald frame at 5.
+- Every upgradable building now has a maximum level. Cities, ports and factories go up to level 5, right away. SAM launchers, silos and radars keep their caps and unlock times.
+- The building card shows what the next level really brings: max population for a city, trade ships and warship repair docks for a port, trains for a factory.
+- The build bar now counts your buildings, not their levels.
+- Nations build a new city, port or factory once all of theirs have reached level 5.
+
+🎡 **New radial menu**
+
+- The right-click menu is redrawn in Territorium's style: rounded slices with a gold rim, a gold dial around the ring and a hatched look on actions you can't use.
+
+🪙 **Territorium coin**
+
+- The coin test under the radial menu is over: it has been removed.
+
 ## v0.1.8
 
 🏳️ **Peace treaties**

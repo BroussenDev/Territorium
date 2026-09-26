@@ -6,7 +6,7 @@
  * unit-type button, with a payload of "production source" types
  * (Warship → [Port], AtomBomb → [MissileSilo, SAMLauncher], building → itself).
  * This controller just plumbs that payload to view.setHighlightStructureTypes;
- * StructurePass + StructureLevelPass already implement the visual highlight.
+ * StructurePass already implements the visual highlight.
  */
 
 import { EventBus } from "../../core/EventBus";

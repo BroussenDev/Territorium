@@ -14,36 +14,56 @@ import {
 } from "../game/Objectives";
 
 /**
- * Map objectives (see Objectives.ts). Zones are placed from the game seed at
- * init (during the spawn phase, so players see them before picking a start),
- * so every client places the same ones. Once per second after the spawn
- * phase, each zone checks which side holds most of its land: a side
- * other than the holder's advances the capture, anyone else lets it fall
- * back. Off unless `objectives` is set in the GameConfig.
+ * Map objectives (see Objectives.ts). Zones are placed from the game seed, so
+ * every client places the same ones, but stay hidden until
+ * objectiveRevealDelay after the spawn phase: nobody can pick a start next to
+ * one and rush it. Everyone is told when they appear. From then on, once per
+ * second, each zone checks which side holds most of its land: a side other
+ * than the holder's advances the capture, anyone else lets it fall back. Off
+ * unless `objectives` is set in the GameConfig.
  */
 export class ObjectiveExecution implements Execution {
   private active = true;
   private mg: Game | null = null;
+  private revealed = false;
 
   constructor(private readonly seed: number) {}
 
   init(mg: Game, ticks: number): void {
     this.mg = mg;
-    mg.setObjectives(placeObjectives(mg.map(), this.seed));
-    this.publish();
   }
 
   tick(ticks: number): void {
-    if (ticks % 10 !== 0) return; // once per second
     if (this.mg === null) throw new Error("Not initialized");
-    // Zones show during the spawn phase so players can plan around them, but
-    // nobody can take one until it ends.
     if (this.mg.inSpawnPhase()) return;
+    if (!this.revealed) {
+      const delay = this.mg.config().objectiveRevealDelay();
+      if (this.mg.elapsedGameSeconds() >= delay / 10) this.reveal();
+      return;
+    }
+    if (ticks % 10 !== 0) return; // once per second
     let changed = false;
     for (const objective of this.mg.objectives()) {
       if (this.step(objective)) changed = true;
     }
     if (changed) this.publish();
+  }
+
+  private reveal(): void {
+    const mg = this.mg!;
+    this.revealed = true;
+    const objectives = placeObjectives(mg.map(), this.seed);
+    mg.setObjectives(objectives);
+    this.publish();
+    if (objectives.length > 0) {
+      mg.displayMessage(
+        "events_display.objectives_revealed",
+        MessageType.OBJECTIVES_REVEALED,
+        null,
+        undefined,
+        { count: objectives.length },
+      );
+    }
   }
 
   /** Advances one zone by a second. Returns whether its state changed. */

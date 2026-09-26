@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Eroare de verificare: {code}. Reîmprospătați și încercați din nou."
   },
+  "event_history": {
+    "empty": "Nu sa întâmplat nimic încă.",
+    "filter_all": "Toate",
+    "filter_attack": "Atacuri",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomaţie",
+    "filter_nuke": "Rachete",
+    "filter_trade": "Comerț",
+    "hours_ago": "acum {n} h",
+    "just_now": "chiar acum",
+    "minutes_ago": "acum {n} min",
+    "seconds_ago": "acum {n} s",
+    "title": "Istoricul evenimentelor"
+  },
   "events_display": {
     "about_to_expire": "Alianța ta cu {name} este pe cale să expire!",
     "accept_alliance": "Acceptă",
@@ -953,6 +967,7 @@
     "no_boats_available": "Nu sunt disponibile bărci, maxim {max}",
     "objective_captured": "Ai capturat un obiectiv al hărții: mai mult aur și creșterea trupelor în timp ce îl ții.",
     "objective_lost": "{name} a luat unul dintre obiectivele hărții tale.",
+    "objectives_revealed": "Au apărut {count} obiective pe hartă!",
     "peace_broken": "{breaker} a rupt pacea cu {victim}! Sperjur.",
     "peace_expired": "Pacea cu {name} a expirat.",
     "peace_rejected": "{name} a refuzat tratatul de pace.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabricile vă leagă orașele și porturile pe calea ferată. Trenurile câștigă aur pentru fiecare clădire pe care o vizitează și mai mult la vecinii tăi.",
       "frames": "Rama din jurul unei clădiri arată nivelul acesteia: bronz la 2, argint la 3, aur la 4.",
       "mirv": "Un MIRV se împarte într-un roi de focoase pe o zonă imensă și lovește doar jucătorul pe care l-ai vizat.",
-      "objectives": "Fiecare obiectiv pe hartă pe care îl dețineți oferă +15% aur și +5% trupe. Dețineți cea mai mare parte a zonei sale timp de 15 secunde pentru a o captura.",
-      "peace": "Pierderea unui război? Semnează un tratat de pace: trei minute fără atacuri, fără nicio alianță necesară. Oricine o rupe este marcat ca trădător în fața tuturor jucătorilor.",
+      "objectives": "Obiectivele hărții apar la un minut de joc. Fiecare pe care îl dețineți oferă +15% aur și +5% trupe: dețineți cea mai mare parte a zonei sale timp de 15 secunde pentru a o captura.",
+      "peace": "Pierderea unui război? Oferă pace jucătorului cu care te lupți: trei minute fără atacuri, fără nicio alianță necesară. Oricine o rupe este marcat ca trădător în fața tuturor jucătorilor.",
       "radar": "Un radar observă bărci inamice, nave de război și rachete în decurs de 100 de plăci, așa că vedeți o invazie care se apropie.",
       "sam": "Lansatoarele SAM doboară rachete în raza de acțiune. Fiecare nivel SAM adaugă o rachetă gata de tragere și mai multă rază de acțiune.",
       "trade": "Porturile fac comerț cu alte țări pe cont propriu și ambele părți câștigă aur. Atacul unui jucător vă oprește schimbul cu el timp de 5 minute.",
       "traitor": "Ruperea unei alianțe te face trădător timp de 30 de secunde: apărarea ta scade la jumătate, iar alți jucători au mai puțină încredere în tine.",
-      "upgrade": "Faceți clic pe una dintre clădirile dvs. pentru a-și deschide cardul și pentru a o îmbunătăți. Fiecare oraș, port sau nivel de fabrică contează ca încă o clădire."
+      "upgrade": "Faceți clic pe una dintre clădirile dvs. pentru a o moderniza: un oraș mai mare găzduiește mai mulți oameni, un port mai mare trimite mai multe nave și o fabrică mai mare trimite mai multe trenuri. Fiecare clădire are un nivel maxim."
     },
     "title": "Începe jocul..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Strângere de mână - cere o alianță. Aliații nu se pot ataca unii pe alții și se pot trimite reciproc trupe și aur.",
     "info_chat": "Chat rapid - alegeți o categorie și o frază; dacă numește un jucător, alege cine, apoi trimite.",
     "info_emoji": "Emoji - trimiteți un emoji rapid jucătorului.",
-    "info_peace": "Steagul alb - oferă un tratat de pace unui inamic. Odată semnat, niciunul dintre voi nu îl poate ataca pe celălalt timp de 3 minute și atacurile în curs se opresc. Cine o încalcă este marcat ca trădător și fiecărui jucător i se spune.",
+    "info_peace": "Steagul alb - oferă un tratat de pace unui jucător cu care ești în război (luptă acum sau în ultimele 2 minute). Odată semnat, niciunul dintre voi nu îl poate ataca pe celălalt timp de 3 minute și atacurile în curs se opresc. Cine o încalcă este marcat ca trădător și fiecărui jucător i se spune.",
     "info_target": "Țintă - marchează acest jucător pentru toți aliații tăi, pentru a planifica un atac împreună.",
     "info_trade": "Comerț - opriți sau reporniți trimiterea navelor comerciale către acest jucător. Comerțul începe din nou când amândoi o permiteți.",
     "objectives_bonus": "Fiecare obiectiv pe care îl dețineți oferă +15% aur și +5% trupe.",
     "objectives_cap": "Doar până la jumătate din obiective contează pentru bonusul tău (2 din 4, 3 din 5 sau 6), așa că nimeni nu câștigă doar ținându-le pe toate.",
     "objectives_capture": "Dețineți cea mai mare parte a zonei timp de 15 secunde pentru a o captura. Inelul se umple în timp ce îl ții.",
-    "objectives_desc": "Unele jocuri plasează obiective pe hartă. Fiecare este o zonă care merită păstrată pentru tot jocul.",
+    "objectives_desc": "Unele jocuri plasează obiective pe hartă. Apar la un minut de joc, cu un anunț, astfel încât nimeni să nu-i poată grăbi de la început. Fiecare este o zonă care merită păstrată pentru tot jocul.",
     "objectives_title": "Harta obiectivelor",
     "objectives_where": "Apar în jocuri solo, private și publice; clasat, 1v1, 2v2 și cursa zilnică nu au niciunul. Creatorul jocului le poate dezactiva.",
     "objectives_zone": "Un obiectiv pe hartă",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Echipa ta:",
     "upgrades_card": "Card de structură",
     "upgrades_desc": "Faceți clic pe una dintre clădirile dvs. pentru a-și deschide cardul: nivelul său, ce aduce următorul nivel și butonul de actualizare.",
-    "upgrades_economy": "Orașe, porturi și fabrici: fără limită și fără așteptare. Fiecare nivel contează ca încă o clădire.",
-    "upgrades_frames": "Clădirile îmbunătățite primesc un cadru pe hartă: bronz la nivelul 2, argint la 3, aur de la 4.",
+    "upgrades_economy": "Orașele, porturile și fabricile urcă la nivelul 5, imediat. Fiecare nivel al unui oraș găzduiește mai mulți oameni, un port trimite mai multe nave comerciale și repara mai multe nave de război deodată, o fabrică trimite mai multe trenuri.",
+    "upgrades_frames": "Clădirile îmbunătățite primesc un cadru pe hartă: bronz la nivelul 2, argint la 3, aur la 4 și smarald la 5.",
     "upgrades_military": "SAM-urile urcă până la nivelul 5 (+1 rachetă pregătită și mai multă rază de acțiune pe nivel), silozurile și radarele până la nivelul 3. Fiecare nou nivel se deblochează pe măsură ce jocul continuă: cardul arată numărătoarea inversă.",
     "upgrades_ranked": "În jocurile clasate, nivelurile sunt mai mici (SAM 3, siloz și radar 2) și se deblochează mai târziu.",
     "upgrades_title": "Actualizări ale clădirii"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% aur, +{troops}% trupe (max.)",
     "cap_hint": "Bonusul tău contează cel mult {max} obiective. Dacă ții mai multe, doar le iei de la rivali.",
     "held": "Obiective {held}/{total}",
+    "reveal_in": "Obiective în {time}",
     "zone_label": "Obiectiv {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Îl dai afară pe {name}?\n\nNu vor putea să se alăture din nou acestui joc.",
     "kicked": "Deja dat afară",
     "moderation": "Moderație",
+    "peace_needs_war": "Nu poți oferi pace decât unui jucător cu care ești în război",
     "peace_time_remaining": "Pacea se termină în",
     "propose_peace": "Oferiți pace",
     "report": "Raportează",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rachete {from} → {to}",
+    "gain_population": "Populația maximă +{from} → +{to}",
     "gain_range": "Rază {from} → {to}",
-    "gain_stack": "Contează ca încă o clădire de acest tip",
+    "gain_repairs": "Docuri de reparații nave de război {from} → {to}",
+    "gain_trade_ships": "Nave comerciale ×{from} → ×{to}",
+    "gain_trains": "Trenuri trimise ×{from} → ×{to}",
     "level": "Nivelul {level}",
     "level_of": "Nivelul {level} / {max}",
     "locked": "Nivelul {level} disponibil în {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Silozul dvs. este gata! Apăsați {key}, apoi faceți clic pe terenul unui vecin pentru a lansa o bombă atomică.",
       "mirv_info": "MIRV: o ploaie de focoase peste un singur inamic. Arma supremă.",
       "no_coast": "Încă nu aveți linie de coastă. Marea deschide bărci, porturi și comerț: extinde-te până ajungi la coastă.",
-      "objectives": "Această hartă are obiective: zone strălucitoare care merită deținute. Dețineți cea mai mare parte a unuia timp de 15 secunde pentru a-l captura, pentru +15% aur și +5% trupe. Acest contor arată câte aveți.",
+      "objectives": "Această hartă are obiective: zone strălucitoare care apar la un minut de joc. Dețineți cea mai mare parte a unuia timp de 15 secunde pentru a-l captura, pentru +15% aur și +5% trupe. Acest contor arată timpul rămas înainte ca acestea să apară, apoi câte dețineți.",
       "port_info_ships": "Porturile trimit nave comerciale în alte țări și fiecare călătorie vă aduce aur.",
       "port_info_warships": "Porturile construiesc și nave de război.",
       "propose_alliance": "Un vecin puternic este mai bine ca un prieten. Faceți clic dreapta pe națiunea cu ținta și cereți o alianță.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Un trădător pierde jumătate din apărare timp de 30 de secunde. Alege-ți cu grijă momentul.",
       "troop_rate": "Acesta este cât de repede cresc trupele tale. Încetinește și devine portocaliu, odată ce depășiți jumătate din maxim.",
       "troops": "Acestea sunt trupele tale. Fiecare atac cheltuiește o parte dintre ele, așa că dă-le timp să recrească între atacuri.",
-      "upgrade_city": "Clădirile pot fi modernizate. Faceți clic pe orașul dvs. pentru a-și deschide cardul, apoi apăsați Upgrade: fiecare nivel contează ca încă un oraș."
+      "upgrade_city": "Clădirile pot fi modernizate. Faceți clic pe orașul dvs. pentru a-și deschide cardul, apoi apăsați Upgrade: fiecare nivel face loc pentru mai mulți oameni, până la nivelul 5."
     },
     "step_counter": "Etapa %{current} din %{total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Un vecin puternic este mai bine ca un prieten. Atingeți națiunea cu ținta, apoi atingeți strângerea de mână pentru a cere o alianță.",
       "send_boat": "Bărcile îți transportă trupele peste apă. Atingeți o coastă inamică peste mare pentru a deschide meniul radial, apoi alegeți barca.",
       "spawn": "Bun venit la Territorium! Atingeți oriunde pe hartă pentru a alege locul de plecare. O linie de coastă va veni la îndemână mai târziu.",
-      "upgrade_city": "Clădirile pot fi modernizate. Atingeți orașul dvs. pentru a-și deschide cardul, apoi atingeți Upgrade: fiecare nivel contează ca încă un oraș."
+      "upgrade_city": "Clădirile pot fi modernizate. Atingeți orașul dvs. pentru a-și deschide cardul, apoi atingeți Upgrade: fiecare nivel face loc pentru mai mulți oameni, până la nivelul 5."
     },
     "title": "Tutorial"
   },

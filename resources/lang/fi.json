@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Vahvistusvirhe: {code}. Päivitä ja yritä uudelleen."
   },
+  "event_history": {
+    "empty": "Mitään ei ole vielä tapahtunut.",
+    "filter_all": "Kaikki",
+    "filter_attack": "Hyökkäykset",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomatia",
+    "filter_nuke": "Ohjukset",
+    "filter_trade": "Kauppa",
+    "hours_ago": "{n} h sitten",
+    "just_now": "juuri nyt",
+    "minutes_ago": "{n} min sitten",
+    "seconds_ago": "{n} s sitten",
+    "title": "Tapahtumahistoria"
+  },
   "events_display": {
     "about_to_expire": "Liittosi pelaajan {name} kanssa on vanhentumassa!",
     "accept_alliance": "Hyväksy",
@@ -953,6 +967,7 @@
     "no_boats_available": "Ei veneitä saatavilla, max {max}",
     "objective_captured": "Valtasit karttatavoitteen: enemmän kultaa ja joukkojen kasvua, kun pidät sitä.",
     "objective_lost": "{name} otti yhden karttakohteistasi.",
+    "objectives_revealed": "{count} tavoitetta on ilmestynyt kartalle!",
     "peace_broken": "{breaker} rikkoi rauhan henkilön {victim} kanssa! Väärä vala.",
     "peace_expired": "Rauha henkilön {name} kanssa on päättynyt.",
     "peace_rejected": "{name} kieltäytyi rauhansopimuksesta.",
@@ -1112,13 +1127,13 @@
       "factory": "Tehtaat yhdistävät kaupunkisi ja satamasi rautateitse. Junat ansaitsevat kultaa jokaisesta rakennuksesta, jossa he vierailevat, ja enemmän naapureistasi.",
       "frames": "Rakennusta ympäröivä kehys näyttää sen tason: pronssia 2, hopea 3, kulta 4.",
       "mirv": "MIRV jakautuu taistelukärkien parviksi valtavalla alueella ja osuu vain siihen pelaajaan, johon tähtäsit.",
-      "objectives": "Jokainen karttatavoite antaa +15% kultaa ja +5% joukkoja. Omista suurin osa vyöhykkeestä 15 sekuntia vangitaksesi sen.",
-      "peace": "Häviätkö sodan? Allekirjoita rauhansopimus: kolme minuuttia ilman hyökkäyksiä, ilman liittoutumista. Jokainen, joka rikkoo sen, merkitään petturiksi kaikkien pelaajien edessä.",
+      "objectives": "Karttatavoitteet ilmestyvät minuutin kuluttua pelistä. Jokainen hallussasi oleva antaa +15% kultaa ja +5% joukkoja: omista suurin osa alueestaan 15 sekuntia vangitaksesi sen.",
+      "peace": "Häviätkö sodan? Tarjoa rauhaa pelaajalle, jota vastaan taistelet: kolme minuuttia ilman hyökkäyksiä, ilman liittoutumaa. Jokainen, joka rikkoo sen, merkitään petturiksi kaikkien pelaajien edessä.",
       "radar": "Tutka havaitsee vihollisen veneitä, sota-aluksia ja ohjuksia 100 ruudun säteellä, joten näet hyökkäyksen tulossa.",
       "sam": "SAM-laukaisimet ampuvat alas ohjuksia kantamalla. Jokainen SAM-taso lisää ampumaan valmiin ohjuksen ja lisää kantamaa.",
       "trade": "Satamat käyvät kauppaa muiden maiden kanssa yksin, ja molemmat osapuolet ansaitsevat kultaa. Pelaajaa vastaan hyökkääminen keskeyttää kaupankäynnin hänen kanssaan 5 minuutiksi.",
       "traitor": "Liiton rikkominen tekee sinusta petturin 30 sekunniksi: puolustus putoaa puoleen ja muut pelaajat luottavat sinuun vähemmän.",
-      "upgrade": "Napsauta jotakin rakennuksistasi avataksesi sen kortin ja päivittääksesi sen. Jokainen kaupunki, satama tai tehdastaso lasketaan yhdeksi lisärakennukseksi."
+      "upgrade": "Napsauta yhtä rakennuksistasi päivittääksesi sitä: isompi kaupunki mahtuu enemmän ihmisiä, suurempi satama lähettää enemmän laivoja ja suurempi tehdas lähettää enemmän junia. Jokaisella rakennuksella on enimmäistaso."
     },
     "title": "Peli alkaa..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Kädenpuristus - pyydä liittoa. Liittolaiset eivät voi hyökätä toisiaan vastaan ja voivat lähettää toisilleen joukkoja ja kultaa.",
     "info_chat": "Pikachat - valitse luokka ja lause; jos se nimeää pelaajan, valitse kuka ja lähetä sitten.",
     "info_emoji": "Emoji - lähetä nopea emoji pelaajalle.",
-    "info_peace": "Valkoinen lippu - tarjoa rauhansopimus viholliselle. Kun olet allekirjoittanut, kumpikaan teistä ei voi hyökätä toisiaan vastaan ​​3 minuuttiin ja käynnissä olevat hyökkäykset pysähtyvät. Se, joka rikkoo sen, merkitään petturiksi ja jokaiselle pelaajalle kerrotaan.",
+    "info_peace": "Valkoinen lippu – tarjoa rauhansopimus pelaajalle, jonka kanssa olet sodassa (taistelee nyt tai viimeisen 2 minuutin aikana). Kun olet allekirjoittanut, kumpikaan teistä ei voi hyökätä toisiaan vastaan 3 minuuttiin ja käynnissä olevat hyökkäykset pysähtyvät. Se, joka rikkoo sen, merkitään petturiksi ja jokaiselle pelaajalle kerrotaan.",
     "info_target": "Kohde – merkitse tämä pelaaja kaikille liittolaisillesi, jotta voit suunnitella hyökkäyksen yhdessä.",
     "info_trade": "Vaihto - lopeta tai aloita uudelleen kauppalaivojen lähettäminen tälle pelaajalle. Kauppa alkaa uudelleen, kun molemmat sallitte sen.",
     "objectives_bonus": "Jokainen omistamasi tavoite antaa +15% kultaa ja +5% joukkoja.",
     "objectives_cap": "Vain puolet tavoitteista lasketaan mukaan bonukseen (2/4, 3/5 tai 6), joten kukaan ei voita vain pitämällä ne kaikki.",
     "objectives_capture": "Omista suurin osa vyöhykkeestä 15 sekunnin ajan vangitaksesi sen. Sormus täyttyy, kun pidät sitä.",
-    "objectives_desc": "Jotkut pelit asettavat tavoitteita kartalle. Jokainen niistä on alue, jota kannattaa pitää koko pelin ajan.",
+    "objectives_desc": "Jotkut pelit asettavat tavoitteita kartalle. He ilmestyvät minuutin kuluttua pelistä ilmoituksen kera, joten kukaan ei voi kiirehtiä heitä alusta alkaen. Jokainen niistä on alue, jota kannattaa pitää koko pelin ajan.",
     "objectives_title": "Kartan tavoitteet",
     "objectives_where": "Ne näkyvät yksin, yksityisissä ja julkisissa peleissä; sijalla, 1v1, 2v2 ja päivittäisessä kilpailussa ei ole yhtään. Pelin luoja voi poistaa ne käytöstä.",
     "objectives_zone": "Tavoite kartalla",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Tiimisi: ",
     "upgrades_card": "Rakennekortti",
     "upgrades_desc": "Napsauta yhtä rakennuksistasi avataksesi sen kortin: sen tason, mitä seuraava taso tuo ja päivityspainike.",
-    "upgrades_economy": "Kaupungit, satamat ja tehtaat: ei rajoituksia eikä odottelua. Jokainen taso lasketaan yhdeksi lisärakennukseksi.",
-    "upgrades_frames": "Päivitetyt rakennukset saavat kehyksen kartalle: pronssia tasolla 2, hopeaa tasolla 3, kultaa tasosta 4.",
+    "upgrades_economy": "Kaupungit, satamat ja tehtaat nousevat tasolle 5 heti. Jokaiselle kaupungin tasolle mahtuu enemmän ihmisiä, satama lähettää enemmän kauppa-aluksia ja korjaa useampia sotalaivoja kerralla, tehdas lähettää enemmän junia.",
+    "upgrades_frames": "Päivitetyt rakennukset saavat kehyksen kartalle: pronssia tasolla 2, hopeaa 3, kultaa 4 ja smaragdia tasolla 5.",
     "upgrades_military": "SAMit nousevat tasolle 5 (+1 ohjus valmiina ja enemmän kantamaa tasoa kohti), siilot ja tutkat tasolle 3. Jokainen uusi taso avautuu pelin edetessä: kortissa näkyy lähtölaskenta.",
     "upgrades_ranked": "Ranking-peleissä tasot ovat alhaisemmat (SAM 3, siilo ja tutka 2) ja avautuvat myöhemmin.",
     "upgrades_title": "Rakennuspäivitykset"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% kultaa, +{troops}% joukkoja (maks.)",
     "cap_hint": "Bonuksesi laskee enintään {max} tavoitetta. Useamman pitäminen vain vie ne kilpailijoiltasi.",
     "held": "Tavoitteet {held}/{total}",
+    "reveal_in": "Tavoitteet {time} päästä",
     "zone_label": "Tavoite {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Potkaise {name}?\n\nHe eivät voi liittyä uudelleen tähän peliin.",
     "kicked": "Potkittu jo",
     "moderation": "Maltillisuus",
+    "peace_needs_war": "Voit tarjota rauhaa vain pelaajalle, jonka kanssa olet sodassa",
     "peace_time_remaining": "Rauha päättyy",
     "propose_peace": "Tarjoa rauhaa",
     "report": "Raportoi",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Ohjukset {from} → {to}",
+    "gain_population": "Suurin asukasluku +{from} → +{to}",
     "gain_range": "Kantama {from} → {to}",
-    "gain_stack": "Toimii kuin yksi tämän tyypin rakennus lisää",
+    "gain_repairs": "Sotalaivojen korjaustelakat {from} → {to}",
+    "gain_trade_ships": "Kauppalaivat ×{from} → ×{to}",
+    "gain_trains": "Lähetetyt junat ×{from} → ×{to}",
     "level": "Taso {level}",
     "level_of": "Taso {level} / {max}",
     "locked": "Taso {level} saatavilla {time} kuluttua",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Siilosi on valmis! Paina {key} ja napsauta sitten naapurin maata laukaistaksesi atomipommin.",
       "mirv_info": "MIRV: taistelukärkien sade yhden vihollisen yllä. Lopullinen ase.",
       "no_coast": "Sinulla ei ole vielä rantaviivaa. Meri avaa veneitä, satamia ja kauppaa: laajenna rannikolle asti.",
-      "objectives": "Tällä kartalla on tavoitteet: hehkuvia vyöhykkeitä, joita kannattaa pitää. Omista suurin osa yhdestä 15 sekunniksi saadaksesi +15% kultaa ja +5% joukkoja. Tämä laskuri näyttää kuinka monta sinulla on.",
+      "objectives": "Tällä kartalla on tavoitteita: hehkuvia vyöhykkeitä, jotka ilmestyvät minuutin kuluttua pelistä. Omista suurin osa yhdestä 15 sekunniksi saadaksesi +15% kultaa ja +5% joukkoja. Tämä laskuri näyttää jäljellä olevan ajan ennen niiden ilmestymistä ja sitten kuinka monta pidät.",
       "port_info_ships": "Satamat lähettävät kauppalaivoja muihin maihin, ja jokainen matka ansaitsee kultaa.",
       "port_info_warships": "Satamat rakentavat myös sotalaivoja.",
       "propose_alliance": "Vahva naapuri on parempi ystävänä. Napsauta hiiren kakkospainikkeella kohdemaata ja pyydä liittoutumaa.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Petturi menettää puolet puolustuksestaan 30 sekunniksi. Valitse hetki huolellisesti.",
       "troop_rate": "Näin nopeasti joukkosi kasvavat. Se hidastuu ja muuttuu oranssiksi, kun ylität puolet maksimistasi.",
       "troops": "Nämä ovat sinun joukkosi. Jokainen hyökkäys kuluttaa osan niistä, joten anna heille aikaa kasvaa uudelleen hyökkäysten välillä.",
-      "upgrade_city": "Rakennuksia voidaan päivittää. Napsauta kaupunkiasi avataksesi sen kortin ja paina sitten Päivitä: jokainen taso lasketaan yhdeksi lisäkaupungiksi."
+      "upgrade_city": "Rakennuksia voidaan päivittää. Napsauta kaupunkiasi avataksesi sen kortin ja paina sitten Päivitä: jokainen taso jättää tilaa useammalle ihmiselle tasolle 5 asti."
     },
     "step_counter": "Vaihe {current} / {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Vahva naapuri on parempi ystävänä. Napauta kohdemaata ja pyydä liittoutumaa napauttamalla kädenpuristusta.",
       "send_boat": "Veneet kuljettavat joukkosi veden yli. Avaa säteittäinen valikko napauttamalla vihollisen rannikkoa meren toisella puolella ja valitse sitten vene.",
       "spawn": "Tervetuloa Territoriumiin! Valitse aloituspaikka napauttamalla mitä tahansa kohtaa kartalla. Rantaviiva on hyödyllinen myöhemmin.",
-      "upgrade_city": "Rakennuksia voidaan päivittää. Napauta kaupunkiasi avataksesi sen kortin ja napauta sitten Päivitä: jokainen taso lasketaan yhdeksi lisäkaupungiksi."
+      "upgrade_city": "Rakennuksia voidaan päivittää. Napauta kaupunkiasi avataksesi sen kortin ja napauta sitten Päivitä: jokainen taso antaa tilaa useammalle ihmiselle tasolle 5 asti."
     },
     "title": "Opastus"
   },

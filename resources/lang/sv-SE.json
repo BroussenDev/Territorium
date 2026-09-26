@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Verifieringsfel: {code}. Uppdatera och försök igen."
   },
+  "event_history": {
+    "empty": "Inget har hänt ännu.",
+    "filter_all": "Alla",
+    "filter_attack": "Attacker",
+    "filter_chat": "Chatt",
+    "filter_diplomacy": "Diplomati",
+    "filter_nuke": "Missiler",
+    "filter_trade": "Handel",
+    "hours_ago": "{n} h sedan",
+    "just_now": "just nu",
+    "minutes_ago": "{n} min sedan",
+    "seconds_ago": "{n} s sedan",
+    "title": "Händelsehistorik"
+  },
   "events_display": {
     "about_to_expire": "Din allians med {name} håller på att gå ut!",
     "accept_alliance": "Acceptera",
@@ -953,6 +967,7 @@
     "no_boats_available": "Inga båtar tillgängliga, max {max}",
     "objective_captured": "Du erövrade ett kartmål: mer guld och trupptillväxt medan du håller det.",
     "objective_lost": "{name} tog ett av dina kartmål.",
+    "objectives_revealed": "{count} mål har dykt upp på kartan!",
     "peace_broken": "{breaker} bröt freden med {victim}! Mened.",
     "peace_expired": "Freden med {name} har löpt ut.",
     "peace_rejected": "{name} vägrade ditt fredsavtal.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabriker länkar samman dina städer och hamnar med järnväg. Tåg tjänar guld för varje byggnad de besöker, och mer hos dina grannar.",
       "frames": "Ramen runt en byggnad visar dess nivå: brons vid 2, silver vid 3, guld från 4.",
       "mirv": "En MIRV delar sig i en svärm av stridsspetsar över ett enormt område, och träffar bara spelaren du siktade på.",
-      "objectives": "Varje kartmål du har ger +15% guld och +5% trupper. Äg större delen av sin zon i 15 sekunder för att fånga den.",
-      "peace": "Förlora ett krig? Skriv under ett fredsavtal: tre minuter utan attacker, utan någon allians behövs. Den som bryter den markeras som en förrädare inför alla spelare.",
+      "objectives": "Kartmål visas en minut in i spelet. Var och en du håller ger +15% guld och +5% trupper: äger större delen av dess zon i 15 sekunder för att fånga den.",
+      "peace": "Förlora ett krig? Erbjud frid till spelaren du kämpar mot: tre minuter utan attacker, utan någon allians behövs. Den som bryter den markeras som en förrädare inför alla spelare.",
       "radar": "En radar upptäcker fiendens båtar, krigsfartyg och missiler inom 100 brickor, så du ser en invasion komma.",
       "sam": "SAM-raketer skjuter ner missiler inom räckhåll. Varje SAM-nivå lägger till en missil redo att avfyras och mer räckvidd.",
       "trade": "Hamnar handlar med andra länder på egen hand, och båda sidor tjänar guld. Att attackera en spelare stoppar din handel med dem i 5 minuter.",
       "traitor": "Att bryta en allians gör dig till en förrädare i 30 sekunder: ditt försvar sjunker med hälften och andra spelare litar mindre på dig.",
-      "upgrade": "Klicka på en av dina byggnader för att öppna dess kort och uppgradera det. Varje stad, hamn eller fabriksnivå räknas som en byggnad till."
+      "upgrade": "Klicka på en av dina byggnader för att uppgradera den: en större stad rymmer fler människor, en större hamn skickar fler fartyg och en större fabrik skickar fler tåg. Varje byggnad har en maxnivå."
     },
     "title": "Spelet startar..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Handslag - be om en allians. Allierade kan inte attackera varandra och kan skicka trupper och guld till varandra.",
     "info_chat": "Snabbchatt - välj en kategori och en fras; om det namnger en spelare, välj vem och skicka sedan.",
     "info_emoji": "Emoji - skicka en snabb emoji till spelaren.",
-    "info_peace": "Vit flagga - erbjuda ett fredsavtal till en fiende. När du väl har skrivit under kan ingen av er attackera den andra på 3 minuter och pågående attacker stoppas. Den som bryter den markeras som en förrädare och varje spelare får veta.",
+    "info_peace": "Vit flagga - erbjuda ett fredsavtal till en spelare du är i krig med (strider nu, eller under de senaste 2 minuterna). När du väl har skrivit under kan ingen av er attackera den andra på 3 minuter och pågående attacker stoppas. Den som bryter den markeras som en förrädare och varje spelare får veta.",
     "info_target": "Mål - markera denna spelare för alla dina allierade, för att planera en attack tillsammans.",
     "info_trade": "Byt - stoppa eller börja om att skicka handelsfartyg till den här spelaren. Handeln börjar igen när ni båda tillåter det.",
     "objectives_bonus": "Varje mål du har ger +15% guld och +5% trupper.",
     "objectives_cap": "Endast upp till hälften av målen räknas mot din bonus (2 av 4, 3 av 5 eller 6), så ingen vinner bara genom att hålla dem alla.",
     "objectives_capture": "Äg större delen av zonen i 15 sekunder för att fånga den. Ringen fylls upp medan du håller den.",
-    "objectives_desc": "Vissa spel placerar mål på kartan. Var och en är en zon värd att hålla under hela spelet.",
+    "objectives_desc": "Vissa spel placerar mål på kartan. De dyker upp en minut in i matchen, med ett tillkännagivande, så ingen kan skynda på dem från början. Var och en är en zon värd att hålla under hela spelet.",
     "objectives_title": "Karta mål",
     "objectives_where": "De förekommer i solo, privata och offentliga spel; rankad, 1v1, 2v2 och det dagliga racet har inga. Spelets skapare kan stänga av dem.",
     "objectives_zone": "Ett mål på kartan",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Ditt lag:",
     "upgrades_card": "Struktur kort",
     "upgrades_desc": "Klicka på en av dina byggnader för att öppna dess kort: dess nivå, vad nästa nivå ger och uppgraderingsknappen.",
-    "upgrades_economy": "Städer, hamnar och fabriker: ingen gräns och ingen väntan. Varje nivå räknas som en byggnad till.",
-    "upgrades_frames": "Uppgraderade byggnader får en ram på kartan: brons på nivå 2, silver på 3, guld från 4.",
+    "upgrades_economy": "Städer, hamnar och fabriker går upp till nivå 5, direkt. Varje nivå i en stad rymmer fler människor, en hamn skickar fler handelsfartyg och reparerar fler krigsfartyg på en gång, en fabrik skickar fler tåg.",
+    "upgrades_frames": "Uppgraderade byggnader får en ram på kartan: brons på nivå 2, silver vid 3, guld vid 4 och smaragd på 5.",
     "upgrades_military": "SAM:s går upp till nivå 5 (+1 missil redo och mer räckvidd per nivå), silos och radarer upp till nivå 3. Varje ny nivå låses upp allt eftersom spelet fortsätter: kortet visar nedräkningen.",
     "upgrades_ranked": "I rankade spel är nivåerna lägre (SAM 3, silo och radar 2) och låses upp senare.",
     "upgrades_title": "Byggnadsuppgraderingar"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% guld, +{troops}% trupper (max)",
     "cap_hint": "Din bonus räknar högst {max} mål. Att hålla fler håller dem bara borta från dina rivaler.",
     "held": "Mål {held}/{total}",
+    "reveal_in": "Mål om {time}",
     "zone_label": "Mål {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nDe kommer inte att kunna gå med i det här spelet igen.",
     "kicked": "Redan sparkad",
     "moderation": "Måtta",
+    "peace_needs_war": "Du kan bara erbjuda fred till en spelare som du är i krig med",
     "peace_time_remaining": "Fred slutar med",
     "propose_peace": "Erbjud fred",
     "report": "Rapportera",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Robotar {from} → {to}",
+    "gain_population": "Max antal +{from} → +{to}",
     "gain_range": "Räckvidd {from} → {to}",
-    "gain_stack": "Räknas som en byggnad till av denna typ",
+    "gain_repairs": "Reparationsbryggor för krigsfartyg {from} → {to}",
+    "gain_trade_ships": "Handelsfartyg ×{from} → ×{to}",
+    "gain_trains": "Tåg skickade ×{from} → ×{to}",
     "level": "Nivå {level}",
     "level_of": "Nivå {level} / {max}",
     "locked": "Nivå {level} tillgänglig om {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Din silo är klar! Tryck på {key} och klicka sedan på en grannes land för att avfyra en atombomb.",
       "mirv_info": "MIRV: ett regn av stridsspetsar över en enda fiende. Det ultimata vapnet.",
       "no_coast": "Du har ingen kustlinje än. Havet öppnar upp för båtar, hamnar och handel: expandera tills du når kusten.",
-      "objectives": "Den här kartan har mål: glödande zoner värda att hålla. Äg det mesta av en i 15 sekunder för att fånga den, för +15% guld och +5% trupper. Denna räknare visar hur många du har.",
+      "objectives": "Den här kartan har mål: glödande zoner som dyker upp en minut in i spelet. Äg det mesta av en i 15 sekunder för att fånga den, för +15% guld och +5% trupper. Denna räknare visar tiden som är kvar innan de dyker upp, sedan hur många du har.",
       "port_info_ships": "Hamnar skickar handelsfartyg till andra länder, och varje resa ger dig guld.",
       "port_info_warships": "Hamnar bygger också krigsfartyg.",
       "propose_alliance": "En stark granne är bättre som en vän. Högerklicka på nationen med målet och be om en allians.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "En förrädare förlorar hälften av sitt försvar i 30 sekunder. Välj ditt ögonblick noggrant.",
       "troop_rate": "Det är så snabbt dina trupper växer. Den saktar ner och blir orange när du passerar hälften av ditt maximum.",
       "troops": "Det här är dina trupper. Varje attack förbrukar en del av dem, så ge dem tid att växa igen mellan attackerna.",
-      "upgrade_city": "Byggnader kan uppgraderas. Klicka på din stad för att öppna dess kort och tryck sedan på Uppgradera: varje nivå räknas som en stad till."
+      "upgrade_city": "Byggnader kan uppgraderas. Klicka på din stad för att öppna dess kort och tryck sedan på Uppgradera: varje nivå ger plats för fler människor, upp till nivå 5."
     },
     "step_counter": "Steg {current} av {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "En stark granne är bättre som en vän. Tryck på nationen med målet och tryck sedan på handslaget för att be om en allians.",
       "send_boat": "Båtar bär dina trupper över vattnet. Tryck på en fiendekust över havet för att öppna den radiella menyn och välj sedan båten.",
       "spawn": "Välkommen till Territorium! Tryck var som helst på kartan för att välja din startplats. En kustlinje kommer väl till pass senare.",
-      "upgrade_city": "Byggnader kan uppgraderas. Tryck på din stad för att öppna dess kort, tryck sedan på Uppgradera: varje nivå räknas som en stad till."
+      "upgrade_city": "Byggnader kan uppgraderas. Tryck på din stad för att öppna dess kort och tryck sedan på Uppgradera: varje nivå ger plats för fler människor, upp till nivå 5."
     },
     "title": "Handledning"
   },

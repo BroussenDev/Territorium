@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Error de verificación: {code}. Actualice e inténtelo de nuevo."
   },
+  "event_history": {
+    "empty": "Aún no ha pasado nada.",
+    "filter_all": "Todos",
+    "filter_attack": "Ataques",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomacia",
+    "filter_nuke": "Misiles",
+    "filter_trade": "Comercio",
+    "hours_ago": "hace {n} h",
+    "just_now": "ahora mismo",
+    "minutes_ago": "hace {n} min",
+    "seconds_ago": "hace {n} s",
+    "title": "Historial de eventos"
+  },
   "events_display": {
     "about_to_expire": "¡Tu alianza con {name} está a punto de expirar!",
     "accept_alliance": "Aceptar",
@@ -953,6 +967,7 @@
     "no_boats_available": "No hay barcos disponibles, máximo {max}",
     "objective_captured": "Captaste un objetivo del mapa: más oro y crecimiento de tropas mientras lo mantienes.",
     "objective_lost": "{name} tomó uno de los objetivos de tu mapa.",
+    "objectives_revealed": "¡Han aparecido {count} objetivos en el mapa!",
     "peace_broken": "¡{breaker} rompió la paz con {victim}! Perjurio.",
     "peace_expired": "La paz con {name} ha caducado.",
     "peace_rejected": "{name} rechazó su tratado de paz.",
@@ -1112,13 +1127,13 @@
       "factory": "Las fábricas unen tus ciudades y puertos por ferrocarril. Los trenes ganan oro por cada edificio que visitan, y más en el de tus vecinos.",
       "frames": "El marco alrededor de un edificio muestra su nivel: bronce en 2, plata en 3, oro en 4.",
       "mirv": "Un MIRV se divide en un enjambre de ojivas en un área enorme y solo alcanza al jugador al que apuntas.",
-      "objectives": "Cada objetivo del mapa que tengas otorga +15% de oro y +5% de tropas. Posee la mayor parte de su zona durante 15 segundos para capturarlo.",
-      "peace": "¿Perder una guerra? Firmar un tratado de paz: tres minutos sin ataques, sin necesidad de alianza. Cualquiera que lo rompa será marcado como traidor delante de todos los jugadores.",
+      "objectives": "Los objetivos del mapa aparecen al minuto de iniciar el juego. Cada uno que tengas otorga +15% de oro y +5% de tropas: posee la mayor parte de su zona durante 15 segundos para capturarlo.",
+      "peace": "¿Perder una guerra? Ofrece paz al jugador con el que te enfrentas: tres minutos sin ataques, sin necesidad de alianza. Cualquiera que lo rompa será marcado como traidor delante de todos los jugadores.",
       "radar": "Un radar detecta barcos, buques de guerra y misiles enemigos en un radio de 100 casillas, por lo que ves venir una invasión.",
       "sam": "Los lanzadores SAM derriban misiles dentro del alcance. Cada nivel de SAM agrega un misil listo para disparar y más alcance.",
       "trade": "Los puertos comercian con otros países por su cuenta y ambas partes ganan oro. Atacar a un jugador detiene tu intercambio con él durante 5 minutos.",
       "traitor": "Romper una alianza te convierte en un traidor durante 30 segundos: tu defensa se reduce a la mitad y los demás jugadores confían menos en ti.",
-      "upgrade": "Haz clic en uno de tus edificios para abrir su tarjeta y actualizarlo. Cada nivel de ciudad, puerto o fábrica cuenta como un edificio más."
+      "upgrade": "Haz clic en uno de tus edificios para mejorarlo: una ciudad más grande alberga a más personas, un puerto más grande envía más barcos y una fábrica más grande envía más trenes. Cada edificio tiene un nivel máximo."
     },
     "title": "La partida está comenzando..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Apretón de manos: solicite una alianza. Los aliados no pueden atacarse entre sí y pueden enviarse tropas y oro entre sí.",
     "info_chat": "Chat rápido: elige una categoría y una frase; si nombra un jugador, elige quién y luego envíalo.",
     "info_emoji": "Emoji: envía un emoji rápido al jugador.",
-    "info_peace": "Bandera blanca: ofrece un tratado de paz al enemigo. Una vez firmado, ninguno de los dos puede atacar al otro durante 3 minutos y los ataques en curso se detienen. Quien lo rompa será marcado como traidor y se informará a todos los jugadores.",
+    "info_peace": "Bandera blanca: ofrece un tratado de paz a un jugador con el que estás en guerra (peleando ahora o en los últimos 2 minutos). Una vez firmado, ninguno de los dos puede atacar al otro durante 3 minutos y los ataques en curso se detienen. Quien lo rompa será marcado como traidor y se informará a todos los jugadores.",
     "info_target": "Objetivo: marca a este jugador para que todos tus aliados planifiquen un ataque juntos.",
     "info_trade": "Comercio: detiene o reinicia el envío de barcos comerciales a este jugador. El comercio comienza de nuevo cuando ambos lo permiten.",
     "objectives_bonus": "Cada objetivo que tengas te otorga +15% de oro y +5% de tropas.",
     "objectives_cap": "Solo hasta la mitad de los objetivos cuentan para tu bonificación (2 de 4, 3 de 5 o 6), por lo que nadie gana simplemente por tenerlos todos.",
     "objectives_capture": "Posee la mayor parte de la zona durante 15 segundos para capturarla. El anillo se llena mientras lo sostienes.",
-    "objectives_desc": "Algunos juegos colocan objetivos en el mapa. Cada una es una zona que vale la pena conservar durante todo el juego.",
+    "objectives_desc": "Algunos juegos colocan objetivos en el mapa. Aparecen al minuto de iniciar el juego, con un anuncio, para que nadie pueda apresurarlos desde el principio. Cada una es una zona que vale la pena conservar durante todo el juego.",
     "objectives_title": "Objetivos del mapa",
     "objectives_where": "Aparecen en juegos públicos, privados y en solitario; clasificados, 1v1, 2v2 y la carrera diaria no tienen ninguno. El creador del juego puede desactivarlos.",
     "objectives_zone": "Un objetivo en el mapa",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Tu equipo:",
     "upgrades_card": "Tarjeta de estructura",
     "upgrades_desc": "Haz clic en uno de tus edificios para abrir su tarjeta: su nivel, lo que trae el siguiente nivel y el botón de actualización.",
-    "upgrades_economy": "Ciudades, puertos y fábricas: sin límites ni esperas. Cada nivel cuenta como un edificio más.",
-    "upgrades_frames": "Los edificios mejorados obtienen un marco en el mapa: bronce en el nivel 2, plata en el 3, oro en el 4.",
+    "upgrades_economy": "Las ciudades, puertos y fábricas suben al nivel 5 de inmediato. Cada nivel de una ciudad alberga a más personas, un puerto envía más barcos mercantes y repara más buques de guerra a la vez, una fábrica envía más trenes.",
+    "upgrades_frames": "Los edificios mejorados obtienen un marco en el mapa: bronce en el nivel 2, plata en el 3, oro en el 4 y esmeralda en el 5.",
     "upgrades_military": "Los SAM suben al nivel 5 (+1 misil listo y más alcance por nivel), silos y radares hasta el nivel 3. Cada nuevo nivel se desbloquea a medida que avanza el juego: la tarjeta muestra la cuenta regresiva.",
     "upgrades_ranked": "En los juegos clasificados, los niveles son más bajos (SAM 3, silo y radar 2) y se desbloquean más tarde.",
     "upgrades_title": "Mejoras de edificios"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% oro, +{troops}% tropas (máx.)",
     "cap_hint": "Tu bonificación cuenta como máximo {max} objetivos. Tener más solo se los quita a tus rivales.",
     "held": "Objetivos {held}/{total}",
+    "reveal_in": "Objetivos en {time}",
     "zone_label": "Objetivo {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nNo podrán volver a unirse a este juego.",
     "kicked": "ya pateado",
     "moderation": "Moderación",
+    "peace_needs_war": "Sólo puedes ofrecer la paz a un jugador con el que estás en guerra.",
     "peace_time_remaining": "La paz termina en",
     "propose_peace": "Ofrecer paz",
     "report": "Informe",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Misiles {from} → {to}",
+    "gain_population": "Población máxima +{from} → +{to}",
     "gain_range": "Alcance {from} → {to}",
-    "gain_stack": "Cuenta como un edificio más de este tipo",
+    "gain_repairs": "Muelles de reparación de buques de guerra {from} → {to}",
+    "gain_trade_ships": "Buques mercantes ×{from} → ×{to}",
+    "gain_trains": "Trenes enviados ×{from} → ×{to}",
     "level": "Nivel {level}",
     "level_of": "Nivel {level} / {max}",
     "locked": "Nivel {level} disponible en {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "¡Tu silo está listo! Presiona {key}, luego haz clic en la tierra de un vecino para lanzar una bomba atómica.",
       "mirv_info": "MIRV: una lluvia de ojivas sobre un solo enemigo. El arma definitiva.",
       "no_coast": "Aún no tienes costa. El mar abre barcos, puertos y comercio: expande hasta llegar a la costa.",
-      "objectives": "Este mapa tiene objetivos: zonas brillantes que vale la pena conservar. Posee la mayor parte de uno durante 15 segundos para capturarlo, para obtener +15 % de oro y +5 % de tropas. Este contador muestra cuántos tienes.",
+      "objectives": "Este mapa tiene objetivos: zonas brillantes que aparecen al minuto de iniciar el juego. Posee la mayor parte de uno durante 15 segundos para capturarlo, para obtener +15 % de oro y +5 % de tropas. Este contador muestra el tiempo que queda antes de que aparezcan y luego cuántos tienes.",
       "port_info_ships": "Los puertos envían barcos mercantes a otros países y con cada viaje obtienes oro.",
       "port_info_warships": "Los puertos también construyen buques de guerra.",
       "propose_alliance": "Un vecino fuerte es mejor como amigo. Haga clic derecho en la nación con el objetivo y solicite una alianza.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Un traidor pierde la mitad de su defensa durante 30 segundos. Elige tu momento con cuidado.",
       "troop_rate": "Así de rápido crecen tus tropas. Se ralentiza y se vuelve naranja una vez que pasas la mitad de tu máximo.",
       "troops": "Estas son tus tropas. Cada ataque gasta algunos de ellos, así que dales tiempo para que vuelvan a crecer entre ataques.",
-      "upgrade_city": "Los edificios se pueden mejorar. Haz clic en tu ciudad para abrir su tarjeta, luego presiona Actualizar: cada nivel cuenta como una ciudad más."
+      "upgrade_city": "Los edificios se pueden mejorar. Haz clic en tu ciudad para abrir su tarjeta, luego presiona Actualizar: cada nivel deja espacio para más personas, hasta el nivel 5."
     },
     "step_counter": "Paso {current} de {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Un vecino fuerte es mejor como amigo. Toca la nación con el objetivo, luego toca el apretón de manos para solicitar una alianza.",
       "send_boat": "Los barcos transportan a tus tropas a través del agua. Toca una costa enemiga al otro lado del mar para abrir el menú radial y luego elige el barco.",
       "spawn": "¡Bienvenido a Territorium! Toca cualquier parte del mapa para elegir tu punto de partida. Una línea costera será útil más adelante.",
-      "upgrade_city": "Los edificios se pueden mejorar. Toca tu ciudad para abrir su tarjeta, luego toca Actualizar: cada nivel cuenta como una ciudad más."
+      "upgrade_city": "Los edificios se pueden mejorar. Toca tu ciudad para abrir su tarjeta, luego toca Actualizar: cada nivel deja espacio para más personas, hasta el nivel 5."
     },
     "title": "Tutoría"
   },

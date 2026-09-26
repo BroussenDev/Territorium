@@ -115,6 +115,11 @@ export class SoundEffectController implements Controller {
     }
 
     for (const e of updates[GameUpdateType.DisplayEvent] ?? []) {
+      // Told to everyone: the map objectives just appeared.
+      if (e.messageType === MessageType.OBJECTIVES_REVEALED) {
+        this.emit("game-start");
+        continue;
+      }
       if (e.playerID !== myPlayer.smallID()) continue;
       const tick = this.game.ticks();
       if (e.messageType === MessageType.RADAR_CONTACT) {

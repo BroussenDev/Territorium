@@ -684,6 +684,7 @@ export function getMessageTypeClasses(type: MessageType): string {
     case MessageType.HYDROGEN_BOMB_INBOUND:
     case MessageType.EMP_INBOUND:
     case MessageType.RADAR_CONTACT:
+    case MessageType.OBJECTIVES_REVEALED:
     case MessageType.SAM_MISS:
     case MessageType.ALLIANCE_EXPIRED:
     case MessageType.NAVAL_INVASION_INBOUND:

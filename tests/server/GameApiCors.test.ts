@@ -1,7 +1,16 @@
 import express from "express";
 import http from "http";
 import type { AddressInfo } from "net";
-import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+  vi,
+} from "vitest";
 import {
   DESKTOP_APP_ORIGIN,
   applyGameApiCorsHeaders,
@@ -213,8 +222,10 @@ describe("gameApiCors middleware, mounted on a real Express app", () => {
   let base: string;
   let routeHits: string[];
 
-  beforeEach(async () => {
-    routeHits = [];
+  // One server for the whole block: a fresh server per test can land on a port
+  // just freed by the previous one, where fetch's keep-alive pool may still
+  // hold a dead socket.
+  beforeAll(async () => {
     const app = express();
     // Mirrors Worker.ts: CORS ahead of the prefix check, matching both shapes.
     app.use(["/api", /^\/w\d+\/api/], gameApiCors);
@@ -240,7 +251,12 @@ describe("gameApiCors middleware, mounted on a real Express app", () => {
     base = `http://127.0.0.1:${address.port}`;
   });
 
-  afterEach(async () => {
+  beforeEach(() => {
+    routeHits = [];
+  });
+
+  afterAll(async () => {
+    server.closeAllConnections();
     await new Promise<void>((resolve, reject) =>
       server.close((err) => (err ? reject(err) : resolve())),
     );

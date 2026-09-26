@@ -450,7 +450,10 @@
     <new-lobby-prompt></new-lobby-prompt>
     <game-starting-modal></game-starting-modal>
     <div class="flex flex-col items-end fixed top-0 right-0 z-1000 gap-2">
-      <game-right-sidebar></game-right-sidebar>
+      <div class="flex flex-row items-start gap-2">
+        <event-history></event-history>
+        <game-right-sidebar></game-right-sidebar>
+      </div>
       <replay-panel></replay-panel>
     </div>
     <settings-modal></settings-modal>

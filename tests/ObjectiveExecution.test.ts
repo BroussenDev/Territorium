@@ -1,5 +1,11 @@
 import { ObjectiveExecution } from "../src/core/execution/ObjectiveExecution";
-import { Game, GameMode, Player, PlayerType } from "../src/core/game/Game";
+import {
+  Game,
+  GameMode,
+  MessageType,
+  Player,
+  PlayerType,
+} from "../src/core/game/Game";
 import { TileRef } from "../src/core/game/GameMap";
 import { GameUpdateType } from "../src/core/game/GameUpdates";
 import {
@@ -99,6 +105,7 @@ describe("ObjectiveExecution", () => {
     );
     game.addExecution(new ObjectiveExecution(SEED));
     game.executeNextTick();
+    runSeconds(game, game.config().objectiveRevealDelay() / 10);
     const players = names.map((n) => game.player(n));
     // A home tile in a corner, away from every zone, keeps each player alive
     // when others take the zones from them.
@@ -106,15 +113,34 @@ describe("ObjectiveExecution", () => {
     return { game, players, zone: game.objectives()[0] };
   }
 
-  it("places the zones and publishes them to the client", async () => {
+  it("reveals the zones a minute after the spawn phase, to everyone", async () => {
     const game = await setup("big_plains", { objectives: true });
     game.addExecution(new ObjectiveExecution(SEED));
+    const delay = game.config().objectiveRevealDelay();
+    expect(delay).toBe(60 * 10);
+
+    // Hidden until then: nothing to see, nothing to rush.
+    for (let i = 0; i < delay; i++) {
+      const updates = game.executeNextTick();
+      expect(updates[GameUpdateType.Objectives]).toHaveLength(0);
+      expect(game.objectives()).toEqual([]);
+    }
+
     const updates = game.executeNextTick();
     const sent = updates[GameUpdateType.Objectives];
     expect(sent).toHaveLength(1);
     expect(sent[0].objectives).toEqual(game.objectives());
+    expect(game.objectives()).toEqual(placeObjectives(game.map(), SEED));
     expect(game.objectives()).toHaveLength(3);
     expect(game.objectives().every((o) => o.holder === 0)).toBe(true);
+
+    const told = updates[GameUpdateType.DisplayEvent].filter(
+      (m) => m.message === "events_display.objectives_revealed",
+    );
+    expect(told).toHaveLength(1);
+    expect(told[0].playerID).toBeNull();
+    expect(told[0].messageType).toBe(MessageType.OBJECTIVES_REVEALED);
+    expect(told[0].params).toEqual({ count: 3 });
   });
 
   it("captures a zone held for the full capture time", async () => {

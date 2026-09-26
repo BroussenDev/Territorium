@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Napaka pri preverjanju: {code}. Osvežite in poskusite znova."
   },
+  "event_history": {
+    "empty": "Nič se še ni zgodilo.",
+    "filter_all": "Vse",
+    "filter_attack": "Napadi",
+    "filter_chat": "Klepet",
+    "filter_diplomacy": "Diplomacija",
+    "filter_nuke": "Izstrelki",
+    "filter_trade": "Trgovina",
+    "hours_ago": "pred {n} h",
+    "just_now": "ravnokar",
+    "minutes_ago": "pred {n} min",
+    "seconds_ago": "pred {n} s",
+    "title": "Zgodovina dogodkov"
+  },
   "events_display": {
     "about_to_expire": "Tvoje zavezništvo s {name} kmalu poteče!",
     "accept_alliance": "Sprejmi",
@@ -953,6 +967,7 @@
     "no_boats_available": "Ni čolnov na voljo, največ {max}",
     "objective_captured": "Zajeli ste cilj zemljevida: več zlata in rast čete, medtem ko ga držite.",
     "objective_lost": "{name} je zavzel enega od vaših ciljev zemljevida.",
+    "objectives_revealed": "{count} cilji so se pojavili na zemljevidu!",
     "peace_broken": "{breaker} je prekinil mir z {victim}! Krivo pričanje.",
     "peace_expired": "Mir z {name} je potekel.",
     "peace_rejected": "{name} je zavrnil vašo mirovno pogodbo.",
@@ -1112,13 +1127,13 @@
       "factory": "Tovarne povezujejo vaša mesta in pristanišča z železnico. Vlaki zaslužijo zlato za vsako stavbo, ki jo obiščejo, in več pri vaših sosedih.",
       "frames": "Okvir okoli stavbe prikazuje njeno raven: bronasta na 2, srebrna na 3, zlata na 4.",
       "mirv": "MIRV se razdeli na roj bojnih glav na ogromnem območju in zadene le igralca, na katerega ste ciljali.",
-      "objectives": "Vsak cilj zemljevida, ki ga držite, daje +15 % zlata in +5 % vojakov. Zavzemite večino svojega območja za 15 sekund, da ga ujamete.",
-      "peace": "Izgubiti vojno? Podpišite mirovno pogodbo: tri minute brez napadov, brez potrebe po zavezništvu. Kdor jo zlomi, je pred vsemi igralci označen kot izdajalec.",
+      "objectives": "Cilji na zemljevidu se pojavijo eno minuto v igri. Vsak, ki ga držite, daje +15 % zlata in +5 % vojakov: imejte v lasti večino njegovega območja za 15 sekund, da ga zavzamete.",
+      "peace": "Izgubiti vojno? Ponudite mir igralcu, s katerim se borite: tri minute brez napadov, brez potrebe po zavezništvu. Kdor jo zlomi, je pred vsemi igralci označen kot izdajalec.",
       "radar": "Radar opazi sovražne čolne, vojaške ladje in izstrelke znotraj 100 ploščic, tako da vidite, da se bliža invazija.",
       "sam": "Lansirniki SAM sestrelijo rakete v dosegu. Vsaka raven SAM doda raketo, pripravljeno na izstrelitev, in večji doseg.",
       "trade": "Pristanišča sama trgujejo z drugimi državami in obe strani zaslužita zlato. Napad na igralca ustavi vašo trgovino z njim za 5 minut.",
       "traitor": "Če prekinete zavezništvo, postanete izdajalec za 30 sekund: vaša obramba se zmanjša za polovico in drugi igralci vam manj zaupajo.",
-      "upgrade": "Kliknite eno od svojih zgradb, da odprete njeno kartico in jo nadgradite. Vsaka raven mesta, pristanišča ali tovarne šteje kot ena zgradba več."
+      "upgrade": "Kliknite eno od svojih zgradb, da jo nadgradite: večje mesto sprejme več ljudi, večje pristanišče pošlje več ladij in večja tovarna pošlje več vlakov. Vsaka zgradba ima najvišjo raven."
     },
     "title": "Igra se začenja..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Rokovanje - prosite za zavezništvo. Zavezniki ne morejo napadati drug drugega in si lahko pošiljajo vojake in zlato.",
     "info_chat": "Hitri klepet - izberite kategorijo in frazo; če imenuje igralca, izberite koga in nato pošljite.",
     "info_emoji": "Emoji - hitro pošljite emoji igralcu.",
-    "info_peace": "Bela zastava - ponudite mirovno pogodbo sovražniku. Ko ste podpisani, nobeden od vaju ne more napadati drugega 3 minute in napadi v teku se ustavijo. Kdor jo zlomi, je označen kot izdajalec in vsakemu igralcu je povedano.",
+    "info_peace": "Bela zastava - ponudite mirovno pogodbo igralcu, s katerim ste v vojni (se borite zdaj ali v zadnjih 2 minutah). Ko ste podpisani, nobeden od vaju ne more napadati drugega 3 minute in napadi v teku se ustavijo. Kdor jo zlomi, je označen kot izdajalec in vsakemu igralcu je povedano.",
     "info_target": "Tarča - označite tega igralca za vse svoje zaveznike, da skupaj načrtujete napad.",
     "info_trade": "Trgovina - ustavite ali znova začnite pošiljati trgovske ladje temu igralcu. Trgovanje se začne znova, ko to dovolita oba.",
     "objectives_bonus": "Vsak cilj, ki ga imate, daje +15 % zlata in +5 % vojakov.",
     "objectives_cap": "Samo do polovica ciljev šteje k vašemu bonusu (2 od 4, 3 od 5 ali 6), tako da nihče ne zmaga, če jih obdržite vse.",
     "objectives_capture": "Zavzemite večino območja za 15 sekund, da ga zajamete. Prstan se napolni, medtem ko ga držite.",
-    "objectives_desc": "Nekatere igre postavljajo cilje na zemljevid. Vsako je cona, ki jo je vredno držati vso igro.",
+    "objectives_desc": "Nekatere igre postavljajo cilje na zemljevid. Pojavijo se eno minuto igre z napovedjo, tako da jih nihče ne more prehitevati od začetka. Vsako je cona, ki jo je vredno držati vso igro.",
     "objectives_title": "Cilji zemljevida",
     "objectives_where": "Pojavljajo se v samostojnih, zasebnih in javnih igrah; ranked, 1v1, 2v2 in dnevna dirka nimajo nobenega. Ustvarjalec igre jih lahko izklopi.",
     "objectives_zone": "Cilj na zemljevidu",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Tvoja ekipa:",
     "upgrades_card": "Kartica strukture",
     "upgrades_desc": "Kliknite eno od svojih zgradb, da odprete njeno kartico: njeno stopnjo, kaj prinaša naslednja stopnja in gumb za nadgradnjo.",
-    "upgrades_economy": "Mesta, pristanišča in tovarne: brez omejitev in brez čakanja. Vsaka stopnja šteje kot ena zgradba več.",
-    "upgrades_frames": "Nadgrajene zgradbe dobijo okvir na zemljevidu: bronasta na 2. stopnji, srebrna na 3., zlata od 4. stopnje.",
+    "upgrades_economy": "Mesta, pristanišča in tovarne gredo takoj na 5. raven. Vsaka raven mesta sprejme več ljudi, pristanišče pošlje več trgovskih ladij in popravi več vojaških ladij hkrati, tovarna pošlje več vlakov.",
+    "upgrades_frames": "Nadgrajene zgradbe dobijo okvir na zemljevidu: bron na ravni 2, srebr na 3, zlato na 4 in smaragd na 5.",
     "upgrades_military": "SAM se povzpnejo do stopnje 5 (+1 pripravljen na izstrelek in večji doseg na raven), silosi in radarji do stopnje 3. Vsaka nova raven se odklene, ko igra poteka: kartica prikazuje odštevanje.",
     "upgrades_ranked": "V uvrščenih igrah so ravni nižje (SAM 3, silos in radar 2) in se odklenejo pozneje.",
     "upgrades_title": "Gradbene nadgradnje"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% zlata, +{troops}% vojakov (najv.)",
     "cap_hint": "Vaš bonus šteje največ {max} cilje. Če jih držite več, jih le odvzamete tekmecem.",
     "held": "Cilji {held}/{total}",
+    "reveal_in": "Cilji čez {time}",
     "zone_label": "Cilj {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nNe bodo se mogli ponovno pridružiti tej igri.",
     "kicked": "Že brcnil",
     "moderation": "Zmernost",
+    "peace_needs_war": "Mir lahko ponudiš samo igralcu, s katerim si v vojni",
     "peace_time_remaining": "Mir se konča",
     "propose_peace": "Ponudite mir",
     "report": "Poročilo",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rakete {from} → {to}",
+    "gain_population": "Največja populacija +{from} → +{to}",
     "gain_range": "Doseg {from} → {to}",
-    "gain_stack": "Šteje kot še ena stavba te vrste",
+    "gain_repairs": "Doki za popravilo vojaških ladij {from} → {to}",
+    "gain_trade_ships": "Trgovske ladje ×{from} → ×{to}",
+    "gain_trains": "Poslani vlaki ×{from} → ×{to}",
     "level": "Raven {level}",
     "level_of": "Raven {level} / {max}",
     "locked": "Raven {level} na voljo čez {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Vaš silos je pripravljen! Pritisnite {key}, nato kliknite sosedovo zemljo, da izstrelite atomsko bombo.",
       "mirv_info": "MIRV: dež bojnih glav nad enim sovražnikom. Ultimativno orožje.",
       "no_coast": "Nimate še nobene obale. Morje odpira čolne, pristanišča in trgovino: razširite se, dokler ne dosežete obale.",
-      "objectives": "Ta zemljevid ima cilje: žareča območja, ki jih je vredno zadržati. Lastite večino enega za 15 sekund, da ga ujamete, za +15% zlata in +5% vojakov. Ta števec prikazuje, koliko jih imate.",
+      "objectives": "Ta zemljevid ima cilje: svetleča območja, ki se pojavijo eno minuto po začetku igre. Lastite večino enega za 15 sekund, da ga ujamete, za +15% zlata in +5% vojakov. Ta števec prikazuje preostali čas, preden se pojavijo, in nato, koliko jih imate.",
       "port_info_ships": "Pristanišča pošiljajo trgovske ladje v druge države in vsako potovanje vam prinese zlato.",
       "port_info_warships": "Pristanišča gradijo tudi vojne ladje.",
       "propose_alliance": "Močan sosed je boljši kot prijatelj. Z desno miškino tipko kliknite državo s tarčo in prosite za zavezništvo.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Izdajalec za 30 sekund izgubi polovico obrambe. Previdno izberite svoj trenutek.",
       "troop_rate": "Tako hitro rastejo vaše čete. Ko presežete polovico maksimuma, se upočasni in postane oranžna.",
       "troops": "To so vaše čete. Vsak napad jih nekaj porabi, zato jim dajte čas, da med napadi ponovno zrastejo.",
-      "upgrade_city": "Stavbe je mogoče nadgraditi. Kliknite svoje mesto, da odprete njegovo kartico, nato pritisnite Nadgradi: vsaka raven šteje kot eno mesto več."
+      "upgrade_city": "Stavbe je mogoče nadgraditi. Kliknite svoje mesto, da odprete njegovo kartico, nato pritisnite Nadgradi: vsaka stopnja naredi prostor za več ljudi, do 5. stopnje."
     },
     "step_counter": "Korak {current} od {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Močan sosed je boljši kot prijatelj. Tapnite narod s tarčo, nato tapnite rokovanje, da zaprosite za zavezništvo.",
       "send_boat": "Čolni prevažajo vaše čete po vodi. Tapnite sovražnikovo obalo čez morje, da odprete radialni meni, nato izberite čoln.",
       "spawn": "Dobrodošli v Territorium! Tapnite kjer koli na zemljevidu, da izberete začetno točko. Kasneje bo še kako prav prišla obala.",
-      "upgrade_city": "Stavbe je mogoče nadgraditi. Tapnite svoje mesto, da odprete njegovo kartico, nato tapnite Nadgradi: vsaka raven šteje kot eno mesto več."
+      "upgrade_city": "Stavbe je mogoče nadgraditi. Tapnite svoje mesto, da odprete njegovo kartico, nato tapnite Nadgradi: vsaka stopnja naredi prostor za več ljudi, do 5. stopnje."
     },
     "title": "Vadnica"
   },

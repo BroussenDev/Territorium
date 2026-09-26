@@ -210,15 +210,19 @@ export const JwksSchema = z.object({
 /** SAM launcher construction duration in ticks (non-instant-build). */
 export const SAM_CONSTRUCTION_TICKS = 30 * 10;
 
-// Military structure levels: each has a level cap, and each level unlocks a
-// set number of minutes after the spawn phase ends (index = level). Ranked
-// games cap lower and unlock later. Other structures level up freely.
-const MILITARY_LEVEL_CAPS: Partial<
-  Record<UnitType, { normal: number; ranked: number }>
+// Every upgradable structure has a level cap. Military levels also unlock a
+// set number of minutes after the spawn phase ends (index = level), and ranked
+// games cap them lower and unlock them later. Economy levels are available
+// right away.
+const LEVEL_CAPS: Partial<
+  Record<UnitType, { normal: number; ranked: number; timed: boolean }>
 > = {
-  [UnitType.SAMLauncher]: { normal: 5, ranked: 3 },
-  [UnitType.MissileSilo]: { normal: 3, ranked: 2 },
-  [UnitType.Radar]: { normal: 3, ranked: 2 },
+  [UnitType.City]: { normal: 5, ranked: 5, timed: false },
+  [UnitType.Port]: { normal: 5, ranked: 5, timed: false },
+  [UnitType.Factory]: { normal: 5, ranked: 5, timed: false },
+  [UnitType.SAMLauncher]: { normal: 5, ranked: 3, timed: true },
+  [UnitType.MissileSilo]: { normal: 3, ranked: 2, timed: true },
+  [UnitType.Radar]: { normal: 3, ranked: 2, timed: true },
 };
 const LEVEL_UNLOCK_MINUTES = [0, 0, 5, 10, 15, 20];
 const RANKED_LEVEL_UNLOCK_MINUTES = [0, 0, 8, 15];
@@ -443,6 +447,11 @@ export class Config {
     return this._gameConfig.waterNukes ?? false;
   }
 
+  // Zones stay hidden this long after the spawn phase, so nobody can plan a
+  // spawn next to one and rush it.
+  objectiveRevealDelay(): Tick {
+    return 60 * 10;
+  }
   objectives(): boolean {
     return this._gameConfig.objectives ?? false;
   }
@@ -875,6 +884,12 @@ export class Config {
   peaceEndCooldown(): Tick {
     return 30 * 10;
   }
+  // Peace can only be offered to someone you are at war with: an attack
+  // between you is under way, or one of you took land from or fired a
+  // missile at the other within this window.
+  warWindow(): Tick {
+    return 2 * 60 * 10;
+  }
   // Before a perjurer can propose peace to their victim again.
   perjuryPeaceCooldown(): Tick {
     return 10 * 60 * 10;
@@ -1228,11 +1243,12 @@ export class Config {
   }
 
   /**
-   * Highest level a structure can reach: SAM launchers, missile silos and
-   * radars are capped (lower in ranked games), the rest are not.
+   * Highest level a structure can reach: 5 for cities, ports, factories and
+   * SAM launchers, 3 for missile silos and radars (military caps are lower in
+   * ranked games). Infinity for types that can't be upgraded.
    */
   maxStructureLevel(type: UnitType): number {
-    const caps = MILITARY_LEVEL_CAPS[type];
+    const caps = LEVEL_CAPS[type];
     if (caps === undefined) return Infinity;
     return this.isRanked() ? caps.ranked : caps.normal;
   }
@@ -1240,10 +1256,10 @@ export class Config {
   /**
    * Seconds after the spawn phase before a structure can be upgraded to
    * `level`: military structures unlock level 2 at 5 min, 3 at 10, 4 at 15
-   * and 5 at 20 (8 and 15 min in ranked). 0 for other structures.
+   * and 5 at 20 (8 and 15 min in ranked). 0 for economy structures.
    */
   structureLevelUnlockSeconds(type: UnitType, level: number): number {
-    if (MILITARY_LEVEL_CAPS[type] === undefined || level <= 1) return 0;
+    if (LEVEL_CAPS[type]?.timed !== true || level <= 1) return 0;
     const table = this.isRanked()
       ? RANKED_LEVEL_UNLOCK_MINUTES
       : LEVEL_UNLOCK_MINUTES;

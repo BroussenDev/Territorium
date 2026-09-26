@@ -624,7 +624,9 @@ export class NationStructureBehavior {
         return true;
       }
       // Density too high but couldn't upgrade (e.g. all under construction) — don't build new, wait for construction (most relevant for SAMs)
-      if (structures.length > 0) {
+      // Once every one of them has reached its level cap, build a new one instead.
+      const cap = game.config().maxStructureLevel(type);
+      if (structures.some((s) => s.level() < cap)) {
         return false;
       }
       // No structures of this type exist yet — fall through to build the first one

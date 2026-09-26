@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Kesalahan verifikasi: {code}. Silakan segarkan dan coba lagi."
   },
+  "event_history": {
+    "empty": "Belum ada yang terjadi.",
+    "filter_all": "Semua",
+    "filter_attack": "Serangan",
+    "filter_chat": "Obrolan",
+    "filter_diplomacy": "Diplomasi",
+    "filter_nuke": "Rudal",
+    "filter_trade": "Dagang",
+    "hours_ago": "{n} jam lalu",
+    "just_now": "baru saja",
+    "minutes_ago": "{n} mnt lalu",
+    "seconds_ago": "{n} dtk lalu",
+    "title": "Sejarah peristiwa"
+  },
   "events_display": {
     "about_to_expire": "Aliansi Anda dengan {name} hampir berakhir!",
     "accept_alliance": "Setuju",
@@ -953,6 +967,7 @@
     "no_boats_available": "Tidak ada kapal yang tersedia, maksmial {max}",
     "objective_captured": "Anda mendapatkan tujuan peta: lebih banyak emas dan pertumbuhan pasukan saat Anda memegangnya.",
     "objective_lost": "{name} mengambil salah satu tujuan peta Anda.",
+    "objectives_revealed": "{count} tujuan telah muncul di peta!",
     "peace_broken": "{breaker} merusak perdamaian dengan {victim}! Sumpah palsu.",
     "peace_expired": "Perdamaian dengan {name} telah berakhir.",
     "peace_rejected": "{name} menolak perjanjian damai Anda.",
@@ -1112,13 +1127,13 @@
       "factory": "Pabrik menghubungkan kota dan pelabuhan Anda dengan kereta api. Kereta api mendapatkan emas untuk setiap bangunan yang mereka kunjungi, dan lebih banyak lagi di bangunan tetangga Anda.",
       "frames": "Bingkai di sekeliling bangunan menunjukkan levelnya: perunggu di level 2, perak di level 3, emas di level 4.",
       "mirv": "MIRV terbagi menjadi segerombolan hulu ledak di area yang luas, dan hanya mengenai pemain yang Anda bidik.",
-      "objectives": "Setiap objektif peta yang Anda pegang memberikan +15% emas dan +5% pasukan. Miliki sebagian besar zonanya selama 15 detik untuk menangkapnya.",
-      "peace": "Kalah perang? Menandatangani perjanjian damai: tiga menit tanpa serangan, tanpa perlu aliansi. Siapa pun yang melanggarnya ditandai sebagai pengkhianat di depan semua pemain.",
+      "objectives": "Tujuan peta muncul satu menit setelah permainan. Setiap zona yang Anda pegang memberi +15% emas dan +5% pasukan: kuasai sebagian besar zonanya selama 15 detik untuk merebutnya.",
+      "peace": "Kalah perang? Tawarkan kedamaian kepada pemain yang Anda lawan: tiga menit tanpa serangan, tanpa perlu aliansi. Siapa pun yang melanggarnya ditandai sebagai pengkhianat di depan semua pemain.",
       "radar": "Radar mendeteksi kapal musuh, kapal perang, dan rudal dalam jarak 100 ubin, sehingga Anda melihat invasi datang.",
       "sam": "Peluncur SAM menembak jatuh rudal dalam jangkauannya. Setiap level SAM menambahkan rudal yang siap ditembakkan dan jangkauan yang lebih jauh.",
       "trade": "Pelabuhan berdagang sendiri dengan negara lain, dan kedua belah pihak mendapatkan emas. Menyerang pemain menghentikan perdagangan Anda dengan mereka selama 5 menit.",
       "traitor": "Menghancurkan aliansi membuat Anda menjadi pengkhianat selama 30 detik: pertahanan Anda turun setengahnya dan pemain lain kurang mempercayai Anda.",
-      "upgrade": "Klik salah satu bangunan Anda untuk membuka kartunya dan meningkatkannya. Setiap tingkat kota, pelabuhan, atau pabrik dihitung sebagai satu bangunan lagi."
+      "upgrade": "Klik salah satu bangunan Anda untuk meningkatkannya: kota yang lebih besar menampung lebih banyak orang, pelabuhan yang lebih besar mengirimkan lebih banyak kapal, dan pabrik yang lebih besar mengirimkan lebih banyak kereta. Setiap bangunan memiliki level maksimum."
     },
     "title": "Memulai Permainan..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Jabat tangan - minta aliansi. Sekutu tidak bisa menyerang satu sama lain dan bisa saling mengirim pasukan dan emas.",
     "info_chat": "Obrolan cepat - pilih kategori dan frasa; jika itu menyebutkan nama pemain, pilih siapa, lalu kirim.",
     "info_emoji": "Emoji - kirim emoji cepat ke pemain.",
-    "info_peace": "Bendera putih - menawarkan perjanjian damai kepada musuh. Setelah ditandatangani, tidak satu pun dari Anda dapat menyerang satu sama lain selama 3 menit dan serangan yang sedang berlangsung berhenti. Siapa pun yang melanggarnya ditandai sebagai pengkhianat dan setiap pemain diberitahu.",
+    "info_peace": "Bendera putih - tawarkan perjanjian damai kepada pemain yang sedang berperang dengan Anda (bertarung sekarang, atau dalam 2 menit terakhir). Setelah ditandatangani, tidak satu pun dari Anda dapat menyerang satu sama lain selama 3 menit dan serangan yang sedang berlangsung berhenti. Siapa pun yang melanggarnya ditandai sebagai pengkhianat dan setiap pemain diberitahu.",
     "info_target": "Target - tandai pemain ini untuk semua sekutu Anda, untuk merencanakan serangan bersama.",
     "info_trade": "Perdagangan - menghentikan atau memulai kembali pengiriman kapal dagang ke pemain ini. Perdagangan dimulai lagi ketika Anda berdua mengizinkannya.",
     "objectives_bonus": "Setiap objektif yang Anda pegang memberi +15% emas dan +5% pasukan.",
     "objectives_cap": "Hanya setengah dari sasaran yang diperhitungkan dalam bonus Anda (2 dari 4, 3 dari 5, atau 6), jadi tidak ada yang menang hanya dengan menahan semuanya.",
     "objectives_capture": "Miliki sebagian besar zona selama 15 detik untuk menangkapnya. Cincin terisi saat Anda memegangnya.",
-    "objectives_desc": "Beberapa permainan menempatkan tujuan pada peta. Masing-masing adalah zona yang layak dipertahankan sepanjang permainan.",
+    "objectives_desc": "Beberapa permainan menempatkan tujuan pada peta. Mereka muncul satu menit setelah permainan, dengan pengumuman, jadi tidak ada yang bisa terburu-buru sejak awal. Masing-masing adalah zona yang layak dipertahankan sepanjang permainan.",
     "objectives_title": "Tujuan peta",
     "objectives_where": "Mereka muncul dalam permainan solo, pribadi dan publik; peringkat, 1v1, 2v2 dan balapan harian tidak ada. Pembuat game dapat mematikannya.",
     "objectives_zone": "Sebuah tujuan di peta",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Tim anda:",
     "upgrades_card": "Kartu struktur",
     "upgrades_desc": "Klik salah satu bangunan Anda untuk membuka kartunya: levelnya, apa yang dibawa oleh level berikutnya, dan tombol peningkatan.",
-    "upgrades_economy": "Kota, pelabuhan, dan pabrik: tanpa batas dan tanpa menunggu. Setiap tingkat dihitung sebagai satu bangunan lagi.",
-    "upgrades_frames": "Bangunan yang ditingkatkan mendapatkan bingkai di peta: perunggu di level 2, perak di level 3, emas dari level 4.",
+    "upgrades_economy": "Kota, pelabuhan, dan pabrik langsung naik ke level 5. Setiap tingkat kota menampung lebih banyak orang, sebuah pelabuhan mengirimkan lebih banyak kapal dagang dan memperbaiki lebih banyak kapal perang sekaligus, sebuah pabrik mengirimkan lebih banyak kereta api.",
+    "upgrades_frames": "Bangunan yang ditingkatkan mendapatkan bingkai di peta: perunggu di level 2, perak di level 3, emas di level 4, dan zamrud di level 5.",
     "upgrades_military": "SAM naik ke level 5 (+1 rudal siap dan lebih banyak jangkauan per level), silo dan radar naik ke level 3. Setiap level baru terbuka seiring berjalannya permainan: kartu menunjukkan hitungan mundur.",
     "upgrades_ranked": "Dalam permainan berperingkat, levelnya lebih rendah (SAM 3, silo, dan radar 2) dan dibuka nanti.",
     "upgrades_title": "Peningkatan bangunan"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% emas, +{troops}% pasukan (maks.)",
     "cap_hint": "Bonus Anda dihitung paling banyak {max} tujuan. Menguasai lebih banyak hanya menjauhkannya dari lawan Anda.",
     "held": "Tujuan {held}/{total}",
+    "reveal_in": "Objektif dalam {time}",
     "zone_label": "Tujuan {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Keluarkan {name}?\n\nDia tidak dapat bergabung kembali dalam permainan ini.",
     "kicked": "Sudah dikeluarkan",
     "moderation": "Moderasi",
+    "peace_needs_war": "Anda hanya bisa menawarkan kedamaian kepada pemain yang sedang berperang dengan Anda",
     "peace_time_remaining": "Kedamaian Berakhir Pada",
     "propose_peace": "Tawarkan Kedamaian",
     "report": "Laporan",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rudal {from} → {to}",
+    "gain_population": "Populasi maksimal +{from} → +{to}",
     "gain_range": "Jangkauan {from} → {to}",
-    "gain_stack": "Dihitung sebagai satu bangunan lagi dari jenis ini",
+    "gain_repairs": "Dermaga perbaikan kapal perang {from} → {to}",
+    "gain_trade_ships": "Kapal dagang ×{from} → ×{to}",
+    "gain_trains": "Kereta dikirim ×{from} → ×{to}",
     "level": "Level {level}",
     "level_of": "Level {level} / {max}",
     "locked": "Level {level} tersedia dalam {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Silo Anda sudah siap! Tekan {key}, lalu klik tanah tetangga untuk meluncurkan bom atom.",
       "mirv_info": "MIRV: hujan hulu ledak terhadap satu musuh. Senjata pamungkas.",
       "no_coast": "Anda belum memiliki garis pantai. Laut membuka perahu, pelabuhan, dan perdagangan: berkembang hingga Anda mencapai pantai.",
-      "objectives": "Peta ini memiliki tujuan: zona bercahaya yang layak dipertahankan. Miliki sebagian besar dari satu selama 15 detik untuk menangkapnya, untuk mendapatkan +15% emas dan +5% pasukan. Penghitung ini menunjukkan berapa banyak yang Anda pegang.",
+      "objectives": "Peta ini memiliki tujuan: zona bercahaya yang muncul satu menit setelah permainan. Miliki sebagian besar dari satu selama 15 detik untuk menangkapnya, untuk mendapatkan +15% emas dan +5% pasukan. Penghitung ini menunjukkan waktu yang tersisa sebelum muncul, lalu berapa banyak yang Anda pegang.",
       "port_info_ships": "Pelabuhan mengirimkan kapal dagang ke negara lain, dan setiap perjalanan memberi Anda emas.",
       "port_info_warships": "Pelabuhan juga membangun kapal perang.",
       "propose_alliance": "Tetangga yang kuat lebih baik sebagai teman. Klik kanan negara yang menjadi target dan minta aliansi.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Seorang pengkhianat kehilangan setengah pertahanannya selama 30 detik. Pilih momen Anda dengan hati-hati.",
       "troop_rate": "Ini adalah seberapa cepat pasukan Anda berkembang. Ini melambat, dan berubah menjadi oranye, setelah Anda melewati setengah dari maksimum Anda.",
       "troops": "Ini adalah pasukanmu. Setiap serangan menghabiskan sebagian darinya, jadi beri mereka waktu untuk tumbuh kembali di antara serangan.",
-      "upgrade_city": "Bangunan dapat ditingkatkan. Klik kota Anda untuk membuka kartunya, lalu tekan Tingkatkan: setiap level dihitung sebagai satu kota lagi."
+      "upgrade_city": "Bangunan dapat ditingkatkan. Klik kota Anda untuk membuka kartunya, lalu tekan Tingkatkan: setiap level memberikan ruang bagi lebih banyak orang, hingga level 5."
     },
     "step_counter": "Langkah {current} dari {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Tetangga yang kuat lebih baik sebagai teman. Ketuk negara yang menjadi target, lalu ketuk jabat tangan untuk meminta aliansi.",
       "send_boat": "Perahu membawa pasukan Anda melintasi perairan. Ketuk pantai musuh di seberang laut untuk membuka menu radial, lalu pilih perahu.",
       "spawn": "Selamat datang di Territorium! Ketuk di mana saja pada peta untuk memilih tempat awal Anda. Garis pantai akan berguna nantinya.",
-      "upgrade_city": "Bangunan dapat ditingkatkan. Ketuk kota Anda untuk membuka kartunya, lalu ketuk Tingkatkan: setiap level dihitung sebagai satu kota lagi."
+      "upgrade_city": "Bangunan dapat ditingkatkan. Ketuk kota Anda untuk membuka kartunya, lalu ketuk Tingkatkan: setiap level memberikan ruang bagi lebih banyak orang, hingga level 5."
     },
     "title": "tutorial"
   },

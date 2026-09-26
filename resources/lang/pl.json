@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Błąd weryfikacji: {code}. Odśwież i spróbuj ponownie."
   },
+  "event_history": {
+    "empty": "Jeszcze nic się nie wydarzyło.",
+    "filter_all": "Wszystko",
+    "filter_attack": "Ataki",
+    "filter_chat": "Czat",
+    "filter_diplomacy": "Dyplomacja",
+    "filter_nuke": "Rakiety",
+    "filter_trade": "Handel",
+    "hours_ago": "{n} godz. temu",
+    "just_now": "przed chwilą",
+    "minutes_ago": "{n} min temu",
+    "seconds_ago": "{n} s temu",
+    "title": "Historia wydarzeń"
+  },
   "events_display": {
     "about_to_expire": "Twój sojusz z {name} wkrótce wygaśnie!",
     "accept_alliance": "Akceptuj",
@@ -953,6 +967,7 @@
     "no_boats_available": "Brak dostępnych łodzi, maks. {max}",
     "objective_captured": "Zdobyłeś cel na mapie: więcej złota i wzrost liczby żołnierzy, gdy go trzymasz.",
     "objective_lost": "{name} zajął jeden z celów na mapie.",
+    "objectives_revealed": "Na mapie pojawiło się {count} celów!",
     "peace_broken": "{breaker} zerwał pokój z {victim}! Krzywoprzysięstwo.",
     "peace_expired": "Pokój z {name} wygasł.",
     "peace_rejected": "{name} odrzucił twój traktat pokojowy.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabryki łączą Twoje miasta i porty koleją. Pociągi zarabiają złoto za każdy odwiedzany budynek, a jeszcze więcej u sąsiadów.",
       "frames": "Ramka wokół budynku pokazuje jego poziom: brązowy na 2, srebrny na 3, złoty na 4.",
       "mirv": "MIRV dzieli się na rój głowic bojowych na ogromnym obszarze i uderza tylko w gracza, w którego celowałeś.",
-      "objectives": "Każdy cel na mapie, który posiadasz, daje +15% złota i +5% żołnierzy. Zdobądź większość jego strefy na 15 sekund, aby ją przejąć.",
-      "peace": "Przegrana wojna? Podpisz traktat pokojowy: trzy minuty bez ataków i bez konieczności sojuszu. Każdy, kto go złamie, jest naznaczony jako zdrajca na oczach wszystkich graczy.",
+      "objectives": "Cele na mapie pojawiają się po minucie gry. Każdy, który trzymasz, daje +15% złota i +5% żołnierzy: przejmij większość jego strefy przez 15 sekund, aby go zdobyć.",
+      "peace": "Przegrana wojna? Zaoferuj pokój graczowi, z którym walczysz: trzy minuty bez ataków i bez konieczności sojuszu. Każdy, kto go złamie, jest naznaczony jako zdrajca na oczach wszystkich graczy.",
       "radar": "Radar wykrywa wrogie łodzie, okręty wojenne i rakiety w promieniu 100 pól, więc widzisz nadchodzącą inwazję.",
       "sam": "Wyrzutnie SAM zestrzeliwują rakiety w zasięgu. Każdy poziom SAM dodaje rakietę gotową do wystrzelenia i większy zasięg.",
       "trade": "Porty samodzielnie handlują z innymi krajami i obie strony zarabiają na złocie. Zaatakowanie gracza zatrzymuje handel z nim na 5 minut.",
       "traitor": "Zerwanie sojuszu czyni cię zdrajcą na 30 sekund: twoja obrona spada o połowę, a inni gracze mniej ci ufają.",
-      "upgrade": "Kliknij jeden ze swoich budynków, aby otworzyć jego kartę i ulepszyć ją. Każde miasto, port lub poziom fabryki liczy się jako jeszcze jeden budynek."
+      "upgrade": "Kliknij jeden ze swoich budynków, aby go ulepszyć: większe miasto może pomieścić więcej ludzi, większy port wysyła więcej statków, a większa fabryka wysyła więcej pociągów. Każdy budynek ma maksymalny poziom."
     },
     "title": "Gra się rozpoczyna..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Uścisk dłoni - poproś o sojusz. Sojusznicy nie mogą atakować się nawzajem i mogą wysyłać sobie nawzajem wojska i złoto.",
     "info_chat": "Szybki czat - wybierz kategorię i frazę; jeśli wskazuje gracza, wybierz kto, a następnie wyślij.",
     "info_emoji": "Emoji - wyślij szybką emoji do gracza.",
-    "info_peace": "Biała flaga - zaoferuj wrogowi traktat pokojowy. Po podpisaniu żaden z was nie może atakować drugiego przez 3 minuty, a trwające ataki zostaną zatrzymane. Ktokolwiek go złamie, zostaje oznaczony jako zdrajca i każdy gracz zostaje o tym poinformowany.",
+    "info_peace": "Biała flaga – zaoferuj traktat pokojowy graczowi, z którym toczysz wojnę (walcząc teraz lub w ciągu ostatnich 2 minut). Po podpisaniu żaden z was nie może atakować drugiego przez 3 minuty, a trwające ataki zostaną zatrzymane. Ktokolwiek go złamie, zostaje oznaczony jako zdrajca i każdy gracz zostaje o tym poinformowany.",
     "info_target": "Cel - zaznacz tego gracza dla wszystkich swoich sojuszników, aby wspólnie zaplanować atak.",
     "info_trade": "Handel - zatrzymaj lub wznów wysyłanie statków handlowych do tego gracza. Handel rozpoczyna się od nowa, gdy oboje na to pozwolicie.",
     "objectives_bonus": "Każdy zdobyty cel daje +15% złota i +5% żołnierzy.",
     "objectives_cap": "Tylko połowa celów liczy się do Twojej premii (2 z 4, 3 z 5 lub 6), więc nikt nie wygrywa, trzymając je wszystkie.",
     "objectives_capture": "Zdobądź większość strefy na 15 sekund, aby ją przejąć. Pierścień napełnia się, gdy go trzymasz.",
-    "objectives_desc": "Niektóre gry umieszczają cele na mapie. Każda z nich to strefa, którą warto utrzymać przez całą grę.",
+    "objectives_desc": "Niektóre gry umieszczają cele na mapie. Pojawiają się po minucie gry, z ogłoszeniem, więc nikt nie może ich ponaglać od samego początku. Każda z nich to strefa, którą warto utrzymać przez całą grę.",
     "objectives_title": "Cele mapy",
     "objectives_where": "Pojawiają się w grach solowych, prywatnych i publicznych; rankingowe, 1 na 1, 2 na 2 i codzienne wyścigi nie mają żadnego. Twórca gry może je wyłączyć.",
     "objectives_zone": "Cel na mapie",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Twój zespół:",
     "upgrades_card": "Karta struktury",
     "upgrades_desc": "Kliknij jeden ze swoich budynków, aby otworzyć jego kartę: jego poziom, co przynosi następny poziom i przycisk ulepszenia.",
-    "upgrades_economy": "Miasta, porty i fabryki: bez ograniczeń i bez czekania. Każdy poziom liczy się jako kolejny budynek.",
-    "upgrades_frames": "Ulepszone budynki otrzymują na mapie ramkę: brązową na poziomie 2, srebrną na 3, złotą na 4.",
+    "upgrades_economy": "Miasta, porty i fabryki od razu przechodzą na poziom 5. Na każdym poziomie miasta mieści się więcej ludzi, port wysyła więcej statków handlowych i naprawia więcej okrętów wojennych na raz, fabryka wysyła więcej pociągów.",
+    "upgrades_frames": "Ulepszone budynki otrzymują na mapie ramkę: brązową na poziomie 2, srebrną na 3, złotą na 4 i szmaragdową na 5.",
     "upgrades_military": "SAM osiągają poziom 5 (+1 gotowość do rakiety i większy zasięg na poziom), silosy i radary aż do poziomu 3. Każdy nowy poziom odblokowuje się w trakcie gry: karta pokazuje odliczanie.",
     "upgrades_ranked": "W grach rankingowych poziomy są niższe (SAM 3, silos i radar 2) i odblokowują się później.",
     "upgrades_title": "Ulepszenia budynków"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% złota, +{troops}% żołnierzy (maks.)",
     "cap_hint": "Twój bonus liczy się za maksymalnie {max} cele. Trzymanie większej liczby jedynie odbiera je rywalom.",
     "held": "Cele {held}/{total}",
+    "reveal_in": "Cele za {time}",
     "zone_label": "Cel {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kopnięcie {name}?\n\nNie będą mogli ponownie dołączyć do tej gry.",
     "kicked": "Już kopnięty",
     "moderation": "Umiar",
+    "peace_needs_war": "Pokój możesz zaoferować jedynie graczowi, z którym prowadzisz wojnę",
     "peace_time_remaining": "Pokój kończy się w",
     "propose_peace": "Ofiaruj pokój",
     "report": "Raport",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Pociski {from} → {to}",
+    "gain_population": "Maksymalna populacja +{from} → +{to}",
     "gain_range": "Zasięg {from} → {to}",
-    "gain_stack": "Liczy się jak jeszcze jeden budynek tego typu",
+    "gain_repairs": "Doki naprawcze okrętów wojennych {from} → {to}",
+    "gain_trade_ships": "Statki handlowe ×{from} → ×{to}",
+    "gain_trains": "Pociągi wysłane ×{from} → ×{to}",
     "level": "Poziom {level}",
     "level_of": "Poziom {level} / {max}",
     "locked": "Poziom {level} dostępny za {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Twój silos jest gotowy! Naciśnij {key}, a następnie kliknij ziemię sąsiada, aby wystrzelić bombę atomową.",
       "mirv_info": "MIRV: deszcz głowic bojowych nad pojedynczym wrogiem. Ostateczna broń.",
       "no_coast": "Nie masz jeszcze linii brzegowej. Morze otwiera łodzie, porty i handel: rozwijaj się, aż dotrzesz do wybrzeża.",
-      "objectives": "Ta mapa ma cele: świecące strefy, które warto utrzymać. Zdobądź większą część jednego z nich przez 15 sekund, aby go zdobyć, co daje +15% złota i +5% żołnierzy. Ten licznik pokazuje, ile posiadasz.",
+      "objectives": "Ta mapa ma cele: świecące strefy, które pojawiają się po minucie gry. Zdobądź większą część jednego z nich przez 15 sekund, aby go zdobyć, co daje +15% złota i +5% żołnierzy. Licznik ten pokazuje czas pozostały do ich pojawienia się, a następnie liczbę posiadanych kart.",
       "port_info_ships": "Porty wysyłają statki handlowe do innych krajów, a każda podróż zapewnia złoto.",
       "port_info_warships": "Porty budują także okręty wojenne.",
       "propose_alliance": "Silny sąsiad jest lepszy jako przyjaciel. Kliknij prawym przyciskiem myszy naród z celem i poproś o sojusz.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Zdrajca traci połowę swojej obrony na 30 sekund. Wybierz swój moment ostrożnie.",
       "troop_rate": "Oto jak szybko rosną Twoje wojska. Zwalnia i zmienia kolor na pomarańczowy po przekroczeniu połowy maksimum.",
       "troops": "To są twoi żołnierze. Każdy atak zużywa część z nich, więc daj im czas na regenerację pomiędzy atakami.",
-      "upgrade_city": "Budynki można ulepszać. Kliknij swoje miasto, aby otworzyć jego kartę, a następnie naciśnij Ulepsz: każdy poziom liczy się jako kolejne miasto."
+      "upgrade_city": "Budynki można ulepszać. Kliknij swoje miasto, aby otworzyć jego kartę, a następnie naciśnij Uaktualnij: każdy poziom zapewnia miejsce dla większej liczby osób, aż do poziomu 5."
     },
     "step_counter": "Krok {current} z {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Silny sąsiad jest lepszy jako przyjaciel. Stuknij naród z celem, a następnie stuknij uścisk dłoni, aby poprosić o sojusz.",
       "send_boat": "Łodzie przewożą twoich żołnierzy po wodzie. Stuknij wrogie wybrzeże za morzem, aby otworzyć menu kołowe, a następnie wybierz łódź.",
       "spawn": "Witamy w Territorium! Kliknij dowolne miejsce na mapie, aby wybrać miejsce początkowe. Linia brzegowa przyda się później.",
-      "upgrade_city": "Budynki można ulepszać. Stuknij swoje miasto, aby otworzyć jego kartę, a następnie stuknij opcję Uaktualnij: każdy poziom liczy się jako kolejne miasto."
+      "upgrade_city": "Budynki można ulepszać. Stuknij swoje miasto, aby otworzyć jego kartę, a następnie stuknij Uaktualnij: każdy poziom zapewnia miejsce dla większej liczby osób, aż do poziomu 5."
     },
     "title": "Seminarium"
   },

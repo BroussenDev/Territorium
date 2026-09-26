@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Doğrulama hatası: {code}. Lütfen yenileyin ve tekrar deneyin."
   },
+  "event_history": {
+    "empty": "Henüz hiçbir şey olmadı.",
+    "filter_all": "Tümü",
+    "filter_attack": "Saldırılar",
+    "filter_chat": "Sohbet",
+    "filter_diplomacy": "Diplomasi",
+    "filter_nuke": "Füzeler",
+    "filter_trade": "Ticaret",
+    "hours_ago": "{n} sa önce",
+    "just_now": "az önce",
+    "minutes_ago": "{n} dk önce",
+    "seconds_ago": "{n} sn önce",
+    "title": "Etkinlik geçmişi"
+  },
   "events_display": {
     "about_to_expire": "{name} ile ittifakının süresi dolmak üzere!",
     "accept_alliance": "Kabul et",
@@ -953,6 +967,7 @@
     "no_boats_available": "Bot mevcut değil, maks {max}",
     "objective_captured": "Bir harita hedefi yakaladınız: onu elinizde tutarken daha fazla altın ve birlik artışı.",
     "objective_lost": "{name} harita hedeflerinizden birini aldı.",
+    "objectives_revealed": "Haritada {count} hedef belirdi!",
     "peace_broken": "{breaker} {victim} ile huzuru bozdu! Yalancı şahitlik.",
     "peace_expired": "{name} ile olan barışın süresi doldu.",
     "peace_rejected": "{name} barış anlaşmanızı reddetti.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabrikalar şehirlerinizi ve limanlarınızı demiryoluyla birbirine bağlar. Trenler ziyaret ettikleri her bina için, komşularınızda ise daha fazla altın kazanır.",
       "frames": "Bir binanın etrafındaki çerçeve onun seviyesini gösterir: 2'de bronz, 3'te gümüş, 4'te altın.",
       "mirv": "MIRV, geniş bir alanda savaş başlıklarına bölünür ve yalnızca hedeflediğiniz oyuncuyu vurur.",
-      "objectives": "Sahip olduğunuz her harita hedefi +%15 altın ve +%5 birlik verir. Onu ele geçirmek için 15 saniye boyunca bölgesinin büyük bir kısmına sahip olun.",
-      "peace": "Bir savaşı kaybetmek mi? Bir barış anlaşması imzalayın: Saldırı olmadan, ittifaka gerek kalmadan üç dakika. Bunu bozan herkes tüm oyuncuların önünde hain olarak işaretlenir.",
+      "objectives": "Harita hedefleri oyuna bir dakika kala görünür. Tuttuğunuz her biri +%15 altın ve +%5 birlik verir: onu ele geçirmek için 15 saniye boyunca bölgesinin çoğuna sahip olun.",
+      "peace": "Bir savaşı kaybetmek mi? Dövüştüğünüz oyuncuya barış teklif edin: üç dakika boyunca saldırı olmadan, ittifak gerektirmeden. Bunu bozan herkes tüm oyuncuların önünde hain olarak işaretlenir.",
       "radar": "Bir radar, 100 karo içindeki düşman teknelerini, savaş gemilerini ve füzelerini tespit eder, böylece bir istilanın yaklaştığını görürsünüz.",
       "sam": "SAM rampaları menzildeki füzeleri vuruyor. Her SAM seviyesi, ateş etmeye hazır bir füze ve daha fazla menzil ekler.",
       "trade": "Limanlar diğer ülkelerle kendi başlarına ticaret yapıyor ve her iki taraf da altın kazanıyor. Bir oyuncuya saldırmak, onunla olan ticaretinizi 5 dakika süreyle durdurur.",
       "traitor": "Bir ittifakı bozmak sizi 30 saniye boyunca hain yapar: savunmanız yarı yarıya düşer ve diğer oyuncular size daha az güvenir.",
-      "upgrade": "Binalarınızdan birine tıklayarak kartını açın ve onu yükseltin. Her şehir, liman veya fabrika seviyesi bir bina daha sayılır."
+      "upgrade": "Yükseltmek için binalarınızdan birine tıklayın: Daha büyük bir şehir daha fazla insanı barındırır, daha büyük bir liman daha fazla gemi gönderir ve daha büyük bir fabrika daha fazla tren gönderir. Her binanın bir maksimum seviyesi vardır."
     },
     "title": "Oyun Başlıyor..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "El sıkışma - ittifak isteyin. Müttefikler birbirlerine saldıramazlar ve birbirlerine birlik ve altın gönderebilirler.",
     "info_chat": "Hızlı sohbet - bir kategori ve bir cümle seçin; Eğer bir oyuncunun ismi varsa, kimi seçin ve gönderin.",
     "info_emoji": "Emoji - oynatıcıya hızlı bir emoji gönderin.",
-    "info_peace": "Beyaz bayrak: Düşmana barış anlaşması teklif etmek. İmzalandıktan sonra hiçbiriniz diğerine 3 dakika boyunca saldıramazsınız ve devam eden saldırılar durur. Kim bunu bozarsa hain olarak işaretlenir ve her oyuncuya söylenir.",
+    "info_peace": "Beyaz bayrak - savaşta olduğunuz (şu anda veya son 2 dakika içinde savaştığınız) bir oyuncuya barış anlaşması teklif edin. İmzalandıktan sonra hiçbiriniz diğerine 3 dakika boyunca saldıramazsınız ve devam eden saldırılar durur. Kim bunu bozarsa hain olarak işaretlenir ve her oyuncuya söylenir.",
     "info_target": "Hedef - birlikte bir saldırı planlamak için bu oyuncuyu tüm müttefikleriniz için işaretleyin.",
     "info_trade": "Takas - Bu oyuncuya ticaret gemileri göndermeyi durdurun veya yeniden başlatın. İkiniz de izin verdiğinizde ticaret yeniden başlar.",
     "objectives_bonus": "Tuttuğunuz her hedef +%15 altın ve +%5 birlik kazandırır.",
     "objectives_cap": "Hedeflerin yalnızca yarısına kadarı bonusunuza dahil edilir (2/4, 3/5 veya 6), yani hiç kimse yalnızca hepsini elinde tutarak kazanamaz.",
     "objectives_capture": "Bölgeyi ele geçirmek için 15 saniye boyunca bölgenin büyük bir kısmına sahip olun. Halkayı tuttuğunuzda dolar.",
-    "objectives_desc": "Bazı oyunlar hedefleri haritaya yerleştirir. Her biri tüm oyun boyunca tutulmaya değer bir bölgedir.",
+    "objectives_desc": "Bazı oyunlar hedefleri haritaya yerleştirir. Oyunun ilk dakikasında bir duyuruyla birlikte görünürler, böylece kimse onları baştan aceleye getiremez. Her biri tüm oyun boyunca tutulmaya değer bir bölgedir.",
     "objectives_title": "Harita hedefleri",
     "objectives_where": "Solo, özel ve halka açık oyunlarda yer alırlar; Sıralamalı, 1v1, 2v2 ve günlük yarışta bunların hiçbiri yok. Oyunun yaratıcısı bunları kapatabilir.",
     "objectives_zone": "Haritadaki bir hedef",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Takımın:",
     "upgrades_card": "Yapı kartı",
     "upgrades_desc": "Binalarınızdan birinin kartını açmak için tıklayın: seviyesi, sonraki seviyenin getirdikleri ve yükseltme düğmesi.",
-    "upgrades_economy": "Şehirler, limanlar ve fabrikalar: Sınır yok ve bekleme yok. Her seviye bir bina daha sayılır.",
-    "upgrades_frames": "Yükseltilmiş binalar haritada bir çerçeveye sahip olur: 2. seviyede bronz, 3. seviyede gümüş, 4. seviyede altın.",
+    "upgrades_economy": "Şehirler, limanlar ve fabrikalar hemen 5. seviyeye çıkar. Bir şehrin her seviyesi daha fazla insanı barındırır, bir liman daha fazla ticaret gemisi gönderir ve aynı anda daha fazla savaş gemisini onarır, bir fabrika daha fazla tren gönderir.",
+    "upgrades_frames": "Yükseltilmiş binalar haritada bir çerçeveye sahip olur: 2. seviyede bronz, 3. seviyede gümüş, 4. seviyede altın ve 5. seviyede zümrüt.",
     "upgrades_military": "SAM'ler 5. seviyeye (+1 füzeye hazır ve seviye başına daha fazla menzil), silolar ve radarlar ise 3. seviyeye kadar çıkar. Oyun ilerledikçe her yeni seviyenin kilidi açılır: kartta geri sayım gösterilir.",
     "upgrades_ranked": "Sıralamalı oyunlarda seviyeler daha düşüktür (SAM 3, silo ve radar 2) ve kilidi daha sonra açılır.",
     "upgrades_title": "Bina yükseltmeleri"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% altın, +{troops}% birlik (maks.)",
     "cap_hint": "Bonusun en fazla {max} hedef için sayılır. Daha fazlasını tutmak onları yalnızca rakiplerinden uzak tutar.",
     "held": "Hedefler {held}/{total}",
+    "reveal_in": "Hedeflere {time}",
     "zone_label": "Hedef {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nBu oyuna yeniden katılamayacaklar.",
     "kicked": "Zaten tekmelendim",
     "moderation": "Moderasyon",
+    "peace_needs_war": "Yalnızca savaşta olduğunuz oyuncuya barış teklif edebilirsiniz",
     "peace_time_remaining": "Barış Bitiyor",
     "propose_peace": "Barışı Teklif Edin",
     "report": "Rapor",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Füzeler {from} → {to}",
+    "gain_population": "Maksimum nüfus +{from} → +{to}",
     "gain_range": "Menzil {from} → {to}",
-    "gain_stack": "Bu türden bir bina daha sayılır",
+    "gain_repairs": "Savaş gemisi onarım iskeleleri {from} → {to}",
+    "gain_trade_ships": "Ticaret gemileri ×{from} → ×{to}",
+    "gain_trains": "Gönderilen trenler ×{from} → ×{to}",
     "level": "Seviye {level}",
     "level_of": "Seviye {level} / {max}",
     "locked": "Seviye {level}, {time} sonra açılır",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Silonuz hazır! {key} tuşuna basın, ardından atom bombası fırlatmak için bir komşunun arazisine tıklayın.",
       "mirv_info": "MIRV: Tek bir düşmanın üzerine savaş başlığı yağmuru. Nihai silah.",
       "no_coast": "Henüz kıyı şeridiniz yok. Deniz teknelerin, limanların ve ticaretin önünü açar: Sahile ulaşana kadar genişleyin.",
-      "objectives": "Bu haritanın hedefleri var: tutmaya değer parlayan bölgeler. +%15 altın ve +%5 birlik karşılığında, birini ele geçirmek için 15 saniye boyunca çoğuna sahip olun. Bu sayaç elinizde kaç tane tuttuğunuzu gösterir.",
+      "objectives": "Bu haritanın hedefleri var: Oyunun ilk dakikasında beliren parlayan bölgeler. +%15 altın ve +%5 birlik karşılığında, birini ele geçirmek için 15 saniye boyunca çoğuna sahip olun. Bu sayaç, görünmeden önce kalan süreyi ve ardından kaç tane tuttuğunuzu gösterir.",
       "port_info_ships": "Limanlar diğer ülkelere ticaret gemileri gönderir ve her yolculuk size altın kazandırır.",
       "port_info_warships": "Limanlar aynı zamanda savaş gemileri de inşa ediyor.",
       "propose_alliance": "Güçlü bir komşu, arkadaş olarak daha iyidir. Hedefin bulunduğu ülkeye sağ tıklayın ve ittifak isteyin.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Bir hain 30 saniye boyunca savunmasının yarısını kaybeder. Anı dikkatlice seçin.",
       "troop_rate": "Birlikleriniz bu kadar hızlı büyüyor. Maksimum seviyenizin yarısını aştığınızda yavaşlar ve turuncuya döner.",
       "troops": "Bunlar sizin birlikleriniz. Her saldırıda bunların bir kısmı harcanır, bu nedenle saldırılar arasında yeniden büyümeleri için onlara zaman tanıyın.",
-      "upgrade_city": "Binalar yükseltilebilir. Kartını açmak için şehrinize tıklayın, ardından Yükselt'e basın: her seviye bir şehir daha sayılır."
+      "upgrade_city": "Binalar yükseltilebilir. Kartını açmak için şehrinize tıklayın, ardından Yükselt'e basın: 5. seviyeye kadar her seviyede daha fazla kişi için yer açılır."
     },
     "step_counter": "Adım {current} / {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Güçlü bir komşu, arkadaş olarak daha iyidir. Hedefin bulunduğu ülkeye dokunun, ardından ittifak istemek için el sıkışmaya dokunun.",
       "send_boat": "Tekneler birliklerinizi su üzerinde taşır. Radyal menüyü açmak için denizin karşısındaki bir düşman kıyısına dokunun, ardından tekneyi seçin.",
       "spawn": "Territorium'a hoş geldiniz! Başlangıç noktanızı seçmek için haritada herhangi bir yere dokunun. Sahil şeridi daha sonra işinize yarayacaktır.",
-      "upgrade_city": "Binalar yükseltilebilir. Kartını açmak için şehrinize dokunun, ardından Yükselt'e dokunun: her seviye bir şehir daha sayılır."
+      "upgrade_city": "Binalar yükseltilebilir. Kartını açmak için şehrinize dokunun, ardından Yükselt'e dokunun: 5. seviyeye kadar her seviyede daha fazla kişi için yer açılır."
     },
     "title": "öğretici"
   },

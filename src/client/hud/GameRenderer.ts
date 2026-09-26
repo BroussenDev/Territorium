@@ -27,6 +27,7 @@ import { ChatDisplay } from "./layers/ChatDisplay";
 import { ChatModal } from "./layers/ChatModal";
 import { ControlPanel } from "./layers/ControlPanel";
 import { EmojiTable } from "./layers/EmojiTable";
+import { EventHistory } from "./layers/EventHistory";
 import { EventsDisplay } from "./layers/EventsDisplay";
 import { GameLeftSidebar } from "./layers/GameLeftSidebar";
 import { GameRightSidebar } from "./layers/GameRightSidebar";
@@ -185,6 +186,13 @@ export function createRenderer(
   }
   gameRightSidebar.game = game;
   gameRightSidebar.eventBus = eventBus;
+
+  const eventHistory = document.querySelector("event-history") as EventHistory;
+  if (!(eventHistory instanceof EventHistory)) {
+    console.error("event history not found");
+  }
+  eventHistory.game = game;
+  eventHistory.eventBus = eventBus;
 
   const settingsModal = document.querySelector(
     "settings-modal",
@@ -363,6 +371,7 @@ export function createRenderer(
     unitDisplay,
     structureCard,
     gameRightSidebar,
+    eventHistory,
     controlPanel,
     playerInfo,
     winModal,

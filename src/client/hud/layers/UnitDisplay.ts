@@ -122,14 +122,14 @@ export class UnitDisplay extends LitElement implements Controller {
     player.buildables(undefined, BuildMenus.types).then((buildables) => {
       this.playerBuildables = buildables;
     });
-    this._cities = player.totalUnitLevels(UnitType.City);
-    this._missileSilo = player.totalUnitLevels(UnitType.MissileSilo);
-    this._port = player.totalUnitLevels(UnitType.Port);
-    this._defensePost = player.totalUnitLevels(UnitType.DefensePost);
-    this._samLauncher = player.totalUnitLevels(UnitType.SAMLauncher);
-    this._factories = player.totalUnitLevels(UnitType.Factory);
-    this._warships = player.totalUnitLevels(UnitType.Warship);
-    this._radar = player.totalUnitLevels(UnitType.Radar);
+    this._cities = player.structureCount(UnitType.City);
+    this._missileSilo = player.structureCount(UnitType.MissileSilo);
+    this._port = player.structureCount(UnitType.Port);
+    this._defensePost = player.structureCount(UnitType.DefensePost);
+    this._samLauncher = player.structureCount(UnitType.SAMLauncher);
+    this._factories = player.structureCount(UnitType.Factory);
+    this._warships = player.structureCount(UnitType.Warship);
+    this._radar = player.structureCount(UnitType.Radar);
     this.requestUpdate();
   }
 

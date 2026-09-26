@@ -12,12 +12,6 @@ import {
   TooltipKey,
 } from "./RadialMenuElements";
 const backIcon = assetUrl("images/BackIconWhite.svg");
-const coinIcon = assetUrl("images/TerritoriumCoinWhite.svg");
-
-// The Territorium coin sits under the main ring when the menu opens on a
-// country, and gets out of the way while a submenu is open.
-const COIN_SIZE = 36;
-const COIN_GAP = 10;
 
 function resolveColor(
   item: MenuElement,
@@ -78,8 +72,6 @@ export class RadialMenu implements Controller {
   private anchorX = 0;
   private anchorY = 0;
 
-  private coinVisible = false;
-
   private menuGroups: Map<
     number,
     d3.Selection<SVGGElement, unknown, null, undefined>
@@ -91,6 +83,11 @@ export class RadialMenu implements Controller {
   private menuIcons: Map<
     string,
     d3.Selection<SVGImageElement, unknown, null, undefined>
+  > = new Map();
+  // The shading laid over each slice: a sheen, or hatching when disabled.
+  private menuSheens: Map<
+    string,
+    d3.Selection<SVGPathElement, unknown, null, undefined>
   > = new Map();
 
   private selectedItemId: string | null = null;
@@ -194,6 +191,28 @@ export class RadialMenu implements Controller {
     feMerge.append("feMergeNode").attr("in", "coloredBlur");
     feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
+    // Disabled slices are hatched, so a greyed-out action reads at a glance.
+    const hatch = defs
+      .append("pattern")
+      .attr("id", "radial-hatch")
+      .attr("patternUnits", "userSpaceOnUse")
+      .attr("width", 6)
+      .attr("height", 6)
+      .attr("patternTransform", "rotate(45)");
+    hatch
+      .append("rect")
+      .attr("width", 6)
+      .attr("height", 6)
+      .attr("fill", "rgba(4, 12, 9, 0.45)");
+    hatch
+      .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", 0)
+      .attr("y2", 6)
+      .attr("stroke", "rgba(231, 239, 233, 0.16)")
+      .attr("stroke-width", 2);
+
     const centerButton = container.append("g").attr("class", "center-button");
 
     centerButton
@@ -216,6 +235,13 @@ export class RadialMenu implements Controller {
 
     centerButton
       .append("circle")
+      .attr("class", "center-button-ring")
+      .attr("r", this.config.centerButtonSize + 5)
+      .attr("fill", "none")
+      .style("pointer-events", "none");
+
+    centerButton
+      .append("circle")
       .attr("class", "center-button-visible")
       .attr("r", this.config.centerButtonSize)
       .attr("fill", this.centerButtonColor)
@@ -230,31 +256,6 @@ export class RadialMenu implements Controller {
       .attr("x", -this.centerButtonIconSize / 2)
       .attr("y", -this.centerButtonIconSize / 2)
       .style("pointer-events", "none");
-
-    container
-      .append("image")
-      .attr("class", "radial-menu-coin")
-      .attr("xlink:href", coinIcon)
-      .attr("width", COIN_SIZE)
-      .attr("height", COIN_SIZE)
-      .attr("x", -COIN_SIZE / 2)
-      .attr("y", this.getOuterRadiusForLevel(0) + COIN_GAP)
-      .style("opacity", 0)
-      .style("pointer-events", "none")
-      .style("filter", "drop-shadow(0 2px 3px rgb(0 0 0 / 0.5))");
-  }
-
-  private updateCoin() {
-    const visible =
-      this.isVisible && this.currentLevel === 0 && !!this.params?.selected;
-    if (visible === this.coinVisible) return;
-    this.coinVisible = visible;
-    this.menuElement
-      .select<SVGImageElement>(".radial-menu-coin")
-      .interrupt()
-      .transition()
-      .duration(this.config.menuTransitionDuration * (visible ? 0.8 : 0.4))
-      .style("opacity", visible ? 1 : 0);
   }
 
   private createTooltipElement() {
@@ -322,7 +323,7 @@ export class RadialMenu implements Controller {
     const pie = d3
       .pie<MenuElement>()
       .value(() => 1)
-      .padAngle(0.03)
+      .padAngle(0.035)
       .startAngle(offset)
       .endAngle(2 * Math.PI + offset);
 
@@ -332,7 +333,10 @@ export class RadialMenu implements Controller {
     const arc = d3
       .arc<d3.PieArcDatum<MenuElement>>()
       .innerRadius(innerRadius)
-      .outerRadius(outerRadius);
+      .outerRadius(outerRadius)
+      .cornerRadius(5);
+
+    this.renderDial(menuGroup, level, innerRadius, outerRadius);
 
     const arcs = menuGroup
       .selectAll(".menu-item")
@@ -342,11 +346,104 @@ export class RadialMenu implements Controller {
       .attr("class", "menu-item-group");
 
     this.renderPaths(arcs, arc, level);
+    this.renderSheens(arcs, arc, level);
     this.setupEventHandlers(arcs, level);
     this.renderIconsAndText(arcs, arc);
     this.setupAnimations(menuGroup);
 
     return menuGroup;
+  }
+
+  /**
+   * The ring's frame, drawn behind the slices: a gold dial with tick marks
+   * and a diamond at the top, like a command table's compass, and an emerald
+   * hairline around the centre button on the main ring.
+   */
+  private renderDial(
+    menuGroup: d3.Selection<SVGGElement, unknown, null, undefined>,
+    level: number,
+    innerRadius: number,
+    outerRadius: number,
+  ) {
+    const dial = menuGroup.append("g").attr("class", "menu-dial");
+    const r = outerRadius + 7;
+    dial.append("circle").attr("class", "menu-dial-ring").attr("r", r);
+
+    const ticks: string[] = [];
+    for (let i = 0; i < 72; i++) {
+      const angle = (i / 72) * 2 * Math.PI;
+      const length = i % 6 === 0 ? 5 : 2.5;
+      const sin = Math.sin(angle);
+      const cos = Math.cos(angle);
+      ticks.push(
+        `M${(sin * r).toFixed(2)},${(-cos * r).toFixed(2)}` +
+          `L${(sin * (r + length)).toFixed(2)},${(-cos * (r + length)).toFixed(2)}`,
+      );
+    }
+    dial
+      .append("path")
+      .attr("class", "menu-dial-ticks")
+      .attr("d", ticks.join(""));
+    dial
+      .append("path")
+      .attr("class", "menu-dial-diamond")
+      .attr("d", `M0,${-r - 6}L4,${-r}L0,${-r + 6}L-4,${-r}Z`);
+
+    if (level === 0) {
+      dial
+        .append("circle")
+        .attr("class", "menu-dial-inner")
+        .attr("r", innerRadius - 5);
+    }
+
+    // Each slice is shaded from dark at its inner edge to a gold rim.
+    const defs = this.menuElement.select("defs");
+    const id = `radial-sheen-${level}`;
+    defs.select(`#${id}`).remove();
+    const inner = innerRadius / outerRadius;
+    const sheen = defs
+      .append("radialGradient")
+      .attr("id", id)
+      .attr("gradientUnits", "userSpaceOnUse")
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("r", outerRadius);
+    const stops: [number, string][] = [
+      [inner, "rgba(0, 0, 0, 0.34)"],
+      [inner + (1 - inner) * 0.55, "rgba(0, 0, 0, 0)"],
+      [1 - 6 / outerRadius, "rgba(253, 230, 138, 0)"],
+      [1, "rgba(253, 230, 138, 0.28)"],
+    ];
+    for (const [offset, color] of stops) {
+      sheen.append("stop").attr("offset", offset).attr("stop-color", color);
+    }
+  }
+
+  private sheenFill(level: number, disabled: boolean): string {
+    return disabled ? "url(#radial-hatch)" : `url(#radial-sheen-${level})`;
+  }
+
+  private renderSheens(
+    arcs: d3.Selection<
+      SVGGElement,
+      d3.PieArcDatum<MenuElement>,
+      SVGGElement,
+      unknown
+    >,
+    arc: d3.Arc<any, d3.PieArcDatum<MenuElement>>,
+    level: number,
+  ) {
+    arcs.each((d, i, nodes) => {
+      const disabled = this.params === null || d.data.disabled(this.params);
+      const sheen = d3
+        .select(nodes[i])
+        .append("path")
+        .attr("class", "menu-item-sheen")
+        .attr("d", arc(d))
+        .attr("data-level", level)
+        .attr("fill", this.sheenFill(level, disabled));
+      this.menuSheens.set(d.data.id, sheen as any);
+    });
   }
 
   private renderPaths(
@@ -377,6 +474,10 @@ export class RadialMenu implements Controller {
         return d3.color(color)?.copy({ opacity: opacity })?.toString() ?? color;
       })
       .attr("stroke", "none")
+      .classed(
+        "is-disabled",
+        (d) => this.params === null || d.data.disabled(this.params),
+      )
       .style("cursor", (d) =>
         this.params === null || d.data.disabled(this.params)
           ? "not-allowed"
@@ -732,7 +833,6 @@ export class RadialMenu implements Controller {
     this.menuStack.push(this.currentMenuItems);
     this.currentMenuItems = children;
     this.currentLevel++;
-    this.updateCoin();
 
     this.clampAndSetMenuPositionForLevel(this.currentLevel);
     this.renderMenuItems(this.currentMenuItems, this.currentLevel);
@@ -834,7 +934,6 @@ export class RadialMenu implements Controller {
     if (this.currentLevel === 0) {
       this.updateCenterButtonState("default");
     }
-    this.updateCoin();
   }
 
   private clearSelectedItemHoverState() {
@@ -915,9 +1014,9 @@ export class RadialMenu implements Controller {
     this.anchorY = y;
 
     this.menuElement.style("display", "block");
-    this.isVisible = true;
-    this.updateCoin();
     this.clampAndSetMenuPositionForLevel(this.currentLevel);
+
+    this.isVisible = true;
 
     this.renderMenuItems(this.currentMenuItems, this.currentLevel);
     this.onCenterButtonHover(true);
@@ -934,7 +1033,6 @@ export class RadialMenu implements Controller {
 
     this.menuElement.style("display", "none");
     this.isVisible = false;
-    this.updateCoin();
     this.selectedItemId = null;
     this.hideTooltip();
 
@@ -944,6 +1042,7 @@ export class RadialMenu implements Controller {
     this.menuGroups.clear();
     this.menuPaths.clear();
     this.menuIcons.clear();
+    this.menuSheens.clear();
 
     this.lastHideTime = Date.now();
     window.removeEventListener("resize", this.handleResize);
@@ -1074,7 +1173,6 @@ export class RadialMenu implements Controller {
 
   public setParams(params: MenuElementParams) {
     this.params = params;
-    this.updateCoin();
   }
 
   public getDefaultCenterIconSize(): number {
@@ -1125,6 +1223,7 @@ export class RadialMenu implements Controller {
     this.menuGroups.clear();
     this.menuPaths.clear();
     this.menuIcons.clear();
+    this.menuSheens.clear();
 
     const menuContainer = this.menuElement?.select(".menu-container");
     if (menuContainer) {
@@ -1171,6 +1270,14 @@ export class RadialMenu implements Controller {
         }
         path.style("opacity", disabled ? 0.5 : 1);
         path.style("cursor", disabled ? "not-allowed" : "pointer");
+        path.classed("is-disabled", disabled);
+        const sheen = this.menuSheens.get(itemId);
+        if (sheen) {
+          sheen.attr(
+            "fill",
+            this.sheenFill(Number(sheen.attr("data-level")), disabled),
+          );
+        }
 
         // Update icon/text appearance using the same logic as renderIconsAndText
         const icon = this.menuIcons.get(itemId);
@@ -1415,11 +1522,6 @@ export class RadialMenu implements Controller {
   private clampAndSetMenuPositionForLevel(level: number) {
     const outerRadius = this.getOuterRadiusForLevel(level);
     const margin = Math.max(outerRadius, this.config.centerButtonSize) + 10;
-    // Keep the coin on screen too when the menu opens near the bottom edge.
-    const marginBottom =
-      level === 0 && this.coinVisible
-        ? outerRadius + COIN_GAP + COIN_SIZE + 10
-        : margin;
 
     const vw = window.innerWidth;
     const vh = window.innerHeight;
@@ -1430,9 +1532,9 @@ export class RadialMenu implements Controller {
         ? vw / 2
         : Math.min(Math.max(this.anchorX, margin), vw - margin);
     const clampedY =
-      margin + marginBottom > vh
+      2 * margin > vh
         ? vh / 2
-        : Math.min(Math.max(this.anchorY, margin), vh - marginBottom);
+        : Math.min(Math.max(this.anchorY, margin), vh - margin);
 
     const svgSel = this.menuElement.select("svg");
     svgSel.style("top", `${clampedY}px`).style("left", `${clampedX}px`);

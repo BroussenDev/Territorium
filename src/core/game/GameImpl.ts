@@ -98,6 +98,8 @@ export class GameImpl implements Game {
   private _peaceTreaties: PeaceTreatyImpl[] = [];
   // "from>to" smallIDs -> first tick `from` may propose peace to `to` again.
   private peaceCooldowns = new Map<string, Tick>();
+  // Keyed by the pair's smallIDs, lower first (see hostilityKey).
+  private lastHostility = new Map<number, Tick>();
 
   private nextPlayerID = 1;
   private _nextUnitID = 1;
@@ -618,6 +620,8 @@ export class GameImpl implements Game {
       undefined,
       breaker.id(),
     );
+    // Perjury reopens the war, so the victim can offer peace right away.
+    this.recordHostility(breaker, other);
   }
 
   removePeaceByPlayerSilently(player: Player) {
@@ -646,6 +650,21 @@ export class GameImpl implements Game {
     if ((this.peaceCooldowns.get(key) ?? 0) < until) {
       this.peaceCooldowns.set(key, until);
     }
+  }
+
+  recordHostility(a: Player, b: Player): void {
+    if (a === b) return;
+    this.lastHostility.set(this.hostilityKey(a, b), this._ticks);
+  }
+
+  lastHostilityBetween(a: Player, b: Player): Tick | null {
+    return this.lastHostility.get(this.hostilityKey(a, b)) ?? null;
+  }
+
+  private hostilityKey(a: Player, b: Player): number {
+    const x = a.smallID();
+    const y = b.smallID();
+    return x < y ? x * 65536 + y : y * 65536 + x;
   }
 
   private peaceCooldownKey(from: Player, to: Player): string {
@@ -1014,6 +1033,9 @@ export class GameImpl implements Game {
     }
     const previousOwner = this.owner(tile) as TerraNullius | PlayerImpl;
     if (previousOwner.isPlayer()) {
+      if (previousOwner !== owner) {
+        this.recordHostility(owner, previousOwner);
+      }
       previousOwner._lastTileChange = this._ticks;
       previousOwner._tileChangeVersion++;
       previousOwner._tiles.delete(tile);

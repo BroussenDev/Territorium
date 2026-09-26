@@ -161,7 +161,7 @@ export class WorldTextPass {
     this.gl = gl;
     this.settings = settings;
 
-    // Parse atlas data (shared with NamePass/StructureLevelPass)
+    // Parse atlas data (shared with NamePass)
     const atlas = parseAtlasData();
     this.glyph = buildGlyphTables(atlas.chars);
     this.kernTable = new Int8Array(CHAR_RANGE * CHAR_RANGE);

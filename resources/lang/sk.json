@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Chyba overenia: {code}. Obnovte stránku a skúste to znova."
   },
+  "event_history": {
+    "empty": "Zatiaľ sa nič nestalo.",
+    "filter_all": "Všetky",
+    "filter_attack": "Útoky",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomacia",
+    "filter_nuke": "Rakety",
+    "filter_trade": "Obchod",
+    "hours_ago": "pred {n} h",
+    "just_now": "práve teraz",
+    "minutes_ago": "pred {n} min",
+    "seconds_ago": "pred {n} s",
+    "title": "História udalostí"
+  },
   "events_display": {
     "about_to_expire": "Tvoje spojenectvo s {name} čoskoro vyprší!",
     "accept_alliance": "Prijať",
@@ -953,6 +967,7 @@
     "no_boats_available": "Nie sú k dispozícii žiadne člny, max {max}",
     "objective_captured": "Obsadili ste cieľ na mape: viac zlata a rast jednotiek, kým ho držíte.",
     "objective_lost": "{name} vzal jeden z vašich cieľov na mape.",
+    "objectives_revealed": "Na mape sa objavilo {count} cieľov!",
     "peace_broken": "{breaker} zlomil mier s {victim}! Krivá prísaha.",
     "peace_expired": "Mier s {name} vypršal.",
     "peace_rejected": "{name} odmietol vašu mierovú zmluvu.",
@@ -1112,13 +1127,13 @@
       "factory": "Továrne spájajú vaše mestá a prístavy železnicou. Vlaky zarábajú zlato za každú budovu, ktorú navštívia, a ešte viac u vašich susedov.",
       "frames": "Rám okolo budovy ukazuje jej úroveň: bronz na 2, striebro na 3, zlato na 4.",
       "mirv": "MIRV sa rozdelí na roj hlavíc na obrovskej ploche a zasiahne iba hráča, na ktorého ste mierili.",
-      "objectives": "Každý cieľ mapy, ktorý držíte, dáva +15% zlata a +5% vojakov. Majte väčšinu jeho zóny na 15 sekúnd, aby ste ju získali.",
-      "peace": "Prehrať vojnu? Podpíšte mierovú zmluvu: tri minúty bez útokov, bez potreby spojenectva. Každý, kto ho poruší, je pred všetkými hráčmi označený za zradcu.",
+      "objectives": "Ciele na mape sa objavia po jednej minúte hry. Každá, ktorú držíte, dáva +15% zlata a +5% vojakov: vlastnte väčšinu jej zóny na 15 sekúnd, aby ste ju obsadili.",
+      "peace": "Prehrať vojnu? Ponúknite mier hráčovi, proti ktorému bojujete: tri minúty bez útokov, bez potreby spojenectva. Každý, kto ho poruší, je pred všetkými hráčmi označený za zradcu.",
       "radar": "Radar zaznamená nepriateľské člny, vojnové lode a rakety v okruhu 100 dlaždíc, takže vidíte blížiacu sa inváziu.",
       "sam": "Odpaľovacie zariadenia SAM zostreľujú rakety v dosahu. Každá úroveň SAM pridáva raketu pripravenú na streľbu a väčší dosah.",
       "trade": "Prístavy obchodujú s inými krajinami samostatne a obe strany zarábajú zlato. Útok na hráča zastaví váš obchod s ním na 5 minút.",
       "traitor": "Rozbitím aliancie sa na 30 sekúnd stanete zradcom: vaša obrana klesne na polovicu a ostatní hráči vám menej veria.",
-      "upgrade": "Kliknutím na jednu zo svojich budov otvorte jej kartu a vylepšite ju. Každá úroveň mesta, prístavu alebo továrne sa počíta ako jedna ďalšia budova."
+      "upgrade": "Kliknutím na jednu zo svojich budov ju vylepšíte: väčšie mesto má viac ľudí, väčší prístav posiela viac lodí a väčšia továreň viac vlakov. Každá budova má maximálnu úroveň."
     },
     "title": "Hra sa začína…"
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Podanie ruky - požiadajte o spojenectvo. Spojenci na seba nemôžu útočiť a môžu si posielať jednotky a zlato.",
     "info_chat": "Rýchly rozhovor - vyberte kategóriu a frázu; ak pomenuje hráča, vyberte koho a potom pošlite.",
     "info_emoji": "Emoji – odošlite rýchle emotikony do prehrávača.",
-    "info_peace": "Biela vlajka - ponúknite mierovú zmluvu nepriateľovi. Po podpísaní nemôže ani jeden z vás útočiť na toho druhého 3 minúty a prebiehajúce útoky sa zastavia. Kto to poruší, je označený za zradcu a každému hráčovi to povedia.",
+    "info_peace": "Biela vlajka – ponúknite mierovú zmluvu hráčovi, s ktorým ste vo vojne (bojujete teraz alebo v posledných 2 minútach). Po podpísaní nemôže ani jeden z vás útočiť na toho druhého 3 minúty a prebiehajúce útoky sa zastavia. Kto to poruší, je označený za zradcu a každému hráčovi to povedia.",
     "info_target": "Cieľ – označte tohto hráča za všetkých svojich spojencov, aby spoločne naplánovali útok.",
     "info_trade": "Obchod – zastavte alebo reštartujte posielanie obchodných lodí tomuto hráčovi. Obchod začína znova, keď to obaja povolíte.",
     "objectives_bonus": "Každý cieľ, ktorý držíte, dáva +15% zlata a +5% vojakov.",
     "objectives_cap": "Do bonusu sa započítava iba polovica cieľov (2 zo 4, 3 z 5 alebo 6), takže nikto nevyhrá len tým, že ich podrží všetky.",
     "objectives_capture": "Majte väčšinu zóny na 15 sekúnd, aby ste ju získali. Krúžok sa naplní, kým ho držíte.",
-    "objectives_desc": "Niektoré hry umiestňujú ciele na mapu. Každý z nich je zónou, ktorú stojí za to držať počas celej hry.",
+    "objectives_desc": "Niektoré hry umiestňujú ciele na mapu. Objavia sa jednu minútu v hre s oznámením, takže ich nikto nemôže uponáhľať od začiatku. Každý z nich je zónou, ktorú stojí za to držať počas celej hry.",
     "objectives_title": "Ciele mapy",
     "objectives_where": "Objavujú sa v sólových, súkromných a verejných hrách; hodnotené, 1v1, 2v2 a denné preteky nemajú žiadne. Tvorca hry ich môže vypnúť.",
     "objectives_zone": "Cieľ na mape",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Tvoj tím:",
     "upgrades_card": "Karta štruktúry",
     "upgrades_desc": "Kliknutím na jednu zo svojich budov otvoríte jej kartu: jej úroveň, čo prináša ďalšia úroveň a tlačidlo inovácie.",
-    "upgrades_economy": "Mestá, prístavy a továrne: bez obmedzenia a bez čakania. Každá úroveň sa počíta ako jedna ďalšia budova.",
-    "upgrades_frames": "Vylepšené budovy dostanú rám na mape: bronzový na úrovni 2, strieborný na úrovni 3, zlatý na úrovni 4.",
+    "upgrades_economy": "Mestá, prístavy a továrne idú hneď na úroveň 5. Každá úroveň mesta má viac ľudí, prístav posiela viac obchodných lodí a opravuje viac vojnových lodí naraz, továreň posiela viac vlakov.",
+    "upgrades_frames": "Vylepšené budovy dostanú rám na mape: bronzový na úrovni 2, strieborný na úrovni 3, zlatý na úrovni 4 a smaragdový na úrovni 5.",
     "upgrades_military": "SAM idú na úroveň 5 (pripravená na +1 raketu a väčší dosah na úroveň), silá a radary na úroveň 3. Každá nová úroveň sa odomyká v priebehu hry: karta zobrazuje odpočítavanie.",
     "upgrades_ranked": "V hodnotených hrách sú úrovne nižšie (SAM 3, silo a radar 2) a odomknú sa neskôr.",
     "upgrades_title": "Vylepšenia budov"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% zlata, +{troops}% vojakov (max.)",
     "cap_hint": "Váš bonus sa počíta najviac za {max} ciele. Držať ich viac ich len odoberie vašim súperom.",
     "held": "Ciele {held}/{total}",
+    "reveal_in": "Ciele o {time}",
     "zone_label": "Cieľ {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nNebudú sa môcť znova pripojiť k tejto hre.",
     "kicked": "Už kopnutý",
     "moderation": "Moderovanie",
+    "peace_needs_war": "Mier môžete ponúknuť len hráčovi, s ktorým ste vo vojne",
     "peace_time_remaining": "Mier sa končí",
     "propose_peace": "Ponúknite mier",
     "report": "Správa",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Rakety {from} → {to}",
+    "gain_population": "Max počet obyvateľov +{from} → +{to}",
     "gain_range": "Dosah {from} → {to}",
-    "gain_stack": "Počíta sa ako ďalšia budova tohto typu",
+    "gain_repairs": "Doky na opravu vojnových lodí {from} → {to}",
+    "gain_trade_ships": "Obchodné lode ×{from} → ×{to}",
+    "gain_trains": "Vlaky odoslané ×{from} → ×{to}",
     "level": "Úroveň {level}",
     "level_of": "Úroveň {level} / {max}",
     "locked": "Úroveň {level} dostupná o {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Vaše silo je pripravené! Stlačte {key}, potom kliknite na susedovu krajinu a spustite atómovú bombu.",
       "mirv_info": "MIRV: dážď hlavíc nad jediným nepriateľom. Ultimátna zbraň.",
       "no_coast": "Zatiaľ nemáte žiadne pobrežie. More otvára lode, prístavy a obchod: expandujte, až kým nedosiahnete pobrežie.",
-      "objectives": "Táto mapa má ciele: žiariace zóny, ktoré sa oplatí držať. Vlastnite väčšinu jedného na 15 sekúnd, aby ste ho získali, za +15% zlata a +5% vojakov. Toto počítadlo ukazuje, koľko ich držíte.",
+      "objectives": "Táto mapa má ciele: žiariace zóny, ktoré sa objavia po jednej minúte hry. Vlastnite väčšinu jedného na 15 sekúnd, aby ste ho získali, za +15% zlata a +5% vojakov. Toto počítadlo ukazuje čas, ktorý zostáva, kým sa objavia, a potom koľko ich držíte.",
       "port_info_ships": "Prístavy posielajú obchodné lode do iných krajín a každá cesta vám zarobí zlato.",
       "port_info_warships": "Prístavy tiež stavajú vojnové lode.",
       "propose_alliance": "Silný sused je lepší ako priateľ. Kliknite pravým tlačidlom myši na národ s cieľom a požiadajte o spojenectvo.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Zradca stratí polovicu svojej obrany na 30 sekúnd. Starostlivo si vyberte svoj okamih.",
       "troop_rate": "Takto rýchlo rastú vaše jednotky. Spomalí a zmení sa na oranžovú, keď prekročíte polovicu svojho maxima.",
       "troops": "Toto sú vaše jednotky. Každý útok niektoré z nich minie, preto im medzi útokmi doprajte čas, aby dorástli.",
-      "upgrade_city": "Budovy je možné upgradovať. Kliknutím na svoje mesto otvorte jeho kartu a potom stlačte Upgrade: každá úroveň sa počíta ako jedno ďalšie mesto."
+      "upgrade_city": "Budovy je možné upgradovať. Kliknutím na svoje mesto otvorte jeho kartu a potom stlačte Upgrade: každá úroveň uvoľní miesto pre viac ľudí až do úrovne 5."
     },
     "step_counter": "Krok {current} z {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Silný sused je lepší ako priateľ. Klepnite na národ s cieľom a potom klepnite na podanie ruky a požiadajte o spojenectvo.",
       "send_boat": "Lode prevážajú vaše jednotky cez vodu. Klepnutím na nepriateľské pobrežie cez more otvorte radiálne menu a potom vyberte loď.",
       "spawn": "Vitajte v Territoriu! Klepnutím kdekoľvek na mape vyberte miesto štartu. Neskôr príde vhod pobrežie.",
-      "upgrade_city": "Budovy je možné upgradovať. Klepnutím na svoje mesto otvorte jeho kartu a potom klepnite na Aktualizovať: každá úroveň sa počíta ako jedno ďalšie mesto."
+      "upgrade_city": "Budovy je možné upgradovať. Klepnutím na svoje mesto otvorte jeho kartu a potom klepnite na položku Inovovať: každá úroveň uvoľní miesto pre viac ľudí až do úrovne 5."
     },
     "title": "Návod"
   },

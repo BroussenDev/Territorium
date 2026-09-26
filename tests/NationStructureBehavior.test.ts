@@ -981,3 +981,41 @@ describe("NationStructureBehavior.getOrBuildReachableStations", () => {
     expect(buildSpy).toHaveBeenCalledTimes(2);
   });
 });
+
+// ── maybeSpawnStructure: upgrade or build ────────────────────────────────────
+
+describe("NationStructureBehavior.maybeSpawnStructure with a dense territory", () => {
+  function makeDense(levels: number[]) {
+    const cities = levels.map((level) => ({ level: () => level }));
+    const game: any = {
+      config: () => ({
+        unitInfo: () => ({ upgradable: true }),
+        maxStructureLevel: () => 5,
+      }),
+    };
+    const player: any = {
+      gold: () => 10n ** 12n,
+      units: vi.fn(() => cities),
+      numTilesOwned: () => 1,
+    };
+    const behavior = makeBehavior(game, player);
+    vi.spyOn(behavior as any, "getPerceivedCost").mockReturnValue(0n);
+    vi.spyOn(behavior as any, "maybeUpgradeStructure").mockReturnValue(false);
+    const spawnTile = vi
+      .spyOn(behavior as any, "structureSpawnTile")
+      .mockReturnValue(null);
+    return { behavior, spawnTile };
+  }
+
+  it("waits while one of its structures can still level up", () => {
+    const { behavior, spawnTile } = makeDense([5, 3]);
+    expect((behavior as any).maybeSpawnStructure(UnitType.City)).toBe(false);
+    expect(spawnTile).not.toHaveBeenCalled();
+  });
+
+  it("builds a new one once every structure is at its level cap", () => {
+    const { behavior, spawnTile } = makeDense([5, 5]);
+    (behavior as any).maybeSpawnStructure(UnitType.City);
+    expect(spawnTile).toHaveBeenCalledWith(UnitType.City);
+  });
+});

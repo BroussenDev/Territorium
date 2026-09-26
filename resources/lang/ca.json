@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Error de verificació: {code}. Actualitzeu i torneu-ho a provar."
   },
+  "event_history": {
+    "empty": "Encara no ha passat res.",
+    "filter_all": "Tots",
+    "filter_attack": "Atacs",
+    "filter_chat": "Xat",
+    "filter_diplomacy": "Diplomàcia",
+    "filter_nuke": "Míssils",
+    "filter_trade": "Comerç",
+    "hours_ago": "fa {n} h",
+    "just_now": "ara mateix",
+    "minutes_ago": "fa {n} min",
+    "seconds_ago": "fa {n} s",
+    "title": "Historial d'esdeveniments"
+  },
   "events_display": {
     "about_to_expire": "La teva aliança amb {name} està a punt d'expirar!",
     "accept_alliance": "Accepta",
@@ -953,6 +967,7 @@
     "no_boats_available": "No et queden vaixells, en pots enviar com a molt {max}",
     "objective_captured": "Has capturat un objectiu del mapa: més or i creixement de tropes mentre el mantens.",
     "objective_lost": "{name} va prendre un dels objectius del teu mapa.",
+    "objectives_revealed": "{count} objectius han aparegut al mapa!",
     "peace_broken": "{breaker} va trencar la pau amb {victim}! Perjuri.",
     "peace_expired": "La pau amb {name} ha expirat.",
     "peace_rejected": "{name} va rebutjar el teu tractat de pau.",
@@ -1112,13 +1127,13 @@
       "factory": "Les fàbriques uneixen les vostres ciutats i ports per ferrocarril. Els trens guanyen or per cada edifici que visiten i més amb els dels teus veïns.",
       "frames": "El marc que envolta un edifici mostra el seu nivell: bronze a 2, plata a 3, or a 4.",
       "mirv": "Un MIRV es divideix en un eixam d'ogives sobre una àrea enorme i només colpeja el jugador al qual vas apuntar.",
-      "objectives": "Cada objectiu del mapa que tens dóna +15% d'or i +5% de tropes. Posseeix la major part de la seva zona durant 15 segons per capturar-la.",
-      "peace": "Perdre una guerra? Signar un tractat de pau: tres minuts sense atacs, sense necessitat d'aliança. Qualsevol que el trenqui és marcat com a traïdor davant de tots els jugadors.",
+      "objectives": "Els objectius del mapa apareixen un minut després del joc. Cadascun que tinguis dóna +15% d'or i +5% de tropes: posseeix la major part de la seva zona durant 15 segons per capturar-la.",
+      "peace": "Perdre una guerra? Ofereix pau al jugador contra el qual estàs lluitant: tres minuts sense atacs, sense necessitat d'aliança. Qualsevol que el trenqui és marcat com a traïdor davant de tots els jugadors.",
       "radar": "Un radar detecta vaixells, vaixells de guerra i míssils enemics dins de 100 fitxes, de manera que veuràs com s'acosta una invasió.",
       "sam": "Els llançadors SAM enderroquen míssils al seu abast. Cada nivell SAM afegeix un míssil llest per disparar i més abast.",
       "trade": "Els ports comercian amb altres països pel seu compte i ambdues parts guanyen or. Atacar un jugador atura el teu comerç amb ell durant 5 minuts.",
       "traitor": "Trencar una aliança et converteix en un traïdor durant 30 segons: la teva defensa es redueix a la meitat i els altres jugadors confien menys en tu.",
-      "upgrade": "Feu clic a un dels vostres edificis per obrir la seva targeta i actualitzar-la. Cada nivell de ciutat, port o fàbrica compta com un edifici més."
+      "upgrade": "Feu clic a un dels vostres edificis per actualitzar-lo: una ciutat més gran té més gent, un port més gran envia més vaixells i una fàbrica més gran envia més trens. Cada edifici té un nivell màxim."
     },
     "title": "Iniciant la partida..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Encaixada de mans: demanar una aliança. Els aliats no es poden atacar entre ells i es poden enviar tropes i or.",
     "info_chat": "Xat ràpid: tria una categoria i una frase; si anomena un jugador, tria qui i després envia.",
     "info_emoji": "Emoji: envia un emoji ràpid al jugador.",
-    "info_peace": "Bandera blanca: ofereix un tractat de pau a un enemic. Un cop signat, cap dels dos podrà atacar a l'altre durant 3 minuts i s'aturaran els atacs en curs. Qui ho trenca és marcat com a traïdor i a cada jugador se'l diu.",
+    "info_peace": "Bandera blanca: ofereix un tractat de pau a un jugador amb el qual estàs en guerra (lluitant ara o en els últims 2 minuts). Un cop signat, cap dels dos podrà atacar a l'altre durant 3 minuts i s'aturaran els atacs en curs. Qui ho trenca és marcat com a traïdor i a cada jugador se'l diu.",
     "info_target": "Objectiu: marca aquest jugador per a tots els teus aliats, per planificar un atac junts.",
     "info_trade": "Comerç: atura o reinicia l'enviament de vaixells comercials a aquest jugador. El comerç torna a començar quan tots dos ho permeteu.",
     "objectives_bonus": "Cada objectiu que tinguis dóna +15% d'or i +5% de tropes.",
     "objectives_cap": "Només fins a la meitat dels objectius compten per a la teva bonificació (2 de 4, 3 de 5 o 6), de manera que ningú guanya només mantenint-los tots.",
     "objectives_capture": "Posseeix la major part de la zona durant 15 segons per capturar-la. L'anell s'omple mentre l'agafes.",
-    "objectives_desc": "Alguns jocs situen objectius al mapa. Cadascuna és una zona que val la pena mantenir durant tot el joc.",
+    "objectives_desc": "Alguns jocs situen objectius al mapa. Apareixen un minut després del joc, amb un anunci, perquè ningú els pugui precipitar des del principi. Cadascuna és una zona que val la pena mantenir durant tot el joc.",
     "objectives_title": "Objectius del mapa",
     "objectives_where": "Apareixen en jocs en solitari, privats i públics; classificat, 1v1, 2v2 i la cursa diària no en tenen cap. El creador del joc pot desactivar-los.",
     "objectives_zone": "Un objectiu al mapa",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "El teu equip:",
     "upgrades_card": "Targeta d'estructura",
     "upgrades_desc": "Feu clic a un dels vostres edificis per obrir la seva targeta: el seu nivell, què aporta el següent nivell i el botó d'actualització.",
-    "upgrades_economy": "Ciutats, ports i fàbriques: sense límit i sense espera. Cada nivell compta com un edifici més.",
-    "upgrades_frames": "Els edificis millorats tenen un marc al mapa: bronze al nivell 2, plata al 3, or al 4.",
+    "upgrades_economy": "Ciutats, ports i fàbriques pugen al nivell 5, de seguida. Cada nivell d'una ciutat alberga més gent, un port envia més vaixells comercials i repara més vaixells de guerra alhora, una fàbrica envia més trens.",
+    "upgrades_frames": "Els edificis millorats tenen un marc al mapa: bronze al nivell 2, plata al 3, or al 4 i maragda al 5.",
     "upgrades_military": "Els SAM pugen fins al nivell 5 (+1 míssil preparat i més abast per nivell), sitges i radars fins al nivell 3. Cada nou nivell es desbloqueja a mesura que avança el joc: la targeta mostra el compte enrere.",
     "upgrades_ranked": "En els jocs classificats, els nivells són més baixos (SAM 3, sitja i radar 2) i es desbloquegen més tard.",
     "upgrades_title": "Actualitzacions de l'edifici"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% d'or, +{troops}% de tropes (màx.)",
     "cap_hint": "La teva bonificació compta com a màxim {max} objectius. Tenir-ne més només els treu als teus rivals.",
     "held": "Objectius {held}/{total}",
+    "reveal_in": "Objectius d'aquí a {time}",
     "zone_label": "Objectiu {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Expulsa a {name}?\n\nNo podran tornar a unir-se a aquesta partida.",
     "kicked": "Jugador ja expulsat",
     "moderation": "Moderació",
+    "peace_needs_war": "Només pots oferir pau a un jugador amb qui estàs en guerra",
     "peace_time_remaining": "La pau acaba en",
     "propose_peace": "Ofereix pau",
     "report": "Informeu",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Míssils {from} → {to}",
+    "gain_population": "Població màxima +{from} → +{to}",
     "gain_range": "Abast {from} → {to}",
-    "gain_stack": "Compta com un edifici més d'aquest tipus",
+    "gain_repairs": "Molls de reparació de vaixells de guerra {from} → {to}",
+    "gain_trade_ships": "Naus comercials ×{from} → ×{to}",
+    "gain_trains": "Trens enviats ×{from} → ×{to}",
     "level": "Nivell {level}",
     "level_of": "Nivell {level} / {max}",
     "locked": "Nivell {level} disponible d'aquí a {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "La teva sitja està a punt! Premeu {key} i, a continuació, feu clic a la terra d'un veí per llançar una bomba atòmica.",
       "mirv_info": "MIRV: pluja d'ogives sobre un únic enemic. L'arma definitiva.",
       "no_coast": "Encara no tens cap costa. El mar obre vaixells, ports i comerç: expandeix-te fins arribar a la costa.",
-      "objectives": "Aquest mapa té objectius: zones brillants que val la pena mantenir. Teniu la majoria d'un durant 15 segons per capturar-lo, per +15% d'or i +5% de tropes. Aquest comptador mostra quants en tens.",
+      "objectives": "Aquest mapa té objectius: zones brillants que apareixen un minut després del joc. Teniu la majoria d'un durant 15 segons per capturar-lo, per +15% d'or i +5% de tropes. Aquest comptador mostra el temps que queda abans que apareguin i, a continuació, quants en tens.",
       "port_info_ships": "Els ports envien vaixells comercials a altres països i cada viatge et guanya or.",
       "port_info_warships": "Els ports també construeixen vaixells de guerra.",
       "propose_alliance": "Un veí fort és millor com a amic. Feu clic amb el botó dret a la nació amb l'objectiu i demaneu una aliança.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Un traïdor perd la meitat de la seva defensa durant 30 segons. Tria el teu moment amb cura.",
       "troop_rate": "Així creixen ràpidament les vostres tropes. S'alenteix, i es torna taronja, un cop supereu la meitat del vostre màxim.",
       "troops": "Aquestes són les vostres tropes. Cada atac gasta alguns d'ells, així que doneu-los temps perquè tornin a créixer entre atacs.",
-      "upgrade_city": "Els edificis es poden millorar. Feu clic a la vostra ciutat per obrir la seva targeta i, a continuació, premeu Actualitza: cada nivell compta com una ciutat més."
+      "upgrade_city": "Els edificis es poden millorar. Feu clic a la vostra ciutat per obrir la seva targeta i, a continuació, premeu Actualitza: cada nivell deixa espai per a més persones, fins al nivell 5."
     },
     "step_counter": "Pas {current} de {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Un veí fort és millor com a amic. Toca la nació amb l'objectiu i després toca l'encaixada de mans per demanar una aliança.",
       "send_boat": "Els vaixells porten les vostres tropes a través de l'aigua. Toqueu una costa enemiga a través del mar per obrir el menú radial i, a continuació, trieu el vaixell.",
       "spawn": "Benvingut a Territorium! Toqueu qualsevol lloc del mapa per triar el vostre punt de partida. Una línia de costa serà útil més endavant.",
-      "upgrade_city": "Els edificis es poden millorar. Toca la teva ciutat per obrir-ne la targeta i després toca Actualitza: cada nivell compta com una ciutat més."
+      "upgrade_city": "Els edificis es poden millorar. Toqueu la vostra ciutat per obrir la seva targeta i, a continuació, toqueu Actualitza: cada nivell deixa espai per a més persones, fins al nivell 5."
     },
     "title": "Tutorial"
   },

@@ -364,7 +364,8 @@ export class TutorialPanel extends LitElement implements Controller {
       upgraded: player
         .units(...UPGRADABLE_TYPES)
         .some((u) => u.isActive() && u.level() > 1),
-      objectivesExist: this.game.objectives().length > 0,
+      // They only appear a minute in; the chip counts down until then.
+      objectivesExist: this.game.config().objectives(),
       portDisabled: this.game.config().isUnitDisabled(UnitType.Port),
       ports: player.units(UnitType.Port).length,
       defensePostDisabled: this.game

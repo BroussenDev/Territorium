@@ -76,6 +76,9 @@ export class ControlPanel extends LitElement implements Controller {
   private _objectivesRewarded = 0;
   @state()
   private _objectivesTotal = 0;
+  // Seconds before the objectives appear, null once they have (or when the
+  // game has none).
+  private _objectivesRevealIn: number | null = null;
 
   @state()
   private _tutorialHighlight: TutorialHighlight | null = null;
@@ -155,6 +158,16 @@ export class ControlPanel extends LitElement implements Controller {
       .reduce((a, b) => a + b, 0);
     this.troopRate = config.troopIncreaseRate(player) * 10;
     this._objectivesTotal = this.game.objectives().length;
+    this._objectivesRevealIn =
+      this._objectivesTotal === 0 && config.objectives()
+        ? Math.max(
+            0,
+            Math.ceil(
+              config.objectiveRevealDelay() / 10 -
+                this.game.elapsedGameSeconds(),
+            ),
+          )
+        : null;
     this._objectivesHeld = player.objectivesHeld();
     this._objectivesRewarded = player.objectivesRewarded();
 
@@ -519,6 +532,16 @@ export class ControlPanel extends LitElement implements Controller {
 
   /** Map objectives held and their bonus; only when the game has them. */
   private renderObjectives() {
+    if (this._objectivesRevealIn !== null) {
+      return html`<div
+        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border border-gray-600 text-xs font-medium text-white/70 ${this.tutorialHighlightClass(
+          "objectives",
+        )}"
+      >
+        <span aria-hidden="true">◆</span>
+        <span>${this.objectivesRevealText()}</span>
+      </div>`;
+    }
     if (this._objectivesTotal === 0) return html``;
     const held = this._objectivesHeld;
     return html`
@@ -548,6 +571,19 @@ export class ControlPanel extends LitElement implements Controller {
 
   /** The desktop's objectives chip, beside the attack slider. */
   private renderObjectivesChip() {
+    if (this._objectivesRevealIn !== null) {
+      return html`<div
+        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border border-gray-600 leading-tight text-white/70 ${this.tutorialHighlightClass(
+          "objectives",
+        )}"
+        translate="no"
+      >
+        <span class="text-xs font-bold whitespace-nowrap tabular-nums"
+          ><span aria-hidden="true">◆</span>
+          ${this.objectivesRevealText()}</span
+        >
+      </div>`;
+    }
     if (this._objectivesTotal === 0) return html``;
     const held = this._objectivesHeld;
     return html`
@@ -576,6 +612,14 @@ export class ControlPanel extends LitElement implements Controller {
           : ""}
       </div>
     `;
+  }
+
+  /** "Objectives in 0:42", before they appear on the map. */
+  private objectivesRevealText(): string {
+    const s = this._objectivesRevealIn ?? 0;
+    return translateText("objectives.reveal_in", {
+      time: `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`,
+    });
   }
 
   private objectivesHint(): string {

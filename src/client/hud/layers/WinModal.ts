@@ -1,10 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import {
-  getGamesPlayed,
-  homeHref,
-  translateText,
-} from "../../../client/Utils";
+import { getGamesPlayed, homeHref, translateText } from "../../../client/Utils";
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";

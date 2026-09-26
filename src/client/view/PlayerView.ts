@@ -563,6 +563,12 @@ export class PlayerView {
     return this.state.troops;
   }
 
+  /** Finished buildings of `type`, however far each one is upgraded. */
+  structureCount(type: UnitType): number {
+    return this.units(type).filter((unit) => !unit.isUnderConstruction())
+      .length;
+  }
+
   totalUnitLevels(type: UnitType): number {
     return this.units(type)
       .filter((unit) => !unit.isUnderConstruction())

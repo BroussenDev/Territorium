@@ -24,6 +24,7 @@ import {
 import { UIState } from "../../UIState";
 import { getMessageTypeClasses, translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
+import { HistoryEntryEvent } from "./EventHistory";
 
 interface ActionableEvent {
   description: string;
@@ -80,6 +81,15 @@ export class ActionableEvents extends LitElement implements Controller {
   private addEvent(event: ActionableEvent) {
     this.events = [...this.events, event];
     this.requestUpdate();
+    this.eventBus.emit(
+      new HistoryEntryEvent(
+        event.description,
+        event.type,
+        event.createdAt,
+        false,
+        event.focusID,
+      ),
+    );
   }
 
   private removeEvent(index: number) {

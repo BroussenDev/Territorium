@@ -198,11 +198,13 @@ void main() {
   }
 
   // Upgraded structures get a metal frame: bronze at level 2, silver at 3,
-  // gold from 4. A light sheen runs down the frame so it reads as metal.
+  // gold at 4 and emerald at 5. A light sheen runs down the frame so it reads
+  // as metal.
   if (!building && vLevel > 1.5) {
     vec3 metal = vLevel < 2.5 ? vec3(0.80, 0.50, 0.24)
                : vLevel < 3.5 ? vec3(0.80, 0.83, 0.88)
-               : vec3(1.00, 0.80, 0.24);
+               : vLevel < 4.5 ? vec3(1.00, 0.80, 0.24)
+               : vec3(0.20, 0.83, 0.60);
     float sheen = 1.15 - (vLocalPos.y + 0.5) * 0.45;
     borderColor.rgb = metal * sheen;
   }

@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Erro de verificação: {code}. Atualize e tente novamente."
   },
+  "event_history": {
+    "empty": "Ainda não aconteceu nada.",
+    "filter_all": "Tudo",
+    "filter_attack": "Ataques",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomacia",
+    "filter_nuke": "Mísseis",
+    "filter_trade": "Comércio",
+    "hours_ago": "há {n} h",
+    "just_now": "agora mesmo",
+    "minutes_ago": "há {n} min",
+    "seconds_ago": "há {n} s",
+    "title": "Histórico de eventos"
+  },
   "events_display": {
     "about_to_expire": "A aliança com {name} está prestes a expirar!",
     "accept_alliance": "Aceitar",
@@ -953,6 +967,7 @@
     "no_boats_available": "Não há barcos disponíveis, máx. {max}",
     "objective_captured": "Capturou um objetivo do mapa: mais ouro e crescimento de tropas enquanto o mantiver.",
     "objective_lost": "{name} pegou num dos objetivos do seu mapa.",
+    "objectives_revealed": "Apareceram {count} objetivos no mapa!",
     "peace_broken": "{breaker} quebrou a paz com {victim}! Perjúrio.",
     "peace_expired": "A paz com {name} expirou.",
     "peace_rejected": "{name} recusou o seu tratado de paz.",
@@ -1112,13 +1127,13 @@
       "factory": "As fábricas ligam as suas cidades e portos por via férrea. Os comboios ganham ouro por cada edifício que visitam e muito mais pelos seus vizinhos.",
       "frames": "A moldura em torno de um edifício mostra o seu nível: bronze no 2, prata no 3, ouro no 4.",
       "mirv": "Um MIRV divide-se num enxame de ogivas sobre uma área enorme e atinge apenas o jogador que apontaste.",
-      "objectives": "Cada objetivo do mapa que possua dá +15% de ouro e +5% de tropas. Domina a maior parte da sua zona durante 15 segundos para a capturar.",
-      "peace": "Perder uma guerra? Assinar um tratado de paz: três minutos sem ataques, sem necessidade de aliança. Qualquer um que o quebre será marcado como traidor à frente de todos os jogadores.",
+      "objectives": "Os objetivos do mapa aparecem um minuto após o início do jogo. Cada um que segurar dá +15% de ouro e +5% de tropas: domina a maior parte da sua zona durante 15 segundos para o capturar.",
+      "peace": "Perder uma guerra? Ofereça paz ao jogador contra quem está a lutar: três minutos sem ataques, sem necessidade de aliança. Qualquer um que o quebre será marcado como traidor à frente de todos os jogadores.",
       "radar": "Um radar localiza barcos, navios de guerra e mísseis inimigos num raio de 100 blocos, para que vejas uma invasão a chegar.",
       "sam": "Os lançadores SAM abatem mísseis ao alcance. Cada nível SAM acrescenta um míssil pronto a disparar e mais alcance.",
       "trade": "Os portos negoceiam com outros países por conta própria e ambos os lados ganham ouro. Atacar um jogador interrompe a sua negociação com ele durante 5 minutos.",
       "traitor": "Quebrar uma aliança faz de si um traidor durante 30 segundos: a sua defesa cai para metade e os outros jogadores confiam menos em si.",
-      "upgrade": "Clique num dos seus edifícios para abrir o seu cartão e atualizá-lo. Cada nível de cidade, porto ou fábrica conta como mais um edifício."
+      "upgrade": "Clique num dos seus edifícios para o melhorar: uma cidade maior pode receber mais pessoas, um porto maior envia mais navios e uma fábrica maior envia mais comboios. Cada edifício tem um nível máximo."
     },
     "title": "O jogo está a começar..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Aperto de mão - peça uma aliança. Os aliados não se podem atacar uns aos outros e podem enviar tropas e ouro uns aos outros.",
     "info_chat": "Chat rápido - escolha uma categoria e uma frase; se nomear um jogador, escolha quem e envie.",
     "info_emoji": "Emoji - enviar um emoji rápido ao jogador.",
-    "info_peace": "Bandeira branca - ofereça um tratado de paz ao inimigo. Uma vez assinado, nenhum de vós poderá atacar o outro durante 3 minutos e os ataques em curso serão interrompidos. Quem o quebra é marcado como traidor e cada jogador é avisado.",
+    "info_peace": "Bandeira branca - ofereça um tratado de paz a um jogador com quem está em guerra (a lutar agora ou nos últimos 2 minutos). Uma vez assinado, nenhum de vós poderá atacar o outro durante 3 minutos e os ataques em curso serão interrompidos. Quem o quebra é marcado como traidor e cada jogador é avisado.",
     "info_target": "Alvo - marque este jogador para todos os seus aliados, para planearem um ataque em conjunto.",
     "info_trade": "Comércio - pare ou reinicie o envio de navios mercantes para este jogador. A negociação recomeça quando ambos o permitem.",
     "objectives_bonus": "Cada objetivo que mantiver dá +15% de ouro e +5% de tropas.",
     "objectives_cap": "Apenas até metade dos objetivos contam para o seu bónus (2 em 4, 3 em 5 ou 6), pelo que ninguém ganha apenas por os manter todos.",
     "objectives_capture": "Domina a maior parte da zona durante 15 segundos para a capturares. O anel enche enquanto o segura.",
-    "objectives_desc": "Alguns jogos colocam os objetivos no mapa. Cada uma é uma zona que vale a pena manter durante todo o jogo.",
+    "objectives_desc": "Alguns jogos colocam os objetivos no mapa. Aparecem um minuto após o início do jogo, com um anúncio, para que ninguém os possa apressar desde o início. Cada uma é uma zona que vale a pena manter durante todo o jogo.",
     "objectives_title": "Objetivos do mapa",
     "objectives_where": "Aparecem em jogos a solo, privados e públicos; classificados, 1v1, 2v2 e a corrida diária não têm qualquer. O criador do jogo pode desativá-los.",
     "objectives_zone": "Um objetivo no mapa",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "A sua equipa:",
     "upgrades_card": "Cartão de estrutura",
     "upgrades_desc": "Clique num dos seus edifícios para abrir o seu cartão: o seu nível, o que o próximo nível traz e o botão de atualização.",
-    "upgrades_economy": "Cidades, portos e fábricas: sem limite e sem esperas. Cada nível conta como mais um edifício.",
-    "upgrades_frames": "Os edifícios atualizados ganham uma moldura no mapa: bronze no nível 2, prata no 3, ouro no 4.",
+    "upgrades_economy": "As cidades, portos e fábricas sobem imediatamente para o nível 5. Cada nível de uma cidade comporta mais pessoas, um porto envia mais navios mercantes e repara mais navios de guerra ao mesmo tempo, uma fábrica envia mais comboios.",
+    "upgrades_frames": "Os edifícios melhorados ganham uma moldura no mapa: bronze no nível 2, prata no 3, ouro no 4 e esmeralda no 5.",
     "upgrades_military": "Os SAM vão até ao nível 5 (+1 míssil pronto e mais alcance por nível), silos e radares até ao nível 3. Cada novo nível é desbloqueado à medida que o jogo avança: a carta mostra a contagem decrescente.",
     "upgrades_ranked": "Nos jogos classificados os níveis são mais baixos (SAM 3, silo e radar 2) e desbloqueados posteriormente.",
     "upgrades_title": "Atualizações de construção"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% ouro, +{troops}% tropas (máx.)",
     "cap_hint": "O seu bónus conta no máximo {max} objetivos. Manter mais apenas os tira aos seus rivais.",
     "held": "Objetivos {held}/{total}",
+    "reveal_in": "Objetivos em {time}",
     "zone_label": "Objetivo {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Kick {name}?\n\nNão poderão voltar ao jogo.",
     "kicked": "Já chutado",
     "moderation": "Moderação",
+    "peace_needs_war": "Só se pode oferecer paz a um jogador com quem se está em guerra",
     "peace_time_remaining": "A paz termina em",
     "propose_peace": "Ofereça paz",
     "report": "Relatório",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Mísseis {from} → {to}",
+    "gain_population": "População máxima +{from} → +{to}",
     "gain_range": "Alcance {from} → {to}",
-    "gain_stack": "Conta como mais um edifício deste tipo",
+    "gain_repairs": "Docas de reparação de navios de guerra {from} → {to}",
+    "gain_trade_ships": "Navios comerciais ×{from} → ×{to}",
+    "gain_trains": "Comboios enviados ×{from} → ×{to}",
     "level": "Nível {level}",
     "level_of": "Nível {level} / {max}",
     "locked": "Nível {level} disponível dentro de {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "O seu silo está pronto! Pressiona {key} e clica nas terras de um vizinho para lançar uma bomba atómica.",
       "mirv_info": "MIRV: uma chuva de ogivas sobre um único inimigo. A arma definitiva.",
       "no_coast": "Ainda não tem litoral. O mar abre barcos, portos e comércio: expanda até chegar à costa.",
-      "objectives": "Este mapa tem objetivos: zonas brilhantes que vale a pena manter. Tenha a maior parte de um durante 15 segundos para o capturar, ganhando + 15% de ouro e + 5% de tropas. Este contador mostra quantos possui.",
+      "objectives": "Este mapa tem objetivos: zonas brilhantes que aparecem após um minuto de jogo. Tenha a maior parte de um durante 15 segundos para o capturar, ganhando + 15% de ouro e + 5% de tropas. Este contador mostra o tempo restante antes de aparecerem e quantos possui.",
       "port_info_ships": "Os portos enviam navios comerciais para outros países e cada viagem rende ouro.",
       "port_info_warships": "Os portos também constroem navios de guerra.",
       "propose_alliance": "Um vizinho forte é melhor como amigo. Clique com o botão direito do rato na nação com o alvo e peça uma aliança.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Um traidor perde metade da sua defesa durante 30 segundos. Escolha o seu momento com cuidado.",
       "troop_rate": "É assim que as suas tropas crescem rapidamente. Diminui a velocidade e fica laranja quando se passa metade do seu máximo.",
       "troops": "Estas são as suas tropas. Cada ataque gasta parte deles, por isso dê-lhes tempo para crescerem novamente entre os ataques.",
-      "upgrade_city": "Os edifícios podem ser atualizados. Clique na sua cidade para abrir o cartão e prima Atualizar: cada nível conta como mais uma cidade."
+      "upgrade_city": "Os edifícios podem ser atualizados. Clique na sua cidade para abrir o cartão e prima Atualizar: cada nível abre espaço para mais pessoas, até ao nível 5."
     },
     "step_counter": "Etapa {current} de {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Um vizinho forte é melhor como amigo. Toque na nação com o alvo e, em seguida, toque no aperto de mão para pedir uma aliança.",
       "send_boat": "Os barcos transportam as suas tropas através da água. Toca na costa inimiga do outro lado do mar para abrir o menu radial e escolhe o barco.",
       "spawn": "Bem-vindo ao Territorium! Toque em qualquer ponto do mapa para escolher o seu ponto de partida. Um litoral será útil mais tarde.",
-      "upgrade_city": "Os edifícios podem ser atualizados. Toque na sua cidade para abrir o cartão e depois toque em Atualizar: cada nível conta como mais uma cidade."
+      "upgrade_city": "Os edifícios podem ser atualizados. Toque na sua cidade para abrir o cartão e depois toque em Atualizar: cada nível abre espaço para mais pessoas, até ao nível 5."
     },
     "title": "Tutorial"
   },

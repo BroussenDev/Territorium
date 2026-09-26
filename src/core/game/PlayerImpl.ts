@@ -941,6 +941,21 @@ export class PlayerImpl implements Player {
     return this.peaceTreatyWith(other) !== null;
   }
 
+  isAtWarWith(other: Player): boolean {
+    if (other === this) return false;
+    const last = this.mg.lastHostilityBetween(this, other);
+    if (
+      last !== null &&
+      this.mg.ticks() - last <= this.mg.config().warWindow()
+    ) {
+      return true;
+    }
+    return (
+      this._outgoingAttacks.some((a) => a.target() === other) ||
+      other.outgoingAttacks().some((a) => a.target() === this)
+    );
+  }
+
   canProposePeace(other: Player): boolean {
     if (other === this || !this.isAlive() || !other.isAlive()) {
       return false;
@@ -954,6 +969,11 @@ export class PlayerImpl implements Player {
     // Answering their proposal is always allowed: it signs the treaty.
     if (this.incomingPeaceRequests().some((r) => r.requestor() === other)) {
       return true;
+    }
+    // Peace ends a war: nothing to sign with a neighbour you are not
+    // fighting.
+    if (!this.isAtWarWith(other)) {
+      return false;
     }
     // One proposal at a time.
     if (this.outgoingPeaceRequest() !== null) {
@@ -1959,6 +1979,7 @@ export class PlayerImpl implements Player {
     );
     this._outgoingAttacks.push(attack);
     if (target.isPlayer()) {
+      this.mg.recordHostility(this, target);
       (target as PlayerImpl)._incomingAttacks.push(attack);
     }
     return attack;

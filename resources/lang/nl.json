@@ -922,6 +922,20 @@
     },
     "turnstile_error": "Verificatiefout: {code}. Ververs en probeer het opnieuw."
   },
+  "event_history": {
+    "empty": "Er is nog niets gebeurd.",
+    "filter_all": "Alle",
+    "filter_attack": "Aanvallen",
+    "filter_chat": "Chat",
+    "filter_diplomacy": "Diplomatie",
+    "filter_nuke": "Raketten",
+    "filter_trade": "Handel",
+    "hours_ago": "{n} uur geleden",
+    "just_now": "zojuist",
+    "minutes_ago": "{n} min geleden",
+    "seconds_ago": "{n} s geleden",
+    "title": "Gebeurtenisgeschiedenis"
+  },
   "events_display": {
     "about_to_expire": "Je alliantie met {name} verloopt bijna!",
     "accept_alliance": "Aanvaarden",
@@ -953,6 +967,7 @@
     "no_boats_available": "Geen boten beschikbaar, max. {max}",
     "objective_captured": "Je hebt een kaartdoel veroverd: meer goud en troepengroei zolang je het vasthoudt.",
     "objective_lost": "{name} heeft een van je kaartdoelen genomen.",
+    "objectives_revealed": "{count} doelstellingen zijn op de kaart verschenen!",
     "peace_broken": "{breaker} verbrak de vrede met {victim}! Meineed.",
     "peace_expired": "De vrede met {name} is verlopen.",
     "peace_rejected": "{name} heeft uw vredesverdrag geweigerd.",
@@ -1112,13 +1127,13 @@
       "factory": "Fabrieken verbinden uw steden en havens per spoor. Treinen verdienen goud voor elk gebouw dat ze bezoeken, en meer bij je buren.",
       "frames": "Het frame rond een gebouw geeft het niveau aan: brons op 2, zilver op 3, goud vanaf 4.",
       "mirv": "Een MIRV splitst zich in een zwerm kernkoppen over een enorm gebied en raakt alleen de speler waarop je mikt.",
-      "objectives": "Elk kaartdoel dat je bezit levert +15% goud en +5% troepen op. Bezit het grootste deel van zijn zone gedurende 15 seconden om het te veroveren.",
-      "peace": "Een oorlog verliezen? Teken een vredesverdrag: drie minuten zonder aanvallen, zonder alliantie. Iedereen die deze overtreedt, wordt in het bijzijn van alle spelers als verrader gemarkeerd.",
+      "objectives": "Kaartdoelstellingen verschijnen na één minuut in het spel. Elk exemplaar dat je vasthoudt levert +15% goud en +5% troepen op: bezit het grootste deel van zijn zone gedurende 15 seconden om het te veroveren.",
+      "peace": "Een oorlog verliezen? Bied vrede aan de speler tegen wie je vecht: drie minuten zonder aanvallen, zonder alliantie. Iedereen die deze overtreedt, wordt in het bijzijn van alle spelers als verrader gemarkeerd.",
       "radar": "Een radar signaleert vijandelijke boten, oorlogsschepen en raketten binnen 100 tegels, dus je ziet een invasie aankomen.",
       "sam": "SAM-lanceerinrichtingen schieten raketten binnen bereik neer. Elk SAM-niveau voegt een raket toe die gereed is om te vuren en een groter bereik.",
       "trade": "Havens handelen op eigen kracht met andere landen, en beide partijen verdienen goud. Als je een speler aanvalt, wordt je ruil met hem gedurende 5 minuten stopgezet.",
       "traitor": "Als je een alliantie verbreekt, ben je voor 30 seconden een verrader: je verdediging daalt met de helft en andere spelers vertrouwen je minder.",
-      "upgrade": "Klik op een van je gebouwen om de bijbehorende kaart te openen en deze te upgraden. Elk stad-, haven- of fabrieksniveau telt als één gebouw extra."
+      "upgrade": "Klik op een van je gebouwen om het te upgraden: een grotere stad biedt plaats aan meer mensen, een grotere haven stuurt meer schepen en een grotere fabriek stuurt meer treinen. Elk gebouw heeft een maximaal niveau."
     },
     "title": "Spel gaat starten..."
   },
@@ -1320,13 +1335,13 @@
     "info_alliance": "Handdruk - vraag om een alliantie. Bondgenoten kunnen elkaar niet aanvallen en kunnen elkaar troepen en goud sturen.",
     "info_chat": "Snelle chat - kies een categorie en een zin; als er een speler wordt genoemd, kies dan wie en verzend vervolgens.",
     "info_emoji": "Emoji - stuur een snelle emoji naar de speler.",
-    "info_peace": "Witte vlag - bied een vredesverdrag aan een vijand. Eenmaal ondertekend, kan geen van jullie de ander gedurende 3 minuten aanvallen en stoppen de lopende aanvallen. Degene die het breekt, wordt gemarkeerd als een verrader en elke speler wordt op de hoogte gebracht.",
+    "info_peace": "Witte vlag - bied een vredesverdrag aan aan een speler met wie je in oorlog bent (nu of in de laatste 2 minuten). Eenmaal ondertekend, kan geen van jullie de ander gedurende 3 minuten aanvallen en stoppen de lopende aanvallen. Degene die het breekt, wordt gemarkeerd als een verrader en elke speler wordt op de hoogte gebracht.",
     "info_target": "Doel - markeer deze speler voor al je bondgenoten, om samen een aanval te plannen.",
     "info_trade": "Handel - stop of herstart het verzenden van handelsschepen naar deze speler. De handel begint opnieuw als jullie het allebei toestaan.",
     "objectives_bonus": "Elk doel dat je bezit levert +15% goud en +5% troepen op.",
     "objectives_cap": "Slechts de helft van de doelstellingen telt mee voor uw bonus (2 van 4, 3 van 5 of 6), dus niemand wint door ze allemaal vast te houden.",
     "objectives_capture": "Bezit het grootste deel van de zone gedurende 15 seconden om deze te veroveren. De ring vult zich terwijl je hem vasthoudt.",
-    "objectives_desc": "Sommige games plaatsen doelstellingen op de kaart. Elk daarvan is een zone die de moeite waard is om het hele spel vast te houden.",
+    "objectives_desc": "Sommige games plaatsen doelstellingen op de kaart. Ze verschijnen na één minuut in het spel, met een aankondiging, zodat niemand ze vanaf het begin kan overhaasten. Elk daarvan is een zone die de moeite waard is om het hele spel vast te houden.",
     "objectives_title": "Doelstellingen in kaart brengen",
     "objectives_where": "Ze verschijnen in solo-, privé- en openbare games; gerangschikt, 1v1, 2v2 en de dagelijkse race hebben er geen. De maker van het spel kan ze uitschakelen.",
     "objectives_zone": "Een doel op de kaart",
@@ -1367,8 +1382,8 @@
     "ui_your_team": "Jouw team:",
     "upgrades_card": "Structuur kaart",
     "upgrades_desc": "Klik op een van je gebouwen om de bijbehorende kaart te openen: het niveau, wat het volgende niveau brengt en de upgradeknop.",
-    "upgrades_economy": "Steden, havens en fabrieken: geen limiet en geen wachttijden. Elk niveau telt als één gebouw meer.",
-    "upgrades_frames": "Opgewaardeerde gebouwen krijgen een kader op de kaart: brons op niveau 2, zilver op 3, goud vanaf 4.",
+    "upgrades_economy": "Steden, havens en fabrieken gaan meteen naar niveau 5. Op elk niveau van een stad wonen meer mensen, een haven stuurt meer handelsschepen en repareert meer oorlogsschepen tegelijk, een fabriek stuurt meer treinen.",
+    "upgrades_frames": "Opgewaardeerde gebouwen krijgen een kader op de kaart: brons op niveau 2, zilver op 3, goud op 4 en smaragd op 5.",
     "upgrades_military": "SAM's gaan naar niveau 5 (+1 raket gereed en meer bereik per niveau), silo's en radars naar niveau 3. Elk nieuw niveau wordt ontgrendeld naarmate het spel vordert: de kaart toont het aftellen.",
     "upgrades_ranked": "In gerangschikte spellen zijn de niveaus lager (SAM 3, silo en radar 2) en worden ze later ontgrendeld.",
     "upgrades_title": "Upgrades van gebouwen"
@@ -1799,6 +1814,7 @@
     "bonus_max": "+{gold}% goud, +{troops}% troepen (max.)",
     "cap_hint": "Je bonus telt maximaal {max} doelen. Meer vasthouden houdt ze alleen weg bij je rivalen.",
     "held": "Doelen {held}/{total}",
+    "reveal_in": "Doelen over {time}",
     "zone_label": "Doel {letter}"
   },
   "overtime": {
@@ -1846,6 +1862,7 @@
     "kick_confirm": "Verwijder {name}?\n\nZe kunnen niet opnieuw deelnemen aan dit spel.",
     "kicked": "Al verwijderd",
     "moderation": "Moderatie",
+    "peace_needs_war": "Je kunt alleen vrede bieden aan een speler met wie je in oorlog bent",
     "peace_time_remaining": "Vrede eindigt binnen",
     "propose_peace": "Bied vrede aan",
     "report": "Rapporteer",
@@ -2319,8 +2336,11 @@
   },
   "structure_card": {
     "gain_missiles": "Raketten {from} → {to}",
+    "gain_population": "Maximale populatie +{from} → +{to}",
     "gain_range": "Bereik {from} → {to}",
-    "gain_stack": "Telt als één extra gebouw van dit type",
+    "gain_repairs": "Reparatiedokken voor oorlogsschepen {from} → {to}",
+    "gain_trade_ships": "Handelsschepen ×{from} → ×{to}",
+    "gain_trains": "Treinen verzonden ×{from} → ×{to}",
     "level": "Niveau {level}",
     "level_of": "Niveau {level} / {max}",
     "locked": "Niveau {level} beschikbaar over {time}",
@@ -2448,7 +2468,7 @@
       "launch_atom": "Je silo is klaar! Druk op {key} en klik vervolgens op het land van een buurman om een atoombom te lanceren.",
       "mirv_info": "MIRV: een regen van kernkoppen over één enkele vijand. Het ultieme wapen.",
       "no_coast": "Je hebt nog geen kustlijn. De zee opent boten, havens en handel: breid uit tot je de kust bereikt.",
-      "objectives": "Deze kaart heeft doelstellingen: gloeiende zones die de moeite waard zijn om vast te houden. Bezit het grootste deel ervan gedurende 15 seconden om het te veroveren, voor +15% goud en +5% troepen. Deze teller laat zien hoeveel je er in je bezit hebt.",
+      "objectives": "Deze kaart heeft doelstellingen: gloeiende zones die na één minuut in het spel verschijnen. Bezit het grootste deel ervan gedurende 15 seconden om het te veroveren, voor +15% goud en +5% troepen. Deze teller toont de resterende tijd voordat ze verschijnen en hoeveel je er nog hebt.",
       "port_info_ships": "Havens sturen handelsschepen naar andere landen, en elke reis levert je goud op.",
       "port_info_warships": "Havens bouwen ook oorlogsschepen.",
       "propose_alliance": "Een sterke buur is beter als vriend. Klik met de rechtermuisknop op het land met het doelwit en vraag om een alliantie.",
@@ -2461,7 +2481,7 @@
       "traitor_info": "Een verrader verliest gedurende 30 seconden de helft van zijn verdediging. Kies je moment zorgvuldig.",
       "troop_rate": "Dit is hoe snel je troepen groeien. Het vertraagt en wordt oranje zodra u de helft van uw maximum passeert.",
       "troops": "Dit zijn jouw troepen. Elke aanval besteedt er een deel van, dus geef ze de tijd om tussen de aanvallen door opnieuw te groeien.",
-      "upgrade_city": "Gebouwen kunnen worden geüpgraded. Klik op je stad om de bijbehorende kaart te openen en druk vervolgens op Upgrade: elk niveau telt als één stad extra."
+      "upgrade_city": "Gebouwen kunnen worden geüpgraded. Klik op je stad om de bijbehorende kaart te openen en druk vervolgens op Upgrade: elk niveau maakt ruimte voor meer mensen, tot niveau 5."
     },
     "step_counter": "Stap {current} van {total}",
     "step_touch": {
@@ -2476,7 +2496,7 @@
       "propose_alliance": "Een sterke buur is beter als vriend. Tik op het land met het doelwit en tik vervolgens op de handdruk om een alliantie te vragen.",
       "send_boat": "Boten vervoeren je troepen over het water. Tik op een vijandelijke kust aan de overkant van de zee om het radiale menu te openen en kies vervolgens de boot.",
       "spawn": "Welkom in Territorium! Tik ergens op de kaart om uw startplek te kiezen. Een kustlijn komt later van pas.",
-      "upgrade_city": "Gebouwen kunnen worden geüpgraded. Tik op je stad om de bijbehorende kaart te openen en tik vervolgens op Upgrade: elk niveau telt als één extra stad."
+      "upgrade_city": "Gebouwen kunnen worden geüpgraded. Tik op je stad om de bijbehorende kaart te openen en tik vervolgens op Upgrade: elk niveau maakt ruimte voor meer mensen, tot niveau 5."
     },
     "title": "Tutorial"
   },
