@@ -107,6 +107,13 @@ export const buildTable: BuildItemDisplay[][] = [
       countable: true,
     },
     {
+      unitType: UnitType.Radar,
+      icon: radarIcon,
+      description: "build_menu.desc.radar",
+      key: "unit_type.radar",
+      countable: true,
+    },
+    {
       unitType: UnitType.DefensePost,
       icon: shieldIcon,
       description: "build_menu.desc.defense_post",
@@ -125,13 +132,6 @@ export const buildTable: BuildItemDisplay[][] = [
       icon: factoryIcon,
       description: "build_menu.desc.factory",
       key: "unit_type.factory",
-      countable: true,
-    },
-    {
-      unitType: UnitType.Radar,
-      icon: radarIcon,
-      description: "build_menu.desc.radar",
-      key: "unit_type.radar",
       countable: true,
     },
   ],

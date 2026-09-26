@@ -1,5 +1,16 @@
 # Territorium — Changelog
 
+## v0.1.3
+
+🧱 **Build bar**
+
+- Buildings are now grouped: economy (city, factory, port), defense (defense post, missile silo, SAM launcher, radar), navy (warship) and missiles (atom bomb, hydrogen bomb, EMP bomb, MIRV), with a thin separator between each group. The build menu and the hotkey settings follow the same order.
+- New default hotkeys: `V` for the radar and `X` for the EMP bomb. The old ones (`=` and `-`) also zoomed the map.
+
+⚡ **EMP**
+
+- A structure hit by an EMP is now shown in steady red for as long as it is disabled, instead of pulsing.
+
 ## v0.1.2
 
 ⚡ **EMP bomb**

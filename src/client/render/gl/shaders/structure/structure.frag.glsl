@@ -195,12 +195,11 @@ void main() {
     }
   }
 
-  // EMP: electric-blue shape with a slow pulse while the structure is out.
+  // EMP: a steady red shape while the structure is out.
   if (disabled) {
-    float pulse = 0.5 + 0.5 * sin(uTime * 6.0);
-    vec3 emp = vec3(0.35, 0.75, 1.0);
-    fillColor.rgb = mix(darken(fillColor.rgb, 0.5), emp, 0.55 + 0.25 * pulse);
-    borderColor.rgb = mix(emp, vec3(1.0), 0.3 * pulse);
+    vec3 empRed = vec3(0.86, 0.15, 0.15);
+    fillColor.rgb = mix(darken(fillColor.rgb, 0.5), empRed, 0.75);
+    borderColor.rgb = vec3(1.0, 0.45, 0.45);
   }
 
   vec4 bgColor = mix(borderColor, fillColor, borderMask);

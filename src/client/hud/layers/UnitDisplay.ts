@@ -169,6 +169,7 @@ export class UnitDisplay extends LitElement implements Controller {
             "port",
             this.keybinds["buildPort"]?.key ?? "3",
           )}
+          ${this.renderDivider()}
           ${this.renderUnitItem(
             defensePostIcon,
             this._defensePost,
@@ -191,12 +192,21 @@ export class UnitDisplay extends LitElement implements Controller {
             this.keybinds["buildSamLauncher"]?.key ?? "6",
           )}
           ${this.renderUnitItem(
+            radarIcon,
+            this._radar,
+            UnitType.Radar,
+            "radar",
+            this.keybinds["buildRadar"]?.key ?? "V",
+          )}
+          ${this.renderDivider()}
+          ${this.renderUnitItem(
             warshipIcon,
             this._warships,
             UnitType.Warship,
             "warship",
             this.keybinds["buildWarship"]?.key ?? "7",
           )}
+          ${this.renderDivider()}
           ${this.renderUnitItem(
             atomBombIcon,
             null,
@@ -212,29 +222,30 @@ export class UnitDisplay extends LitElement implements Controller {
             this.keybinds["buildHydrogenBomb"]?.key ?? "9",
           )}
           ${this.renderUnitItem(
+            empBombIcon,
+            null,
+            UnitType.EMPBomb,
+            "emp_bomb",
+            this.keybinds["buildEmpBomb"]?.key ?? "X",
+          )}
+          ${this.renderUnitItem(
             mirvIcon,
             null,
             UnitType.MIRV,
             "mirv",
             this.keybinds["buildMIRV"]?.key ?? "0",
           )}
-          ${this.renderUnitItem(
-            empBombIcon,
-            null,
-            UnitType.EMPBomb,
-            "emp_bomb",
-            this.keybinds["buildEmpBomb"]?.key ?? "-",
-          )}
-          ${this.renderUnitItem(
-            radarIcon,
-            this._radar,
-            UnitType.Radar,
-            "radar",
-            this.keybinds["buildRadar"]?.key ?? "=",
-          )}
         </div>
       </div>
     `;
+  }
+
+  // Thin rule between the economy, defense, navy and missile groups.
+  private renderDivider() {
+    return html`<div
+      class="w-px self-stretch my-1 mx-0.5 bg-white/15"
+      aria-hidden="true"
+    ></div>`;
   }
 
   private renderUnitItem(

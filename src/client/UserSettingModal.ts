@@ -1296,6 +1296,16 @@ export class UserSettingModal extends BaseModal {
       ></setting-keybind>
 
       <setting-keybind
+        action="buildRadar"
+        label=${translateText("user_setting.build_radar")}
+        description=${translateText("user_setting.build_radar_desc")}
+        defaultKey=${this.defaultKeybinds.buildRadar}
+        .value=${this.getKeyValue("buildRadar")}
+        .display=${this.getKeyChar("buildRadar")}
+        @change=${this.handleKeybindChange}
+      ></setting-keybind>
+
+      <setting-keybind
         action="buildWarship"
         label=${translateText("user_setting.build_warship")}
         description=${translateText("user_setting.build_warship_desc")}
@@ -1326,16 +1336,6 @@ export class UserSettingModal extends BaseModal {
       ></setting-keybind>
 
       <setting-keybind
-        action="buildMIRV"
-        label=${translateText("user_setting.build_mirv")}
-        description=${translateText("user_setting.build_mirv_desc")}
-        defaultKey=${this.defaultKeybinds.buildMIRV}
-        .value=${this.getKeyValue("buildMIRV")}
-        .display=${this.getKeyChar("buildMIRV")}
-        @change=${this.handleKeybindChange}
-      ></setting-keybind>
-
-      <setting-keybind
         action="buildEmpBomb"
         label=${translateText("user_setting.build_emp_bomb")}
         description=${translateText("user_setting.build_emp_bomb_desc")}
@@ -1346,12 +1346,12 @@ export class UserSettingModal extends BaseModal {
       ></setting-keybind>
 
       <setting-keybind
-        action="buildRadar"
-        label=${translateText("user_setting.build_radar")}
-        description=${translateText("user_setting.build_radar_desc")}
-        defaultKey=${this.defaultKeybinds.buildRadar}
-        .value=${this.getKeyValue("buildRadar")}
-        .display=${this.getKeyChar("buildRadar")}
+        action="buildMIRV"
+        label=${translateText("user_setting.build_mirv")}
+        description=${translateText("user_setting.build_mirv_desc")}
+        defaultKey=${this.defaultKeybinds.buildMIRV}
+        .value=${this.getKeyValue("buildMIRV")}
+        .display=${this.getKeyChar("buildMIRV")}
         @change=${this.handleKeybindChange}
       ></setting-keybind>
 
