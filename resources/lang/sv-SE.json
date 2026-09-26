@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Ej tillräckligt med guld",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotta: {count}/{max} krigsfartyg",
     "warship_shift_hint": "Håll ned Shift och dra för att välja flera krigsfartyg samtidigt"
   },
   "challenges": {

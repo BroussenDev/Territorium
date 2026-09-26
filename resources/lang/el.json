@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Όχι αρκετά χρήματα",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Στόλος: {count}/{max} πολεμικά πλοία",
     "warship_shift_hint": "Κρατήστε πατημένο το Shift και σύρετε για να επιλέξετε πολλά πολεμικά πλοία ταυτόχρονα"
   },
   "challenges": {

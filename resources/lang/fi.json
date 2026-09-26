@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Ei tarpeeksi rahaa",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Laivasto: {count}/{max} sotalaivoja",
     "warship_shift_hint": "Pidä Shift-näppäintä painettuna ja vedä valitaksesi useita sotalaivoja kerralla"
   },
   "challenges": {

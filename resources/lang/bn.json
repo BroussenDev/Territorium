@@ -173,6 +173,7 @@
     },
     "not_enough_money": "পর্যাপ্ত টাকা নেই",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "নৌবহর: {count}/{max} যুদ্ধজাহাজ",
     "warship_shift_hint": "একবারে একাধিক যুদ্ধজাহাজ নির্বাচন করতে Shift ধরে রাখুন এবং টেনে আনুন"
   },
   "challenges": {

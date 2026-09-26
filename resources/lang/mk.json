@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Нема доволно пари",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Флота: {count}/{max} воени бродови",
     "warship_shift_hint": "Држете Shift и повлечете за да изберете повеќе воени бродови одеднаш"
   },
   "challenges": {

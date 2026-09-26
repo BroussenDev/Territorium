@@ -173,6 +173,7 @@
     },
     "not_enough_money": "資金不足",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "艦隊：{count}/{max} 艘戰艦",
     "warship_shift_hint": "按住 Shift 並拖曳以一次性選取多艘軍艦"
   },
   "challenges": {

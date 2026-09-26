@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nedostatok zlata",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotila: {count}/{max} vojnových lodí",
     "warship_shift_hint": "Podržte Shift a ťahaním vyberte viacero vojnových lodí naraz"
   },
   "challenges": {

@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nedostatek peněz",
     "upgrade_amount": "×{amount}",
+    "warship_limit": "Flotila: {count}/{max} válečných lodí",
     "warship_shift_hint": "Podrž Shift a tažením vyber více bitevních lodí najednou"
   },
   "challenges": {

@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Няма достатъчно пари",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Флот: {count}/{max} военни кораби",
     "warship_shift_hint": "Задръж Shift и плъзгай, за да избереш няколко военни кораба наведнъж"
   },
   "challenges": {

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.10
+
+⚓ **Warship limit**
+
+- Each player can now own at most 50 warships at once. Once you reach the limit, the warship button is greyed out until one of your ships is sunk.
+- Hover over the warship button to see your fleet size (for example "Fleet: 12/50 warships").
+
 ## v0.1.9
 
 🏳️ **Peace only between enemies**

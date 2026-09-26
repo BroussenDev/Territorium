@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nincs elég pénz",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotta: {count}/{max} hadihajó",
     "warship_shift_hint": "Tartsd lenyomva a Shift billentyűt, és húzással jelölj ki egyszerre több hadihajót"
   },
   "challenges": {

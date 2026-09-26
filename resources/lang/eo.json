@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Ne sufiĉe da mono",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Floto: {count}/{max} batalŝipoj",
     "warship_shift_hint": "Premu la Majuskligan klavon, alklak-tenu kaj ŝovu por elekti plurajn militŝipojn samtempe"
   },
   "challenges": {

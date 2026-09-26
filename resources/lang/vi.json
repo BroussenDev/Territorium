@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Không đủ tiền",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Hạm đội: {count}/{max} tàu chiến",
     "warship_shift_hint": "Giữ phím Shift và kéo chuột để chọn nhiều tàu chiến cùng lúc"
   },
   "challenges": {

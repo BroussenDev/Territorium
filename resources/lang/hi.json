@@ -173,6 +173,7 @@
     },
     "not_enough_money": "पर्याप्त पैसा नहीं हैं",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "बेड़ा: {count}/{max} युद्धपोत",
     "warship_shift_hint": "एक साथ कई युद्धपोतों का चयन करने के लिए Shift दबाए रखें और खींचें"
   },
   "challenges": {

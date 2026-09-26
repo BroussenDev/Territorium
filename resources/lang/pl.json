@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Za mało złota",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flota: {count}/{max} okrętów wojennych",
     "warship_shift_hint": "Przytrzymaj Shift i przeciągnij, aby zaznaczyć wiele okrętów wojennych jednocześnie"
   },
   "challenges": {

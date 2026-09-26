@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Ni dovolj denarja",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flota: {count}/{max} vojaške ladje",
     "warship_shift_hint": "Držite tipko Shift in povlecite, da izberete več vojnih ladij hkrati"
   },
   "challenges": {

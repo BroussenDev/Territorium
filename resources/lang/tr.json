@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Yeterli para yok",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Filo: {count}/{max} savaş gemisi",
     "warship_shift_hint": "Aynı anda birden fazla savaş gemisi seçmek için Shift tuşunu basılı tutun ve sürükleyin"
   },
   "challenges": {

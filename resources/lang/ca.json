@@ -173,6 +173,7 @@
     },
     "not_enough_money": "No tens prou diners",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flota: {count}/{max} vaixells de guerra",
     "warship_shift_hint": "Manteniu premuda la tecla Maj i arrossegueu per seleccionar diversos vaixells de guerra alhora"
   },
   "challenges": {

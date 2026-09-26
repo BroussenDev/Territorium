@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nid gnue Gäud",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotte: {count}/{max} Kriegsschiffe",
     "warship_shift_hint": "Halten Sie die Umschalttaste gedrückt und ziehen Sie, um mehrere Kriegsschiffe gleichzeitig auszuwählen"
   },
   "challenges": {

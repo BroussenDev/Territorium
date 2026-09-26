@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Pole piisavalt raha",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Laevastik: {count}/{max} sõjalaevad",
     "warship_shift_hint": "Mitme sõjalaeva korraga valimiseks hoidke all tõstuklahvi ja lohistage"
   },
   "challenges": {

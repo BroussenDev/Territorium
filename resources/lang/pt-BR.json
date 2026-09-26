@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Sem Dinheiro Suficiente",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Frota: {count}/{max} navios de guerra",
     "warship_shift_hint": "Mantenha pressionado Shift e arraste para selecionar múltiplos navios de guerra de uma vez"
   },
   "challenges": {

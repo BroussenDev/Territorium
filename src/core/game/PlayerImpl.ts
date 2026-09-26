@@ -1507,6 +1507,11 @@ export class PlayerImpl implements Player {
     if (this.mg.config().isUnitDisabled(unitType)) {
       return false;
     }
+    if (
+      this.units(unitType).length >= this.mg.config().maxUnitCount(unitType)
+    ) {
+      return false;
+    }
     const cost = knownCost ?? this.mg.unitInfo(unitType).cost(this.mg, this);
     if (this._gold < cost) {
       return false;

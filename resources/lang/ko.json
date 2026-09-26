@@ -173,6 +173,7 @@
     },
     "not_enough_money": "돈이 부족합니다",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "함대: {count}/{max} 군함",
     "warship_shift_hint": "Shift 키를 누른 상태에서 드래그하여 여러 전함을 한 번에 선택하세요"
   },
   "challenges": {

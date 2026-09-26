@@ -173,6 +173,7 @@
     },
     "not_enough_money": "پول کافی نیست",
     "upgrade_amount": "×{amount}",
+    "warship_limit": "ناوگان: {count}/{max} کشتی های جنگی",
     "warship_shift_hint": "برای انتخاب همزمان چندین کشتی جنگی، Shift را نگه دارید و بکشید"
   },
   "challenges": {

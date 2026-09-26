@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Uang tidak cukup",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Armada: {count}/{max} kapal perang",
     "warship_shift_hint": "Tahan Shift dan seret untuk memilih beberapa kapal perang sekaligus"
   },
   "challenges": {

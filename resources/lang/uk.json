@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Недостатньо коштів",
     "upgrade_amount": "×{amount}",
+    "warship_limit": "Флот: {count}/{max} військових кораблів",
     "warship_shift_hint": "Утримуйте Shift і перетягуйте, щоб виділити декілька військових кораблів одночасно"
   },
   "challenges": {

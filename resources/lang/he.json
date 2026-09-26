@@ -173,6 +173,7 @@
     },
     "not_enough_money": "אין מספיק זהב",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "צי: {count}/{max} ספינות מלחמה",
     "warship_shift_hint": "החזק את Shift וגרור כדי לבחור מספר ספינות מלחמה בו-זמנית"
   },
   "challenges": {

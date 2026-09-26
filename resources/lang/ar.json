@@ -173,6 +173,7 @@
     },
     "not_enough_money": "لا يوجد ما يكفي من المال",
     "upgrade_amount": "س{amount}",
+    "warship_limit": "الأسطول: {count}/{max} سفن حربية",
     "warship_shift_hint": "اضغط مع الاستمرار على Shift واسحب لتحديد سفن حربية متعددة في وقت واحد"
   },
   "challenges": {

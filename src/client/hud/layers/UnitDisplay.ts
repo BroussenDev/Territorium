@@ -305,10 +305,18 @@ export class UnitDisplay extends LitElement implements Controller {
                 </div>
                 ${unitType === UnitType.Warship
                   ? html`<div
-                      class="mt-1 px-2 py-1 text-[10px] text-cyan-300 border-t border-white/10"
-                    >
-                      ⇧ ${translateText("build_menu.warship_shift_hint")}
-                    </div>`
+                        class="mt-1 px-2 py-1 text-[10px] text-cyan-300 border-t border-white/10"
+                      >
+                        ⇧ ${translateText("build_menu.warship_shift_hint")}
+                      </div>
+                      <div class="px-2 pb-1 text-[11px] text-gray-300">
+                        ${translateText("build_menu.warship_limit", {
+                          count: this._warships,
+                          max: this.game
+                            .config()
+                            .maxUnitCount(UnitType.Warship),
+                        })}
+                      </div>`
                   : null}
                 <div class="flex items-center justify-center gap-1">
                   <img src=${goldCoinIcon} width="13" height="13" />

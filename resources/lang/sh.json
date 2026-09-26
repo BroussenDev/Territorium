@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nemaš dovoljno novca",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flota: {count}/{max} ratni brodovi",
     "warship_shift_hint": "Drži Shift i vuci miš da bi odabrao više ratnih brodova odjednom"
   },
   "challenges": {

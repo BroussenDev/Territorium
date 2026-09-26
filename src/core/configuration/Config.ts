@@ -1267,6 +1267,14 @@ export class Config {
     return minutes === undefined ? Infinity : minutes * 60;
   }
 
+  /**
+   * Most units of a type a player can own at once: 50 warships, so fleets
+   * stay readable and naval wars can't snowball. Infinity otherwise.
+   */
+  maxUnitCount(type: UnitType): number {
+    return type === UnitType.Warship ? 50 : Infinity;
+  }
+
   private isRanked(): boolean {
     return this._gameConfig.rankedType !== undefined;
   }

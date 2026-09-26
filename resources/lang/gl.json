@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Non tes ouro dabondo",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flota: {count}/{max} buques de guerra",
     "warship_shift_hint": "Mantén premida a tecla Maiús e arrastra para seleccionar varios buques de guerra á vez"
   },
   "challenges": {

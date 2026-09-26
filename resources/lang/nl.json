@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Niet genoeg goud",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Vloot: {count}/{max} oorlogsschepen",
     "warship_shift_hint": "Houd Shift ingedrukt en sleep om meerdere oorlogsschepen tegelijk te selecteren"
   },
   "challenges": {

@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nicht genug Geld",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotte: {count}/{max} Kriegsschiffe",
     "warship_shift_hint": "Halte Shift gedrückt, um alle Kriegsschiffe auf einmal auszuwählen"
   },
   "challenges": {

@@ -173,6 +173,7 @@
     },
     "not_enough_money": "Nu ai suficienți bani",
     "upgrade_amount": "x{amount}",
+    "warship_limit": "Flotă: {count}/{max} nave de război",
     "warship_shift_hint": "Țineți apăsat Shift și trageți pentru a selecta mai multe nave de război odată"
   },
   "challenges": {
