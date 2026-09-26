@@ -2270,6 +2270,16 @@
     "viewers": "{count}人が視聴中",
     "watch": "{name} を視聴する"
   },
+  "structure_card": {
+    "gain_missiles": "ミサイル {from} → {to}",
+    "gain_range": "射程 {from} → {to}",
+    "gain_stack": "同じ種類の建物がもう1つあるのと同じ効果",
+    "level": "レベル {level}",
+    "level_of": "レベル {level} / {max}",
+    "locked": "レベル {level} まであと {time}",
+    "max": "最大レベル",
+    "upgrade": "強化"
+  },
   "subscription_modal": {
     "browse": "サブスクリプションを見る",
     "none": "有効なサブスクリプションがありません。",

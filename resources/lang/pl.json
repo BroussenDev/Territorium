@@ -2270,6 +2270,16 @@
     "viewers": "{count} oglądam",
     "watch": "Oglądaj {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Pociski {from} → {to}",
+    "gain_range": "Zasięg {from} → {to}",
+    "gain_stack": "Liczy się jak jeszcze jeden budynek tego typu",
+    "level": "Poziom {level}",
+    "level_of": "Poziom {level} / {max}",
+    "locked": "Poziom {level} dostępny za {time}",
+    "max": "Maksymalny poziom",
+    "upgrade": "Ulepsz"
+  },
   "subscription_modal": {
     "browse": "Przeglądaj subskrypcje",
     "none": "Nie masz aktywnej subskrypcji.",

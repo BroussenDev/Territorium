@@ -2270,6 +2270,16 @@
     "viewers": "{count} vaatamine",
     "watch": "Vaata {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Raketid {from} → {to}",
+    "gain_range": "Ulatus {from} → {to}",
+    "gain_stack": "Loeb ühe sama tüüpi hoonena rohkem",
+    "level": "Tase {level}",
+    "level_of": "Tase {level} / {max}",
+    "locked": "Tase {level} saadaval {time} pärast",
+    "max": "Maksimaalne tase",
+    "upgrade": "Täiusta"
+  },
   "subscription_modal": {
     "browse": "Sirvige tellimusi",
     "none": "Teil pole aktiivset tellimust.",

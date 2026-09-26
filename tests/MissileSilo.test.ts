@@ -121,6 +121,8 @@ describe("MissileSilo", () => {
 
   test("missilesilo should have increased level after upgrade", async () => {
     expect(attacker.units(UnitType.MissileSilo)[0].level()).toEqual(1);
+    // Level 2 unlocks 5 minutes after the spawn phase.
+    executeTicks(game, 5 * 60 * 10);
 
     const upgradeStructureExecution = new UpgradeStructureExecution(
       attacker,

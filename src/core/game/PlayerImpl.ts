@@ -1471,7 +1471,27 @@ export class PlayerImpl implements Player {
     if (unit.owner() !== this) {
       return false;
     }
-    return true;
+    return this.upgradesLeft(unit) > 0;
+  }
+
+  /**
+   * How many more levels the unit can gain right now: up to its type's level
+   * cap, and only as far as the levels unlocked since the spawn phase ended.
+   */
+  public upgradesLeft(unit: Unit): number {
+    const config = this.mg.config();
+    const type = unit.type();
+    const cap = config.maxStructureLevel(type);
+    const elapsed = this.mg.elapsedGameSeconds();
+    let level = unit.level();
+    while (
+      level < cap &&
+      elapsed >= config.structureLevelUnlockSeconds(type, level + 1)
+    ) {
+      level++;
+      if (level - unit.level() >= MAX_UPGRADE_AMOUNT) break;
+    }
+    return level - unit.level();
   }
 
   public canUpgradeUnit(unit: Unit): boolean {
@@ -1516,6 +1536,7 @@ export class PlayerImpl implements Player {
 
       const cost = config.unitInfo(u).cost(mg, this);
       let canUpgrade: number | false = false;
+      let upgradeSteps = 0;
       let canBuild: TileRef | false = false;
 
       if (tile !== null && this.canBuildUnitType(u, cost) && !inSpawnPhase) {
@@ -1526,6 +1547,7 @@ export class PlayerImpl implements Player {
             this.isUnitValidToUpgrade(existingUnit)
           ) {
             canUpgrade = existingUnit.id();
+            upgradeSteps = this.upgradesLeft(existingUnit);
           }
         }
         canBuild = this.canSpawnUnitType(u, tile, validTiles);
@@ -1536,11 +1558,12 @@ export class PlayerImpl implements Player {
       // Cumulative bulk-upgrade totals. Each upgrade raises the unit's level
       // and the constructed count, so step n costs the same as if the player
       // already had n extra units — cost(mg, this, n).
+      // Capped at the levels the unit can still gain.
       let upgradeCosts: Gold[] | undefined;
       if (canUpgrade !== false) {
-        upgradeCosts = new Array<Gold>(MAX_UPGRADE_AMOUNT);
+        upgradeCosts = new Array<Gold>(upgradeSteps);
         let total = 0n;
-        for (let n = 0; n < MAX_UPGRADE_AMOUNT; n++) {
+        for (let n = 0; n < upgradeSteps; n++) {
           total += config.unitInfo(u).cost(mg, this, n);
           upgradeCosts[n] = total;
         }

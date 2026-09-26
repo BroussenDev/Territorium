@@ -32,6 +32,7 @@ const HUD_TAGS = [
   "settings-modal",
   "graphics-settings-modal",
   "unit-display",
+  "structure-card",
   "player-panel",
   "chat-modal",
   "multi-tab-modal",
@@ -46,7 +47,7 @@ const HUD_TAGS = [
 
 describe("createRenderer", () => {
   // Serve detached elements from the spy so createRenderer finds each HUD
-  // component without connecting (and rendering) 27 components in jsdom.
+  // component without connecting (and rendering) 28 components in jsdom.
   const elements = new Map<string, HTMLElement>();
 
   beforeEach(() => {

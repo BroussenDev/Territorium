@@ -2270,6 +2270,16 @@
     "viewers": "{count} гледање",
     "watch": "Гледајте {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Ракети {from} → {to}",
+    "gain_range": "Дострел {from} → {to}",
+    "gain_stack": "Се брои како уште една зграда од овој тип",
+    "level": "Ниво {level}",
+    "level_of": "Ниво {level} / {max}",
+    "locked": "Ниво {level} достапно за {time}",
+    "max": "Максимално ниво",
+    "upgrade": "Надогради"
+  },
   "subscription_modal": {
     "browse": "Прелистајте претплати",
     "none": "Немате активна претплата.",

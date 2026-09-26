@@ -3,8 +3,8 @@
  * gold capital, Territorium Display type) carried into the match HUD.
  *
  * Covers the control panel, the leaderboard sidebar, the top-right game bar,
- * the player card, the tutorial panel, the radial menu and the end-of-game
- * window. Everything lives in this file
+ * the player card, the tutorial panel, the radial menu, the structure card
+ * and the end-of-game window. Everything lives in this file
  * and is loaded by a single import in Main.ts, so removing that import (or
  * reverting the commit that added it) restores the previous look.
  *
@@ -232,4 +232,162 @@ win-modal h3 {
 win-modal .bg-black\/30 {
   background-color: var(--tr-ink);
   border: 1px solid var(--tr-emerald-line);
+}
+
+/* ---------------------------------------------------------------------------
+ * Structure card: opens on a click on one of your buildings. The icon frame
+ * follows the building's level: bronze at 2, silver at 3, gold from 4, the
+ * same metals as the frame drawn on the map.
+ * ------------------------------------------------------------------------- */
+
+structure-card .structure-card {
+  --tr-bronze: #cd803d;
+  --tr-silver: #cdd4e0;
+  padding: 10px 12px 12px;
+  border-radius: 10px;
+  background-color: var(--tr-night);
+  border: 1px solid var(--tr-emerald-line);
+  box-shadow:
+    inset 0 1px 0 var(--tr-gold-line),
+    0 0 18px rgba(16, 185, 129, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+  color: #e7efe9;
+  font-size: 13px;
+}
+
+structure-card .structure-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--tr-ink);
+  border: 2px solid var(--tr-emerald-line);
+}
+
+structure-card .structure-card-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+structure-card .structure-card-icon.bronze {
+  border-color: var(--tr-bronze);
+  box-shadow: 0 0 8px rgba(205, 128, 61, 0.45);
+}
+
+structure-card .structure-card-icon.silver {
+  border-color: var(--tr-silver);
+  box-shadow: 0 0 8px rgba(205, 212, 224, 0.45);
+}
+
+structure-card .structure-card-icon.gold {
+  border-color: var(--tr-gold);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.55);
+}
+
+structure-card .structure-card-name {
+  font-family: var(--tr-display);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--tr-gold-light);
+}
+
+structure-card .structure-card-level {
+  color: rgba(231, 239, 233, 0.7);
+  font-size: 12px;
+}
+
+structure-card .structure-card-pips i {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background-color: rgba(231, 239, 233, 0.15);
+  transform: rotate(45deg);
+}
+
+structure-card .structure-card-pips i.on {
+  background-color: var(--tr-emerald-bright);
+}
+
+structure-card .structure-card-pips i.bronze {
+  background-color: var(--tr-bronze);
+}
+
+structure-card .structure-card-pips i.silver {
+  background-color: var(--tr-silver);
+}
+
+structure-card .structure-card-pips i.gold {
+  background-color: var(--tr-gold);
+}
+
+structure-card .structure-card-close {
+  color: rgba(231, 239, 233, 0.55);
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+structure-card .structure-card-close:hover {
+  color: #fff;
+}
+
+structure-card .structure-card-gains {
+  margin: 10px 0;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background-color: var(--tr-ink);
+  border: 1px solid var(--tr-emerald-line);
+}
+
+structure-card .structure-card-gains li::before {
+  content: "▲ ";
+  color: var(--tr-emerald-bright);
+  font-size: 9px;
+}
+
+structure-card .structure-card-upgrade {
+  padding: 7px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--tr-gold);
+  background: linear-gradient(
+    180deg,
+    rgba(251, 191, 36, 0.3),
+    rgba(251, 191, 36, 0.1)
+  );
+  color: var(--tr-gold-light);
+  font-family: var(--tr-display);
+  letter-spacing: 0.03em;
+}
+
+structure-card .structure-card-upgrade:hover:not(:disabled) {
+  background: linear-gradient(
+    180deg,
+    rgba(251, 191, 36, 0.45),
+    rgba(251, 191, 36, 0.18)
+  );
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.35);
+}
+
+structure-card .structure-card-upgrade:focus-visible {
+  outline: 2px solid var(--tr-gold-light);
+  outline-offset: 2px;
+}
+
+structure-card .structure-card-upgrade:disabled {
+  border-color: rgba(231, 239, 233, 0.2);
+  background: rgba(231, 239, 233, 0.05);
+  color: rgba(231, 239, 233, 0.5);
+  cursor: not-allowed;
+}
+
+structure-card .structure-card-price.is-short {
+  color: #f87171;
+}
+
+structure-card .structure-card-note {
+  margin-top: 10px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  border: 1px dashed var(--tr-emerald-line);
+  color: rgba(231, 239, 233, 0.75);
+  text-align: center;
 }

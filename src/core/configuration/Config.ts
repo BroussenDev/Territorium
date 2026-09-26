@@ -210,6 +210,23 @@ export const JwksSchema = z.object({
 /** SAM launcher construction duration in ticks (non-instant-build). */
 export const SAM_CONSTRUCTION_TICKS = 30 * 10;
 
+// Military structure levels: each has a level cap, and each level unlocks a
+// set number of minutes after the spawn phase ends (index = level). Ranked
+// games cap lower and unlock later. Other structures level up freely.
+const MILITARY_LEVEL_CAPS: Partial<
+  Record<UnitType, { normal: number; ranked: number }>
+> = {
+  [UnitType.SAMLauncher]: { normal: 5, ranked: 3 },
+  [UnitType.MissileSilo]: { normal: 3, ranked: 2 },
+  [UnitType.Radar]: { normal: 3, ranked: 2 },
+};
+const LEVEL_UNLOCK_MINUTES = [0, 0, 5, 10, 15, 20];
+const RANKED_LEVEL_UNLOCK_MINUTES = [0, 0, 8, 15];
+
+/** Radar range at level 1, and what each further level adds, in tiles. */
+const RADAR_BASE_RANGE = 100;
+const RADAR_RANGE_PER_LEVEL = 25;
+
 // Doomsday Clock tunables (anti-stall). Off unless enabled in GameConfig.
 // Times in seconds. The required map share rises in waves (levels + times in
 // DoomsdayClock.ts, chosen by `speed`). A side caught below the bar gets a
@@ -716,6 +733,7 @@ export class Config {
             UnitType.Radar,
           ),
           constructionDuration: this.instantBuild() ? 0 : 5 * 10,
+          upgradable: true,
         };
         break;
       default:
@@ -1182,9 +1200,40 @@ export class Config {
     return 45 * 10;
   }
 
-  /** Radius, in tiles, in which a radar spots enemy ships and missiles. */
-  radarRange(): number {
-    return 100;
+  /**
+   * Radius, in tiles, in which a radar spots enemy ships and missiles:
+   * 100 at level 1, then +25 per level (125, 150).
+   */
+  radarRange(level: number = 1): number {
+    return RADAR_BASE_RANGE + RADAR_RANGE_PER_LEVEL * (Math.max(1, level) - 1);
+  }
+
+  /**
+   * Highest level a structure can reach: SAM launchers, missile silos and
+   * radars are capped (lower in ranked games), the rest are not.
+   */
+  maxStructureLevel(type: UnitType): number {
+    const caps = MILITARY_LEVEL_CAPS[type];
+    if (caps === undefined) return Infinity;
+    return this.isRanked() ? caps.ranked : caps.normal;
+  }
+
+  /**
+   * Seconds after the spawn phase before a structure can be upgraded to
+   * `level`: military structures unlock level 2 at 5 min, 3 at 10, 4 at 15
+   * and 5 at 20 (8 and 15 min in ranked). 0 for other structures.
+   */
+  structureLevelUnlockSeconds(type: UnitType, level: number): number {
+    if (MILITARY_LEVEL_CAPS[type] === undefined || level <= 1) return 0;
+    const table = this.isRanked()
+      ? RANKED_LEVEL_UNLOCK_MINUTES
+      : LEVEL_UNLOCK_MINUTES;
+    const minutes = table[level];
+    return minutes === undefined ? Infinity : minutes * 60;
+  }
+
+  private isRanked(): boolean {
+    return this._gameConfig.rankedType !== undefined;
   }
 
   defaultSamRange(): number {

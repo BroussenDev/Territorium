@@ -321,6 +321,8 @@ describe("SAM", () => {
   test("SAM should have increased level after upgrade", async () => {
     defender.buildUnit(UnitType.SAMLauncher, game.ref(1, 1), {});
     expect(defender.units(UnitType.SAMLauncher)[0].level()).toEqual(1);
+    // Level 2 unlocks 5 minutes after the spawn phase.
+    executeTicks(game, 5 * 60 * 10);
 
     const upgradeStructureExecution = new UpgradeStructureExecution(
       defender,

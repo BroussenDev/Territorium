@@ -2270,6 +2270,16 @@
     "viewers": "{count} menonton",
     "watch": "Tonton {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rudal {from} → {to}",
+    "gain_range": "Jangkauan {from} → {to}",
+    "gain_stack": "Dihitung sebagai satu bangunan lagi dari jenis ini",
+    "level": "Level {level}",
+    "level_of": "Level {level} / {max}",
+    "locked": "Level {level} tersedia dalam {time}",
+    "max": "Level maksimum",
+    "upgrade": "Tingkatkan"
+  },
   "subscription_modal": {
     "browse": "Telusuri Langganan",
     "none": "Anda tidak memiliki langganan aktif.",

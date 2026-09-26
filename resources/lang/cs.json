@@ -2270,6 +2270,16 @@
     "viewers": "Sledujících: {count}",
     "watch": "Sledovat {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rakety {from} → {to}",
+    "gain_range": "Dosah {from} → {to}",
+    "gain_stack": "Počítá se jako další budova tohoto typu",
+    "level": "Úroveň {level}",
+    "level_of": "Úroveň {level} / {max}",
+    "locked": "Úroveň {level} dostupná za {time}",
+    "max": "Maximální úroveň",
+    "upgrade": "Vylepšit"
+  },
   "subscription_modal": {
     "browse": "Procházet předplatná",
     "none": "Nemáte aktivní předplatné.",

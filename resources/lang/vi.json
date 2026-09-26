@@ -2270,6 +2270,16 @@
     "viewers": "{count} người đang xem",
     "watch": "Xem {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Tên lửa {from} → {to}",
+    "gain_range": "Tầm bắn {from} → {to}",
+    "gain_stack": "Tính như thêm một công trình cùng loại",
+    "level": "Cấp {level}",
+    "level_of": "Cấp {level} / {max}",
+    "locked": "Cấp {level} mở sau {time}",
+    "max": "Cấp tối đa",
+    "upgrade": "Nâng cấp"
+  },
   "subscription_modal": {
     "browse": "Xem các gói định kỳ",
     "none": "Bạn không có gói định kỳ đang hoạt động.",

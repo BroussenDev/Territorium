@@ -2270,6 +2270,16 @@
     "viewers": "{count}명 시청 중",
     "watch": "{name} 시청"
   },
+  "structure_card": {
+    "gain_missiles": "미사일 {from} → {to}",
+    "gain_range": "사거리 {from} → {to}",
+    "gain_stack": "같은 종류의 건물 하나가 더 있는 것과 같습니다",
+    "level": "레벨 {level}",
+    "level_of": "레벨 {level} / {max}",
+    "locked": "레벨 {level}까지 {time} 남음",
+    "max": "최대 레벨",
+    "upgrade": "업그레이드"
+  },
   "subscription_modal": {
     "browse": "구독 상품 둘러보기",
     "none": "활성화된 구독이 없습니다.",

@@ -2270,6 +2270,16 @@
     "viewers": "{count} tittar på",
     "watch": "Titta på {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Robotar {from} → {to}",
+    "gain_range": "Räckvidd {from} → {to}",
+    "gain_stack": "Räknas som en byggnad till av denna typ",
+    "level": "Nivå {level}",
+    "level_of": "Nivå {level} / {max}",
+    "locked": "Nivå {level} tillgänglig om {time}",
+    "max": "Högsta nivå",
+    "upgrade": "Uppgradera"
+  },
   "subscription_modal": {
     "browse": "Bläddra bland prenumerationer",
     "none": "Du har ingen aktiv prenumeration.",

@@ -2270,6 +2270,16 @@
     "viewers": "{count} néző",
     "watch": "Nézd {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rakéták {from} → {to}",
+    "gain_range": "Hatótáv {from} → {to}",
+    "gain_stack": "Úgy számít, mint még egy ilyen típusú épület",
+    "level": "{level}. szint",
+    "level_of": "{level}. szint / {max}",
+    "locked": "{level}. szint elérhető ennyi idő múlva: {time}",
+    "max": "Maximális szint",
+    "upgrade": "Fejlesztés"
+  },
   "subscription_modal": {
     "browse": "Előfizetések böngészése",
     "none": "Nincs aktív előfizetése.",

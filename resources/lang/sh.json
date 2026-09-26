@@ -2270,6 +2270,16 @@
     "viewers": "{count} gleda",
     "watch": "Gledaj {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rakete {from} → {to}",
+    "gain_range": "Domet {from} → {to}",
+    "gain_stack": "Računa se kao još jedna zgrada ove vrste",
+    "level": "Nivo {level}",
+    "level_of": "Nivo {level} / {max}",
+    "locked": "Nivo {level} dostupan za {time}",
+    "max": "Maksimalni nivo",
+    "upgrade": "Nadogradi"
+  },
   "subscription_modal": {
     "browse": "Pregledaj pretplate",
     "none": "Nemate aktivnu pretplatu.",

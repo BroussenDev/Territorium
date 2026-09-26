@@ -2270,6 +2270,16 @@
     "viewers": "{count} izliyorum",
     "watch": "İzle {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Füzeler {from} → {to}",
+    "gain_range": "Menzil {from} → {to}",
+    "gain_stack": "Bu türden bir bina daha sayılır",
+    "level": "Seviye {level}",
+    "level_of": "Seviye {level} / {max}",
+    "locked": "Seviye {level}, {time} sonra açılır",
+    "max": "Azami seviye",
+    "upgrade": "Yükselt"
+  },
   "subscription_modal": {
     "browse": "Aboneliklere Göz Atın",
     "none": "Aktif bir aboneliğiniz yok.",

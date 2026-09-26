@@ -2270,6 +2270,16 @@
     "viewers": "{count} spectateurs",
     "watch": "Regarder {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Missiles {from} → {to}",
+    "gain_range": "Portée {from} → {to}",
+    "gain_stack": "Compte comme un bâtiment de ce type en plus",
+    "level": "Niv. {level}",
+    "level_of": "Niv. {level} / {max}",
+    "locked": "Niv. {level} disponible dans {time}",
+    "max": "Niveau maximum",
+    "upgrade": "Améliorer"
+  },
   "subscription_modal": {
     "browse": "Voir les abonnements",
     "none": "Vous n’avez pas d'abonnement actif.",

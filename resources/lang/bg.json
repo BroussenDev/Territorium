@@ -2270,6 +2270,16 @@
     "viewers": "{count} зрители",
     "watch": "Гледай {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Ракети {from} → {to}",
+    "gain_range": "Обхват {from} → {to}",
+    "gain_stack": "Брои се като още една сграда от този тип",
+    "level": "Ниво {level}",
+    "level_of": "Ниво {level} / {max}",
+    "locked": "Ниво {level} достъпно след {time}",
+    "max": "Максимално ниво",
+    "upgrade": "Подобри"
+  },
   "subscription_modal": {
     "browse": "Преглед на абонаментите",
     "none": "Нямаш активен абонамент.",

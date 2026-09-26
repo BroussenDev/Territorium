@@ -2270,6 +2270,16 @@
     "viewers": "{count} ser",
     "watch": "Se {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Missiler {from} → {to}",
+    "gain_range": "Rækkevidde {from} → {to}",
+    "gain_stack": "Tæller som én bygning mere af denne type",
+    "level": "Niveau {level}",
+    "level_of": "Niveau {level} / {max}",
+    "locked": "Niveau {level} tilgængeligt om {time}",
+    "max": "Maksimalt niveau",
+    "upgrade": "Opgrader"
+  },
   "subscription_modal": {
     "browse": "Gennemse abonnementer",
     "none": "Du har ikke et aktivt abonnement.",

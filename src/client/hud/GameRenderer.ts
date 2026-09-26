@@ -42,6 +42,7 @@ import { PlayerPanel } from "./layers/PlayerPanel";
 import { ReplayPanel } from "./layers/ReplayPanel";
 import { SettingsModal } from "./layers/SettingsModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
+import { StructureCard } from "./layers/StructureCard";
 import { TutorialPanel } from "./layers/TutorialPanel";
 import { UnitDisplay } from "./layers/UnitDisplay";
 import { WinModal } from "./layers/WinModal";
@@ -230,6 +231,17 @@ export function createRenderer(
   unitDisplay.eventBus = eventBus;
   unitDisplay.uiState = uiState;
 
+  const structureCard = document.querySelector(
+    "structure-card",
+  ) as StructureCard;
+  if (!(structureCard instanceof StructureCard)) {
+    console.error("structure card not found");
+  }
+  structureCard.game = game;
+  structureCard.eventBus = eventBus;
+  structureCard.uiState = uiState;
+  structureCard.transformHandler = transformHandler;
+
   const playerPanel = document.querySelector("player-panel") as PlayerPanel;
   if (!(playerPanel instanceof PlayerPanel)) {
     console.error("player panel not found");
@@ -349,6 +361,7 @@ export function createRenderer(
     immunityTimer,
     gameLeftSidebar,
     unitDisplay,
+    structureCard,
     gameRightSidebar,
     controlPanel,
     playerInfo,

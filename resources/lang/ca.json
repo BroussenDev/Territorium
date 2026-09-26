@@ -2270,6 +2270,16 @@
     "viewers": "{count} mirant",
     "watch": "Mira {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Míssils {from} → {to}",
+    "gain_range": "Abast {from} → {to}",
+    "gain_stack": "Compta com un edifici més d'aquest tipus",
+    "level": "Nivell {level}",
+    "level_of": "Nivell {level} / {max}",
+    "locked": "Nivell {level} disponible d'aquí a {time}",
+    "max": "Nivell màxim",
+    "upgrade": "Millorar"
+  },
   "subscription_modal": {
     "browse": "Exploreu les subscripcions",
     "none": "No teniu cap subscripció activa.",

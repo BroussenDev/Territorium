@@ -2270,6 +2270,16 @@
     "viewers": "{count} παρακολούθηση",
     "watch": "Παρακολουθήστε {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Πύραυλοι {from} → {to}",
+    "gain_range": "Εμβέλεια {from} → {to}",
+    "gain_stack": "Μετράει ως ένα ακόμη κτίριο αυτού του τύπου",
+    "level": "Επίπεδο {level}",
+    "level_of": "Επίπεδο {level} / {max}",
+    "locked": "Επίπεδο {level} διαθέσιμο σε {time}",
+    "max": "Μέγιστο επίπεδο",
+    "upgrade": "Αναβάθμιση"
+  },
   "subscription_modal": {
     "browse": "Περιήγηση σε συνδρομές",
     "none": "Δεν έχετε ενεργή συνδρομή.",

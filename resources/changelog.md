@@ -1,5 +1,18 @@
 # Territorium — Changelog
 
+## v0.1.5
+
+🏗️ **Building upgrades**
+
+- Click one of your buildings to open its card: its level, what the next level brings, and an Upgrade button with the price.
+- Upgraded buildings get a metal frame on the map and on the card: bronze at level 2, silver at level 3, gold from level 4.
+- Military buildings now have a level cap, and each level unlocks after a set time, counted from the end of the spawn phase. While a level is locked, the card counts down to it.
+  - SAM launcher: up to level 5. Level 2 at 5 min, level 3 at 10 min, level 4 at 15 min, level 5 at 20 min.
+  - Missile silo: up to level 3. Level 2 at 5 min, level 3 at 10 min.
+  - Radar: it can now be upgraded, up to level 3 (level 2 at 5 min, level 3 at 10 min). Each level adds 25 tiles of range: 100, 125, then 150.
+- In ranked games the caps are lower and levels come later: SAM up to level 3, silo and radar up to level 2, level 2 at 8 min and level 3 at 15 min.
+- Cities, ports and factories are unchanged: no cap, no wait.
+
 ## v0.1.4
 
 ⚡ **EMP bomb**

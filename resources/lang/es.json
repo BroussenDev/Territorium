@@ -2270,6 +2270,16 @@
     "viewers": "{count} mirando",
     "watch": "Mirar {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Misiles {from} → {to}",
+    "gain_range": "Alcance {from} → {to}",
+    "gain_stack": "Cuenta como un edificio más de este tipo",
+    "level": "Nivel {level}",
+    "level_of": "Nivel {level} / {max}",
+    "locked": "Nivel {level} disponible en {time}",
+    "max": "Nivel máximo",
+    "upgrade": "Mejorar"
+  },
   "subscription_modal": {
     "browse": "Explorar suscripciones",
     "none": "No tienes una suscripción activa.",

@@ -2270,6 +2270,16 @@
     "viewers": "{count}正在观看",
     "watch": "观看{name}"
   },
+  "structure_card": {
+    "gain_missiles": "导弹 {from} → {to}",
+    "gain_range": "射程 {from} → {to}",
+    "gain_stack": "相当于多一座同类建筑",
+    "level": "等级 {level}",
+    "level_of": "等级 {level} / {max}",
+    "locked": "等级 {level} 将在 {time} 后解锁",
+    "max": "最高等级",
+    "upgrade": "升级"
+  },
   "subscription_modal": {
     "browse": "浏览订阅",
     "none": "您没有有效的订阅。",

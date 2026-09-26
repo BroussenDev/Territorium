@@ -2269,6 +2269,16 @@
     "viewers": "{count} مشاهدة",
     "watch": "شاهد {name}"
   },
+  "structure_card": {
+    "gain_missiles": "الصواريخ {from} → {to}",
+    "gain_range": "المدى {from} → {to}",
+    "gain_stack": "يُحتسب كمبنى إضافي من هذا النوع",
+    "level": "المستوى {level}",
+    "level_of": "المستوى {level} / {max}",
+    "locked": "المستوى {level} متاح خلال {time}",
+    "max": "المستوى الأقصى",
+    "upgrade": "ترقية"
+  },
   "subscription_modal": {
     "browse": "تصفح الاشتراكات",
     "none": "ليس لديك اشتراك نشط.",

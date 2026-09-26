@@ -86,7 +86,7 @@ export class RadarExecution implements Execution {
     >();
     const nearby = this.mg.nearbyUnits(
       this.radar.tile(),
-      this.mg.config().radarRange(),
+      this.mg.config().radarRange(this.radar.level()),
       WATCHED_TYPES,
     );
     for (const { unit } of nearby) {

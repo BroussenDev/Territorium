@@ -2270,6 +2270,16 @@
     "viewers": "{count} צופה",
     "watch": "צפו ב{name}"
   },
+  "structure_card": {
+    "gain_missiles": "טילים {from} → {to}",
+    "gain_range": "טווח {from} → {to}",
+    "gain_stack": "נחשב כעוד מבנה אחד מסוג זה",
+    "level": "רמה {level}",
+    "level_of": "רמה {level} / {max}",
+    "locked": "רמה {level} זמינה בעוד {time}",
+    "max": "רמה מרבית",
+    "upgrade": "שדרוג"
+  },
   "subscription_modal": {
     "browse": "עיין במינויים",
     "none": "אין לך מנוי פעיל.",

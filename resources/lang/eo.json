@@ -2270,6 +2270,16 @@
     "viewers": "{count} rigardante",
     "watch": "Rigardu {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Raketoj {from} → {to}",
+    "gain_range": "Atingopovo {from} → {to}",
+    "gain_stack": "Kalkuliĝas kiel unu plia konstruaĵo de ĉi tiu tipo",
+    "level": "Nivelo {level}",
+    "level_of": "Nivelo {level} / {max}",
+    "locked": "Nivelo {level} disponebla post {time}",
+    "max": "Maksimuma nivelo",
+    "upgrade": "Plibonigi"
+  },
   "subscription_modal": {
     "browse": "Foliumi Abonojn",
     "none": "Vi ne havas aktivan abonon.",

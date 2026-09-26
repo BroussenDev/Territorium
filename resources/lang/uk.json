@@ -2269,6 +2269,16 @@
     "viewers": "Глядачі: {count}",
     "watch": "Дивитися {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Ракети {from} → {to}",
+    "gain_range": "Дальність {from} → {to}",
+    "gain_stack": "Рахується як ще одна будівля цього типу",
+    "level": "Рівень {level}",
+    "level_of": "Рівень {level} / {max}",
+    "locked": "Рівень {level} буде доступний через {time}",
+    "max": "Максимальний рівень",
+    "upgrade": "Покращити"
+  },
   "subscription_modal": {
     "browse": "Переглянути підписки",
     "none": "У вас немає активної підписки.",

@@ -2270,6 +2270,16 @@
     "viewers": "{count} assistindo",
     "watch": "Assistir {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Mísseis {from} → {to}",
+    "gain_range": "Alcance {from} → {to}",
+    "gain_stack": "Conta como mais um edifício deste tipo",
+    "level": "Nível {level}",
+    "level_of": "Nível {level} / {max}",
+    "locked": "Nível {level} disponível dentro de {time}",
+    "max": "Nível máximo",
+    "upgrade": "Melhorar"
+  },
   "subscription_modal": {
     "browse": "Navegar por assinaturas",
     "none": "Não tem uma assinatura ativa.",

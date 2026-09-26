@@ -2270,6 +2270,16 @@
     "viewers": "{count}देखना",
     "watch": "देखो {name}"
   },
+  "structure_card": {
+    "gain_missiles": "मिसाइलें {from} → {to}",
+    "gain_range": "रेंज {from} → {to}",
+    "gain_stack": "इस प्रकार की एक और इमारत के बराबर गिना जाता है",
+    "level": "स्तर {level}",
+    "level_of": "स्तर {level} / {max}",
+    "locked": "स्तर {level} {time} में उपलब्ध",
+    "max": "अधिकतम स्तर",
+    "upgrade": "अपग्रेड करें"
+  },
   "subscription_modal": {
     "browse": "सदस्यताएँ ब्राउज़ करें",
     "none": "आपके पास सक्रिय सदस्यता नहीं है.",

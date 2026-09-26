@@ -2270,6 +2270,16 @@
     "viewers": "{count} দেখছে",
     "watch": "দেখুন {name}"
   },
+  "structure_card": {
+    "gain_missiles": "ক্ষেপণাস্ত্র {from} → {to}",
+    "gain_range": "পাল্লা {from} → {to}",
+    "gain_stack": "এই ধরনের আরও একটি ভবন হিসেবে গণ্য হয়",
+    "level": "স্তর {level}",
+    "level_of": "স্তর {level} / {max}",
+    "locked": "স্তর {level} পাওয়া যাবে {time} পরে",
+    "max": "সর্বোচ্চ স্তর",
+    "upgrade": "আপগ্রেড করুন"
+  },
   "subscription_modal": {
     "browse": "সদস্যতা ব্রাউজ করুন",
     "none": "আপনার একটি সক্রিয় সদস্যতা নেই.",

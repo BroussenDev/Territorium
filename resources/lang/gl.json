@@ -2270,6 +2270,16 @@
     "viewers": "{count} vendo",
     "watch": "Mira {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Mísiles {from} → {to}",
+    "gain_range": "Alcance {from} → {to}",
+    "gain_stack": "Conta como un edificio máis deste tipo",
+    "level": "Nivel {level}",
+    "level_of": "Nivel {level} / {max}",
+    "locked": "Nivel {level} dispoñible en {time}",
+    "max": "Nivel máximo",
+    "upgrade": "Mellorar"
+  },
   "subscription_modal": {
     "browse": "Explorar subscricións",
     "none": "Non tes unha subscrición activa.",

@@ -719,6 +719,8 @@ export interface Player {
   findUnitToUpgrade(type: UnitType, targetTile: TileRef): Unit | false;
   canUpgradeUnit(unit: Unit): boolean;
   upgradeUnit(unit: Unit): void;
+  // Levels the unit can still gain now (level cap and unlock times).
+  upgradesLeft(unit: Unit): number;
   captureUnit(unit: Unit): void;
 
   // Relations & Diplomacy

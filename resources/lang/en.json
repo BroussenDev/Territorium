@@ -2270,6 +2270,16 @@
     "viewers": "{count} watching",
     "watch": "Watch {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Missiles {from} → {to}",
+    "gain_range": "Range {from} → {to}",
+    "gain_stack": "Works like one more building of this type",
+    "level": "Level {level}",
+    "level_of": "Level {level} / {max}",
+    "locked": "Level {level} available in {time}",
+    "max": "Maximum level",
+    "upgrade": "Upgrade"
+  },
   "subscription_modal": {
     "browse": "Browse Subscriptions",
     "none": "You don't have an active subscription.",

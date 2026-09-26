@@ -2270,6 +2270,16 @@
     "viewers": "Зрители: {count}",
     "watch": "Смотреть {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Ракеты {from} → {to}",
+    "gain_range": "Дальность {from} → {to}",
+    "gain_stack": "Считается ещё одним зданием этого типа",
+    "level": "Уровень {level}",
+    "level_of": "Уровень {level} / {max}",
+    "locked": "Уровень {level} будет доступен через {time}",
+    "max": "Максимальный уровень",
+    "upgrade": "Улучшить"
+  },
   "subscription_modal": {
     "browse": "Просмотреть подписки",
     "none": "У вас нет активной подписки.",

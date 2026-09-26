@@ -2269,6 +2269,16 @@
     "viewers": "{count} aan het kijken",
     "watch": "Kijk {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Raketten {from} → {to}",
+    "gain_range": "Bereik {from} → {to}",
+    "gain_stack": "Telt als één extra gebouw van dit type",
+    "level": "Niveau {level}",
+    "level_of": "Niveau {level} / {max}",
+    "locked": "Niveau {level} beschikbaar over {time}",
+    "max": "Maximaal niveau",
+    "upgrade": "Verbeteren"
+  },
   "subscription_modal": {
     "browse": "Blader door abonnementen",
     "none": "Je hebt geen actief abonnement.",

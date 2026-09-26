@@ -2270,6 +2270,16 @@
     "viewers": "{count} 人正在觀看",
     "watch": "觀看 {name}"
   },
+  "structure_card": {
+    "gain_missiles": "飛彈 {from} → {to}",
+    "gain_range": "射程 {from} → {to}",
+    "gain_stack": "相當於多一座同類建築",
+    "level": "等級 {level}",
+    "level_of": "等級 {level} / {max}",
+    "locked": "等級 {level} 將在 {time} 後解鎖",
+    "max": "最高等級",
+    "upgrade": "升級"
+  },
   "subscription_modal": {
     "browse": "瀏覽訂閱",
     "none": "您未擁有有效的訂閱。",

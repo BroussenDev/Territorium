@@ -2269,6 +2269,16 @@
     "viewers": "{count} gledam",
     "watch": "Oglejte si {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rakete {from} → {to}",
+    "gain_range": "Doseg {from} → {to}",
+    "gain_stack": "Šteje kot še ena stavba te vrste",
+    "level": "Raven {level}",
+    "level_of": "Raven {level} / {max}",
+    "locked": "Raven {level} na voljo čez {time}",
+    "max": "Najvišja raven",
+    "upgrade": "Nadgradi"
+  },
   "subscription_modal": {
     "browse": "Brskajte po naročninah",
     "none": "Nimate aktivne naročnine.",

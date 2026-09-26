@@ -2270,6 +2270,16 @@
     "viewers": "{count} Vizionare",
     "watch": "Urmărește {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Rachete {from} → {to}",
+    "gain_range": "Rază {from} → {to}",
+    "gain_stack": "Contează ca încă o clădire de acest tip",
+    "level": "Nivelul {level}",
+    "level_of": "Nivelul {level} / {max}",
+    "locked": "Nivelul {level} disponibil în {time}",
+    "max": "Nivel maxim",
+    "upgrade": "Îmbunătățește"
+  },
   "subscription_modal": {
     "browse": "Vezi abonamentele",
     "none": "Nu aveți un abonament activ",

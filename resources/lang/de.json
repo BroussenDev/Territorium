@@ -2270,6 +2270,16 @@
     "viewers": "{count} zuschauen",
     "watch": "{name} ansehen"
   },
+  "structure_card": {
+    "gain_missiles": "Raketen {from} → {to}",
+    "gain_range": "Reichweite {from} → {to}",
+    "gain_stack": "Zählt wie ein weiteres Gebäude dieser Art",
+    "level": "Stufe {level}",
+    "level_of": "Stufe {level} / {max}",
+    "locked": "Stufe {level} verfügbar in {time}",
+    "max": "Höchststufe",
+    "upgrade": "Verbessern"
+  },
   "subscription_modal": {
     "browse": "Abonnements ansehen",
     "none": "Sie haben kein aktives Abonnement.",

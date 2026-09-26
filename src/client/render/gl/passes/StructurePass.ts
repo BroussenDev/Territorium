@@ -64,8 +64,8 @@ const ATLAS_COLS = STRUCTURE_ORDER.length;
 // ---------------------------------------------------------------------------
 
 // Per-instance: x, y, ownerID, state (0 = normal, 1 = under construction,
-// 2 = disabled by an EMP), atlasIdx, markedForDeletion
-const FLOATS_PER_INSTANCE = 6;
+// 2 = disabled by an EMP), atlasIdx, markedForDeletion, level
+const FLOATS_PER_INSTANCE = 7;
 const BYTES_PER_INSTANCE = FLOATS_PER_INSTANCE * 4;
 
 // ---------------------------------------------------------------------------
@@ -272,9 +272,9 @@ export class StructurePass {
     gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
     gl.vertexAttribDivisor(1, 1);
 
-    // Attribute 2: per-instance vec2 (atlasIdx, markedForDeletion)
+    // Attribute 2: per-instance vec3 (atlasIdx, markedForDeletion, level)
     gl.enableVertexAttribArray(2);
-    gl.vertexAttribPointer(2, 2, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+    gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
     gl.vertexAttribDivisor(2, 1);
 
     gl.bindVertexArray(null);
@@ -331,6 +331,7 @@ export class StructurePass {
       this.instanceBuf.float32[off + 4] = atlasIdx;
       this.instanceBuf.float32[off + 5] =
         unit.markedForDeletion !== false ? 1 : 0;
+      this.instanceBuf.float32[off + 6] = unit.level;
 
       count++;
     }
@@ -449,7 +450,7 @@ export class StructurePass {
       // Temporarily rebind instance attrs to ghost buffer
       gl.bindBuffer(gl.ARRAY_BUFFER, this.ghostInstanceBuf);
       gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
-      gl.vertexAttribPointer(2, 2, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+      gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
 
       // -- Green highlight on existing structure being upgraded --
       if (g.canUpgrade && g.upgradeTargetTile !== null) {
@@ -490,7 +491,7 @@ export class StructurePass {
       // Restore instance attrs to main buffer
       gl.bindBuffer(gl.ARRAY_BUFFER, this.instanceBuf.buffer);
       gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
-      gl.vertexAttribPointer(2, 2, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+      gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
     }
   }
 

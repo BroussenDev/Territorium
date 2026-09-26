@@ -2270,6 +2270,16 @@
     "viewers": "{count} katsomassa",
     "watch": "Katso {name}"
   },
+  "structure_card": {
+    "gain_missiles": "Ohjukset {from} → {to}",
+    "gain_range": "Kantama {from} → {to}",
+    "gain_stack": "Toimii kuin yksi tämän tyypin rakennus lisää",
+    "level": "Taso {level}",
+    "level_of": "Taso {level} / {max}",
+    "locked": "Taso {level} saatavilla {time} kuluttua",
+    "max": "Enimmäistaso",
+    "upgrade": "Päivitä"
+  },
   "subscription_modal": {
     "browse": "Selaa tilauksia",
     "none": "Sinulla ei ole aktiivista tilausta.",

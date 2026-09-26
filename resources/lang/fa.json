@@ -2269,6 +2269,16 @@
     "viewers": "{count} بیننده",
     "watch": "تماشای {name}"
   },
+  "structure_card": {
+    "gain_missiles": "موشک‌ها {from} → {to}",
+    "gain_range": "برد {from} → {to}",
+    "gain_stack": "مانند یک ساختمان دیگر از همین نوع حساب می‌شود",
+    "level": "سطح {level}",
+    "level_of": "سطح {level} / {max}",
+    "locked": "سطح {level} تا {time} دیگر در دسترس است",
+    "max": "حداکثر سطح",
+    "upgrade": "ارتقا"
+  },
   "subscription_modal": {
     "browse": "مرور اشتراک‌ها",
     "none": "شما هیچ اشتراک فعالی ندارید.",
