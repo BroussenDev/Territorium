@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} seconds left until betrayal debuff ends",
     "betrayal_description": "You broke your alliance with {name}, making you a TRAITOR ({malusPercent}% defense debuff for {durationText})",
     "betrayed_you": "{name} broke their alliance with you",
+    "capital_fallen": "{capital} has fallen! {name} lost their capital city",
     "conquered_no_gold": "Conquered {name} (didn't play, no gold awarded)",
     "duration_second": "1 second",
     "duration_seconds_plural": "{seconds} seconds",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - hydrogen bomb detonated",
     "ignore": "Ignore",
     "missile_intercepted": "SAM intercepted {unit}",
+    "new_capital_fallen": "{name} lost their capital city!",
     "no_boats_available": "No boats available, max {max}",
     "objective_captured": "You captured a map objective: more gold and troop growth while you hold it.",
     "objective_lost": "{name} took one of your map objectives.",
@@ -1089,6 +1091,20 @@
     "ffa": "Free for All",
     "hvn": "Humans vs Nations",
     "teams": "Teams"
+  },
+  "game_modes": {
+    "more_soon": "More game modes are on the way",
+    "nations_description": "Pick a real country on the giant world map and start with its whole territory. Hold your capital city, swallow your neighbours and rule half of the world.",
+    "nations_fact_ai": "Countries nobody picks are played by the AI",
+    "nations_fact_capital": "Your real capital city gives +10% gold and troop growth",
+    "nations_fact_country": "You start with your whole country",
+    "nations_fact_win": "Own 50% of the land to win",
+    "nations_join": "Choose my country",
+    "nations_title": "Nations",
+    "nations_waiting": "Next game coming soon",
+    "players": "{count}/{max} players",
+    "subtitle": "Multiplayer games with rules of their own",
+    "title": "Game modes"
   },
   "game_settings": {
     "bots": "Tribes: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Don't show again",
     "ffa_collusion": "Reminder: teaming up before the game is not allowed in FFA",
     "multiplayer_game_paused": "Game paused by Lobby Creator",
+    "nations_spawn": "Every country is in place: the war begins in a moment",
     "pvp_immunity_active": "PVP immunity active for {seconds}s",
     "random_spawn": "Random spawn is enabled. Selecting starting location for you...",
     "random_spawn_spectator": "Random spawn is enabled",
@@ -1780,6 +1797,19 @@
     "please_wait": "Please wait",
     "seconds": "seconds",
     "warning": "Vigilant Mode Warning"
+  },
+  "nations_lobby": {
+    "capital": "Capital city: {capital}",
+    "free": "Free",
+    "hint": "Click a country on the map. Grey countries are already taken; every free country will be played by the AI.",
+    "load_failed": "The world map could not be loaded. You will get a random country.",
+    "no_match": "No country found",
+    "none_picked": "No country picked yet: you will get a random free one.",
+    "release": "Release",
+    "search": "Search for a country",
+    "size": "{share} % of the world's land",
+    "taken_by": "Taken by {name}",
+    "title": "Choose your country"
   },
   "nav_account_menu": {
     "account_settings": "Account settings",
@@ -2336,6 +2366,8 @@
     "watch": "Watch {name}"
   },
   "structure_card": {
+    "capital": "Capital city: +10% gold and troop growth",
+    "capital_locked": "New capital city possible in {time}",
     "gain_missiles": "Missiles {from} → {to}",
     "gain_population": "Max population +{from} → +{to}",
     "gain_range": "Range {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Level {level} / {max}",
     "locked": "Level {level} available in {time}",
     "max": "Maximum level",
+    "proclaim_capital": "Make this city my capital city",
     "upgrade": "Upgrade"
   },
   "subscription_modal": {

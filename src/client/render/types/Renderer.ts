@@ -85,6 +85,8 @@ export interface PlayerState {
   /** TileRef the player picked as their spawn (undefined if not yet spawned). */
   spawnTile?: number;
   lastDeleteUnitTick: number;
+  /** Nations mode: tick the capital fell, -1 while it stands. */
+  capitalLostTick: number;
   allies: number[];
   embargoes: number[];
   targets: number[];
@@ -119,6 +121,7 @@ export interface UnitState {
   level: number;
   veterancy: number;
   hasTrainStation: boolean;
+  isCapital: boolean;
   trainType: number | null; // 0=Engine, 1=TailEngine, 2=Carriage
   loaded: boolean | null;
   constructionStartTick: number | null;

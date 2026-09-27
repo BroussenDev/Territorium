@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} quedan segundos hasta que finalice la desventaja de traición",
     "betrayal_description": "Rompiste tu alianza con {name}, convirtiéndote en un TRAIDOR ({malusPercent}% de desventaja de defensa para {durationText})",
     "betrayed_you": "{name} rompió su alianza contigo",
+    "capital_fallen": "{capital} ha caído! {name} perdió su ciudad capital",
     "conquered_no_gold": "Conquistado {name} (no jugó, no se otorgó oro)",
     "duration_second": "1 segundo",
     "duration_seconds_plural": "{seconds} segundos",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - bomba de hidrógeno detonada",
     "ignore": "ignorar",
     "missile_intercepted": "SAM interceptado {unit}",
+    "new_capital_fallen": "{name} ¡perdieron su capital!",
     "no_boats_available": "No hay barcos disponibles, máximo {max}",
     "objective_captured": "Captaste un objetivo del mapa: más oro y crecimiento de tropas mientras lo mantienes.",
     "objective_lost": "{name} tomó uno de los objetivos de tu mapa.",
@@ -1089,6 +1091,20 @@
     "ffa": "Todos contra todos",
     "hvn": "Humanos vs Naciones",
     "teams": "Equipos"
+  },
+  "game_modes": {
+    "more_soon": "Más modos de juego están en camino",
+    "nations_description": "Elige un país real en el mapa mundial gigante y comienza con todo su territorio. Mantén tu capital, trágate a tus vecinos y domina la mitad del mundo.",
+    "nations_fact_ai": "Los países que nadie elige son jugados por la IA.",
+    "nations_fact_capital": "Tu verdadera capital otorga +10% de oro y crecimiento de tropas.",
+    "nations_fact_country": "Empiezas con todo tu país.",
+    "nations_fact_win": "Posee el 50% del terreno para ganar",
+    "nations_join": "Elige mi país",
+    "nations_title": "Naciones",
+    "nations_waiting": "Próximo juego próximamente",
+    "players": "{count}/{max} jugadores",
+    "subtitle": "Juegos multijugador con reglas propias",
+    "title": "Modos de juego"
   },
   "game_settings": {
     "bots": "Tribus: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "No volver a mostrar",
     "ffa_collusion": "Recordatorio: formar equipo antes del juego no está permitido en FFA",
     "multiplayer_game_paused": "Juego pausado por Lobby Creator",
+    "nations_spawn": "Todos los países están en su lugar: la guerra comienza en un momento",
     "pvp_immunity_active": "Inmunidad PVP activa durante {seconds}s",
     "random_spawn": "La generación aleatoria está habilitada. Seleccionando la ubicación de inicio para usted...",
     "random_spawn_spectator": "La generación aleatoria está habilitada",
@@ -1780,6 +1797,19 @@
     "please_wait": "Por favor espera",
     "seconds": "segundos",
     "warning": "Advertencia de modo vigilante"
+  },
+  "nations_lobby": {
+    "capital": "Ciudad capital: {capital}",
+    "free": "Gratis",
+    "hint": "Haga clic en un país en el mapa. Los países grises ya están ocupados; Cada país libre será jugado por la IA.",
+    "load_failed": "No se pudo cargar el mapa mundial. Obtendrás un país aleatorio.",
+    "no_match": "No se encontró ningún país",
+    "none_picked": "Aún no se ha elegido ningún país: obtendrás uno gratuito al azar.",
+    "release": "Liberar",
+    "search": "buscar un pais",
+    "size": "{share} % de la tierra del mundo",
+    "taken_by": "Tomada por {name}",
+    "title": "Elige tu país"
   },
   "nav_account_menu": {
     "account_settings": "Configuración de la cuenta",
@@ -2336,6 +2366,8 @@
     "watch": "Mirar {name}"
   },
   "structure_card": {
+    "capital": "Ciudad capital: +10% de oro y crecimiento de tropas",
+    "capital_locked": "Nueva capital posible en {time}",
     "gain_missiles": "Misiles {from} → {to}",
     "gain_population": "Población máxima +{from} → +{to}",
     "gain_range": "Alcance {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivel {level} / {max}",
     "locked": "Nivel {level} disponible en {time}",
     "max": "Nivel máximo",
+    "proclaim_capital": "Haz de esta ciudad mi capital",
     "upgrade": "Mejorar"
   },
   "subscription_modal": {

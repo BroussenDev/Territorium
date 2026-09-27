@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} detik tersisa hingga efek negatif pengkhianatan berakhir",
     "betrayal_description": "Kamu memutus aliansi dengan {name}, menjadikanmu PENGKHIANAT ({malusPercent}% pengurangan pertahanan selama {durationText})",
     "betrayed_you": "{name} memutus aliansi dengan Anda",
+    "capital_fallen": "{capital} telah jatuh! {name} kehilangan ibu kotanya",
     "conquered_no_gold": "Menaklukan {name} (tidak main, tidak ada emas yang diberikan)",
     "duration_second": "1 detik",
     "duration_seconds_plural": "{seconds} detik",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - bom hidrogen diledakkan",
     "ignore": "Abaikan",
     "missile_intercepted": "Rudal dicegat {unit}",
+    "new_capital_fallen": "{name} kehilangan ibu kotanya!",
     "no_boats_available": "Tidak ada kapal yang tersedia, maksmial {max}",
     "objective_captured": "Anda mendapatkan tujuan peta: lebih banyak emas dan pertumbuhan pasukan saat Anda memegangnya.",
     "objective_lost": "{name} mengambil salah satu tujuan peta Anda.",
@@ -1089,6 +1091,20 @@
     "ffa": "Siapapun bisa bergabung",
     "hvn": "Manusia vs Bangsa",
     "teams": "Tim-tim"
+  },
+  "game_modes": {
+    "more_soon": "Mode permainan lainnya sedang dalam proses",
+    "nations_description": "Pilih negara nyata di peta dunia raksasa dan mulailah dengan seluruh wilayahnya. Pegang ibu kotamu, telan tetanggamu, dan kuasai separuh dunia.",
+    "nations_fact_ai": "Negara-negara yang tidak dipilih oleh siapa pun akan dimainkan oleh AI",
+    "nations_fact_capital": "Ibu kota Anda yang sebenarnya memberikan +10% emas dan pertumbuhan pasukan",
+    "nations_fact_country": "Anda mulai dengan seluruh negara Anda",
+    "nations_fact_win": "Miliki 50% tanah untuk menang",
+    "nations_join": "Pilih negara saya",
+    "nations_title": "Bangsa",
+    "nations_waiting": "Pertandingan berikutnya segera hadir",
+    "players": "{count}/{max} pemain",
+    "subtitle": "Game multipemain dengan aturannya sendiri",
+    "title": "Mode permainan"
   },
   "game_settings": {
     "bots": "Suku:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Jangan tampilkan lagi",
     "ffa_collusion": "Pengingat: bekerja sama sebelum pertandingan tidak diperbolehkan di FFA",
     "multiplayer_game_paused": "Permainan di tunda oleh Pembuat Lobi",
+    "nations_spawn": "Setiap negara sudah siap: perang akan segera dimulai",
     "pvp_immunity_active": "Imunitas PVP aktif selama {seconds} detik",
     "random_spawn": "Kemunculan acak diaktifkan. Memilih lokasi awal untuk Anda...",
     "random_spawn_spectator": "Pemijahan acak diaktifkan",
@@ -1780,6 +1797,19 @@
     "please_wait": "Harap tunggu",
     "seconds": "detik",
     "warning": "Peringatan Mode Waspada"
+  },
+  "nations_lobby": {
+    "capital": "Ibu kota: {capital}",
+    "free": "Bebas",
+    "hint": "Klik salah satu negara di peta. Negara-negara abu-abu sudah diambil alih; setiap negara bebas akan dimainkan oleh AI.",
+    "load_failed": "Peta dunia tidak dapat dimuat. Anda akan mendapatkan negara acak.",
+    "no_match": "Tidak ada negara yang ditemukan",
+    "none_picked": "Belum ada negara yang dipilih: Anda akan mendapatkan negara gratis secara acak.",
+    "release": "Melepaskan",
+    "search": "Telusuri suatu negara",
+    "size": "{share} % daratan di dunia",
+    "taken_by": "Diambil oleh {name}",
+    "title": "Pilih negara Anda"
   },
   "nav_account_menu": {
     "account_settings": "Pengaturan akun",
@@ -2336,6 +2366,8 @@
     "watch": "Tonton {name}"
   },
   "structure_card": {
+    "capital": "Ibu kota: +10% pertumbuhan emas dan pasukan",
+    "capital_locked": "Ibu kota baru mungkin ada di {time}",
     "gain_missiles": "Rudal {from} → {to}",
     "gain_population": "Populasi maksimal +{from} → +{to}",
     "gain_range": "Jangkauan {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Level {level} / {max}",
     "locked": "Level {level} tersedia dalam {time}",
     "max": "Level maksimum",
+    "proclaim_capital": "Jadikan kota ini sebagai ibu kotaku",
     "upgrade": "Tingkatkan"
   },
   "subscription_modal": {

@@ -42,6 +42,7 @@ function makeUnit(
     level: 1,
     veterancy: 0,
     hasTrainStation: false,
+    isCapital: false,
     trainType: null,
     loaded: null,
     constructionStartTick: null,

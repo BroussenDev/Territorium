@@ -217,6 +217,7 @@ export interface UnitUpdate {
   trainType?: TrainType; // Only for trains
   loaded?: boolean; // Only for trains
   samUpgrade?: SamLauncherState;
+  isCapital?: boolean; // Nations mode: the owner's capital city
 }
 
 export interface AttackUpdate {
@@ -284,6 +285,8 @@ export interface PlayerUpdate {
   betrayals?: number;
   lastDeleteUnitTick?: Tick;
   isLobbyCreator?: boolean;
+  /** Nations mode: tick the player's capital fell, -1 while it stands. */
+  capitalLostTick?: Tick;
 }
 
 export interface AllianceView {

@@ -1,6 +1,7 @@
 import { assetUrl } from "../AssetUrls";
 import { GameMapType } from "./Game";
 import { GameMapLoader, MapData } from "./GameMapLoader";
+import { NationsCountriesFile } from "./NationsMode";
 import { MapManifest } from "./TerrainMapLoader";
 
 export class BinaryLoaderGameMapLoader implements GameMapLoader {
@@ -66,6 +67,17 @@ export class BinaryLoaderGameMapLoader implements GameMapLoader {
             return res.blob();
           })
           .then((blob) => createImageBitmap(blob)),
+      countriesBin: this.createLazyLoader(() =>
+        loadBinary(mapAssetUrl("countries.bin")),
+      ),
+      countriesJson: this.createLazyLoader(() =>
+        fetch(mapAssetUrl("countries.json")).then((res) => {
+          if (!res.ok) {
+            throw new Error(`Failed to load ${mapAssetUrl("countries.json")}`);
+          }
+          return res.json() as Promise<NationsCountriesFile>;
+        }),
+      ),
     } satisfies MapData;
 
     this.maps.set(map, mapData);

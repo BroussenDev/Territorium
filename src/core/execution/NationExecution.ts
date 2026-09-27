@@ -105,6 +105,10 @@ export class NationExecution implements Execution {
     }
 
     if (this.mg.inSpawnPhase()) {
+      // Nations mode: NationsModeExecution already placed the whole country.
+      if (this.mg.config().isNationsMode()) {
+        return;
+      }
       if (this.player.hasSpawned()) {
         // Already on the map — periodically re-spawn so the nation
         // visibly hops to different locations during the spawn phase.

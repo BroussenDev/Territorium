@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "Do konce postihu za zradu zbývá {time} s",
     "betrayal_description": "Ukončili jste spojenectví s {name}. Stali jste se ZRÁDCEM! Postih k obraně: {malusPercent}% na {durationText}",
     "betrayed_you": "{name}: spojenectví s vámi ukončeno",
+    "capital_fallen": "{capital} padlo! {name} ztratilo své hlavní město",
     "conquered_no_gold": "{name} dobyt (nehrál, zlato nezískáno)",
     "duration_second": "1 sekunda",
     "duration_seconds_plural": "{seconds} sekund",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - vybuchla vodíková bomba",
     "ignore": "Ignorovat",
     "missile_intercepted": "SAM zneškodnil {unit}",
+    "new_capital_fallen": "{name} ztratilo své hlavní město!",
     "no_boats_available": "Nejsou k dispozici žádné lodě, max. {max}",
     "objective_captured": "Získali jste cíl na mapě: více zlata a růst jednotek, když jej držíte.",
     "objective_lost": "{name} vzal jeden z vašich cílů na mapě.",
@@ -1089,6 +1091,20 @@
     "ffa": "Všichni proti všem",
     "hvn": "Lidé vs. národy",
     "teams": "Týmy"
+  },
+  "game_modes": {
+    "more_soon": "Další herní režimy jsou na cestě",
+    "nations_description": "Vyberte si skutečnou zemi na obří mapě světa a začněte s celým jejím územím. Držte své hlavní město, spolkněte své sousedy a ovládněte polovinu světa.",
+    "nations_fact_ai": "Země, které si nikdo nevybere, hraje AI",
+    "nations_fact_capital": "Vaše skutečné hlavní město dává +10 % zlata a růstu počtu jednotek",
+    "nations_fact_country": "Začnete celou svou zemí",
+    "nations_fact_win": "Chcete-li vyhrát, vlastnit 50 % půdy",
+    "nations_join": "Vyberte mou zemi",
+    "nations_title": "národy",
+    "nations_waiting": "Další hra již brzy",
+    "players": "{count}/{max} hráčů",
+    "subtitle": "Hry pro více hráčů s vlastními pravidly",
+    "title": "Herní režimy"
   },
   "game_settings": {
     "bots": "Kmeny!",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Znovu nezobrazovat",
     "ffa_collusion": "Připomenutí: v režimu Všichni proti všem není domlouvání týmů před hrou povoleno",
     "multiplayer_game_paused": "Hra pozastavena tvůrcem lobby",
+    "nations_spawn": "Každá země je na svém místě: válka za chvíli začíná",
     "pvp_immunity_active": "PVP imunita aktivní ještě {seconds}s",
     "random_spawn": "Náhodná počáteční pozice je zapnutá. Vybírám vám počáteční pozici...",
     "random_spawn_spectator": "Náhodný spawn je zapnutý",
@@ -1780,6 +1797,19 @@
     "please_wait": "Čekejte prosím",
     "seconds": "Sekund",
     "warning": "Upozornění režimu Vigilant"
+  },
+  "nations_lobby": {
+    "capital": "Hlavní město: {capital}",
+    "free": "Uvolnit",
+    "hint": "Klikněte na zemi na mapě. Šedé země jsou již obsazeny; každá svobodná země bude hrát AI.",
+    "load_failed": "Mapu světa nelze načíst. Získáte náhodnou zemi.",
+    "no_match": "Nebyla nalezena žádná země",
+    "none_picked": "Zatím není vybrána žádná země: dostanete náhodně jednu zdarma.",
+    "release": "Uvolnění",
+    "search": "Vyhledejte zemi",
+    "size": "{share} % světové půdy",
+    "taken_by": "Pořízeno {name}",
+    "title": "Vyberte svou zemi"
   },
   "nav_account_menu": {
     "account_settings": "Nastavení účtu",
@@ -2336,6 +2366,8 @@
     "watch": "Sledovat {name}"
   },
   "structure_card": {
+    "capital": "Hlavní město: +10 % zlata a nárůst počtu vojáků",
+    "capital_locked": "Nové hlavní město možné za {time}",
     "gain_missiles": "Rakety {from} → {to}",
     "gain_population": "Maximální počet obyvatel +{from} → +{to}",
     "gain_range": "Dosah {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Úroveň {level} / {max}",
     "locked": "Úroveň {level} dostupná za {time}",
     "max": "Maximální úroveň",
+    "proclaim_capital": "Udělej z tohoto města moje hlavní město",
     "upgrade": "Vylepšit"
   },
   "subscription_modal": {

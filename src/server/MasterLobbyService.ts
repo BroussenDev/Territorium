@@ -281,6 +281,7 @@ export class MasterLobbyService {
       team: [],
       special: [],
       hosted: [],
+      nations: [],
     };
 
     for (const lobby of lobbies) {

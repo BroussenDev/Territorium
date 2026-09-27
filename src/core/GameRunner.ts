@@ -2,6 +2,7 @@ import { placeName, placeSpawnName } from "../client/hud/NameBoxCalculator";
 import { Config } from "./configuration/Config";
 import { DoomsdayClockExecution } from "./execution/DoomsdayClockExecution";
 import { Executor } from "./execution/ExecutionManager";
+import { NationsModeExecution } from "./execution/NationsModeExecution";
 import { ObjectiveExecution } from "./execution/ObjectiveExecution";
 import { RecomputeRailClusterExecution } from "./execution/RecomputeRailClusterExecution";
 import { SpawnTimerExecution } from "./execution/SpawnTimerExecution";
@@ -13,6 +14,7 @@ import {
   GameType,
   GameUpdates,
   NameViewData,
+  Nation,
   Player,
   PlayerActions,
   PlayerBorderTiles,
@@ -28,6 +30,11 @@ import { TileRef } from "./game/GameMap";
 import { GameMapLoader } from "./game/GameMapLoader";
 import { ErrorUpdate, GameUpdateViewData } from "./game/GameUpdates";
 import { createNationsForGame } from "./game/NationCreation";
+import {
+  decodeCountryIds,
+  NationsMapData,
+  seatNationsGame,
+} from "./game/NationsMode";
 import { loadTerrainMap as loadGameMap } from "./game/TerrainMapLoader";
 import { PseudoRandom } from "./PseudoRandom";
 import { ClientID, GameStartInfo, Turn } from "./Schemas";
@@ -55,26 +62,47 @@ export async function createGameRunner(
   const seed = gameSeed(gameStart);
   const random = new PseudoRandom(simpleHash(seed));
 
-  const humans = gameStart.players.map((p) => {
-    return new PlayerInfo(
-      p.username,
-      PlayerType.Human,
-      p.clientID,
-      random.nextID(),
-      p.isLobbyCreator ?? false,
-      p.clanTag,
-      p.friends ?? [],
-      p.teamIndex ?? null,
+  let humans: PlayerInfo[];
+  let nations: Nation[];
+  let nationsMode: NationsModeExecution | null = null;
+  if (config.isNationsMode()) {
+    const data = await loadNationsMapData(gameStart, mapLoader);
+    if (
+      data.ids.length !==
+      gameMap.gameMap.width() * gameMap.gameMap.height()
+    ) {
+      throw new Error("nations mode needs the full-size map");
+    }
+    const seating = seatNationsGame(
+      gameStart.players,
+      gameMap.nations,
+      data.countries,
+      random,
     );
-  });
-
-  const nations = createNationsForGame(
-    gameStart,
-    gameMap.nations,
-    gameMap.additionalNations,
-    humans.length,
-    random,
-  );
+    humans = seating.humans;
+    nations = seating.nations;
+    nationsMode = new NationsModeExecution(data, seating.seats);
+  } else {
+    humans = gameStart.players.map((p) => {
+      return new PlayerInfo(
+        p.username,
+        PlayerType.Human,
+        p.clientID,
+        random.nextID(),
+        p.isLobbyCreator ?? false,
+        p.clanTag,
+        p.friends ?? [],
+        p.teamIndex ?? null,
+      );
+    });
+    nations = createNationsForGame(
+      gameStart,
+      gameMap.nations,
+      gameMap.additionalNations,
+      humans.length,
+      random,
+    );
+  }
 
   const game: Game = createGame(
     humans,
@@ -95,11 +123,31 @@ export async function createGameRunner(
     ),
     callBack,
   );
+  // Hands out the countries before any other execution runs.
+  if (nationsMode !== null) game.addExecution(nationsMode);
   gr.init();
   if (config.objectives()) {
     game.addExecution(new ObjectiveExecution(simpleHash(seed)));
   }
   return gr;
+}
+
+async function loadNationsMapData(
+  gameStart: GameStartInfo,
+  mapLoader: GameMapLoader,
+): Promise<NationsMapData> {
+  const files = mapLoader.getMapData(gameStart.config.gameMap);
+  if (files.countriesBin === undefined || files.countriesJson === undefined) {
+    throw new Error(`no nations data for ${gameStart.config.gameMap}`);
+  }
+  const [bin, json] = await Promise.all([
+    files.countriesBin(),
+    files.countriesJson(),
+  ]);
+  return {
+    ids: decodeCountryIds(bin, json.width * json.height),
+    countries: json.countries,
+  };
 }
 
 export class GameRunner {

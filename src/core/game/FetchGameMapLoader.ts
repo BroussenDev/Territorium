@@ -33,6 +33,10 @@ export class FetchGameMapLoader implements GameMapLoader {
       webpPath: this.url(fileName, "thumbnail.webp"),
       layerPng: (layerId: string) =>
         this.loadImageBitmap(this.url(fileName, `${layerId}.png`)),
+      countriesBin: () =>
+        this.loadBinaryFromUrl(this.url(fileName, "countries.bin")),
+      countriesJson: () =>
+        this.loadJsonFromUrl(this.url(fileName, "countries.json")),
     } satisfies MapData;
 
     this.maps.set(map, mapData);

@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "Còn {time} giây để hết hiệu ứng cho kẻ phản bội",
     "betrayal_description": "Bạn đã phá vỡ liên minh với {name}, khiến bạn trở thành KẺ PHẢN BỘI (giảm {malusPercent}% phòng thủ trong {durationText})",
     "betrayed_you": "{name} đã phá vỡ liên minh với bạn",
+    "capital_fallen": "{capital} đã rơi! {name} mất thủ đô của họ",
     "conquered_no_gold": "Đã chinh phục {name} (không chơi, không nhận được vàng)",
     "duration_second": "1 giây",
     "duration_seconds_plural": "{seconds} giây",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - tên lửa bom nhiệt hạch (bom hydro) đã phát nổ",
     "ignore": "Bỏ qua",
     "missile_intercepted": "Bệ phóng SAM đã đánh chặn {unit}",
+    "new_capital_fallen": "{name} mất thành phố thủ đô của họ!",
     "no_boats_available": "Không có tàu có sẵn, tối đa {max}",
     "objective_captured": "Bạn đã chiếm được một mục tiêu trên bản đồ: thêm vàng và tăng trưởng quân khi còn giữ nó.",
     "objective_lost": "{name} đã lấy một trong các mục tiêu bản đồ của bạn.",
@@ -1089,6 +1091,20 @@
     "ffa": "Đấu tự do (FFA)",
     "hvn": "Người vs Quốc gia (HVN)",
     "teams": "Đội"
+  },
+  "game_modes": {
+    "more_soon": "Nhiều chế độ trò chơi đang được triển khai",
+    "nations_description": "Chọn một quốc gia có thật trên bản đồ thế giới khổng lồ và bắt đầu với toàn bộ lãnh thổ của quốc gia đó. Giữ thành phố thủ đô của bạn, nuốt chửng hàng xóm của bạn và thống trị một nửa thế giới.",
+    "nations_fact_ai": "Các quốc gia không được chọn đều do AI chơi",
+    "nations_fact_capital": "Thành phố thủ đô thực sự của bạn mang lại +10% vàng và tăng trưởng quân đội",
+    "nations_fact_country": "Bạn bắt đầu với cả đất nước của bạn",
+    "nations_fact_win": "Sở hữu 50% đất để giành chiến thắng",
+    "nations_join": "Chọn quốc gia của tôi",
+    "nations_title": "quốc gia",
+    "nations_waiting": "Trò chơi tiếp theo sắp ra mắt",
+    "players": "{count}/{max} người chơi",
+    "subtitle": "Trò chơi nhiều người chơi có quy tắc riêng",
+    "title": "Chế độ trò chơi"
   },
   "game_settings": {
     "bots": "Bộ tộc: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Không hiển thị lại",
     "ffa_collusion": "Nhắc nhở: Không được liên minh trước trận trong chế độ Đấu tự do (FFA)",
     "multiplayer_game_paused": "Trận đấu đã được chủ phòng tạm dừng",
+    "nations_spawn": "Mọi quốc gia đều sẵn sàng: chiến tranh bắt đầu trong giây lát",
     "pvp_immunity_active": "Bảo vệ PvP còn hiệu lực trong {seconds} giây",
     "random_spawn": "Đã bật chế độ spawn ngẫu nhiên. Đang chọn vị trí khởi đầu cho bạn...",
     "random_spawn_spectator": "Chế độ spawn ngẫu nhiên đã được bật",
@@ -1780,6 +1797,19 @@
     "please_wait": "Vui lòng đợi",
     "seconds": "giây",
     "warning": "Cảnh báo Chế độ Cảnh giác"
+  },
+  "nations_lobby": {
+    "capital": "Thủ đô: {capital}",
+    "free": "Miễn phí",
+    "hint": "Nhấp vào một quốc gia trên bản đồ. Các nước xám đã bị chiếm rồi; mọi quốc gia tự do sẽ do AI chơi.",
+    "load_failed": "Không thể tải bản đồ thế giới. Bạn sẽ nhận được một quốc gia ngẫu nhiên.",
+    "no_match": "Không tìm thấy quốc gia nào",
+    "none_picked": "Chưa có quốc gia nào được chọn: bạn sẽ nhận được một quốc gia miễn phí ngẫu nhiên.",
+    "release": "Giải phóng",
+    "search": "Tìm kiếm một quốc gia",
+    "size": "{share} % đất đai trên thế giới",
+    "taken_by": "Được chụp bởi {name}",
+    "title": "Chọn quốc gia của bạn"
   },
   "nav_account_menu": {
     "account_settings": "Cài đặt tài khoản",
@@ -2336,6 +2366,8 @@
     "watch": "Xem {name}"
   },
   "structure_card": {
+    "capital": "Thủ đô: +10% tăng trưởng vàng và quân đội",
+    "capital_locked": "Thành phố thủ đô mới có thể có ở {time}",
     "gain_missiles": "Tên lửa {from} → {to}",
     "gain_population": "Dân số tối đa +{from} → +{to}",
     "gain_range": "Tầm bắn {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Cấp {level} / {max}",
     "locked": "Cấp {level} mở sau {time}",
     "max": "Cấp tối đa",
+    "proclaim_capital": "Biến thành phố này thành thủ đô của tôi",
     "upgrade": "Nâng cấp"
   },
   "subscription_modal": {

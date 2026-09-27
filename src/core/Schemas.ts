@@ -57,7 +57,8 @@ export type Intent =
   | ToggleGameStartTimer
   | PeaceRequestIntent
   | PeaceRejectIntent
-  | BreakPeaceIntent;
+  | BreakPeaceIntent
+  | SetCapitalIntent;
 
 export type AttackIntent = z.infer<typeof AttackIntentSchema>;
 export type CancelAttackIntent = z.infer<typeof CancelAttackIntentSchema>;
@@ -71,6 +72,7 @@ export type BreakAllianceIntent = z.infer<typeof BreakAllianceIntentSchema>;
 export type PeaceRequestIntent = z.infer<typeof PeaceRequestIntentSchema>;
 export type PeaceRejectIntent = z.infer<typeof PeaceRejectIntentSchema>;
 export type BreakPeaceIntent = z.infer<typeof BreakPeaceIntentSchema>;
+export type SetCapitalIntent = z.infer<typeof SetCapitalIntentSchema>;
 export type TargetPlayerIntent = z.infer<typeof TargetPlayerIntentSchema>;
 export type EmojiIntent = z.infer<typeof EmojiIntentSchema>;
 export type DonateGoldIntent = z.infer<typeof DonateGoldIntentSchema>;
@@ -111,7 +113,8 @@ export type ClientMessage =
   | ClientLogMessage
   | ClientHashMessage
   | ClientSpectateMessage
-  | ClientReportMessage;
+  | ClientReportMessage
+  | ClientPickNationMessage;
 
 export type ServerMessage =
   | ServerTurnMessage
@@ -151,6 +154,9 @@ export type ClientRejoinMessage = z.infer<typeof ClientRejoinMessageSchema>;
 export type ClientLogMessage = z.infer<typeof ClientLogMessageSchema>;
 export type ClientHashMessage = z.infer<typeof ClientHashSchema>;
 export type ClientSpectateMessage = z.infer<typeof ClientSpectateMessageSchema>;
+export type ClientPickNationMessage = z.infer<
+  typeof ClientPickNationMessageSchema
+>;
 
 export type AllPlayersStats = z.infer<typeof AllPlayersStatsSchema>;
 export type Player = z.infer<typeof PlayerSchema>;
@@ -172,6 +178,7 @@ export const PublicGameTypeSchema = z.enum([
   "team",
   "special",
   "hosted",
+  "nations",
 ]);
 
 // Lobby types the master schedules from the map playlist. "hosted" is
@@ -312,6 +319,8 @@ const ClientInfoSchema = z.object({
   // preview can honour the pins instead of re-deriving teams that the server
   // will overrule at start. Absent when the game isn't matchmade.
   teamIndex: zb.uint().optional(),
+  // Nations mode: the country this player picked (manifest nation index).
+  nation: zb.uint().optional(),
 });
 
 export const GameInfoSchema = z.object({
@@ -425,6 +434,8 @@ export interface ClientInfo {
   spectator?: boolean;
   // Server-pinned team slot for matchmade team games; absent when not matchmade.
   teamIndex?: number;
+  // Nations lobbies: the country this player picked (manifest nation index).
+  nation?: number;
 }
 export enum LogSeverity {
   Debug = "DEBUG",
@@ -566,6 +577,9 @@ export const GameConfigSchema = z.object({
   // Capturable map objectives (see Objectives.ts). Absent means off, so
   // configs from before the option keep playing the same way.
   objectives: z.boolean().optional(),
+  // A game mode with its own rules on top of FFA. "nations": everyone starts
+  // as a real country of the giant world map (see NationsMode.ts).
+  gameVariant: z.enum(["nations"]).optional(),
 });
 
 export const TeamSchema = z.string();
@@ -792,6 +806,12 @@ export const ToggleGameStartTimerIntentSchema = z.object({
   type: z.literal("toggle_game_start_timer"),
 });
 
+// Nations mode: make one of your cities your new capital.
+export const SetCapitalIntentSchema = z.object({
+  type: z.literal("set_capital"),
+  unitId: zb.uint(),
+});
+
 export const IntentSchema = z.discriminatedUnion("type", [
   AttackIntentSchema,
   CancelAttackIntentSchema,
@@ -821,6 +841,7 @@ export const IntentSchema = z.discriminatedUnion("type", [
   PeaceRequestIntentSchema,
   PeaceRejectIntentSchema,
   BreakPeaceIntentSchema,
+  SetCapitalIntentSchema,
 ]);
 
 // StampedIntent = Intent with server-stamped clientID (used in turns and execution)
@@ -934,6 +955,9 @@ export const PlayerSchema = z.object({
   // game's team list). Feeds deterministic team assignment, so it must be
   // identical for every client (like clanTag/friends).
   teamIndex: zb.uint().optional(),
+  // Nations mode: the country this player plays (manifest nation index).
+  // Server-stamped at start, so it is identical for every client.
+  nation: zb.uint().optional(),
 });
 
 // A purchased bot tribe name in use this game (active names are globally
@@ -1208,6 +1232,13 @@ export const ClientSpectateMessageSchema = z.object({
   spectator: z.boolean(),
 });
 
+// Nations mode lobby: claim a country (manifest nation index), or give it
+// back with null. The server keeps picks unique.
+export const ClientPickNationMessageSchema = z.object({
+  type: z.literal("pick_nation"),
+  nation: zb.uint().nullable(),
+});
+
 export const ClientMessageSchema = zb.discriminatedUnion("type", [
   ClientSendWinnerSchema,
   ClientSendLiveStatsSchema,
@@ -1219,6 +1250,7 @@ export const ClientMessageSchema = zb.discriminatedUnion("type", [
   ClientHashSchema,
   ClientSpectateMessageSchema,
   ClientReportMessageSchema,
+  ClientPickNationMessageSchema,
 ]);
 
 //

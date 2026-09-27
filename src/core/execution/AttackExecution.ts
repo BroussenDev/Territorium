@@ -14,6 +14,7 @@ import {
   UnitType,
 } from "../game/Game";
 import { GameMap, TileRef } from "../game/GameMap";
+import { isCapitalFallen } from "../game/NationsMode";
 import { PseudoRandom } from "../PseudoRandom";
 import { assertNever } from "../Util";
 import { FlatBinaryHeap } from "./utils/FlatBinaryHeap"; // adjust path if needed
@@ -370,6 +371,9 @@ export class AttackExecution implements Execution {
               isTraitor: defender.isTraitor(),
               isDisconnectedTeammate:
                 defender.isDisconnected() && this._owner.isOnSameTeam(defender),
+              capitalFallen:
+                this.mg.config().isNationsMode() &&
+                isCapitalFallen(this.mg, defender),
             },
       defenderHasDefensePost,
       falloutRatio: this.mg.hasFallout(tile)

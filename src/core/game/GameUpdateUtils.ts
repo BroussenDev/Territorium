@@ -61,6 +61,7 @@ export function diffPlayerUpdate(
     prev.betrayals === next.betrayals &&
     prev.lastDeleteUnitTick === next.lastDeleteUnitTick &&
     prev.isLobbyCreator === next.isLobbyCreator &&
+    prev.capitalLostTick === next.capitalLostTick &&
     numberArrayEqual(prev.allies, next.allies) &&
     numberArrayEqual(prev.targets, next.targets) &&
     stringArrayEqual(
@@ -128,6 +129,10 @@ export function diffPlayerUpdate(
     prev.lastDeleteUnitTick === next.lastDeleteUnitTick,
   );
   setIfDifferent("isLobbyCreator", prev.isLobbyCreator === next.isLobbyCreator);
+  setIfDifferent(
+    "capitalLostTick",
+    prev.capitalLostTick === next.capitalLostTick,
+  );
   setIfDifferent("allies", numberArrayEqual(prev.allies, next.allies));
   setIfDifferent("targets", numberArrayEqual(prev.targets, next.targets));
   setIfDifferent(
@@ -198,6 +203,9 @@ export function applyStateUpdate(target: PlayerState, pu: PlayerUpdate): void {
   if (pu.spawnTile !== undefined) target.spawnTile = pu.spawnTile;
   if (pu.lastDeleteUnitTick !== undefined) {
     target.lastDeleteUnitTick = pu.lastDeleteUnitTick;
+  }
+  if (pu.capitalLostTick !== undefined) {
+    target.capitalLostTick = pu.capitalLostTick;
   }
   // Slice() to detach from the wire object — accumulated state mustn't share
   // mutable arrays with per-tick update payloads.

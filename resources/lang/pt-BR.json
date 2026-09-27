@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} segundos restantes até o fim do efeito negativo de traição",
     "betrayal_description": "Você quebrou a sua aliança com {name}, fazendo de você um TRAIDOR ({malusPercent}% debuff de defesa por {durationText})",
     "betrayed_you": "{name} quebrou a aliança dele com você",
+    "capital_fallen": "{capital} caiu! {name} perderam sua capital",
     "conquered_no_gold": "Conquistou {name} (não estava jogando, nenhum ouro recompensado)",
     "duration_second": "1 segundo",
     "duration_seconds_plural": "{seconds} segundos",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} — Bomba de hidrogênio detonada",
     "ignore": "Ignorar",
     "missile_intercepted": "Míssil interceptado por {unit}",
+    "new_capital_fallen": "{name} perderam sua capital!",
     "no_boats_available": "Sem barcos disponíveis, máximo {max}",
     "objective_captured": "Você capturou um objetivo do mapa: mais ouro e crescimento de tropas enquanto o mantém.",
     "objective_lost": "{name} pegou um dos objetivos do seu mapa.",
@@ -1089,6 +1091,20 @@
     "ffa": "Livre Para Todos",
     "hvn": "Humanos vs Nações",
     "teams": "Equipes"
+  },
+  "game_modes": {
+    "more_soon": "Mais modos de jogo estão a caminho",
+    "nations_description": "Escolha um país real no mapa mundial gigante e comece com todo o seu território. Mantenha sua capital, engula seus vizinhos e governe metade do mundo.",
+    "nations_fact_ai": "Os países que ninguém escolhe são jogados pela IA",
+    "nations_fact_capital": "Sua verdadeira capital oferece +10% de ouro e crescimento de tropas",
+    "nations_fact_country": "Você começa com todo o seu país",
+    "nations_fact_win": "Possuir 50% das terras para ganhar",
+    "nations_join": "Escolha meu país",
+    "nations_title": "Nações",
+    "nations_waiting": "Próximo jogo em breve",
+    "players": "{count}/{max} jogadores",
+    "subtitle": "Jogos multijogador com regras próprias",
+    "title": "Modos de jogo"
   },
   "game_settings": {
     "bots": "Tribos: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Não exibir novamente",
     "ffa_collusion": "Lembrete: Fazer Time antes do jogo NÃO é permitido no Livre Para Todos",
     "multiplayer_game_paused": "Jogo pausado pelo criador do Lobby",
+    "nations_spawn": "Cada país está no seu lugar: a guerra começa num momento",
     "pvp_immunity_active": "Imunidade de PVP está ativo por {seconds}s",
     "random_spawn": "O surgimento aleatório está ativado. Selecionando o local inicial para você...",
     "random_spawn_spectator": "O spawn aleatório está ativado",
@@ -1780,6 +1797,19 @@
     "please_wait": "Aguarde",
     "seconds": "segundos",
     "warning": "Aviso de modo de Vigilante"
+  },
+  "nations_lobby": {
+    "capital": "Capital: {capital}",
+    "free": "Livre",
+    "hint": "Clique em um país no mapa. Os países cinzentos já estão tomados; todos os países livres serão jogados pela IA.",
+    "load_failed": "Não foi possível carregar o mapa mundial. Você receberá um país aleatório.",
+    "no_match": "Nenhum país encontrado",
+    "none_picked": "Nenhum país escolhido ainda: você receberá um aleatório grátis.",
+    "release": "Liberar",
+    "search": "Procure um país",
+    "size": "{share}% das terras do mundo",
+    "taken_by": "Tirada por {name}",
+    "title": "Escolha seu país"
   },
   "nav_account_menu": {
     "account_settings": "Configurações de conta",
@@ -2336,6 +2366,8 @@
     "watch": "Assistir {name}"
   },
   "structure_card": {
+    "capital": "Capital: +10% de ouro e crescimento de tropas",
+    "capital_locked": "Nova capital possível em {time}",
     "gain_missiles": "Mísseis {from} → {to}",
     "gain_population": "População máxima +{from} → +{to}",
     "gain_range": "Alcance {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nível {level} / {max}",
     "locked": "Nível {level} disponível em {time}",
     "max": "Nível máximo",
+    "proclaim_capital": "Faça desta cidade minha capital",
     "upgrade": "Melhorar"
   },
   "subscription_modal": {

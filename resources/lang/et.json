@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekundit veel, kuni reeturi nõrgestus lõpeb",
     "betrayal_description": "Sa lõpetasid liidu {name}'ga, mis teeb su REETURIKS (sul on nüüd {malusPercent}% kaitsenõrgesus {durationText})",
     "betrayed_you": "{name} lõpetas liidu sinuga",
+    "capital_fallen": "{capital} on langenud! {name} kaotasid oma pealinna",
     "conquered_no_gold": "Vallutasid {name} (ei mänginud, kulla auhinda pole)",
     "duration_second": "1 sekund",
     "duration_seconds_plural": "{seconds} sekundit",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} – plahvatas vesinikupomm",
     "ignore": "Ignoreeri",
     "missile_intercepted": "Rakett tõkestatud {unit}",
+    "new_capital_fallen": "{name} kaotasid oma pealinna!",
     "no_boats_available": "Laevu pole rohkem saadaval, maks. {max}",
     "objective_captured": "Vallutasite kaardieesmärgi: rohkem kulda ja vägede kasvu, kuni seda hoiate.",
     "objective_lost": "{name} võttis ühe teie kaardiobjektidest.",
@@ -1089,6 +1091,20 @@
     "ffa": "Igaüks enda eest",
     "hvn": "Inimesed vs rahvad",
     "teams": "Tiimid"
+  },
+  "game_modes": {
+    "more_soon": "Rohkem mängurežiime on tulemas",
+    "nations_description": "Valige hiiglaslikul maailmakaardil tõeline riik ja alustage kogu selle territooriumiga. Hoidke oma pealinna, neelake oma naabrid alla ja valitsege poolt maailmast.",
+    "nations_fact_ai": "Riike, mida keegi ei vali, mängib tehisintellekt",
+    "nations_fact_capital": "Teie tõeline pealinn annab +10% kulda ja vägede kasvu",
+    "nations_fact_country": "Alustate kogu oma riigist",
+    "nations_fact_win": "Omada 50% maast, et võita",
+    "nations_join": "Valige minu riik",
+    "nations_title": "Rahvad",
+    "nations_waiting": "Järgmine mäng peagi tulemas",
+    "players": "{count}/{max} mängijat",
+    "subtitle": "Mitme mängijaga mängud oma reeglitega",
+    "title": "Mängurežiimid"
   },
   "game_settings": {
     "bots": "Hõimud: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Ära näita enam",
     "ffa_collusion": "Meeldetuletus: enne mängu ei ole FFA-s lubatud meeskonnatöö",
     "multiplayer_game_paused": "Mäng pausile pandud Lobby Tegija poolt",
+    "nations_spawn": "Iga riik on paigas: sõda algab hetkega",
     "pvp_immunity_active": "PVP immuunsus töötab {seconds} sekundit",
     "random_spawn": "Suvaline tekke asukoht on sisse lülitatud. Sulle tekke asukohe valimine...",
     "random_spawn_spectator": "Juhuslik kudemine on lubatud",
@@ -1780,6 +1797,19 @@
     "please_wait": "Palun oodake",
     "seconds": "sekundit",
     "warning": "Valvsa režiimi hoiatus"
+  },
+  "nations_lobby": {
+    "capital": "Pealinn: {capital}",
+    "free": "Tasuta",
+    "hint": "Klõpsake kaardil riiki. Hallid riigid on juba võetud; iga vaba riiki mängib tehisintellekt.",
+    "load_failed": "Maailmakaarti ei saanud laadida. Saate juhusliku riigi.",
+    "no_match": "Ühtegi riiki ei leitud",
+    "none_picked": "Ühtegi riiki pole veel valitud: saate juhusliku tasuta riigi.",
+    "release": "Vabasta",
+    "search": "Otsige riiki",
+    "size": "{share} % maailma maismaast",
+    "taken_by": "Pildistatud {name}",
+    "title": "Valige oma riik"
   },
   "nav_account_menu": {
     "account_settings": "Konto seaded",
@@ -2336,6 +2366,8 @@
     "watch": "Vaata {name}"
   },
   "structure_card": {
+    "capital": "Pealinn: +10% kuld ja vägede kasv",
+    "capital_locked": "Uus pealinn on võimalik {time}",
     "gain_missiles": "Raketid {from} → {to}",
     "gain_population": "Maksimaalne rahvaarv +{from} → +{to}",
     "gain_range": "Ulatus {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Tase {level} / {max}",
     "locked": "Tase {level} saadaval {time} pärast",
     "max": "Maksimaalne tase",
+    "proclaim_capital": "Tehke sellest linnast minu pealinn",
     "upgrade": "Täiusta"
   },
   "subscription_modal": {

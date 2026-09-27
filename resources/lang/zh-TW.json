@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "距離背叛減益效果結束還剩 {time} 秒",
     "betrayal_description": "你已撕毀和 {name} 的盟約，因而被標記為“叛徒”（你將獲得 {durationText} 的 {malusPercent}% 防禦降低懲罰）",
     "betrayed_you": "{name} 撕毀了和你的盟約",
+    "capital_fallen": "{capital}墮落了！ {name}失去首都",
     "conquered_no_gold": "征服了 {name} （對方沒在玩了，因此未掠奪到黃金）",
     "duration_second": "1 秒",
     "duration_seconds_plural": "{seconds} 秒",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - 核彈已引爆",
     "ignore": "忽略",
     "missile_intercepted": "已攔截飛彈 {unit}",
+    "new_capital_fallen": "{name}失去了首都！",
     "no_boats_available": "沒有可用的運輸船，最多 {max} 個",
     "objective_captured": "你佔領了一個地圖目標：佔領期間獲得更多金幣和兵力成長。",
     "objective_lost": "{name} 奪走了你的一個地圖目標。",
@@ -1089,6 +1091,20 @@
     "ffa": "混戰",
     "hvn": "人類 vs 國家",
     "teams": "團隊"
+  },
+  "game_modes": {
+    "more_soon": "更多遊戲模式正在開發中",
+    "nations_description": "在巨大的世界地圖上選擇一個真實的國家，並從其整個領土開始。守住你的首都，吞併你的鄰居，統治半個世界。",
+    "nations_fact_ai": "沒有人選擇的國家由人工智慧玩",
+    "nations_fact_capital": "你真正的首都會提供 +10% 的黃金和軍隊成長",
+    "nations_fact_country": "你從你的整個國家開始",
+    "nations_fact_win": "擁有50%的土地即可獲勝",
+    "nations_join": "選擇我的國家",
+    "nations_title": "國家",
+    "nations_waiting": "下一場比賽即將推出",
+    "players": "{count}/{max} 玩家",
+    "subtitle": "有自己規則的多人遊戲",
+    "title": "遊戲模式"
   },
   "game_settings": {
     "bots": "部族： ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "不要再顯示",
     "ffa_collusion": "提醒：混戰不允許在遊戲開始前組隊",
     "multiplayer_game_paused": "遊戲已被房主暫停",
+    "nations_spawn": "各國已就位：戰爭瞬間開始",
     "pvp_immunity_active": "PVP 開局和平期將持續 {seconds} 秒",
     "random_spawn": "隨機出生點已啟用。正在為你選擇出生點……",
     "random_spawn_spectator": "隨機出生點已啟用",
@@ -1780,6 +1797,19 @@
     "please_wait": "請稍候",
     "seconds": "秒",
     "warning": "提示模式警告"
+  },
+  "nations_lobby": {
+    "capital": "首都：{capital}",
+    "free": "自由的",
+    "hint": "點擊地圖上的國家。灰色國家已被佔領；每個自由國家都將由AI玩。",
+    "load_failed": "無法載入世界地圖。您將獲得一個隨機國家。",
+    "no_match": "沒有找到國家",
+    "none_picked": "尚未選擇國家/地區：您將獲得隨機的免費國家。",
+    "release": "發布",
+    "search": "搜尋國家",
+    "size": "{share} 佔世界土地的%",
+    "taken_by": "拍攝者：{name}",
+    "title": "選擇您的國家/地區"
   },
   "nav_account_menu": {
     "account_settings": "帳號設定",
@@ -2336,6 +2366,8 @@
     "watch": "觀看 {name}"
   },
   "structure_card": {
+    "capital": "首都：+10% 黃金和部隊成長",
+    "capital_locked": "新首都可能在{time}",
     "gain_missiles": "飛彈 {from} → {to}",
     "gain_population": "最大人口 +{from} → +{to}",
     "gain_range": "射程 {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "等級 {level} / {max}",
     "locked": "等級 {level} 將在 {time} 後解鎖",
     "max": "最高等級",
+    "proclaim_capital": "讓這座城市成為我的首都",
     "upgrade": "升級"
   },
   "subscription_modal": {

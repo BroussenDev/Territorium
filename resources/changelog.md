@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.11
+
+🌍 **New game mode: Nations**
+
+- A new "Game modes" section on the home page, with a first mode: Nations, a multiplayer game for up to 80 players on the giant world map.
+- In the lobby, pick a real country on the world map. Each country shows its capital and its share of the world's land; countries already taken are greyed out. Players who pick nothing get a random free country.
+- Everyone starts with their whole country, borders included. Every country nobody picked is played by the AI. Antarctica stays neutral.
+- Small countries start with extra gold and troops (up to 400K gold and 75K troops) so every pick stays playable.
+- Own 50% of the land to win.
+
+🏛️ **Capitals**
+
+- Each country starts with a free city on its real capital. While you hold it, you get +10% gold and +10% troop growth.
+- If your capital falls, every player is told, and your troops defend 10% worse for one minute.
+- Two minutes later, click one of your cities and choose "Make this city my capital city" to proclaim a new one, for free.
+
 ## v0.1.10
 
 ⚓ **Warship limit**

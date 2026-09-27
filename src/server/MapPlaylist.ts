@@ -14,6 +14,7 @@ import {
   Trios,
   UnitType,
 } from "../core/game/Game";
+import { NATIONS_MAX_PLAYERS } from "../core/game/NationsMode";
 import { PseudoRandom } from "../core/PseudoRandom";
 import {
   GameConfig,
@@ -137,6 +138,10 @@ export class MapPlaylist {
   private scheduled = 0;
 
   public async gameConfig(type: ScheduledPublicGameType): Promise<GameConfig> {
+    // Nations games always seat every country: never trusted, never capped.
+    if (type === "nations") {
+      return this.getNationsConfig();
+    }
     this.scheduled++;
     const trusted = this.scheduled % TRUSTED_PUBLIC_EVERY === 0;
     const config = await this.rollConfig(type, trusted);
@@ -146,8 +151,35 @@ export class MapPlaylist {
     return config;
   }
 
+  private getNationsConfig(): GameConfig {
+    return {
+      donateGold: false,
+      donateTroops: false,
+      gameMap: GameMapType.GiantWorldMap,
+      maxPlayers: NATIONS_MAX_PLAYERS,
+      gameType: GameType.Public,
+      gameMapSize: GameMapSize.Normal,
+      publicGameModifiers: {},
+      difficulty: Difficulty.Medium,
+      infiniteGold: false,
+      infiniteTroops: false,
+      maxTimerValue: undefined,
+      instantBuild: false,
+      randomSpawn: false,
+      nations: "default",
+      gameMode: GameMode.FFA,
+      playerTeams: undefined,
+      bots: 0,
+      spawnImmunityDuration: this.getSpawnImmunityDuration(undefined),
+      disabledUnits: [],
+      disableClanTags: true,
+      overtime: { enabled: true },
+      gameVariant: "nations",
+    } satisfies GameConfig;
+  }
+
   private async rollConfig(
-    type: ScheduledPublicGameType,
+    type: Exclude<ScheduledPublicGameType, "nations">,
     trusted: boolean,
   ): Promise<GameConfig> {
     if (type === "special") {
@@ -589,7 +621,7 @@ export class MapPlaylist {
   }
 
   private getNextMap(
-    type: ScheduledPublicGameType,
+    type: Exclude<ScheduledPublicGameType, "nations">,
     mode?: GameMode,
   ): GameMapType {
     const key = this.playlistKey(type, mode);
@@ -601,7 +633,7 @@ export class MapPlaylist {
   }
 
   private playlistKey(
-    type: ScheduledPublicGameType,
+    type: Exclude<ScheduledPublicGameType, "nations">,
     mode?: GameMode,
   ): PlaylistKey {
     if (type === "special") {
@@ -611,7 +643,7 @@ export class MapPlaylist {
   }
 
   private generateNewPlaylist(
-    type: ScheduledPublicGameType,
+    type: Exclude<ScheduledPublicGameType, "nations">,
     mode?: GameMode,
   ): GameMapType[] {
     const maps = this.buildMapsList(type, mode);
@@ -663,7 +695,7 @@ export class MapPlaylist {
   }
 
   private buildMapsList(
-    type: ScheduledPublicGameType,
+    type: Exclude<ScheduledPublicGameType, "nations">,
     mode?: GameMode,
   ): GameMapType[] {
     const maps: GameMapType[] = [];

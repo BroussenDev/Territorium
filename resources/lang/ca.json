@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "Defenses empitjorades per la traïció per {time}",
     "betrayal_description": "Has trencat l'aliança amb {name}, el qual et fa un TRAIDOR (defensa {malusPercent} pitjor per {durationText})",
     "betrayed_you": "{name} ha trencat la vostra aliança",
+    "capital_fallen": "{capital} ha caigut! {name} van perdre la seva capital",
     "conquered_no_gold": "Has conquerit a {name} (no ha jugat, or no donat)",
     "duration_second": "1 segon",
     "duration_seconds_plural": "{seconds} segons",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - bomba d'hidrogen detonada",
     "ignore": "Ignora",
     "missile_intercepted": "Un míssil interceptat a {unit}",
+    "new_capital_fallen": "{name} va perdre la seva capital!",
     "no_boats_available": "No et queden vaixells, en pots enviar com a molt {max}",
     "objective_captured": "Has capturat un objectiu del mapa: més or i creixement de tropes mentre el mantens.",
     "objective_lost": "{name} va prendre un dels objectius del teu mapa.",
@@ -1089,6 +1091,20 @@
     "ffa": "Tots contra Tots",
     "hvn": "Humans vs Nacions",
     "teams": "Equips"
+  },
+  "game_modes": {
+    "more_soon": "Més modes de joc estan en camí",
+    "nations_description": "Tria un país real al mapa mundial gegant i comença amb tot el seu territori. Mantingueu la vostra capital, empasseu-vos els vostres veïns i governeu la meitat del món.",
+    "nations_fact_ai": "L'IA juga als països que ningú tria",
+    "nations_fact_capital": "La teva capital real ofereix un creixement d'or i tropes del +10%.",
+    "nations_fact_country": "Comenceu amb tot el vostre país",
+    "nations_fact_win": "Posseir el 50% de la terra per guanyar",
+    "nations_join": "Tria el meu país",
+    "nations_title": "Nacions",
+    "nations_waiting": "Aviat el proper partit",
+    "players": "{count}/{max} jugadors",
+    "subtitle": "Jocs multijugador amb regles pròpies",
+    "title": "Modes de joc"
   },
   "game_settings": {
     "bots": "Tribus: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "No tornis a mostrar",
     "ffa_collusion": "Recordatori: fer equip abans del partit no està permès a la FFA",
     "multiplayer_game_paused": "Partida aturada per l'Amfitrió",
+    "nations_spawn": "Cada país està al seu lloc: la guerra comença en un moment",
     "pvp_immunity_active": "Immunitat PVP activa per {seconds}s",
     "random_spawn": "Està activada la selecció aleatòria del punt de partida. Tria'n-te un punt de partida...",
     "random_spawn_spectator": "La generació aleatòria està activada",
@@ -1780,6 +1797,19 @@
     "please_wait": "Si us plau, espereu",
     "seconds": "segons",
     "warning": "Avís de mode vigilant"
+  },
+  "nations_lobby": {
+    "capital": "Ciutat capital: {capital}",
+    "free": "Gratuït",
+    "hint": "Feu clic a un país al mapa. Els països grisos ja estan presos; tots els països lliures seran jugats per l'IA.",
+    "load_failed": "No s'ha pogut carregar el mapa del món. Obtindreu un país aleatori.",
+    "no_match": "No s'ha trobat cap país",
+    "none_picked": "Encara no s'ha escollit cap país: en obtindreu un de franc a l'atzar.",
+    "release": "Alliberament",
+    "search": "Busca un país",
+    "size": "{share}% de la terra del món",
+    "taken_by": "Presa per {name}",
+    "title": "Tria el teu país"
   },
   "nav_account_menu": {
     "account_settings": "Configuració del compte",
@@ -2336,6 +2366,8 @@
     "watch": "Mira {name}"
   },
   "structure_card": {
+    "capital": "Ciutat capital: +10% d'or i creixement de tropes",
+    "capital_locked": "Nova capital possible a {time}",
     "gain_missiles": "Míssils {from} → {to}",
     "gain_population": "Població màxima +{from} → +{to}",
     "gain_range": "Abast {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivell {level} / {max}",
     "locked": "Nivell {level} disponible d'aquí a {time}",
     "max": "Nivell màxim",
+    "proclaim_capital": "Fes d'aquesta ciutat la meva capital",
     "upgrade": "Millorar"
   },
   "subscription_modal": {

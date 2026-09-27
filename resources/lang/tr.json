@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "İhanet zayıflatmasının bitmesine {time} saniye kaldı",
     "betrayal_description": "{name} ile ittifakını bozdun ve HAİN oldun ({durationText}liğine %{malusPercent} savunma zayıflatması)",
     "betrayed_you": "{name} seninle müttefikliğini bozdu",
+    "capital_fallen": "{capital} düştü! {name} başkentlerini kaybettiler",
     "conquered_no_gold": "Fethedildi {name} (oynamadı, altın verilmedi)",
     "duration_second": "1 saniye",
     "duration_seconds_plural": "{seconds} saniye",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - hidrojen bombası patlatıldı",
     "ignore": "Yoksay",
     "missile_intercepted": "{unit} füzesi önlendi",
+    "new_capital_fallen": "{name} başkentlerini kaybettiler!",
     "no_boats_available": "Bot mevcut değil, maks {max}",
     "objective_captured": "Bir harita hedefi yakaladınız: onu elinizde tutarken daha fazla altın ve birlik artışı.",
     "objective_lost": "{name} harita hedeflerinizden birini aldı.",
@@ -1089,6 +1091,20 @@
     "ffa": "Herkes Tek",
     "hvn": "İnsanlar ve Milletler",
     "teams": "Takımlar"
+  },
+  "game_modes": {
+    "more_soon": "Daha fazla oyun modu yolda",
+    "nations_description": "Dev dünya haritasından gerçek bir ülke seçin ve tüm bölgesiyle başlayın. Başkentinizi elinizde tutun, komşularınızı yutun ve dünyanın yarısına hükmedin.",
+    "nations_fact_ai": "Kimsenin seçmediği ülkeler yapay zeka tarafından oynanıyor",
+    "nations_fact_capital": "Gerçek başkentiniz +%10 altın ve birlik artışı sağlar",
+    "nations_fact_country": "Tüm ülkenizle başlarsınız",
+    "nations_fact_win": "Kazanmak için arazinin %50'sine sahip olun",
+    "nations_join": "Ülkemi seç",
+    "nations_title": "Milletler",
+    "nations_waiting": "Bir sonraki oyun yakında gelecek",
+    "players": "{count}/{max} oyuncu",
+    "subtitle": "Kendi kuralları olan çok oyunculu oyunlar",
+    "title": "Oyun modları"
   },
   "game_settings": {
     "bots": "Kabileler:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Bir daha gösterme",
     "ffa_collusion": "Hatırlatma: FFA'da maçtan önce takım kurmaya izin verilmez",
     "multiplayer_game_paused": "Oyun Lobi Sahibi tarafından durduruldu",
+    "nations_spawn": "Her ülke yerinde: savaş bir anda başlıyor",
     "pvp_immunity_active": "PVP bağışıklığı {seconds} saniye boyunca aktif",
     "random_spawn": "Rastgele doğma aktif. Başlangıç noktası senin için seçiliyor...",
     "random_spawn_spectator": "Rastgele ortaya çıkma etkin",
@@ -1780,6 +1797,19 @@
     "please_wait": "Lütfen bekleyin",
     "seconds": "saniye",
     "warning": "Dikkatli Mod Uyarısı"
+  },
+  "nations_lobby": {
+    "capital": "Başkent: {capital}",
+    "free": "Özgür",
+    "hint": "Haritada bir ülkeyi tıklayın. Gri ülkeler zaten alınmış durumda; her özgür ülke yapay zeka tarafından oynanacak.",
+    "load_failed": "Dünya haritası yüklenemedi. Rastgele bir ülke alacaksınız.",
+    "no_match": "Hiçbir ülke bulunamadı",
+    "none_picked": "Henüz hiçbir ülke seçilmedi: Rastgele ücretsiz bir ülke alacaksınız.",
+    "release": "Serbest bırakmak",
+    "search": "Bir ülke arayın",
+    "size": "{share} Dünya topraklarının %'si",
+    "taken_by": "{name} tarafından çekildi",
+    "title": "Ülkenizi seçin"
   },
   "nav_account_menu": {
     "account_settings": "Hesap ayarları",
@@ -2336,6 +2366,8 @@
     "watch": "İzle {name}"
   },
   "structure_card": {
+    "capital": "Başkent: +%10 altın ve asker artışı",
+    "capital_locked": "{time}'de yeni başkent mümkün",
     "gain_missiles": "Füzeler {from} → {to}",
     "gain_population": "Maksimum nüfus +{from} → +{to}",
     "gain_range": "Menzil {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Seviye {level} / {max}",
     "locked": "Seviye {level}, {time} sonra açılır",
     "max": "Azami seviye",
+    "proclaim_capital": "Bu şehri başkentim yap",
     "upgrade": "Yükselt"
   },
   "subscription_modal": {

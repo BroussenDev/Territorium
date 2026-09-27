@@ -21,6 +21,7 @@ const SPECTATOR_BLOCKED_MESSAGES = new Set([
   "live_stats",
   "hash",
   "report",
+  "pick_nation",
 ]);
 
 // What the ingress needs from the game it feeds.

@@ -454,3 +454,12 @@ structure-card .structure-card-note {
   color: rgba(231, 239, 233, 0.75);
   text-align: center;
 }
+
+structure-card .structure-card-capital {
+  border: 1px solid var(--tr-gold);
+  color: var(--tr-gold-light);
+}
+
+structure-card .structure-card-proclaim {
+  margin-top: 10px;
+}

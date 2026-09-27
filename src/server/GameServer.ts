@@ -67,6 +67,7 @@ import {
 import { ListingState } from "./ListingState";
 import { identityFor, MatchTelemetryRecorder } from "./MatchTelemetryRecorder";
 import { friendsLookup, NameVisibility } from "./NameVisibility";
+import { nationsPlayable } from "./NationsCountries";
 import { Roster } from "./Roster";
 import { ServerEnv } from "./ServerEnv";
 import { SocketIngress } from "./SocketIngress";
@@ -245,6 +246,9 @@ export class GameServer {
   private readonly listing = new ListingState();
 
   private lobbyInfoIntervalId: ReturnType<typeof setInterval> | null = null;
+  // Nations lobbies: the country each account picked, by persistentID so a
+  // reconnect keeps it.
+  private readonly nationPicks = new Map<string, number>();
 
   private visibleAt?: number;
 
@@ -298,6 +302,7 @@ export class GameServer {
       config: () => this.gameConfig,
       clients: () => this.clients.all(),
       teamIndex: (c) => this.matchmakingTeamIndex(c),
+      nation: (c) => this.nationPick(c),
     });
     this.log = opts.log.child({ gameID: opts.id });
     this.ingress = new SocketIngress(this.log, this.telemetry, {
@@ -764,6 +769,10 @@ export class GameServer {
         this.handleReport(client, clientMsg);
         break;
       }
+      case "pick_nation": {
+        void this.pickNation(client, clientMsg.nation);
+        break;
+      }
       default: {
         this.log.warn(`Unknown message type: ${(clientMsg as any).type}`, {
           clientID: client.clientID,
@@ -1077,6 +1086,7 @@ export class GameServer {
         isLobbyCreator: this.lobbyCreatorID === c.clientID,
         friends: friendsFor(c),
         teamIndex: this.matchmakingTeamIndex(c),
+        ...this.nationField(c),
       })),
       tribes: this.tribes,
     });
@@ -1311,6 +1321,53 @@ export class GameServer {
   // Resolves a client to its matchmade team slot (index into
   // matchmakingTeams), or undefined when the game isn't matchmade / the
   // client isn't in the assignment.
+  // The country a player holds in a Nations lobby. Only players count: a
+  // spectator's pick is kept but frees the country until they play again.
+  // Only Nations players carry the key, so other games' wire stays as it was.
+  private nationField(c: Client): { nation?: number } {
+    const nation = this.nationPick(c);
+    return nation === undefined ? {} : { nation };
+  }
+
+  private nationPick(c: Client): number | undefined {
+    if (this.gameConfig.gameVariant !== "nations" || c.spectator) {
+      return undefined;
+    }
+    return this.nationPicks.get(c.persistentID);
+  }
+
+  // Picks (or, with null, releases) a country in a Nations lobby. A country
+  // already held by another player stays theirs; players who never pick get
+  // a free one at random when the game starts.
+  private async pickNation(client: Client, nation: number | null) {
+    if (
+      this.gameConfig.gameVariant !== "nations" ||
+      this.hasStarted() ||
+      client.spectator
+    ) {
+      return;
+    }
+    if (nation === null) {
+      this.nationPicks.delete(client.persistentID);
+      this.broadcastLobbyInfo();
+      return;
+    }
+    let playable: (index: number) => boolean;
+    try {
+      playable = await nationsPlayable();
+    } catch (e) {
+      this.log.error("could not load the nations countries", { error: e });
+      return;
+    }
+    if (!playable(nation) || this.hasStarted()) return;
+    const taken = this.clients
+      .players()
+      .some((c) => c !== client && this.nationPick(c) === nation);
+    if (taken) return;
+    this.nationPicks.set(client.persistentID, nation);
+    this.broadcastLobbyInfo();
+  }
+
   private matchmakingTeamIndex(c: Client): number | undefined {
     const publicId = c.publicId;
     if (this.matchmakingTeams === undefined || publicId === undefined) {

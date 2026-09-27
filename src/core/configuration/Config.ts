@@ -20,6 +20,13 @@ import {
   UnitType,
 } from "../game/Game";
 import {
+  CAPITAL_FALLEN_DEFENSE_MULT,
+  CAPITAL_GOLD_BONUS_PERCENT,
+  CAPITAL_TROOP_GROWTH_BONUS_PERCENT,
+  hasCapital,
+  NATIONS_PERCENT_TILES_OWNED_TO_WIN,
+} from "../game/NationsMode";
+import {
   OBJECTIVE_GOLD_PER_TICK,
   OBJECTIVE_TROOP_GROWTH_PERCENT,
 } from "../game/Objectives";
@@ -107,6 +114,8 @@ export interface AttackLogicInput {
     isTraitor: boolean;
     /** Defender is disconnected and on the attacker's team. */
     isDisconnectedTeammate: boolean;
+    /** Nations mode: the defender lost their capital within the minute. */
+    capitalFallen?: boolean;
   } | null;
   /** A defense post owned by the defender is in range of the tile. */
   defenderHasDefensePost: boolean;
@@ -454,6 +463,10 @@ export class Config {
   }
   objectives(): boolean {
     return this._gameConfig.objectives ?? false;
+  }
+  /** Nations mode: players start as real countries (see NationsMode.ts). */
+  isNationsMode(): boolean {
+    return this._gameConfig.gameVariant === "nations";
   }
   isRandomSpawn(): boolean {
     return this._gameConfig.randomSpawn;
@@ -902,7 +915,9 @@ export class Config {
   }
 
   percentageTilesOwnedToWin(elapsedGameSeconds: number): number {
-    const base = PERCENT_TILES_OWNED_TO_WIN;
+    const base = this.isNationsMode()
+      ? NATIONS_PERCENT_TILES_OWNED_TO_WIN
+      : PERCENT_TILES_OWNED_TO_WIN;
     const sd = this.overtimeConfig();
     if (!sd.enabled) {
       return base;
@@ -933,6 +948,11 @@ export class Config {
   numSpawnPhaseTurns(): number {
     if (this._gameConfig.gameType === GameType.Singleplayer) {
       return 100;
+    }
+    if (this.isNationsMode()) {
+      // Nobody picks a spawn: the countries are placed from the start, so
+      // this is only a short look at the map before the war begins.
+      return 50;
     }
     if (this.isRandomSpawn()) {
       return 150;
@@ -1009,6 +1029,8 @@ export class Config {
 
     const traitorLossMod = defender.isTraitor ? this.traitorDefenseDebuff() : 1;
     const traitorCostMod = defender.isTraitor ? this.traitorSpeedDebuff() : 1;
+    // A country that just lost its capital defends worse for a while.
+    const capitalMod = defender.capitalFallen ? CAPITAL_FALLEN_DEFENSE_MULT : 1;
 
     // Defender loses its average troops-per-tile.
     const defenderTroopLoss = defender.troops / defender.numTiles;
@@ -1021,6 +1043,7 @@ export class Config {
     const attackerTroopLoss =
       mag *
       traitorLossMod *
+      capitalMod *
       within(troopRatio, 0.6, 2) *
       (ATTACKER_LOSS_BASE * largeAttackerBonus * largeDefenderBonus +
         ATTACKER_LOSS_PER_DENSITY * defenderTroopLoss);
@@ -1044,7 +1067,8 @@ export class Config {
           tileCost *
           largeAttackerSpeedBonus *
           largeDefenderBonus *
-          traitorCostMod) /
+          traitorCostMod *
+          capitalMod) /
         input.borderSize,
     };
   }
@@ -1147,6 +1171,10 @@ export class Config {
     toAdd *=
       1 + (OBJECTIVE_TROOP_GROWTH_PERCENT * player.objectivesRewarded()) / 100;
 
+    if (this.isNationsMode() && hasCapital(player)) {
+      toAdd *= 1 + CAPITAL_TROOP_GROWTH_BONUS_PERCENT / 100;
+    }
+
     if (player.type() === PlayerType.Nation) {
       switch (this._gameConfig.difficulty) {
         case Difficulty.Easy:
@@ -1178,7 +1206,11 @@ export class Config {
       baseRate = 100n;
     }
     baseRate += OBJECTIVE_GOLD_PER_TICK * BigInt(player.objectivesRewarded());
-    return BigInt(Math.floor(Number(baseRate) * multiplier));
+    const capitalBonus =
+      this.isNationsMode() && hasCapital(player)
+        ? 1 + CAPITAL_GOLD_BONUS_PERCENT / 100
+        : 1;
+    return BigInt(Math.floor(Number(baseRate) * multiplier * capitalBonus));
   }
 
   nukeMagnitudes(unitType: UnitType): NukeMagnitude {

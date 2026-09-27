@@ -173,6 +173,7 @@ export function makeUnitUpdate(
     missileTimerQueue: [],
     level: 1,
     hasTrainStation: false,
+    isCapital: false,
     ...overrides,
   };
 }

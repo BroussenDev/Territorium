@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { GameMapType } from "../../../src/core/game/Game";
 import { GameMapLoader, MapData } from "../../../src/core/game/GameMapLoader";
+import { NationsCountriesFile } from "../../../src/core/game/NationsMode";
 import { MapManifest } from "../../../src/core/game/TerrainMapLoader";
 
 /**
@@ -33,6 +34,11 @@ export class NodeGameMapLoader implements GameMapLoader {
       layerPng: async (_layerId: string) => {
         throw new Error("Layer PNGs are not supported in NodeGameMapLoader");
       },
+      countriesBin: readBin("countries.bin"),
+      countriesJson: async () =>
+        JSON.parse(
+          fs.readFileSync(path.join(dir, "countries.json"), "utf8"),
+        ) as NationsCountriesFile,
     };
   }
 }

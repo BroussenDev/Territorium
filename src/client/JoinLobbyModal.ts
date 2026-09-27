@@ -35,13 +35,14 @@ import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
 import { ensureServerList, redirectToGameVersion } from "./ServerList";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
-import { SendSpectateEvent } from "./Transport";
+import { SendPickNationEvent, SendSpectateEvent } from "./Transport";
 import { normaliseMapKey } from "./Utils";
 import { isReplayShellHost, versionedReplayUrl } from "./VersionedReplay";
 import { BaseModal } from "./components/BaseModal";
 import "./components/CopyButton";
 import "./components/LobbyConfigItem";
 import "./components/LobbyPlayerView";
+import "./components/NationsPicker";
 import { inviteFriendsButton } from "./components/ui/InviteFriendsButton";
 import { DEFAULT_TITLE_CLASS, modalHeader } from "./components/ui/ModalHeader";
 import { nationsConfigToSlider } from "./utilities/GameConfigHelpers";
@@ -353,6 +354,18 @@ export class JoinLobbyModal extends BaseModal {
               `
             : html`
                 ${this.gameConfig ? this.renderGameConfig() : html``}
+                ${this.gameConfig?.gameVariant === "nations"
+                  ? html`<nations-picker
+                      .clients=${this.players}
+                      .currentClientID=${this.currentClientID}
+                      @pick-nation=${(
+                        e: CustomEvent<{ nation: number | null }>,
+                      ) =>
+                        this.eventBus?.emit(
+                          new SendPickNationEvent(e.detail.nation),
+                        )}
+                    ></nations-picker>`
+                  : ""}
                 ${this.players.length > 0
                   ? html`
                       <lobby-player-view
@@ -799,6 +812,9 @@ export class JoinLobbyModal extends BaseModal {
   // --- Game config rendering ---
 
   private modeSubtitle(c: GameConfig): string {
+    if (c.gameVariant === "nations") {
+      return translateText("game_modes.nations_title");
+    }
     if (c.gameMode !== GameMode.Team) {
       return translateText("game_mode.ffa");
     }

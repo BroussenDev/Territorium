@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "No {time} Sekunde, bis der Verrats-Malus endet",
     "betrayal_description": "Du hesch dini Allianz mit {name} broche, und bisch zum VERRÄTER worde ({malusPercent}% verteidigungs malus für {durationText})",
     "betrayed_you": "{name} het d Allianz mit dir broche",
+    "capital_fallen": "{capital} ist gefallen! {name} haben ihre Hauptstadt verloren",
     "conquered_no_gold": "Du hesch {name} erobert. (Kei Gold, het nid gspiut)",
     "duration_second": "1 Sekunde",
     "duration_seconds_plural": "{seconds} Sekunde",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} – Wasserstoffbombe explodierte",
     "ignore": "Ignoriere",
     "missile_intercepted": "Raggete abgfange {unit}",
+    "new_capital_fallen": "{name} haben ihre Hauptstadt verloren!",
     "no_boats_available": "Kei Boot verfüegbar, max. {max}",
     "objective_captured": "Sie haben ein Kartenziel erobert: mehr Gold und Truppenwachstum, solange Sie es halten.",
     "objective_lost": "{name} hat Ihnen ein Kartenziel abgenommen.",
@@ -1089,6 +1091,20 @@
     "ffa": "Jede gäge jede",
     "hvn": "Menschen gegen Nationen",
     "teams": "Teams"
+  },
+  "game_modes": {
+    "more_soon": "Weitere Spielmodi sind in Vorbereitung",
+    "nations_description": "Wählen Sie ein echtes Land auf der riesigen Weltkarte aus und beginnen Sie mit seinem gesamten Territorium. Halten Sie Ihre Hauptstadt, schlucken Sie Ihre Nachbarn und beherrschen Sie die halbe Welt.",
+    "nations_fact_ai": "Länder, die niemand auswählt, werden von der KI gespielt",
+    "nations_fact_capital": "Ihre echte Hauptstadt bringt +10 % Gold- und Truppenwachstum",
+    "nations_fact_country": "Sie beginnen mit Ihrem ganzen Land",
+    "nations_fact_win": "Besitzen Sie 50 % des Landes, um zu gewinnen",
+    "nations_join": "Wählen Sie mein Land",
+    "nations_title": "Nationen",
+    "nations_waiting": "Das nächste Spiel kommt bald",
+    "players": "{count}/{max} Spieler",
+    "subtitle": "Multiplayer-Spiele mit eigenen Regeln",
+    "title": "Spielmodi"
   },
   "game_settings": {
     "bots": "Stämme: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Nicht mehr anzeigen",
     "ffa_collusion": "Zur Erinnerung: Die Bildung von Teams vor dem Spiel ist in der FFA nicht erlaubt",
     "multiplayer_game_paused": "Spiel pausiert vom Lobby-Ersteuer",
+    "nations_spawn": "Jedes Land ist an Ort und Stelle: Der Krieg beginnt in einem Moment",
     "pvp_immunity_active": "PVP Immunität aktiv für {seconds} Sekunde",
     "random_spawn": "Zuefäuige Spawn isch aktiviert. Startposition wird usgwäut...",
     "random_spawn_spectator": "Zufälliger Spawn ist aktiviert",
@@ -1780,6 +1797,19 @@
     "please_wait": "Bitte warten",
     "seconds": "Sekunden",
     "warning": "Warnung im Wachsamkeitsmodus"
+  },
+  "nations_lobby": {
+    "capital": "Hauptstadt: {capital}",
+    "free": "Frei",
+    "hint": "Klicken Sie auf der Karte auf ein Land. Graue Länder sind bereits besetzt; Jedes freie Land wird von der KI gespielt.",
+    "load_failed": "Die Weltkarte konnte nicht geladen werden. Sie erhalten ein zufälliges Land.",
+    "no_match": "Kein Land gefunden",
+    "none_picked": "Noch kein Land ausgewählt: Sie erhalten ein zufälliges kostenloses Land.",
+    "release": "Freigeben",
+    "search": "Suchen Sie nach einem Land",
+    "size": "{share} % der Landfläche der Welt",
+    "taken_by": "Aufgenommen von {name}",
+    "title": "Wählen Sie Ihr Land"
   },
   "nav_account_menu": {
     "account_settings": "Kontoeinstellungen",
@@ -2336,6 +2366,8 @@
     "watch": "{name} ansehen"
   },
   "structure_card": {
+    "capital": "Hauptstadt: +10 % Gold- und Truppenwachstum",
+    "capital_locked": "Neue Hauptstadt in {time} möglich",
     "gain_missiles": "Raketen {from} → {to}",
     "gain_population": "Maximale Bevölkerung +{from} → +{to}",
     "gain_range": "Reichweite {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Stufe {level} / {max}",
     "locked": "Stufe {level} verfügbar in {time}",
     "max": "Höchststufe",
+    "proclaim_capital": "Machen Sie diese Stadt zu meiner Hauptstadt",
     "upgrade": "Verbessern"
   },
   "subscription_modal": {

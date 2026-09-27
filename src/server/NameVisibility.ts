@@ -31,6 +31,8 @@ export interface NameVisibilityView {
   clients: () => ReadonlyMap<ClientID, Client>;
   // The client's pinned matchmade team, or undefined outside one.
   teamIndex: (client: Client) => number | undefined;
+  // Nations lobbies: the country the client picked, or undefined.
+  nation?: (client: Client) => number | undefined;
 }
 
 export type LobbyClient = NonNullable<GameInfo["clients"]>[number];
@@ -171,6 +173,12 @@ export class NameVisibility {
     };
   }
 
+  // A Nations lobby's country pick; other lobbies don't carry the key.
+  private nationField(c: Client): { nation?: number } {
+    const nation = this.view.nation?.(c);
+    return nation === undefined ? {} : { nation };
+  }
+
   // The lobby roster as `viewer` may see it. Everyone connected, spectators
   // included and flagged: they are not in the simulation, but the lobby is
   // the same view for them as for a player — filtering them out emptied the
@@ -192,6 +200,7 @@ export class NameVisibility {
           clientID: c.clientID,
           spectator: c.spectator || undefined,
           teamIndex: this.view.teamIndex(c),
+          ...this.nationField(c),
         };
       }
       // A TEAMMATE reveal is deliberately narrower than the others. Seeing a
@@ -210,6 +219,7 @@ export class NameVisibility {
         verified: c.cosmetics?.verified,
         spectator: c.spectator || undefined,
         teamIndex: this.view.teamIndex(c),
+        ...this.nationField(c),
       };
     });
   }

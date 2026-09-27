@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import type { AssetManifest } from "../core/AssetUrls";
 import { GameMapType } from "../core/game/Game";
 import { GameMapLoader, MapData } from "../core/game/GameMapLoader";
+import { NationsCountriesFile } from "../core/game/NationsMode";
 import { MapManifest } from "../core/game/TerrainMapLoader";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -62,6 +63,11 @@ export class NodeMapLoader implements GameMapLoader {
       layerPng: async () => {
         throw new Error("the server never renders map layers");
       },
+      countriesBin: readBin("countries.bin"),
+      countriesJson: async () =>
+        JSON.parse(
+          fs.readFileSync(this.filePath(dir, "countries.json"), "utf8"),
+        ) as NationsCountriesFile,
     };
   }
 }

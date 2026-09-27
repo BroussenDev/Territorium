@@ -172,6 +172,7 @@ export class PlayerImpl implements Player {
   private relations = new Map<Player, number>();
 
   private lastDeleteUnitTick: Tick = -1;
+  private _capitalLostTick: Tick = -1;
   private lastEmbargoAllTick: Tick = -1;
 
   public _incomingAttacks: Attack[] = [];
@@ -400,6 +401,7 @@ export class PlayerImpl implements Player {
       betrayals: this._betrayalCount,
       lastDeleteUnitTick: this.lastDeleteUnitTick,
       isLobbyCreator: this.isLobbyCreator(),
+      capitalLostTick: this._capitalLostTick,
     };
   }
 
@@ -1251,6 +1253,14 @@ export class PlayerImpl implements Player {
 
   recordDeleteUnit(): void {
     this.lastDeleteUnitTick = this.mg.ticks();
+  }
+
+  capitalLostTick(): Tick {
+    return this._capitalLostTick;
+  }
+
+  setCapitalLostTick(tick: Tick): void {
+    this._capitalLostTick = tick;
   }
 
   canEmbargoAll(): boolean {

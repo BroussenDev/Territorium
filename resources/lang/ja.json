@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "裏切りのデバフ終了まであと{time}秒",
     "betrayal_description": "あなたは{name}との同盟を破棄し、裏切り者になりました（防御力が{durationText}の間{malusPercent}%低下します）",
     "betrayed_you": "{name}はあなたとの同盟を破棄しました",
+    "capital_fallen": "{capital} が落ちました! {name}は首都を失いました",
     "conquered_no_gold": "{name}を征服しました (相手がプレイしていなかったのでゴールドは獲得できません)",
     "duration_second": "1秒",
     "duration_seconds_plural": "{seconds}秒",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - 水素爆弾が爆発しました",
     "ignore": "無視",
     "missile_intercepted": "ミサイルが{unit}を迎撃しました",
+    "new_capital_fallen": "{name} は首都を失いました!",
     "no_boats_available": "輸送船をこれ以上出せません、最大は{max}隻までです",
     "objective_captured": "マップ目標を占領しました。保持している間、ゴールドと兵力の増加量が増えます。",
     "objective_lost": "{name} がマップ目標の 1 つを奪いました。",
@@ -1089,6 +1091,20 @@
     "ffa": "バトルロワイヤル",
     "hvn": "人類 vs 国家",
     "teams": "チーム"
+  },
+  "game_modes": {
+    "more_soon": "さらに多くのゲームモードが準備中です",
+    "nations_description": "巨大な世界地図上で実際の国を選択し、その領土全体から始めましょう。首都を掌握し、近隣諸国を飲み込み、世界の半分を支配しましょう。",
+    "nations_fact_ai": "誰も選ばなかった国はAIによってプレイされる",
+    "nations_fact_capital": "あなたの本当の首都は +10% のゴールドと軍隊の成長を与えます",
+    "nations_fact_country": "まずは国全体から始めましょう",
+    "nations_fact_win": "土地の50%を所有すると勝利します",
+    "nations_join": "私の国を選択してください",
+    "nations_title": "国家",
+    "nations_waiting": "次の試合はもうすぐです",
+    "players": "{count}/{max} プレイヤー",
+    "subtitle": "独自のルールを持つマルチプレイヤー ゲーム",
+    "title": "ゲームモード"
   },
   "game_settings": {
     "bots": "部隊： ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "今後表示しない",
     "ffa_collusion": "警告：バトルロワイヤルでは、ゲーム開始前からのチーミングは禁止されています。",
     "multiplayer_game_paused": "ロビー作成者によってゲームが一時停止されました",
+    "nations_spawn": "どの国も準備が整いました。戦争はすぐに始まります",
     "pvp_immunity_active": "{seconds}秒間のPVPの無敵時間が有効です",
     "random_spawn": "ランダムスポーンが有効です。スタート地点を設定しています…",
     "random_spawn_spectator": "ランダムスポーンが有効です",
@@ -1780,6 +1797,19 @@
     "please_wait": "お待ちください",
     "seconds": "秒",
     "warning": "警戒モードの警告"
+  },
+  "nations_lobby": {
+    "capital": "首都: {capital}",
+    "free": "無料",
+    "hint": "地図上の国をクリックします。灰色の国はすでに占領されています。すべての自由な国は AI によってプレイされることになります。",
+    "load_failed": "世界地図を読み込めませんでした。ランダムな国が表示されます。",
+    "no_match": "国が見つかりませんでした",
+    "none_picked": "まだ国が選択されていません。ランダムで無料の国が 1 つ入手できます。",
+    "release": "リリース",
+    "search": "国を検索する",
+    "size": "世界の土地の{share} %",
+    "taken_by": "{name} が撮影",
+    "title": "国を選択してください"
   },
   "nav_account_menu": {
     "account_settings": "アカウント設定",
@@ -2336,6 +2366,8 @@
     "watch": "{name} を視聴する"
   },
   "structure_card": {
+    "capital": "首都: +10% ゴールドと軍隊の増加",
+    "capital_locked": "{time} に新しい首都が可能",
     "gain_missiles": "ミサイル {from} → {to}",
     "gain_population": "最大人口 +{from} → +{to}",
     "gain_range": "射程 {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "レベル {level} / {max}",
     "locked": "レベル {level} まであと {time}",
     "max": "最大レベル",
+    "proclaim_capital": "この街を私の首都にしましょう",
     "upgrade": "強化"
   },
   "subscription_modal": {

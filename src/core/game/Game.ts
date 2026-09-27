@@ -526,6 +526,9 @@ export interface Unit {
   hash(): number;
   toUpdate(): UnitUpdate;
   hasTrainStation(): boolean;
+  // Nations mode: this city is its owner's capital.
+  setCapital(capital: boolean): void;
+  isCapital(): boolean;
   setTrainStation(trainStation: boolean): void;
   wasDestroyedByEnemy(): boolean;
   destroyer(): Player | undefined;
@@ -797,6 +800,10 @@ export interface Player {
   donateGold(recipient: Player, gold: Gold): boolean;
   canDeleteUnit(): boolean;
   recordDeleteUnit(): void;
+  // Nations mode: tick the player's capital fell, -1 while it stands (or
+  // once a new one is proclaimed).
+  capitalLostTick(): Tick;
+  setCapitalLostTick(tick: Tick): void;
   canEmbargoAll(): boolean;
   recordEmbargoAll(): void;
 
@@ -1137,6 +1144,7 @@ export enum MessageType {
   EMP_INBOUND,
   RADAR_CONTACT,
   OBJECTIVES_REVEALED,
+  CAPITAL_FALLEN,
 }
 
 // Message categories used for filtering events in the EventsDisplay
@@ -1175,6 +1183,7 @@ export const MESSAGE_TYPE_CATEGORIES: Record<MessageType, MessageCategory> = {
   [MessageType.EMP_INBOUND]: MessageCategory.NUKE,
   [MessageType.RADAR_CONTACT]: MessageCategory.ATTACK,
   [MessageType.OBJECTIVES_REVEALED]: MessageCategory.ATTACK,
+  [MessageType.CAPITAL_FALLEN]: MessageCategory.ATTACK,
 } as const;
 
 /**

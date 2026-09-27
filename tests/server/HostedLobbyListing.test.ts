@@ -696,6 +696,7 @@ describe("MasterLobbyService hosted lobbies", () => {
     );
     expect(created.map((m) => m.publicGameType).sort()).toEqual([
       "ffa",
+      "nations",
       "special",
       "team",
     ]);

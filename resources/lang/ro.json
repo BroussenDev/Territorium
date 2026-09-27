@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} Secunde",
     "betrayal_description": "Ți-ai rupt alianța cu {name}, făcându-te un TRĂDĂTOR ({malusPercent}%, penalizare asupra apărării pentru {durationText})",
     "betrayed_you": "{name} A rupt alianța cu tine",
+    "capital_fallen": "{capital} a căzut! {name} și-au pierdut capitala",
     "conquered_no_gold": "Ai cucerit {name} (nu ai jucat, nici aur acordat)",
     "duration_second": "O secundă",
     "duration_seconds_plural": "{seconds} Secunde",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - bombă cu hidrogen detonată",
     "ignore": "Ignoră",
     "missile_intercepted": "Racheta a interceptat {unit}",
+    "new_capital_fallen": "{name} și-au pierdut capitala!",
     "no_boats_available": "Nu sunt disponibile bărci, maxim {max}",
     "objective_captured": "Ai capturat un obiectiv al hărții: mai mult aur și creșterea trupelor în timp ce îl ții.",
     "objective_lost": "{name} a luat unul dintre obiectivele hărții tale.",
@@ -1089,6 +1091,20 @@
     "ffa": "Fiecare pentru el",
     "hvn": "Oameni vs Națiuni",
     "teams": "Echipe"
+  },
+  "game_modes": {
+    "more_soon": "Mai multe moduri de joc sunt pe drum",
+    "nations_description": "Alegeți o țară adevărată de pe harta uriașă a lumii și începeți cu întregul ei teritoriu. Ține-ți capitala, înghite-ți vecinii și stăpânește jumătate din lume.",
+    "nations_fact_ai": "Țările pe care nimeni nu le alege sunt jucate de AI",
+    "nations_fact_capital": "Capitala ta reală oferă +10% aur și creștere a trupelor",
+    "nations_fact_country": "Începi cu toată țara ta",
+    "nations_fact_win": "Dețineți 50% din teren pentru a câștiga",
+    "nations_join": "Alege tara mea",
+    "nations_title": "Națiunile",
+    "nations_waiting": "Următorul joc vine în curând",
+    "players": "{count}/{max} jucători",
+    "subtitle": "Jocuri multiplayer cu reguli proprii",
+    "title": "Moduri de joc"
   },
   "game_settings": {
     "bots": "Triburi: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Nu mai arăta",
     "ffa_collusion": "Atenție: nu este permisă crearea de echipe înainte ca jocul să nu fie permis în FFA",
     "multiplayer_game_paused": "Joc întrerupt de Creatorul Camerei",
+    "nations_spawn": "Fiecare țară este la locul său: războiul începe într-o clipă",
     "pvp_immunity_active": "Imunitatea PVP activă pentru {seconds}s",
     "random_spawn": "Apariția aleatorie este activată. Se selectează locația de pornire...",
     "random_spawn_spectator": "Programarea aleatorie este activată",
@@ -1780,6 +1797,19 @@
     "please_wait": "Vă rugăm așteptați",
     "seconds": "secunde",
     "warning": "Avertizare mod vigilent"
+  },
+  "nations_lobby": {
+    "capital": "Capitală: {capital}",
+    "free": "Gratuit",
+    "hint": "Faceți clic pe o țară de pe hartă. Țările gri sunt deja luate; fiecare țară liberă va fi jucată de AI.",
+    "load_failed": "Harta lumii nu a putut fi încărcată. Veți obține o țară aleatorie.",
+    "no_match": "Nu a fost găsită nicio țară",
+    "none_picked": "Încă nu ați ales nicio țară: veți primi una gratuită aleatorie.",
+    "release": "Eliberare",
+    "search": "Căutați o țară",
+    "size": "{share} % din pământul lumii",
+    "taken_by": "Luat de {name}",
+    "title": "Alege-ți țara"
   },
   "nav_account_menu": {
     "account_settings": "Setări cont",
@@ -2336,6 +2366,8 @@
     "watch": "Urmărește {name}"
   },
   "structure_card": {
+    "capital": "Capitală: +10% creștere aurului și a trupelor",
+    "capital_locked": "Noua capitală posibilă în {time}",
     "gain_missiles": "Rachete {from} → {to}",
     "gain_population": "Populația maximă +{from} → +{to}",
     "gain_range": "Rază {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivelul {level} / {max}",
     "locked": "Nivelul {level} disponibil în {time}",
     "max": "Nivel maxim",
+    "proclaim_capital": "Faceți din acest oraș capitala mea",
     "upgrade": "Îmbunătățește"
   },
   "subscription_modal": {

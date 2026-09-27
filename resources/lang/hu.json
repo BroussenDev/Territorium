@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} másodperc van hátra az árulás miatti gyengítés végéig",
     "betrayal_description": "Szövetség megszegve a következő játékossal: {name}, így ÁRULÓ lettél ({malusPercent}% védelmi büntetés {durationText}-re)”",
     "betrayed_you": "{name} felbontotta a szövetségét veled",
+    "capital_fallen": "{capital} esett! {name} elvesztették fővárosukat",
     "conquered_no_gold": "Meghódítottad {name}-t (nem játszott, nem kaptál aranyat)",
     "duration_second": "1 másodperc",
     "duration_seconds_plural": "{seconds} másodperc",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - hidrogénbomba robbantva",
     "ignore": "Figyelmen kívül hagy",
     "missile_intercepted": "Elfogott rakéta {unit}",
+    "new_capital_fallen": "{name} elvesztették fővárosukat!",
     "no_boats_available": "Nincsenek elérhető hajók, max. {max}",
     "objective_captured": "Elfoglaltál egy térképcélt: több arany és csapatnövekedés, amíg tartod.",
     "objective_lost": "{name} elvette az egyik térképcélját.",
@@ -1089,6 +1091,20 @@
     "ffa": "Mindenki mindenki ellen",
     "hvn": "Emberek vs Nemzetek",
     "teams": "Csapatok"
+  },
+  "game_modes": {
+    "more_soon": "További játékmódok készülnek",
+    "nations_description": "Válasszon egy igazi országot az óriási világtérképen, és kezdje a teljes területével. Tartsa a fővárosát, nyelje le szomszédait, és uralkodjon a világ felén.",
+    "nations_fact_ai": "Azokat az országokat, amelyeket senki sem választ ki, az AI játssza",
+    "nations_fact_capital": "Az igazi fővárosod +10% aranyat és csapatnövekedést ad",
+    "nations_fact_country": "Az egész országoddal kezded",
+    "nations_fact_win": "A föld 50%-ának birtokában lehet nyerni",
+    "nations_join": "Válaszd az országomat",
+    "nations_title": "Nemzetek",
+    "nations_waiting": "Hamarosan jön a következő játék",
+    "players": "{count}/{max} játékos",
+    "subtitle": "Többszereplős játékok saját szabályokkal",
+    "title": "Játékmódok"
   },
   "game_settings": {
     "bots": "Törzsek: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Ne mutasd újra",
     "ffa_collusion": "Emlékeztető: az FFA-ban tilos a csapatok összeállítása a meccs előtt.",
     "multiplayer_game_paused": "A játékot a váróterem készítője szüneteltette",
+    "nations_spawn": "Minden ország a helyén van: a háború pillanatok alatt kezdődik",
     "pvp_immunity_active": "A PVP immunitás {seconds} másodpercig aktív",
     "random_spawn": "Véletlenszerű spawn engedélyezve. Kiválasztjuk a kezdőhelyet...",
     "random_spawn_spectator": "A véletlenszerű spawn engedélyezve",
@@ -1780,6 +1797,19 @@
     "please_wait": "Kérlek, várj",
     "seconds": "másodperc",
     "warning": "Figyelmeztetés: Éber üzemmód"
+  },
+  "nations_lobby": {
+    "capital": "Főváros: {capital}",
+    "free": "Ingyenes",
+    "hint": "Kattintson egy országra a térképen. A szürke országokat már elfoglalták; minden szabad országot az AI fog játszani.",
+    "load_failed": "A világtérképet nem sikerült betölteni. Kapsz egy véletlenszerű országot.",
+    "no_match": "Nem található ország",
+    "none_picked": "Még nincs kiválasztott ország: kapsz egy véletlenszerűen ingyenest.",
+    "release": "Kiadás",
+    "search": "Keressen egy országot",
+    "size": "A világ földterületének {share} %-a",
+    "taken_by": "Készítette: {name}",
+    "title": "Válassza ki országát"
   },
   "nav_account_menu": {
     "account_settings": "Fiókbeállítások",
@@ -2336,6 +2366,8 @@
     "watch": "Nézd {name}"
   },
   "structure_card": {
+    "capital": "Főváros: +10% arany és csapatnövekedés",
+    "capital_locked": "Új főváros lehetséges {time}-ben",
     "gain_missiles": "Rakéták {from} → {to}",
     "gain_population": "Maximális lakosság +{from} → +{to}",
     "gain_range": "Hatótáv {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "{level}. szint / {max}",
     "locked": "{level}. szint elérhető ennyi idő múlva: {time}",
     "max": "Maximális szint",
+    "proclaim_capital": "Legyen ez a város a fővárosom",
     "upgrade": "Fejlesztés"
   },
   "subscription_modal": {

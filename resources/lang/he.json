@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "נותרו {time} שניות עד לסיום ביטול הבגידה",
     "betrayal_description": "שברת את הברית שלך עם {name}, מה שהפך אותך לבוגד ({malusPercent}% ביטול הגנה עבור {durationText})",
     "betrayed_you": "{name} הפרו את הברית שלהם איתך",
+    "capital_fallen": "{capital} נפל! {name} איבדו את עיר הבירה שלהם",
     "conquered_no_gold": "כבש {name} (לא שיחק, לא הוענק זהב)",
     "duration_second": "שנייה אחת",
     "duration_seconds_plural": "{seconds} שניות",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - פצצת מימן התפוצצה",
     "ignore": "התעלם",
     "missile_intercepted": "SAM יורט {unit}",
+    "new_capital_fallen": "{name} איבדו את עיר הבירה שלהם!",
     "no_boats_available": "אין סירות זמינות, מקסימום {max}",
     "objective_captured": "תפסת מטרה במפה: יותר זהב וגידול חיילים בזמן שאתה מחזיק בה.",
     "objective_lost": "{name} לקח את אחד ממטרות המפה שלך.",
@@ -1089,6 +1091,20 @@
     "ffa": "כולם נגד כולם",
     "hvn": "בני אדם נגד אומות",
     "teams": "קבוצות"
+  },
+  "game_modes": {
+    "more_soon": "מצבי משחק נוספים בדרך",
+    "nations_description": "בחר מדינה אמיתית על מפת העולם הענקית והתחל עם כל הטריטוריה שלה. החזק את עיר הבירה שלך, תבלע את שכניך ושלט בחצי העולם.",
+    "nations_fact_ai": "מדינות שאף אחד לא בוחר מופעלות על ידי הבינה המלאכותית",
+    "nations_fact_capital": "עיר הבירה האמיתית שלך נותנת +10% זהב וגידול חיילים",
+    "nations_fact_country": "אתה מתחיל עם כל המדינה שלך",
+    "nations_fact_win": "הבעלים של 50% מהקרקע כדי לזכות",
+    "nations_join": "בחר את המדינה שלי",
+    "nations_title": "אומות",
+    "nations_waiting": "המשחק הבא בקרוב",
+    "players": "{count}/{max} שחקנים",
+    "subtitle": "משחקים מרובי משתתפים עם חוקים משלהם",
+    "title": "מצבי משחק"
   },
   "game_settings": {
     "bots": "שבטים:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "אל תראה שוב",
     "ffa_collusion": "תזכורת: שיתוף פעולה לפני המשחק אסור ב-FFA",
     "multiplayer_game_paused": "המשחק הושהה על ידי Lobby Creator",
+    "nations_spawn": "כל מדינה במקום: המלחמה מתחילה בעוד רגע",
     "pvp_immunity_active": "חסינות PVP פעילה למשך {seconds} שניות",
     "random_spawn": "השרצה אקראית מופעלת. בוחר עבורך מיקום התחלה...",
     "random_spawn_spectator": "השרצה אקראית מופעלת",
@@ -1780,6 +1797,19 @@
     "please_wait": "אנא המתן",
     "seconds": "שניות",
     "warning": "אזהרת מצב ערני"
+  },
+  "nations_lobby": {
+    "capital": "עיר בירה: {capital}",
+    "free": "לְשַׁחְרֵר",
+    "hint": "לחץ על מדינה במפה. מדינות אפורות כבר תפוסות; כל מדינה חופשית תשחק על ידי ה-AI.",
+    "load_failed": "לא ניתן היה לטעון את מפת העולם. תקבל מדינה אקראית.",
+    "no_match": "לא נמצאה מדינה",
+    "none_picked": "עדיין לא נבחרה מדינה: תקבל מדינה בחינם אקראית.",
+    "release": "לְשַׁחְרֵר",
+    "search": "חפש מדינה",
+    "size": "{share}% משטחי העולם",
+    "taken_by": "צולם על ידי {name}",
+    "title": "בחר את המדינה שלך"
   },
   "nav_account_menu": {
     "account_settings": "הגדרות חשבון",
@@ -2336,6 +2366,8 @@
     "watch": "צפו ב{name}"
   },
   "structure_card": {
+    "capital": "עיר בירה: +10% זהב וגידול חיילים",
+    "capital_locked": "עיר בירה חדשה אפשרית ב{time}",
     "gain_missiles": "טילים {from} → {to}",
     "gain_population": "אוכלוסייה מקסימלית +{from} → +{to}",
     "gain_range": "טווח {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "רמה {level} / {max}",
     "locked": "רמה {level} זמינה בעוד {time}",
     "max": "רמה מרבית",
+    "proclaim_capital": "הפוך את העיר הזו לעיר הבירה שלי",
     "upgrade": "שדרוג"
   },
   "subscription_modal": {

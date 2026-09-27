@@ -52,6 +52,7 @@ const TIER_1_TYPES: ReadonlySet<MessageType> = new Set([
   MessageType.EMP_INBOUND,
   MessageType.RADAR_CONTACT,
   MessageType.OBJECTIVES_REVEALED,
+  MessageType.CAPITAL_FALLEN,
   MessageType.NUKE_DETONATED,
   MessageType.NAVAL_INVASION_INBOUND,
   MessageType.ATTACK_REQUEST,

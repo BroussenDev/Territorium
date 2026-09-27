@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekuntia jäljellä petosdebuffin päättymiseen",
     "betrayal_description": "Rikkoit liiton pelaajan {name} kanssa, tehden sinusta PETTURIN ({malusPercent}% puolustuksen huononnus {durationText})",
     "betrayed_you": "{name} rikkoi liittonsa kanssasi",
+    "capital_fallen": "{capital} on pudonnut! {name} menettivät pääkaupunkinsa",
     "conquered_no_gold": "Valloitettu {name} (ei pelannut, kultaa ei myönnetty)",
     "duration_second": "1 sekunti",
     "duration_seconds_plural": "{seconds} sekuntia",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - vetypommi räjäytettiin",
     "ignore": "Sivuuta",
     "missile_intercepted": "SAM siepannut {unit}",
+    "new_capital_fallen": "{name} menettivät pääkaupunkinsa!",
     "no_boats_available": "Ei veneitä saatavilla, max {max}",
     "objective_captured": "Valtasit karttatavoitteen: enemmän kultaa ja joukkojen kasvua, kun pidät sitä.",
     "objective_lost": "{name} otti yhden karttakohteistasi.",
@@ -1089,6 +1091,20 @@
     "ffa": "Kaikki vastaan kaikki",
     "hvn": "Ihmiset vs kansakunnat",
     "teams": "Joukkueet"
+  },
+  "game_modes": {
+    "more_soon": "Lisää pelitiloja on tulossa",
+    "nations_description": "Valitse todellinen maa jättimäiseltä maailmankartalta ja aloita sen koko alueelta. Pidä pääkaupunkisi, niele naapurisi ja hallitse puolta maailmaa.",
+    "nations_fact_ai": "Maissa, joita kukaan ei valitse, pelaa tekoäly",
+    "nations_fact_capital": "Todellinen pääkaupunkisi antaa +10% kultaa ja joukkojen kasvua",
+    "nations_fact_country": "Aloitat koko maastasi",
+    "nations_fact_win": "Omista 50 % maasta voittaaksesi",
+    "nations_join": "Valitse maani",
+    "nations_title": "Kansakunnat",
+    "nations_waiting": "Seuraava peli tulossa pian",
+    "players": "{count}/{max} pelaajaa",
+    "subtitle": "Moninpelit omilla säännöillään",
+    "title": "Pelitilat"
   },
   "game_settings": {
     "bots": "Heimot:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Älä näytä uudelleen",
     "ffa_collusion": "Muistutus: joukkueen yhdistäminen ennen peliä ei ole sallittua FFA:ssa",
     "multiplayer_game_paused": "Lobby Creator keskeytti pelin",
+    "nations_spawn": "Jokainen maa on paikallaan: sota alkaa hetkessä",
     "pvp_immunity_active": "PVP-immuniteetti aktiivinen {seconds}s",
     "random_spawn": "Random spawn on käytössä. Valitaan aloituspaikkaa sinulle...",
     "random_spawn_spectator": "Random spawn on käytössä",
@@ -1780,6 +1797,19 @@
     "please_wait": "Odota",
     "seconds": "sekuntia",
     "warning": "Valppaustilan varoitus"
+  },
+  "nations_lobby": {
+    "capital": "Pääkaupunki: {capital}",
+    "free": "Ilmainen",
+    "hint": "Napsauta maata kartalla. Harmaat maat on jo vallattu; Tekoäly pelaa jokaista vapaata maata.",
+    "load_failed": "Maailman karttaa ei voitu ladata. Saat satunnaisen maan.",
+    "no_match": "Maata ei löytynyt",
+    "none_picked": "Maata ei ole vielä valittu: saat satunnaisen ilmaisen.",
+    "release": "Vapauta",
+    "search": "Etsi maa",
+    "size": "{share} % maailman pinta-alasta",
+    "taken_by": "Kuvaaja {name}",
+    "title": "Valitse maasi"
   },
   "nav_account_menu": {
     "account_settings": "Tilin asetukset",
@@ -2336,6 +2366,8 @@
     "watch": "Katso {name}"
   },
   "structure_card": {
+    "capital": "Pääkaupunki: +10 % kultaa ja joukkojen kasvu",
+    "capital_locked": "Uusi pääkaupunki mahdollinen vuonna {time}",
     "gain_missiles": "Ohjukset {from} → {to}",
     "gain_population": "Suurin asukasluku +{from} → +{to}",
     "gain_range": "Kantama {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Taso {level} / {max}",
     "locked": "Taso {level} saatavilla {time} kuluttua",
     "max": "Enimmäistaso",
+    "proclaim_capital": "Tee tästä kaupungista pääkaupunkini",
     "upgrade": "Päivitä"
   },
   "subscription_modal": {

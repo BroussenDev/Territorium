@@ -7,6 +7,10 @@ import {
   UnitType,
 } from "../../../core/game/Game";
 import { TileRef } from "../../../core/game/GameMap";
+import {
+  capitalRebuildTicksLeft,
+  hasCapital,
+} from "../../../core/game/NationsMode";
 import { Controller } from "../../Controller";
 import {
   CloseViewEvent,
@@ -15,7 +19,10 @@ import {
   TouchEvent,
 } from "../../InputHandler";
 import { TransformHandler } from "../../TransformHandler";
-import { SendUpgradeStructureIntentEvent } from "../../Transport";
+import {
+  SendSetCapitalIntentEvent,
+  SendUpgradeStructureIntentEvent,
+} from "../../Transport";
 import { UIState } from "../../UIState";
 import { renderNumber, translateText } from "../../Utils";
 import { GameView, UnitView } from "../../view";
@@ -183,6 +190,49 @@ export class StructureCard extends LitElement implements Controller {
       new SendUpgradeStructureIntentEvent(unit.id(), unit.type()),
     );
     this.canUpgrade = false;
+  }
+
+  private proclaimCapital(unit: UnitView) {
+    this.eventBus.emit(new SendSetCapitalIntentEvent(unit.id()));
+  }
+
+  /**
+   * Nations mode: the capital says so; a finished city of a player who lost
+   * theirs offers to become the new one, once the rebuild delay is over.
+   */
+  private renderCapital(unit: UnitView) {
+    const me = this.game.myPlayer();
+    if (
+      me === null ||
+      unit.type() !== UnitType.City ||
+      !this.game.config().isNationsMode()
+    ) {
+      return "";
+    }
+    if (unit.isCapital()) {
+      return html`<div class="structure-card-note structure-card-capital">
+        ${translateText("structure_card.capital")}
+      </div>`;
+    }
+    if (hasCapital(me) || unit.isUnderConstruction()) return "";
+    const wait = capitalRebuildTicksLeft(
+      me.capitalLostTick(),
+      this.game.ticks(),
+    );
+    if (wait > 0) {
+      return html`<div class="structure-card-note" translate="no">
+        ${translateText("structure_card.capital_locked", {
+          time: clock((wait * this.game.config().msPerTick()) / 1000),
+        })}
+      </div>`;
+    }
+    return html`<button
+      type="button"
+      class="structure-card-upgrade structure-card-proclaim w-full"
+      @click=${() => this.proclaimCapital(unit)}
+    >
+      ${translateText("structure_card.proclaim_capital")}
+    </button>`;
   }
 
   /** What the next level brings, one line per effect. */
@@ -356,7 +406,7 @@ export class StructureCard extends LitElement implements Controller {
               ${this.gains(unit.type(), level).map((g) => html`<li>${g}</li>`)}
             </ul>`
           : ""}
-        ${this.renderAction(unit, cap)}
+        ${this.renderAction(unit, cap)} ${this.renderCapital(unit)}
       </div>
     `;
   }

@@ -75,6 +75,11 @@ export class SpawnExecution implements Execution {
       return;
     }
 
+    // Nations mode places every country itself; nobody picks a spawn.
+    if (this.fromIntent && this.mg.config().isNationsMode()) {
+      return;
+    }
+
     // Security: If random spawn is enabled, prevent players from re-rolling their spawn location
     if (this.mg.config().isRandomSpawn() && player.hasSpawned()) {
       return;

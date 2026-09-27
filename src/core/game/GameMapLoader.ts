@@ -1,4 +1,5 @@
 import { GameMapType } from "./Game";
+import { NationsCountriesFile } from "./NationsMode";
 import { MapManifest } from "./TerrainMapLoader";
 
 export interface GameMapLoader {
@@ -13,4 +14,7 @@ export interface MapData {
   webpPath: string;
   /** Load a map layer PNG by layer id. Returns an ImageBitmap. */
   layerPng: (layerId: string) => Promise<ImageBitmap>;
+  /** Nations mode data, only shipped with the giant world map. */
+  countriesBin?: () => Promise<Uint8Array>;
+  countriesJson?: () => Promise<NationsCountriesFile>;
 }

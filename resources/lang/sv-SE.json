@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekunder kvar tills förräderi debuff tar slut",
     "betrayal_description": "Du bröt din allians med {name}, vilket gör dig till en FÖRRÄDARE ({malusPercent}% försvagat försvar under {durationText})",
     "betrayed_you": "{name} bröt sin allians med dig",
+    "capital_fallen": "{capital} har fallit! {name} förlorade sin huvudstad",
     "conquered_no_gold": "Erövrade {name} (spelade inte, inget guld tilldelas)",
     "duration_second": "1 sekund",
     "duration_seconds_plural": "{seconds} sekunder",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - vätebomb detonerade",
     "ignore": "Ignorera",
     "missile_intercepted": "SAM avlyssnat {unit}",
+    "new_capital_fallen": "{name} förlorade sin huvudstad!",
     "no_boats_available": "Inga båtar tillgängliga, max {max}",
     "objective_captured": "Du erövrade ett kartmål: mer guld och trupptillväxt medan du håller det.",
     "objective_lost": "{name} tog ett av dina kartmål.",
@@ -1089,6 +1091,20 @@
     "ffa": "Alla mot alla",
     "hvn": "Människor vs nationer",
     "teams": "Lag"
+  },
+  "game_modes": {
+    "more_soon": "Fler spellägen är på väg",
+    "nations_description": "Välj ett riktigt land på den gigantiska världskartan och börja med hela dess territorium. Håll din huvudstad, svälj dina grannar och styr halva världen.",
+    "nations_fact_ai": "Länder som ingen väljer spelas av AI",
+    "nations_fact_capital": "Din riktiga huvudstad ger +10% guld och trupptillväxt",
+    "nations_fact_country": "Du börjar med hela ditt land",
+    "nations_fact_win": "Äg 50% av marken för att vinna",
+    "nations_join": "Välj mitt land",
+    "nations_title": "Nationer",
+    "nations_waiting": "Nästa match kommer snart",
+    "players": "{count}/{max} spelare",
+    "subtitle": "Flerspelarspel med egna regler",
+    "title": "Spellägen"
   },
   "game_settings": {
     "bots": "Stammar:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Visa inte igen",
     "ffa_collusion": "Påminnelse: att samarbeta innan matchen är inte tillåtet i FFA",
     "multiplayer_game_paused": "Spelet pausat av Lobby Creator",
+    "nations_spawn": "Varje land är på plats: kriget börjar om ett ögonblick",
     "pvp_immunity_active": "PVP-immunitet aktiv i {seconds}s",
     "random_spawn": "Slumpmässig spawn är aktiverad. Selecting starting location for you...",
     "random_spawn_spectator": "Slumpmässig spawn är aktiverad",
@@ -1780,6 +1797,19 @@
     "please_wait": "Vänta",
     "seconds": "sekunder",
     "warning": "Varning för vaksamt läge"
+  },
+  "nations_lobby": {
+    "capital": "Huvudstad: {capital}",
+    "free": "Gratis",
+    "hint": "Klicka på ett land på kartan. Grå länder är redan intagna; varje fritt land kommer att spelas av AI.",
+    "load_failed": "Världskartan kunde inte laddas. Du kommer att få ett slumpmässigt land.",
+    "no_match": "Inget land hittades",
+    "none_picked": "Inget land valt ännu: du får ett slumpmässigt gratis.",
+    "release": "Släppa",
+    "search": "Sök efter ett land",
+    "size": "{share} % av världens mark",
+    "taken_by": "Tagen av {name}",
+    "title": "Välj ditt land"
   },
   "nav_account_menu": {
     "account_settings": "Kontoinställningar",
@@ -2336,6 +2366,8 @@
     "watch": "Titta på {name}"
   },
   "structure_card": {
+    "capital": "Huvudstad: +10 % guld och trupptillväxt",
+    "capital_locked": "Ny huvudstad möjlig i {time}",
     "gain_missiles": "Robotar {from} → {to}",
     "gain_population": "Max antal +{from} → +{to}",
     "gain_range": "Räckvidd {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivå {level} / {max}",
     "locked": "Nivå {level} tillgänglig om {time}",
     "max": "Högsta nivå",
+    "proclaim_capital": "Gör den här staden till min huvudstad",
     "upgrade": "Uppgradera"
   },
   "subscription_modal": {

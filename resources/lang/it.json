@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} secondi rimasti alla fine del debuff tradimento",
     "betrayal_description": "Hai rotto la tua alleanza con {name}, rendendoti un TRADITORE ({malusPercent}% debuff di difesa per {durationText})",
     "betrayed_you": "{name} ha rotto la loro alleanza con te",
+    "capital_fallen": "{capital} è caduto! {name} hanno perso la loro capitale",
     "conquered_no_gold": "Conquistato {name} (non ha giocato, nessun oro assegnato)",
     "duration_second": "1 secondo",
     "duration_seconds_plural": "{seconds} secondi",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - bomba all'idrogeno fatta esplodere",
     "ignore": "Ignorare",
     "missile_intercepted": "SAM intercettato {unit}",
+    "new_capital_fallen": "{name} hanno perso la loro capitale!",
     "no_boats_available": "Nessuna barca disponibile, massimo {max}",
     "objective_captured": "Hai catturato un obiettivo della mappa: più oro e crescita delle truppe mentre lo mantieni.",
     "objective_lost": "{name} ha preso uno degli obiettivi della tua mappa.",
@@ -1089,6 +1091,20 @@
     "ffa": "Tutti contro tutti",
     "hvn": "Umani contro Nazioni",
     "teams": "A Squadre"
+  },
+  "game_modes": {
+    "more_soon": "Sono in arrivo altre modalità di gioco",
+    "nations_description": "Scegli un paese reale sulla gigantesca mappa del mondo e inizia con tutto il suo territorio. Mantieni la tua capitale, ingoia i tuoi vicini e governa metà del mondo.",
+    "nations_fact_ai": "I paesi che nessuno sceglie vengono giocati dall'intelligenza artificiale",
+    "nations_fact_capital": "La tua vera capitale fornisce +10% di oro e crescita delle truppe",
+    "nations_fact_country": "Inizi con il tuo intero paese",
+    "nations_fact_win": "Possiedi il 50% della terra per vincere",
+    "nations_join": "Scegli il mio paese",
+    "nations_title": "Nazioni",
+    "nations_waiting": "La prossima partita in arrivo",
+    "players": "{count}/{max} giocatori",
+    "subtitle": "Giochi multiplayer con regole proprie",
+    "title": "Modalità di gioco"
   },
   "game_settings": {
     "bots": "Tribù:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Non mostrare più",
     "ffa_collusion": "Promemoria: fare squadra prima della partita non è consentito in FFA",
     "multiplayer_game_paused": "Gioco messo in pausa dal Lobby Creator",
+    "nations_spawn": "Ogni paese è al suo posto: la guerra inizierà tra un attimo",
     "pvp_immunity_active": "Immunità PVP attiva per {seconds}s",
     "random_spawn": "La generazione casuale è abilitata. Selezione della posizione di partenza per te...",
     "random_spawn_spectator": "La generazione casuale è abilitata",
@@ -1780,6 +1797,19 @@
     "please_wait": "attendere prego",
     "seconds": "secondi",
     "warning": "Avviso modalità di vigilanza"
+  },
+  "nations_lobby": {
+    "capital": "Capitale: {capital}",
+    "free": "Gratuito",
+    "hint": "Fare clic su un paese sulla mappa. I paesi grigi sono già occupati; ogni paese libero sarà interpretato dall'IA.",
+    "load_failed": "Impossibile caricare la mappa del mondo. Otterrai un paese a caso.",
+    "no_match": "Nessun paese trovato",
+    "none_picked": "Nessun paese ancora scelto: ne riceverai uno casuale e gratuito.",
+    "release": "Pubblicazione",
+    "search": "Cerca un paese",
+    "size": "{share} % del territorio mondiale",
+    "taken_by": "Scattato da {name}",
+    "title": "Scegli il tuo paese"
   },
   "nav_account_menu": {
     "account_settings": "Impostazioni dell'account",
@@ -2336,6 +2366,8 @@
     "watch": "Guarda {name}"
   },
   "structure_card": {
+    "capital": "Capitale: +10% di oro e crescita delle truppe",
+    "capital_locked": "Nuova capitale possibile tra {time}",
     "gain_missiles": "Missili {from} → {to}",
     "gain_population": "Popolazione massima +{from} → +{to}",
     "gain_range": "Raggio {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Livello {level} / {max}",
     "locked": "Livello {level} disponibile tra {time}",
     "max": "Livello massimo",
+    "proclaim_capital": "Fai di questa città la mia capitale",
     "upgrade": "Migliora"
   },
   "subscription_modal": {

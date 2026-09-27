@@ -46,6 +46,7 @@ import {
   type BackendReachabilityDetail,
 } from "./ServerList";
 import { SinglePlayerModal } from "./SinglePlayerModal";
+import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { UsernameInput } from "./UsernameInput";
 import {
   calculateServerTimeOffset,
@@ -662,6 +663,7 @@ export class GameModeSelector extends LitElement {
     const ffa = this.lobbies?.games?.["ffa"]?.[0];
     const teams = this.lobbies?.games?.["team"]?.[0];
     const special = this.lobbies?.games?.["special"]?.[0];
+    const nations = this.lobbies?.games?.["nations"]?.[0];
     // The hero slot holds the spinner, then the FFA card; loaded without one
     // it goes and the upcoming column takes the whole row.
     const heroSlot = this.lobbies === null || ffa !== undefined;
@@ -785,6 +787,7 @@ export class GameModeSelector extends LitElement {
           ${this.renderUpcomingHeading()}
         </section>
 
+        ${this.renderGameModes(nations)}
         ${this.showTrustRequired
           ? trustRequiredDialog(
               this.viewerSignedIn,
@@ -961,9 +964,14 @@ export class GameModeSelector extends LitElement {
     `;
   }
 
-  /** Every lobby the browser lists, hosted included. */
+  /**
+   * Every lobby the browser lists, hosted included. Game modes (Nations)
+   * have their own section and aren't in the browser.
+   */
   private advertisedLobbyCount(): number {
-    return Object.values(this.lobbies?.games ?? {}).flat().length;
+    return Object.entries(this.lobbies?.games ?? {})
+      .filter(([type]) => type !== "nations")
+      .flatMap(([, lobbies]) => lobbies).length;
   }
 
   private hostedLobbyCount(): number {
@@ -1027,24 +1035,146 @@ export class GameModeSelector extends LitElement {
     `;
   }
 
+  /**
+   * Game modes with rules of their own, under the regular lobbies. Each mode
+   * is one wide card; the dashed tile keeps the row's place for the next ones.
+   */
+  private renderGameModes(nations: PublicGameInfo | undefined) {
+    const blocked = shouldBlockSocketSourcedAction(
+      this.desktopUpdateState,
+      this.desktopSessionState,
+    );
+    const unavailable = !this.inputValid || nations === undefined;
+    const facts = [
+      translateText("game_modes.nations_fact_country"),
+      translateText("game_modes.nations_fact_capital"),
+      translateText("game_modes.nations_fact_ai"),
+      translateText("game_modes.nations_fact_win"),
+    ];
+    const time = nations ? this.lobbyTimeDisplay(nations) : undefined;
+    return html`
+      <section
+        class="flex flex-col gap-3 min-w-0 sm:col-span-2 sm:row-start-4 lg:col-span-3 lg:row-start-3"
+        aria-labelledby="game-modes-heading"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2
+            id="game-modes-heading"
+            class="font-display text-xl font-bold tracking-wide text-white"
+          >
+            ${translateText("game_modes.title")}
+          </h2>
+          <p class="hidden text-sm text-white/60 sm:block">
+            ${translateText("game_modes.subtitle")}
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <button
+            @click=${() => nations && this.validateAndJoin(nations)}
+            ?disabled=${unavailable}
+            aria-disabled=${blocked}
+            class="group/mode relative flex min-h-56 overflow-hidden rounded-2xl border border-amber-300/25 bg-[#1a1408] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-amber-300/60 hover:shadow-[0_18px_40px_-20px_rgba(251,191,36,0.6)] focus-visible:outline-2 focus-visible:outline-amber-300 sm:col-span-2 ${unavailable
+              ? DISABLED
+              : blocked
+                ? "opacity-50 cursor-not-allowed"
+                : ""}"
+          >
+            <img
+              src=${terrainMapFileLoader.getMapData(GameMapType.GiantWorldMap)
+                .webpPath}
+              alt=""
+              draggable="false"
+              class="pointer-events-none absolute inset-0 size-full select-none object-cover opacity-45 saturate-[0.7] transition-transform duration-500 group-hover/mode:scale-[1.03]"
+            />
+            <span
+              class="absolute inset-0 bg-[linear-gradient(100deg,#1a1408_30%,rgba(26,20,8,0.75)_60%,rgba(26,20,8,0.2))]"
+            ></span>
+            <span class="relative flex flex-1 flex-col gap-3 p-5">
+              <span class="flex items-center gap-3">
+                <span
+                  class="font-display text-3xl font-bold tracking-[0.08em] text-amber-200"
+                  >${translateText("game_modes.nations_title")}</span
+                >
+                ${time
+                  ? html`<span
+                      class="rounded-full bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
+                        ? "uppercase"
+                        : ""}"
+                      >${time.text}</span
+                    >`
+                  : nothing}
+              </span>
+              <span class="max-w-xl text-sm leading-relaxed text-white/85">
+                ${translateText("game_modes.nations_description")}
+              </span>
+              <span
+                class="grid max-w-xl gap-x-5 gap-y-1.5 text-sm sm:grid-cols-2"
+              >
+                ${facts.map(
+                  (fact) =>
+                    html`<span class="flex items-start gap-2 text-white/80">
+                      <span
+                        class="mt-1.5 size-1.5 shrink-0 rotate-45 bg-amber-300"
+                        aria-hidden="true"
+                      ></span>
+                      ${fact}
+                    </span>`,
+                )}
+              </span>
+              <span class="mt-auto flex items-center gap-3 pt-1">
+                <span
+                  class="rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-[#1a1408] transition-colors group-hover/mode:bg-amber-300"
+                  >${nations
+                    ? translateText("game_modes.nations_join")
+                    : translateText("game_modes.nations_waiting")}</span
+                >
+                ${nations
+                  ? html`<span class="text-sm tabular-nums text-white/70"
+                      >${translateText("game_modes.players", {
+                        count: nations.numClients,
+                        max: nations.gameConfig?.maxPlayers ?? "?",
+                      })}</span
+                    >`
+                  : nothing}
+              </span>
+            </span>
+          </button>
+          <div
+            class="flex min-h-24 items-center justify-center rounded-2xl border border-dashed border-white/15 p-5 text-center text-sm text-white/50"
+          >
+            ${translateText("game_modes.more_soon")}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  /** Countdown shown on a lobby card, or "starting" once it runs out. */
+  private lobbyTimeDisplay(lobby: PublicGameInfo): {
+    text: string;
+    uppercase: boolean;
+  } {
+    const timeRemaining = lobby.startsAt
+      ? getSecondsUntilServerTimestamp(lobby.startsAt, this.serverTimeOffset)
+      : undefined;
+    if (timeRemaining === undefined) {
+      return { text: renderDuration(this.defaultLobbyTime), uppercase: false };
+    }
+    if (timeRemaining > 0) {
+      return { text: renderDuration(timeRemaining), uppercase: false };
+    }
+    return {
+      text: translateText("public_lobby.starting_game"),
+      uppercase: true,
+    };
+  }
+
   private renderLobbyCard(
     lobby: PublicGameInfo,
     titleContent: string | TemplateResult,
   ) {
-    const timeRemaining = lobby.startsAt
-      ? getSecondsUntilServerTimestamp(lobby.startsAt, this.serverTimeOffset)
-      : undefined;
-
-    let timeDisplay: string;
-    let timeDisplayUppercase = false;
-    if (timeRemaining === undefined) {
-      timeDisplay = renderDuration(this.defaultLobbyTime);
-    } else if (timeRemaining > 0) {
-      timeDisplay = renderDuration(timeRemaining);
-    } else {
-      timeDisplay = translateText("public_lobby.starting_game");
-      timeDisplayUppercase = true;
-    }
+    const { text: timeDisplay, uppercase: timeDisplayUppercase } =
+      this.lobbyTimeDisplay(lobby);
 
     // Gated, not disabled: `disabled` (which the option below sets, together
     // with pointer-events-none) swallows the click, and the click is what
@@ -1092,6 +1222,9 @@ export class GameModeSelector extends LitElement {
 
   private getLobbyTitle(lobby: PublicGameInfo): string {
     const config = lobby.gameConfig!;
+    if (config.gameVariant === "nations") {
+      return translateText("game_modes.nations_title");
+    }
     if (config.gameMode === GameMode.FFA) {
       return translateText("game_mode.ffa");
     }

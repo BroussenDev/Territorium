@@ -1,0 +1,322 @@
+import { AttackLogicInput, Config } from "../src/core/configuration/Config";
+import { NationsModeExecution } from "../src/core/execution/NationsModeExecution";
+import { SetCapitalExecution } from "../src/core/execution/SetCapitalExecution";
+import { SpawnExecution } from "../src/core/execution/SpawnExecution";
+import {
+  Game,
+  GameMode,
+  GameType,
+  Player,
+  PlayerInfo,
+  PlayerType,
+  TerrainType,
+  Unit,
+  UnitType,
+} from "../src/core/game/Game";
+import { GameUpdateType } from "../src/core/game/GameUpdates";
+import {
+  CAPITAL_FALLEN_DEBUFF_TICKS,
+  CAPITAL_REBUILD_DELAY_TICKS,
+  decodeCountryIds,
+  isCapitalFallen,
+  medianPlayableTiles,
+  NationsCountry,
+  NationsMapData,
+  seatNationsGame,
+  startCompensation,
+} from "../src/core/game/NationsMode";
+import { PseudoRandom } from "../src/core/PseudoRandom";
+import { setup } from "./util/Setup";
+
+// The 100x100 plains test map cut into four vertical bands:
+//   Big   x 0..49   5000 tiles, capital (25, 50)
+//   Small x 50..59  1000 tiles, capital (55, 50)
+//   Mid   x 60..89  3000 tiles, capital (75, 50)
+//   (unplayable)    x 90..99
+const COUNTRIES: NationsCountry[] = [
+  { capital: "Bigtown", coordinates: [25, 50], playable: true, tiles: 5000 },
+  { capital: "Smallton", coordinates: [55, 50], playable: true, tiles: 1000 },
+  { capital: "Midcity", coordinates: [75, 50], playable: true, tiles: 3000 },
+  { playable: false, tiles: 1000 },
+];
+
+function countryAt(x: number): number {
+  if (x < 50) return 0;
+  if (x < 60) return 1;
+  if (x < 90) return 2;
+  return 3;
+}
+
+function mapData(game: Game): NationsMapData {
+  const ids = new Uint8Array(game.width() * game.height());
+  game.forEachTile((tile) => {
+    ids[tile] = countryAt(game.x(tile)) + 1;
+  });
+  return { ids, countries: COUNTRIES };
+}
+
+const human = new PlayerInfo("Small", PlayerType.Human, "client1", "small");
+const big = new PlayerInfo("Big", PlayerType.Nation, null, "big");
+const mid = new PlayerInfo("Mid", PlayerType.Nation, null, "mid");
+
+let game: Game;
+let small: Player;
+
+function capitalOf(player: Player): Unit | undefined {
+  return player.units(UnitType.City).find((c) => c.isCapital());
+}
+
+function tick(): ReturnType<Game["executeNextTick"]> {
+  return game.executeNextTick();
+}
+
+describe("Nations mode", () => {
+  beforeEach(async () => {
+    game = await setup(
+      "plains",
+      {
+        gameMode: GameMode.FFA,
+        gameType: GameType.Public,
+        gameVariant: "nations",
+        instantBuild: true,
+      },
+      [human],
+    );
+    game.addExecution(
+      new NationsModeExecution(mapData(game), [
+        { info: human, country: 1 },
+        { info: big, country: 0 },
+        { info: mid, country: 2 },
+      ]),
+    );
+    tick();
+    small = game.player("small");
+  });
+
+  test("every player starts with their whole country", () => {
+    expect(small.numTilesOwned()).toBe(1000);
+    expect(game.player("big").numTilesOwned()).toBe(5000);
+    expect(game.player("mid").numTilesOwned()).toBe(3000);
+    expect(game.owner(game.ref(95, 50)).isPlayer()).toBe(false);
+    expect(small.hasSpawned()).toBe(true);
+  });
+
+  test("the capital stands on the real capital, for free", () => {
+    const capital = capitalOf(small)!;
+    expect(capital).toBeDefined();
+    expect(capital.tile()).toBe(game.ref(55, 50));
+    expect(small.units(UnitType.City)).toHaveLength(1);
+    // Big got no compensation and paid nothing for its capital.
+    expect(game.player("big").gold()).toBe(
+      game.config().startingGold(game.player("big").info()),
+    );
+  });
+
+  test("small countries start with extra gold and troops", () => {
+    const bonus = startCompensation(1000, 3000);
+    expect(bonus.gold).toBe(266_666n);
+    expect(bonus.troops).toBe(50_000);
+    expect(small.gold() - game.player("big").gold()).toBe(266_666n);
+    expect(startCompensation(5000, 3000)).toEqual({ gold: 0n, troops: 0 });
+    expect(medianPlayableTiles(COUNTRIES)).toBe(3000);
+  });
+
+  test("holding the capital gives +10% gold and troop growth", () => {
+    const config = game.config();
+    const goldWith = config.goldAdditionRate(small);
+    const troopsWith = config.troopIncreaseRate(small);
+    capitalOf(small)!.setCapital(false);
+    const goldWithout = config.goldAdditionRate(small);
+    const troopsWithout = config.troopIncreaseRate(small);
+    expect(goldWith).toBe(BigInt(Math.floor(Number(goldWithout) * 1.1)));
+    expect(troopsWith / troopsWithout).toBeCloseTo(1.1, 5);
+  });
+
+  test("a fallen capital is announced and weakens the defender", () => {
+    const capital = capitalOf(small)!;
+    game.player("big").captureUnit(capital);
+    const updates = tick();
+
+    expect(capital.isCapital()).toBe(false);
+    expect(small.capitalLostTick()).toBe(game.ticks() - 1);
+    const messages =
+      updates[GameUpdateType.DisplayEvent]?.map((e) => e.message) ?? [];
+    expect(messages).toContain("events_display.capital_fallen");
+    expect(isCapitalFallen(game, small)).toBe(true);
+
+    const input = (capitalFallen: boolean): AttackLogicInput => ({
+      terrain: TerrainType.Plains,
+      attackTroops: 10_000,
+      attacker: { type: PlayerType.Human, numTiles: 1000 },
+      defender: {
+        type: PlayerType.Human,
+        numTiles: 1000,
+        troops: 10_000,
+        isTraitor: false,
+        isDisconnectedTeammate: false,
+        capitalFallen,
+      },
+      defenderHasDefensePost: false,
+      falloutRatio: null,
+      borderSize: 10,
+    });
+    // TestConfig stubs attackLogic out: use the real one.
+    const attackLogic = (i: AttackLogicInput) =>
+      Config.prototype.attackLogic.call(game.config(), i);
+    const weak = attackLogic(input(true));
+    const normal = attackLogic(input(false));
+    expect(weak.attackerTroopLoss / normal.attackerTroopLoss).toBeCloseTo(0.9);
+
+    for (let i = 0; i < CAPITAL_FALLEN_DEBUFF_TICKS; i++) tick();
+    expect(isCapitalFallen(game, small)).toBe(false);
+  });
+
+  test("a new capital can be proclaimed only after the delay", () => {
+    capitalOf(small)!.delete();
+    tick();
+    const city = small.buildUnit(UnitType.City, game.ref(52, 20), {});
+    expect(city.isUnderConstruction()).toBe(false);
+
+    game.addExecution(new SetCapitalExecution(small, city.id()));
+    tick();
+    expect(city.isCapital()).toBe(false);
+
+    while (
+      game.ticks() <
+      small.capitalLostTick() + CAPITAL_REBUILD_DELAY_TICKS
+    ) {
+      tick();
+    }
+    game.addExecution(new SetCapitalExecution(small, city.id()));
+    tick();
+    expect(city.isCapital()).toBe(true);
+    tick();
+    expect(small.capitalLostTick()).toBe(-1);
+  });
+
+  test("a city of someone else can't become your capital", () => {
+    capitalOf(small)!.delete();
+    tick();
+    while (
+      game.ticks() <
+      small.capitalLostTick() + CAPITAL_REBUILD_DELAY_TICKS
+    ) {
+      tick();
+    }
+    const foreign = capitalOf(game.player("mid"))!;
+    game.addExecution(new SetCapitalExecution(small, foreign.id()));
+    tick();
+    expect(capitalOf(small)).toBeUndefined();
+  });
+
+  test("nations move their capital by themselves after the delay", () => {
+    const nation = game.player("mid");
+    const other = nation.buildUnit(UnitType.City, game.ref(80, 10), {});
+    capitalOf(nation)!.delete();
+    tick();
+    expect(other.isCapital()).toBe(false);
+
+    while (
+      game.ticks() <
+      nation.capitalLostTick() + CAPITAL_REBUILD_DELAY_TICKS
+    ) {
+      tick();
+      expect(other.isCapital()).toBe(false);
+    }
+    tick();
+    expect(other.isCapital()).toBe(true);
+  });
+
+  test("players can't pick their own spawn", () => {
+    const before = small.numTilesOwned();
+    game.addExecution(
+      new SpawnExecution("game", human, game.ref(95, 10), true),
+    );
+    tick();
+    tick();
+    expect(small.numTilesOwned()).toBe(before);
+    expect(game.owner(game.ref(95, 10)).isPlayer()).toBe(false);
+  });
+
+  test("players earn troops and gold every tick", () => {
+    tick();
+    const troops = small.troops();
+    const gold = small.gold();
+    for (let i = 0; i < 50; i++) tick();
+    expect(small.troops()).toBeGreaterThan(troops);
+    expect(small.gold()).toBeGreaterThan(gold);
+  });
+
+  test("half of the land wins", () => {
+    expect(game.config().percentageTilesOwnedToWin(0)).toBe(50);
+  });
+});
+
+describe("decodeCountryIds", () => {
+  test("expands (id, LEB128 run) pairs", () => {
+    // 3 x id 1, 200 x id 0 (run 200 = 0xc8 0x01), 1 x id 7
+    const bin = new Uint8Array([1, 3, 0, 0xc8, 0x01, 7, 1]);
+    const ids = decodeCountryIds(bin, 204);
+    expect([...ids.slice(0, 4)]).toEqual([1, 1, 1, 0]);
+    expect(ids[202]).toBe(0);
+    expect(ids[203]).toBe(7);
+  });
+
+  test("rejects data that doesn't cover the map", () => {
+    expect(() => decodeCountryIds(new Uint8Array([1, 3]), 4)).toThrow();
+    expect(() => decodeCountryIds(new Uint8Array([1, 5]), 4)).toThrow();
+  });
+});
+
+describe("seatNationsGame", () => {
+  const manifest = [
+    { name: "Big", flag: "big" },
+    { name: "Small", flag: "small" },
+    { name: "Mid", flag: "mid" },
+    { name: "Frozen", flag: "frozen" },
+  ];
+  const player = (clientID: string, nation?: number) => ({
+    clientID,
+    username: clientID,
+    clanTag: null,
+    nation,
+  });
+
+  test("honours picks and gives the rest of the world to nations", () => {
+    const { humans, nations, seats } = seatNationsGame(
+      [player("a", 2)],
+      manifest,
+      COUNTRIES,
+      new PseudoRandom(1),
+    );
+    expect(humans[0].nationFlag).toBe("mid");
+    expect(nations.map((n) => n.playerInfo.name)).toEqual(["Big", "Small"]);
+    expect(seats.map((s) => s.country).sort()).toEqual([0, 1, 2]);
+    expect(nations[0].spawnCell?.x).toBe(25);
+  });
+
+  test("duplicate or unplayable picks get a free country", () => {
+    const { humans, nations, seats } = seatNationsGame(
+      [player("a", 1), player("b", 1), player("c", 3)],
+      manifest,
+      COUNTRIES,
+      new PseudoRandom(1),
+    );
+    expect(humans[0].nationFlag).toBe("small");
+    const countries = seats.map((s) => s.country);
+    expect(new Set(countries).size).toBe(3);
+    expect(countries).not.toContain(3);
+    expect(nations).toHaveLength(0);
+  });
+
+  test("players beyond the number of countries stay unseated", () => {
+    const { humans, seats } = seatNationsGame(
+      [player("a"), player("b"), player("c"), player("d")],
+      manifest,
+      COUNTRIES,
+      new PseudoRandom(1),
+    );
+    expect(humans).toHaveLength(4);
+    expect(seats).toHaveLength(3);
+  });
+});

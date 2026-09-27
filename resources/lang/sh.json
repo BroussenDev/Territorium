@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekundi preostalo pred kraj negativnog efekta izdaje",
     "betrayal_description": "Prekršili ste vaš savez sa igračem {name}, to vas je učinilo IZDAJICOM ({malusPercent}% negativni efekt odbrane u trajanju od {durationText})",
     "betrayed_you": "{name} je prekršio njihov savez sa Vama",
+    "capital_fallen": "{capital} je pao! {name} su izgubili glavni grad",
     "conquered_no_gold": "Porazili ste igrača {name} (igrač nije igrao, nikakvo zlato nije osvojeno)",
     "duration_second": "1 sekunda",
     "duration_seconds_plural": "{seconds} sekundi",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - hidrogenska bomba je detonirana",
     "ignore": "Ignoriši",
     "missile_intercepted": "PVO Raketa je presretnuta {unit}",
+    "new_capital_fallen": "{name} izgubili glavni grad!",
     "no_boats_available": "Nema slobodnih brodova, maksimum {max}",
     "objective_captured": "Zauzeli ste cilj na mapi: više zlata i rast trupa dok ga držite.",
     "objective_lost": "{name} je uzeo jedan od ciljeva vaše karte.",
@@ -1089,6 +1091,20 @@
     "ffa": "Svako za sebe",
     "hvn": "Ljudi vs Nacije",
     "teams": "Timski"
+  },
+  "game_modes": {
+    "more_soon": "Još modova igre je na putu",
+    "nations_description": "Izaberite pravu zemlju na džinovskoj mapi sveta i počnite sa čitavom njenom teritorijom. Držite svoj glavni grad, progutajte svoje komšije i vladajte pola sveta.",
+    "nations_fact_ai": "AI igra zemlje koje niko ne bira",
+    "nations_fact_capital": "Vaš pravi glavni grad daje +10% rasta zlata i trupa",
+    "nations_fact_country": "Počinjete sa celom svojom zemljom",
+    "nations_fact_win": "Posedujte 50% zemlje da biste pobedili",
+    "nations_join": "Izaberi moju zemlju",
+    "nations_title": "Nacije",
+    "nations_waiting": "Sledeća utakmica dolazi uskoro",
+    "players": "{count}/{max} igrača",
+    "subtitle": "Igre za više igrača sa sopstvenim pravilima",
+    "title": "Režimi igre"
   },
   "game_settings": {
     "bots": "Plemena: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Ne prikazuj ponovo",
     "ffa_collusion": "Podsetnik: timovanje pred partiju nije dozvoljeno u FFA igri",
     "multiplayer_game_paused": "Igru je pauzirao kreator predvorja",
+    "nations_spawn": "Svaka država je na svom mestu: rat počinje u trenutku",
     "pvp_immunity_active": "PVP imunitet je aktivan još {seconds}s",
     "random_spawn": "Nasumično pojavljivanje je omogućeno. Biranje početne lokacije za vas...",
     "random_spawn_spectator": "Nasumično pojavljivanje je omogućeno",
@@ -1780,6 +1797,19 @@
     "please_wait": "Molimo sačekajte",
     "seconds": "sekundi",
     "warning": "Upozorenje režima opreza"
+  },
+  "nations_lobby": {
+    "capital": "Glavni grad: {capital}",
+    "free": "Besplatno",
+    "hint": "Kliknite na državu na mapi. Sive zemlje su već zauzete; svaku slobodnu zemlju će igrati AI.",
+    "load_failed": "Nije moguće učitati mapu sveta. Dobićete slučajnu zemlju.",
+    "no_match": "Nije pronađena nijedna zemlja",
+    "none_picked": "Još nijedna zemlja nije izabrana: dobićete nasumično besplatnu zemlju.",
+    "release": "Release",
+    "search": "Potražite zemlju",
+    "size": "{share} % svetske zemlje",
+    "taken_by": "Preuzeo {name}",
+    "title": "Izaberite svoju zemlju"
   },
   "nav_account_menu": {
     "account_settings": "Podešavanja naloga",
@@ -2336,6 +2366,8 @@
     "watch": "Gledaj {name}"
   },
   "structure_card": {
+    "capital": "Glavni grad: +10% rasta zlata i trupa",
+    "capital_locked": "Novi glavni grad moguć za {time}",
     "gain_missiles": "Rakete {from} → {to}",
     "gain_population": "Maksimalna populacija +{from} → +{to}",
     "gain_range": "Domet {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivo {level} / {max}",
     "locked": "Nivo {level} dostupan za {time}",
     "max": "Maksimalni nivo",
+    "proclaim_capital": "Učinite ovaj grad mojom prestonicom",
     "upgrade": "Nadogradi"
   },
   "subscription_modal": {

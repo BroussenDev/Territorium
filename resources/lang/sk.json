@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "Zostáva {time} sekúnd do konca debuffu zrady",
     "betrayal_description": "Prerušil/a si spojenectvo s {name}, kvôli čomu si ZRADCA ({malusPercent} % obranné oslabenie po dobu {durationText})",
     "betrayed_you": "{name} prerušil/a s tebou spojenectvo",
+    "capital_fallen": "{capital} padlo! {name} stratilo svoje hlavné mesto",
     "conquered_no_gold": "Dobyto {name} (nehral, ​​nebolo udelené žiadne zlato)",
     "duration_second": "1 sekunda",
     "duration_seconds_plural": "{seconds} sekúnd",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - vybuchla vodíková bomba",
     "ignore": "Ignorovať",
     "missile_intercepted": "SAM zachytený {unit}",
+    "new_capital_fallen": "{name} stratilo svoje hlavné mesto!",
     "no_boats_available": "Nie sú k dispozícii žiadne člny, max {max}",
     "objective_captured": "Obsadili ste cieľ na mape: viac zlata a rast jednotiek, kým ho držíte.",
     "objective_lost": "{name} vzal jeden z vašich cieľov na mape.",
@@ -1089,6 +1091,20 @@
     "ffa": "Každý za seba",
     "hvn": "Ľudia vs národy",
     "teams": "Tímy"
+  },
+  "game_modes": {
+    "more_soon": "Ďalšie herné režimy sú na ceste",
+    "nations_description": "Vyberte si skutočnú krajinu na obrovskej mape sveta a začnite s celým jej územím. Držte svoje hlavné mesto, prehltnite svojich susedov a ovládnite polovicu sveta.",
+    "nations_fact_ai": "Krajiny, ktoré si nikto nevyberie, hrá AI",
+    "nations_fact_capital": "Vaše skutočné hlavné mesto poskytuje +10% zlata a nárast počtu jednotiek",
+    "nations_fact_country": "Začnete celou svojou krajinou",
+    "nations_fact_win": "Vlastniť 50% pôdy, aby ste vyhrali",
+    "nations_join": "Vyberte si moju krajinu",
+    "nations_title": "národov",
+    "nations_waiting": "Ďalšia hra už čoskoro",
+    "players": "{count}/{max} hráčov",
+    "subtitle": "Hry pre viacerých hráčov s vlastnými pravidlami",
+    "title": "Herné režimy"
   },
   "game_settings": {
     "bots": "kmene:",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Už nezobrazovať",
     "ffa_collusion": "Pripomienka: Vytváranie tímov pred zápasom nie je v FFA povolené",
     "multiplayer_game_paused": "Hra bola pozastavená aplikáciou Lobby Creator",
+    "nations_spawn": "Každá krajina je na svojom mieste: vojna začína o chvíľu",
     "pvp_immunity_active": "PVP imunita aktívna {seconds}s",
     "random_spawn": "Náhodný spawn je povolený. Vyberá sa miesto štartu...",
     "random_spawn_spectator": "Náhodný spawn je povolený",
@@ -1780,6 +1797,19 @@
     "please_wait": "Čakajte prosím",
     "seconds": "sekúnd",
     "warning": "Výstraha režimu bdelosti"
+  },
+  "nations_lobby": {
+    "capital": "Hlavné mesto: {capital}",
+    "free": "Zadarmo",
+    "hint": "Kliknite na krajinu na mape. Šedé krajiny sú už obsadené; každá slobodná krajina bude hrať AI.",
+    "load_failed": "Mapu sveta sa nepodarilo načítať. Dostanete náhodnú krajinu.",
+    "no_match": "Nenašla sa žiadna krajina",
+    "none_picked": "Zatiaľ nie je vybratá žiadna krajina: dostanete náhodnú zadarmo.",
+    "release": "Uvoľnite",
+    "search": "Vyhľadajte krajinu",
+    "size": "{share} % svetovej pôdy",
+    "taken_by": "Odfotené {name}",
+    "title": "Vyberte si svoju krajinu"
   },
   "nav_account_menu": {
     "account_settings": "Nastavenia účtu",
@@ -2336,6 +2366,8 @@
     "watch": "Sledujte {name}"
   },
   "structure_card": {
+    "capital": "Hlavné mesto: +10 % zlata a nárast počtu jednotiek",
+    "capital_locked": "Nové hlavné mesto možné za {time}",
     "gain_missiles": "Rakety {from} → {to}",
     "gain_population": "Max počet obyvateľov +{from} → +{to}",
     "gain_range": "Dosah {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Úroveň {level} / {max}",
     "locked": "Úroveň {level} dostupná o {time}",
     "max": "Maximálna úroveň",
+    "proclaim_capital": "Urob toto mesto mojím hlavným mestom",
     "upgrade": "Vylepšiť"
   },
   "subscription_modal": {

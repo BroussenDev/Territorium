@@ -162,6 +162,10 @@ export class HeadsUpMessage extends LitElement implements Controller {
     if (this.isOvertimeNotice) {
       return translateText("overtime.started");
     }
+    // Nations players start in their country: there is no spawn to choose.
+    if (this.game.config().isNationsMode()) {
+      return translateText("heads_up_message.nations_spawn");
+    }
     if (
       this.game.config().isReplay() ||
       this.game.config().isIntentionalSpectator()

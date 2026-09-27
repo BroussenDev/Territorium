@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} ثانية متبقية على انتهاء تأثير الخيانة",
     "betrayal_description": "لقد كسرت تحالفك مع {name}، مما يجعلك خائنًا ({malusPercent}% تأثير دفاعي لـ {durationText})",
     "betrayed_you": "{name} فسخ تحالفهم معك",
+    "capital_fallen": "{capital} سقط! {name} فقدوا عاصمتهم",
     "conquered_no_gold": "غزا {name} (لم يلعب، ولم يحصل على الميدالية الذهبية)",
     "duration_second": "1 ثانية",
     "duration_seconds_plural": "{seconds} ثانية",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - تفجير القنبلة الهيدروجينية",
     "ignore": "تجاهل",
     "missile_intercepted": "تم اعتراض SAM {unit}",
+    "new_capital_fallen": "{name} فقدوا عاصمتهم!",
     "no_boats_available": "لا توجد قوارب متاحة، بحد أقصى {max}",
     "objective_captured": "لقد استوليت على هدف على الخريطة: ذهب أكثر ونمو أسرع للقوات ما دمت تحتفظ به.",
     "objective_lost": "{name} أخذ أحد أهداف خريطتك.",
@@ -1089,6 +1091,20 @@
     "ffa": "الكل ضد الكل",
     "hvn": "البشر مقابل الأمم",
     "teams": "فرق"
+  },
+  "game_modes": {
+    "more_soon": "المزيد من أوضاع اللعبة في الطريق",
+    "nations_description": "اختر دولة حقيقية على خريطة العالم العملاقة وابدأ بأراضيها بأكملها. احتفظ بعاصمتك، وابتلع جيرانك وحكم نصف العالم.",
+    "nations_fact_ai": "البلدان التي لا يختارها أحد يلعبها الذكاء الاصطناعي",
+    "nations_fact_capital": "تمنحك عاصمتك الحقيقية +10% نموًا في الذهب والقوات",
+    "nations_fact_country": "عليك أن تبدأ مع بلدك كله",
+    "nations_fact_win": "امتلك 50% من الأرض لتفوز",
+    "nations_join": "اختر بلدي",
+    "nations_title": "الأمم",
+    "nations_waiting": "اللعبة القادمة قريبا",
+    "players": "{count}/{max} اللاعبين",
+    "subtitle": "ألعاب متعددة اللاعبين لها قواعد خاصة بها",
+    "title": "أوضاع اللعبة"
   },
   "game_settings": {
     "bots": "القبائل: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "لا تظهر مرة أخرى",
     "ffa_collusion": "تذكير: التعاون قبل المباراة غير مسموح به في FFA",
     "multiplayer_game_paused": "تم إيقاف اللعبة مؤقتًا بواسطة Lobby Creator",
+    "nations_spawn": "كل دولة في مكانها: الحرب تبدأ في لحظة",
     "pvp_immunity_active": "مناعة PVP نشطة لمدة {seconds}s",
     "random_spawn": "تم تمكين النشر العشوائي. تحديد موقع البداية لك...",
     "random_spawn_spectator": "تم تمكين النشر العشوائي",
@@ -1780,6 +1797,19 @@
     "please_wait": "من فضلك انتظر",
     "seconds": "ثواني",
     "warning": "تحذير الوضع اليقظة"
+  },
+  "nations_lobby": {
+    "capital": "العاصمة: {capital}",
+    "free": "حر",
+    "hint": "انقر فوق بلد على الخريطة. لقد تم بالفعل أخذ البلدان الرمادية؛ سيتم لعب كل دولة حرة بواسطة الذكاء الاصطناعي.",
+    "load_failed": "لا يمكن تحميل خريطة العالم. سوف تحصل على بلد عشوائي.",
+    "no_match": "لم يتم العثور على أي دولة",
+    "none_picked": "لم يتم اختيار أي دولة بعد: سوف تحصل على دولة مجانية عشوائية.",
+    "release": "يطلق",
+    "search": "ابحث عن دولة",
+    "size": "{share}% من أراضي العالم",
+    "taken_by": "تم التقاطها بواسطة {name}",
+    "title": "اختر بلدك"
   },
   "nav_account_menu": {
     "account_settings": "إعدادات الحساب",
@@ -2336,6 +2366,8 @@
     "watch": "شاهد {name}"
   },
   "structure_card": {
+    "capital": "العاصمة: +10% نمو الذهب والقوات",
+    "capital_locked": "العاصمة الجديدة ممكنة في {time}",
     "gain_missiles": "الصواريخ {from} → {to}",
     "gain_population": "الحد الأقصى لعدد السكان +{from} → +{to}",
     "gain_range": "المدى {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "المستوى {level} / {max}",
     "locked": "المستوى {level} متاح خلال {time}",
     "max": "المستوى الأقصى",
+    "proclaim_capital": "اجعل هذه المدينة عاصمتي",
     "upgrade": "ترقية"
   },
   "subscription_modal": {

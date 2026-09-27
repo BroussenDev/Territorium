@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekunder tilbage, inden forræderi-debuff udløber",
     "betrayal_description": "Du har brudt din alliance med {name}, og er nu en FORRÆDER (forsvarsstraffe på {malusPercent}% i {durationText})",
     "betrayed_you": "{name} har brudt sin alliance med dig",
+    "capital_fallen": "{capital} er faldet! {name} mistede deres hovedstad",
     "conquered_no_gold": "Erobrede {name} (spillede ikke, intet guld tildelt)",
     "duration_second": "1 sekund",
     "duration_seconds_plural": "{seconds} sekunder",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} – brintbombe detoneret",
     "ignore": "Ignorér",
     "missile_intercepted": "Missil opsnappet {unit}",
+    "new_capital_fallen": "{name} mistede deres hovedstad!",
     "no_boats_available": "Ingen både tilgængelige, maks. {max}",
     "objective_captured": "Du har erobret et kortmål: mere guld og troppevækst, mens du holder det.",
     "objective_lost": "{name} tog et af dine kortmål.",
@@ -1089,6 +1091,20 @@
     "ffa": "Alle mod Alle",
     "hvn": "Mennesker vs Nationer",
     "teams": "Hold"
+  },
+  "game_modes": {
+    "more_soon": "Flere spiltilstande er på vej",
+    "nations_description": "Vælg et rigtigt land på det gigantiske verdenskort og start med hele dets territorium. Hold din hovedstad, slug dine naboer og reger halvdelen af verden.",
+    "nations_fact_ai": "Lande, som ingen vælger, spilles af AI",
+    "nations_fact_capital": "Din rigtige hovedstad giver +10% guld og troppevækst",
+    "nations_fact_country": "Du starter med hele dit land",
+    "nations_fact_win": "Ejer 50% af jorden for at vinde",
+    "nations_join": "Vælg mit land",
+    "nations_title": "Nationer",
+    "nations_waiting": "Næste kamp kommer snart",
+    "players": "{count}/{max} spillere",
+    "subtitle": "Multiplayer spil med deres egne regler",
+    "title": "Spiltilstande"
   },
   "game_settings": {
     "bots": "Stammer: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Vis ikke igen",
     "ffa_collusion": "Påmindelse: Det er ikke tilladt at samarbejde med andre inden spillet starter i FFA",
     "multiplayer_game_paused": "Spil sat på pause af lobbyvært",
+    "nations_spawn": "Hvert land er på plads: krigen begynder om et øjeblik",
     "pvp_immunity_active": "PVP-immunitet aktiv i {seconds}er",
     "random_spawn": "Tilfældig spawn er aktiveret. Vælger startposition for dig...",
     "random_spawn_spectator": "Tilfældig spawn er aktiveret",
@@ -1780,6 +1797,19 @@
     "please_wait": "Vent venligst",
     "seconds": "sekunder",
     "warning": "Advarsel om årvågen tilstand"
+  },
+  "nations_lobby": {
+    "capital": "Hovedstad: {capital}",
+    "free": "Gratis",
+    "hint": "Klik på et land på kortet. Grå lande er allerede taget; hvert frit land vil blive spillet af AI.",
+    "load_failed": "Verdenskortet kunne ikke indlæses. Du får et tilfældigt land.",
+    "no_match": "Intet land fundet",
+    "none_picked": "Intet land valgt endnu: du får et tilfældigt gratis.",
+    "release": "Frigøre",
+    "search": "Søg efter et land",
+    "size": "{share} % af verdens jord",
+    "taken_by": "Taget af {name}",
+    "title": "Vælg dit land"
   },
   "nav_account_menu": {
     "account_settings": "Kontoindstillinger",
@@ -2336,6 +2366,8 @@
     "watch": "Se {name}"
   },
   "structure_card": {
+    "capital": "Hovedstad: +10 % guld og troppevækst",
+    "capital_locked": "Ny hovedstad mulig i {time}",
     "gain_missiles": "Missiler {from} → {to}",
     "gain_population": "Maks. indbyggertal +{from} → +{to}",
     "gain_range": "Rækkevidde {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Niveau {level} / {max}",
     "locked": "Niveau {level} tilgængeligt om {time}",
     "max": "Maksimalt niveau",
+    "proclaim_capital": "Gør denne by til min hovedstad",
     "upgrade": "Opgrader"
   },
   "subscription_modal": {

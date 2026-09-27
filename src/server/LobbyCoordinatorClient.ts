@@ -379,6 +379,7 @@ export class LobbyCoordinatorClient {
           team: [],
           special: [],
           hosted: [],
+          nations: [],
         };
         for (const type of PublicGameTypeSchema.options) {
           for (const entry of msg.games[type] ?? []) {

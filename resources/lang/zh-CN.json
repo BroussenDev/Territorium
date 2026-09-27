@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "距离背叛减益效果结束还剩 {time} 秒",
     "betrayal_description": "你已撕毁和 {name} 的盟约，因而被标记为“叛徒”（你将获得 {durationText} 的 {malusPercent}% 防御降低惩罚）",
     "betrayed_you": "{name} 撕毁了和你的盟约",
+    "capital_fallen": "{capital}堕落了！ {name}失去首都",
     "conquered_no_gold": "征服了 {name} （对方没在玩了，因此未掠夺到黄金）",
     "duration_second": "1 秒",
     "duration_seconds_plural": "{seconds} 秒",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name}——氢弹引爆",
     "ignore": "忽略",
     "missile_intercepted": "已拦截导弹 {unit}",
+    "new_capital_fallen": "{name}失去了首都！",
     "no_boats_available": "无可用船，最多 {max} 个",
     "objective_captured": "你占领了一个地图目标：在占领它的同时获得更多的黄金和部队增长。",
     "objective_lost": "{name} 夺走了你的一个地图目标。",
@@ -1089,6 +1091,20 @@
     "ffa": "混战",
     "hvn": "人类与国家",
     "teams": "团队"
+  },
+  "game_modes": {
+    "more_soon": "更多游戏模式正在开发中",
+    "nations_description": "在巨大的世界地图上选择一个真实的国家，并从其整个领土开始。守住你的首都，吞并你的邻居，统治半个世界。",
+    "nations_fact_ai": "没有人选择的国家由人工智能玩",
+    "nations_fact_capital": "你真正的首都会提供 +10% 的黄金和军队增长",
+    "nations_fact_country": "你从你的整个国家开始",
+    "nations_fact_win": "拥有50%的土地即可获胜",
+    "nations_join": "选择我的国家",
+    "nations_title": "国家",
+    "nations_waiting": "下一场比赛即将推出",
+    "players": "{count}/{max} 玩家",
+    "subtitle": "有自己规则的多人游戏",
+    "title": "游戏模式"
   },
   "game_settings": {
     "bots": "部落：",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "不再显示",
     "ffa_collusion": "提醒：FFA不允许赛前组队",
     "multiplayer_game_paused": "游戏已被房主暂停",
+    "nations_spawn": "各国已就位：战争瞬间开始",
     "pvp_immunity_active": "PVP 和平期将持续 {seconds} 秒",
     "random_spawn": "随机出生点已启用。正在为你选择出生点……",
     "random_spawn_spectator": "随机生成已启用",
@@ -1780,6 +1797,19 @@
     "please_wait": "请稍等",
     "seconds": "秒",
     "warning": "警戒模式警告"
+  },
+  "nations_lobby": {
+    "capital": "首都：{capital}",
+    "free": "自由的",
+    "hint": "单击地图上的国家/地区。灰色国家已被占领；每个自由国家都将由AI玩。",
+    "load_failed": "无法加载世界地图。您将获得一个随机国家。",
+    "no_match": "没有找到国家",
+    "none_picked": "尚未选择国家/地区：您将获得随机的免费国家/地区。",
+    "release": "发布",
+    "search": "搜索国家",
+    "size": "{share} 占世界土地的%",
+    "taken_by": "拍摄者：{name}",
+    "title": "选择您的国家/地区"
   },
   "nav_account_menu": {
     "account_settings": "账户设置",
@@ -2336,6 +2366,8 @@
     "watch": "观看{name}"
   },
   "structure_card": {
+    "capital": "首都：+10% 黄金和部队增长",
+    "capital_locked": "新首都可能在{time}",
     "gain_missiles": "导弹 {from} → {to}",
     "gain_population": "最大人口 +{from} → +{to}",
     "gain_range": "射程 {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "等级 {level} / {max}",
     "locked": "等级 {level} 将在 {time} 后解锁",
     "max": "最高等级",
+    "proclaim_capital": "让这座城市成为我的首都",
     "upgrade": "升级"
   },
   "subscription_modal": {

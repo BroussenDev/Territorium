@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "Nog {time} seconden tot de verraad-verzwakking afloopt",
     "betrayal_description": "Je hebt jouw alliantie met {name} verbroken, je bent nu een VERRADER ({durationText} een {malusPercent}% zwakkere verdediging)",
     "betrayed_you": "{name} heeft de alliantie met jou verbroken",
+    "capital_fallen": "{capital} is gevallen! {name} verloren hun hoofdstad",
     "conquered_no_gold": "Veroverde {name} (heeft niet gespeeld, geen goud gekregen)",
     "duration_second": "1 seconde",
     "duration_seconds_plural": "{seconds} seconden",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - waterstofbom ontploft",
     "ignore": "Negeren",
     "missile_intercepted": "Raket onderschepte {unit}",
+    "new_capital_fallen": "{name} verloor hun hoofdstad!",
     "no_boats_available": "Geen boten beschikbaar, max. {max}",
     "objective_captured": "Je hebt een kaartdoel veroverd: meer goud en troepengroei zolang je het vasthoudt.",
     "objective_lost": "{name} heeft een van je kaartdoelen genomen.",
@@ -1089,6 +1091,20 @@
     "ffa": "Iedereen tegen elkaar (FFA)",
     "hvn": "Mensen vs Naties",
     "teams": "Teams"
+  },
+  "game_modes": {
+    "more_soon": "Er komen nog meer spelmodi",
+    "nations_description": "Kies een echt land op de gigantische wereldkaart en begin met het hele grondgebied. Behoud je hoofdstad, verslind je buren en regeer de helft van de wereld.",
+    "nations_fact_ai": "Landen die niemand kiest, worden door de AI gespeeld",
+    "nations_fact_capital": "Je echte hoofdstad levert +10% goud en troepengroei op",
+    "nations_fact_country": "Je begint met je hele land",
+    "nations_fact_win": "Bezit 50% van het land om te winnen",
+    "nations_join": "Kies mijn land",
+    "nations_title": "Naties",
+    "nations_waiting": "Binnenkort het volgende spel",
+    "players": "{count}/{max} spelers",
+    "subtitle": "Multiplayer-spellen met eigen regels",
+    "title": "Spelmodi"
   },
   "game_settings": {
     "bots": "Stammen: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Niet opnieuw weergeven",
     "ffa_collusion": "Herinnering: samenwerken voordat het spel begint is niet toegestaan in FFA",
     "multiplayer_game_paused": "Spel gepauzeerd door Lobby-maker",
+    "nations_spawn": "Elk land is op zijn plaats: de oorlog begint zo",
     "pvp_immunity_active": "PVP-immuniteitsduur nog {seconds}s actief",
     "random_spawn": "Willekeurige startpositie is ingeschakeld. Positie wordt voor je gekozen...",
     "random_spawn_spectator": "Willekeurige spawn is ingeschakeld",
@@ -1780,6 +1797,19 @@
     "please_wait": "Even geduld",
     "seconds": "seconden",
     "warning": "Waarschuwing: waakmodus actief"
+  },
+  "nations_lobby": {
+    "capital": "Hoofdstad: {capital}",
+    "free": "Vrij",
+    "hint": "Klik op een land op de kaart. Grijze landen zijn al bezet; elk vrij land zal door de AI worden gespeeld.",
+    "load_failed": "De wereldkaart kon niet worden geladen. Je krijgt een willekeurig land.",
+    "no_match": "Geen land gevonden",
+    "none_picked": "Er is nog geen land gekozen: je krijgt een willekeurig gratis land.",
+    "release": "Uitgave",
+    "search": "Zoek een land",
+    "size": "{share} % van het land in de wereld",
+    "taken_by": "Gemaakt door {name}",
+    "title": "Kies uw land"
   },
   "nav_account_menu": {
     "account_settings": "Accountinstellingen",
@@ -2336,6 +2366,8 @@
     "watch": "Kijk {name}"
   },
   "structure_card": {
+    "capital": "Hoofdstad: +10% goud- en troepengroei",
+    "capital_locked": "Nieuwe hoofdstad mogelijk in {time}",
     "gain_missiles": "Raketten {from} → {to}",
     "gain_population": "Maximale populatie +{from} → +{to}",
     "gain_range": "Bereik {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Niveau {level} / {max}",
     "locked": "Niveau {level} beschikbaar over {time}",
     "max": "Maximaal niveau",
+    "proclaim_capital": "Maak van deze stad mijn hoofdstad",
     "upgrade": "Verbeteren"
   },
   "subscription_modal": {

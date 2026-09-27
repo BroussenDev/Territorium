@@ -1,0 +1,646 @@
+{
+  "width": 4108,
+  "height": 1948,
+  "countries": [
+    {
+      "capital": "Ankara",
+      "coordinates": [2304, 532],
+      "playable": true,
+      "tiles": 10311
+    },
+    {
+      "capital": "Berlin",
+      "coordinates": [2082, 383],
+      "playable": true,
+      "tiles": 5708
+    },
+    {
+      "capital": "Paris",
+      "coordinates": [1958, 424],
+      "playable": true,
+      "tiles": 9034
+    },
+    {
+      "capital": "Madrid",
+      "coordinates": [1887, 526],
+      "playable": true,
+      "tiles": 6775
+    },
+    {
+      "capital": "Rome",
+      "coordinates": [2072, 508],
+      "playable": true,
+      "tiles": 4087
+    },
+    {
+      "capital": "London",
+      "coordinates": [1928, 395],
+      "playable": true,
+      "tiles": 3679
+    },
+    {
+      "capital": "Dublin",
+      "coordinates": [1855, 374],
+      "playable": true,
+      "tiles": 1043
+    },
+    {
+      "capital": "Warsaw",
+      "coordinates": [2166, 389],
+      "playable": true,
+      "tiles": 5218
+    },
+    {
+      "capital": "Athens",
+      "coordinates": [2187, 566],
+      "playable": true,
+      "tiles": 1346
+    },
+    {
+      "capital": "Sofia",
+      "coordinates": [2195, 499],
+      "playable": true,
+      "tiles": 1603
+    },
+    {
+      "capital": "Belgrade",
+      "coordinates": [2161, 477],
+      "playable": true,
+      "tiles": 1113
+    },
+    {
+      "capital": "Bucharest",
+      "coordinates": [2227, 479],
+      "playable": true,
+      "tiles": 3512
+    },
+    {
+      "capital": "Budapest",
+      "coordinates": [2149, 445],
+      "playable": true,
+      "tiles": 1435
+    },
+    {
+      "capital": "Kyiv",
+      "coordinates": [2274, 409],
+      "playable": true,
+      "tiles": 9357
+    },
+    {
+      "capital": "Stockholm",
+      "coordinates": [2135, 298],
+      "playable": true,
+      "tiles": 7151
+    },
+    {
+      "capital": "Oslo",
+      "coordinates": [2054, 296],
+      "playable": true,
+      "tiles": 7818
+    },
+    {
+      "capital": "Karasjok",
+      "coordinates": [2220, 183],
+      "playable": true,
+      "tiles": 7282
+    },
+    {
+      "capital": "Helsinki",
+      "coordinates": [2213, 290],
+      "playable": true,
+      "tiles": 4174
+    },
+    {
+      "capital": "Moscow",
+      "coordinates": [2358, 345],
+      "playable": true,
+      "tiles": 87141
+    },
+    {
+      "capital": "Minsk",
+      "coordinates": [2243, 367],
+      "playable": true,
+      "tiles": 3656
+    },
+    {
+      "capital": "Tbilisi",
+      "coordinates": [2440, 511],
+      "playable": true,
+      "tiles": 989
+    },
+    {
+      "capital": "Baghdad",
+      "coordinates": [2439, 608],
+      "playable": true,
+      "tiles": 5237
+    },
+    {
+      "capital": "Damascus",
+      "coordinates": [2343, 608],
+      "playable": true,
+      "tiles": 2366
+    },
+    {
+      "capital": "Riyadh",
+      "coordinates": [2461, 712],
+      "playable": true,
+      "tiles": 22791
+    },
+    {
+      "capital": "Sanaa",
+      "coordinates": [2433, 822],
+      "playable": true,
+      "tiles": 5028
+    },
+    {
+      "capital": "Abu Dhabi",
+      "coordinates": [2553, 719],
+      "playable": true,
+      "tiles": 783
+    },
+    {
+      "capital": "Tehran",
+      "coordinates": [2515, 582],
+      "playable": true,
+      "tiles": 20775
+    },
+    {
+      "capital": "Islamabad",
+      "coordinates": [2762, 606],
+      "playable": true,
+      "tiles": 10575
+    },
+    {
+      "capital": "Kabul",
+      "coordinates": [2718, 595],
+      "playable": true,
+      "tiles": 8324
+    },
+    {
+      "capital": "Astana",
+      "coordinates": [2743, 399],
+      "playable": true,
+      "tiles": 42858
+    },
+    {
+      "capital": "Ashgabat",
+      "coordinates": [2594, 555],
+      "playable": true,
+      "tiles": 6387
+    },
+    {
+      "capital": "Novosibirsk",
+      "coordinates": [2871, 354],
+      "playable": true,
+      "tiles": 290225
+    },
+    {
+      "capital": "New Delhi",
+      "coordinates": [2809, 666],
+      "playable": true,
+      "tiles": 36223
+    },
+    {
+      "capital": "Reykjavík",
+      "coordinates": [1686, 240],
+      "playable": true,
+      "tiles": 2189
+    },
+    {
+      "capital": "Dhaka",
+      "coordinates": [2962, 720],
+      "playable": true,
+      "tiles": 1230
+    },
+    {
+      "capital": "Kathmandu",
+      "coordinates": [2902, 676],
+      "playable": true,
+      "tiles": 1826
+    },
+    {
+      "capital": "Beijing",
+      "coordinates": [3256, 532],
+      "playable": true,
+      "tiles": 124298
+    },
+    {
+      "capital": "Pyongyang",
+      "coordinates": [3364, 543],
+      "playable": true,
+      "tiles": 1664
+    },
+    {
+      "capital": "Seoul",
+      "coordinates": [3379, 560],
+      "playable": true,
+      "tiles": 1126
+    },
+    {
+      "capital": "Tokyo",
+      "coordinates": [3521, 582],
+      "playable": true,
+      "tiles": 4277
+    },
+    {
+      "capital": "Ulaanbaatar",
+      "coordinates": [3148, 438],
+      "playable": true,
+      "tiles": 24640
+    },
+    {
+      "capital": "Jakarta",
+      "coordinates": [3147, 1078],
+      "playable": true,
+      "tiles": 17365
+    },
+    {
+      "capital": "Hanoi",
+      "coordinates": [3136, 755],
+      "playable": true,
+      "tiles": 3598
+    },
+    {
+      "capital": "Naypyidaw",
+      "coordinates": [3024, 770],
+      "playable": true,
+      "tiles": 6821
+    },
+    {
+      "capital": "Bangkok",
+      "coordinates": [3075, 840],
+      "playable": true,
+      "tiles": 5616
+    },
+    {
+      "capital": "Port Moresby",
+      "coordinates": [3608, 1114],
+      "playable": true,
+      "tiles": 5389
+    },
+    {
+      "capital": "Canberra",
+      "coordinates": [3629, 1420],
+      "playable": true,
+      "tiles": 75714
+    },
+    {
+      "capital": "Darwin",
+      "coordinates": [3421, 1156],
+      "playable": true,
+      "tiles": 15398
+    },
+    {
+      "capital": "Wellington",
+      "coordinates": [3913, 1494],
+      "playable": true,
+      "tiles": 3304
+    },
+    {
+      "playable": false,
+      "tiles": 369095
+    },
+    {
+      "capital": "Tunis",
+      "coordinates": [2042, 569],
+      "playable": true,
+      "tiles": 1958
+    },
+    {
+      "capital": "Tripoli",
+      "coordinates": [2079, 619],
+      "playable": true,
+      "tiles": 19737
+    },
+    {
+      "capital": "Cairo",
+      "coordinates": [2288, 647],
+      "playable": true,
+      "tiles": 11696
+    },
+    {
+      "capital": "Rabat",
+      "coordinates": [1854, 604],
+      "playable": true,
+      "tiles": 7227
+    },
+    {
+      "capital": "Algiers",
+      "coordinates": [1964, 573],
+      "playable": true,
+      "tiles": 28672
+    },
+    {
+      "capital": "Khartoum",
+      "coordinates": [2296, 820],
+      "playable": true,
+      "tiles": 20782
+    },
+    {
+      "capital": "Mogadishu",
+      "coordinates": [2445, 976],
+      "playable": true,
+      "tiles": 5039
+    },
+    {
+      "capital": "Addis Ababa",
+      "coordinates": [2371, 897],
+      "playable": true,
+      "tiles": 12320
+    },
+    {
+      "capital": "Nouakchott",
+      "coordinates": [1749, 790],
+      "playable": true,
+      "tiles": 12007
+    },
+    {
+      "capital": "N'Djamena",
+      "coordinates": [2102, 859],
+      "playable": true,
+      "tiles": 14386
+    },
+    {
+      "capital": "Niamey",
+      "coordinates": [1955, 841],
+      "playable": true,
+      "tiles": 13466
+    },
+    {
+      "capital": "Abuja",
+      "coordinates": [2013, 896],
+      "playable": true,
+      "tiles": 9620
+    },
+    {
+      "capital": "Monrovia",
+      "coordinates": [1809, 927],
+      "playable": true,
+      "tiles": 1024
+    },
+    {
+      "capital": "Bangui",
+      "coordinates": [2140, 949],
+      "playable": true,
+      "tiles": 6760
+    },
+    {
+      "capital": "Kinshasa",
+      "coordinates": [2105, 1058],
+      "playable": true,
+      "tiles": 24297
+    },
+    {
+      "capital": "Pretoria",
+      "coordinates": [2250, 1308],
+      "playable": true,
+      "tiles": 14737
+    },
+    {
+      "capital": "Antananarivo",
+      "coordinates": [2471, 1226],
+      "playable": true,
+      "tiles": 6560
+    },
+    {
+      "capital": "Maputo",
+      "coordinates": [2298, 1307],
+      "playable": true,
+      "tiles": 8586
+    },
+    {
+      "capital": "Dodoma",
+      "coordinates": [2337, 1076],
+      "playable": true,
+      "tiles": 9545
+    },
+    {
+      "capital": "Bamako",
+      "coordinates": [1837, 851],
+      "playable": true,
+      "tiles": 14008
+    },
+    {
+      "capital": "Windhoek",
+      "coordinates": [2124, 1270],
+      "playable": true,
+      "tiles": 9574
+    },
+    {
+      "capital": "Luanda",
+      "coordinates": [2082, 1110],
+      "playable": true,
+      "tiles": 13771
+    },
+    {
+      "capital": "Brasília",
+      "coordinates": [1383, 1190],
+      "playable": true,
+      "tiles": 74192
+    },
+    {
+      "capital": "Manaus",
+      "coordinates": [1245, 1037],
+      "playable": true,
+      "tiles": 16480
+    },
+    {
+      "capital": "Buenos Aires",
+      "coordinates": [1260, 1415],
+      "playable": true,
+      "tiles": 36028
+    },
+    {
+      "capital": "Santiago",
+      "coordinates": [1123, 1398],
+      "playable": true,
+      "tiles": 9063
+    },
+    {
+      "capital": "Lima",
+      "coordinates": [1052, 1145],
+      "playable": true,
+      "tiles": 13951
+    },
+    {
+      "capital": "Bogotá",
+      "coordinates": [1085, 948],
+      "playable": true,
+      "tiles": 12022
+    },
+    {
+      "capital": "Caracas",
+      "coordinates": [1166, 881],
+      "playable": true,
+      "tiles": 9459
+    },
+    {
+      "capital": "Managua",
+      "coordinates": [949, 857],
+      "playable": true,
+      "tiles": 1190
+    },
+    {
+      "capital": "Mexico City",
+      "coordinates": [799, 774],
+      "playable": true,
+      "tiles": 22541
+    },
+    {
+      "capital": "Washington, D.C.",
+      "coordinates": [1051, 541],
+      "playable": true,
+      "tiles": 70220
+    },
+    {
+      "capital": "Austin",
+      "coordinates": [815, 646],
+      "playable": true,
+      "tiles": 8489
+    },
+    {
+      "capital": "Sacramento",
+      "coordinates": [545, 548],
+      "playable": true,
+      "tiles": 5534
+    },
+    {
+      "capital": "Salt Lake City",
+      "coordinates": [653, 522],
+      "playable": true,
+      "tiles": 3012
+    },
+    {
+      "capital": "Québec",
+      "coordinates": [1119, 453],
+      "playable": true,
+      "tiles": 26267
+    },
+    {
+      "capital": "St. John's",
+      "coordinates": [1308, 435],
+      "playable": true,
+      "tiles": 5847
+    },
+    {
+      "capital": "Ottawa",
+      "coordinates": [1068, 469],
+      "playable": true,
+      "tiles": 18499
+    },
+    {
+      "capital": "Juneau",
+      "coordinates": [397, 312],
+      "playable": true,
+      "tiles": 34619
+    },
+    {
+      "capital": "Iqaluit",
+      "coordinates": [1148, 248],
+      "playable": true,
+      "tiles": 60030
+    },
+    {
+      "capital": "Whitehorse",
+      "coordinates": [389, 287],
+      "playable": true,
+      "tiles": 11650
+    },
+    {
+      "capital": "Nuuk",
+      "coordinates": [1350, 250],
+      "playable": true,
+      "tiles": 86870
+    },
+    {
+      "capital": "Harare",
+      "coordinates": [2283, 1214],
+      "playable": true,
+      "tiles": 4418
+    },
+    {
+      "capital": "Olympia",
+      "coordinates": [528, 451],
+      "playable": true,
+      "tiles": 2486
+    },
+    {
+      "capital": "Topeka",
+      "coordinates": [838, 542],
+      "playable": true,
+      "tiles": 2823
+    },
+    {
+      "capital": "Jackson",
+      "coordinates": [901, 622],
+      "playable": true,
+      "tiles": 1581
+    },
+    {
+      "capital": "Sucre",
+      "coordinates": [1185, 1228],
+      "playable": true,
+      "tiles": 12164
+    },
+    {
+      "capital": "Libreville",
+      "coordinates": [2042, 998],
+      "playable": true,
+      "tiles": 2763
+    },
+    {
+      "capital": "Helena",
+      "coordinates": [651, 456],
+      "playable": true,
+      "tiles": 5774
+    },
+    {
+      "capital": "Victoria",
+      "coordinates": [514, 429],
+      "playable": true,
+      "tiles": 16574
+    },
+    {
+      "capital": "Edmonton",
+      "coordinates": [636, 374],
+      "playable": true,
+      "tiles": 11874
+    },
+    {
+      "capital": "Regina",
+      "coordinates": [736, 408],
+      "playable": true,
+      "tiles": 11682
+    },
+    {
+      "capital": "Winnipeg",
+      "coordinates": [822, 414],
+      "playable": true,
+      "tiles": 10809
+    },
+    {
+      "capital": "Boston",
+      "coordinates": [1114, 503],
+      "playable": true,
+      "tiles": 247
+    },
+    {
+      "capital": "Saint Paul",
+      "coordinates": [869, 471],
+      "playable": true,
+      "tiles": 3189
+    },
+    {
+      "capital": "Lansing",
+      "coordinates": [965, 499],
+      "playable": true,
+      "tiles": 2027
+    },
+    {
+      "capital": "Yellowknife",
+      "coordinates": [625, 264],
+      "playable": true,
+      "tiles": 32271
+    }
+  ]
+}

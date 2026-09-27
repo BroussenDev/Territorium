@@ -25,6 +25,7 @@ import { PeaceRejectExecution } from "./peace/PeaceRejectExecution";
 import { PeaceRequestExecution } from "./peace/PeaceRequestExecution";
 import { QuickChatExecution } from "./QuickChatExecution";
 import { RetreatExecution } from "./RetreatExecution";
+import { SetCapitalExecution } from "./SetCapitalExecution";
 import { SpawnExecution } from "./SpawnExecution";
 import { TargetPlayerExecution } from "./TargetPlayerExecution";
 import { TransportShipExecution } from "./TransportShipExecution";
@@ -144,6 +145,8 @@ export class Executor {
         return new MarkDisconnectedExecution(player, intent.isDisconnected);
       case "toggle_pause":
         return new PauseExecution(player, intent.paused);
+      case "set_capital":
+        return new SetCapitalExecution(player, intent.unitId);
       default:
         throw new Error(`intent type ${intent} not found`);
     }

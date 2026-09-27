@@ -412,13 +412,19 @@ export class GameView implements GameMap {
           // directly on the update (see PlayerUpdate.nationFlag) rather than
           // being looked up by name — some maps define multiple nations with
           // the same display name (e.g. India's and Pakistan's "Punjab").
-          this._cosmetics.get(pu.clientID ?? "") ??
-            (pu.playerType === PlayerType.Nation && pu.nationFlag
-              ? ({
-                  flag: `/flags/${pu.nationFlag}.svg`,
-                } satisfies PlayerCosmetics)
-              : undefined) ??
-            {},
+          // In Nations games humans fly the flag of the country they play.
+          pu.playerType === PlayerType.Human && pu.nationFlag
+            ? {
+                ...this._cosmetics.get(pu.clientID ?? ""),
+                flag: `/flags/${pu.nationFlag}.svg`,
+              }
+            : (this._cosmetics.get(pu.clientID ?? "") ??
+                (pu.playerType === PlayerType.Nation && pu.nationFlag
+                  ? ({
+                      flag: `/flags/${pu.nationFlag}.svg`,
+                    } satisfies PlayerCosmetics)
+                  : undefined) ??
+                {}),
         );
         this._players.set(pu.id, player);
         this._playerStates.set(pu.smallID!, player.state);

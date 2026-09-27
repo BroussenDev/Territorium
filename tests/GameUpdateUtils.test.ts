@@ -32,6 +32,7 @@ function makePlayerState(overrides: Partial<PlayerState> = {}): PlayerState {
     inDoomsdayClock: false,
     isDecaying: false,
     markedDoomsdayClockTick: -1,
+    capitalLostTick: -1,
     betrayals: 0,
     hasSpawned: true,
     lastDeleteUnitTick: 0,

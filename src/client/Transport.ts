@@ -23,6 +23,7 @@ import {
   ClientIntentMessage,
   ClientJoinMessage,
   ClientMessage,
+  ClientPickNationMessage,
   ClientPingMessage,
   ClientRejoinMessage,
   ClientReportMessage,
@@ -170,6 +171,15 @@ export class SendEmbargoAllIntentEvent implements GameEvent {
 
 export class SendDeleteUnitIntentEvent implements GameEvent {
   constructor(public readonly unitId: number) {}
+}
+
+export class SendSetCapitalIntentEvent implements GameEvent {
+  constructor(public readonly unitId: number) {}
+}
+
+// Nations lobbies: pick a country (manifest index), or release it with null.
+export class SendPickNationEvent implements GameEvent {
+  constructor(public readonly nation: number | null) {}
 }
 
 export class CancelAttackIntentEvent implements GameEvent {
@@ -370,6 +380,15 @@ export class Transport {
 
     this.subscribe(SendToggleGameStartTimer, (e) =>
       this.onSendToggleGameStartTimer(e),
+    );
+    this.subscribe(SendSetCapitalIntentEvent, (e) =>
+      this.sendIntent({ type: "set_capital", unitId: e.unitId }),
+    );
+    this.subscribe(SendPickNationEvent, (e) =>
+      this.sendMsg({
+        type: "pick_nation",
+        nation: e.nation,
+      } satisfies ClientPickNationMessage),
     );
     this.subscribe(SendSpectateEvent, (e) => {
       this.lobbyConfig.spectator = e.spectator;

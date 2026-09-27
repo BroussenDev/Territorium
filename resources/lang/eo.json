@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} sekundojn ĝis fino de perfidula malfortigo",
     "betrayal_description": "Vi rompis vian aliancon kun {name}, igante vin PERFIDULO ({malusPercent}%an defendan malfortigon dum {durationText})",
     "betrayed_you": "{name} rompis sian aliancon kun vi",
+    "capital_fallen": "{capital} falis! {name} perdis sian ĉefurbon",
     "conquered_no_gold": "Konkeris {name} (kiu ne ludis, neniu oro ricevita)",
     "duration_second": "1 sekundo",
     "duration_seconds_plural": "{seconds} sekundoj",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - hidrogenbombo eksplodis",
     "ignore": "Ignori",
     "missile_intercepted": "Misilo interkaptis {unit}",
+    "new_capital_fallen": "{name} perdis sian ĉefurbon!",
     "no_boats_available": "Neniu boato disponebla, maksimume {max}",
     "objective_captured": "Vi kaptis mapan celon: pli da oro kaj trup-kresko dum vi tenas ĝin.",
     "objective_lost": "{name} prenis unu el viaj mapceloj.",
@@ -1089,6 +1091,20 @@
     "ffa": "Ĉiu por si",
     "hvn": "Homoj kontraŭ Nacioj",
     "teams": "Teamoj"
+  },
+  "game_modes": {
+    "more_soon": "Pli da ludreĝimoj estas survoje",
+    "nations_description": "Elektu realan landon sur la giganta mondmapo kaj komencu per ĝia tuta teritorio. Tenu vian ĉefurbon, englutu viajn najbarojn kaj regu duonon de la mondo.",
+    "nations_fact_ai": "Landoj, kiujn neniu elektas, estas luditaj de la AI",
+    "nations_fact_capital": "Via reala ĉefurbo donas +10% oron kaj kreskon de trupoj",
+    "nations_fact_country": "Vi komencas kun via tuta lando",
+    "nations_fact_win": "Posedu 50% de la tero por gajni",
+    "nations_join": "Elektu mian landon",
+    "nations_title": "Nacioj",
+    "nations_waiting": "Sekva ludo baldaŭ venos",
+    "players": "{count}/{max} ludantoj",
+    "subtitle": "Plurludantaj ludoj kun propraj reguloj",
+    "title": "Ludaj reĝimoj"
   },
   "game_settings": {
     "bots": "Triboj: ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Ne montru denove",
     "ffa_collusion": "Rememorigilo: teamado antaŭ la ludo ne estas permesita en FFA",
     "multiplayer_game_paused": "Luda paŭzigita de Ludeja Kreanto",
+    "nations_spawn": "Ĉiu lando estas en loko: la milito komenciĝas en momento",
     "pvp_immunity_active": "Imuneco inter ludantoj aktiva dum {seconds} sekundoj",
     "random_spawn": "Komenclokoj estas hazardaj. Elekto de komencloko por vi...",
     "random_spawn_spectator": "Hazarda spawn estas ebligita",
@@ -1780,6 +1797,19 @@
     "please_wait": "Bonvolu atendi",
     "seconds": "sekundoj",
     "warning": "Averto de Vigla Reĝimo"
+  },
+  "nations_lobby": {
+    "capital": "Ĉefurbo: {capital}",
+    "free": "Senpaga",
+    "hint": "Klaku landon sur la mapo. Grizaj landoj jam estas prenitaj; ĉiu libera lando estos ludita de la AI.",
+    "load_failed": "La mondmapo ne povis esti ŝargita. Vi ricevos hazardan landon.",
+    "no_match": "Neniu lando trovita",
+    "none_picked": "Ankoraŭ neniu lando elektita: vi ricevos hazarde senpagan.",
+    "release": "Liberigu",
+    "search": "Serĉu landon",
+    "size": "{share} % de la tero de la mondo",
+    "taken_by": "Prenite de {name}",
+    "title": "Elektu vian landon"
   },
   "nav_account_menu": {
     "account_settings": "Kontaj agordoj",
@@ -2336,6 +2366,8 @@
     "watch": "Rigardu {name}"
   },
   "structure_card": {
+    "capital": "Ĉefurbo: +10% oro kaj kresko de trupoj",
+    "capital_locked": "Nova ĉefurbo ebla en {time}",
     "gain_missiles": "Raketoj {from} → {to}",
     "gain_population": "Maksimuma loĝantaro +{from} → +{to}",
     "gain_range": "Atingopovo {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Nivelo {level} / {max}",
     "locked": "Nivelo {level} disponebla post {time}",
     "max": "Maksimuma nivelo",
+    "proclaim_capital": "Faru ĉi tiun urbon mia ĉefurbo",
     "upgrade": "Plibonigi"
   },
   "subscription_modal": {

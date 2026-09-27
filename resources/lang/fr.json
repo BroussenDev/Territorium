@@ -955,6 +955,7 @@
     "betrayal_debuff_ends": "{time} secondes restantes jusqu'à la fin du malus de trahison",
     "betrayal_description": "Vous avez rompu votre alliance avec {name}, ce qui fait de vous un TRAÎTRE (affaiblissement de défense de {malusPercent}% pendant {durationText})",
     "betrayed_you": "{name} a rompu son alliance avec vous",
+    "capital_fallen": "{capital} est tombée ! {name} a perdu sa capitale",
     "conquered_no_gold": "Élimination de {name} (n'a pas joué, pas d'or reçu)",
     "duration_second": "1 seconde",
     "duration_seconds_plural": "{seconds} secondes",
@@ -965,6 +966,7 @@
     "hydrogen_bomb_detonated": "{name} - Bombe hydrogène explosée",
     "ignore": "Ignorer",
     "missile_intercepted": "Votre SAM a intercepté {unit}",
+    "new_capital_fallen": "{name} a perdu sa capitale !",
     "no_boats_available": "Aucun bateau disponible, max {max}",
     "objective_captured": "Vous avez capturé un objectif : plus d'or et de croissance des troupes tant que vous le tenez.",
     "objective_lost": "{name} vous a pris un objectif.",
@@ -1089,6 +1091,20 @@
     "ffa": "Chacun pour soi",
     "hvn": "Humains vs Nations",
     "teams": "Équipes"
+  },
+  "game_modes": {
+    "more_soon": "D'autres modes de jeu arrivent",
+    "nations_description": "Choisissez un vrai pays sur la carte du monde géant et commencez avec tout son territoire. Tenez votre capitale, avalez vos voisins et régnez sur la moitié du monde.",
+    "nations_fact_ai": "Les pays que personne ne prend sont joués par l'IA",
+    "nations_fact_capital": "Votre vraie capitale donne +10 % d'or et de croissance des troupes",
+    "nations_fact_country": "Vous commencez avec votre pays entier",
+    "nations_fact_win": "Possédez 50 % des terres pour gagner",
+    "nations_join": "Choisir mon pays",
+    "nations_title": "Nations",
+    "nations_waiting": "Prochaine partie bientôt",
+    "players": "{count}/{max} joueurs",
+    "subtitle": "Des parties multijoueurs avec leurs propres règles",
+    "title": "Modes de jeu"
   },
   "game_settings": {
     "bots": "Tribus : ",
@@ -1273,6 +1289,7 @@
     "dont_show_again": "Ne plus montrer",
     "ffa_collusion": "Rappel : Il est interdit de faire équipe avec des amis en \"Chacun pour soi\", faites preuve de fairplay",
     "multiplayer_game_paused": "Jeu mis en pause par le créateur du salon",
+    "nations_spawn": "Tous les pays sont en place : la guerre commence dans un instant",
     "pvp_immunity_active": "Immunité des joueurs active pour {seconds}s",
     "random_spawn": "Le spawn aléatoire est activé. Sélection de l'emplacement de départ pour vous...",
     "random_spawn_spectator": "Apparition aléatoire activée",
@@ -1780,6 +1797,19 @@
     "please_wait": "Veuillez patienter",
     "seconds": "secondes",
     "warning": "Avertissement du mode Vigilance"
+  },
+  "nations_lobby": {
+    "capital": "Capitale : {capital}",
+    "free": "Libre",
+    "hint": "Cliquez sur un pays de la carte. Les pays gris sont déjà pris ; tous les pays libres seront joués par l'IA.",
+    "load_failed": "La carte du monde n'a pas pu être chargée. Vous recevrez un pays au hasard.",
+    "no_match": "Aucun pays trouvé",
+    "none_picked": "Aucun pays choisi : vous recevrez un pays libre au hasard.",
+    "release": "Libérer",
+    "search": "Rechercher un pays",
+    "size": "{share} % des terres du monde",
+    "taken_by": "Pris par {name}",
+    "title": "Choisissez votre pays"
   },
   "nav_account_menu": {
     "account_settings": "Paramètres du compte",
@@ -2336,6 +2366,8 @@
     "watch": "Regarder {name}"
   },
   "structure_card": {
+    "capital": "Capitale : +10 % d'or et de croissance des troupes",
+    "capital_locked": "Nouvelle capitale possible dans {time}",
     "gain_missiles": "Missiles {from} → {to}",
     "gain_population": "Population max +{from} → +{to}",
     "gain_range": "Portée {from} → {to}",
@@ -2346,6 +2378,7 @@
     "level_of": "Niv. {level} / {max}",
     "locked": "Niv. {level} disponible dans {time}",
     "max": "Niveau maximum",
+    "proclaim_capital": "Faire de cette ville ma capitale",
     "upgrade": "Améliorer"
   },
   "subscription_modal": {

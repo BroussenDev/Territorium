@@ -97,6 +97,7 @@ function stateFromUpdate(pu: PlayerUpdate): PlayerState {
     hasSpawned: pu.hasSpawned!,
     spawnTile: pu.spawnTile,
     lastDeleteUnitTick: pu.lastDeleteUnitTick!,
+    capitalLostTick: pu.capitalLostTick ?? -1,
     allies: pu.allies!.slice(),
     embargoes: [],
     targets: pu.targets!.slice(),
@@ -719,6 +720,10 @@ export class PlayerView {
 
   lastDeleteUnitTick(): Tick {
     return this.state.lastDeleteUnitTick;
+  }
+
+  capitalLostTick(): Tick {
+    return this.state.capitalLostTick;
   }
 
   deleteUnitCooldown(): number {
