@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.13
+
+©️ **Territorium's own creations**
+
+- Territorium's original icons (MIRV, EMP, radar, white flag, medals, emeralds), sounds and store cosmetics now sit with the Territorium brand, owned by Broussen Studio. Nothing changes in the game.
+
 ## v0.1.12
 
 👑 **Capitals stand out**

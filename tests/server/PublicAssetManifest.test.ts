@@ -9,7 +9,9 @@ import {
   clearPublicAssetManifestCache,
   copyRootPublicFiles,
   createHashedPublicAssetFiles,
+  getBrandDir,
   getPublicDir,
+  getRootPublicDirs,
   writeRootFilesIndex,
 } from "../../src/server/PublicAssetManifest";
 
@@ -348,5 +350,48 @@ describe("PublicAssetManifest", () => {
     expect(
       index[".well-known/apple-developer-merchantid-domain-association"],
     ).toBe("text/plain; charset=utf-8");
+  });
+
+  test("serves brand/public/ at the root too, resources/public/ first", async () => {
+    const { resourcesDir, outDir } = await createTempResources();
+    const brandDir = path.join(path.dirname(resourcesDir), "brand");
+    const [publicDir, brandPublicDir] = getRootPublicDirs(
+      resourcesDir,
+      brandDir,
+    );
+    await fs.mkdir(path.join(brandPublicDir, "cosmetics"), { recursive: true });
+    await fs.mkdir(publicDir, { recursive: true });
+    await fs.writeFile(path.join(brandPublicDir, "cosmetics", "a.svg"), "a");
+    await fs.writeFile(path.join(brandPublicDir, "robots.txt"), "brand");
+    await fs.writeFile(path.join(publicDir, "robots.txt"), "resources");
+
+    copyRootPublicFiles([publicDir, brandPublicDir], outDir);
+    writeRootFilesIndex([publicDir, brandPublicDir], outDir);
+
+    await expect(
+      fs.readFile(path.join(outDir, "cosmetics", "a.svg"), "utf8"),
+    ).resolves.toBe("a");
+    await expect(
+      fs.readFile(path.join(outDir, "robots.txt"), "utf8"),
+    ).resolves.toBe("resources");
+    expect(
+      JSON.parse(
+        await fs.readFile(path.join(outDir, "root-files.json"), "utf8"),
+      ),
+    ).toEqual({
+      "cosmetics/a.svg": "image/svg+xml",
+      "robots.txt": "text/plain; charset=utf-8",
+    });
+  });
+
+  test("the shop cosmetics are served from brand/public/", () => {
+    const index = buildRootFilesIndex(
+      getRootPublicDirs(
+        path.resolve("resources"),
+        getBrandDir(path.resolve(".")),
+      ),
+    );
+    expect(index["cosmetics/crowns/laurier.svg"]).toBe("image/svg+xml");
+    expect(index["cosmetics/flags/fleur_de_lys.svg"]).toBe("image/svg+xml");
   });
 });

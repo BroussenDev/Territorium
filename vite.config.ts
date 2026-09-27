@@ -17,8 +17,8 @@ import {
   copyRootPublicFiles,
   createHashedPublicAssetFiles,
   getBrandDir,
-  getPublicDir,
   getResourcesDir,
+  getRootPublicDirs,
   writePublicAssetManifest,
   writeRootFilesIndex,
 } from "./src/server/PublicAssetManifest";
@@ -27,9 +27,10 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Dev-only: resources/public/ is served at the site root, as the build copies
-// it into static/. Vite's publicDir (resources/) would put it under /public/.
-function serveRootPublicDir(publicDir: string): Plugin {
+// Dev-only: resources/public/ and brand/public/ are served at the site root,
+// as the build copies them into static/. Vite's publicDir (resources/) would
+// put them under /public/.
+function serveRootPublicDir(publicDirs: string[]): Plugin {
   return {
     name: "serve-root-public-dir",
     configureServer(server) {
@@ -51,7 +52,11 @@ function serveRootPublicDir(publicDir: string): Plugin {
         if (rel.split(/[\\/]/).some((part) => part === "." || part === ".."))
           return next();
         if (rel === "" || rel.endsWith("/")) rel += "index.html";
-        const filePath = path.join(publicDir, rel);
+        const filePath =
+          publicDirs
+            .map((dir) => path.join(dir, rel))
+            .find((p) => fs.existsSync(p) && fs.statSync(p).isFile()) ??
+          path.join(publicDirs[0], rel);
         if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile())
           return next();
         const mime = lookupMime(filePath);
@@ -215,6 +220,7 @@ export default defineConfig(({ mode }) => {
   const resourcesDir = getResourcesDir(__dirname);
   const brandDir = getBrandDir(__dirname);
   const sourceDirs = [resourcesDir, brandDir];
+  const rootPublicDirs = getRootPublicDirs(resourcesDir, brandDir);
   const assetManifest: AssetManifest = isProduction
     ? buildPublicAssetManifest(sourceDirs)
     : {};
@@ -280,8 +286,8 @@ export default defineConfig(({ mode }) => {
     },
     closeBundle() {
       const outDir = path.join(__dirname, "static");
-      copyRootPublicFiles(getPublicDir(resourcesDir), outDir);
-      writeRootFilesIndex(getPublicDir(resourcesDir), outDir);
+      copyRootPublicFiles(rootPublicDirs, outDir);
+      writeRootFilesIndex(rootPublicDirs, outDir);
       // Run the source→hashed copy first; createHashedPublicAssetFiles iterates
       // assetManifest and expects every key to resolve to a file in resources/
       // or brand/. Vite's bundle output (assets/...) doesn't, so it's
@@ -376,7 +382,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       ...(!isProduction
         ? [
-            serveRootPublicDir(getPublicDir(resourcesDir)),
+            serveRootPublicDir(rootPublicDirs),
             serveBrandDir(brandDir, resourcesDir),
             randomWorkerCreateProxy(devNumWorkers),
             steamLinkAliasRedirect(),

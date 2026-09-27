@@ -255,6 +255,20 @@ export function getBrandDir(rootDir: string = process.cwd()): string {
   return path.join(rootDir, "brand");
 }
 
+// The root-served directories, in precedence order: resources/public/, then
+// brand/public/ (Territorium's own cosmetics, same URLs as if they lived in
+// resources/public/).
+export function getRootPublicDirs(
+  resourcesDir: string,
+  brandDir: string,
+): string[] {
+  return [getPublicDir(resourcesDir), path.join(brandDir, "public")];
+}
+
+function asDirs(publicDirs: string | readonly string[]): readonly string[] {
+  return typeof publicDirs === "string" ? [publicDirs] : publicDirs;
+}
+
 // Scans directories with synchronous fs.existsSync — assumes a small number of sourceDirs.
 function resolveSourceDir(relativePath: string, sourceDirs: string[]): string {
   for (const dir of sourceDirs) {
@@ -371,12 +385,18 @@ export function createHashedPublicAssetFiles(
   }
 }
 
-export function copyRootPublicFiles(publicDir: string, outDir: string): void {
-  for (const relativePath of listRootPublicFiles(publicDir)) {
-    const sourcePath = path.join(publicDir, relativePath);
-    const outputPath = path.join(outDir, relativePath);
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.copyFileSync(sourcePath, outputPath);
+export function copyRootPublicFiles(
+  publicDirs: string | readonly string[],
+  outDir: string,
+): void {
+  // Earlier directories win, so copy the later ones first.
+  for (const publicDir of [...asDirs(publicDirs)].reverse()) {
+    for (const relativePath of listRootPublicFiles(publicDir)) {
+      const sourcePath = path.join(publicDir, relativePath);
+      const outputPath = path.join(outDir, relativePath);
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.copyFileSync(sourcePath, outputPath);
+    }
   }
 }
 
@@ -411,9 +431,12 @@ function rootFileContentType(relativePath: string): string {
   return type;
 }
 
-export function buildRootFilesIndex(publicDir: string): RootFilesIndex {
+export function buildRootFilesIndex(
+  publicDirs: string | readonly string[],
+): RootFilesIndex {
   const index: RootFilesIndex = {};
-  for (const relativePath of listRootPublicFiles(publicDir)) {
+  const relativePaths = asDirs(publicDirs).flatMap(listRootPublicFiles);
+  for (const relativePath of [...new Set(relativePaths)].sort()) {
     const contentType = rootFileContentType(relativePath);
     index[relativePath] = contentType;
     if (path.posix.basename(relativePath) === "index.html") {
@@ -424,11 +447,14 @@ export function buildRootFilesIndex(publicDir: string): RootFilesIndex {
   return index;
 }
 
-export function writeRootFilesIndex(publicDir: string, outDir: string): void {
+export function writeRootFilesIndex(
+  publicDirs: string | readonly string[],
+  outDir: string,
+): void {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(
     path.join(outDir, ROOT_FILES_INDEX),
-    `${JSON.stringify(buildRootFilesIndex(publicDir), null, 2)}\n`,
+    `${JSON.stringify(buildRootFilesIndex(publicDirs), null, 2)}\n`,
   );
 }
 
