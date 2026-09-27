@@ -247,6 +247,13 @@ describe("Nations mode", () => {
     expect(small.gold()).toBeGreaterThan(gold);
   });
 
+  test("the capital can't be upgraded", () => {
+    small.addGold(100_000_000n);
+    const city = small.buildUnit(UnitType.City, game.ref(52, 20), {});
+    expect(small.canUpgradeUnit(city)).toBe(true);
+    expect(small.canUpgradeUnit(capitalOf(small)!)).toBe(false);
+  });
+
   test("half of the land wins", () => {
     expect(game.config().percentageTilesOwnedToWin(0)).toBe(50);
   });

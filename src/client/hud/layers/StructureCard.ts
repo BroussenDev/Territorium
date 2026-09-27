@@ -401,12 +401,13 @@ export class StructureCard extends LitElement implements Controller {
             ✕
           </button>
         </div>
-        ${level < cap
+        ${level < cap && !unit.isCapital()
           ? html`<ul class="structure-card-gains">
               ${this.gains(unit.type(), level).map((g) => html`<li>${g}</li>`)}
             </ul>`
           : ""}
-        ${this.renderAction(unit, cap)} ${this.renderCapital(unit)}
+        ${unit.isCapital() ? "" : this.renderAction(unit, cap)}
+        ${this.renderCapital(unit)}
       </div>
     `;
   }

@@ -64,7 +64,8 @@ const ATLAS_COLS = STRUCTURE_ORDER.length;
 // ---------------------------------------------------------------------------
 
 // Per-instance: x, y, ownerID, state (0 = normal, 1 = under construction,
-// 2 = disabled by an EMP), atlasIdx, markedForDeletion, level
+// 2 = disabled by an EMP), atlasIdx, flags (1 = marked for deletion,
+// 2 = Nations mode capital), level
 const FLOATS_PER_INSTANCE = 7;
 const BYTES_PER_INSTANCE = FLOATS_PER_INSTANCE * 4;
 
@@ -272,7 +273,7 @@ export class StructurePass {
     gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
     gl.vertexAttribDivisor(1, 1);
 
-    // Attribute 2: per-instance vec3 (atlasIdx, markedForDeletion, level)
+    // Attribute 2: per-instance vec3 (atlasIdx, flags, level)
     gl.enableVertexAttribArray(2);
     gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
     gl.vertexAttribDivisor(2, 1);
@@ -330,7 +331,7 @@ export class StructurePass {
           : 0;
       this.instanceBuf.float32[off + 4] = atlasIdx;
       this.instanceBuf.float32[off + 5] =
-        unit.markedForDeletion !== false ? 1 : 0;
+        (unit.markedForDeletion !== false ? 1 : 0) + (unit.isCapital ? 2 : 0);
       this.instanceBuf.float32[off + 6] = unit.level;
 
       count++;

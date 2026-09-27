@@ -1546,6 +1546,10 @@ export class PlayerImpl implements Player {
     if (unit.owner() !== this) {
       return false;
     }
+    // Nations mode: a capital keeps the level it had when proclaimed.
+    if (unit.isCapital()) {
+      return false;
+    }
     return this.upgradesLeft(unit) > 0;
   }
 

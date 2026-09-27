@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.12
+
+👑 **Capitals stand out**
+
+- In Nations games, every capital now wears a gold crown on the map, so you can spot at a glance which city to defend and which one to take.
+- Capitals can no longer be upgraded. A city proclaimed as the new capital keeps the level it already had.
+
 ## v0.1.11
 
 🌍 **New game mode: Nations**

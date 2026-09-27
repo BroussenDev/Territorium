@@ -36,6 +36,7 @@ flat in float vZoom;
 flat in float vAtlasIdx;
 flat in float vShapeScale;
 flat in float vLevel;             // 0 for ghosts, else the unit's level
+flat in float vCapital;           // 1 for a Nations mode capital
 
 out vec4 fragColor;
 
@@ -133,6 +134,14 @@ float shapeSDF(vec2 p, float R) {
   return sdPolygon(p, R, 4.0, PI * 0.25);     // Radar → diamond (vertex up)
 }
 
+// Signed distance (approximate) to a three-pointed crown sitting just above
+// the shape. y grows downwards, so the points are at the most negative y.
+float crownSDF(vec2 p) {
+  float t = abs(fract(p.x / 0.24 + 0.5) - 0.5) * 2.0; // 0 at a point, 1 between
+  float top = mix(-0.77, -0.60, t);
+  return max(abs(p.x) - 0.24, max(p.y + 0.49, top - p.y));
+}
+
 void main() {
   float dist = length(vLocalPos);
   float radius = 0.45;
@@ -146,7 +155,16 @@ void main() {
   float highlightOutlineW = uHighlightMask != 0 ? uHighlightOutlineW / vShapeScale : 0.0;
   float outerAlpha = 1.0 - smoothstep(-fw, fw, sdf - highlightOutlineW);
 
-  if (outerAlpha <= 0.0) discard;
+  // Nations mode capital: a gold crown above the shape.
+  float crownAlpha = 0.0;
+  float crownD = 1.0;
+  if (vCapital > 0.5) {
+    crownD = crownSDF(vLocalPos);
+    float cfw = fwidth(crownD);
+    crownAlpha = 1.0 - smoothstep(-cfw, cfw, crownD);
+  }
+
+  if (outerAlpha <= 0.0 && crownAlpha <= 0.0) discard;
 
   float borderMask = 1.0 - smoothstep(-fw, fw, sdf + borderWidth);
 
@@ -275,6 +293,16 @@ void main() {
   finalRGB = mix(finalRGB, uOutlineColor, tintActive * 0.5);
 
   float finalAlpha = bgColor.a * outerAlpha * uGhostAlpha * uIconAlpha;
+
+  if (crownAlpha > 0.0) {
+    float cfw = fwidth(crownD);
+    float edge = smoothstep(-0.035 - cfw, -0.035 + cfw, crownD);
+    float sheen = 1.2 - (vLocalPos.y + 0.77) * 1.4;
+    vec3 gold = vec3(1.00, 0.80, 0.24) * sheen;
+    vec3 crownRGB = mix(gold, vec3(0.36, 0.22, 0.04), edge);
+    finalRGB = mix(finalRGB, crownRGB, crownAlpha);
+    finalAlpha = max(finalAlpha, crownAlpha * uGhostAlpha * uIconAlpha);
+  }
 
   // Build-button hover highlight: white outline on matching types, dim the rest
   if (uHighlightMask != 0) {
