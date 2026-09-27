@@ -77,7 +77,8 @@ lui-même issu de [WarFront.io](https://github.com/WarFrontIO). Merci à leurs �
   Conformément à la section 7 de la licence, la mention **« © OpenFront and Contributors »**
   reste visible dans le pied de page et sur l'écran de chargement.
 - **Assets du dossier `resources/`** : [CC BY-SA 4.0](LICENSE-ASSETS), attribution « OpenFront ».
-- **Dossier `brand/`** : nom, emblème, logos et sons de Territorium, **tous droits réservés**.
+- **Dossier `brand/`** : nom, emblème, logos, musiques et sons de Territorium, propriété de **Broussen Studio**, **tous droits réservés**.
+  **Ne réutilisez pas ce dossier** : un fork ou une copie du projet doit le supprimer entièrement.
   Le nom « Territorium » et ses logos ne peuvent pas être utilisés par un fork ou un autre projet
   (voir [brand/LICENSE](brand/LICENSE)). Les forks sont les bienvenus sous AGPL, avec leur propre nom et leurs propres assets.
   Police [Chakra Petch](brand/fonts/OFL.txt) sous licence SIL OFL 1.1.

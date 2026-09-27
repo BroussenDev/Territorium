@@ -7,8 +7,9 @@
 >   additional terms: the notice "© OpenFront and Contributors" remains visible
 >   in the game's footer and loading screen.
 > - OpenFront's `/proprietary` assets were **removed**. Territorium's own brand
->   assets live in `/brand` and are All Rights Reserved; the Territorium name
->   and logos may not be used by forks (see `/brand/LICENSE`).
+>   assets live in `/brand`, belong to Broussen Studio and are All Rights
+>   Reserved; forks must delete `/brand` and may not use the Territorium name
+>   and logos (see `/brand/LICENSE`).
 > - `/resources` assets remain CC BY-SA 4.0 with attribution to OpenFront.
 
 ## Overview

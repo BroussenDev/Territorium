@@ -1,6 +1,17 @@
 Territorium Brand Assets
-Copyright (c) 2026 BroussenDev
+Copyright (c) 2026 Broussen Studio
 All Rights Reserved.
+
+  +--------------------------------------------------------------------+
+  |  DO NOT REUSE THIS DIRECTORY.                                      |
+  |  If you fork, copy or reuse this project, delete /brand entirely   |
+  |  and replace it with your own name, logos, music and sounds.       |
+  |                                                                    |
+  |  NE REUTILISEZ PAS CE DOSSIER.                                     |
+  |  Si vous forkez, copiez ou reutilisez ce projet, supprimez /brand  |
+  |  en entier et remplacez-le par vos propres nom, logos, musiques    |
+  |  et sons. Ils appartiennent a Broussen Studio.                     |
+  +--------------------------------------------------------------------+
 
 This directory holds Territorium's brand identity: its name, emblem, logos
 and original audio. None of these assets come from OpenFront; the
@@ -12,6 +23,8 @@ The source code of Territorium is licensed under the GNU AGPL v3 (see
 assets below, nor to the Territorium name.
 
 1. ASSETS - ALL RIGHTS RESERVED (images/, sounds/)
+   Every file in images/ and sounds/, including files added later, among
+   them:
    - images/Favicon.svg, images/TerritoriumEmblem.svg,
      images/TerritoriumLogo.svg,
      images/TerritoriumLogoLight.svg, images/Territorium.png,
@@ -26,7 +39,7 @@ assets below, nor to the Territorium name.
 
 2. NAME AND TRADEMARK
    "Territorium" and the Territorium emblem and logos identify the
-   official game published by BroussenDev. You may NOT use them, or any
+   official game published by Broussen Studio. You may NOT use them, or any
    confusingly similar name or logo, to name, brand, advertise or
    promote a fork, a modified version or any other product or service,
    and you may not imply endorsement by Territorium.

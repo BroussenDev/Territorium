@@ -19,12 +19,14 @@ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 Assets in the `/brand` directory (the Territorium emblem, logos and original
 audio) are:
-- Copyright © 2026 BroussenDev
+- Copyright © 2026 Broussen Studio
 - All Rights Reserved
 - NOT licensed for use, modification, or redistribution outside of the
   official Territorium game
 - The "Territorium" name and logos may not be used to brand a fork or any
   other product
+- Forks, copies and reuses of this project must delete `/brand` entirely and
+  ship their own name, logos, music and sounds
 
 The Chakra Petch font in `/brand/fonts` is third-party, under the SIL Open
 Font License 1.1. See `/brand/LICENSE` for full terms.
