@@ -193,7 +193,7 @@ export class TutorialPanel extends LitElement implements Controller {
    * the next candidates take their place.
    */
   private syncMapMarkers(target: TutorialHighlight | null) {
-    if (target !== "tribes" && target !== "nation") {
+    if (target !== "tribes" && target !== "nation" && target !== "nations") {
       if (this.mapMarksActive) {
         this.mapMarksActive = false;
         this.game.setMarkedPlayers(null);
@@ -209,7 +209,9 @@ export class TutorialPanel extends LitElement implements Controller {
     const ids =
       target === "tribes"
         ? this.attackTargets(player, me)
-        : this.allianceTarget(me);
+        : target === "nations"
+          ? this.nearest(PlayerType.Nation, me)
+          : this.allianceTarget(me);
     this.game.setMarkedPlayers(new Set(ids));
     this.mapMarksActive = true;
   }
@@ -355,6 +357,7 @@ export class TutorialPanel extends LitElement implements Controller {
       nationsExist: this.game
         .playerViews()
         .some((p) => p.type() === PlayerType.Nation && p.isAlive()),
+      training: this.game.config().gameConfig().gameVariant === "training",
       alliancesDisabled: this.game.config().disableAlliances(),
       allied: player.alliances().length > 0,
       gold: player.gold(),
@@ -438,7 +441,9 @@ export class TutorialPanel extends LitElement implements Controller {
         <div class="flex items-center justify-between gap-2 mb-1">
           <span
             class="font-bold text-cyber-yellow uppercase tracking-wide text-sm"
-            >${translateText("tutorial.title")}</span
+            >${translateText(
+              this.ctx?.training ? "main.tutorial" : "tutorial.title",
+            )}</span
           >
           <span class="flex items-center gap-2 text-sm text-gray-300">
             ${this.confirmingClose ? nothing : this.renderHeaderActions()}
@@ -585,6 +590,13 @@ export class TutorialPanel extends LitElement implements Controller {
     return translateText(`tutorial.${block}.${id}`, {
       cost: renderNumber(this.costs.get(UnitType.City) ?? 0n),
       key: this.hotkeyFor(step),
+      left:
+        step.id === "defeat_nations"
+          ? this.game
+              .playerViews()
+              .filter((p) => p.type() === PlayerType.Nation && p.isAlive())
+              .length
+          : 0,
     });
   }
 }

@@ -392,4 +392,26 @@ describe("SinglePlayerModal start feedback", () => {
     expect(cosmeticsMocks.prewarmCosmetics).toHaveBeenCalled();
     expect(joins).toHaveLength(1);
   });
+
+  it("starts the guided training against three easy nations", async () => {
+    await modal.startTutorial();
+
+    expect(joins[0].detail.gameStartInfo.config).toMatchObject({
+      gameMap: "Black Sea",
+      difficulty: "Easy",
+      nations: 3,
+      bots: 100,
+      gameVariant: "training",
+    });
+  });
+
+  it("doesn't carry the training over to the next solo game", async () => {
+    await modal.startTutorial();
+    // What the (stubbed) close() at the end of every start runs.
+    (modal as unknown as { onClose(): void }).onClose();
+    await internals(modal).startGame();
+
+    expect(joins).toHaveLength(2);
+    expect(joins[1].detail.gameStartInfo.config.gameVariant).toBeUndefined();
+  });
 });

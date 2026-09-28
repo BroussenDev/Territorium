@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.19
+
+🎯 **Guided training**
+
+- The "Tutorial" button on the play page becomes "Training": a solo game on the Black Sea against three easy nations, so there is room to try everything.
+- The guide walks you through each objective as before (conquests, buildings, map objectives, your first missile), counted step by step.
+- A last objective closes the training: defeat the three nations, each marked with a target.
+- The help page starts the same training.
+
 ## v0.1.18
 
 🔗 **Shareable replays**

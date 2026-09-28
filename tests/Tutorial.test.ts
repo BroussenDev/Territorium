@@ -15,6 +15,7 @@ function ctx(overrides: Partial<TutorialContext> = {}): TutorialContext {
     boatSent: false,
     botsExist: true,
     nationsExist: true,
+    training: false,
     alliancesDisabled: false,
     allied: false,
     gold: 0n,
@@ -163,7 +164,8 @@ describe("TutorialProgress", () => {
       empDisabled: true,
     });
     // Objectives are off by default in ctx(), so that step is skipped too.
-    expect(p.total(c)).toBe(TUTORIAL_STEPS.length - 21);
+    // So is the training's last step.
+    expect(p.total(c)).toBe(TUTORIAL_STEPS.length - 22);
 
     settle(p, c);
     settle(p, c);
@@ -329,6 +331,25 @@ describe("TutorialProgress.skip", () => {
     expect(p.current()?.id).toBe("propose_alliance");
   });
 
+  it("ends the training on beating the nations", () => {
+    const p = new TutorialProgress();
+    const last = TUTORIAL_STEPS.length - 1;
+    for (let i = 0; i < last; i++) p.skip();
+    p.update(ctx({ hasSpawned: true, training: true }));
+    expect(p.current()?.id).toBe("defeat_nations");
+    expect(p.stepDone()).toBe(false);
+
+    settle(p, ctx({ hasSpawned: true, training: true, nationsExist: false }));
+    expect(p.finished()).toBe(true);
+  });
+
+  it("leaves the nations fight out of a plain solo game", () => {
+    const p = new TutorialProgress();
+    for (let i = 0; i < TUTORIAL_STEPS.length - 1; i++) p.skip();
+    p.update(ctx({ hasSpawned: true }));
+    expect(p.finished()).toBe(true);
+  });
+
   it("can skip through to the end", () => {
     const p = new TutorialProgress();
     for (let i = 0; i < TUTORIAL_STEPS.length; i++) p.skip();
@@ -347,7 +368,7 @@ describe("TutorialProgress step counter", () => {
     const before = ctx({ hasSpawned: true, objectivesExist: true });
     p.update(before);
     const total = p.total(before);
-    expect(total).toBe(TUTORIAL_STEPS.length);
+    expect(total).toBe(TUTORIAL_STEPS.length - 1);
 
     const after = ctx({
       hasSpawned: true,

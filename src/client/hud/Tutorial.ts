@@ -22,7 +22,8 @@ export type TutorialHighlight =
   | "emp"
   | "objectives"
   | "tribes"
-  | "nation";
+  | "nation"
+  | "nations";
 
 /** Emitted whenever the highlighted HUD element changes (null clears it). */
 export class TutorialHighlightEvent implements GameEvent {
@@ -43,6 +44,8 @@ export interface TutorialContext {
   boatSent: boolean;
   botsExist: boolean;
   nationsExist: boolean;
+  /** The menu's guided training game. */
+  training: boolean;
   alliancesDisabled: boolean;
   /** The player has at least one active alliance. */
   allied: boolean;
@@ -274,6 +277,14 @@ export const TUTORIAL_STEPS: readonly TutorialStep[] = [
     highlight: "emp",
     applies: (c) => !c.siloDisabled && !c.empDisabled,
     manual: true,
+  },
+  // The training game ends on a real fight: every nation left is marked, and
+  // the step is done once none is.
+  {
+    id: "defeat_nations",
+    highlight: "nations",
+    applies: (c) => c.training,
+    isDone: (c) => !c.nationsExist,
   },
 ];
 

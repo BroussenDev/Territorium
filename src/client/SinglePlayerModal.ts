@@ -122,6 +122,16 @@ const DEFAULT_OPTIONS = {
   overtimeStartMinutes: undefined as number | undefined,
 } as const;
 
+// The menu's guided training: a small sea map against three easy nations, so
+// every tutorial step has room to happen and the last one (beating the
+// nations) can be done in one sitting.
+const TRAINING_OPTIONS = {
+  selectedMap: GameMapType.BlackSea,
+  selectedDifficulty: Difficulty.Easy,
+  bots: 100,
+  nations: 3,
+} as const;
+
 // A map earns achievements only if it has nations to conquer — the same rule
 // MapDisplay uses to decide whether to draw medals. Maps without nations (e.g.
 // Baikal Nuke Wars) must be excluded from the medal totals. The complete set is
@@ -212,6 +222,8 @@ export class SinglePlayerModal extends BaseModal {
   @state() private overtime: boolean = DEFAULT_OPTIONS.overtime;
   @state() private overtimeStartMinutes: number | undefined =
     DEFAULT_OPTIONS.overtimeStartMinutes;
+  // Set only by startTutorial(): the modal has no control for it.
+  private gameVariant: "training" | undefined = undefined;
   // Drives the Start Game button's busy state. Without it the click produces
   // nothing visible until every await in startGame() settles, which reads as
   // a hang rather than as loading whenever the network is slow or absent.
@@ -649,17 +661,22 @@ export class SinglePlayerModal extends BaseModal {
   }
 
   /**
-   * Starts a solo game on the default settings without opening the modal,
-   * with the in-game tutorial switched back on (the play page's Tutorial
-   * card for new players).
+   * Starts the guided training game without opening the modal, with the
+   * in-game tutorial switched back on (the play page's Training card for new
+   * players, and the help page).
    */
   public async startTutorial(): Promise<void> {
     // The modal never opens on this path, so onOpen's prewarm never runs.
     // Overlap it with the manifest load below.
     void prewarmCosmetics();
     this.resetOptions();
-    // A nation count of 0 means "nations disabled"; wait for the real one.
+    this.selectedMap = TRAINING_OPTIONS.selectedMap;
+    this.selectedDifficulty = TRAINING_OPTIONS.selectedDifficulty;
+    this.bots = TRAINING_OPTIONS.bots;
+    // Loaded for the "default" check in sliderToNationsConfig.
     await this.loadNationCount();
+    this.nations = TRAINING_OPTIONS.nations;
+    this.gameVariant = "training";
     new UserSettings().setTutorialDismissed(false);
     await this.startGame();
   }
@@ -698,6 +715,7 @@ export class SinglePlayerModal extends BaseModal {
     this.doomsdayClockSpeed = DEFAULT_OPTIONS.doomsdayClockSpeed;
     this.overtime = DEFAULT_OPTIONS.overtime;
     this.overtimeStartMinutes = DEFAULT_OPTIONS.overtimeStartMinutes;
+    this.gameVariant = undefined;
   }
 
   protected onOpen(): void {
@@ -1181,6 +1199,7 @@ export class SinglePlayerModal extends BaseModal {
                   : {}),
                 ...(this.waterNukes ? { waterNukes: true } : {}),
                 ...(this.objectives ? { objectives: true } : {}),
+                ...(this.gameVariant ? { gameVariant: this.gameVariant } : {}),
                 ...(this.doomsdayClock
                   ? {
                       doomsdayClock: {

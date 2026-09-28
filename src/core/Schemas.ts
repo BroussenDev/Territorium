@@ -579,7 +579,9 @@ export const GameConfigSchema = z.object({
   objectives: z.boolean().optional(),
   // A game mode with its own rules on top of FFA. "nations": everyone starts
   // as a real country of the giant world map (see NationsMode.ts).
-  gameVariant: z.enum(["nations"]).optional(),
+  // "training": the menu's guided solo game, where the tutorial ends on
+  // beating the nations (the simulation plays it as a plain FFA).
+  gameVariant: z.enum(["nations", "training"]).optional(),
 });
 
 export const TeamSchema = z.string();
