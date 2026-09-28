@@ -16,7 +16,7 @@ export type CosmeticPackItem = z.infer<typeof CosmeticPackItemSchema>;
 export type Subscription = z.infer<typeof SubscriptionSchema>;
 // An effect cosmetic of any type — discriminated on effectType (today
 // transportShipTrail + nukeTrail + nukeExplosion + structures + warship +
-// train + railroad; gains a member per effectType).
+// train + railroad + victory; gains a member per effectType).
 export type Effect = z.infer<typeof EffectSchema>;
 export type EffectType = z.infer<typeof EffectTypeSchema>;
 /** The catalog attribute shape of effects of the given effectType. */
@@ -43,6 +43,10 @@ export type TrainEffectAttributes = z.infer<typeof TrainEffectAttributesSchema>;
 // Attributes of a railroad effect (recolors railroad tracks, not a trail).
 export type RailroadEffectAttributes = z.infer<
   typeof RailroadEffectAttributesSchema
+>;
+// Attributes of a victory effect (a celebration played when its owner wins).
+export type VictoryEffectAttributes = z.infer<
+  typeof VictoryEffectAttributesSchema
 >;
 export type PatternName = z.infer<typeof CosmeticNameSchema>;
 export type Product = z.infer<typeof ProductSchema>;
@@ -139,6 +143,7 @@ export const EFFECT_TYPES = [
   "warship",
   "train",
   "railroad",
+  "victory",
 ] as const;
 export const EffectTypeSchema = z.enum(EFFECT_TYPES);
 
@@ -345,6 +350,44 @@ const RailroadEffectSchema = CosmeticSchema.extend({
   url: z.string().optional(),
 });
 
+// Victory-effect attributes, discriminated on `type`. The celebration plays
+// over the whole screen of everyone in the game when its owner wins:
+//  - "fireworks": rockets rise from the bottom and burst into the palette.
+//    `density` = bursts per second.
+//  - "confetti": pieces in the palette rain down and flutter. `density` =
+//    pieces falling at once.
+//  - "giantFlag": the winner's flag waves huge in the middle of the screen,
+//    showered with sparkles in the palette. `density` = sparkles at once.
+// Colors are unvalidated strings; the renderer drops any it can't parse (and
+// an empty list falls back to gold and white). density must be positive, so
+// a non-positive value drops the entry; the renderer clamps it.
+export const VictoryEffectAttributesSchema = z.discriminatedUnion("type", [
+  z.object({
+    type: z.literal("fireworks"),
+    colors: z.array(z.string()),
+    density: z.number().positive(),
+  }),
+  z.object({
+    type: z.literal("confetti"),
+    colors: z.array(z.string()),
+    density: z.number().positive(),
+  }),
+  z.object({
+    type: z.literal("giantFlag"),
+    colors: z.array(z.string()),
+    density: z.number().positive(),
+  }),
+]);
+
+// Celebrates its owner's win on every screen in the game (see
+// VictoryEffectAttributesSchema). Purely visual: it only plays once the game
+// is over.
+const VictoryEffectSchema = CosmeticSchema.extend({
+  effectType: z.literal("victory"),
+  attributes: VictoryEffectAttributesSchema,
+  url: z.string().optional(),
+});
+
 // Any catalog effect, discriminated on effectType. Add a member per effectType.
 export const EffectSchema = z.discriminatedUnion("effectType", [
   TransportShipTrailEffectSchema,
@@ -354,6 +397,7 @@ export const EffectSchema = z.discriminatedUnion("effectType", [
   WarshipEffectSchema,
   TrainEffectSchema,
   RailroadEffectSchema,
+  VictoryEffectSchema,
 ]);
 
 /**
@@ -373,6 +417,13 @@ export function isNukeExplosionEffect(
   effect: Effect,
 ): effect is Extract<Effect, { effectType: "nukeExplosion" }> {
   return effect.effectType === "nukeExplosion";
+}
+
+/** Narrows an Effect to a victory effect. */
+export function isVictoryEffect(
+  effect: Effect,
+): effect is Extract<Effect, { effectType: "victory" }> {
+  return effect.effectType === "victory";
 }
 
 /**
@@ -545,6 +596,7 @@ export const CosmeticsSchema = z.object({
       warship: lenientRecord(WarshipEffectSchema).optional(),
       train: lenientRecord(TrainEffectSchema).optional(),
       railroad: lenientRecord(RailroadEffectSchema).optional(),
+      victory: lenientRecord(VictoryEffectSchema).optional(),
     })
     .optional(),
   currencyPacks: z.record(z.string(), PackSchema).optional(),

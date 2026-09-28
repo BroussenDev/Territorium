@@ -143,6 +143,23 @@ const effectCosmetics = {
         rarity: "common",
       },
     },
+    victory: {
+      joy: {
+        name: "joy",
+        effectType: "victory" as const,
+        attributes: {
+          type: "fireworks" as const,
+          colors: ["#facc15"],
+          density: 2,
+        },
+        url: "",
+        affiliateCode: null,
+        product: null,
+        priceSoft: undefined,
+        priceHard: 300,
+        rarity: "epic",
+      },
+    },
   },
 };
 const effectChecker = new PrivilegeCheckerImpl(effectCosmetics, mockDecoder);
@@ -620,6 +637,27 @@ describe("Effect validation in isAllowed", () => {
     if (result.type === "forbidden") {
       expect(result.reason).toMatch(/invalid effect/);
     }
+  });
+
+  test("allows an owned victory effect in the victory slot only", () => {
+    const owned = effectChecker.isAllowed(["effect:joy"], {
+      effects: { victory: "joy" },
+    });
+    expect(owned.type).toBe("allowed");
+    if (owned.type === "allowed") {
+      expect(owned.cosmetics.effects?.victory).toEqual({
+        name: "joy",
+        effectType: "victory",
+      });
+    }
+    expect(
+      effectChecker.isAllowed([], { effects: { victory: "joy" } }).type,
+    ).toBe("forbidden");
+    expect(
+      effectChecker.isAllowed(["effect:*"], {
+        effects: { transportShipTrail: "joy" },
+      }).type,
+    ).toBe("forbidden");
   });
 
   test("allows a nuke-explosion effect in its matching nukeType slot", () => {

@@ -11,6 +11,7 @@ import {
   findEffectForSlot,
   isNukeExplosionEffect,
   isTrailEffect,
+  isVictoryEffect,
   NukeExplosionAttributesSchema,
   PackSchema,
   SubscriptionSchema,
@@ -1526,5 +1527,68 @@ describe("Cosmetic pack schemas", () => {
       CosmeticPackSchema.safeParse({ ...starter, displayName: undefined })
         .success,
     ).toBe(false);
+  });
+});
+
+describe("victory effects in the cosmetics catalog", () => {
+  const victory = (name: string, attributes: unknown) => ({
+    name,
+    effectType: "victory",
+    attributes,
+    product: null,
+    priceHard: 300,
+    rarity: "epic",
+  });
+
+  it("parses each celebration and keeps a bad one from sinking the rest", () => {
+    const result = CosmeticsSchema.safeParse({
+      patterns: {},
+      flags: {},
+      effects: {
+        victory: {
+          joy: victory("joy", {
+            type: "fireworks",
+            colors: ["#ef4444", "#facc15"],
+            density: 2.5,
+          }),
+          rain: victory("rain", {
+            type: "confetti",
+            colors: ["#22c55e"],
+            density: 160,
+          }),
+          banner: victory("banner", {
+            type: "giantFlag",
+            colors: [],
+            density: 70,
+          }),
+          still: victory("still", {
+            type: "fireworks",
+            colors: [],
+            density: 0,
+          }),
+          laser: victory("laser", {
+            type: "laserShow",
+            colors: [],
+            density: 1,
+          }),
+        },
+      },
+    });
+    expect(result.success).toBe(true);
+    if (!result.success) return;
+    const byName = result.data.effects?.victory ?? {};
+    expect(Object.keys(byName).sort()).toEqual(["banner", "joy", "rain"]);
+    const joy = findEffect(result.data, "victory", "joy")!;
+    expect(isVictoryEffect(joy)).toBe(true);
+    expect(isTrailEffect(joy)).toBe(false);
+  });
+
+  it("has its own selection slot", () => {
+    expect(effectTypeForSlot("victory")).toBe("victory");
+    const confetti = EffectSchema.parse(
+      victory("rain", { type: "confetti", colors: [], density: 50 }),
+    );
+    expect(effectMatchesSlot(confetti, "victory")).toBe(true);
+    expect(effectMatchesSlot(confetti, "atom")).toBe(false);
   });
 });

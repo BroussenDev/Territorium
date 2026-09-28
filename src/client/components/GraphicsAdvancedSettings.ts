@@ -90,6 +90,11 @@ const COSMETIC_CATEGORIES: ReadonlyArray<{
     labelKey: "graphics_setting.cosmetics_railroads_label",
     descKey: "graphics_setting.cosmetics_railroads_desc",
   },
+  {
+    key: "victory",
+    labelKey: "graphics_setting.cosmetics_victories_label",
+    descKey: "graphics_setting.cosmetics_victories_desc",
+  },
 ];
 
 const NAME_SCALE_MIN = 0.2;

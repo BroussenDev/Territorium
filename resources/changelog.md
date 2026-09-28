@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.21
+
+🎆 **Victory animations**
+
+- A new "Victory" tab in the shop's Effects: Joyful Fireworks, Golden Bouquet, Confetti Shower and Giant Flag, which waves your own flag.
+- When you win, your victory animation plays over the whole screen for everyone in the game. In a team win, it's yours if you were on the winning team, otherwise the one of the winning teammate who holds the most land.
+- Purely visual: it doesn't block clicks, and it's skipped when your system asks for reduced motion.
+- Don't want to see other players' animations? Turn off "Victory celebrations" in the graphics settings.
+
 ## v0.1.20
 
 💬 **In-game chat**

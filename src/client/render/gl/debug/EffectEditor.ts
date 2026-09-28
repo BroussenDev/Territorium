@@ -11,7 +11,6 @@
 import type GUI from "lil-gui";
 import type { Controller } from "lil-gui";
 import {
-  EFFECT_TYPES,
   type EffectAttributesFor,
   type EffectType,
   NUKE_EXPLOSION_TYPES,
@@ -19,6 +18,8 @@ import {
 import {
   catalogSnippet,
   defaultSlotState,
+  EDITABLE_EFFECT_TYPES,
+  type EditableEffectType,
   EFFECT_EDITOR_TYPES,
   type EffectSlotState,
   fieldsForType,
@@ -33,7 +34,7 @@ export interface EffectEditorHooks {
   ): void;
 }
 
-const SLOT_LABELS: Record<EffectType, string> = {
+const SLOT_LABELS: Record<EditableEffectType, string> = {
   transportShipTrail: "Transport Ship Trail",
   nukeTrail: "Nuke Trail",
   structures: "Structures",
@@ -72,9 +73,10 @@ export function buildEffectEditor(
   gui: GUI,
   hooks: EffectEditorHooks,
 ): () => void {
-  const slots: { effectType: EffectType; state: EffectSlotState }[] = [];
+  const slots: { effectType: EditableEffectType; state: EffectSlotState }[] =
+    [];
 
-  for (const effectType of EFFECT_TYPES) {
+  for (const effectType of EDITABLE_EFFECT_TYPES) {
     const state = defaultSlotState(effectType);
     slots.push({ effectType, state });
     const folder = gui.addFolder(SLOT_LABELS[effectType]);

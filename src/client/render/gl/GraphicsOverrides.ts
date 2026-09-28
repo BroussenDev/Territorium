@@ -135,6 +135,7 @@ export const GraphicsOverridesSchema = z
         warship: z.boolean(),
         train: z.boolean(),
         railroad: z.boolean(),
+        victory: z.boolean(),
       })
       .partial(),
     /** Per-layer visibility toggles keyed by layer id. */

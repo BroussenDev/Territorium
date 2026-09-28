@@ -1,7 +1,13 @@
 import { colord } from "colord";
 import { html, LitElement, nothing, PropertyValues, TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { ColorPalette, Pattern } from "../../core/CosmeticSchemas";
+import {
+  ColorPalette,
+  Effect,
+  isVictoryEffect,
+  Pattern,
+  VictoryEffectAttributes,
+} from "../../core/CosmeticSchemas";
 import {
   getCachedCosmetics,
   ResolvedCosmetic,
@@ -15,6 +21,7 @@ import {
 } from "./CosmeticPresentation";
 import "./cosmetics/CosmeticRenderCanvas";
 import type { CosmeticRenderCanvas } from "./cosmetics/CosmeticRenderCanvas";
+import "./VictoryAnimation";
 
 export const TEAM_COLORS = [
   { name: "Red", hex: "#eb3333" },
@@ -258,6 +265,12 @@ export class CosmeticPreviewModal extends LitElement {
     </div>`;
   }
 
+  private victoryAttributes(): VictoryEffectAttributes | null {
+    if (this.resolved?.type !== "effect") return null;
+    const effect = this.resolved.cosmetic as Effect | null;
+    return effect && isVictoryEffect(effect) ? effect.attributes : null;
+  }
+
   render() {
     if (!this.resolved) {
       return nothing;
@@ -269,6 +282,8 @@ export class CosmeticPreviewModal extends LitElement {
     const teamPalettes = this.teamPalettes();
     const artist = (this.resolved.cosmetic as { artist?: string } | null)
       ?.artist;
+    // A victory plays over the end screen, not on the map: no map to zoom.
+    const victory = this.victoryAttributes();
 
     return html`<div
       data-cosmetic-preview-modal
@@ -304,7 +319,9 @@ export class CosmeticPreviewModal extends LitElement {
           </div>
           <div class="flex items-center gap-2 shrink-0">
             <div
-              class="flex items-center gap-1 p-1 rounded-lg bg-white/5 border border-white/10"
+              class="flex items-center gap-1 p-1 rounded-lg bg-white/5 border border-white/10 ${victory
+                ? "hidden"
+                : ""}"
             >
               <button
                 type="button"
@@ -339,11 +356,16 @@ export class CosmeticPreviewModal extends LitElement {
 
         <!-- WebGL Canvas Viewport -->
         <div class="flex-1 p-3 bg-zinc-950/60 min-h-0">
-          <cosmetic-render-canvas
-            .resolved=${this.resolved}
-            .customColors=${this.customColors()}
-            class="block h-full w-full"
-          ></cosmetic-render-canvas>
+          ${victory
+            ? html`<victory-swatch
+                class="block h-full w-full"
+                .victory=${victory}
+              ></victory-swatch>`
+            : html`<cosmetic-render-canvas
+                .resolved=${this.resolved}
+                .customColors=${this.customColors()}
+                class="block h-full w-full"
+              ></cosmetic-render-canvas>`}
         </div>
 
         <!-- Skin colors (catalog palettes) and team colors (team-game look) -->

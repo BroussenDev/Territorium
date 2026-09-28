@@ -24,8 +24,11 @@ import {
 // with the same gradient geometry and timing as the shaders.
 // ---------------------------------------------------------------------------
 
-/** Any effect that previews as a scene (nuke explosions have their own swatches). */
-export type SceneEffect = Exclude<Effect, { effectType: "nukeExplosion" }>;
+/** Any effect that previews as a scene (nuke explosions and victories have their own swatches). */
+export type SceneEffect = Exclude<
+  Effect,
+  { effectType: "nukeExplosion" | "victory" }
+>;
 
 // The preview's stand-in for "you": a default-theme human color
 // (default-theme.json) with the theme's border rule (borderDarken 0.125).

@@ -46,6 +46,7 @@ import { SpawnTimer } from "./layers/SpawnTimer";
 import { StructureCard } from "./layers/StructureCard";
 import { TutorialPanel } from "./layers/TutorialPanel";
 import { UnitDisplay } from "./layers/UnitDisplay";
+import { VictoryCelebration } from "./layers/VictoryCelebration";
 import { WinModal } from "./layers/WinModal";
 import { loadAllSprites } from "./SpriteLoader";
 
@@ -162,6 +163,14 @@ export function createRenderer(
   }
   winModal.eventBus = eventBus;
   winModal.game = game;
+
+  const victoryCelebration = document.querySelector(
+    "victory-celebration",
+  ) as VictoryCelebration;
+  if (!(victoryCelebration instanceof VictoryCelebration)) {
+    console.error("victory celebration not found");
+  }
+  victoryCelebration.game = game;
 
   const newLobbyPrompt = document.querySelector(
     "new-lobby-prompt",
@@ -376,6 +385,7 @@ export function createRenderer(
     controlPanel,
     playerInfo,
     winModal,
+    victoryCelebration,
     newLobbyPrompt,
     replayPanel,
     settingsModal,

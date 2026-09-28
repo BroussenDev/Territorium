@@ -2,16 +2,16 @@ import { describe, expect, test } from "vitest";
 import {
   catalogSnippet,
   defaultSlotState,
+  EDITABLE_EFFECT_TYPES,
   EFFECT_EDITOR_TYPES,
   fieldsForType,
   maxColorsFor,
   slotAttributes,
 } from "../src/client/render/gl/debug/EffectEditorState";
-import { EFFECT_TYPES } from "../src/core/CosmeticSchemas";
 
 describe("slotAttributes", () => {
   test("every slot's default state validates for every type it offers", () => {
-    for (const effectType of EFFECT_TYPES) {
+    for (const effectType of EDITABLE_EFFECT_TYPES) {
       for (const type of EFFECT_EDITOR_TYPES[effectType]) {
         const s = { ...defaultSlotState(effectType), type };
         expect(slotAttributes(effectType, s), `${effectType}/${type}`).not.toBe(

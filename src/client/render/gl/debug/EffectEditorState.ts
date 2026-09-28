@@ -5,6 +5,7 @@
  */
 
 import {
+  EFFECT_TYPES,
   type EffectAttributesFor,
   type EffectType,
   NUKE_EXPLOSION_TYPES,
@@ -16,6 +17,15 @@ import {
 } from "../../../../core/CosmeticSchemas";
 import { MAX_NUKE_EXPLOSION_COLORS } from "../../types";
 
+/**
+ * The effect types the editor tunes on the map. The victory effect plays over
+ * the end-of-game screen, not on the map, so it is left out.
+ */
+export type EditableEffectType = Exclude<EffectType, "victory">;
+export const EDITABLE_EFFECT_TYPES = EFFECT_TYPES.filter(
+  (t): t is EditableEffectType => t !== "victory",
+);
+
 /** Max colors a palette slot can carry — the effect palette holds 8 rows per block. */
 export const EFFECT_EDITOR_MAX_COLORS = 8;
 
@@ -24,7 +34,7 @@ export const EFFECT_EDITOR_MAX_COLORS = 8;
  * bind MAX_NUKE_EXPLOSION_COLORS vertex attributes (extras are dropped by
  * attributesToExplosionParams), everything else has 8 palette rows.
  */
-export function maxColorsFor(effectType: EffectType): number {
+export function maxColorsFor(effectType: EditableEffectType): number {
   return effectType === "nukeExplosion"
     ? MAX_NUKE_EXPLOSION_COLORS
     : EFFECT_EDITOR_MAX_COLORS;
@@ -37,7 +47,10 @@ export function maxColorsFor(effectType: EffectType): number {
  * renderer builds for nukes only (see SpiralTrails); ship trails would just
  * fall back to their territory color.
  */
-export const EFFECT_EDITOR_TYPES: Record<EffectType, readonly string[]> = {
+export const EFFECT_EDITOR_TYPES: Record<
+  EditableEffectType,
+  readonly string[]
+> = {
   transportShipTrail: ["gradient", "transition"],
   nukeTrail: ["gradient", "transition", "spiral"],
   structures: ["gradient", "transition"],
@@ -75,7 +88,9 @@ export interface EffectSlotState {
   density: number;
 }
 
-export function defaultSlotState(effectType: EffectType): EffectSlotState {
+export function defaultSlotState(
+  effectType: EditableEffectType,
+): EffectSlotState {
   return {
     enabled: false,
     type: EFFECT_EDITOR_TYPES[effectType][0],
@@ -107,7 +122,7 @@ export function defaultSlotState(effectType: EffectType): EffectSlotState {
 
 /** The attribute fields shown for a given slot + type (for show/hide). */
 export function fieldsForType(
-  effectType: EffectType,
+  effectType: EditableEffectType,
   type: string,
 ): ReadonlySet<keyof EffectSlotState> {
   const base: (keyof EffectSlotState)[] = ["colorCount", "colors"];
@@ -123,7 +138,7 @@ export function fieldsForType(
 }
 
 /** Whether the slot is a trail (its attributes allow `spiral`). */
-function isTrailEffectType(effectType: EffectType): boolean {
+function isTrailEffectType(effectType: EditableEffectType): boolean {
   return (TRAIL_EFFECT_TYPES as readonly string[]).includes(effectType);
 }
 
@@ -134,9 +149,9 @@ function isTrailEffectType(effectType: EffectType): boolean {
  * non-positive size) or the type isn't valid for the slot.
  */
 export function slotAttributes(
-  effectType: EffectType,
+  effectType: EditableEffectType,
   s: EffectSlotState,
-): EffectAttributesFor<EffectType> | null {
+): EffectAttributesFor<EditableEffectType> | null {
   const colors = s.colors.slice(
     0,
     Math.min(Math.max(Math.round(s.colorCount), 0), maxColorsFor(effectType)),
@@ -179,12 +194,12 @@ export function slotAttributes(
         : StructuresEffectAttributesSchema;
   const parsed = schema.safeParse(candidate);
   if (!parsed.success) return null;
-  return parsed.data as EffectAttributesFor<EffectType>;
+  return parsed.data as EffectAttributesFor<EditableEffectType>;
 }
 
 /** A catalog-entry fragment for the slot, ready to paste into cosmetics. */
 export function catalogSnippet(
-  effectType: EffectType,
+  effectType: EditableEffectType,
   s: EffectSlotState,
 ): string | null {
   const attributes = slotAttributes(effectType, s);

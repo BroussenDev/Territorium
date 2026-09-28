@@ -5,6 +5,7 @@ import {
   Effect,
   Flag,
   isNukeExplosionEffect,
+  isVictoryEffect,
   Pack,
   Pattern,
   Skin,
@@ -20,6 +21,7 @@ import "./EffectPreview";
 import { observeNear } from "./LazyVisibility";
 import { renderPatternPreview } from "./PatternPreview";
 import "./PlutoniumIcon";
+import "./VictoryAnimation";
 
 @customElement("cosmetic-preview")
 export class CosmeticPreview extends LitElement {
@@ -134,6 +136,12 @@ export class CosmeticPreview extends LitElement {
           class="block w-full h-full"
           .explosion=${cosmetic.attributes}
         ></shockwave-swatch>`;
+      }
+      if (isVictoryEffect(cosmetic)) {
+        return html`<victory-swatch
+          class="block w-full h-full"
+          .victory=${cosmetic.attributes}
+        ></victory-swatch>`;
       }
       return html`<effect-scene
         class="block w-full h-full"
