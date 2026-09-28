@@ -51,9 +51,11 @@ export function normalizeAssetPath(path: string): string {
 // Matching only http(s) sent those through normalizeAssetPath, which mangled
 // "app://openfront/_assets/flags/US.<hash>.svg" into
 // "/app%3A/openfront/_assets/..." — a 404, and a country flag that silently
-// never rendered in game on desktop.
+// never rendered in game on desktop. Inline data: URLs (images drawn on the
+// client, e.g. the Nation pack's country-matched flag and crown) are
+// self-contained and pass through too.
 function isAbsoluteUrl(path: string): boolean {
-  return /^[a-z][a-z0-9+.-]*:\/\//i.test(path);
+  return /^(?:[a-z][a-z0-9+.-]*:\/\/|data:)/i.test(path);
 }
 
 export function buildAssetUrl(

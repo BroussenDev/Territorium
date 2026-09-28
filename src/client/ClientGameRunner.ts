@@ -820,6 +820,8 @@ async function createClientGame(
     // No initial regenerate or terrain rebuild needed — the renderer was
     // constructed with the resolved settings above, so the terrain texture
     // already bakes any saved ocean-color override.
+    // Nation pack art is drawn after the players first appear.
+    gameView.onCosmeticsChanged = () => webglBuilder.refreshCosmetics(gameView);
     globalThis.addEventListener(
       `${USER_SETTINGS_CHANGED_EVENT}:${GRAPHICS_KEY}`,
       onGraphicsChanged,

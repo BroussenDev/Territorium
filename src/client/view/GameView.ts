@@ -31,6 +31,11 @@ import { UserSettings } from "../../core/game/UserSettings";
 import { ClientID, GameID, Player, PlayerCosmetics } from "../../core/Schemas";
 import { formatPlayerDisplayName } from "../../core/Util";
 import { WorkerClient } from "../../core/worker/WorkerClient";
+import {
+  applyNationArt,
+  loadNationArt,
+  wantsNationArt,
+} from "../NationCosmetics";
 import { computeAllianceClusters } from "../render/frame/derive/AllianceClusters";
 import { extractAttackRings } from "../render/frame/derive/AttackRings";
 import { extractNukeTelegraphs } from "../render/frame/derive/NukeTelegraphs";
@@ -414,10 +419,7 @@ export class GameView implements GameMap {
           // the same display name (e.g. India's and Pakistan's "Punjab").
           // In Nations games humans fly the flag of the country they play.
           pu.playerType === PlayerType.Human && pu.nationFlag
-            ? {
-                ...this._cosmetics.get(pu.clientID ?? ""),
-                flag: `/flags/${pu.nationFlag}.svg`,
-              }
+            ? this.nationsCosmetics(pu.clientID ?? "", pu.nationFlag)
             : (this._cosmetics.get(pu.clientID ?? "") ??
                 (pu.playerType === PlayerType.Nation && pu.nationFlag
                   ? ({
@@ -1118,6 +1120,30 @@ export class GameView implements GameMap {
   cosmeticVisibility(): CosmeticVisibility {
     return this._cosmeticVisibility;
   }
+
+  /**
+   * Cosmetics of a human in a Nations game: the country's flag, and the
+   * Nation pack items redrawn around it once that art is ready (then
+   * onCosmeticsChanged asks the renderer to pick it up).
+   */
+  private nationsCosmetics(clientID: ClientID, code: string): PlayerCosmetics {
+    const equipped = this._cosmetics.get(clientID) ?? {};
+    const cosmetics: PlayerCosmetics = {
+      ...equipped,
+      flag: `/flags/${code}.svg`,
+    };
+    if (wantsNationArt(equipped)) {
+      void loadNationArt(code).then((art) => {
+        if (art === null) return;
+        applyNationArt(cosmetics, equipped, art);
+        this.onCosmeticsChanged?.();
+      });
+    }
+    return cosmetics;
+  }
+
+  /** Called when a player's cosmetics change after they were first drawn. */
+  onCosmeticsChanged?: () => void;
 
   /**
    * Re-read the cosmetics visibility settings and re-resolve every player's

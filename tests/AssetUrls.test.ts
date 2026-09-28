@@ -93,6 +93,11 @@ describe("AssetUrls", () => {
     expect(buildAssetUrl(first, manifest, "app://openfront")).toBe(first);
   });
 
+  test("returns inline data: URLs unchanged", () => {
+    const inline = "data:image/svg+xml;charset=utf-8,%3Csvg%2F%3E";
+    expect(buildAssetUrl(inline, {}, "https://cdn.example.com")).toBe(inline);
+  });
+
   // Manifest miss → keep same-origin; the CDN only serves what was explicitly
   // hashed and uploaded, so unknown paths must not be prefixed.
   test("does not prefix baseUrl on manifest misses", () => {

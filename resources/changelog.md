@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.23
+
+🏳️ **Nation pack**
+
+- A new "Nation" pack in the shop: the National Standard and the National Crown, sold together or one by one.
+- In a Nations game, the standard shows the flag of the country you play in a golden frame, and the crown takes on that country's colors when you lead the game.
+- In other modes, they show their own golden design.
+- Purely visual, like everything in the shop.
+
 ## v0.1.22
 
 🛡️ **Official clans**
