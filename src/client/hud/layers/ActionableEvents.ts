@@ -316,9 +316,12 @@ export class ActionableEvents extends LitElement implements Controller {
 
     this.eventBus.emit(new PlaySoundEffectEvent("alliance-suggested"));
     this.addEvent({
-      description: translateText("events_display.request_peace", {
-        name: requestor.displayName(),
-      }),
+      description: translateText(
+        update.vassal
+          ? "events_display.request_surrender"
+          : "events_display.request_peace",
+        { name: requestor.displayName() },
+      ),
       buttons: [
         {
           text: translateText("events_display.focus"),

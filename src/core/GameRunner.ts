@@ -34,6 +34,7 @@ import {
   decodeCountryIds,
   NationsMapData,
   seatNationsGame,
+  vassalSide,
 } from "./game/NationsMode";
 import { loadTerrainMap as loadGameMap } from "./game/TerrainMapLoader";
 import { PseudoRandom } from "./PseudoRandom";
@@ -324,6 +325,8 @@ export class GameRunner {
         canProposePeace: player.canProposePeace(other),
         atWar: player.isAtWarWith(other),
         peaceExpiresAt: player.peaceTreatyWith(other)?.expiresAt(),
+        canSurrender: player.canSurrenderTo(other),
+        vassal: vassalSide(player, other),
       };
     }
 

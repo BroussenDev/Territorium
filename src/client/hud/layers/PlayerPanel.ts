@@ -258,6 +258,12 @@ export class PlayerPanel extends LitElement implements Controller {
     this.hide();
   }
 
+  private handleSurrenderClick(e: Event, other: PlayerView) {
+    e.stopPropagation();
+    this.eventBus.emit(new SendPeaceRequestIntentEvent(other, true));
+    this.hide();
+  }
+
   private handleBreakPeaceClick(e: Event, other: PlayerView) {
     e.stopPropagation();
     this.eventBus.emit(new SendBreakPeaceIntentEvent(other));
@@ -842,11 +848,19 @@ export class PlayerPanel extends LitElement implements Controller {
 
   private renderPeaceExpiry() {
     if (this.peaceExpirySeconds === null) return html``;
+    // A surrender treaty says who pays tribute to whom.
+    const vassal = this.actions?.interaction?.vassal;
+    const label =
+      vassal === "self"
+        ? "player_panel.vassal_self"
+        : vassal === "other"
+          ? "player_panel.vassal_other"
+          : "player_panel.peace_time_remaining";
     return html`
       <div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-base">
         <div class="flex items-center gap-1.5 font-semibold text-zinc-300">
           <img src=${whiteFlagIcon} alt="" aria-hidden="true" class="size-4" />
-          ${translateText("player_panel.peace_time_remaining")}
+          ${translateText(label)}
         </div>
         <div class="text-right font-semibold">
           <span
@@ -875,6 +889,7 @@ export class PlayerPanel extends LitElement implements Controller {
     const canEmbargo = this.actions?.interaction?.canEmbargo;
     const atPeace = this.actions?.interaction?.peaceExpiresAt !== undefined;
     const canProposePeace = this.actions?.interaction?.canProposePeace;
+    const canSurrender = this.actions?.interaction?.canSurrender;
     const atWar = this.actions?.interaction?.atWar;
 
     return html`
@@ -1001,6 +1016,17 @@ export class PlayerPanel extends LitElement implements Controller {
                         type: "normal",
                         disabled: !canProposePeace,
                       })}
+                ${canSurrender && !atPeace
+                  ? actionButton({
+                      onClick: (e: MouseEvent) =>
+                        this.handleSurrenderClick(e, other),
+                      icon: whiteFlagIcon,
+                      iconAlt: "Surrender",
+                      title: translateText("player_panel.surrender_title"),
+                      label: translateText("player_panel.surrender"),
+                      type: "yellow",
+                    })
+                  : ""}
               </div>
             `}
         ${other === my

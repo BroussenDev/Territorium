@@ -9,6 +9,7 @@ import {
   Player,
   PlayerInfo,
   PlayerType,
+  Tick,
   UnitType,
 } from "./Game";
 
@@ -65,6 +66,17 @@ export const CAPITAL_REBUILD_DELAY_TICKS = 2 * 60 * 10;
  * tests/perf/fullgame/NationsBalanceSim.ts.
  */
 export const NATIONS_MIN_TROOP_CAP_TILES = 20_000;
+/** Alliances between neighbouring countries last this much longer. */
+export const REGIONAL_ALLIANCE_DURATION_PERCENT = 150;
+/**
+ * A player left with this share of their home country may surrender to a
+ * neighbour at war with them and become their vassal: for VASSAL_DURATION_TICKS
+ * neither can attack the other, and the vassal pays VASSAL_TRIBUTE_PERCENT of
+ * its gold income to its overlord.
+ */
+export const VASSAL_MAX_LAND_PERCENT = 25;
+export const VASSAL_TRIBUTE_PERCENT = 25;
+export const VASSAL_DURATION_TICKS = 10 * 60 * 10;
 /** Most extra gold / troops the smallest country starts with. */
 export const MAX_COMPENSATION_GOLD = 400_000;
 export const MAX_COMPENSATION_TROOPS = 75_000;
@@ -116,6 +128,35 @@ export function startCompensation(tiles: number): {
     gold: BigInt(Math.floor(MAX_COMPENSATION_GOLD * deficit)),
     troops: Math.floor(MAX_COMPENSATION_TROOPS * deficit),
   };
+}
+
+/**
+ * How long a new or extended alliance lasts. In Nations mode, neighbours
+ * (sharing a border at that moment) get a regional alliance that lasts 50%
+ * longer, so countries can build a stable front with the ones next door.
+ */
+export function allianceDurationBetween(
+  game: Game,
+  a: Player,
+  b: Player,
+): Tick {
+  const base = game.config().allianceDuration();
+  if (!isRegionalAlliance(game, a, b)) return base;
+  return Math.floor((base * REGIONAL_ALLIANCE_DURATION_PERCENT) / 100);
+}
+
+export function isRegionalAlliance(game: Game, a: Player, b: Player): boolean {
+  return game.config().isNationsMode() && a.sharesBorderWith(b);
+}
+
+/** Which of the two pays tribute to the other, if either. */
+export function vassalSide(
+  player: Player,
+  other: Player,
+): "self" | "other" | undefined {
+  if (player.overlord() === other) return "self";
+  if (other.overlord() === player) return "other";
+  return undefined;
 }
 
 export function hasCapital(player: Player | PlayerView): boolean {

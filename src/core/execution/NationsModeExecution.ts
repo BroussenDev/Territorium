@@ -65,6 +65,7 @@ export class NationsModeExecution implements Execution {
         continue;
       }
       player.setSpawnTile(capitalTile);
+      player.setHomeTiles(player.numTilesOwned());
       this.setup.push(new PlayerExecution(player));
 
       // The capital is a gift: refund whatever the city cost.

@@ -681,6 +681,8 @@ export const BreakAllianceIntentSchema = z.object({
 export const PeaceRequestIntentSchema = z.object({
   type: z.literal("peaceRequest"),
   recipient: MappedID,
+  // Nations mode: surrender and become the recipient's vassal.
+  vassal: z.boolean().optional(),
 });
 
 export const PeaceRejectIntentSchema = z.object({

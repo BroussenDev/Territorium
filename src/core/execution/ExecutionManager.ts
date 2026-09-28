@@ -93,7 +93,11 @@ export class Executor {
       case "breakAlliance":
         return new BreakAllianceExecution(player, intent.recipient);
       case "peaceRequest":
-        return new PeaceRequestExecution(player, intent.recipient);
+        return new PeaceRequestExecution(
+          player,
+          intent.recipient,
+          intent.vassal === true,
+        );
       case "peaceReject":
         return new PeaceRejectExecution(intent.requestor, player);
       case "breakPeace":

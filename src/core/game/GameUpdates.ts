@@ -328,6 +328,8 @@ export interface PeaceRequestUpdate {
   requestorID: number;
   recipientID: number;
   createdAt: Tick;
+  // The requestor surrenders and offers to become a vassal.
+  vassal?: boolean;
 }
 
 export interface PeaceRequestReplyUpdate {

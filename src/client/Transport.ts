@@ -84,7 +84,11 @@ export class SendAllianceRejectIntentEvent implements GameEvent {
 }
 
 export class SendPeaceRequestIntentEvent implements GameEvent {
-  constructor(public readonly recipient: PlayerView) {}
+  constructor(
+    public readonly recipient: PlayerView,
+    // Nations mode: surrender and become the recipient's vassal.
+    public readonly vassal = false,
+  ) {}
 }
 
 export class SendPeaceRejectIntentEvent implements GameEvent {
@@ -316,7 +320,11 @@ export class Transport {
       this.onBreakAllianceRequestUIEvent(e),
     );
     this.subscribe(SendPeaceRequestIntentEvent, (e) =>
-      this.sendIntent({ type: "peaceRequest", recipient: e.recipient.id() }),
+      this.sendIntent({
+        type: "peaceRequest",
+        recipient: e.recipient.id(),
+        ...(e.vassal ? { vassal: true } : {}),
+      }),
     );
     this.subscribe(SendPeaceRejectIntentEvent, (e) =>
       this.sendIntent({ type: "peaceReject", requestor: e.requestor.id() }),

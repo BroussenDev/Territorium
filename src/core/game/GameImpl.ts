@@ -45,6 +45,7 @@ import {
 import { GameMap, TileRef } from "./GameMap";
 import { GameUpdate, GameUpdateType } from "./GameUpdates";
 import { MotionPlanRecord, packMotionPlans } from "./MotionPlans";
+import { VASSAL_DURATION_TICKS } from "./NationsMode";
 import { ObjectiveState } from "./Objectives";
 import { PeaceRequestImpl, PeaceTreatyImpl } from "./PeaceImpl";
 import { PlayerImpl } from "./PlayerImpl";
@@ -465,8 +466,13 @@ export class GameImpl implements Game {
   createPeaceRequest(
     requestor: Player,
     recipient: Player,
+    vassal = false,
   ): PeaceRequest | null {
-    if (!requestor.canProposePeace(recipient)) {
+    if (
+      vassal
+        ? !requestor.canSurrenderTo(recipient)
+        : !requestor.canProposePeace(recipient)
+    ) {
       return null;
     }
     const theirs = this.peaceRequests.find(
@@ -482,11 +488,14 @@ export class GameImpl implements Game {
       recipient,
       this._ticks,
       this,
+      vassal,
     );
     this.peaceRequests.push(request);
     this.addUpdate(request.toUpdate());
     this.displayMessage(
-      "events_display.peace_request_sent",
+      vassal
+        ? "events_display.surrender_sent"
+        : "events_display.peace_request_sent",
       MessageType.ALLIANCE_REQUEST,
       requestor.id(),
       undefined,
@@ -502,12 +511,15 @@ export class GameImpl implements Game {
     const requestor = request.requestor();
     const recipient = request.recipient();
 
+    const vassal = request.vassal();
     this._peaceTreaties.push(
       new PeaceTreatyImpl(
         requestor,
         recipient,
         this._ticks,
-        this._ticks + this._config.peaceDuration(),
+        this._ticks +
+          (vassal ? VASSAL_DURATION_TICKS : this._config.peaceDuration()),
+        vassal ? requestor : null,
       ),
     );
 
@@ -524,6 +536,19 @@ export class GameImpl implements Game {
     requestor.updateRelation(recipient, 30);
     recipient.updateRelation(requestor, 30);
 
+    if (vassal) {
+      // A surrender is news for everyone.
+      this.displayMessage(
+        "events_display.vassal_signed",
+        MessageType.ALLIANCE_ACCEPTED,
+        null,
+        undefined,
+        { vassal: requestor.displayName(), overlord: recipient.displayName() },
+        undefined,
+        recipient.id(),
+      );
+      return;
+    }
     for (const [player, other] of [
       [requestor, recipient],
       [recipient, requestor],
@@ -571,6 +596,16 @@ export class GameImpl implements Game {
 
   peaceTreaties(): PeaceTreaty[] {
     return this._peaceTreaties;
+  }
+
+  hasVassals(player: Player): boolean {
+    // Overlord = the side of a surrender treaty that isn't the vassal.
+    return this._peaceTreaties.some(
+      (t) =>
+        t.vassal() !== null &&
+        t.vassal() !== player &&
+        (t.requestor() === player || t.recipient() === player),
+    );
   }
 
   peaceTreatyBetween(a: Player, b: Player): PeaceTreatyImpl | null {

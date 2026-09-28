@@ -9,6 +9,7 @@ import {
   UnitType,
 } from "../game/Game";
 import { GameMap, TileRef } from "../game/GameMap";
+import { VASSAL_TRIBUTE_PERCENT } from "../game/NationsMode";
 import {
   bumpTraversalGeneration,
   tileTraversalScratch,
@@ -87,10 +88,20 @@ export class PlayerExecution implements Execution {
     const troopInc = this.config.troopIncreaseRate(this.player);
     this.player.addTroops(troopInc);
     const goldFromWorkers = this.config.goldAdditionRate(this.player);
-    this.player.addGold(goldFromWorkers);
+    // A vassal hands part of its income to its overlord.
+    const overlord = this.player.overlord();
+    const tribute =
+      overlord === null
+        ? 0n
+        : (goldFromWorkers * BigInt(VASSAL_TRIBUTE_PERCENT)) / 100n;
+    this.player.addGold(goldFromWorkers - tribute);
 
     // Record stats
-    this.mg.stats().goldWork(this.player, goldFromWorkers);
+    this.mg.stats().goldWork(this.player, goldFromWorkers - tribute);
+    if (overlord !== null && tribute > 0n) {
+      overlord.addGold(tribute);
+      this.mg.stats().goldWork(overlord, tribute);
+    }
 
     for (const alliance of this.player.alliances()) {
       if (alliance.expiresAt() <= this.mg.ticks()) {

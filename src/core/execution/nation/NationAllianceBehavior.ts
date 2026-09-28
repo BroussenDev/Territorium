@@ -48,7 +48,12 @@ export class NationAllianceBehavior {
 
   handlePeaceRequests() {
     for (const req of this.player.incomingPeaceRequests()) {
-      if (this.getPeaceDecision(req.requestor())) {
+      // A surrender costs nothing and pays tribute: only a traitor's is
+      // refused.
+      const accept = req.vassal()
+        ? !req.requestor().isTraitor()
+        : this.getPeaceDecision(req.requestor());
+      if (accept) {
         req.accept();
       } else {
         req.reject();

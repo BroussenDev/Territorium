@@ -645,6 +645,7 @@ export class HelpModal extends BaseModal {
                 "info_trade",
                 "info_alliance",
                 "info_peace",
+                "info_surrender",
               ])}`,
             "max-w-[220px]",
           )}

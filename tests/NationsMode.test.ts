@@ -1,5 +1,7 @@
 import { AttackLogicInput, Config } from "../src/core/configuration/Config";
+import { AllianceRequestExecution } from "../src/core/execution/alliance/AllianceRequestExecution";
 import { NationsModeExecution } from "../src/core/execution/NationsModeExecution";
+import { PeaceRequestExecution } from "../src/core/execution/peace/PeaceRequestExecution";
 import { SetCapitalExecution } from "../src/core/execution/SetCapitalExecution";
 import { SpawnExecution } from "../src/core/execution/SpawnExecution";
 import {
@@ -24,6 +26,7 @@ import {
   NationsMapData,
   seatNationsGame,
   startCompensation,
+  VASSAL_DURATION_TICKS,
 } from "../src/core/game/NationsMode";
 import { PseudoRandom } from "../src/core/PseudoRandom";
 import { setup } from "./util/Setup";
@@ -293,6 +296,95 @@ describe("Nations mode", () => {
     const city = small.buildUnit(UnitType.City, game.ref(52, 20), {});
     expect(small.canUpgradeUnit(city)).toBe(true);
     expect(small.canUpgradeUnit(capitalOf(small)!)).toBe(false);
+  });
+
+  test("alliances between neighbours last 50% longer", () => {
+    const big = game.player("big");
+    const mid = game.player("mid");
+    const ally = (a: Player, b: Player) => {
+      game.addExecution(new AllianceRequestExecution(a, b.id()));
+      tick();
+      game.addExecution(new AllianceRequestExecution(b, a.id()));
+      tick();
+      const alliance = a.allianceWith(b)!;
+      return alliance.expiresAt() - alliance.createdAt();
+    };
+    const base = game.config().allianceDuration();
+    // Small (x 50..59) sits between Big and Mid, which never touch.
+    expect(ally(small, big)).toBe(base * 1.5);
+    expect(ally(big, mid)).toBe(base);
+  });
+
+  describe("surrendering as a vassal", () => {
+    let big: Player;
+
+    // Big takes Small's land column by column, then they are at war.
+    function loseLand(columns: number) {
+      for (let x = 50; x < 50 + columns; x++) {
+        for (let y = 0; y < 100; y++) big.conquer(game.ref(x, y));
+      }
+      game.recordHostility(big, small);
+    }
+
+    function surrender() {
+      game.addExecution(new PeaceRequestExecution(small, big.id(), true));
+      tick();
+    }
+
+    beforeEach(() => {
+      big = game.player("big");
+    });
+
+    test("only once three quarters of the home country is lost", () => {
+      expect(small.homeTiles()).toBe(1000);
+      loseLand(7);
+      expect(small.canSurrenderTo(big)).toBe(false);
+      loseLand(8);
+      expect(small.numTilesOwned()).toBe(200);
+      expect(small.canSurrenderTo(big)).toBe(true);
+      // Not in a war with them: nothing to surrender.
+      expect(small.canSurrenderTo(game.player("mid"))).toBe(false);
+    });
+
+    test("the overlord accepts: no fighting, 25% tribute, 10 minutes", () => {
+      loseLand(8);
+      surrender();
+      const request = big.incomingPeaceRequests()[0];
+      expect(request.vassal()).toBe(true);
+      // Answering with peace signs the surrender.
+      game.addExecution(new PeaceRequestExecution(big, small.id()));
+      const updates = tick();
+      const messages =
+        updates[GameUpdateType.DisplayEvent]?.map((e) => e.message) ?? [];
+      expect(messages).toContain("events_display.vassal_signed");
+
+      expect(small.overlord()).toBe(big);
+      expect(big.overlord()).toBeNull();
+      expect(small.isAtPeaceWith(big)).toBe(true);
+      expect(big.canAttackPlayer(small)).toBe(false);
+      const treaty = small.peaceTreatyWith(big)!;
+      expect(treaty.expiresAt() - treaty.createdAt()).toBe(
+        VASSAL_DURATION_TICKS,
+      );
+
+      const income = game.config().goldAdditionRate(small);
+      const tribute = (income * 25n) / 100n;
+      const smallGold = small.gold();
+      const bigGold = big.gold();
+      const bigIncome = game.config().goldAdditionRate(big);
+      tick();
+      expect(small.gold() - smallGold).toBe(income - tribute);
+      expect(big.gold() - bigGold).toBe(bigIncome + tribute);
+    });
+
+    test("a refused surrender changes nothing", () => {
+      loseLand(8);
+      surrender();
+      big.incomingPeaceRequests()[0].reject();
+      tick();
+      expect(small.overlord()).toBeNull();
+      expect(small.isAtPeaceWith(big)).toBe(false);
+    });
   });
 
   test("half of the land wins", () => {

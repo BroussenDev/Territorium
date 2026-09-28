@@ -1,5 +1,18 @@
 # Territorium — Changelog
 
+## v0.1.16
+
+🤝 **Regional alliances**
+
+- In Nations games, an alliance with a neighbouring country (one you share a border with) lasts 50% longer: 7 minutes 30 instead of 5. Renewing it while you're still neighbours gives the same bonus.
+
+🏳️ **Surrender as a vassal**
+
+- In Nations games, once you have lost three quarters of your country, you can surrender to a player you are at war with from their player panel.
+- If they accept, you become their vassal for 10 minutes: neither of you can attack the other, and you pay them 25% of your gold income. You stay in the game and can rebuild.
+- Everyone is told who surrendered to whom. Breaking the deal counts as perjury, like breaking a peace treaty.
+- AI countries accept a surrender unless it comes from a traitor.
+
 ## v0.1.15
 
 ⚖️ **A fairer Nations map**

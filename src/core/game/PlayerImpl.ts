@@ -58,6 +58,7 @@ import {
   GameUpdateType,
   PlayerUpdate,
 } from "./GameUpdates";
+import { VASSAL_MAX_LAND_PERCENT } from "./NationsMode";
 import { objectiveBonusCap } from "./Objectives";
 import { ReadonlyTileSet, TileSet } from "./TileSet";
 import {
@@ -173,6 +174,7 @@ export class PlayerImpl implements Player {
 
   private lastDeleteUnitTick: Tick = -1;
   private _capitalLostTick: Tick = -1;
+  private _homeTiles = 0;
   private lastEmbargoAllTick: Tick = -1;
 
   public _incomingAttacks: Attack[] = [];
@@ -984,6 +986,29 @@ export class PlayerImpl implements Player {
     return this.mg.ticks() >= this.mg.peaceCooldownUntil(this, other);
   }
 
+  canSurrenderTo(other: Player): boolean {
+    if (!this.mg.config().isNationsMode()) return false;
+    // Only once most of the home country is lost.
+    if (
+      this._homeTiles === 0 ||
+      this.numTilesOwned() * 100 > this._homeTiles * VASSAL_MAX_LAND_PERCENT
+    ) {
+      return false;
+    }
+    // A vassal can't take vassals, nor can an overlord bow to someone.
+    if (other.overlord() !== null || this.mg.hasVassals(this)) {
+      return false;
+    }
+    return this.canProposePeace(other);
+  }
+
+  overlord(): Player | null {
+    for (const treaty of this.mg.peaceTreaties()) {
+      if (treaty.vassal() === this) return treaty.other(this);
+    }
+    return null;
+  }
+
   createAllianceRequest(recipient: Player): AllianceRequest | null {
     if (this.isAlliedWith(recipient)) {
       throw new Error(`cannot create alliance request, already allies`);
@@ -1261,6 +1286,14 @@ export class PlayerImpl implements Player {
 
   setCapitalLostTick(tick: Tick): void {
     this._capitalLostTick = tick;
+  }
+
+  homeTiles(): number {
+    return this._homeTiles;
+  }
+
+  setHomeTiles(tiles: number): void {
+    this._homeTiles = tiles;
   }
 
   canEmbargoAll(): boolean {

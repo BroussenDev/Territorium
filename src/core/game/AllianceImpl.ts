@@ -1,5 +1,6 @@
 import { Game, MutableAlliance, Player, Tick } from "./Game";
 import { GameUpdateType } from "./GameUpdates";
+import { allianceDurationBetween } from "./NationsMode";
 
 export class AllianceImpl implements MutableAlliance {
   private extensionRequestedRequestor_: boolean = false;
@@ -14,7 +15,8 @@ export class AllianceImpl implements MutableAlliance {
     private readonly createdAt_: Tick,
     private readonly id_: number,
   ) {
-    this.expiresAt_ = createdAt_ + mg.config().allianceDuration();
+    this.expiresAt_ =
+      createdAt_ + allianceDurationBetween(mg, requestor_, recipient_);
   }
 
   other(player: Player): Player {
@@ -82,7 +84,9 @@ export class AllianceImpl implements MutableAlliance {
   extend(): void {
     this.extensionRequestedRequestor_ = false;
     this.extensionRequestedRecipient_ = false;
-    this.expiresAt_ = this.mg.ticks() + this.mg.config().allianceDuration();
+    this.expiresAt_ =
+      this.mg.ticks() +
+      allianceDurationBetween(this.mg, this.requestor_, this.recipient_);
   }
 
   expiresAt(): Tick {

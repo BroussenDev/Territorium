@@ -459,6 +459,8 @@ export interface PeaceRequest {
   recipient(): Player;
   createdAt(): Tick;
   status(): "pending" | "accepted" | "rejected";
+  /** Nations mode: the requestor surrenders and becomes a vassal. */
+  vassal(): boolean;
 }
 
 export interface PeaceTreaty {
@@ -467,6 +469,8 @@ export interface PeaceTreaty {
   createdAt(): Tick;
   expiresAt(): Tick;
   other(player: Player): Player;
+  /** The side paying tribute when the treaty is a surrender, else null. */
+  vassal(): Player | null;
 }
 
 export class PlayerInfo {
@@ -783,6 +787,10 @@ export interface Player {
   /** At war: an attack runs between the two, or a recent hostile act. */
   isAtWarWith(other: Player): boolean;
   canProposePeace(other: Player): boolean;
+  /** Nations mode: almost wiped out, may become `other`'s vassal. */
+  canSurrenderTo(other: Player): boolean;
+  /** Who this player pays tribute to, while a vassal. */
+  overlord(): Player | null;
 
   // Targeting
   canTarget(other: Player): boolean;
@@ -808,6 +816,9 @@ export interface Player {
   // once a new one is proclaimed).
   capitalLostTick(): Tick;
   setCapitalLostTick(tick: Tick): void;
+  // Nations mode: tiles of the country the player started with.
+  homeTiles(): number;
+  setHomeTiles(tiles: number): void;
   canEmbargoAll(): boolean;
   recordEmbargoAll(): void;
 
@@ -890,7 +901,12 @@ export interface Game extends GameMap {
   expireAlliance(alliance: Alliance): void;
 
   // Peace treaties
-  createPeaceRequest(requestor: Player, recipient: Player): PeaceRequest | null;
+  createPeaceRequest(
+    requestor: Player,
+    recipient: Player,
+    vassal?: boolean,
+  ): PeaceRequest | null;
+  hasVassals(player: Player): boolean;
   peaceTreaties(): PeaceTreaty[];
   expirePeace(treaty: PeaceTreaty): void;
   /** Ends the treaty as perjury by `breaker`. No-op when not at peace. */
@@ -1112,6 +1128,10 @@ export interface PlayerInteraction {
   atWar: boolean;
   // Set while the two players are at peace.
   peaceExpiresAt?: Tick;
+  // Nations mode: may surrender to them and become their vassal.
+  canSurrender: boolean;
+  // Set while one of the two is the other's vassal.
+  vassal?: "self" | "other";
 }
 
 export interface EmojiMessage {

@@ -14,6 +14,7 @@ export class PeaceRequestExecution implements Execution {
   constructor(
     private requestor: Player,
     private recipientID: PlayerID,
+    private vassal = false,
   ) {}
 
   init(mg: Game, ticks: number): void {
@@ -30,6 +31,7 @@ export class PeaceRequestExecution implements Execution {
     this.req = mg.createPeaceRequest(
       this.requestor,
       mg.player(this.recipientID),
+      this.vassal,
     );
     if (this.req === null) {
       this.active = false;

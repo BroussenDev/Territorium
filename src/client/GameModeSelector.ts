@@ -1048,6 +1048,8 @@ export class GameModeSelector extends LitElement {
     const facts = [
       translateText("game_modes.nations_fact_country"),
       translateText("game_modes.nations_fact_capital"),
+      translateText("game_modes.nations_fact_alliance"),
+      translateText("game_modes.nations_fact_vassal"),
       translateText("game_modes.nations_fact_ai"),
       translateText("game_modes.nations_fact_win"),
     ];

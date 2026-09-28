@@ -10,7 +10,12 @@ export class PeaceRequestImpl implements PeaceRequest {
     private readonly recipient_: Player,
     private readonly createdAt_: Tick,
     private readonly game: GameImpl,
+    private readonly vassal_: boolean = false,
   ) {}
+
+  vassal(): boolean {
+    return this.vassal_;
+  }
 
   status(): "pending" | "accepted" | "rejected" {
     return this.status_;
@@ -54,6 +59,7 @@ export class PeaceRequestImpl implements PeaceRequest {
       requestorID: this.requestor_.smallID(),
       recipientID: this.recipient_.smallID(),
       createdAt: this.createdAt_,
+      vassal: this.vassal_ || undefined,
     };
   }
 }
@@ -64,7 +70,12 @@ export class PeaceTreatyImpl implements PeaceTreaty {
     private readonly recipient_: Player,
     private readonly createdAt_: Tick,
     private readonly expiresAt_: Tick,
+    private readonly vassal_: Player | null = null,
   ) {}
+
+  vassal(): Player | null {
+    return this.vassal_;
+  }
 
   requestor(): Player {
     return this.requestor_;
