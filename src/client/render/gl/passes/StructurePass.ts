@@ -2,7 +2,8 @@
  * StructurePass — GPU-rendered structures with icon sprites.
  *
  * Renders a filled circle in player color with a white icon overlay,
- * sampled from a pre-built 7-column sprite atlas (generate-sprite-atlases.mjs).
+ * sampled from a pre-built 7-column sprite atlas (generate-sprite-atlases.mjs),
+ * extended at load time with the SAM launcher's upgraded looks.
  *
  * Two LODs based on zoom:
  *   - zoom > 0.5: full icon with circle background
@@ -39,6 +40,18 @@ import structureVertSrc from "../shaders/structure/structure.vert.glsl?raw";
 
 const iconAtlasUrl = assetUrl("atlases/icon-atlas.png");
 
+/**
+ * The SAM launcher's icon at level 1, 2, and 3 and up. Level 1 replaces the
+ * atlas's SAM column; the others get columns of their own after the atlas's.
+ */
+const samLevelIconUrls = [
+  assetUrl("images/SamLauncherLevel1IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel2IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel3IconWhite.svg"),
+];
+/** How much of an atlas cell a SAM icon covers, like the atlas's own icons. */
+const SAM_ICON_FILL = 0.72;
+
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
@@ -58,6 +71,23 @@ const STRUCTURE_ORDER = [
 ] as const;
 
 const ATLAS_COLS = STRUCTURE_ORDER.length;
+const SAM_COL = STRUCTURE_ORDER.indexOf(UT_SAM_LAUNCHER);
+/** Columns of the icon texture: the atlas's, then the upgraded SAM looks. */
+const ICON_COLS = ATLAS_COLS + samLevelIconUrls.length - 1;
+
+/**
+ * The icon texture column of a structure: its atlas column (`atlasIdx`, which
+ * also picks its shape), except for an upgraded SAM launcher, whose look
+ * follows its level.
+ */
+export function structureIconColumn(
+  unitType: string,
+  atlasIdx: number,
+  level: number,
+): number {
+  if (unitType !== UT_SAM_LAUNCHER || level <= 1) return atlasIdx;
+  return ATLAS_COLS + Math.min(level, samLevelIconUrls.length) - 2;
+}
 
 // ---------------------------------------------------------------------------
 // Instance data layout
@@ -65,8 +95,8 @@ const ATLAS_COLS = STRUCTURE_ORDER.length;
 
 // Per-instance: x, y, ownerID, state (0 = normal, 1 = under construction,
 // 2 = disabled by an EMP), atlasIdx, flags (1 = marked for deletion,
-// 2 = Nations mode capital), level
-const FLOATS_PER_INSTANCE = 7;
+// 2 = Nations mode capital), level, iconCol (see structureIconColumn)
+const FLOATS_PER_INSTANCE = 8;
 const BYTES_PER_INSTANCE = FLOATS_PER_INSTANCE * 4;
 
 // ---------------------------------------------------------------------------
@@ -130,6 +160,8 @@ export class StructurePass {
   private ghost: GhostPreviewData | null = null;
   /** Scratch buffer for the single ghost instance (avoids allocation). */
   private ghostBuf = new Float32Array(FLOATS_PER_INSTANCE);
+  /** Level of the structure on each tile, for the upgrade ghost's look. */
+  private structureLevels = new Map<number, number>();
 
   constructor(
     gl: WebGL2RenderingContext,
@@ -157,10 +189,11 @@ export class StructurePass {
     // Compile shaders
     this.program = createProgram(
       gl,
-      shaderSrc(structureVertSrc, { ATLAS_COLS }),
+      shaderSrc(structureVertSrc, { ATLAS_COLS, ICON_COLS }),
       shaderSrc(structureFragSrc, {
         PALETTE_SIZE: getPaletteSize(),
         ATLAS_COLS,
+        ICON_COLS,
         // First row of the structures block in the shared effect palette.
         STRUCT_EFFECT_ROW_BASE: STRUCTURES_EFFECT_BLOCK * MAX_TRAIL_COLORS,
       }),
@@ -273,23 +306,43 @@ export class StructurePass {
     gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
     gl.vertexAttribDivisor(1, 1);
 
-    // Attribute 2: per-instance vec3 (atlasIdx, flags, level)
+    // Attribute 2: per-instance vec4 (atlasIdx, flags, level, iconCol)
     gl.enableVertexAttribArray(2);
-    gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+    gl.vertexAttribPointer(2, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
     gl.vertexAttribDivisor(2, 1);
 
     gl.bindVertexArray(null);
   }
 
   private async loadAtlas(): Promise<void> {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = iconAtlasUrl;
-    await img.decode();
+    const [atlas, ...samIcons] = await Promise.all(
+      [iconAtlasUrl, ...samLevelIconUrls].map(async (url) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = url;
+        await img.decode();
+        return img;
+      }),
+    );
+    // One square cell per column: the atlas, with the SAM looks drawn in.
+    const cell = atlas.height;
+    const canvas = document.createElement("canvas");
+    canvas.width = cell * ICON_COLS;
+    canvas.height = cell;
+    const ctx = canvas.getContext("2d")!;
+    ctx.drawImage(atlas, 0, 0);
+    ctx.clearRect(SAM_COL * cell, 0, cell, cell);
+    const size = cell * SAM_ICON_FILL;
+    const pad = (cell - size) / 2;
+    samIcons.forEach((icon, i) => {
+      const col = i === 0 ? SAM_COL : ATLAS_COLS + i - 1;
+      ctx.drawImage(icon, col * cell + pad, pad, size, size);
+    });
+
     const gl = this.gl;
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, this.atlasTex);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
     gl.generateMipmap(gl.TEXTURE_2D);
     gl.texParameteri(
       gl.TEXTURE_2D,
@@ -309,6 +362,7 @@ export class StructurePass {
 
   updateStructures(units: Map<number, UnitState>): void {
     let count = 0;
+    this.structureLevels.clear();
 
     for (const unit of units.values()) {
       if (!unit.isActive) continue;
@@ -333,6 +387,12 @@ export class StructurePass {
       this.instanceBuf.float32[off + 5] =
         (unit.markedForDeletion !== false ? 1 : 0) + (unit.isCapital ? 2 : 0);
       this.instanceBuf.float32[off + 6] = unit.level;
+      this.instanceBuf.float32[off + 7] = structureIconColumn(
+        unit.unitType,
+        atlasIdx,
+        unit.level,
+      );
+      this.structureLevels.set(unit.pos, unit.level);
 
       count++;
     }
@@ -447,11 +507,20 @@ export class StructurePass {
     if (hasGhost) {
       const g = this.ghost!;
       const atlasIdx = this.typeToAtlasCol.get(g.ghostType)!;
+      // An upgrade previews the look of the level it builds.
+      const iconCol =
+        g.canUpgrade && g.upgradeTargetTile !== null
+          ? structureIconColumn(
+              g.ghostType,
+              atlasIdx,
+              (this.structureLevels.get(g.upgradeTargetTile) ?? 0) + 1,
+            )
+          : atlasIdx;
 
       // Temporarily rebind instance attrs to ghost buffer
       gl.bindBuffer(gl.ARRAY_BUFFER, this.ghostInstanceBuf);
       gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
-      gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+      gl.vertexAttribPointer(2, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
 
       // -- Green highlight on existing structure being upgraded --
       if (g.canUpgrade && g.upgradeTargetTile !== null) {
@@ -463,6 +532,7 @@ export class StructurePass {
         this.ghostBuf[3] = 0;
         this.ghostBuf[4] = atlasIdx;
         this.ghostBuf[5] = 0;
+        this.ghostBuf[7] = iconCol;
         gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.ghostBuf);
 
         gl.uniform1f(this.uGhostAlpha, 0.6);
@@ -477,6 +547,7 @@ export class StructurePass {
       this.ghostBuf[3] = 0;
       this.ghostBuf[4] = atlasIdx;
       this.ghostBuf[5] = 0;
+      this.ghostBuf[7] = iconCol;
       gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.ghostBuf);
 
       gl.uniform1f(this.uGhostAlpha, 0.5);
@@ -492,7 +563,7 @@ export class StructurePass {
       // Restore instance attrs to main buffer
       gl.bindBuffer(gl.ARRAY_BUFFER, this.instanceBuf.buffer);
       gl.vertexAttribPointer(1, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
-      gl.vertexAttribPointer(2, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
+      gl.vertexAttribPointer(2, 4, gl.FLOAT, false, BYTES_PER_INSTANCE, 16);
     }
   }
 

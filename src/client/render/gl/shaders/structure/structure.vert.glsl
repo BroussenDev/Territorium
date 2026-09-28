@@ -3,9 +3,9 @@ precision highp float;
 
 layout(location = 0) in vec2 aPos;
 
-// Per-instance: x, y, ownerID, underConstruction, atlasIdx, flags, level
+// Per-instance: x, y, ownerID, underConstruction, atlasIdx, flags, level, iconCol
 layout(location = 1) in vec4 aInst0; // x, y, ownerID, underConstruction
-layout(location = 2) in vec3 aInst1; // atlasIdx, flags (1 = marked for deletion, 2 = capital), level
+layout(location = 2) in vec4 aInst1; // atlasIdx, flags (1 = marked for deletion, 2 = capital), level, iconCol
 
 uniform mat3  uCamera;
 uniform float uZoom;
@@ -25,6 +25,7 @@ flat out float vUnderConstruction;
 flat out float vMarkedForDeletion;
 flat out float vZoom;
 flat out float vAtlasIdx;
+flat out float vIconCol;
 flat out float vShapeScale;
 flat out float vLevel;
 flat out float vCapital;
@@ -38,6 +39,7 @@ void main() {
   vCapital = step(1.5, aInst1.y);
   vZoom = uZoom;
   vAtlasIdx = aInst1.x;
+  vIconCol = aInst1.w;
   vLevel = aInst1.z;
 
   float iconScale;
@@ -76,6 +78,6 @@ void main() {
   float uvExpand = shapeScale / uIconFills[shapeIdx];
   float scaledX = 0.5 + local.x * uvExpand;
   float scaledY = 0.5 + local.y * uvExpand;
-  float colU = (aInst1.x + scaledX) / float(ATLAS_COLS);
+  float colU = (aInst1.w + scaledX) / float(ICON_COLS);
   vAtlasUV = vec2(colU, scaledY);
 }

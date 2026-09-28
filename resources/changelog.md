@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.27
+
+🚀 **New SAM launcher looks**
+
+- SAM launchers have new icons, and their look now changes as you upgrade them: a launcher at level 1, a gun at level 2, and a missile truck from level 3. You see it on the map, in the structure card, and when you hover a SAM to upgrade it.
+
 ## v0.1.26
 
 💬 **A new game chat**

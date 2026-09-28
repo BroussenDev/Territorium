@@ -46,7 +46,7 @@ const factoryIcon = assetUrl("images/FactoryIconWhite.svg");
 const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 const portIcon = assetUrl("images/PortIcon.svg");
-const samLauncherIcon = assetUrl("images/SamLauncherIconWhite.svg");
+const samLauncherIcon = assetUrl("images/SamLauncherLevel1IconWhite.svg");
 const radarIcon = assetUrl("images/RadarIconWhite.svg");
 const soldierIcon = assetUrl("images/SoldierIcon.svg");
 

@@ -34,6 +34,7 @@ import {
   portIcon,
   radarIcon,
   samLauncherIcon,
+  samLauncherIconFor,
 } from "../HotbarIcons";
 
 // The structures a card opens for: the upgradable ones.
@@ -367,7 +368,12 @@ export class StructureCard extends LitElement implements Controller {
           <div
             class="structure-card-icon ${tier} flex items-center justify-center shrink-0"
           >
-            <img src=${info.icon} alt="" />
+            <img
+              src=${unit.type() === UnitType.SAMLauncher
+                ? samLauncherIconFor(level)
+                : info.icon}
+              alt=""
+            />
           </div>
           <div class="min-w-0 flex-1">
             <div class="structure-card-name">

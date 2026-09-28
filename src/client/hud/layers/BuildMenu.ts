@@ -37,7 +37,7 @@ const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 const portIcon = assetUrl("images/PortIcon.svg");
 const radarIcon = assetUrl("images/RadarIconWhite.svg");
-const samlauncherIcon = assetUrl("images/SamLauncherIconWhite.svg");
+const samlauncherIcon = assetUrl("images/SamLauncherLevel1IconWhite.svg");
 const shieldIcon = assetUrl("images/ShieldIconWhite.svg");
 
 export interface BuildItemDisplay {

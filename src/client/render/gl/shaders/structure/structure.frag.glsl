@@ -34,6 +34,7 @@ flat in float vUnderConstruction; // 0 = normal, 1 = building, 2 = EMP-disabled
 flat in float vMarkedForDeletion;
 flat in float vZoom;
 flat in float vAtlasIdx;
+flat in float vIconCol;           // icon texture column (upgraded SAMs differ)
 flat in float vShapeScale;
 flat in float vLevel;             // 0 for ghosts, else the unit's level
 flat in float vCapital;           // 1 for a Nations mode capital
@@ -242,8 +243,8 @@ void main() {
   if (vZoom > uDotsThreshold) {
     // Clamp UV to this atlas column to prevent bleeding into neighbours
     // when uIconFill shrinks the icon (expanding UV range beyond column).
-    float colStart = vAtlasIdx / float(ATLAS_COLS);
-    float colEnd = (vAtlasIdx + 1.0) / float(ATLAS_COLS);
+    float colStart = vIconCol / float(ICON_COLS);
+    float colEnd = (vIconCol + 1.0) / float(ICON_COLS);
     vec2 safeUV = vec2(clamp(vAtlasUV.x, colStart, colEnd), clamp(vAtlasUV.y, 0.0, 1.0));
     vec4 iconSample = texture(uAtlas, safeUV);
     // Zero out icon outside the valid UV region (clamped pixels would repeat the edge)

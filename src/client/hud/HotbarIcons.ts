@@ -11,7 +11,16 @@ export const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 export const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 export const portIcon = assetUrl("images/PortIcon.svg");
 export const radarIcon = assetUrl("images/RadarIconWhite.svg");
-export const samLauncherIcon = assetUrl("images/SamLauncherIconWhite.svg");
+// The SAM launcher changes look as it is upgraded: level 1, 2, then 3 and up.
+const samLauncherIcons = [
+  assetUrl("images/SamLauncherLevel1IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel2IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel3IconWhite.svg"),
+];
+export const samLauncherIcon = samLauncherIcons[0];
+export function samLauncherIconFor(level: number): string {
+  return samLauncherIcons[Math.min(Math.max(level, 1), 3) - 1];
+}
 export const defensePostIcon = assetUrl("images/ShieldIconWhite.svg");
 export const soldierIcon = assetUrl("images/SoldierIcon.svg");
 export const claimIcon = assetUrl("images/ClaimIcon.svg");

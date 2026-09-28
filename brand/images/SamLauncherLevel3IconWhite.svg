@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="-1 9 128 128" fill="#fff">
+  <mask id="sam3-gap">
+    <rect x="-20" y="-20" width="170" height="170" fill="#fff"/>
+    <path d="M17 92 L80.5 23.5" stroke="#000" stroke-width="16" stroke-linecap="round"/>
+  </mask>
+  <mask id="sam3-arches">
+    <rect x="-20" y="-20" width="170" height="170" fill="#fff"/>
+    <circle cx="16.5" cy="121" r="9.5" fill="#000"/>
+    <circle cx="49.5" cy="121" r="9.5" fill="#000"/>
+    <circle cx="99.5" cy="121" r="9.5" fill="#000"/>
+    <rect x="106" y="96" width="12" height="5.5" rx="1" fill="#000"/>
+  </mask>
+  <g stroke="#fff" stroke-width="11.5" stroke-linecap="round">
+    <path d="M40 88 L82.5 43" mask="url(#sam3-gap)"/>
+    <path d="M17 92 L80.5 23.5"/>
+  </g>
+  <path mask="url(#sam3-arches)" d="M3 93 Q3 91 5 91 H81 V106 H87 V90 Q87 88 89 88 H115.5 Q117 88 118 89 L121.5 92.5 Q122.5 93.5 122.5 95 V110 Q122.5 111.5 121.5 112.5 L119 115 H3 Z"/>
+  <g fill-rule="evenodd">
+    <path d="M16.5 113.5a7.5 7.5 0 1 1 0 15a7.5 7.5 0 1 1 0-15Zm0 4a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7Zm0 2a1.5 1.5 0 1 1 0 3a1.5 1.5 0 1 1 0-3Z"/>
+    <path d="M49.5 113.5a7.5 7.5 0 1 1 0 15a7.5 7.5 0 1 1 0-15Zm0 4a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7Zm0 2a1.5 1.5 0 1 1 0 3a1.5 1.5 0 1 1 0-3Z"/>
+    <path d="M99.5 113.5a7.5 7.5 0 1 1 0 15a7.5 7.5 0 1 1 0-15Zm0 4a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7Zm0 2a1.5 1.5 0 1 1 0 3a1.5 1.5 0 1 1 0-3Z"/>
+  </g>
+</svg>
