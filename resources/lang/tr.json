@@ -1283,9 +1283,12 @@
     "territory_sat_label": "Bölge doygunluğu"
   },
   "heads_up_message": {
+    "capital_lost": "Başkent yok: +%10 altın ve asker büyümesini kaybettiniz",
+    "capital_lost_ready": "Başkentiniz yapmak için şehirlerinizden birini tıklayın",
+    "capital_lost_wait": "{time}'de yeni başkent mümkün",
     "catching_up": "Yakalanıyor...",
     "choose_spawn": "Başlangıç konumu seçin",
-    "choose_spawn_spectator": "Oyuncular başlangıç ​​yerlerini seçiyor",
+    "choose_spawn_spectator": "Oyuncular başlangıç yerlerini seçiyor",
     "dont_show_again": "Bir daha gösterme",
     "ffa_collusion": "Hatırlatma: FFA'da maçtan önce takım kurmaya izin verilmez",
     "multiplayer_game_paused": "Oyun Lobi Sahibi tarafından durduruldu",
@@ -1430,7 +1433,7 @@
     "remove_player": "{username}'i Kaldır",
     "spectator": "Seyirci",
     "spectators": "Seyirciler",
-    "start_delay": "Başlangıç ​​gecikmesi (Saniye)",
+    "start_delay": "Başlangıç gecikmesi (Saniye)",
     "starting_in": "{time}'dan başlıyor. İptal etmek için tıklayın",
     "subscription_required_body": "Lobinizi herkese açık hale getirmek için Savaş Lordu veya Sovereign aboneliğine ihtiyacınız var.",
     "subscription_required_title": "Abonelik Gerekli",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Başkent: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Tüm",
+    "continent_asia": "Asya",
+    "continent_europe": "Avrupa",
+    "continent_north_america": "Kuzey Amerika",
+    "continent_oceania": "Okyanusya",
+    "continent_south_america": "Güney Amerika",
     "free": "Özgür",
     "hint": "Haritada bir ülkeyi tıklayın. Gri ülkeler zaten alınmış durumda; her özgür ülke yapay zeka tarafından oynanacak.",
     "load_failed": "Dünya haritası yüklenemedi. Rastgele bir ülke alacaksınız.",
@@ -2058,7 +2068,7 @@
     "random_spawn": "Rastgele Doğma",
     "sams_disabled": "SAM'ler Devre Dışı",
     "sams_disabled_label": "SAM'ler",
-    "starting_gold": "{amount}M Başlangıç ​​Altını",
+    "starting_gold": "{amount}M Başlangıç Altını",
     "starting_gold_label": "Altından Başlamak",
     "water_nukes": "Su Nükleer Silahları"
   },
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maks",
     "game_speed": "Oyun hızı",
     "replay_speed": "Tekrar oynatma hızı"
+  },
+  "resume_game": {
+    "description": "Henüz bitmemiş çok oyunculu bir oyun bıraktınız. Bulunduğunuz yere geri dönün.",
+    "dismiss": "Unut gitsin",
+    "resume": "Oyunuma devam et",
+    "title": "Oyununuz hâlâ çalışıyor"
   },
   "rewards_modal": {
     "title": "Ödüller"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Yeni Lobi",
     "other_team": "{team} takımı kazandı!",
     "other_won": "{player} kazandı!",
+    "recap_attacks": "Saldırılar başlatıldı",
+    "recap_best_minute": "En iyi dakika",
+    "recap_best_minute_value": "+{tiles} {time}'deki kareler",
+    "recap_eliminated_by": "{name} tarafından elendi",
+    "recap_peak_size": "En büyük boyut",
+    "recap_peak_size_value": "{tiles} kare ({share}%)",
+    "recap_peak_troops": "Çoğu birlik",
+    "recap_time": "Oynanan süre",
+    "recap_title": "Oyunun",
     "requeue": "Tekrar Oyna",
     "spectate": "İzle",
     "support_openfront": "Territorium'u Destekle!",

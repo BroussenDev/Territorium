@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Насиченість територій"
   },
   "heads_up_message": {
+    "capital_lost": "Немає столиці: ви втратили його +10% зростання золота та військ",
+    "capital_lost_ready": "Виберіть одне зі своїх міст, щоб зробити його своєю столицею",
+    "capital_lost_wait": "Нова столиця можлива в {time}",
     "catching_up": "Синхронізація...",
     "choose_spawn": "Оберіть стартову позицію",
     "choose_spawn_spectator": "Гравці обирають стартові позиції",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Столиця: {capital}",
+    "continent_africa": "Африка",
+    "continent_all": "все",
+    "continent_asia": "Азії",
+    "continent_europe": "Європа",
+    "continent_north_america": "Північна Америка",
+    "continent_oceania": "Океанія",
+    "continent_south_america": "Південна Америка",
     "free": "безкоштовно",
     "hint": "Натисніть країну на карті. Сірі країни вже зайняті; у кожній вільній країні гратиме ШІ.",
     "load_failed": "Не вдалося завантажити карту світу. Ви отримаєте випадкову країну.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Макс.",
     "game_speed": "Швидкість гри",
     "replay_speed": "Швидкість відтворення"
+  },
+  "resume_game": {
+    "description": "Ви покинули багатокористувацьку гру, яка ще не завершена. Поверніться туди, де ви є.",
+    "dismiss": "Забудь це",
+    "resume": "Відновити мою гру",
+    "title": "Ваша гра все ще працює"
   },
   "rewards_modal": {
     "title": "Винагороди"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Нове лобі",
     "other_team": "{team} перемогли!",
     "other_won": "Гравець {player} переміг!",
+    "recap_attacks": "Розпочато атаки",
+    "recap_best_minute": "Найкраща хвилина",
+    "recap_best_minute_value": "+{tiles} плитки на {time}",
+    "recap_eliminated_by": "Вилучено {name}",
+    "recap_peak_size": "Найбільший розмір",
+    "recap_peak_size_value": "{tiles} плиток ({share}%)",
+    "recap_peak_troops": "Більшість військ",
+    "recap_time": "Час зіграно",
+    "recap_title": "Ваша гра",
     "requeue": "Грати знову",
     "spectate": "Спостерігати",
     "support_openfront": "Підтримайте Territorium!",

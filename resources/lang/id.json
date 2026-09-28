@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Kejenuhan wilayah"
   },
   "heads_up_message": {
+    "capital_lost": "Tidak ada ibu kota: Anda kehilangan +10% emas dan pertumbuhan pasukannya",
+    "capital_lost_ready": "Klik salah satu kota Anda untuk menjadikannya ibu kota Anda",
+    "capital_lost_wait": "Ibu kota baru mungkin ada di {time}",
     "catching_up": "Menyusul...",
     "choose_spawn": "Pilih lokasi awal",
     "choose_spawn_spectator": "Pemain memilih lokasi awal",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Ibu kota: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Semua",
+    "continent_asia": "Asia",
+    "continent_europe": "Eropa",
+    "continent_north_america": "Amerika Utara",
+    "continent_oceania": "Oceania",
+    "continent_south_america": "Amerika Selatan",
     "free": "Bebas",
     "hint": "Klik salah satu negara di peta. Negara-negara abu-abu sudah diambil alih; setiap negara bebas akan dimainkan oleh AI.",
     "load_failed": "Peta dunia tidak dapat dimuat. Anda akan mendapatkan negara acak.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maks",
     "game_speed": "Kecepatan Permainan",
     "replay_speed": "Kecepatan tanyangan ulang"
+  },
+  "resume_game": {
+    "description": "Anda meninggalkan permainan multipemain yang belum berakhir. Lompat kembali ke tempat Anda berada.",
+    "dismiss": "Lupakan",
+    "resume": "Lanjutkan permainanku",
+    "title": "Permainan Anda masih berjalan"
   },
   "rewards_modal": {
     "title": "Hadiah"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Lobi Baru",
     "other_team": "tim {team} menang!",
     "other_won": "{player} menang!",
+    "recap_attacks": "Serangan diluncurkan",
+    "recap_best_minute": "Menit terbaik",
+    "recap_best_minute_value": "+{tiles} ubin di {time}",
+    "recap_eliminated_by": "Dieliminasi oleh {name}",
+    "recap_peak_size": "Ukuran terbesar",
+    "recap_peak_size_value": "{tiles} ubin ({share}%)",
+    "recap_peak_troops": "Kebanyakan pasukan",
+    "recap_time": "Waktu dimainkan",
+    "recap_title": "permainanmu",
     "requeue": "Main lagi",
     "spectate": "Menonton",
     "support_openfront": "Dukung Territorium!",

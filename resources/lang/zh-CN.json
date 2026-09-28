@@ -1283,6 +1283,9 @@
     "territory_sat_label": "领土饱和度"
   },
   "heads_up_message": {
+    "capital_lost": "没有首都：你失去了 +10% 的黄金和军队增长",
+    "capital_lost_ready": "单击您的城市之一，将其设为您的首都",
+    "capital_lost_wait": "新首都可能在{time}",
     "catching_up": "正在追赶进度……",
     "choose_spawn": "选择出生点",
     "choose_spawn_spectator": "玩家正在选择起始位置",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "首都：{capital}",
+    "continent_africa": "非洲",
+    "continent_all": "全部",
+    "continent_asia": "亚洲",
+    "continent_europe": "欧洲",
+    "continent_north_america": "北美",
+    "continent_oceania": "大洋洲",
+    "continent_south_america": "南美洲",
     "free": "自由的",
     "hint": "单击地图上的国家/地区。灰色国家已被占领；每个自由国家都将由AI玩。",
     "load_failed": "无法加载世界地图。您将获得一个随机国家。",
@@ -2116,7 +2126,7 @@
     "players_in_queue": "名玩家在排队",
     "queue_title": "排位队列",
     "record": "{games} 场比赛 · {wins} 获胜",
-    "rule_cosmetics": "没有化​​妆品：每个人看起来都一样，只显示名字和部落标签。",
+    "rule_cosmetics": "没有化妆品：每个人看起来都一样，只显示名字和部落标签。",
     "rule_elo": "您的 ELO 会随着您的最终排名而变化：您完成得越高，您获得的收益就越多。",
     "rule_format": "每个玩家单独战斗：每场比赛有 8 到 16 名玩家在一组固定的地图上，没有机器人或国家。",
     "rule_placement": "您的前 5 场比赛是定级比赛；您的等级出现在他们之后。",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "最大",
     "game_speed": "游戏速度",
     "replay_speed": "回放速度"
+  },
+  "resume_game": {
+    "description": "您离开了尚未结束的多人游戏。跳回到原来的地方。",
+    "dismiss": "忘了它",
+    "resume": "继续我的游戏",
+    "title": "您的游戏仍在运行"
   },
   "rewards_modal": {
     "title": "奖励"
@@ -2222,7 +2238,7 @@
     "reason_discard_not_linked": "链接未完成。请重新启动链接。",
     "reason_expired": "该链接已过期。请从 Steam 重试。",
     "reason_offer_unavailable": "此确认已过期。请重新启动链接。",
-    "reason_rate_limited": "尝试次数太多。请等待{seconds, plural, =0 {一会儿} one {# 第二} other {#秒}}，然​​后重试。",
+    "reason_rate_limited": "尝试次数太多。请等待{seconds, plural, =0 {一会儿} one {# 第二} other {#秒}}，然后重试。",
     "reason_steam_has_progress": "该Steam帐户已有自己的进度，无法合并。",
     "reason_steam_linked_elsewhere": "此 Steam 帐户已链接到另一个 Territorium 帐户。",
     "success": "您的 Steam 帐户现已关联。",
@@ -2785,6 +2801,15 @@
     "new_lobby": "新大堂",
     "other_team": "{team} 队获胜了！",
     "other_won": "{player} 获胜了！",
+    "recap_attacks": "发起攻击",
+    "recap_best_minute": "最好的一分钟",
+    "recap_best_minute_value": "+{tiles} {time} 处的瓷砖",
+    "recap_eliminated_by": "被{name}淘汰",
+    "recap_peak_size": "最大尺寸",
+    "recap_peak_size_value": "{tiles} 瓷砖 ({share}%)",
+    "recap_peak_troops": "大多数部队",
+    "recap_time": "播放时间",
+    "recap_title": "你的游戏",
     "requeue": "再玩一次",
     "spectate": "观战",
     "support_openfront": "支持 Territorium！",

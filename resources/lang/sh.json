@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Zasićenost teritorije"
   },
   "heads_up_message": {
+    "capital_lost": "Nema glavnog grada: izgubili ste njegovih +10% rasta zlata i trupa",
+    "capital_lost_ready": "Kliknite na jedan od svojih gradova da biste ga učinili glavnim gradom",
+    "capital_lost_wait": "Novi glavni grad moguć za {time}",
     "catching_up": "Hvatanje koraka...",
     "choose_spawn": "Izaberi početnu lokaciju",
     "choose_spawn_spectator": "Igrači biraju početne lokacije",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Glavni grad: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Sve",
+    "continent_asia": "Azija",
+    "continent_europe": "Evropa",
+    "continent_north_america": "Severna Amerika",
+    "continent_oceania": "Okeanija",
+    "continent_south_america": "Južna Amerika",
     "free": "Besplatno",
     "hint": "Kliknite na državu na mapi. Sive zemlje su već zauzete; svaku slobodnu zemlju će igrati AI.",
     "load_failed": "Nije moguće učitati mapu sveta. Dobićete slučajnu zemlju.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maks",
     "game_speed": "Brzina igre",
     "replay_speed": "Brzina snimka"
+  },
+  "resume_game": {
+    "description": "Napustili ste igru za više igrača koja još nije gotova. Skoči nazad tamo gde si.",
+    "dismiss": "Zaboravi",
+    "resume": "Nastavi moju igru",
+    "title": "Vaša igra još uvek radi"
   },
   "rewards_modal": {
     "title": "Nagrade"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nova soba",
     "other_team": "{team} tim je pobedio!",
     "other_won": "{player} je pobedio!",
+    "recap_attacks": "Pokrenuti napadi",
+    "recap_best_minute": "Najbolji minut",
+    "recap_best_minute_value": "+{tiles} pločice na {time}",
+    "recap_eliminated_by": "Eliminiše {name}",
+    "recap_peak_size": "Najveća veličina",
+    "recap_peak_size_value": "{tiles} pločice ({share}%)",
+    "recap_peak_troops": "Većina trupa",
+    "recap_time": "Igrano vreme",
+    "recap_title": "Tvoja igra",
     "requeue": "Igraj ponovo",
     "spectate": "Posmatraj",
     "support_openfront": "Podrži Territorium!",

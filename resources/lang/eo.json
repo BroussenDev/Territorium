@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Teritoria saturiĝo"
   },
   "heads_up_message": {
+    "capital_lost": "Neniu ĉefurbo: vi perdis ĝian +10% oron kaj kreskadon de trupoj",
+    "capital_lost_ready": "Klaku unu el viaj urboj por fari ĝin via ĉefurbo",
+    "capital_lost_wait": "Nova ĉefurbo ebla en {time}",
     "catching_up": "Ĝisdatigante...",
     "choose_spawn": "Elektu komencan lokon",
     "choose_spawn_spectator": "Ludantoj elektas komencajn lokojn",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Ĉefurbo: {capital}",
+    "continent_africa": "Afriko",
+    "continent_all": "Ĉiuj",
+    "continent_asia": "Azio",
+    "continent_europe": "Eŭropo",
+    "continent_north_america": "Nordameriko",
+    "continent_oceania": "Oceanio",
+    "continent_south_america": "Sudameriko",
     "free": "Senpaga",
     "hint": "Klaku landon sur la mapo. Grizaj landoj jam estas prenitaj; ĉiu libera lando estos ludita de la AI.",
     "load_failed": "La mondmapo ne povis esti ŝargita. Vi ricevos hazardan landon.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maksimuma",
     "game_speed": "Luda rapideco",
     "replay_speed": "Reluda rapideco"
+  },
+  "resume_game": {
+    "description": "Vi forlasis plurludantan ludon, kiu ankoraŭ ne finiĝis. Resaltu kie vi estas.",
+    "dismiss": "Forgesu ĝin",
+    "resume": "Rekomencu mian ludon",
+    "title": "Via ludo ankoraŭ funkcias"
   },
   "rewards_modal": {
     "title": "Rekompencoj"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nova Vestiblo",
     "other_team": "{team} teamo venkis!",
     "other_won": "{player} venkis!",
+    "recap_attacks": "Atakoj lanĉitaj",
+    "recap_best_minute": "Plej bona minuto",
+    "recap_best_minute_value": "+{tiles} kaheloj ĉe {time}",
+    "recap_eliminated_by": "Forigita per {name}",
+    "recap_peak_size": "Plej granda grandeco",
+    "recap_peak_size_value": "{tiles} kaheloj ({share}%)",
+    "recap_peak_troops": "Plej multaj trupoj",
+    "recap_time": "Tempo ludis",
+    "recap_title": "Via ludo",
     "requeue": "Reludi",
     "spectate": "Spekti",
     "support_openfront": "Subtenu Territorium!",

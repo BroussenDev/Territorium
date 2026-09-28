@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturarea teritoriului"
   },
   "heads_up_message": {
+    "capital_lost": "Fără capitală: ai pierdut +10% creșterea aurului și a trupelor",
+    "capital_lost_ready": "Faceți clic pe unul dintre orașele dvs. pentru a deveni capitala dvs",
+    "capital_lost_wait": "Noua capitală posibilă în {time}",
     "catching_up": "Se actualizează ...",
     "choose_spawn": "Alegeți o locație de început",
     "choose_spawn_spectator": "Jucătorii aleg locații de început",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Capitală: {capital}",
+    "continent_africa": "Africa",
+    "continent_all": "Toate",
+    "continent_asia": "Asia",
+    "continent_europe": "Europa",
+    "continent_north_america": "America de Nord",
+    "continent_oceania": "Oceania",
+    "continent_south_america": "America de Sud",
     "free": "Gratuit",
     "hint": "Faceți clic pe o țară de pe hartă. Țările gri sunt deja luate; fiecare țară liberă va fi jucată de AI.",
     "load_failed": "Harta lumii nu a putut fi încărcată. Veți obține o țară aleatorie.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maxim",
     "game_speed": "Viteza jocului",
     "replay_speed": "Viteză de redare"
+  },
+  "resume_game": {
+    "description": "Ai părăsit un joc multiplayer care nu s-a terminat încă. Sari înapoi unde ești.",
+    "dismiss": "Uită-l",
+    "resume": "Reluați jocul",
+    "title": "Jocul tău încă rulează"
   },
   "rewards_modal": {
     "title": "Recompense"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Lobby Nou",
     "other_team": "Echipa {team} a câștigat!",
     "other_won": "{player} A câștigat!",
+    "recap_attacks": "S-au lansat atacuri",
+    "recap_best_minute": "Cel mai bun minut",
+    "recap_best_minute_value": "+{tiles} plăci la {time}",
+    "recap_eliminated_by": "Eliminat de {name}",
+    "recap_peak_size": "Cea mai mare dimensiune",
+    "recap_peak_size_value": "{tiles} plăci ({share}%)",
+    "recap_peak_troops": "Majoritatea trupelor",
+    "recap_time": "Timpul jucat",
+    "recap_title": "Jocul tău",
     "requeue": "Jucați din nou",
     "spectate": "Spectator",
     "support_openfront": "Susține Territorium!",

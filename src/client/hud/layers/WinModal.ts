@@ -1,6 +1,11 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { getGamesPlayed, homeHref, translateText } from "../../../client/Utils";
+import {
+  getGamesPlayed,
+  homeHref,
+  renderTroops,
+  translateText,
+} from "../../../client/Utils";
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
@@ -15,6 +20,7 @@ import {
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
+import { forgetActiveGame } from "../../components/ResumeGameButton";
 import { Controller } from "../../Controller";
 import {
   fetchCosmetics,
@@ -26,6 +32,7 @@ import { isDesktopShell } from "../../DesktopShell";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
+import { GameRecap, mainAttacker } from "../GameRecap";
 
 @customElement("win-modal")
 export class WinModal extends LitElement implements Controller {
@@ -35,6 +42,7 @@ export class WinModal extends LitElement implements Controller {
   public eventBus: EventBus;
 
   private hasShownDeathModal = false;
+  private recap: GameRecap | null = null;
 
   @state()
   isVisible = false;
@@ -87,7 +95,7 @@ export class WinModal extends LitElement implements Controller {
           ${this._title || ""}
         </h2>
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
-          ${this.renderGameResult()} ${this.innerHtml()}
+          ${this.renderGameResult()} ${this.renderRecap()} ${this.innerHtml()}
         </div>
         <div class="mt-4 flex justify-between gap-2.5 shrink-0">
           <o-button
@@ -128,6 +136,62 @@ export class WinModal extends LitElement implements Controller {
         </div>
       </div>
     `;
+  }
+
+  private renderRecap() {
+    const me = this.game?.myPlayer();
+    if (!this.recap || !me || !me.hasSpawned()) return null;
+    const s = this.recap.summary(me.isAlive());
+    const killer =
+      s.eliminatedBy !== null
+        ? this.game.playerBySmallID(s.eliminatedBy)
+        : null;
+    const stat = (label: string, value: string) =>
+      html`<div class="rounded-sm bg-black/30 px-3 py-2">
+        <div class="text-xs text-white/60">${label}</div>
+        <div class="text-lg font-bold text-white">${value}</div>
+      </div>`;
+    return html`<div data-win-recap class="mb-4">
+      <h3 class="mb-2 text-center text-lg font-semibold text-white">
+        ${translateText("win_modal.recap_title")}
+      </h3>
+      ${killer?.isPlayer()
+        ? html`<div
+            class="mb-2 rounded-sm border border-red-400/40 bg-red-500/15 px-3 py-2 text-center"
+          >
+            ${translateText("win_modal.recap_eliminated_by", {
+              name: killer.displayName(),
+            })}
+          </div>`
+        : null}
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
+        ${stat(
+          translateText("win_modal.recap_peak_size"),
+          translateText("win_modal.recap_peak_size_value", {
+            tiles: s.peakTiles.toLocaleString(),
+            share: s.peakShare.toFixed(1),
+          }),
+        )}
+        ${stat(
+          translateText("win_modal.recap_peak_troops"),
+          renderTroops(s.peakTroops),
+        )}
+        ${stat(
+          translateText("win_modal.recap_best_minute"),
+          s.bestMinuteGain > 0
+            ? translateText("win_modal.recap_best_minute_value", {
+                tiles: s.bestMinuteGain.toLocaleString(),
+                time: clock(s.bestMinuteEnd),
+              })
+            : "—",
+        )}
+        ${stat(
+          translateText("win_modal.recap_attacks"),
+          s.attacksLaunched.toLocaleString(),
+        )}
+        ${stat(translateText("win_modal.recap_time"), clock(s.secondsPlayed))}
+      </div>
+    </div>`;
   }
 
   private withCountdown(label: string): string {
@@ -289,6 +353,8 @@ export class WinModal extends LitElement implements Controller {
   }
 
   async show() {
+    // The game is over: nothing to go back to from the main menu.
+    forgetActiveGame();
     crazyGamesSDK.gameplayStop();
     this.isRankedGame =
       this.game.config().gameConfig().rankedType !== undefined;
@@ -330,6 +396,7 @@ export class WinModal extends LitElement implements Controller {
 
   tick() {
     const myPlayer = this.game.myPlayer();
+    this.sampleRecap();
     if (
       !this.hasShownDeathModal &&
       myPlayer &&
@@ -407,6 +474,25 @@ export class WinModal extends LitElement implements Controller {
     });
   }
 
+  // One sample per game second of the local player, while they play.
+  private sampleRecap(): void {
+    const me = this.game.myPlayer();
+    if (!me || !me.hasSpawned() || !me.isAlive() || this.game.inSpawnPhase()) {
+      return;
+    }
+    const sinceStart =
+      this.game.ticks() - this.game.config().numSpawnPhaseTurns();
+    if (sinceStart % 10 !== 0) return;
+    this.recap ??= new GameRecap(this.game.numLandTiles());
+    this.recap.add({
+      second: sinceStart / 10,
+      tiles: me.numTilesOwned(),
+      troops: me.troops(),
+      mainAttacker: mainAttacker(me.incomingAttacks()),
+      outgoingAttackIDs: me.outgoingAttacks().map((a) => a.id),
+    });
+  }
+
   private playEndOfGameSound(): void {
     if (this.isWin) {
       this.eventBus.emit(new PlaySoundEffectEvent("victory"));
@@ -417,4 +503,10 @@ export class WinModal extends LitElement implements Controller {
       this.eventBus.emit(new PlaySoundEffectEvent("defeat"));
     }
   }
+}
+
+function clock(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
 }

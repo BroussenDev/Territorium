@@ -1283,6 +1283,9 @@
     "territory_sat_label": "領土顏色飽和度"
   },
   "heads_up_message": {
+    "capital_lost": "沒有首都：你失去了 +10% 的黃金和軍隊成長",
+    "capital_lost_ready": "點擊您的城市之一，將其設為您的首都",
+    "capital_lost_wait": "新首都可能在{time}",
     "catching_up": "正在追上進度……",
     "choose_spawn": "選擇出生點",
     "choose_spawn_spectator": "玩家正在選擇出生點",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "首都：{capital}",
+    "continent_africa": "非洲",
+    "continent_all": "全部",
+    "continent_asia": "亞洲",
+    "continent_europe": "歐洲",
+    "continent_north_america": "北美洲",
+    "continent_oceania": "大洋洲",
+    "continent_south_america": "南美洲",
     "free": "自由的",
     "hint": "點擊地圖上的國家。灰色國家已被佔領；每個自由國家都將由AI玩。",
     "load_failed": "無法載入世界地圖。您將獲得一個隨機國家。",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "最大",
     "game_speed": "遊戲速度",
     "replay_speed": "回放速度"
+  },
+  "resume_game": {
+    "description": "您離開了尚未結束的多人遊戲。跳回到原來的地方。",
+    "dismiss": "忘了它",
+    "resume": "繼續我的遊戲",
+    "title": "您的遊戲仍在運行"
   },
   "rewards_modal": {
     "title": "獎勵"
@@ -2785,6 +2801,15 @@
     "new_lobby": "新建大廳",
     "other_team": "{team} 隊獲勝了！",
     "other_won": "{player} 獲勝了！",
+    "recap_attacks": "發動攻擊",
+    "recap_best_minute": "最好的一分鐘",
+    "recap_best_minute_value": "+{tiles} {time} 處的磁磚",
+    "recap_eliminated_by": "被{name}淘汰",
+    "recap_peak_size": "最大尺寸",
+    "recap_peak_size_value": "{tiles} 磁磚 ({share}%)",
+    "recap_peak_troops": "大多數部隊",
+    "recap_time": "播放時間",
+    "recap_title": "你的遊戲",
     "requeue": "再玩一次",
     "spectate": "觀戰",
     "support_openfront": "支持 Territorium！",

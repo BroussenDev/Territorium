@@ -297,6 +297,7 @@ describe("seatNationsGame", () => {
       new PseudoRandom(1),
     );
     expect(humans[0].nationFlag).toBe("mid");
+    expect(humans[0].displayName).toBe("Mid | a");
     expect(nations.map((n) => n.playerInfo.name)).toEqual(["Big", "Small"]);
     expect(seats.map((s) => s.country).sort()).toEqual([0, 1, 2]);
     expect(nations[0].spawnCell?.x).toBe(25);

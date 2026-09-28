@@ -45,6 +45,7 @@ import {
 import { getPlayToken } from "./Auth";
 import { LobbyConfig } from "./ClientGameRunner";
 import { clientPlatform } from "./ClientPlatform";
+import { forgetActiveGame } from "./components/ResumeGameButton";
 import { isDesktopShell } from "./DesktopShell";
 import { showInGameConfirm } from "./InGameModal";
 import { LocalServer } from "./LocalServer";
@@ -627,6 +628,7 @@ export class Transport {
       cancelText: translateText("common.close"),
     }).then((goHome) => {
       if (goHome) {
+        forgetActiveGame();
         window.location.href = homeHref();
       }
     });

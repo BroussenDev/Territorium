@@ -127,8 +127,8 @@
     "username_placeholder": "Sisestage kasutajanimi",
     "username_save": "Salvesta",
     "username_saved": "Kasutajanimi muudetud.",
-    "username_temporary_notice": "Teie nime võttis teine ​​mängija. Valige uus – see ümbernimetamine on tasuta.",
-    "username_temporary_prompt": "Teie kasutajanime võttis teine ​​mängija. Kas valida kohe uus? Ümbernimetamine on tasuta.",
+    "username_temporary_notice": "Teie nime võttis teine mängija. Valige uus – see ümbernimetamine on tasuta.",
+    "username_temporary_prompt": "Teie kasutajanime võttis teine mängija. Kas valida kohe uus? Ümbernimetamine on tasuta.",
     "username_temporary_prompt_confirm": "Valige nimi",
     "username_title": "Kasutajanimi"
   },
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Territooriumi küllastus"
   },
   "heads_up_message": {
+    "capital_lost": "Pealinna pole: kaotasite oma +10% kulla ja vägede kasvu",
+    "capital_lost_ready": "Klõpsake ühel oma linnadest, et muuta see oma pealinnaks",
+    "capital_lost_wait": "Uus pealinn on võimalik {time}",
     "catching_up": "Jõuan järgi...",
     "choose_spawn": "Vali alguse koht",
     "choose_spawn_spectator": "Mängijad valivad stardipaigad",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Pealinn: {capital}",
+    "continent_africa": "Aafrika",
+    "continent_all": "Kõik",
+    "continent_asia": "Aasia",
+    "continent_europe": "Euroopas",
+    "continent_north_america": "Põhja-Ameerika",
+    "continent_oceania": "Okeaania",
+    "continent_south_america": "Lõuna-Ameerika",
     "free": "Tasuta",
     "hint": "Klõpsake kaardil riiki. Hallid riigid on juba võetud; iga vaba riiki mängib tehisintellekt.",
     "load_failed": "Maailmakaarti ei saanud laadida. Saate juhusliku riigi.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maks.",
     "game_speed": "Mängu kiirus",
     "replay_speed": "Taasesituse kiirus"
+  },
+  "resume_game": {
+    "description": "Lahkusite mitme mängijaga mängust, mis pole veel lõppenud. Hüppa tagasi sinna, kus sa oled.",
+    "dismiss": "Unusta ära",
+    "resume": "Jätkake minu mängu",
+    "title": "Teie mäng on endiselt käimas"
   },
   "rewards_modal": {
     "title": "Preemiad"
@@ -2737,7 +2753,7 @@
   },
   "username": {
     "account_invalid_chars": "Kasutajanimi võib sisaldada ainult tähti, numbreid, allkriipse, sidekriipse ja üksikuid tühikuid sõnade vahel.",
-    "claim_at_risk": "\"{name}\" ei ole enam reserveeritud ja teine ​​mängija võib selle igal hetkel võtta. Selle säilitamiseks tellige kohe uuesti.",
+    "claim_at_risk": "\"{name}\" ei ole enam reserveeritud ja teine mängija võib selle igal hetkel võtta. Selle säilitamiseks tellige kohe uuesti.",
     "claim_reserved": "\"{name}\" on teile reserveeritud kuni {date}. Selle säilitamiseks tellige uuesti enne seda.",
     "clan_browse": "Sirvige klanne",
     "clan_clear": "Silt puudub",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Uus fuajee",
     "other_team": "{team} tiim võitis!",
     "other_won": "{player} võitis!",
+    "recap_attacks": "Rünnakud algasid",
+    "recap_best_minute": "Parim minut",
+    "recap_best_minute_value": "+{tiles} paanid aadressil {time}",
+    "recap_eliminated_by": "Elimineeritud {name}",
+    "recap_peak_size": "Suurim suurus",
+    "recap_peak_size_value": "{tiles} paani ({share}%)",
+    "recap_peak_troops": "Enamik vägesid",
+    "recap_time": "Mängitud aeg",
+    "recap_title": "Sinu mäng",
     "requeue": "Mängi uuesti",
     "spectate": "Hakka pealtvaatajaks",
     "support_openfront": "Toeta Territorium'i!",

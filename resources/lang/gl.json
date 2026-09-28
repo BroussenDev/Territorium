@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturación do territorio"
   },
   "heads_up_message": {
+    "capital_lost": "Ningunha capital: perdeu o seu +10% de ouro e de crecemento de tropas",
+    "capital_lost_ready": "Fai clic nunha das túas cidades para convertela na túa capital",
+    "capital_lost_wait": "Nova capital posible en {time}",
     "catching_up": "Poñéndose ao día...",
     "choose_spawn": "Escolle o lugar de inicio",
     "choose_spawn_spectator": "Os xogadores elixen os lugares de partida",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Cidade capital: {capital}",
+    "continent_africa": "África",
+    "continent_all": "Todos",
+    "continent_asia": "Asia",
+    "continent_europe": "Europa",
+    "continent_north_america": "América do Norte",
+    "continent_oceania": "Oceanía",
+    "continent_south_america": "América do Sur",
     "free": "Libre",
     "hint": "Fai clic nun país no mapa. Os países grises xa están tomados; Todos os países libres serán xogados pola IA.",
     "load_failed": "Non se puido cargar o mapa do mundo. Recibirás un país aleatorio.",
@@ -1868,7 +1878,7 @@
     "render_layers_table_header": "media/máx. | marcar media",
     "reset": "Restablecer",
     "tick_delay": "Retraso de marcas:",
-    "tick_exec": "Tick ​​Exec:",
+    "tick_exec": "Tick Exec:",
     "tick_layers_header": "Marcar capas",
     "tick_layers_summary": "Última marca: {count} capas, {ms}ms",
     "tick_layers_table_header": "media/máx",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "máx.",
     "game_speed": "Velocidade da partida",
     "replay_speed": "Velocidade de reprodución"
+  },
+  "resume_game": {
+    "description": "Deixaches unha partida multixogador que aínda non rematou. Volta onde estás.",
+    "dismiss": "Esquéceo",
+    "resume": "Retomar o meu xogo",
+    "title": "O teu xogo aínda está funcionando"
   },
   "rewards_modal": {
     "title": "Recompensas"
@@ -2656,7 +2672,7 @@
     "exit_game_info": "Volver ó menú principal",
     "exit_game_label": "Saír da partida",
     "game_menu_title": "Menú",
-    "game_speed_down": "Xogo Speed ​​Down",
+    "game_speed_down": "Xogo Speed Down",
     "game_speed_down_desc": "Vai á velocidade do xogo anterior. Só un xogador.",
     "game_speed_up": "Xogo Acelerar",
     "game_speed_up_desc": "Pase á seguinte velocidade de xogo (0,5, 1, 2, máximo). Só un xogador.",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Novo vestíbulo",
     "other_team": "Gañou o equipo {team}!",
     "other_won": "Gañou {player}!",
+    "recap_attacks": "Ataques lanzados",
+    "recap_best_minute": "Mellor minuto",
+    "recap_best_minute_value": "+{tiles} fichas en {time}",
+    "recap_eliminated_by": "Eliminado por {name}",
+    "recap_peak_size": "Tamaño máis grande",
+    "recap_peak_size_value": "{tiles} fichas ({share}%)",
+    "recap_peak_troops": "A maioría das tropas",
+    "recap_time": "Tempo xogado",
+    "recap_title": "O teu xogo",
     "requeue": "Xogar de novo",
     "spectate": "Espectáculo",
     "support_openfront": "Apoio Territorium!",

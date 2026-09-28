@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Κορεσμός εδάφους"
   },
   "heads_up_message": {
+    "capital_lost": "Καμία πρωτεύουσα: έχασες +10% χρυσό και ανάπτυξη στρατευμάτων",
+    "capital_lost_ready": "Κάντε κλικ σε μία από τις πόλεις σας για να την κάνετε πρωτεύουσα σας",
+    "capital_lost_wait": "Δυνατότητα νέας πρωτεύουσας σε {time}",
     "catching_up": "Προλαβαίνοντας...",
     "choose_spawn": "Επίλεξε μια αρχική τοποθεσία",
     "choose_spawn_spectator": "Οι παίκτες επιλέγουν τοποθεσίες εκκίνησης",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Πρωτεύουσα: {capital}",
+    "continent_africa": "Αφρική",
+    "continent_all": "Όλα",
+    "continent_asia": "Ασία",
+    "continent_europe": "Ευρώπη",
+    "continent_north_america": "Βόρεια Αμερική",
+    "continent_oceania": "Ωκεανία",
+    "continent_south_america": "Νότια Αμερική",
     "free": "Δωρεάν",
     "hint": "Κάντε κλικ σε μια χώρα στον χάρτη. Οι γκρίζες χώρες έχουν ήδη ληφθεί. κάθε ελεύθερη χώρα θα παίζεται από το AI.",
     "load_failed": "Δεν ήταν δυνατή η φόρτωση του παγκόσμιου χάρτη. Θα πάρετε μια τυχαία χώρα.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Μέγιστο",
     "game_speed": "Ταχύτητα Παιχνιδιού",
     "replay_speed": "Ταχύτητα επανάληψης"
+  },
+  "resume_game": {
+    "description": "Αφήσατε ένα παιχνίδι για πολλούς παίκτες που δεν έχει τελειώσει ακόμα. Πήδα πίσω στο σημείο που βρίσκεσαι.",
+    "dismiss": "Ξεχάστε το",
+    "resume": "Συνέχιση του παιχνιδιού μου",
+    "title": "Το παιχνίδι σας συνεχίζεται"
   },
   "rewards_modal": {
     "title": "Ανταμοιβές"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Νέο Λόμπι",
     "other_team": "Η ομάδα {team} έχει κερδίσει!",
     "other_won": "Ο {player} κέρδισε!",
+    "recap_attacks": "Ξεκίνησαν επιθέσεις",
+    "recap_best_minute": "Το καλύτερο λεπτό",
+    "recap_best_minute_value": "+{tiles} πλακάκια στο {time}",
+    "recap_eliminated_by": "Αποκλείστηκε με {name}",
+    "recap_peak_size": "Μεγαλύτερο μέγεθος",
+    "recap_peak_size_value": "{tiles} πλακάκια ({share}%)",
+    "recap_peak_troops": "Τα περισσότερα στρατεύματα",
+    "recap_time": "Ο χρόνος έπαιξε",
+    "recap_title": "Το παιχνίδι σου",
     "requeue": "Παίξτε ξανά",
     "spectate": "Παρακολούθηση",
     "support_openfront": "Υποστήριξε το Territorium!",

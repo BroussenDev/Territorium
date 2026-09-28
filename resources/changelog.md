@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.14
+
+🌍 **Nations, clearer**
+
+- In Nations games, players now show as "Country | Name", so you know who holds which country at a glance.
+- When you lose your capital, a banner tells you how long until you can proclaim a new one, then that you can do it now.
+- The country picker has continent filters: pick Europe, Asia, Africa, North America, South America or Oceania to highlight its countries on the map and list them all.
+
+🔁 **Resume my game**
+
+- Closed the tab or lost your connection? The home page now offers to take you back into the multiplayer game you were playing, as long as it's still running.
+
+📊 **End-of-game recap**
+
+- The end-of-game screen now tells you about your game: your peak size and share of the map, your most troops, your best minute, how many attacks you launched, how long you played, and who eliminated you.
+
 ## v0.1.13
 
 ©️ **Territorium's own creations**

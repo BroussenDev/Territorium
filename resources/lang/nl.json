@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Territorium verzadiging"
   },
   "heads_up_message": {
+    "capital_lost": "Geen hoofdstad: je bent +10% goud en troepengroei kwijtgeraakt",
+    "capital_lost_ready": "Klik op een van uw steden om deze uw hoofdstad te maken",
+    "capital_lost_wait": "Nieuwe hoofdstad mogelijk in {time}",
     "catching_up": "Inhaalslag maken...",
     "choose_spawn": "Kies een startlocatie",
     "choose_spawn_spectator": "Spelers kiezen startlocaties",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Hoofdstad: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Alle",
+    "continent_asia": "Azië",
+    "continent_europe": "Europa",
+    "continent_north_america": "Noord-Amerika",
+    "continent_oceania": "Oceanië",
+    "continent_south_america": "Zuid-Amerika",
     "free": "Vrij",
     "hint": "Klik op een land op de kaart. Grijze landen zijn al bezet; elk vrij land zal door de AI worden gespeeld.",
     "load_failed": "De wereldkaart kon niet worden geladen. Je krijgt een willekeurig land.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Max",
     "game_speed": "Spel snelheid",
     "replay_speed": "Afspeelsnelheid"
+  },
+  "resume_game": {
+    "description": "Je hebt een multiplayer-game verlaten die nog niet afgelopen is. Spring terug naar waar je bent.",
+    "dismiss": "Vergeet het",
+    "resume": "Ga verder met mijn spel",
+    "title": "Je spel is nog steeds actief"
   },
   "rewards_modal": {
     "title": "Beloningen"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nieuwe Lobby",
     "other_team": "{team} team heeft gewonnen!",
     "other_won": "{player} heeft gewonnen!",
+    "recap_attacks": "Aanvallen gelanceerd",
+    "recap_best_minute": "Beste minuut",
+    "recap_best_minute_value": "+{tiles} tegels op {time}",
+    "recap_eliminated_by": "Geëlimineerd door {name}",
+    "recap_peak_size": "Grootste maat",
+    "recap_peak_size_value": "{tiles} tegels ({share}%)",
+    "recap_peak_troops": "De meeste troepen",
+    "recap_time": "Tijd gespeeld",
+    "recap_title": "Jouw spel",
     "requeue": "Opnieuw spelen",
     "spectate": "Toekijken",
     "support_openfront": "Steun Territorium!",

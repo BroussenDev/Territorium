@@ -7,6 +7,7 @@ import { createNextLobby } from "../../Api";
 import { ClientEnv } from "../../ClientEnv";
 import "../../components/DoomsdayClockPanel";
 import "../../components/OvertimePanel";
+import { forgetActiveGame } from "../../components/ResumeGameButton";
 import { Controller } from "../../Controller";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
 import { isDesktopShell } from "../../DesktopShell";
@@ -278,6 +279,7 @@ export class GameRightSidebar extends LitElement implements Controller {
     await crazyGamesSDK.requestMidgameAd();
     await crazyGamesSDK.gameplayStop();
     // redirect to the home page
+    forgetActiveGame();
     window.location.href = homeHref();
   }
 

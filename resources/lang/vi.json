@@ -364,7 +364,7 @@
     "donate_insufficient": "Không đủ {currency}.",
     "donate_invalid_amount": "Nhập một số nguyên lớn hơn 0.",
     "donate_irreversible": "Các khoản ủng hộ là vĩnh viễn và không được hoàn lại. Số tiền đã ủng hộ cho clan sẽ không thể được trả lại cho bạn.",
-    "donate_irreversible_hard": "Ngọc lục bảo là loại tiền tệ cao cấp. Sau khi quyên góp, số tiền đó không thể được hoàn lại, rút ​​hoặc chuyển trở lại tài khoản của bạn.",
+    "donate_irreversible_hard": "Ngọc lục bảo là loại tiền tệ cao cấp. Sau khi quyên góp, số tiền đó không thể được hoàn lại, rút hoặc chuyển trở lại tài khoản của bạn.",
     "donate_not_member": "Bạn phải là thành viên của clan để ủng hộ.",
     "donate_submitting": "Đang ủng hộ…",
     "donate_subtitle": "Chuyển tiền từ tài khoản của bạn vào quỹ của clan.",
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Độ bão hòa màu lãnh thổ"
   },
   "heads_up_message": {
+    "capital_lost": "Không có thành phố thủ đô: bạn mất +10% vàng và tăng trưởng quân đội",
+    "capital_lost_ready": "Nhấp vào một trong các thành phố của bạn để biến nó thành thành phố thủ đô của bạn",
+    "capital_lost_wait": "Thành phố thủ đô mới có thể có ở {time}",
     "catching_up": "Đang đồng bộ...",
     "choose_spawn": "Chọn vị trí bắt đầu",
     "choose_spawn_spectator": "Người chơi đang chọn vị trí bắt đầu",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Thủ đô: {capital}",
+    "continent_africa": "Châu phi",
+    "continent_all": "Tất cả",
+    "continent_asia": "Châu Á",
+    "continent_europe": "Châu Âu",
+    "continent_north_america": "Bắc Mỹ",
+    "continent_oceania": "Châu Đại Dương",
+    "continent_south_america": "Nam Mỹ",
     "free": "Miễn phí",
     "hint": "Nhấp vào một quốc gia trên bản đồ. Các nước xám đã bị chiếm rồi; mọi quốc gia tự do sẽ do AI chơi.",
     "load_failed": "Không thể tải bản đồ thế giới. Bạn sẽ nhận được một quốc gia ngẫu nhiên.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Tối đa",
     "game_speed": "Tốc độ trò chơi",
     "replay_speed": "Tốc độ phát lại"
+  },
+  "resume_game": {
+    "description": "Bạn đã rời khỏi trò chơi nhiều người chơi vẫn chưa kết thúc. Hãy quay trở lại vị trí hiện tại của bạn.",
+    "dismiss": "Quên nó đi",
+    "resume": "Tiếp tục trò chơi của tôi",
+    "title": "Trò chơi của bạn vẫn đang chạy"
   },
   "rewards_modal": {
     "title": "Phần thưởng"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Phòng mới",
     "other_team": "Đội {team} đã chiến thắng!",
     "other_won": "{player} đã chiến thắng!",
+    "recap_attacks": "Các cuộc tấn công đã phát động",
+    "recap_best_minute": "Phút tuyệt vời nhất",
+    "recap_best_minute_value": "+{tiles} ô ở {time}",
+    "recap_eliminated_by": "Bị loại bởi {name}",
+    "recap_peak_size": "Kích thước lớn nhất",
+    "recap_peak_size_value": "{tiles} gạch ({share}%)",
+    "recap_peak_troops": "Hầu hết quân",
+    "recap_time": "Thời gian chơi",
+    "recap_title": "Trò chơi của bạn",
     "requeue": "Chơi lại",
     "spectate": "Xem",
     "support_openfront": "Hỗ trợ Territorium!",

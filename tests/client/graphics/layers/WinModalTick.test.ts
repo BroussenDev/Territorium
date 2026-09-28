@@ -57,9 +57,14 @@ function makeGame(opts: {
       clientID: () => opts.myClientID ?? null,
     }),
     inSpawnPhase: () => false,
+    // Off the one-second recap boundary: these tests are about the win.
+    ticks: () => 101,
     updatesSinceLastTick: () => ({ [GameUpdateType.Win]: [winUpdate] }),
     playerByClientID: () => opts.winnerPlayer,
-    config: () => ({ gameConfig: () => ({ rankedType: undefined }) }),
+    config: () => ({
+      gameConfig: () => ({ rankedType: undefined }),
+      numSpawnPhaseTurns: () => 100,
+    }),
   } as unknown as GameView;
 }
 

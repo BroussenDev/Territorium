@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Gebietssättigung"
   },
   "heads_up_message": {
+    "capital_lost": "Keine Hauptstadt: Du hast ihr +10 % Gold- und Truppenwachstum verloren",
+    "capital_lost_ready": "Klicken Sie auf eine Ihrer Städte, um sie zu Ihrer Hauptstadt zu machen",
+    "capital_lost_wait": "Neue Hauptstadt in {time} möglich",
     "catching_up": "Ufhole...",
     "choose_spawn": "Wäu e Startposition",
     "choose_spawn_spectator": "Die Spieler wählen Startorte",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Hauptstadt: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Alle",
+    "continent_asia": "Asien",
+    "continent_europe": "Europa",
+    "continent_north_america": "Nordamerika",
+    "continent_oceania": "Ozeanien",
+    "continent_south_america": "Südamerika",
     "free": "Frei",
     "hint": "Klicken Sie auf der Karte auf ein Land. Graue Länder sind bereits besetzt; Jedes freie Land wird von der KI gespielt.",
     "load_failed": "Die Weltkarte konnte nicht geladen werden. Sie erhalten ein zufälliges Land.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Max",
     "game_speed": "Spiugschwindigkeit",
     "replay_speed": "Wiedergabgschwindigkeit"
+  },
+  "resume_game": {
+    "description": "Sie haben ein Multiplayer-Spiel verlassen, das noch nicht zu Ende ist. Springen Sie dorthin zurück, wo Sie sind.",
+    "dismiss": "Vergiss es",
+    "resume": "Setze mein Spiel fort",
+    "title": "Dein Spiel läuft noch"
   },
   "rewards_modal": {
     "title": "Belohnungen"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Neue Lobby",
     "other_team": "Team {team} het gwunne!",
     "other_won": "{player} het gewunne!",
+    "recap_attacks": "Angriffe gestartet",
+    "recap_best_minute": "Beste Minute",
+    "recap_best_minute_value": "+{tiles} Kacheln bei {time}",
+    "recap_eliminated_by": "Eliminiert durch {name}",
+    "recap_peak_size": "Grösste Grösse",
+    "recap_peak_size_value": "{tiles} Kacheln ({share}%)",
+    "recap_peak_troops": "Die meisten Truppen",
+    "recap_time": "Zeit gespielt",
+    "recap_title": "Dein Spiel",
     "requeue": "No einisch spiele",
     "spectate": "Zueluege",
     "support_openfront": "Ungerstütz Territorium!",

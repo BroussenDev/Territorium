@@ -2,6 +2,10 @@ import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { GameMode, GameType, RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
+import {
+  capitalRebuildTicksLeft,
+  hasCapital,
+} from "../../../core/game/NationsMode";
 import { Controller } from "../../Controller";
 import { translateText } from "../../Utils";
 import { GameView } from "../../view";
@@ -31,6 +35,10 @@ export class HeadsUpMessage extends LitElement implements Controller {
 
   @state()
   private isOvertimeNotice = false;
+  // Nations mode: seconds before the player may proclaim a new capital
+  // (0 = now), or null while they hold one.
+  @state()
+  private capitalLostWait: number | null = null;
 
   private static readonly CATCHING_UP_SHOW_THRESHOLD = 10;
   // How long the overtime announcement banner stays up after the start minute.
@@ -134,6 +142,20 @@ export class HeadsUpMessage extends LitElement implements Controller {
       elapsed >= overtimeStart &&
       elapsed < overtimeStart + HeadsUpMessage.OVERTIME_NOTICE_SECONDS;
 
+    const me = this.game.myPlayer();
+    this.capitalLostWait =
+      this.game.config().isNationsMode() &&
+      !this.game.inSpawnPhase() &&
+      me !== null &&
+      me.isAlive() &&
+      !hasCapital(me)
+        ? Math.ceil(
+            (capitalRebuildTicksLeft(me.capitalLostTick(), this.game.ticks()) *
+              this.game.config().msPerTick()) /
+              1000,
+          )
+        : null;
+
     this.isVisible =
       this.game.inSpawnPhase() ||
       this.isPaused ||
@@ -228,6 +250,28 @@ export class HeadsUpMessage extends LitElement implements Controller {
               </div>
             `
           : null}
+        ${this.capitalLostWait !== null
+          ? html`
+              <div
+                class="fixed top-[8%] left-1/2 -translate-x-1/2 z-[798]
+                            flex flex-col items-center w-fit max-w-[90vw]
+                            bg-red-900/75 border border-amber-400/60 rounded-md lg:rounded-lg
+                            backdrop-blur-xs text-white px-3 lg:px-4 py-1.5 text-center"
+                @contextmenu=${(e: MouseEvent) => e.preventDefault()}
+              >
+                <div class="text-sm lg:text-base font-semibold">
+                  👑 ${translateText("heads_up_message.capital_lost")}
+                </div>
+                <div class="text-xs lg:text-sm text-amber-200">
+                  ${this.capitalLostWait > 0
+                    ? translateText("heads_up_message.capital_lost_wait", {
+                        time: formatWait(this.capitalLostWait),
+                      })
+                    : translateText("heads_up_message.capital_lost_ready")}
+                </div>
+              </div>
+            `
+          : null}
         ${this.game?.inSpawnPhase() &&
         !this.game.config().isReplay() &&
         !this.game.config().isIntentionalSpectator() &&
@@ -259,4 +303,10 @@ export class HeadsUpMessage extends LitElement implements Controller {
       </div>
     `;
   }
+}
+
+function formatWait(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${s.toString().padStart(2, "0")}`;
 }

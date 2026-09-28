@@ -193,6 +193,7 @@ export function seatNationsGame(
       p.friends ?? [],
       null,
       country !== undefined ? (manifestNations[country].flag ?? null) : null,
+      country !== undefined ? manifestNations[country].name : null,
     );
     if (country !== undefined) seats.push({ info, country });
     return info;

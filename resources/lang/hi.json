@@ -1283,6 +1283,9 @@
     "territory_sat_label": "क्षेत्र संतृप्ति"
   },
   "heads_up_message": {
+    "capital_lost": "कोई राजधानी शहर नहीं: आपने इसका +10% सोना और सैन्य वृद्धि खो दी",
+    "capital_lost_ready": "इसे अपनी राजधानी बनाने के लिए अपने किसी एक शहर पर क्लिक करें",
+    "capital_lost_wait": "{time} में नई राजधानी संभव",
     "catching_up": "पकड़ना...",
     "choose_spawn": "एक आरंभिक स्थान चुनें",
     "choose_spawn_spectator": "खिलाड़ी शुरुआती स्थान चुन रहे हैं",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "राजधानी शहर: {capital}",
+    "continent_africa": "अफ़्रीका",
+    "continent_all": "सभी",
+    "continent_asia": "एशिया",
+    "continent_europe": "यूरोप",
+    "continent_north_america": "उत्तरी अमेरिका",
+    "continent_oceania": "ओशिनिया",
+    "continent_south_america": "दक्षिण अमेरिका",
     "free": "मुक्त",
     "hint": "मानचित्र पर किसी देश पर क्लिक करें. ग्रे देशों को पहले ही ले लिया गया है; प्रत्येक स्वतंत्र देश एआई द्वारा खेला जाएगा।",
     "load_failed": "विश्व मानचित्र लोड नहीं किया जा सका. आपको एक यादृच्छिक देश मिलेगा.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "अधिकतम",
     "game_speed": "खेल की गति",
     "replay_speed": "पुनः चलाने की गति"
+  },
+  "resume_game": {
+    "description": "आपने एक मल्टीप्लेयर गेम छोड़ दिया है जो अभी ख़त्म नहीं हुआ है। आप जहां हैं वहीं वापस कूदें।",
+    "dismiss": "रहने भी दो",
+    "resume": "मेरा खेल फिर से शुरू करो",
+    "title": "आपका गेम अभी भी चल रहा है"
   },
   "rewards_modal": {
     "title": "पुरस्कार"
@@ -2785,6 +2801,15 @@
     "new_lobby": "नई लॉबी",
     "other_team": "{team} टीम जीत गई!",
     "other_won": "{player} जीत गया!",
+    "recap_attacks": "हमले शुरू किये गये",
+    "recap_best_minute": "सर्वोत्तम मिनट",
+    "recap_best_minute_value": "+{tiles} टाइल्स {time} पर",
+    "recap_eliminated_by": "{name} द्वारा हटा दिया गया",
+    "recap_peak_size": "सबसे बड़ा आकार",
+    "recap_peak_size_value": "{tiles} टाइल्स ({share}%)",
+    "recap_peak_troops": "अधिकांश सैनिक",
+    "recap_time": "समय खेला गया",
+    "recap_title": "आपका खेल",
     "requeue": "फिर से चालू करें",
     "spectate": "तमाशा",
     "support_openfront": "टेरिटोरियम का समर्थन करें!",

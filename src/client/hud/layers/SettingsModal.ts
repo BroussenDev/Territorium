@@ -11,6 +11,7 @@ import {
 } from "../../InputHandler";
 import type { UserSettingModal } from "../../UserSettingModal";
 import { homeHref, translateText } from "../../Utils";
+import { forgetActiveGame } from "../../components/ResumeGameButton";
 const exitIcon = assetUrl("images/ExitIconWhite.svg");
 const settingsIcon = assetUrl("images/SettingIconWhite.svg");
 const treeIcon = assetUrl("images/TreeIconWhite.svg");
@@ -157,6 +158,7 @@ export class SettingsModal extends LitElement implements Controller {
 
   private onExitButtonClick() {
     // redirect to the home page
+    forgetActiveGame();
     window.location.href = homeHref();
   }
 

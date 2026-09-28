@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturação do Território"
   },
   "heads_up_message": {
+    "capital_lost": "Sem capital: você perdeu +10% de ouro e crescimento de tropas",
+    "capital_lost_ready": "Clique em uma de suas cidades para torná-la sua capital",
+    "capital_lost_wait": "Nova capital possível em {time}",
     "catching_up": "Atualizando...",
     "choose_spawn": "Escolha um local inicial",
     "choose_spawn_spectator": "Jogadores estão escolhendo os locais iniciais",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Capital: {capital}",
+    "continent_africa": "África",
+    "continent_all": "Todos",
+    "continent_asia": "Ásia",
+    "continent_europe": "Europa",
+    "continent_north_america": "América do Norte",
+    "continent_oceania": "Oceânia",
+    "continent_south_america": "Ámérica do Sul",
     "free": "Livre",
     "hint": "Clique em um país no mapa. Os países cinzentos já estão tomados; todos os países livres serão jogados pela IA.",
     "load_failed": "Não foi possível carregar o mapa mundial. Você receberá um país aleatório.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Máximo",
     "game_speed": "Velocidade do Jogo",
     "replay_speed": "Velocidade do Replay"
+  },
+  "resume_game": {
+    "description": "Você saiu de um jogo multijogador que ainda não acabou. Volte para onde você está.",
+    "dismiss": "Esqueça",
+    "resume": "Retomar meu jogo",
+    "title": "Seu jogo ainda está em execução"
   },
   "rewards_modal": {
     "title": "Recompensas"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Novo Lobby",
     "other_team": "{team} Equipe Venceu!",
     "other_won": "{player} Venceu!",
+    "recap_attacks": "Ataques lançados",
+    "recap_best_minute": "Melhor minuto",
+    "recap_best_minute_value": "+{tiles} peças em {time}",
+    "recap_eliminated_by": "Eliminado por {name}",
+    "recap_peak_size": "Maior tamanho",
+    "recap_peak_size_value": "{tiles} blocos ({share}%)",
+    "recap_peak_troops": "A maioria das tropas",
+    "recap_time": "Tempo jogado",
+    "recap_title": "Seu jogo",
     "requeue": "Jogar Novamente",
     "spectate": "Assistir",
     "support_openfront": "Suporte Territorium!",

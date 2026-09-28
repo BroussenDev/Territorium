@@ -1283,6 +1283,9 @@
     "territory_sat_label": "영토 채도"
   },
   "heads_up_message": {
+    "capital_lost": "수도 없음: +10% 금화 및 병력 성장을 잃었습니다.",
+    "capital_lost_ready": "도시 중 하나를 클릭하여 수도로 만드세요.",
+    "capital_lost_wait": "{time}에 새로운 수도 건설 가능",
     "catching_up": "따라잡는 중...",
     "choose_spawn": "시작 위치를 선택하세요",
     "choose_spawn_spectator": "플레이어들이 시작 위치를 선택하고 있습니다",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "수도: {capital}",
+    "continent_africa": "아프리카",
+    "continent_all": "모두",
+    "continent_asia": "아시아",
+    "continent_europe": "유럽",
+    "continent_north_america": "북아메리카",
+    "continent_oceania": "오세아니아",
+    "continent_south_america": "남아메리카",
     "free": "무료",
     "hint": "지도에서 국가를 클릭하세요. 회색 국가는 이미 점령되었습니다. 모든 자유 국가는 AI에 의해 플레이됩니다.",
     "load_failed": "세계 지도를 로드할 수 없습니다. 당신은 임의의 국가를 얻을 것입니다.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "최대",
     "game_speed": "게임 속도",
     "replay_speed": "리플레이 속도"
+  },
+  "resume_game": {
+    "description": "아직 끝나지 않은 멀티플레이어 게임을 떠났습니다. 당신이 있는 곳으로 다시 점프하세요.",
+    "dismiss": "잊어 버려",
+    "resume": "게임 재개",
+    "title": "게임이 아직 실행 중입니다."
   },
   "rewards_modal": {
     "title": "보상"
@@ -2785,6 +2801,15 @@
     "new_lobby": "새 로비",
     "other_team": "{team} 팀이 이겼습니다!",
     "other_won": "{player} 이(가) 이겼습니다!",
+    "recap_attacks": "공격 개시",
+    "recap_best_minute": "최고의 순간",
+    "recap_best_minute_value": "{time}의 +{tiles} 타일",
+    "recap_eliminated_by": "{name}에 의해 제거됨",
+    "recap_peak_size": "가장 큰 크기",
+    "recap_peak_size_value": "{tiles} 타일({share}%)",
+    "recap_peak_troops": "대부분의 군대",
+    "recap_time": "플레이 시간",
+    "recap_title": "당신의 게임",
     "requeue": "다시 하기",
     "spectate": "관전하기",
     "support_openfront": "Territorium를 후원해주세요!",

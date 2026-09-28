@@ -1283,6 +1283,9 @@
     "territory_sat_label": "تشبع الإقليم"
   },
   "heads_up_message": {
+    "capital_lost": "لا توجد عاصمة: لقد فقدت +10% من الذهب ونمو القوات",
+    "capital_lost_ready": "انقر فوق إحدى مدنك لجعلها عاصمتك",
+    "capital_lost_wait": "العاصمة الجديدة ممكنة في {time}",
     "catching_up": "اللحاق...",
     "choose_spawn": "اختر موقع البداية",
     "choose_spawn_spectator": "يختار اللاعبون مواقع البداية",
@@ -1546,7 +1549,7 @@
     "refresh_time": "يتم تحديثه كل 1 ساعة",
     "solo_no_stats": "اربح مباراة فردية ضد الدول للانضمام إلى اللوحة.",
     "solo_points": "نقاط",
-    "solo_points_tooltip": "النقاط من الانتصارات الفردية: سهل 1، متوسط ​​2، صعب 3، مستحيل 5",
+    "solo_points_tooltip": "النقاط من الانتصارات الفردية: سهل 1، متوسط 2، صعب 3، مستحيل 5",
     "solo_rules": "الانتصارات الفردية ضد الأمم تمنح نقاطًا: سهل 1، متوسط 2، صعب 3، مستحيل 5. لا تُحتسب المباريات التي تقل عن دقيقتين أو التي تستخدم خيارات الغش، ولا أكثر من 10 انتصارات في اليوم.",
     "solo_tab": "منفردا",
     "tier": "الطبقة",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "العاصمة: {capital}",
+    "continent_africa": "أفريقيا",
+    "continent_all": "الكل",
+    "continent_asia": "آسيا",
+    "continent_europe": "أوروبا",
+    "continent_north_america": "أمريكا الشمالية",
+    "continent_oceania": "أوقيانوسيا",
+    "continent_south_america": "أمريكا الجنوبية",
     "free": "حر",
     "hint": "انقر فوق بلد على الخريطة. لقد تم بالفعل أخذ البلدان الرمادية؛ سيتم لعب كل دولة حرة بواسطة الذكاء الاصطناعي.",
     "load_failed": "لا يمكن تحميل خريطة العالم. سوف تحصل على بلد عشوائي.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "ماكس",
     "game_speed": "سرعة اللعبة",
     "replay_speed": "سرعة إعادة التشغيل"
+  },
+  "resume_game": {
+    "description": "لقد تركت لعبة متعددة اللاعبين لم تنته بعد. القفز مرة أخرى إلى حيث أنت.",
+    "dismiss": "انسى ذلك",
+    "resume": "استئناف لعبتي",
+    "title": "لعبتك لا تزال قيد التشغيل"
   },
   "rewards_modal": {
     "title": "المكافآت"
@@ -2785,6 +2801,15 @@
     "new_lobby": "اللوبي الجديد",
     "other_team": "{team} فاز الفريق!",
     "other_won": "{player} فاز!",
+    "recap_attacks": "شنت الهجمات",
+    "recap_best_minute": "أفضل دقيقة",
+    "recap_best_minute_value": "+{tiles} البلاط في {time}",
+    "recap_eliminated_by": "تمت الإزالة بواسطة {name}",
+    "recap_peak_size": "أكبر حجم",
+    "recap_peak_size_value": "{tiles} بلاط ({share}%)",
+    "recap_peak_troops": "معظم القوات",
+    "recap_time": "الوقت الذي لعبت فيه",
+    "recap_title": "لعبتك",
     "requeue": "العب مرة أخرى",
     "spectate": "شاهد",
     "support_openfront": "ادعم Territorium!",

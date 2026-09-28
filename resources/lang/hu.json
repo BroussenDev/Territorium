@@ -537,7 +537,7 @@
     "not_allowlisted": "Nem szerepelsz ennek a várószobának az engedélyezési listáján.",
     "not_trusted": "Ez a várószoba csak megbízható fiókok számára érhető el.",
     "protocol_error": "A kapcsolat megsérült.",
-    "ranked_limit_reached": "Mára elfogytak az ingyenes rangsorolt ​​mérkőzéseid.",
+    "ranked_limit_reached": "Mára elfogytak az ingyenes rangsorolt mérkőzéseid.",
     "turnstile_failed": "A botellenőrzés sikertelen volt. Kérjük, frissítsd az oldalt, és próbáld újra.",
     "unknown": "A szerver lezárta a kapcsolatot.",
     "wrong_worker": "Ez a kapcsolat nem a megfelelő szerverfolyamathoz jutott el. Kérjük, frissítsd az oldalt, és próbáld újra."
@@ -647,7 +647,7 @@
     "type_skin": "Minta",
     "uncommon": "Nem gyakori",
     "unlimited_ranked": "Korlátlan rangsorolt",
-    "unlimited_ranked_info": "Nincs korlátozás arra vonatkozóan, hány rangsorolt ​​mérkőzést játszhatsz.",
+    "unlimited_ranked_info": "Nincs korlátozás arra vonatkozóan, hány rangsorolt mérkőzést játszhatsz.",
     "usd_value": "Ár: {usd}$",
     "verified_name": "Hitelesített felhasználónév",
     "verified_name_info": "Felhasználóneved a fiókodhoz van rendelve, és a játékban hitelesítési jelvényt jelenít meg."
@@ -1022,7 +1022,7 @@
     "custom_lobbies": "Személyre szabott előcsarnokok barátokkal",
     "free_heading": "Az ingyenes játék magában foglalja",
     "full_game": "A teljes játék: minden térkép és mód, online és egyjátékos",
-    "ranked": "Rangsorolt ​​játék, az ingyenes napi mérkőzés limittel"
+    "ranked": "Rangsorolt játék, az ingyenes napi mérkőzés limittel"
   },
   "friends": {
     "accept": "Elfogad",
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Terület telítettsége"
   },
   "heads_up_message": {
+    "capital_lost": "Nincs főváros: elvesztette +10%-os arany- és csapatnövekedését",
+    "capital_lost_ready": "Kattintson az egyik városra, hogy fővárosává tegye",
+    "capital_lost_wait": "Új főváros lehetséges {time}-ben",
     "catching_up": "Frissítés...",
     "choose_spawn": "Válassz kiindulási helyet",
     "choose_spawn_spectator": "A játékosok kezdőhelyszíneket választanak",
@@ -1539,7 +1542,7 @@
     "rank": "Rang",
     "ranked_2v2_tab": "Csapatok",
     "ranked_no_players": "Még senki sem fejezte be a helyezési meccseit ebben a szezonban.",
-    "ranked_no_stats": "Ezen a ranglistán még nem játszottak rangsorolt ​​mérkőzéseket.",
+    "ranked_no_stats": "Ezen a ranglistán még nem játszottak rangsorolt mérkőzéseket.",
     "ranked_rules": "{season}. évad · vége: {date}. A játékosok 5 helyezési meccsük után jelennek meg.",
     "ranked_tab": "Rangsorolt",
     "ratio": "Arány",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Főváros: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Minden",
+    "continent_asia": "Ázsia",
+    "continent_europe": "Európa",
+    "continent_north_america": "Észak Amerika",
+    "continent_oceania": "Óceánia",
+    "continent_south_america": "Dél-Amerika",
     "free": "Ingyenes",
     "hint": "Kattintson egy országra a térképen. A szürke országokat már elfoglalták; minden szabad országot az AI fog játszani.",
     "load_failed": "A világtérképet nem sikerült betölteni. Kapsz egy véletlenszerű országot.",
@@ -1867,7 +1877,7 @@
     "render_layers_summary": "Utolsó tick: {frames} képkocka, {ms}ms",
     "render_layers_table_header": "átlag / max | tick átlag",
     "reset": "Visszaállítás",
-    "tick_delay": "Tick ​​késleltetés:",
+    "tick_delay": "Tick késleltetés:",
     "tick_exec": "Tick végrehajtás:",
     "tick_layers_header": "Tick rétegek",
     "tick_layers_summary": "Utolsó tick: {count} képkocka, {ms}ms",
@@ -2114,7 +2124,7 @@
     "placement_progress": "Helyezési játékok: {done}/{total}",
     "play": "Meccs keresése",
     "players_in_queue": "játékosok a sorban",
-    "queue_title": "Rangsorolt ​​várólista",
+    "queue_title": "Rangsorolt várólista",
     "record": "{games} játékok · {wins} nyer",
     "rule_cosmetics": "Nincs kozmetikum: mindenki ugyanúgy néz ki, csak a nevek és a kláncímkék láthatók.",
     "rule_elo": "Az ELO-d a végső helyezéseddel együtt mozog: minél magasabbra érsz, annál többet nyersz.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Max",
     "game_speed": "Játék sebessége",
     "replay_speed": "Visszajátszás sebessége"
+  },
+  "resume_game": {
+    "description": "Kiléptél egy többszereplős játékból, aminek még nincs vége. Ugorj vissza oda, ahol vagy.",
+    "dismiss": "Felejtsd el",
+    "resume": "Folytassa a játékomat",
+    "title": "A játékod még fut"
   },
   "rewards_modal": {
     "title": "Jutalmak"
@@ -2261,7 +2277,7 @@
     "confirm_subscribe_over_grant_no_days": "Elkezd most fizetős {tier} előfizetést? Ingyenes hozzáférése azonnal lejár, és a rajta maradt időt nem térítjük vissza, és nem adjuk hozzá a fizetett idejéhez.",
     "confirm_tier_change_steam": "Feliratkozol most a(z) {tier} szintre? Az új szint azonnal, teljes áron indul, és az aktuális hónap hátralévő részének díját nem térítjük vissza.",
     "confirm_tier_switch_currency": "Váltás erre: {tier}? Új 30 napos időszak kezdődik, és a jelenlegi előfizetéséből hátralévő napok elvesznek.",
-    "confirm_upgrade": "Frissítesz {tier} szintre? Most a különbözet ​​arányosított részét számítjuk fel.",
+    "confirm_upgrade": "Frissítesz {tier} szintre? Most a különbözet arányosított részét számítjuk fel.",
     "cosmetics": "Kinézet",
     "crowns": "Koronák",
     "currency_pack_purchase_success": "Valuta csomag vásárlása sikeres!",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Új váróterem",
     "other_team": "A(z) {team} csapat győzött!",
     "other_won": "{player} nyert!",
+    "recap_attacks": "Megindultak a támadások",
+    "recap_best_minute": "A legjobb perc",
+    "recap_best_minute_value": "+{tiles} csempe itt: {time}",
+    "recap_eliminated_by": "Kizárta: {name}",
+    "recap_peak_size": "Legnagyobb méret",
+    "recap_peak_size_value": "{tiles} csempe ({share}%)",
+    "recap_peak_troops": "A legtöbb csapat",
+    "recap_time": "Játszott idő",
+    "recap_title": "A te játékod",
     "requeue": "Új játék",
     "spectate": "Megfigyel",
     "support_openfront": "Támogasd az Territoriumot!",

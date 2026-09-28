@@ -174,6 +174,10 @@ import "./components/MainLayout";
 import "./components/MobileNavBar";
 import "./components/PlayPage";
 import "./components/RankedModal";
+import {
+  forgetActiveGame,
+  rememberActiveGame,
+} from "./components/ResumeGameButton";
 import "./components/baseComponents/Button";
 import "./components/baseComponents/Modal";
 import "./styles.css";
@@ -971,6 +975,7 @@ class Client {
     };
 
     const leaveGame = () => {
+      forgetActiveGame();
       crazyGamesSDK.gameplayStop().then(() => {
         // redirect to the home page
         window.location.href = homeHref();
@@ -1475,6 +1480,10 @@ class Client {
       // The game is actually starting now (lobby wait is over). Let listeners that stay up
       // through the wait (e.g. the featured-stream panel) hide at this point instead of on join.
       document.dispatchEvent(new CustomEvent("game-starting"));
+      // Remember the game so the main menu can offer to go back to it.
+      if (!isSingleplayer && !lobby.gameRecord && !lobby.spectator) {
+        rememberActiveGame(lobby.gameID);
+      }
       // Earliest point the lobby is provably closed: the server has stopped
       // broadcasting lobby_info and refuses new seats, so the shell must stop
       // advertising this as joinable even though terrain is still loading.
@@ -1734,6 +1743,7 @@ class Client {
       return;
     }
     console.log("leaving lobby, cancelling game");
+    forgetActiveGame();
     this.lobbyHandle.stop(true);
     this.lobbyHandle = null;
     this.currentUrl = null;

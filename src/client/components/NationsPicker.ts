@@ -15,10 +15,133 @@ import { translateText } from "../Utils";
 // quarter of its size.
 const SCALE = 4;
 
+const CONTINENTS = [
+  "europe",
+  "asia",
+  "africa",
+  "north_america",
+  "south_america",
+  "oceania",
+] as const;
+type Continent = (typeof CONTINENTS)[number];
+
+// Continent of each country of the giant world map, by manifest flag code.
+const CONTINENT_FLAGS: Record<Continent, string[]> = {
+  europe: [
+    "tr",
+    "de",
+    "fr",
+    "es",
+    "it",
+    "gb",
+    "ie",
+    "pl",
+    "gr",
+    "bg",
+    "rs",
+    "ro",
+    "hu",
+    "ua",
+    "se",
+    "no",
+    "Sami flag",
+    "fi",
+    "ru",
+    "by",
+    "is",
+  ],
+  asia: [
+    "ge",
+    "iq",
+    "sy",
+    "sa",
+    "ye",
+    "ae",
+    "ir",
+    "pk",
+    "af",
+    "kz",
+    "tm",
+    "Siberia",
+    "in",
+    "bd",
+    "np",
+    "cn",
+    "kp",
+    "kr",
+    "jp",
+    "mn",
+    "id",
+    "vn",
+    "mm",
+    "th",
+  ],
+  africa: [
+    "tn",
+    "ly",
+    "eg",
+    "ma",
+    "dz",
+    "sd",
+    "so",
+    "et",
+    "mr",
+    "td",
+    "ne",
+    "ng",
+    "lr",
+    "cf",
+    "cd",
+    "za",
+    "mg",
+    "mz",
+    "tz",
+    "ml",
+    "na",
+    "ao",
+    "zw",
+    "ga",
+  ],
+  north_america: [
+    "ni",
+    "mx",
+    "us",
+    "Texas",
+    "California",
+    "Utah",
+    "Quebec",
+    "newfoundlandandlabrador",
+    "ca",
+    "Alaska",
+    "Nunavut",
+    "Yukon",
+    "gl",
+    "Washington",
+    "Kansas",
+    "Mississippi",
+    "Montana",
+    "britishcolumbia",
+    "alberta",
+    "saskatchewan",
+    "manitoba",
+    "Massachusetts",
+    "Minnesota",
+    "Michigan",
+    "northwestterritories",
+  ],
+  south_america: ["br", "amazonas", "ar", "cl", "pe", "co", "ve", "bo"],
+  oceania: ["pg", "au", "Australian Aboriginal Flag", "nz"],
+};
+
+const CONTINENT_OF = new Map<string, Continent>(
+  CONTINENTS.flatMap((c) => CONTINENT_FLAGS[c].map((f) => [f, c] as const)),
+);
+
 interface PickerCountry extends NationsCountry {
   index: number;
   name: string;
   flag?: string;
+  continent?: Continent;
   /** Share of the playable world, in percent. */
   share: number;
 }
@@ -52,6 +175,7 @@ function loadPickerData(): Promise<PickerData> {
       index,
       name: manifest.nations[index]?.name ?? "",
       flag: manifest.nations[index]?.flag,
+      continent: CONTINENT_OF.get(manifest.nations[index]?.flag ?? ""),
       share: (c.tiles / total) * 100,
     }));
     const width = Math.ceil(json.width / SCALE);
@@ -120,6 +244,7 @@ export class NationsPicker extends LitElement {
   @state() private hovered: number | null = null;
   @state() private tooltip: { x: number; y: number } | null = null;
   @state() private search = "";
+  @state() private continent: Continent | null = null;
 
   @query("canvas") private canvas?: HTMLCanvasElement;
   // What the canvas shows, so moving the tooltip doesn't repaint it.
@@ -167,7 +292,7 @@ export class NationsPicker extends LitElement {
     }
     const holders = this.holders;
     const mine = this.myNation;
-    const key = `${canvas.width}|${this.hovered}|${mine}|${[...holders.keys()].join(",")}`;
+    const key = `${canvas.width}|${this.hovered}|${mine}|${this.continent}|${[...holders.keys()].join(",")}`;
     if (key === this.drawnKey) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -176,6 +301,9 @@ export class NationsPicker extends LitElement {
       const holder = holders.get(c.index);
       if (c.index === mine) return [250, 204, 21, 255];
       if (holder !== undefined) return [70, 70, 78, 235];
+      if (this.continent !== null && c.continent !== this.continent) {
+        return [40, 40, 48, 110];
+      }
       const [r, g, b] = countryColor(c.index);
       return c.index === this.hovered
         ? [
@@ -303,15 +431,18 @@ export class NationsPicker extends LitElement {
     const data = this.data;
     if (!data) return nothing;
     const query = this.search.trim().toLowerCase();
-    if (query === "") return nothing;
+    // Without a query, a picked continent lists all of its countries.
+    if (query === "" && this.continent === null) return nothing;
     const holders = this.holders;
     const matches = data.countries
       .filter(
         (c) =>
           isPlayableCountry(data.countries, c.index) &&
+          (this.continent === null || c.continent === this.continent) &&
           c.name.toLowerCase().includes(query),
       )
-      .slice(0, 8);
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .slice(0, query === "" ? undefined : 8);
     return html`<ul
       class="mt-2 max-h-48 overflow-y-auto rounded-lg border border-white/10 bg-black/40"
     >
@@ -377,6 +508,26 @@ export class NationsPicker extends LitElement {
     </div>`;
   }
 
+  private renderContinents() {
+    const chip = (continent: Continent | null, label: string) =>
+      html`<button
+        type="button"
+        class="rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${this
+          .continent === continent
+          ? "border-emerald-400 bg-emerald-500/25 text-white"
+          : "border-white/15 bg-black/30 text-white/70 hover:bg-white/10"}"
+        @click=${() => (this.continent = continent)}
+      >
+        ${label}
+      </button>`;
+    return html`<div class="flex flex-wrap gap-1.5">
+      ${chip(null, translateText("nations_lobby.continent_all"))}
+      ${CONTINENTS.map((c) =>
+        chip(c, translateText(`nations_lobby.continent_${c}`)),
+      )}
+    </div>`;
+  }
+
   render() {
     if (this.failed) {
       return html`<p class="text-sm text-red-300">
@@ -397,6 +548,7 @@ export class NationsPicker extends LitElement {
           ${translateText("nations_lobby.hint")}
         </p>
       </div>
+      ${this.renderContinents()}
       <div
         class="relative w-full overflow-visible rounded-lg bg-[#0b2a45]"
         style="aspect-ratio: 4108 / 1948"

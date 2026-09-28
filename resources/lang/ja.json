@@ -1283,6 +1283,9 @@
     "territory_sat_label": "領土の彩度"
   },
   "heads_up_message": {
+    "capital_lost": "首都がありません: +10% のゴールドと軍隊の成長を失いました",
+    "capital_lost_ready": "都市の 1 つをクリックして首都にします",
+    "capital_lost_wait": "{time} に新しい首都が可能",
     "catching_up": "取戻し中…",
     "choose_spawn": "スタート地点を選んで下さい",
     "choose_spawn_spectator": "プレイヤーが開始地点を選択しています",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "首都: {capital}",
+    "continent_africa": "アフリカ",
+    "continent_all": "全て",
+    "continent_asia": "アジア",
+    "continent_europe": "ヨーロッパ",
+    "continent_north_america": "北米",
+    "continent_oceania": "オセアニア",
+    "continent_south_america": "南アメリカ",
     "free": "無料",
     "hint": "地図上の国をクリックします。灰色の国はすでに占領されています。すべての自由な国は AI によってプレイされることになります。",
     "load_failed": "世界地図を読み込めませんでした。ランダムな国が表示されます。",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "最大",
     "game_speed": "ゲーム速度",
     "replay_speed": "再生速度"
+  },
+  "resume_game": {
+    "description": "まだ終わっていないマルチプレイヤー ゲームを終了しました。ジャンプして元の場所に戻りましょう。",
+    "dismiss": "忘れて",
+    "resume": "ゲームを再開する",
+    "title": "ゲームはまだ実行中です"
   },
   "rewards_modal": {
     "title": "報酬"
@@ -2785,6 +2801,15 @@
     "new_lobby": "新規ロビー",
     "other_team": "{team}チームが勝利しました。",
     "other_won": "{player}の勝利！",
+    "recap_attacks": "攻撃が開始されました",
+    "recap_best_minute": "ベストミニッツ",
+    "recap_best_minute_value": "{time} で +{tiles} タイル",
+    "recap_eliminated_by": "{name} によって排除されました",
+    "recap_peak_size": "最大サイズ",
+    "recap_peak_size_value": "{tiles} タイル ({share}%)",
+    "recap_peak_troops": "ほとんどの軍隊",
+    "recap_time": "プレイ時間",
+    "recap_title": "あなたのゲーム",
     "requeue": "もう一度プレイする",
     "spectate": "観戦する",
     "support_openfront": "Territorium を支援！",

@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturació del territori"
   },
   "heads_up_message": {
+    "capital_lost": "Sense capital: heu perdut el seu +10% d'or i de creixement de tropes",
+    "capital_lost_ready": "Feu clic a una de les vostres ciutats per convertir-la en la vostra capital",
+    "capital_lost_wait": "Nova capital possible a {time}",
     "catching_up": "Atrapant la partida...",
     "choose_spawn": "Tria un punt de partida",
     "choose_spawn_spectator": "Els jugadors trien els llocs d'inici",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Ciutat capital: {capital}",
+    "continent_africa": "Àfrica",
+    "continent_all": "Tots",
+    "continent_asia": "Àsia",
+    "continent_europe": "Europa",
+    "continent_north_america": "Amèrica del Nord",
+    "continent_oceania": "Oceania",
+    "continent_south_america": "Amèrica del Sud",
     "free": "Gratuït",
     "hint": "Feu clic a un país al mapa. Els països grisos ja estan presos; tots els països lliures seran jugats per l'IA.",
     "load_failed": "No s'ha pogut carregar el mapa del món. Obtindreu un país aleatori.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Màx",
     "game_speed": "Velocitat de joc",
     "replay_speed": "Velocitat de reproducció"
+  },
+  "resume_game": {
+    "description": "Has deixat una partida multijugador que encara no ha acabat. Torna cap a on ets.",
+    "dismiss": "Oblida't",
+    "resume": "Reprèn el meu joc",
+    "title": "El teu joc encara s'està executant"
   },
   "rewards_modal": {
     "title": "Recompenses"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nou vestíbul",
     "other_team": "L'equip {team} ha guanyat!",
     "other_won": "{player} ha guanyat!",
+    "recap_attacks": "Es van llançar atacs",
+    "recap_best_minute": "Millor minut",
+    "recap_best_minute_value": "+{tiles} fitxes a {time}",
+    "recap_eliminated_by": "Eliminat per {name}",
+    "recap_peak_size": "Talla més gran",
+    "recap_peak_size_value": "{tiles} fitxes ({share}%)",
+    "recap_peak_troops": "La majoria de tropes",
+    "recap_time": "El temps jugat",
+    "recap_title": "El teu joc",
     "requeue": "Torna a Jugar",
     "spectate": "Mira com a espectador",
     "support_openfront": "Dona suport a Territorium!",

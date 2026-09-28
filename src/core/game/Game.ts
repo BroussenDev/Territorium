@@ -490,8 +490,12 @@ export class PlayerInfo {
     // the correct flag even when multiple nations on a map share a display
     // name (e.g. India's and Pakistan's "Punjab").
     public readonly nationFlag: string | null = null,
+    // Nations mode: the real country a human plays, shown before their name.
+    public readonly countryName: string | null = null,
   ) {
-    this.displayName = formatPlayerDisplayName(this.name, this.clanTag);
+    const shown = formatPlayerDisplayName(this.name, this.clanTag);
+    this.displayName =
+      countryName !== null ? `${countryName} | ${shown}` : shown;
   }
 }
 

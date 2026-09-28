@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturation du territoire d'un joueur"
   },
   "heads_up_message": {
+    "capital_lost": "Plus de capitale : vous avez perdu ses +10 % d'or et de troupes",
+    "capital_lost_ready": "Cliquez sur une de vos villes pour en faire votre capitale",
+    "capital_lost_wait": "Nouvelle capitale possible dans {time}",
     "catching_up": "Rattrapage...",
     "choose_spawn": "Choisissez un emplacement de départ",
     "choose_spawn_spectator": "Les joueurs choisissent leur emplacement de départ",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Capitale : {capital}",
+    "continent_africa": "Afrique",
+    "continent_all": "Tous",
+    "continent_asia": "Asie",
+    "continent_europe": "Europe",
+    "continent_north_america": "Amérique du Nord",
+    "continent_oceania": "Océanie",
+    "continent_south_america": "Amérique du Sud",
     "free": "Libre",
     "hint": "Cliquez sur un pays de la carte. Les pays gris sont déjà pris ; tous les pays libres seront joués par l'IA.",
     "load_failed": "La carte du monde n'a pas pu être chargée. Vous recevrez un pays au hasard.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Max",
     "game_speed": "Vitesse de jeu",
     "replay_speed": "Vitesse de relecture"
+  },
+  "resume_game": {
+    "description": "Vous avez quitté une partie multijoueur qui n'est pas terminée. Reprenez-la là où vous en étiez.",
+    "dismiss": "Oublier",
+    "resume": "Reprendre ma partie",
+    "title": "Votre partie continue"
   },
   "rewards_modal": {
     "title": "Récompenses"
@@ -2753,7 +2769,7 @@
     "invalid_chars": "Le pseudonyme peut seulement contenir des lettres, chiffres, espaces et des tirets.",
     "lapse_notice": "Votre abonnement a pris fin, vous ne jouez donc plus sous le nom « {name} ». Il vous reste réservé jusqu’au {date}. Réabonnez-vous avant cette date pour le conserver. Passé ce délai, n’importe quel joueur pourra l’utiliser.",
     "lapse_notice_after_grant": "Le mois d'accès premium fourni avec votre achat Steam est terminé, vous ne jouez donc plus en tant que \"{name}\". Vous conservez le jeu complet gratuitement ; seuls les avantages premium s’arrêtent. Le nom vous reste réservé jusqu'au {date} — abonnez-vous avant pour le conserver. Après cela, tout le monde peut le prendre.",
-    "lapse_notice_after_grant_at_risk": "Le mois d'accès premium fourni avec votre achat Steam est terminé, vous ne jouez donc plus en tant que \"{name}\" et le nom n'est plus réservé. Vous conservez le jeu complet gratuitement. Un autre joueur peut prendre le nom à tout moment – ​​abonnez-vous maintenant pour le conserver.",
+    "lapse_notice_after_grant_at_risk": "Le mois d'accès premium fourni avec votre achat Steam est terminé, vous ne jouez donc plus en tant que \"{name}\" et le nom n'est plus réservé. Vous conservez le jeu complet gratuitement. Un autre joueur peut prendre le nom à tout moment – abonnez-vous maintenant pour le conserver.",
     "lapse_notice_at_risk": "Vous ne jouez plus sous le nom « {name} » et celui-ci n’est plus réservé. Un autre joueur peut l’utiliser à tout moment. Réabonnez-vous maintenant pour le conserver.",
     "not_string": "Le nom d'utilisateur doit être une chaîne de caractères.",
     "tag": "TAG",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nouveau salon",
     "other_team": "L'équipe {team} a gagné !",
     "other_won": "{player} a gagné !",
+    "recap_attacks": "Attaques lancées",
+    "recap_best_minute": "Meilleure minute",
+    "recap_best_minute_value": "+{tiles} cases à {time}",
+    "recap_eliminated_by": "Éliminé par {name}",
+    "recap_peak_size": "Taille maximale",
+    "recap_peak_size_value": "{tiles} cases ({share} %)",
+    "recap_peak_troops": "Troupes maximales",
+    "recap_time": "Temps de jeu",
+    "recap_title": "Votre partie",
     "requeue": "Rejouer",
     "spectate": "Regarder",
     "support_openfront": "Soutenir Territorium!",

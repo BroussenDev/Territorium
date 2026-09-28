@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Sytost vybarvení území"
   },
   "heads_up_message": {
+    "capital_lost": "Žádné hlavní město: přišli jste o jeho +10 % zlata a nárůst počtu vojáků",
+    "capital_lost_ready": "Kliknutím na jedno ze svých měst z něj uděláte své hlavní město",
+    "capital_lost_wait": "Nové hlavní město možné za {time}",
     "catching_up": "Synchronizuji...",
     "choose_spawn": "Vyberte počáteční pozici",
     "choose_spawn_spectator": "Hráči si vybírají počáteční pozice",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Hlavní město: {capital}",
+    "continent_africa": "Afrika",
+    "continent_all": "Vše",
+    "continent_asia": "Asie",
+    "continent_europe": "Evropa",
+    "continent_north_america": "Severní Amerika",
+    "continent_oceania": "Oceánie",
+    "continent_south_america": "Jižní Amerika",
     "free": "Uvolnit",
     "hint": "Klikněte na zemi na mapě. Šedé země jsou již obsazeny; každá svobodná země bude hrát AI.",
     "load_failed": "Mapu světa nelze načíst. Získáte náhodnou zemi.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Maximální",
     "game_speed": "Rychlost hry",
     "replay_speed": "Rychlost přehrávání"
+  },
+  "resume_game": {
+    "description": "Opustili jste hru pro více hráčů, která ještě neskončila. Skoč zpátky tam, kde jsi.",
+    "dismiss": "Zapomeň na to",
+    "resume": "Obnovit moji hru",
+    "title": "Vaše hra stále běží"
   },
   "rewards_modal": {
     "title": "Odměny"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nová lobby",
     "other_team": "Tým {team} vyhrál!",
     "other_won": "{player} vítězí!",
+    "recap_attacks": "Útoky zahájeny",
+    "recap_best_minute": "Nejlepší minuta",
+    "recap_best_minute_value": "+{tiles} dlaždic na {time}",
+    "recap_eliminated_by": "Vyřazeno {name}",
+    "recap_peak_size": "Největší velikost",
+    "recap_peak_size_value": "{tiles} dlaždic ({share}%)",
+    "recap_peak_troops": "Většina vojáků",
+    "recap_time": "Hraný čas",
+    "recap_title": "Vaše hra",
     "requeue": "Hrát znovu",
     "spectate": "Sledovat",
     "support_openfront": "Podpořte Territorium!",

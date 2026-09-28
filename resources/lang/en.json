@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Territory saturation"
   },
   "heads_up_message": {
+    "capital_lost": "No capital city: you lost its +10% gold and troop growth",
+    "capital_lost_ready": "Click one of your cities to make it your capital city",
+    "capital_lost_wait": "New capital city possible in {time}",
     "catching_up": "Catching up...",
     "choose_spawn": "Choose a starting location",
     "choose_spawn_spectator": "Players are choosing starting locations",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Capital city: {capital}",
+    "continent_africa": "Africa",
+    "continent_all": "All",
+    "continent_asia": "Asia",
+    "continent_europe": "Europe",
+    "continent_north_america": "North America",
+    "continent_oceania": "Oceania",
+    "continent_south_america": "South America",
     "free": "Free",
     "hint": "Click a country on the map. Grey countries are already taken; every free country will be played by the AI.",
     "load_failed": "The world map could not be loaded. You will get a random country.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Max",
     "game_speed": "Game speed",
     "replay_speed": "Replay speed"
+  },
+  "resume_game": {
+    "description": "You left a multiplayer game that isn't over yet. Jump back in where you are.",
+    "dismiss": "Forget it",
+    "resume": "Resume my game",
+    "title": "Your game is still running"
   },
   "rewards_modal": {
     "title": "Rewards"
@@ -2785,6 +2801,15 @@
     "new_lobby": "New Lobby",
     "other_team": "{team} team has won!",
     "other_won": "{player} has won!",
+    "recap_attacks": "Attacks launched",
+    "recap_best_minute": "Best minute",
+    "recap_best_minute_value": "+{tiles} tiles at {time}",
+    "recap_eliminated_by": "Eliminated by {name}",
+    "recap_peak_size": "Largest size",
+    "recap_peak_size_value": "{tiles} tiles ({share}%)",
+    "recap_peak_troops": "Most troops",
+    "recap_time": "Time played",
+    "recap_title": "Your game",
     "requeue": "Play Again",
     "spectate": "Spectate",
     "support_openfront": "Support Territorium!",

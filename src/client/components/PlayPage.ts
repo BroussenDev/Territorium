@@ -5,6 +5,7 @@ import "./CosmeticBackground";
 import "./NavAccountMenu";
 import "./NavUtilityIcons";
 import "./NewsBox";
+import "./ResumeGameButton";
 import "./StreamingNow";
 import "./TerritoriumEmblem";
 
@@ -138,6 +139,7 @@ export class PlayPage extends LitElement {
           ></streaming-now>
         </div>
 
+        <resume-game-button></resume-game-button>
         <game-mode-selector></game-mode-selector>
       </div>
     `;

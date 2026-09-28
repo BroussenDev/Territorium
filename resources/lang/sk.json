@@ -956,7 +956,7 @@
     "betrayal_description": "Prerušil/a si spojenectvo s {name}, kvôli čomu si ZRADCA ({malusPercent} % obranné oslabenie po dobu {durationText})",
     "betrayed_you": "{name} prerušil/a s tebou spojenectvo",
     "capital_fallen": "{capital} padlo! {name} stratilo svoje hlavné mesto",
-    "conquered_no_gold": "Dobyto {name} (nehral, ​​nebolo udelené žiadne zlato)",
+    "conquered_no_gold": "Dobyto {name} (nehral, nebolo udelené žiadne zlato)",
     "duration_second": "1 sekunda",
     "duration_seconds_plural": "{seconds} sekúnd",
     "emp_hit": "EMP hráča {name} vyradil {count} tvojich budov na {seconds} s",
@@ -1019,7 +1019,7 @@
   "free_play": {
     "account": "Váš účet, štatistiky, priatelia a kozmetika",
     "ad_free_steam": "V aplikácii Steam nikdy žiadne reklamy",
-    "custom_lobbies": "Súkromné ​​vlastné lobby s priateľmi",
+    "custom_lobbies": "Súkromné vlastné lobby s priateľmi",
     "free_heading": "Hranie zadarmo zahŕňa",
     "full_game": "Plná hra: každá mapa a režim, online a pre jedného hráča",
     "ranked": "Hodnotená hra s bezplatným denným limitom zápasov"
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Sýtosť územia"
   },
   "heads_up_message": {
+    "capital_lost": "Žiadne hlavné mesto: stratili ste jeho +10 % zlata a nárast počtu jednotiek",
+    "capital_lost_ready": "Kliknutím na jedno zo svojich miest z neho urobíte svoje hlavné mesto",
+    "capital_lost_wait": "Nové hlavné mesto možné za {time}",
     "catching_up": "Dobieha...",
     "choose_spawn": "Vyber začiatočnú polohu",
     "choose_spawn_spectator": "Hráči si vyberajú štartovacie miesta",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Hlavné mesto: {capital}",
+    "continent_africa": "Afriky",
+    "continent_all": "Všetky",
+    "continent_asia": "Ázie",
+    "continent_europe": "Európe",
+    "continent_north_america": "Severná Amerika",
+    "continent_oceania": "Oceánia",
+    "continent_south_america": "Južná Amerika",
     "free": "Zadarmo",
     "hint": "Kliknite na krajinu na mape. Šedé krajiny sú už obsadené; každá slobodná krajina bude hrať AI.",
     "load_failed": "Mapu sveta sa nepodarilo načítať. Dostanete náhodnú krajinu.",
@@ -2152,6 +2162,12 @@
     "game_speed": "Rýchlosť hry",
     "replay_speed": "Rýchlosť prehratia"
   },
+  "resume_game": {
+    "description": "Opustili ste hru pre viacerých hráčov, ktorá ešte neskončila. Skočte späť tam, kde ste.",
+    "dismiss": "Zabudni na to",
+    "resume": "Obnoviť moju hru",
+    "title": "Vaša hra stále beží"
+  },
   "rewards_modal": {
     "title": "Odmeny"
   },
@@ -2234,7 +2250,7 @@
   },
   "steam_wishlist": {
     "buy_cta": "Kúpiť na Steame",
-    "buy_on_steam": "Kúpte si Territorium v ​​službe Steam"
+    "buy_on_steam": "Kúpte si Territorium v službe Steam"
   },
   "store": {
     "already_owned": "Túto položku už vlastníte. Nič nebolo účtované.",
@@ -2319,7 +2335,7 @@
     "support_creator": "Podporiť tvorcu",
     "support_creator_desc": "Zadaj kód tvorcu: časť tvojich nákupov za skutočné peniaze pôjde jemu, bez príplatku pre teba.",
     "switch_button": "Prepínač",
-    "tier_change_steam_needs_desktop": "Vaše predplatné sa účtuje prostredníctvom služby Steam. Zmeňte ho v aplikácii Territorium v ​​službe Steam alebo ho spravujte v nastaveniach účtu Steam.",
+    "tier_change_steam_needs_desktop": "Vaše predplatné sa účtuje prostredníctvom služby Steam. Zmeňte ho v aplikácii Territorium v službe Steam alebo ho spravujte v nastaveniach účtu Steam.",
     "tier_change_unavailable_steam": "Ak chcete prepnúť úrovne v službe Steam, zrušte svoje predplatné v nastaveniach účtu Steam a po skončení aktuálneho mesiaca sa prihláste na odber novej úrovne.",
     "title": "Obchod",
     "tribe_boost_button": "Boost",
@@ -2468,7 +2484,7 @@
     "power_saving_tip": "Uistite sa, že váš prehliadač nie je nastavený na režim úspory energie.",
     "renderer": "Renderer",
     "rendering": "Vykresľovanie",
-    "software_rendering": "Softvérové ​​vykresľovanie",
+    "software_rendering": "Softvérové vykresľovanie",
     "title": "Riešenie problémov",
     "unavailable": "nedostupné",
     "unknown": "Neznámy",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nová lobby",
     "other_team": "Vyhral tím {team}!",
     "other_won": "Vyhral hráč {player}!",
+    "recap_attacks": "Začaté útoky",
+    "recap_best_minute": "Najlepšia minúta",
+    "recap_best_minute_value": "+{tiles} dlaždice pri {time}",
+    "recap_eliminated_by": "Odstránené {name}",
+    "recap_peak_size": "Najväčšia veľkosť",
+    "recap_peak_size_value": "{tiles} dlaždíc ({share}%)",
+    "recap_peak_troops": "Väčšina vojakov",
+    "recap_time": "Hraný čas",
+    "recap_title": "Vaša hra",
     "requeue": "Hrať znova",
     "spectate": "Divák",
     "support_openfront": "Podporte Territorium!",

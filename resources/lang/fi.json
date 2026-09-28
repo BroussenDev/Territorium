@@ -179,7 +179,7 @@
   "challenges": {
     "anonymous": "Anonyymi pelaaja",
     "daily": "Tänään",
-    "days_hours": "{days}p ​​{hours}h",
+    "days_hours": "{days}p {hours}h",
     "done": "Tehty",
     "ends_in": "Päättyy numeroon {time}",
     "hours_minutes": "{hours}h {minutes}min",
@@ -537,7 +537,7 @@
     "not_allowlisted": "Et ole tämän aulan sallittujen luettelossa.",
     "not_trusted": "Tämä aula on rajoitettu luotettuihin tileihin. Voit silti liittyä mihin tahansa muuhun aulaan.",
     "protocol_error": "Yhteys oli vioittunut.",
-    "ranked_limit_reached": "Sinulla ei ole tämän päivän ilmaisia ​​ranking-otteluita.",
+    "ranked_limit_reached": "Sinulla ei ole tämän päivän ilmaisia ranking-otteluita.",
     "turnstile_failed": "Botin tarkistus epäonnistui. Lataa sivu uudelleen ja yritä uudelleen.",
     "unknown": "Palvelin sulki yhteyden.",
     "wrong_worker": "Tämä yhteys saavutti väärän palvelinprosessin. Lataa sivu uudelleen ja yritä uudelleen."
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Alueen kylläisyys"
   },
   "heads_up_message": {
+    "capital_lost": "Ei pääkaupunkia: menetit sen +10 % kultaa ja joukkojen kasvua",
+    "capital_lost_ready": "Napsauta jotakin kaupungeistasi tehdäksesi siitä pääkaupunkisi",
+    "capital_lost_wait": "Uusi pääkaupunki mahdollinen vuonna {time}",
     "catching_up": "Kiinni...",
     "choose_spawn": "Valitse aloituspaikka",
     "choose_spawn_spectator": "Pelaajat valitsevat aloituspaikat",
@@ -1544,7 +1547,7 @@
     "ranked_tab": "Sijoitettu",
     "ratio": "Suhde",
     "refresh_time": "Päivitetään 1 tunnin välein",
-    "solo_no_stats": "Voita yksinpeli kansoja vastaan ​​liittyäksesi pöytään.",
+    "solo_no_stats": "Voita yksinpeli kansoja vastaan liittyäksesi pöytään.",
     "solo_points": "Pisteet",
     "solo_points_tooltip": "Pisteet soolovoitoista: helppo 1, keskitaso 2, kova 3, mahdoton 5",
     "solo_rules": "Yksin voittaa kansakuntien pisteitä: Helppo 1, Keskitaso 2, Kova 3, Mahdoton 5. Alle 2 minuuttia kestävät pelit tai huijausvaihtoehdot eivät laske, eikä enempää kuin 10 voittoa päivässä.",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Pääkaupunki: {capital}",
+    "continent_africa": "Afrikka",
+    "continent_all": "Kaikki",
+    "continent_asia": "Aasia",
+    "continent_europe": "Euroopassa",
+    "continent_north_america": "Pohjois-Amerikassa",
+    "continent_oceania": "Oseania",
+    "continent_south_america": "Etelä-Amerikka",
     "free": "Ilmainen",
     "hint": "Napsauta maata kartalla. Harmaat maat on jo vallattu; Tekoäly pelaa jokaista vapaata maata.",
     "load_failed": "Maailman karttaa ei voitu ladata. Saat satunnaisen maan.",
@@ -1868,7 +1878,7 @@
     "render_layers_table_header": "keskim. / max | rasti keskim",
     "reset": "Nollaa",
     "tick_delay": "Tikkun viive:",
-    "tick_exec": "Tick ​​Exec:",
+    "tick_exec": "Tick Exec:",
     "tick_layers_header": "Valitse Tasot",
     "tick_layers_summary": "Viimeinen rasti: {count} tasoa, {ms}ms",
     "tick_layers_table_header": "keskim. / maks",
@@ -2094,7 +2104,7 @@
     "waiting_for_players": "Pelaajia odotellessa"
   },
   "purchase_nudge": {
-    "body": "Näyttää siltä, ​​että pidät Territoriumin pelaamisesta! Harkitse meidän tukemista tekemällä ostos – kaikki ostokset tekevät sinusta ilman mainoksia koko elämäsi.",
+    "body": "Näyttää siltä, että pidät Territoriumin pelaamisesta! Harkitse meidän tukemista tekemällä ostos – kaikki ostokset tekevät sinusta ilman mainoksia koko elämäsi.",
     "close": "Lähellä",
     "title": "Nautitko Territoriumista?",
     "visit_store": "Vieraile kaupassa"
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "max",
     "game_speed": "Pelin nopeus",
     "replay_speed": "Uusinnan nopeus"
+  },
+  "resume_game": {
+    "description": "Poistuit moninpelistä, joka ei ole vielä ohi. Hyppää takaisin sinne, missä olet.",
+    "dismiss": "Unohda se",
+    "resume": "Jatka peliäni",
+    "title": "Pelisi on edelleen käynnissä"
   },
   "rewards_modal": {
     "title": "Palkinnot"
@@ -2687,7 +2703,7 @@
     "move_right_desc": "Siirrä kameraa oikealle",
     "move_up": "Siirrä kameraa ylös",
     "move_up_desc": "Siirrä kameraa ylöspäin",
-    "nuke_alliance_safety_desc": "Estää tahattomat ydiniskut vasta muodostettuja liittolaisia ​​vastaan.",
+    "nuke_alliance_safety_desc": "Estää tahattomat ydiniskut vasta muodostettuja liittolaisia vastaan.",
     "nuke_alliance_safety_duration": "{count, plural, one {1 rasti (0,1 s)} other {{count} punkkia ({seconds}s)}}",
     "nuke_alliance_safety_label": "Liittoystävällinen-paloturvallisuus",
     "objective_labels_desc": "Näyttää kultaiset nimet kartan tavoitteiden yllä pelin aikana.",
@@ -2785,6 +2801,15 @@
     "new_lobby": "Uusi aula",
     "other_team": "{team} joukkue on voittanut!",
     "other_won": "{player} on voittanut!",
+    "recap_attacks": "Hyökkäykset aloitettu",
+    "recap_best_minute": "Paras minuutti",
+    "recap_best_minute_value": "+{tiles} laatat osoitteessa {time}",
+    "recap_eliminated_by": "Eliminoitunut {name}",
+    "recap_peak_size": "Suurin koko",
+    "recap_peak_size_value": "{tiles} laatta ({share}%)",
+    "recap_peak_troops": "Suurin osa joukkoista",
+    "recap_time": "Peliaika",
+    "recap_title": "Sinun pelisi",
     "requeue": "Pelaa uudelleen",
     "spectate": "Näytä",
     "support_openfront": "Tue Territoriumia!",

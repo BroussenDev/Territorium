@@ -2,8 +2,8 @@
   "account_modal": {
     "cancel_subscription": "Cancellare",
     "cancel_subscription_confirm": "Cancellare il tuo abbonamento? Potresti perdere immediatamente l'accesso.",
-    "cancel_subscription_confirm_steam": "Il tuo abbonamento rimane attivo fino al {date}. Gli abbonamenti Steam non possono essere riattivati ​​una volta annullati: per abbonarsi di nuovo ne dovresti acquistare uno nuovo.",
-    "cancel_subscription_confirm_steam_no_date": "Il tuo abbonamento rimane attivo fino alla fine del periodo pagato. Gli abbonamenti Steam non possono essere riattivati ​​una volta annullati: per abbonarsi di nuovo ne dovresti acquistare uno nuovo.",
+    "cancel_subscription_confirm_steam": "Il tuo abbonamento rimane attivo fino al {date}. Gli abbonamenti Steam non possono essere riattivati una volta annullati: per abbonarsi di nuovo ne dovresti acquistare uno nuovo.",
+    "cancel_subscription_confirm_steam_no_date": "Il tuo abbonamento rimane attivo fino alla fine del periodo pagato. Gli abbonamenti Steam non possono essere riattivati una volta annullati: per abbonarsi di nuovo ne dovresti acquistare uno nuovo.",
     "cancel_subscription_failed": "Impossibile annullare l'abbonamento. Riprova o gestisci la fatturazione sul sito web di Territorium.",
     "cancel_subscription_success": "Abbonamento annullato. Il tuo account ora mostra il tuo accesso attuale.",
     "cancel_subscription_success_steam": "Annullato: attivo fino al {date}.",
@@ -335,7 +335,7 @@
     "confirm_kick": "Sei sicuro di voler espellere questo membro?",
     "confirm_transfer": "Trasferisci la leadership a {name}",
     "create_clan": "Crea un clan",
-    "create_clan_desc": "Diventi il ​​suo leader e i membri possono indossare la sua etichetta prima del loro nome nei giochi.",
+    "create_clan_desc": "Diventi il suo leader e i membri possono indossare la sua etichetta prima del loro nome nei giochi.",
     "create_error_already_leader": "Sei già a capo di un clan. Trasferirlo o scioglierlo prima.",
     "create_error_description": "La descrizione è limitata a 200 caratteri.",
     "create_error_name": "Il nome richiede da 3 a 35 caratteri.",
@@ -1283,6 +1283,9 @@
     "territory_sat_label": "Saturazione del territorio"
   },
   "heads_up_message": {
+    "capital_lost": "Nessuna capitale: hai perso il +10% di oro e la crescita delle truppe",
+    "capital_lost_ready": "Fai clic su una delle tue città per renderla la tua capitale",
+    "capital_lost_wait": "Nuova capitale possibile tra {time}",
     "catching_up": "Recuperando il ritardo...",
     "choose_spawn": "Scegli una posizione di partenza",
     "choose_spawn_spectator": "I giocatori scelgono le posizioni di partenza",
@@ -1800,6 +1803,13 @@
   },
   "nations_lobby": {
     "capital": "Capitale: {capital}",
+    "continent_africa": "Africa",
+    "continent_all": "Tutto",
+    "continent_asia": "Asia",
+    "continent_europe": "Europa",
+    "continent_north_america": "America del Nord",
+    "continent_oceania": "Oceania",
+    "continent_south_america": "Sud America",
     "free": "Gratuito",
     "hint": "Fare clic su un paese sulla mappa. I paesi grigi sono già occupati; ogni paese libero sarà interpretato dall'IA.",
     "load_failed": "Impossibile caricare la mappa del mondo. Otterrai un paese a caso.",
@@ -2151,6 +2161,12 @@
     "fastest_game_speed": "Massimo",
     "game_speed": "Velocità di gioco",
     "replay_speed": "Velocità di riproduzione"
+  },
+  "resume_game": {
+    "description": "Hai lasciato una partita multiplayer che non è ancora finita. Torna indietro dove sei.",
+    "dismiss": "Lasci perdere",
+    "resume": "Riprendi il gioco",
+    "title": "Il tuo gioco è ancora in esecuzione"
   },
   "rewards_modal": {
     "title": "Premi"
@@ -2785,6 +2801,15 @@
     "new_lobby": "Nuova lobby",
     "other_team": "La squadra {team} ha vinto!",
     "other_won": "{player} ha vinto!",
+    "recap_attacks": "Attacchi lanciati",
+    "recap_best_minute": "Il miglior minuto",
+    "recap_best_minute_value": "+{tiles} tessere a {time}",
+    "recap_eliminated_by": "Eliminato da {name}",
+    "recap_peak_size": "Dimensione più grande",
+    "recap_peak_size_value": "{tiles} tessere ({share}%)",
+    "recap_peak_troops": "La maggior parte delle truppe",
+    "recap_time": "Il tempo ha giocato",
+    "recap_title": "Il tuo gioco",
     "requeue": "Gioca di nuovo",
     "spectate": "Spettatore",
     "support_openfront": "Sostieni Territorium!",
