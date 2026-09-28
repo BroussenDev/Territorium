@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.30
+
+🏘️ **New city looks**
+
+- Cities have new icons, and they grow as you upgrade them: a tipi at level 1, a yurt at level 2, a house at level 3, a village at level 4 and a town with a tower block at level 5. You see it on the map, in the structure card, and when you hover a city to upgrade it.
+
 ## v0.1.29
 
 🏭 **New factory looks**

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <mask id="city2-cut">
+    <rect width="128" height="128" fill="#fff"/>
+    <g fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round">
+      <path d="M61 26.5 Q57 36 40.5 42"/>
+      <path d="M68.5 27 Q72 36 87.5 42"/>
+    </g>
+    <g fill="#000">
+      <rect x="23" y="49.8" width="17" height="2.2" rx="1"/>
+      <rect x="57" y="50.8" width="12" height="2.2" rx="1"/>
+      <rect x="84" y="49.8" width="22" height="2.2" rx="1"/>
+      <path d="M52 107 V93 Q52 77 65 77 Q78 77 78 93 V107 Z"/>
+    </g>
+  </mask>
+  <path mask="url(#city2-cut)" d="M60 16 H68 L112.5 47.5 V52.5 H111.5 V111.5 H16 V52.5 H14.5 V47.5 Z"/>
+  <g stroke="#fff" stroke-width="2.6" stroke-linecap="round">
+    <path d="M53.5 12.5 L62 17 M74 12.5 L65.5 17 M58.5 11.5 L61 16 M69 11.5 L66.5 16"/>
+  </g>
+</svg>

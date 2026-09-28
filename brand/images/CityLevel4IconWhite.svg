@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <symbol id="city4-house" viewBox="0 0 128 128" width="128" height="128">
+    <mask id="city4-house-cut">
+      <rect width="128" height="128" fill="#fff"/>
+      <g fill="#000">
+        <rect x="16" y="96" width="5" height="8" rx="0.5"/>
+        <rect x="43" y="96" width="5" height="8" rx="0.5"/>
+        <rect x="28" y="99" width="8" height="12" rx="0.5"/>
+      </g>
+    </mask>
+    <g mask="url(#city4-house-cut)">
+      <path d="M31 66 H35.5 L59.5 82 V86.5 H57.5 V113.5 H10 V86.5 H8 V82 Z"/>
+      <rect x="48" y="67.5" width="4" height="11"/>
+    </g>
+  </symbol>
+  <use href="#city4-house" x="30" y="-52"/>
+  <use href="#city4-house"/>
+  <use href="#city4-house" x="59"/>
+</svg>

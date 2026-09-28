@@ -53,6 +53,7 @@ function levelIconUrls(name: string): string[] {
  * the atlas's, in this order.
  */
 const LEVEL_ICONS: [string, string[]][] = [
+  [UT_CITY, levelIconUrls("City")],
   [UT_SAM_LAUNCHER, levelIconUrls("SamLauncher")],
   [UT_FACTORY, levelIconUrls("Factory")],
 ];

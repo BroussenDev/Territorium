@@ -156,7 +156,7 @@ export class HelpModal extends BaseModal {
 
   private renderBuildTable() {
     const rows: [string, string, string][] = [
-      ["city", "images/CityIconWhite.svg", "build_city_desc"],
+      ["city", "images/CityLevel1IconWhite.svg", "build_city_desc"],
       ["factory", "images/FactoryLevel1IconWhite.svg", "build_factory_desc"],
       ["port", "images/PortIcon.svg", "build_port_desc"],
       ["defense_post", "images/ShieldIconWhite.svg", "build_defense_desc"],

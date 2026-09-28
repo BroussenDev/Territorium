@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <mask id="city3-cut">
+    <rect width="128" height="128" fill="#fff"/>
+    <rect x="48" y="80" width="22" height="27" rx="1" fill="#000"/>
+  </mask>
+  <g mask="url(#city3-cut)">
+    <path d="M59 32 H67.5 L115.5 63 V68 H111.5 V111.5 H16 V68 H11 V63 Z"/>
+    <rect x="87" y="31" width="11" height="20"/>
+    <rect x="91.5" y="26" width="5.5" height="6" rx="1"/>
+  </g>
+  <circle cx="65" cy="93" r="2.3"/>
+</svg>

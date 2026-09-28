@@ -238,7 +238,7 @@ describe("PlayerStatsSummary", () => {
       "player_stats_tree.stats_per_game_suffix",
     );
     expect(cities?.querySelector("[data-unit]")?.getAttribute("src")).toBe(
-      "/images/CityIconWhite.svg",
+      "/images/CityLevel1IconWhite.svg",
     );
     // SoldierIcon is authored black, so it is flipped to sit on a dark tile.
     // TroopIconWhite would be the obvious pick and is unusable in an <img>:

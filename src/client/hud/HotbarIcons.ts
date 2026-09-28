@@ -1,7 +1,6 @@
 import { assetUrl } from "../../core/AssetUrls";
 
 export const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
-export const cityIcon = assetUrl("images/CityIconWhite.svg");
 export const empBombIcon = assetUrl("images/EmpIconWhite.svg");
 export const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 export const mirvIcon = assetUrl("images/MIRVIcon.svg");
@@ -10,8 +9,8 @@ export const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 export const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 export const portIcon = assetUrl("images/PortIcon.svg");
 export const radarIcon = assetUrl("images/RadarIconWhite.svg");
-// The SAM launcher and the factory change look at each level they are
-// upgraded to, up to 5.
+// The city, the SAM launcher and the factory change look at each level they
+// are upgraded to, up to 5.
 function levelIcons(name: string): string[] {
   return [1, 2, 3, 4, 5].map((level) =>
     assetUrl(`images/${name}Level${level}IconWhite.svg`),
@@ -19,6 +18,11 @@ function levelIcons(name: string): string[] {
 }
 function iconForLevel(icons: string[], level: number): string {
   return icons[Math.min(Math.max(level, 1), icons.length) - 1];
+}
+const cityIcons = levelIcons("City");
+export const cityIcon = cityIcons[0];
+export function cityIconFor(level: number): string {
+  return iconForLevel(cityIcons, level);
 }
 const samLauncherIcons = levelIcons("SamLauncher");
 export const samLauncherIcon = samLauncherIcons[0];

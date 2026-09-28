@@ -28,6 +28,7 @@ import { renderNumber, translateText } from "../../Utils";
 import { GameView, UnitView } from "../../view";
 import {
   cityIcon,
+  cityIconFor,
   factoryIcon,
   factoryIconFor,
   goldCoinIcon,
@@ -46,7 +47,7 @@ const CARD_TYPES: Partial<
     { icon: string; key: string; iconFor?: (level: number) => string }
   >
 > = {
-  [UnitType.City]: { icon: cityIcon, key: "city" },
+  [UnitType.City]: { icon: cityIcon, key: "city", iconFor: cityIconFor },
   [UnitType.Factory]: {
     icon: factoryIcon,
     key: "factory",

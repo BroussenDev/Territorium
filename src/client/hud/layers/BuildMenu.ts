@@ -27,7 +27,7 @@ import { UIState } from "../../UIState";
 import { renderNumber } from "../../Utils";
 import { GameView } from "../../view";
 const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
-const cityIcon = assetUrl("images/CityIconWhite.svg");
+const cityIcon = assetUrl("images/CityLevel1IconWhite.svg");
 const empIcon = assetUrl("images/EmpIconWhite.svg");
 const factoryIcon = assetUrl("images/FactoryLevel1IconWhite.svg");
 const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
