@@ -24,6 +24,7 @@ import {
   CAPITAL_GOLD_BONUS_PERCENT,
   CAPITAL_TROOP_GROWTH_BONUS_PERCENT,
   hasCapital,
+  NATIONS_MIN_TROOP_CAP_TILES,
   NATIONS_PERCENT_TILES_OWNED_TO_WIN,
 } from "../game/NationsMode";
 import {
@@ -1123,10 +1124,13 @@ export class Config {
   }
 
   maxTroops(player: Player | PlayerView): number {
+    const tiles = this.isNationsMode()
+      ? Math.max(player.numTilesOwned(), NATIONS_MIN_TROOP_CAP_TILES)
+      : player.numTilesOwned();
     const maxTroops =
       player.type() === PlayerType.Human && this.hasInfiniteTroopsFor(player)
         ? 1_000_000_000
-        : 2 * (pow(player.numTilesOwned(), 0.6) * 1000 + 50000) +
+        : 2 * (pow(tiles, 0.6) * 1000 + 50000) +
           player
             .units(UnitType.City)
             .filter((u) => !u.isUnderConstruction())

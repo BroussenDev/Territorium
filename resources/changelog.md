@@ -1,5 +1,20 @@
 # Territorium — Changelog
 
+## v0.1.15
+
+⚖️ **A fairer Nations map**
+
+- The biggest countries are now split into regions around real cities, so no one starts with a quarter of a continent:
+  - Siberia: Siberia, Yugra, Krasnoyarsk, Taymyr, Irkutsk, Yakutia, Far East and Chukotka.
+  - China: China, Xinjiang, Tibet and South China.
+  - Russia: Russia, Volga and Pomorye.
+  - Greenland: Greenland, East Greenland and North Greenland.
+  - Australia and Western Australia, Brazil and Bahia, the United States and Colorado, Nunavut and Kitikmeot, Kazakhstan and West Kazakhstan.
+- There are now 125 countries to pick from.
+- Every country can hold at least as many troops as a 20,000-tile country, so small countries can defend themselves and stay in the fight.
+- Every country smaller than 20,000 tiles starts with extra gold and troops. The smaller the country, the bigger the bonus.
+- We checked the balance with AI-only games: before, huge countries won almost every game. Now small, medium and large countries all win their share.
+
 ## v0.1.14
 
 🌍 **Nations, clearer**

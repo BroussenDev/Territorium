@@ -11,13 +11,15 @@ import {
   PlayerType,
   UnitType,
 } from "./Game";
-import { Nation as ManifestNation } from "./TerrainMapLoader";
 
 // Nations mode: every player starts as a real country of the giant world map,
 // with its whole territory and a capital city on the real capital.
 
-/** One manifest nation, as listed in the map's countries.json. */
+/** One country of the map's countries.json. */
 export interface NationsCountry {
+  name: string;
+  /** Flag code, as in resources/flags. */
+  flag?: string;
   /** Real capital city name, absent for unplayable countries. */
   capital?: string;
   /** Tile the capital city is built on. */
@@ -31,17 +33,17 @@ export interface NationsCountry {
 export interface NationsCountriesFile {
   width: number;
   height: number;
-  /** Indexed like the manifest's nations. */
+  /** Country id - 1 in countries.bin. */
   countries: NationsCountry[];
 }
 
 export interface NationsMapData {
-  /** Per tile: manifest nation index + 1, or 0 for land no country owns. */
+  /** Per tile: country index + 1, or 0 for land no country owns. */
   ids: Uint8Array;
   countries: NationsCountry[];
 }
 
-/** A player of a Nations game and the country (manifest index) they play. */
+/** A player of a Nations game and the country (index) they play. */
 export interface NationsSeat {
   info: PlayerInfo;
   country: number;
@@ -56,6 +58,13 @@ export const CAPITAL_FALLEN_DEBUFF_TICKS = 60 * 10;
 export const CAPITAL_FALLEN_DEFENSE_MULT = 0.9;
 /** How long before a player can proclaim a new capital. */
 export const CAPITAL_REBUILD_DELAY_TICKS = 2 * 60 * 10;
+/**
+ * However small a country gets, it holds as many troops as a country of this
+ * many tiles (the biggest third of the countries are larger), so small
+ * countries aren't wiped out in the first minutes. Tuned with
+ * tests/perf/fullgame/NationsBalanceSim.ts.
+ */
+export const NATIONS_MIN_TROOP_CAP_TILES = 20_000;
 /** Most extra gold / troops the smallest country starts with. */
 export const MAX_COMPENSATION_GOLD = 400_000;
 export const MAX_COMPENSATION_TROOPS = 75_000;
@@ -91,31 +100,22 @@ export function decodeCountryIds(bin: Uint8Array, size: number): Uint8Array {
 }
 
 /**
- * Small countries start richer so the lobby stays fair: the further below the
- * median playable country, the more gold and troops, up to the maximum for a
- * country of (almost) no land. Countries at or above the median get nothing.
+ * Small countries start richer so the lobby stays fair: the further below
+ * NATIONS_MIN_TROOP_CAP_TILES, the more gold and troops, up to the maximum for
+ * a country of (almost) no land. Countries at or above it get nothing.
  */
-export function startCompensation(
-  tiles: number,
-  medianTiles: number,
-): { gold: Gold; troops: number } {
-  if (medianTiles <= 0 || tiles >= medianTiles) {
+export function startCompensation(tiles: number): {
+  gold: Gold;
+  troops: number;
+} {
+  if (tiles >= NATIONS_MIN_TROOP_CAP_TILES) {
     return { gold: 0n, troops: 0 };
   }
-  const deficit = 1 - tiles / medianTiles;
+  const deficit = 1 - tiles / NATIONS_MIN_TROOP_CAP_TILES;
   return {
     gold: BigInt(Math.floor(MAX_COMPENSATION_GOLD * deficit)),
     troops: Math.floor(MAX_COMPENSATION_TROOPS * deficit),
   };
-}
-
-export function medianPlayableTiles(countries: NationsCountry[]): number {
-  const sizes = countries
-    .filter((c) => c.playable)
-    .map((c) => c.tiles)
-    .sort((a, b) => a - b);
-  if (sizes.length === 0) return 0;
-  return sizes[Math.floor(sizes.length / 2)];
 }
 
 export function hasCapital(player: Player | PlayerView): boolean {
@@ -151,7 +151,6 @@ export function isPlayableCountry(
  */
 export function seatNationsGame(
   players: GameStartInfo["players"],
-  manifestNations: ManifestNation[],
   countries: NationsCountry[],
   random: PseudoRandom,
 ): { humans: PlayerInfo[]; nations: Nation[]; seats: NationsSeat[] } {
@@ -192,15 +191,15 @@ export function seatNationsGame(
       p.clanTag,
       p.friends ?? [],
       null,
-      country !== undefined ? (manifestNations[country].flag ?? null) : null,
-      country !== undefined ? manifestNations[country].name : null,
+      country !== undefined ? (countries[country].flag ?? null) : null,
+      country !== undefined ? countries[country].name : null,
     );
     if (country !== undefined) seats.push({ info, country });
     return info;
   });
 
   const nations = free().map((country) => {
-    const n = manifestNations[country];
+    const n = countries[country];
     const info = new PlayerInfo(
       n.name,
       PlayerType.Nation,

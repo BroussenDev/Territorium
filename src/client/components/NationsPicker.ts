@@ -25,7 +25,7 @@ const CONTINENTS = [
 ] as const;
 type Continent = (typeof CONTINENTS)[number];
 
-// Continent of each country of the giant world map, by manifest flag code.
+// Continent of each country of the giant world map, by flag code.
 const CONTINENT_FLAGS: Record<Continent, string[]> = {
   europe: [
     "tr",
@@ -63,6 +63,7 @@ const CONTINENT_FLAGS: Record<Continent, string[]> = {
     "kz",
     "tm",
     "Siberia",
+    "fareasternrepublic",
     "in",
     "bd",
     "np",
@@ -128,8 +129,19 @@ const CONTINENT_FLAGS: Record<Continent, string[]> = {
     "Minnesota",
     "Michigan",
     "northwestterritories",
+    "Colorado",
   ],
-  south_america: ["br", "amazonas", "ar", "cl", "pe", "co", "ve", "bo"],
+  south_america: [
+    "br",
+    "bahia",
+    "amazonas",
+    "ar",
+    "cl",
+    "pe",
+    "co",
+    "ve",
+    "bo",
+  ],
   oceania: ["pg", "au", "Australian Aboriginal Flag", "nz"],
 };
 
@@ -139,8 +151,6 @@ const CONTINENT_OF = new Map<string, Continent>(
 
 interface PickerCountry extends NationsCountry {
   index: number;
-  name: string;
-  flag?: string;
   continent?: Continent;
   /** Share of the playable world, in percent. */
   share: number;
@@ -161,10 +171,9 @@ let dataPromise: Promise<PickerData> | null = null;
 function loadPickerData(): Promise<PickerData> {
   dataPromise ??= (async () => {
     const files = terrainMapFileLoader.getMapData(GameMapType.GiantWorldMap);
-    const [bin, json, manifest] = await Promise.all([
+    const [bin, json] = await Promise.all([
       files.countriesBin!(),
       files.countriesJson!(),
-      files.manifest(),
     ]);
     const ids = decodeCountryIds(bin, json.width * json.height);
     const total = json.countries
@@ -173,9 +182,7 @@ function loadPickerData(): Promise<PickerData> {
     const countries = json.countries.map((c, index) => ({
       ...c,
       index,
-      name: manifest.nations[index]?.name ?? "",
-      flag: manifest.nations[index]?.flag,
-      continent: CONTINENT_OF.get(manifest.nations[index]?.flag ?? ""),
+      continent: CONTINENT_OF.get(c.flag ?? ""),
       share: (c.tiles / total) * 100,
     }));
     const width = Math.ceil(json.width / SCALE);

@@ -10,7 +10,6 @@ import {
 import { TileRef } from "../game/GameMap";
 import {
   CAPITAL_REBUILD_DELAY_TICKS,
-  medianPlayableTiles,
   NationsMapData,
   NationsSeat,
   startCompensation,
@@ -57,7 +56,6 @@ export class NationsModeExecution implements Execution {
       byCountry.get(id)?.conquer(tile);
     });
 
-    const median = medianPlayableTiles(this.data.countries);
     for (const seat of this.seats) {
       const player = mg.player(seat.info.id);
       const country = this.data.countries[seat.country];
@@ -80,7 +78,7 @@ export class NationsModeExecution implements Execution {
         this.capitalNames.set(capital, country.capital);
       }
 
-      const bonus = startCompensation(country.tiles, median);
+      const bonus = startCompensation(country.tiles);
       player.addGold(bonus.gold);
       player.addTroops(bonus.troops);
     }

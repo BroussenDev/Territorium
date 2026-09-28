@@ -19,7 +19,7 @@ import {
   CAPITAL_REBUILD_DELAY_TICKS,
   decodeCountryIds,
   isCapitalFallen,
-  medianPlayableTiles,
+  NATIONS_MIN_TROOP_CAP_TILES,
   NationsCountry,
   NationsMapData,
   seatNationsGame,
@@ -34,10 +34,31 @@ import { setup } from "./util/Setup";
 //   Mid   x 60..89  3000 tiles, capital (75, 50)
 //   (unplayable)    x 90..99
 const COUNTRIES: NationsCountry[] = [
-  { capital: "Bigtown", coordinates: [25, 50], playable: true, tiles: 5000 },
-  { capital: "Smallton", coordinates: [55, 50], playable: true, tiles: 1000 },
-  { capital: "Midcity", coordinates: [75, 50], playable: true, tiles: 3000 },
-  { playable: false, tiles: 1000 },
+  {
+    name: "Big",
+    flag: "big",
+    capital: "Bigtown",
+    coordinates: [25, 50],
+    playable: true,
+    tiles: 5000,
+  },
+  {
+    name: "Small",
+    flag: "small",
+    capital: "Smallton",
+    coordinates: [55, 50],
+    playable: true,
+    tiles: 1000,
+  },
+  {
+    name: "Mid",
+    flag: "mid",
+    capital: "Midcity",
+    coordinates: [75, 50],
+    playable: true,
+    tiles: 3000,
+  },
+  { name: "Frozen", flag: "frozen", playable: false, tiles: 1000 },
 ];
 
 function countryAt(x: number): number {
@@ -106,19 +127,39 @@ describe("Nations mode", () => {
     expect(capital).toBeDefined();
     expect(capital.tile()).toBe(game.ref(55, 50));
     expect(small.units(UnitType.City)).toHaveLength(1);
-    // Big got no compensation and paid nothing for its capital.
+    // Big paid nothing for its capital: all it has is the start and the
+    // compensation of a 5000-tile country.
     expect(game.player("big").gold()).toBe(
-      game.config().startingGold(game.player("big").info()),
+      game.config().startingGold(game.player("big").info()) +
+        startCompensation(5000).gold,
     );
   });
 
   test("small countries start with extra gold and troops", () => {
-    const bonus = startCompensation(1000, 3000);
-    expect(bonus.gold).toBe(266_666n);
-    expect(bonus.troops).toBe(50_000);
-    expect(small.gold() - game.player("big").gold()).toBe(266_666n);
-    expect(startCompensation(5000, 3000)).toEqual({ gold: 0n, troops: 0 });
-    expect(medianPlayableTiles(COUNTRIES)).toBe(3000);
+    // 1000 of the 20000 reference tiles: 95% of the maximum.
+    const bonus = startCompensation(1000);
+    expect(bonus.gold).toBe(380_000n);
+    expect(bonus.troops).toBe(71_250);
+    expect(small.gold() - game.player("big").gold()).toBe(
+      380_000n - startCompensation(5000).gold,
+    );
+    expect(startCompensation(NATIONS_MIN_TROOP_CAP_TILES)).toEqual({
+      gold: 0n,
+      troops: 0,
+    });
+  });
+
+  test("small countries hold as many troops as a 20000-tile country", () => {
+    const config = game.config();
+    const cap = config.maxTroops(small);
+    const cities =
+      cap - 2 * (Math.pow(NATIONS_MIN_TROOP_CAP_TILES, 0.6) * 1000 + 50000);
+    expect(cities).toBeCloseTo(config.cityTroopIncrease());
+    // Losing land doesn't shrink it further.
+    const big = game.player("big");
+    for (let y = 0; y < 50; y++) big.conquer(game.ref(59, y));
+    expect(small.numTilesOwned()).toBe(950);
+    expect(config.maxTroops(small)).toBe(cap);
   });
 
   test("holding the capital gives +10% gold and troop growth", () => {
@@ -276,12 +317,6 @@ describe("decodeCountryIds", () => {
 });
 
 describe("seatNationsGame", () => {
-  const manifest = [
-    { name: "Big", flag: "big" },
-    { name: "Small", flag: "small" },
-    { name: "Mid", flag: "mid" },
-    { name: "Frozen", flag: "frozen" },
-  ];
   const player = (clientID: string, nation?: number) => ({
     clientID,
     username: clientID,
@@ -292,7 +327,6 @@ describe("seatNationsGame", () => {
   test("honours picks and gives the rest of the world to nations", () => {
     const { humans, nations, seats } = seatNationsGame(
       [player("a", 2)],
-      manifest,
       COUNTRIES,
       new PseudoRandom(1),
     );
@@ -306,7 +340,6 @@ describe("seatNationsGame", () => {
   test("duplicate or unplayable picks get a free country", () => {
     const { humans, nations, seats } = seatNationsGame(
       [player("a", 1), player("b", 1), player("c", 3)],
-      manifest,
       COUNTRIES,
       new PseudoRandom(1),
     );
@@ -320,7 +353,6 @@ describe("seatNationsGame", () => {
   test("players beyond the number of countries stay unseated", () => {
     const { humans, seats } = seatNationsGame(
       [player("a"), player("b"), player("c"), player("d")],
-      manifest,
       COUNTRIES,
       new PseudoRandom(1),
     );

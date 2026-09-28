@@ -73,12 +73,7 @@ export async function createGameRunner(
     ) {
       throw new Error("nations mode needs the full-size map");
     }
-    const seating = seatNationsGame(
-      gameStart.players,
-      gameMap.nations,
-      data.countries,
-      random,
-    );
+    const seating = seatNationsGame(gameStart.players, data.countries, random);
     humans = seating.humans;
     nations = seating.nations;
     nationsMode = new NationsModeExecution(data, seating.seats);
