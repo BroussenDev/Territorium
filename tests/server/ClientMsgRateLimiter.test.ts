@@ -102,4 +102,17 @@ describe("ClientMsgRateLimiter", () => {
       expect(limiter.check(CLIENT_A, "intent", twoMB)).toBe("kick");
     });
   });
+
+  describe("chat messages", () => {
+    it("allows a burst of four lines, then limits", () => {
+      const limiter = new ClientMsgRateLimiter();
+      for (let i = 0; i < 4; i++) {
+        expect(limiter.check(CLIENT_A, "chat", SMALL)).toBe("ok");
+      }
+      expect(limiter.check(CLIENT_A, "chat", SMALL)).toBe("limit");
+      // Other clients and other message types are unaffected.
+      expect(limiter.check(CLIENT_B, "chat", SMALL)).toBe("ok");
+      expect(limiter.check(CLIENT_A, "intent", SMALL)).toBe("ok");
+    });
+  });
 });

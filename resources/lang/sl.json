@@ -1061,6 +1061,20 @@
     "enter": "Vnesite celozaslonski način",
     "exit": "Izhod iz celozaslonskega načina"
   },
+  "game_chat": {
+    "close": "Skrij klepet",
+    "empty": "Še ni sporočil. pozdravi se!",
+    "mute": "Izklopite zvok tega igralca do konca igre",
+    "open": "Odpri klepet",
+    "placeholder": "Pošlji sporočilo vsem ...",
+    "report": "Prijavite sporočila tega igralca",
+    "send": "Pošlji",
+    "slow_down": "Upočasnite: počakajte nekaj sekund pred naslednjim sporočilom.",
+    "spectator": "Gledalci lahko klepet berejo, ne pa vanj pišejo.",
+    "title": "Klepetajte",
+    "unmute_all": "Vklopi zvok vseh ({count})",
+    "you": "Ti"
+  },
   "game_info_modal": {
     "all_gold": "Vse zlato",
     "atoms": "Atomi",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Žalovanje",
     "report_reason_inappropriate_username": "Neprimerno uporabniško ime",
+    "report_reason_offensive_chat": "Žaljiva sporočila v klepetu",
     "report_reason_teaming": "Združevanje",
     "report_sent": "Poročilo poslano!",
     "report_submit": "Oddaj poročilo",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojiji",
     "exit_game_info": "Vrnitev na glavni meni",
     "exit_game_label": "Zapri Igro",
+    "game_chat_desc": "Prikaži splošni klepet v igrah za več igralcev",
+    "game_chat_label": "Klepet v igri",
     "game_menu_title": "meni",
     "game_speed_down": "Hitrost igre",
     "game_speed_down_desc": "Preklopite na hitrost prejšnje igre. Samo en igralec.",

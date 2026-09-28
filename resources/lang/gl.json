@@ -1061,6 +1061,20 @@
     "enter": "Entra en pantalla completa",
     "exit": "Saír da pantalla completa"
   },
+  "game_chat": {
+    "close": "Ocultar o chat",
+    "empty": "Aínda non hai mensaxes. Saúde!",
+    "mute": "Silencia este xogador durante o resto do xogo",
+    "open": "Abre o chat",
+    "placeholder": "Mensaxe a todos...",
+    "report": "Informa das mensaxes deste xogador",
+    "send": "Enviar",
+    "slow_down": "Disminución: agarda uns segundos antes da túa seguinte mensaxe.",
+    "spectator": "Os espectadores poden ler o chat pero non escribir nel.",
+    "title": "Chat",
+    "unmute_all": "Activar todo ({count})",
+    "you": "Ti"
+  },
   "game_info_modal": {
     "all_gold": "Todo ouro",
     "atoms": "Átomos",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Loito",
     "report_reason_inappropriate_username": "Nome de usuario inadecuado",
+    "report_reason_offensive_chat": "Mensaxes de chat ofensivas",
     "report_reason_teaming": "Facendo equipo",
     "report_sent": "Informe enviado!",
     "report_submit": "Presentar informe",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Volver ó menú principal",
     "exit_game_label": "Saír da partida",
+    "game_chat_desc": "Mostra o chat xeral en xogos multixogador",
+    "game_chat_label": "Chat no xogo",
     "game_menu_title": "Menú",
     "game_speed_down": "Xogo Speed Down",
     "game_speed_down_desc": "Vai á velocidade do xogo anterior. Só un xogador.",

@@ -1061,6 +1061,20 @@
     "enter": "Entrar em tela cheia",
     "exit": "Sair da tela cheia"
   },
+  "game_chat": {
+    "close": "Ocultar o bate-papo",
+    "empty": "Nenhuma mensagem ainda. Diga olá!",
+    "mute": "Silencie este jogador pelo resto do jogo",
+    "open": "Abra o bate-papo",
+    "placeholder": "Mensagem para todos…",
+    "report": "Denunciar as mensagens deste jogador",
+    "send": "Enviar",
+    "slow_down": "Desacelere: espere alguns segundos antes da próxima mensagem.",
+    "spectator": "Os espectadores podem ler o chat, mas não podem escrever nele.",
+    "title": "Bater papo",
+    "unmute_all": "Ativar som de todos ({count})",
+    "you": "Você"
+  },
   "game_info_modal": {
     "all_gold": "Todo ouro",
     "atoms": "Átomos",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Bots",
     "report_reason_griefing": "Tóxico",
     "report_reason_inappropriate_username": "Nome de usuário impróprio",
+    "report_reason_offensive_chat": "Mensagens de bate-papo ofensivas",
     "report_reason_teaming": "Fazendo Timinho",
     "report_sent": "Denúncia enviada!",
     "report_submit": "Enviar denúncia",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Voltar para o menu principal",
     "exit_game_label": "Sair do jogo",
+    "game_chat_desc": "Mostrar o chat geral em jogos multijogador",
+    "game_chat_label": "Bate-papo no jogo",
     "game_menu_title": "Menu",
     "game_speed_down": "Diminuir Velocidade de Jogo",
     "game_speed_down_desc": "Mudar a velocidade para o do jogo anterior. Apenas jogando Individual.",

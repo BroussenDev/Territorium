@@ -1061,6 +1061,20 @@
     "enter": "Prejdite na celú obrazovku",
     "exit": "Ukončiť celú obrazovku"
   },
+  "game_chat": {
+    "close": "Skryť chat",
+    "empty": "Zatiaľ žiadne správy. Povedz ahoj!",
+    "mute": "Stlmiť tohto hráča po zvyšok hry",
+    "open": "Otvorte chat",
+    "placeholder": "Pošlite správu všetkým…",
+    "report": "Nahlásiť správy tohto hráča",
+    "send": "Odoslať",
+    "slow_down": "Spomaľte: počkajte niekoľko sekúnd pred ďalšou správou.",
+    "spectator": "Diváci môžu chat čítať, ale nemôžu doň písať.",
+    "title": "Chat",
+    "unmute_all": "Zapnúť zvuk všetkých ({count})",
+    "you": "vy"
+  },
   "game_info_modal": {
     "all_gold": "Všetko zlaté",
     "atoms": "Atómy",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Smútok",
     "report_reason_inappropriate_username": "Nevhodné používateľské meno",
+    "report_reason_offensive_chat": "Urážlivé chatové správy",
     "report_reason_teaming": "Tímová práca",
     "report_sent": "Hlásenie bolo odoslané!",
     "report_submit": "Odoslať správu",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoji",
     "exit_game_info": "Vrátiť sa do hlavnej ponuky",
     "exit_game_label": "Opustiť hru",
+    "game_chat_desc": "Zobrazte všeobecný rozhovor v hrách pre viacerých hráčov",
+    "game_chat_label": "Chat v hre",
     "game_menu_title": "Menu",
     "game_speed_down": "Hra Znížiť rýchlosť",
     "game_speed_down_desc": "Cyklus na rýchlosť predchádzajúcej hry. Iba pre jedného hráča.",

@@ -1061,6 +1061,20 @@
     "enter": "Vào chế độ toàn màn hình",
     "exit": "Thoát chế độ toàn màn hình"
   },
+  "game_chat": {
+    "close": "Ẩn cuộc trò chuyện",
+    "empty": "Chưa có tin nhắn nào. Nói xin chào!",
+    "mute": "Tắt tiếng người chơi này trong phần còn lại của trò chơi",
+    "open": "Mở cuộc trò chuyện",
+    "placeholder": "Nhắn tin cho mọi người…",
+    "report": "Báo cáo tin nhắn của người chơi này",
+    "send": "Gửi",
+    "slow_down": "Chậm lại: đợi vài giây trước tin nhắn tiếp theo của bạn.",
+    "spectator": "Khán giả có thể đọc đoạn trò chuyện nhưng không thể viết vào đó.",
+    "title": "Trò chuyện",
+    "unmute_all": "Bật tiếng tất cả ({count})",
+    "you": "Bạn"
+  },
   "game_info_modal": {
     "all_gold": "Tất cả vàng",
     "atoms": "Số tên lửa bom nguyên tử",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Dùng bot",
     "report_reason_griefing": "Phá hoại",
     "report_reason_inappropriate_username": "Tên không phù hợp",
+    "report_reason_offensive_chat": "Tin nhắn trò chuyện xúc phạm",
     "report_reason_teaming": "Lập đội",
     "report_sent": "Đã gửi báo cáo!",
     "report_submit": "Gửi báo cáo",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoji",
     "exit_game_info": "Trở về menu chính",
     "exit_game_label": "Thoát Trận",
+    "game_chat_desc": "Hiển thị cuộc trò chuyện chung trong trò chơi nhiều người chơi",
+    "game_chat_label": "Trò chuyện trong trò chơi",
     "game_menu_title": "Menu",
     "game_speed_down": "Giảm tốc độ trò chơi",
     "game_speed_down_desc": "Chuyển sang mức tốc độ trò chơi trước đó. Chỉ áp dụng cho chế độ chơi đơn.",

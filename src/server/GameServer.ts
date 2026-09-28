@@ -21,6 +21,8 @@ import {
   resolveTeamsList,
 } from "../core/game/TeamAssignment";
 import {
+  CHAT_MESSAGE_MAX_LENGTH,
+  ClientChatMessage,
   ClientID,
   ClientMessage,
   ClientReportMessage,
@@ -39,6 +41,7 @@ import {
   PlayerRecord,
   PlayerReport,
   PublicGameType,
+  ServerChatMessage,
   ServerDesyncSchema,
   ServerErrorMessage,
   ServerLobbyInfoMessage,
@@ -54,6 +57,7 @@ import {
 import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
+import { censorChat } from "./Censor";
 import { Client } from "./Client";
 import { applyGameConfigPatch, hostCheatsEnabled } from "./ConfigPatch";
 import { LiveStatsVote, WinnerVote } from "./Consensus";
@@ -84,6 +88,10 @@ import {
 // A non-spectator join landing this soon after start() is someone who meant
 // to play and missed it; after this they are taken to have come to watch.
 const LATE_JOIN_GRACE_MS = 5_000;
+
+// How many of a player's last chat lines a report against them carries (the
+// cap of PlayerReportSchema.messages).
+const CHAT_LOG_LENGTH = 10;
 
 // A public lobby holds back its last seats (a tenth, at least one) for
 // players with queue priority, then opens them to everyone this long before
@@ -244,6 +252,10 @@ export class GameServer {
   // pair counts once. Never in the turn log (who reported whom is staff-only);
   // emitted as info.reports of the archived record (see handleReport).
   private readonly reports = new Map<string, PlayerReport>();
+
+  // Each player's last chat lines as they typed them, attached to a report
+  // against them so staff see what was said (see handleChat).
+  private readonly chatLog = new Map<ClientID, string[]>();
 
   // This private lobby's presence in the public lobby browser (see
   // ListingState.ts).
@@ -775,6 +787,10 @@ export class GameServer {
       }
       case "pick_nation": {
         void this.pickNation(client, clientMsg.nation);
+        break;
+      }
+      case "chat": {
+        this.handleChat(client, clientMsg);
         break;
       }
       default: {
@@ -1951,12 +1967,55 @@ export class GameServer {
     }
     const key = `${client.clientID}:${reported}`;
     if (this.reports.has(key)) return;
-    this.reports.set(key, { reportedBy: client.clientID, reported, reason });
+    const messages = this.chatLog.get(reported);
+    this.reports.set(key, {
+      reportedBy: client.clientID,
+      reported,
+      reason,
+      ...(messages ? { messages: [...messages] } : {}),
+    });
     this.log.info("player reported", {
       clientID: client.clientID,
       reported,
       reason,
       gameID: this.id,
+    });
+  }
+
+  // A player's line in the general chat, relayed to everyone in the game
+  // (spectators included; SocketIngress keeps them from writing). The server
+  // masks slurs, and the rate limiter caps the flow. Chat never enters the
+  // turn log, so it is not part of the replay.
+  private handleChat(client: Client, clientMsg: ClientChatMessage) {
+    if (this.stage !== "started" || this.ended) return;
+    const text = clientMsg.text
+      // Control and bidi-override characters, which could forge a line
+      // break or flip the text around the next player's name.
+      .replace(
+        // eslint-disable-next-line no-control-regex -- matching them is the point
+        /[\u0000-\u001f\u007f-\u009f\u200b-\u200f\u202a-\u202e\u2066-\u2069]/g,
+        " ",
+      )
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, CHAT_MESSAGE_MAX_LENGTH);
+    if (text === "") return;
+    const log = this.chatLog.get(client.clientID) ?? [];
+    log.push(text);
+    this.chatLog.set(client.clientID, log.slice(-CHAT_LOG_LENGTH));
+
+    const msg = encodeServerMessage(
+      {
+        type: "chat",
+        from: client.clientID,
+        text: censorChat(text),
+      } satisfies ServerChatMessage,
+      this.zbinCtx,
+    );
+    this.clients.active().forEach((c) => {
+      if (c.ws.readyState === WebSocket.OPEN) {
+        c.ws.send(msg);
+      }
     });
   }
 

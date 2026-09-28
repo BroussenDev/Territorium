@@ -1061,6 +1061,20 @@
     "enter": "Entra a schermo intero",
     "exit": "Esci dallo schermo intero"
   },
+  "game_chat": {
+    "close": "Nascondi la chat",
+    "empty": "Nessun messaggio ancora. Saluta!",
+    "mute": "Disattiva l'audio di questo giocatore per il resto della partita",
+    "open": "Apri la chat",
+    "placeholder": "Invia un messaggio a tutti...",
+    "report": "Segnala i messaggi di questo giocatore",
+    "send": "Inviare",
+    "slow_down": "Rallenta: attendi qualche secondo prima del tuo prossimo messaggio.",
+    "spectator": "Gli spettatori possono leggere la chat ma non scrivervi.",
+    "title": "Chiacchierata",
+    "unmute_all": "Riattiva tutto ({count})",
+    "you": "Voi"
+  },
   "game_info_modal": {
     "all_gold": "Tutto oro",
     "atoms": "Atomi",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Lutto",
     "report_reason_inappropriate_username": "Nome utente inappropriato",
+    "report_reason_offensive_chat": "Messaggi di chat offensivi",
     "report_reason_teaming": "Fare squadra",
     "report_sent": "Rapporto inviato!",
     "report_submit": "Invia rapporto",
@@ -2698,6 +2713,8 @@
     "emojis_label": "😊 Emoji",
     "exit_game_info": "Ritorna al menu principale",
     "exit_game_label": "Esci dal gioco",
+    "game_chat_desc": "Mostra la chat generale nei giochi multiplayer",
+    "game_chat_label": "Chat nel gioco",
     "game_menu_title": "Menu",
     "game_speed_down": "Velocità di gioco ridotta",
     "game_speed_down_desc": "Passa alla velocità di gioco precedente. Solo giocatore singolo.",

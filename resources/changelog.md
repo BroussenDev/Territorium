@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.20
+
+💬 **In-game chat**
+
+- Every multiplayer game now has a general chat, bottom right: open it, type, press Enter. A badge counts the messages you haven't read.
+- Hover a message to mute its author for the rest of the game, or to report them: the report form opens on "Offensive chat messages", and the staff see the player's last messages.
+- Slurs are masked, and flooding the chat is held back.
+- Spectators can read the chat but not write in it. Replays and solo games have no chat.
+- Don't want it? Turn off "In-game chat" in the settings.
+
 ## v0.1.19
 
 🎯 **Guided training**

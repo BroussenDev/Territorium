@@ -1061,6 +1061,20 @@
     "enter": "Entrar en pantalla completa",
     "exit": "Salir de pantalla completa"
   },
+  "game_chat": {
+    "close": "Ocultar el chat",
+    "empty": "Aún no hay mensajes. ¡Saluda!",
+    "mute": "Silenciar a este jugador por el resto del juego.",
+    "open": "abre el chat",
+    "placeholder": "Envía un mensaje a todos...",
+    "report": "Reportar los mensajes de este jugador",
+    "send": "enviar",
+    "slow_down": "Disminuya la velocidad: espere unos segundos antes de su próximo mensaje.",
+    "spectator": "Los espectadores pueden leer el chat pero no escribir en él.",
+    "title": "Charla",
+    "unmute_all": "Dejar silenciar a todos ({count})",
+    "you": "Tú"
+  },
   "game_info_modal": {
     "all_gold": "Todo oro",
     "atoms": "átomos",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "botar",
     "report_reason_griefing": "duelo",
     "report_reason_inappropriate_username": "Nombre de usuario inadecuado",
+    "report_reason_offensive_chat": "Mensajes de chat ofensivos",
     "report_reason_teaming": "equipo",
     "report_sent": "Informe enviado!",
     "report_submit": "Enviar informe",
@@ -2698,6 +2713,8 @@
     "emojis_label": "😊 Emojis",
     "exit_game_info": "Volver al menú principal",
     "exit_game_label": "Salir del juego",
+    "game_chat_desc": "Mostrar el chat general en juegos multijugador",
+    "game_chat_label": "Chat en el juego",
     "game_menu_title": "Menú",
     "game_speed_down": "Acelerar el juego",
     "game_speed_down_desc": "Cambia a la velocidad del juego anterior. Solo un jugador.",

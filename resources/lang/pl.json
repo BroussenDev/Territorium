@@ -1061,6 +1061,20 @@
     "enter": "Wejdź na pełny ekran",
     "exit": "Wyjdź z pełnego ekranu"
   },
+  "game_chat": {
+    "close": "Ukryj czat",
+    "empty": "Nie ma jeszcze żadnych wiadomości. Przywitaj się!",
+    "mute": "Wycisz tego gracza na resztę gry",
+    "open": "Otwórz czat",
+    "placeholder": "Wyślij wiadomość do wszystkich…",
+    "report": "Zgłoś wiadomości tego gracza",
+    "send": "Wysłać",
+    "slow_down": "Zwolnij: poczekaj kilka sekund przed następną wiadomością.",
+    "spectator": "Widzowie mogą czytać czat, ale nie mogą na nim pisać.",
+    "title": "Pogawędzić",
+    "unmute_all": "Wyłącz wyciszenie wszystkich ({count})",
+    "you": "Ty"
+  },
   "game_info_modal": {
     "all_gold": "Wszystko złote",
     "atoms": "Atomy",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botowanie",
     "report_reason_griefing": "Smutek",
     "report_reason_inappropriate_username": "Niewłaściwa nazwa użytkownika",
+    "report_reason_offensive_chat": "Obraźliwe wiadomości na czacie",
     "report_reason_teaming": "Współpraca",
     "report_sent": "Raport wysłany!",
     "report_submit": "Prześlij raport",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emotikony",
     "exit_game_info": "Powrót do menu głównego",
     "exit_game_label": "Wyjdź z gry",
+    "game_chat_desc": "Pokaż czat ogólny w grach wieloosobowych",
+    "game_chat_label": "Czat w grze",
     "game_menu_title": "Menu",
     "game_speed_down": "Zmniejszenie prędkości gry",
     "game_speed_down_desc": "Przejdź do poprzedniej prędkości gry. Tylko dla jednego gracza.",

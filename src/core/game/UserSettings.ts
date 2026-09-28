@@ -384,6 +384,10 @@ export class UserSettings {
     return this.getBool("settings.emojis", true);
   }
 
+  gameChat() {
+    return this.getBool("settings.gameChat", true);
+  }
+
   performanceOverlay() {
     return this.getBool(PERFORMANCE_OVERLAY_KEY, false);
   }
@@ -456,6 +460,10 @@ export class UserSettings {
 
   toggleEmojis() {
     this.setBool("settings.emojis", !this.emojis());
+  }
+
+  toggleGameChat() {
+    this.setBool("settings.gameChat", !this.gameChat());
   }
 
   // Performance overlay specifically needs a direct setter for Shift-D

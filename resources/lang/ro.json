@@ -1061,6 +1061,20 @@
     "enter": "Intră în ecran complet",
     "exit": "Ieși din ecran complet"
   },
+  "game_chat": {
+    "close": "Ascunde chatul",
+    "empty": "Încă nu există mesaje. Salută!",
+    "mute": "Dezactivați sunetul acestui jucător pentru restul jocului",
+    "open": "Deschide chatul",
+    "placeholder": "Trimite mesaje tuturor...",
+    "report": "Raportați mesajele acestui jucător",
+    "send": "Trimite",
+    "slow_down": "Încetiniți: așteptați câteva secunde înainte de următorul mesaj.",
+    "spectator": "Spectatorii pot citi chatul, dar nu pot scrie în el.",
+    "title": "Chat",
+    "unmute_all": "Activați sunetul pe toate ({count})",
+    "you": "Tu"
+  },
   "game_info_modal": {
     "all_gold": "Tot aurul",
     "atoms": "Atomice",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Pliant",
     "report_reason_griefing": "Îndurerare",
     "report_reason_inappropriate_username": "Nume de utilizator inadecvat",
+    "report_reason_offensive_chat": "Mesaje de chat jignitoare",
     "report_reason_teaming": "Echiparea",
     "report_sent": "Raport trimis!",
     "report_submit": "Trimiteți raportul",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoticoane",
     "exit_game_info": "Înapoi la meniul principal",
     "exit_game_label": "Ieși din joc",
+    "game_chat_desc": "Afișează chatul general în jocurile multiplayer",
+    "game_chat_label": "Chat în joc",
     "game_menu_title": "Meniu",
     "game_speed_down": "Viteza jocului jos",
     "game_speed_down_desc": "Ciclu la viteza anterioară a jocului. Doar un singur jucător.",

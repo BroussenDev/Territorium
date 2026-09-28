@@ -1061,6 +1061,20 @@
     "enter": "Enter fullscreen",
     "exit": "Exit fullscreen"
   },
+  "game_chat": {
+    "close": "Hide the chat",
+    "empty": "No messages yet. Say hello!",
+    "mute": "Mute this player for the rest of the game",
+    "open": "Open the chat",
+    "placeholder": "Message everyone…",
+    "report": "Report this player's messages",
+    "send": "Send",
+    "slow_down": "Slow down: wait a few seconds before your next message.",
+    "spectator": "Spectators can read the chat but not write in it.",
+    "title": "Chat",
+    "unmute_all": "Unmute all ({count})",
+    "you": "You"
+  },
   "game_info_modal": {
     "all_gold": "All gold",
     "atoms": "Atoms",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Griefing",
     "report_reason_inappropriate_username": "Inappropriate username",
+    "report_reason_offensive_chat": "Offensive chat messages",
     "report_reason_teaming": "Teaming",
     "report_sent": "Report sent!",
     "report_submit": "Submit report",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Return to main menu",
     "exit_game_label": "Exit Game",
+    "game_chat_desc": "Show the general chat in multiplayer games",
+    "game_chat_label": "In-game chat",
     "game_menu_title": "Menu",
     "game_speed_down": "Game Speed Down",
     "game_speed_down_desc": "Cycle to previous game speed. Single player only.",

@@ -114,7 +114,8 @@ export type ClientMessage =
   | ClientHashMessage
   | ClientSpectateMessage
   | ClientReportMessage
-  | ClientPickNationMessage;
+  | ClientPickNationMessage
+  | ClientChatMessage;
 
 export type ServerMessage =
   | ServerTurnMessage
@@ -124,7 +125,8 @@ export type ServerMessage =
   | ServerPrestartMessage
   | ServerErrorMessage
   | ServerLobbyInfoMessage
-  | ServerNewLobbyMessage;
+  | ServerNewLobbyMessage
+  | ServerChatMessage;
 
 export type ServerTurnMessage = z.infer<typeof ServerTurnMessageSchema>;
 export type ServerStartGameMessage = z.infer<
@@ -138,11 +140,13 @@ export type ServerLobbyInfoMessage = z.infer<
   typeof ServerLobbyInfoMessageSchema
 >;
 export type ServerNewLobbyMessage = z.infer<typeof ServerNewLobbyMessageSchema>;
+export type ServerChatMessage = z.infer<typeof ServerChatMessageSchema>;
 export type ClientSendWinnerMessage = z.infer<typeof ClientSendWinnerSchema>;
 export type ClientSendLiveStatsMessage = z.infer<
   typeof ClientSendLiveStatsSchema
 >;
 export type ClientReportMessage = z.infer<typeof ClientReportMessageSchema>;
+export type ClientChatMessage = z.infer<typeof ClientChatMessageSchema>;
 export type ReportReason = z.infer<typeof ReportReasonSchema>;
 export type PlayerReport = z.infer<typeof PlayerReportSchema>;
 export type PlayerLiveStats = z.infer<typeof PlayerLiveStatsSchema>;
@@ -1090,6 +1094,18 @@ export const ServerNewLobbyMessageSchema = z.object({
   gameID: ID,
 });
 
+// The in-game general chat: one player's line, relayed by the server to
+// everyone in the game (see GameServer.handleChat). Never part of a turn, so
+// replays carry no chat.
+export const CHAT_MESSAGE_MAX_LENGTH = 120;
+const ChatTextSchema = z.string().min(1).max(CHAT_MESSAGE_MAX_LENGTH);
+
+export const ServerChatMessageSchema = z.object({
+  type: z.literal("chat"),
+  from: ID,
+  text: ChatTextSchema,
+});
+
 export const ServerMessageSchema = zb.discriminatedUnion("type", [
   ServerTurnMessageSchema,
   ServerPrestartMessageSchema,
@@ -1099,6 +1115,7 @@ export const ServerMessageSchema = zb.discriminatedUnion("type", [
   ServerErrorSchema,
   ServerLobbyInfoMessageSchema,
   ServerNewLobbyMessageSchema,
+  ServerChatMessageSchema,
 ]);
 
 //
@@ -1149,6 +1166,7 @@ export const ReportReasonSchema = z.enum([
   "teaming",
   "inappropriate_username",
   "griefing",
+  "offensive_chat",
 ]);
 
 // A player reporting another player of the same game. The server keeps them
@@ -1158,6 +1176,9 @@ export const PlayerReportSchema = z.object({
   reportedBy: ID,
   reported: ID,
   reason: ReportReasonSchema,
+  // The reported player's last chat lines, as the server relayed them, for
+  // the staff reviewing the report.
+  messages: ChatTextSchema.array().max(10).optional(),
 });
 
 // Note: reportedBy is NOT sent - the server stamps it from the connection.
@@ -1165,6 +1186,11 @@ export const ClientReportMessageSchema = z.object({
   type: z.literal("report"),
   reported: ID,
   reason: ReportReasonSchema,
+});
+
+export const ClientChatMessageSchema = z.object({
+  type: z.literal("chat"),
+  text: ChatTextSchema,
 });
 
 export const ClientHashSchema = z.object({
@@ -1255,6 +1281,7 @@ export const ClientMessageSchema = zb.discriminatedUnion("type", [
   ClientSpectateMessageSchema,
   ClientReportMessageSchema,
   ClientPickNationMessageSchema,
+  ClientChatMessageSchema,
 ]);
 
 //

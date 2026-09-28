@@ -1061,6 +1061,20 @@
     "enter": "Alŝalti plenekranon",
     "exit": "Eliri plenekranon"
   },
+  "game_chat": {
+    "close": "Kaŝi la babilejon",
+    "empty": "Ankoraŭ neniuj mesaĝoj. Salutu!",
+    "mute": "Mutigu ĉi tiun ludanton por la resto de la ludo",
+    "open": "Malfermu la babilejon",
+    "placeholder": "Mesaĝu al ĉiuj...",
+    "report": "Raportu la mesaĝojn de ĉi tiu ludanto",
+    "send": "Sendu",
+    "slow_down": "Malrapidu: atendu kelkajn sekundojn antaŭ via sekva mesaĝo.",
+    "spectator": "Spektantoj povas legi la babilejon sed ne skribi en ĝi.",
+    "title": "Babilado",
+    "unmute_all": "Malŝaltu ĉion ({count})",
+    "you": "Vi"
+  },
   "game_info_modal": {
     "all_gold": "Ĉiu oro",
     "atoms": "Atombomboj",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Funebro",
     "report_reason_inappropriate_username": "Nekonvena uzantnomo",
+    "report_reason_offensive_chat": "Ofendaj babilmesaĝoj",
     "report_reason_teaming": "Teamado",
     "report_sent": "Raporto sendita!",
     "report_submit": "Sendu raporton",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoĝioj",
     "exit_game_info": "Reiri al precipa menuo",
     "exit_game_label": "Eliri el la ludo",
+    "game_chat_desc": "Montru la ĝeneralan babilejon en plurludantaj ludoj",
+    "game_chat_label": "En-luda babilado",
     "game_menu_title": "Menuo",
     "game_speed_down": "Malrapidigi la Ludon",
     "game_speed_down_desc": "Elektas antaŭan rapidecon de la ludo. Nur ludante sole.",

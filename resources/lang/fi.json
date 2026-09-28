@@ -1061,6 +1061,20 @@
     "enter": "Siirry koko näytön tilaan",
     "exit": "Poistu koko näytöstä"
   },
+  "game_chat": {
+    "close": "Piilota keskustelu",
+    "empty": "Ei viestejä vielä. Sano hei!",
+    "mute": "Mykistä tämä soitin pelin loppua varten",
+    "open": "Avaa chat",
+    "placeholder": "Viesti kaikille…",
+    "report": "Ilmoita tämän pelaajan viesteistä",
+    "send": "Lähetä",
+    "slow_down": "Hidasta: odota muutama sekunti ennen seuraavaa viestiä.",
+    "spectator": "Katsojat voivat lukea chatin, mutta eivät kirjoittaa siihen.",
+    "title": "Chat",
+    "unmute_all": "Poista kaikkien mykistys ({count})",
+    "you": "sinä"
+  },
   "game_info_modal": {
     "all_gold": "Kaikki kultaa",
     "atoms": "Atomit",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Surullinen",
     "report_reason_inappropriate_username": "Sopimaton käyttäjätunnus",
+    "report_reason_offensive_chat": "Loukkaavia chat-viestejä",
     "report_reason_teaming": "Teaming",
     "report_sent": "Raportti lähetetty!",
     "report_submit": "Lähetä raportti",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Hymiöt",
     "exit_game_info": "Palaa päävalikkoon",
     "exit_game_label": "Poistu pelistä",
+    "game_chat_desc": "Näytä yleinen chat moninpelissä",
+    "game_chat_label": "Pelin sisäinen chat",
     "game_menu_title": "Valikko",
     "game_speed_down": "Pelin nopeus alas",
     "game_speed_down_desc": "Siirry edelliseen pelinopeuteen. Vain yksi pelaaja.",

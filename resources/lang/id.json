@@ -1061,6 +1061,20 @@
     "enter": "Masuk ke layar penuh",
     "exit": "Keluar dari layar penuh"
   },
+  "game_chat": {
+    "close": "Sembunyikan obrolan",
+    "empty": "Belum ada pesan. Katakan halo!",
+    "mute": "Bisukan pemain ini selama sisa permainan",
+    "open": "Buka obrolan",
+    "placeholder": "Kirim pesan ke semua orang…",
+    "report": "Laporkan pesan pemain ini",
+    "send": "Mengirim",
+    "slow_down": "Pelan-pelan: tunggu beberapa detik sebelum pesan Anda berikutnya.",
+    "spectator": "Penonton dapat membaca chat tersebut namun tidak dapat menulis di dalamnya.",
+    "title": "Mengobrol",
+    "unmute_all": "Suarakan semua ({count})",
+    "you": "Anda"
+  },
   "game_info_modal": {
     "all_gold": "Semua emas",
     "atoms": "Atom",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "pembotolan",
     "report_reason_griefing": "Berduka",
     "report_reason_inappropriate_username": "Nama pengguna tidak pantas",
+    "report_reason_offensive_chat": "Pesan obrolan yang menyinggung",
     "report_reason_teaming": "Bekerja sama",
     "report_sent": "Laporan terkirim!",
     "report_submit": "Kirim laporan",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoji",
     "exit_game_info": "Kembali ke menu utama",
     "exit_game_label": "Keluar Game",
+    "game_chat_desc": "Tampilkan obrolan umum di game multipemain",
+    "game_chat_label": "Obrolan dalam game",
     "game_menu_title": "Menu",
     "game_speed_down": "Kecepatan Permainan Turun",
     "game_speed_down_desc": "Beralih ke kecepatan game sebelumnya. Hanya pemain tunggal.",

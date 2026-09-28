@@ -18,6 +18,7 @@ import {
 import { TileRef } from "../core/game/GameMap";
 import {
   AllPlayersStats,
+  ClientChatMessage,
   ClientHashMessage,
   ClientID,
   ClientIntentMessage,
@@ -215,6 +216,17 @@ export class SendPlayerReportEvent implements GameEvent {
 export class PlayerReportedEvent implements GameEvent {
   constructor(public readonly reported: ClientID) {}
 }
+// The general chat (see GameChat): a line this player sends, and a line the
+// server relayed from anyone in the game.
+export class SendChatMessageEvent implements GameEvent {
+  constructor(public readonly text: string) {}
+}
+export class ChatMessageEvent implements GameEvent {
+  constructor(
+    public readonly from: ClientID,
+    public readonly text: string,
+  ) {}
+}
 export class SendHashEvent implements GameEvent {
   constructor(
     public readonly tick: Tick,
@@ -363,6 +375,7 @@ export class Transport {
     this.subscribe(SendPlayerReportEvent, (e) =>
       this.onSendPlayerReportEvent(e),
     );
+    this.subscribe(SendChatMessageEvent, (e) => this.onSendChatMessageEvent(e));
     this.subscribe(SendHashEvent, (e) => this.onSendHashEvent(e));
     this.subscribe(CancelAttackIntentEvent, (e) =>
       this.onCancelAttackIntentEvent(e),
@@ -938,6 +951,15 @@ export class Transport {
       reason: event.reason,
     } satisfies ClientReportMessage);
     this.eventBus.emit(new PlayerReportedEvent(event.reported));
+  }
+
+  private onSendChatMessageEvent(event: SendChatMessageEvent) {
+    // Nobody to talk to in a local game.
+    if (this.isLocal || this.socket?.readyState !== WebSocket.OPEN) return;
+    this.sendMsg({
+      type: "chat",
+      text: event.text,
+    } satisfies ClientChatMessage);
   }
 
   private onSendHashEvent(event: SendHashEvent) {

@@ -1061,6 +1061,20 @@
     "enter": "Tam ekrana girin",
     "exit": "Tam ekrandan çık"
   },
+  "game_chat": {
+    "close": "Sohbeti gizle",
+    "empty": "Henüz mesaj yok. Merhaba deyin!",
+    "mute": "Oyunun geri kalanında bu oyuncuyu sessize alın",
+    "open": "Sohbeti aç",
+    "placeholder": "Herkese mesaj atın…",
+    "report": "Bu oyuncunun mesajlarını bildirin",
+    "send": "Göndermek",
+    "slow_down": "Yavaşlayın: Bir sonraki mesajınızdan önce birkaç saniye bekleyin.",
+    "spectator": "İzleyiciler sohbeti okuyabilir ancak yazamaz.",
+    "title": "Sohbet",
+    "unmute_all": "Tümünün sesini aç ({count})",
+    "you": "Sen"
+  },
   "game_info_modal": {
     "all_gold": "Tüm altın",
     "atoms": "Atomlar",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botlama",
     "report_reason_griefing": "Keder",
     "report_reason_inappropriate_username": "Uygunsuz kullanıcı adı",
+    "report_reason_offensive_chat": "Saldırgan sohbet mesajları",
     "report_reason_teaming": "Takım oluşturma",
     "report_sent": "Rapor gönderildi!",
     "report_submit": "Raporu gönder",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojiler",
     "exit_game_info": "Ana menüye dön",
     "exit_game_label": "Oyundan Çık",
+    "game_chat_desc": "Çok oyunculu oyunlarda genel sohbeti göster",
+    "game_chat_label": "Oyun içi sohbet",
     "game_menu_title": "Menü",
     "game_speed_down": "Oyun Hızını Düşürme",
     "game_speed_down_desc": "Önceki oyun hızına geçin. Yalnızca tek oyunculu.",

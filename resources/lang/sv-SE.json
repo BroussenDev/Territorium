@@ -1061,6 +1061,20 @@
     "enter": "Ange helskärm",
     "exit": "Avsluta helskärm"
   },
+  "game_chat": {
+    "close": "Göm chatten",
+    "empty": "Inga meddelanden än. Säg hej!",
+    "mute": "Stäng av den här spelaren under resten av spelet",
+    "open": "Öppna chatten",
+    "placeholder": "Skicka meddelande till alla...",
+    "report": "Rapportera spelarens meddelanden",
+    "send": "Skicka",
+    "slow_down": "Sakta ner: vänta några sekunder innan ditt nästa meddelande.",
+    "spectator": "Åskådare kan läsa chatten men inte skriva i den.",
+    "title": "Chatta",
+    "unmute_all": "Slå på ljudet för alla ({count})",
+    "you": "Du"
+  },
   "game_info_modal": {
     "all_gold": "Allt guld",
     "atoms": "Atomer",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Sorg",
     "report_reason_inappropriate_username": "Olämpligt användarnamn",
+    "report_reason_offensive_chat": "Stötande chattmeddelanden",
     "report_reason_teaming": "Teaming",
     "report_sent": "Rapport skickad!",
     "report_submit": "Lämna rapport",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Återgå till huvudmenyn",
     "exit_game_label": "Avsluta Spelet",
+    "game_chat_desc": "Visa den allmänna chatten i spel för flera spelare",
+    "game_chat_label": "Chatt i spelet",
     "game_menu_title": "Meny",
     "game_speed_down": "Spelet Speed Down",
     "game_speed_down_desc": "Gå till föregående spelhastighet. Endast en spelare.",

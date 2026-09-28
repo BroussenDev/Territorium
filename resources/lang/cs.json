@@ -1061,6 +1061,20 @@
     "enter": "Přejít do režimu celé obrazovky",
     "exit": "Ukončit režim celé obrazovky"
   },
+  "game_chat": {
+    "close": "Skrýt chat",
+    "empty": "Zatím žádné zprávy. Pozdravit!",
+    "mute": "Ztlumit tohoto hráče po zbytek hry",
+    "open": "Otevřete chat",
+    "placeholder": "Pošlete zprávu všem…",
+    "report": "Nahlásit zprávy tohoto hráče",
+    "send": "Poslat",
+    "slow_down": "Zpomalte: počkejte několik sekund před další zprávou.",
+    "spectator": "Diváci mohou chat číst, ale ne do něj psát.",
+    "title": "Povídání",
+    "unmute_all": "Zapnout zvuk všem ({count})",
+    "you": "Vy"
+  },
   "game_info_modal": {
     "all_gold": "Celkové zlato",
     "atoms": "Atomové bomby",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Používání botů",
     "report_reason_griefing": "Griefing",
     "report_reason_inappropriate_username": "Nevhodné uživatelské jméno",
+    "report_reason_offensive_chat": "Urážlivé chatové zprávy",
     "report_reason_teaming": "Spolupráce hráčů",
     "report_sent": "Hlášení odesláno!",
     "report_submit": "Odeslat hlášení",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoji",
     "exit_game_info": "Vrátit se do hlavního menu",
     "exit_game_label": "Opustit hru",
+    "game_chat_desc": "Zobrazit obecný chat ve hrách pro více hráčů",
+    "game_chat_label": "Chat ve hře",
     "game_menu_title": "Menu",
     "game_speed_down": "Zpomalit hru",
     "game_speed_down_desc": "Přepne na předchozí rychlost hry. Pouze ve hře pro jednoho hráče.",

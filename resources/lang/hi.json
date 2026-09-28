@@ -1061,6 +1061,20 @@
     "enter": "फ़ुलस्क्रीन दर्ज करें",
     "exit": "फ़ुलस्क्रीन से बाहर निकलें"
   },
+  "game_chat": {
+    "close": "चैट छुपाएं",
+    "empty": "अभी तक कोई संदेश नहीं. हैलो कहें!",
+    "mute": "शेष गेम के लिए इस प्लेयर को म्यूट करें",
+    "open": "चैट खोलें",
+    "placeholder": "सभी को संदेश भेजें...",
+    "report": "इस खिलाड़ी के संदेशों की रिपोर्ट करें",
+    "send": "भेजना",
+    "slow_down": "धीमा करें: अपने अगले संदेश से पहले कुछ सेकंड प्रतीक्षा करें।",
+    "spectator": "दर्शक चैट पढ़ सकते हैं लेकिन उसमें लिख नहीं सकते।",
+    "title": "बात करना",
+    "unmute_all": "सभी को अनम्यूट करें ({count})",
+    "you": "आप"
+  },
   "game_info_modal": {
     "all_gold": "सारा सोना",
     "atoms": "परमाणुओं",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "botting",
     "report_reason_griefing": "शोक",
     "report_reason_inappropriate_username": "अनुपयुक्त उपयोक्तानाम",
+    "report_reason_offensive_chat": "आपत्तिजनक चैट संदेश",
     "report_reason_teaming": "मिलकर",
     "report_sent": "रिपोर्ट भेजी गई!",
     "report_submit": "रिपोर्ट सबमिट करें",
@@ -2698,6 +2713,8 @@
     "emojis_label": "इमोजी",
     "exit_game_info": "मुख्य मेनू पर लौटें",
     "exit_game_label": "खेल से बाहर निकलें",
+    "game_chat_desc": "मल्टीप्लेयर गेम में सामान्य चैट दिखाएं",
+    "game_chat_label": "इन-गेम चैट",
     "game_menu_title": "मेनू",
     "game_speed_down": "गेम स्पीड डाउन",
     "game_speed_down_desc": "पिछले गेम की गति तक चक्र। केवल एकल खिलाड़ी.",

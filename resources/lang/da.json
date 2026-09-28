@@ -1061,6 +1061,20 @@
     "enter": "Gå til fuldskærmsvisning",
     "exit": "Afslut fuldskærmsvisning"
   },
+  "game_chat": {
+    "close": "Skjul chatten",
+    "empty": "Ingen beskeder endnu. Sig hej!",
+    "mute": "Slå lyden fra for denne spiller resten af ​​spillet",
+    "open": "Åbn chatten",
+    "placeholder": "Send besked til alle...",
+    "report": "Rapporter denne spillers beskeder",
+    "send": "Sende",
+    "slow_down": "Sæt farten ned: Vent et par sekunder før din næste besked.",
+    "spectator": "Tilskuere kan læse chatten, men ikke skrive i den.",
+    "title": "Snak",
+    "unmute_all": "Slå alle til ({count})",
+    "you": "Du"
+  },
   "game_info_modal": {
     "all_gold": "Alt guld",
     "atoms": "Atomer",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Sorg",
     "report_reason_inappropriate_username": "Upassende brugernavn",
+    "report_reason_offensive_chat": "Stødende chatbeskeder",
     "report_reason_teaming": "Teaming",
     "report_sent": "Rapport sendt!",
     "report_submit": "Indsend rapport",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Tilbage til hovedmenu",
     "exit_game_label": "Afslut Spil",
+    "game_chat_desc": "Vis den generelle chat i multiplayer-spil",
+    "game_chat_label": "Chat i spillet",
     "game_menu_title": "Menu",
     "game_speed_down": "Spilhastighed ned",
     "game_speed_down_desc": "Skift til forrige spilhastighed. Kun singleplayer.",

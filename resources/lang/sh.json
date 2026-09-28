@@ -1061,6 +1061,20 @@
     "enter": "Pređi u režim punog ekrana",
     "exit": "Napusti režim punog ekrana"
   },
+  "game_chat": {
+    "close": "Sakrij ćaskanje",
+    "empty": "Još nema poruka. Reci zdravo!",
+    "mute": "Isključite zvuk ovog igrača do kraja igre",
+    "open": "Otvorite ćaskanje",
+    "placeholder": "Pošalji poruku svima…",
+    "report": "Prijavite poruke ovog igrača",
+    "send": "Pošalji",
+    "slow_down": "Usporite: sačekajte nekoliko sekundi pre vaše sledeće poruke.",
+    "spectator": "Gledaoci mogu da čitaju ćaskanje, ali ne i da pišu u njemu.",
+    "title": "Ćaskanje",
+    "unmute_all": "Uključi zvuk za sve ({count})",
+    "you": "Vi"
+  },
   "game_info_modal": {
     "all_gold": "Svo zlato",
     "atoms": "Atomi",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Korišćenje botova",
     "report_reason_griefing": "Opstrukcija igre (Griefing)",
     "report_reason_inappropriate_username": "Neprikladno korisničko ime",
+    "report_reason_offensive_chat": "Uvredljive poruke za ćaskanje",
     "report_reason_teaming": "Timovanje",
     "report_sent": "Prijava je poslata!",
     "report_submit": "Pošalji prijavu",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emotikoni",
     "exit_game_info": "Povratak u glavni meni",
     "exit_game_label": "Izađi iz igre",
+    "game_chat_desc": "Prikažite opšte ćaskanje u igrama za više igrača",
+    "game_chat_label": "Ćaskanje u igri",
     "game_menu_title": "Meni",
     "game_speed_down": "Smanji brzinu igre",
     "game_speed_down_desc": "Prebaci na prethodnu brzinu igre. Samo za jednog igrača.",

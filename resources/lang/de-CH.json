@@ -1061,6 +1061,20 @@
     "enter": "Geben Sie den Vollbildmodus ein",
     "exit": "Beenden Sie den Vollbildmodus"
   },
+  "game_chat": {
+    "close": "Verstecke den Chat",
+    "empty": "Noch keine Nachrichten. Sag Hallo!",
+    "mute": "Schalten Sie diesen Spieler für den Rest des Spiels stumm",
+    "open": "Öffnen Sie den Chat",
+    "placeholder": "Nachricht an alle ...",
+    "report": "Melden Sie die Nachrichten dieses Spielers",
+    "send": "Schicken",
+    "slow_down": "Machen Sie es langsamer: Warten Sie ein paar Sekunden, bevor Sie Ihre nächste Nachricht erhalten.",
+    "spectator": "Zuschauer können den Chat lesen, aber nicht darin schreiben.",
+    "title": "Chatten",
+    "unmute_all": "Stummschaltung für alle aufheben ({count})",
+    "you": "Du"
+  },
   "game_info_modal": {
     "all_gold": "Gsamtes Gold",
     "atoms": "Atome",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Trauer",
     "report_reason_inappropriate_username": "Unangemessener Benutzername",
+    "report_reason_offensive_chat": "Beleidigende Chatnachrichten",
     "report_reason_teaming": "Teaming",
     "report_sent": "Bericht gesendet!",
     "report_submit": "Bericht absenden",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Zrügg zum Houptmenu",
     "exit_game_label": "Spieu verloh",
+    "game_chat_desc": "Zeigen Sie den allgemeinen Chat in Multiplayer-Spielen an",
+    "game_chat_label": "Chat im Spiel",
     "game_menu_title": "Menü",
     "game_speed_down": "Spielgeschwindigkeit verringert",
     "game_speed_down_desc": "Wechseln Sie zur vorherigen Spielgeschwindigkeit. Nur Einzelspieler.",

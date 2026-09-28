@@ -1061,6 +1061,20 @@
     "enter": "Entra a pantalla completa",
     "exit": "Sortir de pantalla completa"
   },
+  "game_chat": {
+    "close": "Amaga el xat",
+    "empty": "Encara no hi ha missatges. Digues hola!",
+    "mute": "Silencia aquest jugador durant la resta del joc",
+    "open": "Obre el xat",
+    "placeholder": "Missatge a tothom...",
+    "report": "Informa dels missatges d'aquest jugador",
+    "send": "Enviar",
+    "slow_down": "Redueix la velocitat: espera uns segons abans del teu següent missatge.",
+    "spectator": "Els espectadors poden llegir el xat però no escriure-hi.",
+    "title": "Xatejar",
+    "unmute_all": "Desactiva-ho tot ({count})",
+    "you": "tu"
+  },
   "game_info_modal": {
     "all_gold": "Tot l'or",
     "atoms": "Atòmiques",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Embotellament",
     "report_reason_griefing": "Dol",
     "report_reason_inappropriate_username": "Nom d'usuari inadequat",
+    "report_reason_offensive_chat": "Missatges de xat ofensius",
     "report_reason_teaming": "Formació en equip",
     "report_sent": "Informe enviat!",
     "report_submit": "Presentar informe",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojis",
     "exit_game_info": "Torna al menú principal",
     "exit_game_label": "Surt de la Partida",
+    "game_chat_desc": "Mostra el xat general en jocs multijugador",
+    "game_chat_label": "Xat dins del joc",
     "game_menu_title": "Menú",
     "game_speed_down": "Joc Speed Down",
     "game_speed_down_desc": "Anar a la velocitat del joc anterior. Només un jugador.",

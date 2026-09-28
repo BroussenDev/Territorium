@@ -1061,6 +1061,20 @@
     "enter": "Passer en mode grand écran",
     "exit": "Quitter le mode grand écran"
   },
+  "game_chat": {
+    "close": "Masquer le chat",
+    "empty": "Aucun message pour l'instant. Dites bonjour !",
+    "mute": "Masquer ce joueur jusqu'à la fin de la partie",
+    "open": "Ouvrir le chat",
+    "placeholder": "Écrire à tout le monde…",
+    "report": "Signaler les messages de ce joueur",
+    "send": "Envoyer",
+    "slow_down": "Doucement : attendez quelques secondes avant votre prochain message.",
+    "spectator": "Les spectateurs peuvent lire le chat mais pas y écrire.",
+    "title": "Chat",
+    "unmute_all": "Réafficher tout le monde ({count})",
+    "you": "Vous"
+  },
   "game_info_modal": {
     "all_gold": "Tout l'or",
     "atoms": "Atomes",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Utilisation de bots",
     "report_reason_griefing": "Sabotage, Anti-jeu",
     "report_reason_inappropriate_username": "Pseudonyme inapproprié",
+    "report_reason_offensive_chat": "Messages injurieux dans le chat",
     "report_reason_teaming": "Alliance préméditée ou collusion",
     "report_sent": "Signalement envoyé !",
     "report_submit": "Envoyer le signalement",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Émojis",
     "exit_game_info": "Retour au menu principal",
     "exit_game_label": "Quitter la partie",
+    "game_chat_desc": "Afficher le chat général dans les parties multijoueur",
+    "game_chat_label": "Chat en partie",
     "game_menu_title": "Menu",
     "game_speed_down": "Ralentissement du jeu",
     "game_speed_down_desc": "Reculer la vitesse du jeu d'un cran. Solo uniquement.",

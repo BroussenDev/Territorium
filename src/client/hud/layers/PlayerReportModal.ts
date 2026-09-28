@@ -16,6 +16,8 @@ export class PlayerReportModal extends LitElement {
   @property({ attribute: false }) eventBus: EventBus | null = null;
   @property({ attribute: false }) target: PlayerView | null = null;
   @property({ type: Boolean }) open: boolean = false;
+  // Preselected on opening, e.g. offensive_chat from the chat.
+  @property({ attribute: false }) initialReason: ReportReason | null = null;
 
   @state() private reason: ReportReason | null = null;
 
@@ -25,7 +27,7 @@ export class PlayerReportModal extends LitElement {
 
   updated(changed: Map<string, unknown>) {
     if (changed.has("open") && this.open) {
-      this.reason = null;
+      this.reason = this.initialReason;
       queueMicrotask(() =>
         (this.querySelector('[role="dialog"]') as HTMLElement | null)?.focus(),
       );

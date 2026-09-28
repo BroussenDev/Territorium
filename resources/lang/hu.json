@@ -1061,6 +1061,20 @@
     "enter": "Váltás teljes képernyőre",
     "exit": "Kilépés a teljes képernyős módból"
   },
+  "game_chat": {
+    "close": "A csevegés elrejtése",
+    "empty": "Még nincsenek üzenetek. Köszönj!",
+    "mute": "Némítsa el ezt a játékost a játék hátralévő részében",
+    "open": "Nyissa meg a csevegést",
+    "placeholder": "Üzenet mindenkinek…",
+    "report": "Jelentse a játékos üzeneteit",
+    "send": "Elküld",
+    "slow_down": "Lassítás: várjon néhány másodpercet a következő üzenet előtt.",
+    "spectator": "A nézők elolvashatják a csevegést, de nem írhatnak bele.",
+    "title": "Csevegés",
+    "unmute_all": "Az összes némításának feloldása ({count})",
+    "you": "Te"
+  },
   "game_info_modal": {
     "all_gold": "Összes arany",
     "atoms": "Atombombák",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botolás",
     "report_reason_griefing": "Griefelés",
     "report_reason_inappropriate_username": "Nem megfelelő felhasználónév",
+    "report_reason_offensive_chat": "Sértő chat üzenetek",
     "report_reason_teaming": "Csapatmunka",
     "report_sent": "Jelentés elküldve",
     "report_submit": "Jelentés beküldése",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojik",
     "exit_game_info": "Visszatérés a főmenübe",
     "exit_game_label": "Kilépés a játékból",
+    "game_chat_desc": "Mutasd meg az általános csevegést a többszereplős játékokban",
+    "game_chat_label": "Játékon belüli chat",
     "game_menu_title": "Menü",
     "game_speed_down": "Játék lassítása",
     "game_speed_down_desc": "Visszatérés az előző játéksebességhez. Csak egyjátékos módban.",

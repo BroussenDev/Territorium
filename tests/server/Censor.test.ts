@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  censorChat,
   censorPlayer,
   profanityMatcher,
   shadowNames,
@@ -270,6 +271,30 @@ describe("Censor (local fallback)", () => {
       for (const name of ["José", "Müller", "Łukasz", "Bjørn", "Renée"]) {
         expect(profanityMatcher.hasMatch(name), name).toBe(false);
         expect(censorPlayer(name, null).username, name).toBe(name);
+      }
+    });
+  });
+
+  describe("censorChat", () => {
+    test("masks slurs, including leetspeak and embedded ones", () => {
+      expect(censorChat("you nazi")).toBe("you ****");
+      expect(censorChat("N1GGER lol")).toBe("****** lol");
+      expect(censorChat("xXhitlerXx")).toBe("xX******Xx");
+      expect(censorChat("sieg HEIL")).toBe("sieg ****");
+    });
+
+    test("leaves everyday words in any language alone", () => {
+      for (const text of [
+        "je suis en retard",
+        "assez de toi",
+        "Niger attaque le Nigeria",
+        "spicy move",
+        "this pic",
+        "kanał zablokowany",
+        "assegna le truppe",
+        "heilung",
+      ]) {
+        expect(censorChat(text)).toBe(text);
       }
     });
   });

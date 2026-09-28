@@ -1061,6 +1061,20 @@
     "enter": "전체 화면",
     "exit": "전체 화면 종료"
   },
+  "game_chat": {
+    "close": "채팅 숨기기",
+    "empty": "아직 메시지가 없습니다. 인사하세요!",
+    "mute": "게임이 끝날 때까지 이 플레이어를 음소거합니다.",
+    "open": "채팅을 열어보세요",
+    "placeholder": "모두에게 메시지를 보내세요…",
+    "report": "이 플레이어의 메시지를 신고하세요",
+    "send": "보내다",
+    "slow_down": "속도를 늦추세요: 다음 메시지가 나올 때까지 몇 초 정도 기다리세요.",
+    "spectator": "관중은 채팅을 읽을 수 있지만 쓸 수는 없습니다.",
+    "title": "채팅",
+    "unmute_all": "모두 음소거 해제({count})",
+    "you": "너"
+  },
   "game_info_modal": {
     "all_gold": "모든 금",
     "atoms": "원자",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "봇 사용",
     "report_reason_griefing": "고의적 트롤링",
     "report_reason_inappropriate_username": "부적절한 사용자명",
+    "report_reason_offensive_chat": "공격적인 채팅 메시지",
     "report_reason_teaming": "티밍",
     "report_sent": "신고를 보냈습니다!",
     "report_submit": "신고 제출",
@@ -2698,6 +2713,8 @@
     "emojis_label": "이모지",
     "exit_game_info": "주 메뉴로 돌아가기",
     "exit_game_label": "게임 나가기",
+    "game_chat_desc": "멀티플레이어 게임에서 일반 채팅 표시",
+    "game_chat_label": "게임 내 채팅",
     "game_menu_title": "메뉴",
     "game_speed_down": "게임 속도 감소",
     "game_speed_down_desc": "이전 게임 속도로 전환합니다. 싱글 플레이어 전용입니다.",

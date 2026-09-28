@@ -1,6 +1,8 @@
 import {
   DataSet,
   RegExpMatcher,
+  TextCensor,
+  asteriskCensorStrategy,
   collapseDuplicatesTransformer,
   englishDataset,
   pattern,
@@ -112,6 +114,42 @@ function createMatcher(): RegExpMatcher {
 }
 
 export const profanityMatcher = createMatcher();
+
+// The chat masks slurs only. The username screen above is too eager for free
+// text in 40 languages: englishDataset flags "assez", "assegno", "kanał",
+// and the collapse/skip-punctuation passes join words ("this pic") and turn
+// "Niger" into a match. Plain swearing is left to mute and report.
+const chatSlurs = ["nigger", "nigga", "faggot", "hitler", "auschwitz"];
+// Whole words only, so "spicy" and "heilung" pass.
+const chatWholeWordSlurs = ["chink", "spic", "kike", "nazi", "heil", "kkk"];
+
+function createChatMatcher(): RegExpMatcher {
+  const dataset = new DataSet();
+  for (const word of chatSlurs) {
+    dataset.addPhrase((phrase) => phrase.addPattern(pattern`${word}`));
+  }
+  dataset.addPhrase((phrase) => phrase.addPattern(pattern`white[ ]power`));
+  for (const word of chatWholeWordSlurs) {
+    dataset.addPhrase((phrase) =>
+      phrase.addPattern(pattern`|${word}|`).addPattern(pattern`|${word}s|`),
+    );
+  }
+  return new RegExpMatcher({
+    ...dataset.build(),
+    blacklistMatcherTransformers: [
+      toAsciiLowerCaseTransformer(),
+      resolveConfusablesTransformer(),
+      resolveLeetSpeakTransformer(),
+    ],
+  });
+}
+
+const chatMatcher = createChatMatcher();
+const chatCensor = new TextCensor().setStrategy(asteriskCensorStrategy());
+
+export function censorChat(text: string): string {
+  return chatCensor.applyTo(text, chatMatcher.getAllMatches(text));
+}
 
 /**
  * Same censoring semantics as the API's join_verify: a profane username is

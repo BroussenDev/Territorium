@@ -23,12 +23,12 @@ import { ActionableEvents } from "./layers/ActionableEvents";
 import { AlertFrame } from "./layers/AlertFrame";
 import { AttacksDisplay } from "./layers/AttacksDisplay";
 import { BuildMenu } from "./layers/BuildMenu";
-import { ChatDisplay } from "./layers/ChatDisplay";
 import { ChatModal } from "./layers/ChatModal";
 import { ControlPanel } from "./layers/ControlPanel";
 import { EmojiTable } from "./layers/EmojiTable";
 import { EventHistory } from "./layers/EventHistory";
 import { EventsDisplay } from "./layers/EventsDisplay";
+import { GameChat } from "./layers/GameChat";
 import { GameLeftSidebar } from "./layers/GameLeftSidebar";
 import { GameRightSidebar } from "./layers/GameRightSidebar";
 import { HeadsUpMessage } from "./layers/HeadsUpMessage";
@@ -138,12 +138,13 @@ export function createRenderer(
   attacksDisplay.game = game;
   attacksDisplay.uiState = uiState;
 
-  const chatDisplay = document.querySelector("chat-display") as ChatDisplay;
-  if (!(chatDisplay instanceof ChatDisplay)) {
-    console.error("chat display not found");
+  const gameChat = document.querySelector("game-chat") as GameChat;
+  if (!(gameChat instanceof GameChat)) {
+    console.error("game chat not found");
   }
-  chatDisplay.eventBus = eventBus;
-  chatDisplay.game = game;
+  gameChat.eventBus = eventBus;
+  gameChat.game = game;
+  gameChat.userSettings = userSettings;
 
   const playerInfo = document.querySelector(
     "player-info-overlay",
@@ -354,7 +355,7 @@ export function createRenderer(
     eventsDisplay,
     actionableEvents,
     attacksDisplay,
-    chatDisplay,
+    gameChat,
     buildMenu,
     new MainRadialMenu(
       eventBus,

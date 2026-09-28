@@ -1061,6 +1061,20 @@
     "enter": "全画面にする",
     "exit": "全画面を終了"
   },
+  "game_chat": {
+    "close": "チャットを非表示にする",
+    "empty": "まだメッセージはありません。こんにちは！",
+    "mute": "ゲームの残りの間、このプレイヤーをミュートします",
+    "open": "チャットを開く",
+    "placeholder": "みんなにメッセージを…",
+    "report": "このプレイヤーのメッセージを報告する",
+    "send": "送信",
+    "slow_down": "速度を下げる: 次のメッセージまで数秒待ちます。",
+    "spectator": "観客はチャットを読むことはできますが、書き込むことはできません。",
+    "title": "チャット",
+    "unmute_all": "すべてのミュートを解除 ({count})",
+    "you": "あなた"
+  },
   "game_info_modal": {
     "all_gold": "合計資金",
     "atoms": "原子爆弾",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botの利用",
     "report_reason_griefing": "嫌がらせ行為",
     "report_reason_inappropriate_username": "不適切なユーザー名",
+    "report_reason_offensive_chat": "不快なチャットメッセージ",
     "report_reason_teaming": "チーミング",
     "report_sent": "報告を送信しました！",
     "report_submit": "レポートを送信",
@@ -2698,6 +2713,8 @@
     "emojis_label": "絵文字を表示",
     "exit_game_info": "メインメニューに戻ります。",
     "exit_game_label": "ゲームから退出する",
+    "game_chat_desc": "マルチプレイヤー ゲームで一般的なチャットを表示する",
+    "game_chat_label": "ゲーム内チャット",
     "game_menu_title": "メニュー",
     "game_speed_down": "ゲーム速度を減速",
     "game_speed_down_desc": "前のゲーム速度に切り替えます。  (シングルプレーヤーのみ)",

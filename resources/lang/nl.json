@@ -1061,6 +1061,20 @@
     "enter": "Schakel volledig scherm in",
     "exit": "Volledig scherm afsluiten"
   },
+  "game_chat": {
+    "close": "Verberg de chat",
+    "empty": "Nog geen berichten. Zeg hallo!",
+    "mute": "Demp deze speler voor de rest van het spel",
+    "open": "Open de chat",
+    "placeholder": "Stuur iedereen een bericht...",
+    "report": "Rapporteer de berichten van deze speler",
+    "send": "Versturen",
+    "slow_down": "Vertragen: wacht een paar seconden voor uw volgende bericht.",
+    "spectator": "Toeschouwers kunnen de chat lezen, maar er niet in schrijven.",
+    "title": "Chatten",
+    "unmute_all": "Alles dempen ({count})",
+    "you": "Jij"
+  },
   "game_info_modal": {
     "all_gold": "Alle goud",
     "atoms": "Atoombom",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Botting",
     "report_reason_griefing": "Griefen",
     "report_reason_inappropriate_username": "Ongepaste gebruikersnaam",
+    "report_reason_offensive_chat": "Aanstootgevende chatberichten",
     "report_reason_teaming": "Teamen",
     "report_sent": "Rapport verzonden!",
     "report_submit": "Rapport indienen",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emoji's",
     "exit_game_info": "Terug naar hoofdmenu",
     "exit_game_label": "Spel Verlaten",
+    "game_chat_desc": "Toon de algemene chat in multiplayer-games",
+    "game_chat_label": "Chat in het spel",
     "game_menu_title": "Menu",
     "game_speed_down": "Spelsnelheid omlaag",
     "game_speed_down_desc": "Wissel naar de vorige spelsnelheid. Alleen in één speler modus.",

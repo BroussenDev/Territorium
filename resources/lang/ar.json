@@ -1061,6 +1061,20 @@
     "enter": "أدخل ملء الشاشة",
     "exit": "الخروج من وضع ملء الشاشة"
   },
+  "game_chat": {
+    "close": "إخفاء الدردشة",
+    "empty": "لا توجد رسائل حتى الآن. قل مرحبا!",
+    "mute": "كتم صوت هذا اللاعب لبقية اللعبة",
+    "open": "افتح الدردشة",
+    "placeholder": "رسالة للجميع…",
+    "report": "الإبلاغ عن رسائل هذا اللاعب",
+    "send": "أرسل",
+    "slow_down": "أبطئ: انتظر بضع ثوانٍ قبل رسالتك التالية.",
+    "spectator": "يمكن للمشاهدين قراءة الدردشة ولكن لا يمكنهم الكتابة فيها.",
+    "title": "الدردشة",
+    "unmute_all": "إلغاء كتم صوت الكل ({count})",
+    "you": "أنت"
+  },
   "game_info_modal": {
     "all_gold": "كل الذهب",
     "atoms": "الذرات",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "التعبئة",
     "report_reason_griefing": "الحزن",
     "report_reason_inappropriate_username": "اسم مستخدم غير مناسب",
+    "report_reason_offensive_chat": "رسائل الدردشة المسيئة",
     "report_reason_teaming": "العمل كفريق",
     "report_sent": "تم إرسال التقرير!",
     "report_submit": "إرسال التقرير",
@@ -2698,6 +2713,8 @@
     "emojis_label": "😊 الإيموجيز",
     "exit_game_info": "العودة إلى القائمة الرئيسية",
     "exit_game_label": "لعبة الخروج",
+    "game_chat_desc": "إظهار الدردشة العامة في الألعاب متعددة اللاعبين",
+    "game_chat_label": "الدردشة داخل اللعبة",
     "game_menu_title": "القائمة",
     "game_speed_down": "لعبة سرعة أسفل",
     "game_speed_down_desc": "انتقل إلى سرعة اللعبة السابقة. لاعب واحد فقط.",

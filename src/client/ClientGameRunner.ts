@@ -57,6 +57,7 @@ import { reportGameError } from "./Telemetry";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { GoToPlayerEvent } from "./TransformHandler";
 import {
+  ChatMessageEvent,
   MoveWarshipIntentEvent,
   NewLobbyEvent,
   SendAllianceExtensionIntentEvent,
@@ -1127,6 +1128,9 @@ export class ClientGameRunner {
         // group can hop over. NewLobbyPrompt navigates the host and prompts
         // everyone else.
         this.eventBus.emit(new NewLobbyEvent(message.gameID));
+      }
+      if (message.type === "chat") {
+        this.eventBus.emit(new ChatMessageEvent(message.from, message.text));
       }
       if (message.type === "turn") {
         if (

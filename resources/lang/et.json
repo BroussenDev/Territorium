@@ -1061,6 +1061,20 @@
     "enter": "Sisenege täisekraanil",
     "exit": "Välju täisekraanilt"
   },
+  "game_chat": {
+    "close": "Peida vestlus",
+    "empty": "Sõnumeid pole veel. Öelge tere!",
+    "mute": "Vaigistage see mängija ülejäänud mänguks",
+    "open": "Avage vestlus",
+    "placeholder": "Saada kõigile sõnum…",
+    "report": "Teatage selle mängija sõnumitest",
+    "send": "Saada",
+    "slow_down": "Aeglustage: oodake mõni sekund enne järgmise sõnumi saatmist.",
+    "spectator": "Pealtvaatajad saavad vestlust lugeda, kuid mitte sinna kirjutada.",
+    "title": "Vestlus",
+    "unmute_all": "Tühista kõik ({count})",
+    "you": "Sina"
+  },
   "game_info_modal": {
     "all_gold": "Kogu kuld",
     "atoms": "Aatomid",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "Bottimine",
     "report_reason_griefing": "Leinav",
     "report_reason_inappropriate_username": "Sobimatu kasutajanimi",
+    "report_reason_offensive_chat": "Solvavad vestlussõnumid",
     "report_reason_teaming": "Teaming",
     "report_sent": "Raport saadetud!",
     "report_submit": "Esitage aruanne",
@@ -2698,6 +2713,8 @@
     "emojis_label": "Emojid",
     "exit_game_info": "Tagasi peamenüüle",
     "exit_game_label": "Välju Mängust",
+    "game_chat_desc": "Näidake mitme mängijaga mängude üldist vestlust",
+    "game_chat_label": "Mängusisene vestlus",
     "game_menu_title": "Menüü",
     "game_speed_down": "Mängu kiiruse vähendamine",
     "game_speed_down_desc": "Liikuge eelmisele mängukiirusele. Ainult üksikmängija.",

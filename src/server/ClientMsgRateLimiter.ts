@@ -9,6 +9,10 @@ const MAX_INTENT_SIZE = 2000;
 // only sends one per (re)connect, so anything beyond a handful per minute is
 // abuse.
 const REJOINS_PER_MINUTE = 5;
+// Chat lines go to every player of the game: a short burst is conversation,
+// more is spam.
+const CHATS_PER_10_SECONDS = 4;
+const CHATS_PER_MINUTE = 15;
 const TOTAL_BYTES = 5 * 1024 * 1024; // 5MB per client
 export type RateLimitResult = "ok" | "limit" | "kick";
 
@@ -16,6 +20,8 @@ interface ClientBucket {
   perSecond: RateLimiter;
   perMinute: RateLimiter;
   rejoinPerMinute: RateLimiter;
+  chatBurst: RateLimiter;
+  chatPerMinute: RateLimiter;
   totalBytes: number;
 }
 
@@ -47,6 +53,13 @@ export class ClientMsgRateLimiter {
       if (!bucket.rejoinPerMinute.tryRemoveTokens(1)) {
         return "limit";
       }
+    } else if (type === "chat") {
+      if (
+        !bucket.chatBurst.tryRemoveTokens(1) ||
+        !bucket.chatPerMinute.tryRemoveTokens(1)
+      ) {
+        return "limit";
+      }
     }
 
     return "ok";
@@ -68,6 +81,14 @@ export class ClientMsgRateLimiter {
       }),
       rejoinPerMinute: new RateLimiter({
         tokensPerInterval: REJOINS_PER_MINUTE,
+        interval: "minute",
+      }),
+      chatBurst: new RateLimiter({
+        tokensPerInterval: CHATS_PER_10_SECONDS,
+        interval: 10_000,
+      }),
+      chatPerMinute: new RateLimiter({
+        tokensPerInterval: CHATS_PER_MINUTE,
         interval: "minute",
       }),
       totalBytes: 0,

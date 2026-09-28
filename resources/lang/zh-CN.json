@@ -1061,6 +1061,20 @@
     "enter": "进入全屏",
     "exit": "退出全屏"
   },
+  "game_chat": {
+    "close": "隐藏聊天",
+    "empty": "还没有消息。问好！",
+    "mute": "在游戏的剩余时间内将该玩家静音",
+    "open": "打开聊天",
+    "placeholder": "给大家留言…",
+    "report": "举报该玩家的留言",
+    "send": "发送",
+    "slow_down": "放慢速度：在发送下一条消息之前等待几秒钟。",
+    "spectator": "观众可以阅读聊天内容，但不能在其中书写。",
+    "title": "聊天",
+    "unmute_all": "全部取消静音 ({count})",
+    "you": "你"
+  },
   "game_info_modal": {
     "all_gold": "总黄金",
     "atoms": "原子弹",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "博丁",
     "report_reason_griefing": "悲伤",
     "report_reason_inappropriate_username": "用户名不合适",
+    "report_reason_offensive_chat": "攻击性聊天消息",
     "report_reason_teaming": "组队",
     "report_sent": "报告已发送！",
     "report_submit": "提交报告",
@@ -2698,6 +2713,8 @@
     "emojis_label": "表情符号",
     "exit_game_info": "返回主菜单",
     "exit_game_label": "退出游戏",
+    "game_chat_desc": "显示多人游戏中的一般聊天",
+    "game_chat_label": "游戏内聊天",
     "game_menu_title": "菜单",
     "game_speed_down": "游戏减速",
     "game_speed_down_desc": "轮换到上一个游戏速度。仅限单人玩家。",

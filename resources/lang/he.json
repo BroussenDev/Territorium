@@ -1061,6 +1061,20 @@
     "enter": "היכנס למסך מלא",
     "exit": "צא ממסך מלא"
   },
+  "game_chat": {
+    "close": "הסתר את הצ'אט",
+    "empty": "עדיין אין הודעות. תגיד שלום!",
+    "mute": "השתקת שחקן זה לשארית המשחק",
+    "open": "פתח את הצ'אט",
+    "placeholder": "שלח הודעה לכולם...",
+    "report": "דווח על ההודעות של שחקן זה",
+    "send": "לִשְׁלוֹחַ",
+    "slow_down": "האט: המתן מספר שניות לפני ההודעה הבאה שלך.",
+    "spectator": "הצופים יכולים לקרוא את הצ'אט אך לא לכתוב בו.",
+    "title": "לְשׂוֹחֵחַ",
+    "unmute_all": "בטל השתקת הכל ({count})",
+    "you": "אַתָה"
+  },
   "game_info_modal": {
     "all_gold": "הכל זהב",
     "atoms": "אטומים",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "בוטינג",
     "report_reason_griefing": "אבל",
     "report_reason_inappropriate_username": "שם משתמש לא מתאים",
+    "report_reason_offensive_chat": "הודעות צ'אט פוגעניות",
     "report_reason_teaming": "צוות",
     "report_sent": "דיווח נשלח!",
     "report_submit": "שלח דוח",
@@ -2698,6 +2713,8 @@
     "emojis_label": "אימוג'ים",
     "exit_game_info": "חזור לתפריט הראשי",
     "exit_game_label": "צא ממשחק",
+    "game_chat_desc": "הצג את הצ'אט הכללי במשחקים מרובי משתתפים",
+    "game_chat_label": "צ'אט בתוך המשחק",
     "game_menu_title": "תַפרִיט",
     "game_speed_down": "משחק Speed Down",
     "game_speed_down_desc": "Cycle to previous game speed. שחקן יחיד בלבד.",

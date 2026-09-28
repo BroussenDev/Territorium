@@ -1061,6 +1061,20 @@
     "enter": "ورود به حالت تمام صفحه",
     "exit": "خروج از حالت تمام صفحه"
   },
+  "game_chat": {
+    "close": "چت را مخفی کنید",
+    "empty": "هنوز پیامی وجود ندارد. بگو سلام!",
+    "mute": "این بازیکن را برای بقیه بازی بی صدا کنید",
+    "open": "چت را باز کنید",
+    "placeholder": "به همه پیام بده…",
+    "report": "پیام های این بازیکن را گزارش کنید",
+    "send": "ارسال کنید",
+    "slow_down": "کاهش سرعت: چند ثانیه قبل از پیام بعدی خود صبر کنید.",
+    "spectator": "تماشاگران می توانند چت را بخوانند اما در آن بنویسند.",
+    "title": "چت کنید",
+    "unmute_all": "باصدا کردن همه ({count})",
+    "you": "شما"
+  },
   "game_info_modal": {
     "all_gold": "همه طلا ها",
     "atoms": "اتم ها",
@@ -1927,6 +1941,7 @@
     "report_reason_botting": "استفاده از ربات",
     "report_reason_griefing": "مزاحمت / اخلال در بازی",
     "report_reason_inappropriate_username": "نام کاربری نامناسب",
+    "report_reason_offensive_chat": "پیام های چت توهین آمیز",
     "report_reason_teaming": "تبانی غیرمجاز / تیم‌سازی غیرقانونی",
     "report_sent": "گزارش ارسال شد!",
     "report_submit": "ارسال گزارش",
@@ -2698,6 +2713,8 @@
     "emojis_label": "ایموجی ها",
     "exit_game_info": "بازگشت به منوی اصلی",
     "exit_game_label": "خروج از بازی",
+    "game_chat_desc": "نمایش چت عمومی در بازی های چند نفره",
+    "game_chat_label": "چت درون بازی",
     "game_menu_title": "منو",
     "game_speed_down": "سرعت بازی را کاهش دهید",
     "game_speed_down_desc": "به سرعت قبلی بازی برگردید. فقط تک نفره.",

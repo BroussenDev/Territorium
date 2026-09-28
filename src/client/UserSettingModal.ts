@@ -389,6 +389,10 @@ export class UserSettingModal extends BaseModal {
     console.log("🤡 Emojis:", this.userSettings.emojis() ? "ON" : "OFF");
   }
 
+  private toggleGameChat() {
+    this.userSettings.toggleGameChat();
+  }
+
   private toggleAlertFrame() {
     this.userSettings.toggleAlertFrame();
 
@@ -1650,6 +1654,15 @@ export class UserSettingModal extends BaseModal {
         id="emoji-toggle"
         .checked=${this.userSettings.emojis()}
         @change=${this.toggleEmojis}
+      ></setting-toggle>
+
+      <!-- 💬 In-game chat -->
+      <setting-toggle
+        label="${translateText("user_setting.game_chat_label")}"
+        description="${translateText("user_setting.game_chat_desc")}"
+        id="game-chat-toggle"
+        .checked=${this.userSettings.gameChat()}
+        @change=${this.toggleGameChat}
       ></setting-toggle>
 
       <!-- 📱 Performance Overlay -->

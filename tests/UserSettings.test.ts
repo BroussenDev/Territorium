@@ -93,6 +93,17 @@ describe("UserSettings tutorial dismissal", () => {
   });
 });
 
+describe("UserSettings game chat", () => {
+  beforeEach(resetUserSettingsState);
+
+  it("shows the chat by default and persists turning it off", () => {
+    expect(new UserSettings().gameChat()).toBe(true);
+    new UserSettings().toggleGameChat();
+    expect(new UserSettings().gameChat()).toBe(false);
+    expect(localStorage.getItem("settings.gameChat")).toBe("false");
+  });
+});
+
 describe("UserSettings cosmetic loadouts", () => {
   beforeEach(resetUserSettingsState);
 
