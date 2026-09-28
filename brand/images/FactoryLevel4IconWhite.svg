@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="-2 -3 132 132" fill="#fff">
+  <filter id="factory4-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2"/></filter>
+  <mask id="factory4-cut">
+    <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
+    <rect x="12.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="31.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="50.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="69.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="88.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="107.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="17" y="21" width="13" height="1.6" fill="#000"/><rect x="77" y="30" width="37" height="1.6" fill="#000"/>
+  </mask>
+  <g mask="url(#factory4-cut)"><path d="M0 80 L42 64 H50 L128 79.5 V128 H0 Z"/><rect x="19" y="9" width="9" height="8" rx="0.5"/><rect x="17" y="16" width="13" height="66"/><path d="M95.5 11.5 L114 21.5 V38.5 L112.5 40.5 H78.5 L77 38.5 V21.5 Z"/><rect x="79" y="40" width="3" height="40"/><rect x="109" y="40" width="3" height="40"/><rect x="81" y="50" width="29" height="2.2"/><rect x="81" y="61.5" width="29" height="2.2"/><path d="M6 82 V48.5 Q6 46 9 46 Q12 46 12 48.5 V82 Z"/><path d="M62 70 V48.5 Q62 46 65 46 Q68 46 68 48.5 V70 Z"/></g>
+  <g opacity=".55" filter="url(#factory4-blur)"><ellipse cx="6.5" cy="31" rx="4.5" ry="10" transform="rotate(-8 6.5 31)"/><ellipse cx="63" cy="29" rx="3.5" ry="13" transform="rotate(5 63 29)"/><ellipse cx="48" cy="7" rx="22" ry="6"/><circle cx="37" cy="4" r="5"/><circle cx="57" cy="5" r="6"/><circle cx="28" cy="7" r="4"/><circle cx="66" cy="9" r="4.5"/></g>
+</svg>

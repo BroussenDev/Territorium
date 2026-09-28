@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.29
+
+🏭 **New factory looks**
+
+- Factories have new icons, and they grow as you upgrade them: a chimney at level 2, a water tower at level 3, smoking stacks at level 4 and a crane at level 5. You see it on the map, in the structure card, and when you hover a factory to upgrade it.
+
 ## v0.1.28
 
 🚀 **Two more SAM launcher looks**

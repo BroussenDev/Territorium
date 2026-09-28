@@ -29,7 +29,7 @@ import { GameView } from "../../view";
 const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
 const cityIcon = assetUrl("images/CityIconWhite.svg");
 const empIcon = assetUrl("images/EmpIconWhite.svg");
-const factoryIcon = assetUrl("images/FactoryIconWhite.svg");
+const factoryIcon = assetUrl("images/FactoryLevel1IconWhite.svg");
 const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 const mirvIcon = assetUrl("images/MIRVIcon.svg");
 const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");

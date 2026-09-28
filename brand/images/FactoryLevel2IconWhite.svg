@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="-2 -3 132 132" fill="#fff">
+  <mask id="factory2-cut">
+    <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
+    <rect x="12.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="31.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="50.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="69.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="88.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="107.5" y="95" width="8" height="6" rx="1" fill="#000"/><rect x="17" y="21" width="13" height="1.6" fill="#000"/>
+  </mask>
+  <g mask="url(#factory2-cut)"><path d="M0 80 L42 64 H50 L128 79.5 V128 H0 Z"/><rect x="19" y="9" width="9" height="8" rx="0.5"/><rect x="17" y="16" width="13" height="66"/></g>
+</svg>

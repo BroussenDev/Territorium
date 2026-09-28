@@ -29,6 +29,7 @@ import { GameView, UnitView } from "../../view";
 import {
   cityIcon,
   factoryIcon,
+  factoryIconFor,
   goldCoinIcon,
   missileSiloIcon,
   portIcon,
@@ -37,13 +38,27 @@ import {
   samLauncherIconFor,
 } from "../HotbarIcons";
 
-// The structures a card opens for: the upgradable ones.
-const CARD_TYPES: Partial<Record<UnitType, { icon: string; key: string }>> = {
+// The structures a card opens for: the upgradable ones. `iconFor` gives the
+// look of a level, for those that change look as they are upgraded.
+const CARD_TYPES: Partial<
+  Record<
+    UnitType,
+    { icon: string; key: string; iconFor?: (level: number) => string }
+  >
+> = {
   [UnitType.City]: { icon: cityIcon, key: "city" },
-  [UnitType.Factory]: { icon: factoryIcon, key: "factory" },
+  [UnitType.Factory]: {
+    icon: factoryIcon,
+    key: "factory",
+    iconFor: factoryIconFor,
+  },
   [UnitType.Port]: { icon: portIcon, key: "port" },
   [UnitType.MissileSilo]: { icon: missileSiloIcon, key: "missile_silo" },
-  [UnitType.SAMLauncher]: { icon: samLauncherIcon, key: "sam_launcher" },
+  [UnitType.SAMLauncher]: {
+    icon: samLauncherIcon,
+    key: "sam_launcher",
+    iconFor: samLauncherIconFor,
+  },
   [UnitType.Radar]: { icon: radarIcon, key: "radar" },
 };
 const TYPES = Object.keys(CARD_TYPES) as UnitType[];
@@ -368,12 +383,7 @@ export class StructureCard extends LitElement implements Controller {
           <div
             class="structure-card-icon ${tier} flex items-center justify-center shrink-0"
           >
-            <img
-              src=${unit.type() === UnitType.SAMLauncher
-                ? samLauncherIconFor(level)
-                : info.icon}
-              alt=""
-            />
+            <img src=${info.iconFor?.(level) ?? info.icon} alt="" />
           </div>
           <div class="min-w-0 flex-1">
             <div class="structure-card-name">

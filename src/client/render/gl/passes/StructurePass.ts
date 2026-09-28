@@ -3,7 +3,7 @@
  *
  * Renders a filled circle in player color with a white icon overlay,
  * sampled from a pre-built 7-column sprite atlas (generate-sprite-atlases.mjs),
- * extended at load time with the SAM launcher's upgraded looks.
+ * extended at load time with the looks of upgraded structures (LEVEL_ICONS).
  *
  * Two LODs based on zoom:
  *   - zoom > 0.5: full icon with circle background
@@ -40,20 +40,24 @@ import structureVertSrc from "../shaders/structure/structure.vert.glsl?raw";
 
 const iconAtlasUrl = assetUrl("atlases/icon-atlas.png");
 
+/** One icon per level, the last one also above it, for levels 1 to 5. */
+function levelIconUrls(name: string): string[] {
+  return [1, 2, 3, 4, 5].map((level) =>
+    assetUrl(`images/${name}Level${level}IconWhite.svg`),
+  );
+}
+
 /**
- * The SAM launcher's icon at each level, the last one also above it. Level 1
- * replaces the atlas's SAM column; the others get columns of their own after
- * the atlas's.
+ * Structures that change look as they are upgraded. Level 1 replaces the
+ * structure's atlas column; the other levels get columns of their own after
+ * the atlas's, in this order.
  */
-const samLevelIconUrls = [
-  assetUrl("images/SamLauncherLevel1IconWhite.svg"),
-  assetUrl("images/SamLauncherLevel2IconWhite.svg"),
-  assetUrl("images/SamLauncherLevel3IconWhite.svg"),
-  assetUrl("images/SamLauncherLevel4IconWhite.svg"),
-  assetUrl("images/SamLauncherLevel5IconWhite.svg"),
+const LEVEL_ICONS: [string, string[]][] = [
+  [UT_SAM_LAUNCHER, levelIconUrls("SamLauncher")],
+  [UT_FACTORY, levelIconUrls("Factory")],
 ];
-/** How much of an atlas cell a SAM icon covers, like the atlas's own icons. */
-const SAM_ICON_FILL = 0.72;
+/** How much of an atlas cell a level icon covers, like the atlas's own icons. */
+const LEVEL_ICON_FILL = 0.72;
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -74,22 +78,35 @@ const STRUCTURE_ORDER = [
 ] as const;
 
 const ATLAS_COLS = STRUCTURE_ORDER.length;
-const SAM_COL = STRUCTURE_ORDER.indexOf(UT_SAM_LAUNCHER);
-/** Columns of the icon texture: the atlas's, then the upgraded SAM looks. */
-const ICON_COLS = ATLAS_COLS + samLevelIconUrls.length - 1;
+
+/** Texture column of each level icon, per structure type (index = level - 1). */
+const levelIconCols = new Map<string, number[]>();
+let nextIconCol = ATLAS_COLS;
+for (const [type, urls] of LEVEL_ICONS) {
+  const atlasCol = STRUCTURE_ORDER.indexOf(
+    type as (typeof STRUCTURE_ORDER)[number],
+  );
+  levelIconCols.set(
+    type,
+    urls.map((_, i) => (i === 0 ? atlasCol : nextIconCol++)),
+  );
+}
+/** Columns of the icon texture: the atlas's, then the upgraded looks. */
+const ICON_COLS = nextIconCol;
 
 /**
  * The icon texture column of a structure: its atlas column (`atlasIdx`, which
- * also picks its shape), except for an upgraded SAM launcher, whose look
- * follows its level.
+ * also picks its shape), except for a structure that changes look as it is
+ * upgraded, whose look follows its level.
  */
 export function structureIconColumn(
   unitType: string,
   atlasIdx: number,
   level: number,
 ): number {
-  if (unitType !== UT_SAM_LAUNCHER || level <= 1) return atlasIdx;
-  return ATLAS_COLS + Math.min(level, samLevelIconUrls.length) - 2;
+  const cols = levelIconCols.get(unitType);
+  if (cols === undefined || level <= 1) return atlasIdx;
+  return cols[Math.min(level, cols.length) - 1];
 }
 
 // ---------------------------------------------------------------------------
@@ -318,8 +335,10 @@ export class StructurePass {
   }
 
   private async loadAtlas(): Promise<void> {
-    const [atlas, ...samIcons] = await Promise.all(
-      [iconAtlasUrl, ...samLevelIconUrls].map(async (url) => {
+    const levelUrls = LEVEL_ICONS.flatMap(([, urls]) => urls);
+    const levelCols = LEVEL_ICONS.flatMap(([type]) => levelIconCols.get(type)!);
+    const [atlas, ...levelIcons] = await Promise.all(
+      [iconAtlasUrl, ...levelUrls].map(async (url) => {
         const img = new Image();
         img.crossOrigin = "anonymous";
         img.src = url;
@@ -327,18 +346,18 @@ export class StructurePass {
         return img;
       }),
     );
-    // One square cell per column: the atlas, with the SAM looks drawn in.
+    // One square cell per column: the atlas, with the level looks drawn in.
     const cell = atlas.height;
     const canvas = document.createElement("canvas");
     canvas.width = cell * ICON_COLS;
     canvas.height = cell;
     const ctx = canvas.getContext("2d")!;
     ctx.drawImage(atlas, 0, 0);
-    ctx.clearRect(SAM_COL * cell, 0, cell, cell);
-    const size = cell * SAM_ICON_FILL;
+    const size = cell * LEVEL_ICON_FILL;
     const pad = (cell - size) / 2;
-    samIcons.forEach((icon, i) => {
-      const col = i === 0 ? SAM_COL : ATLAS_COLS + i - 1;
+    levelIcons.forEach((icon, i) => {
+      const col = levelCols[i];
+      ctx.clearRect(col * cell, 0, cell, cell);
       ctx.drawImage(icon, col * cell + pad, pad, size, size);
     });
 
