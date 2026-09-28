@@ -1,9 +1,11 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import {
+  copyToClipboard,
   getGamesPlayed,
   homeHref,
   renderTroops,
+  showToast,
   translateText,
 } from "../../../client/Utils";
 import { assetUrl } from "../../../core/AssetUrls";
@@ -11,12 +13,14 @@ import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
 import { GameType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
+import { responseHasLinkedIdentity } from "../../AccountIdentity";
 import {
   fetchMyGameResult,
   getUserMe,
   invalidateUserMe,
   MyGameResult,
 } from "../../Api";
+import { ClientEnv } from "../../ClientEnv";
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
@@ -68,6 +72,12 @@ export class WinModal extends LitElement implements Controller {
   @state()
   private gameResult: MyGameResult | "pending" | null = null;
 
+  // The finished game's link, which opens its replay: shown once the game
+  // has a winner and its record is kept (every multiplayer game, and the
+  // singleplayer games of signed-in players).
+  @state()
+  private replayLink: string | null = null;
+
   private countdownTimer: ReturnType<typeof setInterval> | null = null;
   private resultRequested = false;
 
@@ -95,7 +105,8 @@ export class WinModal extends LitElement implements Controller {
           ${this._title || ""}
         </h2>
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
-          ${this.renderGameResult()} ${this.renderRecap()} ${this.innerHtml()}
+          ${this.renderGameResult()} ${this.renderReplayShare()}
+          ${this.renderRecap()} ${this.innerHtml()}
         </div>
         <div class="mt-4 flex justify-between gap-2.5 shrink-0">
           <o-button
@@ -136,6 +147,60 @@ export class WinModal extends LitElement implements Controller {
         </div>
       </div>
     `;
+  }
+
+  private renderReplayShare() {
+    const link = this.replayLink;
+    if (link === null) return null;
+    return html`<div
+      data-win-replay
+      class="mb-4 flex flex-wrap items-center gap-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10 px-3 py-2"
+    >
+      <img
+        src=${assetUrl("images/ReplayRegularIconWhite.svg")}
+        alt=""
+        aria-hidden="true"
+        class="w-5 h-5 opacity-80"
+      />
+      <span class="flex-1 min-w-[12rem] text-sm text-white/80">
+        ${translateText("win_modal.replay_share_text")}
+      </span>
+      <button
+        type="button"
+        class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 px-3 py-1.5 text-sm font-bold text-white transition-colors"
+        @click=${() => this.copyReplayLink(link)}
+      >
+        <img
+          src=${assetUrl("images/LinkIconWhite.svg")}
+          alt=""
+          aria-hidden="true"
+          class="w-4 h-4"
+        />
+        ${translateText("win_modal.replay_share")}
+      </button>
+    </div>`;
+  }
+
+  private async copyReplayLink(link: string) {
+    try {
+      await copyToClipboard(link);
+      showToast(translateText("win_modal.replay_copied"), "green");
+    } catch {
+      showToast(translateText("common.failed_copy"), "red");
+    }
+  }
+
+  // Offers the replay link once the game has a winner. A guest's singleplayer
+  // game isn't kept, so its link would lead nowhere.
+  private async offerReplayLink() {
+    const gameID = this.game.gameID();
+    if (this.game.config().gameConfig().gameType === GameType.Singleplayer) {
+      const me = await getUserMe().catch(() => false as const);
+      if (!responseHasLinkedIdentity(me)) return;
+    }
+    // shareOrigin(), not window.location.origin: the desktop shell's own
+    // origin resolves nowhere outside the app.
+    this.replayLink = `${ClientEnv.shareOrigin()}${ClientEnv.gamePath(gameID)}`;
   }
 
   private renderRecap() {
@@ -412,7 +477,10 @@ export class WinModal extends LitElement implements Controller {
     const updates = this.game.updatesSinceLastTick();
     const winUpdates = updates?.[GameUpdateType.Win] ?? [];
     winUpdates.forEach((wu) => {
-      if (wu.winner !== undefined) void this.loadGameResult();
+      if (wu.winner !== undefined) {
+        void this.loadGameResult();
+        void this.offerReplayLink();
+      }
       if (wu.winner === undefined) {
         // Match cancelled (e.g. a ranked 2v2 that didn't fill or fully
         // spawn): the game ends with no winner. Still vote the result to the

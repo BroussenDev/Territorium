@@ -25,6 +25,7 @@ export const ExternalGameInfoSchema = z.object({
           gameType: z.string().optional(),
           maxPlayers: z.number().optional(),
           playerTeams: z.union([z.number(), z.string()]).optional(),
+          gameVariant: z.string().optional(),
         })
         .optional(),
       players: z.array(PlayerInfoSchema).optional(),
@@ -83,7 +84,7 @@ function formatDateTimeParts(timestamp: number): {
 
 type WinnerInfo = { names: string; count: number };
 
-function parseWinner(
+export function parseWinner(
   winnerArray: string[] | undefined,
   players: PlayerInfo[] | undefined,
 ): WinnerInfo | undefined {
@@ -108,6 +109,11 @@ function parseWinner(
     const clientId = winnerArray[1];
     const name = idToName.get(clientId) ?? clientId;
     return { names: name, count: 1 };
+  }
+
+  // A nation AI (a country in Nations games) won.
+  if (winnerArray[0] === "nation") {
+    return { names: `${winnerArray[1]} (AI)`, count: 1 };
   }
 
   // Unknown winner format - don't display confusing output
@@ -162,7 +168,9 @@ export async function buildPreview(
       countActivePlayers(players) || (lobby?.clients?.length ?? 0);
   }
   const map = lobby?.gameConfig?.gameMap ?? config.gameMap;
-  let mode = lobby?.gameConfig?.gameMode ?? config.gameMode ?? GameMode.FFA;
+  let mode: string =
+    lobby?.gameConfig?.gameMode ?? config.gameMode ?? GameMode.FFA;
+  const variant = lobby?.gameConfig?.gameVariant ?? config.gameVariant;
   const playerTeams = lobby?.gameConfig?.playerTeams ?? config.playerTeams;
   const numericTeamCount =
     typeof playerTeams === "number" && playerTeams > 0
@@ -180,7 +188,9 @@ export async function buildPreview(
     : undefined;
 
   // Format team mode display
-  if (mode === "Team" && playerTeams) {
+  if (variant === "nations") {
+    mode = "Nations";
+  } else if (mode === "Team" && playerTeams) {
     if (typeof playerTeams === "string") {
       mode = playerTeams; // e.g., "Quads"
     } else if (typeof playerTeams === "number") {
@@ -209,19 +219,20 @@ export async function buildPreview(
   const gameType = lobby?.gameConfig?.gameType ?? config.gameType;
   const gameTypeLabel = gameType ? ` (${gameType})` : "";
 
+  const setting = `${mode ?? "Game"} on ${map ?? "Unknown Map"}${gameTypeLabel}`;
+  // A finished game's link opens its replay: say who won, so the link reads
+  // well when shared on Discord.
   const title = isFinished
-    ? `${mode ?? "Game"} on ${map ?? "Unknown Map"}${gameTypeLabel}`
+    ? winner
+      ? `Territorium replay: ${winner.names} won`
+      : "Territorium replay"
     : mode && map
       ? `${mode} on ${map}${gameTypeLabel}`
-      : "OpenFront Game";
+      : "Territorium game";
 
   let description: string;
   if (isFinished) {
-    const parts: string[] = [];
-    if (winner) {
-      parts.push(`${winner.count > 1 ? "Winners" : "Winner"}: ${winner.names}`);
-      parts.push(""); // Extra line break after winner
-    }
+    const parts: string[] = [setting];
     const matchTimestamp =
       publicInfo?.info?.start ??
       publicInfo?.info?.end ??

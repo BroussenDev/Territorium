@@ -15,7 +15,14 @@ vi.mock("../../../../src/client/Utils", () => ({
 }));
 
 vi.mock("../../../../src/client/Api", () => ({
-  getUserMe: vi.fn(async () => null),
+  getUserMe: vi.fn(async () => false as const),
+}));
+
+vi.mock("../../../../src/client/ClientEnv", () => ({
+  ClientEnv: {
+    shareOrigin: () => "https://territorium.test",
+    gamePath: (gameID: string) => `/w0/game/${gameID}`,
+  },
 }));
 
 vi.mock("../../../../src/client/Cosmetics", async (importOriginal) => ({
@@ -42,6 +49,7 @@ function makeGame(opts: {
   winner: Winner;
   myTeam?: string;
   myClientID?: string;
+  gameType?: string;
   winnerPlayer?: {
     isPlayer: () => boolean;
     clientID: () => string | null;
@@ -61,8 +69,9 @@ function makeGame(opts: {
     ticks: () => 101,
     updatesSinceLastTick: () => ({ [GameUpdateType.Win]: [winUpdate] }),
     playerByClientID: () => opts.winnerPlayer,
+    gameID: () => "amDoEPS2Dz",
     config: () => ({
-      gameConfig: () => ({ rankedType: undefined }),
+      gameConfig: () => ({ rankedType: undefined, gameType: opts.gameType }),
       numSpawnPhaseTurns: () => 100,
     }),
   } as unknown as GameView;
@@ -213,6 +222,40 @@ describe("WinModal tick win handling", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("offers the replay link of a finished multiplayer game", async () => {
+    setup(
+      makeGame({
+        winner: ["team", "Blue"],
+        myTeam: "Blue",
+        gameType: "Public",
+      }),
+    );
+    document.body.appendChild(modal!);
+    modal!.tick();
+
+    await vi.waitFor(() =>
+      expect(modal!.querySelector("[data-win-replay]")).not.toBeNull(),
+    );
+    const link = (modal as unknown as { replayLink: string }).replayLink;
+    expect(link).toBe("https://territorium.test/w0/game/amDoEPS2Dz");
+  });
+
+  it("offers no replay link for a guest's singleplayer game", async () => {
+    setup(
+      makeGame({
+        winner: ["team", "Blue"],
+        myTeam: "Blue",
+        gameType: "Singleplayer",
+      }),
+    );
+    document.body.appendChild(modal!);
+    modal!.tick();
+
+    await vi.waitFor(() => expect(modal!.isVisible).toBe(true));
+    await modal!.updateComplete;
+    expect(modal!.querySelector("[data-win-replay]")).toBeNull();
   });
 
   it("ignores a player win whose winner is not a known player", () => {

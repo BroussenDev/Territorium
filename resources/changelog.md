@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.18
+
+🔗 **Shareable replays**
+
+- The end-of-game screen now has a "Copy replay link" button: anyone who opens the link watches the replay of the game.
+- Posted on Discord or elsewhere, the link now shows who won (a player, a team or an AI country), the map and the mode, Nations included.
+- Solo games can be shared too when you are logged in.
+
 ## v0.1.17
 
 📊 **Nations statistics**

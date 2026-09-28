@@ -131,7 +131,9 @@ export function registerGamePreviewRoute(opts: {
         const head = root.querySelector("head");
         if (head) {
           head
-            .querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]')
+            .querySelectorAll(
+              'meta[property^="og:"], meta[name^="twitter:"], meta[name="theme-color"]',
+            )
             .forEach((el) => el.remove());
 
           const tagsToInject = [
@@ -139,6 +141,9 @@ export function registerGamePreviewRoute(opts: {
             `<meta property="og:description" content="${escapeHtml(meta.description || meta.title)}" />`,
             `<meta property="og:url" content="${escapeHtml(meta.joinUrl)}" />`,
             `<meta property="og:image" content="${escapeHtml(meta.image)}" />`,
+            `<meta property="og:site_name" content="Territorium" />`,
+            // Discord colors the embed's side bar with it.
+            `<meta name="theme-color" content="#10b981" />`,
             `<meta name="twitter:card" content="summary_large_image" />`,
             `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`,
             `<meta name="twitter:description" content="${escapeHtml(meta.description || meta.title)}" />`,
