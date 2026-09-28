@@ -3,6 +3,7 @@ import { GameType } from "../../src/core/game/Game";
 import {
   PartialGameRecord,
   ServerChatMessage,
+  ServerChatNoticeMessage,
   ServerMessage,
 } from "../../src/core/Schemas";
 import {
@@ -13,9 +14,10 @@ import {
   startGame,
 } from "../util/GameServerHarness";
 
-// The general chat: players' lines go over the socket, the server cleans and
-// relays them to everyone in the game, and a report carries the reported
-// player's last lines as evidence. Nothing of it reaches the turn log.
+// The in-game chat: players' lines go over the socket, the server cleans,
+// moderates and relays them to everyone in the game (or, in a Nations game,
+// to the allies a line names), and a report carries the reported player's
+// last lines as evidence. Nothing of it reaches the turn log.
 
 describe("in-game chat", () => {
   let archive: ReturnType<
@@ -35,9 +37,11 @@ describe("in-game chat", () => {
   const ALICE = cid("alice");
   const BOB = cid("bob");
 
-  function makeTwoPlayerGame() {
+  const CAROL = cid("carol");
+
+  function makeTwoPlayerGame(gameVariant?: "nations") {
     const game = makeGame({
-      config: { gameType: GameType.Public, maxPlayers: 3 },
+      config: { gameType: GameType.Public, maxPlayers: 3, gameVariant },
       deps: { archive },
     });
     const alice = makeClient({ clientID: ALICE, ip: "1.1.1.1" });
@@ -47,6 +51,13 @@ describe("in-game chat", () => {
     return { game, alice, bob };
   }
 
+  function makeThreePlayerGame(gameVariant?: "nations") {
+    const { game, alice, bob } = makeTwoPlayerGame(gameVariant);
+    const carol = makeClient({ clientID: CAROL, ip: "3.3.3.3" });
+    game.joinClient(carol);
+    return { game, alice, bob, carol };
+  }
+
   function chatSeenBy(
     game: ReturnType<typeof makeGame>,
     client: ReturnType<typeof makeClient>,
@@ -54,6 +65,18 @@ describe("in-game chat", () => {
     return mockWsOf(client)
       .sent((game as any).zbinCtx)
       .filter((m: ServerMessage): m is ServerChatMessage => m.type === "chat");
+  }
+
+  function noticesSeenBy(
+    game: ReturnType<typeof makeGame>,
+    client: ReturnType<typeof makeClient>,
+  ): ServerChatNoticeMessage[] {
+    return mockWsOf(client)
+      .sent((game as any).zbinCtx)
+      .filter(
+        (m: ServerMessage): m is ServerChatNoticeMessage =>
+          m.type === "chat_notice",
+      );
   }
 
   it("relays a cleaned line to every player, stamped with its sender", async () => {
@@ -70,13 +93,69 @@ describe("in-game chat", () => {
     expect(chatSeenBy(game, bob)).toEqual(expected);
   });
 
-  it("masks slurs in the relayed line", async () => {
+  it("blocks hate speech and tells only its sender why", async () => {
     const { game, alice, bob } = makeTwoPlayerGame();
     startGame(game);
 
     await mockWsOf(alice).emit({ type: "chat", text: "you nazi" });
 
-    expect(chatSeenBy(game, bob).map((m) => m.text)).toEqual(["you ****"]);
+    expect(chatSeenBy(game, bob)).toEqual([]);
+    expect(chatSeenBy(game, alice)).toEqual([]);
+    expect(noticesSeenBy(game, alice)).toEqual([
+      { type: "chat_notice", notice: "blocked" },
+    ]);
+    expect(noticesSeenBy(game, bob)).toEqual([]);
+  });
+
+  it("masks insults, warns their sender, then mutes them", async () => {
+    const { game, alice, bob } = makeTwoPlayerGame();
+    startGame(game);
+
+    for (const text of ["gg connard", "ta gueule", "salope"]) {
+      await mockWsOf(alice).emit({ type: "chat", text });
+      vi.advanceTimersByTime(4_000);
+    }
+    await mockWsOf(alice).emit({ type: "chat", text: "hello?" });
+
+    expect(chatSeenBy(game, bob).map((m) => m.text)).toEqual([
+      "gg *******",
+      "** ******",
+      "******",
+    ]);
+    expect(noticesSeenBy(game, alice)).toEqual([
+      { type: "chat_notice", notice: "warned" },
+      { type: "chat_notice", notice: "warned" },
+      { type: "chat_notice", notice: "muted", seconds: 120 },
+      { type: "chat_notice", notice: "muted", seconds: 116 },
+    ]);
+  });
+
+  it("sends a Nations allies line only to its sender and the named allies", async () => {
+    const { game, alice, bob, carol } = makeThreePlayerGame("nations");
+    startGame(game);
+
+    await mockWsOf(alice).emit({
+      type: "chat",
+      text: "attack east",
+      to: [BOB],
+    });
+
+    const expected = [
+      { type: "chat", from: ALICE, text: "attack east", allies: true },
+    ];
+    expect(chatSeenBy(game, alice)).toEqual(expected);
+    expect(chatSeenBy(game, bob)).toEqual(expected);
+    expect(chatSeenBy(game, carol)).toEqual([]);
+  });
+
+  it("drops allies lines outside Nations games", async () => {
+    const { game, alice, bob, carol } = makeThreePlayerGame();
+    startGame(game);
+
+    await mockWsOf(alice).emit({ type: "chat", text: "psst", to: [BOB] });
+
+    for (const c of [alice, bob, carol])
+      expect(chatSeenBy(game, c)).toEqual([]);
   });
 
   it("ignores lines before the game starts and blank lines", async () => {

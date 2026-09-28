@@ -126,7 +126,8 @@ export type ServerMessage =
   | ServerErrorMessage
   | ServerLobbyInfoMessage
   | ServerNewLobbyMessage
-  | ServerChatMessage;
+  | ServerChatMessage
+  | ServerChatNoticeMessage;
 
 export type ServerTurnMessage = z.infer<typeof ServerTurnMessageSchema>;
 export type ServerStartGameMessage = z.infer<
@@ -141,6 +142,9 @@ export type ServerLobbyInfoMessage = z.infer<
 >;
 export type ServerNewLobbyMessage = z.infer<typeof ServerNewLobbyMessageSchema>;
 export type ServerChatMessage = z.infer<typeof ServerChatMessageSchema>;
+export type ServerChatNoticeMessage = z.infer<
+  typeof ServerChatNoticeMessageSchema
+>;
 export type ClientSendWinnerMessage = z.infer<typeof ClientSendWinnerSchema>;
 export type ClientSendLiveStatsMessage = z.infer<
   typeof ClientSendLiveStatsSchema
@@ -1105,10 +1109,33 @@ export const ServerNewLobbyMessageSchema = z.object({
 export const CHAT_MESSAGE_MAX_LENGTH = 120;
 const ChatTextSchema = z.string().min(1).max(CHAT_MESSAGE_MAX_LENGTH);
 
+// Nations games also have an allies chat: the sender names its allies as
+// recipients (the server cannot see alliances), and each recipient only
+// shows the line if the sender really is its ally.
+export const MAX_CHAT_RECIPIENTS = 64;
+
 export const ServerChatMessageSchema = z.object({
   type: z.literal("chat"),
   from: ID,
   text: ChatTextSchema,
+  allies: z.boolean().optional(),
+});
+
+// Told to the sender alone when the chat moderation holds a line back or
+// warns them (see ChatModeration.ts). `seconds`: how long a mute lasts.
+export const ChatNoticeSchema = z.enum([
+  "warned",
+  "blocked",
+  "muted",
+  "link",
+  "repeated",
+]);
+export type ChatNotice = z.infer<typeof ChatNoticeSchema>;
+
+export const ServerChatNoticeMessageSchema = z.object({
+  type: z.literal("chat_notice"),
+  notice: ChatNoticeSchema,
+  seconds: zb.uint().optional(),
 });
 
 export const ServerMessageSchema = zb.discriminatedUnion("type", [
@@ -1121,6 +1148,7 @@ export const ServerMessageSchema = zb.discriminatedUnion("type", [
   ServerLobbyInfoMessageSchema,
   ServerNewLobbyMessageSchema,
   ServerChatMessageSchema,
+  ServerChatNoticeMessageSchema,
 ]);
 
 //
@@ -1196,6 +1224,8 @@ export const ClientReportMessageSchema = z.object({
 export const ClientChatMessageSchema = z.object({
   type: z.literal("chat"),
   text: ChatTextSchema,
+  // An allies-chat line: the sender's allies. Absent for the general chat.
+  to: ID.array().max(MAX_CHAT_RECIPIENTS).optional(),
 });
 
 export const ClientHashSchema = z.object({

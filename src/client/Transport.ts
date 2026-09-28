@@ -18,6 +18,7 @@ import {
 import { TileRef } from "../core/game/GameMap";
 import {
   AllPlayersStats,
+  ChatNotice,
   ClientChatMessage,
   ClientHashMessage,
   ClientID,
@@ -216,15 +217,26 @@ export class SendPlayerReportEvent implements GameEvent {
 export class PlayerReportedEvent implements GameEvent {
   constructor(public readonly reported: ClientID) {}
 }
-// The general chat (see GameChat): a line this player sends, and a line the
-// server relayed from anyone in the game.
+// The in-game chat (see GameChat): a line this player sends (to its allies
+// when `to` is given), a line the server relayed from anyone in the game,
+// and what the chat moderation tells this player about their own lines.
 export class SendChatMessageEvent implements GameEvent {
-  constructor(public readonly text: string) {}
+  constructor(
+    public readonly text: string,
+    public readonly to?: ClientID[],
+  ) {}
 }
 export class ChatMessageEvent implements GameEvent {
   constructor(
     public readonly from: ClientID,
     public readonly text: string,
+    public readonly allies: boolean = false,
+  ) {}
+}
+export class ChatNoticeEvent implements GameEvent {
+  constructor(
+    public readonly notice: ChatNotice,
+    public readonly seconds?: number,
   ) {}
 }
 export class SendHashEvent implements GameEvent {
@@ -959,6 +971,7 @@ export class Transport {
     this.sendMsg({
       type: "chat",
       text: event.text,
+      ...(event.to !== undefined ? { to: event.to } : {}),
     } satisfies ClientChatMessage);
   }
 

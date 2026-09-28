@@ -426,11 +426,19 @@
         </div>
       </div>
 
-      <!-- events+chat: <sm between attacks and control (order-2), sm+ right side, lg+ col-3 -->
+      <!-- chat: <sm between attacks and control, sm..lg above the HUD on the left, lg+ col-1 -->
+      <div
+        class="flex flex-col pointer-events-none items-start order-2 sm:order-none sm:absolute sm:bottom-full sm:left-0 sm:pl-2 lg:static lg:col-start-1 lg:row-start-1 lg:self-end min-[1200px]:pl-0"
+      >
+        <game-chat
+          class="block w-full sm:w-auto lg:w-full pointer-events-auto"
+        ></game-chat>
+      </div>
+
+      <!-- events: <sm between attacks and control (order-2), sm+ right side, lg+ col-3 -->
       <div
         class="flex flex-col pointer-events-none items-end order-2 sm:order-none sm:flex-1 lg:col-start-3 lg:self-end lg:justify-end"
       >
-        <game-chat class="w-full sm:w-auto pointer-events-auto"></game-chat>
         <events-display
           class="w-full sm:w-auto pointer-events-auto"
         ></events-display>

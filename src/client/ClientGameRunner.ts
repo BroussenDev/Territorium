@@ -58,6 +58,7 @@ import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { GoToPlayerEvent } from "./TransformHandler";
 import {
   ChatMessageEvent,
+  ChatNoticeEvent,
   MoveWarshipIntentEvent,
   NewLobbyEvent,
   SendAllianceExtensionIntentEvent,
@@ -1132,7 +1133,18 @@ export class ClientGameRunner {
         this.eventBus.emit(new NewLobbyEvent(message.gameID));
       }
       if (message.type === "chat") {
-        this.eventBus.emit(new ChatMessageEvent(message.from, message.text));
+        this.eventBus.emit(
+          new ChatMessageEvent(
+            message.from,
+            message.text,
+            message.allies === true,
+          ),
+        );
+      }
+      if (message.type === "chat_notice") {
+        this.eventBus.emit(
+          new ChatNoticeEvent(message.notice, message.seconds),
+        );
       }
       if (message.type === "turn") {
         if (

@@ -42,6 +42,7 @@ import {
   PlayerReport,
   PublicGameType,
   ServerChatMessage,
+  ServerChatNoticeMessage,
   ServerDesyncSchema,
   ServerErrorMessage,
   ServerLobbyInfoMessage,
@@ -57,7 +58,7 @@ import {
 import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
-import { censorChat } from "./Censor";
+import { ChatModerator } from "./ChatModeration";
 import { Client } from "./Client";
 import { applyGameConfigPatch, hostCheatsEnabled } from "./ConfigPatch";
 import { LiveStatsVote, WinnerVote } from "./Consensus";
@@ -256,6 +257,7 @@ export class GameServer {
   // Each player's last chat lines as they typed them, attached to a report
   // against them so staff see what was said (see handleChat).
   private readonly chatLog = new Map<ClientID, string[]>();
+  private readonly chatModerator = new ChatModerator();
 
   // This private lobby's presence in the public lobby browser (see
   // ListingState.ts).
@@ -2000,20 +2002,48 @@ export class GameServer {
       .trim()
       .slice(0, CHAT_MESSAGE_MAX_LENGTH);
     if (text === "") return;
+    // The allies chat belongs to Nations games.
+    const to = clientMsg.to;
+    if (to !== undefined && this.gameConfig.gameVariant !== "nations") return;
+    // Every typed line, held back or not, is evidence for a report.
     const log = this.chatLog.get(client.clientID) ?? [];
     log.push(text);
     this.chatLog.set(client.clientID, log.slice(-CHAT_LOG_LENGTH));
+
+    const verdict = this.chatModerator.moderate(
+      client.clientID,
+      text,
+      Date.now(),
+    );
+    if (verdict.notice !== null && client.ws.readyState === WebSocket.OPEN) {
+      client.ws.send(
+        encodeServerMessage(
+          {
+            type: "chat_notice",
+            notice: verdict.notice,
+            seconds: verdict.seconds,
+          } satisfies ServerChatNoticeMessage,
+          this.zbinCtx,
+        ),
+      );
+    }
+    if (verdict.text === null) return;
 
     const msg = encodeServerMessage(
       {
         type: "chat",
         from: client.clientID,
-        text: censorChat(text),
+        text: verdict.text,
+        ...(to !== undefined ? { allies: true } : {}),
       } satisfies ServerChatMessage,
       this.zbinCtx,
     );
+    const recipients = to === undefined ? null : new Set(to);
     this.clients.active().forEach((c) => {
-      if (c.ws.readyState === WebSocket.OPEN) {
+      if (
+        c.ws.readyState === WebSocket.OPEN &&
+        (recipients === null || c === client || recipients.has(c.clientID))
+      ) {
         c.ws.send(msg);
       }
     });

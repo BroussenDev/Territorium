@@ -1,5 +1,22 @@
 # Territorium — Changelog
 
+## v0.1.26
+
+💬 **A new game chat**
+
+- The chat now sits in the bottom-left corner and matches the rest of the in-game panels. Your own name is shown in gold, and dark player colors are brightened so every name is easy to read.
+- Add emojis to your messages with the new emoji button.
+- In Nations games, switch between **All** and **Allies** to talk only to your allies.
+- Click someone's message to ignore them or report them.
+- The chat tells you when a player leaves the game, and when they come back.
+
+🛡️ **Tougher chat moderation**
+
+- Insults are masked (even when written with symbols or numbers), and hateful messages are blocked.
+- Repeated insults get you muted for a while, longer each time.
+- Links, spam of the same message, shouting in capitals and long runs of one letter are blocked or toned down.
+- When a message is held back, you see why.
+
 ## v0.1.25
 
 🛡️ **Nation pack**

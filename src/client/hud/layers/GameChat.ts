@@ -1,12 +1,18 @@
-import { html, LitElement, nothing } from "lit";
+import type { Colord } from "colord";
+import { html, LitElement, nothing, svg } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { EventBus } from "../../../core/EventBus";
 import { GameType, PlayerType } from "../../../core/game/Game";
 import { UserSettings } from "../../../core/game/UserSettings";
-import { CHAT_MESSAGE_MAX_LENGTH, ClientID } from "../../../core/Schemas";
+import {
+  CHAT_MESSAGE_MAX_LENGTH,
+  ChatNotice,
+  ClientID,
+} from "../../../core/Schemas";
 import { Controller } from "../../Controller";
 import {
   ChatMessageEvent,
+  ChatNoticeEvent,
   PlayerReportedEvent,
   SendChatMessageEvent,
 } from "../../Transport";
@@ -21,16 +27,46 @@ const BURST_LINES = 4;
 const BURST_WINDOW_MS = 10_000;
 const MAX_LINES = 100;
 
-interface ChatLine {
-  id: number;
-  from: ClientID;
-  text: string;
+// The emoji picker, ten to a row.
+// prettier-ignore
+export const CHAT_EMOJIS = [
+  "😀", "😂", "🤣", "😊", "😍", "😎", "🤔", "😏", "😅", "😢",
+  "😭", "😡", "🤯", "😱", "🥶", "🤡", "💀", "😴", "🫡", "🤝",
+  "👍", "👎", "👏", "🙏", "💪", "👋", "✌️", "🔥", "💥", "⚔️",
+  "🛡️", "👑", "🏆", "🎯", "💰", "⚓", "🚀", "☢️", "❤️", "💔",
+] as const;
+
+type ChatLine =
+  | { id: number; kind: "chat"; from: ClientID; text: string; allies: boolean }
+  | { id: number; kind: "notice"; text: string; tone: "warn" | "info" };
+
+type Channel = "all" | "allies";
+
+const PANEL = "rounded-lg bg-gray-800/92 text-white shadow-lg backdrop-blur-sm";
+const TOOL_BUTTON =
+  "rounded-md border border-slate-500 bg-gray-700/50 transition-colors hover:bg-gray-600";
+
+const chatIcon = svg`<svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>`;
+
+// Names are drawn on the dark panel in the sender's territory color, raised
+// until it reads (a navy empire's name would otherwise vanish).
+function readable(color: Colord): string {
+  let c = color;
+  for (let i = 0; i < 20 && c.brightness() < 0.62; i++) c = c.lighten(0.05);
+  return c.toHex();
 }
 
-// The general chat of a multiplayer game: every player's lines, relayed by
-// the game server (GameServer.handleChat). A player can mute someone for the
-// rest of the game (on this client only) or report them, the report carrying
-// their last lines as the server saw them. Spectators read without writing.
+function formatWait(seconds: number): string {
+  return seconds < 60 ? `${seconds} s` : `${Math.ceil(seconds / 60)} min`;
+}
+
+// The in-game chat of a multiplayer game, in the bottom-left corner: every
+// player's lines, relayed by the game server (GameServer.handleChat), which
+// also moderates them and tells the sender why a line was held back. Nations
+// games add an allies channel. Clicking someone's line offers to ignore them
+// for the rest of the game (on this client only) or to report them, the
+// report carrying their last lines as the server saw them. Spectators read
+// without writing.
 @customElement("game-chat")
 export class GameChat extends LitElement implements Controller {
   public eventBus: EventBus;
@@ -45,8 +81,13 @@ export class GameChat extends LitElement implements Controller {
   @state() private muted = new Set<ClientID>();
   @state() private reportTarget: PlayerView | null = null;
   @state() private enabled = true;
+  @state() private selected: number | null = null;
+  @state() private emojis = false;
+  @state() private channel: Channel = "all";
 
   private reported = new Set<ClientID>();
+  // Players seen disconnected at the last tick, null before the first one.
+  private away: Set<ClientID> | null = null;
   private sentAt: number[] = [];
   private nextId = 0;
 
@@ -60,6 +101,7 @@ export class GameChat extends LitElement implements Controller {
     this.requestUpdate();
     this.enabled = this.userSettings.gameChat();
     this.eventBus.on(ChatMessageEvent, (e) => this.onMessage(e));
+    this.eventBus.on(ChatNoticeEvent, (e) => this.onNotice(e));
     this.eventBus.on(PlayerReportedEvent, (e) => {
       this.reported.add(e.reported);
       this.requestUpdate();
@@ -70,6 +112,37 @@ export class GameChat extends LitElement implements Controller {
     // Follows the setting when it changes mid-game.
     const enabled = this.userSettings.gameChat();
     if (enabled !== this.enabled) this.enabled = enabled;
+    this.watchDepartures();
+  }
+
+  // Says in the chat when a player leaves the game, and when they come back.
+  // The first look only takes note of who is already gone.
+  private watchDepartures() {
+    if (!this.available()) return;
+    const me = this.game.myClientID();
+    const away = new Set<ClientID>();
+    for (const p of this.game.players()) {
+      const id = p.clientID();
+      if (p.type() !== PlayerType.Human || !id || id === me) continue;
+      if (!p.isDisconnected()) {
+        if (this.away?.has(id)) this.announce("player_back", p);
+        continue;
+      }
+      away.add(id);
+      if (this.away !== null && !this.away.has(id)) {
+        this.announce("player_left", p);
+      }
+    }
+    this.away = away;
+  }
+
+  private announce(key: "player_left" | "player_back", player: PlayerView) {
+    this.push({
+      id: this.nextId++,
+      kind: "notice",
+      tone: "info",
+      text: translateText(`game_chat.${key}`, { name: player.displayName() }),
+    });
   }
 
   getTickIntervalMs() {
@@ -86,14 +159,49 @@ export class GameChat extends LitElement implements Controller {
     );
   }
 
+  private hasAlliesChannel(): boolean {
+    return this.game.config().isNationsMode() && this.game.myPlayer() !== null;
+  }
+
+  private push(line: ChatLine) {
+    this.lines = [...this.lines, line].slice(-MAX_LINES);
+    if (this.open) this.scrollToEnd();
+  }
+
   private onMessage(e: ChatMessageEvent) {
     if (!this.available() || this.muted.has(e.from)) return;
-    this.lines = [
-      ...this.lines,
-      { id: this.nextId++, from: e.from, text: e.text },
-    ].slice(-MAX_LINES);
-    if (!this.open && e.from !== this.game.myClientID()) this.unread++;
-    if (this.open) this.scrollToEnd();
+    const mine = e.from === this.game.myClientID();
+    // An allies line counts only if its sender really is our ally: the
+    // server delivers it to whoever the sender named.
+    if (e.allies && !mine) {
+      const me = this.game.myPlayer();
+      const sender = this.game.playerByClientID(e.from);
+      if (me === null || sender === null || !me.isAlliedWith(sender)) return;
+    }
+    this.push({
+      id: this.nextId++,
+      kind: "chat",
+      from: e.from,
+      text: e.text,
+      allies: e.allies,
+    });
+    if (!this.open && !mine) this.unread++;
+  }
+
+  private onNotice(e: ChatNoticeEvent) {
+    if (!this.available()) return;
+    this.notify(e.notice, e.seconds);
+  }
+
+  private notify(notice: ChatNotice | "no_allies", seconds?: number) {
+    this.push({
+      id: this.nextId++,
+      kind: "notice",
+      tone: "warn",
+      text: translateText(`game_chat.notice_${notice}`, {
+        time: formatWait(seconds ?? 0),
+      }),
+    });
   }
 
   private scrollToEnd() {
@@ -103,22 +211,39 @@ export class GameChat extends LitElement implements Controller {
     });
   }
 
+  private input(): HTMLInputElement | null {
+    return this.querySelector("[data-chat-input]");
+  }
+
   private toggle() {
     this.open = !this.open;
+    this.selected = null;
+    this.emojis = false;
     if (this.open) {
       this.unread = 0;
       this.scrollToEnd();
-      void this.updateComplete.then(() =>
-        (
-          this.querySelector("[data-chat-input]") as HTMLInputElement | null
-        )?.focus(),
-      );
+      void this.updateComplete.then(() => this.input()?.focus());
     }
+  }
+
+  private allyRecipients(): ClientID[] {
+    return (this.game.myPlayer()?.allies() ?? [])
+      .filter((p) => p.type() === PlayerType.Human)
+      .map((p) => p.clientID())
+      .filter((id): id is ClientID => id !== null && id !== undefined);
   }
 
   private send() {
     const text = this.draft.trim();
     if (text === "") return;
+    let to: ClientID[] | undefined;
+    if (this.channel === "allies") {
+      to = this.allyRecipients();
+      if (to.length === 0) {
+        this.notify("no_allies");
+        return;
+      }
+    }
     const now = Date.now();
     this.sentAt = this.sentAt.filter((t) => now - t < BURST_WINDOW_MS);
     if (this.sentAt.length >= BURST_LINES) {
@@ -128,11 +253,13 @@ export class GameChat extends LitElement implements Controller {
     this.sentAt.push(now);
     this.slowDown = false;
     this.draft = "";
-    this.eventBus.emit(new SendChatMessageEvent(text));
+    this.emojis = false;
+    this.eventBus.emit(new SendChatMessageEvent(text, to));
   }
 
   private onKeydown(e: KeyboardEvent) {
     if (e.key === "Escape") {
+      this.emojis = false;
       (e.target as HTMLInputElement).blur();
       return;
     }
@@ -144,9 +271,24 @@ export class GameChat extends LitElement implements Controller {
     }
   }
 
+  private insertEmoji(emoji: string) {
+    const input = this.input();
+    const start = input?.selectionStart ?? this.draft.length;
+    const end = input?.selectionEnd ?? start;
+    const next = this.draft.slice(0, start) + emoji + this.draft.slice(end);
+    if (next.length > CHAT_MESSAGE_MAX_LENGTH) return;
+    this.draft = next;
+    void this.updateComplete.then(() => {
+      const caret = start + emoji.length;
+      input?.focus();
+      input?.setSelectionRange(caret, caret);
+    });
+  }
+
   private mute(from: ClientID) {
     this.muted = new Set([...this.muted, from]);
-    this.lines = this.lines.filter((l) => l.from !== from);
+    this.lines = this.lines.filter((l) => l.kind !== "chat" || l.from !== from);
+    this.selected = null;
   }
 
   private unmuteAll() {
@@ -162,12 +304,6 @@ export class GameChat extends LitElement implements Controller {
     );
   }
 
-  private senderColor(sender: PlayerView | null): string {
-    if (!sender) return "#d1d5db";
-    const color = sender.territoryColor();
-    return (color.isDark() ? color.lighten(0.25) : color).toHex();
-  }
-
   render() {
     if (!this.available()) return nothing;
     if (!this.open) {
@@ -175,16 +311,15 @@ export class GameChat extends LitElement implements Controller {
         <button
           type="button"
           data-chat-toggle
-          class="mb-1 flex items-center gap-2 rounded-lg bg-gray-800/92 backdrop-blur-sm px-3 py-1.5 text-sm font-semibold text-white shadow-lg hover:bg-gray-700/92"
+          class="mb-1 flex items-center gap-2 ${PANEL} px-3 py-1.5 text-sm font-semibold hover:bg-gray-700/92"
           aria-label=${translateText("game_chat.open")}
           @click=${this.toggle}
         >
-          <span aria-hidden="true">💬</span>
-          ${translateText("game_chat.title")}
+          ${chatIcon} ${translateText("game_chat.title")}
           ${this.unread > 0
             ? html`<span
                 data-chat-unread
-                class="min-w-5 rounded-full bg-emerald-500 px-1.5 text-center text-xs text-white"
+                class="min-w-5 rounded-full bg-brand px-1.5 text-center text-xs text-white"
                 >${this.unread}</span
               >`
             : nothing}
@@ -195,19 +330,18 @@ export class GameChat extends LitElement implements Controller {
     const canWrite = this.game.myPlayer() !== null;
     return html`
       <div
-        class="mb-1 flex w-full flex-col rounded-lg bg-gray-800/92 text-white shadow-lg backdrop-blur-sm min-[1200px]:w-96"
+        class="mb-1 flex w-full flex-col ${PANEL} sm:w-80 lg:w-96 lg:max-w-full"
       >
-        <div
-          class="flex items-center gap-2 border-b border-white/10 px-3 py-1.5"
-        >
-          <span class="text-sm font-semibold"
-            >💬 ${translateText("game_chat.title")}</span
+        <div class="flex items-center gap-2 px-3 pt-2 pb-1.5">
+          ${chatIcon}
+          <span class="text-sm font-bold"
+            >${translateText("game_chat.title")}</span
           >
           ${this.muted.size > 0
             ? html`<button
                 type="button"
                 data-chat-unmute
-                class="text-xs text-white/60 underline hover:text-white"
+                class="text-xs text-slate-400 underline hover:text-white"
                 @click=${this.unmuteAll}
               >
                 ${translateText("game_chat.unmute_all", {
@@ -217,7 +351,7 @@ export class GameChat extends LitElement implements Controller {
             : nothing}
           <button
             type="button"
-            class="ml-auto px-1 text-white/60 hover:text-white"
+            class="ml-auto ${TOOL_BUTTON} size-6 text-xs leading-none text-white/80"
             aria-label=${translateText("game_chat.close")}
             title=${translateText("game_chat.close")}
             @click=${this.toggle}
@@ -227,51 +361,16 @@ export class GameChat extends LitElement implements Controller {
         </div>
         <ul
           data-chat-lines
-          class="max-h-[18vh] overflow-y-auto px-3 py-1.5 text-xs lg:max-h-[24vh] lg:text-sm"
+          aria-live="polite"
+          class="mx-2 max-h-[20vh] overflow-y-auto rounded-md border border-gray-600 bg-gray-900/60 p-1 text-xs lg:max-h-[26vh] lg:text-sm"
         >
           ${this.lines.length === 0
-            ? html`<li class="py-1 text-white/50">
+            ? html`<li class="px-1.5 py-1 text-slate-400">
                 ${translateText("game_chat.empty")}
               </li>`
             : this.lines.map((line) => this.renderLine(line, me))}
         </ul>
-        ${canWrite
-          ? html`
-              <div class="flex gap-2 border-t border-white/10 p-2">
-                <input
-                  data-chat-input
-                  type="text"
-                  maxlength=${CHAT_MESSAGE_MAX_LENGTH}
-                  class="min-w-0 flex-1 rounded-md bg-black/30 px-2 py-1 text-sm text-white placeholder-white/40 outline-hidden focus:ring-1 focus:ring-emerald-400/60"
-                  placeholder=${translateText("game_chat.placeholder")}
-                  .value=${this.draft}
-                  @input=${(e: InputEvent) =>
-                    (this.draft = (e.target as HTMLInputElement).value)}
-                  @keydown=${this.onKeydown}
-                />
-                <button
-                  type="button"
-                  class="rounded-md bg-emerald-600 px-3 py-1 text-sm font-semibold hover:bg-emerald-500 disabled:opacity-40"
-                  ?disabled=${this.draft.trim() === ""}
-                  @click=${this.send}
-                >
-                  ${translateText("game_chat.send")}
-                </button>
-              </div>
-              ${this.slowDown
-                ? html`<p
-                    data-chat-slow
-                    class="px-3 pb-2 text-xs text-amber-300"
-                  >
-                    ${translateText("game_chat.slow_down")}
-                  </p>`
-                : nothing}
-            `
-          : html`<p
-              class="border-t border-white/10 px-3 py-2 text-xs text-white/50"
-            >
-              ${translateText("game_chat.spectator")}
-            </p>`}
+        ${canWrite ? this.renderComposer() : this.renderSpectatorNote()}
       </div>
       ${this.reportTarget
         ? html`<div class="fixed inset-0 z-1200">
@@ -287,49 +386,192 @@ export class GameChat extends LitElement implements Controller {
     `;
   }
 
+  private renderSpectatorNote() {
+    return html`<p class="px-3 py-2 text-xs text-slate-400">
+      ${translateText("game_chat.spectator")}
+    </p>`;
+  }
+
+  private renderComposer() {
+    const allies = this.channel === "allies";
+    return html`
+      ${this.emojis
+        ? html`<div
+            data-chat-emojis
+            class="mx-2 mt-1.5 grid grid-cols-10 gap-0.5 rounded-md border border-gray-600 bg-gray-900/60 p-1"
+          >
+            ${CHAT_EMOJIS.map(
+              (emoji) =>
+                html`<button
+                  type="button"
+                  data-chat-emoji
+                  class="rounded text-lg leading-7 hover:bg-white/10"
+                  @click=${() => this.insertEmoji(emoji)}
+                >
+                  ${emoji}
+                </button>`,
+            )}
+          </div>`
+        : nothing}
+      ${this.hasAlliesChannel()
+        ? html`<div
+            class="mx-2 mt-1.5 flex gap-1 text-xs font-semibold"
+            role="radiogroup"
+          >
+            ${(["all", "allies"] as const).map(
+              (channel) =>
+                html`<button
+                  type="button"
+                  role="radio"
+                  data-chat-channel=${channel}
+                  aria-checked=${this.channel === channel}
+                  class="rounded-md border px-2.5 py-0.5 transition-colors ${this
+                    .channel === channel
+                    ? channel === "allies"
+                      ? "border-teal-400 bg-teal-500/25 text-teal-200"
+                      : "border-brand bg-brand/25 text-white"
+                    : "border-slate-600 text-slate-400 hover:text-white"}"
+                  @click=${() => {
+                    this.channel = channel;
+                    this.input()?.focus();
+                  }}
+                >
+                  ${translateText(`game_chat.channel_${channel}`)}
+                </button>`,
+            )}
+          </div>`
+        : nothing}
+      <div class="flex items-center gap-1.5 p-2">
+        <button
+          type="button"
+          data-chat-emoji-toggle
+          class="${TOOL_BUTTON} size-8 shrink-0 text-base ${this.emojis
+            ? "bg-gray-600"
+            : ""}"
+          aria-label=${translateText("game_chat.emojis")}
+          aria-expanded=${this.emojis}
+          title=${translateText("game_chat.emojis")}
+          @click=${() => (this.emojis = !this.emojis)}
+        >
+          😀
+        </button>
+        <input
+          data-chat-input
+          type="text"
+          maxlength=${CHAT_MESSAGE_MAX_LENGTH}
+          class="h-8 min-w-0 flex-1 rounded-md border bg-gray-900/60 px-2 text-sm text-white placeholder-slate-400 outline-hidden ${allies
+            ? "border-teal-500/70 focus:border-teal-400"
+            : "border-gray-600 focus:border-brand"}"
+          placeholder=${translateText(
+            allies ? "game_chat.placeholder_allies" : "game_chat.placeholder",
+          )}
+          .value=${this.draft}
+          @input=${(e: InputEvent) =>
+            (this.draft = (e.target as HTMLInputElement).value)}
+          @keydown=${this.onKeydown}
+        />
+        <button
+          type="button"
+          class="h-8 shrink-0 rounded-md bg-brand px-3 text-sm font-bold text-white transition-colors hover:bg-brand-light disabled:opacity-40"
+          ?disabled=${this.draft.trim() === ""}
+          @click=${this.send}
+        >
+          ${translateText("game_chat.send")}
+        </button>
+      </div>
+      ${this.slowDown
+        ? html`<p data-chat-slow class="px-3 pb-2 text-xs text-amber-300">
+            ${translateText("game_chat.slow_down")}
+          </p>`
+        : nothing}
+    `;
+  }
+
   private renderLine(line: ChatLine, me: ClientID | undefined) {
+    if (line.kind === "notice") {
+      return line.tone === "warn"
+        ? html`<li
+            data-chat-notice
+            class="px-1.5 py-0.5 text-amber-300 italic"
+            dir="auto"
+          >
+            ⚠ ${line.text}
+          </li>`
+        : html`<li
+            data-chat-event
+            class="px-1.5 py-0.5 text-slate-400 italic"
+            dir="auto"
+          >
+            ${line.text}
+          </li>`;
+    }
     const sender = this.game.playerByClientID(line.from);
     const mine = line.from === me;
     const name = mine
       ? translateText("game_chat.you")
       : (sender?.displayName() ?? "?");
+    const nameColor = mine
+      ? "#fcd34d"
+      : sender
+        ? readable(sender.territoryColor())
+        : "#cbd5e1";
+    const selected = this.selected === line.id;
+    const text = html`${line.allies
+        ? html`<span
+            class="rounded-sm bg-teal-500/25 px-1 text-[10px] font-bold text-teal-200 uppercase"
+            >${translateText("game_chat.channel_allies")}</span
+          >`
+        : nothing}
+      <span class="font-bold" style="color: ${nameColor}">${name}:</span>
+      <span class="text-slate-100">${line.text}</span>`;
     return html`
-      <li class="group flex items-start gap-1 py-0.5" data-chat-line>
-        <p class="min-w-0 flex-1 break-words" dir="auto">
-          <span class="font-semibold" style="color: ${this.senderColor(sender)}"
-            >${name}:</span
-          >
-          ${line.text}
-        </p>
+      <li data-chat-line>
         ${mine
-          ? nothing
-          : html`<span
-              class="flex shrink-0 gap-0.5 opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100"
+          ? html`<p class="px-1.5 py-0.5 break-words" dir="auto">${text}</p>`
+          : html`<button
+              type="button"
+              data-chat-line-button
+              class="w-full rounded px-1.5 py-0.5 text-left break-words transition-colors hover:bg-white/5 ${selected
+                ? "bg-white/10"
+                : ""}"
+              dir="auto"
+              title=${translateText("game_chat.line_hint")}
+              aria-expanded=${selected}
+              @click=${() => (this.selected = selected ? null : line.id)}
             >
-              <button
-                type="button"
-                data-chat-mute
-                class="rounded px-1 hover:bg-white/10"
-                title=${translateText("game_chat.mute")}
-                aria-label=${translateText("game_chat.mute")}
-                @click=${() => this.mute(line.from)}
-              >
-                🔇
-              </button>
-              ${this.canReport(sender)
-                ? html`<button
-                    type="button"
-                    data-chat-report
-                    class="rounded px-1 hover:bg-white/10"
-                    title=${translateText("game_chat.report")}
-                    aria-label=${translateText("game_chat.report")}
-                    @click=${() => (this.reportTarget = sender)}
-                  >
-                    🚩
-                  </button>`
-                : nothing}
-            </span>`}
+              ${text}
+            </button>`}
+        ${selected ? this.renderLineActions(line.from, sender) : nothing}
       </li>
     `;
+  }
+
+  private renderLineActions(from: ClientID, sender: PlayerView | null) {
+    const name = sender?.displayName() ?? "?";
+    return html`<div class="flex flex-wrap gap-1 px-1.5 pt-0.5 pb-1 text-xs">
+      <button
+        type="button"
+        data-chat-mute
+        class="${TOOL_BUTTON} px-2 py-0.5"
+        title=${translateText("game_chat.mute")}
+        @click=${() => this.mute(from)}
+      >
+        🔇 ${translateText("game_chat.ignore_player", { name })}
+      </button>
+      ${this.canReport(sender)
+        ? html`<button
+            type="button"
+            data-chat-report
+            class="rounded-md border border-red-400/60 bg-red-500/15 px-2 py-0.5 text-red-200 transition-colors hover:bg-red-500/30"
+            title=${translateText("game_chat.report")}
+            @click=${() => {
+              this.reportTarget = sender;
+              this.selected = null;
+            }}
+          >
+            🚩 ${translateText("game_chat.report_player", { name })}
+          </button>`
+        : nothing}
+    </div>`;
   }
 }
