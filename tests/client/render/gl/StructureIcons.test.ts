@@ -1,6 +1,6 @@
 /**
- * The SAM launcher changes look as it is upgraded: level 1, 2, then 3 and
- * up. On the map (StructurePass picks the icon texture column) and in the
+ * The SAM launcher changes look at each level it is upgraded to, up to 5.
+ * On the map (StructurePass picks the icon texture column) and in the
  * HUD (samLauncherIconFor picks the image).
  */
 
@@ -16,16 +16,19 @@ const SAM_COL = 4;
 const ATLAS_COLS = 7;
 
 describe("structureIconColumn", () => {
-  it("gives a SAM launcher one look per level, up to the third", () => {
+  it("gives a SAM launcher one look per level, up to the fifth", () => {
     // Ghosts have level 0 and show the first look.
     expect(structureIconColumn(UT_SAM_LAUNCHER, SAM_COL, 0)).toBe(SAM_COL);
     expect(structureIconColumn(UT_SAM_LAUNCHER, SAM_COL, 1)).toBe(SAM_COL);
-    expect(structureIconColumn(UT_SAM_LAUNCHER, SAM_COL, 2)).toBe(ATLAS_COLS);
-    for (const level of [3, 4, 5]) {
+    for (const level of [2, 3, 4, 5]) {
       expect(structureIconColumn(UT_SAM_LAUNCHER, SAM_COL, level)).toBe(
-        ATLAS_COLS + 1,
+        ATLAS_COLS + level - 2,
       );
     }
+    // Past the last look (not reachable today), it stays on the last one.
+    expect(structureIconColumn(UT_SAM_LAUNCHER, SAM_COL, 6)).toBe(
+      ATLAS_COLS + 3,
+    );
   });
 
   it("keeps other structures on their atlas column", () => {
@@ -39,7 +42,9 @@ describe("samLauncherIconFor", () => {
     expect(samLauncherIconFor(1)).toContain("SamLauncherLevel1IconWhite.svg");
     expect(samLauncherIconFor(2)).toContain("SamLauncherLevel2IconWhite.svg");
     expect(samLauncherIconFor(3)).toContain("SamLauncherLevel3IconWhite.svg");
-    expect(samLauncherIconFor(5)).toContain("SamLauncherLevel3IconWhite.svg");
+    expect(samLauncherIconFor(4)).toContain("SamLauncherLevel4IconWhite.svg");
+    expect(samLauncherIconFor(5)).toContain("SamLauncherLevel5IconWhite.svg");
+    expect(samLauncherIconFor(6)).toContain("SamLauncherLevel5IconWhite.svg");
     expect(samLauncherIconFor(0)).toContain("SamLauncherLevel1IconWhite.svg");
   });
 });

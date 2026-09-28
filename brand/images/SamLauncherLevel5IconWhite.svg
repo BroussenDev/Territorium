@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="5.5 3.5 114 114" fill="#fff">
+  <defs>
+    <mask id="sam5-cut">
+      <rect x="0" y="0" width="128" height="128" fill="#fff"/>
+      <rect x="22" y="55" width="20" height="5" rx="1" fill="#000"/>
+      <g fill="none" stroke="#000" stroke-width="1.5">
+        <path d="M55.5 34.5 Q59.5 38.5 63.5 34.5"/>
+        <path d="M73.5 34.5 Q77.5 38.5 81.5 34.5"/>
+        <path d="M92.5 34.5 Q96.5 38.5 100.5 34.5"/>
+      </g>
+      <g fill="#000">
+        <rect x="50" y="64" width="56" height="1.5"/>
+      </g>
+    </mask>
+    <path id="sam5-nose" d="M0 20 L1 22.5 C3 25.5 4 29.5 4 34.5 H-4 C-4 29.5 -3 25.5 -1 22.5 Z"/>
+  </defs>
+  <g mask="url(#sam5-cut)">
+    <path d="M16 49 Q16 48 17 48 H47 Q48 48 48 49 V80 H111 Q112 80 112 81 V112 H16 Z"/>
+    <rect x="54" y="34" width="11" height="47" rx="1"/>
+    <rect x="72" y="34" width="11" height="47" rx="1"/>
+    <rect x="91" y="34" width="11" height="47" rx="1"/>
+    <use href="#sam5-nose" x="59.5"/>
+    <use href="#sam5-nose" x="77.5"/>
+    <use href="#sam5-nose" x="96.5"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="2.4">
+    <path d="M32 14 V48.5"/>
+    <path d="M28.5 10.5 L32 15.5 L35.5 10"/>
+    <path d="M32 17.5 H51"/>
+    <path d="M39.5 12.5 V22.5 M46.5 12.5 V22.5"/>
+    <path d="M13 27.5 H32"/>
+    <path d="M14 22.5 L17 32.5 M21.5 22 L24.5 32"/>
+    <path d="M32 39.5 H46"/>
+    <path d="M41.5 34.5 V43"/>
+  </g>
+</svg>

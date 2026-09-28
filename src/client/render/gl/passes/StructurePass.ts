@@ -41,13 +41,16 @@ import structureVertSrc from "../shaders/structure/structure.vert.glsl?raw";
 const iconAtlasUrl = assetUrl("atlases/icon-atlas.png");
 
 /**
- * The SAM launcher's icon at level 1, 2, and 3 and up. Level 1 replaces the
- * atlas's SAM column; the others get columns of their own after the atlas's.
+ * The SAM launcher's icon at each level, the last one also above it. Level 1
+ * replaces the atlas's SAM column; the others get columns of their own after
+ * the atlas's.
  */
 const samLevelIconUrls = [
   assetUrl("images/SamLauncherLevel1IconWhite.svg"),
   assetUrl("images/SamLauncherLevel2IconWhite.svg"),
   assetUrl("images/SamLauncherLevel3IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel4IconWhite.svg"),
+  assetUrl("images/SamLauncherLevel5IconWhite.svg"),
 ];
 /** How much of an atlas cell a SAM icon covers, like the atlas's own icons. */
 const SAM_ICON_FILL = 0.72;

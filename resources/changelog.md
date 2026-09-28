@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.28
+
+🚀 **Two more SAM launcher looks**
+
+- Upgraded SAM launchers now get a new look at every level: a tracked missile carrier at level 4 and a fortified missile site with its radar antenna at level 5.
+
 ## v0.1.27
 
 🚀 **New SAM launcher looks**
