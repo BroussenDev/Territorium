@@ -8,6 +8,7 @@ import "./components/clan/ClanBrowseView";
 import type { BrowseState } from "./components/clan/ClanBrowseView";
 import "./components/clan/ClanCard";
 import "./components/clan/ClanCreateView";
+import "./components/clan/ClanCrestBadge";
 import "./components/clan/ClanDetailView";
 import "./components/clan/ClanDonationsView";
 import "./components/clan/ClanGameHistoryView";
@@ -18,10 +19,11 @@ import "./components/clan/ClanMyRequestsView";
 import "./components/clan/ClanRequestsView";
 import type { ClanRole } from "./components/clan/ClanShared";
 import "./components/clan/ClanTransferView";
+import "./components/clan/ClanWarsView";
 import "./components/ConfirmDialog";
 import "./components/CopyButton";
 import "./components/CurrencyDisplay";
-import { modalHeader } from "./components/ui/ModalHeader";
+import { DEFAULT_TITLE_CLASS, modalHeader } from "./components/ui/ModalHeader";
 import { signedOutNotice } from "./components/ui/SignedOutNotice";
 import { modalRouter } from "./ModalRouter";
 import type { ProfileOrigin } from "./PlayerProfileModal";
@@ -37,7 +39,7 @@ type View =
   | "my-requests";
 
 // List tabs share BaseModal's `activeTab` slot with detail tabs ("overview" /
-// "members" / "game-history" / "donations"); which set is live depends on `view`.
+// "members" / "game-history" / "donations" / "wars"); which set is live depends on `view`.
 // "map" is first in the tab bar but not the landing tab (see the constructor).
 const LIST_TABS = ["map", "my-clans", "browse"] as const;
 type ListTab = (typeof LIST_TABS)[number];
@@ -150,6 +152,7 @@ export class ClanModal extends BaseModal {
                 key: "donations",
                 label: translateText("clan_modal.tab_donations"),
               },
+              { key: "wars", label: translateText("clan_modal.tab_wars") },
             ]
           : [],
     };
@@ -268,6 +271,16 @@ export class ClanModal extends BaseModal {
     // Default: detail
     return modalHeader({
       title: clan?.name ?? translateText("clan_modal.title"),
+      titleContent: clan
+        ? html`<span class="flex items-center gap-3 min-w-0">
+            <clan-crest
+              .crest=${clan.crest}
+              .tag=${clan.tag}
+              .size=${36}
+            ></clan-crest>
+            <span class="${DEFAULT_TITLE_CLASS} min-w-0">${clan.name}</span>
+          </span>`
+        : undefined,
       onBack: () => {
         if (this.backToProfile()) return;
         this.view = "list";
@@ -350,6 +363,7 @@ export class ClanModal extends BaseModal {
           memberCount: c.memberCount,
           softBalance: c.softBalance,
           hardBalance: c.hardBalance,
+          crest: c.crest,
         });
       }
       this.myClanRoles = roles;
@@ -452,6 +466,14 @@ export class ClanModal extends BaseModal {
         ></clan-bans-view>`;
       }
       // Default: detail view — dispatched by the active detail tab
+      if (this.activeTab === "wars") {
+        return html`<clan-wars-view
+          .clanTag=${this.selectedClanTag}
+          .myClanRoles=${this.myClanRoles}
+          @clan-select=${(e: CustomEvent<{ tag: string }>) =>
+            this.openDetail(e.detail.tag)}
+        ></clan-wars-view>`;
+      }
       if (this.activeTab === "donations") {
         return html`<clan-donations-view
           .clanTag=${this.selectedClanTag}

@@ -18,12 +18,26 @@ export const ClanLeaderboardEntrySchema = z.object({
   weightedWins: z.number(),
   weightedLosses: z.number(),
   weightedWLRatio: z.number(),
+  // Optional: an API deploy predating crests and clan wars leaves them out.
+  name: z.string().optional(),
+  crest: z.string().nullable().optional(),
+  warWins: z.number().optional(),
+  warLosses: z.number().optional(),
 });
 export type ClanLeaderboardEntry = z.infer<typeof ClanLeaderboardEntrySchema>;
+
+// The board of one season (the ranked mode's calendar months).
+export const ClanSeasonSchema = z.object({
+  number: z.number().int().positive(),
+  endsAt: z.iso.datetime(),
+});
+export type ClanSeason = z.infer<typeof ClanSeasonSchema>;
 
 export const ClanLeaderboardResponseSchema = z.object({
   start: z.iso.datetime(),
   end: z.iso.datetime(),
+  season: ClanSeasonSchema.optional(),
+  currentSeason: z.number().int().positive().optional(),
   clans: ClanLeaderboardEntrySchema.array(),
   total: z.number().optional(),
   limit: z.number().optional(),
@@ -73,6 +87,10 @@ export const ClanInfoSchema = z.object({
   // Discord invite URL set by the clan leader; null when unset. Optional
   // because not every ClanInfo source includes it (e.g. browse results).
   discordUrl: z.string().max(255).nullable().optional(),
+  // "shape:field:charge:symbol" (see ClanCrest.ts); null shows the default.
+  crest: z.string().max(40).nullable().optional(),
+  // Seasons the clan finished first on the clan board.
+  titles: z.number().int().positive().array().optional(),
   isOpen: z.boolean(),
   createdAt: z.iso.datetime().optional(),
   memberCount: z.number().optional(),
@@ -309,3 +327,43 @@ export const ClanDonationsResponseSchema = z.object({
   limit: z.number(),
 });
 export type ClanDonationsResponse = z.infer<typeof ClanDonationsResponseSchema>;
+
+// Clan wars: one clan's officers challenge another's; once accepted, the next
+// private team game between the two clans settles it.
+export const ClanWarStatusSchema = z.enum([
+  "pending",
+  "accepted",
+  "declined",
+  "cancelled",
+  "expired",
+  "done",
+]);
+export type ClanWarStatus = z.infer<typeof ClanWarStatusSchema>;
+
+export const ClanWarSideSchema = z.object({
+  tag: RequiredClanTagSchema,
+  name: z.string(),
+  crest: z.string().nullable(),
+});
+
+export const ClanWarSchema = z.object({
+  id: z.number().int(),
+  challenger: ClanWarSideSchema,
+  defender: ClanWarSideSchema,
+  status: ClanWarStatusSchema,
+  createdAt: z.iso.datetime(),
+  answeredAt: z.iso.datetime().nullable(),
+  expiresAt: z.iso.datetime().nullable(),
+  endedAt: z.iso.datetime().nullable(),
+  winner: RequiredClanTagSchema.nullable(),
+  gameId: z.string().nullable(),
+});
+export type ClanWar = z.infer<typeof ClanWarSchema>;
+
+export const ClanWarsResponseSchema = z.object({
+  season: ClanSeasonSchema,
+  wins: z.number(),
+  losses: z.number(),
+  wars: ClanWarSchema.array(),
+});
+export type ClanWarsResponse = z.infer<typeof ClanWarsResponseSchema>;

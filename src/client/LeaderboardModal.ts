@@ -3,7 +3,10 @@ import { customElement, query, state } from "lit/decorators.js";
 import { RankedType } from "../core/game/Game";
 import { BaseModal } from "./components/BaseModal";
 import "./components/leaderboard/LeaderboardClanTable";
-import type { LeaderboardClanTable } from "./components/leaderboard/LeaderboardClanTable";
+import type {
+  ClanBoardRange,
+  LeaderboardClanTable,
+} from "./components/leaderboard/LeaderboardClanTable";
 import "./components/leaderboard/LeaderboardNationsTable";
 import type { LeaderboardNationsTable } from "./components/leaderboard/LeaderboardNationsTable";
 import "./components/leaderboard/LeaderboardPlayerList";
@@ -40,7 +43,7 @@ export class LeaderboardModal extends BaseModal {
   protected routerName = "leaderboard";
 
   @state()
-  private clanDateRange: { start: string; end: string } | null = null;
+  private clanDateRange: ClanBoardRange | null = null;
 
   @query("leaderboard-ranked-table")
   private rankedTable?: LeaderboardRankedTable;
@@ -138,15 +141,20 @@ export class LeaderboardModal extends BaseModal {
     })();
   }
 
-  private handleClanDateRangeChange(
-    event: CustomEvent<{ start: string; end: string }>,
-  ) {
+  private handleClanDateRangeChange(event: CustomEvent<ClanBoardRange>) {
     this.clanDateRange = event.detail;
   }
 
   protected renderHeaderSlot() {
     let dateRange = html``;
-    if (this.clanDateRange) {
+    if (this.clanDateRange?.season) {
+      dateRange = html`<span
+        class="text-sm font-normal text-white/40 ml-2 wrap-break-words"
+        >(${translateText("leaderboard_modal.clan_season", {
+          season: this.clanDateRange.season,
+        })})</span
+      >`;
+    } else if (this.clanDateRange) {
       const start = new Date(this.clanDateRange.start).toLocaleDateString();
       const end = new Date(this.clanDateRange.end).toLocaleDateString();
       dateRange = html`<span
@@ -200,9 +208,8 @@ export class LeaderboardModal extends BaseModal {
         ></leaderboard-player-list>
         <leaderboard-clan-table
           class=${this.activeTab === "clans" ? "h-full" : "hidden"}
-          @date-range-change=${(
-            event: CustomEvent<{ start: string; end: string }>,
-          ) => this.handleClanDateRangeChange(event)}
+          @date-range-change=${(event: CustomEvent<ClanBoardRange>) =>
+            this.handleClanDateRangeChange(event)}
         ></leaderboard-clan-table>
         <leaderboard-tribe-table
           class=${this.activeTab === "tribes" ? "h-full" : "hidden"}

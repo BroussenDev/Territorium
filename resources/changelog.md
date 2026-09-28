@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.22
+
+🛡️ **Official clans**
+
+- Every clan now has a crest. Leaders design it in Manage: pick a shape, a background, a color for the symbol and border, and one of 13 symbols. Clans without one get a crest drawn from their tag.
+- Crests show on clan cards, clan pages and the clan leaderboard.
+- The clan leaderboard now runs by season, the same monthly seasons as ranked. Browse past seasons with the arrows. The top clan when a season ends is crowned champion, and the title stays on its clan page.
+- Clan wars: officers can challenge another clan from the new "Wars" tab. Once the other clan's officers accept, play a private Teams game with 2 teams, one clan per team, everyone wearing their clan tag. The result is counted automatically.
+- Each clan's war record for the season shows in its Wars tab and on the leaderboard.
+
 ## v0.1.21
 
 🎆 **Victory animations**

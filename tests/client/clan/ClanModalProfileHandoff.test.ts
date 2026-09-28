@@ -272,7 +272,7 @@ describe("ClanModal — player-profile handoff", () => {
     expect(getElState(modal, "activeTab")).toBe("my-clans");
   });
 
-  it("offers a Donations tab on the clan detail", async () => {
+  it("offers Donations and Wars tabs on the clan detail", async () => {
     modal.open({ clan: "AAA" });
     await waitForSubComponent(modal, "clan-detail-view");
 
@@ -281,7 +281,13 @@ describe("ClanModal — player-profile handoff", () => {
     )
       .modalConfig()
       .tabs.map((t) => t.key);
-    expect(tabs).toEqual(["overview", "members", "game-history", "donations"]);
+    expect(tabs).toEqual([
+      "overview",
+      "members",
+      "game-history",
+      "donations",
+      "wars",
+    ]);
   });
 
   it("returns a donor's profile to the clan's Donations tab", async () => {

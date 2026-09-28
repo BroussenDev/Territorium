@@ -630,6 +630,21 @@ export class ClanDetailView extends LitElement {
   private renderDescriptionCard(clan: ClanInfo) {
     return html`
       <div class="bg-white/5 rounded-xl border border-white/10 p-5">
+        ${clan.titles?.length
+          ? html`<div class="flex flex-wrap gap-2 mb-3">
+              ${clan.titles.map(
+                (season) =>
+                  html`<span
+                    data-title-season=${season}
+                    class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/40"
+                    >🏆
+                    ${translateText("clan_modal.season_champion", {
+                      season,
+                    })}</span
+                  >`,
+              )}
+            </div>`
+          : ""}
         <p class="text-white/70 text-sm">
           ${clan.description || translateText("clan_modal.no_description")}
         </p>

@@ -17,6 +17,7 @@ import {
 import { translateText } from "../../Utils";
 import "../ConfirmDialog";
 import { playerNameLink } from "../ui/PlayerNameLink";
+import "./ClanCrestEditor";
 import {
   type ClanRole,
   defaultOrderForSort,
@@ -45,6 +46,7 @@ export class ClanManageView extends LitElement {
   @state() private manageDescription = "";
   @state() private manageDiscordUrl = "";
   @state() private manageIsOpen = true;
+  @state() private manageCrest: string | null = null;
   @state() private saving = false;
   @state() private members: ClanMember[] = [];
   @state() private membersTotal = 0;
@@ -69,6 +71,7 @@ export class ClanManageView extends LitElement {
       this.manageDescription = this.selectedClan.description ?? "";
       this.manageDiscordUrl = this.selectedClan.discordUrl ?? "";
       this.manageIsOpen = this.selectedClan.isOpen ?? true;
+      this.manageCrest = this.selectedClan.crest ?? null;
     }
     this.loadMembers(1);
   }
@@ -135,6 +138,7 @@ export class ClanManageView extends LitElement {
       description?: string;
       discordUrl?: string;
       isOpen?: boolean;
+      crest?: string | null;
     } = {};
     if (this.manageName !== clan.name) patch.name = this.manageName;
     if ((this.manageDescription ?? "") !== (clan.description ?? ""))
@@ -146,6 +150,9 @@ export class ClanManageView extends LitElement {
       patch.discordUrl = this.manageDiscordUrl;
     if (this.manageIsOpen !== (clan.isOpen ?? true))
       patch.isOpen = this.manageIsOpen;
+    // Leader-only like the Discord link: officers never touch the editor.
+    if (this.manageCrest !== (clan.crest ?? null))
+      patch.crest = this.manageCrest;
     if (Object.keys(patch).length === 0) return;
 
     this.saving = true;
@@ -162,6 +169,7 @@ export class ClanManageView extends LitElement {
           description: result.description,
           discordUrl: result.discordUrl,
           isOpen: result.isOpen,
+          crest: result.crest,
         },
         bubbles: true,
         composed: true,
@@ -413,6 +421,12 @@ export class ClanManageView extends LitElement {
                     ${translateText("clan_modal.discord_url_hint")}
                   </p>
                 </div>
+                <clan-crest-editor
+                  .tag=${clan.tag}
+                  .value=${this.manageCrest}
+                  @crest-change=${(e: CustomEvent<{ crest: string }>) =>
+                    (this.manageCrest = e.detail.crest)}
+                ></clan-crest-editor>
               `
             : ""}
           <div class="flex items-center justify-between">

@@ -255,6 +255,7 @@ export const UserMeResponseSchema = z.object({
           // format. Decimal bigint strings; optional for older responses.
           softBalance: z.string().optional(),
           hardBalance: z.string().optional(),
+          crest: z.string().max(40).nullable().optional(),
         }),
       )
       .optional(),

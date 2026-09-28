@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import type { ClanInfo } from "../../ClanApi";
 import { translateText } from "../../Utils";
 import "../CurrencyDisplay";
+import "./ClanCrestBadge";
 import { translateClanRole } from "./ClanShared";
 
 @customElement("clan-card")
@@ -68,16 +69,17 @@ export class ClanCard extends LitElement {
         class="w-full text-left bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 hover:border-white/20 p-4 transition-all cursor-pointer group"
       >
         <div class="flex items-center gap-4">
-          <div
-            class="w-12 h-12 rounded-xl bg-gradient-to-br ${clan.isOpen
-              ? "from-brand/20 to-brand-light/20"
-              : "from-amber-500/20 to-orange-500/20"} flex items-center justify-center border border-white/10 shrink-0"
-          >
-            <span class="text-white font-bold text-sm">${clan.tag}</span>
-          </div>
+          <clan-crest
+            .crest=${clan.crest}
+            .tag=${clan.tag}
+            .size=${44}
+          ></clan-crest>
           <div class="flex-1 min-w-0">
             <span class="text-white font-bold truncate block"
-              >${clan.name}</span
+              >${clan.name}
+              <span class="text-white/40 font-semibold text-xs ml-1"
+                >[${clan.tag}]</span
+              ></span
             >
             <div
               class="flex items-center flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-white/40"

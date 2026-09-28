@@ -19,6 +19,10 @@ import {
   ClanMembersResponseSchema,
   type ClanRequestsResponse,
   ClanRequestsResponseSchema,
+  type ClanWar,
+  ClanWarSchema,
+  type ClanWarsResponse,
+  ClanWarsResponseSchema,
   DiscordInviteResponseSchema,
   JoinClanResponseSchema,
 } from "../core/ClanApiSchemas";
@@ -47,6 +51,8 @@ export type {
   ClanMemberWL,
   ClanRequestsResponse,
   ClanTerritoryContender,
+  ClanWar,
+  ClanWarsResponse,
 } from "../core/ClanApiSchemas";
 
 async function clanFetch(
@@ -64,13 +70,18 @@ async function clanFetch(
   });
 }
 
-export async function fetchClanLeaderboard(): Promise<
-  ClanLeaderboardResponse | false
-> {
+// Without a season the API returns the current one.
+export async function fetchClanLeaderboard(
+  season?: number,
+): Promise<ClanLeaderboardResponse | false> {
   try {
-    const res = await fetch(`${getApiBase()}/public/clans/leaderboard`, {
-      headers: { Accept: "application/json" },
-    });
+    const query = season ? `?season=${season}` : "";
+    const res = await fetch(
+      `${getApiBase()}/public/clans/leaderboard${query}`,
+      {
+        headers: { Accept: "application/json" },
+      },
+    );
 
     if (!res.ok) {
       console.warn(
@@ -364,6 +375,7 @@ export async function updateClan(
     description?: string;
     discordUrl?: string;
     isOpen?: boolean;
+    crest?: string | null;
   },
 ): Promise<ClanInfo | { error: string }> {
   try {
@@ -381,6 +393,8 @@ export async function updateClan(
         return { error: "clan_modal.discord_invalid" };
       if (code === "DISCORD_EXPIRES")
         return { error: "clan_modal.discord_expires" };
+      if (code === "CREST_INVALID")
+        return { error: "clan_modal.crest_invalid" };
       return { error: "clan_modal.error_failed" };
     }
     // The only rate limit on this endpoint is the one Discord-link
@@ -774,5 +788,75 @@ export async function fetchClanBans(
     return parsed.data;
   } catch {
     return false;
+  }
+}
+
+export async function fetchClanWars(
+  tag: string,
+): Promise<ClanWarsResponse | false> {
+  try {
+    const res = await clanFetch(`/clans/${encodeURIComponent(tag)}/wars`);
+    if (!res.ok) return false;
+    const parsed = ClanWarsResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn("fetchClanWars: Zod validation failed", parsed.error);
+      return false;
+    }
+    return parsed.data;
+  } catch {
+    return false;
+  }
+}
+
+const WAR_ERRORS: Record<string, string> = {
+  WAR_SELF: "clan_modal.war_error_self",
+  WAR_OPEN: "clan_modal.war_error_open",
+  WAR_LIMIT: "clan_modal.war_error_limit",
+};
+
+async function warError(res: Response): Promise<{ error: string }> {
+  if (res.status === 429) return { error: "clan_modal.war_error_rate" };
+  if (res.status === 404) return { error: "clan_modal.war_error_not_found" };
+  const body = await res.json().catch(() => ({}));
+  const code = (body as { code?: string }).code;
+  return { error: WAR_ERRORS[code ?? ""] ?? "clan_modal.error_failed" };
+}
+
+// An officer of `tag` challenges the clan `opponent`.
+export async function challengeClan(
+  tag: string,
+  opponent: string,
+): Promise<ClanWar | { error: string }> {
+  try {
+    const res = await clanFetch(`/clans/${encodeURIComponent(tag)}/wars`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ opponent }),
+    });
+    if (!res.ok) return warError(res);
+    const parsed = ClanWarSchema.safeParse(await res.json());
+    if (!parsed.success) return { error: "clan_modal.error_failed" };
+    return parsed.data;
+  } catch {
+    return { error: "clan_modal.error_network" };
+  }
+}
+
+export async function answerClanWar(
+  tag: string,
+  id: number,
+  action: "accept" | "decline" | "cancel",
+): Promise<ClanWar | { error: string }> {
+  try {
+    const res = await clanFetch(
+      `/clans/${encodeURIComponent(tag)}/wars/${id}/${action}`,
+      { method: "POST" },
+    );
+    if (!res.ok) return warError(res);
+    const parsed = ClanWarSchema.safeParse(await res.json());
+    if (!parsed.success) return { error: "clan_modal.error_failed" };
+    return parsed.data;
+  } catch {
+    return { error: "clan_modal.error_network" };
   }
 }

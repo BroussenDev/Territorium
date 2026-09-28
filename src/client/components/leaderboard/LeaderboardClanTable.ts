@@ -6,12 +6,22 @@ import {
 } from "../../../core/ClanApiSchemas";
 import { fetchClanLeaderboard } from "../../ClanApi";
 import { translateText } from "../../Utils";
+import "../clan/ClanCrestBadge";
+
+// What the modal header shows above the board: the season when the API
+// sends one, the date window otherwise.
+export interface ClanBoardRange {
+  start: string;
+  end: string;
+  season?: number;
+}
 
 export type ClanSortColumn =
   | "rank"
   | "games"
   | "winScore"
   | "lossScore"
+  | "wars"
   | "ratio";
 export type ClanSortOrder = "asc" | "desc";
 
@@ -34,19 +44,24 @@ export class LeaderboardClanTable extends LitElement {
     await this.loadClanLeaderboard();
   }
 
-  public async loadClanLeaderboard() {
+  // Without a season: the one last shown, the current one at first.
+  public async loadClanLeaderboard(season = this.clanData?.season?.number) {
     this.isLoading = true;
     this.error = null;
 
     try {
-      const data = await fetchClanLeaderboard();
+      const data = await fetchClanLeaderboard(season);
       if (!data) throw new Error("Failed to load clan leaderboard");
 
       this.clanData = data;
       this.hasLoaded = true;
       this.dispatchEvent(
-        new CustomEvent<{ start: string; end: string }>("date-range-change", {
-          detail: { start: data.start, end: data.end },
+        new CustomEvent<ClanBoardRange>("date-range-change", {
+          detail: {
+            start: data.start,
+            end: data.end,
+            season: data.season?.number,
+          },
           bubbles: true,
           composed: true,
         }),
@@ -89,6 +104,10 @@ export class LeaderboardClanTable extends LitElement {
         case "lossScore":
           aVal = a.weightedLosses;
           bVal = b.weightedLosses;
+          break;
+        case "wars":
+          aVal = (a.warWins ?? 0) - (a.warLosses ?? 0);
+          bVal = (b.warWins ?? 0) - (b.warLosses ?? 0);
           break;
         case "ratio":
           aVal = a.weightedWLRatio;
@@ -186,29 +205,104 @@ export class LeaderboardClanTable extends LitElement {
     `;
   }
 
+  // Steps between seasons, from the first to the one being played.
+  private renderSeasonBar() {
+    const season = this.clanData?.season;
+    const current = this.clanData?.currentSeason;
+    if (!season || !current) return "";
+    const ended = season.number < current;
+    const step =
+      "w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-white/70 disabled:opacity-30 disabled:hover:bg-white/5";
+    const champion = ended ? this.clanData?.clans[0] : undefined;
+    return html`
+      <div
+        class="flex flex-wrap items-center gap-3 px-4 py-3 border-b border-white/5 bg-black/30"
+      >
+        <button
+          type="button"
+          class=${step}
+          data-season-step="prev"
+          aria-label=${translateText("leaderboard_modal.clan_season_prev")}
+          ?disabled=${season.number <= 1}
+          @click=${() => this.loadClanLeaderboard(season.number - 1)}
+        >
+          ‹
+        </button>
+        <div class="min-w-0">
+          <div class="text-white font-bold text-sm">
+            ${translateText("leaderboard_modal.clan_season", {
+              season: season.number,
+            })}
+          </div>
+          <div class="text-white/40 text-[11px]">
+            ${translateText(
+              ended
+                ? "leaderboard_modal.clan_season_ended"
+                : "leaderboard_modal.clan_season_ends",
+              { date: new Date(season.endsAt).toLocaleDateString() },
+            )}
+          </div>
+        </div>
+        <button
+          type="button"
+          class=${step}
+          data-season-step="next"
+          aria-label=${translateText("leaderboard_modal.clan_season_next")}
+          ?disabled=${season.number >= current}
+          @click=${() => this.loadClanLeaderboard(season.number + 1)}
+        >
+          ›
+        </button>
+        ${champion
+          ? html`<div
+              data-season-champion=${champion.clanTag}
+              class="ml-auto flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-400/30 text-amber-200 text-xs font-bold"
+            >
+              <clan-crest
+                .crest=${champion.crest}
+                .tag=${champion.clanTag}
+                .size=${22}
+              ></clan-crest>
+              ${translateText("leaderboard_modal.clan_season_champion", {
+                clan: champion.name ?? champion.clanTag,
+              })}
+            </div>`
+          : html`<span class="ml-auto text-white/30 text-[11px]"
+              >${translateText("leaderboard_modal.clan_season_rules")}</span
+            >`}
+      </div>
+    `;
+  }
+
   render() {
     if (this.isLoading) return this.renderLoading();
     if (this.error) return this.renderError();
     if (!this.clanData || this.clanData.clans.length === 0)
-      return this.renderNoData();
+      return html`<div class="h-full flex flex-col">
+        ${this.renderSeasonBar()}
+        <div class="flex-1 min-h-0">${this.renderNoData()}</div>
+      </div>`;
 
     const { clans } = this.clanData;
     const sorted = this.getSortedClans(clans);
     const maxGames = Math.max(...clans.map((c) => c.games), 1);
+    const showWars = clans.some((c) => c.warWins !== undefined);
 
     return html`
-      <div class="h-full">
-        <div class="h-full border border-white/5 bg-black/20">
+      <div class="h-full flex flex-col">
+        ${this.renderSeasonBar()}
+        <div class="flex-1 min-h-0 border border-white/5 bg-black/20">
           <div
             class="h-full overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/20"
           >
             <table class="w-full text-sm border-collapse table-fixed">
               <colgroup>
                 <col style="width: 4rem" />
-                <col style="width: 5rem" />
-                <col style="width: 8rem" />
+                <col style="width: 12rem" />
+                <col style="width: 7rem" />
                 <col style="width: 6rem" />
                 <col style="width: 6rem" />
+                ${showWars ? html`<col style="width: 6rem" />` : ""}
                 <col style="width: 6rem" />
               </colgroup>
               <thead class="sticky top-0 z-10">
@@ -287,6 +381,31 @@ export class LeaderboardClanTable extends LitElement {
                         : "↕"}
                     </button>
                   </th>
+                  ${showWars
+                    ? html`<th
+                        class="py-4 px-4 text-right font-bold cursor-pointer hover:text-white/60 transition-colors"
+                        title=${translateText(
+                          "leaderboard_modal.clan_wars_tooltip",
+                        )}
+                      >
+                        <button
+                          class="whitespace-nowrap uppercase"
+                          @click=${() => this.handleSort("wars")}
+                          aria-sort=${this.sortBy === "wars"
+                            ? this.sortOrder === "asc"
+                              ? "ascending"
+                              : "descending"
+                            : "none"}
+                        >
+                          ${translateText("leaderboard_modal.clan_wars")}
+                          ${this.sortBy === "wars"
+                            ? this.sortOrder === "asc"
+                              ? "↑"
+                              : "↓"
+                            : "↕"}
+                        </button>
+                      </th>`
+                    : ""}
                   <th
                     class="py-4 px-4 text-right font-bold pr-6 cursor-pointer hover:text-white/60 transition-colors"
                   >
@@ -340,11 +459,28 @@ export class LeaderboardClanTable extends LitElement {
                           ${rankIcon}
                         </div>
                       </td>
-                      <td class="py-3 px-4 font-bold text-emerald-300">
-                        <div
-                          class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 inline-block"
-                        >
-                          ${clan.clanTag}
+                      <td class="py-3 px-4">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <clan-crest
+                            .crest=${clan.crest}
+                            .tag=${clan.clanTag}
+                            .size=${30}
+                          ></clan-crest>
+                          <div class="min-w-0">
+                            ${clan.name
+                              ? html`<div
+                                  class="text-white font-bold truncate"
+                                  title=${clan.name}
+                                >
+                                  ${clan.name}
+                                </div>`
+                              : ""}
+                            <div
+                              class="text-emerald-300 font-bold text-xs truncate"
+                            >
+                              [${clan.clanTag}]
+                            </div>
+                          </div>
                         </div>
                       </td>
                       <td class="py-3 px-4 text-right">
@@ -376,6 +512,19 @@ export class LeaderboardClanTable extends LitElement {
                           maximumFractionDigits: 1,
                         })}
                       </td>
+                      ${showWars
+                        ? html`<td
+                            class="py-3 px-4 text-right font-mono whitespace-nowrap"
+                          >
+                            <span class="text-green-400/90"
+                              >${clan.warWins ?? 0}</span
+                            >
+                            <span class="text-white/30">–</span>
+                            <span class="text-red-400/90"
+                              >${clan.warLosses ?? 0}</span
+                            >
+                          </td>`
+                        : ""}
                       <td class="py-3 px-4 text-right pr-6">
                         <div class="inline-flex flex-col items-end">
                           <span
