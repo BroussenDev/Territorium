@@ -733,6 +733,34 @@ export async function donateToClan(
   return { error: "clan_modal.error_failed" };
 }
 
+/**
+ * Spends the clan treasury on a clan pack (leader and officers). Resolves to
+ * the clan's fresh info, whose balance and packs include the purchase.
+ */
+export async function buyClanPack(
+  tag: string,
+  packName: string,
+): Promise<ClanInfo | { error: string }> {
+  let res: Response;
+  try {
+    res = await clanFetch(
+      `/clans/${encodeURIComponent(tag)}/packs/${encodeURIComponent(packName)}`,
+      { method: "POST" },
+    );
+  } catch {
+    return { error: "clan_modal.error_network" };
+  }
+  if (res.ok) {
+    const parsed = ClanInfoSchema.safeParse(await res.json().catch(() => null));
+    return parsed.success ? parsed.data : { error: "clan_modal.error_failed" };
+  }
+  if (res.status === 401) return { error: "clan_modal.sign_in_for_clans" };
+  if (res.status === 403) return { error: "clan_modal.shop_officers_only" };
+  if (res.status === 409) return { error: "clan_modal.shop_already_owned" };
+  if (res.status === 400) return { error: "clan_modal.shop_insufficient" };
+  return { error: "clan_modal.error_failed" };
+}
+
 export type ClanDonationsFetchError = "forbidden" | "failed";
 
 /**

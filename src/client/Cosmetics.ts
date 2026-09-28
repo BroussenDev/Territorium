@@ -1095,6 +1095,7 @@ export function cosmeticRelationship(
     requiredFlare: string;
     priceSoft?: number;
     priceHard?: number;
+    clanOnly?: boolean;
     affiliateCode: string | null;
     itemAffiliateCode: string | null;
   },
@@ -1114,6 +1115,9 @@ export function cosmeticRelationship(
   if (opts.affiliateCode !== opts.itemAffiliateCode) {
     return "blocked";
   }
+
+  // Worn through a clan pack only, never sold on its own.
+  if (opts.clanOnly) return "blocked";
 
   // Cosmetics are sold for currency only (USD checkout was removed).
   if (opts.priceSoft !== undefined || opts.priceHard !== undefined) {
@@ -1161,6 +1165,7 @@ export function patternRelationship(
       requiredFlare: `pattern:${pattern.name}:${colorPalette.name}`,
       priceSoft: pattern.priceSoft,
       priceHard: pattern.priceHard,
+      clanOnly: pattern.clanOnly,
       affiliateCode,
       itemAffiliateCode: pattern.affiliateCode ?? null,
     },
@@ -1179,6 +1184,7 @@ export function flagRelationship(
       requiredFlare: `flag:${flag.name}`,
       priceSoft: flag.priceSoft,
       priceHard: flag.priceHard,
+      clanOnly: flag.clanOnly,
       affiliateCode,
       itemAffiliateCode: flag.affiliateCode ?? null,
     },
@@ -1197,6 +1203,7 @@ export function crownRelationship(
       requiredFlare: `crown:${crown.name}`,
       priceSoft: crown.priceSoft,
       priceHard: crown.priceHard,
+      clanOnly: crown.clanOnly,
       affiliateCode,
       itemAffiliateCode: crown.affiliateCode ?? null,
     },
@@ -1215,6 +1222,7 @@ export function skinRelationship(
       requiredFlare: `skin:${skin.name}`,
       priceSoft: skin.priceSoft,
       priceHard: skin.priceHard,
+      clanOnly: skin.clanOnly,
       affiliateCode,
       itemAffiliateCode: skin.affiliateCode ?? null,
     },
@@ -1233,6 +1241,7 @@ export function effectRelationship(
       requiredFlare: `effect:${effect.name}`,
       priceSoft: effect.priceSoft,
       priceHard: effect.priceHard,
+      clanOnly: effect.clanOnly,
       affiliateCode,
       itemAffiliateCode: effect.affiliateCode ?? null,
     },
@@ -1290,6 +1299,8 @@ export function cosmeticPackRelationship(
   if (pack.items.length === 0) return "blocked";
   const owned = ownedPackItems(pack, userMeResponse).length;
   if (owned === pack.items.length) return "owned";
+  // Bought by a clan (ClanShopView), not in the store.
+  if (pack.clanOnly) return "blocked";
   // Pack revenue isn't attributed to affiliates: hidden in affiliate mode.
   if (affiliateCode !== null) return "blocked";
   // Partially owned packs can't be bought (see ownedPackItems).

@@ -102,6 +102,17 @@ export const ClanInfoSchema = z.object({
   // which the UI hides rather than rendering as zero.
   softBalance: z.string().optional(),
   hardBalance: z.string().optional(),
+  // Clan packs the clan bought with its treasury; every member wears them.
+  packs: z
+    .object({
+      name: z.string(),
+      price: z.string(),
+      boughtBy: z.string().nullable(),
+      boughtByUsername: z.string().nullable().optional(),
+      boughtAt: z.iso.datetime(),
+    })
+    .array()
+    .optional(),
 });
 export type ClanInfo = z.infer<typeof ClanInfoSchema>;
 

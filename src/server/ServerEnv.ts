@@ -357,6 +357,11 @@ export class ServerEnv {
   }
   // Where the admin-managed news feed is persisted. Mount it on a volume in
   // production, or edits are lost when the container is replaced.
+  // Channel webhook the master posts open public lobbies to
+  // (DiscordLobbyAnnouncer.ts). Unset: no announcements.
+  static discordWebhookUrl(): string {
+    return process.env.DISCORD_WEBHOOK_URL ?? "";
+  }
   static newsFile(): string {
     const v = process.env.NEWS_FILE;
     return v && v.length > 0 ? v : "data/news.json";

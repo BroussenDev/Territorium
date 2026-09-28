@@ -15,6 +15,7 @@ import {
   sendCheckin,
 } from "./ClusterCheckin";
 import { getDescriptor } from "./DesktopRelease";
+import { DiscordLobbyAnnouncer, isWebhookUrl } from "./DiscordLobbyAnnouncer";
 import {
   coordinatorUrl,
   LobbyCoordinatorClient,
@@ -220,6 +221,21 @@ export async function startMaster() {
     });
     lobbyService.attachCoordinator(client);
     client.start();
+  }
+
+  // Announce open public lobbies on the community Discord.
+  const webhook = ServerEnv.discordWebhookUrl();
+  if (isWebhookUrl(webhook) && ServerEnv.domain()) {
+    const announcer = new DiscordLobbyAnnouncer(
+      webhook,
+      `https://${ServerEnv.domain()}`,
+      path.join(path.dirname(ServerEnv.newsFile()), "discord-lobbies.json"),
+    );
+    void announcer.cleanUp();
+    lobbyService.attachAnnouncer(announcer);
+    log.info("Announcing public lobbies on Discord");
+  } else if (webhook) {
+    log.warn("DISCORD_WEBHOOK_URL is not a Discord webhook: no announcements");
   }
 
   // Fork workers

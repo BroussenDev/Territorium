@@ -99,6 +99,9 @@ const CosmeticSchema = z.object({
   product: ProductSchema.nullable(),
   priceSoft: z.number().optional(),
   priceHard: z.number().optional(),
+  // Part of a clan pack: never sold on its own, worn by the members of a
+  // clan that bought the pack.
+  clanOnly: z.boolean().optional(),
   artist: z.string().optional(),
   rarity: z
     .enum(["common", "uncommon", "rare", "epic", "legendary"])
@@ -530,17 +533,25 @@ export const CosmeticPackItemSchema = z.object({
 // A bundle of cosmetics bought in one hard-currency transaction
 // (POST /shop/purchase/pack). `name` is the slug sent to that endpoint. Only
 // packs that are for sale are listed. The price is the pack's own, not the
-// sum of its items; packs never have a soft-currency price.
-export const CosmeticPackSchema = z.object({
-  name: CosmeticNameSchema,
-  displayName: z.string(),
-  description: z.string(),
-  priceHard: z.number(),
-  rarity: z
-    .enum(["common", "uncommon", "rare", "epic", "legendary"])
-    .or(z.string()),
-  items: CosmeticPackItemSchema.array(),
-});
+// sum of its items; packs never have a soft-currency price. A clan pack
+// (clanOnly) is not in the store: a clan buys it with its treasury for
+// clanPriceHard (POST /clans/:tag/packs/:name) and all its members wear it.
+export const CosmeticPackSchema = z
+  .object({
+    name: CosmeticNameSchema,
+    displayName: z.string(),
+    description: z.string(),
+    priceHard: z.number().optional(),
+    clanOnly: z.boolean().optional(),
+    clanPriceHard: z.number().optional(),
+    rarity: z
+      .enum(["common", "uncommon", "rare", "epic", "legendary"])
+      .or(z.string()),
+    items: CosmeticPackItemSchema.array(),
+  })
+  // Only a clan pack may come without a store price.
+  .refine((p) => p.priceHard !== undefined || p.clanOnly === true)
+  .transform((p) => ({ ...p, priceHard: p.priceHard ?? 0 }));
 
 export const SubscriptionSchema = CosmeticSchema.extend({
   description: z.string(),

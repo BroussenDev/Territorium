@@ -4,7 +4,7 @@ import { TribeStatsResponse } from "../../core/ApiSchemas";
 import { fetchTribeStats } from "../Api";
 import { translateText } from "../Utils";
 import { renderLoadingSpinner } from "./BaseModal";
-import { formatWindowDate } from "./leaderboard/LeaderboardTribeTable";
+import { formatWindowDate } from "./leaderboard/LeaderboardFormat";
 import "./PlayerName";
 import { modalHeader } from "./ui/ModalHeader";
 

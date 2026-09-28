@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.24
+
+🛡️ **Clan shop**
+
+- The Nation pack is now a clan pack: it has left the shop and moved to the new "Shop" tab of the clan page.
+- The clan leader or an officer unlocks it with 1,000 emeralds from the clan treasury, and every member can wear it for as long as they stay in the clan. Fill the treasury with donations to get there together.
+- Players who already bought the Nation pack keep it.
+
+📣 **Lobbies on Discord**
+
+- As soon as a public lobby has a player in it, it's announced on the Territorium Discord with a link to join. The post follows the player count and the countdown, and disappears once the game starts.
+
+🧹 **Leaderboards**
+
+- The tribe leaderboard has been removed.
+
 ## v0.1.23
 
 🏳️ **Nation pack**

@@ -6,7 +6,7 @@ import { translateText } from "../../Utils";
 import "../PlayerName";
 import { tierEmblem, tierLabel } from "../ranked/RankedTier";
 import { goldFramed } from "./GoldFrame";
-import { rankStyle } from "./LeaderboardTribeTable";
+import { rankStyle } from "./LeaderboardFormat";
 
 // The ranked free-for-all board: this season's top 100 placed players.
 @customElement("leaderboard-ranked-table")

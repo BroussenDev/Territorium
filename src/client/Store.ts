@@ -313,6 +313,8 @@ export class StoreModal extends BaseModal {
         .filter(
           (resolved) =>
             resolved.type === "cosmeticPack" &&
+            // Clan packs are bought from the clan's page.
+            !(resolved.cosmetic as CosmeticPack).clanOnly &&
             (resolved.relationship !== "blocked" ||
               this.ownedPackItemNames(resolved).length > 0),
         )

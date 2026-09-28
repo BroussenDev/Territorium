@@ -18,6 +18,7 @@ import "./components/clan/ClanMapView";
 import "./components/clan/ClanMyRequestsView";
 import "./components/clan/ClanRequestsView";
 import type { ClanRole } from "./components/clan/ClanShared";
+import "./components/clan/ClanShopView";
 import "./components/clan/ClanTransferView";
 import "./components/clan/ClanWarsView";
 import "./components/ConfirmDialog";
@@ -39,7 +40,7 @@ type View =
   | "my-requests";
 
 // List tabs share BaseModal's `activeTab` slot with detail tabs ("overview" /
-// "members" / "game-history" / "donations" / "wars"); which set is live depends on `view`.
+// "members" / "game-history" / "donations" / "wars" / "shop"); which set is live depends on `view`.
 // "map" is first in the tab bar but not the landing tab (see the constructor).
 const LIST_TABS = ["map", "my-clans", "browse"] as const;
 type ListTab = (typeof LIST_TABS)[number];
@@ -153,6 +154,15 @@ export class ClanModal extends BaseModal {
                 label: translateText("clan_modal.tab_donations"),
               },
               { key: "wars", label: translateText("clan_modal.tab_wars") },
+              // Clan packs are bought by the clan's own officers.
+              ...(this.myRole !== null
+                ? [
+                    {
+                      key: "shop",
+                      label: translateText("clan_modal.tab_shop"),
+                    },
+                  ]
+                : []),
             ]
           : [],
     };
@@ -474,6 +484,15 @@ export class ClanModal extends BaseModal {
             this.openDetail(e.detail.tag)}
         ></clan-wars-view>`;
       }
+      if (this.activeTab === "shop" && this.myRole !== null) {
+        if (!this.selectedClan) return this.renderLoadingSpinner();
+        return html`<clan-shop-view
+          .clan=${this.selectedClan}
+          .myRole=${this.myRole}
+          @clan-pack-bought=${(e: CustomEvent<{ clan: ClanInfo }>) =>
+            this.applyFreshClan(e.detail.clan)}
+        ></clan-shop-view>`;
+      }
       if (this.activeTab === "donations") {
         return html`<clan-donations-view
           .clanTag=${this.selectedClanTag}
@@ -559,20 +578,8 @@ export class ClanModal extends BaseModal {
           this.openPlayerProfile(e.detail.publicId)}
         @navigate-manage=${() => (this.view = "manage")}
         @navigate-requests=${() => (this.view = "requests")}
-        @clan-donated=${(e: CustomEvent<{ clan: ClanInfo }>) => {
-          // Fresh detail after a donation: the header treasury and the My
-          // Clans card both show balances, so both pick up the new figures.
-          this.selectedClan = e.detail.clan;
-          this.myClans = this.myClans.map((c) =>
-            c.tag === e.detail.clan.tag
-              ? {
-                  ...c,
-                  softBalance: e.detail.clan.softBalance,
-                  hardBalance: e.detail.clan.hardBalance,
-                }
-              : c,
-          );
-        }}
+        @clan-donated=${(e: CustomEvent<{ clan: ClanInfo }>) =>
+          this.applyFreshClan(e.detail.clan)}
         @clan-joined=${(e: CustomEvent<{ tag: string }>) => {
           this.myClanRoles = new Map([
             ...this.myClanRoles,
@@ -668,6 +675,17 @@ export class ClanModal extends BaseModal {
     } finally {
       this.preserveStateForModalHandoff = false;
     }
+  }
+
+  // Fresh detail after a donation or a clan purchase: the header treasury
+  // and the My Clans card both show balances, so both pick up the new figures.
+  private applyFreshClan(clan: ClanInfo): void {
+    this.selectedClan = clan;
+    this.myClans = this.myClans.map((c) =>
+      c.tag === clan.tag
+        ? { ...c, softBalance: clan.softBalance, hardBalance: clan.hardBalance }
+        : c,
+    );
   }
 
   private openPlayerProfile(publicId: string): void {

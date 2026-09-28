@@ -1528,6 +1528,18 @@ describe("Cosmetic pack schemas", () => {
         .success,
     ).toBe(false);
   });
+
+  it("lets only a clan pack go without a store price", () => {
+    const clanPack = CosmeticPackSchema.safeParse({
+      ...starter,
+      priceHard: undefined,
+      clanOnly: true,
+      clanPriceHard: 1000,
+    });
+    expect(clanPack.success).toBe(true);
+    expect(clanPack.data?.priceHard).toBe(0);
+    expect(clanPack.data?.clanPriceHard).toBe(1000);
+  });
 });
 
 describe("victory effects in the cosmetics catalog", () => {

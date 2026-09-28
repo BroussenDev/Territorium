@@ -5,6 +5,7 @@ import {
   PublicGameType,
   SCHEDULED_PUBLIC_GAME_TYPES,
 } from "../core/Schemas";
+import { DiscordLobbyAnnouncer } from "./DiscordLobbyAnnouncer";
 import {
   InternalGameInfo,
   InternalGameInfoSchema,
@@ -82,6 +83,7 @@ export class MasterLobbyService {
   // set rather than the roster's own field so a roster that arrives twice
   // between broadcasts does not lose the first one's delists.
   private readonly pendingDelist = new Set<string>();
+  private announcer: DiscordLobbyAnnouncer | null = null;
 
   constructor(
     private playlist: MapPlaylist,
@@ -168,6 +170,11 @@ export class MasterLobbyService {
    */
   attachCoordinator(client: LobbyCoordinatorClient) {
     this.coordinator = client;
+  }
+
+  /** Posts this server's listed lobbies to Discord from now on. */
+  attachAnnouncer(announcer: DiscordLobbyAnnouncer) {
+    this.announcer = announcer;
   }
 
   coordinatorHandlers(): CoordinatorHandlers {
@@ -404,6 +411,17 @@ export class MasterLobbyService {
       delistGameIDs: delist.length > 0 ? delist : undefined,
       active: this.active || !this.stateKnown,
     } satisfies MasterLobbiesBroadcast;
+    if (this.announcer !== null) {
+      // Each server announces its own lobbies; a coordinated roster also
+      // lists the other servers'.
+      const own = new Set(this.ownLobbies().map((l) => l.gameID));
+      const delisted = new Set(delist);
+      this.announcer.update(
+        Object.values(games)
+          .flat()
+          .filter((l) => own.has(l.gameID) && !delisted.has(l.gameID)),
+      );
+    }
     for (const [workerId, worker] of this.workers.entries()) {
       worker.send(msg, (e) => {
         if (e) {

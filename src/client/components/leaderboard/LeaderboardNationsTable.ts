@@ -3,7 +3,7 @@ import { customElement, state } from "lit/decorators.js";
 import { fetchNationsLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import { countryFlag, loadNationsCountries } from "../NationsCountries";
-import { rankStyle } from "./LeaderboardTribeTable";
+import { rankStyle } from "./LeaderboardFormat";
 import { NationsBoardRow, nationsBoardRows } from "./NationsBoard";
 
 // The Nations board: which countries players pick, and which countries win,

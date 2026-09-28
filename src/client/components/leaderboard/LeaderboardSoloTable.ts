@@ -5,7 +5,7 @@ import { fetchSoloLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
 import { goldFramed } from "./GoldFrame";
-import { rankStyle } from "./LeaderboardTribeTable";
+import { rankStyle } from "./LeaderboardFormat";
 
 // The solo board: players ranked by points from singleplayer wins against
 // the nations (see SoloLeaderboardResponseSchema for the scoring).
