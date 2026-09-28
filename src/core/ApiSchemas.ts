@@ -659,6 +659,28 @@ export type SoloLeaderboardResponse = z.infer<
   typeof SoloLeaderboardResponseSchema
 >;
 
+// GET /leaderboard/nations — public: every finished Nations game counted by
+// country. A country is keyed by its countries.json index, or by its name when
+// the nation AI playing it won. picks: games a human played it; wins: games
+// it won, by a human (keyed by index) or the AI (keyed by name).
+export const NationsLeaderboardEntrySchema = z.object({
+  nation: z.number().int().nonnegative().nullable(),
+  name: z.string().nullable(),
+  picks: z.number().int().nonnegative(),
+  wins: z.number().int().nonnegative(),
+});
+export type NationsLeaderboardEntry = z.infer<
+  typeof NationsLeaderboardEntrySchema
+>;
+
+export const NationsLeaderboardResponseSchema = z.object({
+  games: z.number().int().nonnegative(),
+  countries: NationsLeaderboardEntrySchema.array(),
+});
+export type NationsLeaderboardResponse = z.infer<
+  typeof NationsLeaderboardResponseSchema
+>;
+
 // Ranked free-for-all tiers, lowest first. "legend" is no rating band: it is
 // held by the season's top five masters.
 export const RankedTiers = [
@@ -955,6 +977,17 @@ export const PlayerProfileSchema = z.object({
   seasonBadges: SeasonBadgeSchema.array().optional(),
   // True when the player's subscription frames their profile in gold.
   goldFrame: z.boolean().optional(),
+  // The countries this player played in Nations games (countries.json
+  // index), most played first. Optional for an API without the field.
+  nations: z
+    .array(
+      z.object({
+        nation: z.number().int().nonnegative(),
+        games: z.number().int().nonnegative(),
+        wins: z.number().int().nonnegative(),
+      }),
+    )
+    .optional(),
 });
 export type PlayerProfile = z.infer<typeof PlayerProfileSchema>;
 

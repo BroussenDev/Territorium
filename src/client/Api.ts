@@ -14,6 +14,8 @@ import {
   GetMyTribeNamesResponse,
   GetMyTribeNamesResponseSchema,
   HiddenNameResponseSchema,
+  NationsLeaderboardResponse,
+  NationsLeaderboardResponseSchema,
   NewsItemSchema,
   PaymentsCheckoutResponse,
   PaymentsCheckoutResponseSchema,
@@ -2383,6 +2385,33 @@ export async function fetchSoloLeaderboard(): Promise<
     return parsed.data;
   } catch (err) {
     console.error("fetchSoloLeaderboard: request failed", err);
+    return false;
+  }
+}
+
+// GET /leaderboard/nations — public, countries played and won in Nations.
+export async function fetchNationsLeaderboard(): Promise<
+  NationsLeaderboardResponse | false
+> {
+  try {
+    const res = await fetch(`${getApiBase()}/leaderboard/nations`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      console.warn("fetchNationsLeaderboard: unexpected status", res.status);
+      return false;
+    }
+    const parsed = NationsLeaderboardResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn(
+        "fetchNationsLeaderboard: Zod validation failed",
+        parsed.error.toString(),
+      );
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchNationsLeaderboard: request failed", err);
     return false;
   }
 }

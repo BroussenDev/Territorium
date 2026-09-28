@@ -319,7 +319,7 @@ const ClientInfoSchema = z.object({
   // preview can honour the pins instead of re-deriving teams that the server
   // will overrule at start. Absent when the game isn't matchmade.
   teamIndex: zb.uint().optional(),
-  // Nations mode: the country this player picked (manifest nation index).
+  // Nations mode: the country this player plays (countries.json index).
   nation: zb.uint().optional(),
 });
 
@@ -434,7 +434,7 @@ export interface ClientInfo {
   spectator?: boolean;
   // Server-pinned team slot for matchmade team games; absent when not matchmade.
   teamIndex?: number;
-  // Nations lobbies: the country this player picked (manifest nation index).
+  // Nations lobbies: the country this player picked (countries.json index).
   nation?: number;
 }
 export enum LogSeverity {

@@ -1,7 +1,11 @@
 import { html, nothing, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { ClientEnv } from "src/client/ClientEnv";
-import { PlayerStatsTree, UserMeResponse } from "../core/ApiSchemas";
+import {
+  PlayerProfile,
+  PlayerStatsTree,
+  UserMeResponse,
+} from "../core/ApiSchemas";
 import { assetUrl } from "../core/AssetUrls";
 import { hasLinkedIdentity } from "./AccountIdentity";
 import { fetchPlayerById, getUserMe, invalidateUserMe } from "./Api";
@@ -29,6 +33,7 @@ import "./components/CreatorDashboardPanel";
 import "./components/CurrencyDisplay";
 import "./components/Difficulties";
 import "./components/FriendsList";
+import "./components/NationsProfileStats";
 import "./components/RewardsPanel";
 import type { RewardsChangedDetail } from "./components/RewardsPanel";
 import { googleLinkButton } from "./components/ui/GoogleLinkButton";
@@ -73,6 +78,7 @@ export class AccountModal extends BaseModal {
 
   private userMeResponse: UserMeResponse | null = null;
   private statsTree: PlayerStatsTree | null = null;
+  private nations: NonNullable<PlayerProfile["nations"]> = [];
   // Preserves the Games tab's accumulated list + cursor across tab switches.
   private gameHistoryCache: PlayerGameHistoryCache | null = null;
   private gamesScrollTop = 0;
@@ -369,6 +375,7 @@ export class AccountModal extends BaseModal {
       );
     }
     return html`
+      <nations-profile-stats .nations=${this.nations}></nations-profile-stats>
       <player-stats-tree-view
         .statsTree=${this.statsTree}
       ></player-stats-tree-view>
@@ -666,6 +673,7 @@ export class AccountModal extends BaseModal {
 
   private resetPlayerData(): void {
     this.statsTree = null;
+    this.nations = [];
     this.gameHistoryCache = null;
     this.gamesScrollTop = 0;
     this.restoreGamesScrollAfterOpen = false;
@@ -958,6 +966,7 @@ export class AccountModal extends BaseModal {
       }
 
       this.statsTree = data.stats;
+      this.nations = data.nations ?? [];
 
       this.requestUpdate();
     } catch (err) {

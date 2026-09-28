@@ -67,7 +67,11 @@ import {
 import { ListingState } from "./ListingState";
 import { identityFor, MatchTelemetryRecorder } from "./MatchTelemetryRecorder";
 import { friendsLookup, NameVisibility } from "./NameVisibility";
-import { nationsPlayable } from "./NationsCountries";
+import {
+  assignFreeNations,
+  loadedPlayableNations,
+  nationsPlayable,
+} from "./NationsCountries";
 import { Roster } from "./Roster";
 import { ServerEnv } from "./ServerEnv";
 import { SocketIngress } from "./SocketIngress";
@@ -912,6 +916,12 @@ export class GameServer {
     }
     this.stage = "prestart";
     this.fetchTribes();
+    // start() hands out countries from this list, so it must be ready then.
+    if (this.gameConfig.gameVariant === "nations") {
+      nationsPlayable().catch((e) =>
+        this.log.error("could not load the nations countries", { error: e }),
+      );
+    }
 
     const prestartMsg = ServerPrestartMessageSchema.safeParse({
       type: "prestart",
@@ -1062,6 +1072,7 @@ export class GameServer {
     this.lastPingUpdate = Date.now();
 
     this.convertClanOverflowToSpectators();
+    this.assignFreeNations();
 
     const friendsFor = friendsLookup(this.clients.active());
 
@@ -1366,6 +1377,26 @@ export class GameServer {
     if (taken) return;
     this.nationPicks.set(client.persistentID, nation);
     this.broadcastLobbyInfo();
+  }
+
+  // Players who never picked a country get a free one at random, so every
+  // game record says which country each player played. If the list isn't
+  // loaded yet, the simulation draws their country instead.
+  private assignFreeNations() {
+    const playable = loadedPlayableNations();
+    if (this.gameConfig.gameVariant !== "nations" || playable === null) {
+      return;
+    }
+    const players = this.clients.players();
+    const nations = assignFreeNations(
+      players.map((c) => this.nationPick(c)),
+      playable,
+      Math.random,
+    );
+    players.forEach((c, i) => {
+      const nation = nations[i];
+      if (nation !== undefined) this.nationPicks.set(c.persistentID, nation);
+    });
   }
 
   private matchmakingTeamIndex(c: Client): number | undefined {
@@ -1873,6 +1904,8 @@ export class GameServer {
           teamIndex: player.teamIndex,
           friends: player.friends,
           isLobbyCreator: player.isLobbyCreator,
+          // Nations games: the country played, for replays and the stats.
+          ...(player.nation !== undefined ? { nation: player.nation } : {}),
         } satisfies PlayerRecord;
       },
     );

@@ -4,6 +4,8 @@ import { RankedType } from "../core/game/Game";
 import { BaseModal } from "./components/BaseModal";
 import "./components/leaderboard/LeaderboardClanTable";
 import type { LeaderboardClanTable } from "./components/leaderboard/LeaderboardClanTable";
+import "./components/leaderboard/LeaderboardNationsTable";
+import type { LeaderboardNationsTable } from "./components/leaderboard/LeaderboardNationsTable";
 import "./components/leaderboard/LeaderboardPlayerList";
 import type { LeaderboardPlayerList } from "./components/leaderboard/LeaderboardPlayerList";
 import "./components/leaderboard/LeaderboardRankedTable";
@@ -18,6 +20,7 @@ import { translateText } from "./Utils";
 const TAB_KEYS = [
   "ranked",
   "solo",
+  "nations",
   "players",
   "players2v2",
   "clans",
@@ -43,6 +46,8 @@ export class LeaderboardModal extends BaseModal {
   private rankedTable?: LeaderboardRankedTable;
   @query("leaderboard-solo-table")
   private soloTable?: LeaderboardSoloTable;
+  @query("leaderboard-nations-table")
+  private nationsTable?: LeaderboardNationsTable;
   @query("leaderboard-player-list")
   private playerList?: LeaderboardPlayerList;
   @query("leaderboard-clan-table")
@@ -58,6 +63,10 @@ export class LeaderboardModal extends BaseModal {
       tabs: [
         { key: "ranked", label: translateText("leaderboard_modal.ranked_tab") },
         { key: "solo", label: translateText("leaderboard_modal.solo_tab") },
+        {
+          key: "nations",
+          label: translateText("leaderboard_modal.nations_tab"),
+        },
         {
           key: "players",
           label: translateText("leaderboard_modal.multiplayer_tab"),
@@ -80,6 +89,7 @@ export class LeaderboardModal extends BaseModal {
     if (this.rankedTypeFor(tab) !== null) return this.playerList;
     if (tab === "ranked") return this.rankedTable;
     if (tab === "solo") return this.soloTable;
+    if (tab === "nations") return this.nationsTable;
     if (tab === "clans") return this.clanTable;
     return this.tribeTable;
   }
@@ -178,6 +188,9 @@ export class LeaderboardModal extends BaseModal {
         <leaderboard-solo-table
           class=${this.activeTab === "solo" ? "h-full" : "hidden"}
         ></leaderboard-solo-table>
+        <leaderboard-nations-table
+          class=${this.activeTab === "nations" ? "h-full" : "hidden"}
+        ></leaderboard-nations-table>
         <leaderboard-player-list
           class=${this.rankedTypeFor(this.activeTab) !== null
             ? "h-full"

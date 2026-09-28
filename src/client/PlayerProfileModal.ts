@@ -13,6 +13,7 @@ import "./components/baseComponents/stats/PlayerStatsTree";
 import { BaseModal } from "./components/BaseModal";
 import "./components/clan/ClanCard";
 import { goldFramed } from "./components/leaderboard/GoldFrame";
+import "./components/NationsProfileStats";
 import "./components/PlayerName";
 import {
   seasonBadgeChip,
@@ -43,6 +44,7 @@ export class PlayerProfileModal extends BaseModal {
   @state() private ranked: PlayerProfile["ranked"] = undefined;
   @state() private seasonBadges: NonNullable<PlayerProfile["seasonBadges"]> =
     [];
+  @state() private nations: NonNullable<PlayerProfile["nations"]> = [];
   @state() private loading = false;
   private openedFrom: ProfileOrigin | null = null;
   // Mirrors the account modal's Games tab: keep the accumulated history list +
@@ -236,6 +238,7 @@ export class PlayerProfileModal extends BaseModal {
     }
     return html`
       ${this.renderRanked()}
+      <nations-profile-stats .nations=${this.nations}></nations-profile-stats>
       <player-stats-tree-view
         .statsTree=${this.statsTree}
       ></player-stats-tree-view>
@@ -336,6 +339,7 @@ export class PlayerProfileModal extends BaseModal {
     this.clans = [];
     this.ranked = undefined;
     this.seasonBadges = [];
+    this.nations = [];
     this.gameHistoryCache = null;
     this.gamesScrollTop = 0;
     this.restoreGamesScrollAfterOpen = false;
@@ -360,6 +364,7 @@ export class PlayerProfileModal extends BaseModal {
     this.clans = profile === false ? [] : (profile.clans ?? []);
     this.ranked = profile === false ? undefined : profile.ranked;
     this.seasonBadges = profile === false ? [] : (profile.seasonBadges ?? []);
+    this.nations = profile === false ? [] : (profile.nations ?? []);
   }
 
   // Intentionally preserves publicId/statsTree/history cache/scroll: the page

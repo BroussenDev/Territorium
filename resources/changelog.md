@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.17
+
+📊 **Nations statistics**
+
+- A new "Nations" tab in the leaderboard shows which countries players pick most, how many games each country won (played by a player or by the AI) and how often players win with it.
+- Your profile now lists the countries you played in Nations games, with your games and wins for each one.
+- Players who don't pick a country now get one drawn by the server, so every Nations game counts in the statistics.
+
 ## v0.1.16
 
 🤝 **Regional alliances**

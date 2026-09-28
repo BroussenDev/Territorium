@@ -4,6 +4,11 @@ import { GameMapType, GameType } from "../../src/core/game/Game";
 import { Client } from "../../src/server/Client";
 import { GameServer } from "../../src/server/GameServer";
 import {
+  assignFreeNations,
+  loadedPlayableNations,
+  nationsPlayable,
+} from "../../src/server/NationsCountries";
+import {
   cid,
   makeClient as harnessClient,
   makeGame as harnessGame,
@@ -75,9 +80,41 @@ describe("GameServer - Nations lobby", () => {
     expect(game.gameInfo(a.clientID).clients?.[0].nation).toBe(FRANCE);
     const players = startPlayers(game, a);
     expect(players.find((p) => p.clientID === a.clientID)?.nation).toBe(FRANCE);
-    expect(players.find((p) => p.clientID === b.clientID)?.nation).toBe(
+    // b never picked: the server drew a free country for them.
+    const drawn = players.find((p) => p.clientID === b.clientID)?.nation;
+    expect(drawn).not.toBe(FRANCE);
+    expect(loadedPlayableNations()).toContain(drawn);
+  });
+
+  it("draws a country for players who never picked one", async () => {
+    await nationsPlayable();
+    const game = makeGame();
+    const a = makeClient("a");
+    const b = makeClient("b");
+    game.joinClient(a);
+    game.joinClient(b);
+
+    const players = startPlayers(game, a);
+    const [na, nb] = players.map((p) => p.nation);
+    expect(loadedPlayableNations()).toContain(na);
+    expect(loadedPlayableNations()).toContain(nb);
+    expect(na).not.toBe(nb);
+    // The lobby shows the drawn country too.
+    expect(game.gameInfo().clients?.map((c) => c.nation)).toEqual([na, nb]);
+  });
+
+  it("hands out free countries only, in order, until none is left", () => {
+    const random = () => 0;
+    expect(
+      assignFreeNations([5, undefined, undefined], [5, 6, 7], random),
+    ).toEqual([5, 6, 7]);
+    expect(assignFreeNations([undefined, 6], [6, 8], () => 0.99)).toEqual([
+      8, 6,
+    ]);
+    expect(assignFreeNations([undefined, undefined], [3], random)).toEqual([
+      3,
       undefined,
-    );
+    ]);
   });
 
   it("keeps a country for the first player who picked it", async () => {
@@ -135,8 +172,9 @@ describe("GameServer - Nations lobby", () => {
     ]);
 
     startGame(game);
+    const drawn = game.gameInfo().clients?.[0].nation;
     await mockWsOf(b).emit({ type: "pick_nation", nation: SPAIN });
     await flush();
-    expect(game.gameInfo().clients?.[0].nation).toBe(undefined);
+    expect(game.gameInfo().clients?.[0].nation).toBe(drawn);
   });
 });
