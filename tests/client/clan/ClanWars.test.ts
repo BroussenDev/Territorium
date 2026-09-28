@@ -154,7 +154,7 @@ describe("clan-crest", () => {
     document.body.appendChild(badge);
     await badge.updateComplete;
     const svg = badge.shadowRoot!.querySelector("svg")!;
-    expect(svg.getAttribute("style")).toContain("#f1c40f");
+    expect(svg.querySelector("[color]")?.getAttribute("color")).toBe("#f1c40f");
     expect(svg.querySelector("text")).toBeNull();
 
     badge.crest = null;

@@ -20,6 +20,7 @@ import {
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
 } from "../core/game/UserSettings";
+import { wearerCrest } from "../core/NationPack";
 import { PlayerPattern } from "../core/Schemas";
 import { getUserMe } from "./Api";
 import { userAuth } from "./Auth";
@@ -38,6 +39,7 @@ import type {
   InventoryLoadoutEntry,
 } from "./components/InventoryLoadoutBar";
 import "./components/InventoryLoadoutMenu";
+import { navNotifications } from "./components/NavNotificationsController";
 import { ProgressiveList } from "./components/ProgressiveList";
 import { modalHeader } from "./components/ui/ModalHeader";
 import {
@@ -47,6 +49,7 @@ import {
   ResolvedCosmetic,
   resolvedToPlayerPattern,
 } from "./Cosmetics";
+import { withCrestPreview } from "./NationCosmetics";
 import { translateText } from "./Utils";
 
 type OwnershipState = "loading" | "guest" | "loaded" | "error";
@@ -277,7 +280,15 @@ export class InventoryModal extends BaseModal {
     ) {
       return this.resolvedCache.items;
     }
-    const items = resolveCosmetics(this.cosmetics, this.userMeResponse, null);
+    // Items that carry the clan crest are shown with the player's.
+    const wearer = this.userMeResponse
+      ? wearerCrest(this.userMeResponse.player.clans, null)
+      : null;
+    const items = resolveCosmetics(
+      this.cosmetics,
+      this.userMeResponse,
+      null,
+    ).map((item) => withCrestPreview(item, wearer));
     this.resolvedCache = {
       cosmetics: this.cosmetics,
       userMeResponse: this.userMeResponse,
@@ -757,6 +768,7 @@ export class InventoryModal extends BaseModal {
   }
 
   protected async onOpen(): Promise<void> {
+    navNotifications.onInventoryOpened();
     if (
       this.ownershipState === "loading" ||
       (this.cosmetics === null && !this.loadFailed)

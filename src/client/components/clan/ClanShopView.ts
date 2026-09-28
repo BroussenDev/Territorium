@@ -1,6 +1,7 @@
 import { html, LitElement, nothing, type TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { CosmeticPack } from "../../../core/CosmeticSchemas";
+import { wearerCrest } from "../../../core/NationPack";
 import { buyClanPack, type ClanInfo } from "../../ClanApi";
 import {
   broadcastFreshUserMe,
@@ -10,6 +11,7 @@ import {
   resolveCosmetics,
   type ResolvedCosmetic,
 } from "../../Cosmetics";
+import { withCrestPreview } from "../../NationCosmetics";
 import { translateText } from "../../Utils";
 import "../ConfirmDialog";
 import { cosmeticDisplayName } from "../CosmeticPresentation";
@@ -138,6 +140,8 @@ export class ClanShopView extends LitElement {
     const pack = resolved.cosmetic as CosmeticPack;
     const price = pack.clanPriceHard ?? 0;
     const bought = this.clan?.packs?.find((p) => p.name === pack.name);
+    // Items that carry the crest are shown with this clan's.
+    const wearer = this.clan ? wearerCrest([this.clan], this.clan.tag) : null;
     return html`
       <div
         data-clan-pack=${pack.name}
@@ -154,19 +158,21 @@ export class ClanShopView extends LitElement {
           </currency-display>
         </div>
         <div class="flex flex-wrap gap-3">
-          ${(resolved.packItems ?? []).map(
-            (item) =>
-              html`<div class="w-28 text-center">
-                <div
-                  class="w-28 h-28 rounded-lg bg-black/30 border border-white/10 overflow-hidden"
-                >
-                  <cosmetic-preview .resolved=${item}></cosmetic-preview>
-                </div>
-                <p class="text-white/70 text-xs mt-1 truncate">
-                  ${cosmeticDisplayName(item)}
-                </p>
-              </div>`,
-          )}
+          ${(resolved.packItems ?? [])
+            .map((item) => withCrestPreview(item, wearer))
+            .map(
+              (item) =>
+                html`<div class="w-28 text-center">
+                  <div
+                    class="w-28 h-28 rounded-lg bg-black/30 border border-white/10 overflow-hidden"
+                  >
+                    <cosmetic-preview .resolved=${item}></cosmetic-preview>
+                  </div>
+                  <p class="text-white/70 text-xs mt-1 truncate">
+                    ${cosmeticDisplayName(item)}
+                  </p>
+                </div>`,
+            )}
         </div>
         ${bought ? this.renderBought(bought) : this.renderBuy(pack, price)}
       </div>

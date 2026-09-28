@@ -1,12 +1,16 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import type { ResolvedCosmetic } from "../../src/client/Cosmetics";
 import {
   applyNationArt,
+  clanNationArt,
   loadNationArt,
-  NATION_CROWN_NAME,
   nationCrownSvg,
   nationFlagSvg,
   wantsNationArt,
+  withClanArt,
+  withCrestPreview,
 } from "../../src/client/NationCosmetics";
+import { NATION_CROWN_NAME } from "../../src/core/NationPack";
 import { PlayerCosmetics } from "../../src/core/Schemas";
 
 const art = { flag: "data:flag", crown: "data:crown" };
@@ -67,5 +71,68 @@ describe("Nation pack art", () => {
     expect(fetch).toHaveBeenCalledTimes(1);
 
     expect(await loadNationArt("xx")).toBeNull();
+  });
+
+  it("draws the wearer's clan crest in the round, on the clan's colors", () => {
+    const wearer = { tag: "AAA", crest: "round:red:gold:star" };
+    const art = clanNationArt(wearer);
+    expect(clanNationArt(wearer)).toBe(art);
+    for (const url of [art.flag, art.crown]) {
+      const svg = decodeURIComponent(url.split(",")[1]);
+      const doc = new DOMParser().parseFromString(svg, "image/svg+xml");
+      expect(doc.querySelector("parsererror")).toBeNull();
+      // The crest: its red field and gold charge.
+      expect(doc.querySelector('[fill="#c0392b"]')).not.toBeNull();
+      expect(doc.querySelector('[color="#f1c40f"]')).not.toBeNull();
+      // The field behind it, quartered in the same colors.
+      const field = atob(
+        doc.querySelector("image")!.getAttribute("href")!.split(",")[1],
+      );
+      expect(field).toContain("#c0392b");
+      expect(field).toContain("#f1c40f");
+    }
+
+    const letter = decodeURIComponent(
+      clanNationArt({ tag: "bee", crest: "shield:navy:gold:letter" }).flag,
+    );
+    expect(letter).toContain(">B</text>");
+  });
+
+  it("puts the crest on the equipped Nation items, in game and in previews", () => {
+    const wearer = { tag: "AAA", crest: "round:red:gold:star" };
+    const art = clanNationArt(wearer);
+    const equipped: PlayerCosmetics = {
+      flag: "/cosmetics/flags/etendard_national.svg",
+      crown: { name: NATION_CROWN_NAME, url: "/c.svg" },
+      clanCrest: wearer,
+    };
+    const shown = withClanArt(equipped);
+    expect(shown.flag).toBe(art.flag);
+    expect(shown.crown?.url).toBe(art.crown);
+    expect(equipped.flag).toBe("/cosmetics/flags/etendard_national.svg");
+    const plain: PlayerCosmetics = { flag: "/cosmetics/flags/x.svg" };
+    expect(withClanArt(plain)).toBe(plain);
+
+    const item = {
+      type: "flag",
+      cosmetic: { name: "etendard_national", url: "/e.svg" },
+    } as unknown as ResolvedCosmetic;
+    expect(
+      (withCrestPreview(item, wearer).cosmetic as { url: string }).url,
+    ).toBe(art.flag);
+    expect(withCrestPreview(item, null)).toBe(item);
+  });
+
+  it("puts the crest over the country flag in a Nations game", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({ ok: true, text: async () => "<svg/>" })),
+    );
+    const wearer = { tag: "AAA", crest: "round:red:gold:star" };
+    const plain = await loadNationArt("it");
+    const crested = await loadNationArt("it", wearer);
+    expect(crested).not.toBe(plain);
+    expect(decodeURIComponent(crested!.flag)).toContain("#c0392b");
+    expect(decodeURIComponent(plain!.flag)).not.toContain("#c0392b");
   });
 });

@@ -95,6 +95,10 @@ export class DesktopNavBar extends LitElement {
 
   private _renderItem(item: NavPage, currentPage: string) {
     const isStore = item.page === "page-item-store";
+    const showDot =
+      (isStore && this._notifications.showStoreDot()) ||
+      (item.page === "page-inventory" &&
+        this._notifications.showInventoryDot());
     // The label lives in its own span: data-i18n replaces the element's
     // text, which would wipe the icon if it sat on the button.
     return html`
@@ -118,7 +122,7 @@ export class DesktopNavBar extends LitElement {
           ${item.icon}
         </svg>
         <span data-i18n=${item.i18n}></span>
-        ${isStore && this._notifications.showStoreDot()
+        ${showDot
           ? html`
               <span
                 class="absolute top-1 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-ping"

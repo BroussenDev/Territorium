@@ -10,6 +10,7 @@ import { z } from "zod";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { GameEnv } from "../core/configuration/Config";
 import { GameType } from "../core/game/Game";
+import { stampNationCrest } from "../core/NationPack";
 import {
   ClientMessage,
   ClientPlatformSchema,
@@ -641,6 +642,7 @@ export async function startWorker() {
         let publicId: string | undefined;
         let friends: string[] = [];
         let ownedClanTags: string[] = [];
+        let clans: { tag: string; crest?: string | null }[] | undefined;
         let trusted = false;
         let queuePriority = false;
         let accountUsername:
@@ -672,7 +674,8 @@ export async function startWorker() {
           flares = result.response.player.flares;
           publicId = result.response.player.publicId;
           friends = result.response.player.friends;
-          ownedClanTags = result.response.player.clans?.map((c) => c.tag) ?? [];
+          clans = result.response.player.clans;
+          ownedClanTags = clans?.map((c) => c.tag) ?? [];
           accountUsername = result.response.player;
           trusted = result.response.player.trustTier === "trusted";
           queuePriority = result.response.player.queuePriority === true;
@@ -722,6 +725,8 @@ export async function startWorker() {
           ws.close(CloseCode.Forbidden, CloseReason.CosmeticsForbidden);
           return;
         }
+
+        stampNationCrest(cosmeticResult.cosmetics, clans, resolvedClanTag);
 
         // Verified intent, not a claim to verify: the check stays only when
         // the account renders bare and the screened join name is that bare

@@ -1019,6 +1019,7 @@ export class SinglePlayerModal extends BaseModal {
           resolvedName,
           cosmetics: await getPlayerCosmetics({
             verified: resolvedName.verified,
+            clanTag: usernameInput?.joinClanTag() ?? null,
           }),
         };
       })(),

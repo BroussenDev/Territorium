@@ -1,5 +1,21 @@
 # Territorium — Changelog
 
+## v0.1.25
+
+🛡️ **Nation pack**
+
+- The Nation standard and crown now carry your clan's crest in their gold round, on a field of your clan's colors. In a Nations game, the crest sits over your country's flag.
+- The clan shop and your inventory show the pack with your own clan's crest.
+
+🎒 **Inventory and shop**
+
+- A red dot on Inventory tells you when you've unlocked something new. It goes away once you open the inventory.
+- What you buy in the shop is now equipped right away (every item of a pack too).
+
+💬 **Game chat**
+
+- Fixed the general chat not showing up in multiplayer games.
+
 ## v0.1.24
 
 🛡️ **Clan shop**

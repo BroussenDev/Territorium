@@ -112,13 +112,18 @@ export class MobileNavBar extends LitElement {
             ? this._renderDot("bg-red-500")
             : ""}
         </div>
-        <button
-          class="${MOBILE_ITEM} ${currentPage === "page-inventory"
-            ? "active"
-            : ""}"
-          data-page="page-inventory"
-          data-i18n="main.inventory"
-        ></button>
+        <div class="flex items-center w-full">
+          <button
+            class="${MOBILE_ITEM} ${currentPage === "page-inventory"
+              ? "active"
+              : ""}"
+            data-page="page-inventory"
+            data-i18n="main.inventory"
+          ></button>
+          ${this._notifications.showInventoryDot()
+            ? this._renderDot("bg-red-500")
+            : ""}
+        </div>
         <button
           class="${MOBILE_ITEM}"
           data-page="page-leaderboard"

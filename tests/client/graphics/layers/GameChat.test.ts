@@ -90,6 +90,22 @@ describe("GameChat", () => {
     await chat.updateComplete;
   };
 
+  it("shows its button once the game starts, though the page drew it before", async () => {
+    // In the page, the element is connected long before the game exists.
+    const early = document.createElement("game-chat") as GameChat;
+    document.body.appendChild(early);
+    await early.updateComplete;
+    expect(early.querySelector("[data-chat-toggle]")).toBeNull();
+
+    early.eventBus = bus;
+    early.userSettings = chat.userSettings;
+    early.game = chat.game;
+    early.init();
+    await early.updateComplete;
+    expect(early.querySelector("[data-chat-toggle]")).not.toBeNull();
+    early.remove();
+  });
+
   it("counts unread lines from others while closed, then shows them", async () => {
     await chat.updateComplete;
     await receive(BOB, "hello");

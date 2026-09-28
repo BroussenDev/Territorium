@@ -14,12 +14,14 @@ import {
   Effect,
   findEffectForSlot,
   Flag,
+  isNukeExplosionEffect,
   Pack,
   Pattern,
   Skin,
   Subscription,
 } from "../core/CosmeticSchemas";
 import { UserSettings } from "../core/game/UserSettings";
+import { stampNationCrest, wearsNationPack } from "../core/NationPack";
 import {
   PlayerCosmeticRefs,
   PlayerCosmetics,
@@ -499,7 +501,7 @@ export async function purchaseCosmetic(
   }
 
   if (resolved.type === "cosmeticPack") {
-    return purchasePack(c as CosmeticPack, method);
+    return purchasePack(c as CosmeticPack, method, resolved.packItems ?? []);
   }
 
   if (method === "dollar") {
@@ -703,11 +705,51 @@ export async function purchaseCosmetic(
         return;
     }
   }
+  // What one just bought is what one wants to wear.
+  equipCosmetic(resolved);
   await showInGameAlert(
     translateText("store.purchase_success", { name: c.name }),
   );
   invalidateUserMe();
   window.location.reload();
+}
+
+/**
+ * Wears a cosmetic: the skin or pattern (with its colour), the flag, the
+ * crown, or the effect in its slot. Other kinds are not worn and are ignored.
+ */
+export function equipCosmetic(
+  resolved: ResolvedCosmetic,
+  userSettings: UserSettings = new UserSettings(),
+): void {
+  const c = resolved.cosmetic;
+  if (c === null) return;
+  switch (resolved.type) {
+    case "pattern": {
+      const palette = resolved.colorPalette?.name;
+      userSettings.setSelectedPatternName(
+        `pattern:${palette === undefined ? c.name : `${c.name}:${palette}`}`,
+      );
+      return;
+    }
+    case "skin":
+      userSettings.setSelectedPatternName(`skin:${c.name}`);
+      return;
+    case "flag":
+      userSettings.setFlag(resolved.key);
+      return;
+    case "crown":
+      userSettings.setSelectedCrownName(c.name);
+      return;
+    case "effect": {
+      const effect = c as Effect;
+      const slot = isNukeExplosionEffect(effect)
+        ? effect.attributes.nukeType
+        : resolved.effectType;
+      if (slot !== undefined) userSettings.setSelectedEffectName(slot, c.name);
+      return;
+    }
+  }
 }
 
 /**
@@ -806,6 +848,7 @@ async function purchaseListingWithCurrency(
 async function purchasePack(
   pack: CosmeticPack,
   method: PaymentMethod,
+  items: ResolvedCosmetic[],
 ): Promise<PurchaseResult> {
   if (method !== "hard") {
     console.error("purchaseCosmetic: packs are only sold for hard currency");
@@ -837,6 +880,8 @@ async function purchasePack(
 
   const result = await purchaseCosmeticPack(pack.name);
   if (result.ok) {
+    const userSettings = new UserSettings();
+    for (const item of items) equipCosmetic(item, userSettings);
     await showInGameAlert(
       translateText("store.purchase_success", {
         name: packDisplayName(pack),
@@ -1730,7 +1775,7 @@ export async function getPlayerCosmeticsRefs(
 }
 
 export async function getPlayerCosmetics(
-  opts: { verified?: boolean } = {},
+  opts: { verified?: boolean; clanTag?: string | null } = {},
 ): Promise<PlayerCosmetics> {
   const refs = await getPlayerCosmeticsRefs(opts);
   const cosmetics = await fetchCosmetics();
@@ -1794,6 +1839,16 @@ export async function getPlayerCosmetics(
 
   if (refs.verified) {
     result.verified = true;
+  }
+
+  // What the game server stamps on a multiplayer join, for solo games.
+  if (wearsNationPack(result)) {
+    const me = await getUserMe();
+    stampNationCrest(
+      result,
+      me ? me.player.clans : undefined,
+      opts.clanTag ?? null,
+    );
   }
 
   return result;

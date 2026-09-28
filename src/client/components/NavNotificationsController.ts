@@ -1,11 +1,23 @@
 import { ReactiveController, ReactiveControllerHost } from "lit";
 import version from "resources/version.txt?raw";
+import type { UserMeResponse } from "../../core/ApiSchemas";
 import { getCosmeticsHash } from "../Cosmetics";
 import { getGamesPlayed } from "../Utils";
 
 const HELP_SEEN_KEY = "helpSeen";
 const STORE_SEEN_HASH_KEY = "storeSeenHash";
 const NEWS_SEEN_VERSION_KEY = "newsSeenVersion";
+// Per account: the wearables the player had last time they looked at their
+// inventory.
+const INVENTORY_SEEN_KEY = "inventorySeenItems";
+
+// What the inventory lists: owned skins, patterns, flags, crowns and effects.
+// A wildcard grant ("pattern:*") is staff access, not an unlock.
+function wearables(me: UserMeResponse): string[] {
+  return (me.player.flares ?? []).filter(
+    (f) => /^(pattern|skin|flag|crown|effect):/.test(f) && !f.endsWith("*"),
+  );
+}
 
 function normalizedVersion(): string {
   const trimmed = version.trim();
@@ -29,6 +41,8 @@ class NavNotificationsStore {
   private _helpSeen = false;
   private _hasNewCosmetics = false;
   private _hasNewVersion = false;
+  private _hasNewItems = false;
+  private _items: { key: string; items: string[] } | null = null;
 
   subscribe(host: ReactiveControllerHost): void {
     this.hosts.add(host);
@@ -50,6 +64,10 @@ class NavNotificationsStore {
 
     this._helpSeen = localStorage.getItem(HELP_SEEN_KEY) === "true";
 
+    document.addEventListener("userMeResponse", (event: Event) =>
+      this.onUserMe((event as CustomEvent<UserMeResponse | false>).detail),
+    );
+
     getCosmeticsHash()
       .then((hash: string | null) => {
         const seenHash = localStorage.getItem(STORE_SEEN_HASH_KEY);
@@ -66,6 +84,49 @@ class NavNotificationsStore {
       localStorage.setItem(NEWS_SEEN_VERSION_KEY, currentVersion);
     }
   }
+
+  // A new unlock (a purchase, a reward, a clan pack) lights the inventory.
+  // The first profile seen on this device only sets the baseline.
+  private onUserMe(me: UserMeResponse | false): void {
+    if (!me) {
+      this._items = null;
+      this._hasNewItems = false;
+      this.notify();
+      return;
+    }
+    const key = `${INVENTORY_SEEN_KEY}:${me.player.publicId}`;
+    const items = wearables(me);
+    this._items = { key, items };
+    let seen: unknown = null;
+    try {
+      seen = JSON.parse(localStorage.getItem(key) ?? "null");
+    } catch {
+      // A corrupt entry is replaced below, like a missing one.
+    }
+    if (!Array.isArray(seen)) {
+      localStorage.setItem(key, JSON.stringify(items));
+      this._hasNewItems = false;
+    } else {
+      const known = new Set(seen);
+      this._hasNewItems = items.some((i) => !known.has(i));
+    }
+    this.notify();
+  }
+
+  // Not ranked against the other dots: it is about the player's own items,
+  // on its own button.
+  showInventoryDot(): boolean {
+    return this._hasNewItems;
+  }
+
+  onInventoryOpened = (): void => {
+    if (this._items !== null) {
+      localStorage.setItem(this._items.key, JSON.stringify(this._items.items));
+    }
+    if (!this._hasNewItems) return;
+    this._hasNewItems = false;
+    this.notify();
+  };
 
   // Only show one dot at a time to prevent
   // overwhelming users. Priority: News > Store > Help.
@@ -117,6 +178,8 @@ class NavNotificationsStore {
     this._helpSeen = false;
     this._hasNewCosmetics = false;
     this._hasNewVersion = false;
+    this._hasNewItems = false;
+    this._items = null;
   }
 }
 
@@ -152,6 +215,10 @@ export class NavNotificationsController implements ReactiveController {
 
   showHelpDot(): boolean {
     return navNotifications.showHelpDot();
+  }
+
+  showInventoryDot(): boolean {
+    return navNotifications.showInventoryDot();
   }
 
   onNewsClick = (): void => navNotifications.onNewsClick();

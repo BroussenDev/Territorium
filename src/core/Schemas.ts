@@ -950,6 +950,11 @@ export const PlayerCosmeticsSchema = z.object({
   effects: z.record(z.string(), PlayerEffectSchema).optional(),
   // Plays under the verified account username — renders the blue check.
   verified: z.boolean().optional(),
+  // Server-stamped for a Nation pack wearer: their clan's crest, drawn on
+  // the pack's standard and crown (see NationPack.ts).
+  clanCrest: z
+    .object({ tag: z.string().max(5), crest: z.string().max(40) })
+    .optional(),
 });
 
 export const PlayerSchema = z.object({

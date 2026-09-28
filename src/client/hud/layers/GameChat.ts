@@ -55,6 +55,9 @@ export class GameChat extends LitElement implements Controller {
   }
 
   init() {
+    // The element sits in the page before any game exists, so its first
+    // render saw no game; draw it again now that there is one.
+    this.requestUpdate();
     this.enabled = this.userSettings.gameChat();
     this.eventBus.on(ChatMessageEvent, (e) => this.onMessage(e));
     this.eventBus.on(PlayerReportedEvent, (e) => {

@@ -75,4 +75,39 @@ describe("nav notifications", () => {
     bell.controller.onStoreClick();
     expect(bell.controller.showHelpDot()).toBe(true);
   });
+
+  it("lights the inventory for a new unlock until the inventory is opened", () => {
+    const navBar = host();
+    const profile = (flares: string[]) =>
+      document.dispatchEvent(
+        new CustomEvent("userMeResponse", {
+          detail: { player: { publicId: "p1", flares } },
+        }),
+      );
+
+    // The first profile on this device is the baseline, not news.
+    profile(["flag:fr", "pattern:*"]);
+    expect(navBar.controller.showInventoryDot()).toBe(false);
+
+    profile(["flag:fr", "pattern:*", "crown:couronne_nationale"]);
+    expect(navBar.controller.showInventoryDot()).toBe(true);
+
+    navNotifications.onInventoryOpened();
+    expect(navBar.controller.showInventoryDot()).toBe(false);
+    // Seen for good: the same items after a reload stay quiet.
+    navNotifications.reset();
+    host();
+    profile(["flag:fr", "pattern:*", "crown:couronne_nationale"]);
+    expect(navBar.controller.showInventoryDot()).toBe(false);
+
+    // A wildcard grant is not an unlock; signing out clears the dot.
+    profile(["flag:fr", "pattern:*", "crown:couronne_nationale", "skin:*"]);
+    expect(navBar.controller.showInventoryDot()).toBe(false);
+    profile(["flag:fr", "crown:couronne_nationale", "effect:gold"]);
+    expect(navBar.controller.showInventoryDot()).toBe(true);
+    document.dispatchEvent(
+      new CustomEvent("userMeResponse", { detail: false }),
+    );
+    expect(navBar.controller.showInventoryDot()).toBe(false);
+  });
 });

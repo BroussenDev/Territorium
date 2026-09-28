@@ -35,6 +35,7 @@ import {
   applyNationArt,
   loadNationArt,
   wantsNationArt,
+  withClanArt,
 } from "../NationCosmetics";
 import { computeAllianceClusters } from "../render/frame/derive/AllianceClusters";
 import { extractAttackRings } from "../render/frame/derive/AttackRings";
@@ -420,7 +421,7 @@ export class GameView implements GameMap {
           // In Nations games humans fly the flag of the country they play.
           pu.playerType === PlayerType.Human && pu.nationFlag
             ? this.nationsCosmetics(pu.clientID ?? "", pu.nationFlag)
-            : (this._cosmetics.get(pu.clientID ?? "") ??
+            : (this.clanCosmetics(pu.clientID ?? "") ??
                 (pu.playerType === PlayerType.Nation && pu.nationFlag
                   ? ({
                       flag: `/flags/${pu.nationFlag}.svg`,
@@ -1133,13 +1134,18 @@ export class GameView implements GameMap {
       flag: `/flags/${code}.svg`,
     };
     if (wantsNationArt(equipped)) {
-      void loadNationArt(code).then((art) => {
+      void loadNationArt(code, equipped.clanCrest).then((art) => {
         if (art === null) return;
         applyNationArt(cosmetics, equipped, art);
         this.onCosmeticsChanged?.();
       });
     }
     return cosmetics;
+  }
+
+  private clanCosmetics(clientID: ClientID): PlayerCosmetics | undefined {
+    const equipped = this._cosmetics.get(clientID);
+    return equipped && withClanArt(equipped);
   }
 
   /** Called when a player's cosmetics change after they were first drawn. */
