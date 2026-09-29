@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.34
+
+🚩 **New defense post look**
+
+- The defense post has a new icon: a bunker flying a flag. Every structure now has its own Territorium look.
+
 ## v0.1.33
 
 🚀 **New missile silo looks**

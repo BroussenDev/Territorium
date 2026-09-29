@@ -58,7 +58,7 @@ describe("structureIconColumn", () => {
     },
   );
 
-  it("keeps other structures on their atlas column", () => {
+  it("gives the defense post, which has no levels, one look", () => {
     expect(structureIconColumn(UT_DEFENSE_POST, 3, 1)).toBe(3);
     expect(structureIconColumn(UT_DEFENSE_POST, 3, 5)).toBe(3);
   });

@@ -59,6 +59,8 @@ const LEVEL_ICONS: [string, string[]][] = [
   [UT_RADAR, levelIconUrls("Radar", 3)],
   [UT_PORT, levelIconUrls("Port", 5)],
   [UT_MISSILE_SILO, levelIconUrls("MissileSilo", 3)],
+  // The defense post has no levels: its one icon only replaces the atlas's.
+  [UT_DEFENSE_POST, [assetUrl("images/DefensePostIconWhite.svg")]],
 ];
 /** How much of an atlas cell a level icon covers, like the atlas's own icons. */
 const LEVEL_ICON_FILL = 0.72;

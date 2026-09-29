@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <mask id="defense-post-cut">
+    <rect width="128" height="128" fill="#fff"/>
+    <g fill="#000">
+      <rect x="64" y="12" width="2" height="20.5"/>
+      <rect x="25" y="67" width="78" height="3" rx="1"/>
+      <rect x="16" y="92" width="22" height="12" rx="1"/>
+      <rect x="90" y="92" width="22" height="12" rx="1"/>
+      <rect x="55" y="92" width="18" height="25"/>
+    </g>
+  </mask>
+  <g mask="url(#defense-post-cut)">
+    <rect x="62" y="7" width="4" height="40" rx="1"/>
+    <path d="M66 9 L90 30.5 V31.5 L71 33.5 H66 Z"/>
+    <path d="M41 46 H87 L98 60.5 H108 L122.5 83 V123 H6 V83 L20 60.5 H30 Z"/>
+  </g>
+</svg>

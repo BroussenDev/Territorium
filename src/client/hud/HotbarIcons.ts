@@ -47,7 +47,7 @@ export const radarIcon = radarIcons[0];
 export function radarIconFor(level: number): string {
   return iconForLevel(radarIcons, level);
 }
-export const defensePostIcon = assetUrl("images/ShieldIconWhite.svg");
+export const defensePostIcon = assetUrl("images/DefensePostIconWhite.svg");
 export const soldierIcon = assetUrl("images/SoldierIcon.svg");
 export const claimIcon = assetUrl("images/ClaimIcon.svg");
 export const profileIcon = assetUrl("images/ProfileIcon.svg");
