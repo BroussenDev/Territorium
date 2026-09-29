@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <mask id="port5-stack">
+    <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
+    <g fill="#000"><rect x="41" y="35" width="21" height="8"/><rect x="66" y="35" width="21" height="8"/><rect x="26" y="46" width="22" height="10"/><rect x="52" y="46" width="24" height="10"/><rect x="80" y="46" width="22" height="10"/><rect x="26" y="59" width="22" height="10"/><rect x="52" y="59" width="24" height="10"/><rect x="80" y="59" width="22" height="10"/><rect x="26" y="72" width="22" height="6"/><rect x="52" y="72" width="24" height="6"/><rect x="80" y="72" width="22" height="6"/></g>
+  </mask>
+  <mask id="port5-hull">
+    <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
+    <path d="M58.5 78 L32 90.5 M69 78 L95.5 90.5" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  </mask>
+  <g transform="translate(0 -4)">
+    <g mask="url(#port5-stack)">
+      <rect x="38" y="32" width="52" height="14"/>
+      <rect x="23" y="43" width="82" height="35"/>
+    </g>
+    <path mask="url(#port5-hull)" d="M23 77 Q42 70 58 64 H70 Q86 70 105 77 L112 80 V86 L101 128 H27 L16 86 V80 Z"/>
+  </g>
+</svg>

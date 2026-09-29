@@ -101,7 +101,7 @@ const METRIC_GROUPS = [
 
 const UNIT_ICONS = {
   city: "images/CityLevel1IconWhite.svg",
-  port: "images/PortIcon.svg",
+  port: "images/PortLevel1IconWhite.svg",
   factory: "images/FactoryLevel1IconWhite.svg",
   defensePost: "images/ShieldIconWhite.svg",
   transport: "images/BoatIconWhite.svg",

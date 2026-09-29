@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.32
+
+⚓ **New port looks**
+
+- Ports have new icons, and they grow as you upgrade them: a lighthouse at level 1, a crane at level 2, a crane lifting a container at level 3, a gantry crane at level 4 and a container ship at level 5. You see it on the map, in the structure card, and when you hover a port to upgrade it.
+
 ## v0.1.31
 
 📡 **New radar looks**

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <mask id="port4-cut">
+    <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
+    <g fill="#000"><path d="M17.5 15 H34.5 L25.5 24 Z"/><path d="M42.5 18 L51.5 26 H33.5 Z"/><path d="M12.5 20.5 L14 26 H11 Z"/><g transform="matrix(-1 0 0 1 127 0)"><path d="M17.5 15 H34.5 L25.5 24 Z"/><path d="M42.5 18 L51.5 26 H33.5 Z"/><path d="M12.5 20.5 L14 26 H11 Z"/></g><path d="M48.5 15 H78.5 L63.5 24.5 Z"/><rect x="41.5" y="89" width="1.4" height="10"/><rect x="52.1" y="89" width="1.4" height="10"/><rect x="62.8" y="89" width="1.4" height="10"/><rect x="73.5" y="89" width="1.4" height="10"/><rect x="84.1" y="89" width="1.4" height="10"/></g>
+  </mask>
+  <g transform="translate(0 -4)">
+    <g mask="url(#port4-cut)">
+      <path d="M7 9 H120 L124 23 V32 H3 V23 Z"/>
+      <rect x="31.5" y="86" width="64" height="16" rx="1"/>
+    </g>
+    <path d="M3 31 H11 L14 111 H8 Z"/><path d="M22 31 H28 L23 111 H17 Z"/><rect x="8" y="110" width="15" height="7"/><rect x="10" y="116" width="12" height="12"/>
+    <g transform="matrix(-1 0 0 1 127 0)"><path d="M3 31 H11 L14 111 H8 Z"/><path d="M22 31 H28 L23 111 H17 Z"/><rect x="8" y="110" width="15" height="7"/><rect x="10" y="116" width="12" height="12"/></g>
+    <rect x="54" y="31" width="19" height="7"/>
+    <rect x="62" y="37" width="3" height="46"/>
+    <path d="M59 82 H68 L67 86.5 H60 Z"/>
+  </g>
+</svg>

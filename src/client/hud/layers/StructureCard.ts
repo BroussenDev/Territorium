@@ -34,6 +34,7 @@ import {
   goldCoinIcon,
   missileSiloIcon,
   portIcon,
+  portIconFor,
   radarIcon,
   radarIconFor,
   samLauncherIcon,
@@ -54,7 +55,7 @@ const CARD_TYPES: Partial<
     key: "factory",
     iconFor: factoryIconFor,
   },
-  [UnitType.Port]: { icon: portIcon, key: "port" },
+  [UnitType.Port]: { icon: portIcon, key: "port", iconFor: portIconFor },
   [UnitType.MissileSilo]: { icon: missileSiloIcon, key: "missile_silo" },
   [UnitType.SAMLauncher]: {
     icon: samLauncherIcon,

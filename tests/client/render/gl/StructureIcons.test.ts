@@ -1,8 +1,8 @@
 /**
- * The city, the SAM launcher, the factory and the radar change look at each
- * level they are upgraded to (up to 5, 3 for the radar). On the map
- * (StructurePass picks the icon texture column) and in the HUD
- * (cityIconFor / samLauncherIconFor / factoryIconFor / radarIconFor pick the
+ * The city, the port, the SAM launcher, the factory and the radar change look
+ * at each level they are upgraded to (up to 5, 3 for the radar). On the map
+ * (StructurePass picks the icon texture column) and in the HUD (cityIconFor,
+ * portIconFor, samLauncherIconFor, factoryIconFor and radarIconFor pick the
  * image).
  */
 
@@ -10,12 +10,14 @@ import { describe, expect, it } from "vitest";
 import {
   cityIconFor,
   factoryIconFor,
+  portIconFor,
   radarIconFor,
   samLauncherIconFor,
 } from "../../../../src/client/hud/HotbarIcons";
 import { structureIconColumn } from "../../../../src/client/render/gl/passes/StructurePass";
 import {
   UT_CITY,
+  UT_DEFENSE_POST,
   UT_FACTORY,
   UT_PORT,
   UT_RADAR,
@@ -31,6 +33,7 @@ const LEVELED = [
   ["SAM launcher", UT_SAM_LAUNCHER, 4, ATLAS_COLS + 4, 5],
   ["factory", UT_FACTORY, 2, ATLAS_COLS + 8, 5],
   ["radar", UT_RADAR, 6, ATLAS_COLS + 12, 3],
+  ["port", UT_PORT, 1, ATLAS_COLS + 14, 5],
 ] as const;
 
 describe("structureIconColumn", () => {
@@ -53,8 +56,8 @@ describe("structureIconColumn", () => {
   );
 
   it("keeps other structures on their atlas column", () => {
-    expect(structureIconColumn(UT_PORT, 1, 1)).toBe(1);
-    expect(structureIconColumn(UT_PORT, 1, 5)).toBe(1);
+    expect(structureIconColumn(UT_DEFENSE_POST, 3, 1)).toBe(3);
+    expect(structureIconColumn(UT_DEFENSE_POST, 3, 5)).toBe(3);
   });
 });
 
@@ -63,6 +66,7 @@ describe.each([
   ["samLauncherIconFor", samLauncherIconFor, "SamLauncher", 5],
   ["factoryIconFor", factoryIconFor, "Factory", 5],
   ["radarIconFor", radarIconFor, "Radar", 3],
+  ["portIconFor", portIconFor, "Port", 5],
 ] as const)("%s", (_, iconFor, name, levels) => {
   it("picks the image of the structure's level", () => {
     for (let level = 1; level <= levels; level++) {
