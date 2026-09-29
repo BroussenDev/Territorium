@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.31
+
+📡 **New radar looks**
+
+- Radars have new icons, and they grow as you upgrade them: an antenna mast at level 1, a radar dish at level 2 and three dishes at level 3. You see it on the map, in the structure card, and when you hover a radar to upgrade it.
+
 ## v0.1.30
 
 🏘️ **New city looks**

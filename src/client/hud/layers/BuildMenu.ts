@@ -36,7 +36,7 @@ const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 const portIcon = assetUrl("images/PortIcon.svg");
-const radarIcon = assetUrl("images/RadarIconWhite.svg");
+const radarIcon = assetUrl("images/RadarLevel1IconWhite.svg");
 const samlauncherIcon = assetUrl("images/SamLauncherLevel1IconWhite.svg");
 const shieldIcon = assetUrl("images/ShieldIconWhite.svg");
 

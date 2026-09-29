@@ -35,6 +35,7 @@ import {
   missileSiloIcon,
   portIcon,
   radarIcon,
+  radarIconFor,
   samLauncherIcon,
   samLauncherIconFor,
 } from "../HotbarIcons";
@@ -60,7 +61,7 @@ const CARD_TYPES: Partial<
     key: "sam_launcher",
     iconFor: samLauncherIconFor,
   },
-  [UnitType.Radar]: { icon: radarIcon, key: "radar" },
+  [UnitType.Radar]: { icon: radarIcon, key: "radar", iconFor: radarIconFor },
 };
 const TYPES = Object.keys(CARD_TYPES) as UnitType[];
 

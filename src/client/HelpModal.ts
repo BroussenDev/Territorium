@@ -166,7 +166,7 @@ export class HelpModal extends BaseModal {
         "images/SamLauncherLevel1IconWhite.svg",
         "build_sam_desc",
       ],
-      ["radar", "images/RadarIconWhite.svg", "build_radar_desc"],
+      ["radar", "images/RadarLevel1IconWhite.svg", "build_radar_desc"],
       ["warship", "images/BattleshipIconWhite.svg", "build_warship_desc"],
       ["atom_bomb", "images/NukeIconWhite.svg", "build_atom_desc"],
       [

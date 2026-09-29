@@ -40,10 +40,10 @@ import structureVertSrc from "../shaders/structure/structure.vert.glsl?raw";
 
 const iconAtlasUrl = assetUrl("atlases/icon-atlas.png");
 
-/** One icon per level, the last one also above it, for levels 1 to 5. */
-function levelIconUrls(name: string): string[] {
-  return [1, 2, 3, 4, 5].map((level) =>
-    assetUrl(`images/${name}Level${level}IconWhite.svg`),
+/** One icon per level up to `levels`, the last one also above it. */
+function levelIconUrls(name: string, levels: number): string[] {
+  return Array.from({ length: levels }, (_, i) =>
+    assetUrl(`images/${name}Level${i + 1}IconWhite.svg`),
   );
 }
 
@@ -53,9 +53,10 @@ function levelIconUrls(name: string): string[] {
  * the atlas's, in this order.
  */
 const LEVEL_ICONS: [string, string[]][] = [
-  [UT_CITY, levelIconUrls("City")],
-  [UT_SAM_LAUNCHER, levelIconUrls("SamLauncher")],
-  [UT_FACTORY, levelIconUrls("Factory")],
+  [UT_CITY, levelIconUrls("City", 5)],
+  [UT_SAM_LAUNCHER, levelIconUrls("SamLauncher", 5)],
+  [UT_FACTORY, levelIconUrls("Factory", 5)],
+  [UT_RADAR, levelIconUrls("Radar", 3)],
 ];
 /** How much of an atlas cell a level icon covers, like the atlas's own icons. */
 const LEVEL_ICON_FILL = 0.72;

@@ -47,7 +47,7 @@ const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 const portIcon = assetUrl("images/PortIcon.svg");
 const samLauncherIcon = assetUrl("images/SamLauncherLevel1IconWhite.svg");
-const radarIcon = assetUrl("images/RadarIconWhite.svg");
+const radarIcon = assetUrl("images/RadarLevel1IconWhite.svg");
 const soldierIcon = assetUrl("images/SoldierIcon.svg");
 
 function euclideanDistWorld(

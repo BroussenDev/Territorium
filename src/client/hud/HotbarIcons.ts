@@ -8,31 +8,35 @@ export const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 export const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 export const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
 export const portIcon = assetUrl("images/PortIcon.svg");
-export const radarIcon = assetUrl("images/RadarIconWhite.svg");
-// The city, the SAM launcher and the factory change look at each level they
-// are upgraded to, up to 5.
-function levelIcons(name: string): string[] {
-  return [1, 2, 3, 4, 5].map((level) =>
-    assetUrl(`images/${name}Level${level}IconWhite.svg`),
+// The city, the SAM launcher, the factory and the radar change look at each
+// level they are upgraded to (up to 5, 3 for the radar).
+function levelIcons(name: string, levels: number): string[] {
+  return Array.from({ length: levels }, (_, i) =>
+    assetUrl(`images/${name}Level${i + 1}IconWhite.svg`),
   );
 }
 function iconForLevel(icons: string[], level: number): string {
   return icons[Math.min(Math.max(level, 1), icons.length) - 1];
 }
-const cityIcons = levelIcons("City");
+const cityIcons = levelIcons("City", 5);
 export const cityIcon = cityIcons[0];
 export function cityIconFor(level: number): string {
   return iconForLevel(cityIcons, level);
 }
-const samLauncherIcons = levelIcons("SamLauncher");
+const samLauncherIcons = levelIcons("SamLauncher", 5);
 export const samLauncherIcon = samLauncherIcons[0];
 export function samLauncherIconFor(level: number): string {
   return iconForLevel(samLauncherIcons, level);
 }
-const factoryIcons = levelIcons("Factory");
+const factoryIcons = levelIcons("Factory", 5);
 export const factoryIcon = factoryIcons[0];
 export function factoryIconFor(level: number): string {
   return iconForLevel(factoryIcons, level);
+}
+const radarIcons = levelIcons("Radar", 3);
+export const radarIcon = radarIcons[0];
+export function radarIconFor(level: number): string {
+  return iconForLevel(radarIcons, level);
 }
 export const defensePostIcon = assetUrl("images/ShieldIconWhite.svg");
 export const soldierIcon = assetUrl("images/SoldierIcon.svg");

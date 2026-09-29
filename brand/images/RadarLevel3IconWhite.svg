@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <symbol id="radar3-dish" viewBox="0 0 128 128" width="128" height="128">
+    <path d="M40 15.5 L104.5 66.5 H43 Q37.5 46 40 15.5 Z"/>
+    <path d="M66 38.5 L81 26" stroke="#fff" stroke-width="5"/>
+    <path fill-rule="evenodd" d="M76 27.5 A6.5 6.5 0 1 0 89 27.5 A6.5 6.5 0 1 0 76 27.5 Z M80 27.5 A2.5 2.5 0 1 0 85 27.5 A2.5 2.5 0 1 0 80 27.5 Z"/>
+    <path d="M41 66 H59 L65.5 92.5 H33 Z"/>
+    <path d="M21 92 H77 L88 128 H8 Z"/>
+  </symbol>
+  <g transform="translate(64 124) scale(0.97) translate(-65 -128)">
+    <use href="#radar3-dish" transform="translate(24 25.6) scale(0.8)"/>
+    <use href="#radar3-dish" transform="translate(0 81.9) scale(0.36)"/>
+    <use href="#radar3-dish" transform="translate(91 81.9) scale(0.36)"/>
+    <rect x="2" y="124" width="126" height="4"/>
+  </g>
+</svg>
