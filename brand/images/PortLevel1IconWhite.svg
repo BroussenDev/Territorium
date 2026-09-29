@@ -1,15 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
   <mask id="port1-cut">
     <rect x="-10" y="-10" width="150" height="150" fill="#fff"/>
-    <g fill="#000"><rect x="51.5" y="30" width="25" height="5.5" rx="2.75"/><path d="M60.5 128 V118 A3.5 3.5 0 0 1 67.5 118 V128 Z"/></g>
+    <g fill="#000"><circle cx="23" cy="88.5" r="3"/><circle cx="57" cy="88.5" r="3"/><rect x="34" y="86" width="12" height="10"/></g>
   </mask>
   <g transform="translate(0 -4)">
-    <g mask="url(#port1-cut)">
-      <path d="M61 10 H67 L85 23.5 V28 H43 V23.5 Z"/>
-      <rect x="48" y="27.5" width="32" height="11"/>
-      <rect x="38" y="38" width="52" height="10" rx="1"/>
-      <path d="M48 47.5 H80 L85 128 H43 Z"/>
-    </g>
-    <path d="M83 32.5 L124 7 V50 Z"/>
+    <path mask="url(#port1-cut)" d="M14 68 L30 63.5 V57 H33 L66 66.5 V97 H14 Z"/>
+    <rect x="72" y="91" width="2" height="6"/><rect x="71" y="92" width="4" height="2"/><rect x="81" y="91" width="2" height="6"/><rect x="80" y="92" width="4" height="2"/>
+    <rect x="3" y="96" width="84" height="32"/>
   </g>
 </svg>

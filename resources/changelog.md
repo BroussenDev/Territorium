@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.35
+
+⚓ **New harbour look**
+
+- The level 1 port is now a harbour office on its quay, with two bollards, instead of the lighthouse.
+
 ## v0.1.34
 
 🚩 **New defense post look**
