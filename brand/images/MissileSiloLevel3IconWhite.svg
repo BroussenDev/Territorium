@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <symbol id="silo3-rocket" viewBox="0 0 128 128" width="128" height="128" overflow="visible">
+    <mask id="silo3-rocket-cut"><rect x="-10" y="-10" width="150" height="150" fill="#fff"/><g fill="#000"><path d="M42.5 49 Q43 51.5 45 51.5 H52 Q54 51.5 54.5 49" fill="none" stroke="#000" stroke-width="1.8"/><rect x="42.0" y="99.0" width="2.6" height="2.1"/><rect x="44.6" y="101.1" width="2.6" height="2.1"/><rect x="47.2" y="99.0" width="2.6" height="2.1"/><rect x="49.8" y="101.1" width="2.6" height="2.1"/><rect x="52.4" y="99.0" width="2.6" height="2.1"/></g></mask>
+    <path mask="url(#silo3-rocket-cut)" d="M47 25 H50 L57 47.5 V113 H40 V47.5 Z"/>
+  </symbol>
+  <g transform="translate(64 124) scale(0.95) translate(-64 -128)">
+    <use href="#silo3-rocket"/>
+    <use href="#silo3-rocket" x="31"/>
+    <path d="M0 48 H4 L32 111 H23 Z"/>
+    <g transform="matrix(-1 0 0 1 128 0)"><path d="M0 48 H4 L32 111 H23 Z"/></g>
+    <path d="M23 110.5 H105 L103 118 L106 128 H22 L25 118 Z"/>
+  </g>
+</svg>

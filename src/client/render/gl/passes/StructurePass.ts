@@ -58,6 +58,7 @@ const LEVEL_ICONS: [string, string[]][] = [
   [UT_FACTORY, levelIconUrls("Factory", 5)],
   [UT_RADAR, levelIconUrls("Radar", 3)],
   [UT_PORT, levelIconUrls("Port", 5)],
+  [UT_MISSILE_SILO, levelIconUrls("MissileSilo", 3)],
 ];
 /** How much of an atlas cell a level icon covers, like the atlas's own icons. */
 const LEVEL_ICON_FILL = 0.72;

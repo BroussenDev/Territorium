@@ -1,15 +1,16 @@
 /**
- * The city, the port, the SAM launcher, the factory and the radar change look
- * at each level they are upgraded to (up to 5, 3 for the radar). On the map
- * (StructurePass picks the icon texture column) and in the HUD (cityIconFor,
- * portIconFor, samLauncherIconFor, factoryIconFor and radarIconFor pick the
- * image).
+ * The city, the port, the SAM launcher, the factory, the radar and the missile
+ * silo change look at each level they are upgraded to (up to 5, 3 for the
+ * radar and the missile silo). On the map (StructurePass picks the icon
+ * texture column) and in the HUD (cityIconFor, portIconFor, samLauncherIconFor,
+ * factoryIconFor, radarIconFor and missileSiloIconFor pick the image).
  */
 
 import { describe, expect, it } from "vitest";
 import {
   cityIconFor,
   factoryIconFor,
+  missileSiloIconFor,
   portIconFor,
   radarIconFor,
   samLauncherIconFor,
@@ -19,6 +20,7 @@ import {
   UT_CITY,
   UT_DEFENSE_POST,
   UT_FACTORY,
+  UT_MISSILE_SILO,
   UT_PORT,
   UT_RADAR,
   UT_SAM_LAUNCHER,
@@ -34,6 +36,7 @@ const LEVELED = [
   ["factory", UT_FACTORY, 2, ATLAS_COLS + 8, 5],
   ["radar", UT_RADAR, 6, ATLAS_COLS + 12, 3],
   ["port", UT_PORT, 1, ATLAS_COLS + 14, 5],
+  ["missile silo", UT_MISSILE_SILO, 5, ATLAS_COLS + 18, 3],
 ] as const;
 
 describe("structureIconColumn", () => {
@@ -67,6 +70,7 @@ describe.each([
   ["factoryIconFor", factoryIconFor, "Factory", 5],
   ["radarIconFor", radarIconFor, "Radar", 3],
   ["portIconFor", portIconFor, "Port", 5],
+  ["missileSiloIconFor", missileSiloIconFor, "MissileSilo", 3],
 ] as const)("%s", (_, iconFor, name, levels) => {
   it("picks the image of the structure's level", () => {
     for (let level = 1; level <= levels; level++) {

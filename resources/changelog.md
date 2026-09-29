@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.33
+
+🚀 **New missile silo looks**
+
+- Missile silos have new icons, and they grow as you upgrade them: a rocket at level 1, a rocket next to its launch tower at level 2 and two rockets in a silo at level 3. You see it on the map, in the structure card, and when you hover a missile silo to upgrade it.
+
 ## v0.1.32
 
 ⚓ **New port looks**

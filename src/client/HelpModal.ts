@@ -160,7 +160,11 @@ export class HelpModal extends BaseModal {
       ["factory", "images/FactoryLevel1IconWhite.svg", "build_factory_desc"],
       ["port", "images/PortLevel1IconWhite.svg", "build_port_desc"],
       ["defense_post", "images/ShieldIconWhite.svg", "build_defense_desc"],
-      ["missile_silo", "images/MissileSiloIconWhite.svg", "build_silo_desc"],
+      [
+        "missile_silo",
+        "images/MissileSiloLevel1IconWhite.svg",
+        "build_silo_desc",
+      ],
       [
         "sam_launcher",
         "images/SamLauncherLevel1IconWhite.svg",

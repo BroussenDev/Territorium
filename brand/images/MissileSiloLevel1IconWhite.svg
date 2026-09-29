@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <symbol id="silo1-rocket" viewBox="0 0 128 128" width="128" height="128" overflow="visible">
+    <mask id="silo1-rocket-cut"><rect x="-10" y="-10" width="150" height="150" fill="#fff"/><g fill="#000"><path d="M56.5 23.5 Q57.5 26 60 26 H71 Q73.5 26 74.5 23.5" fill="none" stroke="#000" stroke-width="2"/><rect x="55.5" y="64.0" width="2.5" height="2.0"/><rect x="58.0" y="66.0" width="2.5" height="2.0"/><rect x="60.5" y="64.0" width="2.5" height="2.0"/><rect x="63.0" y="66.0" width="2.5" height="2.0"/><rect x="65.5" y="64.0" width="2.5" height="2.0"/><rect x="68.0" y="66.0" width="2.5" height="2.0"/><rect x="70.5" y="64.0" width="2.5" height="2.0"/><rect x="73.0" y="66.0" width="2.5" height="2.0"/><path d="M52 86.5 H57 V124 H55 V89 H52 Z"/><path d="M79 86.5 H74 V124 H76 V89 H79 Z"/><rect x="29" y="124" width="21" height="2"/><rect x="81" y="124" width="21" height="2"/></g></mask>
+    <path mask="url(#silo1-rocket-cut)" d="M63 4 H68 L78 22.5 V80 L81 86.5 L107 124 V128 H24 V124 L50 86.5 L53 80 V22.5 Z"/>
+  </symbol>
+  <use href="#silo1-rocket" transform="translate(64 124) scale(0.97) translate(-65.5 -128)"/>
+</svg>

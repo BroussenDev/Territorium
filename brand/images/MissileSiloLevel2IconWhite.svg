@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#fff">
+  <symbol id="silo2-rocket" viewBox="0 0 128 128" width="128" height="128" overflow="visible">
+    <mask id="silo2-rocket-cut"><rect x="-10" y="-10" width="150" height="150" fill="#fff"/><g fill="#000"><path d="M56.5 23.5 Q57.5 26 60 26 H71 Q73.5 26 74.5 23.5" fill="none" stroke="#000" stroke-width="2"/><rect x="55.5" y="64.0" width="2.5" height="2.0"/><rect x="58.0" y="66.0" width="2.5" height="2.0"/><rect x="60.5" y="64.0" width="2.5" height="2.0"/><rect x="63.0" y="66.0" width="2.5" height="2.0"/><rect x="65.5" y="64.0" width="2.5" height="2.0"/><rect x="68.0" y="66.0" width="2.5" height="2.0"/><rect x="70.5" y="64.0" width="2.5" height="2.0"/><rect x="73.0" y="66.0" width="2.5" height="2.0"/><path d="M52 86.5 H57 V124 H55 V89 H52 Z"/><path d="M79 86.5 H74 V124 H76 V89 H79 Z"/><rect x="29" y="124" width="21" height="2"/><rect x="81" y="124" width="21" height="2"/></g></mask>
+    <path mask="url(#silo2-rocket-cut)" d="M63 4 H68 L78 22.5 V80 L81 86.5 L107 124 V128 H24 V124 L50 86.5 L53 80 V22.5 Z"/>
+  </symbol>
+  <mask id="silo2-arms"><rect x="-10" y="-10" width="150" height="150" fill="#fff"/><g fill="#000"><path d="M50.5 37 H56.5 L58.0 40 H52.0 Z"/><path d="M59.5 37 H65.5 L67.0 40 H61.0 Z"/><path d="M68.5 37 H74.5 L76.0 40 H70.0 Z"/><path d="M50.5 65 H56.5 L58.0 68 H52.0 Z"/><path d="M59.5 65 H65.5 L67.0 68 H61.0 Z"/><path d="M68.5 65 H74.5 L76.0 68 H70.0 Z"/></g></mask>
+  <g transform="translate(64 124) scale(0.97) translate(-72 -128)">
+    <rect x="20" y="6" width="4" height="122"/><rect x="44" y="6" width="4" height="122"/><rect x="20" y="6.0" width="28" height="4"/><rect x="20" y="25.7" width="28" height="4"/><rect x="20" y="45.3" width="28" height="4"/><rect x="20" y="65.0" width="28" height="4"/><rect x="20" y="84.7" width="28" height="4"/><rect x="20" y="104.4" width="28" height="4"/><rect x="20" y="124.0" width="28" height="4"/><g stroke="#fff" stroke-width="3.5"><path d="M24 10.0 L44 25.7 M44 10.0 L24 25.7"/><path d="M24 29.7 L44 45.3 M44 29.7 L24 45.3"/><path d="M24 49.3 L44 65.0 M44 49.3 L24 65.0"/><path d="M24 69.0 L44 84.7 M44 69.0 L24 84.7"/><path d="M24 88.7 L44 104.4 M44 88.7 L24 104.4"/><path d="M24 108.4 L44 124.0 M44 108.4 L24 124.0"/></g>
+    <g mask="url(#silo2-arms)"><path d="M47 33 H73 L78 38 V43.5 H47 Z"/><path d="M47 61 H78 V67.5 L73 72.5 H47 Z"/></g>
+    <use href="#silo2-rocket" transform="translate(35.3 8.3) scale(0.82 0.935)"/>
+  </g>
+</svg>

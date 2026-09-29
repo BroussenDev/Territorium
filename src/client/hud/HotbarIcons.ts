@@ -4,11 +4,11 @@ export const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
 export const empBombIcon = assetUrl("images/EmpIconWhite.svg");
 export const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
 export const mirvIcon = assetUrl("images/MIRVIcon.svg");
-export const missileSiloIcon = assetUrl("images/MissileSiloIconWhite.svg");
 export const hydrogenBombIcon = assetUrl("images/MushroomCloudIconWhite.svg");
 export const atomBombIcon = assetUrl("images/NukeIconWhite.svg");
-// The city, the port, the SAM launcher, the factory and the radar change look
-// at each level they are upgraded to (up to 5, 3 for the radar).
+// The city, the port, the SAM launcher, the factory, the radar and the missile
+// silo change look at each level they are upgraded to (up to 5, 3 for the
+// radar and the missile silo).
 function levelIcons(name: string, levels: number): string[] {
   return Array.from({ length: levels }, (_, i) =>
     assetUrl(`images/${name}Level${i + 1}IconWhite.svg`),
@@ -36,6 +36,11 @@ const portIcons = levelIcons("Port", 5);
 export const portIcon = portIcons[0];
 export function portIconFor(level: number): string {
   return iconForLevel(portIcons, level);
+}
+const missileSiloIcons = levelIcons("MissileSilo", 3);
+export const missileSiloIcon = missileSiloIcons[0];
+export function missileSiloIconFor(level: number): string {
+  return iconForLevel(missileSiloIcons, level);
 }
 const radarIcons = levelIcons("Radar", 3);
 export const radarIcon = radarIcons[0];
