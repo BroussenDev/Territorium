@@ -29,7 +29,7 @@ if (!document.getElementById(PURCHASE_STYLE_ID)) {
       left: -60%;
       width: 40%;
       height: 100%;
-      background: linear-gradient(90deg, transparent 0%, rgba(147,197,253,0.5) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
       transform: skewX(-15deg);
       opacity: 0;
     }
@@ -37,54 +37,49 @@ if (!document.getElementById(PURCHASE_STYLE_ID)) {
     [data-cosmetic-shell]:hover .purchase-btn-wrap .purchase-sparkle-streak {
       animation: purchase-streak 0.7s ease-in-out;
     }
+    /* Real money is the gold button; an emerald price lights emerald and a
+       coin price lights gold, whatever the card's tier. */
     .purchase-btn-wrap:hover .purchase-sparkle-btn,
     [data-cosmetic-shell]:hover .purchase-btn-wrap .purchase-sparkle-btn {
-      background: rgb(37,99,235);
-      border-color: rgb(96,165,250);
-      color: white;
-      box-shadow: 0 0 20px rgba(96,165,250,0.6);
+      background: #f7c85a;
+      border-color: #f7c85a;
+      box-shadow: 0 10px 24px -12px rgba(242,182,50,0.9);
     }
     .purchase-btn-wrap:hover .purchase-sparkle-btn-hard,
     [data-cosmetic-shell]:hover .purchase-btn-wrap .purchase-sparkle-btn-hard {
-      background: rgb(29,78,216);
-      border-color: rgb(96,165,250);
+      background: rgba(16,185,129,0.16);
+      border-color: rgba(52,211,153,0.7);
       color: white;
-      box-shadow: 0 0 20px rgba(96,165,250,0.6);
     }
     .purchase-btn-wrap:hover .purchase-sparkle-btn-soft,
     [data-cosmetic-shell]:hover .purchase-btn-wrap .purchase-sparkle-btn-soft {
-      background: rgb(180,83,9);
-      border-color: rgb(217,119,6);
+      background: rgba(242,182,50,0.14);
+      border-color: rgba(242,182,50,0.7);
       color: white;
-      box-shadow: 0 0 20px rgba(217,119,6,0.6);
     }
     @keyframes purchase-pulse {
-      0%   { box-shadow: 0 0 15px rgba(96,165,250,0.6), 0 0 30px rgba(37,99,235,0.3); }
-      50%  { box-shadow: 0 0 25px rgba(96,165,250,0.9), 0 0 50px rgba(37,99,235,0.5); }
-      100% { box-shadow: 0 0 15px rgba(96,165,250,0.6), 0 0 30px rgba(37,99,235,0.3); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.35); }
+      50%      { box-shadow: 0 0 0 4px rgba(52,211,153,0.15); }
     }
     .purchase-sparkle-btn:hover {
-      background: rgb(29,78,216) !important;
-      border-color: rgb(96,165,250) !important;
-      color: white !important;
-      animation: purchase-pulse 1.2s ease-in-out infinite !important;
+      background: #f7c85a !important;
+      color: #1c1403 !important;
     }
     .purchase-sparkle-btn-hard:hover {
-      background: rgb(29,78,216) !important;
-      border-color: rgb(96,165,250) !important;
+      background: rgba(16,185,129,0.24) !important;
+      border-color: rgb(52,211,153) !important;
       color: white !important;
-      animation: purchase-pulse 1.2s ease-in-out infinite !important;
+      animation: purchase-pulse 1.4s ease-in-out infinite !important;
     }
     @keyframes purchase-pulse-soft {
-      0%   { box-shadow: 0 0 15px rgba(217,119,6,0.6), 0 0 30px rgba(180,83,9,0.3); }
-      50%  { box-shadow: 0 0 25px rgba(217,119,6,0.9), 0 0 50px rgba(180,83,9,0.5); }
-      100% { box-shadow: 0 0 15px rgba(217,119,6,0.6), 0 0 30px rgba(180,83,9,0.3); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(242,182,50,0.35); }
+      50%      { box-shadow: 0 0 0 4px rgba(242,182,50,0.15); }
     }
     .purchase-sparkle-btn-soft:hover {
-      background: rgb(180,83,9) !important;
-      border-color: rgb(217,119,6) !important;
+      background: rgba(242,182,50,0.22) !important;
+      border-color: rgb(242,182,50) !important;
       color: white !important;
-      animation: purchase-pulse-soft 1.2s ease-in-out infinite !important;
+      animation: purchase-pulse-soft 1.4s ease-in-out infinite !important;
     }
     @keyframes purchase-ember-0 {
       0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.9; }
@@ -109,8 +104,8 @@ if (!document.getElementById(PURCHASE_STYLE_ID)) {
       width: 3px;
       height: 3px;
       border-radius: 50%;
-      background: rgba(96,165,250,0.9);
-      box-shadow: 0 0 4px rgba(96,165,250,0.8);
+      background: rgba(110,231,183,0.9);
+      box-shadow: 0 0 4px rgba(52,211,153,0.8);
       opacity: 0;
       display: none;
     }
@@ -135,8 +130,8 @@ if (!document.getElementById(PURCHASE_STYLE_ID)) {
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: rgba(96,165,250,1);
-      box-shadow: 0 0 6px rgba(96,165,250,0.9), 0 0 2px rgba(255,255,255,0.5);
+      background: rgba(110,231,183,1);
+      box-shadow: 0 0 6px rgba(52,211,153,0.9), 0 0 2px rgba(255,255,255,0.5);
       opacity: 0;
       display: none;
     }
@@ -202,7 +197,7 @@ if (!document.getElementById(PURCHASE_STYLE_ID)) {
       width: 40px;
       height: 40px;
       border: 4px solid rgba(255,255,255,0.2);
-      border-top-color: rgb(96,165,250);
+      border-top-color: rgb(52,211,153);
       border-radius: 50%;
       animation: cosmetic-spin 0.8s linear infinite;
     }
@@ -362,8 +357,7 @@ export class PurchaseButton extends LitElement {
 
     return html`
       <button
-        class="purchase-sparkle-btn relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-blue-500/20 text-blue-300 border border-blue-500/40 rounded-lg text-base font-bold cursor-pointer transition-all duration-200 flex items-center justify-center
-         hover:bg-blue-600 hover:border-blue-400 hover:text-white hover:shadow-[0_0_20px_rgba(96,165,250,0.6)]"
+        class="purchase-sparkle-btn relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-capital text-capital-ink border border-capital rounded-md font-display text-base font-bold cursor-pointer transition-colors duration-150 flex items-center justify-center hover:bg-capital-light"
         ?disabled=${this.busy}
         @click=${(e: Event) => this.handleClick(e, this.onPurchaseDollar)}
       >
@@ -378,8 +372,7 @@ export class PurchaseButton extends LitElement {
   private renderHardButton() {
     return html`
       <button
-        class="purchase-sparkle-btn-hard relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-blue-500/20 text-blue-300 border border-blue-500/40 rounded-lg text-base font-bold cursor-pointer transition-all duration-200 flex items-center justify-center gap-2
-         hover:bg-blue-600 hover:border-blue-400 hover:text-white hover:shadow-[0_0_20px_rgba(96,165,250,0.6)]"
+        class="purchase-sparkle-btn-hard relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-white/[0.04] text-white border border-white/15 rounded-md font-display text-base font-bold tabular-nums cursor-pointer transition-colors duration-150 flex items-center justify-center gap-2"
         ?disabled=${this.busy}
         @click=${(e: Event) => {
           e.stopPropagation();
@@ -405,8 +398,7 @@ export class PurchaseButton extends LitElement {
   private renderSoftButton() {
     return html`
       <button
-        class="purchase-sparkle-btn-soft relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-amber-700/20 text-amber-600 border border-amber-700/30 rounded-lg text-base font-bold cursor-pointer transition-all duration-200 flex items-center justify-center gap-2
-         hover:bg-amber-700 hover:border-amber-600 hover:text-white hover:shadow-[0_0_20px_rgba(217,119,6,0.6)]"
+        class="purchase-sparkle-btn-soft relative overflow-hidden w-full min-h-11 px-2 py-1.5 bg-white/[0.04] text-amber-100 border border-white/15 rounded-md font-display text-base font-bold tabular-nums cursor-pointer transition-colors duration-150 flex items-center justify-center gap-2"
         ?disabled=${this.busy}
         @click=${(e: Event) => {
           e.stopPropagation();
@@ -423,7 +415,7 @@ export class PurchaseButton extends LitElement {
   private renderReservedLine() {
     return html`<span
       aria-hidden="true"
-      class="invisible block w-full min-h-11 px-2 py-1.5 border rounded-lg text-base font-bold"
+      class="invisible block w-full min-h-11 px-2 py-1.5 border rounded-md font-display text-base font-bold"
       >0</span
     >`;
   }

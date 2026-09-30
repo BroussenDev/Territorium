@@ -182,7 +182,7 @@ export class CosmeticPreview extends LitElement {
         <span class="text-lg font-black leading-none ${colorClass}"
           >${pack.amount.toLocaleString()}</span
         >
-        <span class="text-[10px] font-bold leading-none text-white/50 uppercase"
+        <span class="text-xs font-medium leading-none text-white/55"
           >${translateText(currencyKey)}</span
         >
         ${price
@@ -194,7 +194,8 @@ export class CosmeticPreview extends LitElement {
           : nothing}
         ${pack.bonusAmount > 0
           ? html`<div
-              class="absolute top-8 -right-10 w-40 bg-green-500 text-white text-[10px] font-black py-0.5 rotate-45 shadow-md uppercase tracking-wide pointer-events-none"
+              data-pack-bonus
+              class="absolute left-2 top-2 rounded-sm bg-capital px-1.5 py-0.5 font-display text-xs font-bold tabular-nums text-capital-ink shadow-[0_4px_12px_-4px_rgb(242_182_50/0.7)] pointer-events-none"
             >
               ${translateText("cosmetics.free", {
                 numFree: pack.bonusAmount.toLocaleString(),
@@ -219,7 +220,7 @@ export class CosmeticPreview extends LitElement {
             <span class="text-sm font-bold text-green-400"
               >${subscription.hardCurrencySignupBonus.toLocaleString()}</span
             >
-            <span class="text-[10px] text-white/50 uppercase"
+            <span class="text-xs text-white/55"
               >${translateText("cosmetics.signup_bonus")}</span
             >
           </div>
@@ -228,7 +229,7 @@ export class CosmeticPreview extends LitElement {
             <span class="text-sm font-bold text-green-400"
               >${subscription.dailyHardCurrency.toLocaleString()}</span
             >
-            <span class="text-[10px] text-white/50 uppercase"
+            <span class="text-xs text-white/55"
               >${translateText("cosmetics.per_day")}</span
             >
           </div>
@@ -238,7 +239,7 @@ export class CosmeticPreview extends LitElement {
                 <span class="text-sm font-bold text-amber-300"
                   >${subscription.dailySoftCurrency.toLocaleString()}</span
                 >
-                <span class="text-[10px] text-white/50 uppercase"
+                <span class="text-xs text-white/55"
                   >${translateText("cosmetics.per_day")}</span
                 >
               </div>`
@@ -246,8 +247,8 @@ export class CosmeticPreview extends LitElement {
           ${subscriptionPerks(subscription).map(
             (perk) =>
               html`<span
-                class="self-start text-left text-[10px] font-bold text-purple-300 uppercase tracking-wide"
-                ><span class="text-green-400">✓</span> ${perk.label}</span
+                class="self-start text-left text-xs font-medium text-white/80"
+                ><span class="text-brand-light">✓</span> ${perk.label}</span
               >`,
           )}
         </div>

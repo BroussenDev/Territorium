@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.43
+
+🗺️ **A cleaner home page and store**
+
+- Solo is emerald again.
+- The home page background is calmer: the world map only shows through, and the hero sits on it without a heavy box. The name field and the news strip are slimmer.
+- Store cards are dark plates with a colored top edge and label for their rarity, instead of fully colored cards. Pack and item names are in sentence case.
+- Price buttons are clearer: paying in euros is the gold button, emerald and coin prices sit on neutral plates. Emerald bonuses are shown as a small gold tag.
+- Subscriptions, the inventory, the leaderboard and the "not signed in" badge no longer use all capitals, and the leaderboard lost its blue-grey tables.
+
 ## v0.1.42
 
 🎨 **A menu with Territorium's own look**

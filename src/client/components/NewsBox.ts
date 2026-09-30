@@ -143,31 +143,32 @@ export class NewsBox extends LitElement {
 
     return html`
       <div
-        class="px-2 py-2 bg-surface border-y border-white/10 lg:border-y-0 lg:rounded-xl lg:p-3"
+        class="px-2 py-2 bg-surface/80 border-y border-white/10 lg:border lg:rounded-md lg:px-3 lg:py-2"
       >
         <div class="flex items-center gap-3">
           <span
-            class="shrink-0 text-[10px] font-bold tracking-wider px-2 py-0.5 rounded ${typeLabelColors[
+            class="shrink-0 font-display text-xs font-semibold px-1.5 py-0.5 rounded-sm ${typeLabelColors[
               item.type
             ] ?? typeLabelColors["announcement"]}"
             >${translateText(
               typeLabelKeys[item.type] ?? typeLabelKeys["announcement"],
             )}</span
           >
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 lg:flex lg:items-baseline lg:gap-3">
             ${item.url
               ? html`<a
                   href="${item.url}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-sm font-medium text-white hover:text-emerald-300 transition-colors truncate block"
+                  class="shrink-0 text-sm font-semibold text-white hover:text-emerald-300 transition-colors truncate block lg:max-w-[45%]"
                   >${item.title}</a
                 >`
-              : html`<span class="text-sm font-medium text-white truncate block"
+              : html`<span
+                  class="shrink-0 text-sm font-semibold text-white truncate block lg:max-w-[45%]"
                   >${item.title}</span
                 >`}
             <span
-              class="text-xs text-white/50 block [&_a]:text-emerald-300 [&_a:hover]:text-emerald-200"
+              class="text-xs text-white/55 block min-w-0 lg:truncate [&_a]:text-emerald-300 [&_a:hover]:text-emerald-200"
               >${renderMarkdown(
                 item.descriptionTranslationKey
                   ? translateText(item.descriptionTranslationKey)

@@ -455,15 +455,14 @@ describe("StoreModal cosmetic browser", () => {
       ...modal.querySelectorAll<HTMLButtonElement>("button"),
     ].find((candidate) => candidate.textContent?.trim() === "store.crowns")!;
 
-    // Same typography as the o-modal tab bar (px-4 py-3 text-sm font-bold),
+    // Same typography as the o-modal tab bar (px-4 py-3 font-display semibold),
     // so the nested bar does not read as heavier or taller than its parent.
     for (const token of [
       "px-4",
       "py-3",
       "text-sm",
-      "font-bold",
-      "uppercase",
-      "tracking-wider",
+      "font-display",
+      "font-semibold",
       "whitespace-nowrap",
     ]) {
       expect(subTab.classList.contains(token)).toBe(true);

@@ -50,7 +50,7 @@ export class InventoryLoadoutMenu extends LitElement {
         data-loadout-slot=${name}
         aria-pressed=${isActive ? "true" : "false"}
         aria-label=${translateText("inventory.loadout_slot", { name })}
-        class="px-3 py-1.5 text-xs font-black uppercase tracking-wider transition-colors ${isActive
+        class="px-3 py-1.5 font-display text-sm font-semibold transition-colors ${isActive
           ? "text-white"
           : "text-white/75 hover:bg-white/10"}"
         @click=${() => this.onSelect?.(name)}
@@ -85,7 +85,7 @@ export class InventoryLoadoutMenu extends LitElement {
         data-loadout-add
         ?disabled=${!this.canAdd}
         aria-label=${translateText("inventory.loadout_add")}
-        class="rounded-lg border border-dashed border-white/25 px-3 py-1.5 text-xs font-black text-white/75 transition-colors hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+        class="rounded-md border border-dashed border-white/25 px-3 py-1.5 text-sm font-bold text-white/75 transition-colors hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
         @click=${() => this.onAdd?.()}
       >
         +
@@ -94,7 +94,7 @@ export class InventoryLoadoutMenu extends LitElement {
         type="button"
         data-inventory-unequip-all
         ?disabled=${!this.canUnequip}
-        class="ml-auto rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-black uppercase tracking-wider text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+        class="ml-auto rounded-md border border-white/15 bg-white/5 px-3 py-1.5 font-display text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
         @click=${() => this.onUnequipAll?.()}
       >
         ${translateText("inventory.unequip_all")}

@@ -263,7 +263,7 @@ describe("CosmeticCard", () => {
     await card!.updateComplete;
 
     const shell = card!.querySelector<HTMLElement>("[data-cosmetic-shell]")!;
-    expect(shell.className).toMatch(/hover:-translate-y-1/);
+    expect(shell.className).toMatch(/transition-\[border-color,box-shadow\]/);
     expect(card!.querySelector("[data-cosmetic-info]")?.textContent).toContain(
       "Artist: Test Artist",
     );
@@ -372,7 +372,7 @@ describe("CosmeticCard", () => {
     const backdrop = document.querySelector<HTMLElement>(
       "[data-cosmetic-backdrop]",
     )!;
-    expect(backdrop.style.background).toBe("rgba(0, 0, 0, 0.6)");
+    expect(backdrop.style.background).toBe("rgba(0, 0, 0, 0.35)");
 
     card!.dispatchEvent(new MouseEvent("mouseleave"));
     expect(backdrop.style.background).toBe("rgba(0, 0, 0, 0)");
@@ -430,7 +430,8 @@ describe("CosmeticCard", () => {
     const swatch =
       card!.querySelector<HTMLButtonElement>("[data-variant-key]")!;
 
-    expect(shell.className).not.toMatch(/emerald|sky|blue/);
+    // Rare's sky edge is fine; green stays reserved for the equipped state.
+    expect(shell.className).not.toMatch(/emerald|green-5|blue/);
     expect(main.className).toMatch(/focus-visible:ring-white/);
     expect(swatch.className).toMatch(/focus-visible:ring-white/);
     expect(main.className).not.toMatch(/ring-blue/);
@@ -447,7 +448,7 @@ describe("CosmeticCard", () => {
     const badge = card!.querySelector<HTMLElement>(
       "[data-cosmetic-equipped='true']",
     )!;
-    expect(shell.classList).toContain("border-violet-300/70");
+    expect(shell.classList).toContain("border-sky-400/35");
     expect(shell.className).toMatch(/ring-emerald/);
     expect(shell.className).not.toMatch(/ring-blue/);
     expect(shell.className).toMatch(/shadow-\[/);
@@ -457,7 +458,7 @@ describe("CosmeticCard", () => {
     card!.state = "focused";
     await card!.updateComplete;
     shell = card!.querySelector<HTMLElement>("[data-cosmetic-rarity]")!;
-    expect(shell.classList).toContain("border-violet-300/70");
+    expect(shell.classList).toContain("border-sky-400/35");
     expect(shell.className).not.toMatch(/ring-blue/);
     expect(shell.className).not.toMatch(/ring-emerald/);
   });

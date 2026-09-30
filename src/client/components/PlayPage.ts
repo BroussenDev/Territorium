@@ -94,35 +94,30 @@ export class PlayPage extends LitElement {
                banner: the clan tag menu drops down out of it. -->
           <div class="flex flex-col gap-2 min-w-0">
             <section
-              class="relative z-30 flex items-center gap-6 lg:gap-8 sm:rounded-2xl sm:border sm:border-emerald-400/15 sm:bg-[linear-gradient(115deg,#0f2a21_0%,var(--color-ink)_65%)] sm:px-6 sm:py-5 lg:px-8"
+              class="relative z-30 flex items-center gap-5 lg:gap-7 sm:py-3 lg:py-5"
             >
-              <!-- Tile mesh fading in from the right edge, echoing the backdrop. -->
-              <div
-                class="hidden sm:block territory-mesh absolute inset-y-0 right-0 w-2/3 rounded-r-2xl bg-emerald-500/10 [mask-image:linear-gradient(to_left,#000,transparent)] pointer-events-none"
-                aria-hidden="true"
-              ></div>
               <territorium-emblem
-                class="hidden sm:block relative shrink-0 w-20 lg:w-28 drop-shadow-[0_8px_24px_rgb(16_185_129_/_0.25)]"
+                class="hidden sm:block relative shrink-0 w-20 lg:w-24 drop-shadow-[0_8px_24px_rgb(16_185_129_/_0.25)]"
               ></territorium-emblem>
-              <div class="relative flex-1 min-w-0 flex flex-col gap-4">
+              <div class="relative flex-1 min-w-0 flex flex-col gap-3">
                 <p
-                  class="hidden sm:block font-display font-bold text-white text-2xl lg:text-[2.1rem] leading-tight tracking-wide text-balance"
+                  class="hidden sm:block font-display font-bold text-white text-2xl lg:text-[2rem] leading-tight tracking-[0.01em] text-balance [text-shadow:0_2px_18px_rgb(0_0_0/0.6)]"
                   data-i18n="main.tagline"
                 ></p>
 
                 <!-- Identity row: username over the currently selected cosmetic background. -->
                 <div
-                  class="relative bg-surface border-y border-white/10 overflow-visible flex items-center sm:min-h-[60px] sm:z-20 sm:border sm:border-emerald-400/20 sm:rounded-xl"
+                  class="relative bg-surface border-y border-white/10 overflow-visible flex items-center sm:max-w-2xl sm:min-h-[52px] sm:z-20 sm:border sm:border-white/12 sm:border-l-4 sm:border-l-brand sm:rounded-md"
                 >
                   <!-- Selected skin/pattern fills the bubble like the player's territory in game. -->
                   <cosmetic-background
-                    class="absolute inset-0 z-0 overflow-hidden sm:rounded-xl pointer-events-none"
+                    class="absolute inset-0 z-0 overflow-hidden sm:rounded-r-md pointer-events-none"
                   ></cosmetic-background>
                   <div
-                    class="relative z-10 flex h-full w-full min-w-0 items-center bg-surface/80 p-1 sm:rounded-xl"
+                    class="relative z-10 flex h-full w-full min-w-0 items-center bg-surface/85 p-1 sm:rounded-r-md"
                   >
                     <username-input
-                      class="flex-1 min-w-0 h-10 sm:h-[50px]"
+                      class="flex-1 min-w-0 h-10 sm:h-[44px]"
                     ></username-input>
                   </div>
                 </div>

@@ -165,7 +165,7 @@ export class LeaderboardModal extends BaseModal {
       titleContent: html`
         <div class="flex flex-wrap items-center gap-2">
           <span
-            class="text-white text-xl sm:text-2xl font-bold uppercase tracking-widest"
+            class="text-white text-2xl lg:text-3xl font-display font-bold tracking-[0.01em]"
           >
             ${translateText("leaderboard_modal.title")}
           </span>

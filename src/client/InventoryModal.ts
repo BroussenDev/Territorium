@@ -609,7 +609,7 @@ export class InventoryModal extends BaseModal {
         type="button"
         data-inventory-unequip
         ?disabled=${equipped === null}
-        class="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-black uppercase tracking-wider text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+        class="rounded-md border border-white/15 bg-white/5 px-3 py-2 font-display text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
         @click=${() => {
           if (category === "skins") {
             this.userSettings.setSelectedPatternName(undefined);
@@ -656,9 +656,9 @@ export class InventoryModal extends BaseModal {
 
         <div class="md:flex items-center gap-2 justify-center mt-4">
           <input
-            class="h-12 w-full max-w-md border border-white/10 bg-black/60
-              rounded-xl shadow-inner text-xl text-center focus:outline-none
-              focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 text-white placeholder-white/30 transition-all"
+            class="h-11 w-full max-w-md border border-white/12 bg-black/40
+              rounded-md px-4 text-base focus:outline-none
+              focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 text-white placeholder-white/35 transition-colors"
             type="text"
             placeholder=${translateText("cosmetics.search")}
             .value=${this.search}

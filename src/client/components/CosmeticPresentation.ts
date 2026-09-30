@@ -22,9 +22,8 @@ export function cosmeticDisplayName(resolved: ResolvedCosmetic): string {
   }
   if (resolved.type === "pack" || resolved.type === "cosmeticPack") {
     const name = packDisplayName(cosmetic as Pack | CosmeticPack);
-    return name.replace(/(^|[\s-])\p{L}/gu, (match) =>
-      match.toLocaleUpperCase(),
-    );
+    // Sentence case: "Bourse d'émeraudes", not "Bourse D'émeraudes".
+    return name.replace(/^\p{L}/u, (match) => match.toLocaleUpperCase());
   }
   if (resolved.type === "subscription") {
     return translateCosmetic("subscriptions", cosmetic.name);

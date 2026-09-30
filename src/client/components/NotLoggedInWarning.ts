@@ -46,13 +46,15 @@ export class NotLoggedInWarning extends LitElement {
 
     return html`<div class="no-crazygames flex items-center">
       <button
-        class="px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 cursor-pointer hover:bg-red-500/30"
-        data-i18n="common.not_logged_in"
+        class="flex items-center gap-2 px-3 py-2 font-display text-sm font-semibold transition-colors duration-150 rounded-md bg-white/[0.04] text-white/85 border border-white/15 cursor-pointer hover:border-capital/60 hover:text-white"
         @click=${() => {
           window.showPage?.("page-account");
         }}
       >
-        ${translateText("common.not_logged_in")}
+        <span class="size-2 shrink-0 rounded-[1px] bg-capital"></span>
+        <span data-i18n="common.not_logged_in"
+          >${translateText("common.not_logged_in")}</span
+        >
       </button>
     </div>`;
   }

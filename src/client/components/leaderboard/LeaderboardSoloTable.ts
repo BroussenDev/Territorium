@@ -144,7 +144,7 @@ export class LeaderboardSoloTable extends LitElement {
               </colgroup>
               <thead class="sticky top-0 z-10">
                 <tr
-                  class="text-white/40 text-[10px] uppercase tracking-wider border-b border-white/5 bg-[#1e2433]"
+                  class="text-white/45 text-xs font-medium border-b border-white/5 bg-[#0d1c17]"
                 >
                   <th class="py-4 px-4 text-center font-bold">
                     ${translateText("leaderboard_modal.rank")}

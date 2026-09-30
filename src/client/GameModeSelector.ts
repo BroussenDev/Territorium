@@ -75,7 +75,7 @@ import { isReplayShellHost } from "./VersionedReplay";
 // Solo is the page's one gold element, the capital of the rail; the other
 // actions are dark plates whose left edge is a claimed tile.
 const PRIMARY_ACTION =
-  "solo-tile bg-capital hover:bg-capital-light active:bg-capital/85 !text-capital-ink font-bold shadow-[inset_0_-4px_0_rgb(0_0_0/0.18)] lg:flex-col lg:gap-3 lg:!text-4xl lg:tracking-[0.02em]";
+  "solo-tile bg-brand hover:bg-brand-light active:bg-brand/80 !text-white font-bold shadow-[inset_0_-4px_0_rgb(0_0_0/0.18)] lg:flex-col lg:gap-3 lg:!text-4xl lg:tracking-[0.02em] lg:bg-[linear-gradient(160deg,#10b981,#059669_55%,#047857)] lg:hover:brightness-110";
 const SECONDARY_ACTION =
   "bg-surface/90 border border-white/10 border-l-2 lg:border-l-4 border-l-brand/60 hover:border-l-brand-bright hover:bg-[#0f1f1a] active:brightness-[0.95] lg:justify-start lg:gap-3 lg:px-4";
 const DISABLED = "opacity-50 cursor-not-allowed pointer-events-none";

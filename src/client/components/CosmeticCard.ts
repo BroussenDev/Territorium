@@ -12,6 +12,7 @@ import "./CosmeticInfo";
 import {
   cosmeticDisplayName,
   cosmeticRarity,
+  cosmeticRarityLabel,
   cosmeticSelectionLabel,
 } from "./CosmeticPresentation";
 import "./CosmeticPreview";
@@ -23,8 +24,8 @@ if (!document.getElementById(COSMETIC_CARD_STYLE_ID)) {
   style.id = COSMETIC_CARD_STYLE_ID;
   style.textContent = `
     @keyframes cosmetic-card-legendary-pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(251,146,60,0.8), 0 0 30px rgba(251,146,60,0.4); }
-      50% { box-shadow: 0 0 25px rgba(251,146,60,0.9), 0 0 45px rgba(251,146,60,0.5); }
+      0%, 100% { box-shadow: inset 0 3px 0 #f59e0b, 0 14px 30px -14px rgba(245,158,11,0.7); }
+      50% { box-shadow: inset 0 3px 0 #f59e0b, 0 18px 40px -12px rgba(245,158,11,0.9); }
     }
     @keyframes cosmetic-card-shimmer {
       0% { left: -60%; }
@@ -51,47 +52,25 @@ if (!document.getElementById(COSMETIC_CARD_STYLE_ID)) {
       35%, 58% { opacity: 1; transform: scale(1) rotate(-20deg); }
     }
 
-    [data-cosmetic-shell][data-cosmetic-rarity="common"] {
-      background: linear-gradient(to top, rgba(80,80,80,0.55) 0%, rgba(15,15,20,0.85) 100%);
-      border-color: rgba(255,255,255,0.15);
+    /* Every card is the same dark plate; the tier only shows as the colored
+       edge along its top, which lights the border on hover. */
+    [data-cosmetic-shell] {
+      --rarity: rgba(255,255,255,0.28);
+      background: linear-gradient(180deg, #11221c 0%, #0a1512 100%);
+      box-shadow: inset 0 3px 0 var(--rarity);
     }
-    [data-cosmetic-shell][data-cosmetic-rarity="uncommon"] {
-      background: linear-gradient(to top, rgba(30,100,30,0.65) 0%, rgba(15,15,20,0.85) 100%);
-      border-color: rgba(74,222,128,0.45);
-    }
-    [data-cosmetic-shell][data-cosmetic-rarity="rare"] {
-      background: linear-gradient(to top, rgba(20,60,160,0.7) 0%, rgba(15,15,20,0.85) 100%);
-      border-color: rgba(96,165,250,0.5);
-    }
-    [data-cosmetic-shell][data-cosmetic-rarity="epic"] {
-      background: linear-gradient(to top, rgba(90,20,160,0.75) 0%, rgba(15,15,20,0.85) 100%);
-      border-color: rgba(192,132,252,0.6);
-    }
-    [data-cosmetic-shell][data-cosmetic-rarity="legendary"] {
-      background: linear-gradient(to top, rgba(180,80,0,0.75) 0%, rgba(15,15,20,0.85) 100%);
-      border-color: rgba(251,146,60,0.65);
-    }
+    [data-cosmetic-shell][data-cosmetic-rarity="uncommon"] { --rarity: #4ade80; }
+    [data-cosmetic-shell][data-cosmetic-rarity="rare"] { --rarity: #38bdf8; }
+    [data-cosmetic-shell][data-cosmetic-rarity="epic"] { --rarity: #a78bfa; }
+    [data-cosmetic-shell][data-cosmetic-rarity="legendary"] { --rarity: #f59e0b; }
 
     cosmetic-card:hover { position: relative; z-index: 10; }
-    cosmetic-card:hover [data-cosmetic-shell][data-cosmetic-rarity="common"] {
-      transform: translateY(-4px);
-      box-shadow: 0 0 10px rgba(255,255,255,0.5);
-    }
-    cosmetic-card:hover [data-cosmetic-shell][data-cosmetic-rarity="uncommon"] {
-      transform: translateY(-4px);
-      box-shadow: 0 0 12px rgba(74,222,128,0.6);
-    }
-    cosmetic-card:hover [data-cosmetic-shell][data-cosmetic-rarity="rare"] {
-      transform: translateY(-4px);
-      box-shadow: 0 0 14px rgba(96,165,250,0.7);
-    }
-    cosmetic-card:hover [data-cosmetic-shell][data-cosmetic-rarity="epic"] {
-      transform: translateY(-4px);
-      box-shadow: 0 0 14px rgba(192,132,252,0.85);
+    cosmetic-card:hover [data-cosmetic-shell] {
+      border-color: var(--rarity);
+      box-shadow: inset 0 3px 0 var(--rarity), 0 18px 36px -18px var(--rarity);
     }
     cosmetic-card:hover [data-cosmetic-shell][data-cosmetic-rarity="legendary"] {
-      transform: translateY(-6px) scale(1.12);
-      animation: cosmetic-card-legendary-pulse 1.4s ease-in-out infinite;
+      animation: cosmetic-card-legendary-pulse 1.8s ease-in-out infinite;
     }
 
     [data-cosmetic-main], [data-cosmetic-action] {
@@ -265,7 +244,7 @@ export class CosmeticCard extends LitElement {
 
   private onHoverStart = () => {
     if (cosmeticRarity(this.activeResolved) !== "legendary") return;
-    CosmeticCard.ensureBackdrop().style.background = "rgba(0,0,0,0.6)";
+    CosmeticCard.ensureBackdrop().style.background = "rgba(0,0,0,0.35)";
   };
 
   private onHoverEnd = () => {
@@ -280,15 +259,15 @@ export class CosmeticCard extends LitElement {
   private rarityClass(rarity: string): string {
     switch (rarity) {
       case "uncommon":
-        return "border-zinc-300/70";
+        return "border-green-400/30";
       case "rare":
-        return "border-violet-300/70";
+        return "border-sky-400/35";
       case "epic":
-        return "border-fuchsia-300/70";
+        return "border-violet-400/40";
       case "legendary":
-        return "border-amber-400/70";
+        return "border-amber-400/50";
       default:
-        return "border-white/20";
+        return "border-white/10";
     }
   }
 
@@ -395,7 +374,7 @@ export class CosmeticCard extends LitElement {
     const content = html`
       <div class="relative w-full flex-1 ${previewShape}">
         <div
-          class="flex h-full w-full items-center justify-center overflow-hidden rounded-lg bg-white/5 p-2"
+          class="flex h-full w-full items-center justify-center overflow-hidden rounded-md bg-black/30 p-2 ring-1 ring-inset ring-white/[0.06]"
         >
           <cosmetic-preview .resolved=${active} size="card"></cosmetic-preview>
         </div>
@@ -410,19 +389,27 @@ export class CosmeticCard extends LitElement {
     `;
     const name = html`<span
       data-cosmetic-name
-      class="w-full capitalize  whitespace-normal break-words px-3 pt-3 text-center text-sm font-bold leading-tight text-white ${this
+      class="flex w-full flex-col items-start gap-0.5 whitespace-normal break-words px-3 pt-3.5 text-left leading-tight ${this
         .interactive
         ? "cursor-pointer"
         : ""}"
       @click=${() => this.interactive && this.onActivate?.(active)}
-      >${displayName}</span
+      ><span
+        class="font-display text-base font-bold text-white first-letter:uppercase"
+        >${displayName}</span
+      ><span
+        data-cosmetic-rarity-label
+        class="text-xs font-semibold"
+        style="color: var(--rarity)"
+        >${cosmeticRarityLabel(active)}</span
+      ></span
     >`;
 
     return html`<div
       data-cosmetic-shell
       data-cosmetic-state=${this.state}
       data-cosmetic-rarity=${rarity}
-      class="relative flex h-full flex-col items-center overflow-visible rounded-xl border transition-all duration-200 ease-out hover:-translate-y-1 ${shellClass}"
+      class="relative flex h-full flex-col items-center overflow-visible rounded-lg border transition-[border-color,box-shadow] duration-200 ease-out ${shellClass}"
     >
       ${rarity === "epic" || rarity === "legendary"
         ? html`<span data-cosmetic-shimmer aria-hidden="true"></span>`
