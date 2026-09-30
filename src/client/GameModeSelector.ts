@@ -72,14 +72,16 @@ import { isReplayShellHost } from "./VersionedReplay";
 // At lg the action cards leave the rows under the lobbies and stack into a
 // rail beside them: Solo grows into the rail's tall tile, the multiplayer
 // cards become a left-aligned list with icons.
+// Solo is the page's one gold element, the capital of the rail; the other
+// actions are dark plates whose left edge is a claimed tile.
 const PRIMARY_ACTION =
-  "solo-tile bg-brand hover:bg-brand-light active:bg-brand/80 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:flex-col lg:gap-3 lg:!text-3xl lg:font-display lg:font-bold lg:tracking-[0.12em] lg:bg-[linear-gradient(160deg,#10b981,#059669_55%,#047857)] lg:hover:brightness-110";
+  "solo-tile bg-capital hover:bg-capital-light active:bg-capital/85 !text-capital-ink font-bold shadow-[inset_0_-4px_0_rgb(0_0_0/0.18)] lg:flex-col lg:gap-3 lg:!text-4xl lg:tracking-[0.02em]";
 const SECONDARY_ACTION =
-  "bg-surface hover:brightness-[1.08] active:brightness-[0.95] hover:scale-105 hover:shadow-[var(--shadow-action-card-hover)] lg:hover:scale-100 lg:justify-start lg:gap-3 lg:px-4 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold lg:bg-surface/90 lg:border lg:border-emerald-400/15 lg:hover:border-brand/60";
+  "bg-surface/90 border border-white/10 border-l-2 lg:border-l-4 border-l-brand/60 hover:border-l-brand-bright hover:bg-[#0f1f1a] active:brightness-[0.95] lg:justify-start lg:gap-3 lg:px-4";
 const DISABLED = "opacity-50 cursor-not-allowed pointer-events-none";
-/** Tutorial card: the panel's gold, dark text for contrast. */
+/** Tutorial card: a plate edged in gold, so new players spot it next to Solo. */
 const TUTORIAL_ACTION =
-  "bg-cyber-yellow hover:bg-yellow-300 active:bg-cyber-yellow/80 !text-gray-900 hover:scale-y-105 hover:scale-x-[1.01] lg:hover:scale-100 lg:normal-case lg:tracking-normal lg:font-display lg:font-semibold";
+  "bg-surface/90 border border-capital/35 border-l-2 lg:border-l-4 border-l-capital hover:bg-[#1a1608] !text-capital-light lg:justify-start lg:gap-3 lg:px-4";
 
 // Heroicons (outline, 24px), shown beside the action labels in the lg rail.
 const ICON_FLAG =
@@ -970,8 +972,7 @@ export class GameModeSelector extends LitElement {
             </svg>
           </span>
           <span class="flex min-w-0 flex-1 flex-col leading-tight">
-            <span
-              class="truncate text-base font-bold uppercase tracking-wide text-white"
+            <span class="truncate font-display text-base font-bold text-white"
               >${translateText("public_lobby.upcoming")}</span
             >
             <span
@@ -982,7 +983,7 @@ export class GameModeSelector extends LitElement {
             >
           </span>
           <span
-            class="grid size-8 shrink-0 place-items-center rounded-full bg-white/10 text-white transition-transform group-hover/upcoming:translate-x-0.5 group-hover/upcoming:bg-emerald-500"
+            class="grid size-8 shrink-0 place-items-center rounded-md bg-white/10 text-white transition-transform group-hover/upcoming:translate-x-0.5 group-hover/upcoming:bg-emerald-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -1043,7 +1044,7 @@ export class GameModeSelector extends LitElement {
         @click=${onClick}
         ?disabled=${!this.inputValid}
         aria-disabled=${blocked}
-        class="relative flex items-center justify-center w-full h-full rounded-lg ${bgClass} transition-all duration-200 text-sm lg:text-base font-medium text-white uppercase tracking-wider text-center ${!this
+        class="relative flex items-center justify-center w-full h-full rounded-lg ${bgClass} transition-colors duration-150 px-1 font-display text-[13px] sm:text-sm lg:text-base font-semibold text-white text-center ${!this
           .inputValid
           ? DISABLED
           : blocked
@@ -1059,7 +1060,9 @@ export class GameModeSelector extends LitElement {
               stroke="currentColor"
               class="hidden lg:block shrink-0 ${bgClass === PRIMARY_ACTION
                 ? "size-12 opacity-90"
-                : "size-5 text-brand-bright"}"
+                : bgClass === TUTORIAL_ACTION
+                  ? "size-5"
+                  : "size-5 text-brand-bright"}"
               aria-hidden="true"
             >
               <path stroke-linecap="round" stroke-linejoin="round" d=${icon} />
@@ -1143,7 +1146,7 @@ export class GameModeSelector extends LitElement {
                 >
                 ${time
                   ? html`<span
-                      class="rounded-full bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
+                      class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
                         ? "uppercase"
                         : ""}"
                       >${time.text}</span
@@ -1169,7 +1172,7 @@ export class GameModeSelector extends LitElement {
               </span>
               <span class="mt-auto flex items-center gap-3 pt-1">
                 <span
-                  class="rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-[#1a1408] transition-colors group-hover/mode:bg-amber-300"
+                  class="rounded-md bg-capital px-4 py-2 font-display text-sm font-bold text-capital-ink transition-colors group-hover/mode:bg-capital-light"
                   >${nations
                     ? translateText("game_modes.nations_join")
                     : translateText("game_modes.nations_waiting")}</span

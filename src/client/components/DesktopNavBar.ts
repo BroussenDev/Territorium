@@ -44,13 +44,14 @@ const PAGES: NavPage[] = [
   },
 ];
 
+// Flat tabs: the active one is marked by the claim strip (styles.css) along
+// the bar's bottom edge, like a border of freshly taken tiles.
 const ITEM =
-  "nav-menu-item relative flex items-center gap-2 rounded-xl px-2.5 xl:px-4 py-2 " +
-  "text-[13px] font-semibold uppercase tracking-[0.04em] xl:tracking-[0.08em] text-white/60 " +
-  "cursor-pointer transition-colors hover:text-white hover:bg-white/[0.05] " +
-  "focus-visible:outline-2 focus-visible:outline-emerald-400 " +
-  "[&.active]:text-emerald-300 [&.active]:bg-emerald-400/[0.12] " +
-  "[&.active]:shadow-[inset_0_0_0_1px_rgba(52,211,153,0.35)]";
+  "nav-tab nav-menu-item relative flex h-16 items-center gap-2 px-3 xl:px-4 " +
+  "font-display text-[15px] font-semibold text-white/55 " +
+  "cursor-pointer transition-colors hover:text-white " +
+  "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-capital " +
+  "[&.active]:text-white [&.active_svg]:text-brand-bright";
 
 @customElement("desktop-nav-bar")
 export class DesktopNavBar extends LitElement {
@@ -163,9 +164,7 @@ export class DesktopNavBar extends LitElement {
             ></span>
           </button>
           <div class="flex flex-1 justify-center">
-            <div
-              class="flex items-center gap-1 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-1"
-            >
+            <div class="flex items-center">
               ${PAGES.map((item) => this._renderItem(item, currentPage))}
             </div>
           </div>

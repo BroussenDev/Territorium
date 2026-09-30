@@ -18,11 +18,11 @@ const DEFAULT_DIVIDER_CLASS = "border-b border-white/10";
 const DEFAULT_PADDING_CLASS = "p-4 lg:p-6";
 const DEFAULT_LEFT_CLASS = "flex items-center gap-4 flex-1";
 const DEFAULT_BUTTON_CLASS =
-  "group flex items-center justify-center w-10 h-10 rounded-full shrink-0 " +
-  "bg-white/5 hover:bg-white/10 transition-all border border-white/10";
+  "group flex items-center justify-center w-10 h-10 rounded-md shrink-0 " +
+  "bg-white/5 hover:bg-white/10 transition-colors border border-white/10 hover:border-brand-bright/50";
 export const DEFAULT_TITLE_CLASS =
-  "text-white text-xl lg:text-2xl font-bold uppercase " +
-  "tracking-widest break-words hyphens-auto";
+  "text-white text-2xl lg:text-3xl font-display font-bold " +
+  "tracking-[0.01em] break-words hyphens-auto";
 
 const withClasses = (...classes: Array<string | undefined>) =>
   classes.filter(Boolean).join(" ");

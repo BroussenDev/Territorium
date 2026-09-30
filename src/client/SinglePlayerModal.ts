@@ -297,7 +297,7 @@ export class SinglePlayerModal extends BaseModal {
       return html``;
     }
     return html`<button
-      class="px-3 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-200 rounded-lg bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 whitespace-nowrap shrink-0 cursor-pointer hover:bg-yellow-500/30"
+      class="px-3 py-2 font-display text-sm font-semibold transition-colors duration-200 rounded-md bg-capital/10 text-capital-light border border-capital/30 border-l-4 border-l-capital whitespace-nowrap shrink-0 cursor-pointer hover:bg-capital/20"
       @click=${() => {
         this.close();
         window.showPage?.("page-account");

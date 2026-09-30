@@ -18,24 +18,25 @@ export class OButton extends LitElement {
   @property({ attribute: false }) icon?: TemplateResult;
   @property({ type: Boolean }) disable = false;
   @property({ type: Boolean }) submit = false;
-  @property({ type: Boolean }) uppercase = true;
+  @property({ type: Boolean }) uppercase = false;
 
   createRenderRoot() {
     return this;
   }
 
   private readonly BASE =
-    "font-bold tracking-wider rounded-xl border border-transparent " +
-    "transition-all duration-300 transform hover:-translate-y-px " +
-    "outline-none text-center whitespace-normal break-words leading-tight overflow-hidden relative " +
-    "disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:opacity-70";
+    "font-display font-bold tracking-[0.04em] rounded-md border border-transparent " +
+    "transition-colors duration-150 " +
+    "outline-none focus-visible:ring-2 focus-visible:ring-capital/60 " +
+    "text-center whitespace-normal break-words leading-tight overflow-hidden relative " +
+    "disabled:cursor-not-allowed disabled:opacity-70";
 
   private variantClasses(): string {
     switch (this.variant) {
       case "primary":
-        return "bg-brand hover:bg-brand-light text-white disabled:bg-gray-600 disabled:text-gray-300";
+        return "bg-capital hover:bg-capital-light text-capital-ink shadow-[inset_0_-3px_0_rgb(0_0_0/0.18)] disabled:bg-gray-600 disabled:text-gray-300 disabled:shadow-none";
       case "secondary":
-        return "bg-gray-700 hover:bg-gray-600 text-white disabled:bg-gray-800 disabled:text-gray-400";
+        return "bg-surface hover:bg-white/[0.08] text-white border-white/15 hover:border-brand-bright/50 disabled:bg-gray-800 disabled:text-gray-400";
       case "danger":
         return "bg-red-600 hover:bg-red-500 text-white disabled:bg-red-900 disabled:text-gray-300";
       case "warning":

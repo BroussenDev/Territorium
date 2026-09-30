@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.42
+
+🎨 **A menu with Territorium's own look**
+
+- Gold is now the color of action: Solo, "Start game" and the other main buttons are gold, like the capital in the logo. Emerald marks what is yours or selected.
+- The top bar has flat tabs; the open page is marked by a row of claimed tiles led by a gold capital, and so are the tabs inside windows.
+- Sharper corners everywhere, like tiles on the map, and the Territorium font for titles, tabs, map names and buttons, without all the capitals.
+- Lobby cards, the action list beside them, the map picker and the game options were restyled to match.
+
 ## v0.1.41
 
 🛡️ **Nations: a real barrier around each capital**

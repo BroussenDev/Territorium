@@ -20,6 +20,12 @@
 
   /* Gold accent */
   --color-cyber-yellow: #fbbf24;
+
+  /* The capital's gold: Territorium's action color. Gold is what you press
+     (play, start, confirm); emerald is what is yours or selected. */
+  --color-capital: #f2b632;
+  --color-capital-light: #f7c85a;
+  --color-capital-ink: #1c1403;
   --color-limestone: #999999;
 
   /* Background & decorative — not for standalone UI use */
@@ -31,6 +37,14 @@
      blue-black. */
   --color-surface: #0a1512;
   --color-ink: #06100c;
+
+  /* Map-plate corners: tiles and plates are cut square, not pill-rounded. */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 5px;
+  --radius-2xl: 6px;
+  --radius-3xl: 8px;
 
   --shadow-brand: 0 0 15px rgba(16, 185, 129, 0.2);
   --shadow-brand-soft: 0 0 12px rgba(16, 185, 129, 0.2);
@@ -280,6 +294,29 @@ body.in-game #hex-grid {
   }
 }
 
+/* Territorium's "you are here" marker: a row of claimed tiles led by the
+   gold capital, drawn under the active nav tab and the active modal tab. */
+.claim-strip,
+.nav-tab.active::after {
+  background:
+    linear-gradient(var(--color-capital), var(--color-capital)) 0 0 / 6px 100%
+      no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 8px,
+      var(--color-brand-bright) 8px 14px,
+      transparent 14px 16px
+    );
+}
+.nav-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0;
+  height: 4px;
+}
+
 /* A patch of claimed tiles in the corner of the Solo tile. */
 .solo-tile {
   position: relative;
@@ -292,8 +329,8 @@ body.in-game #hex-grid {
   z-index: -1;
   border-radius: inherit;
   background-image:
-    linear-gradient(to right, rgb(4 70 50 / 0.55) 3px, transparent 0),
-    linear-gradient(to bottom, rgb(4 70 50 / 0.55) 3px, transparent 0);
+    linear-gradient(to right, rgb(120 72 0 / 0.35) 3px, transparent 0),
+    linear-gradient(to bottom, rgb(120 72 0 / 0.35) 3px, transparent 0);
   background-size: 16px 16px;
   mask-image: radial-gradient(circle at 100% 100%, #000, transparent 70%);
   opacity: 0.7;

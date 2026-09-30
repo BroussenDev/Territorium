@@ -128,7 +128,7 @@ export interface LobbyCardOptions {
  * line box and renders short and low.
  */
 const PILL =
-  "rounded bg-brand px-2 py-1 text-xs font-bold tracking-widest text-white";
+  "rounded-sm border-l-4 border-brand-bright bg-ink/85 px-2 py-1 text-xs font-semibold tracking-[0.02em] text-white";
 // No backdrop-filter anywhere in the card: under a transformed ancestor
 // Chrome clips it with a separate mask and the map leaks at the corners.
 const BADGE = "rounded bg-black/70";
@@ -193,7 +193,7 @@ export function lobbyCard({
       @click=${onClick}
       ?disabled=${disabled}
       aria-disabled=${blocked}
-      class="group @container relative block w-full ${heightClass} overflow-hidden rounded-2xl bg-surface text-left uppercase text-white transition-shadow duration-200 hover:shadow-[var(--shadow-lobby-card-hover)] ${state}"
+      class="group @container relative block w-full ${heightClass} overflow-hidden rounded-2xl bg-surface text-left text-white transition-shadow duration-200 hover:shadow-[var(--shadow-lobby-card-hover)] ${state}"
     >
       <img
         src=${terrainMapFileLoader.getMapData(mapType).webpPath}
@@ -209,9 +209,9 @@ export function lobbyCard({
           ${modifiers.map((label) => html`<span class=${PILL}>${label}</span>`)}
         </div>
         <span
-          class="${PILL} shrink-0 tabular-nums ${timeDisplayUppercase
-            ? ""
-            : "normal-case"}"
+          class="${PILL} shrink-0 !border-capital tabular-nums ${timeDisplayUppercase
+            ? "uppercase"
+            : ""}"
           >${timeDisplay}</span
         >
       </div>
@@ -239,12 +239,12 @@ export function lobbyCard({
         ${trustedOnly ? trustLockIcon(viewerTrusted) : nothing}
         ${title
           ? html`<p
-              class="text-sm font-bold leading-tight tracking-wider @[20rem]:text-base"
+              class="font-display text-base font-bold leading-tight @[20rem]:text-lg"
             >
               ${title}
             </p>`
           : nothing}
-        <h3 class="text-xs tracking-wider text-white/70">${subtitleLine}</h3>
+        <h3 class="text-xs text-white/70">${subtitleLine}</h3>
       </div>
     </button>
   `;

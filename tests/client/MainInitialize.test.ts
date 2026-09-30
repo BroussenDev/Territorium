@@ -224,7 +224,11 @@ describe("Client.initialize() booted from Main.ts module scope", () => {
     // After `await userAuth()` resolves, the remainder of initialize() is
     // synchronous — one flush after the call is observed means the hashchange
     // listener, join-lobby listener and slider wiring are all in place.
-    await vi.waitFor(() => expect(mocks.userAuth).toHaveBeenCalled());
+    // vi.waitFor gives up after 1s by default; under a full parallel suite
+    // run the boot can take longer than that.
+    await vi.waitFor(() => expect(mocks.userAuth).toHaveBeenCalled(), {
+      timeout: 30_000,
+    });
     await new Promise((resolve) => setTimeout(resolve, 25));
   }, 60_000);
 
