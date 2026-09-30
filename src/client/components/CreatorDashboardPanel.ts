@@ -1,15 +1,24 @@
 import { html, LitElement, nothing, TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { CreatorBalance, CreatorDashboard } from "../../core/ApiSchemas";
-import { getCreatorDashboard, requestCreatorPayout } from "../Api";
+import {
+  CreatorBalance,
+  CreatorDashboard,
+  CreatorPayoutMethod,
+} from "../../core/ApiSchemas";
+import {
+  getCreatorDashboard,
+  requestCreatorPayout,
+  saveCreatorPayoutDetails,
+} from "../Api";
 import { translateText } from "../Utils";
 import "./baseComponents/Button";
 
 /**
  * A partnered creator's own panel on the account tab: their code, share,
- * supporters and earnings, and a withdraw button per currency. Shares are held
- * for `holdDays` (refunds, chargebacks) before they can be withdrawn; a
- * withdrawal is a request the Territorium team pays by bank transfer.
+ * supporters and earnings, where their money goes (an IBAN or a PayPal
+ * address) and a withdraw button per currency. Shares are held for `holdDays`
+ * (refunds, chargebacks) before they can be withdrawn; a withdrawal is a
+ * request the Territorium team pays by hand to that account.
  *
  * Hosted by AccountModal, shown only when /users/@me carries
  * `creatorAccount`. Loads its own data when `code` is set.
@@ -23,6 +32,13 @@ export class CreatorDashboardPanel extends LitElement {
   @state() private busyCurrency: string | null = null;
   @state() private error = "";
   @state() private notice = "";
+  // The payout account form: open when there is none yet, or on "Change".
+  @state() private editingPayout = false;
+  @state() private payoutMethod: CreatorPayoutMethod = "iban";
+  @state() private payoutHolder = "";
+  @state() private payoutAccount = "";
+  @state() private payoutBusy = false;
+  @state() private payoutError = "";
 
   createRenderRoot() {
     return this;
@@ -43,6 +59,166 @@ export class CreatorDashboardPanel extends LitElement {
       style: "currency",
       currency: currency.toUpperCase(),
     });
+  }
+
+  private async savePayoutDetails(): Promise<void> {
+    if (this.payoutBusy) return;
+    this.payoutBusy = true;
+    this.payoutError = "";
+    this.notice = "";
+    const result = await saveCreatorPayoutDetails({
+      method: this.payoutMethod,
+      holder: this.payoutHolder.trim(),
+      account: this.payoutAccount.trim(),
+    });
+    this.payoutBusy = false;
+    if (!result.ok) {
+      this.payoutError = translateText(
+        `creator_dashboard.errors.${result.code}`,
+      );
+      return;
+    }
+    this.dashboard = result.dashboard;
+    this.editingPayout = false;
+    this.payoutAccount = "";
+    this.notice = translateText("creator_dashboard.payout_saved");
+  }
+
+  private editPayout(dashboard: CreatorDashboard): void {
+    this.payoutMethod = dashboard.payoutDetails?.method ?? "iban";
+    this.payoutHolder = dashboard.payoutDetails?.holder ?? "";
+    this.payoutAccount = "";
+    this.payoutError = "";
+    this.editingPayout = true;
+  }
+
+  private renderPayoutAccount(dashboard: CreatorDashboard): TemplateResult {
+    const details = dashboard.payoutDetails ?? null;
+    const label = html`<span
+      class="text-[10px] uppercase tracking-widest text-white/40 font-bold"
+    >
+      ${translateText("creator_dashboard.payout_account")}
+    </span>`;
+    if (details !== null && !this.editingPayout) {
+      return html`<div class="flex flex-col gap-1.5">
+        ${label}
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm font-bold text-white break-all"
+              >${translateText(
+                `creator_dashboard.payout_method_${details.method}`,
+              )}:
+              ${details.account}</span
+            >
+            <span class="text-xs text-white/50 break-all"
+              >${details.holder}</span
+            >
+          </div>
+          <o-button
+            variant="secondary"
+            size="sm"
+            translationKey="creator_dashboard.payout_change"
+            @click=${() => this.editPayout(dashboard)}
+          ></o-button>
+        </div>
+      </div>`;
+    }
+    const input = (
+      id: string,
+      value: string,
+      placeholderKey: string,
+      onInput: (value: string) => void,
+      type = "text",
+    ) =>
+      html`<input
+        id=${id}
+        type=${type}
+        .value=${value}
+        @input=${(e: Event) => onInput((e.target as HTMLInputElement).value)}
+        placeholder=${translateText(placeholderKey)}
+        ?disabled=${this.payoutBusy}
+        autocomplete="off"
+        spellcheck="false"
+        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand/50 transition-all font-medium hover:bg-white/10 disabled:opacity-50"
+      />`;
+    const methodButton = (method: CreatorPayoutMethod) =>
+      html`<button
+        type="button"
+        class="flex-1 rounded-lg border px-3 py-2 text-sm font-bold transition-colors ${this
+          .payoutMethod === method
+          ? "border-brand/60 bg-brand/20 text-white"
+          : "border-white/10 bg-white/5 text-white/60 hover:bg-white/10"}"
+        aria-pressed=${this.payoutMethod === method}
+        @click=${() => {
+          this.payoutMethod = method;
+          this.payoutAccount = "";
+          this.payoutError = "";
+        }}
+      >
+        ${translateText(`creator_dashboard.payout_method_${method}`)}
+      </button>`;
+    const canSave =
+      !this.payoutBusy &&
+      this.payoutHolder.trim().length >= 2 &&
+      this.payoutAccount.trim().length > 0;
+    return html`<div
+      class="flex flex-col gap-2 rounded-lg border border-white/10 bg-black/20 p-3"
+    >
+      ${label}
+      ${details === null
+        ? html`<p class="text-xs text-amber-300">
+            ${translateText("creator_dashboard.payout_needed")}
+          </p>`
+        : nothing}
+      <div class="flex gap-2" role="group">
+        ${methodButton("iban")} ${methodButton("paypal")}
+      </div>
+      ${input(
+        "creator-payout-holder",
+        this.payoutHolder,
+        "creator_dashboard.payout_holder",
+        (v) => (this.payoutHolder = v),
+      )}
+      ${this.payoutMethod === "iban"
+        ? input(
+            "creator-payout-iban",
+            this.payoutAccount,
+            "creator_dashboard.payout_iban",
+            (v) => (this.payoutAccount = v),
+          )
+        : input(
+            "creator-payout-email",
+            this.payoutAccount,
+            "creator_dashboard.payout_email",
+            (v) => (this.payoutAccount = v),
+            "email",
+          )}
+      ${this.payoutError
+        ? html`<div class="text-sm text-red-400">${this.payoutError}</div>`
+        : nothing}
+      <div class="flex gap-2">
+        ${details !== null
+          ? html`<o-button
+              class="flex-1"
+              variant="secondary"
+              width="block"
+              size="md"
+              translationKey="common.cancel"
+              .disable=${this.payoutBusy}
+              @click=${() => (this.editingPayout = false)}
+            ></o-button>`
+          : nothing}
+        <o-button
+          class="flex-1"
+          variant="primary"
+          width="block"
+          size="md"
+          translationKey="creator_dashboard.payout_save"
+          .disable=${!canSave}
+          @click=${() => void this.savePayoutDetails()}
+        ></o-button>
+      </div>
+    </div>`;
   }
 
   private async withdraw(currency: string): Promise<void> {
@@ -69,6 +245,7 @@ export class CreatorDashboardPanel extends LitElement {
     const { currency } = balance;
     const canWithdraw =
       dashboard.status !== "terminated" &&
+      (dashboard.payoutDetails ?? null) !== null &&
       balance.requestedCents === 0 &&
       balance.availableCents >= dashboard.minPayoutCents;
     const line = (key: string, cents: number) =>
@@ -162,6 +339,7 @@ export class CreatorDashboardPanel extends LitElement {
         ${stat("creator_dashboard.supporters", String(dashboard.supporters))}
         ${stat("creator_dashboard.sales", String(dashboard.sales))}
       </div>
+      ${this.renderPayoutAccount(dashboard)}
       ${balances.map((b) => this.renderBalance(b, dashboard))}
       ${this.error
         ? html`<div class="text-sm text-red-400">${this.error}</div>`

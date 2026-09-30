@@ -485,6 +485,17 @@ export const CreatorBalanceSchema = z.object({
 });
 export type CreatorBalance = z.infer<typeof CreatorBalanceSchema>;
 
+// Where a creator's withdrawals are sent: a bank account (IBAN) or a PayPal
+// address. The account comes back masked (e.g. "FR76 •••• 0189").
+export const CreatorPayoutMethodSchema = z.enum(["iban", "paypal"]);
+export type CreatorPayoutMethod = z.infer<typeof CreatorPayoutMethodSchema>;
+export const CreatorPayoutDetailsSchema = z.object({
+  method: CreatorPayoutMethodSchema,
+  holder: z.string(),
+  account: z.string(),
+});
+export type CreatorPayoutDetails = z.infer<typeof CreatorPayoutDetailsSchema>;
+
 export const CreatorDashboardSchema = z.object({
   code: z.string(),
   displayName: z.string(),
@@ -495,6 +506,9 @@ export const CreatorDashboardSchema = z.object({
   supporters: z.number(),
   sales: z.number(),
   balances: CreatorBalanceSchema.array(),
+  // null until the creator says where to send their money; withdrawals
+  // need it.
+  payoutDetails: CreatorPayoutDetailsSchema.nullable().optional(),
   payouts: z
     .object({
       id: z.string(),

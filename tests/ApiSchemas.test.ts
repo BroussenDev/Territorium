@@ -1,6 +1,7 @@
 import {
   ClaimAllRewardsResponseSchema,
   ClaimRewardResponseSchema,
+  CreatorDashboardSchema,
   FriendEntrySchema,
   GetMyTribeNamesResponseSchema,
   GoogleUser,
@@ -1477,5 +1478,62 @@ describe("UserMeResponseSchema player achievements", () => {
   it("defaults player to an empty array when the server omits it", () => {
     const parsed = achievements.parse({ singleplayerMap: [] });
     expect(parsed.player).toEqual([]);
+  });
+});
+
+describe("CreatorDashboardSchema", () => {
+  const base = {
+    code: "LUCAS",
+    displayName: "Lucas TV",
+    status: "active",
+    sharePercent: 10,
+    holdDays: 30,
+    minPayoutCents: 2000,
+    supporters: 3,
+    sales: 5,
+    balances: [],
+    payouts: [],
+  };
+
+  it("accepts a dashboard without payout details (older servers)", () => {
+    expect(CreatorDashboardSchema.parse(base).payoutDetails).toBeUndefined();
+  });
+
+  it("accepts no payout account yet", () => {
+    const parsed = CreatorDashboardSchema.parse({
+      ...base,
+      payoutDetails: null,
+    });
+    expect(parsed.payoutDetails).toBeNull();
+  });
+
+  it("keeps a masked IBAN or PayPal payout account", () => {
+    const iban = CreatorDashboardSchema.parse({
+      ...base,
+      payoutDetails: {
+        method: "iban",
+        holder: "Lucas Martin",
+        account: "FR76 •••• 0189",
+      },
+    });
+    expect(iban.payoutDetails?.account).toBe("FR76 •••• 0189");
+    const paypal = CreatorDashboardSchema.parse({
+      ...base,
+      payoutDetails: {
+        method: "paypal",
+        holder: "Lucas Martin",
+        account: "lu•••@mail.fr",
+      },
+    });
+    expect(paypal.payoutDetails?.method).toBe("paypal");
+  });
+
+  it("rejects an unknown payout method", () => {
+    expect(
+      CreatorDashboardSchema.safeParse({
+        ...base,
+        payoutDetails: { method: "cash", holder: "Lucas", account: "x" },
+      }).success,
+    ).toBe(false);
   });
 });

@@ -11,6 +11,7 @@ import {
   ClaimRewardResponseSchema,
   CreatorDashboard,
   CreatorDashboardSchema,
+  CreatorPayoutMethod,
   GetMyTribeNamesResponse,
   GetMyTribeNamesResponseSchema,
   HiddenNameResponseSchema,
@@ -765,6 +766,7 @@ export type CreatorPayoutResult =
         | "below_minimum"
         | "already_requested"
         | "terminated"
+        | "no_payout_details"
         | "rate_limited"
         | "failed";
     };
@@ -794,7 +796,8 @@ export async function requestCreatorPayout(
       if (
         reason === "below_minimum" ||
         reason === "already_requested" ||
-        reason === "terminated"
+        reason === "terminated" ||
+        reason === "no_payout_details"
       ) {
         return { ok: false, code: reason };
       }
@@ -811,6 +814,73 @@ export async function requestCreatorPayout(
     return { ok: true, dashboard: parsed.data };
   } catch (e) {
     console.error("requestCreatorPayout: request failed", e);
+    return { ok: false, code: "failed" };
+  }
+}
+
+const PAYOUT_DETAILS_ERROR_CODES = [
+  "invalid_method",
+  "invalid_holder",
+  "invalid_iban",
+  "invalid_email",
+] as const;
+type PayoutDetailsErrorCode = (typeof PAYOUT_DETAILS_ERROR_CODES)[number];
+function isPayoutDetailsErrorCode(
+  value: unknown,
+): value is PayoutDetailsErrorCode {
+  return (
+    typeof value === "string" &&
+    (PAYOUT_DETAILS_ERROR_CODES as readonly string[]).includes(value)
+  );
+}
+
+export type CreatorPayoutDetailsResult =
+  | { ok: true; dashboard: CreatorDashboard }
+  | { ok: false; code: PayoutDetailsErrorCode | "rate_limited" | "failed" };
+
+// PUT /users/@me/creator/payout-details {method, holder, account} — where the
+// creator's withdrawals are sent (an IBAN or a PayPal address).
+export async function saveCreatorPayoutDetails(details: {
+  method: CreatorPayoutMethod;
+  holder: string;
+  account: string;
+}): Promise<CreatorPayoutDetailsResult> {
+  try {
+    const response = await fetch(
+      `${getApiBase()}/users/@me/creator/payout-details`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: await getAuthHeader(),
+        },
+        body: JSON.stringify(details),
+      },
+    );
+    if (response.status === 401) {
+      await logOut();
+      return { ok: false, code: "failed" };
+    }
+    if (response.status === 429) return { ok: false, code: "rate_limited" };
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      const reason: unknown = body?.reason;
+      return {
+        ok: false,
+        code: isPayoutDetailsErrorCode(reason) ? reason : "failed",
+      };
+    }
+    const parsed = CreatorDashboardSchema.safeParse(await response.json());
+    if (!parsed.success) {
+      console.error(
+        "saveCreatorPayoutDetails: Zod validation failed",
+        parsed.error,
+      );
+      return { ok: false, code: "failed" };
+    }
+    return { ok: true, dashboard: parsed.data };
+  } catch (e) {
+    console.error("saveCreatorPayoutDetails: request failed", e);
     return { ok: false, code: "failed" };
   }
 }

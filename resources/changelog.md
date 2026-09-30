@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.39
+
+💸 **Creators: choose where your money goes**
+
+- The creator space in your account now has a payout account: a bank account (IBAN) or a PayPal address, with the account holder's name.
+- The IBAN is checked as you save it, and only a masked version is shown afterwards.
+- Withdrawals unlock once the payout account is set, and each withdrawal is sent to it by the Territorium team.
+
 ## v0.1.38
 
 ⚖️ **Fairer ranked maps**
