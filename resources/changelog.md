@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.44
+
+🖊️ **Name buttons and lobby maps**
+
+- The buttons beside your name were redrawn: a pencil laying down a tile to use your own name, a mask to hide it. The hide button used to show up empty; it now shows its icon.
+- Lobby cards on the home page show the whole map instead of a cropped close-up.
+
 ## v0.1.43
 
 🗺️ **A cleaner home page and store**

@@ -183,10 +183,12 @@ export function lobbyCard({
     : blocked
       ? "opacity-50 cursor-not-allowed"
       : "";
-  // Cover images sit at 1.05 to hide their edges, so they zoom from there.
+  // The whole map is shown on the card's night-sea ground; the name bar may
+  // overlap its bottom edge, as it did when the map was cropped to fill.
+  const mapImage = terrainMapFileLoader.getMapData(mapType).webpPath;
   const image = fitsByContain(mapType)
     ? "object-contain group-hover:scale-105"
-    : "object-cover scale-[1.05] group-hover:scale-[1.12]";
+    : "object-contain p-1.5 pb-8 group-hover:scale-[1.04]";
 
   return html`
     <button
@@ -196,7 +198,7 @@ export function lobbyCard({
       class="group @container relative block w-full ${heightClass} overflow-hidden rounded-2xl bg-surface text-left text-white transition-shadow duration-200 hover:shadow-[var(--shadow-lobby-card-hover)] ${state}"
     >
       <img
-        src=${terrainMapFileLoader.getMapData(mapType).webpPath}
+        src=${mapImage}
         alt=${mapName ?? mapType}
         draggable="false"
         class="pointer-events-none absolute inset-0 size-full select-none transition-transform duration-200 ${image}"

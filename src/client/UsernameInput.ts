@@ -1,4 +1,4 @@
-import { html, LitElement, nothing } from "lit";
+import { html, LitElement, nothing, svg } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { translateText } from "../client/Utils";
 import { UserMeResponse } from "../core/ApiSchemas";
@@ -122,6 +122,13 @@ const NAME_BOX =
 // `line-height: normal` because that is what an <input> uses for its editor
 // box; the span only lands on the same pixel when it sizes from font metrics
 // too. Any fixed leading drifts a pixel under some fonts.
+// Square icon buttons beside the name: flat plates that light emerald.
+const ICON_BUTTON =
+  "flex h-full aspect-square items-center justify-center rounded-md " +
+  "border border-white/12 bg-white/[0.04] text-white/75 transition-colors " +
+  "hover:border-brand/60 hover:bg-brand/10 hover:text-white cursor-pointer " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60";
+
 const NAME_TEXT =
   "text-xl/[normal] sm:text-2xl/[normal] font-medium tracking-wider " +
   "[text-shadow:0_1px_2px_rgba(0,0,0,0.9)]";
@@ -1044,7 +1051,7 @@ export class UsernameInput extends LitElement {
     return html`
       <button
         type="button"
-        class="flex h-full aspect-square items-center justify-center rounded-lg border border-white/15 bg-black/25 text-white/70 transition-colors hover:border-white/30 hover:bg-black/40 hover:text-white cursor-pointer disabled:opacity-50 disabled:cursor-wait"
+        class="${ICON_BUTTON} disabled:opacity-50 disabled:cursor-wait"
         title=${label}
         aria-label=${label}
         ?disabled=${this.hiddenNameBusy}
@@ -1052,7 +1059,7 @@ export class UsernameInput extends LitElement {
       >
         <svg
           viewBox="0 0 24 24"
-          class="w-5 h-5"
+          class="size-[22px]"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -1061,18 +1068,32 @@ export class UsernameInput extends LitElement {
           aria-hidden="true"
         >
           ${action === "reroll"
-            ? html`<path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+            ? svg`<path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
                 <path d="M21 3v6h-6"></path>`
             : action === "on"
-              ? html`<path
-                    d="M9.9 4.24A9.1 9.1 0 0 1 12 4c7 0 10 8 10 8a13.2 13.2 0 0 1-1.67 2.68"
-                  ></path>
+              ? svg`<!-- A domino mask with tile-shaped eye holes. -->
                   <path
-                    d="M6.61 6.61A13.5 13.5 0 0 0 2 12s3 8 10 8a9.7 9.7 0 0 0 5.39-1.61"
+                    d="M2.5 9.6A2.6 2.6 0 0 1 5.1 7h13.8a2.6 2.6 0 0 1 2.6 2.6v1.1c0 3.5-2.6 6.3-5.8 6.3-1.7 0-2.8-1.6-3.7-3.1-.9 1.5-2 3.1-3.7 3.1-3.2 0-5.8-2.8-5.8-6.3Z"
                   ></path>
-                  <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
-                  <path d="m2 2 20 20"></path>`
-              : html`<path
+                  <rect
+                    x="6"
+                    y="10"
+                    width="3.4"
+                    height="2.6"
+                    rx=".5"
+                    fill="currentColor"
+                    stroke="none"
+                  ></rect>
+                  <rect
+                    x="14.6"
+                    y="10"
+                    width="3.4"
+                    height="2.6"
+                    rx=".5"
+                    fill="currentColor"
+                    stroke="none"
+                  ></rect>`
+              : svg`<path
                     d="M2 12s3-8 10-8 10 8 10 8-3 8-10 8-10-8-10-8Z"
                   ></path>
                   <circle cx="12" cy="12" r="3"></circle>`}
@@ -1117,7 +1138,7 @@ export class UsernameInput extends LitElement {
     return html`
       <button
         type="button"
-        class="flex h-full aspect-square items-center justify-center rounded-lg border border-white/15 bg-black/25 text-white/70 transition-colors hover:border-white/30 hover:bg-black/40 hover:text-white cursor-pointer"
+        class=${ICON_BUTTON}
         title=${translateText("username.verified_use_custom")}
         aria-label=${translateText("username.verified_use_custom")}
         @click=${this.handleVerifiedToggle}
@@ -1126,7 +1147,7 @@ export class UsernameInput extends LitElement {
              verified badge so the two buttons read as a pair. -->
         <svg
           viewBox="0 0 24 24"
-          class="w-5 h-5"
+          class="size-[22px]"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -1134,8 +1155,20 @@ export class UsernameInput extends LitElement {
           stroke-linejoin="round"
           aria-hidden="true"
         >
-          <path d="M12 20h9"></path>
-          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+          <!-- A pencil laying down a territory tile. -->
+          <path
+            d="M4 20l1.1-4.3 9.8-9.8a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8l-9.8 9.8Z"
+          ></path>
+          <path d="m13.4 7.4 3.2 3.2"></path>
+          <rect
+            x="14.5"
+            y="16.5"
+            width="4.5"
+            height="4.5"
+            rx=".7"
+            fill="#34d399"
+            stroke="none"
+          ></rect>
         </svg>
       </button>
     `;
