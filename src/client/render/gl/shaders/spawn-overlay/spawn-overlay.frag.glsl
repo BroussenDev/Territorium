@@ -14,9 +14,15 @@ uniform vec4 uSelfRadii;          // (minR, maxR, _, _)
 uniform vec4 uMateRadii;          // (minR, maxR, _, _)
 uniform vec2 uGradientStops;      // (innerEdge, solidEnd)
 
+// Versus spawn zone: the rectangle the local team may spawn in (x, y, w, h)
+// and the no-spawn disc at the map centre (x, y, radius), all in tiles.
+uniform vec4 uZone;
+uniform vec3 uZoneHole;
+
 in vec2 vWorldPos;
 flat in vec2 vCenter;
-flat in float vKind;   // 0 = enemy highlight, 1 = self ring, 2 = teammate ring
+flat in float vKind;   // 0 = enemy highlight, 1 = self ring, 2 = teammate ring,
+                       // 3 = versus spawn zone
 flat in vec3 vColor;
 
 out vec4 fragColor;
@@ -26,6 +32,19 @@ void main() {
   float dy = vWorldPos.y - vCenter.y;
   float distSq = dx * dx + dy * dy;
   float dist = sqrt(distSq);
+
+  // --- Versus spawn zone: veil the land the local team can't spawn on ---
+  if (vKind > 2.5) {
+    vec2 tile = floor(vWorldPos);
+    if (tile.x < 0.0 || tile.y < 0.0 || tile.x >= uMapSize.x || tile.y >= uMapSize.y)
+      discard;
+    vec2 fromHole = tile - uZoneHole.xy;
+    bool allowed = tile.x >= uZone.x && tile.x < uZone.x + uZone.z &&
+      tile.y >= uZone.y && tile.y < uZone.y + uZone.w &&
+      dot(fromHole, fromHole) >= uZoneHole.z * uZoneHole.z;
+    fragColor = allowed ? vec4(vColor, 0.12) : vec4(0.0, 0.0, 0.0, 0.5);
+    return;
+  }
 
   // --- Enemy tile highlights: only unowned tiles within radius ---
   if (vKind < 0.5) {

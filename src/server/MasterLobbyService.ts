@@ -1,5 +1,6 @@
 import { Worker } from "cluster";
 import winston from "winston";
+import { versusTeamSizeOfType } from "../core/game/Versus";
 import {
   MAX_HOSTED_LOBBIES,
   PublicGameType,
@@ -289,6 +290,10 @@ export class MasterLobbyService {
       special: [],
       hosted: [],
       nations: [],
+      "1v1": [],
+      "2v2": [],
+      "3v3": [],
+      "4v4": [],
     };
 
     for (const lobby of lobbies) {
@@ -446,13 +451,16 @@ export class MasterLobbyService {
     // given a countdown or replaced by the master.
     for (const type of SCHEDULED_PUBLIC_GAME_TYPES) {
       const lobbies = lobbiesByType[type];
+      // Versus lobbies have no countdown: each format keeps one lobby open,
+      // which starts as soon as it is full, and the next one opens then.
+      const versus = versusTeamSizeOfType(type) !== null;
 
       // Always ensure the next lobby has a timer, even if the queue is
       // already full. This prevents a race where two lobbies are created before
       // either receives a startsAt (IPC round-trip delay), leaving both stuck
       // without a countdown.
       const nextLobby = lobbies[0];
-      if (nextLobby && nextLobby.startsAt === undefined) {
+      if (!versus && nextLobby && nextLobby.startsAt === undefined) {
         this.sendMessageToWorker({
           type: "updateLobby",
           gameID: nextLobby.gameID,
@@ -462,7 +470,8 @@ export class MasterLobbyService {
 
       // An inactive deployment still starts what it already queued (the
       // countdown above), it just stops adding to the queue.
-      if (!this.active || lobbies.length >= QUEUED_LOBBIES_PER_TYPE) {
+      const queued = versus ? 1 : QUEUED_LOBBIES_PER_TYPE;
+      if (!this.active || lobbies.length >= queued) {
         continue;
       }
 

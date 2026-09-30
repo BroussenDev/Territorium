@@ -120,6 +120,10 @@ describe("MasterLobbyService with a lobby coordinator", () => {
         special: [],
         hosted: [],
         nations: [],
+        "1v1": [],
+        "2v2": [],
+        "3v3": [],
+        "4v4": [],
       },
       delistGameIDs: [],
     });
@@ -138,7 +142,17 @@ describe("MasterLobbyService with a lobby coordinator", () => {
   it("forwards the coordinator's delists once", async () => {
     service.coordinatorHandlers().onRoster({
       serverTime: 1,
-      games: { ffa: [], team: [], special: [], hosted: [], nations: [] },
+      games: {
+        ffa: [],
+        team: [],
+        special: [],
+        hosted: [],
+        nations: [],
+        "1v1": [],
+        "2v2": [],
+        "3v3": [],
+        "4v4": [],
+      },
       delistGameIDs: ["LOSER1"],
     });
     await broadcaster()();
@@ -203,6 +217,10 @@ describe("MasterLobbyService with a lobby coordinator", () => {
         special: [],
         hosted: [],
         nations: [],
+        "1v1": [],
+        "2v2": [],
+        "3v3": [],
+        "4v4": [],
       },
       delistGameIDs: [],
     });
@@ -210,9 +228,10 @@ describe("MasterLobbyService with a lobby coordinator", () => {
 
     coordinator.coordinated = false;
     await scheduler()();
-    // Local: countdown for own front lobby, and creates to fill the queue.
+    // Local: countdown for own front lobby, and creates to fill the queues
+    // (three more scheduled types and the four versus formats).
     expect(sent(worker, "updateLobby")).toHaveLength(1);
-    expect(sent(worker, "createGame")).toHaveLength(4);
+    expect(sent(worker, "createGame")).toHaveLength(8);
     await broadcaster()();
     const [b] = sent(worker, "lobbiesBroadcast");
     // Foreign lobbies are dropped from the feed: the coordinator that

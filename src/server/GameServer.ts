@@ -20,6 +20,7 @@ import {
   assignTeamsLobbyPreview,
   resolveTeamsList,
 } from "../core/game/TeamAssignment";
+import { versusTeamSize } from "../core/game/Versus";
 import {
   CHAT_MESSAGE_MAX_LENGTH,
   ClientChatMessage,
@@ -267,6 +268,9 @@ export class GameServer {
   // Nations lobbies: the country each account picked, by persistentID so a
   // reconnect keeps it.
   private readonly nationPicks = new Map<string, number>();
+  // Private versus lobbies: the side (0: west, 1: east) each account picked,
+  // by persistentID so a reconnect keeps it.
+  private readonly teamPicks = new Map<string, number>();
 
   private visibleAt?: number;
 
@@ -432,6 +436,9 @@ export class GameServer {
       }
 
       case "update_game_config": {
+        if (this.isVersus()) {
+          return finish({ status: 409, error: "versus rules are fixed" });
+        }
         this.updateGameConfig(stamped.config);
         return finish({ status: 200 });
       }
@@ -439,6 +446,8 @@ export class GameServer {
       case "toggle_game_start_timer": {
         if (this.startsAt) {
           this.startsAt = undefined;
+        } else if (this.isVersus() && !this.isFull()) {
+          return finish({ status: 409, error: "versus lobby is not full" });
         } else {
           this.setStartsAt(
             Date.now() + (this.gameConfig.startDelay ?? 0) * 1000,
@@ -663,7 +672,9 @@ export class GameServer {
     this.ingress.attach(client);
     this.startLobbyInfoBroadcast();
 
-    if (this.playerCount() >= (this.gameConfig.maxPlayers ?? Infinity)) {
+    // Versus lobbies check for a full lobby live instead (see phase()): a
+    // player leaving a full lobby before it starts must reopen the seat.
+    if (!this.isVersus() && this.isFull()) {
       this.hasReachedMaxPlayerCount = true;
     }
 
@@ -789,6 +800,10 @@ export class GameServer {
       }
       case "pick_nation": {
         void this.pickNation(client, clientMsg.nation);
+        break;
+      }
+      case "pick_team": {
+        this.pickTeam(client, clientMsg.team);
         break;
       }
       case "chat": {
@@ -1267,6 +1282,7 @@ export class GameServer {
     if (!max) return Infinity;
     const reserved =
       this.isPublic() &&
+      !this.isVersus() &&
       !client.queuePriority &&
       !this.gameConfig.allowedPublicIds?.length &&
       (this.startsAt === undefined ||
@@ -1417,7 +1433,45 @@ export class GameServer {
     });
   }
 
+  isVersus(): boolean {
+    return this.gameConfig.gameVariant === "versus";
+  }
+
+  private isFull(): boolean {
+    return this.playerCount() >= (this.gameConfig.maxPlayers ?? Infinity);
+  }
+
+  // Picks (or, with null, releases) a side in a private versus lobby. A side
+  // already holding the format's team size is closed; players who never pick
+  // fill the free places when the game starts.
+  private pickTeam(client: Client, team: number | null) {
+    const size = versusTeamSize(this.gameConfig);
+    if (
+      size === null ||
+      this.isPublic() ||
+      this.hasStarted() ||
+      client.spectator
+    ) {
+      return;
+    }
+    if (team === null) {
+      this.teamPicks.delete(client.persistentID);
+    } else {
+      const taken = this.clients
+        .players()
+        .filter(
+          (c) => c !== client && this.teamPicks.get(c.persistentID) === team,
+        ).length;
+      if (taken >= size) return;
+      this.teamPicks.set(client.persistentID, team);
+    }
+    this.broadcastLobbyInfo();
+  }
+
   private matchmakingTeamIndex(c: Client): number | undefined {
+    if (this.isVersus()) {
+      return c.spectator ? undefined : this.teamPicks.get(c.persistentID);
+    }
     const publicId = c.publicId;
     if (this.matchmakingTeams === undefined || publicId === undefined) {
       return undefined;
@@ -1633,10 +1687,14 @@ export class GameServer {
     }
 
     const lessThanLifetime = this.startsAt ? Date.now() < this.startsAt : true;
+    // A public versus lobby starts the moment it is full; a private one waits
+    // for its host.
+    const versusFull = this.isVersus() && this.isPublic() && this.isFull();
     if (
       lessThanLifetime &&
       !this.hasStarted() &&
-      !this.hasReachedMaxPlayerCount
+      !this.hasReachedMaxPlayerCount &&
+      !versusFull
     ) {
       return GamePhase.Lobby;
     }

@@ -26,6 +26,7 @@ import {
   ClientJoinMessage,
   ClientMessage,
   ClientPickNationMessage,
+  ClientPickTeamMessage,
   ClientPingMessage,
   ClientRejoinMessage,
   ClientReportMessage,
@@ -187,6 +188,12 @@ export class SendSetCapitalIntentEvent implements GameEvent {
 // Nations lobbies: pick a country (manifest index), or release it with null.
 export class SendPickNationEvent implements GameEvent {
   constructor(public readonly nation: number | null) {}
+}
+
+// Private versus lobbies: pick a side (0: west, 1: east), or leave it to the
+// draw with null.
+export class SendPickTeamEvent implements GameEvent {
+  constructor(public readonly team: number | null) {}
 }
 
 export class CancelAttackIntentEvent implements GameEvent {
@@ -423,6 +430,12 @@ export class Transport {
         type: "pick_nation",
         nation: e.nation,
       } satisfies ClientPickNationMessage),
+    );
+    this.subscribe(SendPickTeamEvent, (e) =>
+      this.sendMsg({
+        type: "pick_team",
+        team: e.team,
+      } satisfies ClientPickTeamMessage),
     );
     this.subscribe(SendSpectateEvent, (e) => {
       this.lobbyConfig.spectator = e.spectator;

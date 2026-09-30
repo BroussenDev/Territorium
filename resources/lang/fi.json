@@ -1223,7 +1223,6 @@
     "teams": "Joukkueet"
   },
   "game_modes": {
-    "more_soon": "Lisää pelitiloja on tulossa",
     "nations_description": "Valitse todellinen maa jättimäiseltä maailmankartalta ja aloita sen koko alueelta. Pidä pääkaupunkisi, niele naapurisi ja hallitse puolta maailmaa.",
     "nations_fact_ai": "Maissa, joita kukaan ei valitse, pelaa tekoäly",
     "nations_fact_alliance": "Liittoumat naapurimaan kanssa kestävät 50 % pidempään",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Seuraava peli tulossa pian",
     "players": "{count}/{max} pelaajaa",
     "subtitle": "Moninpelit omilla säännöillään",
-    "title": "Pelitilat"
+    "title": "Pelitilat",
+    "versus_description": "Kaksi joukkuetta kohtaa turnauskartalla, samoin säännöin kaikille.",
+    "versus_open": "Valitse muoto",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} odottaa"
   },
   "game_settings": {
     "bots": "Heimot:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP-immuniteetti aktiivinen {seconds}s",
     "random_spawn": "Random spawn on käytössä. Valitaan aloituspaikkaa sinulle...",
     "random_spawn_spectator": "Random spawn on käytössä",
-    "singleplayer_game_paused": "Peli keskeytetty"
+    "singleplayer_game_paused": "Peli keskeytetty",
+    "versus_spawn": "Valitse aloituspaikka joukkueesi alueelta"
   },
   "help_modal": {
     "action_attack_altclick": "Hyökkäys (kun hiiren vasen painike on asetettu avaamaan valikon)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Käytä vahvistettua",
     "verified_use_custom": "Vaihda takaisin mukautettuun nimeen",
     "verified_use_hint": "Pelaa vahvistetulla tilinimelläsi"
+  },
+  "versus": {
+    "draw_hint": "Joukkueet arvotaan pelin alkaessa.",
+    "format_title": "Versus {format}",
+    "host": "Isäntä",
+    "in_lobby": "Aulassa: {count}/{max}",
+    "intro": "Kaksi joukkuetta kohtaa turnauskartalla. Kumpikin joukkue aloittaa omalta alueeltaan, joka on vastustajan alueen peilikuva, eivätkä säännöt koskaan muutu.",
+    "join_side": "Liity tälle puolelle",
+    "kick": "Poista aulasta",
+    "leave_side": "Poistu tältä puolelta",
+    "no_side": "Ei vielä puolta ({count})",
+    "pick_hint": "Valitse puolesi. Peli voi alkaa, kun molemmat joukkueet ovat täynnä.",
+    "play_private": "Luo yksityinen peli",
+    "play_private_hint": "Kutsu ystäväsi linkillä. Jokainen valitsee puolen, minkä jälkeen isäntä aloittaa pelin.",
+    "play_public": "Pelaa julkinen peli",
+    "play_public_hint": "Alkaa heti, kun kaikki paikat ovat täynnä. Joukkueet arvotaan.",
+    "private_title": "Yksityinen {format}",
+    "queue": "{count}/{max} odottaa",
+    "queue_opening": "Avataan seuraavaa peliä…",
+    "rule_fixed": "Kiinteät säännöt, joita kukaan ei voi muuttaa",
+    "rule_map": "Kartta: {map}",
+    "rule_no_ai": "Ei botteja eikä kansakuntia: vain pelaajia",
+    "rule_north": "Kartan pohjoisosa on puolueetonta aluetta",
+    "rule_win": "Viimeisenä pystyssä oleva joukkue voittaa",
+    "rule_zones": "Kumpikin joukkue aloittaa omalta alueeltaan, kaukana keskustasta",
+    "seat_draw": "Arvotaan alussa",
+    "seat_free": "Vapaa paikka",
+    "side_east": "Itä",
+    "side_full": "Tämä puoli on täynnä",
+    "side_south_east": "Kaakko",
+    "side_south_west": "Lounas",
+    "side_west": "Länsi",
+    "waiting_players": "Odotetaan pelaajia ({count}/{max})",
+    "you": "Sinä"
   },
   "win_modal": {
     "died": "Sinä kuolit",

@@ -469,6 +469,10 @@ export class Config {
   isNationsMode(): boolean {
     return this._gameConfig.gameVariant === "nations";
   }
+  /** Versus mode: two teams on a tournament map, fixed rules (see Versus.ts). */
+  isVersusMode(): boolean {
+    return this._gameConfig.gameVariant === "versus";
+  }
   isRandomSpawn(): boolean {
     return this._gameConfig.randomSpawn;
   }

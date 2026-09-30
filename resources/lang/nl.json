@@ -1223,7 +1223,6 @@
     "teams": "Teams"
   },
   "game_modes": {
-    "more_soon": "Er komen nog meer spelmodi",
     "nations_description": "Kies een echt land op de gigantische wereldkaart en begin met het hele grondgebied. Behoud je hoofdstad, verslind je buren en regeer de helft van de wereld.",
     "nations_fact_ai": "Landen die niemand kiest, worden door de AI gespeeld",
     "nations_fact_alliance": "Allianties met een buurland duren 50% langer",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Binnenkort het volgende spel",
     "players": "{count}/{max} spelers",
     "subtitle": "Multiplayer-spellen met eigen regels",
-    "title": "Spelmodi"
+    "title": "Spelmodi",
+    "versus_description": "Twee teams nemen het tegen elkaar op op een toernooikaart, met dezelfde regels voor iedereen.",
+    "versus_open": "Kies een formaat",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} wachtend"
   },
   "game_settings": {
     "bots": "Stammen: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP-immuniteitsduur nog {seconds}s actief",
     "random_spawn": "Willekeurige startpositie is ingeschakeld. Positie wordt voor je gekozen...",
     "random_spawn_spectator": "Willekeurige spawn is ingeschakeld",
-    "singleplayer_game_paused": "Spel gepauzeerd"
+    "singleplayer_game_paused": "Spel gepauzeerd",
+    "versus_spawn": "Kies een startlocatie in de zone van je team"
   },
   "help_modal": {
     "action_attack_altclick": "Aanvallen (als linkermuisknop is ingesteld op menu openen)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Gebruik geverifieerd",
     "verified_use_custom": "Ga terug naar een aangepaste naam",
     "verified_use_hint": "Speel onder je geverifieerde accountnaam"
+  },
+  "versus": {
+    "draw_hint": "De teams worden geloot wanneer het spel start.",
+    "format_title": "Versus {format}",
+    "host": "Host",
+    "in_lobby": "In de lobby: {count}/{max}",
+    "intro": "Twee teams nemen het tegen elkaar op op een toernooikaart. Elk team start in zijn eigen zone, het spiegelbeeld van die van de tegenstander, en de regels veranderen nooit.",
+    "join_side": "Bij deze kant aansluiten",
+    "kick": "Uit de lobby verwijderen",
+    "leave_side": "Deze kant verlaten",
+    "no_side": "Nog geen kant ({count})",
+    "pick_hint": "Kies je kant. Het spel kan starten zodra beide teams vol zijn.",
+    "play_private": "Maak een privéspel",
+    "play_private_hint": "Nodig je vrienden uit met de link. Iedereen kiest een kant, daarna start de host het spel.",
+    "play_public": "Speel een openbaar spel",
+    "play_public_hint": "Start zodra alle plaatsen bezet zijn. De teams worden geloot.",
+    "private_title": "Privé {format}",
+    "queue": "{count}/{max} wachtend",
+    "queue_opening": "Volgend spel wordt geopend…",
+    "rule_fixed": "Vaste regels die niemand kan veranderen",
+    "rule_map": "Kaart: {map}",
+    "rule_no_ai": "Geen bots of naties: alleen spelers",
+    "rule_north": "Het noorden van de kaart is neutraal gebied",
+    "rule_win": "Het laatste overgebleven team wint",
+    "rule_zones": "Elk team start in zijn eigen zone, ver van het midden",
+    "seat_draw": "Geloot bij de start",
+    "seat_free": "Vrije plaats",
+    "side_east": "Oost",
+    "side_full": "Deze kant is vol",
+    "side_south_east": "Zuidoost",
+    "side_south_west": "Zuidwest",
+    "side_west": "West",
+    "waiting_players": "Wachten op spelers ({count}/{max})",
+    "you": "Jij"
   },
   "win_modal": {
     "died": "Je bent dood",

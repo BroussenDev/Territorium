@@ -8,6 +8,7 @@ import {
   SpawnArea,
 } from "../game/Game";
 import { TileRef } from "../game/GameMap";
+import { isVersusSpawnTile } from "../game/Versus";
 import { PseudoRandom } from "../PseudoRandom";
 import { GameID } from "../Schemas";
 import { simpleHash } from "../Util";
@@ -77,6 +78,16 @@ export class SpawnExecution implements Execution {
 
     // Nations mode places every country itself; nobody picks a spawn.
     if (this.fromIntent && this.mg.config().isNationsMode()) {
+      return;
+    }
+
+    // Versus: each team spawns in its own zone.
+    if (
+      this.fromIntent &&
+      this.mg.config().isVersusMode() &&
+      this.tile !== undefined &&
+      !isVersusSpawnTile(this.mg, player.team(), this.tile)
+    ) {
       return;
     }
 
@@ -151,6 +162,17 @@ export class SpawnExecution implements Execution {
         !this.mg.isLand(center) ||
         this.mg.hasOwner(center) ||
         this.mg.isBorder(center)
+      ) {
+        continue;
+      }
+
+      if (
+        this.mg.config().isVersusMode() &&
+        !isVersusSpawnTile(
+          this.mg,
+          this.mg.player(this.playerInfo.id).team(),
+          center,
+        )
       ) {
         continue;
       }

@@ -1223,7 +1223,6 @@
     "teams": "Tim-tim"
   },
   "game_modes": {
-    "more_soon": "Mode permainan lainnya sedang dalam proses",
     "nations_description": "Pilih negara nyata di peta dunia raksasa dan mulailah dengan seluruh wilayahnya. Pegang ibu kotamu, telan tetanggamu, dan kuasai separuh dunia.",
     "nations_fact_ai": "Negara-negara yang tidak dipilih oleh siapa pun akan dimainkan oleh AI",
     "nations_fact_alliance": "Aliansi dengan negara tetangga bertahan 50% lebih lama",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Pertandingan berikutnya segera hadir",
     "players": "{count}/{max} pemain",
     "subtitle": "Game multipemain dengan aturannya sendiri",
-    "title": "Mode permainan"
+    "title": "Mode permainan",
+    "versus_description": "Dua tim berhadapan di peta turnamen, dengan aturan yang sama untuk semua.",
+    "versus_open": "Pilih format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} menunggu"
   },
   "game_settings": {
     "bots": "Suku:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Imunitas PVP aktif selama {seconds} detik",
     "random_spawn": "Kemunculan acak diaktifkan. Memilih lokasi awal untuk Anda...",
     "random_spawn_spectator": "Pemijahan acak diaktifkan",
-    "singleplayer_game_paused": "Permainan dijeda"
+    "singleplayer_game_paused": "Permainan dijeda",
+    "versus_spawn": "Pilih lokasi awal di zona timmu"
   },
   "help_modal": {
     "action_attack_altclick": "Serang (saat klik kiri diatur untuk membuka menu)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Gunakan terverifikasi",
     "verified_use_custom": "Beralih kembali ke nama khusus",
     "verified_use_hint": "Mainkan dengan nama akun terverifikasi Anda"
+  },
+  "versus": {
+    "draw_hint": "Tim diundi saat permainan dimulai.",
+    "format_title": "Versus {format}",
+    "host": "Host",
+    "in_lobby": "Di lobi: {count}/{max}",
+    "intro": "Dua tim berhadapan di peta turnamen. Setiap tim mulai di zonanya sendiri, cerminan zona lawan, dan aturannya tidak pernah berubah.",
+    "join_side": "Gabung sisi ini",
+    "kick": "Keluarkan dari lobi",
+    "leave_side": "Tinggalkan sisi ini",
+    "no_side": "Belum punya sisi ({count})",
+    "pick_hint": "Pilih sisimu. Permainan bisa dimulai setelah kedua tim penuh.",
+    "play_private": "Buat permainan privat",
+    "play_private_hint": "Undang temanmu lewat tautan. Semua memilih sisi, lalu host memulai permainan.",
+    "play_public": "Main permainan publik",
+    "play_public_hint": "Dimulai begitu semua kursi terisi. Tim ditentukan secara acak.",
+    "private_title": "{format} privat",
+    "queue": "{count}/{max} menunggu",
+    "queue_opening": "Membuka permainan berikutnya…",
+    "rule_fixed": "Aturan tetap yang tidak bisa diubah siapa pun",
+    "rule_map": "Peta: {map}",
+    "rule_no_ai": "Tanpa bot atau bangsa: hanya pemain",
+    "rule_north": "Bagian utara peta adalah wilayah netral",
+    "rule_win": "Tim terakhir yang bertahan menang",
+    "rule_zones": "Setiap tim mulai di zonanya sendiri, jauh dari tengah",
+    "seat_draw": "Diundi saat mulai",
+    "seat_free": "Kursi kosong",
+    "side_east": "Timur",
+    "side_full": "Sisi ini penuh",
+    "side_south_east": "Tenggara",
+    "side_south_west": "Barat daya",
+    "side_west": "Barat",
+    "waiting_players": "Menunggu pemain ({count}/{max})",
+    "you": "Kamu"
   },
   "win_modal": {
     "died": "Anda meninggal",

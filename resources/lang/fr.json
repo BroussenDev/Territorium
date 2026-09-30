@@ -1223,7 +1223,6 @@
     "teams": "Équipes"
   },
   "game_modes": {
-    "more_soon": "D'autres modes de jeu arrivent",
     "nations_description": "Choisissez un vrai pays sur la carte du monde géant et commencez avec tout son territoire. Tenez votre capitale, avalez vos voisins et régnez sur la moitié du monde.",
     "nations_fact_ai": "Les pays que personne ne prend sont joués par l'IA",
     "nations_fact_alliance": "Les alliances entre pays voisins durent 50 % plus longtemps",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Prochaine partie bientôt",
     "players": "{count}/{max} joueurs",
     "subtitle": "Des parties multijoueurs avec leurs propres règles",
-    "title": "Modes de jeu"
+    "title": "Modes de jeu",
+    "versus_description": "Deux équipes s'affrontent sur une carte de tournoi, avec les mêmes règles pour tous.",
+    "versus_open": "Choisir un format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} en attente"
   },
   "game_settings": {
     "bots": "Tribus : ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Immunité des joueurs active pour {seconds}s",
     "random_spawn": "Le spawn aléatoire est activé. Sélection de l'emplacement de départ pour vous...",
     "random_spawn_spectator": "Apparition aléatoire activée",
-    "singleplayer_game_paused": "Jeu en pause"
+    "singleplayer_game_paused": "Jeu en pause",
+    "versus_spawn": "Choisissez un emplacement de départ dans la zone de votre équipe"
   },
   "help_modal": {
     "action_attack_altclick": "Attaquer (quand le clic gauche est configuré pour ouvrir le menu)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Utiliser le pseudo vérifié",
     "verified_use_custom": "Revenir à un pseudo personnalisé",
     "verified_use_hint": "Jouer avec votre pseudo de compte vérifié"
+  },
+  "versus": {
+    "draw_hint": "Les équipes sont tirées au sort au lancement de la partie.",
+    "format_title": "Versus {format}",
+    "host": "Hôte",
+    "in_lobby": "Dans le salon : {count}/{max}",
+    "intro": "Deux équipes s'affrontent sur une carte de tournoi. Chaque équipe part de sa propre zone, le reflet exact de celle d'en face, et les règles ne changent jamais.",
+    "join_side": "Rejoindre ce camp",
+    "kick": "Retirer du salon",
+    "leave_side": "Quitter ce camp",
+    "no_side": "Sans camp ({count})",
+    "pick_hint": "Choisissez votre camp. La partie peut démarrer quand les deux équipes sont complètes.",
+    "play_private": "Créer une partie privée",
+    "play_private_hint": "Invitez vos amis avec le lien. Chacun choisit son camp, puis l'hôte lance la partie.",
+    "play_public": "Jouer une partie publique",
+    "play_public_hint": "Démarre dès que toutes les places sont prises. Les équipes sont tirées au sort.",
+    "private_title": "{format} privé",
+    "queue": "{count}/{max} en attente",
+    "queue_opening": "Ouverture de la prochaine partie…",
+    "rule_fixed": "Règles fixes, personne ne peut les modifier",
+    "rule_map": "Carte : {map}",
+    "rule_no_ai": "Ni bots ni nations : uniquement des joueurs",
+    "rule_north": "Le nord de la carte est un territoire neutre",
+    "rule_win": "La dernière équipe en jeu gagne",
+    "rule_zones": "Chaque équipe part de sa propre zone, loin du centre",
+    "seat_draw": "Tirée au sort au départ",
+    "seat_free": "Place libre",
+    "side_east": "Est",
+    "side_full": "Ce camp est complet",
+    "side_south_east": "Sud-est",
+    "side_south_west": "Sud-ouest",
+    "side_west": "Ouest",
+    "waiting_players": "En attente de joueurs ({count}/{max})",
+    "you": "Vous"
   },
   "win_modal": {
     "died": "Vous êtes mort·e.",

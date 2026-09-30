@@ -695,6 +695,10 @@ describe("MasterLobbyService hosted lobbies", () => {
       sentMessages(w).filter((m) => m.type === "createGame"),
     );
     expect(created.map((m) => m.publicGameType).sort()).toEqual([
+      "1v1",
+      "2v2",
+      "3v3",
+      "4v4",
       "ffa",
       "nations",
       "special",

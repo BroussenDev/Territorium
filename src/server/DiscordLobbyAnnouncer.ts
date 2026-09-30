@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { GameMode } from "../core/game/Game";
+import { versusTeamSize } from "../core/game/Versus";
 import { InternalGameInfo } from "./IPCBridgeSchema";
 import { logger } from "./Logger";
 
@@ -27,6 +28,10 @@ function modeLabel(lobby: InternalGameInfo): string {
   const config = lobby.gameConfig;
   if (lobby.publicGameType === "nations" || config?.gameVariant === "nations") {
     return "Nations";
+  }
+  const versus = config ? versusTeamSize(config) : null;
+  if (versus !== null) {
+    return `Versus ${versus}v${versus}`;
   }
   if (config?.gameMode === GameMode.Team) {
     const teams = config.playerTeams;

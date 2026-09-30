@@ -1223,7 +1223,6 @@
     "teams": "A Squadre"
   },
   "game_modes": {
-    "more_soon": "Sono in arrivo altre modalità di gioco",
     "nations_description": "Scegli un paese reale sulla gigantesca mappa del mondo e inizia con tutto il suo territorio. Mantieni la tua capitale, ingoia i tuoi vicini e governa metà del mondo.",
     "nations_fact_ai": "I paesi che nessuno sceglie vengono giocati dall'intelligenza artificiale",
     "nations_fact_alliance": "Le alleanze con un paese vicino durano il 50% in più",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "La prossima partita in arrivo",
     "players": "{count}/{max} giocatori",
     "subtitle": "Giochi multiplayer con regole proprie",
-    "title": "Modalità di gioco"
+    "title": "Modalità di gioco",
+    "versus_description": "Due squadre si sfidano su una mappa da torneo, con le stesse regole per tutti.",
+    "versus_open": "Scegli un formato",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} in attesa"
   },
   "game_settings": {
     "bots": "Tribù:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Immunità PVP attiva per {seconds}s",
     "random_spawn": "La generazione casuale è abilitata. Selezione della posizione di partenza per te...",
     "random_spawn_spectator": "La generazione casuale è abilitata",
-    "singleplayer_game_paused": "Gioco in pausa"
+    "singleplayer_game_paused": "Gioco in pausa",
+    "versus_spawn": "Scegli un punto di partenza nella zona della tua squadra"
   },
   "help_modal": {
     "action_attack_altclick": "Attacco (quando il clic sinistro è impostato per aprire il menu)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Usa verificato",
     "verified_use_custom": "Torna a un nome personalizzato",
     "verified_use_hint": "Gioca con il nome del tuo account verificato"
+  },
+  "versus": {
+    "draw_hint": "Le squadre vengono sorteggiate all'inizio della partita.",
+    "format_title": "Versus {format}",
+    "host": "Host",
+    "in_lobby": "Nella lobby: {count}/{max}",
+    "intro": "Due squadre si sfidano su una mappa da torneo. Ogni squadra parte dalla propria zona, speculare a quella avversaria, e le regole non cambiano mai.",
+    "join_side": "Unisciti a questo schieramento",
+    "kick": "Rimuovi dalla lobby",
+    "leave_side": "Lascia questo schieramento",
+    "no_side": "Senza schieramento ({count})",
+    "pick_hint": "Scegli il tuo schieramento. La partita può iniziare quando entrambe le squadre sono al completo.",
+    "play_private": "Crea una partita privata",
+    "play_private_hint": "Invita i tuoi amici con il link. Ognuno sceglie uno schieramento, poi l'host avvia la partita.",
+    "play_public": "Gioca una partita pubblica",
+    "play_public_hint": "Inizia appena tutti i posti sono occupati. Le squadre vengono sorteggiate.",
+    "private_title": "{format} privato",
+    "queue": "{count}/{max} in attesa",
+    "queue_opening": "Apertura della prossima partita…",
+    "rule_fixed": "Regole fisse che nessuno può cambiare",
+    "rule_map": "Mappa: {map}",
+    "rule_no_ai": "Niente bot né nazioni: solo giocatori",
+    "rule_north": "Il nord della mappa è territorio neutrale",
+    "rule_win": "Vince l'ultima squadra rimasta",
+    "rule_zones": "Ogni squadra parte dalla propria zona, lontano dal centro",
+    "seat_draw": "Sorteggiato all'inizio",
+    "seat_free": "Posto libero",
+    "side_east": "Est",
+    "side_full": "Questo schieramento è al completo",
+    "side_south_east": "Sud-est",
+    "side_south_west": "Sud-ovest",
+    "side_west": "Ovest",
+    "waiting_players": "In attesa di giocatori ({count}/{max})",
+    "you": "Tu"
   },
   "win_modal": {
     "died": "Sei morto",

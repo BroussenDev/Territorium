@@ -1223,7 +1223,6 @@
     "teams": "Ekipe"
   },
   "game_modes": {
-    "more_soon": "Več načinov igre je na poti",
     "nations_description": "Na velikanskem zemljevidu sveta izberite pravo državo in začnite z njenim celotnim ozemljem. Držite svojo prestolnico, pogoltnite svoje sosede in vladajte polovici sveta.",
     "nations_fact_ai": "Države, ki jih nihče ne izbere, igra AI",
     "nations_fact_alliance": "Zavezništva s sosednjo državo trajajo 50% dlje",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Naslednja igra kmalu",
     "players": "{count}/{max} igralcev",
     "subtitle": "Igre za več igralcev s svojimi pravili",
-    "title": "Načini igre"
+    "title": "Načini igre",
+    "versus_description": "Dve ekipi se pomerita na turnirskem zemljevidu, z enakimi pravili za vse.",
+    "versus_open": "Izberi format",
+    "versus_title": "Versus",
+    "versus_waiting": "Čaka: {count}"
   },
   "game_settings": {
     "bots": "Plemena:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP imunost aktivna {seconds}s",
     "random_spawn": "Naključno drstenje je omogočeno. Izbira začetne lokacije za vas ...",
     "random_spawn_spectator": "Naključno drstenje je omogočeno",
-    "singleplayer_game_paused": "Igra zaustavljena"
+    "singleplayer_game_paused": "Igra zaustavljena",
+    "versus_spawn": "Izberi začetno mesto v coni svoje ekipe"
   },
   "help_modal": {
     "action_attack_altclick": "Napadi (ko je levi klik nastavljen da odpre meni)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Uporabite preverjeno",
     "verified_use_custom": "Preklopite nazaj na ime po meri",
     "verified_use_hint": "Igrajte pod imenom potrjenega računa"
+  },
+  "versus": {
+    "draw_hint": "Ekipi se izžrebata ob začetku igre.",
+    "format_title": "Versus {format}",
+    "host": "Gostitelj",
+    "in_lobby": "V preddverju: {count}/{max}",
+    "intro": "Dve ekipi se pomerita na turnirskem zemljevidu. Vsaka ekipa začne v svoji coni, zrcalni sliki nasprotnikove, pravila pa se nikoli ne spremenijo.",
+    "join_side": "Pridruži se tej strani",
+    "kick": "Odstrani iz preddverja",
+    "leave_side": "Zapusti to stran",
+    "no_side": "Še brez strani ({count})",
+    "pick_hint": "Izberi svojo stran. Igra se lahko začne, ko sta obe ekipi polni.",
+    "play_private": "Ustvari zasebno igro",
+    "play_private_hint": "Povabi prijatelje s povezavo. Vsak izbere stran, nato gostitelj začne igro.",
+    "play_public": "Igraj javno igro",
+    "play_public_hint": "Začne se takoj, ko so zasedena vsa mesta. Ekipi se izžrebata.",
+    "private_title": "Zasebna {format}",
+    "queue": "Čaka: {count}/{max}",
+    "queue_opening": "Odpiranje naslednje igre…",
+    "rule_fixed": "Stalna pravila, ki jih nihče ne more spremeniti",
+    "rule_map": "Zemljevid: {map}",
+    "rule_no_ai": "Brez botov in narodov: samo igralci",
+    "rule_north": "Sever zemljevida je nevtralno ozemlje",
+    "rule_win": "Zmaga zadnja preživela ekipa",
+    "rule_zones": "Vsaka ekipa začne v svoji coni, daleč od središča",
+    "seat_draw": "Žreb ob začetku",
+    "seat_free": "Prosto mesto",
+    "side_east": "Vzhod",
+    "side_full": "Ta stran je polna",
+    "side_south_east": "Jugovzhod",
+    "side_south_west": "Jugozahod",
+    "side_west": "Zahod",
+    "waiting_players": "Čakanje na igralce ({count}/{max})",
+    "you": "Ti"
   },
   "win_modal": {
     "died": "Umrl si",

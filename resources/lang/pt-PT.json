@@ -1223,7 +1223,6 @@
     "teams": "Equipas"
   },
   "game_modes": {
-    "more_soon": "Mais modos de jogo estão a caminho",
     "nations_description": "Escolha um país real no mapa mundial gigante e comece por todo o seu território. Mantenha a sua capital, engula os seus vizinhos e governe metade do mundo.",
     "nations_fact_ai": "Os países que ninguém escolhe são jogados pela IA",
     "nations_fact_alliance": "Alianças com país vizinho duram mais 50%",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Próximo jogo em breve",
     "players": "{count}/{max} jogadores",
     "subtitle": "Jogos multijogador com regras próprias",
-    "title": "Modos de jogo"
+    "title": "Modos de jogo",
+    "versus_description": "Duas equipas defrontam-se num mapa de torneio, com as mesmas regras para todos.",
+    "versus_open": "Escolher um formato",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} à espera"
   },
   "game_settings": {
     "bots": "Tribos:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Imunidade PVP ativa durante {seconds}s",
     "random_spawn": "A geração aleatória está ativada. Selecionando o local de partida para si...",
     "random_spawn_spectator": "A geração aleatória está ativada",
-    "singleplayer_game_paused": "Jogo pausado"
+    "singleplayer_game_paused": "Jogo pausado",
+    "versus_spawn": "Escolhe um local de início na zona da tua equipa"
   },
   "help_modal": {
     "action_attack_altclick": "Atacar (quando a função de o botão esquerdo abrir o menu está acionada)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Usar verificado",
     "verified_use_custom": "Voltar para um nome personalizado",
     "verified_use_hint": "Jogue com o nome da sua conta verificada"
+  },
+  "versus": {
+    "draw_hint": "As equipas são sorteadas quando a partida começa.",
+    "format_title": "Versus {format}",
+    "host": "Anfitrião",
+    "in_lobby": "Na sala: {count}/{max}",
+    "intro": "Duas equipas defrontam-se num mapa de torneio. Cada equipa começa na sua própria zona, espelho exato da adversária, e as regras nunca mudam.",
+    "join_side": "Juntar-se a este lado",
+    "kick": "Remover da sala",
+    "leave_side": "Sair deste lado",
+    "no_side": "Sem lado ({count})",
+    "pick_hint": "Escolhe o teu lado. A partida pode começar quando as duas equipas estiverem completas.",
+    "play_private": "Criar uma partida privada",
+    "play_private_hint": "Convida os teus amigos com a ligação. Cada um escolhe um lado e depois o anfitrião inicia a partida.",
+    "play_public": "Jogar uma partida pública",
+    "play_public_hint": "Começa assim que todos os lugares estiverem ocupados. As equipas são sorteadas.",
+    "private_title": "{format} privado",
+    "queue": "{count}/{max} à espera",
+    "queue_opening": "A abrir a próxima partida…",
+    "rule_fixed": "Regras fixas que ninguém pode mudar",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Sem bots nem nações: só jogadores",
+    "rule_north": "O norte do mapa é território neutro",
+    "rule_win": "Vence a última equipa em jogo",
+    "rule_zones": "Cada equipa começa na sua própria zona, longe do centro",
+    "seat_draw": "Sorteado no início",
+    "seat_free": "Lugar livre",
+    "side_east": "Este",
+    "side_full": "Este lado está completo",
+    "side_south_east": "Sudeste",
+    "side_south_west": "Sudoeste",
+    "side_west": "Oeste",
+    "waiting_players": "À espera de jogadores ({count}/{max})",
+    "you": "Tu"
   },
   "win_modal": {
     "died": "Morreste",

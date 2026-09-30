@@ -188,10 +188,15 @@ export class HeadsUpMessage extends LitElement implements Controller {
     if (this.game.config().isNationsMode()) {
       return translateText("heads_up_message.nations_spawn");
     }
-    if (
+    const spectating =
       this.game.config().isReplay() ||
-      this.game.config().isIntentionalSpectator()
-    ) {
+      this.game.config().isIntentionalSpectator();
+    // Versus players may only spawn in their team's zone, left bright on
+    // the map.
+    if (this.game.config().isVersusMode() && !spectating) {
+      return translateText("heads_up_message.versus_spawn");
+    }
+    if (spectating) {
       return this.game.config().isRandomSpawn()
         ? translateText("heads_up_message.random_spawn_spectator")
         : translateText("heads_up_message.choose_spawn_spectator");

@@ -55,7 +55,7 @@ import { SAMRadiusPass } from "./passes/SamRadiusPass";
 import { SelectionBoxPass } from "./passes/SelectionBoxPass";
 import { SkinAtlasArray } from "./passes/SkinAtlasArray";
 import { SmallPlayerGlowPass } from "./passes/SmallPlayerGlowPass";
-import type { SpawnCenter } from "./passes/SpawnOverlayPass";
+import type { SpawnCenter, SpawnZone } from "./passes/SpawnOverlayPass";
 import { SpawnOverlayPass } from "./passes/SpawnOverlayPass";
 import { SpiralRibbonPass } from "./passes/SpiralRibbonPass";
 import { StructurePass } from "./passes/StructurePass";
@@ -1115,9 +1115,13 @@ export class GPURenderer {
     this.objectiveLabels = visible;
   }
 
-  updateSpawnOverlay(inSpawnPhase: boolean, centers: SpawnCenter[]): void {
+  updateSpawnOverlay(
+    inSpawnPhase: boolean,
+    centers: SpawnCenter[],
+    zone: SpawnZone | null = null,
+  ): void {
     this.inSpawnPhase = inSpawnPhase;
-    this.spawnOverlayPass.update(centers);
+    this.spawnOverlayPass.update(centers, zone);
   }
 
   updateSmallPlayerGlow(set: Uint8Array | null): void {

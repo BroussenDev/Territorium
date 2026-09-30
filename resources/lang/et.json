@@ -1223,7 +1223,6 @@
     "teams": "Tiimid"
   },
   "game_modes": {
-    "more_soon": "Rohkem mängurežiime on tulemas",
     "nations_description": "Valige hiiglaslikul maailmakaardil tõeline riik ja alustage kogu selle territooriumiga. Hoidke oma pealinna, neelake oma naabrid alla ja valitsege poolt maailmast.",
     "nations_fact_ai": "Riike, mida keegi ei vali, mängib tehisintellekt",
     "nations_fact_alliance": "Liidud naaberriigiga kestavad 50% kauem",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Järgmine mäng peagi tulemas",
     "players": "{count}/{max} mängijat",
     "subtitle": "Mitme mängijaga mängud oma reeglitega",
-    "title": "Mängurežiimid"
+    "title": "Mängurežiimid",
+    "versus_description": "Kaks meeskonda kohtuvad turniirikaardil, kõigile samade reeglitega.",
+    "versus_open": "Vali formaat",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} ootel"
   },
   "game_settings": {
     "bots": "Hõimud: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP immuunsus töötab {seconds} sekundit",
     "random_spawn": "Suvaline tekke asukoht on sisse lülitatud. Sulle tekke asukohe valimine...",
     "random_spawn_spectator": "Juhuslik kudemine on lubatud",
-    "singleplayer_game_paused": "Mäng pausil"
+    "singleplayer_game_paused": "Mäng pausil",
+    "versus_spawn": "Vali alguskoht oma meeskonna tsoonis"
   },
   "help_modal": {
     "action_attack_altclick": "Ründa (kui vasak klõps on seatud menüü avamiseks)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Kasuta kontrollitud",
     "verified_use_custom": "Lülitage tagasi kohandatud nimele",
     "verified_use_hint": "Mängige oma kinnitatud konto nime all"
+  },
+  "versus": {
+    "draw_hint": "Meeskonnad loositakse mängu alguses.",
+    "format_title": "Versus {format}",
+    "host": "Võõrustaja",
+    "in_lobby": "Fuajees: {count}/{max}",
+    "intro": "Kaks meeskonda kohtuvad turniirikaardil. Iga meeskond alustab oma tsoonis, mis on vastase tsooni peegelpilt, ja reeglid ei muutu kunagi.",
+    "join_side": "Liitu selle poolega",
+    "kick": "Eemalda fuajeest",
+    "leave_side": "Lahku sellelt poolelt",
+    "no_side": "Veel poolt pole ({count})",
+    "pick_hint": "Vali oma pool. Mäng saab alata, kui mõlemad meeskonnad on täis.",
+    "play_private": "Loo privaatne mäng",
+    "play_private_hint": "Kutsu sõbrad lingiga. Igaüks valib poole, seejärel alustab võõrustaja mängu.",
+    "play_public": "Mängi avalikku mängu",
+    "play_public_hint": "Algab kohe, kui kõik kohad on täis. Meeskonnad loositakse.",
+    "private_title": "Privaatne {format}",
+    "queue": "{count}/{max} ootel",
+    "queue_opening": "Järgmise mängu avamine…",
+    "rule_fixed": "Kindlad reeglid, mida keegi muuta ei saa",
+    "rule_map": "Kaart: {map}",
+    "rule_no_ai": "Ei roboteid ega rahvaid: ainult mängijad",
+    "rule_north": "Kaardi põhjaosa on neutraalne ala",
+    "rule_win": "Võidab viimasena alles jäänud meeskond",
+    "rule_zones": "Iga meeskond alustab oma tsoonis, keskusest eemal",
+    "seat_draw": "Loositakse alguses",
+    "seat_free": "Vaba koht",
+    "side_east": "Ida",
+    "side_full": "See pool on täis",
+    "side_south_east": "Kagu",
+    "side_south_west": "Edel",
+    "side_west": "Lääs",
+    "waiting_players": "Mängijate ootamine ({count}/{max})",
+    "you": "Sina"
   },
   "win_modal": {
     "died": "Sa said surma",

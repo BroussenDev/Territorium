@@ -1223,7 +1223,6 @@
     "teams": "Equips"
   },
   "game_modes": {
-    "more_soon": "Més modes de joc estan en camí",
     "nations_description": "Tria un país real al mapa mundial gegant i comença amb tot el seu territori. Mantingueu la vostra capital, empasseu-vos els vostres veïns i governeu la meitat del món.",
     "nations_fact_ai": "L'IA juga als països que ningú tria",
     "nations_fact_alliance": "Les aliances amb un país veí duren un 50% més",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Aviat el proper partit",
     "players": "{count}/{max} jugadors",
     "subtitle": "Jocs multijugador amb regles pròpies",
-    "title": "Modes de joc"
+    "title": "Modes de joc",
+    "versus_description": "Dos equips s'enfronten en un mapa de torneig, amb les mateixes regles per a tothom.",
+    "versus_open": "Tria un format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} esperant"
   },
   "game_settings": {
     "bots": "Tribus: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Immunitat PVP activa per {seconds}s",
     "random_spawn": "Està activada la selecció aleatòria del punt de partida. Tria'n-te un punt de partida...",
     "random_spawn_spectator": "La generació aleatòria està activada",
-    "singleplayer_game_paused": "Partida en pausa"
+    "singleplayer_game_paused": "Partida en pausa",
+    "versus_spawn": "Tria un punt d'inici a la zona del teu equip"
   },
   "help_modal": {
     "action_attack_altclick": "Ataca (quan el clic esquerre està configurat per obrir el menú)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Ús verificat",
     "verified_use_custom": "Torneu a un nom personalitzat",
     "verified_use_hint": "Juga amb el nom del teu compte verificat"
+  },
+  "versus": {
+    "draw_hint": "Els equips se sortegen quan comença la partida.",
+    "format_title": "Versus {format}",
+    "host": "Amfitrió",
+    "in_lobby": "A la sala: {count}/{max}",
+    "intro": "Dos equips s'enfronten en un mapa de torneig. Cada equip comença a la seva pròpia zona, reflex exacte de la del rival, i les regles no canvien mai.",
+    "join_side": "Uneix-te a aquest bàndol",
+    "kick": "Treu de la sala",
+    "leave_side": "Deixa aquest bàndol",
+    "no_side": "Sense bàndol ({count})",
+    "pick_hint": "Tria el teu bàndol. La partida pot començar quan els dos equips són complets.",
+    "play_private": "Crea una partida privada",
+    "play_private_hint": "Convida els teus amics amb l'enllaç. Cadascú tria bàndol i després l'amfitrió inicia la partida.",
+    "play_public": "Juga una partida pública",
+    "play_public_hint": "Comença tan bon punt s'ocupen totes les places. Els equips se sortegen.",
+    "private_title": "{format} privat",
+    "queue": "{count}/{max} esperant",
+    "queue_opening": "S'està obrint la propera partida…",
+    "rule_fixed": "Regles fixes que ningú pot canviar",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Sense bots ni nacions: només jugadors",
+    "rule_north": "El nord del mapa és territori neutral",
+    "rule_win": "Guanya l'últim equip que queda",
+    "rule_zones": "Cada equip comença a la seva pròpia zona, lluny del centre",
+    "seat_draw": "Se sorteja a l'inici",
+    "seat_free": "Plaça lliure",
+    "side_east": "Est",
+    "side_full": "Aquest bàndol és ple",
+    "side_south_east": "Sud-est",
+    "side_south_west": "Sud-oest",
+    "side_west": "Oest",
+    "waiting_players": "Esperant jugadors ({count}/{max})",
+    "you": "Tu"
   },
   "win_modal": {
     "died": "Has mort",

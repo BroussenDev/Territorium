@@ -1223,7 +1223,6 @@
     "teams": "Đội"
   },
   "game_modes": {
-    "more_soon": "Nhiều chế độ trò chơi đang được triển khai",
     "nations_description": "Chọn một quốc gia có thật trên bản đồ thế giới khổng lồ và bắt đầu với toàn bộ lãnh thổ của quốc gia đó. Giữ thành phố thủ đô của bạn, nuốt chửng hàng xóm của bạn và thống trị một nửa thế giới.",
     "nations_fact_ai": "Các quốc gia không được chọn đều do AI chơi",
     "nations_fact_alliance": "Liên minh với một quốc gia láng giềng tồn tại lâu hơn 50%",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Trò chơi tiếp theo sắp ra mắt",
     "players": "{count}/{max} người chơi",
     "subtitle": "Trò chơi nhiều người chơi có quy tắc riêng",
-    "title": "Chế độ trò chơi"
+    "title": "Chế độ trò chơi",
+    "versus_description": "Hai đội đối đầu trên bản đồ giải đấu, với cùng một luật cho tất cả.",
+    "versus_open": "Chọn thể thức",
+    "versus_title": "Đối kháng",
+    "versus_waiting": "{count} đang chờ"
   },
   "game_settings": {
     "bots": "Bộ tộc: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Bảo vệ PvP còn hiệu lực trong {seconds} giây",
     "random_spawn": "Đã bật chế độ spawn ngẫu nhiên. Đang chọn vị trí khởi đầu cho bạn...",
     "random_spawn_spectator": "Chế độ spawn ngẫu nhiên đã được bật",
-    "singleplayer_game_paused": "Trận đấu đã tạm dừng"
+    "singleplayer_game_paused": "Trận đấu đã tạm dừng",
+    "versus_spawn": "Chọn vị trí xuất phát trong khu vực của đội bạn"
   },
   "help_modal": {
     "action_attack_altclick": "Tấn công (khi nhấp chuột trái được thiết lập để mở menu)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Sử dụng tên đã xác minh",
     "verified_use_custom": "Đổi lại về tên tuỳ chỉnh",
     "verified_use_hint": "Chơi dưới tên tài khoản đã được xác minh của bạn"
+  },
+  "versus": {
+    "draw_hint": "Các đội được bốc thăm khi trận bắt đầu.",
+    "format_title": "Đối kháng {format}",
+    "host": "Chủ phòng",
+    "in_lobby": "Trong sảnh: {count}/{max}",
+    "intro": "Hai đội đối đầu trên bản đồ giải đấu. Mỗi đội xuất phát trong khu vực riêng, đối xứng với khu vực của đối thủ, và luật chơi không bao giờ thay đổi.",
+    "join_side": "Vào phe này",
+    "kick": "Mời khỏi sảnh",
+    "leave_side": "Rời phe này",
+    "no_side": "Chưa chọn phe ({count})",
+    "pick_hint": "Chọn phe của bạn. Trận có thể bắt đầu khi cả hai đội đã đủ.",
+    "play_private": "Tạo trận riêng tư",
+    "play_private_hint": "Mời bạn bè bằng liên kết. Mọi người chọn phe, sau đó chủ phòng bắt đầu trận.",
+    "play_public": "Chơi trận công khai",
+    "play_public_hint": "Bắt đầu ngay khi đủ chỗ. Các đội được bốc thăm.",
+    "private_title": "{format} riêng tư",
+    "queue": "{count}/{max} đang chờ",
+    "queue_opening": "Đang mở trận tiếp theo…",
+    "rule_fixed": "Luật cố định, không ai có thể thay đổi",
+    "rule_map": "Bản đồ: {map}",
+    "rule_no_ai": "Không có bot hay quốc gia: chỉ người chơi",
+    "rule_north": "Phía bắc bản đồ là vùng trung lập",
+    "rule_win": "Đội trụ lại cuối cùng giành chiến thắng",
+    "rule_zones": "Mỗi đội xuất phát trong khu vực riêng, xa trung tâm",
+    "seat_draw": "Bốc thăm khi bắt đầu",
+    "seat_free": "Chỗ trống",
+    "side_east": "Đông",
+    "side_full": "Phe này đã đủ",
+    "side_south_east": "Đông Nam",
+    "side_south_west": "Tây Nam",
+    "side_west": "Tây",
+    "waiting_players": "Đang chờ người chơi ({count}/{max})",
+    "you": "Bạn"
   },
   "win_modal": {
     "died": "Bạn đã chết",

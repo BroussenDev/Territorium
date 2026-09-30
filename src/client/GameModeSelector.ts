@@ -11,6 +11,12 @@ import {
   Quads,
   Trios,
 } from "../core/game/Game";
+import {
+  isVersusGameType,
+  VERSUS_TEAM_SIZES,
+  versusGameType,
+  versusTeamSize,
+} from "../core/game/Versus";
 import { PublicGameInfo, PublicGames } from "../core/Schemas";
 import { getDesktopSessionState } from "./Auth";
 import "./components/IOSAddToHomeScreenBanner";
@@ -22,6 +28,8 @@ import {
   viewerIsSignedIn,
   viewerIsTrusted,
 } from "./components/LobbyCard";
+import { versusZoneMap } from "./components/VersusLobby";
+import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import {
   getDesktopUpdateState,
@@ -449,6 +457,7 @@ export class GameModeSelector extends LitElement {
     );
     document.addEventListener("join-lobby", this.onJoinLobby);
     document.addEventListener("leave-lobby", this.onLeaveLobby);
+    document.addEventListener("versus-play", this.onVersusPlay);
     // Pick up the current value in case username-input validated before us.
     const usernameInput = document.querySelector(
       "username-input",
@@ -481,6 +490,7 @@ export class GameModeSelector extends LitElement {
     );
     document.removeEventListener("join-lobby", this.onJoinLobby);
     document.removeEventListener("leave-lobby", this.onLeaveLobby);
+    document.removeEventListener("versus-play", this.onVersusPlay);
     super.disconnectedCallback();
   }
 
@@ -880,6 +890,27 @@ export class GameModeSelector extends LitElement {
     (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open();
   };
 
+  private openVersus = () => {
+    if (!this.validateUsername()) return;
+    window.showPage?.("page-versus");
+  };
+
+  // From the Versus page: join the format's public lobby, or host a private
+  // one, through the same gates as the buttons here.
+  private onVersusPlay = (e: Event) => {
+    const { teamSize, mode } = (e as CustomEvent<VersusPlayDetail>).detail;
+    if (mode === "private") {
+      if (this.blockedFromApiAction()) return;
+      if (!this.validateUsername()) return;
+      (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open({
+        versusSize: teamSize,
+      });
+      return;
+    }
+    const lobby = this.lobbies?.games?.[versusGameType(teamSize)]?.[0];
+    if (lobby) this.validateAndJoin(lobby);
+  };
+
   private openJoinLobby = () => {
     if (this.blockedFromApiAction()) return;
     if (!this.validateUsername()) return;
@@ -965,12 +996,12 @@ export class GameModeSelector extends LitElement {
   }
 
   /**
-   * Every lobby the browser lists, hosted included. Game modes (Nations)
-   * have their own section and aren't in the browser.
+   * Every lobby the browser lists, hosted included. Game modes (Nations,
+   * Versus) have their own section and aren't in the browser.
    */
   private advertisedLobbyCount(): number {
     return Object.entries(this.lobbies?.games ?? {})
-      .filter(([type]) => type !== "nations")
+      .filter(([type]) => type !== "nations" && !isVersusGameType(type))
       .flatMap(([, lobbies]) => lobbies).length;
   }
 
@@ -1036,8 +1067,8 @@ export class GameModeSelector extends LitElement {
   }
 
   /**
-   * Game modes with rules of their own, under the regular lobbies. Each mode
-   * is one wide card; the dashed tile keeps the row's place for the next ones.
+   * Game modes with rules of their own, under the regular lobbies: Nations,
+   * a wide card that joins its lobby, and Versus, which opens its own page.
    */
   private renderGameModes(nations: PublicGameInfo | undefined) {
     const blocked = shouldBlockSocketSourcedAction(
@@ -1141,14 +1172,66 @@ export class GameModeSelector extends LitElement {
               </span>
             </span>
           </button>
-          <div
-            class="flex min-h-24 items-center justify-center rounded-2xl border border-dashed border-white/15 p-5 text-center text-sm text-white/50"
-          >
-            ${translateText("game_modes.more_soon")}
-          </div>
+          ${this.renderVersusCard()}
         </div>
       </section>
     `;
+  }
+
+  private renderVersusCard() {
+    const waiting = VERSUS_TEAM_SIZES.map(
+      (size) =>
+        this.lobbies?.games?.[versusGameType(size)]?.[0]?.numClients ?? 0,
+    );
+    const total = waiting.reduce((a, b) => a + b, 0);
+    return html`<button
+      @click=${this.openVersus}
+      ?disabled=${!this.inputValid}
+      class="group/mode relative flex min-h-56 overflow-hidden rounded-2xl border border-white/15 bg-[linear-gradient(90deg,#2a0d10,#0d1830)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-white/45 hover:shadow-[0_18px_40px_-20px_rgba(147,197,253,0.6)] focus-visible:outline-2 focus-visible:outline-white ${this
+        .inputValid
+        ? ""
+        : DISABLED}"
+    >
+      <span
+        class="pointer-events-none absolute -right-10 -top-10 w-44 opacity-60 transition-transform duration-500 group-hover/mode:scale-[1.04]"
+        >${versusZoneMap(1)}</span
+      >
+      <span class="relative flex flex-1 flex-col gap-3 p-5">
+        <span
+          class="font-display text-3xl font-bold tracking-[0.08em] text-white"
+          >${translateText("game_modes.versus_title")}</span
+        >
+        <span class="max-w-[14rem] text-sm leading-relaxed text-white/85">
+          ${translateText("game_modes.versus_description")}
+        </span>
+        <span class="flex flex-wrap gap-1.5">
+          ${VERSUS_TEAM_SIZES.map(
+            (size, i) =>
+              html`<span
+                class="rounded-md bg-black/45 px-2 py-0.5 text-sm font-bold tabular-nums ${waiting[
+                  i
+                ] > 0
+                  ? "text-emerald-300"
+                  : "text-white/85"}"
+                >${versusGameType(size)}</span
+              >`,
+          )}
+        </span>
+        <span class="mt-auto flex flex-wrap items-center gap-3 pt-1">
+          <span
+            class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#0d1830] transition-colors group-hover/mode:bg-blue-100"
+            >${translateText("game_modes.versus_open")}</span
+          >
+          ${total > 0
+            ? html`<span class="text-sm tabular-nums text-white/70"
+                >${translateText("game_modes.versus_waiting", {
+                  count: total,
+                })}</span
+              >`
+            : nothing}
+        </span>
+      </span>
+    </button>`;
   }
 
   /** Countdown shown on a lobby card, or "starting" once it runs out. */
@@ -1226,6 +1309,12 @@ export class GameModeSelector extends LitElement {
     const config = lobby.gameConfig!;
     if (config.gameVariant === "nations") {
       return translateText("game_modes.nations_title");
+    }
+    const versus = versusTeamSize(config);
+    if (versus !== null) {
+      return translateText("versus.format_title", {
+        format: versusGameType(versus),
+      });
     }
     if (config.gameMode === GameMode.FFA) {
       return translateText("game_mode.ffa");

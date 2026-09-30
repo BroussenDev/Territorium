@@ -1223,7 +1223,6 @@
     "teams": "Týmy"
   },
   "game_modes": {
-    "more_soon": "Další herní režimy jsou na cestě",
     "nations_description": "Vyberte si skutečnou zemi na obří mapě světa a začněte s celým jejím územím. Držte své hlavní město, spolkněte své sousedy a ovládněte polovinu světa.",
     "nations_fact_ai": "Země, které si nikdo nevybere, hraje AI",
     "nations_fact_alliance": "Spojenectví se sousední zemí trvá o 50 % déle",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Další hra již brzy",
     "players": "{count}/{max} hráčů",
     "subtitle": "Hry pro více hráčů s vlastními pravidly",
-    "title": "Herní režimy"
+    "title": "Herní režimy",
+    "versus_description": "Dva týmy se utkají na turnajové mapě se stejnými pravidly pro všechny.",
+    "versus_open": "Vybrat formát",
+    "versus_title": "Versus",
+    "versus_waiting": "Čeká: {count}"
   },
   "game_settings": {
     "bots": "Kmeny!",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP imunita aktivní ještě {seconds}s",
     "random_spawn": "Náhodná počáteční pozice je zapnutá. Vybírám vám počáteční pozici...",
     "random_spawn_spectator": "Náhodný spawn je zapnutý",
-    "singleplayer_game_paused": "Hra pozastavena"
+    "singleplayer_game_paused": "Hra pozastavena",
+    "versus_spawn": "Vyber si výchozí místo v zóně svého týmu"
   },
   "help_modal": {
     "action_attack_altclick": "Útok (když je kliknutí levým tlačítkem myši nastaveno na otevření nabídky)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Použít ověřené jméno",
     "verified_use_custom": "Přepnout zpět na vlastní jméno",
     "verified_use_hint": "Hrát pod ověřeným jménem svého účtu"
+  },
+  "versus": {
+    "draw_hint": "Týmy se losují při startu hry.",
+    "format_title": "Versus {format}",
+    "host": "Hostitel",
+    "in_lobby": "V lobby: {count}/{max}",
+    "intro": "Dva týmy se utkají na turnajové mapě. Každý tým začíná ve své zóně, zrcadlovém obrazu zóny soupeře, a pravidla se nikdy nemění.",
+    "join_side": "Přidat se k této straně",
+    "kick": "Odebrat z lobby",
+    "leave_side": "Opustit tuto stranu",
+    "no_side": "Zatím bez strany ({count})",
+    "pick_hint": "Vyber si stranu. Hra může začít, jakmile jsou oba týmy plné.",
+    "play_private": "Vytvořit soukromou hru",
+    "play_private_hint": "Pozvi přátele odkazem. Každý si vybere stranu a pak hostitel hru spustí.",
+    "play_public": "Hrát veřejnou hru",
+    "play_public_hint": "Začne, jakmile jsou obsazena všechna místa. Týmy se losují.",
+    "private_title": "Soukromá {format}",
+    "queue": "Čeká: {count}/{max}",
+    "queue_opening": "Otevírá se další hra…",
+    "rule_fixed": "Pevná pravidla, která nikdo nemůže změnit",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Žádní boti ani národy: pouze hráči",
+    "rule_north": "Sever mapy je neutrální území",
+    "rule_win": "Vyhrává poslední tým, který vydrží",
+    "rule_zones": "Každý tým začíná ve své zóně, daleko od středu",
+    "seat_draw": "Losuje se na startu",
+    "seat_free": "Volné místo",
+    "side_east": "Východ",
+    "side_full": "Tato strana je plná",
+    "side_south_east": "Jihovýchod",
+    "side_south_west": "Jihozápad",
+    "side_west": "Západ",
+    "waiting_players": "Čekání na hráče ({count}/{max})",
+    "you": "Ty"
   },
   "win_modal": {
     "died": "Byli jste poraženi",

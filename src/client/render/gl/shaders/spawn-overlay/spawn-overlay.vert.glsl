@@ -4,7 +4,8 @@ precision highp float;
 // Unit quad [0,1]
 layout(location = 0) in vec2 aPos;
 // Per-instance: centerX, centerY, quadRadius, kind
-//   kind: 0 = enemy tile highlight, 1 = self ring, 2 = teammate ring
+//   kind: 0 = enemy tile highlight, 1 = self ring, 2 = teammate ring,
+//         3 = versus spawn zone
 layout(location = 1) in vec4 aInstance;
 // Per-instance: r, g, b (base color)
 layout(location = 2) in vec3 aColor;

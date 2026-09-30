@@ -1223,7 +1223,6 @@
     "teams": "Takımlar"
   },
   "game_modes": {
-    "more_soon": "Daha fazla oyun modu yolda",
     "nations_description": "Dev dünya haritasından gerçek bir ülke seçin ve tüm bölgesiyle başlayın. Başkentinizi elinizde tutun, komşularınızı yutun ve dünyanın yarısına hükmedin.",
     "nations_fact_ai": "Kimsenin seçmediği ülkeler yapay zeka tarafından oynanıyor",
     "nations_fact_alliance": "Komşu bir ülkeyle ittifaklar %50 daha uzun sürer",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Bir sonraki oyun yakında gelecek",
     "players": "{count}/{max} oyuncu",
     "subtitle": "Kendi kuralları olan çok oyunculu oyunlar",
-    "title": "Oyun modları"
+    "title": "Oyun modları",
+    "versus_description": "İki takım, herkes için aynı kurallarla bir turnuva haritasında karşı karşıya gelir.",
+    "versus_open": "Bir format seç",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} bekliyor"
   },
   "game_settings": {
     "bots": "Kabileler:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP bağışıklığı {seconds} saniye boyunca aktif",
     "random_spawn": "Rastgele doğma aktif. Başlangıç noktası senin için seçiliyor...",
     "random_spawn_spectator": "Rastgele ortaya çıkma etkin",
-    "singleplayer_game_paused": "Oyun durduruldu"
+    "singleplayer_game_paused": "Oyun durduruldu",
+    "versus_spawn": "Takımının bölgesinde bir başlangıç noktası seç"
   },
   "help_modal": {
     "action_attack_altclick": "Saldır (sol tıklama menü açmaya ayarlıysa)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Doğrulanmış olanı kullan",
     "verified_use_custom": "Özel bir isme geri dönün",
     "verified_use_hint": "Doğrulanmış hesap adınızla oynayın"
+  },
+  "versus": {
+    "draw_hint": "Takımlar oyun başlarken kurayla belirlenir.",
+    "format_title": "Versus {format}",
+    "host": "Ev sahibi",
+    "in_lobby": "Lobide: {count}/{max}",
+    "intro": "İki takım bir turnuva haritasında karşı karşıya gelir. Her takım, rakibinkinin ayna görüntüsü olan kendi bölgesinde başlar ve kurallar asla değişmez.",
+    "join_side": "Bu tarafa katıl",
+    "kick": "Lobiden çıkar",
+    "leave_side": "Bu taraftan ayrıl",
+    "no_side": "Henüz tarafı yok ({count})",
+    "pick_hint": "Tarafını seç. İki takım da dolunca oyun başlayabilir.",
+    "play_private": "Özel oyun oluştur",
+    "play_private_hint": "Arkadaşlarını bağlantıyla davet et. Herkes bir taraf seçer, ardından ev sahibi oyunu başlatır.",
+    "play_public": "Herkese açık oyun oyna",
+    "play_public_hint": "Tüm yerler dolar dolmaz başlar. Takımlar kurayla belirlenir.",
+    "private_title": "Özel {format}",
+    "queue": "{count}/{max} bekliyor",
+    "queue_opening": "Sonraki oyun açılıyor…",
+    "rule_fixed": "Kimsenin değiştiremeyeceği sabit kurallar",
+    "rule_map": "Harita: {map}",
+    "rule_no_ai": "Bot ya da ulus yok: yalnızca oyuncular",
+    "rule_north": "Haritanın kuzeyi tarafsız bölgedir",
+    "rule_win": "Ayakta kalan son takım kazanır",
+    "rule_zones": "Her takım merkezden uzakta, kendi bölgesinde başlar",
+    "seat_draw": "Başlangıçta kurayla",
+    "seat_free": "Boş yer",
+    "side_east": "Doğu",
+    "side_full": "Bu taraf dolu",
+    "side_south_east": "Güneydoğu",
+    "side_south_west": "Güneybatı",
+    "side_west": "Batı",
+    "waiting_players": "Oyuncular bekleniyor ({count}/{max})",
+    "you": "Sen"
   },
   "win_modal": {
     "died": "Öldün",

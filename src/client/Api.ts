@@ -60,6 +60,7 @@ import {
 import {
   AnalyticsRecord,
   ArchivedAnalyticsRecordSchema,
+  GameConfig,
   GameInfo,
 } from "../core/Schemas";
 import { UserSettings } from "../core/game/UserSettings";
@@ -2117,7 +2118,9 @@ export async function setLobbyListed(
 // the caller as creator. Deliberately has no worker prefix and no id: the edge
 // (nginx in prod, the vite dev proxy locally) picks a worker, which mints a
 // self-owned id and returns it.
-export async function createLobby(): Promise<GameInfo> {
+// `config` fixes the new lobby's rules from the start (versus lobbies);
+// without it the server uses the default private lobby settings.
+export async function createLobby(config?: GameConfig): Promise<GameInfo> {
   // A new game needs a server that takes new games on this build: ask the
   // API (multi-server v2), falling back to the page's own server. When the
   // list says nothing runs this build any more, creating against the page's
@@ -2155,6 +2158,7 @@ export async function createLobby(): Promise<GameInfo> {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: config ? JSON.stringify(config) : undefined,
       },
     );
 

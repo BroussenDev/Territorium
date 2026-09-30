@@ -1223,7 +1223,6 @@
     "teams": "Csapatok"
   },
   "game_modes": {
-    "more_soon": "További játékmódok készülnek",
     "nations_description": "Válasszon egy igazi országot az óriási világtérképen, és kezdje a teljes területével. Tartsa a fővárosát, nyelje le szomszédait, és uralkodjon a világ felén.",
     "nations_fact_ai": "Azokat az országokat, amelyeket senki sem választ ki, az AI játssza",
     "nations_fact_alliance": "A szomszédos országgal kötött szövetségek 50%-kal tovább tartanak",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Hamarosan jön a következő játék",
     "players": "{count}/{max} játékos",
     "subtitle": "Többszereplős játékok saját szabályokkal",
-    "title": "Játékmódok"
+    "title": "Játékmódok",
+    "versus_description": "Két csapat mérkőzik meg egy versenytérképen, mindenkire azonos szabályokkal.",
+    "versus_open": "Formátum választása",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} vár"
   },
   "game_settings": {
     "bots": "Törzsek: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "A PVP immunitás {seconds} másodpercig aktív",
     "random_spawn": "Véletlenszerű spawn engedélyezve. Kiválasztjuk a kezdőhelyet...",
     "random_spawn_spectator": "A véletlenszerű spawn engedélyezve",
-    "singleplayer_game_paused": "A játék szünetel"
+    "singleplayer_game_paused": "A játék szünetel",
+    "versus_spawn": "Válassz kezdőhelyet a csapatod zónájában"
   },
   "help_modal": {
     "action_attack_altclick": "Támadás (ha a bal kattintás a menü megnyitására van beállítva)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Használja az ellenőrzöttet",
     "verified_use_custom": "Váltás vissza egyéni névre",
     "verified_use_hint": "Játssz az ellenőrzött fiókneveddel"
+  },
+  "versus": {
+    "draw_hint": "A csapatokat a játék kezdetekor sorsolják.",
+    "format_title": "Versus {format}",
+    "host": "Házigazda",
+    "in_lobby": "A váróban: {count}/{max}",
+    "intro": "Két csapat mérkőzik meg egy versenytérképen. Minden csapat a saját zónájából indul, amely az ellenfél zónájának tükörképe, és a szabályok sosem változnak.",
+    "join_side": "Csatlakozás ehhez az oldalhoz",
+    "kick": "Eltávolítás a váróból",
+    "leave_side": "Oldal elhagyása",
+    "no_side": "Még nincs oldala ({count})",
+    "pick_hint": "Válaszd ki az oldaladat. A játék indulhat, ha mindkét csapat teljes.",
+    "play_private": "Privát játék létrehozása",
+    "play_private_hint": "Hívd meg a barátaidat a linkkel. Mindenki oldalt választ, majd a házigazda elindítja a játékot.",
+    "play_public": "Nyilvános játék",
+    "play_public_hint": "Azonnal indul, amint minden hely betelt. A csapatokat sorsolás dönti el.",
+    "private_title": "Privát {format}",
+    "queue": "{count}/{max} vár",
+    "queue_opening": "A következő játék megnyitása…",
+    "rule_fixed": "Rögzített szabályok, amelyeket senki sem módosíthat",
+    "rule_map": "Térkép: {map}",
+    "rule_no_ai": "Nincsenek botok és nemzetek: csak játékosok",
+    "rule_north": "A térkép északi része semleges terület",
+    "rule_win": "Az utolsó talpon maradt csapat nyer",
+    "rule_zones": "Minden csapat a saját zónájából indul, távol a középponttól",
+    "seat_draw": "Kezdéskor sorsolva",
+    "seat_free": "Szabad hely",
+    "side_east": "Kelet",
+    "side_full": "Ez az oldal megtelt",
+    "side_south_east": "Délkelet",
+    "side_south_west": "Délnyugat",
+    "side_west": "Nyugat",
+    "waiting_players": "Játékosokra várunk ({count}/{max})",
+    "you": "Te"
   },
   "win_modal": {
     "died": "Meghaltál",

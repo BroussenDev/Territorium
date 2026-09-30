@@ -1223,7 +1223,6 @@
     "teams": "团队"
   },
   "game_modes": {
-    "more_soon": "更多游戏模式正在开发中",
     "nations_description": "在巨大的世界地图上选择一个真实的国家，并从其整个领土开始。守住你的首都，吞并你的邻居，统治半个世界。",
     "nations_fact_ai": "没有人选择的国家由人工智能玩",
     "nations_fact_alliance": "与邻国的联盟持续时间延长 50%",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "下一场比赛即将推出",
     "players": "{count}/{max} 玩家",
     "subtitle": "有自己规则的多人游戏",
-    "title": "游戏模式"
+    "title": "游戏模式",
+    "versus_description": "两支队伍在锦标赛地图上对决，所有人规则相同。",
+    "versus_open": "选择模式",
+    "versus_title": "对战",
+    "versus_waiting": "{count} 人等待中"
   },
   "game_settings": {
     "bots": "部落：",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP 和平期将持续 {seconds} 秒",
     "random_spawn": "随机出生点已启用。正在为你选择出生点……",
     "random_spawn_spectator": "随机生成已启用",
-    "singleplayer_game_paused": "游戏已暂停"
+    "singleplayer_game_paused": "游戏已暂停",
+    "versus_spawn": "在你队伍的区域内选择出生点"
   },
   "help_modal": {
     "action_attack_altclick": "攻击 (当左键单击被设置为打开菜单时)",
@@ -2946,6 +2950,40 @@
     "verified_use": "使用已验证",
     "verified_use_custom": "切换回自定义名称",
     "verified_use_hint": "使用您已验证的帐户名进行游戏"
+  },
+  "versus": {
+    "draw_hint": "队伍在游戏开始时随机分配。",
+    "format_title": "对战 {format}",
+    "host": "房主",
+    "in_lobby": "大厅内：{count}/{max}",
+    "intro": "两支队伍在锦标赛地图上对决。每支队伍从自己的区域出发，与对手区域完全对称，规则永不改变。",
+    "join_side": "加入该阵营",
+    "kick": "移出大厅",
+    "leave_side": "离开该阵营",
+    "no_side": "未选阵营 ({count})",
+    "pick_hint": "选择你的阵营。两队满员后即可开始游戏。",
+    "play_private": "创建私人对局",
+    "play_private_hint": "用链接邀请好友。每人选择阵营，然后由房主开始游戏。",
+    "play_public": "进行公开对局",
+    "play_public_hint": "所有位置坐满后立即开始。队伍随机分配。",
+    "private_title": "私人 {format}",
+    "queue": "{count}/{max} 人等待中",
+    "queue_opening": "正在开启下一局…",
+    "rule_fixed": "固定规则，任何人都无法修改",
+    "rule_map": "地图：{map}",
+    "rule_no_ai": "没有机器人和国家：仅限玩家",
+    "rule_north": "地图北部是中立区域",
+    "rule_win": "最后存活的队伍获胜",
+    "rule_zones": "每支队伍从自己的区域出发，远离中心",
+    "seat_draw": "开局时随机分配",
+    "seat_free": "空位",
+    "side_east": "东",
+    "side_full": "该阵营已满",
+    "side_south_east": "东南",
+    "side_south_west": "西南",
+    "side_west": "西",
+    "waiting_players": "等待玩家 ({count}/{max})",
+    "you": "你"
   },
   "win_modal": {
     "died": "你已经死了",

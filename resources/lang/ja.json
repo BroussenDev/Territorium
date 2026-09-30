@@ -1223,7 +1223,6 @@
     "teams": "チーム"
   },
   "game_modes": {
-    "more_soon": "さらに多くのゲームモードが準備中です",
     "nations_description": "巨大な世界地図上で実際の国を選択し、その領土全体から始めましょう。首都を掌握し、近隣諸国を飲み込み、世界の半分を支配しましょう。",
     "nations_fact_ai": "誰も選ばなかった国はAIによってプレイされる",
     "nations_fact_alliance": "隣国との同盟は50%長く続く",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "次の試合はもうすぐです",
     "players": "{count}/{max} プレイヤー",
     "subtitle": "独自のルールを持つマルチプレイヤー ゲーム",
-    "title": "ゲームモード"
+    "title": "ゲームモード",
+    "versus_description": "2チームがトーナメントマップで対決。ルールは全員共通です。",
+    "versus_open": "形式を選ぶ",
+    "versus_title": "バーサス",
+    "versus_waiting": "{count}人が待機中"
   },
   "game_settings": {
     "bots": "部隊： ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "{seconds}秒間のPVPの無敵時間が有効です",
     "random_spawn": "ランダムスポーンが有効です。スタート地点を設定しています…",
     "random_spawn_spectator": "ランダムスポーンが有効です",
-    "singleplayer_game_paused": "ゲームを一時停止"
+    "singleplayer_game_paused": "ゲームを一時停止",
+    "versus_spawn": "チームのゾーン内で開始地点を選んでください"
   },
   "help_modal": {
     "action_attack_altclick": "攻撃する(左クリックがメニューの場合)",
@@ -2946,6 +2950,40 @@
     "verified_use": "確認済みを利用する",
     "verified_use_custom": "カスタム名に戻す",
     "verified_use_hint": "認証済みをアカウント名でプレイしてます"
+  },
+  "versus": {
+    "draw_hint": "チームはゲーム開始時に抽選で決まります。",
+    "format_title": "バーサス {format}",
+    "host": "ホスト",
+    "in_lobby": "ロビー: {count}/{max}",
+    "intro": "2チームがトーナメントマップで対決します。各チームは相手と鏡写しの自陣ゾーンから始まり、ルールは変わりません。",
+    "join_side": "この陣営に参加",
+    "kick": "ロビーから外す",
+    "leave_side": "この陣営を離れる",
+    "no_side": "陣営未選択 ({count})",
+    "pick_hint": "陣営を選んでください。両チームが揃うとゲームを開始できます。",
+    "play_private": "プライベートゲームを作成",
+    "play_private_hint": "リンクで友達を招待しましょう。全員が陣営を選んだら、ホストがゲームを開始します。",
+    "play_public": "公開ゲームをプレイ",
+    "play_public_hint": "全席が埋まるとすぐに開始します。チームは抽選で決まります。",
+    "private_title": "プライベート {format}",
+    "queue": "{count}/{max}人が待機中",
+    "queue_opening": "次のゲームを準備中…",
+    "rule_fixed": "誰も変更できない固定ルール",
+    "rule_map": "マップ: {map}",
+    "rule_no_ai": "ボットや国家なし: プレイヤーのみ",
+    "rule_north": "マップの北側は中立地帯",
+    "rule_win": "最後まで残ったチームの勝利",
+    "rule_zones": "各チームは中央から離れた自陣ゾーンから開始",
+    "seat_draw": "開始時に抽選",
+    "seat_free": "空き席",
+    "side_east": "東",
+    "side_full": "この陣営は満員です",
+    "side_south_east": "南東",
+    "side_south_west": "南西",
+    "side_west": "西",
+    "waiting_players": "プレイヤーを待っています ({count}/{max})",
+    "you": "あなた"
   },
   "win_modal": {
     "died": "あなたは死んでしまった",

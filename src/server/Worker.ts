@@ -10,6 +10,7 @@ import { z } from "zod";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { GameEnv } from "../core/configuration/Config";
 import { GameType } from "../core/game/Game";
+import { versusGameConfig, versusTeamSize } from "../core/game/Versus";
 import { stampNationCrest } from "../core/NationPack";
 import {
   ClientMessage,
@@ -181,7 +182,7 @@ export async function startWorker() {
     if (!parsed.success) {
       return res.status(400).json({ error: z.prettifyError(parsed.error) });
     }
-    const gc = parsed.data;
+    let gc = parsed.data;
     // Public games are scheduled by the master over IPC, never created here.
     if (gc?.gameType === GameType.Public) {
       return res
@@ -231,6 +232,17 @@ export async function startWorker() {
       }
       // A recorded successor that no longer exists (already cleaned up) falls
       // through and gets replaced by a fresh lobby.
+    }
+
+    // Versus rules are fixed: a versus lobby (or the successor of one) always
+    // gets its format's preset, whatever else the body asked for.
+    const versusSource = gc ?? previousGame?.gameInfo().gameConfig;
+    if (versusSource?.gameVariant === "versus") {
+      const size = versusTeamSize(versusSource);
+      if (size === null) {
+        return res.status(400).json({ error: "Invalid versus format" });
+      }
+      gc = versusGameConfig(size, GameType.Private);
     }
 
     const id = ServerEnv.generateGameIdForWorker(workerId);
@@ -291,7 +303,9 @@ export async function startWorker() {
         .status(403)
         .json({ error: "Only the lobby creator can change its listing" });
     }
-    if (game.isPublic() || game.hasStarted()) {
+    // A versus lobby is a match among friends; the public versus queue is
+    // where strangers meet.
+    if (game.isPublic() || game.hasStarted() || game.isVersus()) {
       return res.status(409).json({ error: "Game cannot be listed" });
     }
     // Listing is one-way for the host: players recruited from the lobby

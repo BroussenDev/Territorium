@@ -1223,7 +1223,6 @@
     "teams": "Echipe"
   },
   "game_modes": {
-    "more_soon": "Mai multe moduri de joc sunt pe drum",
     "nations_description": "Alegeți o țară adevărată de pe harta uriașă a lumii și începeți cu întregul ei teritoriu. Ține-ți capitala, înghite-ți vecinii și stăpânește jumătate din lume.",
     "nations_fact_ai": "Țările pe care nimeni nu le alege sunt jucate de AI",
     "nations_fact_alliance": "Alianțele cu o țară vecină durează cu 50% mai mult",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Următorul joc vine în curând",
     "players": "{count}/{max} jucători",
     "subtitle": "Jocuri multiplayer cu reguli proprii",
-    "title": "Moduri de joc"
+    "title": "Moduri de joc",
+    "versus_description": "Două echipe se înfruntă pe o hartă de turneu, cu aceleași reguli pentru toți.",
+    "versus_open": "Alege un format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} așteaptă"
   },
   "game_settings": {
     "bots": "Triburi: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Imunitatea PVP activă pentru {seconds}s",
     "random_spawn": "Apariția aleatorie este activată. Se selectează locația de pornire...",
     "random_spawn_spectator": "Programarea aleatorie este activată",
-    "singleplayer_game_paused": "Joc întrerupt"
+    "singleplayer_game_paused": "Joc întrerupt",
+    "versus_spawn": "Alege un punct de start în zona echipei tale"
   },
   "help_modal": {
     "action_attack_altclick": "Atac (când clic stânga este configurat să deschidă meniul)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Utilizare verificată",
     "verified_use_custom": "Comută înapoi la un nume personalizat",
     "verified_use_hint": "Joacă sub numele tău de cont verificat"
+  },
+  "versus": {
+    "draw_hint": "Echipele sunt trase la sorți la începutul meciului.",
+    "format_title": "Versus {format}",
+    "host": "Gazdă",
+    "in_lobby": "În lobby: {count}/{max}",
+    "intro": "Două echipe se înfruntă pe o hartă de turneu. Fiecare echipă pornește din propria zonă, imaginea în oglindă a celei adverse, iar regulile nu se schimbă niciodată.",
+    "join_side": "Intră în această tabără",
+    "kick": "Elimină din lobby",
+    "leave_side": "Părăsește această tabără",
+    "no_side": "Fără tabără încă ({count})",
+    "pick_hint": "Alege-ți tabăra. Meciul poate începe când ambele echipe sunt complete.",
+    "play_private": "Creează un meci privat",
+    "play_private_hint": "Invită-ți prietenii cu linkul. Fiecare își alege tabăra, apoi gazda pornește meciul.",
+    "play_public": "Joacă un meci public",
+    "play_public_hint": "Începe imediat ce toate locurile sunt ocupate. Echipele sunt trase la sorți.",
+    "private_title": "{format} privat",
+    "queue": "{count}/{max} așteaptă",
+    "queue_opening": "Se deschide următorul meci…",
+    "rule_fixed": "Reguli fixe pe care nimeni nu le poate schimba",
+    "rule_map": "Hartă: {map}",
+    "rule_no_ai": "Fără boți sau națiuni: doar jucători",
+    "rule_north": "Nordul hărții este teritoriu neutru",
+    "rule_win": "Câștigă ultima echipă rămasă în joc",
+    "rule_zones": "Fiecare echipă pornește din propria zonă, departe de centru",
+    "seat_draw": "Tras la sorți la start",
+    "seat_free": "Loc liber",
+    "side_east": "Est",
+    "side_full": "Această tabără e completă",
+    "side_south_east": "Sud-est",
+    "side_south_west": "Sud-vest",
+    "side_west": "Vest",
+    "waiting_players": "Se așteaptă jucători ({count}/{max})",
+    "you": "Tu"
   },
   "win_modal": {
     "died": "Ai murit",

@@ -143,7 +143,10 @@ export class WinCheckExecution implements Execution {
   checkWinnerTeam(): void {
     if (this.mg === null) throw new Error("Not initialized");
 
-    if (this.mg.config().gameConfig().rankedType === RankedType.TwoVTwo) {
+    if (
+      this.mg.config().gameConfig().rankedType === RankedType.TwoVTwo ||
+      this.mg.config().isVersusMode()
+    ) {
       // players() only returns alive players, so a team drops out of this set
       // once every member is dead or disconnected.
       const teamsRemaining = new Set<Team>();

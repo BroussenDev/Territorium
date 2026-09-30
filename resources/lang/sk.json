@@ -1223,7 +1223,6 @@
     "teams": "Tímy"
   },
   "game_modes": {
-    "more_soon": "Ďalšie herné režimy sú na ceste",
     "nations_description": "Vyberte si skutočnú krajinu na obrovskej mape sveta a začnite s celým jej územím. Držte svoje hlavné mesto, prehltnite svojich susedov a ovládnite polovicu sveta.",
     "nations_fact_ai": "Krajiny, ktoré si nikto nevyberie, hrá AI",
     "nations_fact_alliance": "Aliancie so susednou krajinou trvajú o 50 % dlhšie",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Ďalšia hra už čoskoro",
     "players": "{count}/{max} hráčov",
     "subtitle": "Hry pre viacerých hráčov s vlastnými pravidlami",
-    "title": "Herné režimy"
+    "title": "Herné režimy",
+    "versus_description": "Dva tímy sa stretnú na turnajovej mape s rovnakými pravidlami pre všetkých.",
+    "versus_open": "Vybrať formát",
+    "versus_title": "Versus",
+    "versus_waiting": "Čaká: {count}"
   },
   "game_settings": {
     "bots": "kmene:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP imunita aktívna {seconds}s",
     "random_spawn": "Náhodný spawn je povolený. Vyberá sa miesto štartu...",
     "random_spawn_spectator": "Náhodný spawn je povolený",
-    "singleplayer_game_paused": "Hra pozastavená"
+    "singleplayer_game_paused": "Hra pozastavená",
+    "versus_spawn": "Vyber si štartovacie miesto v zóne svojho tímu"
   },
   "help_modal": {
     "action_attack_altclick": "Útok (keď je ľavé ťuknutie nastavené na otvorenie ponuky)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Používať overené",
     "verified_use_custom": "Prepnúť späť na vlastný názov",
     "verified_use_hint": "Hrajte pod overeným názvom účtu"
+  },
+  "versus": {
+    "draw_hint": "Tímy sa losujú pri štarte hry.",
+    "format_title": "Versus {format}",
+    "host": "Hostiteľ",
+    "in_lobby": "V lobby: {count}/{max}",
+    "intro": "Dva tímy sa stretnú na turnajovej mape. Každý tím začína vo svojej zóne, zrkadlovom obraze zóny súpera, a pravidlá sa nikdy nemenia.",
+    "join_side": "Pridať sa k tejto strane",
+    "kick": "Odstrániť z lobby",
+    "leave_side": "Opustiť túto stranu",
+    "no_side": "Zatiaľ bez strany ({count})",
+    "pick_hint": "Vyber si stranu. Hra môže začať, keď sú oba tímy plné.",
+    "play_private": "Vytvoriť súkromnú hru",
+    "play_private_hint": "Pozvi priateľov odkazom. Každý si vyberie stranu a potom hostiteľ spustí hru.",
+    "play_public": "Hrať verejnú hru",
+    "play_public_hint": "Začne, hneď ako sú obsadené všetky miesta. Tímy sa losujú.",
+    "private_title": "Súkromná {format}",
+    "queue": "Čaká: {count}/{max}",
+    "queue_opening": "Otvára sa ďalšia hra…",
+    "rule_fixed": "Pevné pravidlá, ktoré nikto nemôže zmeniť",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Žiadni boti ani národy: iba hráči",
+    "rule_north": "Sever mapy je neutrálne územie",
+    "rule_win": "Vyhráva posledný tím, ktorý vydrží",
+    "rule_zones": "Každý tím začína vo svojej zóne, ďaleko od stredu",
+    "seat_draw": "Losuje sa na štarte",
+    "seat_free": "Voľné miesto",
+    "side_east": "Východ",
+    "side_full": "Táto strana je plná",
+    "side_south_east": "Juhovýchod",
+    "side_south_west": "Juhozápad",
+    "side_west": "Západ",
+    "waiting_players": "Čaká sa na hráčov ({count}/{max})",
+    "you": "Ty"
   },
   "win_modal": {
     "died": "Zomrel/a si",

@@ -1223,7 +1223,6 @@
     "teams": "Hold"
   },
   "game_modes": {
-    "more_soon": "Flere spiltilstande er på vej",
     "nations_description": "Vælg et rigtigt land på det gigantiske verdenskort og start med hele dets territorium. Hold din hovedstad, slug dine naboer og reger halvdelen af verden.",
     "nations_fact_ai": "Lande, som ingen vælger, spilles af AI",
     "nations_fact_alliance": "Alliancer med et naboland varer 50 % længere",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Næste kamp kommer snart",
     "players": "{count}/{max} spillere",
     "subtitle": "Multiplayer spil med deres egne regler",
-    "title": "Spiltilstande"
+    "title": "Spiltilstande",
+    "versus_description": "To hold mødes på et turneringskort med de samme regler for alle.",
+    "versus_open": "Vælg format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} venter"
   },
   "game_settings": {
     "bots": "Stammer: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP-immunitet aktiv i {seconds}er",
     "random_spawn": "Tilfældig spawn er aktiveret. Vælger startposition for dig...",
     "random_spawn_spectator": "Tilfældig spawn er aktiveret",
-    "singleplayer_game_paused": "Spil sat på pause"
+    "singleplayer_game_paused": "Spil sat på pause",
+    "versus_spawn": "Vælg et startsted i dit holds zone"
   },
   "help_modal": {
     "action_attack_altclick": "Angreb (når venstreklik er sat til at åbne menuen)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Brug verificeret",
     "verified_use_custom": "Skift tilbage til et brugerdefineret navn",
     "verified_use_hint": "Spil under dit verificerede kontonavn"
+  },
+  "versus": {
+    "draw_hint": "Holdene trækkes lod om, når spillet starter.",
+    "format_title": "Versus {format}",
+    "host": "Vært",
+    "in_lobby": "I lobbyen: {count}/{max}",
+    "intro": "To hold mødes på et turneringskort. Hvert hold starter i sin egen zone, et spejlbillede af modstandernes, og reglerne ændrer sig aldrig.",
+    "join_side": "Tilslut dig denne side",
+    "kick": "Fjern fra lobbyen",
+    "leave_side": "Forlad denne side",
+    "no_side": "Ingen side endnu ({count})",
+    "pick_hint": "Vælg din side. Spillet kan starte, når begge hold er fulde.",
+    "play_private": "Opret et privat spil",
+    "play_private_hint": "Inviter dine venner med linket. Alle vælger side, og så starter værten spillet.",
+    "play_public": "Spil et offentligt spil",
+    "play_public_hint": "Starter, så snart alle pladser er taget. Holdene trækkes lod om.",
+    "private_title": "Privat {format}",
+    "queue": "{count}/{max} venter",
+    "queue_opening": "Åbner næste spil…",
+    "rule_fixed": "Faste regler, som ingen kan ændre",
+    "rule_map": "Kort: {map}",
+    "rule_no_ai": "Ingen bots eller nationer: kun spillere",
+    "rule_north": "Kortets nordlige del er neutralt område",
+    "rule_win": "Det sidste hold tilbage vinder",
+    "rule_zones": "Hvert hold starter i sin egen zone, langt fra midten",
+    "seat_draw": "Trækkes lod om ved start",
+    "seat_free": "Ledig plads",
+    "side_east": "Øst",
+    "side_full": "Denne side er fuld",
+    "side_south_east": "Sydøst",
+    "side_south_west": "Sydvest",
+    "side_west": "Vest",
+    "waiting_players": "Venter på spillere ({count}/{max})",
+    "you": "Dig"
   },
   "win_modal": {
     "died": "Du døde",

@@ -6,6 +6,7 @@
  *   1. Colored highlights on unowned tiles within radius of each enemy human
  *      player's spawn center.
  *   2. Animated breathing rings around the local player and teammates.
+ *   3. In versus games, a veil over the land the local team can't spawn on.
  *
  * One instanced quad is drawn per spawn center (sized to that center's
  * influence radius), so cost scales with the number of spawns rather than
@@ -36,6 +37,7 @@ const RADIUS_MARGIN = 1;
 const KIND_ENEMY = 0;
 const KIND_SELF = 1;
 const KIND_TEAMMATE = 2;
+const KIND_ZONE = 3;
 
 export interface SpawnCenter {
   x: number;
@@ -45,6 +47,22 @@ export interface SpawnCenter {
   b: number;
   isSelf: boolean;
   isTeammate: boolean;
+}
+
+/** The local team's spawn zone in a versus game, in tiles. */
+export interface SpawnZone {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  /** The no-spawn disc at the map centre. */
+  holeX: number;
+  holeY: number;
+  holeRadius: number;
+  /** Team color. */
+  r: number;
+  g: number;
+  b: number;
 }
 
 export class SpawnOverlayPass {
@@ -63,6 +81,8 @@ export class SpawnOverlayPass {
   private uSelfRadii: WebGLUniformLocation;
   private uMateRadii: WebGLUniformLocation;
   private uGradientStops: WebGLUniformLocation;
+  private uZone: WebGLUniformLocation;
+  private uZoneHole: WebGLUniformLocation;
 
   private mapW: number;
   private mapH: number;
@@ -73,6 +93,7 @@ export class SpawnOverlayPass {
   private instanceCount = 0;
   private animTime = 0;
   private lastTime = 0;
+  private zone: SpawnZone | null = null;
 
   constructor(
     gl: WebGL2RenderingContext,
@@ -110,6 +131,8 @@ export class SpawnOverlayPass {
       this.program,
       "uGradientStops",
     )!;
+    this.uZone = gl.getUniformLocation(this.program, "uZone")!;
+    this.uZoneHole = gl.getUniformLocation(this.program, "uZoneHole")!;
 
     gl.useProgram(this.program);
     gl.uniform1i(gl.getUniformLocation(this.program, "uTileTex"), 0);
@@ -153,9 +176,13 @@ export class SpawnOverlayPass {
     gl.bindVertexArray(null);
   }
 
-  /** Update spawn overlay state each tick. Empty centers turn the pass off. */
-  update(centers: SpawnCenter[]): void {
-    this.active = centers.length > 0;
+  /**
+   * Update spawn overlay state each tick. No centers and no zone turn the
+   * pass off.
+   */
+  update(centers: SpawnCenter[], zone: SpawnZone | null = null): void {
+    this.zone = zone;
+    this.active = centers.length > 0 || zone !== null;
     if (!this.active) {
       this.instanceCount = 0;
       return;
@@ -166,7 +193,7 @@ export class SpawnOverlayPass {
     const mateRadius = s.mateMaxRad * MAX_BREATH_SCALE + RADIUS_MARGIN;
     const enemyRadius = s.highlightRadius + RADIUS_MARGIN;
 
-    this.instanceBuf.ensureCapacity(centers.length);
+    this.instanceBuf.ensureCapacity(centers.length + 1);
     const data = this.instanceBuf.float32;
     let count = 0;
 
@@ -183,7 +210,24 @@ export class SpawnOverlayPass {
     };
 
     // Draw order = buffer order; over-blending puts later instances on top.
-    // Enemies first, then teammates, then self so the local ring wins.
+    // The zone veil goes under everything, then enemies, then teammates,
+    // then self so the local ring wins.
+    if (zone !== null) {
+      // One quad over the whole map; the shader cuts the zone out.
+      write(
+        {
+          x: this.mapW / 2,
+          y: this.mapH / 2,
+          r: zone.r,
+          g: zone.g,
+          b: zone.b,
+          isSelf: false,
+          isTeammate: false,
+        },
+        KIND_ZONE,
+        Math.max(this.mapW, this.mapH) / 2 + RADIUS_MARGIN,
+      );
+    }
     for (const c of centers) {
       if (!c.isSelf && !c.isTeammate) write(c, KIND_ENEMY, enemyRadius);
     }
@@ -236,6 +280,11 @@ export class SpawnOverlayPass {
     gl.uniform4f(this.uSelfRadii, s.selfMinRad, s.selfMaxRad, 0, 0);
     gl.uniform4f(this.uMateRadii, s.mateMinRad, s.mateMaxRad, 0, 0);
     gl.uniform2f(this.uGradientStops, s.gradientInnerEdge, s.gradientSolidEnd);
+    const zone = this.zone;
+    if (zone !== null) {
+      gl.uniform4f(this.uZone, zone.x, zone.y, zone.width, zone.height);
+      gl.uniform3f(this.uZoneHole, zone.holeX, zone.holeY, zone.holeRadius);
+    }
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.tileTex);

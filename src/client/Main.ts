@@ -178,6 +178,7 @@ import {
   forgetActiveGame,
   rememberActiveGame,
 } from "./components/ResumeGameButton";
+import "./components/VersusModal";
 import "./components/baseComponents/Button";
 import "./components/baseComponents/Modal";
 import "./styles.css";
@@ -442,6 +443,10 @@ class Client {
     modalRouter.register("ranked", {
       tag: "ranked-modal",
       pageId: "page-ranked",
+    });
+    modalRouter.register("versus", {
+      tag: "versus-modal",
+      pageId: "page-versus",
     });
     modalRouter.register("challenges", {
       tag: "challenges-modal",

@@ -16,15 +16,23 @@ import {
   GameMapSize,
   GameMapType,
   GameMode,
+  GameType,
   UnitType,
 } from "../core/game/Game";
 import { UserSettings } from "../core/game/UserSettings";
 import {
+  isVersusTeamSize,
+  versusGameConfig,
+  versusGameType,
+  VersusTeamSize,
+  versusTeamSize,
+} from "../core/game/Versus";
+import {
   ClientInfo,
   GameConfig,
+  isValidGameID,
   LobbyInfoEvent,
   TeamCountConfig,
-  isValidGameID,
 } from "../core/Schemas";
 import { createLobby, getUserMe, setLobbyListed } from "./Api";
 import "./components/baseComponents/Modal";
@@ -37,9 +45,11 @@ import "./components/LobbyPlayerView";
 import "./components/ToggleInputCard";
 import { inviteFriendsButton } from "./components/ui/InviteFriendsButton";
 import { modalHeader } from "./components/ui/ModalHeader";
+import "./components/VersusLobby";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { JoinLobbyEvent } from "./Main";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
+import { SendPickTeamEvent } from "./Transport";
 import {
   getBotsForCompactMap,
   getNationsForCompactMap,
@@ -117,6 +127,9 @@ export class HostLobbyModal extends BaseModal {
   @state() private showSubscriptionRequired: boolean = false;
   // Server timestamp when the listed lobby auto-starts (from lobby info).
   @state() private autoStartAt: number | null = null;
+  // Players per team of a versus lobby, whose rules are fixed: no settings,
+  // no public listing, and the game starts only once every seat is taken.
+  @state() private versusSize: VersusTeamSize | null = null;
 
   @property({ attribute: false }) eventBus: EventBus | null = null;
   // Timers for debouncing slider changes
@@ -152,6 +165,11 @@ export class HostLobbyModal extends BaseModal {
       this.publiclyListed = lobby.listed;
     }
     this.autoStartAt = lobby.autoStartAt ?? null;
+    // A successor lobby keeps its predecessor's versus format.
+    const versus = lobby.gameConfig ? versusTeamSize(lobby.gameConfig) : null;
+    if (versus !== null) {
+      this.versusSize = versus;
+    }
   };
 
   private getRandomString(): string {
@@ -218,9 +236,13 @@ export class HostLobbyModal extends BaseModal {
         <span
           class="text-white text-xl lg:text-2xl font-bold uppercase tracking-widest break-words hyphens-auto"
         >
-          ${translateText("host_modal.title")}
+          ${this.versusSize === null
+            ? translateText("host_modal.title")
+            : translateText("versus.private_title", {
+                format: versusGameType(this.versusSize),
+              })}
         </span>
-        ${this.renderVisibilityToggle()}
+        ${this.versusSize === null ? this.renderVisibilityToggle() : nothing}
       `,
       onBack: () => {
         this.leaveLobbyOnClose = true;
@@ -319,6 +341,9 @@ export class HostLobbyModal extends BaseModal {
   }
 
   protected renderBody() {
+    if (this.versusSize !== null) {
+      return this.renderVersusBody(this.versusSize);
+    }
     const secondsRemaining =
       this.lobbyStartAt !== null
         ? getSecondsUntilServerTimestamp(
@@ -682,6 +707,58 @@ export class HostLobbyModal extends BaseModal {
     `;
   }
 
+  private renderVersusBody(teamSize: VersusTeamSize) {
+    const secondsRemaining =
+      this.lobbyStartAt !== null
+        ? getSecondsUntilServerTimestamp(
+            this.lobbyStartAt,
+            this.serverTimeOffset,
+          )
+        : null;
+    const players = this.clients.filter((c) => !c.spectator).length;
+    const full = players === teamSize * 2;
+    const statusLabel =
+      secondsRemaining !== null
+        ? translateText("host_modal.starting_in", {
+            time: renderDuration(secondsRemaining),
+          })
+        : full
+          ? translateText("game_settings.start")
+          : translateText("versus.waiting_players", {
+              count: players,
+              max: teamSize * 2,
+            });
+    return html`
+      <div class="flex flex-col h-full">
+        <div
+          class="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 sm:p-6 mx-auto w-full max-w-5xl"
+        >
+          <versus-lobby
+            .clients=${this.clients}
+            .currentClientID=${this.lobbyCreatorClientID}
+            .hostClientID=${this.lobbyCreatorClientID}
+            .teamSize=${teamSize}
+            .canPick=${true}
+            .onKick=${(clientID: string) => this.kickPlayer(clientID)}
+            @pick-team=${(e: CustomEvent<{ team: number | null }>) =>
+              this.eventBus?.emit(new SendPickTeamEvent(e.detail.team))}
+          ></versus-lobby>
+        </div>
+        <div class="p-6 pt-4 border-t border-white/10 bg-black/20 shrink-0">
+          <o-button
+            variant=${secondsRemaining !== null ? "warning" : "primary"}
+            width="block"
+            size="lg"
+            .title=${statusLabel}
+            .uppercase=${secondsRemaining === null}
+            ?disable=${this.lobbyStartAt === null && !full}
+            @click=${this.toggleGameStartTimer}
+          ></o-button>
+        </div>
+      </div>
+    `;
+  }
+
   protected onOpen(args?: Record<string, unknown>): void {
     // Re-armed here (not in onClose's reset) so that once
     // closeWithoutLeaving() disarms it, no close cascade — e.g. another
@@ -712,11 +789,20 @@ export class HostLobbyModal extends BaseModal {
       return;
     }
 
+    // A versus lobby is created with its format's fixed rules.
+    this.versusSize = isVersusTeamSize(args?.versusSize)
+      ? args.versusSize
+      : null;
+
     // The server mints the game id, so we don't know it until createLobby
     // resolves. clientID is assigned by the server when we join the lobby.
 
     // Pass auth token for creator identification (server extracts persistentID from it)
-    createLobby()
+    createLobby(
+      this.versusSize === null
+        ? undefined
+        : versusGameConfig(this.versusSize, GameType.Private),
+    )
       .then(async (lobby) => {
         this.lobbyId = lobby.gameID;
         if (!isValidGameID(this.lobbyId)) {
@@ -750,7 +836,7 @@ export class HostLobbyModal extends BaseModal {
     // BaseModal.firstUpdated() owns modalEl.onClose so the o-modal close path
     // (backdrop / close button) runs confirmBeforeClose(). Don't override it
     // here — doing so would bypass the leave-lobby confirmation.
-    this.loadNationCount();
+    if (this.versusSize === null) this.loadNationCount();
   }
 
   // Bind the host view to a lobby the server already created (the successor of a
@@ -881,6 +967,7 @@ export class HostLobbyModal extends BaseModal {
     this.publiclyListed = false;
     this.showSubscriptionRequired = false;
     this.autoStartAt = null;
+    this.versusSize = null;
   }
 
   private async handleSelectRandomMap() {
@@ -1495,7 +1582,8 @@ export class HostLobbyModal extends BaseModal {
   }
 
   private async toggleGameStartTimer() {
-    await this.putGameConfig();
+    // A versus lobby's rules can't change (the server refuses any update).
+    if (this.versusSize === null) await this.putGameConfig();
     console.log(
       `Starting private game with map: ${GameMapType[this.selectedMap as keyof typeof GameMapType]} ${this.useRandomMap ? " (Randomly selected)" : ""}`,
     );

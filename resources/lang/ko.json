@@ -1223,7 +1223,6 @@
     "teams": "팀전"
   },
   "game_modes": {
-    "more_soon": "더 많은 게임 모드가 준비 중입니다",
     "nations_description": "거대한 세계 지도에서 실제 국가를 선택하고 전체 영토부터 시작하세요. 수도를 지키고 이웃을 삼키고 세계의 절반을 지배하세요.",
     "nations_fact_ai": "아무도 선택하지 않은 국가는 AI가 플레이합니다.",
     "nations_fact_alliance": "이웃 국가와의 동맹이 50% 더 오래 지속됩니다.",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "다음 게임이 곧 출시됩니다",
     "players": "{count}/{max} 플레이어",
     "subtitle": "자신만의 규칙이 있는 멀티플레이어 게임",
-    "title": "게임 모드"
+    "title": "게임 모드",
+    "versus_description": "두 팀이 모두에게 같은 규칙으로 토너먼트 맵에서 맞붙습니다.",
+    "versus_open": "형식 선택",
+    "versus_title": "대전",
+    "versus_waiting": "{count}명 대기 중"
   },
   "game_settings": {
     "bots": "부족: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "{seconds}초 동안 PVP 면역이 활성화되었습니다",
     "random_spawn": "무작위 시작이 활성화되었습니다. 시작 위치를 선택하는 중...",
     "random_spawn_spectator": "랜덤 스폰이 활성화되었습니다",
-    "singleplayer_game_paused": "게임 일시 중지됨"
+    "singleplayer_game_paused": "게임 일시 중지됨",
+    "versus_spawn": "팀 구역 안에서 시작 위치를 고르세요"
   },
   "help_modal": {
     "action_attack_altclick": "공격 (좌클릭을 메뉴 열기로 설정한 경우)",
@@ -2946,6 +2950,40 @@
     "verified_use": "인증 이름 사용",
     "verified_use_custom": "사용자 지정 이름으로 다시 변경",
     "verified_use_hint": "인증된 계정 이름으로 플레이합니다"
+  },
+  "versus": {
+    "draw_hint": "팀은 게임이 시작될 때 무작위로 정해집니다.",
+    "format_title": "대전 {format}",
+    "host": "호스트",
+    "in_lobby": "로비: {count}/{max}",
+    "intro": "두 팀이 토너먼트 맵에서 맞붙습니다. 각 팀은 상대 구역과 대칭인 자기 구역에서 시작하며, 규칙은 절대 바뀌지 않습니다.",
+    "join_side": "이 진영에 참가",
+    "kick": "로비에서 내보내기",
+    "leave_side": "이 진영 나가기",
+    "no_side": "진영 미선택 ({count})",
+    "pick_hint": "진영을 고르세요. 두 팀이 모두 차면 게임을 시작할 수 있습니다.",
+    "play_private": "비공개 게임 만들기",
+    "play_private_hint": "링크로 친구를 초대하세요. 모두 진영을 고르면 호스트가 게임을 시작합니다.",
+    "play_public": "공개 게임 플레이",
+    "play_public_hint": "모든 자리가 차면 바로 시작합니다. 팀은 무작위로 정해집니다.",
+    "private_title": "비공개 {format}",
+    "queue": "{count}/{max}명 대기 중",
+    "queue_opening": "다음 게임을 여는 중…",
+    "rule_fixed": "아무도 바꿀 수 없는 고정 규칙",
+    "rule_map": "맵: {map}",
+    "rule_no_ai": "봇과 국가 없음: 플레이어만",
+    "rule_north": "맵의 북쪽은 중립 지역",
+    "rule_win": "마지막까지 남은 팀이 승리",
+    "rule_zones": "각 팀은 중앙에서 떨어진 자기 구역에서 시작",
+    "seat_draw": "시작 시 무작위 배정",
+    "seat_free": "빈 자리",
+    "side_east": "동쪽",
+    "side_full": "이 진영은 가득 찼습니다",
+    "side_south_east": "남동쪽",
+    "side_south_west": "남서쪽",
+    "side_west": "서쪽",
+    "waiting_players": "플레이어 대기 중 ({count}/{max})",
+    "you": "나"
   },
   "win_modal": {
     "died": "죽었습니다",

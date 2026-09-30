@@ -31,7 +31,7 @@ import type {
   UnitState,
 } from "../types";
 import type { ObjectiveZone } from "./passes/ObjectivePass";
-import type { SpawnCenter } from "./passes/SpawnOverlayPass";
+import type { SpawnCenter, SpawnZone } from "./passes/SpawnOverlayPass";
 import type { AttackTroopLabel } from "./passes/WorldTextPass";
 import { GPURenderer } from "./Renderer";
 import type { RenderSettings } from "./RenderSettings";
@@ -302,9 +302,16 @@ export class MapRenderer {
     this.renderer?.setObjectiveLabels(visible);
   }
 
-  /** Update spawn phase overlay (tile highlights + breathing rings). */
-  updateSpawnOverlay(inSpawnPhase: boolean, centers: SpawnCenter[]): void {
-    this.renderer?.updateSpawnOverlay(inSpawnPhase, centers);
+  /**
+   * Update spawn phase overlay (tile highlights + breathing rings, and the
+   * local team's spawn zone in versus games).
+   */
+  updateSpawnOverlay(
+    inSpawnPhase: boolean,
+    centers: SpawnCenter[],
+    zone: SpawnZone | null = null,
+  ): void {
+    this.renderer?.updateSpawnOverlay(inSpawnPhase, centers, zone);
   }
 
   /** Set the small-player glow set (1 byte per owner smallID), or null = off. */

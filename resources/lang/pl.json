@@ -1223,7 +1223,6 @@
     "teams": "Drużyny"
   },
   "game_modes": {
-    "more_soon": "Więcej trybów gry jest już w drodze",
     "nations_description": "Wybierz prawdziwy kraj na gigantycznej mapie świata i zacznij od całego jego terytorium. Utrzymaj swoją stolicę, połknij swoich sąsiadów i rządź połową świata.",
     "nations_fact_ai": "Kraje, których nikt nie wybiera, są rozgrywane przez sztuczną inteligencję",
     "nations_fact_alliance": "Sojusze z sąsiednim krajem trwają o 50% dłużej",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Następny mecz już wkrótce",
     "players": "{count}/{max} graczy",
     "subtitle": "Gry wieloosobowe z własnymi zasadami",
-    "title": "Tryby gry"
+    "title": "Tryby gry",
+    "versus_description": "Dwie drużyny mierzą się na mapie turniejowej, z tymi samymi zasadami dla wszystkich.",
+    "versus_open": "Wybierz format",
+    "versus_title": "Versus",
+    "versus_waiting": "Czeka: {count}"
   },
   "game_settings": {
     "bots": "Plemiona:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Odporność na PVP aktywna przez {seconds} s",
     "random_spawn": "Losowe spawnowanie jest włączone. Wybieram dla Ciebie lokalizację początkową...",
     "random_spawn_spectator": "Losowe spawnowanie jest włączone",
-    "singleplayer_game_paused": "Gra została wstrzymana"
+    "singleplayer_game_paused": "Gra została wstrzymana",
+    "versus_spawn": "Wybierz miejsce startu w strefie swojej drużyny"
   },
   "help_modal": {
     "action_attack_altclick": "Atak (gdy lewy przycisk myszy jest ustawiony na otwieranie menu).",
@@ -2946,6 +2950,40 @@
     "verified_use": "Użyj zweryfikowanego",
     "verified_use_custom": "Wróć do nazwy niestandardowej",
     "verified_use_hint": "Graj pod zweryfikowaną nazwą konta"
+  },
+  "versus": {
+    "draw_hint": "Drużyny są losowane na początku gry.",
+    "format_title": "Versus {format}",
+    "host": "Gospodarz",
+    "in_lobby": "W lobby: {count}/{max}",
+    "intro": "Dwie drużyny mierzą się na mapie turniejowej. Każda drużyna zaczyna we własnej strefie, lustrzanym odbiciu strefy rywali, a zasady nigdy się nie zmieniają.",
+    "join_side": "Dołącz do tej strony",
+    "kick": "Usuń z lobby",
+    "leave_side": "Opuść tę stronę",
+    "no_side": "Bez strony ({count})",
+    "pick_hint": "Wybierz stronę. Gra może się rozpocząć, gdy obie drużyny są pełne.",
+    "play_private": "Utwórz grę prywatną",
+    "play_private_hint": "Zaproś znajomych linkiem. Każdy wybiera stronę, a potem gospodarz rozpoczyna grę.",
+    "play_public": "Zagraj w grę publiczną",
+    "play_public_hint": "Startuje, gdy tylko wszystkie miejsca są zajęte. Drużyny są losowane.",
+    "private_title": "Prywatny {format}",
+    "queue": "Czeka: {count}/{max}",
+    "queue_opening": "Otwieranie następnej gry…",
+    "rule_fixed": "Stałe zasady, których nikt nie może zmienić",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Bez botów i nacji: tylko gracze",
+    "rule_north": "Północ mapy to teren neutralny",
+    "rule_win": "Wygrywa ostatnia drużyna na placu boju",
+    "rule_zones": "Każda drużyna zaczyna we własnej strefie, z dala od środka",
+    "seat_draw": "Losowane na starcie",
+    "seat_free": "Wolne miejsce",
+    "side_east": "Wschód",
+    "side_full": "Ta strona jest pełna",
+    "side_south_east": "Południowy wschód",
+    "side_south_west": "Południowy zachód",
+    "side_west": "Zachód",
+    "waiting_players": "Oczekiwanie na graczy ({count}/{max})",
+    "you": "Ty"
   },
   "win_modal": {
     "died": "Nie żyjesz",

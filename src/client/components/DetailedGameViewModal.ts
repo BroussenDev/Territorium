@@ -3,6 +3,7 @@ import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { UserMeResponse } from "../../core/ApiSchemas";
 import { GameMapType } from "../../core/game/Game";
+import { isVersusGameType } from "../../core/game/Versus";
 import { PublicGameInfo, PublicGames } from "../../core/Schemas";
 import { getDesktopSessionState } from "../Auth";
 import { crazyGamesSDK } from "../CrazyGamesSDK";
@@ -300,7 +301,10 @@ export class DetailedGameViewModal extends BaseModal {
       return this.renderLoadingSpinner();
     }
 
-    const all = flattenLobbies(this.lobbies.games);
+    // Versus lobbies have their own page.
+    const all = flattenLobbies(this.lobbies.games).filter(
+      (lobby) => !isVersusGameType(lobby.publicGameType ?? ""),
+    );
     const shown = filterAndSortLobbies(all, this.filters);
     const ofType = (lobbies: PublicGameInfo[], type: string) =>
       lobbies.filter((lobby) => lobby.publicGameType === type);

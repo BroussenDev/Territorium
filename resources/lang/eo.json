@@ -1223,7 +1223,6 @@
     "teams": "Teamoj"
   },
   "game_modes": {
-    "more_soon": "Pli da ludreĝimoj estas survoje",
     "nations_description": "Elektu realan landon sur la giganta mondmapo kaj komencu per ĝia tuta teritorio. Tenu vian ĉefurbon, englutu viajn najbarojn kaj regu duonon de la mondo.",
     "nations_fact_ai": "Landoj, kiujn neniu elektas, estas luditaj de la AI",
     "nations_fact_alliance": "Aliancoj kun najbara lando daŭras 50% pli longe",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Sekva ludo baldaŭ venos",
     "players": "{count}/{max} ludantoj",
     "subtitle": "Plurludantaj ludoj kun propraj reguloj",
-    "title": "Ludaj reĝimoj"
+    "title": "Ludaj reĝimoj",
+    "versus_description": "Du teamoj alfrontas unu la alian sur turnira mapo, kun la samaj reguloj por ĉiuj.",
+    "versus_open": "Elekti formaton",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} atendas"
   },
   "game_settings": {
     "bots": "Triboj: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Imuneco inter ludantoj aktiva dum {seconds} sekundoj",
     "random_spawn": "Komenclokoj estas hazardaj. Elekto de komencloko por vi...",
     "random_spawn_spectator": "Hazarda spawn estas ebligita",
-    "singleplayer_game_paused": "Ludo paŭzigita"
+    "singleplayer_game_paused": "Ludo paŭzigita",
+    "versus_spawn": "Elektu komencan lokon en la zono de via teamo"
   },
   "help_modal": {
     "action_attack_altclick": "Ataki (kiam la maldekstra klako estas formi por malfermi la menuon)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Uzo kontrolita",
     "verified_use_custom": "Reiru al propra nomo",
     "verified_use_hint": "Ludu sub via kontrolita kontonomo"
+  },
+  "versus": {
+    "draw_hint": "La teamoj estas lotumitaj kiam la ludo komenciĝas.",
+    "format_title": "Versus {format}",
+    "host": "Gastiganto",
+    "in_lobby": "En la atendejo: {count}/{max}",
+    "intro": "Du teamoj alfrontas unu la alian sur turnira mapo. Ĉiu teamo komencas en sia propra zono, spegula bildo de tiu de la kontraŭulo, kaj la reguloj neniam ŝanĝiĝas.",
+    "join_side": "Aliĝi al ĉi tiu flanko",
+    "kick": "Forigi el la atendejo",
+    "leave_side": "Forlasi ĉi tiun flankon",
+    "no_side": "Ankoraŭ sen flanko ({count})",
+    "pick_hint": "Elektu vian flankon. La ludo povas komenciĝi kiam ambaŭ teamoj estas plenaj.",
+    "play_private": "Krei privatan ludon",
+    "play_private_hint": "Invitu viajn amikojn per la ligilo. Ĉiu elektas flankon, poste la gastiganto komencas la ludon.",
+    "play_public": "Ludi publikan ludon",
+    "play_public_hint": "Komenciĝas tuj kiam ĉiuj lokoj estas okupitaj. La teamoj estas lotumitaj.",
+    "private_title": "Privata {format}",
+    "queue": "{count}/{max} atendas",
+    "queue_opening": "Malfermante la sekvan ludon…",
+    "rule_fixed": "Fiksaj reguloj, kiujn neniu povas ŝanĝi",
+    "rule_map": "Mapo: {map}",
+    "rule_no_ai": "Neniuj robotoj aŭ nacioj: nur ludantoj",
+    "rule_north": "La nordo de la mapo estas neŭtrala tereno",
+    "rule_win": "La lasta restanta teamo venkas",
+    "rule_zones": "Ĉiu teamo komencas en sia propra zono, for de la centro",
+    "seat_draw": "Lotumita ĉe la komenco",
+    "seat_free": "Libera loko",
+    "side_east": "Oriento",
+    "side_full": "Ĉi tiu flanko estas plena",
+    "side_south_east": "Sudoriento",
+    "side_south_west": "Sudokcidento",
+    "side_west": "Okcidento",
+    "waiting_players": "Atendante ludantojn ({count}/{max})",
+    "you": "Vi"
   },
   "win_modal": {
     "died": "Vi mortis",

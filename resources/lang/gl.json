@@ -1223,7 +1223,6 @@
     "teams": "Equipos"
   },
   "game_modes": {
-    "more_soon": "Máis modos de xogo están en camiño",
     "nations_description": "Escolle un país real no mapa mundial xigante e comeza con todo o seu territorio. Mantén a túa capital, traga aos teus veciños e goberna a metade do mundo.",
     "nations_fact_ai": "Os países que ninguén escolle son xogados pola IA",
     "nations_fact_alliance": "As alianzas cun país veciño duran un 50% máis",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Próximamente o próximo xogo",
     "players": "{count}/{max} xogadores",
     "subtitle": "Xogos multixogador con regras propias",
-    "title": "Modos de xogo"
+    "title": "Modos de xogo",
+    "versus_description": "Dous equipos enfróntanse nun mapa de torneo, coas mesmas regras para todos.",
+    "versus_open": "Escoller un formato",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} agardando"
   },
   "game_settings": {
     "bots": "Tribos:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "Inmunidade PVP activa durante {seconds}s",
     "random_spawn": "A creación aleatoria está activada. Seleccionando o lugar de partida para ti...",
     "random_spawn_spectator": "A creación aleatoria está activada",
-    "singleplayer_game_paused": "Xogo en pausa"
+    "singleplayer_game_paused": "Xogo en pausa",
+    "versus_spawn": "Escolle un punto de inicio na zona do teu equipo"
   },
   "help_modal": {
     "action_attack_altclick": "Ataque (cando o botón esquerdo está configurado para abrir o menú)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Usar verificado",
     "verified_use_custom": "Cambia de novo a un nome personalizado",
     "verified_use_hint": "Xoga co nome da túa conta verificada"
+  },
+  "versus": {
+    "draw_hint": "Os equipos sortéanse cando comeza a partida.",
+    "format_title": "Versus {format}",
+    "host": "Anfitrión",
+    "in_lobby": "Na sala: {count}/{max}",
+    "intro": "Dous equipos enfróntanse nun mapa de torneo. Cada equipo comeza na súa propia zona, reflexo exacto da do rival, e as regras nunca cambian.",
+    "join_side": "Unirse a este bando",
+    "kick": "Expulsar da sala",
+    "leave_side": "Deixar este bando",
+    "no_side": "Sen bando ({count})",
+    "pick_hint": "Escolle o teu bando. A partida pode comezar cando os dous equipos estean completos.",
+    "play_private": "Crear unha partida privada",
+    "play_private_hint": "Convida aos teus amigos coa ligazón. Cada un escolle bando e despois o anfitrión inicia a partida.",
+    "play_public": "Xogar unha partida pública",
+    "play_public_hint": "Comeza en canto se ocupan todos os postos. Os equipos sortéanse.",
+    "private_title": "{format} privado",
+    "queue": "{count}/{max} agardando",
+    "queue_opening": "Abrindo a seguinte partida…",
+    "rule_fixed": "Regras fixas que ninguén pode cambiar",
+    "rule_map": "Mapa: {map}",
+    "rule_no_ai": "Sen bots nin nacións: só xogadores",
+    "rule_north": "O norte do mapa é territorio neutral",
+    "rule_win": "Gaña o último equipo en pé",
+    "rule_zones": "Cada equipo comeza na súa propia zona, lonxe do centro",
+    "seat_draw": "Sortéase ao inicio",
+    "seat_free": "Posto libre",
+    "side_east": "Leste",
+    "side_full": "Este bando está completo",
+    "side_south_east": "Sueste",
+    "side_south_west": "Suroeste",
+    "side_west": "Oeste",
+    "waiting_players": "Agardando xogadores ({count}/{max})",
+    "you": "Ti"
   },
   "win_modal": {
     "died": "Morriches",

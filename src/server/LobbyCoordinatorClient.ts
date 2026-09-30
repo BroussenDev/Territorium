@@ -380,6 +380,10 @@ export class LobbyCoordinatorClient {
           special: [],
           hosted: [],
           nations: [],
+          "1v1": [],
+          "2v2": [],
+          "3v3": [],
+          "4v4": [],
         };
         for (const type of PublicGameTypeSchema.options) {
           for (const entry of msg.games[type] ?? []) {

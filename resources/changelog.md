@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.36
+
+⚔️ **New Versus mode: 1v1, 2v2, 3v3 and 4v4**
+
+- A new Versus card on the home page opens the four formats, each on its own tournament map: 1v1 on Tournament 2 Teams, 2v2 on Tournament 4 Teams, 3v3 on Tournament 3 Teams and 4v4 on Tournament 8 Teams.
+- Each team starts in its own zone, a mirror image of the other one, away from the centre of the map. On the 3v3 map both teams start in the south and the north is neutral ground. The other team's zone is greyed out while you pick your starting location.
+- Public games start as soon as every seat is taken, and the teams are drawn at random.
+- Private games: invite your friends with the link, everyone picks the red or the blue side, and the host starts the game once both teams are full.
+- The rules are fixed and nobody can change them: no bots, no nations, and the last team standing wins.
+
 ## v0.1.35
 
 ⚓ **New harbour look**

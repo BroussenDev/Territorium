@@ -18,6 +18,11 @@ import {
   OBJECTIVE_CAPTURE_SECONDS,
   type ObjectiveState,
 } from "../core/game/Objectives";
+import {
+  versusExclusionRadius,
+  versusSpawnArea,
+  versusTeamIndex,
+} from "../core/game/Versus";
 import { decodePatternData } from "../core/PatternDecoder";
 import { getCachedCosmetics } from "./Cosmetics";
 import { buildTerrainRowSpans } from "./render/frame/derive/TerrainRowSpans";
@@ -29,6 +34,7 @@ import type {
   ObjectiveZone,
   PlayerStatic,
   SpawnCenter,
+  SpawnZone,
 } from "./render/gl";
 import {
   DEFAULT_NUKE_EXPLOSION_COLOR,
@@ -500,7 +506,41 @@ export class WebGLFrameBuilder {
           p.smallID() !== me?.smallID(),
       });
     }
-    this.view.updateSpawnOverlay(inSpawnPhase, centers);
+    this.view.updateSpawnOverlay(
+      inSpawnPhase,
+      centers,
+      inSpawnPhase ? this.versusSpawnZone(gameView) : null,
+    );
+  }
+
+  /**
+   * Versus games: the zone the local player's team spawns in, where the
+   * simulation accepts their spawn click. Null in any other game, and for
+   * spectators.
+   */
+  private versusSpawnZone(gameView: GameView): SpawnZone | null {
+    const config = gameView.config();
+    const team = gameView.myPlayer()?.team() ?? null;
+    if (!config.isVersusMode() || team === null) return null;
+    const width = gameView.width();
+    const height = gameView.height();
+    const area = versusSpawnArea(
+      config.gameConfig().gameMap,
+      versusTeamIndex(team),
+      width,
+      height,
+    );
+    if (area === undefined) return null;
+    const color = gameView.myPlayer()!.territoryColor().toRgb();
+    return {
+      ...area,
+      holeX: (width - 1) / 2,
+      holeY: (height - 1) / 2,
+      holeRadius: versusExclusionRadius(width),
+      r: color.r / 255,
+      g: color.g / 255,
+      b: color.b / 255,
+    };
   }
 
   /**

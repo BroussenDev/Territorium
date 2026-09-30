@@ -1223,7 +1223,6 @@
     "teams": "Teams"
   },
   "game_modes": {
-    "more_soon": "Weitere Spielmodi sind in Vorbereitung",
     "nations_description": "Wählen Sie ein echtes Land auf der riesigen Weltkarte aus und beginnen Sie mit seinem gesamten Territorium. Halten Sie Ihre Hauptstadt, schlucken Sie Ihre Nachbarn und beherrschen Sie die halbe Welt.",
     "nations_fact_ai": "Länder, die niemand auswählt, werden von der KI gespielt",
     "nations_fact_alliance": "Allianzen mit einem Nachbarland halten 50 % länger",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Das nächste Spiel kommt bald",
     "players": "{count}/{max} Spieler",
     "subtitle": "Multiplayer-Spiele mit eigenen Regeln",
-    "title": "Spielmodi"
+    "title": "Spielmodi",
+    "versus_description": "Zwei Teams treten auf einer Turnierkarte gegeneinander an, mit denselben Regeln für alle.",
+    "versus_open": "Format wählen",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} warten"
   },
   "game_settings": {
     "bots": "Stämme: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP Immunität aktiv für {seconds} Sekunden",
     "random_spawn": "Zufälliger Spawn ist aktiviert. Startposition wird ausgewählt...",
     "random_spawn_spectator": "Zufälliger Spawn ist aktiviert",
-    "singleplayer_game_paused": "Spiel pausiert"
+    "singleplayer_game_paused": "Spiel pausiert",
+    "versus_spawn": "Wähle einen Startpunkt in der Zone deines Teams"
   },
   "help_modal": {
     "action_attack_altclick": "Angriff ausführen (wenn Linksklick auf \"öffne Menü\" gestellt ist)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Verifizierung verwenden",
     "verified_use_custom": "Zu einem eigenen Namen zurückkehren",
     "verified_use_hint": "Sie spielen unter Ihrem verifizierten Kontonamen"
+  },
+  "versus": {
+    "draw_hint": "Die Teams werden beim Spielstart ausgelost.",
+    "format_title": "Versus {format}",
+    "host": "Host",
+    "in_lobby": "In der Lobby: {count}/{max}",
+    "intro": "Zwei Teams treten auf einer Turnierkarte gegeneinander an. Jedes Team startet in seiner eigenen Zone, dem Spiegelbild der gegnerischen, und die Regeln ändern sich nie.",
+    "join_side": "Dieser Seite beitreten",
+    "kick": "Aus der Lobby entfernen",
+    "leave_side": "Diese Seite verlassen",
+    "no_side": "Noch ohne Seite ({count})",
+    "pick_hint": "Wähle deine Seite. Das Spiel kann starten, sobald beide Teams voll sind.",
+    "play_private": "Privates Spiel erstellen",
+    "play_private_hint": "Lade deine Freunde über den Link ein. Jeder wählt eine Seite, dann startet der Host das Spiel.",
+    "play_public": "Öffentliches Spiel spielen",
+    "play_public_hint": "Startet, sobald alle Plätze belegt sind. Die Teams werden ausgelost.",
+    "private_title": "Privates {format}",
+    "queue": "{count}/{max} warten",
+    "queue_opening": "Nächstes Spiel wird geöffnet…",
+    "rule_fixed": "Feste Regeln, die niemand ändern kann",
+    "rule_map": "Karte: {map}",
+    "rule_no_ai": "Keine Bots oder Nationen: nur Spieler",
+    "rule_north": "Der Norden der Karte ist neutrales Gebiet",
+    "rule_win": "Das letzte verbliebene Team gewinnt",
+    "rule_zones": "Jedes Team startet in seiner eigenen Zone, fern der Mitte",
+    "seat_draw": "Wird beim Start ausgelost",
+    "seat_free": "Freier Platz",
+    "side_east": "Osten",
+    "side_full": "Diese Seite ist voll",
+    "side_south_east": "Südosten",
+    "side_south_west": "Südwesten",
+    "side_west": "Westen",
+    "waiting_players": "Warte auf Spieler ({count}/{max})",
+    "you": "Du"
   },
   "win_modal": {
     "died": "Du bist gestorben",

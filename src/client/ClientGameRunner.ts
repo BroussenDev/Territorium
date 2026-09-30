@@ -33,6 +33,7 @@ import {
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
 } from "../core/game/UserSettings";
+import { isVersusSpawnCell } from "../core/game/Versus";
 import { WorkerClient } from "../core/worker/WorkerClient";
 import { isDesktopShell } from "./DesktopShell";
 import { GameMetrics } from "./GameMetrics";
@@ -1222,6 +1223,24 @@ export class ClientGameRunner {
     }
   }
 
+  /**
+   * Versus games: the simulation only accepts a spawn in the team's own
+   * zone (veiled around it on the map), so a click elsewhere sends nothing.
+   */
+  private outsideVersusZone(x: number, y: number): boolean {
+    const config = this.gameView.config();
+    const team = this.gameView.myPlayer()?.team() ?? null;
+    if (!config.isVersusMode() || team === null) return false;
+    return !isVersusSpawnCell(
+      config.gameConfig().gameMap,
+      team,
+      x,
+      y,
+      this.gameView.width(),
+      this.gameView.height(),
+    );
+  }
+
   private inputEvent(event: MouseUpEvent) {
     if (!this.isActive || this.renderer.uiState.ghostStructure !== null) {
       return;
@@ -1241,6 +1260,7 @@ export class ClientGameRunner {
       this.gameView.inSpawnPhase() &&
       !this.gameView.config().isRandomSpawn()
     ) {
+      if (this.outsideVersusZone(cell.x, cell.y)) return;
       this.eventBus.emit(new SendSpawnIntentEvent(tile));
       return;
     }

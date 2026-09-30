@@ -115,7 +115,8 @@ export type ClientMessage =
   | ClientSpectateMessage
   | ClientReportMessage
   | ClientPickNationMessage
-  | ClientChatMessage;
+  | ClientChatMessage
+  | ClientPickTeamMessage;
 
 export type ServerMessage =
   | ServerTurnMessage
@@ -165,6 +166,7 @@ export type ClientSpectateMessage = z.infer<typeof ClientSpectateMessageSchema>;
 export type ClientPickNationMessage = z.infer<
   typeof ClientPickNationMessageSchema
 >;
+export type ClientPickTeamMessage = z.infer<typeof ClientPickTeamMessageSchema>;
 
 export type AllPlayersStats = z.infer<typeof AllPlayersStatsSchema>;
 export type Player = z.infer<typeof PlayerSchema>;
@@ -187,6 +189,11 @@ export const PublicGameTypeSchema = z.enum([
   "special",
   "hosted",
   "nations",
+  // Versus: one lobby per format, which starts as soon as it is full.
+  "1v1",
+  "2v2",
+  "3v3",
+  "4v4",
 ]);
 
 // Lobby types the master schedules from the map playlist. "hosted" is
@@ -589,7 +596,9 @@ export const GameConfigSchema = z.object({
   // as a real country of the giant world map (see NationsMode.ts).
   // "training": the menu's guided solo game, where the tutorial ends on
   // beating the nations (the simulation plays it as a plain FFA).
-  gameVariant: z.enum(["nations", "training"]).optional(),
+  // "versus": two teams of 1 to 4 on a tournament map, fixed rules, each
+  // team spawning in its own zone (see Versus.ts).
+  gameVariant: z.enum(["nations", "training", "versus"]).optional(),
 });
 
 export const TeamSchema = z.string();
@@ -1304,6 +1313,13 @@ export const ClientPickNationMessageSchema = z.object({
   nation: zb.uint().nullable(),
 });
 
+// Private versus lobby: choose a side (0: west, 1: east), or null to let the
+// game place you. The server caps each side at the format's team size.
+export const ClientPickTeamMessageSchema = z.object({
+  type: z.literal("pick_team"),
+  team: zb.uint({ max: 1 }).nullable(),
+});
+
 export const ClientMessageSchema = zb.discriminatedUnion("type", [
   ClientSendWinnerSchema,
   ClientSendLiveStatsSchema,
@@ -1317,6 +1333,7 @@ export const ClientMessageSchema = zb.discriminatedUnion("type", [
   ClientReportMessageSchema,
   ClientPickNationMessageSchema,
   ClientChatMessageSchema,
+  ClientPickTeamMessageSchema,
 ]);
 
 //

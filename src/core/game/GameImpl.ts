@@ -56,6 +56,7 @@ import { StatsImpl } from "./StatsImpl";
 import { assignTeams, resolveTeamsList } from "./TeamAssignment";
 import { TerraNulliusImpl } from "./TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "./UnitGrid";
+import { versusSpawnArea, versusTeamIndex } from "./Versus";
 import { WaterManager } from "./WaterManager";
 
 export function createGame(
@@ -1333,6 +1334,14 @@ export class GameImpl implements Game {
   }
 
   teamSpawnArea(team: Team): SpawnArea | undefined {
+    if (this._config.isVersusMode()) {
+      return versusSpawnArea(
+        this._config.gameConfig().gameMap,
+        versusTeamIndex(team),
+        this.width(),
+        this.height(),
+      );
+    }
     if (!this._teamGameSpawnAreas) {
       return undefined;
     }

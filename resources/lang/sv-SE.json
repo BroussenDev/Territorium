@@ -1223,7 +1223,6 @@
     "teams": "Lag"
   },
   "game_modes": {
-    "more_soon": "Fler spellägen är på väg",
     "nations_description": "Välj ett riktigt land på den gigantiska världskartan och börja med hela dess territorium. Håll din huvudstad, svälj dina grannar och styr halva världen.",
     "nations_fact_ai": "Länder som ingen väljer spelas av AI",
     "nations_fact_alliance": "Allianser med ett grannland varar 50 % längre",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Nästa match kommer snart",
     "players": "{count}/{max} spelare",
     "subtitle": "Flerspelarspel med egna regler",
-    "title": "Spellägen"
+    "title": "Spellägen",
+    "versus_description": "Två lag möts på en turneringskarta, med samma regler för alla.",
+    "versus_open": "Välj format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} väntar"
   },
   "game_settings": {
     "bots": "Stammar:",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP-immunitet aktiv i {seconds}s",
     "random_spawn": "Slumpmässig spawn är aktiverad. Selecting starting location for you...",
     "random_spawn_spectator": "Slumpmässig spawn är aktiverad",
-    "singleplayer_game_paused": "Spelet pausades"
+    "singleplayer_game_paused": "Spelet pausades",
+    "versus_spawn": "Välj en startplats i ditt lags zon"
   },
   "help_modal": {
     "action_attack_altclick": "Anfall (när vänsterklick för meny är aktiverat)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Använd verifierad",
     "verified_use_custom": "Växla tillbaka till ett anpassat namn",
     "verified_use_hint": "Spela under ditt verifierade kontonamn"
+  },
+  "versus": {
+    "draw_hint": "Lagen lottas när spelet startar.",
+    "format_title": "Versus {format}",
+    "host": "Värd",
+    "in_lobby": "I lobbyn: {count}/{max}",
+    "intro": "Två lag möts på en turneringskarta. Varje lag startar i sin egen zon, en spegelbild av motståndarnas, och reglerna ändras aldrig.",
+    "join_side": "Gå med i den här sidan",
+    "kick": "Ta bort från lobbyn",
+    "leave_side": "Lämna den här sidan",
+    "no_side": "Ingen sida än ({count})",
+    "pick_hint": "Välj din sida. Spelet kan starta när båda lagen är fulla.",
+    "play_private": "Skapa ett privat spel",
+    "play_private_hint": "Bjud in dina vänner med länken. Alla väljer sida, sedan startar värden spelet.",
+    "play_public": "Spela ett offentligt spel",
+    "play_public_hint": "Startar så snart alla platser är tagna. Lagen lottas.",
+    "private_title": "Privat {format}",
+    "queue": "{count}/{max} väntar",
+    "queue_opening": "Öppnar nästa spel…",
+    "rule_fixed": "Fasta regler som ingen kan ändra",
+    "rule_map": "Karta: {map}",
+    "rule_no_ai": "Inga bottar eller nationer: bara spelare",
+    "rule_north": "Kartans norra del är neutral mark",
+    "rule_win": "Det sista laget som står kvar vinner",
+    "rule_zones": "Varje lag startar i sin egen zon, långt från mitten",
+    "seat_draw": "Lottas vid start",
+    "seat_free": "Ledig plats",
+    "side_east": "Öst",
+    "side_full": "Den här sidan är full",
+    "side_south_east": "Sydost",
+    "side_south_west": "Sydväst",
+    "side_west": "Väst",
+    "waiting_players": "Väntar på spelare ({count}/{max})",
+    "you": "Du"
   },
   "win_modal": {
     "died": "Du dog",

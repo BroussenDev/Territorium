@@ -28,6 +28,7 @@ import {
   GameType,
   HumansVsNations,
 } from "../core/game/Game";
+import { versusTeamSize } from "../core/game/Versus";
 import { getApiBase } from "./Api";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { showInGameConfirm } from "./InGameModal";
@@ -35,7 +36,11 @@ import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
 import { ensureServerList, redirectToGameVersion } from "./ServerList";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
-import { SendPickNationEvent, SendSpectateEvent } from "./Transport";
+import {
+  SendPickNationEvent,
+  SendPickTeamEvent,
+  SendSpectateEvent,
+} from "./Transport";
 import { normaliseMapKey } from "./Utils";
 import { isReplayShellHost, versionedReplayUrl } from "./VersionedReplay";
 import { BaseModal } from "./components/BaseModal";
@@ -43,6 +48,7 @@ import "./components/CopyButton";
 import "./components/LobbyConfigItem";
 import "./components/LobbyPlayerView";
 import "./components/NationsPicker";
+import "./components/VersusLobby";
 import { inviteFriendsButton } from "./components/ui/InviteFriendsButton";
 import { DEFAULT_TITLE_CLASS, modalHeader } from "./components/ui/ModalHeader";
 import { nationsConfigToSlider } from "./utilities/GameConfigHelpers";
@@ -336,6 +342,8 @@ export class JoinLobbyModal extends BaseModal {
     const hostClientID = this.isPrivateLobby()
       ? (this.lobbyCreatorClientID ?? "")
       : "";
+    // Versus lobbies have fixed rules: the sides replace the settings.
+    const versus = this.gameConfig ? versusTeamSize(this.gameConfig) : null;
     return html`
       <div class="flex flex-col h-full">
         <div class="flex-1 custom-scrollbar p-6 space-y-4 mr-1">
@@ -352,41 +360,51 @@ export class JoinLobbyModal extends BaseModal {
                   </p>
                 </div>
               `
-            : html`
-                ${this.gameConfig ? this.renderGameConfig() : html``}
-                ${this.gameConfig?.gameVariant === "nations"
-                  ? html`<nations-picker
-                      .clients=${this.players}
-                      .currentClientID=${this.currentClientID}
-                      @pick-nation=${(
-                        e: CustomEvent<{ nation: number | null }>,
-                      ) =>
-                        this.eventBus?.emit(
-                          new SendPickNationEvent(e.detail.nation),
-                        )}
-                    ></nations-picker>`
-                  : ""}
-                ${this.players.length > 0
-                  ? html`
-                      <lobby-player-view
-                        class="mt-6"
-                        .gameMode=${this.gameConfig?.gameMode ?? GameMode.FFA}
+            : versus !== null
+              ? html`<versus-lobby
+                  .clients=${this.players}
+                  .currentClientID=${this.currentClientID}
+                  .hostClientID=${hostClientID}
+                  .teamSize=${versus}
+                  .canPick=${this.isPrivateLobby()}
+                  @pick-team=${(e: CustomEvent<{ team: number | null }>) =>
+                    this.eventBus?.emit(new SendPickTeamEvent(e.detail.team))}
+                ></versus-lobby>`
+              : html`
+                  ${this.gameConfig ? this.renderGameConfig() : html``}
+                  ${this.gameConfig?.gameVariant === "nations"
+                    ? html`<nations-picker
                         .clients=${this.players}
-                        .lobbyCreatorClientID=${hostClientID}
                         .currentClientID=${this.currentClientID}
-                        .anonymizeNames=${this.gameConfig?.anonymizeNames ??
-                        false}
-                        .teamCount=${this.gameConfig?.playerTeams ?? 2}
-                        .isPublicGame=${this.gameConfig?.gameType ===
-                        GameType.Public}
-                        .nationCount=${nationsConfigToSlider(
-                          this.gameConfig?.nations ?? "default",
-                          this.nationCount,
-                        )}
-                      ></lobby-player-view>
-                    `
-                  : ""}
-              `}
+                        @pick-nation=${(
+                          e: CustomEvent<{ nation: number | null }>,
+                        ) =>
+                          this.eventBus?.emit(
+                            new SendPickNationEvent(e.detail.nation),
+                          )}
+                      ></nations-picker>`
+                    : ""}
+                  ${this.players.length > 0
+                    ? html`
+                        <lobby-player-view
+                          class="mt-6"
+                          .gameMode=${this.gameConfig?.gameMode ?? GameMode.FFA}
+                          .clients=${this.players}
+                          .lobbyCreatorClientID=${hostClientID}
+                          .currentClientID=${this.currentClientID}
+                          .anonymizeNames=${this.gameConfig?.anonymizeNames ??
+                          false}
+                          .teamCount=${this.gameConfig?.playerTeams ?? 2}
+                          .isPublicGame=${this.gameConfig?.gameType ===
+                          GameType.Public}
+                          .nationCount=${nationsConfigToSlider(
+                            this.gameConfig?.nations ?? "default",
+                            this.nationCount,
+                          )}
+                        ></lobby-player-view>
+                      `
+                    : ""}
+                `}
         </div>
 
         ${html`

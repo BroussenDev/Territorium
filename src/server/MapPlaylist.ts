@@ -15,6 +15,12 @@ import {
   UnitType,
 } from "../core/game/Game";
 import { NATIONS_MAX_PLAYERS } from "../core/game/NationsMode";
+import {
+  isVersusGameType,
+  versusGameConfig,
+  VersusGameType,
+  versusTeamSizeOfType,
+} from "../core/game/Versus";
 import { PseudoRandom } from "../core/PseudoRandom";
 import {
   GameConfig,
@@ -25,6 +31,13 @@ import { logger } from "./Logger";
 import { getMapLandTiles } from "./MapLandTiles";
 
 const log = logger.child({});
+
+// Lobby types rolled from the map playlists: nations and versus lobbies play
+// fixed presets instead.
+type RolledGameType = Exclude<
+  ScheduledPublicGameType,
+  "nations" | VersusGameType
+>;
 
 // Lobby size the Crowded modifier forces on small maps (compact / normal).
 const CROWDED_COMPACT_PLAYER_COUNT = 60;
@@ -142,6 +155,10 @@ export class MapPlaylist {
     if (type === "nations") {
       return this.getNationsConfig();
     }
+    // Versus lobbies always play their format's fixed rules.
+    if (isVersusGameType(type)) {
+      return versusGameConfig(versusTeamSizeOfType(type)!, GameType.Public);
+    }
     this.scheduled++;
     const trusted = this.scheduled % TRUSTED_PUBLIC_EVERY === 0;
     const config = await this.rollConfig(type, trusted);
@@ -179,7 +196,7 @@ export class MapPlaylist {
   }
 
   private async rollConfig(
-    type: Exclude<ScheduledPublicGameType, "nations">,
+    type: RolledGameType,
     trusted: boolean,
   ): Promise<GameConfig> {
     if (type === "special") {
@@ -620,10 +637,7 @@ export class MapPlaylist {
     } satisfies GameConfig;
   }
 
-  private getNextMap(
-    type: Exclude<ScheduledPublicGameType, "nations">,
-    mode?: GameMode,
-  ): GameMapType {
+  private getNextMap(type: RolledGameType, mode?: GameMode): GameMapType {
     const key = this.playlistKey(type, mode);
     const playlist = this.playlists[key];
     if (playlist.length === 0) {
@@ -632,10 +646,7 @@ export class MapPlaylist {
     return playlist.shift()!;
   }
 
-  private playlistKey(
-    type: Exclude<ScheduledPublicGameType, "nations">,
-    mode?: GameMode,
-  ): PlaylistKey {
+  private playlistKey(type: RolledGameType, mode?: GameMode): PlaylistKey {
     if (type === "special") {
       return mode === GameMode.Team ? "specialTeam" : "specialFfa";
     }
@@ -643,7 +654,7 @@ export class MapPlaylist {
   }
 
   private generateNewPlaylist(
-    type: Exclude<ScheduledPublicGameType, "nations">,
+    type: RolledGameType,
     mode?: GameMode,
   ): GameMapType[] {
     const maps = this.buildMapsList(type, mode);
@@ -694,10 +705,7 @@ export class MapPlaylist {
     return false;
   }
 
-  private buildMapsList(
-    type: Exclude<ScheduledPublicGameType, "nations">,
-    mode?: GameMode,
-  ): GameMapType[] {
+  private buildMapsList(type: RolledGameType, mode?: GameMode): GameMapType[] {
     const maps: GameMapType[] = [];
     allMaps.forEach((mapInfo) => {
       const map = mapInfo.type;

@@ -1223,7 +1223,6 @@
     "teams": "Teams"
   },
   "game_modes": {
-    "more_soon": "More game modes are on the way",
     "nations_description": "Pick a real country on the giant world map and start with its whole territory. Hold your capital city, swallow your neighbours and rule half of the world.",
     "nations_fact_ai": "Countries nobody picks are played by the AI",
     "nations_fact_alliance": "Alliances with a neighbouring country last 50% longer",
@@ -1236,7 +1235,11 @@
     "nations_waiting": "Next game coming soon",
     "players": "{count}/{max} players",
     "subtitle": "Multiplayer games with rules of their own",
-    "title": "Game modes"
+    "title": "Game modes",
+    "versus_description": "Two teams face off on a tournament map, with the same rules for everyone.",
+    "versus_open": "Choose a format",
+    "versus_title": "Versus",
+    "versus_waiting": "{count} waiting"
   },
   "game_settings": {
     "bots": "Tribes: ",
@@ -1430,7 +1433,8 @@
     "pvp_immunity_active": "PVP immunity active for {seconds}s",
     "random_spawn": "Random spawn is enabled. Selecting starting location for you...",
     "random_spawn_spectator": "Random spawn is enabled",
-    "singleplayer_game_paused": "Game paused"
+    "singleplayer_game_paused": "Game paused",
+    "versus_spawn": "Choose a starting location in your team's zone"
   },
   "help_modal": {
     "action_attack_altclick": "Attack (when left click is set to open menu)",
@@ -2946,6 +2950,40 @@
     "verified_use": "Use verified",
     "verified_use_custom": "Switch back to a custom name",
     "verified_use_hint": "Play under your verified account name"
+  },
+  "versus": {
+    "draw_hint": "Teams are drawn when the game starts.",
+    "format_title": "Versus {format}",
+    "host": "Host",
+    "in_lobby": "In the lobby: {count}/{max}",
+    "intro": "Two teams face off on a tournament map. Each team starts in its own zone, a mirror image of the other, and the rules never change.",
+    "join_side": "Join this side",
+    "kick": "Remove from the lobby",
+    "leave_side": "Leave this side",
+    "no_side": "No side yet ({count})",
+    "pick_hint": "Pick your side. The game can start once both teams are full.",
+    "play_private": "Create a private game",
+    "play_private_hint": "Invite your friends with the link. Everyone picks a side, then the host starts the game.",
+    "play_public": "Play a public game",
+    "play_public_hint": "Starts as soon as every seat is taken. Teams are drawn at random.",
+    "private_title": "Private {format}",
+    "queue": "{count}/{max} waiting",
+    "queue_opening": "Opening the next game…",
+    "rule_fixed": "Fixed rules that nobody can change",
+    "rule_map": "Map: {map}",
+    "rule_no_ai": "No bots or nations: players only",
+    "rule_north": "The north of the map is neutral ground",
+    "rule_win": "Last team standing wins",
+    "rule_zones": "Each team starts in its own zone, away from the centre",
+    "seat_draw": "Drawn at start",
+    "seat_free": "Free seat",
+    "side_east": "East",
+    "side_full": "This side is full",
+    "side_south_east": "South-east",
+    "side_south_west": "South-west",
+    "side_west": "West",
+    "waiting_players": "Waiting for players ({count}/{max})",
+    "you": "You"
   },
   "win_modal": {
     "died": "You died",
