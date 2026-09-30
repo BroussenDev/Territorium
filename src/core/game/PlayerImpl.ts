@@ -58,7 +58,7 @@ import {
   GameUpdateType,
   PlayerUpdate,
 } from "./GameUpdates";
-import { VASSAL_MAX_LAND_PERCENT } from "./NationsMode";
+import { isCapitalShielded, VASSAL_MAX_LAND_PERCENT } from "./NationsMode";
 import { objectiveBonusCap } from "./Objectives";
 import { ReadonlyTileSet, TileSet } from "./TileSet";
 import {
@@ -1760,6 +1760,10 @@ export class PlayerImpl implements Player {
     }
     // Impassable terrain cannot be nuked.
     if (mg.isImpassable(tile)) {
+      return false;
+    }
+    // Nations mode: nothing may be aimed at a shielded capital zone.
+    if (isCapitalShielded(mg, tile, this)) {
       return false;
     }
     const owner = this.mg.owner(tile);

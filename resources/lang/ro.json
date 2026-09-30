@@ -1438,7 +1438,7 @@
     "capital_lost": "Fără capitală: ai pierdut +10% creșterea aurului și a trupelor",
     "capital_lost_ready": "Faceți clic pe unul dintre orașele dvs. pentru a deveni capitala dvs",
     "capital_lost_wait": "Noua capitală posibilă în {time}",
-    "capital_shield": "Capitalele sunt protejate: teritoriul aflat la cel mult {radius} pătrățele de fiecare capitală nu poate fi cucerit",
+    "capital_shield": "Capitalele sunt protejate: teritoriul aflat la cel mult {radius} pătrățele de fiecare capitală nu poate fi cucerit sau bombardat",
     "capital_shield_ends": "Protecția se încheie în {time}",
     "catching_up": "Se actualizează ...",
     "choose_spawn": "Alegeți o locație de început",

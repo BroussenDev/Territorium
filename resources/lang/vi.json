@@ -1438,7 +1438,7 @@
     "capital_lost": "Không có thành phố thủ đô: bạn mất +10% vàng và tăng trưởng quân đội",
     "capital_lost_ready": "Nhấp vào một trong các thành phố của bạn để biến nó thành thành phố thủ đô của bạn",
     "capital_lost_wait": "Thành phố thủ đô mới có thể có ở {time}",
-    "capital_shield": "Các thủ đô được bảo vệ: không thể chiếm vùng đất trong phạm vi {radius} ô quanh mỗi thủ đô",
+    "capital_shield": "Các thủ đô được bảo vệ: không thể chiếm hay ném bom vùng đất trong phạm vi {radius} ô quanh mỗi thủ đô",
     "capital_shield_ends": "Hết bảo vệ sau {time}",
     "catching_up": "Đang đồng bộ...",
     "choose_spawn": "Chọn vị trí bắt đầu",

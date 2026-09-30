@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="capShieldBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="0.55" stop-color="#2b8fd6"/>
+      <stop offset="1" stop-color="#1e4f91"/>
+    </linearGradient>
+    <linearGradient id="capShieldCrown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#e0a526"/>
+    </linearGradient>
+  </defs>
+  <!-- Heater shield in capital-shield blue, rimmed, with the capital's crown
+       standing on the Territorium tile row. -->
+  <path d="M32 2 57 11v19c0 15.5-10.4 26.5-25 32C17.4 56.5 7 45.5 7 30V11z" fill="#0f2f5c"/>
+  <path d="M32 5.6 53.6 13.4V30c0 13.4-8.8 23-21.6 28.2C19.2 53 10.4 43.4 10.4 30V13.4z" fill="url(#capShieldBody)"/>
+  <path d="M32 9.4 50 15.9V30c0 11.4-7.2 19.6-18 24.3C21.2 49.6 14 41.4 14 30V15.9z" fill="none" stroke="#e0f2fe" stroke-width="1.6" opacity="0.55"/>
+  <path d="M19.5 34.5 18 21l7.2 5.6L32 17.5l6.8 9.1L46 21l-1.5 13.5z" fill="url(#capShieldCrown)" stroke="#92400e" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="18" cy="21" r="2.1" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+  <circle cx="32" cy="17.5" r="2.1" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+  <circle cx="46" cy="21" r="2.1" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+  <g fill="#0f2f5c">
+    <rect x="20.2" y="38.2" width="6.6" height="6.6" rx="1.1"/>
+    <rect x="37.2" y="38.2" width="6.6" height="6.6" rx="1.1"/>
+    <rect x="28.7" y="46.3" width="6.6" height="6.6" rx="1.1"/>
+  </g>
+  <rect x="28.7" y="38.2" width="6.6" height="6.6" rx="1.1" fill="#10b981"/>
+  <path d="M14.8 17.5c3.5-1.5 7-2.8 10.5-3.9" fill="none" stroke="#f0f9ff" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+</svg>

@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
+import { assetUrl } from "../../../core/AssetUrls";
 import { GameMode, GameType, RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
@@ -289,21 +290,27 @@ export class HeadsUpMessage extends LitElement implements Controller {
           ? html`
               <div
                 class="fixed top-[8%] left-1/2 -translate-x-1/2 z-[798]
-                            flex flex-col items-center w-fit max-w-[90vw]
-                            bg-sky-900/75 border border-sky-300/50 rounded-md lg:rounded-lg
-                            backdrop-blur-xs text-white px-3 lg:px-4 py-1.5 text-center"
+                            flex items-center gap-2.5 w-fit max-w-[90vw]
+                            bg-sky-950/80 border border-sky-300/50 rounded-md lg:rounded-lg
+                            backdrop-blur-xs text-white pl-2 pr-3 lg:pr-4 py-1.5"
                 @contextmenu=${(e: MouseEvent) => e.preventDefault()}
               >
-                <div class="text-sm lg:text-base font-semibold">
-                  🛡️
-                  ${translateText("heads_up_message.capital_shield", {
-                    radius: CAPITAL_SHIELD_RADIUS,
-                  })}
-                </div>
-                <div class="text-xs lg:text-sm text-sky-200">
-                  ${translateText("heads_up_message.capital_shield_ends", {
-                    time: formatWait(this.capitalShieldLeft),
-                  })}
+                <img
+                  src=${assetUrl("images/CapitalShieldIcon.svg")}
+                  alt=""
+                  class="size-8 lg:size-10 shrink-0 drop-shadow"
+                />
+                <div class="flex flex-col text-left">
+                  <div class="text-sm lg:text-base font-semibold">
+                    ${translateText("heads_up_message.capital_shield", {
+                      radius: CAPITAL_SHIELD_RADIUS,
+                    })}
+                  </div>
+                  <div class="text-xs lg:text-sm text-sky-200 tabular-nums">
+                    ${translateText("heads_up_message.capital_shield_ends", {
+                      time: formatWait(this.capitalShieldLeft),
+                    })}
+                  </div>
                 </div>
               </div>
             `

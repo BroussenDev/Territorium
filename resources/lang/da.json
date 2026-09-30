@@ -1438,7 +1438,7 @@
     "capital_lost": "Ingen hovedstad: du mistede dens +10% guld og troppevækst",
     "capital_lost_ready": "Klik på en af dine byer for at gøre den til din hovedstad",
     "capital_lost_wait": "Ny hovedstad mulig i {time}",
-    "capital_shield": "Hovedstæderne er beskyttet: landet inden for {radius} felter af hver hovedstad kan ikke erobres",
+    "capital_shield": "Hovedstæderne er beskyttet: landet inden for {radius} felter af hver hovedstad kan hverken erobres eller bombes",
     "capital_shield_ends": "Beskyttelsen slutter om {time}",
     "catching_up": "Indhenter...",
     "choose_spawn": "Vælg en startplacering",

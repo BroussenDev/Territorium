@@ -12,6 +12,7 @@ import {
   UnitType,
 } from "../game/Game";
 import { TileRef } from "../game/GameMap";
+import { isCapitalShielded } from "../game/NationsMode";
 import { UniversalPathFinding } from "../pathfinding/PathFinder";
 import { ParabolaUniversalPathFinder } from "../pathfinding/PathFinder.Parabola";
 import { PathStatus } from "../pathfinding/types";
@@ -437,6 +438,8 @@ export class NukeExecution implements Execution {
     // Retrieve all impacted players and the number of tiles
     const tilesPerPlayers = new Map<Player, number>();
     for (const tile of toDestroy) {
+      // Nations mode: the blast stops at a shielded capital zone.
+      if (isCapitalShielded(mg, tile, this.player)) continue;
       const owner = mg.owner(tile);
       if (owner.isPlayer()) {
         owner.relinquish(tile);
@@ -514,7 +517,10 @@ export class NukeExecution implements Execution {
       ) {
         continue;
       }
-      if (mg.euclideanDistSquared(dst, unit.tile()) < outer2) {
+      if (
+        mg.euclideanDistSquared(dst, unit.tile()) < outer2 &&
+        !isCapitalShielded(mg, unit.tile(), this.player)
+      ) {
         // treatAFKFriendly matches warship targeting: a disconnected
         // teammate's or ally's units are still not kills.
         const friendly = this.player.isFriendly(unit.owner(), true);
@@ -570,7 +576,11 @@ export class NukeExecution implements Execution {
     const disabledPerPlayer = new Map<Player, number>();
     for (const { unit } of mg.nearbyUnits(this.dst, radius, EMP_TARGETS)) {
       const owner = unit.owner();
-      if (owner === this.player || this.player.isFriendly(owner, true)) {
+      if (
+        owner === this.player ||
+        this.player.isFriendly(owner, true) ||
+        isCapitalShielded(mg, unit.tile(), this.player)
+      ) {
         continue;
       }
       if (!unit.disable(until, immuneUntil)) {

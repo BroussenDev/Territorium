@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.41
+
+🛡️ **Nations: a real barrier around each capital**
+
+- The capital protection now lasts 1 minute instead of 3.
+- It now stops every bomb too: atom bombs, hydrogen bombs, MIRVs and EMPs can't be aimed at a protected zone, and a blast next to it stops at its edge.
+- A glowing blue barrier is drawn around each capital on the map while it lasts, and fades out as it ends.
+- The banner has its own shield-and-crown icon.
+
 ## v0.1.40
 
 🛡️ **Nations: protected capitals at the start**

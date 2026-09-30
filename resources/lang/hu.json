@@ -1438,7 +1438,7 @@
     "capital_lost": "Nincs főváros: elvesztette +10%-os arany- és csapatnövekedését",
     "capital_lost_ready": "Kattintson az egyik városra, hogy fővárosává tegye",
     "capital_lost_wait": "Új főváros lehetséges {time}-ben",
-    "capital_shield": "A fővárosok védettek: az egyes fővárosoktól {radius} mezőn belüli földet nem lehet elfoglalni",
+    "capital_shield": "A fővárosok védettek: az egyes fővárosoktól {radius} mezőn belüli földet nem lehet elfoglalni vagy bombázni",
     "capital_shield_ends": "A védelem {time} múlva véget ér",
     "catching_up": "Frissítés...",
     "choose_spawn": "Válassz kiindulási helyet",

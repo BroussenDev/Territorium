@@ -34,6 +34,10 @@ import { GLUnavailableError, initGL } from "./initGL";
 import { BarPass } from "./passes/BarPass";
 import { BorderComputePass } from "./passes/BorderComputePass";
 import { BorderStampPass } from "./passes/BorderStampPass";
+import {
+  CapitalShieldPass,
+  type CapitalShieldState,
+} from "./passes/CapitalShieldPass";
 import { CoordinateGridPass } from "./passes/CoordinateGridPass";
 import { CrosshairPass } from "./passes/CrosshairPass";
 import { DefenseCoveragePass } from "./passes/DefenseCoveragePass";
@@ -150,6 +154,7 @@ export class GPURenderer {
   private affiliationPalette: AffiliationPalette;
   private coordinateGridPass: CoordinateGridPass;
   private spawnOverlayPass: SpawnOverlayPass;
+  private capitalShieldPass: CapitalShieldPass;
   private smallPlayerGlowPass: SmallPlayerGlowPass;
   private inSpawnPhase = false;
 
@@ -463,6 +468,9 @@ export class GPURenderer {
       this.res.tileTex,
       this.settings.spawnOverlay,
     );
+
+    // --- Nations capital shields (blue barriers, first minute) ---
+    this.capitalShieldPass = new CapitalShieldPass(gl);
 
     this.smallPlayerGlowPass = new SmallPlayerGlowPass(
       gl,
@@ -1128,6 +1136,10 @@ export class GPURenderer {
     this.smallPlayerGlowPass.update(set);
   }
 
+  updateCapitalShield(state: CapitalShieldState | null): void {
+    this.capitalShieldPass.update(state);
+  }
+
   // ---------------------------------------------------------------------------
   // Queries
   // ---------------------------------------------------------------------------
@@ -1383,6 +1395,7 @@ export class GPURenderer {
     if (pe.unit) this.unitPass.drawGround(cam);
     if (pe.falloutBloom) this.bloomPass.draw(cam, this.frameTick);
     this.objectivePass.draw(cam, zoom);
+    this.capitalShieldPass.draw(cam);
     this.samRadiusPass.draw(cam);
     this.rangeCirclePass.draw(cam);
     this.nukeTrajectoryPass.draw(cam);
@@ -1517,6 +1530,7 @@ export class GPURenderer {
     this.affiliationPalette.dispose();
     this.coordinateGridPass.dispose();
     this.spawnOverlayPass.dispose();
+    this.capitalShieldPass.dispose();
     this.smallPlayerGlowPass.dispose();
     this.railroadPass.dispose();
     this.rangeCirclePass.dispose();

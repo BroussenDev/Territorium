@@ -1438,7 +1438,7 @@
     "capital_lost": "Neniu ĉefurbo: vi perdis ĝian +10% oron kaj kreskadon de trupoj",
     "capital_lost_ready": "Klaku unu el viaj urboj por fari ĝin via ĉefurbo",
     "capital_lost_wait": "Nova ĉefurbo ebla en {time}",
-    "capital_shield": "Ĉefurboj estas protektataj: la tero ene de {radius} kaheloj de ĉiu ĉefurbo ne povas esti konkerata",
+    "capital_shield": "Ĉefurboj estas protektataj: la tero ene de {radius} kaheloj de ĉiu ĉefurbo ne povas esti konkerata nek bombata",
     "capital_shield_ends": "La protekto finiĝos post {time}",
     "catching_up": "Ĝisdatigante...",
     "choose_spawn": "Elektu komencan lokon",

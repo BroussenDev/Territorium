@@ -1438,7 +1438,7 @@
     "capital_lost": "Plus de capitale : vous avez perdu ses +10 % d'or et de troupes",
     "capital_lost_ready": "Cliquez sur une de vos villes pour en faire votre capitale",
     "capital_lost_wait": "Nouvelle capitale possible dans {time}",
-    "capital_shield": "Les capitales sont protégées : les terres à {radius} cases de chaque capitale sont imprenables",
+    "capital_shield": "Les capitales sont protégées : les terres à {radius} cases de chaque capitale ne peuvent être ni prises ni bombardées",
     "capital_shield_ends": "Fin de la protection dans {time}",
     "catching_up": "Rattrapage...",
     "choose_spawn": "Choisissez un emplacement de départ",

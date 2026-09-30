@@ -1438,7 +1438,7 @@
     "capital_lost": "Brez glavnega mesta: izgubili ste njegovo +10 % zlato in rast čete",
     "capital_lost_ready": "Kliknite eno od svojih mest, da postane vaše glavno mesto",
     "capital_lost_wait": "Novo glavno mesto možno v {time}",
-    "capital_shield": "Prestolnice so zaščitene: ozemlja v polmeru {radius} polj okoli vsake prestolnice ni mogoče osvojiti",
+    "capital_shield": "Prestolnice so zaščitene: ozemlja v polmeru {radius} polj okoli vsake prestolnice ni mogoče osvojiti ali bombardirati",
     "capital_shield_ends": "Zaščita se konča čez {time}",
     "catching_up": "Dohitevanje ...",
     "choose_spawn": "Izberite začetno lokacijo",

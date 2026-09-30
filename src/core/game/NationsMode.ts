@@ -58,10 +58,11 @@ export const CAPITAL_TROOP_GROWTH_BONUS_PERCENT = 10;
 /**
  * For the first CAPITAL_SHIELD_SECONDS of the game, the land within
  * CAPITAL_SHIELD_RADIUS tiles of each country's original capital can't be
- * taken by anyone else, so no country is wiped out before it can react.
+ * taken or bombed by anyone else, so no country is wiped out before it can
+ * react.
  */
 export const CAPITAL_SHIELD_RADIUS = 5;
-export const CAPITAL_SHIELD_SECONDS = 3 * 60;
+export const CAPITAL_SHIELD_SECONDS = 60;
 /** How long a player defends 10% worse after losing their capital. */
 export const CAPITAL_FALLEN_DEBUFF_TICKS = 60 * 10;
 export const CAPITAL_FALLEN_DEFENSE_MULT = 0.9;

@@ -2,6 +2,7 @@ import { AttackLogicInput, Config } from "../src/core/configuration/Config";
 import { AllianceRequestExecution } from "../src/core/execution/alliance/AllianceRequestExecution";
 import { AttackExecution } from "../src/core/execution/AttackExecution";
 import { NationsModeExecution } from "../src/core/execution/NationsModeExecution";
+import { NukeExecution } from "../src/core/execution/NukeExecution";
 import { PeaceRequestExecution } from "../src/core/execution/peace/PeaceRequestExecution";
 import { SetCapitalExecution } from "../src/core/execution/SetCapitalExecution";
 import { SpawnExecution } from "../src/core/execution/SpawnExecution";
@@ -430,15 +431,37 @@ describe("Nations mode", () => {
       game.addExecution(new AttackExecution(4_000_000, big, small.id()));
       const zone = shielded();
       expect(zone.length).toBeGreaterThan(60);
-      for (let i = 0; i < 1200; i++) tick();
+      for (let i = 0; i < 590; i++) tick();
 
       expect(capitalShieldSecondsLeft(game)).toBeGreaterThan(0);
       expect(small.isAlive()).toBe(true);
-      expect(small.numTilesOwned()).toBe(zone.length);
+      expect(small.numTilesOwned()).toBeLessThan(1000 - 400);
       expect(zone.every((tile) => game.owner(tile) === small)).toBe(true);
     });
 
-    test("ends after the first minutes", () => {
+    test("no bomb can be aimed at it or blast it", () => {
+      while (game.inSpawnPhase()) tick();
+      const big = game.player("big");
+      big.addGold(100_000_000n);
+      big.buildUnit(UnitType.MissileSilo, game.ref(10, 10), {});
+      expect(big.canBuild(UnitType.AtomBomb, game.ref(55, 50))).toBe(false);
+      expect(big.canBuild(UnitType.MIRV, game.ref(57, 52))).toBe(false);
+      expect(big.canBuild(UnitType.AtomBomb, game.ref(55, 62))).not.toBe(false);
+
+      const zone = shielded();
+      // The zone lies well inside this bomb's inner radius.
+      game.addExecution(
+        new NukeExecution(UnitType.AtomBomb, big, game.ref(55, 62), null),
+      );
+      for (let i = 0; i < 300; i++) tick();
+
+      expect(game.units(UnitType.AtomBomb)).toHaveLength(0);
+      expect(game.owner(game.ref(55, 62))).not.toBe(small);
+      expect(small.isAlive()).toBe(true);
+      expect(zone.every((tile) => game.owner(tile) === small)).toBe(true);
+    });
+
+    test("ends after the first minute", () => {
       while (capitalShieldSecondsLeft(game) > 0) tick();
       const big = game.player("big");
       expect(isCapitalShielded(game, game.ref(55, 50), big)).toBe(false);

@@ -5,6 +5,7 @@ export { GraphicsOverridesSchema } from "./GraphicsOverrides";
 export type { GraphicsOverrides, GraphicsPresets } from "./GraphicsOverrides";
 export { GLUnavailableError, showGLGate, trackGLInit } from "./initGL";
 export { MapRenderer } from "./MapRenderer";
+export type { CapitalShieldState } from "./passes/CapitalShieldPass";
 export { preloadAtlasData } from "./passes/name-pass/AtlasData";
 export type { ObjectiveZone } from "./passes/ObjectivePass";
 export type { SpawnCenter, SpawnZone } from "./passes/SpawnOverlayPass";

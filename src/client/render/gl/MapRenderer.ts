@@ -30,6 +30,7 @@ import type {
   TerrainRect,
   UnitState,
 } from "../types";
+import type { CapitalShieldState } from "./passes/CapitalShieldPass";
 import type { ObjectiveZone } from "./passes/ObjectivePass";
 import type { SpawnCenter, SpawnZone } from "./passes/SpawnOverlayPass";
 import type { AttackTroopLabel } from "./passes/WorldTextPass";
@@ -312,6 +313,11 @@ export class MapRenderer {
     zone: SpawnZone | null = null,
   ): void {
     this.renderer?.updateSpawnOverlay(inSpawnPhase, centers, zone);
+  }
+
+  /** Nations mode: the capital shields to draw, or null = none. */
+  updateCapitalShield(state: CapitalShieldState | null): void {
+    this.renderer?.updateCapitalShield(state);
   }
 
   /** Set the small-player glow set (1 byte per owner smallID), or null = off. */

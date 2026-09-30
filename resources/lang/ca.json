@@ -1438,7 +1438,7 @@
     "capital_lost": "Sense capital: heu perdut el seu +10% d'or i de creixement de tropes",
     "capital_lost_ready": "Feu clic a una de les vostres ciutats per convertir-la en la vostra capital",
     "capital_lost_wait": "Nova capital possible a {time}",
-    "capital_shield": "Les capitals estan protegides: la terra a {radius} caselles de cada capital no es pot conquerir",
+    "capital_shield": "Les capitals estan protegides: la terra a {radius} caselles de cada capital no es pot conquerir ni bombardejar",
     "capital_shield_ends": "La protecció acaba d'aquí a {time}",
     "catching_up": "Atrapant la partida...",
     "choose_spawn": "Tria un punt de partida",

@@ -1438,7 +1438,7 @@
     "capital_lost": "Geen hoofdstad: je bent +10% goud en troepengroei kwijtgeraakt",
     "capital_lost_ready": "Klik op een van uw steden om deze uw hoofdstad te maken",
     "capital_lost_wait": "Nieuwe hoofdstad mogelijk in {time}",
-    "capital_shield": "Hoofdsteden zijn beschermd: het land binnen {radius} vakjes van elke hoofdstad kan niet worden veroverd",
+    "capital_shield": "Hoofdsteden zijn beschermd: het land binnen {radius} vakjes van elke hoofdstad kan niet worden veroverd of gebombardeerd",
     "capital_shield_ends": "Bescherming eindigt over {time}",
     "catching_up": "Inhaalslag maken...",
     "choose_spawn": "Kies een startlocatie",

@@ -1438,7 +1438,7 @@
     "capital_lost": "Nessuna capitale: hai perso il +10% di oro e la crescita delle truppe",
     "capital_lost_ready": "Fai clic su una delle tue città per renderla la tua capitale",
     "capital_lost_wait": "Nuova capitale possibile tra {time}",
-    "capital_shield": "Le capitali sono protette: il territorio entro {radius} caselle da ogni capitale non può essere conquistato",
+    "capital_shield": "Le capitali sono protette: il territorio entro {radius} caselle da ogni capitale non può essere conquistato né bombardato",
     "capital_shield_ends": "La protezione termina tra {time}",
     "catching_up": "Recuperando il ritardo...",
     "choose_spawn": "Scegli una posizione di partenza",

@@ -15,6 +15,10 @@ import {
 } from "../core/CosmeticSchemas";
 import { PlayerType } from "../core/game/Game";
 import {
+  CAPITAL_SHIELD_RADIUS,
+  capitalShieldSecondsLeft,
+} from "../core/game/NationsMode";
+import {
   OBJECTIVE_CAPTURE_SECONDS,
   type ObjectiveState,
 } from "../core/game/Objectives";
@@ -30,6 +34,7 @@ import { uploadFrameData } from "./render/frame/Upload";
 // Type-only: a value import would pull GPURenderer and its `.glsl?raw` shader
 // imports into any non-Vite consumer (e.g. the Node perf harness).
 import type {
+  CapitalShieldState,
   MapRenderer,
   ObjectiveZone,
   PlayerStatic,
@@ -317,6 +322,7 @@ export class WebGLFrameBuilder {
 
   private lastObjectives: readonly ObjectiveState[] = [];
   private lastObjectiveHighlight = -1;
+  private capitalShieldShown = false;
 
   update(gameView: GameView): void {
     this.syncPlayers(gameView);
@@ -324,6 +330,7 @@ export class WebGLFrameBuilder {
     this.syncPlayerSpawns(gameView);
     this.syncLocalPlayer(gameView);
     this.syncSpawnOverlay(gameView);
+    this.syncCapitalShield(gameView);
     this.syncObjectives(gameView);
     this.syncSmallPlayerGlow(gameView);
     this.syncTerrainDeltas(gameView);
@@ -511,6 +518,38 @@ export class WebGLFrameBuilder {
       centers,
       inSpawnPhase ? this.versusSpawnZone(gameView) : null,
     );
+  }
+
+  /**
+   * Nations mode: a blue barrier around each living country's original
+   * capital while the land around it can't be taken or bombed. It fades out
+   * over the last seconds.
+   */
+  private syncCapitalShield(gameView: GameView): void {
+    const secondsLeft = gameView.inSpawnPhase()
+      ? 0
+      : capitalShieldSecondsLeft(gameView);
+    if (secondsLeft <= 0) {
+      if (this.capitalShieldShown) {
+        this.capitalShieldShown = false;
+        this.view.updateCapitalShield(null);
+      }
+      return;
+    }
+    const centers: number[] = [];
+    for (const p of gameView.players()) {
+      const capital = p.state.spawnTile;
+      if (capital === undefined || !p.isAlive()) continue;
+      centers.push(gameView.x(capital), gameView.y(capital));
+    }
+    const state: CapitalShieldState = {
+      centers,
+      // Covers the edges of the tiles CAPITAL_SHIELD_RADIUS away.
+      radius: CAPITAL_SHIELD_RADIUS + 0.5,
+      strength: Math.min(1, secondsLeft / 5),
+    };
+    this.capitalShieldShown = true;
+    this.view.updateCapitalShield(state);
   }
 
   /**

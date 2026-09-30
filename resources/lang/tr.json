@@ -1438,7 +1438,7 @@
     "capital_lost": "Başkent yok: +%10 altın ve asker büyümesini kaybettiniz",
     "capital_lost_ready": "Başkentiniz yapmak için şehirlerinizden birini tıklayın",
     "capital_lost_wait": "{time}'de yeni başkent mümkün",
-    "capital_shield": "Başkentler korunuyor: her başkentin {radius} kare çevresindeki topraklar ele geçirilemez",
+    "capital_shield": "Başkentler korunuyor: her başkentin {radius} kare çevresindeki topraklar ele geçirilemez ve bombalanamaz",
     "capital_shield_ends": "Koruma {time} sonra bitiyor",
     "catching_up": "Yakalanıyor...",
     "choose_spawn": "Başlangıç konumu seçin",
