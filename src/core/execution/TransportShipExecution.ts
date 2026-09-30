@@ -11,6 +11,7 @@ import {
 } from "../game/Game";
 import { TileRef } from "../game/GameMap";
 import { MotionPlanRecord } from "../game/MotionPlans";
+import { isCapitalShielded } from "../game/NationsMode";
 import { targetTransportTile } from "../game/TransportShipUtils";
 import { WaterPathFinder } from "../pathfinding/PathFinder";
 import { PathStatus } from "../pathfinding/types";
@@ -212,8 +213,9 @@ export class TransportShipExecution implements Execution {
 
     // Peace signed while the boat was at sea: it turns back.
     if (
-      this.target.isPlayer() &&
-      this.attacker.isAtPeaceWith(this.target) &&
+      ((this.target.isPlayer() && this.attacker.isAtPeaceWith(this.target)) ||
+        (this.dst !== null &&
+          isCapitalShielded(this.mg, this.dst, this.attacker))) &&
       !this.boat.transportShipState().isRetreating
     ) {
       this.boat.updateTransportShipState({ isRetreating: true });

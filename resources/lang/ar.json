@@ -1438,6 +1438,8 @@
     "capital_lost": "لا توجد عاصمة: لقد فقدت +10% من الذهب ونمو القوات",
     "capital_lost_ready": "انقر فوق إحدى مدنك لجعلها عاصمتك",
     "capital_lost_wait": "العاصمة الجديدة ممكنة في {time}",
+    "capital_shield": "العواصم محمية: لا يمكن الاستيلاء على الأراضي ضمن {radius} خانات من كل عاصمة",
+    "capital_shield_ends": "تنتهي الحماية خلال {time}",
     "catching_up": "اللحاق...",
     "choose_spawn": "اختر موقع البداية",
     "choose_spawn_spectator": "يختار اللاعبون مواقع البداية",

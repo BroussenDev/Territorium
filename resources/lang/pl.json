@@ -1438,6 +1438,8 @@
     "capital_lost": "Brak stolicy: utraciłeś +10% złota i przyrostu wojsk",
     "capital_lost_ready": "Kliknij jedno ze swoich miast, aby uczynić je stolicą",
     "capital_lost_wait": "Nowa stolica możliwa w {time}",
+    "capital_shield": "Stolice są chronione: ziemi w promieniu {radius} pól od każdej stolicy nie można zdobyć",
+    "capital_shield_ends": "Ochrona kończy się za {time}",
     "catching_up": "Nadrabianie zaległości...",
     "choose_spawn": "Wybierz lokalizację początkową",
     "choose_spawn_spectator": "Gracze wybierają lokalizacje początkowe",

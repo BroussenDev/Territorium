@@ -1438,6 +1438,8 @@
     "capital_lost": "No capital city: you lost its +10% gold and troop growth",
     "capital_lost_ready": "Click one of your cities to make it your capital city",
     "capital_lost_wait": "New capital city possible in {time}",
+    "capital_shield": "Capitals are protected: the land within {radius} tiles of each capital can't be taken",
+    "capital_shield_ends": "Protection ends in {time}",
     "catching_up": "Catching up...",
     "choose_spawn": "Choose a starting location",
     "choose_spawn_spectator": "Players are choosing starting locations",

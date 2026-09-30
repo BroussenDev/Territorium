@@ -1,5 +1,6 @@
 import { AttackLogicInput, Config } from "../src/core/configuration/Config";
 import { AllianceRequestExecution } from "../src/core/execution/alliance/AllianceRequestExecution";
+import { AttackExecution } from "../src/core/execution/AttackExecution";
 import { NationsModeExecution } from "../src/core/execution/NationsModeExecution";
 import { PeaceRequestExecution } from "../src/core/execution/peace/PeaceRequestExecution";
 import { SetCapitalExecution } from "../src/core/execution/SetCapitalExecution";
@@ -19,8 +20,12 @@ import { GameUpdateType } from "../src/core/game/GameUpdates";
 import {
   CAPITAL_FALLEN_DEBUFF_TICKS,
   CAPITAL_REBUILD_DELAY_TICKS,
+  CAPITAL_SHIELD_RADIUS,
+  CAPITAL_SHIELD_SECONDS,
+  capitalShieldSecondsLeft,
   decodeCountryIds,
   isCapitalFallen,
+  isCapitalShielded,
   NATIONS_MIN_TROOP_CAP_TILES,
   NationsCountry,
   NationsMapData,
@@ -384,6 +389,64 @@ describe("Nations mode", () => {
       tick();
       expect(small.overlord()).toBeNull();
       expect(small.isAtPeaceWith(big)).toBe(false);
+    });
+  });
+
+  describe("the shielded capital zone", () => {
+    // Small's land (x 50-59) within the radius of its capital on (55, 50).
+    const shielded = () => {
+      const tiles: number[] = [];
+      game.forEachTile((tile) => {
+        if (
+          game.owner(tile) === small &&
+          game.euclideanDistSquared(tile, game.ref(55, 50)) <=
+            CAPITAL_SHIELD_RADIUS * CAPITAL_SHIELD_RADIUS
+        ) {
+          tiles.push(tile);
+        }
+      });
+      return tiles;
+    };
+
+    test("covers the tiles around the original capital, for others", () => {
+      const big = game.player("big");
+      expect(capitalShieldSecondsLeft(game)).toBeGreaterThan(
+        CAPITAL_SHIELD_SECONDS - 1,
+      );
+      expect(isCapitalShielded(game, game.ref(55, 50), big)).toBe(true);
+      expect(isCapitalShielded(game, game.ref(55 - 5, 50), big)).toBe(true);
+      expect(isCapitalShielded(game, game.ref(55 + 3, 50 + 4), big)).toBe(true);
+      expect(isCapitalShielded(game, game.ref(55 - 6, 50), big)).toBe(false);
+      expect(isCapitalShielded(game, game.ref(55, 20), big)).toBe(false);
+      // Not against its owner, and not on land nobody owns.
+      expect(isCapitalShielded(game, game.ref(55, 50), small)).toBe(false);
+      expect(isCapitalShielded(game, game.ref(95, 50), big)).toBe(false);
+    });
+
+    test("an attack takes the land around it but not the zone", () => {
+      while (game.inSpawnPhase()) tick();
+      const big = game.player("big");
+      big.addTroops(5_000_000);
+      game.addExecution(new AttackExecution(4_000_000, big, small.id()));
+      const zone = shielded();
+      expect(zone.length).toBeGreaterThan(60);
+      for (let i = 0; i < 1200; i++) tick();
+
+      expect(capitalShieldSecondsLeft(game)).toBeGreaterThan(0);
+      expect(small.isAlive()).toBe(true);
+      expect(small.numTilesOwned()).toBe(zone.length);
+      expect(zone.every((tile) => game.owner(tile) === small)).toBe(true);
+    });
+
+    test("ends after the first minutes", () => {
+      while (capitalShieldSecondsLeft(game) > 0) tick();
+      const big = game.player("big");
+      expect(isCapitalShielded(game, game.ref(55, 50), big)).toBe(false);
+
+      big.addTroops(5_000_000);
+      game.addExecution(new AttackExecution(4_000_000, big, small.id()));
+      for (let i = 0; i < 1200 && small.isAlive(); i++) tick();
+      expect(small.isAlive()).toBe(false);
     });
   });
 

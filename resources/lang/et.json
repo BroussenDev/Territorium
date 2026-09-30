@@ -1438,6 +1438,8 @@
     "capital_lost": "Pealinna pole: kaotasite oma +10% kulla ja vägede kasvu",
     "capital_lost_ready": "Klõpsake ühel oma linnadest, et muuta see oma pealinnaks",
     "capital_lost_wait": "Uus pealinn on võimalik {time}",
+    "capital_shield": "Pealinnad on kaitstud: iga pealinna {radius} ruudu raadiuses olevat maad ei saa vallutada",
+    "capital_shield_ends": "Kaitse lõpeb {time} pärast",
     "catching_up": "Jõuan järgi...",
     "choose_spawn": "Vali alguse koht",
     "choose_spawn_spectator": "Mängijad valivad stardipaigad",

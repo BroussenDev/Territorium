@@ -1438,6 +1438,8 @@
     "capital_lost": "수도 없음: +10% 금화 및 병력 성장을 잃었습니다.",
     "capital_lost_ready": "도시 중 하나를 클릭하여 수도로 만드세요.",
     "capital_lost_wait": "{time}에 새로운 수도 건설 가능",
+    "capital_shield": "수도가 보호됩니다: 각 수도에서 {radius}칸 이내의 땅은 점령할 수 없습니다",
+    "capital_shield_ends": "보호 종료까지 {time}",
     "catching_up": "따라잡는 중...",
     "choose_spawn": "시작 위치를 선택하세요",
     "choose_spawn_spectator": "플레이어들이 시작 위치를 선택하고 있습니다",

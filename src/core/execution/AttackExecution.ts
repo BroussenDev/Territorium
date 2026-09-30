@@ -14,7 +14,7 @@ import {
   UnitType,
 } from "../game/Game";
 import { GameMap, TileRef } from "../game/GameMap";
-import { isCapitalFallen } from "../game/NationsMode";
+import { isCapitalFallen, isCapitalShielded } from "../game/NationsMode";
 import { PseudoRandom } from "../PseudoRandom";
 import { assertNever } from "../Util";
 import { FlatBinaryHeap } from "./utils/FlatBinaryHeap"; // adjust path if needed
@@ -405,7 +405,8 @@ export class AttackExecution implements Execution {
       if (
         this.map.isWater(neighbor) ||
         this.map.isImpassable(neighbor) ||
-        this.map.ownerID(neighbor) !== this.targetSmallID
+        this.map.ownerID(neighbor) !== this.targetSmallID ||
+        isCapitalShielded(this.mg, neighbor, this._owner)
       ) {
         continue;
       }
@@ -445,6 +446,14 @@ export class AttackExecution implements Execution {
   private handleDeadDefender() {
     if (!(this.target.isPlayer() && this.target.numTilesOwned() < 100)) return;
     const target: Player = this.target;
+    // Nations mode: a country keeps its shielded capital zone.
+    const capital = target.spawnTile();
+    if (
+      capital !== undefined &&
+      isCapitalShielded(this.mg, capital, this._owner)
+    ) {
+      return;
+    }
 
     this.mg.conquerPlayer(this._owner, target);
 

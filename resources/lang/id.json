@@ -1438,6 +1438,8 @@
     "capital_lost": "Tidak ada ibu kota: Anda kehilangan +10% emas dan pertumbuhan pasukannya",
     "capital_lost_ready": "Klik salah satu kota Anda untuk menjadikannya ibu kota Anda",
     "capital_lost_wait": "Ibu kota baru mungkin ada di {time}",
+    "capital_shield": "Ibu kota dilindungi: wilayah dalam jarak {radius} petak dari setiap ibu kota tidak bisa direbut",
+    "capital_shield_ends": "Perlindungan berakhir dalam {time}",
     "catching_up": "Menyusul...",
     "choose_spawn": "Pilih lokasi awal",
     "choose_spawn_spectator": "Pemain memilih lokasi awal",

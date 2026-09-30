@@ -1438,6 +1438,8 @@
     "capital_lost": "Nema glavnog grada: izgubili ste njegovih +10% rasta zlata i trupa",
     "capital_lost_ready": "Kliknite na jedan od svojih gradova da biste ga učinili glavnim gradom",
     "capital_lost_wait": "Novi glavni grad moguć za {time}",
+    "capital_shield": "Glavni gradovi su zaštićeni: zemlja u krugu od {radius} polja oko svakog glavnog grada ne može se osvojiti",
+    "capital_shield_ends": "Zaštita ističe za {time}",
     "catching_up": "Hvatanje koraka...",
     "choose_spawn": "Izaberi početnu lokaciju",
     "choose_spawn_spectator": "Igrači biraju početne lokacije",

@@ -1438,6 +1438,8 @@
     "capital_lost": "Ingen huvudstad: du förlorade dess +10% guld och trupptillväxt",
     "capital_lost_ready": "Klicka på en av dina städer för att göra den till din huvudstad",
     "capital_lost_wait": "Ny huvudstad möjlig i {time}",
+    "capital_shield": "Huvudstäderna är skyddade: marken inom {radius} rutor från varje huvudstad kan inte erövras",
+    "capital_shield_ends": "Skyddet upphör om {time}",
     "catching_up": "Ikapp...",
     "choose_spawn": "Välj en plats att börja på",
     "choose_spawn_spectator": "Spelare väljer startplatser",

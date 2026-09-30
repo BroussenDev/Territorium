@@ -9,7 +9,7 @@ import {
   UnitType,
 } from "../game/Game";
 import { GameMap, TileRef } from "../game/GameMap";
-import { VASSAL_TRIBUTE_PERCENT } from "../game/NationsMode";
+import { isCapitalShielded, VASSAL_TRIBUTE_PERCENT } from "../game/NationsMode";
 import {
   bumpTraversalGeneration,
   tileTraversalScratch,
@@ -507,13 +507,15 @@ export class PlayerExecution implements Execution {
       return;
     }
 
+    // Nations mode: the shielded zone around a capital stays its owner's.
     const tiles = this.floodFillWithGen(
       this.bumpGeneration(),
       this.traversalState().visited,
       [firstTile],
       false,
       (tile) => this.mg.ownerID(tile) === this.player.smallID(),
-    );
+    ).filter((tile) => !isCapitalShielded(this.mg, tile, capturing));
+    if (tiles.length === 0) return;
 
     if (this.player.numTilesOwned() === tiles.length) {
       this.mg.conquerPlayer(capturing, this.player);

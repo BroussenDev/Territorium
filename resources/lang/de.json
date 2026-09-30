@@ -1438,6 +1438,8 @@
     "capital_lost": "Keine Hauptstadt: Du hast ihr +10 % Gold- und Truppenwachstum verloren",
     "capital_lost_ready": "Klicken Sie auf eine Ihrer Städte, um sie zu Ihrer Hauptstadt zu machen",
     "capital_lost_wait": "Neue Hauptstadt in {time} möglich",
+    "capital_shield": "Hauptstädte sind geschützt: Das Land im Umkreis von {radius} Feldern um jede Hauptstadt kann nicht erobert werden",
+    "capital_shield_ends": "Der Schutz endet in {time}",
     "catching_up": "Aufholen...",
     "choose_spawn": "Wähle eine Startposition",
     "choose_spawn_spectator": "Spieler wählen Startplätze",

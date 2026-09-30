@@ -1438,6 +1438,8 @@
     "capital_lost": "沒有首都：你失去了 +10% 的黃金和軍隊成長",
     "capital_lost_ready": "點擊您的城市之一，將其設為您的首都",
     "capital_lost_wait": "新首都可能在{time}",
+    "capital_shield": "首都受保護：每個首都周圍 {radius} 格內的土地無法被奪取",
+    "capital_shield_ends": "保護將在 {time} 後結束",
     "catching_up": "正在追上進度……",
     "choose_spawn": "選擇出生點",
     "choose_spawn_spectator": "玩家正在選擇出生點",

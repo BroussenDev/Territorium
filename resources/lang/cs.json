@@ -1438,6 +1438,8 @@
     "capital_lost": "Žádné hlavní město: přišli jste o jeho +10 % zlata a nárůst počtu vojáků",
     "capital_lost_ready": "Kliknutím na jedno ze svých měst z něj uděláte své hlavní město",
     "capital_lost_wait": "Nové hlavní město možné za {time}",
+    "capital_shield": "Hlavní města jsou chráněna: území do {radius} polí od každého hlavního města nelze dobýt",
+    "capital_shield_ends": "Ochrana končí za {time}",
     "catching_up": "Synchronizuji...",
     "choose_spawn": "Vyberte počáteční pozici",
     "choose_spawn_spectator": "Hráči si vybírají počáteční pozice",

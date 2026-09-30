@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.40
+
+🛡️ **Nations: protected capitals at the start**
+
+- For the first 3 minutes of a Nations game, the land within 5 tiles of each country's capital can't be taken by anyone else: attacks, encirclements and landings stop at its edge.
+- No country can be wiped out during those minutes, so everyone gets time to react.
+- A banner shows the protection and how long it lasts. Nukes are not stopped by it.
+
 ## v0.1.39
 
 💸 **Creators: choose where your money goes**

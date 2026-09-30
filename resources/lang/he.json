@@ -1438,6 +1438,8 @@
     "capital_lost": "אין עיר בירה: איבדת את +10% הזהב והצמיחה שלה",
     "capital_lost_ready": "לחץ על אחת מהערים שלך כדי להפוך אותה לעיר הבירה שלך",
     "capital_lost_wait": "עיר בירה חדשה אפשרית ב{time}",
+    "capital_shield": "הבירות מוגנות: לא ניתן לכבוש את השטח בטווח {radius} משבצות מכל בירה",
+    "capital_shield_ends": "ההגנה מסתיימת בעוד {time}",
     "catching_up": "מתעדכן...",
     "choose_spawn": "בחר מיקום התחלתי",
     "choose_spawn_spectator": "שחקנים בוחרים מיקומי התחלה",

@@ -1438,6 +1438,8 @@
     "capital_lost": "Ei pääkaupunkia: menetit sen +10 % kultaa ja joukkojen kasvua",
     "capital_lost_ready": "Napsauta jotakin kaupungeistasi tehdäksesi siitä pääkaupunkisi",
     "capital_lost_wait": "Uusi pääkaupunki mahdollinen vuonna {time}",
+    "capital_shield": "Pääkaupungit ovat suojattuja: maata {radius} ruudun säteellä kustakin pääkaupungista ei voi valloittaa",
+    "capital_shield_ends": "Suoja päättyy {time} kuluttua",
     "catching_up": "Kiinni...",
     "choose_spawn": "Valitse aloituspaikka",
     "choose_spawn_spectator": "Pelaajat valitsevat aloituspaikat",

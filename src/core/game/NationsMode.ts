@@ -1,4 +1,4 @@
-import { PlayerView } from "../../client/view";
+import { GameView, PlayerView } from "../../client/view";
 import { PseudoRandom } from "../PseudoRandom";
 import { GameStartInfo } from "../Schemas";
 import {
@@ -12,6 +12,7 @@ import {
   Tick,
   UnitType,
 } from "./Game";
+import { TileRef } from "./GameMap";
 
 // Nations mode: every player starts as a real country of the giant world map,
 // with its whole territory and a capital city on the real capital.
@@ -54,6 +55,13 @@ export const NATIONS_MAX_PLAYERS = 80;
 export const NATIONS_PERCENT_TILES_OWNED_TO_WIN = 50;
 export const CAPITAL_GOLD_BONUS_PERCENT = 10;
 export const CAPITAL_TROOP_GROWTH_BONUS_PERCENT = 10;
+/**
+ * For the first CAPITAL_SHIELD_SECONDS of the game, the land within
+ * CAPITAL_SHIELD_RADIUS tiles of each country's original capital can't be
+ * taken by anyone else, so no country is wiped out before it can react.
+ */
+export const CAPITAL_SHIELD_RADIUS = 5;
+export const CAPITAL_SHIELD_SECONDS = 3 * 60;
 /** How long a player defends 10% worse after losing their capital. */
 export const CAPITAL_FALLEN_DEBUFF_TICKS = 60 * 10;
 export const CAPITAL_FALLEN_DEFENSE_MULT = 0.9;
@@ -161,6 +169,32 @@ export function vassalSide(
 
 export function hasCapital(player: Player | PlayerView): boolean {
   return player.units(UnitType.City).some((u) => u.isCapital());
+}
+
+/** Seconds left of the capital shield (0 once it is over). */
+export function capitalShieldSecondsLeft(game: Game | GameView): number {
+  if (!game.config().isNationsMode()) return 0;
+  return Math.max(0, CAPITAL_SHIELD_SECONDS - game.elapsedGameSeconds());
+}
+
+/**
+ * Whether `by` may not take `tile` yet: it lies in the shielded zone around
+ * its owner's original capital (their spawn tile in Nations mode).
+ */
+export function isCapitalShielded(
+  game: Game,
+  tile: TileRef,
+  by: Player,
+): boolean {
+  if (capitalShieldSecondsLeft(game) <= 0) return false;
+  const owner = game.owner(tile);
+  if (!owner.isPlayer() || owner === by) return false;
+  const capital = owner.spawnTile();
+  return (
+    capital !== undefined &&
+    game.euclideanDistSquared(tile, capital) <=
+      CAPITAL_SHIELD_RADIUS * CAPITAL_SHIELD_RADIUS
+  );
 }
 
 /** Within the minute of weakness after losing a capital. */

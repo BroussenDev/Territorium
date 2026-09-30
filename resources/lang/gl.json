@@ -1438,6 +1438,8 @@
     "capital_lost": "Ningunha capital: perdeu o seu +10% de ouro e de crecemento de tropas",
     "capital_lost_ready": "Fai clic nunha das túas cidades para convertela na túa capital",
     "capital_lost_wait": "Nova capital posible en {time}",
+    "capital_shield": "As capitais están protexidas: o territorio a {radius} casas de cada capital non se pode conquistar",
+    "capital_shield_ends": "A protección remata en {time}",
     "catching_up": "Poñéndose ao día...",
     "choose_spawn": "Escolle o lugar de inicio",
     "choose_spawn_spectator": "Os xogadores elixen os lugares de partida",

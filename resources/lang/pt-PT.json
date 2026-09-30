@@ -1438,6 +1438,8 @@
     "capital_lost": "Sem capital: perdeu +10% de ouro e crescimento de tropas",
     "capital_lost_ready": "Clique numa das suas cidades para torná-la a sua capital",
     "capital_lost_wait": "Nova capital possível em {time}",
+    "capital_shield": "As capitais estão protegidas: o território a até {radius} casas de cada capital não pode ser conquistado",
+    "capital_shield_ends": "A proteção termina dentro de {time}",
     "catching_up": "Alcançando...",
     "choose_spawn": "Escolha um local de início",
     "choose_spawn_spectator": "Os jogadores estão a escolher os locais de partida",

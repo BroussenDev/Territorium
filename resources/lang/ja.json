@@ -1438,6 +1438,8 @@
     "capital_lost": "首都がありません: +10% のゴールドと軍隊の成長を失いました",
     "capital_lost_ready": "都市の 1 つをクリックして首都にします",
     "capital_lost_wait": "{time} に新しい首都が可能",
+    "capital_shield": "首都は保護されています：各首都から{radius}マス以内の土地は奪えません",
+    "capital_shield_ends": "保護終了まで {time}",
     "catching_up": "取戻し中…",
     "choose_spawn": "スタート地点を選んで下さい",
     "choose_spawn_spectator": "プレイヤーが開始地点を選択しています",

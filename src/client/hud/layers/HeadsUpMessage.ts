@@ -3,7 +3,9 @@ import { customElement, state } from "lit/decorators.js";
 import { GameMode, GameType, RankedType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
+  CAPITAL_SHIELD_RADIUS,
   capitalRebuildTicksLeft,
+  capitalShieldSecondsLeft,
   hasCapital,
 } from "../../../core/game/NationsMode";
 import { Controller } from "../../Controller";
@@ -39,6 +41,9 @@ export class HeadsUpMessage extends LitElement implements Controller {
   // (0 = now), or null while they hold one.
   @state()
   private capitalLostWait: number | null = null;
+  // Nations mode: seconds left of the shield around every capital, or 0.
+  @state()
+  private capitalShieldLeft = 0;
 
   private static readonly CATCHING_UP_SHOW_THRESHOLD = 10;
   // How long the overtime announcement banner stays up after the start minute.
@@ -155,6 +160,9 @@ export class HeadsUpMessage extends LitElement implements Controller {
               1000,
           )
         : null;
+    this.capitalShieldLeft = this.game.inSpawnPhase()
+      ? 0
+      : Math.ceil(capitalShieldSecondsLeft(this.game));
 
     this.isVisible =
       this.game.inSpawnPhase() ||
@@ -273,6 +281,29 @@ export class HeadsUpMessage extends LitElement implements Controller {
                         time: formatWait(this.capitalLostWait),
                       })
                     : translateText("heads_up_message.capital_lost_ready")}
+                </div>
+              </div>
+            `
+          : null}
+        ${this.capitalShieldLeft > 0 && this.capitalLostWait === null
+          ? html`
+              <div
+                class="fixed top-[8%] left-1/2 -translate-x-1/2 z-[798]
+                            flex flex-col items-center w-fit max-w-[90vw]
+                            bg-sky-900/75 border border-sky-300/50 rounded-md lg:rounded-lg
+                            backdrop-blur-xs text-white px-3 lg:px-4 py-1.5 text-center"
+                @contextmenu=${(e: MouseEvent) => e.preventDefault()}
+              >
+                <div class="text-sm lg:text-base font-semibold">
+                  🛡️
+                  ${translateText("heads_up_message.capital_shield", {
+                    radius: CAPITAL_SHIELD_RADIUS,
+                  })}
+                </div>
+                <div class="text-xs lg:text-sm text-sky-200">
+                  ${translateText("heads_up_message.capital_shield_ends", {
+                    time: formatWait(this.capitalShieldLeft),
+                  })}
                 </div>
               </div>
             `
