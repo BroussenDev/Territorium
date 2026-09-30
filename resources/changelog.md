@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.38
+
+⚖️ **Fairer ranked maps**
+
+- Ranked maps now depend on the number of players, so everyone gets about the same amount of land in a match of 4 or 16.
+- 4 to 5 players: compact Europe Classic, Asia or Australia. 6 to 10 players: compact Africa or Europe. 11 to 16 players: Europe Classic, Asia, Australia or South America.
+- Italy, Japan and France are out of the ranked pool: their islands and peninsulas made some starting spots much safer than others.
+
 ## v0.1.37
 
 🏆 **Ranked: your Elo, front and centre**

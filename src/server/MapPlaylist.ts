@@ -139,6 +139,45 @@ const MUTUALLY_EXCLUSIVE_MODIFIERS: [ModifierKey, ModifierKey][] = [
 // each half can then fall back to the matching ffaFrequency/teamFrequency.
 type PlaylistKey = "ffa" | "team" | "specialFfa" | "specialTeam";
 
+/**
+ * The ranked free-for-all maps, by match size. Only maps that are one big
+ * landmass, with no islands or peninsulas that make some starts safer than
+ * others. Each pool gives every player roughly 45k to 130k land tiles.
+ */
+export const RANKED_FFA_POOLS: readonly {
+  maxPlayers: number;
+  size: GameMapSize;
+  maps: readonly GameMapType[];
+}[] = [
+  {
+    maxPlayers: 5,
+    size: GameMapSize.Compact,
+    maps: [GameMapType.EuropeClassic, GameMapType.Asia, GameMapType.Australia],
+  },
+  {
+    maxPlayers: 10,
+    size: GameMapSize.Compact,
+    maps: [GameMapType.Africa, GameMapType.Europe],
+  },
+  {
+    maxPlayers: 16,
+    size: GameMapSize.Normal,
+    maps: [
+      GameMapType.EuropeClassic,
+      GameMapType.Asia,
+      GameMapType.Australia,
+      GameMapType.SouthAmerica,
+    ],
+  },
+];
+
+export function rankedFfaPool(players: number) {
+  return (
+    RANKED_FFA_POOLS.find((pool) => players <= pool.maxPlayers) ??
+    RANKED_FFA_POOLS[RANKED_FFA_POOLS.length - 1]
+  );
+}
+
 export class MapPlaylist {
   private playlists: Record<PlaylistKey, GameMapType[]> = {
     ffa: [],
@@ -569,27 +608,18 @@ export class MapPlaylist {
   }
 
   // Ranked free-for-all (the "Ranked game" button): the matched players only,
-  // no nations and no tribes, on a fixed pool of mid-sized maps so a rating
-  // reflects play rather than map luck. Small matches get the compact map.
+  // no nations and no tribes. The map comes from the pool for the match's
+  // size so everyone gets about the same land whatever the player count.
   public getRankedFfaConfig(players: number): GameConfig {
-    const maps = [
-      GameMapType.Europe,
-      GameMapType.EuropeClassic,
-      GameMapType.Asia,
-      GameMapType.Africa,
-      GameMapType.Australia,
-      GameMapType.France,
-      GameMapType.Italia,
-      GameMapType.Japan,
-    ];
-    const isCompact = players <= 6;
+    const pool = rankedFfaPool(players);
+    const isCompact = pool.size === GameMapSize.Compact;
     return {
       donateGold: false,
       donateTroops: false,
-      gameMap: maps[Math.floor(Math.random() * maps.length)],
+      gameMap: pool.maps[Math.floor(Math.random() * pool.maps.length)],
       maxPlayers: players,
       gameType: GameType.Public,
-      gameMapSize: isCompact ? GameMapSize.Compact : GameMapSize.Normal,
+      gameMapSize: pool.size,
       difficulty: Difficulty.Medium, // Doesn't matter, nations are disabled
       rankedType: RankedType.FFA,
       infiniteGold: false,
