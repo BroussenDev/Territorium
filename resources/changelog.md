@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.37
+
+🏆 **Ranked: your Elo, front and centre**
+
+- The ranked page now shows your Elo in big numbers, with your tier and your rank on the ladder. The tier names stay the same, from Bronze to Master and Legend.
+- A tier bar shows where you stand from Bronze to Master and how many Elo points you need for the next tier.
+- Your last 10 ranked games of the season are listed with the Elo each one won or lost and your final place.
+- Ranked seasons now last three months: season 1 runs until 31 December 2026. Clan seasons stay monthly.
+- A "New season" tag appears on the Ranked button for the first two weeks of each season.
+
 ## v0.1.36
 
 ⚔️ **New Versus mode: 1v1, 2v2, 3v3 and 4v4**

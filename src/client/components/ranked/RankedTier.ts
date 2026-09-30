@@ -1,5 +1,5 @@
 import { html, svg } from "lit";
-import { RankedTier } from "../../../core/ApiSchemas";
+import { RankedSeason, RankedTier } from "../../../core/ApiSchemas";
 import { translateText } from "../../Utils";
 
 // How each ranked tier looks wherever it is shown: the ranked hub, the
@@ -27,6 +27,27 @@ export const TIER_MIN_ELO: Record<Exclude<RankedTier, "legend">, number> = {
 
 export const tierLabel = (tier: RankedTier) =>
   translateText(`ranked.tier_${tier}`);
+
+export const tierColors = (tier: RankedTier) => TIER_COLORS[tier];
+
+// A season counts as new for its first two weeks.
+const NEW_SEASON_MS = 14 * 24 * 60 * 60 * 1000;
+
+export function isNewSeason(season: RankedSeason | null | undefined): boolean {
+  if (!season?.startsAt) return false;
+  const age = Date.now() - Date.parse(season.startsAt);
+  return age >= 0 && age < NEW_SEASON_MS;
+}
+
+// The small "New season" tag, on the home page's ranked button and in the hub.
+export function newSeasonTag(extraClass = "") {
+  return html`<span
+    class="inline-flex items-center gap-1 rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-bold normal-case leading-none tracking-normal whitespace-nowrap text-black shadow-[0_0_12px_rgba(251,191,36,0.55)] ${extraClass}"
+  >
+    <span class="size-1.5 rounded-full bg-black/70 animate-pulse"></span>
+    ${translateText("ranked.new_season")}
+  </span>`;
+}
 
 // A shield in the tier's colours; legend gets a crown on top.
 export function tierEmblem(tier: RankedTier, size = 40) {

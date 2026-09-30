@@ -699,8 +699,19 @@ export type RankedTier = z.infer<typeof RankedTierSchema>;
 // Monthly seasons: the number and when it closes (UTC).
 export const RankedSeasonSchema = z.object({
   number: z.number().int().min(1),
+  startsAt: z.iso.datetime().optional(),
   endsAt: z.iso.datetime(),
 });
+export type RankedSeason = z.infer<typeof RankedSeasonSchema>;
+
+// One of the player's last ranked games: where they finished, out of how
+// many, and how much Elo it moved.
+export const RankedGameResultSchema = z.object({
+  place: z.number(),
+  players: z.number(),
+  delta: z.number(),
+});
+export type RankedGameResult = z.infer<typeof RankedGameResultSchema>;
 
 // GET /ranked/me — the season and where the signed-in player stands in it.
 // tier and rank are null until the placement games are played.
@@ -713,6 +724,8 @@ export const RankedStatusSchema = z.object({
   placementLeft: z.number(),
   tier: RankedTierSchema.nullable(),
   rank: z.number().nullable(),
+  // This season's last games, newest first.
+  history: RankedGameResultSchema.array().optional(),
 });
 export type RankedStatus = z.infer<typeof RankedStatusSchema>;
 

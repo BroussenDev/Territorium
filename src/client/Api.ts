@@ -45,6 +45,8 @@ import {
   RankedLeaderboardResponseSchema,
   RankedQueueState,
   RankedQueueStateSchema,
+  RankedSeason,
+  RankedSeasonSchema,
   RankedStatus,
   RankedStatusSchema,
   SoloLeaderboardResponse,
@@ -2407,6 +2409,18 @@ export async function fetchRankedStatus(): Promise<RankedStatus | false> {
     return parsed.data;
   } catch (err) {
     console.error("fetchRankedStatus: request failed", err);
+    return false;
+  }
+}
+
+// GET /ranked/season — the running ranked season, public.
+export async function fetchRankedSeason(): Promise<RankedSeason | false> {
+  try {
+    const res = await fetch(`${getApiBase()}/ranked/season`);
+    if (!res.ok) return false;
+    const parsed = RankedSeasonSchema.safeParse(await res.json());
+    return parsed.success ? parsed.data : false;
+  } catch {
     return false;
   }
 }

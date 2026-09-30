@@ -251,6 +251,19 @@
     "teams": "kulupu {num}",
     "waiting": "jan musi {num} li awen"
   },
+  "ranked": {
+    "elo": "Elo",
+    "is_legend": "sina lon kulupu 5 pi jan musi wawa pi tenpo ni",
+    "new_season": "tenpo sin",
+    "peak": "nanpa sewi: {elo}",
+    "rank": "nanpa #{rank}",
+    "recent_empty": "musi nanpa pini sina li kama lon ni.",
+    "recent_game": "nanpa #{place} lon {players}",
+    "recent_title": "musi pini",
+    "rule_season": "tenpo musi li awen e mun 3. tenpo ni li pini la sina kama jo e sitelen pona e sitelen tenpo, en nanpa li kama lili.",
+    "to_legend": "o lon kulupu 5 wawa pi jan lawa la sina kama jan nimi",
+    "to_next_tier": "{points} Elo la sina kama {tier}"
+  },
   "select_lang": {
     "title": "o wile e toki"
   },

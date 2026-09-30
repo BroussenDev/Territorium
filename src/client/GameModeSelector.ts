@@ -1,7 +1,7 @@
 import { html, LitElement, nothing, type TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { ClientEnv } from "src/client/ClientEnv";
-import { UserMeResponse } from "../core/ApiSchemas";
+import { RankedSeason, UserMeResponse } from "../core/ApiSchemas";
 import {
   Duos,
   GameMapType,
@@ -18,6 +18,7 @@ import {
   versusTeamSize,
 } from "../core/game/Versus";
 import { PublicGameInfo, PublicGames } from "../core/Schemas";
+import { fetchRankedSeason } from "./Api";
 import { getDesktopSessionState } from "./Auth";
 import "./components/IOSAddToHomeScreenBanner";
 import {
@@ -28,6 +29,7 @@ import {
   viewerIsSignedIn,
   viewerIsTrusted,
 } from "./components/LobbyCard";
+import { isNewSeason, newSeasonTag } from "./components/ranked/RankedTier";
 import { versusZoneMap } from "./components/VersusLobby";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
@@ -334,6 +336,8 @@ export class GameModeSelector extends LitElement {
   // multiplayerAllowedForBackend for why one missed heartbeat must not dim
   // these buttons.
   @state() private backendOutage = false;
+  // The current ranked season, for the "New season" tag on the ranked card.
+  @state() private rankedSeason: RankedSeason | null = null;
   private serverTimeOffset: number = 0;
   private defaultLobbyTime: number = 0;
 
@@ -458,6 +462,9 @@ export class GameModeSelector extends LitElement {
     document.addEventListener("join-lobby", this.onJoinLobby);
     document.addEventListener("leave-lobby", this.onLeaveLobby);
     document.addEventListener("versus-play", this.onVersusPlay);
+    void fetchRankedSeason().then((season) => {
+      if (season) this.rankedSeason = season;
+    });
     // Pick up the current value in case username-input validated before us.
     const usernameInput = document.querySelector(
       "username-input",
@@ -758,6 +765,7 @@ export class GameModeSelector extends LitElement {
               undefined,
               true,
               ICON_TROPHY,
+              isNewSeason(this.rankedSeason),
             )}
           </div>
         </div>
@@ -1020,6 +1028,8 @@ export class GameModeSelector extends LitElement {
     gated: boolean = false,
     // Heroicon path; only drawn in the lg rail, where the cards have room.
     icon?: string,
+    // Shows the "New season" tag where the badge would sit.
+    newSeason: boolean = false,
   ) {
     const blocked =
       gated &&
@@ -1061,6 +1071,9 @@ export class GameModeSelector extends LitElement {
               class="absolute -top-2 -right-2 lg:static lg:ml-auto min-w-[1.375rem] h-[1.375rem] px-1.5 flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold tracking-normal"
               >${badge}</span
             >`
+          : nothing}
+        ${newSeason
+          ? newSeasonTag("absolute -top-2 -right-2 lg:static lg:ml-auto")
           : nothing}
       </button>
     `;
