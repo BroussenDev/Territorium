@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Sao chép vào bộ nhớ tạm",
     "crashed": "Trò chơi đã bị lỗi!",
     "desync_notice": "Bạn đã mất đồng bộ với những người chơi khác. Những gì bạn thấy có thể khác với những người chơi khác.",
+    "details": "Chi tiết kỹ thuật",
     "login_failed": "Đăng nhập thất bại, vui lòng thử lại.",
     "login_token_consumed": "Liên kết đăng nhập này đã được sử dụng. Có thể bạn đã đăng nhập — hãy kiểm tra tab khác.",
     "paste_discord": "Vui lòng dán nội dung sau vào báo cáo lỗi của bạn trên Discord:",
+    "reload": "Tải lại trang",
     "spawn_failed": {
       "description": "Tự động chọn điểm hồi sinh thất bại. Bạn không thể chơi trận này.",
       "title": "Spawn thất bại"

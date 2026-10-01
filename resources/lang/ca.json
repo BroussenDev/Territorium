@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copia al porta-retalls",
     "crashed": "El joc s'ha tancat de forma inesperada.",
     "desync_notice": "Estàs dessincronitzat dels altres jugadors. El que veus pot ser diferent del que veuen els altres jugadors.",
+    "details": "Detalls tècnics",
     "login_failed": "No s'ha pogut iniciar la sessió. Si us plau, torna-ho a provar més tard.",
     "login_token_consumed": "Aquest enllaç d'inici de sessió ja s'ha utilitzat. Probablement ja heu iniciat sessió: comproveu una altra pestanya.",
     "paste_discord": "Si us plau, enganxeu el següent al vostre informe d'errors a Discord:",
+    "reload": "Torna a carregar la pàgina",
     "spawn_failed": {
       "description": "La selecció automàtica del teu punt de partida ha fallat. No pots jugar aquesta partida.",
       "title": "Aparició fallada"

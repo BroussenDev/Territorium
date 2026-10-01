@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copia negli appunti",
     "crashed": "Il gioco si è bloccato!",
     "desync_notice": "Sei desincronizzato dagli altri giocatori. Ciò che vedi potrebbe differire da quello degli altri giocatori.",
+    "details": "Dettagli tecnici",
     "login_failed": "Accesso non riuscito. Per favore riprova più tardi.",
     "login_token_consumed": "Questo collegamento di accesso è già stato utilizzato. Probabilmente hai già effettuato l'accesso: controlla un'altra scheda.",
     "paste_discord": "Incolla quanto segue nella segnalazione di bug in Discord:",
+    "reload": "Ricarica la pagina",
     "spawn_failed": {
       "description": "La selezione automatica dello spawn non è riuscita. Non puoi giocare a questo gioco.",
       "title": "La generazione non è riuscita"

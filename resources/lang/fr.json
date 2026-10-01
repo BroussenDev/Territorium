@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copier dans le presse-papier",
     "crashed": "Le jeu a planté !",
     "desync_notice": "Vous êtes désynchronisé des autres joueurs. Ce que vous voyez peut être différent des autres joueurs.",
+    "details": "Détails techniques",
     "login_failed": "Échec de la connexion. Merci de réessayer plus tard.",
     "login_token_consumed": "Ce lien de connexion a déjà été utilisé. Vous êtes sans doute déjà connecté : vérifiez un autre onglet.",
     "paste_discord": "Veuillez coller ce qui suit dans votre rapport de bogue dans Discord :",
+    "reload": "Recharger la page",
     "spawn_failed": {
       "description": "La sélection automatique du spawn a échoué. Vous ne pouvez pas jouer à cette partie.",
       "title": "Échec du spawn"

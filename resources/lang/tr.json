@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Panoya kopyala",
     "crashed": "Oyun çöktü!",
     "desync_notice": "Diğer oyuncularla senkronizasyonunuz bozuldu. Gördükleriniz diğer oyunculardan farklı olabilir.",
+    "details": "Teknik ayrıntılar",
     "login_failed": "Giriş başarısız oldu. Lütfen daha sonra tekrar deneyin.",
     "login_token_consumed": "Bu giriş bağlantısı zaten kullanılmış. Muhtemelen zaten giriş yapmışsınızdır; başka bir sekmeyi kontrol edin.",
     "paste_discord": "Lütfen aşağıdakini Discord'daki hata raporunuza yapıştırın:",
+    "reload": "Sayfayı yeniden yükle",
     "spawn_failed": {
       "description": "Otomatik doğma seçimi başarısız. Bu oyunu oynayamazsın.",
       "title": "Doğma başarısız"

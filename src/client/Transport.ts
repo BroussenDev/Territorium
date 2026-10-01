@@ -670,6 +670,7 @@ export class Transport {
   private showTerminalDialog(message: string) {
     void showInGameConfirm(message, {
       variant: "warning",
+      heading: translateText("error_modal.connection_error"),
       confirmText: translateText("win_modal.exit"),
       cancelText: translateText("common.close"),
     }).then((goHome) => {

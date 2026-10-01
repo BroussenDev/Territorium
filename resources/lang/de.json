@@ -1026,9 +1026,11 @@
     "copy_clipboard": "In die Zwischenablage kopieren",
     "crashed": "Spiel ist abgestürzt!",
     "desync_notice": "Du wurdest von anderen Spielern desynchronisiert. Was du siehst, könnte sich von anderen Spielern unterscheiden.",
+    "details": "Technische Details",
     "login_failed": "Anmelden fehlgeschlagen. Bitte versuche es später erneut.",
     "login_token_consumed": "Dieser Login-Link wurde bereits verwendet. Sie sind wahrscheinlich bereits angemeldet – überprüfen Sie einen anderen Tab.",
     "paste_discord": "Bitte füge folgendes in deinen Fehlerbericht auf Discord ein:",
+    "reload": "Seite neu laden",
     "spawn_failed": {
       "description": "Automatische Spawn-Auswahl fehlgeschlagen. Du kannst dieses Spiel nicht spielen.",
       "title": "Spawn fehlgeschlagen"

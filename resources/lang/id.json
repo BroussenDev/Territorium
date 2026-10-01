@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Salin ke papan klip",
     "crashed": "Game berhenti / rusak!",
     "desync_notice": "Anda tidak tersinkronisasi dengan pemain lain. Apa yang Anda lihat mungkin berbeda dari pemain lain.",
+    "details": "Detail teknis",
     "login_failed": "Gagal masuk. Silakan coba lagi nanti.",
     "login_token_consumed": "Tautan login ini sudah digunakan. Anda mungkin sudah masuk — periksa tab lain.",
     "paste_discord": "Silakan tempelkan teks berikut di laporan bug Anda di Discord:",
+    "reload": "Muat ulang halaman",
     "spawn_failed": {
       "description": "Pemilihan titik awal otomatis gagal. Anda tidak dapat memainkan game ini.",
       "title": "Kemunculan gagal"

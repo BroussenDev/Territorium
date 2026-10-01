@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copy to clipboard",
     "crashed": "Game crashed!",
     "desync_notice": "You are desynced from other players. What you see might differ from other players.",
+    "details": "Technical details",
     "login_failed": "Login failed. Please try again later.",
     "login_token_consumed": "This login link was already used. You're probably already logged in — check another tab.",
     "paste_discord": "Please paste the following in your bug report in Discord:",
+    "reload": "Reload the page",
     "spawn_failed": {
       "description": "Automatic spawn selection failed. You can't play this game.",
       "title": "Spawn failed"

@@ -1026,9 +1026,11 @@
     "copy_clipboard": "I d Zwüschenablag kopiere",
     "crashed": "Spiu isch abgstürzt!",
     "desync_notice": "Du bisch vo angere Spieler desynchronisiert worde. Was du gsehsch, chönnt sech vo angere Spieler ungerscheide.",
+    "details": "Technische Details",
     "login_failed": "Die Anmeldung ist fehlgeschlagen. Bitte versuchen Sie es später noch einmal.",
     "login_token_consumed": "Dieser Login-Link wurde bereits verwendet. Sie sind wahrscheinlich bereits angemeldet – überprüfen Sie einen anderen Tab.",
     "paste_discord": "Bitte füeg das i di Fehlerbericht auf Discord i:",
+    "reload": "Seite neu laden",
     "spawn_failed": {
       "description": "Automatischi Spawn-Uswau fäugschlage. Du chasch das Spiel nid spiele.",
       "title": "Spawn fäugschlage"

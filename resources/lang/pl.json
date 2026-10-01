@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopiuj do schowka",
     "crashed": "Gra uległa awarii!",
     "desync_notice": "Jesteś desynchronizowany względem innych graczy. To, co widzisz, może się różnić od tego, co widzą inni.",
+    "details": "Szczegóły techniczne",
     "login_failed": "Logowanie nie powiodło się. Spróbuj ponownie później.",
     "login_token_consumed": "Ten link do logowania był już używany. Prawdopodobnie jesteś już zalogowany — sprawdź inną zakładkę.",
     "paste_discord": "Proszę wkleić poniższą treść do swojego zgłoszenia błędu na Discordzie:",
+    "reload": "Odśwież stronę",
     "spawn_failed": {
       "description": "Automatyczny wybór punktu odrodzenia nie powiódł się. Nie możesz grać w tę grę.",
       "title": "Spawn nie powiódł się"

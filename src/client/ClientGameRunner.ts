@@ -1644,8 +1644,18 @@ function showErrorModal(
   const translatedError = translateText(error);
   const displayError = translatedError === error ? error : translatedError;
 
-  const modal = document.createElement("div");
-  modal.id = "error-modal";
+  // Plain words up front; the raw report for a bug report sits folded away.
+  const summary =
+    translatedError !== error
+      ? translatedError
+      : !showDiscord &&
+          message &&
+          message.length < 200 &&
+          !message.includes("\n")
+        ? message
+        : showDiscord
+          ? translateText("error_modal.paste_discord")
+          : null;
 
   const content = [
     showDiscord ? translateText("error_modal.paste_discord") : null,
@@ -1658,13 +1668,51 @@ function showErrorModal(
     .filter(Boolean)
     .join("\n");
 
-  // Create elements
-  const pre = document.createElement("pre");
-  pre.textContent = content;
+  const modal = document.createElement("div");
+  modal.id = "error-modal";
+  modal.className =
+    "fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-[2px]";
+  modal.setAttribute("role", "alertdialog");
+  modal.setAttribute("aria-modal", "true");
 
+  const card = document.createElement("div");
+  card.className =
+    "relative w-full max-w-lg overflow-hidden rounded-lg border border-white/10 bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] p-5 pt-6 text-white shadow-[0_24px_60px_-20px_rgb(0_0_0/0.85)]";
+  card.innerHTML = `
+    <div class="absolute inset-x-0 top-0 h-[3px] bg-red-500"></div>
+    <div class="flex items-start gap-3.5">
+      <div class="flex size-10 shrink-0 items-center justify-center rounded-md bg-red-500/15 text-red-400">
+        <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+          <path d="M8.3 2.5h7.4l5.8 5.8v7.4l-5.8 5.8H8.3l-5.8-5.8V8.3Z"></path>
+          <path d="M12 7.5v5.5"></path>
+          <circle cx="12" cy="16.6" r="1.1" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </div>
+      <div class="min-w-0 flex-1 pr-7">
+        <h2 data-error-heading class="font-display text-lg font-bold leading-snug"></h2>
+        <p data-error-summary class="mt-1 text-sm leading-relaxed text-white/75"></p>
+      </div>
+    </div>
+    <details class="group mt-4 rounded-md border border-white/10 bg-black/30">
+      <summary data-error-details class="cursor-pointer select-none list-none px-3 py-2 text-xs font-medium text-white/55 hover:text-white/80"></summary>
+      <pre class="max-h-64 overflow-auto whitespace-pre-wrap break-words border-t border-white/10 px-3 py-2 font-mono text-[11px] leading-relaxed text-white/70"></pre>
+    </details>
+    <div data-error-actions class="mt-5 flex flex-wrap gap-2.5"></div>`;
+  card.querySelector("[data-error-heading]")!.textContent =
+    translateText(heading);
+  const summaryEl = card.querySelector("[data-error-summary]")!;
+  if (summary) summaryEl.textContent = summary;
+  else summaryEl.remove();
+  card.querySelector("[data-error-details]")!.textContent = translateText(
+    "error_modal.details",
+  );
+  card.querySelector("pre")!.textContent = content;
+
+  const actions = card.querySelector("[data-error-actions]")!;
   const button = document.createElement("button");
   button.textContent = translateText("error_modal.copy_clipboard");
-  button.className = "copy-btn";
+  button.className =
+    "copy-btn flex-1 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 font-display text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white";
   button.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(content);
@@ -1673,19 +1721,26 @@ function showErrorModal(
       button.textContent = translateText("common.failed_copy");
     }
   });
+  const reload = document.createElement("button");
+  reload.textContent = translateText("error_modal.reload");
+  reload.className =
+    "flex-1 rounded-md bg-capital px-4 py-2.5 font-display text-sm font-bold text-capital-ink transition-colors hover:bg-capital-light";
+  reload.addEventListener("click", () => window.location.reload());
+  actions.append(button, reload);
 
-  // Add to modal
-  modal.appendChild(pre);
-  modal.appendChild(button);
   if (closable) {
     const closeButton = document.createElement("button");
-    closeButton.textContent = "X";
-    closeButton.className = "close-btn";
+    closeButton.setAttribute("aria-label", translateText("common.close"));
+    closeButton.className =
+      "close-btn absolute top-3 right-3 flex size-8 items-center justify-center rounded-md text-white/50 transition-colors hover:bg-white/10 hover:text-white";
+    closeButton.innerHTML =
+      '<svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>';
     closeButton.addEventListener("click", () => {
       modal.remove();
     });
-    modal.appendChild(closeButton);
+    card.appendChild(closeButton);
   }
 
+  modal.appendChild(card);
   document.body.appendChild(modal);
 }

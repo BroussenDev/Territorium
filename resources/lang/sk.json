@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopírovať do schránky",
     "crashed": "Hra sa pokazila!",
     "desync_notice": "Tvoja hra je desynchronizovaná od ostatných hráčov. To, čo vidíš, sa môže líšiť od nich.",
+    "details": "Technické podrobnosti",
     "login_failed": "Prihlásenie zlyhalo. Skúste to znova neskôr.",
     "login_token_consumed": "Tento odkaz na prihlásenie už bol použitý. Pravdepodobne ste už prihlásení – skontrolujte inú kartu.",
     "paste_discord": "Prosím, prilep nasledujúci obsah v tvojom hlásení chyby v Discorde:",
+    "reload": "Znova načítať stránku",
     "spawn_failed": {
       "description": "Automatický výber spawnu zlyhal. Túto hru nemôžete hrať.",
       "title": "Spawn zlyhal"

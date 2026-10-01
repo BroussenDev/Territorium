@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.45
+
+🪧 **Warnings and errors in Territorium's style**
+
+- Every warning and confirmation window (kicked from a game, lost connection, banning a clan member…) is now a dark plate with a red or gold edge, a drawn icon and clear buttons.
+- The white "game crashed" and "connection error" box is gone: the error is explained in plain words, the technical report folds away under "Technical details", and a button reloads the page.
+- The "your account is banned" notice is redone the same way, with the reason and the end date set apart.
+- The "graphics acceleration unavailable" screen matches too.
+
 ## v0.1.44
 
 🖊️ **Name buttons and lobby maps**

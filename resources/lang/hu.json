@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Másolás a vágólapra",
     "crashed": "A játék összeomlott!",
     "desync_notice": "Szinkronizációs hiba. Amit látsz, eltérhet attól, amit mások látnak.",
+    "details": "Technikai részletek",
     "login_failed": "A bejelentkezés sikertelen. Kérjük, próbáld meg később.",
     "login_token_consumed": "Ezt a bejelentkezési linket már használták. Valószínűleg már bejelentkezett – ellenőrizze egy másik lapot.",
     "paste_discord": "Kérlek, illeszd be a következőt a hibajelentésedbe a Discordon:",
+    "reload": "Oldal újratöltése",
     "spawn_failed": {
       "description": "Az automatikus spawn sikertelen. Nem játszhatsz ezzel a játékkal.",
       "title": "Sikertelen spawnolás"

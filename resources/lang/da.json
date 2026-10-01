@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopier til udklipsholder",
     "crashed": "Spillet crashede!",
     "desync_notice": "Du er ikke synkroniseret med de andre spillere. Det, du ser, kan derfor være forskelligt fra, hvad de andre spillere ser.",
+    "details": "Tekniske detaljer",
     "login_failed": "Login mislykkedes. Prøv venligst igen senere.",
     "login_token_consumed": "Dette login-link blev allerede brugt. Du er sandsynligvis allerede logget ind - tjek en anden fane.",
     "paste_discord": "Indsæt venligst følgende i din fejlrapport i Discord:",
+    "reload": "Genindlæs siden",
     "spawn_failed": {
       "description": "Automatisk spawn-valg mislykkedes. Du kan ikke spille dette spil.",
       "title": "Spawn mislykkedes"

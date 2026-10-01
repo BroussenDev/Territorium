@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copiar para área de transferência",
     "crashed": "O jogo parou de funcionar!",
     "desync_notice": "Está dessincronizado de outros jogadores. O que vê pode ser diferente dos outros jogadores.",
+    "details": "Detalhes técnicos",
     "login_failed": "Falha no login. Por favor, tente mais tarde.",
     "login_token_consumed": "Este link de login já foi utilizado. Provavelmente já está logado – verifique outra aba.",
     "paste_discord": "Por favor, cole o seguinte no seu relatório de bug no Discord:",
+    "reload": "Recarregar a página",
     "spawn_failed": {
       "description": "A seleção automática da geração falhou. Não pode jogar este jogo.",
       "title": "Falha na geração"

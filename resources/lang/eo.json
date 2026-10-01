@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopii al tondujo",
     "crashed": "Ludo kolapsis!",
     "desync_notice": "Vi estas malsinkronigita de aliaj ludantoj. Kion vi vidas eble diferencas de aliaj ludantoj.",
+    "details": "Teknikaj detaloj",
     "login_failed": "Ensaluto malsukcesis. Bonvolu provi denove poste.",
     "login_token_consumed": "Ĉi tiu ensaluta ligilo jam estis uzata. Vi verŝajne jam ensalutis — kontrolu alian langeton.",
     "paste_discord": "Bonvolu glui la jenon al via cimo-raporto en Diskordo:",
+    "reload": "Reŝargi la paĝon",
     "spawn_failed": {
       "description": "Aŭtomata elekto de komencloko malsukcesis. Vi ne povas ludi tiun ludon.",
       "title": "Malsukcesis aperi"

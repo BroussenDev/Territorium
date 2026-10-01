@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copiar para a área de transferência",
     "crashed": "O Jogo crashou!",
     "desync_notice": "Você está dessincronizado para outros jogadores. O que você está vendo pode ser diferente dos outros jogadores.",
+    "details": "Detalhes técnicos",
     "login_failed": "Falhou no login, por favor, tente novamente mais tarde.",
     "login_token_consumed": "Este link de login já foi usado. Você provavelmente já está logado – verifique outra aba.",
     "paste_discord": "Por favor, cole as informações no seu reporte de bug no Discord:",
+    "reload": "Recarregar a página",
     "spawn_failed": {
       "description": "A seleção de surgir automaticamente falhou. Você não pode jogar este jogo.",
       "title": "Falha ao Surgir"

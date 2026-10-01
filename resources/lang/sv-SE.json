@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopiera till urklipp",
     "crashed": "Spelet kraschade!",
     "desync_notice": "Du har blivit avsynkroniserad från de andra spelarna. Det du ser kan komma att skilja från andra spelare.",
+    "details": "Tekniska detaljer",
     "login_failed": "Inloggningen misslyckades. Försök igen senare.",
     "login_token_consumed": "Denna inloggningslänk användes redan. Du är förmodligen redan inloggad – kolla en annan flik.",
     "paste_discord": "Vänligen klistra in följande i din buggrapport på Discord:",
+    "reload": "Ladda om sidan",
     "spawn_failed": {
       "description": "Automatiskt val av spawn misslyckades. Du kan inte spela det här spelet.",
       "title": "Spawn misslyckades"

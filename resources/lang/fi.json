@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopioi leikepöydälle",
     "crashed": "Peli kaatui!",
     "desync_notice": "Olet muiden pelaajien kanssa eri tahdissa. Mitä näet saattaa poiketa muiden pelaajien näkymästä.",
+    "details": "Tekniset tiedot",
     "login_failed": "Kirjautuminen epäonnistui. Yritä myöhemmin uudelleen.",
     "login_token_consumed": "Tämä kirjautumislinkki oli jo käytössä. Olet todennäköisesti jo kirjautunut sisään – tarkista toinen välilehti.",
     "paste_discord": "Ole hyvä ja liitä seuraava vikailmoitukseesi Discordissa:",
+    "reload": "Lataa sivu uudelleen",
     "spawn_failed": {
       "description": "Automaattinen spawn-valinta epäonnistui. Et voi pelata tätä peliä.",
       "title": "Spawn epäonnistui"

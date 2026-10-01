@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Naar klembord kopiëren",
     "crashed": "Spel gecrasht!",
     "desync_notice": "Je bent niet meer gesynchroniseerd met andere spelers. Wat je ziet kan verschillen van andere spelers.",
+    "details": "Technische details",
     "login_failed": "Inloggen is mislukt. probeer het later opnieuw.",
     "login_token_consumed": "Deze inloglink werd al gebruikt. Je bent waarschijnlijk al ingelogd. Controleer een ander tabblad.",
     "paste_discord": "Plak het volgende in je bug report op Discord:",
+    "reload": "Pagina opnieuw laden",
     "spawn_failed": {
       "description": "Automatische plaatsing startpositie is mislukt. Je kunt dit spel niet meespelen.",
       "title": "Startpositie plaatsen mislukt"

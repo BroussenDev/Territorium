@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copiar al portapapeles",
     "crashed": "¡El juego falló!",
     "desync_notice": "Estás desincronizado de otros jugadores. Lo que ves puede diferir de otros jugadores.",
+    "details": "Detalles técnicos",
     "login_failed": "Error de inicio de sesion. Inténtelo de nuevo más tarde.",
     "login_token_consumed": "Este enlace de inicio de sesión ya se utilizó. Probablemente ya hayas iniciado sesión; consulta otra pestaña.",
     "paste_discord": "Pegue lo siguiente en su informe de error en Discord:",
+    "reload": "Recargar la página",
     "spawn_failed": {
       "description": "La selección automática de generación falló. No puedes jugar a este juego.",
       "title": "Error de generación"

@@ -127,17 +127,19 @@ export class WebGLGate extends LitElement {
 
     return html`
       <div
-        class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 p-5"
+        class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/80 p-5 backdrop-blur-[2px]"
       >
         <div
-          class="w-full max-w-lg max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-xl bg-surface text-white shadow-2xl"
+          class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-lg border border-white/10 border-t-[3px] border-t-capital bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] text-white shadow-[0_24px_60px_-20px_rgb(0_0_0/0.85)]"
         >
-          <h2 class="text-xl font-bold mb-3">${title}</h2>
+          <h2 class="font-display text-xl font-bold mb-3">${title}</h2>
           <p class="text-sm leading-relaxed text-white/85 mb-5">${intro}</p>
           ${sections.map(
             (section) => html`
               <section class="mb-5">
-                <h3 class="text-sm font-bold text-white mb-1.5">
+                <h3
+                  class="font-display text-sm font-semibold text-capital-light mb-1.5"
+                >
                   ${section.title}
                 </h3>
                 <ol
@@ -149,7 +151,11 @@ export class WebGLGate extends LitElement {
             `,
           )}
           <section class="mb-0">
-            <h3 class="text-sm font-bold text-white mb-1.5">${notesTitle}</h3>
+            <h3
+              class="font-display text-sm font-semibold text-capital-light mb-1.5"
+            >
+              ${notesTitle}
+            </h3>
             <ul
               class="pl-5 list-disc text-sm leading-relaxed text-white/85 space-y-1.5"
             >
@@ -159,7 +165,7 @@ export class WebGLGate extends LitElement {
           ${limited
             ? html`
                 <button
-                  class="mt-5 w-full py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-bold text-white transition-colors"
+                  class="mt-5 w-full py-2.5 rounded-md border border-white/15 bg-white/[0.04] hover:border-white/30 font-display text-sm font-semibold text-white transition-colors"
                   @click=${() => this.remove()}
                 >
                   Continue anyway
@@ -174,12 +180,12 @@ export class WebGLGate extends LitElement {
   private renderDesktop() {
     return html`
       <div
-        class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/85 p-5"
+        class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/80 p-5 backdrop-blur-[2px]"
       >
         <div
-          class="w-full max-w-lg max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-xl bg-surface text-white shadow-2xl"
+          class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-lg border border-white/10 border-t-[3px] border-t-capital bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] text-white shadow-[0_24px_60px_-20px_rgb(0_0_0/0.85)]"
         >
-          <h2 class="text-xl font-bold mb-3">
+          <h2 class="font-display text-xl font-bold mb-3">
             ${translateText("desktop_webgl_gate.title")}
           </h2>
           <p class="text-sm leading-relaxed text-white/85 mb-5">
@@ -195,7 +201,7 @@ export class WebGLGate extends LitElement {
           ${desktopQuit() !== null
             ? html`
                 <button
-                  class="mt-5 w-full py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-bold text-white transition-colors"
+                  class="mt-5 w-full py-2.5 rounded-md border border-white/15 bg-white/[0.04] hover:border-white/30 font-display text-sm font-semibold text-white transition-colors"
                   @click=${() => requestDesktopQuit()}
                 >
                   ${translateText("desktop_webgl_gate.quit")}

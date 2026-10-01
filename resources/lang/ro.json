@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copiază în clipboard",
     "crashed": "Jocul a încetat să funcționeze!",
     "desync_notice": "Ești desincronizat de alți jucători. Ceea ce vezi poate diferi de alți jucători.",
+    "details": "Detalii tehnice",
     "login_failed": "Autentificare eșuată. Te rugăm să încerci mai târziu.",
     "login_token_consumed": "Acest link de conectare a fost deja folosit. Probabil că v-ați conectat deja — verificați altă filă.",
     "paste_discord": "Te rugăm să pui următoarele în raportul de eroare pe Discord:",
+    "reload": "Reîncarcă pagina",
     "spawn_failed": {
       "description": "Selecția automată a locului de apariție a eșuat. Nu puteți juca acest meci.",
       "title": "Apariție eșuată"

@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopiraj v odložišče",
     "crashed": "Igra se je sesula!",
     "desync_notice": "Niste sinhronizirani z drugimi igralci. Kar vidite, se lahko razlikuje od drugih igralcev.",
+    "details": "Tehnične podrobnosti",
     "login_failed": "Prijava ni uspela. Poskusite znova pozneje.",
     "login_token_consumed": "Ta povezava za prijavo je bila že uporabljena. Verjetno ste že prijavljeni — preverite drug zavihek.",
     "paste_discord": "V poročilo o napaki v Discordu prilepite naslednje:",
+    "reload": "Znova naloži stran",
     "spawn_failed": {
       "description": "Samodejna izbira drstitve ni uspela. Ne moreš igrati te igre.",
       "title": "Drstenje ni uspelo"

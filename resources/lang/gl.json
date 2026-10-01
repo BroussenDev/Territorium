@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Copiar ó portapapeis",
     "crashed": "O xogo caeu!",
     "desync_notice": "Estás desincronizado con respecto ós demais xogadores. O que ves pode ser diferente do que ven eles.",
+    "details": "Detalles técnicos",
     "login_failed": "Fallou o inicio de sesión. Téntao de novo máis tarde.",
     "login_token_consumed": "Esta ligazón de inicio de sesión xa se utilizou. Probablemente xa teñas iniciado sesión: consulta outra pestana.",
     "paste_discord": "Por favor, pega o seguinte no teu informe do erro en Discord:",
+    "reload": "Recargar a páxina",
     "spawn_failed": {
       "description": "Produciuse un erro na selección automática de xerar. Non podes xogar a este xogo.",
       "title": "Produciuse un erro"

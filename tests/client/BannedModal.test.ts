@@ -68,8 +68,7 @@ describe("banned-modal", () => {
       player: {},
     });
     const t = await text();
-    // Title is set on the modal shell (an attribute), the rest is body text.
-    expect(el.querySelector("o-modal")?.getAttribute("title")).toContain(
+    expect(el.querySelector("[data-ban-title]")?.textContent).toContain(
       "ban_notice.title",
     );
     expect(t).toContain("ban_notice.category.cheating");
@@ -101,6 +100,27 @@ describe("banned-modal", () => {
     // The player is unbanned and @me re-dispatches without a ban.
     fireUserMe({ ban: null, user: {}, player: {} });
     expect((await text()).trim()).toBe("");
+  });
+
+  it("stays closed once dismissed, until a later ban", async () => {
+    const banned = {
+      ban: { category: "cheating", reason: null, expiresAt: null },
+      user: {},
+      player: {},
+    };
+    fireUserMe(banned);
+    await el.updateComplete;
+    el.querySelector<HTMLButtonElement>("button")!.click();
+    expect((await text()).trim()).toBe("");
+
+    // A refreshed @me with the same ban doesn't reopen it...
+    fireUserMe(banned);
+    expect((await text()).trim()).toBe("");
+
+    // ...but an unban followed by a new ban does.
+    fireUserMe({ ban: null, user: {}, player: {} });
+    fireUserMe(banned);
+    expect(await text()).toContain("ban_notice.category.cheating");
   });
 
   it("falls back to the generic category for an unknown value", async () => {

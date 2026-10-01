@@ -1026,9 +1026,11 @@
     "copy_clipboard": "複製到剪貼簿",
     "crashed": "遊戲崩潰！",
     "desync_notice": "你與其他玩家失去同步。你看到的可能與其他玩家不同。",
+    "details": "技術詳情",
     "login_failed": "登入失敗，請稍後再試。",
     "login_token_consumed": "該登入連結已被使用。您可能已經登入 - 檢查另一個選項卡。",
     "paste_discord": "請在 Discord 中貼上以下錯誤報告：",
+    "reload": "重新載入頁面",
     "spawn_failed": {
       "description": "自動選擇出生點失敗。您無法參與這場遊戲。",
       "title": "出生失敗"

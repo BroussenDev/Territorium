@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopeeri clipboard'i",
     "crashed": "Mäng jooksis kokku!",
     "desync_notice": "Sul puudub sünkroon teiste mängijatega. See, mida näed, võib erineda teiste mängijate vaadetest.",
+    "details": "Tehnilised üksikasjad",
     "login_failed": "Sisselogimine ebaõnnestus. Proovige hiljem uuesti.",
     "login_token_consumed": "Seda sisselogimislinki oli juba kasutatud. Tõenäoliselt olete juba sisse logitud – vaadake mõnda muud vahekaarti.",
     "paste_discord": "Palu kleebi järgnev oma bug reporti Discordis:",
+    "reload": "Laadi leht uuesti",
     "spawn_failed": {
       "description": "Automaatne tekkimisvalik nurjus. Sa ei saa seda mängu mängida.",
       "title": "Tekkimine nurjus"

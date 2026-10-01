@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Kopiraj u privremenu memoriju",
     "crashed": "Igra se srušila!",
     "desync_notice": "Nisi sinhronizovan sa drugim igračima. Ono što vidiš može se razlikovati od drugih igrača.",
+    "details": "Tehnički detalji",
     "login_failed": "Prijavljivanje nije uspelo. Pokušajte ponovo kasnije.",
     "login_token_consumed": "Ova veza za prijavu je već korišćena. Verovatno ste već prijavljeni — proverite drugu karticu.",
     "paste_discord": "Molimo da nalepiš sledeće u svom izveštaju o grešci na Discord-u:",
+    "reload": "Ponovo učitaj stranicu",
     "spawn_failed": {
       "description": "Automatsko pokretanje nije uspelo. Ne možete igrati ovu igru.",
       "title": "Pokretanje nije uspelo"

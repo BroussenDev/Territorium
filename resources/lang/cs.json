@@ -1026,9 +1026,11 @@
     "copy_clipboard": "Zkopírovat do schránky",
     "crashed": "Hra spadla!",
     "desync_notice": "Nejsi synchronizovaný*á s ostatními hráči. Co uvidíš se může lišit od ostatních hráčů.",
+    "details": "Technické podrobnosti",
     "login_failed": "Přihlášení se nezdařilo. Zkuste to prosím později.",
     "login_token_consumed": "Tento odkaz pro přihlášení již byl použit. Pravděpodobně jste již přihlášeni – podívejte se na jinou kartu.",
     "paste_discord": "Do hlášení o chybě na Discordu vlož prosím následující informace:",
+    "reload": "Znovu načíst stránku",
     "spawn_failed": {
       "description": "Automatický výběr spawnu se nezdařil. Nemůžete hrát tuto hru.",
       "title": "Spawn selhal"
