@@ -214,7 +214,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
   private displayUnitCount(player: PlayerView, type: UnitType, icon: string) {
     return !this.game.config().isUnitDisabled(type)
       ? html`<div
-          class="flex items-center justify-center gap-0.5 lg:gap-1 p-0.5 lg:p-1 border rounded-md border-gray-500 text-[10px] lg:text-xs w-9 lg:w-12 h-6 lg:h-7"
+          class="flex items-center justify-center gap-0.5 lg:gap-1 p-0.5 lg:p-1 border rounded-md border-plate-500 text-[10px] lg:text-xs w-9 lg:w-12 h-6 lg:h-7"
           translate="no"
         >
           <img
@@ -516,11 +516,11 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
                   class="flex flex-col items-center leading-tight shrink-0"
                 >
                   <span
-                    class="text-gray-400 text-xs font-mono font-normal whitespace-nowrap"
+                    class="text-white/60 text-xs font-mono font-normal whitespace-nowrap"
                     >${playerType}</span
                   >
                   <span
-                    class="text-xs font-mono font-normal text-gray-400 whitespace-nowrap"
+                    class="text-xs font-mono font-normal text-white/60 whitespace-nowrap"
                     >[<span
                       style="color: ${themeProvider
                         .current()
@@ -531,7 +531,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
                   >
                 </div>`
               : html`<span
-                  class="text-gray-400 text-xs font-mono font-normal shrink-0 whitespace-nowrap"
+                  class="text-white/60 text-xs font-mono font-normal shrink-0 whitespace-nowrap"
                   >${playerType}</span
                 >`}
             ${this.renderPlayerNameIcons(playerIcons)} ${betrayalHtml ?? ""}
@@ -576,11 +576,11 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
 
     return html`
       <div
-        class="w-full h-5 lg:h-6 border border-gray-600 rounded-md bg-gray-900/60 overflow-hidden relative"
+        class="w-full h-5 lg:h-6 border border-plate-600 rounded-md bg-plate-900/60 overflow-hidden relative"
       >
         <div class="relative h-full">
           <div
-            class="absolute inset-y-0 left-0 w-full origin-left bg-sky-700 transition-transform duration-200 ease-out"
+            class="absolute inset-y-0 left-0 w-full origin-left bg-brand transition-transform duration-200 ease-out"
             style="transform: scaleX(${greenPercent / 100});"
           ></div>
           <div
@@ -657,7 +657,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
         @contextmenu=${(e: MouseEvent) => e.preventDefault()}
       >
         <div
-          class="bg-gray-800/92 backdrop-blur-sm shadow-xs min-[1200px]:rounded-lg sm:rounded-b-lg shadow-lg text-white text-lg lg:text-base w-full sm:w-[500px] overflow-hidden ${containerClasses}"
+          class="bg-plate-800/92 backdrop-blur-sm shadow-xs min-[1200px]:rounded-lg sm:rounded-b-lg shadow-lg text-white text-lg lg:text-base w-full sm:w-[500px] overflow-hidden ${containerClasses}"
         >
           ${this.player ? this.renderPlayerInfo(this.player) : ""}
           ${this.unit ? this.renderUnitInfo(this.unit) : ""}

@@ -641,10 +641,15 @@ export class EventsDisplay extends LitElement implements Controller {
     return html`
       <tr>
         <td
-          class="lg:px-2 lg:py-1 p-1 text-left ${getMessageTypeClasses(
+          class="px-2 py-1 lg:px-2.5 lg:py-1.5 text-left ${getMessageTypeClasses(
             event.type,
           )}"
         >
+          <!-- A tile in the message's colour, like the logo's territory. -->
+          <span
+            class="mr-2 inline-block size-2 shrink-0 translate-y-[-1px] rounded-[1px] bg-current align-middle"
+            aria-hidden="true"
+          ></span>
           ${event.focusID
             ? this.renderButton({
                 content: this.getEventDescription(event),
@@ -701,7 +706,7 @@ export class EventsDisplay extends LitElement implements Controller {
         ${tier2Events.length > 0
           ? html`
               <div
-                class="bg-gray-800/92 backdrop-blur-sm max-h-[12vh] lg:max-h-[22vh] overflow-y-auto rounded-lg opacity-90 events-container"
+                class="bg-plate-900/90 backdrop-blur-sm max-h-[12vh] lg:max-h-[22vh] overflow-y-auto rounded-md border border-white/10 events-container [&_tr+tr]:border-t [&_tr+tr]:border-white/[0.06]"
               >
                 <table
                   class="w-full border-collapse text-white text-xs lg:text-sm pointer-events-auto"
@@ -716,7 +721,7 @@ export class EventsDisplay extends LitElement implements Controller {
         ${tier1Events.length > 0 || showBetrayalTimer
           ? html`
               <div
-                class="bg-gray-800 backdrop-blur-sm max-h-[30vh] lg:max-h-[40vh] overflow-y-auto rounded-lg shadow-lg border-l-4 border-red-500 important-events-container"
+                class="bg-plate-900/95 backdrop-blur-sm max-h-[30vh] lg:max-h-[40vh] overflow-y-auto rounded-md shadow-lg border border-red-500/35 border-l-4 border-l-red-500 important-events-container [&_tr+tr]:border-t [&_tr+tr]:border-white/[0.06]"
               >
                 <table
                   class="w-full border-collapse text-white text-base lg:text-lg font-medium pointer-events-auto"
@@ -726,7 +731,7 @@ export class EventsDisplay extends LitElement implements Controller {
                     ${showBetrayalTimer
                       ? html`
                           <tr>
-                            <td class="lg:px-2 lg:py-1 p-1 text-left">
+                            <td class="px-2 py-1 lg:px-2.5 lg:py-1.5 text-left">
                               ${this.renderBetrayalDebuffTimer()}
                             </td>
                           </tr>

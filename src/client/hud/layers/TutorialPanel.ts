@@ -435,7 +435,7 @@ export class TutorialPanel extends LitElement implements Controller {
     return html`
       <div
         dir=${textDirection()}
-        class="pointer-events-auto w-full sm:rounded-lg bg-gray-800/92 backdrop-blur-sm shadow-lg text-white text-base p-2 sm:mb-1"
+        class="pointer-events-auto w-full sm:rounded-lg bg-plate-800/92 backdrop-blur-sm shadow-lg text-white text-base p-2 sm:mb-1"
         @contextmenu=${(e: MouseEvent) => e.preventDefault()}
       >
         <div class="flex items-center justify-between gap-2 mb-1">
@@ -445,7 +445,7 @@ export class TutorialPanel extends LitElement implements Controller {
               this.ctx?.training ? "main.tutorial" : "tutorial.title",
             )}</span
           >
-          <span class="flex items-center gap-2 text-sm text-gray-300">
+          <span class="flex items-center gap-2 text-sm text-white/75">
             ${this.confirmingClose ? nothing : this.renderHeaderActions()}
             ${this.ctx && !this.progress.finished()
               ? translateText("tutorial.step_counter", {
@@ -454,7 +454,7 @@ export class TutorialPanel extends LitElement implements Controller {
                 })
               : nothing}
             <button
-              class="text-gray-400 hover:text-white text-base leading-none px-1"
+              class="text-white/60 hover:text-white text-base leading-none px-1"
               title=${translateText("tutorial.close")}
               aria-label=${translateText("tutorial.close")}
               @click=${() => (this.confirmingClose = !this.confirmingClose)}
@@ -496,7 +496,7 @@ export class TutorialPanel extends LitElement implements Controller {
           </button>`
         : nothing}
       <button
-        class="text-gray-400 hover:text-white underline"
+        class="text-white/60 hover:text-white underline"
         @click=${() => this.progress.skip()}
       >
         ${translateText("tutorial.skip")}
@@ -508,13 +508,13 @@ export class TutorialPanel extends LitElement implements Controller {
     return html`
       <div class="flex flex-col gap-1.5">
         <button
-          class="rounded-md border border-gray-500 hover:bg-gray-700 px-2 py-1"
+          class="rounded-md border border-plate-500 hover:bg-plate-700 px-2 py-1"
           @click=${() => this.setActive(false)}
         >
           ${translateText("tutorial.hide_for_game")}
         </button>
         <button
-          class="rounded-md border border-gray-500 hover:bg-gray-700 px-2 py-1"
+          class="rounded-md border border-plate-500 hover:bg-plate-700 px-2 py-1"
           @click=${() => this.dismissForever()}
         >
           ${translateText("tutorial.never_show")}

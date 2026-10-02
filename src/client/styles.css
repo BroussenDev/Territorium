@@ -36,6 +36,16 @@
   /* App-specific surface colors: the emblem's night green, not a neutral
      blue-black. */
   --color-surface: #0a1512;
+
+  /* In-game plates: the night green in steps, from the deepest panel (950)
+     to raised controls and dividers (400), in place of neutral greys. */
+  --color-plate-950: #0a1512;
+  --color-plate-900: #0d1a16;
+  --color-plate-800: #11221c;
+  --color-plate-700: #1a2e27;
+  --color-plate-600: #24392f;
+  --color-plate-500: #3a5047;
+  --color-plate-400: #5d746a;
   --color-ink: #06100c;
 
   /* Map-plate corners: tiles and plates are cut square, not pill-rounded. */

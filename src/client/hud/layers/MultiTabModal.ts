@@ -123,10 +123,10 @@ export class MultiTabModal extends LitElement implements Controller {
         class="fixed inset-0 z-50 overflow-auto bg-red-500/20 flex items-center justify-center"
       >
         <div
-          class="relative p-6 bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full m-4 transition-all transform"
+          class="relative p-6 border border-white/10 border-t-[3px] border-t-red-500 bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] rounded-lg shadow-xl max-w-md w-full m-4 transition-all transform"
         >
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-2xl font-bold text-red-600 dark:text-red-400">
+            <h2 class="text-2xl font-bold text-red-400">
               ${translateText("multi_tab.warning")}
             </h2>
             <div
@@ -136,50 +136,42 @@ export class MultiTabModal extends LitElement implements Controller {
             </div>
           </div>
 
-          <p class="mb-4 text-gray-800 dark:text-gray-200">
+          <p class="mb-4 text-white/85">
             ${translateText("multi_tab.detected")}
           </p>
 
-          <div
-            class="mb-4 p-3 bg-gray-100 dark:bg-gray-900 rounded-md text-sm font-mono"
-          >
+          <div class="mb-4 p-3 bg-plate-900 rounded-md text-sm font-mono">
             <div class="flex justify-between mb-1">
-              <span class="text-gray-500 dark:text-gray-400">IP:</span>
-              <span class="text-red-600 dark:text-red-400">${this.fakeIp}</span>
+              <span class="text-white/60">IP:</span>
+              <span class="text-red-400">${this.fakeIp}</span>
             </div>
             <div class="flex justify-between mb-1">
-              <span class="text-gray-500 dark:text-gray-400"
-                >Device Fingerprint:</span
-              >
-              <span class="text-red-600 dark:text-red-400"
-                >${this.deviceFingerprint}</span
-              >
+              <span class="text-white/60">Device Fingerprint:</span>
+              <span class="text-red-400">${this.deviceFingerprint}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">Reported:</span>
-              <span class="text-red-600 dark:text-red-400"
+              <span class="text-white/60">Reported:</span>
+              <span class="text-red-400"
                 >${this.reported ? "TRUE" : "FALSE"}</span
               >
             </div>
           </div>
 
-          <p class="mb-4 text-gray-800 dark:text-gray-200">
+          <p class="mb-4 text-white/85">
             ${translateText("multi_tab.please_wait")}
             <span class="font-bold text-xl">${this.countdown}</span>
             ${translateText("multi_tab.seconds")}
           </p>
 
-          <div
-            class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4"
-          >
+          <div class="w-full bg-plate-700 rounded-full h-2.5 mb-4">
             <div
-              class="bg-red-600 dark:bg-red-500 h-2.5 rounded-full transition-all duration-1000 ease-linear w-(--width)"
+              class="bg-red-500 h-2.5 rounded-full transition-all duration-1000 ease-linear w-(--width)"
               style="--width: ${(this.countdown / (this.duration / 1000)) *
               100}%"
             ></div>
           </div>
 
-          <p class="text-sm text-gray-600 dark:text-gray-400">
+          <p class="text-sm text-white/60">
             ${translateText("multi_tab.explanation")}
           </p>
 

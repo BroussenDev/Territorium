@@ -406,7 +406,7 @@ export class ControlPanel extends LitElement implements Controller {
     const { greenPercent, orangePercent } = this.calculateTroopBar();
     return html`
       <div
-        class="w-full h-6 border border-gray-600 rounded-md bg-gray-900/60 overflow-hidden relative"
+        class="w-full h-6 border border-plate-600 rounded-md bg-plate-900/60 overflow-hidden relative"
       >
         <div class="relative h-full">
           <div
@@ -464,7 +464,7 @@ export class ControlPanel extends LitElement implements Controller {
     const { greenPercent, orangePercent } = this.calculateTroopBar();
     return html`
       <div
-        class="w-full h-6 border border-gray-600 rounded-md bg-gray-900/60 overflow-hidden relative"
+        class="w-full h-6 border border-plate-600 rounded-md bg-plate-900/60 overflow-hidden relative"
       >
         <div class="relative h-full">
           <div
@@ -534,7 +534,7 @@ export class ControlPanel extends LitElement implements Controller {
   private renderObjectives() {
     if (this._objectivesRevealIn !== null) {
       return html`<div
-        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border border-gray-600 text-xs font-medium text-white/70 ${this.tutorialHighlightClass(
+        class="flex items-center gap-1.5 px-1.5 py-0.5 mb-1 rounded-md border border-plate-600 text-xs font-medium text-white/70 ${this.tutorialHighlightClass(
           "objectives",
         )}"
       >
@@ -551,7 +551,7 @@ export class ControlPanel extends LitElement implements Controller {
           "objectives",
         )} ${held > 0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
-          : "border-gray-600 text-white/70"}"
+          : "border-plate-600 text-white/70"}"
       >
         <span aria-hidden="true">◆</span>
         <span
@@ -573,7 +573,7 @@ export class ControlPanel extends LitElement implements Controller {
   private renderObjectivesChip() {
     if (this._objectivesRevealIn !== null) {
       return html`<div
-        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border border-gray-600 leading-tight text-white/70 ${this.tutorialHighlightClass(
+        class="objectives-chip flex flex-col justify-center shrink-0 self-stretch px-1.5 rounded-md border border-plate-600 leading-tight text-white/70 ${this.tutorialHighlightClass(
           "objectives",
         )}"
         translate="no"
@@ -593,7 +593,7 @@ export class ControlPanel extends LitElement implements Controller {
           "objectives",
         )} ${held > 0
           ? "border-amber-300/60 bg-amber-300/10 text-amber-200"
-          : "border-gray-600 text-white/70"}"
+          : "border-plate-600 text-white/70"}"
         translate="no"
       >
         <span class="text-xs font-bold whitespace-nowrap"
@@ -704,7 +704,7 @@ export class ControlPanel extends LitElement implements Controller {
         translate="no"
       >
         <div
-          class="flex items-center gap-1 shrink-0 border border-gray-600 rounded-md px-1 py-0.5 text-sm font-bold text-white cursor-pointer w-[8rem]"
+          class="flex items-center gap-1 shrink-0 border border-plate-600 rounded-md px-1 py-0.5 text-sm font-bold text-white cursor-pointer w-[8rem]"
         >
           <img
             src=${swordIcon}

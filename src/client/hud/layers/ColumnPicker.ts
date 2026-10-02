@@ -100,7 +100,7 @@ export class ColumnPicker extends LitElement {
     litRender(
       html`
         <div
-          class="column-picker-popover fixed z-2000 min-w-40 bg-gray-900/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl shadow-black/40 p-1.5 flex flex-col gap-0.5 overflow-y-auto whitespace-nowrap"
+          class="column-picker-popover fixed z-2000 min-w-40 bg-plate-900/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl shadow-black/40 p-1.5 flex flex-col gap-0.5 overflow-y-auto whitespace-nowrap"
           style="top: ${top}px; right: ${right}px; max-height: ${maxHeight}px;"
         >
           <div

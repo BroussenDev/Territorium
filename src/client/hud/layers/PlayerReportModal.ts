@@ -81,7 +81,7 @@ export class PlayerReportModal extends LitElement {
           @keydown=${this.handleKeydown}
         >
           <div
-            class="rounded-2xl bg-zinc-900 p-5 shadow-2xl ring-1 ring-zinc-800 max-h-[90vh] text-zinc-200"
+            class="rounded-2xl bg-plate-900 p-5 shadow-2xl ring-1 ring-plate-800 max-h-[90vh] text-white/85"
             @click=${(e: MouseEvent) => e.stopPropagation()}
           >
             <div class="mb-3 flex items-center justify-between relative">
@@ -94,7 +94,7 @@ export class PlayerReportModal extends LitElement {
                 />
                 <h2
                   id="report-title"
-                  class="text-lg font-semibold tracking-tight text-zinc-100"
+                  class="text-lg font-semibold tracking-tight text-white/95"
                 >
                   ${title}
                 </h2>
@@ -103,7 +103,7 @@ export class PlayerReportModal extends LitElement {
               <button
                 type="button"
                 @click=${() => this.closeModal()}
-                class="absolute -top-3 -right-3 flex h-7 w-7 items-center justify-center rounded-full bg-zinc-700 text-white shadow-sm hover:bg-red-500 transition-colors focus-visible:ring-2 focus-visible:ring-white/30 focus:outline-hidden"
+                class="absolute -top-3 -right-3 flex h-7 w-7 items-center justify-center rounded-full bg-plate-700 text-white shadow-sm hover:bg-red-500 transition-colors focus-visible:ring-2 focus-visible:ring-white/30 focus:outline-hidden"
                 aria-label=${translateText("common.close")}
                 title=${translateText("common.close")}
               >
@@ -115,7 +115,7 @@ export class PlayerReportModal extends LitElement {
               class="mb-4 rounded-xl border border-white/10 bg-white/5 px-3 py-2"
             >
               <div
-                class="text-sm font-semibold text-zinc-100 truncate"
+                class="text-sm font-semibold text-white/95 truncate"
                 title=${other.displayName()}
               >
                 ${other.displayName()}
@@ -134,7 +134,7 @@ export class PlayerReportModal extends LitElement {
                     class=${`w-full text-left rounded-lg border px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/20 ${
                       selected
                         ? "border-red-400/60 bg-red-500/15 text-red-300"
-                        : "border-white/10 bg-white/4 text-zinc-200 hover:bg-white/10"
+                        : "border-white/10 bg-white/4 text-white/85 hover:bg-white/10"
                     }`}
                   >
                     ${translateText(`player_panel.report_reason_${reason}`)}

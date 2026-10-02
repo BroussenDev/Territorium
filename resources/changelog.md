@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.48
+
+🧭 **An in-game interface in Territorium's colours**
+
+- The grey-blue panels left from OpenFront are now night-green plates: attack bubbles, player card, chat, side panels, settings, sending gold or troops, reports.
+- Notifications were redone: each message starts with a small tile in its colour, on a plate with thin dividers; important ones sit on a plate edged in red.
+- The pop-up messages ("Alliance accepted"…) and the "Choose a starting location" bubble are dark plates too, and requests waiting for an answer have a gold edge.
+
 ## v0.1.47
 
 🌊 **The sea goes on past the map**

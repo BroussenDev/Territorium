@@ -42,9 +42,10 @@ type ChatLine =
 
 type Channel = "all" | "allies";
 
-const PANEL = "rounded-lg bg-gray-800/92 text-white shadow-lg backdrop-blur-sm";
+const PANEL =
+  "rounded-lg bg-plate-800/92 text-white shadow-lg backdrop-blur-sm";
 const TOOL_BUTTON =
-  "rounded-md border border-slate-500 bg-gray-700/50 transition-colors hover:bg-gray-600";
+  "rounded-md border border-plate-500 bg-plate-700/50 transition-colors hover:bg-plate-600";
 
 const chatIcon = svg`<svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>`;
 
@@ -311,7 +312,7 @@ export class GameChat extends LitElement implements Controller {
         <button
           type="button"
           data-chat-toggle
-          class="mb-1 flex items-center gap-2 ${PANEL} px-3 py-1.5 text-sm font-semibold hover:bg-gray-700/92"
+          class="mb-1 flex items-center gap-2 ${PANEL} px-3 py-1.5 text-sm font-semibold hover:bg-plate-700/92"
           aria-label=${translateText("game_chat.open")}
           @click=${this.toggle}
         >
@@ -341,7 +342,7 @@ export class GameChat extends LitElement implements Controller {
             ? html`<button
                 type="button"
                 data-chat-unmute
-                class="text-xs text-slate-400 underline hover:text-white"
+                class="text-xs text-white/60 underline hover:text-white"
                 @click=${this.unmuteAll}
               >
                 ${translateText("game_chat.unmute_all", {
@@ -362,10 +363,10 @@ export class GameChat extends LitElement implements Controller {
         <ul
           data-chat-lines
           aria-live="polite"
-          class="mx-2 max-h-[20vh] overflow-y-auto rounded-md border border-gray-600 bg-gray-900/60 p-1 text-xs lg:max-h-[26vh] lg:text-sm"
+          class="mx-2 max-h-[20vh] overflow-y-auto rounded-md border border-plate-600 bg-plate-900/60 p-1 text-xs lg:max-h-[26vh] lg:text-sm"
         >
           ${this.lines.length === 0
-            ? html`<li class="px-1.5 py-1 text-slate-400">
+            ? html`<li class="px-1.5 py-1 text-white/60">
                 ${translateText("game_chat.empty")}
               </li>`
             : this.lines.map((line) => this.renderLine(line, me))}
@@ -387,7 +388,7 @@ export class GameChat extends LitElement implements Controller {
   }
 
   private renderSpectatorNote() {
-    return html`<p class="px-3 py-2 text-xs text-slate-400">
+    return html`<p class="px-3 py-2 text-xs text-white/60">
       ${translateText("game_chat.spectator")}
     </p>`;
   }
@@ -398,7 +399,7 @@ export class GameChat extends LitElement implements Controller {
       ${this.emojis
         ? html`<div
             data-chat-emojis
-            class="mx-2 mt-1.5 grid grid-cols-10 gap-0.5 rounded-md border border-gray-600 bg-gray-900/60 p-1"
+            class="mx-2 mt-1.5 grid grid-cols-10 gap-0.5 rounded-md border border-plate-600 bg-plate-900/60 p-1"
           >
             ${CHAT_EMOJIS.map(
               (emoji) =>
@@ -430,7 +431,7 @@ export class GameChat extends LitElement implements Controller {
                     ? channel === "allies"
                       ? "border-teal-400 bg-teal-500/25 text-teal-200"
                       : "border-brand bg-brand/25 text-white"
-                    : "border-slate-600 text-slate-400 hover:text-white"}"
+                    : "border-plate-600 text-white/60 hover:text-white"}"
                   @click=${() => {
                     this.channel = channel;
                     this.input()?.focus();
@@ -446,7 +447,7 @@ export class GameChat extends LitElement implements Controller {
           type="button"
           data-chat-emoji-toggle
           class="${TOOL_BUTTON} size-8 shrink-0 text-base ${this.emojis
-            ? "bg-gray-600"
+            ? "bg-plate-600"
             : ""}"
           aria-label=${translateText("game_chat.emojis")}
           aria-expanded=${this.emojis}
@@ -459,9 +460,9 @@ export class GameChat extends LitElement implements Controller {
           data-chat-input
           type="text"
           maxlength=${CHAT_MESSAGE_MAX_LENGTH}
-          class="h-8 min-w-0 flex-1 rounded-md border bg-gray-900/60 px-2 text-sm text-white placeholder-slate-400 outline-hidden ${allies
+          class="h-8 min-w-0 flex-1 rounded-md border bg-plate-900/60 px-2 text-sm text-white placeholder-white/60 outline-hidden ${allies
             ? "border-teal-500/70 focus:border-teal-400"
-            : "border-gray-600 focus:border-brand"}"
+            : "border-plate-600 focus:border-brand"}"
           placeholder=${translateText(
             allies ? "game_chat.placeholder_allies" : "game_chat.placeholder",
           )}
@@ -499,7 +500,7 @@ export class GameChat extends LitElement implements Controller {
           </li>`
         : html`<li
             data-chat-event
-            class="px-1.5 py-0.5 text-slate-400 italic"
+            class="px-1.5 py-0.5 text-white/60 italic"
             dir="auto"
           >
             ${line.text}
@@ -523,7 +524,7 @@ export class GameChat extends LitElement implements Controller {
           >`
         : nothing}
       <span class="font-bold" style="color: ${nameColor}">${name}:</span>
-      <span class="text-slate-100">${line.text}</span>`;
+      <span class="text-white/95">${line.text}</span>`;
     return html`
       <li data-chat-line>
         ${mine

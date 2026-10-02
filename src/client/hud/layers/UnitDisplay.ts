@@ -293,7 +293,7 @@ export class UnitDisplay extends LitElement implements Controller {
         ${hovered
           ? html`
               <div
-                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-gray-200 text-center w-max text-xs bg-gray-800/90 backdrop-blur-xs rounded-sm p-1 z-[100] shadow-lg pointer-events-none"
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 text-white/85 text-center w-max text-xs bg-plate-800/90 backdrop-blur-xs rounded-sm p-1 z-[100] shadow-lg pointer-events-none"
               >
                 <div class="font-bold text-sm mb-1">
                   ${translateText(
@@ -309,7 +309,7 @@ export class UnitDisplay extends LitElement implements Controller {
                       >
                         ⇧ ${translateText("build_menu.warship_shift_hint")}
                       </div>
-                      <div class="px-2 pb-1 text-[11px] text-gray-300">
+                      <div class="px-2 pb-1 text-[11px] text-white/75">
                         ${translateText("build_menu.warship_limit", {
                           count: this._warships,
                           max: this.game
@@ -366,7 +366,7 @@ export class UnitDisplay extends LitElement implements Controller {
             this.eventBus?.emit(new ToggleStructureEvent(null))}
         >
           <span
-            class="hotbar-key absolute top-0.5 left-1 text-[9px] font-bold leading-none text-gray-400"
+            class="hotbar-key absolute top-0.5 left-1 text-[9px] font-bold leading-none text-white/60"
             >${displayHotkey}</span
           >
           <img src=${icon} alt=${structureKey} class="size-5" />

@@ -70,7 +70,7 @@ export class ReplayPanel extends LitElement implements Controller {
 
     return html`
       <div
-        class="p-2 bg-gray-800/92 backdrop-blur-sm shadow-xs rounded-l-lg"
+        class="p-2 bg-plate-800/92 backdrop-blur-sm shadow-xs rounded-l-lg"
         @contextmenu=${(e: Event) => e.preventDefault()}
       >
         <label class="block mb-2 text-white" translate="no">
@@ -97,7 +97,7 @@ export class ReplayPanel extends LitElement implements Controller {
 
     return html`
       <button
-        class="py-0.5 px-1 text-sm text-white rounded-sm border transition border-gray-500 ${backgroundColor} hover:border-gray-200"
+        class="py-0.5 px-1 text-sm text-white rounded-sm border transition border-plate-500 ${backgroundColor} hover:border-white/70"
         @click=${() => this.onReplaySpeedChange(value)}
       >
         ${label}

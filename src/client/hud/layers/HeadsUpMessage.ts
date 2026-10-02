@@ -227,19 +227,11 @@ export class HeadsUpMessage extends LitElement implements Controller {
         ${this.toastMessage
           ? html`
               <div
-                class="fixed top-6 left-1/2 -translate-x-1/2 z-[1002] px-6 py-4 rounded-xl transition-all duration-300 animate-fade-in-out"
-                style="max-width: 90vw; min-width: 200px; text-align: center;
-                  background: ${this.toastColor === "red"
-                  ? "rgba(239,68,68,0.1)"
-                  : "rgba(34,197,94,0.1)"};
-                  border: 1px solid ${this.toastColor === "red"
-                  ? "rgba(239,68,68,0.5)"
-                  : "rgba(34,197,94,0.5)"};
-                  color: white;
-                  box-shadow: 0 0 30px 0 ${this.toastColor === "red"
-                  ? "rgba(239,68,68,0.3)"
-                  : "rgba(34,197,94,0.3)"};
-                  backdrop-filter: blur(12px);"
+                class="fixed top-6 left-1/2 -translate-x-1/2 z-[1002] px-5 py-3 rounded-md border border-white/10 border-l-4 bg-plate-900/95 text-white shadow-[0_18px_40px_-18px_rgb(0_0_0/0.9)] transition-all duration-300 animate-fade-in-out ${this
+                  .toastColor === "red"
+                  ? "border-l-red-500"
+                  : "border-l-brand"}"
+                style="max-width: 90vw; min-width: 200px; text-align: center;"
                 @contextmenu=${(e: MouseEvent) => e.preventDefault()}
               >
                 ${typeof this.toastMessage === "string"
@@ -254,8 +246,8 @@ export class HeadsUpMessage extends LitElement implements Controller {
                 class="fixed top-[15%] left-1/2 -translate-x-1/2 z-[799]
                             inline-flex items-center justify-center min-h-8 lg:min-h-10
                             w-fit max-w-[90vw]
-                            bg-gray-800/70 rounded-md lg:rounded-lg
-                            backdrop-blur-xs text-white text-md lg:text-xl px-3 lg:px-4 py-1
+                            bg-plate-900/85 border border-white/10 rounded-md
+                            backdrop-blur-xs font-display text-white text-md lg:text-xl px-3 lg:px-4 py-1
                             text-center break-words"
                 style="word-wrap: break-word; hyphens: auto;"
                 @contextmenu=${(e: MouseEvent) => e.preventDefault()}
