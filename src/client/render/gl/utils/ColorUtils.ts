@@ -62,7 +62,7 @@ export function hexToRgb(hex: string): [number, number, number] | null {
  * the `terrain.oceanColor` default in render-settings.json (the single source
  * of truth); used as a fallback when no override color is supplied.
  */
-const DEEP_WATER_BASE: readonly [number, number, number] = hexToRgb(
+export const DEEP_WATER_BASE: readonly [number, number, number] = hexToRgb(
   renderDefaults.terrain.oceanColor,
 )!;
 

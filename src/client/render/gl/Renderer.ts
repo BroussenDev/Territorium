@@ -46,6 +46,7 @@ import { FalloutLightPass } from "./passes/FalloutLightPass";
 import { FxPass } from "./passes/fx-pass";
 import { LightmapPass } from "./passes/LightmapPass";
 import { MapLayerPass } from "./passes/MapLayerPass";
+import { MapSurroundPass } from "./passes/MapSurroundPass";
 import { MoveIndicatorPass } from "./passes/MoveIndicatorPass";
 import { NamePass } from "./passes/name-pass";
 import { NightCompositePass } from "./passes/NightCompositePass";
@@ -71,6 +72,7 @@ import { WorldTextPass } from "./passes/WorldTextPass";
 import type { RenderSettings } from "./RenderSettings";
 import { AffiliationPalette } from "./utils/Affiliation";
 import {
+  DEEP_WATER_BASE,
   EFFECT_PALETTE_BLOCKS,
   getPaletteSize,
   hexToRgb,
@@ -124,6 +126,7 @@ export class GPURenderer {
 
   // Passes
   private terrainPass: TerrainPass;
+  private mapSurroundPass: MapSurroundPass;
   private territoryPass: TerritoryPass;
   private trailPass: TrailPass;
   private spiralRibbonPass: SpiralRibbonPass;
@@ -291,6 +294,13 @@ export class GPURenderer {
         mountainColor:
           hexToRgb(this.settings.terrain.mountainColor) ?? undefined,
       },
+    );
+
+    this.mapSurroundPass = new MapSurroundPass(
+      gl,
+      mapW,
+      mapH,
+      hexToRgb(this.settings.terrain.oceanColor) ?? DEEP_WATER_BASE,
     );
 
     // --- Terrain bytes R8UI texture (shared by map-layer passes) ---
@@ -1036,6 +1046,9 @@ export class GPURenderer {
       highlandColor: hexToRgb(this.settings.terrain.highlandColor) ?? undefined,
       mountainColor: hexToRgb(this.settings.terrain.mountainColor) ?? undefined,
     });
+    this.mapSurroundPass.setOceanColor(
+      hexToRgb(this.settings.terrain.oceanColor) ?? DEEP_WATER_BASE,
+    );
   }
 
   applyConquestEvents(events: ConquestFx[]): void {
@@ -1372,7 +1385,10 @@ export class GPURenderer {
     gl.clearColor(bgR / 255, bgG / 255, bgB / 255, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.disable(gl.BLEND);
-    if (pe.terrain) this.terrainPass.draw(cam);
+    if (pe.terrain) {
+      this.mapSurroundPass.draw(cam);
+      this.terrainPass.draw(cam);
+    }
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
     // Map layers sit between terrain and territory.
@@ -1515,6 +1531,7 @@ export class GPURenderer {
       this.terrainBytesTex = null;
     }
     this.terrainPass.dispose();
+    this.mapSurroundPass.dispose();
     this.territoryPass.dispose();
     this.trailPass.dispose();
     this.spiralRibbonPass.dispose();

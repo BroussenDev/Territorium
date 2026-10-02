@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.47
+
+🌊 **The sea goes on past the map**
+
+- The flat grey around the map is gone: the ocean now carries on beyond its edges, so zooming all the way out shows open sea everywhere, darkening only slightly far away.
+
 ## v0.1.46
 
 🎮 **Coming to Steam, and nations that upgrade**
