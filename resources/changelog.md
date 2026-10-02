@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.50
+
+🏰 **Bots with Territorium names**
+
+- Bots no longer use OpenFront's English names ("Hawaiian Cluster", "Tibetan Corp"…). They now have their own names in French, built from simple words: Royaume du Loup, Ligue d'Or, Duché des Brumes, Légion d'Acier…
+- Each kind of map keeps its own flavour: medieval realms in Europe, dynasties in Asia, stations and fleets in space, crews and gangs on the funny maps.
+- Anonymous player names use the same names.
+
 ## v0.1.49
 
 🌍 **Countries in your language**

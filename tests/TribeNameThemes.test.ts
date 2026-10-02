@@ -9,11 +9,11 @@ describe("resolveTribeNameData", () => {
     expect(data.prefixes.length).toBeGreaterThan(0);
     expect(data.suffixes.length).toBeGreaterThan(0);
     expect(data.customTribes).toBeUndefined();
-    // Spot-check that the default theme contains known prefixes.
-    expect(data.prefixes).toContain("Roman");
-    expect(data.prefixes).toContain("Viking");
-    expect(data.suffixes).toContain("Empire");
-    expect(data.suffixes).toContain("Kingdom");
+    // Territorium's own French names: a realm, then what it belongs to.
+    expect(data.prefixes).toContain("Royaume");
+    expect(data.prefixes).toContain("Empire");
+    expect(data.suffixes).toContain("du Loup");
+    expect(data.suffixes).toContain("d'Or");
   });
 
   test("returns default theme when called with undefined", () => {
@@ -126,9 +126,40 @@ describe("createRandomName (deterministic)", () => {
   test("different names produce different random names (usually)", () => {
     const name1 = createRandomName("Alice", PlayerType.Human);
     const name2 = createRandomName("Bob", PlayerType.Human);
-    // They could theoretically collide, but with 178*66 combinations it's unlikely.
+    // They could theoretically collide, but with thousands of combinations it's unlikely.
     // We just verify both are valid.
     expect(name1).toBeTruthy();
     expect(name2).toBeTruthy();
+  });
+});
+
+describe("Territorium bot names", () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const themes = require("../resources/tribeNameThemes.json") as Record<
+    string,
+    { prefixes: string[]; suffixes: string[] }
+  >;
+
+  test("read as a realm followed by its complement", () => {
+    const data = resolveTribeNameData();
+    expect(`${data.prefixes[1]} ${data.suffixes[4]}`).toBe("Royaume du Loup");
+  });
+
+  test("every complement starts with de/du/des/d' or is a call sign", () => {
+    const callSigns = new Set(themes.vs.suffixes.filter((s) => !/ /.test(s)));
+    for (const theme of Object.values(themes)) {
+      for (const suffix of theme.suffixes) {
+        if (callSigns.has(suffix)) continue;
+        expect(suffix).toMatch(/^(de |du |des |d'|de l'|de la )/);
+      }
+    }
+  });
+
+  test("names stay short enough for the map and the leaderboard", () => {
+    for (const theme of Object.values(themes)) {
+      const longestHead = Math.max(...theme.prefixes.map((p) => p.length));
+      const longestTail = Math.max(...theme.suffixes.map((s) => s.length));
+      expect(longestHead + 1 + longestTail).toBeLessThanOrEqual(40);
+    }
   });
 });
