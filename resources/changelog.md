@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.49
+
+🌍 **Countries in your language**
+
+- Real countries now read in your language on the map, in the leaderboard and on the player card: Sénégal, Bénin, Pologne… in French, and likewise in every other language. In Nations games, the country a player plays is translated too.
+- Regions, cities and historical empires keep their own names.
+
 ## v0.1.48
 
 🧭 **An in-game interface in Territorium's colours**

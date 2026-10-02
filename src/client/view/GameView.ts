@@ -32,6 +32,10 @@ import { ClientID, GameID, Player, PlayerCosmetics } from "../../core/Schemas";
 import { formatPlayerDisplayName } from "../../core/Util";
 import { WorkerClient } from "../../core/worker/WorkerClient";
 import {
+  localizeCountryInDisplayName,
+  localizedCountryName,
+} from "../CountryNames";
+import {
   applyNationArt,
   loadNationArt,
   wantsNationArt,
@@ -48,7 +52,7 @@ import { SpiralTrails } from "../render/frame/SpiralTrails";
 import { TrailManager } from "../render/frame/TrailManager";
 import type { FrameData, NameEntry } from "../render/types";
 import { STRUCTURE_TYPES } from "../render/types";
-import { resolveTeamClanTag } from "../Utils";
+import { currentLanguage, resolveTeamClanTag } from "../Utils";
 import type { CosmeticVisibility } from "./CosmeticVisibility";
 import { PlayerView } from "./PlayerView";
 import { UnitView } from "./UnitView";
@@ -387,6 +391,28 @@ export class GameView implements GameMap {
         pu.name = this._myUsername;
         pu.displayName = myDisplayName;
         pu.clanTag = this._myClanTag;
+      }
+
+      // Real countries read in the player's language ("Senegal" → "Sénégal"),
+      // for nations and for the country a human plays in Nations games.
+      if (pu.displayName !== undefined && pu.nationFlag) {
+        pu.displayName = localizeCountryInDisplayName(
+          pu.displayName,
+          pu.nationFlag,
+          pu.playerType === PlayerType.Nation,
+          currentLanguage(),
+        );
+      }
+      if (
+        pu.name !== undefined &&
+        pu.nationFlag &&
+        pu.playerType === PlayerType.Nation
+      ) {
+        pu.name = localizedCountryName(
+          pu.name,
+          pu.nationFlag,
+          currentLanguage(),
+        );
       }
 
       if (pu.smallID !== undefined) {
