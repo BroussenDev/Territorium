@@ -2399,6 +2399,16 @@
     "title": "Aliĝu al Lobby",
     "try_again": "Provu denove"
   },
+  "steam_launch": {
+    "body": "Aldonu Territorium al via dezirlisto: Steam sciigos vin en la eldontago, kaj ĉi tiuj reĝimoj malfermiĝos samtempe.",
+    "coming": "Baldaŭ ĉe Steam",
+    "later": "Poste",
+    "public_lobbies": "Publikaj ludejoj",
+    "title_public_lobby": "Publikaj ludejoj venos kun la eldono ĉe Steam",
+    "title_ranked": "Rangaj ludoj venos kun la eldono ĉe Steam",
+    "title_versus": "Versus venos kun la eldono ĉe Steam",
+    "wishlist": "Aldoni al mia dezirlisto"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Enigu la kodon montritan en via labortabla programo Steam.",

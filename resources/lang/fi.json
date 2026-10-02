@@ -2399,6 +2399,16 @@
     "title": "Liity aulaan",
     "try_again": "Yritä uudelleen"
   },
+  "steam_launch": {
+    "body": "Lisää Territorium toivelistallesi: Steam kertoo julkaisupäivänä, ja nämä tilat avautuvat samalla.",
+    "coming": "Pian Steamissa",
+    "later": "Myöhemmin",
+    "public_lobbies": "Julkiset aulat",
+    "title_public_lobby": "Julkiset aulat avautuvat Steam-julkaisun myötä",
+    "title_ranked": "Rankatut pelit avautuvat Steam-julkaisun myötä",
+    "title_versus": "Versus avautuu Steam-julkaisun myötä",
+    "wishlist": "Lisää toivelistalle"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Anna Steam-työpöytäsovelluksessa näkyvä koodi.",

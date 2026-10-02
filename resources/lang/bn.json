@@ -2399,6 +2399,16 @@
     "title": "লবিতে যোগ দিন",
     "try_again": "আবার চেষ্টা করুন"
   },
+  "steam_launch": {
+    "body": "Territorium আপনার উইশলিস্টে যোগ করুন: রিলিজের দিন Steam আপনাকে জানাবে, আর এই মোডগুলো তখনই খুলবে।",
+    "coming": "শীঘ্রই Steam-এ",
+    "later": "পরে",
+    "public_lobbies": "পাবলিক লবি",
+    "title_public_lobby": "পাবলিক লবি Steam রিলিজের সাথে আসছে",
+    "title_ranked": "র‍্যাঙ্কড মোড Steam রিলিজের সাথে আসছে",
+    "title_versus": "Versus Steam রিলিজের সাথে আসছে",
+    "wishlist": "আমার উইশলিস্টে যোগ করুন"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "আপনার স্টিম ডেস্কটপ অ্যাপে দেখানো কোডটি লিখুন।",

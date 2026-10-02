@@ -42,12 +42,14 @@ import { CopyButton } from "./components/CopyButton";
 import "./components/GameConfigSettings";
 import "./components/InputCard";
 import "./components/LobbyPlayerView";
+import { lockIcon } from "./components/SteamLaunchDialog";
 import "./components/ToggleInputCard";
 import { inviteFriendsButton } from "./components/ui/InviteFriendsButton";
 import { modalHeader } from "./components/ui/ModalHeader";
 import "./components/VersusLobby";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { JoinLobbyEvent } from "./Main";
+import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { SendPickTeamEvent } from "./Transport";
 import {
@@ -287,7 +289,11 @@ export class HostLobbyModal extends BaseModal {
           : "text-white/50 hover:text-white"}"
         @click=${() => this.handleVisibilitySelect(isPublic)}
       >
-        ${translateText(labelKey)}
+        <span class="flex items-center gap-1"
+          >${isPublic && STEAM_LAUNCH_LOCKED && !this.publiclyListed
+            ? lockIcon("size-3")
+            : nothing}${translateText(labelKey)}</span
+        >
       </button>
     `;
     return html`
@@ -331,6 +337,10 @@ export class HostLobbyModal extends BaseModal {
       isPublic === this.publiclyListed ||
       !this.lobbyId
     ) {
+      return;
+    }
+    if (isPublic && STEAM_LAUNCH_LOCKED) {
+      showSteamLaunchDialog("public_lobby");
       return;
     }
     if (isPublic && !this.canListPublicly) {

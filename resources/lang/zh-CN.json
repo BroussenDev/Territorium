@@ -2399,6 +2399,16 @@
     "title": "加入大厅",
     "try_again": "再试一次"
   },
+  "steam_launch": {
+    "body": "将 Territorium 加入愿望单：发售当天 Steam 会通知你，这些模式也将同时开放。",
+    "coming": "即将登陆 Steam",
+    "later": "稍后",
+    "public_lobbies": "公开房间",
+    "title_public_lobby": "公开房间将随 Steam 发售开放",
+    "title_ranked": "排位赛将随 Steam 发售开放",
+    "title_versus": "Versus 将随 Steam 发售开放",
+    "wishlist": "加入愿望单"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "输入 Steam 桌面应用程序上显示的代码。",

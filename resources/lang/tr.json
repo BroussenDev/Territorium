@@ -2399,6 +2399,16 @@
     "title": "Lobiye Katılın",
     "try_again": "Tekrar deneyin"
   },
+  "steam_launch": {
+    "body": "Territorium'u istek listene ekle: Steam çıkış günü sana haber verecek ve bu modlar onunla birlikte açılacak.",
+    "coming": "Yakında Steam'de",
+    "later": "Sonra",
+    "public_lobbies": "Herkese açık lobiler",
+    "title_public_lobby": "Herkese açık lobiler Steam çıkışıyla geliyor",
+    "title_ranked": "Dereceli mod Steam çıkışıyla geliyor",
+    "title_versus": "Versus Steam çıkışıyla geliyor",
+    "wishlist": "İstek listeme ekle"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Steam masaüstü uygulamanızda gösterilen kodu girin.",

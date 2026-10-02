@@ -2399,6 +2399,16 @@
     "title": "Приєднання до лобі",
     "try_again": "Спробувати знову"
   },
+  "steam_launch": {
+    "body": "Додайте Territorium до списку бажаного: Steam повідомить у день виходу, і ці режими відкриються разом із ним.",
+    "coming": "Незабаром у Steam",
+    "later": "Пізніше",
+    "public_lobbies": "Публічні лобі",
+    "title_public_lobby": "Публічні лобі відкриються з виходом у Steam",
+    "title_ranked": "Рейтингові ігри відкриються з виходом у Steam",
+    "title_versus": "Versus відкриється з виходом у Steam",
+    "wishlist": "Додати до списку бажаного"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Введіть код із застосунку Steam для ПК.",

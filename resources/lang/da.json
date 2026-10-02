@@ -2399,6 +2399,16 @@
     "title": "Deltag i lobbyen",
     "try_again": "Prøv igen"
   },
+  "steam_launch": {
+    "body": "Føj Territorium til din ønskeliste: Steam giver dig besked på udgivelsesdagen, og disse tilstande åbner samtidig.",
+    "coming": "Snart på Steam",
+    "later": "Senere",
+    "public_lobbies": "Offentlige lobbyer",
+    "title_public_lobby": "Offentlige lobbyer kommer med Steam-udgivelsen",
+    "title_ranked": "Rangerede spil kommer med Steam-udgivelsen",
+    "title_versus": "Versus kommer med Steam-udgivelsen",
+    "wishlist": "Føj til min ønskeliste"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Indtast koden vist på din Steam-skrivebordsapp.",

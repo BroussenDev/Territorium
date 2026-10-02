@@ -2399,6 +2399,16 @@
     "title": "Uneix-te al vestíbul",
     "try_again": "Torna-ho a provar"
   },
+  "steam_launch": {
+    "body": "Afegeix Territorium a la teva llista de desitjos: Steam t'avisarà el dia del llançament, i aquests modes s'obriran alhora.",
+    "coming": "Aviat a Steam",
+    "later": "Més tard",
+    "public_lobbies": "Sales públiques",
+    "title_public_lobby": "Les sales públiques arriben amb el llançament a Steam",
+    "title_ranked": "El mode classificatori arriba amb el llançament a Steam",
+    "title_versus": "Versus arriba amb el llançament a Steam",
+    "wishlist": "Afegeix a la llista de desitjos"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Introduïu el codi que es mostra a la vostra aplicació d'escriptori Steam.",

@@ -2399,6 +2399,16 @@
     "title": "Tham gia phòng",
     "try_again": "Thử lại"
   },
+  "steam_launch": {
+    "body": "Thêm Territorium vào danh sách mong muốn: Steam sẽ báo cho bạn vào ngày phát hành, và các chế độ này mở cùng lúc.",
+    "coming": "Sắp có trên Steam",
+    "later": "Để sau",
+    "public_lobbies": "Phòng công khai",
+    "title_public_lobby": "Phòng công khai sẽ mở cùng bản phát hành trên Steam",
+    "title_ranked": "Chế độ xếp hạng sẽ mở cùng bản phát hành trên Steam",
+    "title_versus": "Versus sẽ mở cùng bản phát hành trên Steam",
+    "wishlist": "Thêm vào danh sách mong muốn"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Nhập mã được hiển thị trên ứng dụng Steam trên máy tính của bạn.",

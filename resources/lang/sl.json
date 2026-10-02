@@ -2399,6 +2399,16 @@
     "title": "Pridružite se Lobbyju",
     "try_again": "poskusi ponovno"
   },
+  "steam_launch": {
+    "body": "Dodajte Territorium na seznam želja: Steam vas bo obvestil na dan izida, ti načini pa se odprejo hkrati z njim.",
+    "coming": "Kmalu na Steamu",
+    "later": "Pozneje",
+    "public_lobbies": "Javne čakalnice",
+    "title_public_lobby": "Javne čakalnice pridejo z izidom na Steamu",
+    "title_ranked": "Rangirane igre pridejo z izidom na Steamu",
+    "title_versus": "Versus pride z izidom na Steamu",
+    "wishlist": "Dodaj na seznam želja"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Vnesite kodo, prikazano v namizni aplikaciji Steam.",

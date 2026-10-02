@@ -2399,6 +2399,16 @@
     "title": "انضم إلى الردهة",
     "try_again": "حاول مرة أخرى"
   },
+  "steam_launch": {
+    "body": "أضف Territorium إلى قائمة أمنياتك: سيخبرك Steam يوم صدوره، وستُفتح هذه الأوضاع معه.",
+    "coming": "قريبًا على Steam",
+    "later": "لاحقًا",
+    "public_lobbies": "الغرف العامة",
+    "title_public_lobby": "الغرف العامة تصل مع الإصدار على Steam",
+    "title_ranked": "اللعب المصنّف يصل مع الإصدار على Steam",
+    "title_versus": "Versus يصل مع الإصدار على Steam",
+    "wishlist": "أضف إلى قائمة أمنياتي"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "أدخل الرمز الموضح في تطبيق Steam لسطح المكتب.",

@@ -2399,6 +2399,16 @@
     "title": "הצטרף ללובי",
     "try_again": "נסה שוב"
   },
+  "steam_launch": {
+    "body": "הוסיפו את Territorium לרשימת המשאלות: Steam יודיע לכם ביום ההשקה, והמצבים האלה ייפתחו יחד איתה.",
+    "coming": "בקרוב ב-Steam",
+    "later": "אחר כך",
+    "public_lobbies": "לובים ציבוריים",
+    "title_public_lobby": "לובים ציבוריים מגיעים עם ההשקה ב-Steam",
+    "title_ranked": "משחקי דירוג מגיעים עם ההשקה ב-Steam",
+    "title_versus": "Versus מגיע עם ההשקה ב-Steam",
+    "wishlist": "הוספה לרשימת המשאלות"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "הזן את הקוד המוצג באפליקציית Steam שולחן העבודה שלך.",

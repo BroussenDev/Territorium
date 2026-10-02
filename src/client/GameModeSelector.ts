@@ -30,6 +30,7 @@ import {
   viewerIsTrusted,
 } from "./components/LobbyCard";
 import { isNewSeason, newSeasonTag } from "./components/ranked/RankedTier";
+import { lockIcon } from "./components/SteamLaunchDialog";
 import { versusZoneMap } from "./components/VersusLobby";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
@@ -56,6 +57,7 @@ import {
   type BackendReachabilityDetail,
 } from "./ServerList";
 import { SinglePlayerModal } from "./SinglePlayerModal";
+import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { UsernameInput } from "./UsernameInput";
 import {
@@ -767,7 +769,8 @@ export class GameModeSelector extends LitElement {
               undefined,
               true,
               ICON_TROPHY,
-              isNewSeason(this.rankedSeason),
+              !STEAM_LAUNCH_LOCKED && isNewSeason(this.rankedSeason),
+              STEAM_LAUNCH_LOCKED,
             )}
           </div>
         </div>
@@ -866,6 +869,10 @@ export class GameModeSelector extends LitElement {
   }
 
   private openRankedMenu = () => {
+    if (STEAM_LAUNCH_LOCKED) {
+      showSteamLaunchDialog("ranked");
+      return;
+    }
     if (this.blockedFromApiAction()) return;
     if (!this.validateUsername()) return;
     window.showPage?.("page-ranked");
@@ -901,6 +908,10 @@ export class GameModeSelector extends LitElement {
   };
 
   private openVersus = () => {
+    if (STEAM_LAUNCH_LOCKED) {
+      showSteamLaunchDialog("versus");
+      return;
+    }
     if (!this.validateUsername()) return;
     window.showPage?.("page-versus");
   };
@@ -1031,6 +1042,8 @@ export class GameModeSelector extends LitElement {
     icon?: string,
     // Shows the "New season" tag where the badge would sit.
     newSeason: boolean = false,
+    // Opens with the Steam release: a padlock where the badge would sit.
+    steamLocked: boolean = false,
   ) {
     const blocked =
       gated &&
@@ -1077,6 +1090,16 @@ export class GameModeSelector extends LitElement {
           : nothing}
         ${newSeason
           ? newSeasonTag("absolute -top-2 -right-2 lg:static lg:ml-auto")
+          : nothing}
+        ${steamLocked
+          ? html`<span
+              data-steam-locked
+              title=${translateText("steam_launch.coming")}
+              class="absolute -top-2 -right-2 flex items-center gap-1 rounded-sm bg-capital px-1.5 py-0.5 text-[11px] font-bold text-capital-ink lg:static lg:ml-auto lg:bg-capital/15 lg:text-capital-light"
+              >${lockIcon("size-3.5")}<span class="hidden lg:inline"
+                >Steam</span
+              ></span
+            >`
           : nothing}
       </button>
     `;
@@ -1234,11 +1257,19 @@ export class GameModeSelector extends LitElement {
           )}
         </span>
         <span class="mt-auto flex flex-wrap items-center gap-3 pt-1">
-          <span
-            class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#0d1830] transition-colors group-hover/mode:bg-blue-100"
-            >${translateText("game_modes.versus_open")}</span
-          >
-          ${total > 0
+          ${STEAM_LAUNCH_LOCKED
+            ? html`<span
+                data-steam-locked
+                class="flex items-center gap-2 rounded-md bg-capital px-4 py-2 font-display text-sm font-bold text-capital-ink transition-colors group-hover/mode:bg-capital-light"
+                >${lockIcon("size-4")}${translateText(
+                  "steam_launch.coming",
+                )}</span
+              >`
+            : html`<span
+                class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#0d1830] transition-colors group-hover/mode:bg-blue-100"
+                >${translateText("game_modes.versus_open")}</span
+              >`}
+          ${!STEAM_LAUNCH_LOCKED && total > 0
             ? html`<span class="text-sm tabular-nums text-white/70"
                 >${translateText("game_modes.versus_waiting", {
                   count: total,

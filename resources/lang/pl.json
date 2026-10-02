@@ -2399,6 +2399,16 @@
     "title": "Dołącz do lobby",
     "try_again": "Spróbuj ponownie"
   },
+  "steam_launch": {
+    "body": "Dodaj Territorium do listy życzeń: Steam powiadomi cię w dniu premiery, a te tryby otworzą się razem z nią.",
+    "coming": "Wkrótce na Steam",
+    "later": "Później",
+    "public_lobbies": "Publiczne poczekalnie",
+    "title_public_lobby": "Publiczne poczekalnie pojawią się wraz z premierą na Steam",
+    "title_ranked": "Tryb rankingowy pojawi się wraz z premierą na Steam",
+    "title_versus": "Versus pojawi się wraz z premierą na Steam",
+    "wishlist": "Dodaj do listy życzeń"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Wpisz kod wyświetlony w aplikacji komputerowej Steam.",

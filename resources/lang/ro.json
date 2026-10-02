@@ -2399,6 +2399,16 @@
     "title": "Alătură-te camerei",
     "try_again": "Încercați din nou"
   },
+  "steam_launch": {
+    "body": "Adaugă Territorium în lista de dorințe: Steam te anunță în ziua lansării, iar aceste moduri se deschid odată cu ea.",
+    "coming": "În curând pe Steam",
+    "later": "Mai târziu",
+    "public_lobbies": "Lobby-uri publice",
+    "title_public_lobby": "Lobby-urile publice vin odată cu lansarea pe Steam",
+    "title_ranked": "Modul clasat vine odată cu lansarea pe Steam",
+    "title_versus": "Versus vine odată cu lansarea pe Steam",
+    "wishlist": "Adaugă în lista de dorințe"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Introdu codul afișat pe aplicația ta pentru desktop Steam.",

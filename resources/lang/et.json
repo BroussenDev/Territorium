@@ -2399,6 +2399,16 @@
     "title": "Liituge Lobbyga",
     "try_again": "Proovi uuesti"
   },
+  "steam_launch": {
+    "body": "Lisa Territorium oma soovinimekirja: Steam annab väljalaskepäeval teada ja need režiimid avanevad koos sellega.",
+    "coming": "Varsti Steamis",
+    "later": "Hiljem",
+    "public_lobbies": "Avalikud fuajeed",
+    "title_public_lobby": "Avalikud fuajeed avanevad Steami väljalaskega",
+    "title_ranked": "Edetabelimängud avanevad Steami väljalaskega",
+    "title_versus": "Versus avaneb Steami väljalaskega",
+    "wishlist": "Lisa soovinimekirja"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX–XXXX",
     "code_prompt": "Sisestage oma Steami töölauarakenduses kuvatav kood.",

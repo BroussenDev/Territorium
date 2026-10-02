@@ -2399,6 +2399,16 @@
     "title": "Junte-se ao lobby",
     "try_again": "Tente novamente"
   },
+  "steam_launch": {
+    "body": "Adiciona Territorium à tua lista de desejos: o Steam avisa-te no dia do lançamento, e estes modos abrem ao mesmo tempo.",
+    "coming": "Em breve no Steam",
+    "later": "Mais tarde",
+    "public_lobbies": "Salas públicas",
+    "title_public_lobby": "As salas públicas chegam com o lançamento no Steam",
+    "title_ranked": "O modo competitivo chega com o lançamento no Steam",
+    "title_versus": "O Versus chega com o lançamento no Steam",
+    "wishlist": "Adicionar à lista de desejos"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Introduza o código mostrado na sua aplicação Steam para desktop.",

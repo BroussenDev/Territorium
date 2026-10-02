@@ -79,6 +79,23 @@ const FIRST_MISSILE_SILO_RATIO = 0.4;
 const UPGRADE_DENSITY_THRESHOLD = 1 / 1500;
 
 /**
+ * Below that density, a nation that already owns MIN_OWNED_BEFORE_UPGRADING
+ * structures of a type upgrades one of them instead of building another this
+ * often (in %). Players stack levels on their best-placed (SAM-covered)
+ * structures, and big nations rarely reach the density threshold, so without
+ * this they never upgrade anything.
+ */
+const UPGRADE_PREFERENCE_BY_DIFFICULTY: Record<Difficulty, number> = {
+  [Difficulty.Easy]: 25,
+  [Difficulty.Medium]: 50,
+  [Difficulty.Hard]: 70,
+  [Difficulty.Impossible]: 85,
+};
+
+/** Structures of a type a nation spreads out before it starts stacking levels. */
+const MIN_OWNED_BEFORE_UPGRADING = 2;
+
+/**
  * Minimum number of full-map water tiles a water body must have for the AI to
  * consider placing a port on it.  Prevents the AI from wasting ports on tiny
  * decorative ponds scattered across the map.
@@ -616,9 +633,18 @@ export class NationStructureBehavior {
 
     // Check if we should upgrade instead of building new
     const structures = this.player.units(type);
+    const upgradable = game.config().unitInfo(type).upgradable;
+    if (
+      upgradable &&
+      this.getTotalStructureDensity() <= UPGRADE_DENSITY_THRESHOLD &&
+      this.prefersUpgrade(structures) &&
+      this.maybeUpgradeStructure(structures)
+    ) {
+      return true;
+    }
     if (
       this.getTotalStructureDensity() > UPGRADE_DENSITY_THRESHOLD &&
-      game.config().unitInfo(type).upgradable
+      upgradable
     ) {
       if (this.maybeUpgradeStructure(structures)) {
         return true;
@@ -716,14 +742,26 @@ export class NationStructureBehavior {
   }
 
   /**
-   * Tries to upgrade an existing structure if density threshold is exceeded.
+   * Whether to upgrade rather than build while there is still room to build:
+   * once the nation owns a few structures of the type, on a difficulty-based
+   * roll.
+   */
+  private prefersUpgrade(structures: Unit[]): boolean {
+    if (structures.length < MIN_OWNED_BEFORE_UPGRADING) {
+      return false;
+    }
+    const { difficulty } = this.game.config().gameConfig();
+    return (
+      this.random.nextInt(0, 100) < UPGRADE_PREFERENCE_BY_DIFFICULTY[difficulty]
+    );
+  }
+
+  /**
+   * Tries to upgrade one of the given structures.
    * @param structures The pool of structures to consider for upgrading
    * @returns true if an upgrade was initiated, false otherwise
    */
   private maybeUpgradeStructure(structures: Unit[]): boolean {
-    if (this.getTotalStructureDensity() <= UPGRADE_DENSITY_THRESHOLD) {
-      return false;
-    }
     if (structures.length === 0) {
       return false;
     }

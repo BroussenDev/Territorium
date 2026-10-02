@@ -2399,6 +2399,16 @@
     "title": "ロビーに参加する",
     "try_again": "もう一度やり直してください"
   },
+  "steam_launch": {
+    "body": "Territoriumをウィッシュリストに追加してください。リリース日にSteamがお知らせし、これらのモードも同時に解放されます。",
+    "coming": "Steamで近日公開",
+    "later": "あとで",
+    "public_lobbies": "公開ロビー",
+    "title_public_lobby": "公開ロビーはSteamでのリリースと同時に解放",
+    "title_ranked": "ランクマッチはSteamでのリリースと同時に解放",
+    "title_versus": "VersusはSteamでのリリースと同時に解放",
+    "wishlist": "ウィッシュリストに追加"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Steamデスクトップアプリに表示されたコードを入力してください。",

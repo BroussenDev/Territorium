@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.46
+
+🎮 **Coming to Steam, and nations that upgrade**
+
+- Ranked, Versus and public lobbies now open with Territorium's Steam release. They stay visible with a padlock; trying one explains it and offers to add the game to your Steam wishlist.
+- Steam links now lead to Territorium's own Steam page.
+- Nations now upgrade their cities, ports, factories and defenses instead of only building new ones. Harder nations upgrade more often, which makes their economy and defense noticeably stronger.
+
 ## v0.1.45
 
 🪧 **Warnings and errors in Territorium's style**

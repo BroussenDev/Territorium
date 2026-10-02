@@ -2399,6 +2399,16 @@
     "title": "Pripojte sa k lobby",
     "try_again": "Skúste to znova"
   },
+  "steam_launch": {
+    "body": "Pridajte si Territorium do zoznamu želaní: Steam vám dá vedieť v deň vydania a tieto režimy sa otvoria spolu s ním.",
+    "coming": "Čoskoro na Steame",
+    "later": "Neskôr",
+    "public_lobbies": "Verejné lobby",
+    "title_public_lobby": "Verejné lobby prídu s vydaním na Steame",
+    "title_ranked": "Hodnotené hry prídu s vydaním na Steame",
+    "title_versus": "Versus príde s vydaním na Steame",
+    "wishlist": "Pridať do zoznamu želaní"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Zadajte kód zobrazený vo vašej počítačovej aplikácii Steam.",

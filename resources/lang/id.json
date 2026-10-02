@@ -2399,6 +2399,16 @@
     "title": "Bergabunglah dengan Lobi",
     "try_again": "Coba lagi"
   },
+  "steam_launch": {
+    "body": "Tambahkan Territorium ke daftar keinginanmu: Steam akan memberi tahu saat rilis, dan mode ini dibuka bersamanya.",
+    "coming": "Segera di Steam",
+    "later": "Nanti",
+    "public_lobbies": "Lobi publik",
+    "title_public_lobby": "Lobi publik hadir bersama rilis di Steam",
+    "title_ranked": "Mode peringkat hadir bersama rilis di Steam",
+    "title_versus": "Versus hadir bersama rilis di Steam",
+    "wishlist": "Tambahkan ke daftar keinginan"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Masukkan kode yang ditampilkan di aplikasi desktop Steam Anda.",

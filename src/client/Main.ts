@@ -167,6 +167,7 @@ import {
 } from "./utilities/DisableSafariPinchZoom";
 
 import "./ChallengesModal";
+import { STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
 import "./components/DesktopNavBar";
 import "./components/DetailedGameViewModal";
 import "./components/Footer";
@@ -440,14 +441,17 @@ class Client {
       tag: "single-player-modal",
       pageId: "page-single-player",
     });
-    modalRouter.register("ranked", {
-      tag: "ranked-modal",
-      pageId: "page-ranked",
-    });
-    modalRouter.register("versus", {
-      tag: "versus-modal",
-      pageId: "page-versus",
-    });
+    // Locked until the Steam release: their links fall back to the home page.
+    if (!STEAM_LAUNCH_LOCKED) {
+      modalRouter.register("ranked", {
+        tag: "ranked-modal",
+        pageId: "page-ranked",
+      });
+      modalRouter.register("versus", {
+        tag: "versus-modal",
+        pageId: "page-versus",
+      });
+    }
     modalRouter.register("challenges", {
       tag: "challenges-modal",
       pageId: "page-challenges",

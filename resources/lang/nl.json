@@ -2399,6 +2399,16 @@
     "title": "Deelnemen aan Lobby",
     "try_again": "Opnieuw proberen"
   },
+  "steam_launch": {
+    "body": "Zet Territorium op je verlanglijst: Steam laat je weten wanneer het uitkomt, en deze modi gaan dan meteen open.",
+    "coming": "Binnenkort op Steam",
+    "later": "Later",
+    "public_lobbies": "Openbare lobby's",
+    "title_public_lobby": "Openbare lobby's komen met de Steam-release",
+    "title_ranked": "Ranked komt met de Steam-release",
+    "title_versus": "Versus komt met de Steam-release",
+    "wishlist": "Op mijn verlanglijst"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Voer de code in die getoond wordt op je Steam desktop app.",

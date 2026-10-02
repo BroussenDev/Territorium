@@ -2399,6 +2399,16 @@
     "title": "로비 참가",
     "try_again": "다시 시도"
   },
+  "steam_launch": {
+    "body": "Territorium을 찜 목록에 추가하세요. 출시일에 Steam이 알려 드리며, 이 모드들도 함께 열립니다.",
+    "coming": "Steam 출시 예정",
+    "later": "나중에",
+    "public_lobbies": "공개 로비",
+    "title_public_lobby": "공개 로비는 Steam 출시와 함께 열립니다",
+    "title_ranked": "랭크 모드는 Steam 출시와 함께 열립니다",
+    "title_versus": "Versus는 Steam 출시와 함께 열립니다",
+    "wishlist": "찜 목록에 추가"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Steam 데스크톱 앱에 표시된 코드를 입력하세요.",

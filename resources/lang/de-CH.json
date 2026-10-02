@@ -2399,6 +2399,16 @@
     "title": "Treten Sie der Lobby bei",
     "try_again": "Versuchen Sie es erneut"
   },
+  "steam_launch": {
+    "body": "Setz Territorium auf deine Wunschliste: Steam sagt dir Bescheid, sobald es erscheint, und diese Modi öffnen am selben Tag.",
+    "coming": "Bald auf Steam",
+    "later": "Später",
+    "public_lobbies": "Öffentliche Lobbys",
+    "title_public_lobby": "Öffentliche Lobbys starten mit dem Steam-Release",
+    "title_ranked": "Ranglistenspiele starten mit dem Steam-Release",
+    "title_versus": "Versus startet mit dem Steam-Release",
+    "wishlist": "Auf meine Wunschliste"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Geben Sie den in Ihrer Steam-Desktop-App angezeigten Code ein.",

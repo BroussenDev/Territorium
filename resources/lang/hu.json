@@ -2399,6 +2399,16 @@
     "title": "Csatlakozz a Lobbyhoz",
     "try_again": "Próbáld újra"
   },
+  "steam_launch": {
+    "body": "Tedd a Territoriumot a kívánságlistádra: a Steam szól a megjelenés napján, és ezek a módok vele együtt nyílnak meg.",
+    "coming": "Hamarosan a Steamen",
+    "later": "Később",
+    "public_lobbies": "Nyilvános várók",
+    "title_public_lobby": "A nyilvános várók a Steam-megjelenéssel érkeznek",
+    "title_ranked": "A rangsorolt mód a Steam-megjelenéssel érkezik",
+    "title_versus": "A Versus a Steam-megjelenéssel érkezik",
+    "wishlist": "Hozzáadás a kívánságlistához"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Add meg a Steam asztali alkalmazásban látható kódot.",

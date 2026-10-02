@@ -2399,6 +2399,16 @@
     "title": "پیوستن به لابی",
     "try_again": "تلاش مجدد"
   },
+  "steam_launch": {
+    "body": "Territorium را به فهرست علاقه‌مندی‌هایتان اضافه کنید: Steam روز انتشار به شما خبر می‌دهد و این حالت‌ها همراه آن باز می‌شوند.",
+    "coming": "به‌زودی در Steam",
+    "later": "بعداً",
+    "public_lobbies": "لابی‌های عمومی",
+    "title_public_lobby": "لابی‌های عمومی با انتشار در Steam می‌آیند",
+    "title_ranked": "بازی‌های رتبه‌بندی با انتشار در Steam می‌آیند",
+    "title_versus": "Versus با انتشار در Steam می‌آید",
+    "wishlist": "افزودن به فهرست علاقه‌مندی‌ها"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "کدی را که در برنامه دسکتاپ استیم شما نشان داده شده وارد کنید.",

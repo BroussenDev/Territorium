@@ -2399,6 +2399,16 @@
     "title": "加入大廳",
     "try_again": "重試"
   },
+  "steam_launch": {
+    "body": "將 Territorium 加入願望清單：發售當天 Steam 會通知你，這些模式也會同時開放。",
+    "coming": "即將登上 Steam",
+    "later": "稍後",
+    "public_lobbies": "公開房間",
+    "title_public_lobby": "公開房間將隨 Steam 發售開放",
+    "title_ranked": "排位賽將隨 Steam 發售開放",
+    "title_versus": "Versus 將隨 Steam 發售開放",
+    "wishlist": "加入願望清單"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "請輸入在 Steam 桌面程式上顯示的驗證碼。",

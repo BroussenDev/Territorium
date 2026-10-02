@@ -2399,6 +2399,16 @@
     "title": "लॉबी से जुड़ें",
     "try_again": "पुनः प्रयास करें"
   },
+  "steam_launch": {
+    "body": "Territorium को अपनी विशलिस्ट में जोड़ें: रिलीज़ के दिन Steam आपको बताएगा, और ये मोड उसी के साथ खुलेंगे।",
+    "coming": "जल्द ही Steam पर",
+    "later": "बाद में",
+    "public_lobbies": "सार्वजनिक लॉबी",
+    "title_public_lobby": "सार्वजनिक लॉबी Steam रिलीज़ के साथ आएँगी",
+    "title_ranked": "रैंक्ड मोड Steam रिलीज़ के साथ आएगा",
+    "title_versus": "Versus Steam रिलीज़ के साथ आएगा",
+    "wishlist": "मेरी विशलिस्ट में जोड़ें"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "अपने स्टीम डेस्कटॉप ऐप पर दिखाया गया कोड दर्ज करें।",

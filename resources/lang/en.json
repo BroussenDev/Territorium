@@ -2399,6 +2399,16 @@
     "title": "Join Lobby",
     "try_again": "Try again"
   },
+  "steam_launch": {
+    "body": "Add Territorium to your wishlist: Steam will tell you the day it comes out, and these modes open with it.",
+    "coming": "Coming on Steam",
+    "later": "Later",
+    "public_lobbies": "Public lobbies",
+    "title_public_lobby": "Public lobbies open with the Steam release",
+    "title_ranked": "Ranked opens with the Steam release",
+    "title_versus": "Versus opens with the Steam release",
+    "wishlist": "Add to my wishlist"
+  },
   "steam_link_modal": {
     "code_placeholder": "XXXX-XXXX",
     "code_prompt": "Enter the code shown on your Steam desktop app.",
