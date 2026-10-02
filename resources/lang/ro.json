@@ -3024,6 +3024,22 @@
     "waiting_players": "Se așteaptă jucători ({count}/{max})",
     "you": "Tu"
   },
+  "webgl_gate": {
+    "continue": "Joacă oricum",
+    "intro_limited": "O setare de confidențialitate limitează grafica sub ce are nevoie jocul, iar părți din hartă pot apărea negre. Exceptează acest site:",
+    "intro_software": "Browserul nu folosește placa video, așa că jocul nu poate rula fluid. Activează accelerarea hardware, apoi repornește browserul:",
+    "intro_unsupported": "Browserul tău nu suportă WebGL2, de care jocul are nevoie. Activează-l sau actualizează browserul:",
+    "note_drivers": "Tot nu merge? Actualizează driverele plăcii video sau încearcă alt browser.",
+    "note_limited": "Protecția rămâne activă pe toate celelalte site-uri.",
+    "step_chrome": "Setări › Sistem › activează accelerarea grafică, apoi redeschide Chrome.",
+    "step_edge": "Setări › Sistem și performanță › activează accelerarea hardware, apoi repornește Edge.",
+    "step_firefox": "Scrie about:config în bara de adrese, setează webgl.disabled la false și webgl.force-enabled la true, apoi repornește Firefox.",
+    "step_limited": "Scrie about:config în bara de adrese, caută privacy.resistFingerprinting.exemptedDomains, adaugă {host} (separat prin virgulă), apoi repornește browserul.",
+    "step_safari": "Setări › Site-uri web › WebGL › alege Permite. Pe iPhone și iPad este mereu activat.",
+    "title_limited": "Browserul tău limitează grafica",
+    "title_software": "Accelerarea hardware este dezactivată",
+    "title_unsupported": "Browserul tău nu poate rula jocul"
+  },
   "win_modal": {
     "died": "Ai murit",
     "exit": "Închide jocul",

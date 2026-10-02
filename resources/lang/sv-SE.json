@@ -3024,6 +3024,22 @@
     "waiting_players": "Väntar på spelare ({count}/{max})",
     "you": "Du"
   },
+  "webgl_gate": {
+    "continue": "Spela ändå",
+    "intro_limited": "En sekretessinställning begränsar grafiken under vad spelet behöver, så delar av kartan kan bli svarta. Undanta den här webbplatsen:",
+    "intro_software": "Webbläsaren använder inte ditt grafikkort, så spelet kan inte flyta på. Slå på hårdvaruacceleration och starta om webbläsaren:",
+    "intro_unsupported": "Din webbläsare stöder inte WebGL2, som spelet behöver. Slå på det eller uppdatera webbläsaren:",
+    "note_drivers": "Fungerar det fortfarande inte? Uppdatera grafikkortets drivrutiner eller prova en annan webbläsare.",
+    "note_limited": "Skyddet är fortfarande på för alla andra webbplatser.",
+    "step_chrome": "Inställningar › System › slå på grafikacceleration och starta om Chrome.",
+    "step_edge": "Inställningar › System och prestanda › slå på hårdvaruacceleration och starta om Edge.",
+    "step_firefox": "Skriv about:config i adressfältet, sätt webgl.disabled till false och webgl.force-enabled till true och starta om Firefox.",
+    "step_limited": "Skriv about:config i adressfältet, leta upp privacy.resistFingerprinting.exemptedDomains, lägg till {host} (avgränsat med komma) och starta om webbläsaren.",
+    "step_safari": "Inställningar › Webbplatser › WebGL › välj Tillåt. På iPhone och iPad är det alltid på.",
+    "title_limited": "Din webbläsare begränsar grafiken",
+    "title_software": "Hårdvaruacceleration är avstängd",
+    "title_unsupported": "Din webbläsare kan inte köra spelet"
+  },
   "win_modal": {
     "died": "Du dog",
     "exit": "Avsluta spelet",

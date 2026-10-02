@@ -3024,6 +3024,22 @@
     "waiting_players": "En attente de joueurs ({count}/{max})",
     "you": "Vous"
   },
+  "webgl_gate": {
+    "continue": "Jouer quand même",
+    "intro_limited": "Un réglage de confidentialité bride les graphismes en dessous de ce dont le jeu a besoin : des zones de la carte peuvent s'afficher en noir. Exemptez ce site :",
+    "intro_software": "Votre navigateur n'utilise pas votre carte graphique : le jeu ne peut pas tourner correctement. Activez l'accélération matérielle, puis redémarrez votre navigateur :",
+    "intro_unsupported": "Votre navigateur ne prend pas en charge WebGL2, dont le jeu a besoin. Activez-le ou mettez votre navigateur à jour :",
+    "note_drivers": "Toujours bloqué ? Mettez à jour les pilotes de votre carte graphique, ou essayez un autre navigateur.",
+    "note_limited": "La protection reste active sur tous les autres sites.",
+    "step_chrome": "Paramètres › Système › activez l'accélération graphique, puis relancez Chrome.",
+    "step_edge": "Paramètres › Système et performances › activez l'accélération matérielle, puis redémarrez Edge.",
+    "step_firefox": "Tapez about:config dans la barre d'adresse, mettez webgl.disabled à false et webgl.force-enabled à true, puis redémarrez Firefox.",
+    "step_limited": "Tapez about:config dans la barre d'adresse, cherchez privacy.resistFingerprinting.exemptedDomains, ajoutez {host} (séparé par une virgule), puis redémarrez le navigateur.",
+    "step_safari": "Réglages › Sites web › WebGL › choisissez Autoriser. Sur iPhone et iPad, il est toujours activé.",
+    "title_limited": "Votre navigateur limite les graphismes",
+    "title_software": "L'accélération matérielle est désactivée",
+    "title_unsupported": "Votre navigateur ne peut pas lancer le jeu"
+  },
   "win_modal": {
     "died": "Vous êtes mort·e.",
     "exit": "Quitter la partie",

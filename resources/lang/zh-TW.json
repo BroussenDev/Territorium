@@ -3024,6 +3024,22 @@
     "waiting_players": "等待玩家 ({count}/{max})",
     "you": "你"
   },
+  "webgl_gate": {
+    "continue": "仍要遊玩",
+    "intro_limited": "某項隱私設定把圖形限制在遊戲所需水準以下，地圖的部分區域可能顯示為黑色。請為本站設定例外：",
+    "intro_software": "你的瀏覽器沒有使用顯示卡，遊戲無法流暢執行。請開啟硬體加速，然後重新啟動瀏覽器：",
+    "intro_unsupported": "你的瀏覽器不支援遊戲所需的 WebGL2。請開啟它或更新瀏覽器：",
+    "note_drivers": "還是不行？請更新顯示卡驅動程式，或換一個瀏覽器試試。",
+    "note_limited": "其他所有網站的保護仍然開啟。",
+    "step_chrome": "設定 › 系統 › 開啟圖形加速，然後重新開啟 Chrome。",
+    "step_edge": "設定 › 系統與效能 › 開啟硬體加速，然後重新啟動 Edge。",
+    "step_firefox": "在網址列輸入 about:config，將 webgl.disabled 設為 false，webgl.force-enabled 設為 true，然後重新啟動 Firefox。",
+    "step_limited": "在網址列輸入 about:config，找到 privacy.resistFingerprinting.exemptedDomains，加入 {host}（以逗號分隔），然後重新啟動瀏覽器。",
+    "step_safari": "設定 › 網站 › WebGL › 選擇允許。在 iPhone 和 iPad 上一律開啟。",
+    "title_limited": "你的瀏覽器正在限制圖形",
+    "title_software": "硬體加速已關閉",
+    "title_unsupported": "你的瀏覽器無法執行遊戲"
+  },
   "win_modal": {
     "died": "你已經死了",
     "exit": "退出遊戲",

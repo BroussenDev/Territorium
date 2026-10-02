@@ -3024,6 +3024,22 @@
     "waiting_players": "Venter på spillere ({count}/{max})",
     "you": "Dig"
   },
+  "webgl_gate": {
+    "continue": "Spil alligevel",
+    "intro_limited": "En privatlivsindstilling begrænser grafikken under det, spillet kræver, så dele af kortet kan blive sorte. Undtag dette websted:",
+    "intro_software": "Din browser bruger ikke dit grafikkort, så spillet kan ikke køre glat. Slå hardwareacceleration til, og genstart browseren:",
+    "intro_unsupported": "Din browser understøtter ikke WebGL2, som spillet kræver. Slå det til, eller opdater browseren:",
+    "note_drivers": "Virker det stadig ikke? Opdater grafikkortets drivere, eller prøv en anden browser.",
+    "note_limited": "Beskyttelsen forbliver slået til på alle andre websteder.",
+    "step_chrome": "Indstillinger › System › slå grafikacceleration til, og genstart Chrome.",
+    "step_edge": "Indstillinger › System og ydeevne › slå hardwareacceleration til, og genstart Edge.",
+    "step_firefox": "Skriv about:config i adresselinjen, sæt webgl.disabled til false og webgl.force-enabled til true, og genstart Firefox.",
+    "step_limited": "Skriv about:config i adresselinjen, find privacy.resistFingerprinting.exemptedDomains, tilføj {host} (adskilt med komma), og genstart browseren.",
+    "step_safari": "Indstillinger › Websteder › WebGL › vælg Tillad. På iPhone og iPad er det altid slået til.",
+    "title_limited": "Din browser begrænser grafikken",
+    "title_software": "Hardwareacceleration er slået fra",
+    "title_unsupported": "Din browser kan ikke køre spillet"
+  },
   "win_modal": {
     "died": "Du døde",
     "exit": "Afslut Spil",

@@ -3024,6 +3024,22 @@
     "waiting_players": "Atendante ludantojn ({count}/{max})",
     "you": "Vi"
   },
+  "webgl_gate": {
+    "continue": "Ludi tamen",
+    "intro_limited": "Privateca agordo limigas la grafikon sub tio, kion la ludo bezonas, do partoj de la mapo povas aperi nigraj. Esceptigu ĉi tiun retejon:",
+    "intro_software": "Via retumilo ne uzas la grafikan karton, do la ludo ne povas ruliĝi glate. Ŝaltu aparataran akcelon, poste restartigu la retumilon:",
+    "intro_unsupported": "Via retumilo ne subtenas WebGL2, kiun la ludo bezonas. Ŝaltu ĝin aŭ ĝisdatigu la retumilon:",
+    "note_drivers": "Ankoraŭ blokita? Ĝisdatigu la pelilojn de la grafika karto aŭ provu alian retumilon.",
+    "note_limited": "La protekto restas ŝaltita por ĉiuj aliaj retejoj.",
+    "step_chrome": "Agordoj › Sistemo › ŝaltu grafikan akcelon, poste remalfermu Chrome.",
+    "step_edge": "Agordoj › Sistemo kaj rendimento › ŝaltu aparataran akcelon, poste restartigu Edge.",
+    "step_firefox": "Tajpu about:config en la adresbreton, agordu webgl.disabled al false kaj webgl.force-enabled al true, poste restartigu Firefox.",
+    "step_limited": "Tajpu about:config en la adresbreton, trovu privacy.resistFingerprinting.exemptedDomains, aldonu {host} (apartigite per komo), poste restartigu la retumilon.",
+    "step_safari": "Agordoj › Retejoj › WebGL › elektu Permesi. Ĉe iPhone kaj iPad ĝi ĉiam estas ŝaltita.",
+    "title_limited": "Via retumilo limigas la grafikon",
+    "title_software": "Aparatara akcelo estas malŝaltita",
+    "title_unsupported": "Via retumilo ne povas ruli la ludon"
+  },
   "win_modal": {
     "died": "Vi mortis",
     "exit": "Eliri el la ludo",

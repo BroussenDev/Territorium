@@ -3024,6 +3024,22 @@
     "waiting_players": "Agardando xogadores ({count}/{max})",
     "you": "Ti"
   },
+  "webgl_gate": {
+    "continue": "Xogar igualmente",
+    "intro_limited": "Un axuste de privacidade limita os gráficos por debaixo do que precisa o xogo, e partes do mapa poden verse negras. Exime este sitio:",
+    "intro_software": "O navegador non usa a tarxeta gráfica, así que o xogo non pode ir fluído. Activa a aceleración por hardware e reinicia o navegador:",
+    "intro_unsupported": "O teu navegador non admite WebGL2, que o xogo precisa. Actívao ou actualiza o navegador:",
+    "note_drivers": "Segue sen funcionar? Actualiza os controladores da tarxeta gráfica ou proba outro navegador.",
+    "note_limited": "A protección segue activa en todos os demais sitios.",
+    "step_chrome": "Configuración › Sistema › activa a aceleración gráfica e volve abrir Chrome.",
+    "step_edge": "Configuración › Sistema e rendemento › activa a aceleración por hardware e reinicia Edge.",
+    "step_firefox": "Escribe about:config na barra de enderezos, pon webgl.disabled en false e webgl.force-enabled en true, e reinicia Firefox.",
+    "step_limited": "Escribe about:config na barra de enderezos, busca privacy.resistFingerprinting.exemptedDomains, engade {host} (separado por unha coma) e reinicia o navegador.",
+    "step_safari": "Axustes › Sitios web › WebGL › escolle Permitir. No iPhone e no iPad sempre está activado.",
+    "title_limited": "O teu navegador está a limitar os gráficos",
+    "title_software": "A aceleración por hardware está desactivada",
+    "title_unsupported": "O teu navegador non pode executar o xogo"
+  },
   "win_modal": {
     "died": "Morriches",
     "exit": "Saír da partida",

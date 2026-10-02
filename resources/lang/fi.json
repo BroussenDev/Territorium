@@ -3024,6 +3024,22 @@
     "waiting_players": "Odotetaan pelaajia ({count}/{max})",
     "you": "Sinä"
   },
+  "webgl_gate": {
+    "continue": "Pelaa silti",
+    "intro_limited": "Yksityisyysasetus rajoittaa grafiikkaa alle pelin tarpeen, joten osa kartasta voi näkyä mustana. Vapauta tämä sivusto:",
+    "intro_software": "Selain ei käytä näytönohjainta, joten peli ei pyöri sujuvasti. Ota laitteistokiihdytys käyttöön ja käynnistä selain uudelleen:",
+    "intro_unsupported": "Selaimesi ei tue WebGL2:ta, jota peli tarvitsee. Ota se käyttöön tai päivitä selain:",
+    "note_drivers": "Eikö vieläkään toimi? Päivitä näytönohjaimen ajurit tai kokeile toista selainta.",
+    "note_limited": "Suojaus pysyy päällä kaikilla muilla sivustoilla.",
+    "step_chrome": "Asetukset › Järjestelmä › ota grafiikkakiihdytys käyttöön ja käynnistä Chrome uudelleen.",
+    "step_edge": "Asetukset › Järjestelmä ja suorituskyky › ota laitteistokiihdytys käyttöön ja käynnistä Edge uudelleen.",
+    "step_firefox": "Kirjoita osoiteriville about:config, aseta webgl.disabled arvoon false ja webgl.force-enabled arvoon true ja käynnistä Firefox uudelleen.",
+    "step_limited": "Kirjoita osoiteriville about:config, etsi privacy.resistFingerprinting.exemptedDomains, lisää {host} (pilkulla eroteltuna) ja käynnistä selain uudelleen.",
+    "step_safari": "Asetukset › Verkkosivustot › WebGL › valitse Salli. iPhonessa ja iPadissa se on aina päällä.",
+    "title_limited": "Selaimesi rajoittaa grafiikkaa",
+    "title_software": "Laitteistokiihdytys on pois päältä",
+    "title_unsupported": "Selaimesi ei pysty ajamaan peliä"
+  },
   "win_modal": {
     "died": "Sinä kuolit",
     "exit": "Poistu pelistä",

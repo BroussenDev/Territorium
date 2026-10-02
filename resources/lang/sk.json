@@ -3024,6 +3024,22 @@
     "waiting_players": "Čaká sa na hráčov ({count}/{max})",
     "you": "Ty"
   },
+  "webgl_gate": {
+    "continue": "Aj tak hrať",
+    "intro_limited": "Nastavenie súkromia obmedzuje grafiku pod úroveň, ktorú hra potrebuje, takže časti mapy môžu byť čierne. Vyňatie tejto stránky:",
+    "intro_software": "Prehliadač nepoužíva grafickú kartu, takže hra nemôže bežať plynulo. Zapnite hardvérovú akceleráciu a reštartujte prehliadač:",
+    "intro_unsupported": "Váš prehliadač nepodporuje WebGL2, ktoré hra potrebuje. Zapnite ho alebo prehliadač aktualizujte:",
+    "note_drivers": "Stále to nejde? Aktualizujte ovládače grafickej karty alebo skúste iný prehliadač.",
+    "note_limited": "Ochrana zostáva zapnutá pre všetky ostatné stránky.",
+    "step_chrome": "Nastavenia › Systém › zapnite grafickú akceleráciu a znova spustite Chrome.",
+    "step_edge": "Nastavenia › Systém a výkon › zapnite hardvérovú akceleráciu a reštartujte Edge.",
+    "step_firefox": "Zadajte about:config do panela s adresou, nastavte webgl.disabled na false a webgl.force-enabled na true a reštartujte Firefox.",
+    "step_limited": "Zadajte about:config do panela s adresou, nájdite privacy.resistFingerprinting.exemptedDomains, pridajte {host} (oddelené čiarkou) a reštartujte prehliadač.",
+    "step_safari": "Nastavenia › Webové stránky › WebGL › zvoľte Povoliť. Na iPhone a iPade je vždy zapnuté.",
+    "title_limited": "Váš prehliadač obmedzuje grafiku",
+    "title_software": "Hardvérová akcelerácia je vypnutá",
+    "title_unsupported": "Váš prehliadač nedokáže hru spustiť"
+  },
   "win_modal": {
     "died": "Zomrel/a si",
     "exit": "Opustiť hru",

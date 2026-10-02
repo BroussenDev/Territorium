@@ -3024,6 +3024,22 @@
     "waiting_players": "Waiting for players ({count}/{max})",
     "you": "You"
   },
+  "webgl_gate": {
+    "continue": "Play anyway",
+    "intro_limited": "A privacy setting caps the graphics below what the game needs, so parts of the map may show black. Exempt this site from it:",
+    "intro_software": "Your browser isn't using your graphics card, so the game can't run smoothly. Turn hardware acceleration on, then restart your browser:",
+    "intro_unsupported": "Your browser doesn't support WebGL2, which the game needs. Turn it on, or update your browser:",
+    "note_drivers": "Still stuck? Update your graphics card drivers, or try another browser.",
+    "note_limited": "The protection stays on for every other site.",
+    "step_chrome": "Settings › System › turn on graphics acceleration, then relaunch Chrome.",
+    "step_edge": "Settings › System and performance › turn on hardware acceleration, then restart Edge.",
+    "step_firefox": "Type about:config in the address bar, set webgl.disabled to false and webgl.force-enabled to true, then restart Firefox.",
+    "step_limited": "Type about:config in the address bar, find privacy.resistFingerprinting.exemptedDomains, add {host} (separated by a comma), then restart the browser.",
+    "step_safari": "Settings › Websites › WebGL › choose Allow. On iPhone and iPad it is always on.",
+    "title_limited": "Your browser is limiting the graphics",
+    "title_software": "Hardware acceleration is off",
+    "title_unsupported": "Your browser can't run the game"
+  },
   "win_modal": {
     "died": "You died",
     "exit": "Exit Game",

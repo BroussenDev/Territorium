@@ -3024,6 +3024,22 @@
     "waiting_players": "Mängijate ootamine ({count}/{max})",
     "you": "Sina"
   },
+  "webgl_gate": {
+    "continue": "Mängi ikkagi",
+    "intro_limited": "Privaatsusseade piirab graafikat alla mängu vajaduse, nii et osa kaardist võib olla must. Tee sellele saidile erand:",
+    "intro_software": "Brauser ei kasuta graafikakaarti, seega mäng ei saa sujuvalt töötada. Lülita riistvaraline kiirendus sisse ja taaskäivita brauser:",
+    "intro_unsupported": "Sinu brauser ei toeta WebGL2-t, mida mäng vajab. Lülita see sisse või uuenda brauserit:",
+    "note_drivers": "Ikka ei tööta? Uuenda graafikakaardi draivereid või proovi teist brauserit.",
+    "note_limited": "Kaitse jääb kõigil teistel saitidel sisse.",
+    "step_chrome": "Seaded › Süsteem › lülita graafikakiirendus sisse ja käivita Chrome uuesti.",
+    "step_edge": "Seaded › Süsteem ja jõudlus › lülita riistvaraline kiirendus sisse ja taaskäivita Edge.",
+    "step_firefox": "Sisesta aadressiribale about:config, sea webgl.disabled väärtuseks false ja webgl.force-enabled väärtuseks true ning taaskäivita Firefox.",
+    "step_limited": "Sisesta aadressiribale about:config, leia privacy.resistFingerprinting.exemptedDomains, lisa {host} (komaga eraldatult) ja taaskäivita brauser.",
+    "step_safari": "Seaded › Veebisaidid › WebGL › vali Luba. iPhone'is ja iPadis on see alati sees.",
+    "title_limited": "Sinu brauser piirab graafikat",
+    "title_software": "Riistvaraline kiirendus on välja lülitatud",
+    "title_unsupported": "Sinu brauser ei suuda mängu käivitada"
+  },
   "win_modal": {
     "died": "Sa said surma",
     "exit": "Välju Mängust",

@@ -3024,6 +3024,22 @@
     "waiting_players": "Esperant jugadors ({count}/{max})",
     "you": "Tu"
   },
+  "webgl_gate": {
+    "continue": "Jugar igualment",
+    "intro_limited": "Un ajust de privadesa limita els gràfics per sota del que necessita el joc, i parts del mapa poden sortir negres. Exclou aquest lloc:",
+    "intro_software": "El navegador no fa servir la targeta gràfica, així que el joc no pot anar fluid. Activa l'acceleració per maquinari i reinicia el navegador:",
+    "intro_unsupported": "El teu navegador no admet WebGL2, que el joc necessita. Activa'l o actualitza el navegador:",
+    "note_drivers": "Encara no funciona? Actualitza els controladors de la targeta gràfica o prova un altre navegador.",
+    "note_limited": "La protecció continua activa a tots els altres llocs.",
+    "step_chrome": "Configuració › Sistema › activa l'acceleració gràfica i torna a obrir Chrome.",
+    "step_edge": "Configuració › Sistema i rendiment › activa l'acceleració per maquinari i reinicia Edge.",
+    "step_firefox": "Escriu about:config a la barra d'adreces, posa webgl.disabled a false i webgl.force-enabled a true, i reinicia Firefox.",
+    "step_limited": "Escriu about:config a la barra d'adreces, cerca privacy.resistFingerprinting.exemptedDomains, afegeix {host} (separat per una coma) i reinicia el navegador.",
+    "step_safari": "Configuració › Llocs web › WebGL › tria Permet. A l'iPhone i l'iPad sempre està activat.",
+    "title_limited": "El teu navegador està limitant els gràfics",
+    "title_software": "L'acceleració per maquinari està desactivada",
+    "title_unsupported": "El teu navegador no pot executar el joc"
+  },
   "win_modal": {
     "died": "Has mort",
     "exit": "Surt de la Partida",

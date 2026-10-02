@@ -28,6 +28,25 @@ describe("webgl-gate", () => {
     expect(gate!.textContent).not.toContain("desktop_webgl_gate");
   });
 
+  it.each<WebGLGateStatus>(["unsupported", "software", "limited"])(
+    "has an en.json entry for every translated string (%s)",
+    async (status) => {
+      await mount(status);
+
+      const keys = [
+        ...gate!.querySelectorAll(
+          "h2, section > p, :scope > div > div > p, button",
+        ),
+      ]
+        .map((el) => el.textContent!.trim())
+        .filter((text) => text.startsWith("webgl_gate."));
+      expect(keys.length).toBeGreaterThanOrEqual(3);
+      for (const key of keys) {
+        expect(en.webgl_gate).toHaveProperty(key.slice("webgl_gate.".length));
+      }
+    },
+  );
+
   it.each<WebGLGateStatus>(["unsupported", "software"])(
     "shows Steam instructions instead of browser ones in the desktop shell (%s)",
     async (status) => {
@@ -37,7 +56,7 @@ describe("webgl-gate", () => {
       expect(gate!.textContent).toContain(
         "desktop_webgl_gate.step_restart_steam",
       );
-      expect(gate!.textContent).not.toContain("chrome://flags");
+      expect(gate!.textContent).not.toContain("webgl_gate.step_chrome");
       expect(gate!.textContent).not.toContain("Safari");
     },
   );
@@ -78,6 +97,6 @@ describe("webgl-gate", () => {
     window.openfrontDesktop = {};
     await mount("limited");
 
-    expect(gate!.textContent).toContain("Your browser is limiting WebGL");
+    expect(gate!.textContent).toContain("webgl_gate.title_limited");
   });
 });

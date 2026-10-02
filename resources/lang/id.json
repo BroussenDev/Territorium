@@ -3024,6 +3024,22 @@
     "waiting_players": "Menunggu pemain ({count}/{max})",
     "you": "Kamu"
   },
+  "webgl_gate": {
+    "continue": "Tetap main",
+    "intro_limited": "Sebuah pengaturan privasi membatasi grafis di bawah kebutuhan game, sehingga sebagian peta bisa tampak hitam. Kecualikan situs ini:",
+    "intro_software": "Browsermu tidak memakai kartu grafis, jadi game tidak bisa berjalan lancar. Aktifkan akselerasi perangkat keras, lalu mulai ulang browser:",
+    "intro_unsupported": "Browsermu tidak mendukung WebGL2 yang dibutuhkan game. Aktifkan atau perbarui browsermu:",
+    "note_drivers": "Masih macet? Perbarui driver kartu grafis atau coba browser lain.",
+    "note_limited": "Perlindungan tetap aktif untuk semua situs lain.",
+    "step_chrome": "Setelan › Sistem › aktifkan akselerasi grafis, lalu buka ulang Chrome.",
+    "step_edge": "Pengaturan › Sistem dan performa › aktifkan akselerasi perangkat keras, lalu mulai ulang Edge.",
+    "step_firefox": "Ketik about:config di bilah alamat, setel webgl.disabled ke false dan webgl.force-enabled ke true, lalu mulai ulang Firefox.",
+    "step_limited": "Ketik about:config di bilah alamat, cari privacy.resistFingerprinting.exemptedDomains, tambahkan {host} (dipisahkan koma), lalu mulai ulang browser.",
+    "step_safari": "Pengaturan › Situs web › WebGL › pilih Izinkan. Di iPhone dan iPad selalu aktif.",
+    "title_limited": "Browsermu membatasi grafis",
+    "title_software": "Akselerasi perangkat keras nonaktif",
+    "title_unsupported": "Browsermu tidak bisa menjalankan game ini"
+  },
   "win_modal": {
     "died": "Anda meninggal",
     "exit": "Keluar Game",

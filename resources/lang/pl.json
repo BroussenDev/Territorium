@@ -3024,6 +3024,22 @@
     "waiting_players": "Oczekiwanie na graczy ({count}/{max})",
     "you": "Ty"
   },
+  "webgl_gate": {
+    "continue": "Graj mimo to",
+    "intro_limited": "Ustawienie prywatności ogranicza grafikę poniżej potrzeb gry, więc części mapy mogą być czarne. Wyklucz tę stronę:",
+    "intro_software": "Twoja przeglądarka nie korzysta z karty graficznej, więc gra nie działa płynnie. Włącz akcelerację sprzętową i uruchom ponownie przeglądarkę:",
+    "intro_unsupported": "Twoja przeglądarka nie obsługuje WebGL2, którego potrzebuje gra. Włącz go lub zaktualizuj przeglądarkę:",
+    "note_drivers": "Nadal nie działa? Zaktualizuj sterowniki karty graficznej lub spróbuj innej przeglądarki.",
+    "note_limited": "Ochrona pozostaje włączona na wszystkich innych stronach.",
+    "step_chrome": "Ustawienia › System › włącz akcelerację grafiki, a potem uruchom ponownie Chrome.",
+    "step_edge": "Ustawienia › System i wydajność › włącz akcelerację sprzętową, a potem uruchom ponownie Edge.",
+    "step_firefox": "Wpisz about:config w pasku adresu, ustaw webgl.disabled na false i webgl.force-enabled na true, a potem uruchom ponownie Firefoksa.",
+    "step_limited": "Wpisz about:config w pasku adresu, znajdź privacy.resistFingerprinting.exemptedDomains, dodaj {host} (oddzielone przecinkiem) i uruchom ponownie przeglądarkę.",
+    "step_safari": "Ustawienia › Witryny › WebGL › wybierz Zezwalaj. Na iPhonie i iPadzie jest zawsze włączony.",
+    "title_limited": "Twoja przeglądarka ogranicza grafikę",
+    "title_software": "Akceleracja sprzętowa jest wyłączona",
+    "title_unsupported": "Twoja przeglądarka nie może uruchomić gry"
+  },
   "win_modal": {
     "died": "Nie żyjesz",
     "exit": "Wyjdź z gry",

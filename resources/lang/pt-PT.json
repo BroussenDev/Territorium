@@ -3024,6 +3024,22 @@
     "waiting_players": "À espera de jogadores ({count}/{max})",
     "you": "Tu"
   },
+  "webgl_gate": {
+    "continue": "Jogar mesmo assim",
+    "intro_limited": "Uma definição de privacidade limita os gráficos abaixo do que o jogo precisa, e partes do mapa podem aparecer a preto. Isenta este site:",
+    "intro_software": "O teu navegador não está a usar a placa gráfica, por isso o jogo não corre bem. Ativa a aceleração de hardware e reinicia o navegador:",
+    "intro_unsupported": "O teu navegador não suporta WebGL2, de que o jogo precisa. Ativa-o ou atualiza o navegador:",
+    "note_drivers": "Continua bloqueado? Atualiza os controladores da placa gráfica ou experimenta outro navegador.",
+    "note_limited": "A proteção mantém-se ativa em todos os outros sites.",
+    "step_chrome": "Definições › Sistema › ativa a aceleração gráfica e reabre o Chrome.",
+    "step_edge": "Definições › Sistema e desempenho › ativa a aceleração de hardware e reinicia o Edge.",
+    "step_firefox": "Escreve about:config na barra de endereços, define webgl.disabled como false e webgl.force-enabled como true, e reinicia o Firefox.",
+    "step_limited": "Escreve about:config na barra de endereços, procura privacy.resistFingerprinting.exemptedDomains, adiciona {host} (separado por vírgula) e reinicia o navegador.",
+    "step_safari": "Definições › Sites › WebGL › escolhe Permitir. No iPhone e iPad está sempre ativado.",
+    "title_limited": "O teu navegador está a limitar os gráficos",
+    "title_software": "A aceleração de hardware está desativada",
+    "title_unsupported": "O teu navegador não consegue executar o jogo"
+  },
   "win_modal": {
     "died": "Morreste",
     "exit": "Sair do jogo",

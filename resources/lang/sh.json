@@ -3024,6 +3024,22 @@
     "waiting_players": "Čekanje igrača ({count}/{max})",
     "you": "Ti"
   },
+  "webgl_gate": {
+    "continue": "Igraj svejedno",
+    "intro_limited": "Postavka privatnosti ograničava grafiku ispod onoga što igra treba, pa dijelovi mape mogu biti crni. Izuzmite ovu stranicu:",
+    "intro_software": "Preglednik ne koristi grafičku karticu, pa igra ne radi glatko. Uključite hardversko ubrzanje i ponovo pokrenite preglednik:",
+    "intro_unsupported": "Vaš preglednik ne podržava WebGL2, koji je potreban igri. Uključite ga ili ažurirajte preglednik:",
+    "note_drivers": "I dalje ne radi? Ažurirajte upravljačke programe grafičke kartice ili probajte drugi preglednik.",
+    "note_limited": "Zaštita ostaje uključena za sve ostale stranice.",
+    "step_chrome": "Postavke › Sustav › uključite grafičko ubrzanje, pa ponovo pokrenite Chrome.",
+    "step_edge": "Postavke › Sustav i performanse › uključite hardversko ubrzanje, pa ponovo pokrenite Edge.",
+    "step_firefox": "Upišite about:config u adresnu traku, postavite webgl.disabled na false i webgl.force-enabled na true, pa ponovo pokrenite Firefox.",
+    "step_limited": "Upišite about:config u adresnu traku, pronađite privacy.resistFingerprinting.exemptedDomains, dodajte {host} (odvojeno zarezom) i ponovo pokrenite preglednik.",
+    "step_safari": "Postavke › Web-stranice › WebGL › odaberite Dopusti. Na iPhoneu i iPadu je uvijek uključen.",
+    "title_limited": "Vaš preglednik ograničava grafiku",
+    "title_software": "Hardversko ubrzanje je isključeno",
+    "title_unsupported": "Vaš preglednik ne može pokrenuti igru"
+  },
   "win_modal": {
     "died": "Umro si",
     "exit": "Napusti Igru",

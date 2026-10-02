@@ -3024,6 +3024,22 @@
     "waiting_players": "Warte auf Spieler ({count}/{max})",
     "you": "Du"
   },
+  "webgl_gate": {
+    "continue": "Trotzdem spielen",
+    "intro_limited": "Eine Datenschutzeinstellung begrenzt die Grafik unter das, was das Spiel braucht, daher können Teile der Karte schwarz sein. Nimm diese Seite davon aus:",
+    "intro_software": "Dein Browser nutzt deine Grafikkarte nicht, daher läuft das Spiel nicht flüssig. Schalte die Hardwarebeschleunigung ein und starte den Browser neu:",
+    "intro_unsupported": "Dein Browser unterstützt kein WebGL2, das das Spiel braucht. Schalte es ein oder aktualisiere deinen Browser:",
+    "note_drivers": "Immer noch blockiert? Aktualisiere deine Grafiktreiber oder probiere einen anderen Browser.",
+    "note_limited": "Der Schutz bleibt auf allen anderen Seiten aktiv.",
+    "step_chrome": "Einstellungen › System › Grafikbeschleunigung einschalten, dann Chrome neu starten.",
+    "step_edge": "Einstellungen › System und Leistung › Hardwarebeschleunigung einschalten, dann Edge neu starten.",
+    "step_firefox": "Gib about:config in die Adressleiste ein, setze webgl.disabled auf false und webgl.force-enabled auf true, dann starte Firefox neu.",
+    "step_limited": "Gib about:config in die Adressleiste ein, suche privacy.resistFingerprinting.exemptedDomains, füge {host} hinzu (mit Komma getrennt) und starte den Browser neu.",
+    "step_safari": "Einstellungen › Websites › WebGL › Erlauben wählen. Auf iPhone und iPad ist es immer an.",
+    "title_limited": "Dein Browser schränkt die Grafik ein",
+    "title_software": "Hardwarebeschleunigung ist aus",
+    "title_unsupported": "Dein Browser kann das Spiel nicht ausführen"
+  },
   "win_modal": {
     "died": "Du bist gestorben",
     "exit": "Spiel verlassen",

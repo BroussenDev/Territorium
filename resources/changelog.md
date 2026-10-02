@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.51
+
+🖥️ **The graphics troubleshooting screen in your language**
+
+- The screen shown when your browser can't use your graphics card ("hardware acceleration is off") is now translated into every language.
+- It was also made shorter: one clear line per browser (Chrome, Edge, Firefox, Safari), plus a tip to update your graphics drivers.
+
 ## v0.1.50
 
 🏰 **Bots with Territorium names**

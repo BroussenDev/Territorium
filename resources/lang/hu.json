@@ -3024,6 +3024,22 @@
     "waiting_players": "Játékosokra várunk ({count}/{max})",
     "you": "Te"
   },
+  "webgl_gate": {
+    "continue": "Játék mégis",
+    "intro_limited": "Egy adatvédelmi beállítás a játék igénye alá korlátozza a grafikát, ezért a térkép egyes részei feketék lehetnek. Mentesítsd ezt az oldalt:",
+    "intro_software": "A böngésző nem használja a videokártyát, így a játék nem fut gördülékenyen. Kapcsold be a hardveres gyorsítást, majd indítsd újra a böngészőt:",
+    "intro_unsupported": "A böngésződ nem támogatja a WebGL2-t, amelyre a játéknak szüksége van. Kapcsold be, vagy frissítsd a böngészőt:",
+    "note_drivers": "Még mindig nem megy? Frissítsd a videokártya illesztőprogramjait, vagy próbálj másik böngészőt.",
+    "note_limited": "A védelem minden más oldalon bekapcsolva marad.",
+    "step_chrome": "Beállítások › Rendszer › kapcsold be a grafikus gyorsítást, majd indítsd újra a Chrome-ot.",
+    "step_edge": "Beállítások › Rendszer és teljesítmény › kapcsold be a hardveres gyorsítást, majd indítsd újra az Edge-et.",
+    "step_firefox": "Írd be a címsorba: about:config, állítsd a webgl.disabled értékét false-ra és a webgl.force-enabled értékét true-ra, majd indítsd újra a Firefoxot.",
+    "step_limited": "Írd be a címsorba: about:config, keresd meg a privacy.resistFingerprinting.exemptedDomains beállítást, add hozzá: {host} (vesszővel elválasztva), majd indítsd újra a böngészőt.",
+    "step_safari": "Beállítások › Webhelyek › WebGL › válaszd az Engedélyezést. iPhone-on és iPaden mindig be van kapcsolva.",
+    "title_limited": "A böngésződ korlátozza a grafikát",
+    "title_software": "A hardveres gyorsítás ki van kapcsolva",
+    "title_unsupported": "A böngésződ nem tudja futtatni a játékot"
+  },
   "win_modal": {
     "died": "Meghaltál",
     "exit": "Kilépés a játékból",

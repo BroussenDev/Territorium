@@ -3024,6 +3024,22 @@
     "waiting_players": "Đang chờ người chơi ({count}/{max})",
     "you": "Bạn"
   },
+  "webgl_gate": {
+    "continue": "Vẫn chơi",
+    "intro_limited": "Một cài đặt quyền riêng tư giới hạn đồ họa dưới mức trò chơi cần, nên một phần bản đồ có thể bị đen. Hãy miễn trừ trang này:",
+    "intro_software": "Trình duyệt không dùng card đồ họa nên trò chơi không thể chạy mượt. Hãy bật tăng tốc phần cứng rồi khởi động lại trình duyệt:",
+    "intro_unsupported": "Trình duyệt của bạn không hỗ trợ WebGL2 mà trò chơi cần. Hãy bật nó hoặc cập nhật trình duyệt:",
+    "note_drivers": "Vẫn chưa được? Hãy cập nhật driver card đồ họa hoặc thử trình duyệt khác.",
+    "note_limited": "Bảo vệ vẫn bật cho mọi trang khác.",
+    "step_chrome": "Cài đặt › Hệ thống › bật tăng tốc đồ họa rồi mở lại Chrome.",
+    "step_edge": "Cài đặt › Hệ thống và hiệu suất › bật tăng tốc phần cứng rồi khởi động lại Edge.",
+    "step_firefox": "Gõ about:config vào thanh địa chỉ, đặt webgl.disabled thành false và webgl.force-enabled thành true rồi khởi động lại Firefox.",
+    "step_limited": "Gõ about:config vào thanh địa chỉ, tìm privacy.resistFingerprinting.exemptedDomains, thêm {host} (ngăn cách bằng dấu phẩy) rồi khởi động lại trình duyệt.",
+    "step_safari": "Cài đặt › Trang web › WebGL › chọn Cho phép. Trên iPhone và iPad, nó luôn bật.",
+    "title_limited": "Trình duyệt của bạn đang giới hạn đồ họa",
+    "title_software": "Tăng tốc phần cứng đang tắt",
+    "title_unsupported": "Trình duyệt của bạn không chạy được trò chơi"
+  },
   "win_modal": {
     "died": "Bạn đã chết",
     "exit": "Thoát Trận Đấu",

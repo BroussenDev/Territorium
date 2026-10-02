@@ -3024,6 +3024,22 @@
     "waiting_players": "플레이어 대기 중 ({count}/{max})",
     "you": "나"
   },
+  "webgl_gate": {
+    "continue": "그래도 플레이",
+    "intro_limited": "개인정보 보호 설정이 그래픽을 게임에 필요한 수준 이하로 제한해 지도 일부가 검게 보일 수 있습니다. 이 사이트를 예외로 추가하세요:",
+    "intro_software": "브라우저가 그래픽 카드를 사용하지 않아 게임이 원활하게 실행되지 않습니다. 하드웨어 가속을 켠 뒤 브라우저를 다시 시작하세요:",
+    "intro_unsupported": "브라우저가 게임에 필요한 WebGL2를 지원하지 않습니다. 켜거나 브라우저를 업데이트하세요:",
+    "note_drivers": "여전히 안 되나요? 그래픽 카드 드라이버를 업데이트하거나 다른 브라우저를 사용해 보세요.",
+    "note_limited": "다른 모든 사이트에서는 보호가 계속 켜져 있습니다.",
+    "step_chrome": "설정 › 시스템 › 그래픽 가속을 켠 뒤 Chrome을 다시 실행하세요.",
+    "step_edge": "설정 › 시스템 및 성능 › 하드웨어 가속을 켠 뒤 Edge를 다시 시작하세요.",
+    "step_firefox": "주소창에 about:config를 입력하고 webgl.disabled를 false로, webgl.force-enabled를 true로 설정한 뒤 Firefox를 다시 시작하세요.",
+    "step_limited": "주소창에 about:config를 입력하고 privacy.resistFingerprinting.exemptedDomains를 찾아 {host}를 추가한 뒤(쉼표로 구분) 브라우저를 다시 시작하세요.",
+    "step_safari": "설정 › 웹사이트 › WebGL › 허용을 선택하세요. iPhone과 iPad에서는 항상 켜져 있습니다.",
+    "title_limited": "브라우저가 그래픽을 제한하고 있습니다",
+    "title_software": "하드웨어 가속이 꺼져 있습니다",
+    "title_unsupported": "브라우저에서 게임을 실행할 수 없습니다"
+  },
   "win_modal": {
     "died": "죽었습니다",
     "exit": "게임 나가기",

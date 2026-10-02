@@ -3024,6 +3024,22 @@
     "waiting_players": "Oyuncular bekleniyor ({count}/{max})",
     "you": "Sen"
   },
+  "webgl_gate": {
+    "continue": "Yine de oyna",
+    "intro_limited": "Bir gizlilik ayarı grafikleri oyunun ihtiyacının altında sınırlıyor, bu yüzden haritanın bazı yerleri siyah görünebilir. Bu siteyi muaf tut:",
+    "intro_software": "Tarayıcın ekran kartını kullanmıyor, bu yüzden oyun akıcı çalışamaz. Donanım hızlandırmayı aç ve tarayıcıyı yeniden başlat:",
+    "intro_unsupported": "Tarayıcın, oyunun ihtiyaç duyduğu WebGL2'yi desteklemiyor. Etkinleştir ya da tarayıcını güncelle:",
+    "note_drivers": "Hâlâ olmuyor mu? Ekran kartı sürücülerini güncelle ya da başka bir tarayıcı dene.",
+    "note_limited": "Koruma diğer tüm sitelerde açık kalır.",
+    "step_chrome": "Ayarlar › Sistem › grafik hızlandırmayı aç, sonra Chrome'u yeniden başlat.",
+    "step_edge": "Ayarlar › Sistem ve performans › donanım hızlandırmayı aç, sonra Edge'i yeniden başlat.",
+    "step_firefox": "Adres çubuğuna about:config yaz, webgl.disabled değerini false, webgl.force-enabled değerini true yap ve Firefox'u yeniden başlat.",
+    "step_limited": "Adres çubuğuna about:config yaz, privacy.resistFingerprinting.exemptedDomains'i bul, {host} ekle (virgülle ayırarak) ve tarayıcıyı yeniden başlat.",
+    "step_safari": "Ayarlar › Web siteleri › WebGL › İzin Ver'i seç. iPhone ve iPad'de her zaman açıktır.",
+    "title_limited": "Tarayıcın grafikleri sınırlıyor",
+    "title_software": "Donanım hızlandırma kapalı",
+    "title_unsupported": "Tarayıcın oyunu çalıştıramıyor"
+  },
   "win_modal": {
     "died": "Öldün",
     "exit": "Oyundan Çık",

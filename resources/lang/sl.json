@@ -3024,6 +3024,22 @@
     "waiting_players": "Čakanje na igralce ({count}/{max})",
     "you": "Ti"
   },
+  "webgl_gate": {
+    "continue": "Vseeno igraj",
+    "intro_limited": "Nastavitev zasebnosti omejuje grafiko pod raven, ki jo igra potrebuje, zato so deli zemljevida lahko črni. Izvzemite to stran:",
+    "intro_software": "Brskalnik ne uporablja grafične kartice, zato igra ne teče gladko. Vklopite strojno pospeševanje in znova zaženite brskalnik:",
+    "intro_unsupported": "Vaš brskalnik ne podpira WebGL2, ki ga igra potrebuje. Vklopite ga ali posodobite brskalnik:",
+    "note_drivers": "Še vedno ne gre? Posodobite gonilnike grafične kartice ali poskusite drug brskalnik.",
+    "note_limited": "Zaščita ostane vklopljena za vse druge strani.",
+    "step_chrome": "Nastavitve › Sistem › vklopite grafično pospeševanje, nato znova zaženite Chrome.",
+    "step_edge": "Nastavitve › Sistem in zmogljivost › vklopite strojno pospeševanje, nato znova zaženite Edge.",
+    "step_firefox": "V naslovno vrstico vpišite about:config, nastavite webgl.disabled na false in webgl.force-enabled na true, nato znova zaženite Firefox.",
+    "step_limited": "V naslovno vrstico vpišite about:config, poiščite privacy.resistFingerprinting.exemptedDomains, dodajte {host} (ločeno z vejico) in znova zaženite brskalnik.",
+    "step_safari": "Nastavitve › Spletna mesta › WebGL › izberite Dovoli. Na iPhonu in iPadu je vedno vklopljen.",
+    "title_limited": "Vaš brskalnik omejuje grafiko",
+    "title_software": "Strojno pospeševanje je izklopljeno",
+    "title_unsupported": "Vaš brskalnik ne more zagnati igre"
+  },
   "win_modal": {
     "died": "Umrl si",
     "exit": "Zapri Igro",

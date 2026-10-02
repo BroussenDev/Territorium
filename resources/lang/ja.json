@@ -3024,6 +3024,22 @@
     "waiting_players": "プレイヤーを待っています ({count}/{max})",
     "you": "あなた"
   },
+  "webgl_gate": {
+    "continue": "このままプレイ",
+    "intro_limited": "プライバシー設定によりグラフィックがゲームに必要な水準より低く制限され、マップの一部が黒く表示されることがあります。このサイトを除外してください：",
+    "intro_software": "ブラウザがグラフィックカードを使っていないため、ゲームが快適に動きません。ハードウェアアクセラレーションをオンにして、ブラウザを再起動してください：",
+    "intro_unsupported": "お使いのブラウザは、ゲームに必要な WebGL2 に対応していません。有効にするか、ブラウザを更新してください：",
+    "note_drivers": "まだ解決しませんか？グラフィックドライバーを更新するか、別のブラウザをお試しください。",
+    "note_limited": "ほかのサイトでは保護が有効なままです。",
+    "step_chrome": "設定 › システム › グラフィックアクセラレーションをオンにして、Chrome を再起動します。",
+    "step_edge": "設定 › システムとパフォーマンス › ハードウェアアクセラレーションをオンにして、Edge を再起動します。",
+    "step_firefox": "アドレスバーに about:config と入力し、webgl.disabled を false、webgl.force-enabled を true にして、Firefox を再起動します。",
+    "step_limited": "アドレスバーに about:config と入力し、privacy.resistFingerprinting.exemptedDomains を探して {host} を追加し（カンマ区切り）、ブラウザを再起動します。",
+    "step_safari": "設定 › Web サイト › WebGL › 許可を選びます。iPhone と iPad では常にオンです。",
+    "title_limited": "お使いのブラウザがグラフィックを制限しています",
+    "title_software": "ハードウェアアクセラレーションがオフです",
+    "title_unsupported": "お使いのブラウザではゲームを実行できません"
+  },
   "win_modal": {
     "died": "あなたは死んでしまった",
     "exit": "ゲームから退出",

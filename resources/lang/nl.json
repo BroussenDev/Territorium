@@ -3024,6 +3024,22 @@
     "waiting_players": "Wachten op spelers ({count}/{max})",
     "you": "Jij"
   },
+  "webgl_gate": {
+    "continue": "Toch spelen",
+    "intro_limited": "Een privacy-instelling beperkt de graphics tot onder wat het spel nodig heeft, waardoor delen van de kaart zwart kunnen zijn. Sluit deze site uit:",
+    "intro_software": "Je browser gebruikt je videokaart niet, dus het spel loopt niet soepel. Zet hardwareversnelling aan en herstart je browser:",
+    "intro_unsupported": "Je browser ondersteunt geen WebGL2, dat het spel nodig heeft. Zet het aan of werk je browser bij:",
+    "note_drivers": "Lukt het nog steeds niet? Werk je videokaartstuurprogramma's bij of probeer een andere browser.",
+    "note_limited": "De bescherming blijft aan voor alle andere sites.",
+    "step_chrome": "Instellingen › Systeem › zet grafische versnelling aan en start Chrome opnieuw.",
+    "step_edge": "Instellingen › Systeem en prestaties › zet hardwareversnelling aan en herstart Edge.",
+    "step_firefox": "Typ about:config in de adresbalk, zet webgl.disabled op false en webgl.force-enabled op true en herstart Firefox.",
+    "step_limited": "Typ about:config in de adresbalk, zoek privacy.resistFingerprinting.exemptedDomains, voeg {host} toe (gescheiden door een komma) en herstart de browser.",
+    "step_safari": "Instellingen › Websites › WebGL › kies Sta toe. Op iPhone en iPad staat het altijd aan.",
+    "title_limited": "Je browser beperkt de graphics",
+    "title_software": "Hardwareversnelling staat uit",
+    "title_unsupported": "Je browser kan het spel niet draaien"
+  },
   "win_modal": {
     "died": "Je bent dood",
     "exit": "Verlaat spel",
