@@ -32,7 +32,6 @@
  * the same frame as the home page's cards.
  * ------------------------------------------------------------------------- */
 
-game-left-sidebar > aside,
 game-right-sidebar > aside,
 player-info-overlay .bg-gray-800\/92,
 tutorial-panel .bg-gray-800\/92,
@@ -196,40 +195,15 @@ control-panel .objectives-chip {
  * Leaderboard (left sidebar)
  * ------------------------------------------------------------------------- */
 
-game-left-sidebar .bg-gray-700\/50 {
-  background-color: var(--tr-emerald-wash);
-  border-color: var(--tr-emerald-line);
-}
-
-game-left-sidebar .bg-gray-700\/50:hover {
-  background-color: rgba(16, 185, 129, 0.25);
-  border-color: var(--tr-gold-line);
-}
-
-game-left-sidebar .stats-table .bg-gray-800\/85 {
-  background-color: var(--tr-ink);
-  border: 1px solid var(--tr-emerald-line);
-}
-
 game-left-sidebar .stats-table-header {
-  background-color: rgba(6, 78, 59, 0.9);
   color: var(--tr-gold-light);
   font-family: var(--tr-display);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
-game-left-sidebar .stats-table .border-b-slate-500 {
-  border-bottom-color: var(--tr-gold-line);
-}
-
-game-left-sidebar .stats-table-row:hover {
-  background-color: rgba(16, 185, 129, 0.18);
-}
-
-/* Your own row stays pinned; mark it with the gold edge. */
+/* Your own row stays pinned; mark it with the gold capital edge. */
 game-left-sidebar .stats-table-pinned-row {
-  background-color: rgba(6, 78, 59, 0.95);
-  box-shadow: inset 3px 0 0 var(--tr-gold);
+  box-shadow: inset 3px 0 0 var(--color-capital);
 }
 
 /* ---------------------------------------------------------------------------

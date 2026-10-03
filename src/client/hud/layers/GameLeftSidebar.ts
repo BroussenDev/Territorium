@@ -112,14 +112,17 @@ export class GameLeftSidebar extends LitElement implements Controller {
   render() {
     return html`
       <aside
-        class=${`fixed top-0 left-0 z-900 flex flex-col max-h-[calc(100vh-80px)] overflow-y-auto p-2 bg-plate-800/92 backdrop-blur-sm shadow-xs rounded-br-lg ${this.isPlayerStatsShown || this.isTeamStatsShown ? "max-[400px]:w-full max-[400px]:rounded-none" : ""} transition-all duration-300 ease-out transform ${
+        class=${`fixed top-0 left-0 z-900 flex flex-col max-h-[calc(100vh-80px)] overflow-y-auto p-2 border border-t-0 border-l-0 border-white/10 bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)] rounded-br-md ${this.isPlayerStatsShown || this.isTeamStatsShown ? "max-[400px]:w-full max-[400px]:rounded-none" : ""} transition-all duration-300 ease-out transform ${
           this.isVisible ? "translate-x-0" : "hidden"
         }`}
         style="margin-top: ${this.barOffset}px;"
       >
-        <div class="flex items-center gap-4 xl:gap-6 text-white">
+        <div class="flex items-center gap-1.5 text-white">
           <div
-            class="cursor-pointer p-0.5 bg-plate-700/50 hover:bg-plate-600 border rounded-md border-plate-500 transition-colors"
+            class="grid size-8 cursor-pointer place-items-center rounded-md border transition-colors ${this
+              .isPlayerStatsShown
+              ? "border-brand/60 bg-brand/15"
+              : "border-white/10 bg-black/25 hover:border-brand/50 hover:bg-brand/10"}"
             @click=${this.togglePlayerStats}
             role="button"
             tabindex="0"
@@ -143,7 +146,10 @@ export class GameLeftSidebar extends LitElement implements Controller {
           ${this.isTeamGame
             ? html`
                 <div
-                  class="cursor-pointer p-0.5 bg-plate-700/50 hover:bg-plate-600 border rounded-md border-plate-500 transition-colors"
+                  class="grid size-8 cursor-pointer place-items-center rounded-md border transition-colors ${this
+                    .isTeamStatsShown
+                    ? "border-brand/60 bg-brand/15"
+                    : "border-white/10 bg-black/25 hover:border-brand/50 hover:bg-brand/10"}"
                   @click=${this.toggleTeamStats}
                   role="button"
                   tabindex="0"

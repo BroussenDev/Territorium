@@ -48,8 +48,8 @@ const ALIGNMENT_CLASS: Record<ColumnAlignment, string> = {
   end: "justify-end text-right",
 };
 const CELL_CLASS = "h-6 md:h-8 lg:h-9 min-w-0 px-1 flex items-center";
-const DIVIDER_CLASS = "border-l border-l-slate-600/40";
-const HEADER_DIVIDER_CLASS = "border-l border-l-slate-500";
+const DIVIDER_CLASS = "border-l border-l-white/[0.05]";
+const HEADER_DIVIDER_CLASS = "border-l border-l-white/10";
 
 export abstract class StatsTable extends LitElement {
   public game: GameView | null = null;
@@ -209,7 +209,7 @@ export abstract class StatsTable extends LitElement {
     const sorted = this.sortKey === column.id;
     return html`
       <div
-        class="stats-table-header-cell ${CELL_CLASS} justify-center text-center whitespace-nowrap border-b border-b-slate-500 ${index >
+        class="stats-table-header-cell ${CELL_CLASS} justify-center text-center whitespace-nowrap border-b border-b-capital/40 ${index >
         0
           ? HEADER_DIVIDER_CLASS
           : ""}"
@@ -225,13 +225,13 @@ export abstract class StatsTable extends LitElement {
       >
         ${column.isOrderable
           ? html`<button
-              class="inline-flex items-center justify-center gap-1 hover:text-sky-200 transition-colors"
+              class="inline-flex items-center justify-center gap-1 hover:text-capital-light transition-colors"
               aria-label=${label}
               @click=${() => this.setSort(column.id)}
             >
               ${visual}
               ${sorted
-                ? html`<span class="text-sky-300" aria-hidden="true"
+                ? html`<span class="text-capital-light" aria-hidden="true"
                     >${this.sortOrder === "asc" ? "↑" : "↓"}</span
                   >`
                 : nothing}
@@ -273,8 +273,8 @@ export abstract class StatsTable extends LitElement {
   ) {
     return html`
       <div
-        class="stats-table-row grid col-span-full hover:bg-slate-600/60 ${pinned
-          ? "stats-table-pinned-row bg-gray-700/95"
+        class="stats-table-row grid col-span-full hover:bg-brand/10 ${pinned
+          ? "stats-table-pinned-row bg-brand/15"
           : ""} ${row.emphasized ? "font-bold" : ""} ${row.onClick
           ? "cursor-pointer"
           : ""}"
@@ -358,7 +358,7 @@ export abstract class StatsTable extends LitElement {
     return html`
       <div class="stats-table relative mt-1 text-white text-xs lg:text-sm">
         <div
-          class="overflow-x-auto rounded-lg bg-gray-800/85"
+          class="overflow-x-auto rounded-md border border-white/10 bg-black/30"
           @contextmenu=${(event: Event) => event.preventDefault()}
         >
           <div
@@ -367,7 +367,7 @@ export abstract class StatsTable extends LitElement {
             role="table"
           >
             <div
-              class="stats-table-header grid col-span-full font-bold bg-gray-700/95"
+              class="stats-table-header grid col-span-full font-bold bg-plate-800"
               style="grid-template-columns: subgrid; grid-column: 1 / -1;"
               role="row"
             >
@@ -377,7 +377,7 @@ export abstract class StatsTable extends LitElement {
                 (column, index) => this.renderHeaderCell(column, index),
               )}
               <div
-                class="${CELL_CLASS} justify-center border-b border-b-slate-500 ${HEADER_DIVIDER_CLASS}"
+                class="${CELL_CLASS} justify-center border-b border-b-capital/40 ${HEADER_DIVIDER_CLASS}"
                 role="columnheader"
               >
                 <column-picker
@@ -415,7 +415,7 @@ export abstract class StatsTable extends LitElement {
                     index < scrollableRows.length - 1 ||
                       pinnedRow !== null ||
                       bottomSpacerPx > 0
-                      ? "border-b border-b-slate-500"
+                      ? "border-b border-b-white/[0.06]"
                       : "",
                   ),
               )}

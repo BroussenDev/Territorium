@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.55
+
+🕰️ **Leaderboard and match clock reworked**
+
+- The match clock now hangs from the top of the screen next to the bell, in gold Territorium figures.
+- The buttons (speed, pause, settings, full screen, leave) are now a column of square tiles down the right edge; leave lights red on hover.
+- The in-game leaderboard uses the same dark plates as the command panel, with a gold line under its header, gold sort arrows and your own row marked by the gold capital edge.
+
 ## v0.1.54
 
 🎯 **The right-click menu in Territorium's colours**
