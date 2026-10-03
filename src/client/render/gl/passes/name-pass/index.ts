@@ -46,6 +46,7 @@ import {
 import { DebugProgram } from "./DebugProgram";
 import { FlagAtlasArray } from "./FlagAtlasArray";
 import { IconProgram } from "./IconProgram";
+import { PlateProgram } from "./PlateProgram";
 import { StatusIconProgram } from "./StatusIconProgram";
 import { layoutString } from "./TextLayout";
 import { TextProgram } from "./TextProgram";
@@ -81,6 +82,7 @@ export class NamePass {
   private iconProgram: IconProgram;
   private statusIconProgram: StatusIconProgram;
   private debugProgram: DebugProgram;
+  private plateProgram: PlateProgram;
 
   // Atlas + glyph data
   private glyph: GlyphTables;
@@ -230,6 +232,12 @@ export class NamePass {
       config.allianceExtensionPromptOffset(),
     );
     this.debugProgram = new DebugProgram(
+      gl,
+      atlas,
+      this.playerDataTex,
+      this.maxPlayers,
+    );
+    this.plateProgram = new PlateProgram(
       gl,
       atlas,
       this.playerDataTex,
@@ -653,9 +661,9 @@ export class NamePass {
     d[off + 11] = 1.0;
 
     // Column 3: nameLen, troopLen, nameShade, nameHalfWidth
-    // Name fill darkens by type: human black, nation a bit gray, bot greyer.
+    // Name fill by type: humans brightest, nations a touch dimmer, bots dimmest.
     const ns = this.settings.name;
-    let nameShade = 0.0;
+    let nameShade = ns.nameShadeHuman;
     if (slot.static.playerType === PlayerTypeEnum.Nation) {
       nameShade = ns.nameShadeNation;
     } else if (slot.static.playerType === PlayerTypeEnum.Bot) {
@@ -842,6 +850,13 @@ export class NamePass {
 
     const fadeOwnerID = this.hitTestNamePlate(performance.now() / 1000);
 
+    this.plateProgram.draw(
+      cameraMatrix,
+      this.settings,
+      this.vao,
+      this.highlightOwnerID,
+      fadeOwnerID,
+    );
     this.textProgram.draw(
       cameraMatrix,
       this.settings,
@@ -876,6 +891,7 @@ export class NamePass {
     this.crownAtlas.dispose();
     this.statusIconProgram.dispose();
     this.debugProgram.dispose();
+    this.plateProgram.dispose();
     gl.deleteTexture(this.glyphMetricsTex);
     gl.deleteTexture(this.cursorTex);
     gl.deleteTexture(this.stringTex);

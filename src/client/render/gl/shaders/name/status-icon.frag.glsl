@@ -10,6 +10,7 @@ uniform float uStatusOutlinePx; // outline radius in atlas texels (0 = off)
 in vec2 vUV;
 in vec2 vLocalUV;
 flat in int vCrownLayer;
+flat in int vIsCrown;
 flat in int vDiscard;
 flat in float vAllianceFraction;
 flat in vec2 vFadedUV0;
@@ -37,6 +38,20 @@ void main() {
   vec4 texel = (vCrownLayer >= 0)
     ? texture(uCrownAtlas, vec3(vLocalUV, float(vCrownLayer)))
     : texture(uStatusAtlas, vUV);
+
+  // Without a crown cosmetic, the leader wears Territorium's gold capital
+  // tile: a square with a light top-left bevel, outlined in night ink.
+  if (vIsCrown == 1 && vCrownLayer < 0) {
+    vec2 q = abs(vLocalUV - 0.5);
+    float d = max(q.x, q.y);
+    float aa = fwidth(d);
+    float tile = 1.0 - smoothstep(0.30 - aa, 0.30 + aa, d);
+    float rim = 1.0 - smoothstep(0.38 - aa, 0.38 + aa, d);
+    float bevel = clamp(1.2 - (vLocalUV.x + vLocalUV.y), 0.0, 1.0);
+    vec3 gold = mix(vec3(0.87, 0.62, 0.13), vec3(1.0, 0.86, 0.47), bevel);
+    vec3 ink = vec3(0.04, 0.08, 0.07);
+    texel = vec4(mix(ink, gold, tile), rim);
+  }
 
   // Alliance drain: composite faded icon behind colored icon, clipped by fraction.
   // Matches the game's CSS clip-path: inset(topCut% -2px 0 -2px) behavior.

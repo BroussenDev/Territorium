@@ -285,7 +285,8 @@ export interface RenderSettings {
     outlineB: number;
     outlineUsePlayerColor: boolean;
     fillUsePlayerColor: boolean;
-    /** Name fill grayscale shade by player type (0 = black). Human is always 0. */
+    /** Name fill grayscale shade by player type (0 = black, 1 = white). */
+    nameShadeHuman: number;
     nameShadeNation: number;
     nameShadeBot: number;
     emojiRowOffset: number;
@@ -298,6 +299,8 @@ export interface RenderSettings {
     hoverGlowWidth: number;
     /** Peak opacity of the hover glow (0 disables it). */
     hoverGlowAlpha: number;
+    /** Opacity of the night cartouche behind each name (0 = no cartouche). */
+    plateAlpha: number;
     flagAlpha: number;
   };
   fx: {

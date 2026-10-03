@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.58
+
+🏷️ **Names on cartouches**
+
+- Every name on the map now sits on a small night cartouche, underlined in the territory's colour, with the flag and the troop count inside it. Names are written in light letters, so they read clearly on any land.
+- The player with the most land no longer wears OpenFront's crown: a gold capital tile, like the one in the logo, marks the leader. Crown cosmetics still replace it.
+
 ## v0.1.57
 
 ⏱️ **A single match bar**

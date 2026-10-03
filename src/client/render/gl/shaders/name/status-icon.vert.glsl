@@ -36,6 +36,7 @@ uniform float uAllianceFlashWindowSec; // seconds before expiry the alliance ico
 out vec2 vUV;
 out vec2 vLocalUV;               // 0..1 within the icon cell
 flat out int vCrownLayer;        // crown-cosmetic atlas layer for slot 0, or -1
+flat out int vIsCrown;           // 1 for the first-place slot (slot 0)
 flat out int vDiscard;
 flat out float vAllianceFraction; // 0 = no drain effect, >0 = active drain
 flat out vec2 vFadedUV0;         // top-left UV of faded alliance cell
@@ -105,6 +106,7 @@ void main() {
 
   // A crown cosmetic skins the first-place crown (slot 0).
   vCrownLayer = (iconSlot == 0 && pd8.x >= 0.0) ? int(pd8.x) : -1;
+  vIsCrown = iconSlot == 0 ? 1 : 0;
 
   vDecay = 0.0; // only the decaying doomsday skull raises this
 
