@@ -47,6 +47,7 @@ export class TextProgram {
   private uOutlineWidth: WebGLUniformLocation;
   private uNightAmbient: WebGLUniformLocation;
   private uOutlineColor: WebGLUniformLocation;
+  private uPlatedShade: WebGLUniformLocation;
   private uOutlineUsePlayerColor: WebGLUniformLocation;
   private uFillUsePlayerColor: WebGLUniformLocation;
   private uHoverGlowWidth: WebGLUniformLocation;
@@ -122,6 +123,7 @@ export class TextProgram {
     this.uOutlineWidth = gl.getUniformLocation(this.program, "uOutlineWidth")!;
     this.uNightAmbient = gl.getUniformLocation(this.program, "uNightAmbient")!;
     this.uOutlineColor = gl.getUniformLocation(this.program, "uOutlineColor")!;
+    this.uPlatedShade = gl.getUniformLocation(this.program, "uPlatedShade")!;
     this.uOutlineUsePlayerColor = gl.getUniformLocation(
       this.program,
       "uOutlineUsePlayerColor",
@@ -198,6 +200,7 @@ export class TextProgram {
       ns.outlineUsePlayerColor ? 1.0 : 0.0,
     );
     gl.uniform1f(this.uFillUsePlayerColor, ns.fillUsePlayerColor ? 1.0 : 0.0);
+    gl.uniform1f(this.uPlatedShade, ns.nameShadeHuman);
     gl.uniform1f(this.uHoverGlowWidth, ns.hoverGlowWidth);
     gl.uniform1f(this.uHoverGlowAlpha, ns.hoverGlowAlpha);
 

@@ -39,7 +39,9 @@ void main() {
   vec4 pd2 = texelFetch(uPlayerData, ivec2(2, playerIdx), 0);
   vec4 pd3 = texelFetch(uPlayerData, ivec2(3, playerIdx), 0);
   vec4 pd4 = texelFetch(uPlayerData, ivec2(4, playerIdx), 0);
-  if (pd1.w <= 0.0 || pd3.x <= 0.0) { hide(); return; }
+  // Only real players get a cartouche (pd8.w).
+  float plated = texelFetch(uPlayerData, ivec2(8, playerIdx), 0).w;
+  if (pd1.w <= 0.0 || pd3.x <= 0.0 || plated < 0.5) { hide(); return; }
 
   float elapsed = uTime - pd0.w;
   float t = clamp(1.0 - exp(-uLerpSpeed * elapsed), 0.0, 1.0);

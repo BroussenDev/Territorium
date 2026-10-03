@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.59
+
+🏷️ **Cartouches for real players only**
+
+- Only real players' names now sit on a cartouche, so you can tell them apart at a glance. Nations and bots go back to their previous lettering: a dark name outlined in their territory colour.
+
 ## v0.1.58
 
 🏷️ **Names on cartouches**

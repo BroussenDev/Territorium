@@ -661,9 +661,10 @@ export class NamePass {
     d[off + 11] = 1.0;
 
     // Column 3: nameLen, troopLen, nameShade, nameHalfWidth
-    // Name fill by type: humans brightest, nations a touch dimmer, bots dimmest.
+    // Name fill darkens by type: human black, nation a bit gray, bot greyer
+    // (real players are drawn light on their cartouche instead).
     const ns = this.settings.name;
-    let nameShade = ns.nameShadeHuman;
+    let nameShade = 0.0;
     if (slot.static.playerType === PlayerTypeEnum.Nation) {
       nameShade = ns.nameShadeNation;
     } else if (slot.static.playerType === PlayerTypeEnum.Bot) {
@@ -709,7 +710,8 @@ export class NamePass {
     d[off + 30] = slot.allianceFraction;
     d[off + 31] = slot.allianceRemainingTicks;
 
-    // Column 8: crownLayerIdx (crown cosmetic), verified badge, statusIconCount, free
+    // Column 8: crownLayerIdx (crown cosmetic), verified badge, statusIconCount,
+    // plated (1 for real players: their name sits on a cartouche)
     d[off + 32] = slot.crownLayerIdx;
     d[off + 33] = slot.static.verified === true ? 1.0 : 0.0;
     // Count of active status-row icons so shaders don't recompute it independently.
@@ -724,7 +726,7 @@ export class NamePass {
       slot.nukeActive,
       slot.inDoomsdayClock || slot.doomsdayClockDraining,
     ].filter(Boolean).length;
-    d[off + 35] = 0.0;
+    d[off + 35] = slot.static.playerType === PlayerTypeEnum.Human ? 1.0 : 0.0;
 
     this.playerDataDirty = true;
   }

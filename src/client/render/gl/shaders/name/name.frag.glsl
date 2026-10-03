@@ -8,6 +8,7 @@ uniform float uNightAmbient;
 uniform vec3  uOutlineColor;
 uniform float uOutlineUsePlayerColor;
 uniform float uFillUsePlayerColor;
+uniform float uPlatedShade;      // name fill shade on a cartouche (1 = white)
 uniform float uHoverGlowWidth; // px the white hover glow extends past the outline
 uniform float uHoverGlowAlpha; // peak opacity of the hover glow
 
@@ -15,6 +16,7 @@ in vec2 vUV;
 in vec4 vPlayerColor;   // player territory color (rgb) + alpha
 in float vNameShade;      // name fill grayscale shade (0.0 = black)
 flat in float vHighlight; // 1.0 when this player is hovered (white glow)
+flat in float vPlated;    // 1.0 for real players, whose names sit on a cartouche
 out vec4 fragColor;
 
 float median(float r, float g, float b) {
@@ -32,7 +34,9 @@ void main() {
 
   // Compute fill color: player color, or per-type grayscale shade
   // (black for human, grayer for nation/bot). Applies in day and night.
-  vec3 defaultFill = vec3(vNameShade);
+  // Real players read light on their cartouche; nations and bots keep a
+  // dark name outlined in their territory colour.
+  vec3 defaultFill = vec3(vPlated > 0.5 ? uPlatedShade : vNameShade);
   vec3 fillColor = mix(defaultFill, vPlayerColor.rgb, uFillUsePlayerColor);
 
   vec3 msd = texture(uAtlas, vUV).rgb;
@@ -57,7 +61,8 @@ void main() {
     float outlineAlpha = clamp(outlineDist + 0.5, 0.0, 1.0);
 
     vec3 nightOutlineColor = mix(vec3(0.0), uOutlineColor, borderT);
-    vec3 borderColor = mix(nightOutlineColor, vPlayerColor.rgb, uOutlineUsePlayerColor);
+    float useColor = vPlated > 0.5 ? 0.0 : uOutlineUsePlayerColor;
+    vec3 borderColor = mix(nightOutlineColor, vPlayerColor.rgb, useColor);
     color = mix(borderColor, fillColor, fillAlpha);
     coverage = outlineAlpha;
   } else {

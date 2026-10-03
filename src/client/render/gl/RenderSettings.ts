@@ -285,8 +285,9 @@ export interface RenderSettings {
     outlineB: number;
     outlineUsePlayerColor: boolean;
     fillUsePlayerColor: boolean;
-    /** Name fill grayscale shade by player type (0 = black, 1 = white). */
+    /** Real players' name fill on their cartouche (0 = black, 1 = white). */
     nameShadeHuman: number;
+    /** Name fill grayscale shade for nations and bots (0 = black). */
     nameShadeNation: number;
     nameShadeBot: number;
     emojiRowOffset: number;
@@ -299,7 +300,7 @@ export interface RenderSettings {
     hoverGlowWidth: number;
     /** Peak opacity of the hover glow (0 disables it). */
     hoverGlowAlpha: number;
-    /** Opacity of the night cartouche behind each name (0 = no cartouche). */
+    /** Opacity of the cartouche behind real players' names (0 = none). */
     plateAlpha: number;
     flagAlpha: number;
   };

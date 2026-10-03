@@ -35,6 +35,7 @@ out vec2 vUV;
 out vec4 vPlayerColor;  // player territory color (rgb) + alpha
 out float vNameShade;     // name fill grayscale shade (0.0 = black)
 flat out float vHighlight; // 1.0 when this player is hovered (white glow)
+flat out float vPlated;    // 1.0 for real players, whose names sit on a cartouche
 
 void main() {
   // 1. Decode instance ID → playerIdx, lineIdx, charPos
@@ -185,4 +186,5 @@ void main() {
   vPlayerColor = vec4(pd2.rgb, pd2.a * hoverAlpha); // player territory color + alpha
   vNameShade = pd3.z;         // name fill grayscale shade (0.0 = black)
   vHighlight = isHighlighted ? 1.0 : 0.0;
+  vPlated = texelFetch(uPlayerData, ivec2(8, playerIdx), 0).w;
 }
