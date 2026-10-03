@@ -32,7 +32,6 @@
  * the same frame as the home page's cards.
  * ------------------------------------------------------------------------- */
 
-#game-hud div:has(> control-panel),
 game-left-sidebar > aside,
 game-right-sidebar > aside,
 player-info-overlay .bg-gray-800\/92,
@@ -47,50 +46,121 @@ win-modal > div {
 }
 
 /* ---------------------------------------------------------------------------
- * Control panel and unit bar
+ * Command panel (troops, gold, attack ratio, build bar): a dark plate topped
+ * by a row of claimed tiles led by the gold capital, like the menu tabs.
  * ------------------------------------------------------------------------- */
 
-control-panel .border-gray-600,
-unit-display .border-gray-600 {
-  border-color: var(--tr-emerald-line);
+#game-hud .command-panel {
+  position: relative;
+  background: linear-gradient(180deg, #11221c 0%, #0a1512 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
 }
 
-control-panel .bg-gray-900\/60 {
-  background-color: var(--tr-ink);
+#game-hud .command-panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--color-capital), var(--color-capital)) 0 0 / 6px 100%
+      no-repeat,
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 8px,
+      var(--color-brand-bright) 8px 14px,
+      transparent 14px 16px
+    );
 }
 
-/* Gold readout: a gold pill with the display face, like the home page's
-   currency chips. */
-control-panel .border-yellow-400 {
-  border-color: var(--tr-gold-line);
-  background: linear-gradient(
-    180deg,
-    rgba(251, 191, 36, 0.16),
-    rgba(251, 191, 36, 0.05)
+/* The troop gauge reads as a row of tiles: every layer inside is cut into
+   square-ish cells with a hairline gap. */
+control-panel .tile-gauge {
+  --cells: 28;
+  -webkit-mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0 calc(100% / var(--cells) - 2px),
+    transparent calc(100% / var(--cells) - 2px) calc(100% / var(--cells))
   );
-  color: var(--tr-gold-light);
-  font-family: var(--tr-display);
-  letter-spacing: 0.02em;
+  mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0 calc(100% / var(--cells) - 2px),
+    transparent calc(100% / var(--cells) - 2px) calc(100% / var(--cells))
+  );
 }
 
-control-panel .accent-brand-light {
-  accent-color: var(--tr-gold);
+/* Attack ratio slider: an emerald track filled up to the value, with the
+   gold capital tile as the handle. --val is set inline. */
+control-panel .tr-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+}
+
+control-panel .tr-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-bright) var(--val, 0%),
+    rgba(255, 255, 255, 0.1) var(--val, 0%)
+  );
+}
+
+control-panel .tr-range::-moz-range-track {
+  height: 6px;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-bright) var(--val, 0%),
+    rgba(255, 255, 255, 0.1) var(--val, 0%)
+  );
+}
+
+control-panel .tr-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -4px;
+  border-radius: 2px;
+  background: var(--color-capital-light);
+  border: 2px solid #0a1512;
+  box-shadow: 0 0 0 1px var(--color-capital);
+}
+
+control-panel .tr-range::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--color-capital-light);
+  border: 2px solid #0a1512;
+  box-shadow: 0 0 0 1px var(--color-capital);
+}
+
+control-panel .tr-range:focus-visible {
+  outline: 2px solid var(--color-capital-light);
+  outline-offset: 2px;
 }
 
 unit-display .border-white\/10 {
-  border-color: var(--tr-emerald-line);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-unit-display .bg-gray-800\/90 {
+unit-display .bg-plate-800\/90 {
   background-color: var(--tr-night);
-  border: 1px solid var(--tr-gold-line);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Build bar: each group (economy, defense, navy, missiles) is a dark
    inset tray; tiles light up emerald on hover and gold when picked. */
 unit-display .hotbar-group {
-  background-color: var(--tr-ink);
-  border-color: var(--tr-emerald-line);
+  background-color: rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 unit-display .hotbar-tile:hover {

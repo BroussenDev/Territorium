@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.53
+
+🎛️ **A new command panel**
+
+- The bottom panel was redone as Territorium's own command panel: your troops in large figures with their growth beside them, and the treasury on a gold plate.
+- The troop gauge is now a row of tiles that fills up as your army grows; troops away attacking show as pale tiles.
+- The attack slider has an emerald track and the gold capital tile as its handle, with the number of troops it sends right next to it.
+- A row of claimed tiles led by the gold capital tops the panel, like the menu tabs.
+
 ## v0.1.52
 
 ⚔️ **See your fronts**
