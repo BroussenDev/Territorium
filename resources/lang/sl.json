@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Mošnja smaragdov",
     "bourse_royale": "Kraljeva mošnja",
+    "chambre_forte": "Trezor smaragdov",
     "coffre": "Skrinja smaragdov",
     "coffre_royal": "Kraljeva skrinja",
+    "malle": "Skrinja smaragdov",
+    "pochette_royale": "Kraljevi mošnjiček",
     "tresor": "Zaklad smaragdov",
+    "tresor_imperial": "Cesarski zaklad",
     "tresor_royal": "Kraljevi zaklad"
   },
   "desktop_gate": {

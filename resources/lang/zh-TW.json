@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "翡翠錢袋",
     "bourse_royale": "皇家錢袋",
+    "chambre_forte": "綠寶石寶庫",
     "coffre": "翡翠寶箱",
     "coffre_royal": "皇家寶箱",
+    "malle": "綠寶石大箱",
+    "pochette_royale": "皇家錢袋",
     "tresor": "翡翠寶藏",
+    "tresor_imperial": "帝國寶藏",
     "tresor_royal": "皇家寶藏"
   },
   "desktop_gate": {

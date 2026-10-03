@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Sakiewka szmaragdów",
     "bourse_royale": "Królewska sakiewka",
+    "chambre_forte": "Skarbiec szmaragdów",
     "coffre": "Skrzynia szmaragdów",
     "coffre_royal": "Królewska skrzynia",
+    "malle": "Kufer szmaragdów",
+    "pochette_royale": "Królewska sakiewka",
     "tresor": "Skarb szmaragdów",
+    "tresor_imperial": "Cesarski skarb",
     "tresor_royal": "Królewski skarb"
   },
   "desktop_gate": {

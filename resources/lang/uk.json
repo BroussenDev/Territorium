@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Мішечок смарагдів",
     "bourse_royale": "Королівський мішечок",
+    "chambre_forte": "Сховище смарагдів",
     "coffre": "Скриня смарагдів",
     "coffre_royal": "Королівська скриня",
+    "malle": "Скриня смарагдів",
+    "pochette_royale": "Королівський гаманець",
     "tresor": "Скарб смарагдів",
+    "tresor_imperial": "Імперська скарбниця",
     "tresor_royal": "Королівський скарб"
   },
   "desktop_gate": {

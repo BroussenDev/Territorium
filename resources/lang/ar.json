@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "صرة زمرد",
     "bourse_royale": "الصرة الملكية",
+    "chambre_forte": "خزنة زمرد",
     "coffre": "صندوق زمرد",
     "coffre_royal": "الصندوق الملكي",
+    "malle": "صندوق زمرد",
+    "pochette_royale": "صرّة ملكية",
     "tresor": "كنز زمرد",
+    "tresor_imperial": "كنز إمبراطوري",
     "tresor_royal": "الكنز الملكي"
   },
   "desktop_gate": {

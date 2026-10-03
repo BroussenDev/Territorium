@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Ќесе со смарагди",
     "bourse_royale": "Кралско ќесе",
+    "chambre_forte": "Трезор со смарагди",
     "coffre": "Сандак со смарагди",
     "coffre_royal": "Кралски сандак",
+    "malle": "Ковчег со смарагди",
+    "pochette_royale": "Кралско ќесенце",
     "tresor": "Богатство од смарагди",
+    "tresor_imperial": "Империјално богатство",
     "tresor_royal": "Кралско богатство"
   },
   "desktop_gate": {

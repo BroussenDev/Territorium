@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Borsa di smeraldi",
     "bourse_royale": "Borsa reale",
+    "chambre_forte": "Camera blindata",
     "coffre": "Forziere di smeraldi",
     "coffre_royal": "Forziere reale",
+    "malle": "Baule di smeraldi",
+    "pochette_royale": "Borsellino reale",
     "tresor": "Tesoro di smeraldi",
+    "tresor_imperial": "Tesoro imperiale",
     "tresor_royal": "Tesoro reale"
   },
   "desktop_gate": {

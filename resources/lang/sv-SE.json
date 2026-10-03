@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragdpung",
     "bourse_royale": "Kunglig pung",
+    "chambre_forte": "Smaragdvalv",
     "coffre": "Smaragdkista",
     "coffre_royal": "Kunglig kista",
+    "malle": "Smaragdkista",
+    "pochette_royale": "Kunglig börs",
     "tresor": "Smaragdskatt",
+    "tresor_imperial": "Kejserlig skatt",
     "tresor_royal": "Kunglig skatt"
   },
   "desktop_gate": {

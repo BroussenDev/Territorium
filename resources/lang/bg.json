@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Кесия с изумруди",
     "bourse_royale": "Кралска кесия",
+    "chambre_forte": "Трезор с изумруди",
     "coffre": "Сандък с изумруди",
     "coffre_royal": "Кралски сандък",
+    "malle": "Сандък изумруди",
+    "pochette_royale": "Кралска кесийка",
     "tresor": "Съкровище от изумруди",
+    "tresor_imperial": "Имперско съкровище",
     "tresor_royal": "Кралско съкровище"
   },
   "desktop_gate": {

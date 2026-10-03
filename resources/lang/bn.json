@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "পান্নার থলি",
     "bourse_royale": "রাজকীয় থলি",
+    "chambre_forte": "পান্নার ভল্ট",
     "coffre": "পান্নার সিন্দুক",
     "coffre_royal": "রাজকীয় সিন্দুক",
+    "malle": "পান্নার সিন্দুক",
+    "pochette_royale": "রাজকীয় থলি",
     "tresor": "পান্নার ভান্ডার",
+    "tresor_imperial": "সাম্রাজ্যের ধনভান্ডার",
     "tresor_royal": "রাজকীয় ভান্ডার"
   },
   "desktop_gate": {

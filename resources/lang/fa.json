@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "کیسه زمرد",
     "bourse_royale": "کیسه سلطنتی",
+    "chambre_forte": "گاوصندوق زمرد",
     "coffre": "صندوق زمرد",
     "coffre_royal": "صندوق سلطنتی",
+    "malle": "صندوقچهٔ زمرد",
+    "pochette_royale": "کیسهٔ سلطنتی",
     "tresor": "گنج زمرد",
+    "tresor_imperial": "گنج امپراتوری",
     "tresor_royal": "گنج سلطنتی"
   },
   "desktop_gate": {

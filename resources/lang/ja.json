@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "エメラルドの小袋",
     "bourse_royale": "王家の小袋",
+    "chambre_forte": "エメラルドの金庫",
     "coffre": "エメラルドの箱",
     "coffre_royal": "王家の箱",
+    "malle": "エメラルドの大箱",
+    "pochette_royale": "王家の小袋",
     "tresor": "エメラルドの宝物",
+    "tresor_imperial": "帝国の秘宝",
     "tresor_royal": "王家の宝物"
   },
   "desktop_gate": {

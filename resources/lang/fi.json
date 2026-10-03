@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragdikukkaro",
     "bourse_royale": "Kuninkaallinen kukkaro",
+    "chambre_forte": "Smaragdiholvi",
     "coffre": "Smaragdiarkku",
     "coffre_royal": "Kuninkaallinen arkku",
+    "malle": "Smaragdiarkku",
+    "pochette_royale": "Kuninkaallinen kukkaro",
     "tresor": "Smaragdiaarre",
+    "tresor_imperial": "Keisarillinen aarre",
     "tresor_royal": "Kuninkaallinen aarre"
   },
   "desktop_gate": {

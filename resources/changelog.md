@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.60
+
+💎 **More emerald packs**
+
+- The Emeralds tab now has five packs bought with medals and five bought with money: new Emerald Trunk and Emerald Vault for medals, new Royal Purse (1.99) and Imperial Treasure (49.99) for money. The bigger the pack, the bigger the bonus.
+- Medal packs fill the first row and money packs the second, from smallest to largest; the custom-amount card sits on its own below them.
+
 ## v0.1.59
 
 🏷️ **Cartouches for real players only**

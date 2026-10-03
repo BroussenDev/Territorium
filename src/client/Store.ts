@@ -298,8 +298,11 @@ export class StoreModal extends BaseModal {
         .map((resolved) => [resolved]);
     }
     if (tab === "packs") {
+      // A row of packs bought with medals, then a row bought with money,
+      // each from smallest to largest.
       return this.resolvedPurchasables()
         .filter((resolved) => resolved.type === "pack")
+        .sort((a, b) => packOrder(a) - packOrder(b))
         .map((resolved) => [resolved]);
     }
     if (tab === "bundles") {
@@ -651,8 +654,11 @@ export class StoreModal extends BaseModal {
       trailingContent: html`<custom-currency-card
         class="block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48"
       ></custom-currency-card>`,
+      // Five 12rem cards and their gaps per row on wide screens, so the medal
+      // packs and the money packs each fill a row and the custom card sits
+      // alone below them.
       gridClass:
-        "flex flex-wrap items-stretch justify-center content-start gap-4 p-4 sm:p-8",
+        "mx-auto max-w-[68rem] flex flex-wrap items-stretch justify-center content-start gap-4 p-4 sm:p-8",
       cardClass: "block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48",
       emptyClass: "w-full py-8 text-center text-sm font-medium text-white/45",
     });
@@ -787,4 +793,14 @@ export class StoreModal extends BaseModal {
   public async refresh() {
     this.requestUpdate();
   }
+}
+
+/** Medal packs first, then money packs, each by price. */
+function packOrder(resolved: ResolvedCosmetic): number {
+  const pack = resolved.cosmetic as {
+    priceCents?: number;
+    priceSoft?: number;
+  } | null;
+  if (pack?.priceCents !== undefined) return 1e9 + pack.priceCents;
+  return pack?.priceSoft ?? 0;
 }

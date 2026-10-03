@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Πουγγί σμαραγδιών",
     "bourse_royale": "Βασιλικό πουγγί",
+    "chambre_forte": "Θησαυροφυλάκιο σμαραγδιών",
     "coffre": "Σεντούκι σμαραγδιών",
     "coffre_royal": "Βασιλικό σεντούκι",
+    "malle": "Μπαούλο σμαραγδιών",
+    "pochette_royale": "Βασιλικό πουγκάκι",
     "tresor": "Θησαυρός σμαραγδιών",
+    "tresor_imperial": "Αυτοκρατορικός θησαυρός",
     "tresor_royal": "Βασιλικός θησαυρός"
   },
   "desktop_gate": {

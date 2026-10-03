@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragdikukkur",
     "bourse_royale": "Kuninglik kukkur",
+    "chambre_forte": "Smaragdihoidla",
     "coffre": "Smaragdikirst",
     "coffre_royal": "Kuninglik kirst",
+    "malle": "Smaragdikirst",
+    "pochette_royale": "Kuninglik kukkur",
     "tresor": "Smaragdiaare",
+    "tresor_imperial": "Keiserlik aare",
     "tresor_royal": "Kuninglik aare"
   },
   "desktop_gate": {

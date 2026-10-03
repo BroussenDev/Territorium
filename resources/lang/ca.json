@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Bossa de maragdes",
     "bourse_royale": "Bossa reial",
+    "chambre_forte": "Cambra cuirassada",
     "coffre": "Cofre de maragdes",
     "coffre_royal": "Cofre reial",
+    "malle": "Bagul de maragdes",
+    "pochette_royale": "Bosseta reial",
     "tresor": "Tresor de maragdes",
+    "tresor_imperial": "Tresor imperial",
     "tresor_royal": "Tresor reial"
   },
   "desktop_gate": {

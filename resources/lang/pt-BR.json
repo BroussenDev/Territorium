@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Bolsa de esmeraldas",
     "bourse_royale": "Bolsa real",
+    "chambre_forte": "Cofre-forte",
     "coffre": "Baú de esmeraldas",
     "coffre_royal": "Baú real",
+    "malle": "Baú de esmeraldas",
+    "pochette_royale": "Bolsinha real",
     "tresor": "Tesouro de esmeraldas",
+    "tresor_imperial": "Tesouro imperial",
     "tresor_royal": "Tesouro real"
   },
   "desktop_gate": {

@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Túi ngọc lục bảo",
     "bourse_royale": "Túi hoàng gia",
+    "chambre_forte": "Kho ngọc lục bảo",
     "coffre": "Rương ngọc lục bảo",
     "coffre_royal": "Rương hoàng gia",
+    "malle": "Rương ngọc lục bảo",
+    "pochette_royale": "Túi hoàng gia",
     "tresor": "Kho báu ngọc lục bảo",
+    "tresor_imperial": "Kho báu hoàng triều",
     "tresor_royal": "Kho báu hoàng gia"
   },
   "desktop_gate": {

@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "पन्ने की थैली",
     "bourse_royale": "शाही थैली",
+    "chambre_forte": "पन्नों की तिजोरी",
     "coffre": "पन्ने का संदूक",
     "coffre_royal": "शाही संदूक",
+    "malle": "पन्नों का संदूक",
+    "pochette_royale": "शाही थैली",
     "tresor": "पन्ने का ख़ज़ाना",
+    "tresor_imperial": "शाही ख़ज़ाना",
     "tresor_royal": "शाही ख़ज़ाना"
   },
   "desktop_gate": {

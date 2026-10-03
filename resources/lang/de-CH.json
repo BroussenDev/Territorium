@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragdbeutel",
     "bourse_royale": "Königlicher Beutel",
+    "chambre_forte": "Smaragdtresor",
     "coffre": "Smaragdtruhe",
     "coffre_royal": "Königliche Truhe",
+    "malle": "Smaragdtruhe",
+    "pochette_royale": "Königlicher Beutel",
     "tresor": "Smaragdschatz",
+    "tresor_imperial": "Kaiserlicher Schatz",
     "tresor_royal": "Königlicher Schatz"
   },
   "desktop_gate": {

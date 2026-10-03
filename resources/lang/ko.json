@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "에메랄드 주머니",
     "bourse_royale": "왕실 주머니",
+    "chambre_forte": "에메랄드 금고",
     "coffre": "에메랄드 상자",
     "coffre_royal": "왕실 상자",
+    "malle": "에메랄드 트렁크",
+    "pochette_royale": "왕실 주머니",
     "tresor": "에메랄드 보물",
+    "tresor_imperial": "제국의 보물",
     "tresor_royal": "왕실 보물"
   },
   "desktop_gate": {

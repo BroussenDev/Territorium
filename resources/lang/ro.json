@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Pungă de smaralde",
     "bourse_royale": "Pungă regală",
+    "chambre_forte": "Seif de smaralde",
     "coffre": "Cufăr de smaralde",
     "coffre_royal": "Cufăr regal",
+    "malle": "Cufăr de smaralde",
+    "pochette_royale": "Pungă regală",
     "tresor": "Comoară de smaralde",
+    "tresor_imperial": "Comoară imperială",
     "tresor_royal": "Comoară regală"
   },
   "desktop_gate": {

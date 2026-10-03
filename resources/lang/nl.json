@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragdbuidel",
     "bourse_royale": "Koninklijke buidel",
+    "chambre_forte": "Smaragdkluis",
     "coffre": "Smaragdkist",
     "coffre_royal": "Koninklijke kist",
+    "malle": "Smaragdkist",
+    "pochette_royale": "Koninklijk buideltje",
     "tresor": "Smaragdschat",
+    "tresor_imperial": "Keizerlijke schat",
     "tresor_royal": "Koninklijke schat"
   },
   "desktop_gate": {

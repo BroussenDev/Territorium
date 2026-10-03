@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Emerald Pouch",
     "bourse_royale": "Royal Pouch",
+    "chambre_forte": "Emerald Vault",
     "coffre": "Emerald Chest",
     "coffre_royal": "Royal Chest",
+    "malle": "Emerald Trunk",
+    "pochette_royale": "Royal Purse",
     "tresor": "Emerald Treasure",
+    "tresor_imperial": "Imperial Treasure",
     "tresor_royal": "Royal Treasure"
   },
   "desktop_gate": {

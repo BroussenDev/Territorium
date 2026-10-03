@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Bourse d'émeraudes",
     "bourse_royale": "Bourse royale",
+    "chambre_forte": "Chambre forte",
     "coffre": "Coffre d'émeraudes",
     "coffre_royal": "Coffre royal",
+    "malle": "Malle d'émeraudes",
+    "pochette_royale": "Pochette royale",
     "tresor": "Trésor d'émeraudes",
+    "tresor_imperial": "Trésor impérial",
     "tresor_royal": "Trésor royal"
   },
   "desktop_gate": {

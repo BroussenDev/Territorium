@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Mešec smaragdov",
     "bourse_royale": "Kráľovský mešec",
+    "chambre_forte": "Trezor smaragdov",
     "coffre": "Truhlica smaragdov",
     "coffre_royal": "Kráľovská truhlica",
+    "malle": "Truhlica smaragdov",
+    "pochette_royale": "Kráľovské vrecúško",
     "tresor": "Poklad smaragdov",
+    "tresor_imperial": "Cisársky poklad",
     "tresor_royal": "Kráľovský poklad"
   },
   "desktop_gate": {

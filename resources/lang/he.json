@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "כיס אזמרגדים",
     "bourse_royale": "כיס מלכותי",
+    "chambre_forte": "כספת אזמרגדים",
     "coffre": "תיבת אזמרגדים",
     "coffre_royal": "תיבה מלכותית",
+    "malle": "תיבת אזמרגדים",
+    "pochette_royale": "ארנק מלכותי",
     "tresor": "אוצר אזמרגדים",
+    "tresor_imperial": "אוצר קיסרי",
     "tresor_royal": "אוצר מלכותי"
   },
   "desktop_gate": {

@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Zümrüt Kesesi",
     "bourse_royale": "Kraliyet Kesesi",
+    "chambre_forte": "Zümrüt Kasası",
     "coffre": "Zümrüt Sandığı",
     "coffre_royal": "Kraliyet Sandığı",
+    "malle": "Zümrüt Sandığı",
+    "pochette_royale": "Kraliyet Kesesi",
     "tresor": "Zümrüt Hazinesi",
+    "tresor_imperial": "İmparatorluk Hazinesi",
     "tresor_royal": "Kraliyet Hazinesi"
   },
   "desktop_gate": {

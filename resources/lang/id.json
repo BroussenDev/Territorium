@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Kantong Zamrud",
     "bourse_royale": "Kantong Kerajaan",
+    "chambre_forte": "Brankas Zamrud",
     "coffre": "Peti Zamrud",
     "coffre_royal": "Peti Kerajaan",
+    "malle": "Peti Zamrud",
+    "pochette_royale": "Kantong Kerajaan",
     "tresor": "Harta Zamrud",
+    "tresor_imperial": "Harta Kekaisaran",
     "tresor_royal": "Harta Kerajaan"
   },
   "desktop_gate": {

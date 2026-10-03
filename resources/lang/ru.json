@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Мешочек изумрудов",
     "bourse_royale": "Королевский мешочек",
+    "chambre_forte": "Хранилище изумрудов",
     "coffre": "Сундук изумрудов",
     "coffre_royal": "Королевский сундук",
+    "malle": "Сундук изумрудов",
+    "pochette_royale": "Королевский кошелёк",
     "tresor": "Сокровище изумрудов",
+    "tresor_imperial": "Имперская сокровищница",
     "tresor_royal": "Королевское сокровище"
   },
   "desktop_gate": {

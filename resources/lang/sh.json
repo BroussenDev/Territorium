@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Kesa smaragda",
     "bourse_royale": "Kraljevska kesa",
+    "chambre_forte": "Trezor smaragda",
     "coffre": "Škrinja smaragda",
     "coffre_royal": "Kraljevska škrinja",
+    "malle": "Škrinja smaragda",
+    "pochette_royale": "Kraljevska kesica",
     "tresor": "Blago smaragda",
+    "tresor_imperial": "Carsko blago",
     "tresor_royal": "Kraljevsko blago"
   },
   "desktop_gate": {

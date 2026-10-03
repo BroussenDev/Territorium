@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smeralda saketo",
     "bourse_royale": "Reĝa saketo",
+    "chambre_forte": "Trezorejo de smeraldoj",
     "coffre": "Smeralda kesto",
     "coffre_royal": "Reĝa kesto",
+    "malle": "Kofro de smeraldoj",
+    "pochette_royale": "Reĝa monujeto",
     "tresor": "Smeralda trezoro",
+    "tresor_imperial": "Imperia trezoro",
     "tresor_royal": "Reĝa trezoro"
   },
   "desktop_gate": {

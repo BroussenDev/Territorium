@@ -823,9 +823,13 @@
   "currency_packs": {
     "bourse": "Smaragderszény",
     "bourse_royale": "Királyi erszény",
+    "chambre_forte": "Smaragdkincstár",
     "coffre": "Smaragdláda",
     "coffre_royal": "Királyi láda",
+    "malle": "Smaragdláda",
+    "pochette_royale": "Királyi erszény",
     "tresor": "Smaragdkincs",
+    "tresor_imperial": "Császári kincs",
     "tresor_royal": "Királyi kincs"
   },
   "desktop_gate": {
