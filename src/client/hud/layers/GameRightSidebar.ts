@@ -34,11 +34,10 @@ const FLASH_TIMER_SECONDS = 30;
 const FLASH_SIDEBAR_SECONDS = 10;
 const ONE_MINUTE_WARNING_DURATION_MS = 4_000;
 
-/** A square control tile: a dark plate that lights emerald on hover. */
+/** A control on the match bar: a quiet square that lights emerald on hover. */
 const TILE_BUTTON =
-  "grid size-9 place-items-center rounded-md border border-white/10 " +
-  "bg-[#0a1512]/90 shadow-[0_8px_18px_-10px_rgb(0_0_0/0.9)] cursor-pointer " +
-  "transition-colors hover:border-brand/60 hover:bg-brand/15 " +
+  "grid size-8 place-items-center rounded-sm cursor-pointer opacity-80 " +
+  "transition-[background-color,opacity] hover:bg-brand/15 hover:opacity-100 " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60";
 
 @customElement("game-right-sidebar")
@@ -372,71 +371,71 @@ export class GameRightSidebar extends LitElement implements Controller {
           }
         }
       </style>
-      <div
-        class="flex flex-col items-end gap-2 transition-transform duration-300 ease-out ${this
-          ._isVisible
-          ? "translate-x-0"
-          : "translate-x-full"}"
+      <!-- The match bar: one plate hanging from the top edge, the clock on
+           the left and the controls beside it, over a row of claimed tiles. -->
+      <aside
+        class=${`relative flex h-11 items-center gap-1 rounded-b-md border border-t-0 border-white/10 bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] pl-3 pr-1.5 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)] transition-transform duration-300 ease-out ${shouldFlashSidebar ? "game-end-timer-sidebar-flash" : ""} ${
+          this._isVisible ? "translate-x-0" : "translate-x-full"
+        }`}
         @contextmenu=${(e: Event) => e.preventDefault()}
       >
-        <!-- The match clock hangs from the top edge, like the bell beside it. -->
-        <aside
-          class=${`flex h-10 items-center gap-2 rounded-b-md border border-t-0 border-white/10 bg-[linear-gradient(180deg,#11221c_0%,#0a1512_100%)] px-3 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)] ${shouldFlashSidebar ? "game-end-timer-sidebar-flash" : ""}`}
+        <svg
+          viewBox="0 0 24 24"
+          class="size-4 shrink-0 text-capital-light/70"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="size-4 shrink-0 text-capital-light/70"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="13" r="8"></circle>
-            <path d="M12 9v4l2.5 1.5M10 2h4"></path>
-          </svg>
-          <div
-            data-game-timer
-            class=${timerClass}
-            style="font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 700;"
-          >
-            ${this.secondsToHms(this.timer)}
-          </div>
-        </aside>
+          <circle cx="12" cy="13" r="8"></circle>
+          <path d="M12 9v4l2.5 1.5M10 2h4"></path>
+        </svg>
+        <div
+          data-game-timer
+          class=${timerClass}
+          style="font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 700; min-width: 3.4rem;"
+        >
+          ${this.secondsToHms(this.timer)}
+        </div>
 
-        <!-- Controls: a column of square tiles down the right edge. -->
-        <nav class="mr-2 flex flex-col gap-1.5">
-          ${this.maybeRenderReplayButtons()}
-          <button
-            class=${TILE_BUTTON}
-            title=${translateText("main.settings")}
-            @click=${this.onSettingsButtonClick}
-          >
-            <img src=${settingsIcon} alt="settings" width="18" height="18" />
-          </button>
-          ${document.fullscreenEnabled && !this.hideFullscreenButton
-            ? html`<button
-                class=${TILE_BUTTON}
-                @click=${this.onFullscreenButtonClick}
-              >
-                <img
-                  src=${this.isFullscreen ? exitFullscreenIcon : fullscreenIcon}
-                  alt=${this.isFullscreen
-                    ? translateText("fullscreen.exit")
-                    : translateText("fullscreen.enter")}
-                  width="18"
-                  height="18"
-                />
-              </button>`
-            : ""}
-          <button
-            class="${TILE_BUTTON} hover:!border-red-500/60 hover:!bg-red-500/15"
-            @click=${this.onExitButtonClick}
-          >
-            <img src=${exitIcon} alt="exit" width="18" height="18" />
-          </button>
-        </nav>
-      </div>
+        <span class="mx-1.5 h-5 w-px bg-white/15" aria-hidden="true"></span>
+
+        ${this.maybeRenderReplayButtons()}
+        <button
+          class=${TILE_BUTTON}
+          title=${translateText("main.settings")}
+          @click=${this.onSettingsButtonClick}
+        >
+          <img src=${settingsIcon} alt="settings" width="17" height="17" />
+        </button>
+        ${document.fullscreenEnabled && !this.hideFullscreenButton
+          ? html`<button
+              class=${TILE_BUTTON}
+              @click=${this.onFullscreenButtonClick}
+            >
+              <img
+                src=${this.isFullscreen ? exitFullscreenIcon : fullscreenIcon}
+                alt=${this.isFullscreen
+                  ? translateText("fullscreen.exit")
+                  : translateText("fullscreen.enter")}
+                width="17"
+                height="17"
+              />
+            </button>`
+          : ""}
+        <button
+          class="${TILE_BUTTON} hover:!bg-red-500/20"
+          @click=${this.onExitButtonClick}
+        >
+          <img src=${exitIcon} alt="exit" width="17" height="17" />
+        </button>
+
+        <span
+          class="claim-strip pointer-events-none absolute bottom-0 left-3 right-3 h-[3px]"
+          aria-hidden="true"
+        ></span>
+      </aside>
       <doomsday-clock-panel
         .game=${this.game}
         .hasWinner=${this.hasWinner}
@@ -467,8 +466,8 @@ export class GameRightSidebar extends LitElement implements Controller {
               <img
                 src=${FastForwardIconSolid}
                 alt="replay"
-                width="18"
-                height="18"
+                width="17"
+                height="17"
               />
             </button>
           `
@@ -477,15 +476,15 @@ export class GameRightSidebar extends LitElement implements Controller {
         ? html`
             <button
               class="${TILE_BUTTON} ${this.isPaused
-                ? "!border-capital/70 !bg-capital/15"
+                ? "!bg-capital/20 !opacity-100"
                 : ""}"
               @click=${this.onPauseButtonClick}
             >
               <img
                 src=${this.isPaused ? playIcon : pauseIcon}
                 alt="play/pause"
-                width="18"
-                height="18"
+                width="17"
+                height="17"
               />
             </button>
           `
@@ -502,8 +501,8 @@ export class GameRightSidebar extends LitElement implements Controller {
               <img
                 src=${newLobbyIcon}
                 alt=${translateText("win_modal.new_lobby")}
-                width="18"
-                height="18"
+                width="17"
+                height="17"
               />
             </button>
           `

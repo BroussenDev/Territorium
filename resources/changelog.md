@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.57
+
+⏱️ **A single match bar**
+
+- The clock and the buttons (speed, pause, settings, full screen, leave) are back in one horizontal bar at the top right, now a single dark plate hanging from the top edge with a row of claimed tiles along its bottom, like the command panel.
+- The notification bell beside it uses the same plate.
+
 ## v0.1.56
 
 🛡️ **Heraldic colours for countries**

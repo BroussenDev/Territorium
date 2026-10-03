@@ -96,16 +96,14 @@ const styles = html`<style>
     position: relative;
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     color: var(--tr-gold-light, #fde68a);
-    background: var(--eh-night);
-    border: 1px solid var(--eh-line);
+    background: linear-gradient(180deg, #11221c 0%, #0a1512 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none;
-    border-radius: 0 0 10px 10px;
-    box-shadow:
-      inset 0 1px 0 var(--eh-gold-line),
-      0 8px 24px rgba(0, 0, 0, 0.45);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.9);
     cursor: pointer;
     transition:
       color 0.15s,
