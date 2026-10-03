@@ -270,6 +270,9 @@ export class MapRenderer {
   updateAttackRings(rings: AttackRingInput[]): void {
     this.renderer?.updateAttackRings(rings);
   }
+  updateAttackFronts(fronts: Uint8Array, mySmallID: number): void {
+    this.renderer?.updateAttackFronts(fronts, mySmallID);
+  }
 
   /** Update ghost structure preview (build-mode visualization). null = clear. */
   updateGhostPreview(data: GhostPreviewData | null): void {

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.52
+
+⚔️ **See your fronts**
+
+- Every border where you are fighting now shows a thin line that pulses gently: emerald for your attacks, red for attacks on you.
+- Zoom in and small arrowheads appear in the tiles being attacked, lit by a wave that runs the way the attack goes, so you can see at a glance who is pushing where.
+
 ## v0.1.51
 
 🖥️ **The graphics troubleshooting screen in your language**

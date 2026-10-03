@@ -39,6 +39,7 @@ export interface FrameUploadTarget {
   applyConquestEvents(events: ConquestFx[]): void;
   applyBonusEvents(events: BonusEvent[]): void;
   updateAttackRings(rings: AttackRingInput[]): void;
+  updateAttackFronts(fronts: Uint8Array, mySmallID: number): void;
   updateNukeTelegraphs(data: NukeTelegraphData[]): void;
   updateNames(
     names: ReadonlyMap<string, NameEntry>,
@@ -109,6 +110,7 @@ export function uploadFrameData(
 
   // --- Attack rings + nuke telegraphs ---
   view.updateAttackRings(frame.attackRings);
+  view.updateAttackFronts(frame.attackFronts, frame.mySmallID);
   view.updateNukeTelegraphs(frame.nukeTelegraphs);
 
   // --- Names + player status ---

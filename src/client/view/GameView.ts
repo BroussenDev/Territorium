@@ -42,6 +42,7 @@ import {
   withClanArt,
 } from "../NationCosmetics";
 import { computeAllianceClusters } from "../render/frame/derive/AllianceClusters";
+import { buildAttackFronts } from "../render/frame/derive/AttackFronts";
 import { extractAttackRings } from "../render/frame/derive/AttackRings";
 import { extractNukeTelegraphs } from "../render/frame/derive/NukeTelegraphs";
 import { computePlayerStatus } from "../render/frame/derive/PlayerStatus";
@@ -228,6 +229,8 @@ export class GameView implements GameMap {
       allianceClusters: new Map(),
       nukeTelegraphs: [],
       attackRings: [],
+      attackFronts: new Uint8Array(0),
+      mySmallID: 0,
       structuresDirty: false,
     };
   }
@@ -706,6 +709,11 @@ export class GameView implements GameMap {
           this._myPlayer.smallID(),
         )
       : [];
+    f.attackFronts = buildAttackFronts(
+      this._myPlayer?.outgoingAttacks() ?? [],
+      this._myPlayer?.incomingAttacks() ?? [],
+    );
+    f.mySmallID = this._myPlayer?.smallID() ?? 0;
     f.structuresDirty = this._structuresDirty;
 
     // First populate: signal "full upload required" by nulling changedTiles.

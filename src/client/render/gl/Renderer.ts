@@ -31,6 +31,7 @@ import type {
 } from "../types";
 import { Camera } from "./Camera";
 import { GLUnavailableError, initGL } from "./initGL";
+import { AttackFrontPass } from "./passes/AttackFrontPass";
 import { BarPass } from "./passes/BarPass";
 import { BorderComputePass } from "./passes/BorderComputePass";
 import { BorderStampPass } from "./passes/BorderStampPass";
@@ -142,6 +143,7 @@ export class GPURenderer {
   private unitPass: UnitPass;
   private namePass: NamePass;
   private fxPass: FxPass;
+  private attackFrontPass: AttackFrontPass;
   private rangeCirclePass: RangeCirclePass;
   private objectivePass: ObjectivePass;
   private samRadiusPass: SAMRadiusPass;
@@ -418,6 +420,12 @@ export class GPURenderer {
       this.settings,
     );
     this.res.borderTex = this.borderPass.getBorderTex();
+    this.attackFrontPass = new AttackFrontPass(
+      gl,
+      mapW,
+      mapH,
+      this.res.tileTex,
+    );
 
     // --- Defense coverage (needs tileTex) — per-tile "defended by same-owner
     // post" flag, stamped one instanced circle per post. Replaces the old
@@ -1082,6 +1090,10 @@ export class GPURenderer {
     this.fxPass.updateAttackRings(rings);
   }
 
+  updateAttackFronts(fronts: Uint8Array, mySmallID: number): void {
+    this.attackFrontPass.update(fronts, mySmallID);
+  }
+
   updateGhostPreview(data: GhostPreviewData | null): void {
     this.structurePass.updateGhostPreview(data);
     this.railroadPass.updateGhostPreview(data);
@@ -1407,6 +1419,7 @@ export class GPURenderer {
 
     this.spawnOverlayPass.draw(cam);
     if (pe.borderStamp) this.borderStampPass.draw(cam);
+    this.attackFrontPass.draw(cam);
     if (pe.railroad) this.railroadPass.draw(cam, zoom);
     if (pe.unit) this.unitPass.drawGround(cam);
     if (pe.falloutBloom) this.bloomPass.draw(cam, this.frameTick);
@@ -1558,6 +1571,7 @@ export class GPURenderer {
     this.unitPass.dispose();
     this.namePass.dispose();
     this.fxPass.dispose();
+    this.attackFrontPass.dispose();
     this.worldTextPass.dispose();
     this.selectionBoxPass.dispose();
     this.moveIndicatorPass.dispose();

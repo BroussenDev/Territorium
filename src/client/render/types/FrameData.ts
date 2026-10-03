@@ -74,6 +74,13 @@ export interface FrameData {
   readonly allianceClusters: ReadonlyMap<number, number>;
   readonly nukeTelegraphs: NukeTelegraphData[];
   readonly attackRings: AttackRingInput[];
+  /**
+   * The local player's land fronts, one flag per smallID (see
+   * derive/AttackFronts): who they attack and who attacks them.
+   */
+  readonly attackFronts: Uint8Array;
+  /** The local player's smallID, or 0 when spectating. */
+  readonly mySmallID: number;
   /** True when structures changed this tick (added/removed/level change). */
   readonly structuresDirty: boolean;
 }
