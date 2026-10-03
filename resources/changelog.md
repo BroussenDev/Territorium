@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.56
+
+🛡️ **Heraldic colours for countries**
+
+- Countries and players now wear bold, clear colours like heraldic tinctures (red, azure, green, purple, gold…) instead of OpenFront's washed-out pastels, and neighbours get colours far apart from each other.
+- Territory fill is a little stronger and borders are more marked, while the terrain relief still shows through.
+- Tribes keep a neutral parchment tone, so countries and players stand out on top of them.
+
 ## v0.1.55
 
 🕰️ **Leaderboard and match clock reworked**
