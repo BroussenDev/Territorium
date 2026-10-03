@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.54
+
+🎯 **The right-click menu in Territorium's colours**
+
+- The slate and navy slices of the right-click menu are now night-green plates; attack stays red, alliances turn emerald and building turns capital gold.
+- The centre button is the night-green plate with its gold ring, and the tooltip matches.
+
 ## v0.1.53
 
 🎛️ **A new command panel**

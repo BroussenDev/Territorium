@@ -302,18 +302,9 @@ game-right-sidebar
   stroke-width: 1px;
 }
 
-.radial-menu-container .menu-item-path[fill="#1e3a5f"],
-.radial-menu-container .menu-item-path[fill^="rgba(30, 58, 95"] {
-  fill: rgba(6, 78, 59, 0.88);
-}
-
 .radial-menu-container .center-button-visible {
   stroke: var(--tr-gold);
   stroke-width: 2px;
-}
-
-.radial-menu-container .center-button-visible[fill="#0f2744"] {
-  fill: var(--tr-night-solid);
 }
 
 /* The tooltip is styled inline by RadialMenu, hence !important. */

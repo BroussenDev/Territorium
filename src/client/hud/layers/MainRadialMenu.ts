@@ -54,6 +54,7 @@ export class MainRadialMenu implements Controller {
   ) {
     const menuConfig: RadialMenuConfig = {
       centerButtonIcon: swordIcon,
+      disabledColor: COLORS.disabled,
       tooltipStyle: `
         .radial-tooltip .cost {
           margin-top: 4px;
@@ -160,7 +161,7 @@ export class MainRadialMenu implements Controller {
 
     this.radialMenu.setCenterButtonAppearance(
       isFriendlyTarget ? donateTroopIcon : swordIcon,
-      isFriendlyTarget ? "#22d3ee" : "#0f2744",
+      isFriendlyTarget ? "#10b981" : "#0a1512",
       isFriendlyTarget
         ? this.radialMenu.getDefaultCenterIconSize() * 0.75
         : this.radialMenu.getDefaultCenterIconSize(),

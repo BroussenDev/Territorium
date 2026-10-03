@@ -91,20 +91,24 @@ export interface CenterButtonElement {
   action: (params: MenuElementParams) => void;
 }
 
+/**
+ * Territorium's radial palette: neutral slices are night-green plates; action
+ * colours keep their meaning (red attacks, emerald allies, gold builds).
+ */
 export const COLORS = {
-  build: "#e6c74a",
-  building: "#1e3a5f",
-  boat: "#2a82c9",
-  disabled: "#94a3b8",
-  ally: "#4ade80",
+  build: "#f2b632",
+  building: "#14382c",
+  boat: "#2b7fb8",
+  disabled: "#3a5047",
+  ally: "#10b981",
   breakAlly: "#dc2626",
   breakAllyNoDebuff: "#d97706",
-  delete: "#ef4444",
-  info: "#475569",
-  target: "#ef4444",
-  attack: "#ef4444",
-  infoDetails: "#7f8c8d",
-  infoEmoji: "#fbbf24",
+  delete: "#dc3b3b",
+  info: "#24392f",
+  target: "#dc3b3b",
+  attack: "#dc3b3b",
+  infoDetails: "#3a5047",
+  infoEmoji: "#f2b632",
   trade: "#0891b2",
   embargo: "#7c3aed",
   peace: "#14b8a6",

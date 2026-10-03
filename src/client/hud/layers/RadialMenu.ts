@@ -95,7 +95,7 @@ export class RadialMenu implements Controller {
   private backButtonHoverTimeout: number | null = null;
   private navigationInProgress: boolean = false;
   private originalCenterButtonIcon: string = "";
-  private readonly defaultCenterButtonColor = "#0f2744";
+  private readonly defaultCenterButtonColor = "#0a1512";
   private centerButtonColor: string;
   private centerButtonIconSize: number;
 
@@ -263,7 +263,7 @@ export class RadialMenu implements Controller {
     this.tooltipElement.className = "radial-tooltip";
     this.tooltipElement.style.position = "absolute";
     this.tooltipElement.style.pointerEvents = "none";
-    this.tooltipElement.style.background = "rgba(12, 35, 64, 0.88)";
+    this.tooltipElement.style.background = "rgba(10, 21, 18, 0.94)";
     this.tooltipElement.style.color = "white";
     this.tooltipElement.style.padding = "6px 10px";
     this.tooltipElement.style.borderRadius = "6px";
