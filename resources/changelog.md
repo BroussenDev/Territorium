@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.61
+
+🚩 **New mode: Conquest**
+
+- A new game mode in the "Game modes" section: five objectives appear on the map after 30 seconds. Hold three of them for three minutes in a row and you win, whatever the size of your territory.
+- Lose one of your three objectives and the countdown stops; take the majority again and it starts over from three minutes.
+- A banner at the top shows the five objectives (emerald yours, red someone else's), who holds the majority and the time left before they win. Everyone is warned when someone takes the majority.
+- Conquest is never played on the world map: it rotates through regional maps (Europe, Africa, North America, South America, Asia, Australia, Middle East and North Africa, Mars).
+
 ## v0.1.60
 
 💎 **More emerald packs**

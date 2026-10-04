@@ -9,9 +9,13 @@ import {
   capitalShieldSecondsLeft,
   hasCapital,
 } from "../../../core/game/NationsMode";
+import {
+  conquestMajority,
+  conquestSecondsLeft,
+} from "../../../core/game/Objectives";
 import { Controller } from "../../Controller";
 import { translateText } from "../../Utils";
-import { GameView } from "../../view";
+import { GameView, PlayerView } from "../../view";
 
 const COLLUSION_WARNING_CLOSED_KEY = "hasClosedCollusionWarning";
 
@@ -45,6 +49,9 @@ export class HeadsUpMessage extends LitElement implements Controller {
   // Nations mode: seconds left of the shield around every capital, or 0.
   @state()
   private capitalShieldLeft = 0;
+  // Conquest mode: refreshed each tick so the countdown moves.
+  @state()
+  private conquestTick = 0;
 
   private static readonly CATCHING_UP_SHOW_THRESHOLD = 10;
   // How long the overtime announcement banner stays up after the start minute.
@@ -164,6 +171,9 @@ export class HeadsUpMessage extends LitElement implements Controller {
     this.capitalShieldLeft = this.game.inSpawnPhase()
       ? 0
       : Math.ceil(capitalShieldSecondsLeft(this.game));
+    if (this.game.config().isConquestMode()) {
+      this.conquestTick = this.game.ticks();
+    }
 
     this.isVisible =
       this.game.inSpawnPhase() ||
@@ -278,6 +288,7 @@ export class HeadsUpMessage extends LitElement implements Controller {
               </div>
             `
           : null}
+        ${this.conquestTick >= 0 ? renderConquest(this.game) : null}
         ${this.capitalShieldLeft > 0 && this.capitalLostWait === null
           ? html`
               <div
@@ -338,6 +349,90 @@ export class HeadsUpMessage extends LitElement implements Controller {
       </div>
     `;
   }
+}
+
+/**
+ * Conquest mode banner: one tile per objective (emerald yours, red someone
+ * else's, hollow free), and who holds the majority with the time left before
+ * they win.
+ */
+function renderConquest(game: GameView | undefined) {
+  if (game === undefined || !game.config().isConquestMode()) return null;
+  if (game.inSpawnPhase() || game.gameOver()) return null;
+  const objectives = game.objectives();
+  if (objectives.length === 0) return null;
+  const me = game.myPlayer();
+  const mine = (smallID: number) => {
+    if (smallID === 0 || me === null) return false;
+    if (smallID === me.smallID()) return true;
+    const holder = game.playerBySmallID(smallID);
+    return holder.isPlayer() && me.isOnSameTeam(holder as PlayerView);
+  };
+  const state = game.conquest();
+  const left = conquestSecondsLeft(
+    state,
+    Math.floor(game.elapsedGameSeconds()),
+  );
+  const leader =
+    state !== null && state.holder !== 0
+      ? game.playerBySmallID(state.holder)
+      : null;
+  const ours = state !== null && mine(state.holder);
+  const edge =
+    left === null
+      ? "border-l-capital"
+      : ours
+        ? "border-l-brand-bright"
+        : "border-l-red-500";
+  return html`
+    <div
+      data-conquest-banner
+      class="fixed top-14 left-1/2 -translate-x-1/2 z-[797] flex items-center gap-3 w-fit max-w-[92vw]
+             rounded-md border border-white/10 border-l-4 ${edge} bg-[#0a1512]/90 backdrop-blur-xs
+             px-3 py-1.5 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)]"
+      @contextmenu=${(e: MouseEvent) => e.preventDefault()}
+    >
+      <div class="flex gap-1" aria-hidden="true">
+        ${objectives.map(
+          (o) =>
+            html`<span
+              class="size-3 rounded-[2px] border ${o.holder === 0
+                ? "border-white/40"
+                : mine(o.holder)
+                  ? "border-brand-bright bg-brand-bright"
+                  : "border-red-400 bg-red-500"}"
+            ></span>`,
+        )}
+      </div>
+      <div class="flex flex-col leading-tight">
+        ${left === null || leader === null || !leader.isPlayer()
+          ? html`<span class="font-display text-sm font-semibold"
+                >${translateText("heads_up_message.conquest_goal", {
+                  needed: conquestMajority(objectives.length),
+                  total: objectives.length,
+                })}</span
+              >
+              <span class="text-xs text-white/60"
+                >${translateText("heads_up_message.conquest_hint")}</span
+              >`
+          : html`<span class="font-display text-sm font-semibold"
+                >${ours
+                  ? translateText("heads_up_message.conquest_you_hold")
+                  : translateText("heads_up_message.conquest_they_hold", {
+                      name: leader.displayName(),
+                    })}</span
+              >
+              <span
+                class="text-xs tabular-nums ${ours
+                  ? "text-emerald-200"
+                  : "text-red-200"}"
+                >${translateText("heads_up_message.conquest_wins_in", {
+                  time: formatWait(left),
+                })}</span
+              >`}
+      </div>
+    </div>
+  `;
 }
 
 function formatWait(seconds: number): string {

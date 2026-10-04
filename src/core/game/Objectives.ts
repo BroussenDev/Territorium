@@ -20,6 +20,38 @@ export const OBJECTIVE_GOLD_PER_TICK = 15n;
 /** Troop growth bonus per held objective, in percent. */
 export const OBJECTIVE_TROOP_GROWTH_PERCENT = 5;
 
+/**
+ * Conquest mode: the map always has this many objectives (odd, so a majority
+ * is clear), and the side holding most of them for CONQUEST_HOLD_SECONDS in a
+ * row wins.
+ */
+export const CONQUEST_OBJECTIVES = 5;
+export const CONQUEST_HOLD_SECONDS = 3 * 60;
+
+/** Conquest mode: who holds most objectives, and since when. */
+export interface ConquestState {
+  /** smallID of the leading holder; 0 when no side holds a majority. */
+  holder: number;
+  /** The holder's team in team games, else null. */
+  team: string | null;
+  /** Game second the majority was taken. */
+  since: number;
+}
+
+/** Objectives a side needs to dominate: a strict majority (3 of 5). */
+export function conquestMajority(numObjectives: number): number {
+  return Math.floor(numObjectives / 2) + 1;
+}
+
+/** Seconds left before the dominating side wins, never below 0. */
+export function conquestSecondsLeft(
+  state: ConquestState | null,
+  elapsedSeconds: number,
+): number | null {
+  if (state === null || state.holder === 0) return null;
+  return Math.max(0, CONQUEST_HOLD_SECONDS - (elapsedSeconds - state.since));
+}
+
 export interface ObjectiveState {
   id: number;
   tile: TileRef;
@@ -97,9 +129,12 @@ function landPercent(map: GameMap, center: TileRef, radius: number): number {
  * out by keeping, for each objective, the candidate farthest from those
  * already placed. Deterministic for a given map and seed.
  */
-export function placeObjectives(map: GameMap, seed: number): ObjectiveState[] {
+export function placeObjectives(
+  map: GameMap,
+  seed: number,
+  count: number = objectiveCount(map.numLandTiles()),
+): ObjectiveState[] {
   const random = new PseudoRandom(seed);
-  const count = objectiveCount(map.numLandTiles());
   const radius = objectiveRadius(map.numLandTiles());
   const w = map.width();
   const h = map.height();

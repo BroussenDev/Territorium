@@ -699,6 +699,7 @@ describe("MasterLobbyService hosted lobbies", () => {
       "2v2",
       "3v3",
       "4v4",
+      "conquest",
       "ffa",
       "nations",
       "special",

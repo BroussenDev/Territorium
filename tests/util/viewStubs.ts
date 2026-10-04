@@ -78,6 +78,7 @@ export function stubTerrainMap(width = 10, height = 10): TerrainMapData {
   const gameMap = new GameMapImpl(width, height, terrain, 0);
   return {
     nations: [],
+    conquest: [],
     additionalNations: [],
     gameMap,
     miniGameMap: gameMap,

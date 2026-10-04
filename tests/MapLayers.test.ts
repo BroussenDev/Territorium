@@ -347,6 +347,7 @@ describe("Map layer feature", () => {
         map4x: { width, height, num_land_tiles: 1 },
         map16x: { width, height, num_land_tiles: 1 },
         nations: [],
+        conquest: [],
         layers,
       };
       const mapData: MapData = {

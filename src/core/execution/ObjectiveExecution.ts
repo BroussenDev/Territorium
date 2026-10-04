@@ -7,6 +7,10 @@ import {
 } from "../game/Game";
 import { GameUpdateType } from "../game/GameUpdates";
 import {
+  CONQUEST_HOLD_SECONDS,
+  CONQUEST_OBJECTIVES,
+  conquestMajority,
+  ConquestState,
   forEachTileInZone,
   OBJECTIVE_CAPTURE_SECONDS,
   ObjectiveState,
@@ -26,6 +30,8 @@ export class ObjectiveExecution implements Execution {
   private active = true;
   private mg: Game | null = null;
   private revealed = false;
+  /** Conquest mode: who holds the majority of the objectives. */
+  private conquest: ConquestState | null = null;
 
   constructor(private readonly seed: number) {}
 
@@ -42,17 +48,122 @@ export class ObjectiveExecution implements Execution {
       return;
     }
     if (ticks % 10 !== 0) return; // once per second
+    if (this.mg.getWinner() !== null) return;
     let changed = false;
     for (const objective of this.mg.objectives()) {
       if (this.step(objective)) changed = true;
     }
+    if (this.mg.config().isConquestMode() && this.stepConquest()) {
+      changed = true;
+    }
     if (changed) this.publish();
+  }
+
+  /**
+   * Conquest mode: follows which side holds a strict majority of the
+   * objectives. Taking it starts a CONQUEST_HOLD_SECONDS countdown, losing it
+   * stops it, and holding it to the end wins the game. Returns whether the
+   * majority changed hands.
+   */
+  private stepConquest(): boolean {
+    const mg = this.mg!;
+    const objectives = mg.objectives();
+    const lead = this.majorityHolder(objectives);
+    const now = Math.floor(mg.elapsedGameSeconds());
+    const previous = this.conquest;
+    const sameSide =
+      previous !== null &&
+      lead !== null &&
+      (previous.team !== null
+        ? previous.team === lead.team()
+        : previous.holder === lead.smallID());
+
+    if (lead === null) {
+      if (previous === null) return false;
+      this.conquest = null;
+      const lost = this.player(previous.holder);
+      mg.displayMessage(
+        "events_display.conquest_broken",
+        MessageType.ATTACK_FAILED,
+        null,
+        undefined,
+        { name: lost?.displayName() ?? "" },
+      );
+      return true;
+    }
+
+    if (!sameSide) {
+      this.conquest = { holder: lead.smallID(), team: lead.team(), since: now };
+      mg.displayMessage(
+        "events_display.conquest_taken",
+        MessageType.NUKE_INBOUND,
+        null,
+        undefined,
+        {
+          name: lead.displayName(),
+          minutes: CONQUEST_HOLD_SECONDS / 60,
+        },
+      );
+      return true;
+    }
+
+    if (now - previous.since >= CONQUEST_HOLD_SECONDS) {
+      const team = previous.team;
+      mg.setWinner(team ?? lead, mg.stats().stats());
+      this.active = false;
+    }
+    return false;
+  }
+
+  /**
+   * The side holding a strict majority of the objectives, as its player with
+   * the most of them (teammates count together), or null.
+   */
+  private majorityHolder(objectives: ObjectiveState[]): Player | null {
+    const bySide = new Map<
+      string,
+      { count: number; lead: Player; most: number }
+    >();
+    const perPlayer = new Map<number, number>();
+    for (const o of objectives) {
+      if (o.holder === 0) continue;
+      perPlayer.set(o.holder, (perPlayer.get(o.holder) ?? 0) + 1);
+    }
+    for (const [smallID, count] of perPlayer) {
+      const player = this.player(smallID);
+      if (player === null || !player.isAlive()) continue;
+      const team = player.team();
+      const key =
+        team !== null && team !== ColoredTeams.Bot
+          ? `t:${team}`
+          : `p:${smallID}`;
+      const side = bySide.get(key);
+      if (side === undefined) {
+        bySide.set(key, { count, lead: player, most: count });
+      } else {
+        side.count += count;
+        if (
+          count > side.most ||
+          (count === side.most && smallID < side.lead.smallID())
+        ) {
+          side.lead = player;
+          side.most = count;
+        }
+      }
+    }
+    const needed = conquestMajority(objectives.length);
+    for (const side of bySide.values()) {
+      if (side.count >= needed) return side.lead;
+    }
+    return null;
   }
 
   private reveal(): void {
     const mg = this.mg!;
     this.revealed = true;
-    const objectives = placeObjectives(mg.map(), this.seed);
+    const objectives = mg.config().isConquestMode()
+      ? placeObjectives(mg.map(), this.seed, CONQUEST_OBJECTIVES)
+      : placeObjectives(mg.map(), this.seed);
     mg.setObjectives(objectives);
     this.publish();
     if (objectives.length > 0) {
@@ -185,6 +296,9 @@ export class ObjectiveExecution implements Execution {
     this.mg!.addUpdate({
       type: GameUpdateType.Objectives,
       objectives: this.mg!.objectives().map((o) => ({ ...o })),
+      ...(this.mg!.config().isConquestMode()
+        ? { conquest: this.conquest === null ? null : { ...this.conquest } }
+        : {}),
     });
   }
 

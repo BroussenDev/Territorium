@@ -460,10 +460,15 @@ export class Config {
   // Zones stay hidden this long after the spawn phase, so nobody can plan a
   // spawn next to one and rush it.
   objectiveRevealDelay(): Tick {
-    return 60 * 10;
+    // Conquest is played on the objectives: they appear after 30 seconds.
+    return this.isConquestMode() ? 30 * 10 : 60 * 10;
   }
   objectives(): boolean {
-    return this._gameConfig.objectives ?? false;
+    return (this._gameConfig.objectives ?? false) || this.isConquestMode();
+  }
+  /** Conquest mode: holding most objectives for 3 minutes wins (Objectives.ts). */
+  isConquestMode(): boolean {
+    return this._gameConfig.gameVariant === "conquest";
   }
   /** Nations mode: players start as real countries (see NationsMode.ts). */
   isNationsMode(): boolean {

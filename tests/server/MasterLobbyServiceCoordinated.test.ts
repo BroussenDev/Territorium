@@ -120,6 +120,7 @@ describe("MasterLobbyService with a lobby coordinator", () => {
         special: [],
         hosted: [],
         nations: [],
+        conquest: [],
         "1v1": [],
         "2v2": [],
         "3v3": [],
@@ -148,6 +149,7 @@ describe("MasterLobbyService with a lobby coordinator", () => {
         special: [],
         hosted: [],
         nations: [],
+        conquest: [],
         "1v1": [],
         "2v2": [],
         "3v3": [],
@@ -217,6 +219,7 @@ describe("MasterLobbyService with a lobby coordinator", () => {
         special: [],
         hosted: [],
         nations: [],
+        conquest: [],
         "1v1": [],
         "2v2": [],
         "3v3": [],
@@ -229,9 +232,9 @@ describe("MasterLobbyService with a lobby coordinator", () => {
     coordinator.coordinated = false;
     await scheduler()();
     // Local: countdown for own front lobby, and creates to fill the queues
-    // (three more scheduled types and the four versus formats).
+    // (four more scheduled types and the four versus formats).
     expect(sent(worker, "updateLobby")).toHaveLength(1);
-    expect(sent(worker, "createGame")).toHaveLength(8);
+    expect(sent(worker, "createGame")).toHaveLength(9);
     await broadcaster()();
     const [b] = sent(worker, "lobbiesBroadcast");
     // Foreign lobbies are dropped from the feed: the coordinator that

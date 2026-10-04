@@ -23,7 +23,7 @@ import {
   MotionPlanRecord,
   unpackMotionPlans,
 } from "../../core/game/MotionPlans";
-import { ObjectiveState } from "../../core/game/Objectives";
+import { ConquestState, ObjectiveState } from "../../core/game/Objectives";
 import { TerrainMapData } from "../../core/game/TerrainMapLoader";
 import { TerraNulliusImpl } from "../../core/game/TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "../../core/game/UnitGrid";
@@ -244,6 +244,11 @@ export class GameView implements GameMap {
     return this._objectives;
   }
 
+  /** Conquest mode: who holds most objectives, and since when, or null. */
+  public conquest(): ConquestState | null {
+    return this._conquest;
+  }
+
   public objectivesHeldBy(smallID: number): number {
     let held = 0;
     for (const o of this._objectives) {
@@ -354,8 +359,9 @@ export class GameView implements GameMap {
     }
     const objectivesUpdates = gu.updates[GameUpdateType.Objectives];
     if (objectivesUpdates.length > 0) {
-      this._objectives =
-        objectivesUpdates[objectivesUpdates.length - 1].objectives;
+      const last = objectivesUpdates[objectivesUpdates.length - 1];
+      this._objectives = last.objectives;
+      if (last.conquest !== undefined) this._conquest = last.conquest;
     }
 
     const myDisplayName = formatPlayerDisplayName(
@@ -1236,6 +1242,7 @@ export class GameView implements GameMap {
   // those who stay, but the server archives the record at that point.
   private _gameOver = false;
   private _objectives: ObjectiveState[] = [];
+  private _conquest: ConquestState | null = null;
   gameOver(): boolean {
     return this._gameOver;
   }

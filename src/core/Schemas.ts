@@ -189,6 +189,7 @@ export const PublicGameTypeSchema = z.enum([
   "special",
   "hosted",
   "nations",
+  "conquest",
   // Versus: one lobby per format, which starts as soon as it is full.
   "1v1",
   "2v2",
@@ -598,7 +599,9 @@ export const GameConfigSchema = z.object({
   // beating the nations (the simulation plays it as a plain FFA).
   // "versus": two teams of 1 to 4 on a tournament map, fixed rules, each
   // team spawning in its own zone (see Versus.ts).
-  gameVariant: z.enum(["nations", "training", "versus"]).optional(),
+  // "conquest": five map objectives; holding most of them for three minutes
+  // wins (see Objectives.ts).
+  gameVariant: z.enum(["nations", "training", "versus", "conquest"]).optional(),
 });
 
 export const TeamSchema = z.string();

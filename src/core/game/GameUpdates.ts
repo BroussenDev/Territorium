@@ -17,7 +17,7 @@ import {
   WarshipState,
 } from "./Game";
 import { TileRef } from "./GameMap";
-import { ObjectiveState } from "./Objectives";
+import { ConquestState, ObjectiveState } from "./Objectives";
 
 export interface GameUpdateViewData {
   tick: number;
@@ -144,6 +144,8 @@ export type GameUpdate =
 export interface ObjectivesUpdate {
   type: GameUpdateType.Objectives;
   objectives: ObjectiveState[];
+  /** Conquest mode only: who holds the majority, and since when. */
+  conquest?: ConquestState | null;
 }
 
 export interface BonusEventUpdate {

@@ -32,12 +32,28 @@ import { getMapLandTiles } from "./MapLandTiles";
 
 const log = logger.child({});
 
-// Lobby types rolled from the map playlists: nations and versus lobbies play
-// fixed presets instead.
+// Lobby types rolled from the map playlists: nations, conquest and versus
+// lobbies play their own presets instead.
 type RolledGameType = Exclude<
   ScheduledPublicGameType,
-  "nations" | VersusGameType
+  "nations" | "conquest" | VersusGameType
 >;
+
+/**
+ * Conquest lobbies rotate through regional maps (never the world map): big
+ * enough for five objectives far apart, small enough that they get fought
+ * over from the start.
+ */
+export const CONQUEST_MAPS: readonly GameMapType[] = [
+  GameMapType.Europe,
+  GameMapType.Africa,
+  GameMapType.NorthAmerica,
+  GameMapType.SouthAmerica,
+  GameMapType.Asia,
+  GameMapType.Australia,
+  GameMapType.Mena,
+  GameMapType.Mars,
+];
 
 // Lobby size the Crowded modifier forces on small maps (compact / normal).
 const CROWDED_COMPACT_PLAYER_COUNT = 60;
@@ -189,10 +205,16 @@ export class MapPlaylist {
   // Scheduled public games handed out so far, across all types.
   private scheduled = 0;
 
+  // Conquest lobbies handed out so far: the next map in CONQUEST_MAPS.
+  private conquestPlayed = 0;
+
   public async gameConfig(type: ScheduledPublicGameType): Promise<GameConfig> {
     // Nations games always seat every country: never trusted, never capped.
     if (type === "nations") {
       return this.getNationsConfig();
+    }
+    if (type === "conquest") {
+      return this.getConquestConfig();
     }
     // Versus lobbies always play their format's fixed rules.
     if (isVersusGameType(type)) {
@@ -205,6 +227,36 @@ export class MapPlaylist {
       config.trusted = true;
     }
     return config;
+  }
+
+  private async getConquestConfig(): Promise<GameConfig> {
+    const map = CONQUEST_MAPS[this.conquestPlayed % CONQUEST_MAPS.length];
+    this.conquestPlayed++;
+    return {
+      donateGold: false,
+      donateTroops: false,
+      gameMap: map,
+      maxPlayers: await this.lobbyMaxPlayers(map, GameMode.FFA, undefined),
+      gameType: GameType.Public,
+      gameMapSize: GameMapSize.Normal,
+      publicGameModifiers: {},
+      difficulty: Difficulty.Medium,
+      infiniteGold: false,
+      infiniteTroops: false,
+      maxTimerValue: undefined,
+      instantBuild: false,
+      randomSpawn: false,
+      nations: "default",
+      gameMode: GameMode.FFA,
+      playerTeams: undefined,
+      bots: 100,
+      spawnImmunityDuration: this.getSpawnImmunityDuration(undefined),
+      disabledUnits: [],
+      disableClanTags: true,
+      overtime: { enabled: true },
+      objectives: true,
+      gameVariant: "conquest",
+    } satisfies GameConfig;
   }
 
   private getNationsConfig(): GameConfig {

@@ -36,6 +36,10 @@ export class WinCheckExecution implements Execution {
       return;
     }
     if (this.mg === null) throw new Error("Not initialized");
+    if (this.mg.getWinner() !== null) {
+      this.active = false;
+      return;
+    }
 
     if (this.checkRanked2v2Cancelled()) {
       return;

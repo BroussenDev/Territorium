@@ -63,6 +63,7 @@ import { UsernameInput } from "./UsernameInput";
 import {
   calculateServerTimeOffset,
   getGamesPlayed,
+  getMapName,
   getSecondsUntilServerTimestamp,
   reloadForUpdate,
   renderDuration,
@@ -1021,7 +1022,10 @@ export class GameModeSelector extends LitElement {
    */
   private advertisedLobbyCount(): number {
     return Object.entries(this.lobbies?.games ?? {})
-      .filter(([type]) => type !== "nations" && !isVersusGameType(type))
+      .filter(
+        ([type]) =>
+          type !== "nations" && type !== "conquest" && !isVersusGameType(type),
+      )
       .flatMap(([, lobbies]) => lobbies).length;
   }
 
@@ -1211,10 +1215,120 @@ export class GameModeSelector extends LitElement {
               </span>
             </span>
           </button>
-          ${this.renderVersusCard()}
+          ${this.renderVersusCard()} ${this.renderConquestCard()}
         </div>
       </section>
     `;
+  }
+
+  /**
+   * Conquest: a full-width card under Nations and Versus. The five objective
+   * tiles on the left echo the rule, the lobby's map shows through on the right.
+   */
+  private renderConquestCard() {
+    const lobby = this.lobbies?.games?.["conquest"]?.[0];
+    const blocked = shouldBlockSocketSourcedAction(
+      this.desktopUpdateState,
+      this.desktopSessionState,
+    );
+    const unavailable = !this.inputValid || lobby === undefined;
+    const time = lobby ? this.lobbyTimeDisplay(lobby) : undefined;
+    const map = lobby?.gameConfig?.gameMap;
+    const facts = [
+      translateText("game_modes.conquest_fact_objectives"),
+      translateText("game_modes.conquest_fact_hold"),
+      translateText("game_modes.conquest_fact_maps"),
+    ];
+    return html`<button
+      data-conquest-card
+      @click=${() => lobby && this.validateAndJoin(lobby)}
+      ?disabled=${unavailable}
+      aria-disabled=${blocked}
+      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-emerald-400/25 bg-[#07130f] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-emerald-300/60 hover:shadow-[0_18px_40px_-20px_rgba(16,185,129,0.6)] focus-visible:outline-2 focus-visible:outline-emerald-300 sm:col-span-3 ${unavailable
+        ? DISABLED
+        : blocked
+          ? "opacity-50 cursor-not-allowed"
+          : ""}"
+    >
+      ${map
+        ? html`<img
+            src=${terrainMapFileLoader.getMapData(map).webpPath}
+            alt=""
+            draggable="false"
+            class="pointer-events-none absolute inset-y-0 right-0 h-full w-2/3 select-none object-cover opacity-50 saturate-[0.8] [mask-image:linear-gradient(to_left,#000_40%,transparent)] transition-transform duration-500 group-hover/mode:scale-[1.03]"
+          />`
+        : nothing}
+      <span
+        class="relative flex flex-1 flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-8"
+      >
+        <!-- Five objectives: three already held, the majority that wins. -->
+        <span
+          class="grid shrink-0 grid-cols-5 gap-1.5 self-start sm:self-center"
+          aria-hidden="true"
+        >
+          ${[0, 1, 2, 3, 4].map(
+            (i) =>
+              html`<span
+                class="size-5 rounded-[3px] border-2 ${i < 3
+                  ? "border-brand-bright bg-brand-bright shadow-[0_0_12px_rgba(52,211,153,0.6)]"
+                  : "border-white/35"}"
+              ></span>`,
+          )}
+        </span>
+        <span class="flex min-w-0 flex-1 flex-col gap-2.5">
+          <span class="flex flex-wrap items-center gap-3">
+            <span
+              class="font-display text-3xl font-bold tracking-[0.08em] text-emerald-200"
+              >${translateText("game_modes.conquest_title")}</span
+            >
+            ${time
+              ? html`<span
+                  class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
+                    ? "uppercase"
+                    : ""}"
+                  >${time.text}</span
+                >`
+              : nothing}
+            ${map
+              ? html`<span class="text-sm font-semibold text-white/70"
+                  >${getMapName(map) ?? map}</span
+                >`
+              : nothing}
+          </span>
+          <span class="max-w-2xl text-sm leading-relaxed text-white/85">
+            ${translateText("game_modes.conquest_description")}
+          </span>
+          <span class="flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
+            ${facts.map(
+              (fact) =>
+                html`<span class="flex items-start gap-2 text-white/80">
+                  <span
+                    class="mt-1.5 size-1.5 shrink-0 rounded-[1px] bg-brand-bright"
+                    aria-hidden="true"
+                  ></span>
+                  ${fact}
+                </span>`,
+            )}
+          </span>
+        </span>
+        <span class="flex shrink-0 items-center gap-3">
+          <span
+            class="rounded-md bg-brand px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-brand-light"
+            >${lobby
+              ? translateText("game_modes.conquest_join")
+              : translateText("game_modes.conquest_waiting")}</span
+          >
+          ${lobby
+            ? html`<span class="text-sm tabular-nums text-white/70"
+                >${translateText("game_modes.players", {
+                  count: lobby.numClients,
+                  max: lobby.gameConfig?.maxPlayers ?? "?",
+                })}</span
+              >`
+            : nothing}
+        </span>
+      </span>
+    </button>`;
   }
 
   private renderVersusCard() {
