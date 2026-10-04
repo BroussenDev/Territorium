@@ -6,7 +6,8 @@
   },
   "ignorePatterns": [
     "src/server/gatekeeper/**",
-    "tests/pathfinding/playground/**"
+    "tests/pathfinding/playground/**",
+    "Tauri-dev/**"
   ],
   "categories": {
     "correctness": "off",

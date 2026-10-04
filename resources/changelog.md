@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.62
+
+🖥️ **Desktop app fix**
+
+- The "Retry" button in the desktop app's Steam status bar now shows its translated label instead of a raw text key.
+
 ## v0.1.61
 
 🚩 **New mode: Conquest**

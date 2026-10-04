@@ -290,6 +290,7 @@ export class LangSelector extends LitElement {
       "tribes-panel",
       "steam-wishlist",
       "steam-wishlist-button",
+      "desktop-status-bar",
       "streaming-now",
       "tutorial-panel",
     ];
