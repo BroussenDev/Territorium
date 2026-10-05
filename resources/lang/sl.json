@@ -3079,6 +3079,13 @@
     "waiting_players": "Čakanje na igralce ({count}/{max})",
     "you": "Ti"
   },
+  "warning_notice": {
+    "body": "Vaš račun je prejel uradno opozorilo moderatorske ekipe.",
+    "consequence": "Vsak nov incident bo privedel do izključitve iz rangiranega načina.",
+    "reason": "Razlog: {reason}",
+    "title": "Uradno opozorilo",
+    "understood": "Razumem"
+  },
   "webgl_gate": {
     "continue": "Vseeno igraj",
     "intro_limited": "Nastavitev zasebnosti omejuje grafiko pod raven, ki jo igra potrebuje, zato so deli zemljevida lahko črni. Izvzemite to stran:",

@@ -3079,6 +3079,13 @@
     "waiting_players": "Wachten op spelers ({count}/{max})",
     "you": "Jij"
   },
+  "warning_notice": {
+    "body": "Je account heeft een officiële waarschuwing van het moderatieteam ontvangen.",
+    "consequence": "Elk nieuw incident leidt tot uitsluiting van de ranglijstmodus.",
+    "reason": "Reden: {reason}",
+    "title": "Officiële waarschuwing",
+    "understood": "Ik begrijp het"
+  },
   "webgl_gate": {
     "continue": "Toch spelen",
     "intro_limited": "Een privacy-instelling beperkt de graphics tot onder wat het spel nodig heeft, waardoor delen van de kaart zwart kunnen zijn. Sluit deze site uit:",

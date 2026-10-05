@@ -121,3 +121,35 @@ describe("UserMeResponseSchema subscription.provider", () => {
     );
   });
 });
+
+describe("UserMeResponseSchema warnings", () => {
+  it("carries the pending moderation warnings", () => {
+    const parsed = UserMeResponseSchema.parse({
+      user: {},
+      player: samplePlayer(),
+      warnings: [
+        { id: 7, reason: "macro", createdAt: "2026-10-05T12:00:00.000Z" },
+      ],
+    });
+    expect(parsed.warnings).toEqual([
+      { id: 7, reason: "macro", createdAt: "2026-10-05T12:00:00.000Z" },
+    ]);
+  });
+
+  it("an older API without warnings parses as none", () => {
+    const parsed = UserMeResponseSchema.parse({
+      user: {},
+      player: samplePlayer(),
+    });
+    expect(parsed.warnings).toBeUndefined();
+  });
+
+  it("a malformed warning is refused", () => {
+    const parsed = UserMeResponseSchema.safeParse({
+      user: {},
+      player: samplePlayer(),
+      warnings: [{ id: "7", reason: "macro", createdAt: "hier" }],
+    });
+    expect(parsed.success).toBe(false);
+  });
+});

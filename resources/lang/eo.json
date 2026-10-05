@@ -3079,6 +3079,13 @@
     "waiting_players": "Atendante ludantojn ({count}/{max})",
     "you": "Vi"
   },
+  "warning_notice": {
+    "body": "Via konto ricevis oficialan averton de la moderiga teamo.",
+    "consequence": "Ĉiu nova okazaĵo kondukos al ekskludo el la rangigita reĝimo.",
+    "reason": "Kialo: {reason}",
+    "title": "Oficiala averto",
+    "understood": "Mi komprenas"
+  },
   "webgl_gate": {
     "continue": "Ludi tamen",
     "intro_limited": "Privateca agordo limigas la grafikon sub tio, kion la ludo bezonas, do partoj de la mapo povas aperi nigraj. Esceptigu ĉi tiun retejon:",

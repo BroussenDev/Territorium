@@ -3079,6 +3079,13 @@
     "waiting_players": "Čekanje igrača ({count}/{max})",
     "you": "Ti"
   },
+  "warning_notice": {
+    "body": "Vaš nalog je dobio službeno upozorenje od moderatorskog tima.",
+    "consequence": "Svaki novi incident dovest će do isključenja iz rangiranog načina.",
+    "reason": "Razlog: {reason}",
+    "title": "Službeno upozorenje",
+    "understood": "Razumijem"
+  },
   "webgl_gate": {
     "continue": "Igraj svejedno",
     "intro_limited": "Postavka privatnosti ograničava grafiku ispod onoga što igra treba, pa dijelovi mape mogu biti crni. Izuzmite ovu stranicu:",

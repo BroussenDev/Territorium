@@ -3079,6 +3079,13 @@
     "waiting_players": "Oczekiwanie na graczy ({count}/{max})",
     "you": "Ty"
   },
+  "warning_notice": {
+    "body": "Twoje konto otrzymało oficjalne ostrzeżenie od zespołu moderacji.",
+    "consequence": "Każdy kolejny incydent spowoduje wykluczenie z trybu rankingowego.",
+    "reason": "Powód: {reason}",
+    "title": "Oficjalne ostrzeżenie",
+    "understood": "Rozumiem"
+  },
   "webgl_gate": {
     "continue": "Graj mimo to",
     "intro_limited": "Ustawienie prywatności ogranicza grafikę poniżej potrzeb gry, więc części mapy mogą być czarne. Wyklucz tę stronę:",

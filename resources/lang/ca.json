@@ -3079,6 +3079,13 @@
     "waiting_players": "Esperant jugadors ({count}/{max})",
     "you": "Tu"
   },
+  "warning_notice": {
+    "body": "El teu compte ha rebut una advertència oficial de l'equip de moderació.",
+    "consequence": "Qualsevol nou incident comportarà l'exclusió del mode classificatori.",
+    "reason": "Motiu: {reason}",
+    "title": "Advertència oficial",
+    "understood": "Entesos"
+  },
   "webgl_gate": {
     "continue": "Jugar igualment",
     "intro_limited": "Un ajust de privadesa limita els gràfics per sota del que necessita el joc, i parts del mapa poden sortir negres. Exclou aquest lloc:",

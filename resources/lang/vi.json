@@ -3079,6 +3079,13 @@
     "waiting_players": "Đang chờ người chơi ({count}/{max})",
     "you": "Bạn"
   },
+  "warning_notice": {
+    "body": "Tài khoản của bạn đã nhận một cảnh cáo chính thức từ đội ngũ kiểm duyệt.",
+    "consequence": "Bất kỳ sự cố mới nào cũng sẽ dẫn đến việc bị loại khỏi chế độ xếp hạng.",
+    "reason": "Lý do: {reason}",
+    "title": "Cảnh cáo chính thức",
+    "understood": "Tôi đã hiểu"
+  },
   "webgl_gate": {
     "continue": "Vẫn chơi",
     "intro_limited": "Một cài đặt quyền riêng tư giới hạn đồ họa dưới mức trò chơi cần, nên một phần bản đồ có thể bị đen. Hãy miễn trừ trang này:",

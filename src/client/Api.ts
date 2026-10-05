@@ -911,6 +911,23 @@ export async function setHiddenName(
   }
 }
 
+// POST /users/@me/warnings/:id/ack: the player read a moderation warning.
+// True when the server recorded it; on failure the notice comes back at the
+// next visit.
+export async function acknowledgeWarning(id: number): Promise<boolean> {
+  try {
+    const response = await fetch(
+      `${getApiBase()}/users/@me/warnings/${encodeURIComponent(id)}/ack`,
+      { method: "POST", headers: { Authorization: await getAuthHeader() } },
+    );
+    if (response.ok) invalidateUserMe();
+    return response.ok;
+  } catch (e) {
+    console.error("acknowledgeWarning: request failed", e);
+    return false;
+  }
+}
+
 // GET /users/@me/tribe_names — the player's purchased custom tribe names plus
 // the current purchase price. Auth required; returns false when logged out or
 // on any error (callers show a login/empty state rather than a hard failure).

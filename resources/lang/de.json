@@ -3079,6 +3079,13 @@
     "waiting_players": "Warte auf Spieler ({count}/{max})",
     "you": "Du"
   },
+  "warning_notice": {
+    "body": "Dein Konto hat eine offizielle Verwarnung vom Moderationsteam erhalten.",
+    "consequence": "Jeder weitere Vorfall führt zum Ausschluss vom Ranglistenmodus.",
+    "reason": "Grund: {reason}",
+    "title": "Offizielle Verwarnung",
+    "understood": "Ich habe verstanden"
+  },
   "webgl_gate": {
     "continue": "Trotzdem spielen",
     "intro_limited": "Eine Datenschutzeinstellung begrenzt die Grafik unter das, was das Spiel braucht, daher können Teile der Karte schwarz sein. Nimm diese Seite davon aus:",

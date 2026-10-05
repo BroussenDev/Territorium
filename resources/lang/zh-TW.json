@@ -3079,6 +3079,13 @@
     "waiting_players": "等待玩家 ({count}/{max})",
     "you": "你"
   },
+  "warning_notice": {
+    "body": "您的帳號已收到管理團隊的正式警告。",
+    "consequence": "再有任何違規行為，您將被禁止參加排位模式。",
+    "reason": "原因：{reason}",
+    "title": "正式警告",
+    "understood": "我知道了"
+  },
   "webgl_gate": {
     "continue": "仍要遊玩",
     "intro_limited": "某項隱私設定把圖形限制在遊戲所需水準以下，地圖的部分區域可能顯示為黑色。請為本站設定例外：",

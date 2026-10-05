@@ -3079,6 +3079,13 @@
     "waiting_players": "Aguardando jogadores ({count}/{max})",
     "you": "Você"
   },
+  "warning_notice": {
+    "body": "Sua conta recebeu uma advertência oficial da equipe de moderação.",
+    "consequence": "Qualquer novo incidente levará à exclusão do modo ranqueado.",
+    "reason": "Motivo: {reason}",
+    "title": "Advertência oficial",
+    "understood": "Entendi"
+  },
   "webgl_gate": {
     "continue": "Jogar mesmo assim",
     "intro_limited": "Uma configuração de privacidade limita os gráficos abaixo do que o jogo precisa, e partes do mapa podem ficar pretas. Libere este site:",

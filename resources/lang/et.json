@@ -3079,6 +3079,13 @@
     "waiting_players": "Mängijate ootamine ({count}/{max})",
     "you": "Sina"
   },
+  "warning_notice": {
+    "body": "Teie konto sai modereerimismeeskonnalt ametliku hoiatuse.",
+    "consequence": "Iga uus juhtum toob kaasa reitingurežiimist kõrvaldamise.",
+    "reason": "Põhjus: {reason}",
+    "title": "Ametlik hoiatus",
+    "understood": "Sain aru"
+  },
   "webgl_gate": {
     "continue": "Mängi ikkagi",
     "intro_limited": "Privaatsusseade piirab graafikat alla mängu vajaduse, nii et osa kaardist võib olla must. Tee sellele saidile erand:",

@@ -3079,6 +3079,13 @@
     "waiting_players": "Čekání na hráče ({count}/{max})",
     "you": "Ty"
   },
+  "warning_notice": {
+    "body": "Váš účet obdržel oficiální varování od moderátorského týmu.",
+    "consequence": "Jakýkoli další incident povede k vyloučení z hodnoceného režimu.",
+    "reason": "Důvod: {reason}",
+    "title": "Oficiální varování",
+    "understood": "Rozumím"
+  },
   "webgl_gate": {
     "continue": "Přesto hrát",
     "intro_limited": "Nastavení soukromí omezuje grafiku pod úroveň, kterou hra potřebuje, takže části mapy mohou být černé. Vyjměte tento web:",

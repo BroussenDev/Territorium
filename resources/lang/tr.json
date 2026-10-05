@@ -3079,6 +3079,13 @@
     "waiting_players": "Oyuncular bekleniyor ({count}/{max})",
     "you": "Sen"
   },
+  "warning_notice": {
+    "body": "Hesabınız moderasyon ekibinden resmî bir uyarı aldı.",
+    "consequence": "Yeni herhangi bir olay, dereceli moddan çıkarılmanıza yol açacaktır.",
+    "reason": "Sebep: {reason}",
+    "title": "Resmî uyarı",
+    "understood": "Anladım"
+  },
   "webgl_gate": {
     "continue": "Yine de oyna",
     "intro_limited": "Bir gizlilik ayarı grafikleri oyunun ihtiyacının altında sınırlıyor, bu yüzden haritanın bazı yerleri siyah görünebilir. Bu siteyi muaf tut:",

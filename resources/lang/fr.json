@@ -3079,6 +3079,13 @@
     "waiting_players": "En attente de joueurs ({count}/{max})",
     "you": "Vous"
   },
+  "warning_notice": {
+    "body": "Votre compte a reçu un avertissement officiel de l'équipe de modération.",
+    "consequence": "Tout nouvel incident entraînera une exclusion du mode classé.",
+    "reason": "Motif : {reason}",
+    "title": "Avertissement officiel",
+    "understood": "J'ai compris"
+  },
   "webgl_gate": {
     "continue": "Jouer quand même",
     "intro_limited": "Un réglage de confidentialité bride les graphismes en dessous de ce dont le jeu a besoin : des zones de la carte peuvent s'afficher en noir. Exemptez ce site :",

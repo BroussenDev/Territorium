@@ -3079,6 +3079,13 @@
     "waiting_players": "Se așteaptă jucători ({count}/{max})",
     "you": "Tu"
   },
+  "warning_notice": {
+    "body": "Contul tău a primit un avertisment oficial din partea echipei de moderare.",
+    "consequence": "Orice nou incident va duce la excluderea din modul clasat.",
+    "reason": "Motiv: {reason}",
+    "title": "Avertisment oficial",
+    "understood": "Am înțeles"
+  },
   "webgl_gate": {
     "continue": "Joacă oricum",
     "intro_limited": "O setare de confidențialitate limitează grafica sub ce are nevoie jocul, iar părți din hartă pot apărea negre. Exceptează acest site:",

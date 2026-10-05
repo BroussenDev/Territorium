@@ -181,6 +181,17 @@ export const UserMeResponseSchema = z.object({
     })
     .nullable()
     .optional(),
+  // Moderation warnings the player has not acknowledged yet; the game shows
+  // each one until they confirm they read it. Absent on an older API.
+  warnings: z
+    .array(
+      z.object({
+        id: z.number(),
+        reason: z.string(),
+        createdAt: z.iso.datetime(),
+      }),
+    )
+    .optional(),
   player: z.object({
     publicId: z.string(),
     adfree: z.boolean(),

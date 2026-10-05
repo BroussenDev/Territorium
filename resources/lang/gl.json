@@ -3079,6 +3079,13 @@
     "waiting_players": "Agardando xogadores ({count}/{max})",
     "you": "Ti"
   },
+  "warning_notice": {
+    "body": "A túa conta recibiu unha advertencia oficial do equipo de moderación.",
+    "consequence": "Calquera novo incidente suporá a exclusión do modo clasificatorio.",
+    "reason": "Motivo: {reason}",
+    "title": "Advertencia oficial",
+    "understood": "Entendido"
+  },
   "webgl_gate": {
     "continue": "Xogar igualmente",
     "intro_limited": "Un axuste de privacidade limita os gráficos por debaixo do que precisa o xogo, e partes do mapa poden verse negras. Exime este sitio:",

@@ -3079,6 +3079,13 @@
     "waiting_players": "Menunggu pemain ({count}/{max})",
     "you": "Kamu"
   },
+  "warning_notice": {
+    "body": "Akun Anda menerima peringatan resmi dari tim moderasi.",
+    "consequence": "Setiap insiden baru akan berujung pada pengecualian dari mode peringkat.",
+    "reason": "Alasan: {reason}",
+    "title": "Peringatan resmi",
+    "understood": "Saya mengerti"
+  },
   "webgl_gate": {
     "continue": "Tetap main",
     "intro_limited": "Sebuah pengaturan privasi membatasi grafis di bawah kebutuhan game, sehingga sebagian peta bisa tampak hitam. Kecualikan situs ini:",

@@ -3079,6 +3079,13 @@
     "waiting_players": "Odotetaan pelaajia ({count}/{max})",
     "you": "Sinä"
   },
+  "warning_notice": {
+    "body": "Tilisi on saanut virallisen varoituksen moderointitiimiltä.",
+    "consequence": "Jokainen uusi tapaus johtaa sulkemiseen pois rankattu-tilasta.",
+    "reason": "Syy: {reason}",
+    "title": "Virallinen varoitus",
+    "understood": "Ymmärrän"
+  },
   "webgl_gate": {
     "continue": "Pelaa silti",
     "intro_limited": "Yksityisyysasetus rajoittaa grafiikkaa alle pelin tarpeen, joten osa kartasta voi näkyä mustana. Vapauta tämä sivusto:",

@@ -3079,6 +3079,13 @@
     "waiting_players": "Esperando jugadores ({count}/{max})",
     "you": "Tú"
   },
+  "warning_notice": {
+    "body": "Tu cuenta ha recibido una advertencia oficial del equipo de moderación.",
+    "consequence": "Cualquier nuevo incidente supondrá la exclusión del modo clasificatorio.",
+    "reason": "Motivo: {reason}",
+    "title": "Advertencia oficial",
+    "understood": "Entendido"
+  },
   "webgl_gate": {
     "continue": "Jugar de todos modos",
     "intro_limited": "Un ajuste de privacidad limita los gráficos por debajo de lo que necesita el juego, así que partes del mapa pueden verse negras. Exime a este sitio:",

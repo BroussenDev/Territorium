@@ -3079,6 +3079,13 @@
     "waiting_players": "Waiting for players ({count}/{max})",
     "you": "You"
   },
+  "warning_notice": {
+    "body": "Your account has received an official warning from the moderation team.",
+    "consequence": "Any new incident will lead to an exclusion from ranked mode.",
+    "reason": "Reason: {reason}",
+    "title": "Official warning",
+    "understood": "I understand"
+  },
   "webgl_gate": {
     "continue": "Play anyway",
     "intro_limited": "A privacy setting caps the graphics below what the game needs, so parts of the map may show black. Exempt this site from it:",

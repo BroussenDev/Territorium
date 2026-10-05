@@ -3079,6 +3079,13 @@
     "waiting_players": "Venter på spillere ({count}/{max})",
     "you": "Dig"
   },
+  "warning_notice": {
+    "body": "Din konto har modtaget en officiel advarsel fra moderatorteamet.",
+    "consequence": "Enhver ny hændelse vil føre til udelukkelse fra rangeret tilstand.",
+    "reason": "Årsag: {reason}",
+    "title": "Officiel advarsel",
+    "understood": "Jeg forstår"
+  },
   "webgl_gate": {
     "continue": "Spil alligevel",
     "intro_limited": "En privatlivsindstilling begrænser grafikken under det, spillet kræver, så dele af kortet kan blive sorte. Undtag dette websted:",

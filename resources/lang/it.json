@@ -3079,6 +3079,13 @@
     "waiting_players": "In attesa di giocatori ({count}/{max})",
     "you": "Tu"
   },
+  "warning_notice": {
+    "body": "Il tuo account ha ricevuto un avvertimento ufficiale dal team di moderazione.",
+    "consequence": "Qualsiasi nuovo incidente comporterà l'esclusione dalla modalità classificata.",
+    "reason": "Motivo: {reason}",
+    "title": "Avvertimento ufficiale",
+    "understood": "Ho capito"
+  },
   "webgl_gate": {
     "continue": "Gioca comunque",
     "intro_limited": "Un'impostazione della privacy limita la grafica sotto ciò che serve al gioco, quindi parti della mappa possono apparire nere. Escludi questo sito:",

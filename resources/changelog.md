@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.73
+
+⚠️ **Moderation warnings you can see**
+
+- When the moderation team gives your account an official warning, the game shows it the next time you open Territorium, with its reason. It stays on screen until you confirm with "I understand".
+
 ## v0.1.72
 
 🛡️ **TGS, the Territorium Game Shield**

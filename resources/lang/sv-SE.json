@@ -3079,6 +3079,13 @@
     "waiting_players": "Väntar på spelare ({count}/{max})",
     "you": "Du"
   },
+  "warning_notice": {
+    "body": "Ditt konto har fått en officiell varning från moderatorteamet.",
+    "consequence": "Varje ny incident leder till uteslutning från rankat läge.",
+    "reason": "Anledning: {reason}",
+    "title": "Officiell varning",
+    "understood": "Jag förstår"
+  },
   "webgl_gate": {
     "continue": "Spela ändå",
     "intro_limited": "En sekretessinställning begränsar grafiken under vad spelet behöver, så delar av kartan kan bli svarta. Undanta den här webbplatsen:",

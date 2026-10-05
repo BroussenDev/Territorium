@@ -3079,6 +3079,13 @@
     "waiting_players": "Játékosokra várunk ({count}/{max})",
     "you": "Te"
   },
+  "warning_notice": {
+    "body": "A fiókod hivatalos figyelmeztetést kapott a moderátori csapattól.",
+    "consequence": "Minden újabb incidens a rangsorolt módból való kizárást vonja maga után.",
+    "reason": "Indok: {reason}",
+    "title": "Hivatalos figyelmeztetés",
+    "understood": "Megértettem"
+  },
   "webgl_gate": {
     "continue": "Játék mégis",
     "intro_limited": "Egy adatvédelmi beállítás a játék igénye alá korlátozza a grafikát, ezért a térkép egyes részei feketék lehetnek. Mentesítsd ezt az oldalt:",
