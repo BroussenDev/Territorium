@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.63
+
+🌍 **Territorium moves to territorium.gg**
+
+- The game now lives at territorium.gg. The old address shows the team's admin page, with a "Join us on Territorium.gg" button that brings your signed-in account along.
+- "Sign in with Steam" now works on the website: if you play on Steam, you find the same account, progress and emeralds in your browser.
+- Signed in with email, Discord or Google? Link your Steam account from your account page; the Steam app then opens that account. Steam confirms the link on its own page, and the link is permanent.
+- In the Steam app, emeralds are bought through Steam's own purchase window. On the website, payment stays with Mollie.
+- The terms of service and privacy policy now mention Steam.
+
 ## v0.1.62
 
 🖥️ **Desktop app fix**
