@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.66
+
+📜 **Terms brought up to date**
+
+- The terms of service now mention signing in and linking an account with Steam.
+- The terms of sale describe the emerald packs (sold at the price shown on each pack, bonus included) and the custom amount, from 20 to 5,000 emeralds.
+- The privacy policy lists Valve (Steam) among the services that may process data in the United States.
+
 ## v0.1.65
 
 🌐 **Steam app: choose your language**
