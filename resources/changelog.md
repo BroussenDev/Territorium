@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.71
+
+🎧 **Territorium on Discord**
+
+- With the Steam app open, your Discord profile shows Territorium with its emblem: in the menu, in a lobby or in a game, the mode and map, the time played and the number of players. Your friends get a "Join the game" button.
+
 ## v0.1.70
 
 👥 **Your friends see what you play**
