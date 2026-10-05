@@ -1125,6 +1125,12 @@
     "minimize": "Micșorează",
     "open_on_twitch": "Deschide {channel} pe Twitch"
   },
+  "first_launch": {
+    "continue": "Continuă",
+    "subtitle": "O poți schimba oricând din steagul din partea de jos a ecranului.",
+    "suggested": "Sugerată",
+    "title": "Alege-ți limba"
+  },
   "flags": {
     "chevron_royal": "Chevron regal",
     "croix_du_nord": "Crucea Nordului",

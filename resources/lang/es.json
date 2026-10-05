@@ -1125,6 +1125,12 @@
     "minimize": "minimizar",
     "open_on_twitch": "Abrir {channel} en Twitch"
   },
+  "first_launch": {
+    "continue": "Continuar",
+    "subtitle": "Puedes cambiarlo en cualquier momento con la bandera de la parte inferior de la pantalla.",
+    "suggested": "Sugerido",
+    "title": "Elige tu idioma"
+  },
   "flags": {
     "chevron_royal": "Chevrón real",
     "croix_du_nord": "Cruz del Norte",

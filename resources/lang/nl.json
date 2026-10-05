@@ -1125,6 +1125,12 @@
     "minimize": "Minimaliseren",
     "open_on_twitch": "Open {channel} op Twitch"
   },
+  "first_launch": {
+    "continue": "Doorgaan",
+    "subtitle": "Je kunt deze altijd wijzigen met de vlag onderaan het scherm.",
+    "suggested": "Voorgesteld",
+    "title": "Kies je taal"
+  },
   "flags": {
     "chevron_royal": "Koninklijke Chevron",
     "croix_du_nord": "Noorderkruis",

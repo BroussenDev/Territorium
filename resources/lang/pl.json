@@ -1125,6 +1125,12 @@
     "minimize": "Zminimalizować",
     "open_on_twitch": "Otwórz {channel} na Twitchu"
   },
+  "first_launch": {
+    "continue": "Dalej",
+    "subtitle": "Możesz go zmienić w każdej chwili za pomocą flagi na dole ekranu.",
+    "suggested": "Sugerowany",
+    "title": "Wybierz język"
+  },
   "flags": {
     "chevron_royal": "Królewski szewron",
     "croix_du_nord": "Krzyż Północy",

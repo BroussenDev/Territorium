@@ -1125,6 +1125,12 @@
     "minimize": "کوچک‌نمایی",
     "open_on_twitch": "{channel} را در توییچ باز کنید"
   },
+  "first_launch": {
+    "continue": "ادامه",
+    "subtitle": "می‌توانید هر زمان با پرچم پایین صفحه آن را تغییر دهید.",
+    "suggested": "پیشنهادی",
+    "title": "زبان خود را انتخاب کنید"
+  },
   "flags": {
     "chevron_royal": "رویال شورون",
     "croix_du_nord": "صلیب شمال",

@@ -1125,6 +1125,12 @@
     "minimize": "Згорнути",
     "open_on_twitch": "Відкрити {channel} на Twitch"
   },
+  "first_launch": {
+    "continue": "Продовжити",
+    "subtitle": "Її можна змінити будь-коли за допомогою прапорця внизу екрана.",
+    "suggested": "Рекомендована",
+    "title": "Оберіть мову"
+  },
   "flags": {
     "chevron_royal": "Королівський шеврон",
     "croix_du_nord": "Північний хрест",

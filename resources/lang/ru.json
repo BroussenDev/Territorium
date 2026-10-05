@@ -1125,6 +1125,12 @@
     "minimize": "Свернуть",
     "open_on_twitch": "Открыть {channel} на Twitch"
   },
+  "first_launch": {
+    "continue": "Продолжить",
+    "subtitle": "Его можно изменить в любой момент с помощью флага внизу экрана.",
+    "suggested": "Рекомендуемый",
+    "title": "Выберите язык"
+  },
   "flags": {
     "chevron_royal": "Королевский Шеврон",
     "croix_du_nord": "Северный крест",

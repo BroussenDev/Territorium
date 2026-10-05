@@ -1125,6 +1125,12 @@
     "minimize": "最小化",
     "open_on_twitch": "Twitchの {channel} を開く"
   },
+  "first_launch": {
+    "continue": "続ける",
+    "subtitle": "画面下の旗からいつでも変更できます。",
+    "suggested": "おすすめ",
+    "title": "言語を選択"
+  },
   "flags": {
     "chevron_royal": "ロイヤル シェブロン",
     "croix_du_nord": "北十字",

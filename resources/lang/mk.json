@@ -1125,6 +1125,12 @@
     "minimize": "Минимизирајте",
     "open_on_twitch": "Отворете {channel} на Twitch"
   },
+  "first_launch": {
+    "continue": "Продолжи",
+    "subtitle": "Можете да го промените во секое време преку знамето на дното на екранот.",
+    "suggested": "Предложен",
+    "title": "Изберете јазик"
+  },
   "flags": {
     "chevron_royal": "Кралскиот Шеврон",
     "croix_du_nord": "Северен крст",

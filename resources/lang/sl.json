@@ -1125,6 +1125,12 @@
     "minimize": "Zmanjšaj",
     "open_on_twitch": "Odprite {channel} na Twitchu"
   },
+  "first_launch": {
+    "continue": "Nadaljuj",
+    "subtitle": "Kadar koli ga lahko spremenite z zastavico na dnu zaslona.",
+    "suggested": "Predlagano",
+    "title": "Izberite jezik"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Severni križ",

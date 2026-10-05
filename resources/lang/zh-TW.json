@@ -1125,6 +1125,12 @@
     "minimize": "最小化",
     "open_on_twitch": "在 Twitch 上開啟 {channel}"
   },
+  "first_launch": {
+    "continue": "繼續",
+    "subtitle": "你可以隨時透過畫面底部的旗幟更改語言。",
+    "suggested": "推薦",
+    "title": "選擇你的語言"
+  },
   "flags": {
     "chevron_royal": "皇家雪佛龍",
     "croix_du_nord": "北方十字",

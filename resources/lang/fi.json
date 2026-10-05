@@ -1125,6 +1125,12 @@
     "minimize": "Minimoida",
     "open_on_twitch": "Avaa {channel} Twitchissä"
   },
+  "first_launch": {
+    "continue": "Jatka",
+    "subtitle": "Voit vaihtaa sen milloin tahansa näytön alareunan lipusta.",
+    "suggested": "Ehdotettu",
+    "title": "Valitse kieli"
+  },
   "flags": {
     "chevron_royal": "Kuninkaallinen Chevron",
     "croix_du_nord": "Pohjoinen risti",

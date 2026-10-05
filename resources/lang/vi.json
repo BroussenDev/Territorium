@@ -1125,6 +1125,12 @@
     "minimize": "Thu nhỏ",
     "open_on_twitch": "Mở {channel} trên Twitch"
   },
+  "first_launch": {
+    "continue": "Tiếp tục",
+    "subtitle": "Bạn có thể đổi bất cứ lúc nào bằng lá cờ ở cuối màn hình.",
+    "suggested": "Đề xuất",
+    "title": "Chọn ngôn ngữ của bạn"
+  },
   "flags": {
     "chevron_royal": "Hoàng gia Chevron",
     "croix_du_nord": "Thập tự phương Bắc",

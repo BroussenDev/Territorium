@@ -1125,6 +1125,12 @@
     "minimize": "Minimumigi",
     "open_on_twitch": "Malfermu {channel} ĉe Twitch"
   },
+  "first_launch": {
+    "continue": "Daŭrigi",
+    "subtitle": "Vi povas ŝanĝi ĝin iam ajn per la flago ĉe la malsupro de la ekrano.",
+    "suggested": "Proponita",
+    "title": "Elektu vian lingvon"
+  },
   "flags": {
     "chevron_royal": "Reĝa Ĉevrono",
     "croix_du_nord": "Norda Kruco",

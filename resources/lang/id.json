@@ -1125,6 +1125,12 @@
     "minimize": "Memperkecil",
     "open_on_twitch": "Buka {channel} di Twitch"
   },
+  "first_launch": {
+    "continue": "Lanjutkan",
+    "subtitle": "Kamu bisa mengubahnya kapan saja lewat bendera di bagian bawah layar.",
+    "suggested": "Disarankan",
+    "title": "Pilih bahasamu"
+  },
   "flags": {
     "chevron_royal": "Kerajaan Chevron",
     "croix_du_nord": "Salib Utara",

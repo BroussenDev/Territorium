@@ -1125,6 +1125,12 @@
     "minimize": "Minimalizovať",
     "open_on_twitch": "Otvorte {channel} na Twitchi"
   },
+  "first_launch": {
+    "continue": "Pokračovať",
+    "subtitle": "Kedykoľvek ho môžete zmeniť pomocou vlajky v dolnej časti obrazovky.",
+    "suggested": "Odporúčaný",
+    "title": "Vyberte si jazyk"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Severný kríž",

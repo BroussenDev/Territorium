@@ -1125,6 +1125,12 @@
     "minimize": "Ελαχιστοποίηση",
     "open_on_twitch": "Ανοίξτε το {channel} στο Twitch"
   },
+  "first_launch": {
+    "continue": "Συνέχεια",
+    "subtitle": "Μπορείτε να την αλλάξετε ανά πάσα στιγμή από τη σημαία στο κάτω μέρος της οθόνης.",
+    "suggested": "Προτεινόμενη",
+    "title": "Επιλέξτε τη γλώσσα σας"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Σταυρός του Βορρά",

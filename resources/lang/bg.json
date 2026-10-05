@@ -1125,6 +1125,12 @@
     "minimize": "Скрий",
     "open_on_twitch": "Отвори {channel} в Twitch"
   },
+  "first_launch": {
+    "continue": "Продължи",
+    "subtitle": "Можете да го смените по всяко време от знамето в долната част на екрана.",
+    "suggested": "Предложен",
+    "title": "Изберете език"
+  },
   "flags": {
     "chevron_royal": "Кралски шеврон",
     "croix_du_nord": "Северен кръст",

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.65
+
+🌐 **Steam app: choose your language**
+
+- The first time you open the Steam app, the game starts in English and asks which language you want to play in. Your Steam language is suggested first, and the screen switches to a language as soon as you pick it.
+- You can change it later with the flag at the bottom of the screen.
+
 ## v0.1.64
 
 🎮 **Steam app: every mode open**

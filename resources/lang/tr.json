@@ -1125,6 +1125,12 @@
     "minimize": "Küçült",
     "open_on_twitch": "Twitch'te {channel}'ı açın"
   },
+  "first_launch": {
+    "continue": "Devam",
+    "subtitle": "Ekranın altındaki bayraktan istediğin zaman değiştirebilirsin.",
+    "suggested": "Önerilen",
+    "title": "Dilini seç"
+  },
   "flags": {
     "chevron_royal": "Kraliyet Şevronu",
     "croix_du_nord": "Kuzey Haçı",

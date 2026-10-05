@@ -1125,6 +1125,12 @@
     "minimize": "Minimize",
     "open_on_twitch": "Open {channel} on Twitch"
   },
+  "first_launch": {
+    "continue": "Continue",
+    "subtitle": "You can change it at any time with the flag at the bottom of the screen.",
+    "suggested": "Suggested",
+    "title": "Choose your language"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Northern Cross",

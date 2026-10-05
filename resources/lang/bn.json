@@ -1125,6 +1125,12 @@
     "minimize": "ছোট করুন",
     "open_on_twitch": "Twitch-এ {channel} খুলুন"
   },
+  "first_launch": {
+    "continue": "চালিয়ে যান",
+    "subtitle": "স্ক্রিনের নিচের পতাকা থেকে যেকোনো সময় এটি বদলাতে পারবেন।",
+    "suggested": "প্রস্তাবিত",
+    "title": "আপনার ভাষা বেছে নিন"
+  },
   "flags": {
     "chevron_royal": "রয়্যাল শেভরন",
     "croix_du_nord": "উত্তরের ক্রস",

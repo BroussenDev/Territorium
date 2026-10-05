@@ -1125,6 +1125,12 @@
     "minimize": "Minimera",
     "open_on_twitch": "Öppna {channel} på Twitch"
   },
+  "first_launch": {
+    "continue": "Fortsätt",
+    "subtitle": "Du kan när som helst ändra det med flaggan längst ned på skärmen.",
+    "suggested": "Föreslaget",
+    "title": "Välj ditt språk"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Nordkorset",

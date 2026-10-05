@@ -1125,6 +1125,12 @@
     "minimize": "Minimeeri",
     "open_on_twitch": "Avage Twitchis {channel}"
   },
+  "first_launch": {
+    "continue": "Jätka",
+    "subtitle": "Saad seda igal ajal muuta ekraani allservas oleva lipu kaudu.",
+    "suggested": "Soovitatud",
+    "title": "Vali oma keel"
+  },
   "flags": {
     "chevron_royal": "Kuninglik Chevron",
     "croix_du_nord": "Põhjarist",

@@ -1125,6 +1125,12 @@
     "minimize": "Kicsinyítés",
     "open_on_twitch": "Nyisd meg a(z) {channel} csatornát a Twitchen"
   },
+  "first_launch": {
+    "continue": "Tovább",
+    "subtitle": "Bármikor módosíthatod a képernyő alján lévő zászlóval.",
+    "suggested": "Javasolt",
+    "title": "Válassz nyelvet"
+  },
   "flags": {
     "chevron_royal": "Royal Chevron",
     "croix_du_nord": "Északi kereszt",

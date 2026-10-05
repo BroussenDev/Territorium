@@ -1125,6 +1125,12 @@
     "minimize": "לְצַמְצֵם",
     "open_on_twitch": "פתח את {channel} ב-Twitch"
   },
+  "first_launch": {
+    "continue": "המשך",
+    "subtitle": "אפשר לשנות אותה בכל עת דרך הדגל בתחתית המסך.",
+    "suggested": "מומלצת",
+    "title": "בחרו שפה"
+  },
   "flags": {
     "chevron_royal": "רויאל שברון",
     "croix_du_nord": "צלב הצפון",

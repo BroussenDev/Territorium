@@ -1125,6 +1125,12 @@
     "minimize": "छोटा करना",
     "open_on_twitch": "ट्विच पर {channel} खोलें"
   },
+  "first_launch": {
+    "continue": "जारी रखें",
+    "subtitle": "आप इसे कभी भी स्क्रीन के नीचे दिए झंडे से बदल सकते हैं।",
+    "suggested": "सुझाई गई",
+    "title": "अपनी भाषा चुनें"
+  },
   "flags": {
     "chevron_royal": "रॉयल शेवरॉन",
     "croix_du_nord": "उत्तरी क्रॉस",

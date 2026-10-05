@@ -1,7 +1,9 @@
 import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { assetUrl } from "../core/AssetUrls";
-import { desktopSteamLocale } from "./DesktopShell";
+import "./components/FirstLaunchLanguage";
+import type { FirstLaunchLanguage } from "./components/FirstLaunchLanguage";
+import { desktopSteamLocale, isDesktopShell } from "./DesktopShell";
 import "./LanguageModal";
 import { LanguageModal } from "./LanguageModal";
 import { formatDebugTranslation } from "./Utils";
@@ -126,7 +128,11 @@ export class LangSelector extends LitElement {
     // changes their Steam language sees the game follow.
     const browserLocale = this.defaultLocale();
     const savedLang = localStorage.getItem("lang");
-    const userLang = this.getClosestSupportedLang(savedLang ?? browserLocale);
+    // The Steam app's first launch starts in English and asks.
+    const firstLaunch = savedLang === null && isDesktopShell();
+    const userLang = firstLaunch
+      ? "en"
+      : this.getClosestSupportedLang(savedLang ?? browserLocale);
 
     const [defaultTranslations, translations] = await Promise.all([
       this.loadLanguage("en"),
@@ -139,6 +145,18 @@ export class LangSelector extends LitElement {
 
     await this.loadLanguageList();
     this.applyTranslation();
+    if (firstLaunch) this.askFirstLanguage(browserLocale);
+  }
+
+  private askFirstLanguage(defaultLocale: string) {
+    const picker = document.createElement(
+      "first-launch-language",
+    ) as FirstLaunchLanguage;
+    picker.languages = this.languageMetadata.filter((l) => l.code !== "debug");
+    const suggested = this.getClosestSupportedLang(defaultLocale);
+    picker.suggested = suggested === "en" ? null : suggested;
+    picker.addEventListener("close", () => picker.remove());
+    document.body.appendChild(picker);
   }
 
   private async loadLanguage(lang: string): Promise<Record<string, string>> {
@@ -291,6 +309,7 @@ export class LangSelector extends LitElement {
       "steam-wishlist",
       "steam-wishlist-button",
       "desktop-status-bar",
+      "first-launch-language",
       "streaming-now",
       "tutorial-panel",
     ];
