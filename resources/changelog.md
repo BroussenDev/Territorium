@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.67
+
+🏹 **Troops on the move**
+
+- The number of troops in an attack now sits on a small plate, with a round badge whose arrow points the way the troops are going: blue for your attacks, red for the ones coming at you.
+
 ## v0.1.66
 
 📜 **Terms brought up to date**

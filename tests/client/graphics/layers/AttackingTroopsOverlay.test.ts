@@ -1,8 +1,10 @@
 import { describe, expect, test } from "vitest";
 import {
   alignClusterOrder,
+  attackDirection,
   Slot,
 } from "../../../../src/client/controllers/AttackingTroopsController";
+import { attackPlateLayout } from "../../../../src/client/render/gl/passes/WorldTextPass";
 import { Cell } from "../../../../src/core/game/Game";
 
 // Slots only need the `dst` fields populated for `alignClusterOrder` — it
@@ -72,5 +74,43 @@ describe("alignClusterOrder", () => {
     const next = [c(100, 0), c(0, 0), c(50, 0)];
     alignClusterOrder(next, [slot(0, 0), slot(100, 0)]);
     expect(next.map((p) => p.x)).toEqual([100, 0, 50]);
+  });
+});
+
+describe("attack label arrow", () => {
+  const at = (x: number, y: number) => ({ nameLocation: () => ({ x, y }) });
+  const nowhere = { nameLocation: () => undefined };
+
+  test("points from the attacker toward the defender", () => {
+    const d = attackDirection(at(0, 0), at(30, 40));
+    expect(d.x).toBeCloseTo(0.6);
+    expect(d.y).toBeCloseTo(0.8);
+  });
+
+  test("falls back to pointing right when a position is unknown", () => {
+    expect(attackDirection(nowhere, at(5, 5))).toEqual({ x: 1, y: 0 });
+    expect(attackDirection(at(5, 5), at(5, 5))).toEqual({ x: 1, y: 0 });
+  });
+});
+
+describe("attack plate layout", () => {
+  test("centres the plate on the label and puts the count after the badge", () => {
+    const p = attackPlateLayout(100, 50, 10, 4);
+    expect(p.centerX).toBe(100);
+    expect(p.centerY).toBe(50);
+    // Plate height: 1.95 digit heights.
+    expect(p.halfH * 2).toBeCloseTo(7.8);
+    // The count ends inside the plate, short of its right edge.
+    const right = p.centerX + p.halfW;
+    expect(p.textX + 10).toBeLessThan(right);
+    // And starts after the badge, on the plate's left.
+    const left = p.centerX - p.halfW;
+    expect(p.textX - 10).toBeGreaterThan(left + 7.8 * (0.16 + 0.68));
+  });
+
+  test("grows with the count", () => {
+    expect(attackPlateLayout(0, 0, 20, 4).halfW).toBeGreaterThan(
+      attackPlateLayout(0, 0, 10, 4).halfW,
+    );
   });
 });

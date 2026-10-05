@@ -48,7 +48,29 @@ export interface Slot {
 interface AttackEntry {
   text: string;
   isIncoming: boolean;
+  /** Which way the troops move: from the attacker toward the defender. */
+  dirX: number;
+  dirY: number;
   slots: Slot[];
+}
+
+type Located = { nameLocation(): { x: number; y: number } | undefined };
+
+/**
+ * The way troops move from `attacker` to `defender`, from where their names
+ * sit on the map; (1, 0) when either is unknown or both are at one point.
+ */
+export function attackDirection(
+  attacker: Located,
+  defender: Located,
+): { x: number; y: number } {
+  const from = attacker.nameLocation();
+  const to = defender.nameLocation();
+  if (!from || !to) return { x: 1, y: 0 };
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const len = Math.hypot(dx, dy);
+  return len > 0 ? { x: dx / len, y: dy / len } : { x: 1, y: 0 };
 }
 
 export function alignClusterOrder(next: Cell[], prev: Slot[]): void {
@@ -114,7 +136,12 @@ export class AttackingTroopsController implements Controller {
       const defender = this.game.playerBySmallID(attack.targetID);
       if (!defender || !defender.isPlayer()) continue;
       activeIDs.add(attack.id);
-      this.ensureEntry(attack.id, attack.troops, false);
+      this.ensureEntry(
+        attack.id,
+        attack.troops,
+        false,
+        attackDirection(myPlayer, defender),
+      );
     }
 
     // Incoming: only label attacks coming from another player; skip tribes.
@@ -128,7 +155,12 @@ export class AttackingTroopsController implements Controller {
         continue;
       }
       activeIDs.add(attack.id);
-      this.ensureEntry(attack.id, attack.troops, true);
+      this.ensureEntry(
+        attack.id,
+        attack.troops,
+        true,
+        attackDirection(attacker, myPlayer),
+      );
     }
 
     for (const id of this.attacks.keys()) {
@@ -158,15 +190,28 @@ export class AttackingTroopsController implements Controller {
       });
   }
 
-  private ensureEntry(attackID: string, troops: number, isIncoming: boolean) {
+  private ensureEntry(
+    attackID: string,
+    troops: number,
+    isIncoming: boolean,
+    dir: { x: number; y: number },
+  ) {
     const text = renderTroops(troops);
     const existing = this.attacks.get(attackID);
     if (existing) {
       existing.text = text;
       existing.isIncoming = isIncoming;
+      existing.dirX = dir.x;
+      existing.dirY = dir.y;
       return;
     }
-    this.attacks.set(attackID, { text, isIncoming, slots: [] });
+    this.attacks.set(attackID, {
+      text,
+      isIncoming,
+      dirX: dir.x,
+      dirY: dir.y,
+      slots: [],
+    });
   }
 
   private reconcileSlots(
@@ -251,6 +296,8 @@ export class AttackingTroopsController implements Controller {
           colorR: r,
           colorG: g,
           colorB: b,
+          dirX: entry.dirX,
+          dirY: entry.dirY,
         });
       }
     }

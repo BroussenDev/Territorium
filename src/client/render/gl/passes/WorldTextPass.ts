@@ -5,6 +5,8 @@
  *  - Conquest popups: "+ 500" gold text at conquered player locations (fade only)
  *  - Bonus popups:    "+ 45K" income text at port tiles (rises upward + fades)
  *  - Ghost cost label: persistent build-cost number under the ghost cursor
+ *  - Attack troop labels: the count of troops on the move, on a plate with
+ *    an arrow showing which way they go (attack-plate shaders)
  */
 
 import type { Config } from "../../../../core/configuration/Config";
@@ -20,6 +22,8 @@ import { CHAR_RANGE, MAX_CHARS } from "./name-pass/Types";
 
 import { assetUrl } from "src/core/AssetUrls";
 import { renderNumber } from "../../../Utils";
+import plateFragSrc from "../shaders/world-text/attack-plate.frag.glsl?raw";
+import plateVertSrc from "../shaders/world-text/attack-plate.vert.glsl?raw";
 import fragSrc from "../shaders/world-text/world-text.frag.glsl?raw";
 import vertSrc from "../shaders/world-text/world-text.vert.glsl?raw";
 
@@ -47,6 +51,17 @@ const GHOST_COST_OUTLINE_WIDTH = 1.4;
  */
 const ATTACK_LABEL_SCREEN_SCALE = 17.0;
 const ATTACK_LABEL_OUTLINE_WIDTH = 1.2;
+/** The count sits light on its plate. */
+const ATTACK_LABEL_TEXT_RGB = [0.96, 0.97, 0.97] as const;
+// Attack plate layout, in plate heights (PAD and the badge radius must match
+// attack-plate.frag.glsl).
+const PLATE_HEIGHT_PER_DIGIT = 1.95;
+const PLATE_PAD = 0.16;
+const PLATE_BADGE = 0.68;
+const PLATE_GAP = 0.18;
+const PLATE_RIGHT_PAD = 0.24;
+// centreX, centreY, halfW, halfH, r, g, b, a, dirX, dirY
+const FLOATS_PER_PLATE = 10;
 
 // ---------------------------------------------------------------------------
 // Active popup tracking
@@ -78,6 +93,9 @@ export interface AttackTroopLabel {
   colorR: number;
   colorG: number;
   colorB: number;
+  /** Which way the troops move, in world axes (need not be normalized). */
+  dirX: number;
+  dirY: number;
 }
 
 function formatGold(gold: number): string {
@@ -120,6 +138,17 @@ export class WorldTextPass {
 
   private distanceRange: number;
   private fontSize: number;
+  // Where a digit's ink sits in the line, for centring the attack plates.
+  private digitTop: number;
+  private digitHeight: number;
+
+  // Attack plates (drawn under their counts).
+  private plateProgram: WebGLProgram;
+  private uPlateCamera: WebGLUniformLocation;
+  private plateVao: WebGLVertexArrayObject;
+  private plateBuf: WebGLBuffer;
+  private plateData = new Float32Array(32 * FLOATS_PER_PLATE);
+  private plateCount = 0;
   private atlasScaleH: number;
   private base: number;
 
@@ -169,6 +198,9 @@ export class WorldTextPass {
     this.fontSize = atlas.fontSize;
     this.atlasScaleH = atlas.scaleH;
     this.base = atlas.base;
+    const digit = atlas.chars.find((c) => c.char === "0" || c.id === 48);
+    this.digitTop = digit?.yoffset ?? 0;
+    this.digitHeight = digit?.height ?? atlas.base;
 
     // Compile shaders
     this.program = createProgram(gl, vertSrc, fragSrc);
@@ -246,6 +278,30 @@ export class WorldTextPass {
     gl.vertexAttribPointer(3, 2, gl.FLOAT, false, BYTES_PER_INSTANCE, 32);
     gl.vertexAttribDivisor(3, 1);
 
+    gl.bindVertexArray(null);
+
+    // Attack plates: their own program, a quad per plate.
+    this.plateProgram = createProgram(gl, plateVertSrc, plateFragSrc);
+    this.uPlateCamera = gl.getUniformLocation(this.plateProgram, "uCamera")!;
+    this.plateBuf = gl.createBuffer()!;
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.plateBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, this.plateData.byteLength, gl.DYNAMIC_DRAW);
+    this.plateVao = gl.createVertexArray()!;
+    gl.bindVertexArray(this.plateVao);
+    gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.plateBuf);
+    const stride = FLOATS_PER_PLATE * 4;
+    gl.enableVertexAttribArray(1);
+    gl.vertexAttribPointer(1, 4, gl.FLOAT, false, stride, 0);
+    gl.vertexAttribDivisor(1, 1);
+    gl.enableVertexAttribArray(2);
+    gl.vertexAttribPointer(2, 4, gl.FLOAT, false, stride, 16);
+    gl.vertexAttribDivisor(2, 1);
+    gl.enableVertexAttribArray(3);
+    gl.vertexAttribPointer(3, 2, gl.FLOAT, false, stride, 32);
+    gl.vertexAttribDivisor(3, 1);
     gl.bindVertexArray(null);
   }
 
@@ -386,6 +442,7 @@ export class WorldTextPass {
       this.attackTroopLabels.length === 0
     ) {
       this.instanceCount = 0;
+      this.plateCount = 0;
       return;
     }
     const now = this.now();
@@ -451,35 +508,72 @@ export class WorldTextPass {
     // Attack troop labels — persistent, no fade. Controller interpolates
     // positions before pushing. Scale is divided by zoom so the label keeps
     // a constant on-screen size regardless of how zoomed-in the camera is.
+    // Each count sits on a plate centred on the label's point, to the right
+    // of a badge whose arrow shows which way the troops go.
     const attackScale =
       (ATTACK_LABEL_SCREEN_SCALE * dpr) / Math.max(zoom, 0.0001);
+    const worldScale = attackScale / this.fontSize;
+    let plates = 0;
     for (const label of this.attackTroopLabels) {
-      layoutString(
-        label.text,
-        this.glyph,
-        this.kernTable,
-        this.charCodes,
-        this.cursors,
+      const halfText =
+        layoutString(
+          label.text,
+          this.glyph,
+          this.kernTable,
+          this.charCodes,
+          this.cursors,
+        ) * worldScale;
+      const plate = attackPlateLayout(
+        label.x + 0.5,
+        label.y +
+          0.5 +
+          worldScale * (this.digitTop + this.digitHeight / 2 - this.base * 0.5),
+        halfText,
+        this.digitHeight * worldScale,
       );
+      if ((plates + 1) * FLOATS_PER_PLATE > this.plateData.length) {
+        const grown = new Float32Array(this.plateData.length * 2);
+        grown.set(this.plateData);
+        this.plateData = grown;
+      }
+      const dirLen = Math.hypot(label.dirX, label.dirY);
+      this.plateData.set(
+        [
+          plate.centerX,
+          plate.centerY,
+          plate.halfW,
+          plate.halfH,
+          label.colorR,
+          label.colorG,
+          label.colorB,
+          1,
+          dirLen > 0 ? label.dirX / dirLen : 1,
+          dirLen > 0 ? label.dirY / dirLen : 0,
+        ],
+        plates * FLOATS_PER_PLATE,
+      );
+      plates++;
+
       const len = Math.min(label.text.length, MAX_CHARS);
       for (let i = 0; i < len; i++) {
         if (this.charCodes[i] === 0) continue;
         if (count >= this.maxInstances) this.growBuffer();
 
         const off = count * FLOATS_PER_INSTANCE;
-        this.instanceData[off + 0] = label.x;
+        this.instanceData[off + 0] = plate.textX - 0.5;
         this.instanceData[off + 1] = label.y;
         this.instanceData[off + 2] = this.cursors[i];
         this.instanceData[off + 3] = this.charCodes[i];
         this.instanceData[off + 4] = 1;
-        this.instanceData[off + 5] = label.colorR;
-        this.instanceData[off + 6] = label.colorG;
-        this.instanceData[off + 7] = label.colorB;
+        this.instanceData[off + 5] = ATTACK_LABEL_TEXT_RGB[0];
+        this.instanceData[off + 6] = ATTACK_LABEL_TEXT_RGB[1];
+        this.instanceData[off + 7] = ATTACK_LABEL_TEXT_RGB[2];
         this.instanceData[off + 8] = attackScale;
         this.instanceData[off + 9] = ATTACK_LABEL_OUTLINE_WIDTH;
         count++;
       }
     }
+    this.plateCount = plates;
 
     // Ghost cost label — persistent, no fade or rise. layoutString already
     // centers cursors around 0, so passing the tile coord places the text
@@ -576,6 +670,31 @@ export class WorldTextPass {
     if (zoom < this.settings.bonusPopup.cullZoom) return;
 
     const gl = this.gl;
+    if (this.plateCount > 0) {
+      gl.useProgram(this.plateProgram);
+      gl.uniformMatrix3fv(this.uPlateCamera, false, cameraMatrix);
+      gl.bindBuffer(gl.ARRAY_BUFFER, this.plateBuf);
+      if (
+        this.plateData.byteLength >
+        gl.getBufferParameter(gl.ARRAY_BUFFER, gl.BUFFER_SIZE)
+      ) {
+        gl.bufferData(
+          gl.ARRAY_BUFFER,
+          this.plateData.byteLength,
+          gl.DYNAMIC_DRAW,
+        );
+      }
+      gl.bufferSubData(
+        gl.ARRAY_BUFFER,
+        0,
+        this.plateData,
+        0,
+        this.plateCount * FLOATS_PER_PLATE,
+      );
+      gl.bindVertexArray(this.plateVao);
+      gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, this.plateCount);
+    }
+
     gl.useProgram(this.program);
     gl.uniformMatrix3fv(this.uCamera, false, cameraMatrix);
     gl.uniform1f(this.uZoom, zoom);
@@ -617,6 +736,7 @@ export class WorldTextPass {
     this.active.length = 0;
     this.attackTroopLabels = [];
     this.instanceCount = 0;
+    this.plateCount = 0;
   }
 
   dispose(): void {
@@ -624,7 +744,40 @@ export class WorldTextPass {
     gl.deleteProgram(this.program);
     gl.deleteBuffer(this.instanceBuf);
     gl.deleteVertexArray(this.vao);
+    gl.deleteProgram(this.plateProgram);
+    gl.deleteBuffer(this.plateBuf);
+    gl.deleteVertexArray(this.plateVao);
     gl.deleteTexture(this.glyphMetricsTex);
     if (this.atlasTex) gl.deleteTexture(this.atlasTex);
   }
+}
+
+/**
+ * Where an attack plate and its count go, in world units: the plate centred
+ * on (x, y), the badge on its left, the count (halfText wide each side, its
+ * digits digitHeight tall) after it. textX is the count's centre.
+ */
+export function attackPlateLayout(
+  x: number,
+  y: number,
+  halfText: number,
+  digitHeight: number,
+): {
+  centerX: number;
+  centerY: number;
+  halfW: number;
+  halfH: number;
+  textX: number;
+} {
+  const h = digitHeight * PLATE_HEIGHT_PER_DIGIT;
+  const width =
+    h * (PLATE_PAD + PLATE_BADGE + PLATE_GAP + PLATE_RIGHT_PAD) + halfText * 2;
+  const left = x - width / 2;
+  return {
+    centerX: x,
+    centerY: y,
+    halfW: width / 2,
+    halfH: h / 2,
+    textX: left + h * (PLATE_PAD + PLATE_BADGE + PLATE_GAP) + halfText,
+  };
 }
