@@ -8,6 +8,7 @@ import { SteamLaunchDialog } from "../../src/client/components/SteamLaunchDialog
 import {
   showSteamLaunchDialog,
   STEAM_LAUNCH_LOCKED,
+  steamLaunchLocked,
 } from "../../src/client/SteamLaunch";
 
 if (!customElements.get("steam-launch-dialog")) {
@@ -28,8 +29,18 @@ afterEach(() => {
 });
 
 describe("Steam launch lock", () => {
-  it("keeps ranked, Versus and public lobbies locked until the release", () => {
+  it("keeps ranked, Versus and public lobbies locked on the website", () => {
     expect(STEAM_LAUNCH_LOCKED).toBe(true);
+  });
+
+  it("opens them in the Steam app", () => {
+    window.openfrontDesktop = {};
+    try {
+      expect(steamLaunchLocked()).toBe(false);
+    } finally {
+      delete window.openfrontDesktop;
+    }
+    expect(steamLaunchLocked()).toBe(true);
   });
 
   it("names the feature the player tried and highlights it", async () => {

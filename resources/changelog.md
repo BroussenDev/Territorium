@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.64
+
+🎮 **Steam app: every mode open**
+
+- In the Steam app, Ranked, Versus and public lobbies are now open. On the website they stay marked "Coming soon on Steam".
+
 ## v0.1.63
 
 🌍 **Territorium moves to territorium.gg**

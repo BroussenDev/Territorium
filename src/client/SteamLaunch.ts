@@ -3,15 +3,21 @@ import type {
   SteamLaunchDialog,
   SteamLockedFeature,
 } from "./components/SteamLaunchDialog";
+import { isDesktopShell } from "./DesktopShell";
 
 export type { SteamLockedFeature } from "./components/SteamLaunchDialog";
 
 /**
- * Ranked games, Versus and public lobbies open with Territorium's Steam
- * release. Until then they are shown but locked for everyone, and trying one
- * invites the player to wishlist the game. Flip to false on release day.
+ * Ranked games, Versus and public lobbies are the Steam app's: on the website
+ * they are shown but locked, and trying one invites the player to wishlist
+ * the game. The app's bridge is in place before this module loads, so the
+ * answer never changes during a session.
  */
-export const STEAM_LAUNCH_LOCKED = true;
+export const STEAM_LAUNCH_LOCKED = steamLaunchLocked();
+
+export function steamLaunchLocked(): boolean {
+  return !isDesktopShell();
+}
 
 /** Shows the "coming with the Steam release" dialog for a locked feature. */
 export function showSteamLaunchDialog(feature: SteamLockedFeature): void {
