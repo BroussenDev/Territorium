@@ -1678,7 +1678,9 @@
     "duplicate_session": "Expulso do jogo (pode estar a jogar noutra aba)",
     "host_left": "O anfitrião saiu do lobby.",
     "lobby_creator": "Expulso pelo criador do lobby",
-    "match_cancelled": "Partida cancelada: um jogador não conseguiu ligar. Não perdeu nenhum ELO."
+    "match_cancelled": "Partida cancelada: um jogador não conseguiu ligar. Não perdeu nenhum ELO.",
+    "tgs_101": "Desligado pelo TGS (TGS-101): frequência de comandos anormal.",
+    "tgs_102": "Desligado pelo TGS (TGS-102): dessincronização crítica com o servidor. Pode voltar a entrar no jogo."
   },
   "lang": {
     "en": "Portugal",

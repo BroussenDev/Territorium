@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.72
+
+🛡️ **TGS, the Territorium Game Shield**
+
+- The game servers now watch for abuse: a player who floods the server with commands (TGS-101), or whose game stays out of step with everyone else's (TGS-102), is disconnected with a clear message. After a desync you can rejoin the game straight away.
+- TGS never bans anyone. Each disconnection goes to the team, who review the game's replay before deciding anything.
+
 ## v0.1.71
 
 🎧 **Territorium on Discord**

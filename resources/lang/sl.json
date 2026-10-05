@@ -1678,7 +1678,9 @@
     "duplicate_session": "Vržen iz igre (morda ste igrali na drugem zavihku)",
     "host_left": "Gostitelj je zapustil preddverje.",
     "lobby_creator": "Brcnil ustvarjalec lobija",
-    "match_cancelled": "Tekma preklicana: igralec se ni uspel povezati. Izgubili niste nobenega ELO."
+    "match_cancelled": "Tekma preklicana: igralec se ni uspel povezati. Izgubili niste nobenega ELO.",
+    "tgs_101": "TGS je prekinil povezavo (TGS-101): nenavadna pogostost ukazov.",
+    "tgs_102": "TGS je prekinil povezavo (TGS-102): kritična desinhronizacija s strežnikom. Igri se lahko znova pridružite."
   },
   "lang": {
     "en": "Slovenian",

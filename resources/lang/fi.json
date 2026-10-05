@@ -1678,7 +1678,9 @@
     "duplicate_session": "Poistettu pelistä (olet ehkä pelannut toisella välilehdellä)",
     "host_left": "Isäntä on poistunut aulasta.",
     "lobby_creator": "Aulan luoja potkaisi",
-    "match_cancelled": "Ottelu peruutettu: pelaaja ei onnistunut muodostamaan yhteyttä. Et ole menettänyt yhtään ELO:ta."
+    "match_cancelled": "Ottelu peruutettu: pelaaja ei onnistunut muodostamaan yhteyttä. Et ole menettänyt yhtään ELO:ta.",
+    "tgs_101": "TGS katkaisi yhteyden (TGS-101): poikkeava komentotiheys.",
+    "tgs_102": "TGS katkaisi yhteyden (TGS-102): kriittinen epäsynkronointi palvelimen kanssa. Voit liittyä peliin uudelleen."
   },
   "lang": {
     "en": "Finnish",

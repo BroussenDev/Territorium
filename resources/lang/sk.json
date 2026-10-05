@@ -1678,7 +1678,9 @@
     "duplicate_session": "Vykopnutý z hry (možno ste hrali na inej karte)",
     "host_left": "Hostiteľ opustil halu.",
     "lobby_creator": "Kopnutý tvorcom lobby",
-    "match_cancelled": "Zápas zrušený: hráčovi sa nepodarilo pripojiť. Nestratili ste žiadne ELO."
+    "match_cancelled": "Zápas zrušený: hráčovi sa nepodarilo pripojiť. Nestratili ste žiadne ELO.",
+    "tgs_101": "Odpojené systémom TGS (TGS-101): neobvyklá frekvencia príkazov.",
+    "tgs_102": "Odpojené systémom TGS (TGS-102): kritická desynchronizácia so serverom. Môžete sa k hre znova pripojiť."
   },
   "lang": {
     "en": "Slovak",

@@ -1678,7 +1678,9 @@
     "duplicate_session": "Du bisch us em Spiel kickt worde. (Du hesch wahrschinlech i em ne angere Tab gspüut)",
     "host_left": "Der Gastgeber hat die Lobby verlassen.",
     "lobby_creator": "Du bisch vom Lobby-Ersteller us em Spiel kickt worde",
-    "match_cancelled": "Spiel abgebrochen: Ein Spieler konnte keine Verbindung herstellen. Sie haben kein ELO verloren."
+    "match_cancelled": "Spiel abgebrochen: Ein Spieler konnte keine Verbindung herstellen. Sie haben kein ELO verloren.",
+    "tgs_101": "Von TGS getrennt (TGS-101): ungewöhnliche Befehlsrate.",
+    "tgs_102": "Von TGS getrennt (TGS-102): kritische Desynchronisierung mit dem Server. Du kannst dem Spiel wieder beitreten."
   },
   "lang": {
     "en": "Swiss-German",

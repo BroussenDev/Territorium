@@ -1678,7 +1678,9 @@
     "duplicate_session": "Vyhozen ze hry (možná jste měli hru otevřenou v jiném okně)",
     "host_left": "Hostitel opustil lobby.",
     "lobby_creator": "Vyhozen tvůrcem lobby",
-    "match_cancelled": "Zápas byl zrušen: jednomu z hráčů se nepodařilo připojit. O žádné ELO jste nepřišli."
+    "match_cancelled": "Zápas byl zrušen: jednomu z hráčů se nepodařilo připojit. O žádné ELO jste nepřišli.",
+    "tgs_101": "Odpojeno systémem TGS (TGS-101): neobvyklá frekvence příkazů.",
+    "tgs_102": "Odpojeno systémem TGS (TGS-102): kritická desynchronizace se serverem. Můžete se ke hře znovu připojit."
   },
   "lang": {
     "en": "Czech",

@@ -1678,7 +1678,9 @@
     "duplicate_session": "Đã bị đuổi khỏi trò chơi (có thể bạn đang chơi ở một tab khác)",
     "host_left": "Chủ phòng đã rời khỏi phòng.",
     "lobby_creator": "Đã bị cấm bởi người tạo phòng",
-    "match_cancelled": "Trận đấu đã bị hủy: một người chơi không kết nối được. Bạn không bị mất điểm ELO."
+    "match_cancelled": "Trận đấu đã bị hủy: một người chơi không kết nối được. Bạn không bị mất điểm ELO.",
+    "tgs_101": "Bị TGS ngắt kết nối (TGS-101): tần suất lệnh bất thường.",
+    "tgs_102": "Bị TGS ngắt kết nối (TGS-102): mất đồng bộ nghiêm trọng với máy chủ. Bạn có thể vào lại trận."
   },
   "lang": {
     "en": "Tiếng Anh",

@@ -1678,7 +1678,9 @@
     "duplicate_session": "Expulsé de la partie (vous jouiez peut-être dans un autre onglet)",
     "host_left": "L'hôte a quitté le salon.",
     "lobby_creator": "Expulsé par le créateur du lobby",
-    "match_cancelled": "Partie annulée : un joueur n’a pas réussi à se connecter. Vous n’avez pas perdu d'ELO."
+    "match_cancelled": "Partie annulée : un joueur n’a pas réussi à se connecter. Vous n’avez pas perdu d'ELO.",
+    "tgs_101": "Déconnecté par TGS (TGS-101) : fréquence de commandes anormale.",
+    "tgs_102": "Déconnecté par TGS (TGS-102) : désynchronisation critique avec le serveur. Vous pouvez rejoindre la partie."
   },
   "lang": {
     "en": "French",

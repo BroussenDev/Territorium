@@ -1678,7 +1678,9 @@
     "duplicate_session": "Sparkade från spelet (du kan ha spelat på en annan flik)",
     "host_left": "Värden har lämnat lobbyn.",
     "lobby_creator": "Sparkad av lobbyskaparen",
-    "match_cancelled": "Matchen avbröts: en spelare kunde inte ansluta. Du har inte förlorat någon ELO."
+    "match_cancelled": "Matchen avbröts: en spelare kunde inte ansluta. Du har inte förlorat någon ELO.",
+    "tgs_101": "Frånkopplad av TGS (TGS-101): onormal kommandofrekvens.",
+    "tgs_102": "Frånkopplad av TGS (TGS-102): kritisk desynkronisering med servern. Du kan gå med i matchen igen."
   },
   "lang": {
     "en": "Swedish",

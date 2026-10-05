@@ -1678,7 +1678,9 @@
     "duplicate_session": "Smidt ud af spil (du spiller måske på en anden fane)",
     "host_left": "Vært har forladt lobbyen.",
     "lobby_creator": "Smidt ud af lobbyvært",
-    "match_cancelled": "Kamp annulleret: En spiller kunne ikke oprette forbindelse. Du har ikke mistet nogen ELO."
+    "match_cancelled": "Kamp annulleret: En spiller kunne ikke oprette forbindelse. Du har ikke mistet nogen ELO.",
+    "tgs_101": "Afbrudt af TGS (TGS-101): unormal kommandofrekvens.",
+    "tgs_102": "Afbrudt af TGS (TGS-102): kritisk desynkronisering med serveren. Du kan deltage i spillet igen."
   },
   "lang": {
     "en": "Danish",

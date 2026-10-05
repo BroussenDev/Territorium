@@ -85,6 +85,14 @@ import {
   noopMatchTelemetryEmitter,
   type MatchTelemetryEmitter,
 } from "./telemetry/MatchTelemetry";
+import {
+  TGS_DESYNC_CODE,
+  TGS_FLOOD_CODE,
+  TGS_KICK_REASONS,
+  TgsCode,
+  TgsMonitor,
+} from "./Tgs";
+import { reportTgsIncident } from "./TgsApi";
 
 // Outcome of GameServer.joinClient. The worker maps each to a close code.
 // A non-spectator join landing this soon after start() is someone who meant
@@ -189,6 +197,9 @@ export class GameServer {
   // Compares the per-turn state hashes clients report; a disagreeing client
   // is told once and its votes are ignored from then on.
   private readonly desync = new DesyncDetector();
+  // TGS, the integrity watch: flood and persistent desync disconnections,
+  // and the markers the staff's replay review jumps to (Tgs.ts).
+  private readonly tgs = new TgsMonitor();
 
   // Socket listeners and the decode / validate / rate-limit / spectator-block
   // pipeline every frame goes through before handleClientMessage.
@@ -333,6 +344,12 @@ export class GameServer {
       onMessage: (client, msg) => this.handleClientMessage(client, msg),
       onClose: (client) => this.handleClientDisconnect(client),
       kick: (clientID, reasonKey) => this.kickClient(clientID, reasonKey),
+      tgsIntent: (client) => {
+        const code = this.tgs.observeIntent(client.clientID, this.turns.length);
+        if (code === null) return false;
+        this.tgsDisconnect(client.clientID, code);
+        return true;
+      },
     });
     if (opts.startsAt !== undefined) {
       this.visibleAt = Date.now();
@@ -1913,6 +1930,44 @@ export class GameServer {
     }
   }
 
+  /**
+   * A TGS disconnection. A flood (TGS-101) removes the player from the match
+   * like a kick; a desync (TGS-102) only closes the socket, so rejoining
+   * replays the game and puts them back in step. Either way the staff gets
+   * the incident at once, then again with the match's record.
+   */
+  private tgsDisconnect(clientID: ClientID, code: TgsCode): void {
+    const client = this.clients.get(clientID);
+    const reasonKey = TGS_KICK_REASONS[code];
+    this.log.warn("TGS disconnection", {
+      clientID,
+      persistentID: client?.persistentID,
+      code,
+    });
+    const incident = this.tgs.lastIncident();
+    if (incident !== undefined && client !== undefined) {
+      void reportTgsIncident(
+        this.id,
+        incident,
+        client.persistentID,
+        client.username,
+      );
+    }
+    if (code === TGS_FLOOD_CODE) {
+      this.kickClient(clientID, reasonKey);
+      return;
+    }
+    if (client?.ws.readyState === WebSocket.OPEN) {
+      client.ws.send(
+        encodeServerMessage(
+          { type: "error", error: reasonKey } satisfies ServerErrorMessage,
+          this.zbinCtx,
+        ),
+      );
+      client.ws.close(CloseCode.Normal, reasonKey);
+    }
+  }
+
   private checkDisconnectedStatus() {
     if (this.turns.length % 5 !== 0) {
       return;
@@ -1999,6 +2054,7 @@ export class GameServer {
         this.visibleAt,
         this.gameStartInfo.tribes,
         [...this.reports.values()],
+        this.tgs.report(),
       ),
     );
   }
@@ -2113,6 +2169,13 @@ export class GameServer {
       return;
     }
     const { turn, mostCommonHash, outOfSyncClients } = check;
+    for (const clientID of this.tgs.observeDesync(
+      turn,
+      this.clients.active().map((c) => c.clientID),
+      outOfSyncClients.map((c) => c.clientID),
+    )) {
+      this.tgsDisconnect(clientID, TGS_DESYNC_CODE);
+    }
 
     if (outOfSyncClients.length === 0) {
       this.turns[turn].hash = mostCommonHash;

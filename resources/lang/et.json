@@ -1678,7 +1678,9 @@
     "duplicate_session": "Mängust välja visatud (võib-olla mängisid teisel aknal)",
     "host_left": "Peremees on fuajeest lahkunud.",
     "lobby_creator": "Välja visatud lobby tegija poolt",
-    "match_cancelled": "Matš tühistati: mängijal ei õnnestunud ühendust luua. Te pole kaotanud ühtegi ELO-d."
+    "match_cancelled": "Matš tühistati: mängijal ei õnnestunud ühendust luua. Te pole kaotanud ühtegi ELO-d.",
+    "tgs_101": "TGS katkestas ühenduse (TGS-101): ebatavaline käskude sagedus.",
+    "tgs_102": "TGS katkestas ühenduse (TGS-102): kriitiline sünkroonist väljumine serveriga. Saad mänguga uuesti liituda."
   },
   "lang": {
     "en": "Estonian",

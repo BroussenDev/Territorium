@@ -1678,7 +1678,9 @@
     "duplicate_session": "Izbačeni ste iz igre (možda ste igrali na drugom jezičku)",
     "host_left": "Domaćin je napustio sobu.",
     "lobby_creator": "Izbacio vas je kreator predvorja",
-    "match_cancelled": "Meč je otkazan: jedan igrač nije uspeo da se poveže. Niste izgubili ELO bodove."
+    "match_cancelled": "Meč je otkazan: jedan igrač nije uspeo da se poveže. Niste izgubili ELO bodove.",
+    "tgs_101": "TGS je prekinuo vezu (TGS-101): neuobičajena učestalost naredbi.",
+    "tgs_102": "TGS je prekinuo vezu (TGS-102): kritična desinkronizacija sa serverom. Možete se ponovno pridružiti igri."
   },
   "lang": {
     "en": "Serbo-Croatian",

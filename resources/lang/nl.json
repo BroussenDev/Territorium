@@ -1678,7 +1678,9 @@
     "duplicate_session": "Verwijderd uit het spel (misschien heb je een ander tabblad open)",
     "host_left": "De host heeft de lobby verlaten.",
     "lobby_creator": "Verwijderd door lobby maker",
-    "match_cancelled": "Wedstrijd geannuleerd: een speler kon geen verbinding maken. Je hebt geen ELO verloren."
+    "match_cancelled": "Wedstrijd geannuleerd: een speler kon geen verbinding maken. Je hebt geen ELO verloren.",
+    "tgs_101": "Verbinding verbroken door TGS (TGS-101): abnormale opdrachtfrequentie.",
+    "tgs_102": "Verbinding verbroken door TGS (TGS-102): kritieke desynchronisatie met de server. Je kunt opnieuw deelnemen."
   },
   "lang": {
     "en": "Dutch",

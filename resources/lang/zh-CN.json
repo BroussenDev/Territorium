@@ -1678,7 +1678,9 @@
     "duplicate_session": "已被踢出游戏（也可能你正在另一个标签页上玩游戏）",
     "host_left": "房主已离开房间。",
     "lobby_creator": "已被房主踢出房间",
-    "match_cancelled": "比赛取消：玩家连接失败。您没有失去任何 ELO。"
+    "match_cancelled": "比赛取消：玩家连接失败。您没有失去任何 ELO。",
+    "tgs_101": "已被 TGS 断开（TGS-101）：指令频率异常。",
+    "tgs_102": "已被 TGS 断开（TGS-102）：与服务器严重不同步。你可以重新加入游戏。"
   },
   "lang": {
     "en": "Chinese Simplified",

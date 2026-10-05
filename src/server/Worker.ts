@@ -39,6 +39,7 @@ import {
 import { getUserMe, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
 import { applyHiddenName, resolveVerifiedJoin } from "./Privilege";
+import { startTgsStatusPoller } from "./TgsApi";
 
 import { MapPlaylist } from "./MapPlaylist";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
@@ -108,6 +109,9 @@ export async function startWorker() {
   if (ServerEnv.otelEnabled()) {
     initWorkerMetrics(gm, lobbyService, singleplayerPresence);
   }
+
+  // TGS follows the admin panel's switch (TgsApi.ts).
+  startTgsStatusPoller();
 
   const privilegeRefresher = new PrivilegeRefresher(
     ServerEnv.jwtIssuer() + "/cosmetics.json",

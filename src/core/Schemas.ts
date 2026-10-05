@@ -154,6 +154,7 @@ export type ClientReportMessage = z.infer<typeof ClientReportMessageSchema>;
 export type ClientChatMessage = z.infer<typeof ClientChatMessageSchema>;
 export type ReportReason = z.infer<typeof ReportReasonSchema>;
 export type PlayerReport = z.infer<typeof PlayerReportSchema>;
+export type TgsReport = z.infer<typeof TgsReportSchema>;
 export type PlayerLiveStats = z.infer<typeof PlayerLiveStatsSchema>;
 export type LiveStats = z.infer<typeof LiveStatsSchema>;
 export type ClientPingMessage = z.infer<typeof ClientPingMessageSchema>;
@@ -1226,6 +1227,28 @@ export const PlayerReportSchema = z.object({
   messages: ChatTextSchema.array().max(10).optional(),
 });
 
+// What TGS (server/Tgs.ts) noticed during a game.
+export const TgsReportSchema = z.object({
+  markers: z
+    .object({
+      turn: z.number().int().nonnegative(),
+      clientID: ID,
+      anomaly: z.enum(["TGS_MACRO_SPIKE", "TGS_DESYNC"]),
+      value: z.number(),
+    })
+    .array()
+    .max(500),
+  incidents: z
+    .object({
+      clientID: ID,
+      code: z.enum(["TGS-101", "TGS-102"]),
+      turn: z.number().int().nonnegative(),
+      details: z.string().max(200),
+    })
+    .array()
+    .max(200),
+});
+
 // Note: reportedBy is NOT sent - the server stamps it from the connection.
 export const ClientReportMessageSchema = z.object({
   type: z.literal("report"),
@@ -1360,6 +1383,9 @@ export const GameEndInfoSchema = GameStartInfoSchema.extend({
   // Absent on singleplayer records and on records read back from the API,
   // which scrubs them like persistentID.
   reports: PlayerReportSchema.array().optional(),
+  // TGS markers and disconnections (server/Tgs.ts), for the staff only:
+  // scrubbed like the reports.
+  tgs: TgsReportSchema.optional(),
 });
 export type GameEndInfo = z.infer<typeof GameEndInfoSchema>;
 

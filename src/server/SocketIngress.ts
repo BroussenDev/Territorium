@@ -36,6 +36,9 @@ export interface SocketIngressView {
   onMessage: (client: Client, msg: ClientMessage) => void;
   onClose: (client: Client) => void;
   kick: (clientID: ClientID, reasonKey: string) => void;
+  // TGS sees every intent before any limit drops it; true when it
+  // disconnected the sender (Tgs.ts).
+  tgsIntent?: (client: Client) => boolean;
 }
 
 // The socket side of a game: attaches the listeners to a client's socket and
@@ -135,6 +138,9 @@ export class SocketIngress {
       return;
     }
     const clientMsg = parsed.data;
+    if (clientMsg.type === "intent" && this.view.tgsIntent?.(client)) {
+      return;
+    }
     const bytes = message.length;
     const rateResult = this.rateLimiter.check(
       client.clientID,

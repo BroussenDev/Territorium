@@ -1678,7 +1678,9 @@
     "duplicate_session": "Wyrzucono z gry (być może grałeś na innej karcie)",
     "host_left": "Gospodarz opuścił lobby.",
     "lobby_creator": "Wyrzucony przez twórcę lobby",
-    "match_cancelled": "Mecz anulowany: graczowi nie udało się połączyć. Nie straciłeś żadnego ELO."
+    "match_cancelled": "Mecz anulowany: graczowi nie udało się połączyć. Nie straciłeś żadnego ELO.",
+    "tgs_101": "Rozłączono przez TGS (TGS-101): nienormalna częstotliwość poleceń.",
+    "tgs_102": "Rozłączono przez TGS (TGS-102): krytyczna desynchronizacja z serwerem. Możesz ponownie dołączyć do gry."
   },
   "lang": {
     "en": "Polish",

@@ -252,3 +252,24 @@ describe("SocketIngress.attach", () => {
     expect(view.kick).not.toHaveBeenCalled();
   });
 });
+
+describe("SocketIngress and TGS", () => {
+  it("shows TGS every intent, even one the rate limiter then drops", () => {
+    const { ingress, view, check } = setup("limit");
+    const tgsIntent = vi.fn(() => false);
+    view.tgsIntent = tgsIntent;
+    const client = makeClient({ clientID: P1 });
+    ingress.receive(client, spawn());
+    expect(tgsIntent).toHaveBeenCalledWith(client);
+    expect(check).toHaveBeenCalled();
+    expect(view.onMessage).not.toHaveBeenCalled();
+  });
+
+  it("stops at TGS when it disconnected the sender", () => {
+    const { ingress, view, check } = setup();
+    view.tgsIntent = vi.fn(() => true);
+    ingress.receive(makeClient({ clientID: P1 }), spawn());
+    expect(check).not.toHaveBeenCalled();
+    expect(view.onMessage).not.toHaveBeenCalled();
+  });
+});

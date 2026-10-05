@@ -1678,7 +1678,9 @@
     "duplicate_session": "Desconnectat del joc (potser estaves jugant en una altra pestanya)",
     "host_left": "L'amfitrió ha sortit del vestíbul.",
     "lobby_creator": "Expulsat per l'amfitrió de la partida",
-    "match_cancelled": "Partit cancel·lat: un jugador no s'ha pogut connectar. No has perdut cap ELO."
+    "match_cancelled": "Partit cancel·lat: un jugador no s'ha pogut connectar. No has perdut cap ELO.",
+    "tgs_101": "Desconnectat per TGS (TGS-101): freqüència d'ordres anormal.",
+    "tgs_102": "Desconnectat per TGS (TGS-102): dessincronització crítica amb el servidor. Pots tornar a unir-te a la partida."
   },
   "lang": {
     "en": "Catalan",

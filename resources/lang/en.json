@@ -1678,7 +1678,9 @@
     "duplicate_session": "Kicked from game (you may have been playing on another tab)",
     "host_left": "The host has left the lobby.",
     "lobby_creator": "Kicked by lobby creator",
-    "match_cancelled": "Match cancelled: a player failed to connect. You have not lost any ELO."
+    "match_cancelled": "Match cancelled: a player failed to connect. You have not lost any ELO.",
+    "tgs_101": "Disconnected by TGS (TGS-101): abnormal command rate.",
+    "tgs_102": "Disconnected by TGS (TGS-102): critical desynchronization with the server. You can rejoin the game."
   },
   "lang": {
     "en": "English",

@@ -1678,7 +1678,9 @@
     "duplicate_session": "Forpelita de la ludo (vi eble ludis per alia langeto)",
     "host_left": "La gastiganto eliris de la ludejo.",
     "lobby_creator": "Forpelita de la ludeja kreanto",
-    "match_cancelled": "Matĉo nuligita: ludanto malsukcesis konekti. Vi ne perdis neniun ELO."
+    "match_cancelled": "Matĉo nuligita: ludanto malsukcesis konekti. Vi ne perdis neniun ELO.",
+    "tgs_101": "Malkonektita de TGS (TGS-101): nenormala komanda ofteco.",
+    "tgs_102": "Malkonektita de TGS (TGS-102): kritika malsinkroniĝo kun la servilo. Vi povas realiĝi al la ludo."
   },
   "lang": {
     "en": "Esperanto",

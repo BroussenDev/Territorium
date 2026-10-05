@@ -1678,7 +1678,9 @@
     "duplicate_session": "Oyundan atıldınız (başka bir sekmede oynuyor olabilirsiniz)",
     "host_left": "Ev sahibi lobiden ayrıldı.",
     "lobby_creator": "Lobi yaratıcısı tarafından tekmelendi",
-    "match_cancelled": "Maç iptal edildi: Bir oyuncu bağlanamadı. Hiçbir ELO kaybetmediniz."
+    "match_cancelled": "Maç iptal edildi: Bir oyuncu bağlanamadı. Hiçbir ELO kaybetmediniz.",
+    "tgs_101": "TGS bağlantıyı kesti (TGS-101): anormal komut sıklığı.",
+    "tgs_102": "TGS bağlantıyı kesti (TGS-102): sunucuyla kritik senkronizasyon kaybı. Oyuna yeniden katılabilirsin."
   },
   "lang": {
     "en": "Turkish",

@@ -1678,7 +1678,9 @@
     "duplicate_session": "Ki lettél rúgva a játékból (lehet, hogy egy másik lapon játszottál)",
     "host_left": "A házigazda kilépett a váróteremből.",
     "lobby_creator": "A váróterem házigazdája kirúgta",
-    "match_cancelled": "A mérkőzés törölve: az egyik játékos nem tudott csatlakozni. Nem veszítettél ELO-t."
+    "match_cancelled": "A mérkőzés törölve: az egyik játékos nem tudott csatlakozni. Nem veszítettél ELO-t.",
+    "tgs_101": "A TGS lecsatlakoztatott (TGS-101): rendellenes parancsgyakoriság.",
+    "tgs_102": "A TGS lecsatlakoztatott (TGS-102): kritikus deszinkronizáció a szerverrel. Újra csatlakozhatsz a játékhoz."
   },
   "lang": {
     "en": "Hungarian",

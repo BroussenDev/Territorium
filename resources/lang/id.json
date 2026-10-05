@@ -1678,7 +1678,9 @@
     "duplicate_session": "Dikeluarkan dari permainan (kamu mungkin bermain di tab yang lain)",
     "host_left": "Tuan rumah telah meninggalkan lobi.",
     "lobby_creator": "Dikeluarkan oleh pembuat lobi",
-    "match_cancelled": "Pertandingan dibatalkan: pemain gagal terhubung. Anda belum kehilangan ELO apa pun."
+    "match_cancelled": "Pertandingan dibatalkan: pemain gagal terhubung. Anda belum kehilangan ELO apa pun.",
+    "tgs_101": "Diputus oleh TGS (TGS-101): frekuensi perintah tidak wajar.",
+    "tgs_102": "Diputus oleh TGS (TGS-102): desinkronisasi kritis dengan server. Kamu bisa bergabung kembali ke permainan."
   },
   "lang": {
     "en": "Indonesian",

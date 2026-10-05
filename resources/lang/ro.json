@@ -1678,7 +1678,9 @@
     "duplicate_session": "Dat afară din joc (este posibil să fi jucat pe o altă filă)",
     "host_left": "Gazda a părăsit lobby-ul.",
     "lobby_creator": "Șters de creatorul de lobby",
-    "match_cancelled": "Meciul a fost anulat: un jucător nu a reușit să se conecteze. Nu ai pierdut niciun ELO."
+    "match_cancelled": "Meciul a fost anulat: un jucător nu a reușit să se conecteze. Nu ai pierdut niciun ELO.",
+    "tgs_101": "Deconectat de TGS (TGS-101): frecvență anormală a comenzilor.",
+    "tgs_102": "Deconectat de TGS (TGS-102): desincronizare critică cu serverul. Poți reintra în joc."
   },
   "lang": {
     "en": "Romanian",
