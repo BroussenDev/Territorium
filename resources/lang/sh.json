@@ -627,6 +627,7 @@
     "not_trusted": "Ova soba je ograničena samo na poverljive naloge.",
     "protocol_error": "Veza je oštećena.",
     "ranked_limit_reached": "Iskoristili ste sve besplatne rangirane mečeve za danas.",
+    "steam_app_required": "Ovaj način je dostupan samo u aplikaciji Territorium na Steamu.",
     "turnstile_failed": "Provera botova nije uspela. Osvežite stranicu i pokušajte ponovo.",
     "unknown": "Server je zatvorio vezu.",
     "wrong_worker": "Ova veza je stigla do pogrešnog procesa na serveru. Osvežite stranicu i pokušajte ponovo."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Kupovina je uspela: {name}",
     "purchase_tribe_button": "Kupi",
     "sale_terms": "Uslovi prodaje",
+    "sort": {
+      "featured": "Preporučeno",
+      "label": "Sortiraj po",
+      "name": "Ime",
+      "price_asc": "Cijena: od najniže",
+      "price_desc": "Cijena: od najviše",
+      "rarity": "Rijetkost"
+    },
+    "steam_edition": {
+      "owned": "Kupljeno",
+      "perk_achievements": "Steam postignuća",
+      "perk_cloud": "Postavke sinkronizirane sa Steam Cloudom",
+      "perk_friends": "Steam prijatelji i overlay",
+      "perk_lobbies": "Javni lobiji",
+      "perk_ranked": "Rangirani način",
+      "perk_versus": "Versus način",
+      "tag": "Dostupno na Steamu",
+      "title": "Steam izdanje"
+    },
     "steam_overlay_cancelled": "Kupovina je otkazana. Ništa vam nije naplaćeno.",
     "steam_overlay_waiting": "Odobrite kupovinu u Steam overlay-u da biste nastavili.",
     "subscribe_heading": "Pokreni pretplatu",

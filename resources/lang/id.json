@@ -627,6 +627,7 @@
     "not_trusted": "Lobi ini terbatas pada akun tepercaya. Anda masih dapat bergabung dengan lobi lainnya.",
     "protocol_error": "Sambungannya rusak.",
     "ranked_limit_reached": "Anda kehabisan pertandingan peringkat gratis untuk hari ini.",
+    "steam_app_required": "Mode ini hanya tersedia di aplikasi Territorium di Steam.",
     "turnstile_failed": "Pemeriksaan bot gagal. Silakan muat ulang halaman dan coba lagi.",
     "unknown": "Server menutup koneksi.",
     "wrong_worker": "Koneksi ini mencapai proses server yang salah. Silakan muat ulang halaman dan coba lagi."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Pembelian berhasil: {name}",
     "purchase_tribe_button": "Pembelian",
     "sale_terms": "Ketentuan penjualan",
+    "sort": {
+      "featured": "Unggulan",
+      "label": "Urutkan",
+      "name": "Nama",
+      "price_asc": "Harga: terendah dulu",
+      "price_desc": "Harga: tertinggi dulu",
+      "rarity": "Kelangkaan"
+    },
+    "steam_edition": {
+      "owned": "Sudah dibeli",
+      "perk_achievements": "Prestasi Steam",
+      "perk_cloud": "Pengaturan tersinkron dengan Steam Cloud",
+      "perk_friends": "Teman dan overlay Steam",
+      "perk_lobbies": "Lobi publik",
+      "perk_ranked": "Mode peringkat",
+      "perk_versus": "Mode Versus",
+      "tag": "Tersedia di Steam",
+      "title": "Edisi Steam"
+    },
     "steam_overlay_cancelled": "Pembelian dibatalkan. Anda belum ditagih.",
     "steam_overlay_waiting": "Setujui pembelian di hamparan Steam untuk melanjutkan.",
     "subscribe_heading": "Mulai Berlangganan",

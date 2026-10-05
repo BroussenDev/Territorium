@@ -627,6 +627,7 @@
     "not_trusted": "This lobby is limited to trusted accounts. You can still join any other lobby.",
     "protocol_error": "The connection was corrupted.",
     "ranked_limit_reached": "You are out of free ranked matches for today.",
+    "steam_app_required": "This mode is only available in the Territorium app on Steam.",
     "turnstile_failed": "The bot check failed. Please reload the page and try again.",
     "unknown": "The server closed the connection.",
     "wrong_worker": "This connection reached the wrong server process. Please reload the page and try again."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Purchase succeeded: {name}",
     "purchase_tribe_button": "Purchase",
     "sale_terms": "Terms of sale",
+    "sort": {
+      "featured": "Featured",
+      "label": "Sort by",
+      "name": "Name",
+      "price_asc": "Price: low to high",
+      "price_desc": "Price: high to low",
+      "rarity": "Rarity"
+    },
+    "steam_edition": {
+      "owned": "Purchased",
+      "perk_achievements": "Steam achievements",
+      "perk_cloud": "Settings synced with Steam Cloud",
+      "perk_friends": "Steam friends and overlay",
+      "perk_lobbies": "Public lobbies",
+      "perk_ranked": "Ranked mode",
+      "perk_versus": "Versus mode",
+      "tag": "Available on Steam",
+      "title": "Steam Edition"
+    },
     "steam_overlay_cancelled": "Purchase cancelled. You haven't been charged.",
     "steam_overlay_waiting": "Approve the purchase in the Steam overlay to continue.",
     "subscribe_heading": "Start Subscription",

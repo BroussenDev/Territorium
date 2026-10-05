@@ -627,6 +627,7 @@
     "not_trusted": "Questa lobby è limitata agli account attendibili. Puoi comunque unirti a qualsiasi altra lobby.",
     "protocol_error": "La connessione era danneggiata.",
     "ranked_limit_reached": "Non hai più partite classificate gratuite per oggi.",
+    "steam_app_required": "Questa modalità è disponibile solo nell'app Territorium su Steam.",
     "turnstile_failed": "Il controllo del bot non è riuscito. Ricarica la pagina e riprova.",
     "unknown": "Il server ha chiuso la connessione.",
     "wrong_worker": "Questa connessione ha raggiunto il processo server sbagliato. Ricarica la pagina e riprova."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Acquisto riuscito: {name}",
     "purchase_tribe_button": "Acquistare",
     "sale_terms": "Condizioni di vendita",
+    "sort": {
+      "featured": "In evidenza",
+      "label": "Ordina per",
+      "name": "Nome",
+      "price_asc": "Prezzo crescente",
+      "price_desc": "Prezzo decrescente",
+      "rarity": "Rarità"
+    },
+    "steam_edition": {
+      "owned": "Acquistata",
+      "perk_achievements": "Obiettivi di Steam",
+      "perk_cloud": "Impostazioni sincronizzate con Steam Cloud",
+      "perk_friends": "Amici e overlay di Steam",
+      "perk_lobbies": "Lobby pubbliche",
+      "perk_ranked": "Modalità classificata",
+      "perk_versus": "Modalità Versus",
+      "tag": "Disponibile su Steam",
+      "title": "Edizione Steam"
+    },
     "steam_overlay_cancelled": "Acquisto annullato. Non ti è stato addebitato alcun importo.",
     "steam_overlay_waiting": "Approva l'acquisto nell'overlay di Steam per continuare.",
     "subscribe_heading": "Inizia l'abbonamento",

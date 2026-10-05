@@ -627,6 +627,7 @@
     "not_trusted": "Phòng này chỉ dành cho tài khoản đáng tin cậy. Bạn vẫn có thể tham gia các phòng khác.",
     "protocol_error": "Kết nối đã bị lỗi.",
     "ranked_limit_reached": "Bạn đã hết số trận xếp hạng miễn phí trong hôm nay.",
+    "steam_app_required": "Chế độ này chỉ có trong ứng dụng Territorium trên Steam.",
     "turnstile_failed": "Xác minh bot thất bại. Vui lòng tải lại trang và thử lại.",
     "unknown": "Máy chủ đã đóng kết nối.",
     "wrong_worker": "Kết nối này đã tới nhầm tiến trình máy chủ. Vui lòng tải lại trang và thử lại."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Mua thành công: {name}",
     "purchase_tribe_button": "Mua",
     "sale_terms": "Điều khoản bán hàng",
+    "sort": {
+      "featured": "Nổi bật",
+      "label": "Sắp xếp theo",
+      "name": "Tên",
+      "price_asc": "Giá: thấp đến cao",
+      "price_desc": "Giá: cao đến thấp",
+      "rarity": "Độ hiếm"
+    },
+    "steam_edition": {
+      "owned": "Đã mua",
+      "perk_achievements": "Thành tựu Steam",
+      "perk_cloud": "Cài đặt đồng bộ với Steam Cloud",
+      "perk_friends": "Bạn bè và overlay Steam",
+      "perk_lobbies": "Phòng công khai",
+      "perk_ranked": "Chế độ xếp hạng",
+      "perk_versus": "Chế độ Versus",
+      "tag": "Có trên Steam",
+      "title": "Phiên bản Steam"
+    },
     "steam_overlay_cancelled": "Đã hủy giao dịch. Bạn chưa bị tính phí.",
     "steam_overlay_waiting": "Hãy phê duyệt giao dịch trong giao diện Steam để tiếp tục.",
     "subscribe_heading": "Bắt đầu Gói định kỳ",

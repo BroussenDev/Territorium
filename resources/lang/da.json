@@ -627,6 +627,7 @@
     "not_trusted": "Denne lobby er begrænset til betroede konti. Du kan stadig deltage i enhver anden lobby.",
     "protocol_error": "Forbindelsen var beskadiget.",
     "ranked_limit_reached": "Du er ude af gratis rangerede kampe i dag.",
+    "steam_app_required": "Denne tilstand findes kun i Territorium-appen på Steam.",
     "turnstile_failed": "Botkontrollen mislykkedes. Genindlæs siden og prøv igen.",
     "unknown": "Serveren lukkede forbindelsen.",
     "wrong_worker": "Denne forbindelse nåede den forkerte serverproces. Genindlæs siden og prøv igen."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Køb gennemført: {name}",
     "purchase_tribe_button": "Køb",
     "sale_terms": "Salgsbetingelser",
+    "sort": {
+      "featured": "Udvalgte",
+      "label": "Sortér efter",
+      "name": "Navn",
+      "price_asc": "Pris: lav til høj",
+      "price_desc": "Pris: høj til lav",
+      "rarity": "Sjældenhed"
+    },
+    "steam_edition": {
+      "owned": "Købt",
+      "perk_achievements": "Steam-præstationer",
+      "perk_cloud": "Indstillinger synkroniseret med Steam Cloud",
+      "perk_friends": "Steam-venner og overlay",
+      "perk_lobbies": "Offentlige lobbyer",
+      "perk_ranked": "Rangeret tilstand",
+      "perk_versus": "Versus-tilstand",
+      "tag": "Fås på Steam",
+      "title": "Steam-udgave"
+    },
     "steam_overlay_cancelled": "Køb annulleret. Du er ikke blevet debiteret.",
     "steam_overlay_waiting": "Godkend købet i Steam-overlayet for at fortsætte.",
     "subscribe_heading": "Start abonnement",

@@ -627,6 +627,7 @@
     "not_trusted": "이 로비는 인증된 계정 전용입니다.",
     "protocol_error": "연결이 손상되었습니다.",
     "ranked_limit_reached": "오늘의 무료 랭크전 횟수를 모두 소진했습니다.",
+    "steam_app_required": "이 모드는 Steam의 Territorium 앱에서만 이용할 수 있습니다.",
     "turnstile_failed": "봇 확인에 실패했습니다. 페이지를 새로고침한 후 다시 시도해 주세요.",
     "unknown": "서버에서 연결을 종료했습니다.",
     "wrong_worker": "잘못된 서버 프로세스에 연결되었습니다. 페이지를 새로고침한 후 다시 시도해 주세요."
@@ -2546,6 +2547,25 @@
     "purchase_success": "구매가 완료되었습니다: {name}",
     "purchase_tribe_button": "구매",
     "sale_terms": "판매 조건",
+    "sort": {
+      "featured": "추천",
+      "label": "정렬",
+      "name": "이름",
+      "price_asc": "가격 낮은 순",
+      "price_desc": "가격 높은 순",
+      "rarity": "희귀도"
+    },
+    "steam_edition": {
+      "owned": "구매함",
+      "perk_achievements": "Steam 도전 과제",
+      "perk_cloud": "Steam 클라우드 설정 동기화",
+      "perk_friends": "Steam 친구 및 오버레이",
+      "perk_lobbies": "공개 로비",
+      "perk_ranked": "랭크 모드",
+      "perk_versus": "Versus 모드",
+      "tag": "Steam에서 이용 가능",
+      "title": "Steam 에디션"
+    },
     "steam_overlay_cancelled": "구매가 취소되었습니다. 금액이 청구되지 않았습니다.",
     "steam_overlay_waiting": "계속하려면 Steam 오버레이에서 구매를 승인하세요.",
     "subscribe_heading": "구독 시작",

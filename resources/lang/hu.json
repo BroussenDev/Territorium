@@ -627,6 +627,7 @@
     "not_trusted": "Ez a várószoba csak megbízható fiókok számára érhető el.",
     "protocol_error": "A kapcsolat megsérült.",
     "ranked_limit_reached": "Mára elfogytak az ingyenes rangsorolt mérkőzéseid.",
+    "steam_app_required": "Ez a mód csak a Territorium Steames alkalmazásában érhető el.",
     "turnstile_failed": "A botellenőrzés sikertelen volt. Kérjük, frissítsd az oldalt, és próbáld újra.",
     "unknown": "A szerver lezárta a kapcsolatot.",
     "wrong_worker": "Ez a kapcsolat nem a megfelelő szerverfolyamathoz jutott el. Kérjük, frissítsd az oldalt, és próbáld újra."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Sikeres vásárlás: {name}",
     "purchase_tribe_button": "Vásárlás",
     "sale_terms": "Eladási feltételek",
+    "sort": {
+      "featured": "Ajánlott",
+      "label": "Rendezés",
+      "name": "Név",
+      "price_asc": "Ár szerint növekvő",
+      "price_desc": "Ár szerint csökkenő",
+      "rarity": "Ritkaság"
+    },
+    "steam_edition": {
+      "owned": "Megvásárolva",
+      "perk_achievements": "Steam-teljesítmények",
+      "perk_cloud": "Steam Cloudon szinkronizált beállítások",
+      "perk_friends": "Steam-barátok és overlay",
+      "perk_lobbies": "Nyilvános lobbik",
+      "perk_ranked": "Rangsorolt mód",
+      "perk_versus": "Versus mód",
+      "tag": "Elérhető a Steamen",
+      "title": "Steam kiadás"
+    },
     "steam_overlay_cancelled": "A vásárlást töröltük. Nem terheltük meg a számládat.",
     "steam_overlay_waiting": "A folytatáshoz hagyd jóvá a vásárlást a Steam-átfedésben.",
     "subscribe_heading": "Indítsa el az előfizetést",

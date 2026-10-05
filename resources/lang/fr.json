@@ -627,6 +627,7 @@
     "not_trusted": "Ce salon est limité aux comptes fiables. Vous pouvez néanmoins rejoindre les autres salons en attendant d'avoir le statut nécessaire.",
     "protocol_error": "La connexion a été corrompue.",
     "ranked_limit_reached": "Vous êtes à court de matchs classés gratuits pour aujourd'hui.",
+    "steam_app_required": "Ce mode n'est disponible que dans l'application Territorium sur Steam.",
     "turnstile_failed": "La vérification du bot a échoué. Veuillez recharger la page et réessayer.",
     "unknown": "Le serveur a mis fin à la connexion.",
     "wrong_worker": "Cette connexion a atteint le mauvais processus serveur. Veuillez recharger la page et réessayer."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Achat réussit : {name}",
     "purchase_tribe_button": "Acheter",
     "sale_terms": "Conditions de vente",
+    "sort": {
+      "featured": "Recommandés",
+      "label": "Trier par",
+      "name": "Nom",
+      "price_asc": "Prix croissant",
+      "price_desc": "Prix décroissant",
+      "rarity": "Rareté"
+    },
+    "steam_edition": {
+      "owned": "Achetée",
+      "perk_achievements": "Succès Steam",
+      "perk_cloud": "Réglages synchronisés avec Steam Cloud",
+      "perk_friends": "Amis et overlay Steam",
+      "perk_lobbies": "Salons publics",
+      "perk_ranked": "Mode Classé",
+      "perk_versus": "Mode Versus",
+      "tag": "Disponible sur Steam",
+      "title": "Édition Steam"
+    },
     "steam_overlay_cancelled": "Achat annulé. Vous n'avez pas été facturé.",
     "steam_overlay_waiting": "Confirmez l’achat dans l’interface Steam pour continuer.",
     "subscribe_heading": "S'abonner",

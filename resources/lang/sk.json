@@ -627,6 +627,7 @@
     "not_trusted": "Táto lobby je obmedzená na dôveryhodné účty. Stále sa môžete pripojiť k akejkoľvek inej lobby.",
     "protocol_error": "Spojenie bolo poškodené.",
     "ranked_limit_reached": "Pre dnešok nemáte voľný počet zápasov.",
+    "steam_app_required": "Tento režim je dostupný iba v aplikácii Territorium na Steame.",
     "turnstile_failed": "Kontrola robota zlyhala. Znova načítajte stránku a skúste to znova.",
     "unknown": "Server ukončil spojenie.",
     "wrong_worker": "Toto pripojenie dosiahlo nesprávny proces servera. Znova načítajte stránku a skúste to znova."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Nákup bol úspešný: {name}",
     "purchase_tribe_button": "Nákup",
     "sale_terms": "Podmienky predaja",
+    "sort": {
+      "featured": "Odporúčané",
+      "label": "Zoradiť podľa",
+      "name": "Názov",
+      "price_asc": "Cena: od najnižšej",
+      "price_desc": "Cena: od najvyššej",
+      "rarity": "Vzácnosť"
+    },
+    "steam_edition": {
+      "owned": "Zakúpené",
+      "perk_achievements": "Úspechy na Steame",
+      "perk_cloud": "Nastavenia synchronizované cez Steam Cloud",
+      "perk_friends": "Priatelia a overlay Steamu",
+      "perk_lobbies": "Verejné lobby",
+      "perk_ranked": "Hodnotený režim",
+      "perk_versus": "Režim Versus",
+      "tag": "Dostupné na Steame",
+      "title": "Edícia Steam"
+    },
     "steam_overlay_cancelled": "Nákup bol zrušený. Neboli vám účtované žiadne poplatky.",
     "steam_overlay_waiting": "Ak chcete pokračovať, schváľte nákup v prekrytí Steam.",
     "subscribe_heading": "Začať predplatné",

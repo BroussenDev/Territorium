@@ -627,6 +627,7 @@
     "not_trusted": "這個大廳只允許信任帳號加入。您仍可加入其他大廳。",
     "protocol_error": "連線資料損壞。",
     "ranked_limit_reached": "您已用完今日的免費排位賽額度。",
+    "steam_app_required": "此模式僅在 Steam 上的 Territorium 應用程式中提供。",
     "turnstile_failed": "機器人帳號驗證失敗。請刷新頁面後重試。",
     "unknown": "伺服器已關閉連線。",
     "wrong_worker": "本連線連到錯誤的伺服器處理程序。請刷新頁面後再試。"
@@ -2546,6 +2547,25 @@
     "purchase_success": "購買成功：{name}",
     "purchase_tribe_button": "購買",
     "sale_terms": "銷售條款",
+    "sort": {
+      "featured": "推薦",
+      "label": "排序方式",
+      "name": "名稱",
+      "price_asc": "價格由低到高",
+      "price_desc": "價格由高到低",
+      "rarity": "稀有度"
+    },
+    "steam_edition": {
+      "owned": "已購買",
+      "perk_achievements": "Steam 成就",
+      "perk_cloud": "透過 Steam 雲端同步設定",
+      "perk_friends": "Steam 好友與介面",
+      "perk_lobbies": "公開大廳",
+      "perk_ranked": "排名模式",
+      "perk_versus": "Versus 模式",
+      "tag": "已在 Steam 上架",
+      "title": "Steam 版"
+    },
     "steam_overlay_cancelled": "購買已取消。您未被扣款。",
     "steam_overlay_waiting": "請在 Steam 內嵌介面中確認購買以繼續。",
     "subscribe_heading": "開始訂閱",

@@ -627,6 +627,7 @@
     "not_trusted": "Diese Lobby ist auf vertrauenswürdige Konten beschränkt.",
     "protocol_error": "Die Verbindung ist beschädigt.",
     "ranked_limit_reached": "Du hast keine freien Ranglisten-Spiele für heute.",
+    "steam_app_required": "Dieser Modus ist nur in der Territorium-App auf Steam verfügbar.",
     "turnstile_failed": "Die Bot‑Prüfung ist fehlgeschlagen. Bitte lade die Seite neu und versuche es erneut.",
     "unknown": "Der Server hat die Verbindung beendet.",
     "wrong_worker": "Diese Verbindung hat den falschen Serverprozess erreicht. Bitte lade die Seite neu und versuche es erneut."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Kauf erfolgreich: {name}",
     "purchase_tribe_button": "Kaufen",
     "sale_terms": "Verkaufsbedingungen",
+    "sort": {
+      "featured": "Empfohlen",
+      "label": "Sortieren nach",
+      "name": "Name",
+      "price_asc": "Preis: aufsteigend",
+      "price_desc": "Preis: absteigend",
+      "rarity": "Seltenheit"
+    },
+    "steam_edition": {
+      "owned": "Gekauft",
+      "perk_achievements": "Steam-Errungenschaften",
+      "perk_cloud": "Einstellungen per Steam Cloud synchronisiert",
+      "perk_friends": "Steam-Freunde und Overlay",
+      "perk_lobbies": "Öffentliche Lobbys",
+      "perk_ranked": "Ranglistenmodus",
+      "perk_versus": "Versus-Modus",
+      "tag": "Auf Steam erhältlich",
+      "title": "Steam-Edition"
+    },
     "steam_overlay_cancelled": "Kauf abgebrochen. Dir wurde nichts berechnet.",
     "steam_overlay_waiting": "Genehmige den Kauf im Steam‑Overlay, um fortzufahren.",
     "subscribe_heading": "Abonnement starten",

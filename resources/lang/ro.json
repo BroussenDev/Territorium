@@ -627,6 +627,7 @@
     "not_trusted": "Acest lobby este limitat la conturi de încredere. Încă vă puteți alătura oricărui alt lobby.",
     "protocol_error": "Conexiunea a fost deteriorată.",
     "ranked_limit_reached": "Nu mai ai meciuri gratuite clasate pentru astăzi.",
+    "steam_app_required": "Acest mod este disponibil doar în aplicația Territorium de pe Steam.",
     "turnstile_failed": "Verificarea bot-ului a eșuat. Vă rugăm să reîncărcați pagina și să încercați din nou.",
     "unknown": "Serverul a închis conexiunea.",
     "wrong_worker": "Această conexiune a ajuns la procesul de server greșit. Vă rugăm să reîncărcați pagina și să încercați din nou."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Achiziție reușită: {name}",
     "purchase_tribe_button": "Cumpărați",
     "sale_terms": "Condiții de vânzare",
+    "sort": {
+      "featured": "Recomandate",
+      "label": "Sortează după",
+      "name": "Nume",
+      "price_asc": "Preț crescător",
+      "price_desc": "Preț descrescător",
+      "rarity": "Raritate"
+    },
+    "steam_edition": {
+      "owned": "Cumpărată",
+      "perk_achievements": "Realizări Steam",
+      "perk_cloud": "Setări sincronizate cu Steam Cloud",
+      "perk_friends": "Prieteni și overlay Steam",
+      "perk_lobbies": "Lobby-uri publice",
+      "perk_ranked": "Mod clasat",
+      "perk_versus": "Mod Versus",
+      "tag": "Disponibil pe Steam",
+      "title": "Ediția Steam"
+    },
     "steam_overlay_cancelled": "Achiziție anulată. Nu ați fost taxată.",
     "steam_overlay_waiting": "Aprobă achiziția de la Steam suprapusă pentru a continua.",
     "subscribe_heading": "Abonamentul Tău",

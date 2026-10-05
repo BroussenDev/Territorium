@@ -627,6 +627,7 @@
     "not_trusted": "এই লবি বিশ্বস্ত অ্যাকাউন্টে সীমাবদ্ধ। আপনি এখনও অন্য কোনো লবি যোগ দিতে পারেন.",
     "protocol_error": "সংযোগটি নষ্ট হয়ে গেছে।",
     "ranked_limit_reached": "আপনি আজকের জন্য বিনামূল্যে র্যাঙ্ক করা ম্যাচের বাইরে।",
+    "steam_app_required": "এই মোড শুধু Steam-এর Territorium অ্যাপে পাওয়া যায়।",
     "turnstile_failed": "বট চেক ব্যর্থ হয়েছে. অনুগ্রহ করে পৃষ্ঠাটি পুনরায় লোড করুন এবং আবার চেষ্টা করুন৷",
     "unknown": "সার্ভার সংযোগ বন্ধ.",
     "wrong_worker": "এই সংযোগটি ভুল সার্ভার প্রক্রিয়ায় পৌঁছেছে৷ অনুগ্রহ করে পৃষ্ঠাটি পুনরায় লোড করুন এবং আবার চেষ্টা করুন৷"
@@ -2546,6 +2547,25 @@
     "purchase_success": "ক্রয় সফল হয়েছে: {name}",
     "purchase_tribe_button": "ক্রয়",
     "sale_terms": "বিক্রয় শর্তাবলী",
+    "sort": {
+      "featured": "নির্বাচিত",
+      "label": "সাজান",
+      "name": "নাম",
+      "price_asc": "দাম: কম থেকে বেশি",
+      "price_desc": "দাম: বেশি থেকে কম",
+      "rarity": "বিরলতা"
+    },
+    "steam_edition": {
+      "owned": "কেনা হয়েছে",
+      "perk_achievements": "Steam অর্জন",
+      "perk_cloud": "Steam Cloud-এ সিঙ্ক করা সেটিংস",
+      "perk_friends": "Steam বন্ধু ও ওভারলে",
+      "perk_lobbies": "পাবলিক লবি",
+      "perk_ranked": "র‍্যাঙ্কড মোড",
+      "perk_versus": "Versus মোড",
+      "tag": "Steam-এ পাওয়া যায়",
+      "title": "Steam সংস্করণ"
+    },
     "steam_overlay_cancelled": "কেনাকাটা বাতিল করা হয়েছে। আপনাকে চার্জ করা হয়নি।",
     "steam_overlay_waiting": "চালিয়ে যেতে স্টিম ওভারলেতে ক্রয় অনুমোদন করুন।",
     "subscribe_heading": "সদস্যতা শুরু করুন",

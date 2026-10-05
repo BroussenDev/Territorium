@@ -627,6 +627,7 @@
     "not_trusted": "הלובי הזה מוגבל לחשבונות מהימנים. אתה עדיין יכול להצטרף לכל לובי אחר.",
     "protocol_error": "החיבור פגום.",
     "ranked_limit_reached": "נגמרו לך המשחקים המדורגים בחינם להיום.",
+    "steam_app_required": "מצב זה זמין רק באפליקציית Territorium ב-Steam.",
     "turnstile_failed": "בדיקת הבוט נכשלה. טען מחדש את הדף ונסה שוב.",
     "unknown": "השרת סגר את החיבור.",
     "wrong_worker": "חיבור זה הגיע לתהליך שרת שגוי. טען מחדש את הדף ונסה שוב."
@@ -2546,6 +2547,25 @@
     "purchase_success": "הרכישה הצליחה: {name}",
     "purchase_tribe_button": "לִרְכּוֹשׁ",
     "sale_terms": "תנאי מכירה",
+    "sort": {
+      "featured": "מומלצים",
+      "label": "מיון לפי",
+      "name": "שם",
+      "price_asc": "מחיר: מהנמוך לגבוה",
+      "price_desc": "מחיר: מהגבוה לנמוך",
+      "rarity": "נדירות"
+    },
+    "steam_edition": {
+      "owned": "נרכש",
+      "perk_achievements": "הישגי Steam",
+      "perk_cloud": "הגדרות מסונכרנות עם Steam Cloud",
+      "perk_friends": "חברים ושכבת-על של Steam",
+      "perk_lobbies": "לובים ציבוריים",
+      "perk_ranked": "מצב מדורג",
+      "perk_versus": "מצב Versus",
+      "tag": "זמין ב-Steam",
+      "title": "מהדורת Steam"
+    },
     "steam_overlay_cancelled": "הרכישה בוטלה. לא חויבת.",
     "steam_overlay_waiting": "אשר את הרכישה בשכבת העל של Steam כדי להמשיך.",
     "subscribe_heading": "התחל מנוי",

@@ -627,6 +627,7 @@
     "not_trusted": "Ĉi tiu vestiblo estas limigita al fidindaj kontoj. Vi ankoraŭ povas aliĝi al iu ajn alia vestiblo.",
     "protocol_error": "La konekto estis koruptita.",
     "ranked_limit_reached": "Vi estas el senpagaj vicigitaj matĉoj hodiaŭ.",
+    "steam_app_required": "Ĉi tiu reĝimo haveblas nur en la aplikaĵo Territorium ĉe Steam.",
     "turnstile_failed": "La botkontrolo malsukcesis. Bonvolu reŝargi la paĝon kaj provi denove.",
     "unknown": "La servilo fermis la konekton.",
     "wrong_worker": "Ĉi tiu konekto atingis la malĝustan servilan procezon. Bonvolu reŝargi la paĝon kaj provi denove."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Sukcese aĉetis: {name}-on",
     "purchase_tribe_button": "Aĉeto",
     "sale_terms": "Kondiĉoj de vendo",
+    "sort": {
+      "featured": "Rekomenditaj",
+      "label": "Ordigi laŭ",
+      "name": "Nomo",
+      "price_asc": "Prezo: kreskanta",
+      "price_desc": "Prezo: malkreskanta",
+      "rarity": "Rareco"
+    },
+    "steam_edition": {
+      "owned": "Aĉetita",
+      "perk_achievements": "Steam-atingoj",
+      "perk_cloud": "Agordoj sinkronigitaj per Steam Cloud",
+      "perk_friends": "Steam-amikoj kaj surmetaĵo",
+      "perk_lobbies": "Publikaj atendejoj",
+      "perk_ranked": "Rangigita reĝimo",
+      "perk_versus": "Versus-reĝimo",
+      "tag": "Havebla ĉe Steam",
+      "title": "Steam-eldono"
+    },
     "steam_overlay_cancelled": "Aĉeto nuligita. Vi ne estis akuzita.",
     "steam_overlay_waiting": "Aprobu la aĉeton en la Steam-kovraĵo por daŭrigi.",
     "subscribe_heading": "Komencu Abono",

@@ -627,6 +627,7 @@
     "not_trusted": "Ta lobi je omejen na zaupanja vredne račune. Še vedno se lahko pridružite kateremu koli drugemu lobiju.",
     "protocol_error": "Povezava je bila poškodovana.",
     "ranked_limit_reached": "Zmanjkalo vam je brezplačnih uvrščenih tekem za danes.",
+    "steam_app_required": "Ta način je na voljo samo v aplikaciji Territorium na Steamu.",
     "turnstile_failed": "Preverjanje bota ni uspelo. Ponovno naložite stran in poskusite znova.",
     "unknown": "Strežnik je prekinil povezavo.",
     "wrong_worker": "Ta povezava je dosegla napačen strežniški proces. Ponovno naložite stran in poskusite znova."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Nakup uspel: {name}",
     "purchase_tribe_button": "Nakup",
     "sale_terms": "Pogoji prodaje",
+    "sort": {
+      "featured": "Priporočeno",
+      "label": "Razvrsti po",
+      "name": "Ime",
+      "price_asc": "Cena: naraščajoče",
+      "price_desc": "Cena: padajoče",
+      "rarity": "Redkost"
+    },
+    "steam_edition": {
+      "owned": "Kupljeno",
+      "perk_achievements": "Dosežki Steam",
+      "perk_cloud": "Nastavitve, sinhronizirane s Steam Cloud",
+      "perk_friends": "Prijatelji in prekrivni sloj Steam",
+      "perk_lobbies": "Javne sobe",
+      "perk_ranked": "Rangirani način",
+      "perk_versus": "Način Versus",
+      "tag": "Na voljo na Steamu",
+      "title": "Izdaja Steam"
+    },
     "steam_overlay_cancelled": "Nakup preklican. Niso vam bili zaračunani.",
     "steam_overlay_waiting": "Za nadaljevanje odobrite nakup v prekrivnem elementu Steam.",
     "subscribe_heading": "Začni naročnino",

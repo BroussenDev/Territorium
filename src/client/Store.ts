@@ -24,6 +24,7 @@ import "./components/PackContentsDialog";
 import { ProgressiveList } from "./components/ProgressiveList";
 import "./components/PurchaseButton";
 import { alignPurchaseRows } from "./components/PurchaseButton";
+import "./components/SteamEditionCard";
 import "./components/SupportCreatorDialog";
 import "./components/TribesPanel";
 import { modalHeader } from "./components/ui/ModalHeader";
@@ -38,10 +39,18 @@ import {
   ResolvedCosmetic,
   shopDiscountPercent,
 } from "./Cosmetics";
+import { isDesktopShell } from "./DesktopShell";
 import {
   priceStringToCents,
   reportPendingSteamAuthorizations,
 } from "./Payments";
+import {
+  savedStoreSort,
+  saveStoreSort,
+  sortStoreGroups,
+  STORE_SORTS,
+  StoreSort,
+} from "./StoreSort";
 import { translateText } from "./Utils";
 
 type StoreTab =
@@ -86,6 +95,8 @@ export class StoreModal extends BaseModal {
   /** The bundle whose contents dialog is open, if any. */
   private openedPack: ResolvedCosmetic | null = null;
   @state() private supportCreatorOpen = false;
+  /** Order of the cosmetics and bundles grids, remembered between visits. */
+  @state() private sort: StoreSort = savedStoreSort();
   private readonly pages = new ProgressiveList(this);
 
   protected modalConfig() {
@@ -260,20 +271,64 @@ export class StoreModal extends BaseModal {
   ): readonly (readonly ResolvedCosmetic[])[] {
     const items = this.resolvedPurchasables();
     if (tab === "flags") {
-      return items
-        .filter((resolved) => resolved.type === "flag")
-        .map((r) => [r]);
+      return this.sorted(
+        items.filter((resolved) => resolved.type === "flag").map((r) => [r]),
+      );
     }
     if (tab === "crowns") {
-      return items
-        .filter((resolved) => resolved.type === "crown")
-        .map((r) => [r]);
+      return this.sorted(
+        items.filter((resolved) => resolved.type === "crown").map((r) => [r]),
+      );
     }
-    return groupCosmeticVariants(
-      items.filter(
-        (resolved) => resolved.type === "pattern" || resolved.type === "skin",
+    return this.sorted(
+      groupCosmeticVariants(
+        items.filter(
+          (resolved) => resolved.type === "pattern" || resolved.type === "skin",
+        ),
       ),
     );
+  }
+
+  private sorted(
+    groups: readonly (readonly ResolvedCosmetic[])[],
+  ): readonly (readonly ResolvedCosmetic[])[] {
+    return sortStoreGroups(groups, this.sort, cosmeticSelectionLabel);
+  }
+
+  private setSort(sort: StoreSort): void {
+    this.sort = sort;
+    saveStoreSort(sort);
+    this.pages.reset();
+    this.selectVisible(this.groupsForTab(this.activeTab));
+    this.requestUpdate();
+  }
+
+  // The order picker above the cosmetics and bundles grids.
+  private renderSortBar(): TemplateResult {
+    return html`<div
+      data-store-sort
+      role="group"
+      aria-label=${translateText("store.sort.label")}
+      class="flex flex-wrap items-center justify-end gap-1.5 px-4 pt-3"
+    >
+      <span class="mr-1 text-xs font-semibold text-white/45"
+        >${translateText("store.sort.label")}</span
+      >
+      ${STORE_SORTS.map((sort) => {
+        const active = this.sort === sort;
+        return html`<button
+          type="button"
+          data-sort=${sort}
+          aria-pressed=${active}
+          class="rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${active
+            ? "border-brand/60 bg-brand/15 text-brand-light"
+            : "border-white/10 bg-white/[0.03] text-white/55 hover:border-white/25 hover:text-white/85"}"
+          @click=${() => this.setSort(sort)}
+        >
+          ${translateText(`store.sort.${sort}`)}
+        </button>`;
+      })}
+    </div>`;
   }
 
   private groupsForTab(tab: string): readonly (readonly ResolvedCosmetic[])[] {
@@ -308,7 +363,7 @@ export class StoreModal extends BaseModal {
     if (tab === "bundles") {
       // Owned and partially owned bundles stay listed (as a status, not a
       // buy button) so the player can see why one isn't for sale to them.
-      return resolveCosmetics(
+      const bundles = resolveCosmetics(
         this.cosmetics,
         this.userMeResponse,
         this.affiliateCode,
@@ -322,6 +377,7 @@ export class StoreModal extends BaseModal {
               this.ownedPackItemNames(resolved).length > 0),
         )
         .map((resolved) => [resolved]);
+      return this.sorted(bundles);
     }
     if (tab === "subscriptions") {
       return resolveCosmetics(
@@ -619,6 +675,7 @@ export class StoreModal extends BaseModal {
           </button>`;
         })}
       </div>
+      ${this.renderSortBar()}
       ${this.renderBrowser(this.visibleGroups, {
         emptyTranslationKey: emptyKey,
       })}
@@ -665,9 +722,12 @@ export class StoreModal extends BaseModal {
   }
 
   private renderBundleGrid(): TemplateResult {
-    return html`${this.renderBrowser(this.visibleGroups, {
-      emptyTranslationKey: "store.no_bundles",
-    })}${this.openedPack && !this.previewingCosmetic
+    return html`${this.renderSortBar()}${this.renderBrowser(
+      this.visibleGroups,
+      {
+        emptyTranslationKey: "store.no_bundles",
+      },
+    )}${this.openedPack && !this.previewingCosmetic
       ? // The dialog is portaled above the modal's stacking context, so a
         // preview opened from one of its items would render underneath it.
         // Yield to the preview; the dialog comes back when it closes.
@@ -692,6 +752,12 @@ export class StoreModal extends BaseModal {
     return this.renderBrowser(this.visibleGroups, {
       emptyTranslationKey: "store.no_subscriptions",
       userHasSubscription,
+      // What the game on Steam adds, beside the tiers: to wishlist on the
+      // website, already bought in the Steam app.
+      trailingContent: html`<steam-edition-card
+        class="block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48"
+        ?owned=${isDesktopShell()}
+      ></steam-edition-card>`,
       gridClass:
         "flex flex-wrap items-stretch justify-center content-start gap-4 p-4 sm:p-8",
       cardClass: "block w-[calc(50%-0.5rem)] max-w-48 shrink-0 sm:w-48",

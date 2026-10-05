@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import type { TokenPayload } from "../../src/core/ApiSchemas";
 import {
   isSteamAuthenticated,
+  joinNeedsSteamApp,
   planJoinVerify,
   verifyJoin,
 } from "../../src/server/JoinVerify";
@@ -272,6 +273,50 @@ describe("isSteamAuthenticated", () => {
   it("is false for a missing provider, a non-steam provider, and null claims", () => {
     expect(isSteamAuthenticated(claims())).toBe(false);
     expect(isSteamAuthenticated(claims("discord"))).toBe(false);
+    expect(isSteamAuthenticated(null)).toBe(false);
+  });
+});
+
+describe("joinNeedsSteamApp", () => {
+  it("keeps Versus for the Steam app's own sign-in", () => {
+    expect(
+      joinNeedsSteamApp({
+        isVersus: true,
+        steamAuthed: false,
+        isReadmit: false,
+      }),
+    ).toBe(true);
+    expect(
+      joinNeedsSteamApp({
+        isVersus: true,
+        steamAuthed: true,
+        isReadmit: false,
+      }),
+    ).toBe(false);
+  });
+
+  it("leaves other games open and admitted players seated", () => {
+    expect(
+      joinNeedsSteamApp({
+        isVersus: false,
+        steamAuthed: false,
+        isReadmit: false,
+      }),
+    ).toBe(false);
+    expect(
+      joinNeedsSteamApp({
+        isVersus: true,
+        steamAuthed: false,
+        isReadmit: true,
+      }),
+    ).toBe(false);
+  });
+
+  it("only trusts the signed provider claim, never a web Steam session", () => {
+    const claims = (provider: string) =>
+      ({ provider }) as unknown as Parameters<typeof isSteamAuthenticated>[0];
+    expect(isSteamAuthenticated(claims("steam"))).toBe(true);
+    expect(isSteamAuthenticated(claims("steam_web"))).toBe(false);
     expect(isSteamAuthenticated(null)).toBe(false);
   });
 });

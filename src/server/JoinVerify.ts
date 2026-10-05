@@ -54,6 +54,20 @@ export function isSteamAuthenticated(claims: TokenPayload | null): boolean {
   return claims?.provider === "steam";
 }
 
+/**
+ * Versus belongs to the Steam app: a first join needs the Steam app's own
+ * sign-in (isSteamAuthenticated), which only the API can sign, so no change
+ * to the client lets a browser in. A player already admitted keeps their
+ * seat.
+ */
+export function joinNeedsSteamApp(args: {
+  isVersus: boolean;
+  steamAuthed: boolean;
+  isReadmit: boolean;
+}): boolean {
+  return args.isVersus && !args.steamAuthed && !args.isReadmit;
+}
+
 export function planJoinVerify(args: {
   isReadmit: boolean;
   gameStarted: boolean;

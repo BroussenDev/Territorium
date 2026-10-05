@@ -627,6 +627,7 @@
     "not_trusted": "Aquest lobby està limitat als comptes de confiança. Encara us podeu unir a qualsevol altre lobby.",
     "protocol_error": "La connexió estava malmesa.",
     "ranked_limit_reached": "Et quedes sense partits classificats gratuïts per avui.",
+    "steam_app_required": "Aquest mode només està disponible a l'aplicació de Territorium a Steam.",
     "turnstile_failed": "La comprovació del bot ha fallat. Torneu a carregar la pàgina i torneu-ho a provar.",
     "unknown": "El servidor va tancar la connexió.",
     "wrong_worker": "Aquesta connexió ha arribat al procés del servidor incorrecte. Torneu a carregar la pàgina i torneu-ho a provar."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Compra reeixida: {name}",
     "purchase_tribe_button": "Compra",
     "sale_terms": "Condicions de venda",
+    "sort": {
+      "featured": "Destacats",
+      "label": "Ordena per",
+      "name": "Nom",
+      "price_asc": "Preu: de menor a major",
+      "price_desc": "Preu: de major a menor",
+      "rarity": "Raresa"
+    },
+    "steam_edition": {
+      "owned": "Comprada",
+      "perk_achievements": "Assoliments de Steam",
+      "perk_cloud": "Configuració sincronitzada amb Steam Cloud",
+      "perk_friends": "Amics i overlay de Steam",
+      "perk_lobbies": "Sales públiques",
+      "perk_ranked": "Mode classificatori",
+      "perk_versus": "Mode Versus",
+      "tag": "Disponible a Steam",
+      "title": "Edició Steam"
+    },
     "steam_overlay_cancelled": "Compra cancel·lada. No t'han cobrat.",
     "steam_overlay_waiting": "Aprova la compra a la superposició de Steam per continuar.",
     "subscribe_heading": "Inicieu la subscripció",

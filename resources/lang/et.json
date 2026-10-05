@@ -627,6 +627,7 @@
     "not_trusted": "See fuajee on piiratud usaldusväärsete kontodega. Saate endiselt liituda mis tahes muu fuajeega.",
     "protocol_error": "Ühendus oli rikutud.",
     "ranked_limit_reached": "Teil on tänaseks vabad paremusjärjestuses mängud väljas.",
+    "steam_app_required": "See režiim on saadaval ainult Steami Territoriumi rakenduses.",
     "turnstile_failed": "Boti kontroll ebaõnnestus. Laadige leht uuesti ja proovige uuesti.",
     "unknown": "Server sulges ühenduse.",
     "wrong_worker": "See ühendus jõudis valesse serveriprotsessi. Laadige leht uuesti ja proovige uuesti."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Ost õnnestus: {name}",
     "purchase_tribe_button": "ostma",
     "sale_terms": "Müügitingimused",
+    "sort": {
+      "featured": "Soovitatud",
+      "label": "Sorteeri",
+      "name": "Nimi",
+      "price_asc": "Hind: odavamad enne",
+      "price_desc": "Hind: kallimad enne",
+      "rarity": "Haruldus"
+    },
+    "steam_edition": {
+      "owned": "Ostetud",
+      "perk_achievements": "Steami saavutused",
+      "perk_cloud": "Steam Cloudiga sünkroonitud seaded",
+      "perk_friends": "Steami sõbrad ja ülekate",
+      "perk_lobbies": "Avalikud fuajeed",
+      "perk_ranked": "Reitingurežiim",
+      "perk_versus": "Versus-režiim",
+      "tag": "Saadaval Steamis",
+      "title": "Steami väljaanne"
+    },
     "steam_overlay_cancelled": "Ost tühistatud. Teilt pole tasu võetud.",
     "steam_overlay_waiting": "Jätkamiseks kinnitage ost Steami ülekattes.",
     "subscribe_heading": "Alusta tellimust",

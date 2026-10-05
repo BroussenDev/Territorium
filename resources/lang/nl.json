@@ -627,6 +627,7 @@
     "not_trusted": "Deze lobby is beperkt tot vertrouwde accounts. Je kunt nog steeds deelnemen aan een andere lobby.",
     "protocol_error": "De verbinding was beschadigd.",
     "ranked_limit_reached": "Je hebt geen gratis ranked wedstrijden meer.",
+    "steam_app_required": "Deze modus is alleen beschikbaar in de Territorium-app op Steam.",
     "turnstile_failed": "De robot verificatie is niet gelukt. Herlaad de pagina, en verifieer opnieuw.",
     "unknown": "De server heeft de verbinding verbroken.",
     "wrong_worker": "Deze verbinding heeft het verkeerde serverproces bereikt. Herlaad de pagina en probeer het opnieuw."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Aankoop geslaagd: {name}",
     "purchase_tribe_button": "Koop",
     "sale_terms": "Verkoopvoorwaarden",
+    "sort": {
+      "featured": "Aanbevolen",
+      "label": "Sorteren op",
+      "name": "Naam",
+      "price_asc": "Prijs: laag naar hoog",
+      "price_desc": "Prijs: hoog naar laag",
+      "rarity": "Zeldzaamheid"
+    },
+    "steam_edition": {
+      "owned": "Gekocht",
+      "perk_achievements": "Steam-prestaties",
+      "perk_cloud": "Instellingen gesynchroniseerd met Steam Cloud",
+      "perk_friends": "Steam-vrienden en overlay",
+      "perk_lobbies": "Openbare lobby's",
+      "perk_ranked": "Ranglijstmodus",
+      "perk_versus": "Versus-modus",
+      "tag": "Verkrijgbaar op Steam",
+      "title": "Steam-editie"
+    },
     "steam_overlay_cancelled": "Aankoop geannuleerd. Er zijn geen kosten in rekening gebracht.",
     "steam_overlay_waiting": "Bevestig de aankoop in de Steam overlay om door te gaan.",
     "subscribe_heading": "Abonnement starten",

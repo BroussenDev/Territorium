@@ -1465,6 +1465,12 @@ export class HostLobbyModal extends BaseModal {
   }
 
   private showListingError(serverError?: string) {
+    // The server's own check (the Steam app only): same invitation as the
+    // locked toggle.
+    if (serverError === "steam_app_required") {
+      showSteamLaunchDialog("public_lobby");
+      return;
+    }
     let key = "private_lobby.listing_failed";
     if (serverError === "subscription_required") {
       key = "private_lobby.listing_requires_subscription";

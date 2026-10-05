@@ -627,6 +627,7 @@
     "not_trusted": "Tämä aula on rajoitettu luotettuihin tileihin. Voit silti liittyä mihin tahansa muuhun aulaan.",
     "protocol_error": "Yhteys oli vioittunut.",
     "ranked_limit_reached": "Sinulla ei ole tämän päivän ilmaisia ranking-otteluita.",
+    "steam_app_required": "Tämä tila on saatavilla vain Territoriumin Steam-sovelluksessa.",
     "turnstile_failed": "Botin tarkistus epäonnistui. Lataa sivu uudelleen ja yritä uudelleen.",
     "unknown": "Palvelin sulki yhteyden.",
     "wrong_worker": "Tämä yhteys saavutti väärän palvelinprosessin. Lataa sivu uudelleen ja yritä uudelleen."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Ostos onnistui: {name}",
     "purchase_tribe_button": "Ostaa",
     "sale_terms": "Myyntiehdot",
+    "sort": {
+      "featured": "Suositellut",
+      "label": "Lajittele",
+      "name": "Nimi",
+      "price_asc": "Hinta: halvin ensin",
+      "price_desc": "Hinta: kallein ensin",
+      "rarity": "Harvinaisuus"
+    },
+    "steam_edition": {
+      "owned": "Ostettu",
+      "perk_achievements": "Steam-saavutukset",
+      "perk_cloud": "Steam Cloudiin synkronoidut asetukset",
+      "perk_friends": "Steam-kaverit ja overlay",
+      "perk_lobbies": "Julkiset aulat",
+      "perk_ranked": "Rankattu tila",
+      "perk_versus": "Versus-tila",
+      "tag": "Saatavilla Steamissa",
+      "title": "Steam-versio"
+    },
     "steam_overlay_cancelled": "Ostos peruutettu. Sinua ei ole veloitettu.",
     "steam_overlay_waiting": "Hyväksy osto Steam-peittokuvassa jatkaaksesi.",
     "subscribe_heading": "Aloita tilaus",

@@ -53,6 +53,7 @@ export const CloseReason = {
   RankedLimitReached: "close_reason.ranked_limit_reached",
   InvalidClan: "close_reason.invalid_clan",
   ClanVerificationFailed: "close_reason.clan_verification_failed",
+  SteamAppRequired: "close_reason.steam_app_required",
   // Shown for a terminal close whose reason is not one of ours.
   Unknown: "close_reason.unknown",
 } as const;

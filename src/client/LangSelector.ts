@@ -310,6 +310,7 @@ export class LangSelector extends LitElement {
       "steam-wishlist-button",
       "desktop-status-bar",
       "first-launch-language",
+      "steam-edition-card",
       "streaming-now",
       "tutorial-panel",
     ];

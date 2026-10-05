@@ -627,6 +627,7 @@
     "not_trusted": "يقتصر هذا اللوبي على الحسابات الموثوقة. لا يزال بإمكانك الانضمام إلى أي ردهة أخرى.",
     "protocol_error": "الاتصال تالف.",
     "ranked_limit_reached": "لقد نفدت من المباريات المصنفة المجانية لهذا اليوم.",
+    "steam_app_required": "هذا الوضع متاح فقط في تطبيق Territorium على Steam.",
     "turnstile_failed": "فشل فحص الروبوت. يرجى إعادة تحميل الصفحة والمحاولة مرة أخرى.",
     "unknown": "أغلق الخادم الاتصال.",
     "wrong_worker": "وصل هذا الاتصال إلى عملية خادم خاطئة. يرجى إعادة تحميل الصفحة والمحاولة مرة أخرى."
@@ -2546,6 +2547,25 @@
     "purchase_success": "نجح الشراء: {name}",
     "purchase_tribe_button": "شراء",
     "sale_terms": "شروط البيع",
+    "sort": {
+      "featured": "مميّزة",
+      "label": "ترتيب حسب",
+      "name": "الاسم",
+      "price_asc": "السعر: من الأقل إلى الأعلى",
+      "price_desc": "السعر: من الأعلى إلى الأقل",
+      "rarity": "الندرة"
+    },
+    "steam_edition": {
+      "owned": "تم الشراء",
+      "perk_achievements": "إنجازات Steam",
+      "perk_cloud": "إعدادات متزامنة عبر Steam Cloud",
+      "perk_friends": "أصدقاء Steam وواجهته",
+      "perk_lobbies": "ردهات عامة",
+      "perk_ranked": "وضع التصنيف",
+      "perk_versus": "وضع Versus",
+      "tag": "متاح على Steam",
+      "title": "إصدار Steam"
+    },
     "steam_overlay_cancelled": "تم إلغاء الشراء. لم يتم تحصيل أي رسوم منك.",
     "steam_overlay_waiting": "قم بالموافقة على الشراء في تراكب Steam للمتابعة.",
     "subscribe_heading": "ابدأ الاشتراك",

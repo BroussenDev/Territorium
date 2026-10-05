@@ -30,7 +30,12 @@ import { gameApiCors } from "./GameApiCors";
 import { GameManager } from "./GameManager";
 import { registerGamePreviewRoute } from "./GamePreviewRoute";
 import type { GameServer } from "./GameServer";
-import { isSteamAuthenticated, planJoinVerify, verifyJoin } from "./JoinVerify";
+import {
+  isSteamAuthenticated,
+  joinNeedsSteamApp,
+  planJoinVerify,
+  verifyJoin,
+} from "./JoinVerify";
 import { getUserMe, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
 import { applyHiddenName, resolveVerifiedJoin } from "./Privilege";
@@ -293,6 +298,14 @@ export async function startWorker() {
       return res.status(400).json({ error: z.prettifyError(parsed.error) });
     }
     const { listed } = parsed.data;
+    // Public lobbies belong to the Steam app (see joinNeedsSteamApp).
+    if (
+      listed &&
+      ServerEnv.env() !== GameEnv.Dev &&
+      !isSteamAuthenticated(auth.claims)
+    ) {
+      return res.status(403).json({ error: "steam_app_required" });
+    }
 
     const game = gm.game(req.params.id);
     if (game === null) {
@@ -535,6 +548,22 @@ export async function startWorker() {
             ws.close(CloseCode.GameNotFound, CloseReason.GameNotFound);
           }
           return;
+        }
+
+        // Steam-app-only games (Versus) refuse any other sign-in.
+        if (ServerEnv.env() !== GameEnv.Dev) {
+          const target = gm.game(clientMsg.gameID);
+          if (
+            target !== null &&
+            joinNeedsSteamApp({
+              isVersus: target.isVersus(),
+              steamAuthed: isSteamAuthenticated(claims),
+              isReadmit: target.wasAdmitted(persistentId),
+            })
+          ) {
+            ws.close(CloseCode.Forbidden, CloseReason.SteamAppRequired);
+            return;
+          }
         }
 
         // Basic local screen as the fallback identity for the paths

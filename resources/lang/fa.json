@@ -627,6 +627,7 @@
     "not_trusted": "این لابی فقط برای حساب‌های کاربری معتبر (مورد اعتماد) محدود شده است.",
     "protocol_error": "ارتباط شبکه دچار اختلال شد.",
     "ranked_limit_reached": "تعداد مسابقات رتبه‌بندی‌شده (رنکد) رایگان شما برای امروز به پایان رسیده است.",
+    "steam_app_required": "این حالت فقط در برنامه Territorium در Steam در دسترس است.",
     "turnstile_failed": "بررسی ربات ناموفق بود. لطفاً صفحه را دوباره بارگذاری کرده و تلاش کنید.",
     "unknown": "سرور اتصال را قطع کرد.",
     "wrong_worker": "این اتصال به فرآیند سرور اشتباهی متصل شده است. لطفاً صفحه را مجدداً بارگذاری کرده و دوباره تلاش کنید."
@@ -2546,6 +2547,25 @@
     "purchase_success": "خرید با موفقیت انجام شد: {name}",
     "purchase_tribe_button": "خرید",
     "sale_terms": "شرایط فروش",
+    "sort": {
+      "featured": "پیشنهادی",
+      "label": "مرتب‌سازی بر اساس",
+      "name": "نام",
+      "price_asc": "قیمت: کم به زیاد",
+      "price_desc": "قیمت: زیاد به کم",
+      "rarity": "کمیابی"
+    },
+    "steam_edition": {
+      "owned": "خریداری شده",
+      "perk_achievements": "دستاوردهای Steam",
+      "perk_cloud": "تنظیمات همگام با Steam Cloud",
+      "perk_friends": "دوستان و رابط Steam",
+      "perk_lobbies": "لابی‌های عمومی",
+      "perk_ranked": "حالت رتبه‌بندی",
+      "perk_versus": "حالت Versus",
+      "tag": "در Steam موجود است",
+      "title": "نسخه Steam"
+    },
     "steam_overlay_cancelled": "خرید لغو شد. هیچ هزینه‌ای از شما کسر نشده است.",
     "steam_overlay_waiting": "برای ادامه، خرید را در صفحه اورلی (Overlay) استیم تأیید کنید.",
     "subscribe_heading": "شروع اشتراک",

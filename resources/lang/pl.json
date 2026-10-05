@@ -627,6 +627,7 @@
     "not_trusted": "To lobby jest ograniczone do zaufanych kont. Nadal możesz dołączyć do dowolnego innego lobby.",
     "protocol_error": "Połączenie zostało uszkodzone.",
     "ranked_limit_reached": "Nie masz już bezpłatnych meczów rankingowych na dzisiaj.",
+    "steam_app_required": "Ten tryb jest dostępny tylko w aplikacji Territorium na Steam.",
     "turnstile_failed": "Kontrola bota nie powiodła się. Załaduj ponownie stronę i spróbuj ponownie.",
     "unknown": "Serwer zamknął połączenie.",
     "wrong_worker": "To połączenie osiągnęło niewłaściwy proces serwera. Załaduj ponownie stronę i spróbuj ponownie."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Zakup powiódł się: {name}",
     "purchase_tribe_button": "Zakup",
     "sale_terms": "Warunki sprzedaży",
+    "sort": {
+      "featured": "Polecane",
+      "label": "Sortuj według",
+      "name": "Nazwa",
+      "price_asc": "Cena: rosnąco",
+      "price_desc": "Cena: malejąco",
+      "rarity": "Rzadkość"
+    },
+    "steam_edition": {
+      "owned": "Kupiono",
+      "perk_achievements": "Osiągnięcia Steam",
+      "perk_cloud": "Ustawienia synchronizowane przez Steam Cloud",
+      "perk_friends": "Znajomi i nakładka Steam",
+      "perk_lobbies": "Publiczne poczekalnie",
+      "perk_ranked": "Tryb rankingowy",
+      "perk_versus": "Tryb Versus",
+      "tag": "Dostępne na Steam",
+      "title": "Edycja Steam"
+    },
     "steam_overlay_cancelled": "Zakup anulowany. Nie postawiono Ci żadnych zarzutów.",
     "steam_overlay_waiting": "Aby kontynuować, zatwierdź zakup w nakładce Steam.",
     "subscribe_heading": "Rozpocznij subskrypcję",

@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.68
+
+🛒 **Sorting in the store, and the Steam Edition**
+
+- Skins, flags, crowns and bundles can now be sorted: featured, price (low to high or high to low), rarity or name. The store remembers your choice.
+- The Subscriptions tab shows the Steam Edition and what it adds: Ranked, Versus, public lobbies, Steam achievements, settings synced with Steam Cloud, Steam friends and overlay. On the website it invites you to wishlist the game; in the Steam app it shows as purchased.
+- Ranked, Versus and public lobbies are now checked by the servers too: they only open to players signed in through the Steam app.
+
 ## v0.1.67
 
 🏹 **Troops on the move**

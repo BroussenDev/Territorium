@@ -627,6 +627,7 @@
     "not_trusted": "Bu lobi güvenilir hesaplarla sınırlıdır. Yine de başka bir lobiye katılabilirsiniz.",
     "protocol_error": "Bağlantı bozulmuş.",
     "ranked_limit_reached": "Bugün için ücretsiz sıralamalı maçların dışındasınız.",
+    "steam_app_required": "Bu mod yalnızca Steam'deki Territorium uygulamasında kullanılabilir.",
     "turnstile_failed": "Bot kontrolü başarısız oldu. Lütfen sayfayı yeniden yükleyip tekrar deneyin.",
     "unknown": "Sunucu bağlantıyı kapattı.",
     "wrong_worker": "Bu bağlantı yanlış sunucu işlemine ulaştı. Lütfen sayfayı yeniden yükleyip tekrar deneyin."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Satın alma işlemi başarılı oldu: {name}",
     "purchase_tribe_button": "Satın almak",
     "sale_terms": "Satış şartları",
+    "sort": {
+      "featured": "Öne çıkanlar",
+      "label": "Sırala",
+      "name": "Ad",
+      "price_asc": "Fiyat: artan",
+      "price_desc": "Fiyat: azalan",
+      "rarity": "Nadirlik"
+    },
+    "steam_edition": {
+      "owned": "Satın alındı",
+      "perk_achievements": "Steam başarımları",
+      "perk_cloud": "Steam Cloud ile eşitlenen ayarlar",
+      "perk_friends": "Steam arkadaşları ve arayüzü",
+      "perk_lobbies": "Herkese açık lobiler",
+      "perk_ranked": "Dereceli mod",
+      "perk_versus": "Versus modu",
+      "tag": "Steam'de mevcut",
+      "title": "Steam Sürümü"
+    },
     "steam_overlay_cancelled": "Satın alma iptal edildi. Sizden herhangi bir ücret alınmadı.",
     "steam_overlay_waiting": "Devam etmek için Steam arayüzünde satın alma işlemini onaylayın.",
     "subscribe_heading": "Aboneliği Başlat",

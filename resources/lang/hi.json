@@ -627,6 +627,7 @@
     "not_trusted": "यह लॉबी विश्वसनीय खातों तक ही सीमित है। आप अभी भी किसी अन्य लॉबी से जुड़ सकते हैं.",
     "protocol_error": "कनेक्शन ख़राब हो गया था.",
     "ranked_limit_reached": "आप आज के लिए निःशुल्क रैंक वाले मैचों से बाहर हैं।",
+    "steam_app_required": "यह मोड केवल Steam पर Territorium ऐप में उपलब्ध है।",
     "turnstile_failed": "बॉट जाँच विफल रही. कृपया पेज लोड करें और पुन: प्रयास करें।",
     "unknown": "सर्वर ने कनेक्शन बंद कर दिया.",
     "wrong_worker": "यह कनेक्शन गलत सर्वर प्रक्रिया तक पहुंच गया. कृपया पेज लोड करें और पुन: प्रयास करें।"
@@ -2546,6 +2547,25 @@
     "purchase_success": "खरीदारी सफल हुई: {name}",
     "purchase_tribe_button": "खरीदना",
     "sale_terms": "बिक्री की शर्तें",
+    "sort": {
+      "featured": "चुनिंदा",
+      "label": "इसके अनुसार क्रमबद्ध करें",
+      "name": "नाम",
+      "price_asc": "कीमत: कम से ज़्यादा",
+      "price_desc": "कीमत: ज़्यादा से कम",
+      "rarity": "दुर्लभता"
+    },
+    "steam_edition": {
+      "owned": "खरीदा गया",
+      "perk_achievements": "Steam उपलब्धियाँ",
+      "perk_cloud": "Steam Cloud से सिंक की गई सेटिंग्स",
+      "perk_friends": "Steam दोस्त और ओवरले",
+      "perk_lobbies": "सार्वजनिक लॉबी",
+      "perk_ranked": "रैंक्ड मोड",
+      "perk_versus": "Versus मोड",
+      "tag": "Steam पर उपलब्ध",
+      "title": "Steam संस्करण"
+    },
     "steam_overlay_cancelled": "खरीदारी रद्द कर दी गई. आपसे शुल्क नहीं लिया गया है.",
     "steam_overlay_waiting": "जारी रखने के लिए स्टीम ओवरले में खरीदारी को मंजूरी दें।",
     "subscribe_heading": "सदस्यता प्रारंभ करें",

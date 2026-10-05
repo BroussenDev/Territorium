@@ -627,6 +627,7 @@
     "not_trusted": "Este lobby está limitado a cuentas confiables. Aún puedes unirte a cualquier otro lobby.",
     "protocol_error": "La conexión estaba dañada.",
     "ranked_limit_reached": "Te has quedado sin partidas clasificatorias gratuitas para hoy.",
+    "steam_app_required": "Este modo solo está disponible en la aplicación de Territorium en Steam.",
     "turnstile_failed": "La verificación del bot falló. Vuelva a cargar la página e inténtelo de nuevo.",
     "unknown": "El servidor cerró la conexión.",
     "wrong_worker": "Esta conexión llegó al proceso del servidor incorrecto. Vuelva a cargar la página e inténtelo de nuevo."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Compra exitosa: {name}",
     "purchase_tribe_button": "Compra",
     "sale_terms": "Condiciones de venta",
+    "sort": {
+      "featured": "Destacados",
+      "label": "Ordenar por",
+      "name": "Nombre",
+      "price_asc": "Precio: de menor a mayor",
+      "price_desc": "Precio: de mayor a menor",
+      "rarity": "Rareza"
+    },
+    "steam_edition": {
+      "owned": "Comprada",
+      "perk_achievements": "Logros de Steam",
+      "perk_cloud": "Ajustes sincronizados con Steam Cloud",
+      "perk_friends": "Amigos y overlay de Steam",
+      "perk_lobbies": "Salas públicas",
+      "perk_ranked": "Modo clasificatorio",
+      "perk_versus": "Modo Versus",
+      "tag": "Disponible en Steam",
+      "title": "Edición Steam"
+    },
     "steam_overlay_cancelled": "Compra cancelada. No te han acusado.",
     "steam_overlay_waiting": "Aprueba la compra en la superposición de Steam para continuar.",
     "subscribe_heading": "Iniciar suscripción",

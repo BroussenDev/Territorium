@@ -627,6 +627,7 @@
     "not_trusted": "Denna lobby är begränsad till betrodda konton. Du kan fortfarande gå med i vilken annan lobby som helst.",
     "protocol_error": "Anslutningen var skadad.",
     "ranked_limit_reached": "Du har slut på gratis rankade matcher för idag.",
+    "steam_app_required": "Det här läget finns bara i Territorium-appen på Steam.",
     "turnstile_failed": "Botkontrollen misslyckades. Ladda om sidan och försök igen.",
     "unknown": "Servern stängde anslutningen.",
     "wrong_worker": "Den här anslutningen nådde fel serverprocess. Ladda om sidan och försök igen."
@@ -2546,6 +2547,25 @@
     "purchase_success": "Köpet lyckades: {name}",
     "purchase_tribe_button": "Köpa",
     "sale_terms": "Försäljningsvillkor",
+    "sort": {
+      "featured": "Utvalda",
+      "label": "Sortera efter",
+      "name": "Namn",
+      "price_asc": "Pris: lägst först",
+      "price_desc": "Pris: högst först",
+      "rarity": "Sällsynthet"
+    },
+    "steam_edition": {
+      "owned": "Köpt",
+      "perk_achievements": "Steam-prestationer",
+      "perk_cloud": "Inställningar synkade med Steam Cloud",
+      "perk_friends": "Steam-vänner och overlay",
+      "perk_lobbies": "Offentliga lobbyer",
+      "perk_ranked": "Rankat läge",
+      "perk_versus": "Versus-läge",
+      "tag": "Finns på Steam",
+      "title": "Steam-utgåva"
+    },
     "steam_overlay_cancelled": "Köpet annullerats. Du har inte debiterats.",
     "steam_overlay_waiting": "Godkänn köpet i Steam-överlägget för att fortsätta.",
     "subscribe_heading": "Starta prenumeration",

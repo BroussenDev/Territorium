@@ -627,6 +627,7 @@
     "not_trusted": "该大厅仅限受信任的帐户使用。您仍然可以加入任何其他大厅。",
     "protocol_error": "连接已损坏。",
     "ranked_limit_reached": "您今天的免费排名比赛已结束。",
+    "steam_app_required": "此模式仅在 Steam 上的 Territorium 应用中提供。",
     "turnstile_failed": "机器人检查失败。请重新加载页面并重试。",
     "unknown": "服务器关闭了连接。",
     "wrong_worker": "此连接到达了错误的服务器进程。请重新加载页面并重试。"
@@ -2546,6 +2547,25 @@
     "purchase_success": "购买成功：{name}",
     "purchase_tribe_button": "购买",
     "sale_terms": "销售条款",
+    "sort": {
+      "featured": "推荐",
+      "label": "排序方式",
+      "name": "名称",
+      "price_asc": "价格从低到高",
+      "price_desc": "价格从高到低",
+      "rarity": "稀有度"
+    },
+    "steam_edition": {
+      "owned": "已购买",
+      "perk_achievements": "Steam 成就",
+      "perk_cloud": "通过 Steam 云同步设置",
+      "perk_friends": "Steam 好友与界面",
+      "perk_lobbies": "公开大厅",
+      "perk_ranked": "排位模式",
+      "perk_versus": "Versus 模式",
+      "tag": "已在 Steam 上架",
+      "title": "Steam 版"
+    },
     "steam_overlay_cancelled": "购买已取消。你还没有被指控。",
     "steam_overlay_waiting": "在 Steam 界面中批准购买才能继续。",
     "subscribe_heading": "开始订阅",
