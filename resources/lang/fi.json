@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassiset tasonumerot",
     "colored_names_desc": "Näytä pelaajien nimet pelaajien värillä tai mustalla",
     "colored_names_label": "Nimen väri",
+    "conquest_flash_desc": "Vallatut ruudut välähtävät hetken",
+    "conquest_flash_label": "Valloituksen välähdys",
     "coordinate_grid_opacity_desc": "Kuinka läpinäkymätön koordinaattiruudukko on (alempi antaa enemmän asioita näkyviin)",
     "coordinate_grid_opacity_label": "Koordinaattiruudukon opasiteetti",
     "copy_json_desc": "Kopioi nykyiset asetukset JSON-muodossa jakaaksesi ystävien kanssa",

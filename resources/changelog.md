@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.69
+
+✨ **Conquest flash and colour-blind play**
+
+- Freshly captured tiles light up for a moment, then fade back to their owner's colour. It stays discreet, and can be turned off in Settings → Graphics → Effects ("Conquest flash").
+- With the Colourblind graphics preset, the Conquest banner and the attack plates now use blue and orange like the map, instead of green and red.
+- The terms of service now say that the game is free on territorium.gg and that the Steam app is a paid product sold by Steam.
+
 ## v0.1.68
 
 🛒 **Sorting in the store, and the Steam Edition**

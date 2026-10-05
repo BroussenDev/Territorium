@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasické čísla úrovní",
     "colored_names_desc": "Zobrazte mená hráčov vo farbe hráča alebo v čiernej farbe",
     "colored_names_label": "Farba názvu",
+    "conquest_flash_desc": "Dobyté polia na okamih zažiaria",
+    "conquest_flash_label": "Záblesk dobytia",
     "coordinate_grid_opacity_desc": "Ako nepriehľadná je súradnicová mriežka (nižšia umožňuje zobraziť viac vecí)",
     "coordinate_grid_opacity_label": "Nepriehľadnosť súradnicovej mriežky",
     "copy_json_desc": "Skopírujte aktuálne nastavenia ako JSON a zdieľajte ich s priateľmi",

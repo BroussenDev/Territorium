@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "أرقام المستوى الكلاسيكي",
     "colored_names_desc": "إظهار أسماء اللاعبين بلون اللاعب الخاص بهم أو باللون الأسود",
     "colored_names_label": "لون الاسم",
+    "conquest_flash_desc": "تضيء المربعات المحتلة لحظة قصيرة",
+    "conquest_flash_label": "وميض الغزو",
     "coordinate_grid_opacity_desc": "مدى عدم شفافية شبكة الإحداثيات (الجزء السفلي يتيح ظهور المزيد من الأشياء من خلالها)",
     "coordinate_grid_opacity_label": "تنسيق عتامة الشبكة",
     "copy_json_desc": "انسخ الإعدادات الحالية بتنسيق JSON لمشاركتها مع الأصدقاء",

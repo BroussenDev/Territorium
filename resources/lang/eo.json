@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasikaj nivelaj nombroj",
     "colored_names_desc": "Ĉu montri la nomojn en koloro de la ludanto aŭ nigre",
     "colored_names_label": "Koloro de la nomo",
+    "conquest_flash_desc": "Konkeritaj kampoj ekbrilas dum momento",
+    "conquest_flash_label": "Konkera ekbrilo",
     "coordinate_grid_opacity_desc": "Kiel maldiafana estas la koordinata krado (pli malalta lasas pli da aferoj montriĝi)",
     "coordinate_grid_opacity_label": "Koordinata krado opakeco",
     "copy_json_desc": "Kopiu la nunajn agordojn kiel JSON por dividi kun amikoj",

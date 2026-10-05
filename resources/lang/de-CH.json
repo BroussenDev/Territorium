@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassische Levelnummern",
     "colored_names_desc": "Zeigen Sie Spielernamen in ihrer Spielerfarbe oder in Schwarz an",
     "colored_names_label": "Farbe benennen",
+    "conquest_flash_desc": "Eroberte Felder leuchten kurz auf",
+    "conquest_flash_label": "Eroberungsblitz",
     "coordinate_grid_opacity_desc": "Wie undurchsichtig das Koordinatengitter ist (unten lässt mehr Dinge durchscheinen)",
     "coordinate_grid_opacity_label": "Koordinatengitter-Deckkraft",
     "copy_json_desc": "Kopieren Sie die aktuellen Einstellungen als JSON, um sie mit Freunden zu teilen",

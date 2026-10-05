@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Nombres de niveau classiques",
     "colored_names_desc": "Montrer les noms de joueurs dans la couleur du joueur ou en noir",
     "colored_names_label": "Couleur du nom",
+    "conquest_flash_desc": "Les cases conquises s'illuminent un court instant",
+    "conquest_flash_label": "Éclat de conquête",
     "coordinate_grid_opacity_desc": "Permet de changer la transparence de la grille de coordonnées (baisser l'opacité laisse voir plus clairement au travers de la grille)",
     "coordinate_grid_opacity_label": "Opacité de la grille de coordonnées",
     "copy_json_desc": "Copiez les paramètres actuels au format JSON pour les partager avec vos amis",

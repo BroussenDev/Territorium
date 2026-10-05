@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "מספרים ברמה קלאסית",
     "colored_names_desc": "הצג את שמות השחקנים בצבע הנגן שלהם או בשחור",
     "colored_names_label": "צבע השם",
+    "conquest_flash_desc": "משבצות שנכבשו מאירות לרגע",
+    "conquest_flash_label": "הבזק כיבוש",
     "coordinate_grid_opacity_desc": "עד כמה רשת הקואורדינטות אטומה (נמוכה יותר מאפשרת ליותר דברים להופיע)",
     "coordinate_grid_opacity_label": "אטימות רשת תיאום",
     "copy_json_desc": "העתק את ההגדרות הנוכחיות כ-JSON כדי לשתף עם חברים",

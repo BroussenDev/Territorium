@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Številke klasične stopnje",
     "colored_names_desc": "Prikaži imena igralcev v njihovi barvi igralcev ali v črni barvi",
     "colored_names_label": "Barva imena",
+    "conquest_flash_desc": "Osvojena polja za trenutek zasvetijo",
+    "conquest_flash_label": "Blisk osvojitve",
     "coordinate_grid_opacity_desc": "Kako neprozorna je koordinatna mreža (nižje omogoča prikaz več stvari)",
     "coordinate_grid_opacity_label": "Neprosojnost koordinatne mreže",
     "copy_json_desc": "Kopirajte trenutne nastavitve kot JSON, da jih delite s prijatelji",

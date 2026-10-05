@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Classic level numbers",
     "colored_names_desc": "Show player names in their player color or in black",
     "colored_names_label": "Name color",
+    "conquest_flash_desc": "Captured tiles light up for a moment",
+    "conquest_flash_label": "Conquest flash",
     "coordinate_grid_opacity_desc": "How opaque the coordinate grid is (lower lets more things show through)",
     "coordinate_grid_opacity_label": "Coordinate grid opacity",
     "copy_json_desc": "Copy the current settings as JSON to share with friends",

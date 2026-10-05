@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "经典级别数字",
     "colored_names_desc": "以玩家颜色或黑色显示玩家姓名",
     "colored_names_label": "名称颜色",
+    "conquest_flash_desc": "被占领的格子会短暂发亮",
+    "conquest_flash_label": "征服闪光",
     "coordinate_grid_opacity_desc": "坐标网格的不透明程度（越低可以显示更多内容）",
     "coordinate_grid_opacity_label": "坐标网格不透明度",
     "copy_json_desc": "将当前设置复制为 JSON 以便与朋友分享",

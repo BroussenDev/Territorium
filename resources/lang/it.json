@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Numeri di livello classico",
     "colored_names_desc": "Mostra i nomi dei giocatori nel colore del giocatore o in nero",
     "colored_names_label": "Colore del nome",
+    "conquest_flash_desc": "Le caselle conquistate si illuminano per un istante",
+    "conquest_flash_label": "Bagliore di conquista",
     "coordinate_grid_opacity_desc": "Quanto è opaca la griglia delle coordinate (il valore inferiore lascia trasparire più elementi)",
     "coordinate_grid_opacity_label": "Opacità della griglia delle coordinate",
     "copy_json_desc": "Copia le impostazioni correnti come JSON per condividerle con gli amici",

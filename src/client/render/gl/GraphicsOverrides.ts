@@ -91,6 +91,8 @@ export const GraphicsOverridesSchema = z
         // Nuclear fallout effects: the broiling green territory bloom and its
         // light emission in day/night mode. Disable to improve performance.
         fallout: z.boolean(),
+        // Captured tiles light up for a moment.
+        conquestFlash: z.boolean(),
       })
       .partial(),
     terrain: z

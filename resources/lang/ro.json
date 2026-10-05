@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Numere de nivel clasice",
     "colored_names_desc": "Arată numele jucătorilor în culoarea jucătorului lor sau în negru",
     "colored_names_label": "Culoarea numelui",
+    "conquest_flash_desc": "Căsuțele cucerite se luminează pentru o clipă",
+    "conquest_flash_label": "Strălucire de cucerire",
     "coordinate_grid_opacity_desc": "Cât de opacă este rețeaua de coordonate (permite mai multe lucruri să apară în jos)",
     "coordinate_grid_opacity_label": "Opacitatea rețelei de coordonate",
     "copy_json_desc": "Copiați setările curente ca JSON pentru a le partaja cu prietenii",

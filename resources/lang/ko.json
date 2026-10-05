@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "클래식 레벨 숫자",
     "colored_names_desc": "플레이어 이름을 고유 색상 또는 검은색으로 표시합니다",
     "colored_names_label": "이름 색상",
+    "conquest_flash_desc": "점령한 칸이 잠깐 빛납니다",
+    "conquest_flash_label": "점령 섬광",
     "coordinate_grid_opacity_desc": "좌표 격자의 불투명도입니다 (낮을수록 지형이 더 잘 보입니다)",
     "coordinate_grid_opacity_label": "좌표 격자 불투명도",
     "copy_json_desc": "친구와 공유할 수 있도록 현재 설정을 JSON 형식으로 복사합니다",

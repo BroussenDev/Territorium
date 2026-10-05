@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassiske niveaunumre",
     "colored_names_desc": "Vis spillernavne i deres spillerfarve eller i sort",
     "colored_names_label": "Navnefarve",
+    "conquest_flash_desc": "Erobrede felter lyser kortvarigt op",
+    "conquest_flash_label": "Erobringsglimt",
     "coordinate_grid_opacity_desc": "Hvor uigennemsigtigt koordinatgitteret er (lavere lader mere vises igennem)",
     "coordinate_grid_opacity_label": "Koordinatgitter-gennemsigtighed",
     "copy_json_desc": "Kopier de aktuelle indstillinger som JSON for at dele med venner",

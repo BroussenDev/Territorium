@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Số cấp dạng classic",
     "colored_names_desc": "Hiển thị tên người chơi theo màu của họ hoặc màu đen",
     "colored_names_label": "Màu tên",
+    "conquest_flash_desc": "Các ô vừa chiếm sáng lên trong chốc lát",
+    "conquest_flash_label": "Ánh chiếm đóng",
     "coordinate_grid_opacity_desc": "Độ đục của lưới tọa độ (giá trị thấp hơn cho phép nhìn thấy nhiều thứ phía dưới hơn)",
     "coordinate_grid_opacity_label": "Độ mờ của lưới tọa độ",
     "copy_json_desc": "Sao chép cài đặt hiện tại dưới dạng JSON để chia sẻ với bạn bè",

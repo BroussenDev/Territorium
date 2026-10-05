@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Números de nivel clásico",
     "colored_names_desc": "Mostra os nomes dos xogadores na cor dos seus xogadores ou en negro",
     "colored_names_label": "Cor do nome",
+    "conquest_flash_desc": "As casas conquistadas ilumínanse un intre",
+    "conquest_flash_label": "Escintileo de conquista",
     "coordinate_grid_opacity_desc": "Que tan opaca é a cuadrícula de coordenadas (máis baixa deixa que se vexan máis cousas)",
     "coordinate_grid_opacity_label": "Opacidade da grella de coordenadas",
     "copy_json_desc": "Copia a configuración actual como JSON para compartir cos amigos",

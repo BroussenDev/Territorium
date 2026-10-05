@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasyczne numery poziomu",
     "colored_names_desc": "Pokaż nazwy graczy w kolorze gracza lub na czarno",
     "colored_names_label": "Nazwij kolor",
+    "conquest_flash_desc": "Zdobyte pola na chwilę się rozświetlają",
+    "conquest_flash_label": "Błysk podboju",
     "coordinate_grid_opacity_desc": "Jak nieprzezroczysta jest siatka współrzędnych (niższa pozwala prześwitywać więcej rzeczy)",
     "coordinate_grid_opacity_label": "Nieprzezroczystość siatki współrzędnych",
     "copy_json_desc": "Skopiuj bieżące ustawienia jako JSON, aby udostępnić je znajomym",

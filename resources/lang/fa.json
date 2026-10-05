@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "اعداد سطح کلاسیک",
     "colored_names_desc": "نمایش نام بازیکنان با رنگ خودشان یا به رنگ مشکی",
     "colored_names_label": "رنگ نام",
+    "conquest_flash_desc": "خانه‌های فتح‌شده لحظه‌ای روشن می‌شوند",
+    "conquest_flash_label": "درخشش فتح",
     "coordinate_grid_opacity_desc": "میزان مات بودن شبکه مختصات (عدد پایین‌تر اجازه می‌دهد چیزهای بیشتری از پشت آن دیده شود)",
     "coordinate_grid_opacity_label": "کدری شبکه مختصات",
     "copy_json_desc": "تنظیمات فعلی را به‌صورت JSON کپی کنید تا با دوستانتان به اشتراک بگذارید",

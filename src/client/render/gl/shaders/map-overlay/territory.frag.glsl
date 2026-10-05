@@ -29,6 +29,10 @@ uniform float uSaturation;         // 1 = full color, 0 = grayscale
 uniform float uTerritoryAlpha;     // absolute fill opacity; 1 = fully opaque
 uniform sampler2D uAffiliation;    // RGBA8 — alt-view relation colors (row 0)
 uniform float uAltFillAlpha;       // alt-view translucent fill opacity
+uniform usampler2D uFlashTex;      // R32UI — capture time per tile (0 = never)
+uniform uint uFlashNow;            // current time, same units as uFlashTex
+uniform float uFlashStrength;      // conquest flash peak; 0 = disabled
+uniform float uFlashUnits;         // flash duration, in uFlashTex units
 
 in vec2 vWorldPos;
 out vec4 fragColor;
@@ -134,6 +138,18 @@ void main() {
   if (uSaturation != 1.0) {
     float luma = dot(color.rgb, vec3(0.299, 0.587, 0.114));
     color.rgb = mix(vec3(luma), color.rgb, uSaturation);
+  }
+
+  // Conquest flash: a freshly captured tile lightens and fades back
+  // (TerritoryPass.flashAmount mirrors this).
+  if (uFlashStrength > 0.0) {
+    uint stamp = texelFetch(uFlashTex, tc, 0).r;
+    if (stamp != 0u && uFlashNow >= stamp) {
+      float t = float(uFlashNow - stamp) / uFlashUnits;
+      if (t < 1.0) {
+        color.rgb = mix(color.rgb, vec3(1.0), uFlashStrength * (1.0 - t) * (1.0 - t));
+      }
+    }
   }
 
   color.a = uTerritoryAlpha;

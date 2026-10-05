@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasik seviye numaraları",
     "colored_names_desc": "Oyuncu adlarını oyuncu renginde veya siyah renkte göster",
     "colored_names_label": "Ad rengi",
+    "conquest_flash_desc": "Ele geçirilen kareler bir anlığına parlar",
+    "conquest_flash_label": "Fetih parıltısı",
     "coordinate_grid_opacity_desc": "Koordinat ızgarasının ne kadar opak olduğu (daha düşük olması daha fazla şeyin görünmesini sağlar)",
     "coordinate_grid_opacity_label": "Izgara opaklığını koordine etme",
     "copy_json_desc": "Arkadaşlarınızla paylaşmak için mevcut ayarları JSON olarak kopyalayın",

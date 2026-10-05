@@ -13,6 +13,7 @@ import {
   conquestMajority,
   conquestSecondsLeft,
 } from "../../../core/game/Objectives";
+import { friendFoeColors } from "../../ColorblindPalette";
 import { Controller } from "../../Controller";
 import { translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
@@ -353,8 +354,8 @@ export class HeadsUpMessage extends LitElement implements Controller {
 
 /**
  * Conquest mode banner: one tile per objective (emerald yours, red someone
- * else's, hollow free), and who holds the majority with the time left before
- * they win.
+ * else's, hollow free; blue and orange with the Colorblind palette), and who
+ * holds the majority with the time left before they win.
  */
 function renderConquest(game: GameView | undefined) {
   if (game === undefined || !game.config().isConquestMode()) return null;
@@ -378,18 +379,16 @@ function renderConquest(game: GameView | undefined) {
       ? game.playerBySmallID(state.holder)
       : null;
   const ours = state !== null && mine(state.holder);
+  const colors = friendFoeColors();
   const edge =
-    left === null
-      ? "border-l-capital"
-      : ours
-        ? "border-l-brand-bright"
-        : "border-l-red-500";
+    left === null ? "var(--color-capital)" : ours ? colors.friend : colors.foe;
   return html`
     <div
       data-conquest-banner
       class="fixed top-14 left-1/2 -translate-x-1/2 z-[797] flex items-center gap-3 w-fit max-w-[92vw]
-             rounded-md border border-white/10 border-l-4 ${edge} bg-[#0a1512]/90 backdrop-blur-xs
+             rounded-md border border-white/10 border-l-4 bg-[#0a1512]/90 backdrop-blur-xs
              px-3 py-1.5 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)]"
+      style="border-left-color: ${edge}"
       @contextmenu=${(e: MouseEvent) => e.preventDefault()}
     >
       <div class="flex gap-1" aria-hidden="true">
@@ -398,9 +397,10 @@ function renderConquest(game: GameView | undefined) {
             html`<span
               class="size-3 rounded-[2px] border ${o.holder === 0
                 ? "border-white/40"
-                : mine(o.holder)
-                  ? "border-brand-bright bg-brand-bright"
-                  : "border-red-400 bg-red-500"}"
+                : ""}"
+              style=${o.holder === 0
+                ? ""
+                : `background: ${mine(o.holder) ? colors.friend : colors.foe}; border-color: ${mine(o.holder) ? colors.friend : colors.foe}`}
             ></span>`,
         )}
       </div>
@@ -423,9 +423,8 @@ function renderConquest(game: GameView | undefined) {
                     })}</span
               >
               <span
-                class="text-xs tabular-nums ${ours
-                  ? "text-emerald-200"
-                  : "text-red-200"}"
+                class="text-xs tabular-nums"
+                style="color: ${ours ? colors.friend : colors.foe}"
                 >${translateText("heads_up_message.conquest_wins_in", {
                   time: formatWait(left),
                 })}</span

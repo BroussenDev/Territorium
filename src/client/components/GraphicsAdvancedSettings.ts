@@ -856,6 +856,17 @@ export class GraphicsAdvancedSettings extends LitElement {
     this.patchPassEnabled({ fallout: !this.currentFallout() });
   }
 
+  private currentConquestFlash(): boolean {
+    return (
+      this.userSettings.graphicsOverrides().passEnabled?.conquestFlash ??
+      renderDefaults.passEnabled.conquestFlash
+    );
+  }
+
+  private onToggleConquestFlash() {
+    this.patchPassEnabled({ conquestFlash: !this.currentConquestFlash() });
+  }
+
   private currentGlowStrength(): number {
     return (
       this.userSettings.graphicsOverrides().smallPlayerGlow?.strength ??
@@ -1393,6 +1404,14 @@ export class GraphicsAdvancedSettings extends LitElement {
         id="fallout-toggle"
         .checked=${this.currentFallout()}
         @change=${this.onToggleFallout}
+      ></setting-toggle>
+
+      <setting-toggle
+        label=${translateText("graphics_setting.conquest_flash_label")}
+        description=${translateText("graphics_setting.conquest_flash_desc")}
+        id="conquest-flash-toggle"
+        .checked=${this.currentConquestFlash()}
+        @change=${this.onToggleConquestFlash}
       ></setting-toggle>
 
       <setting-slider

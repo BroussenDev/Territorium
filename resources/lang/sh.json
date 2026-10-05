@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasični brojevi nivoa",
     "colored_names_desc": "Prikaži imena igrača u njihovoj boji ili crnoj boji",
     "colored_names_label": "Boja imena",
+    "conquest_flash_desc": "Osvojena polja na trenutak zasvijetle",
+    "conquest_flash_label": "Bljesak osvajanja",
     "coordinate_grid_opacity_desc": "Nivo neprovidnosti koordinatne mreže (niža vrednost omogućava da se više toga vidi)",
     "coordinate_grid_opacity_label": "Neprovidnost koordinatne mreže",
     "copy_json_desc": "Kopiraj trenutna podešavanja kao JSON radi deljenja sa prijateljima",

@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "レベル表示のクラシックなフォント",
     "colored_names_desc": "プレイヤー名をプレイヤーの色または黒で表示する",
     "colored_names_label": "名前のカラー",
+    "conquest_flash_desc": "占領したマスが一瞬光ります",
+    "conquest_flash_label": "占領の閃光",
     "coordinate_grid_opacity_desc": "グリッド表示にする時の不透明度を調節します（数値が低いほど透き通ります）",
     "coordinate_grid_opacity_label": "グリッドの不透明度",
     "copy_json_desc": "現在の設定をJSONとしてコピー（共有用）",

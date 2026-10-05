@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "ক্লাসিক স্তরের সংখ্যা",
     "colored_names_desc": "প্লেয়ারের নাম তাদের প্লেয়ারের রঙে বা কালোতে দেখান",
     "colored_names_label": "নামের রঙ",
+    "conquest_flash_desc": "দখল করা ঘরগুলো এক মুহূর্তের জন্য জ্বলে ওঠে",
+    "conquest_flash_label": "বিজয়ের ঝলক",
     "coordinate_grid_opacity_desc": "স্থানাঙ্ক গ্রিড কতটা অস্বচ্ছ (নিম্ন আরও জিনিস দেখাতে দেয়)",
     "coordinate_grid_opacity_label": "সমন্বয় গ্রিড অস্বচ্ছতা",
     "copy_json_desc": "বন্ধুদের সাথে শেয়ার করতে বর্তমান সেটিংস JSON হিসেবে কপি করুন",

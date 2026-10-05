@@ -11,6 +11,7 @@
 import { EventBus } from "../../core/EventBus";
 import { Cell, PlayerType } from "../../core/game/Game";
 import { UserSettings } from "../../core/game/UserSettings";
+import { isColorblindPalette } from "../ColorblindPalette";
 import { Controller } from "../Controller";
 import { AlternateViewEvent } from "../InputHandler";
 import { MapRenderer } from "../render/gl";
@@ -25,6 +26,9 @@ const OUTGOING_B = 0xf5 / 255;
 const INCOMING_R = 0xf8 / 255;
 const INCOMING_G = 0x71 / 255;
 const INCOMING_B = 0x71 / 255;
+// With the Colorblind palette: Okabe-Ito sky blue and orange.
+const CB_OUTGOING = [0x56 / 255, 0xb4 / 255, 0xe9 / 255] as const;
+const CB_INCOMING = [0xe6 / 255, 0x9f / 255, 0x00 / 255] as const;
 
 /** Animation duration for cluster shifts — matches old CSS transition. */
 const ANIM_MS = 250;
@@ -90,6 +94,8 @@ export class AttackingTroopsController implements Controller {
   private attacks = new Map<string, AttackEntry>();
   private inFlightRequest = false;
   private alternateView = false;
+  /** The Colorblind palette, read each tick rather than each frame. */
+  private colorblind = false;
   /** Reused buffer pushed to the view each frame. */
   private labelBuf: AttackTroopLabel[] = [];
 
@@ -117,6 +123,7 @@ export class AttackingTroopsController implements Controller {
   }
 
   tick() {
+    this.colorblind = isColorblindPalette(this.userSettings);
     if (!this.userSettings.attackingTroopsOverlay() || this.alternateView) {
       if (this.attacks.size > 0) this.attacks.clear();
       return;
@@ -281,10 +288,15 @@ export class AttackingTroopsController implements Controller {
     const now = performance.now();
     const out: AttackTroopLabel[] = [];
 
+    const colorblind = this.colorblind;
     for (const entry of this.attacks.values()) {
-      const r = entry.isIncoming ? INCOMING_R : OUTGOING_R;
-      const g = entry.isIncoming ? INCOMING_G : OUTGOING_G;
-      const b = entry.isIncoming ? INCOMING_B : OUTGOING_B;
+      const [r, g, b] = colorblind
+        ? entry.isIncoming
+          ? CB_INCOMING
+          : CB_OUTGOING
+        : entry.isIncoming
+          ? [INCOMING_R, INCOMING_G, INCOMING_B]
+          : [OUTGOING_R, OUTGOING_G, OUTGOING_B];
       for (const slot of entry.slots) {
         const t = Math.min(1, (now - slot.startMs) / ANIM_MS);
         slot.curX = slot.srcX + (slot.dstX - slot.srcX) * t;

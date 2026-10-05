@@ -14,7 +14,8 @@
     "railroad": true,
     "fx": true,
     "bar": true,
-    "nameDebug": false
+    "nameDebug": false,
+    "conquestFlash": true
   },
   "terrain": {
     "backgroundColor": "#3c3c3c",

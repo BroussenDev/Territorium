@@ -62,6 +62,8 @@ export interface RenderSettings {
     fx: boolean;
     bar: boolean;
     nameDebug: boolean;
+    /** Freshly captured tiles light up briefly (TerritoryPass). */
+    conquestFlash: boolean;
   };
   terrain: {
     /**

@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassiska nivåsiffror",
     "colored_names_desc": "Visa spelarnamn i deras spelarfärg eller i svart",
     "colored_names_label": "Namnfärg",
+    "conquest_flash_desc": "Erövrade rutor lyser upp en kort stund",
+    "conquest_flash_label": "Erövringsblixt",
     "coordinate_grid_opacity_desc": "Hur ogenomskinligt koordinatnätet är (lägre låter fler saker synas igenom)",
     "coordinate_grid_opacity_label": "Koordinatnätets opacitet",
     "copy_json_desc": "Kopiera de nuvarande inställningarna som JSON för att dela med vänner",

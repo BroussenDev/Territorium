@@ -21,6 +21,31 @@ import overlayVertSrc from "../shaders/map-overlay/overlay.vert.glsl?raw";
 import territoryFragSrc from "../shaders/map-overlay/territory.frag.glsl?raw";
 import { TileScatterPass } from "./TileScatterPass";
 
+/**
+ * Conquest flash: a captured tile lightens toward white and fades back over
+ * FLASH_MS. Capture times are stored per tile in FLASH_UNIT_MS steps (32-bit,
+ * so they never wrap during a game); 0 means "never flashed".
+ */
+const FLASH_UNIT_MS = 25;
+const FLASH_MS = 550;
+const FLASH_STRENGTH = 0.4;
+
+export function flashStamp(nowMs: number): number {
+  return Math.floor(nowMs / FLASH_UNIT_MS) + 1;
+}
+
+/** How much a tile captured at `stamp` is lit at `nowStamp` (0..strength). */
+export function flashAmount(
+  stamp: number,
+  nowStamp: number,
+  strength = FLASH_STRENGTH,
+): number {
+  if (stamp === 0) return 0;
+  const t = ((nowStamp - stamp) * FLASH_UNIT_MS) / FLASH_MS;
+  if (t < 0 || t >= 1) return 0;
+  return strength * (1 - t) * (1 - t);
+}
+
 export class TerritoryPass {
   private gl: WebGL2RenderingContext;
   private settings: RenderSettings;
@@ -43,7 +68,13 @@ export class TerritoryPass {
   private uSaturation: WebGLUniformLocation;
   private uTerritoryAlpha: WebGLUniformLocation;
   private uAltFillAlpha: WebGLUniformLocation;
+  private uFlashNow: WebGLUniformLocation;
+  private uFlashStrength: WebGLUniformLocation;
+  private uFlashUnits: WebGLUniformLocation;
   private highlightOwner = 0;
+  /** R32UI: when each tile was last captured (flashStamp), 0 = never. */
+  private flashTex: WebGLTexture;
+  private flashScatter: TileScatterPass;
   private isTeamMode = false;
 
   private vao: WebGLVertexArrayObject;
@@ -182,6 +213,12 @@ export class TerritoryPass {
       "uTerritoryAlpha",
     )!;
     this.uAltFillAlpha = gl.getUniformLocation(this.program, "uAltFillAlpha")!;
+    this.uFlashNow = gl.getUniformLocation(this.program, "uFlashNow")!;
+    this.uFlashStrength = gl.getUniformLocation(
+      this.program,
+      "uFlashStrength",
+    )!;
+    this.uFlashUnits = gl.getUniformLocation(this.program, "uFlashUnits")!;
 
     gl.useProgram(this.program);
     gl.uniform1i(gl.getUniformLocation(this.program, "uTileTex"), 0);
@@ -194,10 +231,38 @@ export class TerritoryPass {
     gl.uniform1i(gl.getUniformLocation(this.program, "uDefenseCoverageTex"), 7);
     gl.uniform1i(gl.getUniformLocation(this.program, "uBorderTex"), 8);
     gl.uniform1i(gl.getUniformLocation(this.program, "uAffiliation"), 9);
+    gl.uniform1i(gl.getUniformLocation(this.program, "uFlashTex"), 10);
 
     this.vao = createMapQuad(gl, mapW, mapH);
 
     this.scatter = new TileScatterPass(gl, mapW, mapH, tileTex);
+
+    this.flashTex = gl.createTexture()!;
+    gl.bindTexture(gl.TEXTURE_2D, this.flashTex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.R32UI,
+      mapW,
+      mapH,
+      0,
+      gl.RED_INTEGER,
+      gl.UNSIGNED_INT,
+      null,
+    );
+    this.flashScatter = new TileScatterPass(gl, mapW, mapH, this.flashTex);
+  }
+
+  /** Marks a tile that changed hands, for the conquest flash. */
+  private flashTile(x: number, y: number, prev: number, state: number): void {
+    const owner = state & OWNER_MASK;
+    if (owner === 0 || owner === (prev & OWNER_MASK)) return;
+    if (!this.settings.passEnabled.conquestFlash) return;
+    this.flashScatter.push(x, y, flashStamp(performance.now()));
   }
 
   // ---------------------------------------------------------------------------
@@ -264,6 +329,7 @@ export class TerritoryPass {
           const x = ref % w;
           const y = (ref - x) / w;
           this.scatter.push(x, y, state);
+          this.flashTile(x, y, prev, state);
           if (borderFn) {
             borderFn(x, y, prev & OWNER_MASK, state & OWNER_MASK);
           }
@@ -301,6 +367,7 @@ export class TerritoryPass {
           const x = ref % w;
           const y = (ref - x) / w;
           this.scatter.push(x, y, state);
+          this.flashTile(x, y, prev, state);
           if (borderFn) {
             borderFn(x, y, prev & OWNER_MASK, state & OWNER_MASK);
           }
@@ -343,6 +410,9 @@ export class TerritoryPass {
    * already pushed per-tile border patches via `borderPatchConsumer`.
    */
   flushTileTexture(): "none" | "full" | "scatter" {
+    if (this.flashScatter.count > 0 && !this.fullUploadPending) {
+      this.flashScatter.flush();
+    }
     if (!this.tilesDirty) return "none";
     const gl = this.gl;
 
@@ -363,6 +433,7 @@ export class TerritoryPass {
         this.cpuTileState,
       );
       this.scatter.clear();
+      this.flashScatter.clear();
       this.fullUploadPending = false;
       this.tilesDirty = false;
       return "full";
@@ -447,6 +518,12 @@ export class TerritoryPass {
     gl.uniform1f(this.uSaturation, mo.territorySaturation);
     gl.uniform1f(this.uTerritoryAlpha, mo.territoryAlpha);
     gl.uniform1f(this.uAltFillAlpha, this.settings.altView.fillAlpha);
+    gl.uniform1ui(this.uFlashNow, flashStamp(performance.now()));
+    gl.uniform1f(
+      this.uFlashStrength,
+      this.settings.passEnabled.conquestFlash ? FLASH_STRENGTH : 0,
+    );
+    gl.uniform1f(this.uFlashUnits, FLASH_MS / FLASH_UNIT_MS);
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.tileTex);
@@ -474,6 +551,8 @@ export class TerritoryPass {
       gl.activeTexture(gl.TEXTURE9);
       gl.bindTexture(gl.TEXTURE_2D, this.affiliationTex);
     }
+    gl.activeTexture(gl.TEXTURE10);
+    gl.bindTexture(gl.TEXTURE_2D, this.flashTex);
 
     gl.bindVertexArray(this.vao);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -484,6 +563,8 @@ export class TerritoryPass {
     gl.deleteProgram(this.program);
     gl.deleteVertexArray(this.vao);
     this.scatter.dispose();
+    this.flashScatter.dispose();
+    gl.deleteTexture(this.flashTex);
     // tileTex, paletteTex, patternMetaTex, patternDataTex owned by GPUResources / renderer
   }
 }

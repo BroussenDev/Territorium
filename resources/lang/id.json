@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Angka tingkat klasik",
     "colored_names_desc": "Tampilkan nama pemain dalam warna pemainnya atau hitam",
     "colored_names_label": "Warna nama",
+    "conquest_flash_desc": "Petak yang direbut menyala sesaat",
+    "conquest_flash_label": "Kilau penaklukan",
     "coordinate_grid_opacity_desc": "Seberapa buram kotak koordinatnya (lebih rendah memungkinkan lebih banyak hal terlihat)",
     "coordinate_grid_opacity_label": "Opasitas grid koordinat",
     "copy_json_desc": "Salin pengaturan saat ini sebagai JSON untuk dibagikan dengan teman",

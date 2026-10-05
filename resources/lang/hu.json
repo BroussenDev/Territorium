@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klasszikus szintszámok",
     "colored_names_desc": "A játékosok neveinek megjelenítése a játékos színén vagy feketén",
     "colored_names_label": "Név szín",
+    "conquest_flash_desc": "Az elfoglalt mezők egy pillanatra felvillannak",
+    "conquest_flash_label": "Hódítási villanás",
     "coordinate_grid_opacity_desc": "Mennyire átlátszó a koordinátarács (alacsonyabb érték esetén több dolog látszik)",
     "coordinate_grid_opacity_label": "Koordinátarács átlátszósága",
     "copy_json_desc": "Másolja a jelenlegi beállításokat JSON formátumban, hogy megoszthassa azokat barátaival.",

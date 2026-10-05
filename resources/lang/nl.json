@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassieke level nummers",
     "colored_names_desc": "Toon spelersnamen in hun spelerskleur of zwart",
     "colored_names_label": "Naam kleur",
+    "conquest_flash_desc": "Veroverde vakjes lichten even op",
+    "conquest_flash_label": "Veroveringsflits",
     "coordinate_grid_opacity_desc": "Hoe doorzichtig het coördinatenraster is (minder laat meer dingen zien)",
     "coordinate_grid_opacity_label": "Transparantie coördinatenraster",
     "copy_json_desc": "Kopieer de huidige instellingen als JSON om deze te delen met vrienden",

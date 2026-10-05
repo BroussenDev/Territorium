@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "क्लासिक स्तर की संख्याएँ",
     "colored_names_desc": "खिलाड़ियों के नाम उनके खिलाड़ी रंग या काले रंग में दिखाएं",
     "colored_names_label": "नाम का रंग",
+    "conquest_flash_desc": "जीते गए खाने पल भर के लिए चमकते हैं",
+    "conquest_flash_label": "विजय की चमक",
     "coordinate_grid_opacity_desc": "समन्वय ग्रिड कितना अपारदर्शी है (नीचे से अधिक चीज़ें दिखाई देती हैं)",
     "coordinate_grid_opacity_label": "समन्वित ग्रिड अपारदर्शिता",
     "copy_json_desc": "दोस्तों के साथ साझा करने के लिए वर्तमान सेटिंग्स को JSON के रूप में कॉपी करें",

@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Klassikalised tasemenumbrid",
     "colored_names_desc": "Näidake mängijate nimesid nende mängija värvi või mustaga",
     "colored_names_label": "Nime värv",
+    "conquest_flash_desc": "Vallutatud ruudud süttivad hetkeks",
+    "conquest_flash_label": "Vallutuse sähvatus",
     "coordinate_grid_opacity_desc": "Kui läbipaistmatu on koordinaatide ruudustik (madalam laseb rohkem asju läbi näha)",
     "coordinate_grid_opacity_label": "Koordinaatide ruudustiku läbipaistmatus",
     "copy_json_desc": "Kopeerige praegused seaded JSON-vormingus, et sõpradega jagada",

@@ -143,6 +143,9 @@ export function applyGraphicsOverrides(
   if (overrides.passEnabled?.fx !== undefined) {
     settings.passEnabled.fx = overrides.passEnabled.fx;
   }
+  if (overrides.passEnabled?.conquestFlash !== undefined) {
+    settings.passEnabled.conquestFlash = overrides.passEnabled.conquestFlash;
+  }
   if (overrides.passEnabled?.fallout !== undefined) {
     // One user-facing toggle drives both fallout passes: the territory bloom
     // and its additive light contribution in the day/night composite.

@@ -1344,6 +1344,8 @@
     "classic_numbers_label": "Nombres de nivell clàssic",
     "colored_names_desc": "Mostra els noms dels jugadors amb el seu color de jugador o en negre",
     "colored_names_label": "Color del nom",
+    "conquest_flash_desc": "Les caselles conquerides s'il·luminen un instant",
+    "conquest_flash_label": "Esclat de conquesta",
     "coordinate_grid_opacity_desc": "Com d'opaca és la quadrícula de coordenades (més inferior permet que es mostrin més coses)",
     "coordinate_grid_opacity_label": "Opacitat de la quadrícula de coordenades",
     "copy_json_desc": "Copieu la configuració actual com a JSON per compartir-la amb els amics",
