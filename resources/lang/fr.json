@@ -2227,6 +2227,13 @@
     "nation": "Nation",
     "player": "Joueur"
   },
+  "presence": {
+    "game": "En partie",
+    "join": "Rejoindre la partie",
+    "lobby": "Dans un salon",
+    "menu": "Dans le menu",
+    "spectating": "Spectateur"
+  },
   "private_lobby": {
     "disabled_units": "Unités désactivées",
     "enter_id": "Entrez l'ID du salon",

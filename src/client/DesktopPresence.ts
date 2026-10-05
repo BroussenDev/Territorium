@@ -4,6 +4,8 @@
 // This module deliberately knows NOTHING about Steam. It reports game state;
 // the shell decides what Steam and Discord make of it.
 
+import { translateText } from "./Utils";
+
 export type PresenceState = "menu" | "lobby" | "game" | "spectating";
 
 export interface PresencePayload {
@@ -22,6 +24,13 @@ export interface PresencePayload {
   // the menu. NOT the lobby id and not derived from it — see GroupToken in
   // src/core/Schemas.ts for why those must stay separable.
   groupToken?: string;
+  // Display texts in the player's language, for the shell to show as they
+  // are (PresenceLabels.ts): the mode and map names, the state ("In a
+  // lobby"…) and the join button's label.
+  modeName?: string;
+  mapName?: string;
+  stateName?: string;
+  joinLabel?: string;
 }
 
 interface PresenceBridge {
@@ -60,7 +69,15 @@ class DesktopPresence {
     if (!this.isAvailable()) return;
     try {
       void bridge()
-        ?.presence?.set(payload)
+        ?.presence?.set(
+          payload === null
+            ? null
+            : {
+                ...payload,
+                stateName: translateText(`presence.${payload.state}`),
+                joinLabel: translateText("presence.join"),
+              },
+        )
         ?.catch(() => undefined);
     } catch {
       // A bridge that throws synchronously must not take the game down --

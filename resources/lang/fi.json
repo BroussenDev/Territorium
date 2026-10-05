@@ -2227,6 +2227,13 @@
     "nation": "Kansakunta",
     "player": "Pelaaja"
   },
+  "presence": {
+    "game": "Pelissä",
+    "join": "Liity peliin",
+    "lobby": "Aulassa",
+    "menu": "Valikossa",
+    "spectating": "Katsoo"
+  },
   "private_lobby": {
     "disabled_units": "Vammaiset yksiköt",
     "enter_id": "Syötä aulan tunnus",

@@ -2227,6 +2227,13 @@
     "nation": "národa",
     "player": "Hráč"
   },
+  "presence": {
+    "game": "V hre",
+    "join": "Pripojiť sa",
+    "lobby": "V lobby",
+    "menu": "V menu",
+    "spectating": "Sleduje"
+  },
   "private_lobby": {
     "disabled_units": "Zakázané jednotky",
     "enter_id": "Zadaj ID miestnosti",

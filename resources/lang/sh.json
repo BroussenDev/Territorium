@@ -2227,6 +2227,13 @@
     "nation": "Nacija",
     "player": "Igrač"
   },
+  "presence": {
+    "game": "U igri",
+    "join": "Pridruži se",
+    "lobby": "U lobiju",
+    "menu": "U meniju",
+    "spectating": "Gleda"
+  },
   "private_lobby": {
     "disabled_units": "Onemogućene jedinice",
     "enter_id": "Unesi identifikaciju čekaonice",

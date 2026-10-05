@@ -2227,6 +2227,13 @@
     "nation": "Nemzet",
     "player": "Játékos"
   },
+  "presence": {
+    "game": "Játékban",
+    "join": "Csatlakozás",
+    "lobby": "Lobbiban",
+    "menu": "A menüben",
+    "spectating": "Nézőként"
+  },
   "private_lobby": {
     "disabled_units": "Egységek letiltása",
     "enter_id": "Lépj be a lobby azonosítójával",

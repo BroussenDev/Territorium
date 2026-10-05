@@ -2227,6 +2227,13 @@
     "nation": "Έθνος",
     "player": "Παίκτης"
   },
+  "presence": {
+    "game": "Σε παιχνίδι",
+    "join": "Συμμετοχή",
+    "lobby": "Σε λόμπι",
+    "menu": "Στο μενού",
+    "spectating": "Παρακολουθεί"
+  },
   "private_lobby": {
     "disabled_units": "Μονάδες με ειδικές ανάγκες",
     "enter_id": "Εισαγωγή ID Λόμπι",

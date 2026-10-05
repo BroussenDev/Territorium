@@ -2227,6 +2227,13 @@
     "nation": "Nacio",
     "player": "Ludanto"
   },
+  "presence": {
+    "game": "En ludo",
+    "join": "Aliĝi al la ludo",
+    "lobby": "En atendejo",
+    "menu": "En la menuo",
+    "spectating": "Spektas"
+  },
   "private_lobby": {
     "disabled_units": "Malebligitaj konstruaĵoj",
     "enter_id": "Enigu la ludejan ID-on",

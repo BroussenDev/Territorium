@@ -2227,6 +2227,13 @@
     "nation": "Bangsa",
     "player": "Pemain"
   },
+  "presence": {
+    "game": "Dalam permainan",
+    "join": "Gabung permainan",
+    "lobby": "Di lobi",
+    "menu": "Di menu",
+    "spectating": "Menonton"
+  },
   "private_lobby": {
     "disabled_units": "Nonaktfikan Units",
     "enter_id": "Masukan ID Lobi",

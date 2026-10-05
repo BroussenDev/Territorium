@@ -2227,6 +2227,13 @@
     "nation": "Nació",
     "player": "Jugador"
   },
+  "presence": {
+    "game": "En partida",
+    "join": "Uneix-te a la partida",
+    "lobby": "En una sala",
+    "menu": "Al menú",
+    "spectating": "Mirant"
+  },
   "private_lobby": {
     "disabled_units": "Característiques desactivades",
     "enter_id": "Introduïu l'ID de l'Aula",

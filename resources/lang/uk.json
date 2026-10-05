@@ -2227,6 +2227,13 @@
     "nation": "Нація",
     "player": "Гравець"
   },
+  "presence": {
+    "game": "У грі",
+    "join": "Приєднатися",
+    "lobby": "У лобі",
+    "menu": "У меню",
+    "spectating": "Спостерігає"
+  },
   "private_lobby": {
     "disabled_units": "Вимкнені юніти",
     "enter_id": "Введіть ID лобі",

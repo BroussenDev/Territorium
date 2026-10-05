@@ -2227,6 +2227,13 @@
     "nation": "Ulus",
     "player": "Oyuncu"
   },
+  "presence": {
+    "game": "Oyunda",
+    "join": "Oyuna katıl",
+    "lobby": "Lobide",
+    "menu": "Menüde",
+    "spectating": "İzliyor"
+  },
   "private_lobby": {
     "disabled_units": "Devre Dışı Bırakılmış Birimler",
     "enter_id": "Lobi ID'sini Girin",

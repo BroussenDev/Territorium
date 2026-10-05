@@ -2227,6 +2227,13 @@
     "nation": "国家",
     "player": "プレイヤー"
   },
+  "presence": {
+    "game": "プレイ中",
+    "join": "ゲームに参加",
+    "lobby": "ロビー",
+    "menu": "メニュー",
+    "spectating": "観戦中"
+  },
   "private_lobby": {
     "disabled_units": "無効にされたユニット",
     "enter_id": "プライベートゲームに参加",

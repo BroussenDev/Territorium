@@ -2227,6 +2227,13 @@
     "nation": "राष्ट्र",
     "player": "खिलाड़ी"
   },
+  "presence": {
+    "game": "खेल में",
+    "join": "खेल में शामिल हों",
+    "lobby": "लॉबी में",
+    "menu": "मेनू में",
+    "spectating": "देख रहे हैं"
+  },
   "private_lobby": {
     "disabled_units": "अक्षम इकाइयाँ",
     "enter_id": "लॉबी आईडी दर्ज करें",

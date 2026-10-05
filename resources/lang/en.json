@@ -2227,6 +2227,13 @@
     "nation": "Nation",
     "player": "Player"
   },
+  "presence": {
+    "game": "In a game",
+    "join": "Join the game",
+    "lobby": "In a lobby",
+    "menu": "In the menu",
+    "spectating": "Spectating"
+  },
   "private_lobby": {
     "disabled_units": "Disabled Units",
     "enter_id": "Enter Lobby ID",

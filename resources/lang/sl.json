@@ -2227,6 +2227,13 @@
     "nation": "Narod",
     "player": "Igralec"
   },
+  "presence": {
+    "game": "V igri",
+    "join": "Pridruži se",
+    "lobby": "V sobi",
+    "menu": "V meniju",
+    "spectating": "Gleda"
+  },
   "private_lobby": {
     "disabled_units": "Onemogočene enote",
     "enter_id": "Vnesi ID sobe",

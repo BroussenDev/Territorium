@@ -2227,6 +2227,13 @@
     "nation": "ملت",
     "player": "بازیکن"
   },
+  "presence": {
+    "game": "در بازی",
+    "join": "پیوستن به بازی",
+    "lobby": "در لابی",
+    "menu": "در منو",
+    "spectating": "تماشاگر"
+  },
   "private_lobby": {
     "disabled_units": "واحدهای غیر فعال شده",
     "enter_id": "آیدی لابی را وارد کنید",

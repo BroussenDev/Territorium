@@ -2227,6 +2227,13 @@
     "nation": "Naród",
     "player": "Gracz"
   },
+  "presence": {
+    "game": "W grze",
+    "join": "Dołącz do gry",
+    "lobby": "W poczekalni",
+    "menu": "W menu",
+    "spectating": "Ogląda"
+  },
   "private_lobby": {
     "disabled_units": "Jednostki niepełnosprawne",
     "enter_id": "Wprowadź ID Lobby",

@@ -63,7 +63,13 @@ describe("DesktopPresence", () => {
     };
     expect(desktopPresence.isAvailable()).toBe(true);
     desktopPresence.set({ state: "lobby", lobbyId: "abc123" });
-    expect(setFn).toHaveBeenCalledWith({ state: "lobby", lobbyId: "abc123" });
+    // The texts friends read come along, in the player's language.
+    expect(setFn).toHaveBeenCalledWith({
+      state: "lobby",
+      lobbyId: "abc123",
+      stateName: "presence.lobby",
+      joinLabel: "presence.join",
+    });
     expect(await desktopPresence.consumePendingInvite()).toBe("abc123");
     expect(await desktopPresence.openInviteDialog()).toBe(true);
   });

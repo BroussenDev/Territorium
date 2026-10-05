@@ -2227,6 +2227,13 @@
     "nation": "الأمة",
     "player": "لاعب"
   },
+  "presence": {
+    "game": "في مباراة",
+    "join": "انضم إلى المباراة",
+    "lobby": "في ردهة",
+    "menu": "في القائمة",
+    "spectating": "يشاهد"
+  },
   "private_lobby": {
     "disabled_units": "الوحدات المعوقة",
     "enter_id": "أدخل رقم اللوبي",

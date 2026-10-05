@@ -2227,6 +2227,13 @@
     "nation": "Nation",
     "player": "Spelare"
   },
+  "presence": {
+    "game": "I en match",
+    "join": "Gå med i matchen",
+    "lobby": "I en lobby",
+    "menu": "I menyn",
+    "spectating": "Tittar på"
+  },
   "private_lobby": {
     "disabled_units": "Inaktiverade enheter",
     "enter_id": "Ange Lobby-ID",

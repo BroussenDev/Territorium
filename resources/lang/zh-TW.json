@@ -2227,6 +2227,13 @@
     "nation": "國家",
     "player": "玩家"
   },
+  "presence": {
+    "game": "遊戲中",
+    "join": "加入遊戲",
+    "lobby": "在大廳中",
+    "menu": "在選單中",
+    "spectating": "觀戰中"
+  },
   "private_lobby": {
     "disabled_units": "禁用單位",
     "enter_id": "請輸入大廳 ID",

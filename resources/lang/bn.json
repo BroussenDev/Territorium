@@ -2227,6 +2227,13 @@
     "nation": "জাতি",
     "player": "প্লেয়ার"
   },
+  "presence": {
+    "game": "খেলায়",
+    "join": "খেলায় যোগ দিন",
+    "lobby": "লবিতে",
+    "menu": "মেনুতে",
+    "spectating": "দেখছেন"
+  },
   "private_lobby": {
     "disabled_units": "প্রতিবন্ধী ইউনিট",
     "enter_id": "লবি আইডি লিখুন",

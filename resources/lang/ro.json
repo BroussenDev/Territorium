@@ -2227,6 +2227,13 @@
     "nation": "Națiune",
     "player": "Jucător"
   },
+  "presence": {
+    "game": "În joc",
+    "join": "Intră în joc",
+    "lobby": "Într-un lobby",
+    "menu": "În meniu",
+    "spectating": "Spectator"
+  },
   "private_lobby": {
     "disabled_units": "Unități imobilizate",
     "enter_id": "Introdu ID-ul jocului",

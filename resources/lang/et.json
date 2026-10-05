@@ -2227,6 +2227,13 @@
     "nation": "Robot-riik",
     "player": "Mängija"
   },
+  "presence": {
+    "game": "Mängus",
+    "join": "Liitu mänguga",
+    "lobby": "Fuajees",
+    "menu": "Menüüs",
+    "spectating": "Vaatab"
+  },
   "private_lobby": {
     "disabled_units": "Keelatud Üksused",
     "enter_id": "Sisesta Lobby ID",

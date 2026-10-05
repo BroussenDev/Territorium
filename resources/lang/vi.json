@@ -2227,6 +2227,13 @@
     "nation": "Quốc gia",
     "player": "Người chơi"
   },
+  "presence": {
+    "game": "Đang chơi",
+    "join": "Tham gia trận",
+    "lobby": "Trong phòng chờ",
+    "menu": "Ở menu",
+    "spectating": "Đang xem"
+  },
   "private_lobby": {
     "disabled_units": "Cấm xây / bắn",
     "enter_id": "Nhập ID phòng",

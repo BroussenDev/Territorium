@@ -2227,6 +2227,13 @@
     "nation": "国家",
     "player": "玩家"
   },
+  "presence": {
+    "game": "游戏中",
+    "join": "加入游戏",
+    "lobby": "在大厅中",
+    "menu": "在菜单中",
+    "spectating": "观战中"
+  },
   "private_lobby": {
     "disabled_units": "禁用单位",
     "enter_id": "输入房间 ID",

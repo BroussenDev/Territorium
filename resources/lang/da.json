@@ -2227,6 +2227,13 @@
     "nation": "Nation",
     "player": "Spiller"
   },
+  "presence": {
+    "game": "I et spil",
+    "join": "Deltag i spillet",
+    "lobby": "I en lobby",
+    "menu": "I menuen",
+    "spectating": "Ser med"
+  },
   "private_lobby": {
     "disabled_units": "Deaktiverede Enheder",
     "enter_id": "Indtast Lobby ID",

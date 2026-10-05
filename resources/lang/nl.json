@@ -2227,6 +2227,13 @@
     "nation": "Natie",
     "player": "Speler"
   },
+  "presence": {
+    "game": "In een potje",
+    "join": "Doe mee",
+    "lobby": "In een lobby",
+    "menu": "In het menu",
+    "spectating": "Kijkt mee"
+  },
   "private_lobby": {
     "disabled_units": "Uitgeschakelde Eenheden",
     "enter_id": "Voer Lobby-ID in",

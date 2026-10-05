@@ -98,6 +98,7 @@ import {
   presenceLobbyId,
   withGroupToken,
 } from "./PresenceGroup";
+import { presenceLabels } from "./PresenceLabels";
 import { RewardsModal } from "./RewardsModal";
 import {
   ensureServerList,
@@ -556,6 +557,7 @@ class Client {
         gameType: config?.gameType,
         gameMode: config?.gameMode,
         map: presenceMapKey(config?.gameMap),
+        ...presenceLabels(config),
         // Seats, not connections: spectators are in the roster but hold none
         // (mirrors LobbyPlayerView and the join modal's own count).
         playerCount: event.lobby.clients?.filter((c) => !c.spectator).length,
@@ -1393,6 +1395,7 @@ class Client {
       gameType: joinConfig?.gameType,
       gameMode: joinConfig?.gameMode,
       map: presenceMapKey(joinConfig?.gameMap),
+      ...presenceLabels(joinConfig),
       playerCount:
         joinInfo === undefined
           ? undefined

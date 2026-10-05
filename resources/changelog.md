@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.70
+
+👥 **Your friends see what you play**
+
+- In the Steam app, your Steam friends see what you are doing in Territorium: in the menu, in a lobby, or in a game, with its mode and map ("Conquest — Europe").
+- They can join your game from their Steam friends list, and the "Invite friends" button in a lobby opens Steam's invite window.
+- Discord will show it too (with a "Join the game" button) as soon as the app's Discord link is set up.
+
 ## v0.1.69
 
 ✨ **Conquest flash and colour-blind play**

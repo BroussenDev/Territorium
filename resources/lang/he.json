@@ -2227,6 +2227,13 @@
     "nation": "אוּמָה",
     "player": "נַגָן"
   },
+  "presence": {
+    "game": "במשחק",
+    "join": "הצטרפות למשחק",
+    "lobby": "בלובי",
+    "menu": "בתפריט",
+    "spectating": "צופה"
+  },
   "private_lobby": {
     "disabled_units": "יחידות מושבתות",
     "enter_id": "הכנס ID של הלובי",

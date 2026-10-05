@@ -2227,6 +2227,13 @@
     "nation": "Нация",
     "player": "Играч"
   },
+  "presence": {
+    "game": "В игра",
+    "join": "Присъедини се",
+    "lobby": "В лоби",
+    "menu": "В менюто",
+    "spectating": "Наблюдава"
+  },
   "private_lobby": {
     "disabled_units": "Изключени военни единици",
     "enter_id": "Въведи ID на частното лоби",
