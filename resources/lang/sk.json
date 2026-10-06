@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Otvorte {channel} na Twitchi"
   },
   "first_launch": {
+    "audio_subtitle": "Kedykoľvek ho môžete zmeniť v nastaveniach.",
+    "audio_test": "Otestovať zvuk",
+    "audio_title": "Nastavte zvuk",
+    "back": "Späť",
     "continue": "Pokračovať",
+    "keys_subtitle": "Kliknutím na kláves ho zmeníte. Všetky ostatné nájdete v Nastavenia > Klávesy.",
+    "keys_title": "Vaše klávesy",
+    "play": "Hrať",
+    "step_audio": "Zvuk",
+    "step_keys": "Klávesy",
+    "step_language": "Jazyk",
     "subtitle": "Kedykoľvek ho môžete zmeniť pomocou vlajky v dolnej časti obrazovky.",
     "suggested": "Odporúčaný",
     "title": "Vyberte si jazyk"

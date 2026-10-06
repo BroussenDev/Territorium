@@ -128,11 +128,10 @@ export class LangSelector extends LitElement {
     // changes their Steam language sees the game follow.
     const browserLocale = this.defaultLocale();
     const savedLang = localStorage.getItem("lang");
-    // The Steam app's first launch starts in English and asks.
+    // The Steam app's first launch starts in the language Steam (else the
+    // system) reports and asks, with that language already picked.
     const firstLaunch = savedLang === null && isDesktopShell();
-    const userLang = firstLaunch
-      ? "en"
-      : this.getClosestSupportedLang(savedLang ?? browserLocale);
+    const userLang = this.getClosestSupportedLang(savedLang ?? browserLocale);
 
     const [defaultTranslations, translations] = await Promise.all([
       this.loadLanguage("en"),

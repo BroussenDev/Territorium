@@ -1127,7 +1127,17 @@
     "open_on_twitch": "פתח את {channel} ב-Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "אפשר לשנות אותו בכל עת בהגדרות.",
+    "audio_test": "בדיקת צליל",
+    "audio_title": "כוונו את הצליל",
+    "back": "חזרה",
     "continue": "המשך",
+    "keys_subtitle": "לחצו על מקש כדי לשנות אותו. כל השאר נמצאים בהגדרות > מקשים.",
+    "keys_title": "המקשים שלך",
+    "play": "שחק",
+    "step_audio": "צליל",
+    "step_keys": "מקשים",
+    "step_language": "שפה",
     "subtitle": "אפשר לשנות אותה בכל עת דרך הדגל בתחתית המסך.",
     "suggested": "מומלצת",
     "title": "בחרו שפה"

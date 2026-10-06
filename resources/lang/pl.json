@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Otwórz {channel} na Twitchu"
   },
   "first_launch": {
+    "audio_subtitle": "Możesz go zmienić w dowolnej chwili w ustawieniach.",
+    "audio_test": "Przetestuj dźwięk",
+    "audio_title": "Ustaw dźwięk",
+    "back": "Wstecz",
     "continue": "Dalej",
+    "keys_subtitle": "Kliknij klawisz, aby go zmienić. Wszystkie pozostałe znajdziesz w Ustawienia > Klawisze.",
+    "keys_title": "Twoje klawisze",
+    "play": "Graj",
+    "step_audio": "Dźwięk",
+    "step_keys": "Klawisze",
+    "step_language": "Język",
     "subtitle": "Możesz go zmienić w każdej chwili za pomocą flagi na dole ekranu.",
     "suggested": "Sugerowany",
     "title": "Wybierz język"

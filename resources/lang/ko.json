@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Twitch에서 {channel} 채널 열기"
   },
   "first_launch": {
+    "audio_subtitle": "설정에서 언제든지 변경할 수 있습니다.",
+    "audio_test": "사운드 테스트",
+    "audio_title": "사운드 설정",
+    "back": "뒤로",
     "continue": "계속",
+    "keys_subtitle": "키를 클릭해 변경하세요. 나머지 키는 설정 > 키 설정에 있습니다.",
+    "keys_title": "키 설정",
+    "play": "플레이",
+    "step_audio": "사운드",
+    "step_keys": "키",
+    "step_language": "언어",
     "subtitle": "화면 아래의 깃발에서 언제든지 바꿀 수 있습니다.",
     "suggested": "추천",
     "title": "언어를 선택하세요"

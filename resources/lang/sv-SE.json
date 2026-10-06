@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Öppna {channel} på Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Du kan ändra det när som helst i inställningarna.",
+    "audio_test": "Testa ljudet",
+    "audio_title": "Ställ in ljudet",
+    "back": "Tillbaka",
     "continue": "Fortsätt",
+    "keys_subtitle": "Klicka på en tangent för att ändra den. Alla andra finns under Inställningar > Tangenter.",
+    "keys_title": "Dina tangenter",
+    "play": "Spela",
+    "step_audio": "Ljud",
+    "step_keys": "Tangenter",
+    "step_language": "Språk",
     "subtitle": "Du kan när som helst ändra det med flaggan längst ned på skärmen.",
     "suggested": "Föreslaget",
     "title": "Välj ditt språk"

@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Malfermu {channel} ĉe Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Vi povas ŝanĝi ĝin iam ajn en la agordoj.",
+    "audio_test": "Testi la sonon",
+    "audio_title": "Agordu la sonon",
+    "back": "Reen",
     "continue": "Daŭrigi",
+    "keys_subtitle": "Alklaku klavon por ŝanĝi ĝin. Ĉiuj aliaj troviĝas en Agordoj > Klavoj.",
+    "keys_title": "Viaj klavoj",
+    "play": "Ludi",
+    "step_audio": "Sono",
+    "step_keys": "Klavoj",
+    "step_language": "Lingvo",
     "subtitle": "Vi povas ŝanĝi ĝin iam ajn per la flago ĉe la malsupro de la ekrano.",
     "suggested": "Proponita",
     "title": "Elektu vian lingvon"

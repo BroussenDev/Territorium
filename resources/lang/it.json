@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Apri {channel} su Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Puoi modificarlo in qualsiasi momento nelle impostazioni.",
+    "audio_test": "Prova l'audio",
+    "audio_title": "Regola l'audio",
+    "back": "Indietro",
     "continue": "Continua",
+    "keys_subtitle": "Clicca su un tasto per cambiarlo. Tutti gli altri sono in Impostazioni > Tasti.",
+    "keys_title": "I tuoi tasti",
+    "play": "Gioca",
+    "step_audio": "Audio",
+    "step_keys": "Tasti",
+    "step_language": "Lingua",
     "subtitle": "Puoi cambiarla in qualsiasi momento con la bandiera in fondo allo schermo.",
     "suggested": "Consigliata",
     "title": "Scegli la tua lingua"

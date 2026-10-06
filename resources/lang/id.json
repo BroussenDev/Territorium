@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Buka {channel} di Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Anda dapat mengubahnya kapan saja di pengaturan.",
+    "audio_test": "Uji suara",
+    "audio_title": "Atur suara",
+    "back": "Kembali",
     "continue": "Lanjutkan",
+    "keys_subtitle": "Klik tombol untuk mengubahnya. Semua tombol lainnya ada di Pengaturan > Tombol.",
+    "keys_title": "Tombol Anda",
+    "play": "Main",
+    "step_audio": "Suara",
+    "step_keys": "Tombol",
+    "step_language": "Bahasa",
     "subtitle": "Kamu bisa mengubahnya kapan saja lewat bendera di bagian bawah layar.",
     "suggested": "Disarankan",
     "title": "Pilih bahasamu"

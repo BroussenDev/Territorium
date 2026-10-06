@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Open {channel} op Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Je kunt het op elk moment wijzigen in de instellingen.",
+    "audio_test": "Geluid testen",
+    "audio_title": "Stel het geluid in",
+    "back": "Terug",
     "continue": "Doorgaan",
+    "keys_subtitle": "Klik op een toets om hem te wijzigen. Alle andere vind je in Instellingen > Toetsen.",
+    "keys_title": "Jouw toetsen",
+    "play": "Spelen",
+    "step_audio": "Geluid",
+    "step_keys": "Toetsen",
+    "step_language": "Taal",
     "subtitle": "Je kunt deze altijd wijzigen met de vlag onderaan het scherm.",
     "suggested": "Voorgesteld",
     "title": "Kies je taal"

@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Odprite {channel} na Twitchu"
   },
   "first_launch": {
+    "audio_subtitle": "Kadar koli ga lahko spremenite v nastavitvah.",
+    "audio_test": "Preizkusi zvok",
+    "audio_title": "Nastavite zvok",
+    "back": "Nazaj",
     "continue": "Nadaljuj",
+    "keys_subtitle": "Kliknite tipko, da jo spremenite. Vse ostale so v Nastavitve > Tipke.",
+    "keys_title": "Vaše tipke",
+    "play": "Igraj",
+    "step_audio": "Zvok",
+    "step_keys": "Tipke",
+    "step_language": "Jezik",
     "subtitle": "Kadar koli ga lahko spremenite z zastavico na dnu zaslona.",
     "suggested": "Predlagano",
     "title": "Izberite jezik"

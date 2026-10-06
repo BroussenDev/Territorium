@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Obre {channel} a Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Pots canviar-lo en qualsevol moment a la configuració.",
+    "audio_test": "Prova el so",
+    "audio_title": "Ajusta el so",
+    "back": "Enrere",
     "continue": "Continua",
+    "keys_subtitle": "Fes clic en una tecla per canviar-la. Totes les altres són a Configuració > Tecles.",
+    "keys_title": "Les teves tecles",
+    "play": "Juga",
+    "step_audio": "So",
+    "step_keys": "Tecles",
+    "step_language": "Idioma",
     "subtitle": "Pots canviar-lo en qualsevol moment amb la bandera de la part inferior de la pantalla.",
     "suggested": "Suggerit",
     "title": "Tria el teu idioma"

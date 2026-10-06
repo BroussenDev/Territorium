@@ -1127,7 +1127,17 @@
     "open_on_twitch": "افتح {channel} على Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "يمكنك تغييره في أي وقت من الإعدادات.",
+    "audio_test": "اختبار الصوت",
+    "audio_title": "اضبط الصوت",
+    "back": "رجوع",
     "continue": "متابعة",
+    "keys_subtitle": "انقر على مفتاح لتغييره. جميع المفاتيح الأخرى في الإعدادات > المفاتيح.",
+    "keys_title": "مفاتيحك",
+    "play": "العب",
+    "step_audio": "الصوت",
+    "step_keys": "المفاتيح",
+    "step_language": "اللغة",
     "subtitle": "يمكنك تغييرها في أي وقت من العلم أسفل الشاشة.",
     "suggested": "مقترحة",
     "title": "اختر لغتك"

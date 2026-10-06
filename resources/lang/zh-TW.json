@@ -1127,7 +1127,17 @@
     "open_on_twitch": "在 Twitch 上開啟 {channel}"
   },
   "first_launch": {
+    "audio_subtitle": "您可以隨時在設定中更改。",
+    "audio_test": "測試聲音",
+    "audio_title": "調整聲音",
+    "back": "返回",
     "continue": "繼續",
+    "keys_subtitle": "點擊按鍵即可更改。其他所有按鍵都在 設定 > 按鍵 中。",
+    "keys_title": "您的按鍵",
+    "play": "開始遊戲",
+    "step_audio": "聲音",
+    "step_keys": "按鍵",
+    "step_language": "語言",
     "subtitle": "你可以隨時透過畫面底部的旗幟更改語言。",
     "suggested": "推薦",
     "title": "選擇你的語言"

@@ -34,6 +34,7 @@ import {
   type DesktopDisplaySnapshot,
 } from "./DesktopDisplay";
 import { isDesktopShell } from "./DesktopShell";
+import { keybindConflicts, readUserKeybinds } from "./KeybindRules";
 import { pushMapLayerState } from "./MapLayerSettings";
 import { Platform } from "./Platform";
 import type { AudioControls } from "./sound/CuePlayer";
@@ -199,39 +200,7 @@ export class UserSettingModal extends BaseModal {
   };
 
   private loadKeybindsFromStorage() {
-    const parsed = this.userSettings.parsedUserKeybinds();
-    if (Object.keys(parsed).length === 0) {
-      this.userKeybinds = {};
-      return;
-    }
-
-    const validated: Record<string, { value: string; key: string }> = {};
-
-    for (const [action, entry] of Object.entries(parsed)) {
-      if (typeof entry === "string") {
-        validated[action] = { value: entry, key: entry };
-      } else if (
-        typeof entry === "object" &&
-        entry !== null &&
-        !Array.isArray(entry)
-      ) {
-        const rawValue = (entry as any).value ?? "Null";
-        const value = Array.isArray(rawValue)
-          ? rawValue.find((v) => typeof v === "string")
-          : rawValue;
-
-        const rawKey = (entry as any).key ?? value;
-        const key = Array.isArray(rawKey)
-          ? rawKey.find((v) => typeof v === "string")
-          : rawKey;
-
-        if (typeof value === "string" && typeof key === "string") {
-          validated[action] = { value, key };
-        }
-      }
-    }
-
-    this.userKeybinds = validated;
+    this.userKeybinds = readUserKeybinds(this.userSettings);
   }
 
   private handleKeybindChange(
@@ -244,40 +213,8 @@ export class UserSettingModal extends BaseModal {
   ) {
     const { action, value, key, prevValue } = e.detail;
 
-    const activeKeybinds = { ...this.defaultKeybinds };
-    for (const [k, v] of Object.entries(this.userKeybinds)) {
-      const normalizedValue = v.value;
-      if (normalizedValue === "Null") {
-        delete activeKeybinds[k];
-      } else {
-        activeKeybinds[k] = normalizedValue;
-      }
-    }
-
-    const values = Object.entries(activeKeybinds)
-      .filter(([k]) => k !== action)
-      .map(([, v]) => v);
-
-    // Allow specific key pairs to share physical modifier keys without reporting conflict
-    const ALLOWED_SHARED_MODIFIERS: Array<{
-      actions: [string, string];
-      keyPrefix: string;
-    }> = [
-      { actions: ["emojiMenuModifier", "altKey"], keyPrefix: "Alt" },
-      { actions: ["boxSelectWarships", "shiftKey"], keyPrefix: "Shift" },
-    ];
-
-    const isAllowedSharedModifier = ALLOWED_SHARED_MODIFIERS.some(
-      ({ actions: [a1, a2], keyPrefix }) =>
-        ((action === a1 && activeKeybinds[a2] === value) ||
-          (action === a2 && activeKeybinds[a1] === value)) &&
-        (value === `${keyPrefix}Left` || value === `${keyPrefix}Right`),
-    );
-
     if (
-      values.includes(value) &&
-      value !== "Null" &&
-      !isAllowedSharedModifier
+      keybindConflicts(this.defaultKeybinds, this.userKeybinds, action, value)
     ) {
       const displayKey = formatKeyForDisplay(key || value);
       window.dispatchEvent(

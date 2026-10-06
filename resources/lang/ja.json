@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Twitchの {channel} を開く"
   },
   "first_launch": {
+    "audio_subtitle": "設定からいつでも変更できます。",
+    "audio_test": "サウンドをテスト",
+    "audio_title": "サウンドを調整",
+    "back": "戻る",
     "continue": "続ける",
+    "keys_subtitle": "キーをクリックして変更します。その他のキーは「設定 > キー割り当て」にあります。",
+    "keys_title": "キー設定",
+    "play": "プレイ",
+    "step_audio": "サウンド",
+    "step_keys": "キー",
+    "step_language": "言語",
     "subtitle": "画面下の旗からいつでも変更できます。",
     "suggested": "おすすめ",
     "title": "言語を選択"

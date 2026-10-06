@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Open {channel} on Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "You can change it at any time in Settings.",
+    "audio_test": "Test the sound",
+    "audio_title": "Set the sound",
+    "back": "Back",
     "continue": "Continue",
+    "keys_subtitle": "Click a key to change it. Every other key is in Settings > Keybinds.",
+    "keys_title": "Your keys",
+    "play": "Play",
+    "step_audio": "Sound",
+    "step_keys": "Keys",
+    "step_language": "Language",
     "subtitle": "You can change it at any time with the flag at the bottom of the screen.",
     "suggested": "Suggested",
     "title": "Choose your language"

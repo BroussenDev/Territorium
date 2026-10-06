@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Otvori {channel} na Twitch-u"
   },
   "first_launch": {
+    "audio_subtitle": "Možete ga promijeniti u bilo kojem trenutku u postavkama.",
+    "audio_test": "Testiraj zvuk",
+    "audio_title": "Podesite zvuk",
+    "back": "Nazad",
     "continue": "Nastavi",
+    "keys_subtitle": "Kliknite na tipku da je promijenite. Sve ostale su u Postavke > Tipke.",
+    "keys_title": "Vaše tipke",
+    "play": "Igraj",
+    "step_audio": "Zvuk",
+    "step_keys": "Tipke",
+    "step_language": "Jezik",
     "subtitle": "Možete ga promijeniti u bilo kojem trenutku pomoću zastave na dnu ekrana.",
     "suggested": "Predloženo",
     "title": "Izaberite jezik"

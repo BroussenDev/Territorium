@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Twitch'te {channel}'ı açın"
   },
   "first_launch": {
+    "audio_subtitle": "Ayarlardan istediğiniz zaman değiştirebilirsiniz.",
+    "audio_test": "Sesi test et",
+    "audio_title": "Sesi ayarlayın",
+    "back": "Geri",
     "continue": "Devam",
+    "keys_subtitle": "Değiştirmek için bir tuşa tıklayın. Diğer tüm tuşlar Ayarlar > Tuşlar bölümünde.",
+    "keys_title": "Tuşlarınız",
+    "play": "Oyna",
+    "step_audio": "Ses",
+    "step_keys": "Tuşlar",
+    "step_language": "Dil",
     "subtitle": "Ekranın altındaki bayraktan istediğin zaman değiştirebilirsin.",
     "suggested": "Önerilen",
     "title": "Dilini seç"

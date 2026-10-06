@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Åbn {channel} på Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Du kan ændre den når som helst i indstillingerne.",
+    "audio_test": "Test lyden",
+    "audio_title": "Indstil lyden",
+    "back": "Tilbage",
     "continue": "Fortsæt",
+    "keys_subtitle": "Klik på en tast for at ændre den. Alle andre findes under Indstillinger > Taster.",
+    "keys_title": "Dine taster",
+    "play": "Spil",
+    "step_audio": "Lyd",
+    "step_keys": "Taster",
+    "step_language": "Sprog",
     "subtitle": "Du kan altid ændre det med flaget nederst på skærmen.",
     "suggested": "Foreslået",
     "title": "Vælg dit sprog"

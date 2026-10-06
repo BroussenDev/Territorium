@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Nyisd meg a(z) {channel} csatornát a Twitchen"
   },
   "first_launch": {
+    "audio_subtitle": "Bármikor módosíthatod a beállításokban.",
+    "audio_test": "Hang tesztelése",
+    "audio_title": "Állítsd be a hangot",
+    "back": "Vissza",
     "continue": "Tovább",
+    "keys_subtitle": "Kattints egy billentyűre a módosításhoz. Az összes többi a Beállítások > Billentyűk menüben van.",
+    "keys_title": "A billentyűid",
+    "play": "Játék",
+    "step_audio": "Hang",
+    "step_keys": "Billentyűk",
+    "step_language": "Nyelv",
     "subtitle": "Bármikor módosíthatod a képernyő alján lévő zászlóval.",
     "suggested": "Javasolt",
     "title": "Válassz nyelvet"

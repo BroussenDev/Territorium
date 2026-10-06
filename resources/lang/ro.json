@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Deschide {channel} pe Twitch"
   },
   "first_launch": {
+    "audio_subtitle": "Îl poți modifica oricând din setări.",
+    "audio_test": "Testează sunetul",
+    "audio_title": "Reglează sunetul",
+    "back": "Înapoi",
     "continue": "Continuă",
+    "keys_subtitle": "Fă clic pe o tastă pentru a o schimba. Toate celelalte sunt în Setări > Taste.",
+    "keys_title": "Tastele tale",
+    "play": "Joacă",
+    "step_audio": "Sunet",
+    "step_keys": "Taste",
+    "step_language": "Limbă",
     "subtitle": "O poți schimba oricând din steagul din partea de jos a ecranului.",
     "suggested": "Sugerată",
     "title": "Alege-ți limba"

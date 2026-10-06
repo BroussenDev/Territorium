@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Avage Twitchis {channel}"
   },
   "first_launch": {
+    "audio_subtitle": "Saad seda igal ajal seadetes muuta.",
+    "audio_test": "Testi heli",
+    "audio_title": "Seadista heli",
+    "back": "Tagasi",
     "continue": "Jätka",
+    "keys_subtitle": "Klõpsa klahvil, et seda muuta. Kõik teised on menüüs Seaded > Klahvid.",
+    "keys_title": "Sinu klahvid",
+    "play": "Mängi",
+    "step_audio": "Heli",
+    "step_keys": "Klahvid",
+    "step_language": "Keel",
     "subtitle": "Saad seda igal ajal muuta ekraani allservas oleva lipu kaudu.",
     "suggested": "Soovitatud",
     "title": "Vali oma keel"

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.74
+
+🎛️ **A quicker first launch in the Steam app**
+
+- The language Steam is set to is already picked: most players only have to press Continue.
+- Two new steps follow: the sound, starting at half volume with a button to test it, then the main keys, which you can change before your first game. Everything else stays in the settings.
+
 ## v0.1.73
 
 ⚠️ **Moderation warnings you can see**

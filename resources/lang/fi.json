@@ -1127,7 +1127,17 @@
     "open_on_twitch": "Avaa {channel} Twitchissä"
   },
   "first_launch": {
+    "audio_subtitle": "Voit muuttaa sitä milloin tahansa asetuksista.",
+    "audio_test": "Testaa ääni",
+    "audio_title": "Säädä ääntä",
+    "back": "Takaisin",
     "continue": "Jatka",
+    "keys_subtitle": "Napsauta näppäintä vaihtaaksesi sen. Kaikki muut löytyvät kohdasta Asetukset > Näppäimet.",
+    "keys_title": "Näppäimesi",
+    "play": "Pelaa",
+    "step_audio": "Ääni",
+    "step_keys": "Näppäimet",
+    "step_language": "Kieli",
     "subtitle": "Voit vaihtaa sen milloin tahansa näytön alareunan lipusta.",
     "suggested": "Ehdotettu",
     "title": "Valitse kieli"
