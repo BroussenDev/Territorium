@@ -372,6 +372,32 @@ export function formatPercentage(value: number): string {
  * formatKeyForDisplay("ArrowUp") // returns "Arrowup"
  * formatKeyForDisplay("") // returns ""
  */
+// The letter each physical key prints on the player's keyboard ("KeyW" is Z
+// on AZERTY), when the browser can tell (Chromium, so WebView2 too).
+let keyboardLayout: ReadonlyMap<string, string> | null = null;
+
+/** Fired on window once the player's keyboard layout is known. */
+export const KEYBOARD_LAYOUT_READY_EVENT = "keyboard-layout-ready";
+
+/**
+ * Reads the player's keyboard layout, so keys show the letter printed on
+ * their keyboard. Bindings stay physical key codes either way.
+ */
+export async function loadKeyboardLayout(): Promise<void> {
+  const keyboard = (
+    navigator as Navigator & {
+      keyboard?: { getLayoutMap?: () => Promise<ReadonlyMap<string, string>> };
+    }
+  ).keyboard;
+  if (typeof keyboard?.getLayoutMap !== "function") return;
+  try {
+    keyboardLayout = await keyboard.getLayoutMap();
+    window.dispatchEvent(new Event(KEYBOARD_LAYOUT_READY_EVENT));
+  } catch {
+    // Not allowed here (an iframe, for one): keys keep their QWERTY names.
+  }
+}
+
 export function formatKeyForDisplay(value: string): string {
   // Handle empty string
   if (!value) return "";
@@ -389,8 +415,13 @@ export function formatKeyForDisplay(value: string): string {
     return value.replace("Digit", "");
   }
 
-  // Handle KeyX pattern (e.g., "KeyA" -> "A")
+  // Handle KeyX pattern (e.g., "KeyA" -> "A"), as the player's keyboard
+  // prints it when known. Digits keep their number: AZERTY prints "&" on 1.
   if (/^Key[A-Z]$/.test(value)) {
+    const printed = keyboardLayout?.get(value);
+    if (printed !== undefined && /^\p{L}$/u.test(printed)) {
+      return printed.toUpperCase();
+    }
     return value.replace("Key", "");
   }
 

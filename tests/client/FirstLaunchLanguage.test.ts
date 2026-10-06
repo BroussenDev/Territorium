@@ -4,6 +4,7 @@ vi.mock("../../src/client/Utils", () => ({
   translateText: (key: string, params?: Record<string, string>) =>
     params?.key ? `${key}:${params.key}` : key,
   formatKeyForDisplay: (code: string) => code.replace(/^Key/, ""),
+  KEYBOARD_LAYOUT_READY_EVENT: "keyboard-layout-ready",
 }));
 
 const platform = vi.hoisted(() => ({ isTouch: false, isMac: false }));

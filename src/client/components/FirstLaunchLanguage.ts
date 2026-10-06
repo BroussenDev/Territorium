@@ -13,7 +13,11 @@ import {
 } from "../KeybindRules";
 import { Platform } from "../Platform";
 import { audioControls } from "../sound/CuePlayer";
-import { formatKeyForDisplay, translateText } from "../Utils";
+import {
+  formatKeyForDisplay,
+  KEYBOARD_LAYOUT_READY_EVENT,
+  translateText,
+} from "../Utils";
 import "./baseComponents/setting/SettingKeybind";
 import "./baseComponents/setting/SettingSlider";
 
@@ -95,12 +99,17 @@ export class FirstLaunchLanguage extends LitElement {
     this.userSettings.setAudioVolume("master", FIRST_LAUNCH_MASTER_VOLUME);
     this.keybinds = readUserKeybinds(this.userSettings);
     document.addEventListener("keydown", this.onKeyDown);
+    window.addEventListener(KEYBOARD_LAYOUT_READY_EVENT, this.onLayout);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     document.removeEventListener("keydown", this.onKeyDown);
+    window.removeEventListener(KEYBOARD_LAYOUT_READY_EVENT, this.onLayout);
   }
+
+  // The keys step shows the player's own letters once they are known.
+  private onLayout = () => this.requestUpdate();
 
   private steps(): Step[] {
     return Platform.isTouch

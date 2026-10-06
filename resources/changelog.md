@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.75
+
+⌨️ **Your keyboard's letters**
+
+- Keys now show the letter printed on your keyboard: ZQSD on a French AZERTY keyboard instead of WASD, everywhere keys are shown (first launch, settings, help). Works in the Steam app and in Chrome or Edge.
+
 ## v0.1.74
 
 🎛️ **A quicker first launch in the Steam app**

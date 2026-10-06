@@ -151,15 +151,16 @@ import {
   flushReloadToast,
   homeHref,
   incrementGamesPlayed,
+  loadKeyboardLayout,
   presenceMapKey,
   translateText,
 } from "./Utils";
 import { isReplayShellHost } from "./VersionedReplay";
 import "./components/BannedModal";
-import "./components/WarningModal";
 import "./components/DesktopStatusBar";
 import "./components/MarketingConsentToast";
 import "./components/PurchaseNudgeModal";
+import "./components/WarningModal";
 import { initAudioMixer } from "./sound/AudioMixer";
 import { startMenuMusic } from "./sound/MenuMusic";
 import {
@@ -1905,6 +1906,10 @@ const bootstrap = () => {
   // First, so the error hooks are in place for everything below. No-op
   // without a collector URL (see Telemetry.ts); never awaited.
   void initTelemetry();
+
+  // Keys then show the letters printed on the player's keyboard (ZQSD on
+  // AZERTY); never awaited, a keyboard the browser cannot read stays QWERTY.
+  void loadKeyboardLayout();
 
   // Prevent Safari's page-level pinch-zoom, which ignores `user-scalable=no`
   // on iOS and can softlock the HUD. See issue #2330.
