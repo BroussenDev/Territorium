@@ -882,12 +882,16 @@ export class GameServer {
   }
 
   // Ranked games show a player's name and clan tag, nothing bought: every
-  // cosmetic but the verified-name check is left out of the start info.
+  // cosmetic but the verified-name check and the Pionnier badge (earned by
+  // owning the game, not bought in it) is left out of the start info.
   private shownCosmetics(c: Client): PlayerCosmetics | undefined {
     if (this.gameConfig.rankedType === undefined || c.cosmetics === undefined) {
       return c.cosmetics;
     }
-    return c.cosmetics.verified ? { verified: true } : {};
+    return {
+      ...(c.cosmetics.verified ? { verified: true } : {}),
+      ...(c.cosmetics.pioneer ? { pioneer: true } : {}),
+    };
   }
 
   // Matchmade ranked games (1v1/2v2) must start with full attendance: the

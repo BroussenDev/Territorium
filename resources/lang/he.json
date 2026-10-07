@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "ממוצע:"
   },
+  "pioneer": {
+    "badge": "חלוץ",
+    "badge_desc": "תמך ב-Territorium בגישה המוקדמת"
+  },
+  "pioneer_reward": {
+    "body": "אתם בין הראשונים שתמכו ב-Territorium בגישה המוקדמת. הנה תג החלוץ שלכם, לתמיד.",
+    "continue": "המשך",
+    "title": "תודה, חלוץ!",
+    "where": "הוא מופיע ליד השם שלכם בלובים ובפרופיל."
+  },
   "player_panel": {
     "active": "פָּעִיל",
     "alliance_time_remaining": "ברית מתבטל בעוד",

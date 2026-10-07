@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.76
+
+🚩 **The Pioneer badge**
+
+- Everyone who plays the Steam app during early access receives the Pioneer badge, for good, with a reward screen right after the first setup.
+- The badge appears next to your name in lobbies and on your profile.
+
 ## v0.1.75
 
 ⌨️ **Your keyboard's letters**

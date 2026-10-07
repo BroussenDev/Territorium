@@ -249,6 +249,24 @@ export class PrivilegeCheckerImpl implements PrivilegeChecker {
   }
 }
 
+/** The account item that is the "Pionnier" badge (given by the API). */
+export const PIONEER_FLARE = "badge:pionnier";
+
+/**
+ * Stamps the "Pionnier" badge from the account's items. Only the server sets
+ * it: the cosmetics a client sends carry no such field.
+ */
+export function stampPioneer(
+  cosmetics: PlayerCosmetics,
+  flares: readonly string[] | undefined,
+): void {
+  if (flares?.includes(PIONEER_FLARE)) {
+    cosmetics.pioneer = true;
+  } else {
+    delete cosmetics.pioneer;
+  }
+}
+
 export class FailOpenPrivilegeChecker implements PrivilegeChecker {
   isAllowed(flares: string[], refs: PlayerCosmeticRefs): CosmeticResult {
     // Catalog cosmetics can't be resolved without the cosmetics data, but the

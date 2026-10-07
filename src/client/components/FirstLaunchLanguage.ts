@@ -30,6 +30,9 @@ export interface FirstLaunchLanguageEntry {
 
 type Step = "language" | "audio" | "keys";
 
+/** Fired on window when the first-launch setup closes. */
+export const FIRST_LAUNCH_DONE_EVENT = "first-launch-done";
+
 /** Where the master volume starts on a first launch. */
 export const FIRST_LAUNCH_MASTER_VOLUME = 0.5;
 
@@ -142,6 +145,7 @@ export class FirstLaunchLanguage extends LitElement {
     const at = steps.indexOf(this.step);
     if (at === steps.length - 1) {
       this.dispatchEvent(new CustomEvent("close"));
+      window.dispatchEvent(new Event(FIRST_LAUNCH_DONE_EVENT));
       return;
     }
     this.conflict = null;

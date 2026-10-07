@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "priem:"
   },
+  "pioneer": {
+    "badge": "Priekopník",
+    "badge_desc": "Podporil Territorium v predbežnom prístupe"
+  },
+  "pioneer_reward": {
+    "body": "Patríte medzi prvých, ktorí podporili Territorium v predbežnom prístupe. Tu je váš odznak Priekopník, navždy.",
+    "continue": "Pokračovať",
+    "title": "Ďakujeme, Priekopník!",
+    "where": "Zobrazuje sa pri vašom mene v lobby a na profile."
+  },
   "player_panel": {
     "active": "Aktívne",
     "alliance_time_remaining": "Spojenectvo vyprší o",

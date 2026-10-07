@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Prosek:"
   },
+  "pioneer": {
+    "badge": "Pionir",
+    "badge_desc": "Podržao Territorium tokom ranog pristupa"
+  },
+  "pioneer_reward": {
+    "body": "Među prvima ste koji su podržali Territorium tokom ranog pristupa. Evo vaše značke Pionir, zauvijek.",
+    "continue": "Nastavi",
+    "title": "Hvala, Pioniru!",
+    "where": "Prikazuje se pored vašeg imena u predvorjima i na profilu."
+  },
   "player_panel": {
     "active": "Aktivno",
     "alliance_time_remaining": "Savezništvo Ističe Za",

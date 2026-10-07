@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Gem:"
   },
+  "pioneer": {
+    "badge": "Pionier",
+    "badge_desc": "Steunde Territorium tijdens early access"
+  },
+  "pioneer_reward": {
+    "body": "Je bent een van de eersten die Territorium steunen tijdens early access. Hier is je Pionier-badge, voor altijd.",
+    "continue": "Doorgaan",
+    "title": "Bedankt, Pionier!",
+    "where": "Hij staat naast je naam in lobby's en op je profiel."
+  },
   "player_panel": {
     "active": "Actief",
     "alliance_time_remaining": "Alliantie verloopt over",

@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Rata-rata:"
   },
+  "pioneer": {
+    "badge": "Perintis",
+    "badge_desc": "Mendukung Territorium selama akses awal"
+  },
+  "pioneer_reward": {
+    "body": "Anda termasuk yang pertama mendukung Territorium selama akses awal. Ini lencana Perintis Anda, selamanya.",
+    "continue": "Lanjutkan",
+    "title": "Terima kasih, Perintis!",
+    "where": "Lencana ini muncul di samping nama Anda di lobi dan di profil Anda."
+  },
   "player_panel": {
     "active": "Aktif",
     "alliance_time_remaining": "Aliansi Berakhir Dalam",

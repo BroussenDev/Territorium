@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Átlag:"
   },
+  "pioneer": {
+    "badge": "Úttörő",
+    "badge_desc": "Támogatta a Territoriumot a korai hozzáférés alatt"
+  },
+  "pioneer_reward": {
+    "body": "Az elsők között támogatod a Territoriumot a korai hozzáférés alatt. Íme az Úttörő jelvényed, örökre.",
+    "continue": "Tovább",
+    "title": "Köszönjük, Úttörő!",
+    "where": "A neved mellett jelenik meg a várótermekben és a profilodon."
+  },
   "player_panel": {
     "active": "Aktív",
     "alliance_time_remaining": "A szövetség lejár",

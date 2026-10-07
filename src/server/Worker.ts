@@ -38,7 +38,11 @@ import {
 } from "./JoinVerify";
 import { getUserMe, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
-import { applyHiddenName, resolveVerifiedJoin } from "./Privilege";
+import {
+  applyHiddenName,
+  resolveVerifiedJoin,
+  stampPioneer,
+} from "./Privilege";
 import { startTgsStatusPoller } from "./TgsApi";
 
 import { MapPlaylist } from "./MapPlaylist";
@@ -774,6 +778,7 @@ export async function startWorker() {
         }
 
         stampNationCrest(cosmeticResult.cosmetics, clans, resolvedClanTag);
+        stampPioneer(cosmeticResult.cosmetics, flares);
 
         // Verified intent, not a claim to verify: the check stays only when
         // the account renders bare and the screened join name is that bare

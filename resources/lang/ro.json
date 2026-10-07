@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Medie:"
   },
+  "pioneer": {
+    "badge": "Pionier",
+    "badge_desc": "A susținut Territorium în accesul timpuriu"
+  },
+  "pioneer_reward": {
+    "body": "Ești printre primii care susțin Territorium în accesul timpuriu. Iată insigna ta de Pionier, pentru totdeauna.",
+    "continue": "Continuă",
+    "title": "Mulțumim, Pionierule!",
+    "where": "Apare lângă numele tău în lobby-uri și pe profil."
+  },
   "player_panel": {
     "active": "Activ",
     "alliance_time_remaining": "Alianța expiră în",

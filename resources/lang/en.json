@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Avg:"
   },
+  "pioneer": {
+    "badge": "Pioneer",
+    "badge_desc": "Supported Territorium during early access"
+  },
+  "pioneer_reward": {
+    "body": "You are among the first to support Territorium during its early access. Here is your Pioneer badge, for good.",
+    "continue": "Continue",
+    "title": "Thank you, Pioneer!",
+    "where": "It appears next to your name in lobbies and on your profile."
+  },
   "player_panel": {
     "active": "Active",
     "alliance_time_remaining": "Alliance Expires In",

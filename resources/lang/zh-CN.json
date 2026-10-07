@@ -2092,6 +2092,16 @@
     "tps": "TPS：",
     "tps_avg_60s": "平均："
   },
+  "pioneer": {
+    "badge": "先驱者",
+    "badge_desc": "在抢先体验期间支持了 Territorium"
+  },
+  "pioneer_reward": {
+    "body": "你是在抢先体验期间最早支持 Territorium 的玩家之一。这是你的先驱者徽章，永久有效。",
+    "continue": "继续",
+    "title": "谢谢你，先驱者！",
+    "where": "它会显示在大厅和个人资料中你的名字旁边。"
+  },
   "player_panel": {
     "active": "活跃",
     "alliance_time_remaining": "结盟有效期截至",

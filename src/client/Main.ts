@@ -159,6 +159,7 @@ import { isReplayShellHost } from "./VersionedReplay";
 import "./components/BannedModal";
 import "./components/DesktopStatusBar";
 import "./components/MarketingConsentToast";
+import "./components/PioneerReward";
 import "./components/PurchaseNudgeModal";
 import "./components/WarningModal";
 import { initAudioMixer } from "./sound/AudioMixer";

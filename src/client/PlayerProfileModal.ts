@@ -21,6 +21,7 @@ import {
   tierLabel,
 } from "./components/ranked/RankedTier";
 import { modalHeader } from "./components/ui/ModalHeader";
+import { pioneerBadge } from "./components/ui/PioneerBadge";
 import { usernameText } from "./components/ui/UsernameText";
 import { verifiedBadge } from "./components/ui/VerifiedBadge";
 import { playerProfileUrl } from "./utilities/PlayerProfileUrl";
@@ -39,6 +40,7 @@ export class PlayerProfileModal extends BaseModal {
   @state() private username: string | null = null;
   @state() private staffRole: PlayerProfile["role"] = undefined;
   @state() private goldFrame = false;
+  @state() private pioneer = false;
   @state() private statsTree: PlayerStatsTree | null = null;
   @state() private clans: NonNullable<PlayerProfile["clans"]> = [];
   @state() private ranked: PlayerProfile["ranked"] = undefined;
@@ -81,6 +83,7 @@ export class PlayerProfileModal extends BaseModal {
             ${isVerifiedUsername(this.username)
               ? verifiedBadge("w-5 h-5")
               : nothing}
+            ${this.pioneer ? pioneerBadge("w-5 h-5") : nothing}
             ${this.staffRole
               ? html`<span
                   class="shrink-0 rounded-md border px-2 py-0.5 text-xs font-semibold ${this
@@ -335,6 +338,7 @@ export class PlayerProfileModal extends BaseModal {
     this.username = null;
     this.staffRole = undefined;
     this.goldFrame = false;
+    this.pioneer = false;
     this.statsTree = null;
     this.clans = [];
     this.ranked = undefined;
@@ -360,6 +364,7 @@ export class PlayerProfileModal extends BaseModal {
     this.statsTree = profile === false ? null : profile.stats;
     this.username = profile === false ? null : (profile.username ?? null);
     this.staffRole = profile === false ? undefined : profile.role;
+    this.pioneer = profile !== false && profile.pioneer === true;
     this.goldFrame = profile !== false && profile.goldFrame === true;
     this.clans = profile === false ? [] : (profile.clans ?? []);
     this.ranked = profile === false ? undefined : profile.ranked;

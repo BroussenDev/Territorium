@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Gns:"
   },
+  "pioneer": {
+    "badge": "Pioner",
+    "badge_desc": "Støttede Territorium i early access"
+  },
+  "pioneer_reward": {
+    "body": "Du er blandt de første, der støtter Territorium i early access. Her er dit Pioner-mærke, for altid.",
+    "continue": "Fortsæt",
+    "title": "Tak, Pioner!",
+    "where": "Det vises ved dit navn i lobbyer og på din profil."
+  },
   "player_panel": {
     "active": "Aktiv",
     "alliance_time_remaining": "Alliancen Udløber Om",

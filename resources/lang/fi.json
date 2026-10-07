@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Keskim.:"
   },
+  "pioneer": {
+    "badge": "Pioneeri",
+    "badge_desc": "Tuki Territoriumia ennakkojulkaisun aikana"
+  },
+  "pioneer_reward": {
+    "body": "Olet ensimmäisten joukossa tukemassa Territoriumia ennakkojulkaisun aikana. Tässä Pioneeri-merkkisi, ikuisesti.",
+    "continue": "Jatka",
+    "title": "Kiitos, Pioneeri!",
+    "where": "Se näkyy nimesi vieressä auloissa ja profiilissasi."
+  },
   "player_panel": {
     "active": "Aktiivinen",
     "alliance_time_remaining": "Liittouma päättyy",

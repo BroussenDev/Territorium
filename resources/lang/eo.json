@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Averaĝo:"
   },
+  "pioneer": {
+    "badge": "Pioniro",
+    "badge_desc": "Subtenis Territorium dum la frua aliro"
+  },
+  "pioneer_reward": {
+    "body": "Vi estas inter la unuaj subtenantoj de Territorium dum la frua aliro. Jen via Pioniro-insigno, por ĉiam.",
+    "continue": "Daŭrigi",
+    "title": "Dankon, Pioniro!",
+    "where": "Ĝi aperas apud via nomo en la atendejoj kaj en via profilo."
+  },
   "player_panel": {
     "active": "Aktiva",
     "alliance_time_remaining": "Alianco finiĝos en",

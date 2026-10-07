@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Ortalama:"
   },
+  "pioneer": {
+    "badge": "Öncü",
+    "badge_desc": "Erken erişimde Territorium'u destekledi"
+  },
+  "pioneer_reward": {
+    "body": "Erken erişimde Territorium'u destekleyen ilk oyunculardansınız. İşte Öncü rozetiniz, sonsuza dek.",
+    "continue": "Devam",
+    "title": "Teşekkürler, Öncü!",
+    "where": "Lobilerde ve profilinizde adınızın yanında görünür."
+  },
   "player_panel": {
     "active": "Aktif",
     "alliance_time_remaining": "İttifak Şu Süre Sonra Bitecek",

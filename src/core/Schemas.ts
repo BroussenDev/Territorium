@@ -329,6 +329,8 @@ const ClientInfoSchema = z.object({
   // lobby list). Never set on anonymized entries — the badge vouches for
   // the exact display name.
   verified: z.boolean().optional(),
+  // Holds the "Pionnier" badge (bought the Steam app in early access).
+  pioneer: z.boolean().optional(),
   // Watching rather than playing. Listed like anyone else — a spectator sees the
   // lobby exactly as a player does — but not in the simulation.
   spectator: z.boolean().optional(),
@@ -446,6 +448,8 @@ export interface ClientInfo {
   // Plays under their server-validated account name (blue check). Never set
   // on anonymized entries.
   verified?: boolean;
+  // Holds the "Pionnier" badge.
+  pioneer?: boolean;
   // Watching rather than playing — listed like anyone else, but not in the
   // simulation.
   spectator?: boolean;
@@ -967,6 +971,8 @@ export const PlayerCosmeticsSchema = z.object({
   effects: z.record(z.string(), PlayerEffectSchema).optional(),
   // Plays under the verified account username — renders the blue check.
   verified: z.boolean().optional(),
+  // Server-stamped from the account's items: the "Pionnier" badge.
+  pioneer: z.boolean().optional(),
   // Server-stamped for a Nation pack wearer: their clan's crest, drawn on
   // the pack's standard and crown (see NationPack.ts).
   clanCrest: z

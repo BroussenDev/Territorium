@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Durchschn:"
   },
+  "pioneer": {
+    "badge": "Pionier",
+    "badge_desc": "Hat Territorium im Early Access unterstützt"
+  },
+  "pioneer_reward": {
+    "body": "Du gehörst zu den Ersten, die Territorium im Early Access unterstützen. Hier ist dein Pionier-Abzeichen, für immer.",
+    "continue": "Weiter",
+    "title": "Danke, Pionier!",
+    "where": "Es erscheint neben deinem Namen in Lobbys und in deinem Profil."
+  },
   "player_panel": {
     "active": "Aktiv",
     "alliance_time_remaining": "Allianz endet in",

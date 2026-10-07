@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Keskm.:"
   },
+  "pioneer": {
+    "badge": "Teerajaja",
+    "badge_desc": "Toetas Territoriumi varajase juurdepääsu ajal"
+  },
+  "pioneer_reward": {
+    "body": "Oled esimeste seas, kes toetavad Territoriumi varajase juurdepääsu ajal. Siin on sinu Teerajaja märk, igaveseks.",
+    "continue": "Jätka",
+    "title": "Aitäh, Teerajaja!",
+    "where": "See kuvatakse sinu nime kõrval ootesaalides ja profiilil."
+  },
   "player_panel": {
     "active": "Aktiivne",
     "alliance_time_remaining": "Liit aegub",

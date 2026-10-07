@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Średnia:"
   },
+  "pioneer": {
+    "badge": "Pionier",
+    "badge_desc": "Wspierał Territorium we wczesnym dostępie"
+  },
+  "pioneer_reward": {
+    "body": "Należysz do pierwszych, którzy wspierają Territorium we wczesnym dostępie. Oto Twoja odznaka Pioniera, na zawsze.",
+    "continue": "Dalej",
+    "title": "Dziękujemy, Pionierze!",
+    "where": "Wyświetla się obok Twojej nazwy w poczekalniach i na profilu."
+  },
   "player_panel": {
     "active": "Aktywny",
     "alliance_time_remaining": "Sojusz wygasa za",

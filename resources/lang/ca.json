@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Mitjana:"
   },
+  "pioneer": {
+    "badge": "Pioner",
+    "badge_desc": "Va donar suport a Territorium durant l'accés anticipat"
+  },
+  "pioneer_reward": {
+    "body": "Ets dels primers a donar suport a Territorium durant l'accés anticipat. Aquí tens la teva insígnia de Pioner, per sempre.",
+    "continue": "Continua",
+    "title": "Gràcies, Pioner!",
+    "where": "Apareix al costat del teu nom a les sales i al teu perfil."
+  },
   "player_panel": {
     "active": "Actiu",
     "alliance_time_remaining": "L'aliança s'acaba d'aquí",

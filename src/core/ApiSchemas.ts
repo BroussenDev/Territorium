@@ -183,6 +183,13 @@ export const UserMeResponseSchema = z.object({
     .optional(),
   // Moderation warnings the player has not acknowledged yet; the game shows
   // each one until they confirm they read it. Absent on an older API.
+  // The "Pionnier" badge: since when the player has it, and whether the
+  // game has shown its reward screen. Null without the badge; absent on an
+  // older API.
+  pioneer: z
+    .object({ since: z.iso.datetime(), seen: z.boolean() })
+    .nullable()
+    .optional(),
   warnings: z
     .array(
       z.object({
@@ -992,6 +999,8 @@ export const PlayerProfileSchema = z.object({
   // Staff role, shown as a chip beside the name. Absent for regular players
   // and from an API without the field.
   role: z.enum(["admin", "mod"]).optional(),
+  // Holds the "Pionnier" badge. Absent otherwise.
+  pioneer: z.boolean().optional(),
   stats: PlayerStatsTreeSchema,
   // Clans this player belongs to, tag-ordered. Optional so responses from an
   // API without the field still parse (→ no clans shown).

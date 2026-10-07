@@ -928,6 +928,22 @@ export async function acknowledgeWarning(id: number): Promise<boolean> {
   }
 }
 
+// POST /users/@me/pioneer/seen: the "Pionnier" reward screen was shown.
+// On failure it shows again at the next visit.
+export async function markPioneerSeen(): Promise<boolean> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/pioneer/seen`, {
+      method: "POST",
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (response.ok) invalidateUserMe();
+    return response.ok;
+  } catch (e) {
+    console.error("markPioneerSeen: request failed", e);
+    return false;
+  }
+}
+
 // GET /users/@me/tribe_names — the player's purchased custom tribe names plus
 // the current purchase price. Auth required; returns false when logged out or
 // on any error (callers show a login/empty state rather than a hard failure).

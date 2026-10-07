@@ -2092,6 +2092,16 @@
     "tps": "초당 틱 수(TPS):",
     "tps_avg_60s": "평균:"
   },
+  "pioneer": {
+    "badge": "개척자",
+    "badge_desc": "앞서 해보기 기간에 Territorium을 후원함"
+  },
+  "pioneer_reward": {
+    "body": "앞서 해보기 기간에 Territorium을 처음으로 후원해 주신 분 중 한 명입니다. 개척자 배지를 드립니다. 영원히 함께합니다.",
+    "continue": "계속",
+    "title": "고마워요, 개척자님!",
+    "where": "로비와 프로필에서 이름 옆에 표시됩니다."
+  },
   "player_panel": {
     "active": "활성화 됨",
     "alliance_time_remaining": "동맹 만료: ",

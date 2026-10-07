@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "متوسط:"
   },
+  "pioneer": {
+    "badge": "رائد",
+    "badge_desc": "دعم Territorium خلال الوصول المبكر"
+  },
+  "pioneer_reward": {
+    "body": "أنت من أوائل الداعمين لـ Territorium خلال الوصول المبكر. إليك شارة الرائد، إلى الأبد.",
+    "continue": "متابعة",
+    "title": "شكرًا لك أيها الرائد!",
+    "where": "تظهر بجانب اسمك في الصالات وعلى ملفك الشخصي."
+  },
   "player_panel": {
     "active": "نشط",
     "alliance_time_remaining": "التحالف ينتهي في",

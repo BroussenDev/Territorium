@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Genomsnitt:"
   },
+  "pioneer": {
+    "badge": "Pionjär",
+    "badge_desc": "Stöttade Territorium under early access"
+  },
+  "pioneer_reward": {
+    "body": "Du är bland de första som stöttar Territorium under early access. Här är ditt Pionjär-märke, för alltid.",
+    "continue": "Fortsätt",
+    "title": "Tack, Pionjär!",
+    "where": "Det visas bredvid ditt namn i lobbyer och på din profil."
+  },
   "player_panel": {
     "active": "Aktiv",
     "alliance_time_remaining": "Alliansen går ut om",

@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Trung bình:"
   },
+  "pioneer": {
+    "badge": "Người tiên phong",
+    "badge_desc": "Đã ủng hộ Territorium trong giai đoạn truy cập sớm"
+  },
+  "pioneer_reward": {
+    "body": "Bạn là một trong những người đầu tiên ủng hộ Territorium trong giai đoạn truy cập sớm. Đây là huy hiệu Người tiên phong của bạn, mãi mãi.",
+    "continue": "Tiếp tục",
+    "title": "Cảm ơn, Người tiên phong!",
+    "where": "Huy hiệu hiển thị cạnh tên bạn trong phòng chờ và trên hồ sơ."
+  },
   "player_panel": {
     "active": "Đang giao thương",
     "alliance_time_remaining": "Liên minh hết hạn sau",

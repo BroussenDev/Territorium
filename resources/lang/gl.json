@@ -2092,6 +2092,16 @@
     "tps": "TPS:",
     "tps_avg_60s": "Media:"
   },
+  "pioneer": {
+    "badge": "Pioneiro",
+    "badge_desc": "Apoiou Territorium durante o acceso anticipado"
+  },
+  "pioneer_reward": {
+    "body": "Estás entre os primeiros en apoiar Territorium durante o acceso anticipado. Aquí tes a túa insignia de Pioneiro, para sempre.",
+    "continue": "Continuar",
+    "title": "Grazas, Pioneiro!",
+    "where": "Aparece xunto ao teu nome nas salas e no teu perfil."
+  },
   "player_panel": {
     "active": "Activo",
     "alliance_time_remaining": "Alianza acaba en",

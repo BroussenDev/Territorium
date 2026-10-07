@@ -2092,6 +2092,16 @@
     "tps": "TPS :",
     "tps_avg_60s": "Moy :"
   },
+  "pioneer": {
+    "badge": "Pionnier",
+    "badge_desc": "A soutenu Territorium pendant l'accès anticipé"
+  },
+  "pioneer_reward": {
+    "body": "Vous faites partie des premiers à soutenir Territorium pendant son accès anticipé. Voici votre badge Pionnier, pour toujours.",
+    "continue": "Continuer",
+    "title": "Merci, Pionnier !",
+    "where": "Il s'affiche à côté de votre nom dans les salons et sur votre profil."
+  },
   "player_panel": {
     "active": "Actif",
     "alliance_time_remaining": "L'alliance expire dans",

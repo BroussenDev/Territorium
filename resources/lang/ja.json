@@ -2092,6 +2092,16 @@
     "tps": "TPS :",
     "tps_avg_60s": "平均 :"
   },
+  "pioneer": {
+    "badge": "パイオニア",
+    "badge_desc": "早期アクセス中にTerritoriumを支援"
+  },
+  "pioneer_reward": {
+    "body": "あなたは早期アクセス中にTerritoriumを支援してくれた最初のプレイヤーの一人です。パイオニアバッジをどうぞ。ずっとあなたのものです。",
+    "continue": "続ける",
+    "title": "ありがとう、パイオニア！",
+    "where": "ロビーやプロフィールで名前の横に表示されます。"
+  },
   "player_panel": {
     "active": "貿易中",
     "alliance_time_remaining": "同盟の有効期限までの残り時間",
