@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Používateľské meno môže obsahovať iba písmená, čísla, podčiarkovníky, spojovníky a jednotlivé medzery medzi slovami.",
+    "badge_label": "Zobrazený odznak",
+    "badge_none": "Bez odznaku",
     "claim_at_risk": "\"{name}\" už nie je rezervované a môže ho kedykoľvek vziať iný hráč. Znova sa prihláste na odber, aby ste si ho ponechali.",
     "claim_reserved": "„{name}“ je pre vás rezervované do {date}. Predtým sa znova prihláste na odber, aby ste si ho ponechali.",
     "clan_browse": "Prehľadávať klany",

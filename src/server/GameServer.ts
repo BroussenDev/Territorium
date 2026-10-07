@@ -890,7 +890,7 @@ export class GameServer {
     }
     return {
       ...(c.cosmetics.verified ? { verified: true } : {}),
-      ...(c.cosmetics.pioneer ? { pioneer: true } : {}),
+      ...(c.cosmetics.badge ? { badge: c.cosmetics.badge } : {}),
     };
   }
 

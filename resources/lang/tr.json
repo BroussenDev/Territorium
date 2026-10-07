@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Kullanıcı adı yalnızca harf, rakam, alt çizgi, kısa çizgi ve kelimeler arasında tek boşluk içerebilir.",
+    "badge_label": "Gösterilen rozet",
+    "badge_none": "Rozet yok",
     "claim_at_risk": "\"{name}\" artık rezerve edilmemiştir ve her an başka bir oyuncu tarafından alınabilir. Bunu korumak için şimdi yeniden abone olun.",
     "claim_reserved": "\"{name}\" {date} tarihine kadar size ayrılmıştır. Devam etmek için daha önce yeniden abone olun.",
     "clan_browse": "Klanlara göz atın",

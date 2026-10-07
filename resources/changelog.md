@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.77
+
+🎖️ **Choose your badge**
+
+- A new button next to your name lets you choose the badge shown in lobbies, or none. Your choice follows you on every PC with Steam Cloud.
+
 ## v0.1.76
 
 🚩 **The Pioneer badge**

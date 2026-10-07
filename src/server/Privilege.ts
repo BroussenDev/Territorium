@@ -1,4 +1,5 @@
 import countries from "resources/countries.json";
+import { shownBadge } from "../core/Badges";
 
 import { isTemporaryUsername } from "../core/ApiSchemas";
 import { Cosmetics, findEffectForSlot } from "../core/CosmeticSchemas";
@@ -249,21 +250,21 @@ export class PrivilegeCheckerImpl implements PrivilegeChecker {
   }
 }
 
-/** The account item that is the "Pionnier" badge (given by the API). */
-export const PIONEER_FLARE = "badge:pionnier";
-
 /**
- * Stamps the "Pionnier" badge from the account's items. Only the server sets
- * it: the cosmetics a client sends carry no such field.
+ * Stamps the badge the player shows: their pick (`choice`) when the account
+ * holds it, else their first badge, or none (Badges.ts). The client only
+ * picks; whether a badge is held comes from the account's items.
  */
-export function stampPioneer(
+export function stampBadge(
   cosmetics: PlayerCosmetics,
+  choice: string | undefined,
   flares: readonly string[] | undefined,
 ): void {
-  if (flares?.includes(PIONEER_FLARE)) {
-    cosmetics.pioneer = true;
+  const badge = shownBadge(choice, flares);
+  if (badge === undefined) {
+    delete cosmetics.badge;
   } else {
-    delete cosmetics.pioneer;
+    cosmetics.badge = badge;
   }
 }
 

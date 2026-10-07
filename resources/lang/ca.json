@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "El nom d'usuari només pot contenir lletres, números, guions baixos, guions i espais individuals entre paraules.",
+    "badge_label": "Insígnia mostrada",
+    "badge_none": "Cap insígnia",
     "claim_at_risk": "\"{name}\" ja no està reservat i pot ser agafat per un altre jugador en qualsevol moment. Torna a subscriure't ara per mantenir-lo.",
     "claim_reserved": "\"{name}\" està reservat per a tu fins al {date}. Torna a subscriure't abans per mantenir-lo.",
     "clan_browse": "Explora els clans",

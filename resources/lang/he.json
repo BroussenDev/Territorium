@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "שם משתמש יכול להכיל רק אותיות, מספרים, קווים תחתונים, מקפים ורווחים בודדים בין מילים.",
+    "badge_label": "התג המוצג",
+    "badge_none": "ללא תג",
     "claim_at_risk": "\"{name}\" אינו שמור יותר וניתן לקחת אותו על ידי שחקן אחר בכל רגע. Resubscribe now to keep it.",
     "claim_reserved": "\"{name}\" שמור לך עד {date}. הירשם מחדש לפני כן כדי לשמור אותו.",
     "clan_browse": "עיין בשבטים",

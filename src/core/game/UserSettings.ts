@@ -412,6 +412,18 @@ export class UserSettings {
     this.setBool("settings.steamBuildSeen", true);
   }
 
+  /**
+   * The badge the player picked to show next to their name (core/Badges.ts
+   * id, or "none"); null when they never picked, which shows their first.
+   */
+  badgeChoice(): string | null {
+    return this.getCached("settings.badge");
+  }
+
+  setBadgeChoice(value: string) {
+    this.setString("settings.badge", value);
+  }
+
   steamLobbyLinks(): "ask" | "steam" | "browser" {
     const value = this.getString("settings.steamLobbyLinks", "ask");
     return value === "steam" || value === "browser" ? value : "ask";

@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Användarnamn kan bara innehålla bokstäver, siffror, understreck, bindestreck och enstaka mellanslag mellan ord.",
+    "badge_label": "Visat märke",
+    "badge_none": "Inget märke",
     "claim_at_risk": "\"{name}\" är inte längre reserverad och kan tas av en annan spelare när som helst. Prenumerera igen nu för att behålla den.",
     "claim_reserved": "\"{name}\" är reserverad för dig fram till {date}. Prenumerera igen innan dess för att behålla den.",
     "clan_browse": "Bläddra bland klaner",

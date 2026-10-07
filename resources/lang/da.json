@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Brugernavn kan kun indeholde bogstaver, tal, understregninger, bindestreger og enkelte mellemrum mellem ord.",
+    "badge_label": "Vist mærke",
+    "badge_none": "Intet mærke",
     "claim_at_risk": "\"{name}\" er ikke længere reserveret og kan tages af en anden spiller når som helst. Tilmeld dig igen nu for at beholde den.",
     "claim_reserved": "\"{name}\" er reserveret til dig indtil {date}. Gentilmeld inden da for at beholde den.",
     "clan_browse": "Gennemse klaner",

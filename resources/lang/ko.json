@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "사용자명에는 문자, 숫자, 밑줄, 하이픈 및 단어 사이의 단일 공백만 사용할 수 있습니다.",
+    "badge_label": "표시할 배지",
+    "badge_none": "배지 없음",
     "claim_at_risk": "\"{name}\"의 선점이 해제되어 언제든지 다른 플레이어가 차지할 수 있습니다. 유지하려면 지금 다시 구독하세요.",
     "claim_reserved": "\"{name}\"은(는) {date}까지 선점되어 있습니다. 유지하려면 그전에 다시 구독하세요.",
     "clan_browse": "클랜 검색",

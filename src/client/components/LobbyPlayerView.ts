@@ -22,7 +22,7 @@ import {
   resolveTeamClanTag,
   translateText,
 } from "../Utils";
-import { pioneerBadge } from "./ui/PioneerBadge";
+import { badgeIcon } from "./ui/BadgeIcon";
 
 export interface TeamPreviewData {
   team: Team;
@@ -172,7 +172,7 @@ export class LobbyTeamView extends LitElement {
               >
                 <span class="text-white"
                   >${this.getClientDisplayName(client)}
-                  ${this.renderVerifiedBadge(client)}${this.renderPioneerBadge(
+                  ${this.renderVerifiedBadge(client)}${this.renderBadge(
                     client,
                   )}</span
                 >
@@ -215,9 +215,7 @@ export class LobbyTeamView extends LitElement {
                 : "bg-gray-700/70 border-transparent"}"
             >
               ${displayName}
-              ${this.renderVerifiedBadge(client)}${this.renderPioneerBadge(
-                client,
-              )}
+              ${this.renderVerifiedBadge(client)}${this.renderBadge(client)}
               ${this.renderFriendBadge(client)}
             </div>`;
           },
@@ -282,9 +280,7 @@ export class LobbyTeamView extends LitElement {
         >
           <span class="text-white"
             >${displayName}
-            ${this.renderVerifiedBadge(client)}${this.renderPioneerBadge(
-              client,
-            )}
+            ${this.renderVerifiedBadge(client)}${this.renderBadge(client)}
             ${this.renderFriendBadge(client)}</span
           >
           ${this.renderRevealToggle(client.clientID)}
@@ -373,9 +369,7 @@ export class LobbyTeamView extends LitElement {
                   >
                     <span class="flex items-center gap-1 min-w-0">
                       <span class="truncate text-white">${displayName}</span>
-                      ${this.renderVerifiedBadge(p)}${this.renderPioneerBadge(
-                        p,
-                      )}
+                      ${this.renderVerifiedBadge(p)}${this.renderBadge(p)}
                       ${this.renderFriendBadge(p)}
                     </span>
                     ${this.renderRevealToggle(p.clientID)}
@@ -604,12 +598,14 @@ export class LobbyTeamView extends LitElement {
     </svg>`;
   }
 
-  // The "Pionnier" badge, withheld like the check on an anonymized row.
-  private renderPioneerBadge(client: ClientInfo) {
+  // The badge the player shows, withheld like the check on an anonymized row.
+  private renderBadge(client: ClientInfo) {
     const anonymized =
       this.userSettings.anonymousNames() && !this.isCurrentPlayer(client);
-    if (client.pioneer !== true || anonymized) return html``;
-    return pioneerBadge("inline-block w-3.5 h-3.5 align-[-2px]");
+    if (anonymized) return html``;
+    return (
+      badgeIcon(client.badge, "inline-block w-3.5 h-3.5 align-[-2px]") ?? html``
+    );
   }
 
   // A mark for players on the viewer's friends list

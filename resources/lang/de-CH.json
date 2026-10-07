@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Der Benutzername darf nur Buchstaben, Zahlen, Unterstriche, Bindestriche und einzelne Leerzeichen zwischen Wörtern enthalten.",
+    "badge_label": "Angezeigtes Abzeichen",
+    "badge_none": "Kein Abzeichen",
     "claim_at_risk": "„{name}“ ist nicht mehr reserviert und kann jederzeit von einem anderen Spieler übernommen werden. Melden Sie sich jetzt erneut an, um es zu behalten.",
     "claim_reserved": "„{name}“ ist bis {date} für Sie reserviert. Melden Sie sich vorher erneut an, um es zu behalten.",
     "clan_browse": "Durchsuchen Sie Clans",

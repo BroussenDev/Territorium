@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Nazwa użytkownika może zawierać tylko litery, cyfry, podkreślenia, łączniki i pojedyncze spacje między słowami.",
+    "badge_label": "Wyświetlana odznaka",
+    "badge_none": "Brak odznaki",
     "claim_at_risk": "„{name}” nie jest już zarezerwowane i w każdej chwili może zostać przejęte przez innego gracza. Zasubskrybuj ponownie teraz, aby ją zachować.",
     "claim_reserved": "„{name}” jest dla Ciebie zarezerwowane do {date}. Zasubskrybuj ponownie wcześniej, aby ją zachować.",
     "clan_browse": "Przeglądaj klany",

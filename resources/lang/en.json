@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Username can only contain letters, numbers, underscores, hyphens, and single spaces between words.",
+    "badge_label": "Badge shown",
+    "badge_none": "No badge",
     "claim_at_risk": "\"{name}\" is no longer reserved and can be taken by another player at any moment. Resubscribe now to keep it.",
     "claim_reserved": "\"{name}\" is reserved for you until {date}. Resubscribe before then to keep it.",
     "clan_browse": "Browse clans",

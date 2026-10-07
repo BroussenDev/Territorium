@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "Numele de utilizator poate conține doar litere, numere, linii de subliniere, cratime și spații individuale între cuvinte.",
+    "badge_label": "Insigna afișată",
+    "badge_none": "Fără insignă",
     "claim_at_risk": "„{name}„ nu mai este rezervat și poate fi luat de un alt jucător în orice moment. Re subscrie-te acum pentru a-l păstra.",
     "claim_reserved": "„{name}„ vă este rezervat până la {date}. Re subscrieți înainte de a o păstra.",
     "clan_browse": "Caută clanuri",

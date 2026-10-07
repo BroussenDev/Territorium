@@ -3029,6 +3029,8 @@
   },
   "username": {
     "account_invalid_chars": "用户名只能包含字母、数字、下划线、连字符和单词之间的单个空格。",
+    "badge_label": "显示的徽章",
+    "badge_none": "不显示徽章",
     "claim_at_risk": "“{name}”不再保留，随时可以被其他玩家拿走。立即重新订阅以保留它。",
     "claim_reserved": "“{name}”为您保留至{date}。在此之前重新订阅以保留它。",
     "clan_browse": "浏览氏族",

@@ -1771,6 +1771,7 @@ export async function getPlayerCosmeticsRefs(
     crownName,
     effects: Object.keys(effects).length > 0 ? effects : undefined,
     verified: opts.verified ? true : undefined,
+    badge: userSettings.badgeChoice() ?? undefined,
   };
 }
 

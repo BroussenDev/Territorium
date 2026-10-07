@@ -329,8 +329,8 @@ const ClientInfoSchema = z.object({
   // lobby list). Never set on anonymized entries — the badge vouches for
   // the exact display name.
   verified: z.boolean().optional(),
-  // Holds the "Pionnier" badge (bought the Steam app in early access).
-  pioneer: z.boolean().optional(),
+  // The badge the player shows next to their name (Badges.ts).
+  badge: z.string().max(32).optional(),
   // Watching rather than playing. Listed like anyone else — a spectator sees the
   // lobby exactly as a player does — but not in the simulation.
   spectator: z.boolean().optional(),
@@ -448,8 +448,8 @@ export interface ClientInfo {
   // Plays under their server-validated account name (blue check). Never set
   // on anonymized entries.
   verified?: boolean;
-  // Holds the "Pionnier" badge.
-  pioneer?: boolean;
+  // The badge shown next to the player's name (Badges.ts).
+  badge?: string;
   // Watching rather than playing — listed like anyone else, but not in the
   // simulation.
   spectator?: boolean;
@@ -938,6 +938,9 @@ export const PlayerCosmeticRefsSchema = z.object({
   // (resolveVerifiedJoin in src/server/Privilege.ts); the name is never
   // replaced and nothing sent here can mint a badge.
   verified: z.boolean().optional(),
+  // The badge the player picked to show (a Badges.ts id, or "none"). Only a
+  // pick: the server shows it when the account holds it (stampBadge).
+  badge: z.string().max(32).optional(),
 });
 
 export const PlayerSkinSchema = z.object({
@@ -971,8 +974,9 @@ export const PlayerCosmeticsSchema = z.object({
   effects: z.record(z.string(), PlayerEffectSchema).optional(),
   // Plays under the verified account username — renders the blue check.
   verified: z.boolean().optional(),
-  // Server-stamped from the account's items: the "Pionnier" badge.
-  pioneer: z.boolean().optional(),
+  // Server-stamped from the account's items and the player's pick: the
+  // badge shown next to their name (Badges.ts).
+  badge: z.string().max(32).optional(),
   // Server-stamped for a Nation pack wearer: their clan's crest, drawn on
   // the pack's standard and crown (see NationPack.ts).
   clanCrest: z

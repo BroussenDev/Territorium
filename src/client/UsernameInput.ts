@@ -2,6 +2,8 @@ import { html, LitElement, nothing, svg } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { translateText } from "../client/Utils";
 import { UserMeResponse } from "../core/ApiSchemas";
+import { BadgeId, NO_BADGE, ownedBadges, shownBadge } from "../core/Badges";
+import { UserSettings } from "../core/game/UserSettings";
 import {
   MAX_CLAN_TAG_LENGTH,
   MAX_USERNAME_LENGTH,
@@ -12,6 +14,11 @@ import {
 } from "../core/validations/username";
 import { getUserMe, invalidateUserMe, setHiddenName } from "./Api";
 import { checkClanTagOwnership } from "./ClanApi";
+import {
+  badgeDescription,
+  badgeIcon,
+  badgeName,
+} from "./components/ui/BadgeIcon";
 import { verifiedBadge } from "./components/ui/VerifiedBadge";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { showInGameAlert, showInGameConfirm } from "./InGameModal";
@@ -174,6 +181,10 @@ export class UsernameInput extends LitElement {
   @state() private clanTagOwnershipError: string = "";
   @state() private clanCheckPending: boolean = false;
   @state() private clanMenuOpen: boolean = false;
+  @state() private badgeMenuOpen: boolean = false;
+  // The badge picked to show next to the name (UserSettings.badgeChoice).
+  @state() private badgeChoice: string | null =
+    new UserSettings().badgeChoice();
   private _isValid: boolean = true;
   private _lastValidatedLang: string | null = null;
 
@@ -275,9 +286,10 @@ export class UsernameInput extends LitElement {
   // Bound for the element's lifetime rather than with the menu, so no stray
   // listener can outlive it.
   private handleDocumentPointerDown = (e: Event) => {
-    if (!this.clanMenuOpen) return;
+    if (!this.clanMenuOpen && !this.badgeMenuOpen) return;
     if (e.composedPath().includes(this)) return;
     this.clanMenuOpen = false;
+    this.badgeMenuOpen = false;
   };
 
   private handleClanMenuKeydown(e: KeyboardEvent) {
@@ -799,6 +811,7 @@ export class UsernameInput extends LitElement {
            leave, so the row always fills the strip. -->
       <div class="flex items-center w-full h-full gap-1.5 sm:gap-2">
         ${this.renderClanControl()} ${this.renderNameControl()}
+        ${this.renderBadgeControl()}
       </div>
       <!-- One positioned slot, stacked. An error and the reservation reminder
            are not alternatives: the error is transient and self-inflicted
@@ -906,6 +919,145 @@ export class UsernameInput extends LitElement {
         ${this.clanMenuOpen ? this.renderClanMenu() : null}
       </div>
     `;
+  }
+
+  // Picks the badge shown next to the name in lobbies. Only for players who
+  // hold one; the game server shows the pick only if the account holds it.
+  private renderBadgeControl() {
+    const flares =
+      this.userMe !== null && this.userMe !== false
+        ? this.userMe.player.flares
+        : undefined;
+    const owned = ownedBadges(flares);
+    if (owned.length === 0) return nothing;
+    const shown = shownBadge(this.badgeChoice, flares);
+    const label = translateText("username.badge_label");
+    return html`
+      <div
+        class="no-crazygames relative shrink-0 h-full max-h-[44px]"
+        @keydown=${this.handleBadgeMenuKeydown}
+      >
+        <button
+          type="button"
+          id="badge-button"
+          class="${ICON_BUTTON} ${this.badgeMenuOpen
+            ? "border-brand/60 bg-brand/10"
+            : ""}"
+          aria-haspopup="dialog"
+          aria-expanded=${this.badgeMenuOpen ? "true" : "false"}
+          aria-label=${label}
+          title=${label}
+          @click=${() => (this.badgeMenuOpen = !this.badgeMenuOpen)}
+        >
+          ${badgeIcon(shown, "size-[24px]", null) ??
+          html`<svg
+            viewBox="0 0 24 24"
+            class="size-[22px]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <!-- An empty shield: no badge shown. -->
+            <path
+              d="M12 2.5 19.5 5.3v5.6c0 4.6-3.2 8.5-7.5 9.9-4.3-1.4-7.5-5.3-7.5-9.9V5.3Z"
+              stroke-dasharray="2.6 2.2"
+            ></path>
+          </svg>`}
+        </button>
+        ${this.badgeMenuOpen ? this.renderBadgeMenu(owned, shown) : null}
+      </div>
+    `;
+  }
+
+  private renderBadgeMenu(owned: BadgeId[], shown: BadgeId | undefined) {
+    const check = html`<svg
+      viewBox="0 0 24 24"
+      class="w-4 h-4 shrink-0 text-brand"
+      aria-hidden="true"
+    >
+      <path
+        d="M5 12.5l4.5 4.5L19 7"
+        stroke="currentColor"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>`;
+    const option = (
+      value: string,
+      selected: boolean,
+      icon: unknown,
+      name: string,
+      description: string | null,
+    ) => html`
+      <button
+        type="button"
+        data-badge-option=${value}
+        aria-pressed=${selected ? "true" : "false"}
+        class="flex w-full items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors cursor-pointer ${selected
+          ? "bg-brand/25"
+          : "hover:bg-white/10"}"
+        @click=${() => this.selectBadge(value)}
+      >
+        <span class="flex size-7 shrink-0 items-center justify-center"
+          >${icon}</span
+        >
+        <span class="min-w-0 flex-1">
+          <span class="block truncate text-sm font-semibold text-white"
+            >${name}</span
+          >
+          ${description
+            ? html`<span class="block text-xs leading-snug text-white/50"
+                >${description}</span
+              >`
+            : null}
+        </span>
+        ${selected ? check : null}
+      </button>
+    `;
+    return html`
+      <div
+        id="badge-menu"
+        role="dialog"
+        aria-labelledby="badge-button"
+        class="absolute right-0 top-full z-50 mt-1.5 w-[18rem] max-w-[80vw] rounded-xl border border-white/15 bg-surface/95 p-1.5 shadow-xl backdrop-blur-md"
+      >
+        <div class="px-2 pt-1 pb-1.5 text-xs font-semibold text-white/50">
+          ${translateText("username.badge_label")}
+        </div>
+        ${owned.map((id) =>
+          option(
+            id,
+            shown === id,
+            badgeIcon(id, "w-7 h-7", null),
+            badgeName(id),
+            badgeDescription(id),
+          ),
+        )}
+        ${option(
+          NO_BADGE,
+          shown === undefined,
+          null,
+          translateText("username.badge_none"),
+          null,
+        )}
+      </div>
+    `;
+  }
+
+  private selectBadge(value: string) {
+    new UserSettings().setBadgeChoice(value);
+    this.badgeChoice = value;
+    this.badgeMenuOpen = false;
+  }
+
+  private handleBadgeMenuKeydown(e: KeyboardEvent) {
+    if (e.key !== "Escape") return;
+    this.badgeMenuOpen = false;
+    this.querySelector<HTMLElement>("#badge-button")?.focus();
   }
 
   private renderClanMenu() {

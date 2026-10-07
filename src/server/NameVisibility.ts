@@ -217,7 +217,7 @@ export class NameVisibility {
         clientID: c.clientID,
         friends: teammateOnly ? undefined : friendsFor(c),
         verified: c.cosmetics?.verified,
-        pioneer: c.cosmetics?.pioneer,
+        badge: c.cosmetics?.badge,
         spectator: c.spectator || undefined,
         teamIndex: this.view.teamIndex(c),
         ...this.nationField(c),
