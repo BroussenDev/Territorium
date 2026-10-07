@@ -682,6 +682,8 @@ export const SoloLeaderboardEntrySchema = z.object({
   games: z.number(),
   // True when the player's subscription frames their row in gold.
   goldFrame: z.boolean().optional(),
+  // The badge the player shows (core/Badges.ts id), when any.
+  badge: z.string().max(32).optional(),
 });
 export type SoloLeaderboardEntry = z.infer<typeof SoloLeaderboardEntrySchema>;
 
@@ -772,6 +774,8 @@ export const RankedFfaLeaderboardEntrySchema = z.object({
   wins: z.number(),
   // True when the player's subscription frames their row in gold.
   goldFrame: z.boolean().optional(),
+  // The badge the player shows (core/Badges.ts id), when any.
+  badge: z.string().max(32).optional(),
 });
 export type RankedFfaLeaderboardEntry = z.infer<
   typeof RankedFfaLeaderboardEntrySchema
@@ -1025,6 +1029,8 @@ export const PlayerProfileSchema = z.object({
   seasonBadges: SeasonBadgeSchema.array().optional(),
   // True when the player's subscription frames their profile in gold.
   goldFrame: z.boolean().optional(),
+  // The badge the player shows (core/Badges.ts id), when any.
+  badge: z.string().max(32).optional(),
   // The countries this player played in Nations games (countries.json
   // index), most played first. Optional for an API without the field.
   nations: z
@@ -1107,6 +1113,8 @@ export const PlayerLeaderboardEntrySchema = z.object({
   winRate: z.number(),
   // True when the player's subscription frames their row in gold.
   goldFrame: z.boolean().optional(),
+  // The badge the player shows (core/Badges.ts id), when any.
+  badge: z.string().max(32).optional(),
 });
 export type PlayerLeaderboardEntry = z.infer<
   typeof PlayerLeaderboardEntrySchema
@@ -1132,6 +1140,8 @@ export const RankedLeaderboardEntrySchema = z.object({
   accountUsername: z.string().nullable(),
   // True when the player's subscription frames their row in gold.
   goldFrame: z.boolean().optional(),
+  // The badge the player shows (core/Badges.ts id), when any.
+  badge: z.string().max(32).optional(),
 });
 export type RankedLeaderboardEntry = z.infer<
   typeof RankedLeaderboardEntrySchema

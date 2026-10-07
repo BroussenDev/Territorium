@@ -23,8 +23,9 @@ export function visibleCosmetics(
     showFrom === "self" ||
     (showFrom === "teammates" && owner !== "teammate")
   ) {
-    // The verified badge marks the account, it isn't a cosmetic.
-    return { verified: cosmetics.verified };
+    // The verified check and the badge mark the account, they aren't
+    // cosmetics.
+    return { verified: cosmetics.verified, badge: cosmetics.badge };
   }
 
   const visible: PlayerCosmetics = { ...cosmetics };

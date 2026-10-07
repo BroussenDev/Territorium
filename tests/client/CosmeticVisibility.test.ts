@@ -50,6 +50,13 @@ describe("visibleCosmetics", () => {
     ).toEqual({ verified: true });
   });
 
+  test("hiding cosmetics keeps the player's badge, which marks the account", () => {
+    const withBadge = { ...EQUIPPED, badge: "pionnier" };
+    expect(
+      visibleCosmetics(withBadge, { showFrom: "self" }, "other").badge,
+    ).toBe("pionnier");
+  });
+
   test("my team shows teammates' cosmetics only", () => {
     const visibility = { showFrom: "teammates" } as const;
     expect(visibleCosmetics(EQUIPPED, visibility, "teammate")).toEqual(

@@ -12,7 +12,12 @@ import {
   validateClanTag,
   validateUsername,
 } from "../core/validations/username";
-import { getUserMe, invalidateUserMe, setHiddenName } from "./Api";
+import {
+  getUserMe,
+  invalidateUserMe,
+  saveBadgeChoice,
+  setHiddenName,
+} from "./Api";
 import { checkClanTagOwnership } from "./ClanApi";
 import {
   badgeDescription,
@@ -1050,6 +1055,7 @@ export class UsernameInput extends LitElement {
 
   private selectBadge(value: string) {
     new UserSettings().setBadgeChoice(value);
+    void saveBadgeChoice(value);
     this.badgeChoice = value;
     this.badgeMenuOpen = false;
   }

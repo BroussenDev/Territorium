@@ -5,6 +5,7 @@ import { fetchRankedFfaLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
 import { tierEmblem, tierLabel } from "../ranked/RankedTier";
+import { badgeIcon } from "../ui/BadgeIcon";
 import { goldFramed } from "./GoldFrame";
 import { rankStyle } from "./LeaderboardFormat";
 
@@ -171,6 +172,10 @@ export class LeaderboardRankedTable extends LitElement {
                           .onNameClick=${() =>
                             this.openProfile(player.publicId)}
                         ></player-name>`,
+                      )}
+                      ${badgeIcon(
+                        player.badge,
+                        "inline-block w-4 h-4 align-[-3px] ml-1.5",
                       )}
                     </td>
                     <td class="py-3 px-2">

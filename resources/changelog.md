@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.78
+
+🏆 **Badges on the leaderboards and the scoreboard**
+
+- Your badge now appears next to your name on the leaderboards (Ranked, Solo and 1v1/2v2) and in the in-game scoreboard.
+
 ## v0.1.77
 
 🎖️ **Choose your badge**

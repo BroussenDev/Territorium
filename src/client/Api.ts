@@ -928,6 +928,23 @@ export async function acknowledgeWarning(id: number): Promise<boolean> {
   }
 }
 
+// PUT /users/@me/badge: the badge the player picked to show (or "none"),
+// so the leaderboards show it too. Best effort.
+export async function saveBadgeChoice(badge: string): Promise<void> {
+  try {
+    await fetch(`${getApiBase()}/users/@me/badge`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+      },
+      body: JSON.stringify({ badge }),
+    });
+  } catch (e) {
+    console.error("saveBadgeChoice: request failed", e);
+  }
+}
+
 // POST /users/@me/pioneer/seen: the "Pionnier" reward screen was shown.
 // On failure it shows again at the next visit.
 export async function markPioneerSeen(): Promise<boolean> {

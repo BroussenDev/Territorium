@@ -25,6 +25,7 @@ export class PlayerStats extends StatsTable {
         name: player.name(),
         clanTag: player.clanTag(),
         verified: player.cosmetics.verified === true,
+        badge: player.cosmetics.badge,
         values: columnValues(player, game, columns),
         emphasized:
           myPlayer !== null &&

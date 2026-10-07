@@ -11,6 +11,7 @@ import {
 import { type ColumnId, type StatsTableKind } from "../StatsConstants";
 import { translateText } from "../Utils";
 import type { GameView } from "../view";
+import { badgeIcon } from "./ui/BadgeIcon";
 import { verifiedBadge } from "./ui/VerifiedBadge";
 
 export interface StatsRow {
@@ -19,6 +20,8 @@ export interface StatsRow {
   clanTag?: string | null;
   /** Plays under a verified account name: badge next to the name. */
   verified?: boolean;
+  /** The badge the player shows (core/Badges.ts id), next to the name. */
+  badge?: string;
   values: ReadonlyMap<ColumnId, number>;
   emphasized?: boolean;
   pinned?: boolean;
@@ -294,8 +297,10 @@ export abstract class StatsTable extends LitElement {
                 game,
               ),
               borderClass,
-              column.id === "player" && row.verified === true
-                ? verifiedBadge("w-3 h-3")
+              column.id === "player"
+                ? html`${row.verified === true
+                    ? verifiedBadge("w-3 h-3")
+                    : null}${badgeIcon(row.badge, "w-3.5 h-3.5")}`
                 : null,
             ),
         )}

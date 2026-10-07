@@ -4,6 +4,7 @@ import { SoloLeaderboardResponse } from "../../../core/ApiSchemas";
 import { fetchSoloLeaderboard } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
+import { badgeIcon } from "../ui/BadgeIcon";
 import { goldFramed } from "./GoldFrame";
 import { rankStyle } from "./LeaderboardFormat";
 
@@ -193,6 +194,10 @@ export class LeaderboardSoloTable extends LitElement {
                             .onNameClick=${() =>
                               this.openProfile(player.publicId)}
                           ></player-name>`,
+                        )}
+                        ${badgeIcon(
+                          player.badge,
+                          "inline-block w-4 h-4 align-[-3px] ml-1.5",
                         )}
                       </td>
                       <td class="py-3 px-2 text-right font-mono text-white/80">

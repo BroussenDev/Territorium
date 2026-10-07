@@ -8,6 +8,7 @@ import { RankedType } from "../../../core/game/Game";
 import { fetchPlayerLeaderboard, getUserMe } from "../../Api";
 import { translateText } from "../../Utils";
 import "../PlayerName";
+import { badgeIcon } from "../ui/BadgeIcon";
 import { goldFramed } from "./GoldFrame";
 
 /** One ranked ladder's loaded rows. */
@@ -39,6 +40,7 @@ const toPlayerEntry = (
   losses: entry.losses,
   winRate: entry.total > 0 ? entry.wins / entry.total : 0,
   goldFrame: entry.goldFrame,
+  badge: entry.badge,
 });
 
 @customElement("leaderboard-player-list")
@@ -386,6 +388,10 @@ export class LeaderboardPlayerList extends LitElement {
                 .nameClass=${"font-bold text-emerald-300 truncate text-base hover:underline"}
                 .onNameClick=${() => this.openProfile(player.playerId)}
               ></player-name>`,
+            )}
+            ${badgeIcon(
+              player.badge,
+              "inline-block w-4 h-4 align-[-3px] ml-1.5",
             )}
           </div>
         </td>
