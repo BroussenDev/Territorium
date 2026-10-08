@@ -833,6 +833,25 @@
     "tresor_imperial": "Imperial Treasure",
     "tresor_royal": "Royal Treasure"
   },
+  "deluxe": {
+    "badge": "High Commander",
+    "badge_desc": "Title of the Deluxe edition “Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Thank you for choosing the Deluxe edition. Everything in the pack is now on your account.",
+    "continue": "Continue",
+    "item_badge": "Exclusive title, shown next to your name",
+    "item_emblem": "Conquérant emblem",
+    "item_emblem_detail": "An exclusive flag for your nation",
+    "item_frame": "Conquérant frame",
+    "item_frame_detail": "Animated, on the leaderboards and your profile",
+    "item_patterns": "3 exclusive territory patterns",
+    "item_patterns_detail": "Glaives, Shields and Laurels, in two palettes",
+    "item_subscription": "1 month of Seigneur",
+    "item_subscription_detail": "Added to your subscription if one is running",
+    "title": "Pack Conquérant unlocked!",
+    "where": "Everything is in your Inventory: choose your title with the badge button next to your name."
+  },
   "desktop_gate": {
     "back_to_game": "Back to Game",
     "browser_fallback": "Couldn't open your browser automatically — use the link above.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Northern Cross",
     "echiquier": "Chessboard",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Wars",
     "clan_wars_tooltip": "Clan wars won and lost this season",
     "clans_tab": "Clans",
+    "conqueror_frame": "Deluxe edition “Conquérant”",
     "elo": "ELO",
     "error": "Error loading leaderboard",
     "games": "Games",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Ember",
+      "conquerant": "Conquérant",
       "cuivre": "Copper",
       "emeraude": "Emerald",
       "foret": "Forest",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Bricks",
       "chevrons": "Chevrons",
+      "conquerant_ecus": "Shields",
+      "conquerant_glaives": "Glaives",
+      "conquerant_lauriers": "Laurels",
       "couronne": "Crown",
       "creneaux": "Battlements",
       "croix": "Cross",

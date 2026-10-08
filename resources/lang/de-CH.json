@@ -833,6 +833,25 @@
     "tresor_imperial": "Kaiserlicher Schatz",
     "tresor_royal": "Königlicher Schatz"
   },
+  "deluxe": {
+    "badge": "Oberkommandant",
+    "badge_desc": "Titel der Deluxe-Edition „Conquérant“"
+  },
+  "deluxe_reward": {
+    "body": "Danke, dass du dich für die Deluxe-Edition entschieden hast. Der gesamte Inhalt des Packs ist jetzt auf deinem Konto.",
+    "continue": "Weiter",
+    "item_badge": "Exklusiver Titel neben deinem Namen",
+    "item_emblem": "Conquérant-Wappen",
+    "item_emblem_detail": "Eine exklusive Flagge für deine Nation",
+    "item_frame": "Conquérant-Rahmen",
+    "item_frame_detail": "Animiert, in den Ranglisten und auf deinem Profil",
+    "item_patterns": "3 exklusive Gebietsmuster",
+    "item_patterns_detail": "Klingen, Schilde und Lorbeeren, in zwei Paletten",
+    "item_subscription": "1 Monat Seigneur",
+    "item_subscription_detail": "Wird zu einem laufenden Abo hinzugefügt",
+    "title": "Pack Conquérant freigeschaltet!",
+    "where": "Alles ist in deinem Inventar: Wähle deinen Titel mit der Abzeichen-Schaltfläche neben deinem Namen."
+  },
   "desktop_gate": {
     "back_to_game": "Zurück zum Spiel",
     "browser_fallback": "Ihr Browser konnte nicht automatisch geöffnet werden – verwenden Sie den Link oben.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Königlicher Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Nordkreuz",
     "echiquier": "Schachbrett",
     "etendard_emeraude": "Smaragd-Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Kriege",
     "clan_wars_tooltip": "Clankriege haben diese Saison gewonnen und verloren",
     "clans_tab": "Clans",
+    "conqueror_frame": "Deluxe-Edition „Conquérant“",
     "elo": "ELO",
     "error": "Bim Lade vor Rangliste isch e Fehler aufträtte",
     "games": "Spiele",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Glut",
+      "conquerant": "Conquérant",
       "cuivre": "Kupfer",
       "emeraude": "Smaragd",
       "foret": "Wald",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Ziegel",
       "chevrons": "Sparren",
+      "conquerant_ecus": "Schilde",
+      "conquerant_glaives": "Klingen",
+      "conquerant_lauriers": "Lorbeeren",
       "couronne": "Krone",
       "creneaux": "Zinnen",
       "croix": "Kreuz",

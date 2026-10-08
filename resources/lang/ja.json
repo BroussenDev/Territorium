@@ -833,6 +833,25 @@
     "tresor_imperial": "帝国の秘宝",
     "tresor_royal": "王家の宝物"
   },
+  "deluxe": {
+    "badge": "最高司令官",
+    "badge_desc": "デラックス版「Conquérant」の称号"
+  },
+  "deluxe_reward": {
+    "body": "デラックス版をお選びいただきありがとうございます。パックのすべてがアカウントに追加されました。",
+    "continue": "続ける",
+    "item_badge": "名前の横に表示される限定称号",
+    "item_emblem": "Conquérantの紋章",
+    "item_emblem_detail": "あなたの国家のための限定旗",
+    "item_frame": "Conquérantフレーム",
+    "item_frame_detail": "ランキングとプロフィールでアニメーション表示",
+    "item_patterns": "限定の領土パターン3種",
+    "item_patterns_detail": "剣・盾・月桂冠、2つのパレット",
+    "item_subscription": "Seigneur 1か月",
+    "item_subscription_detail": "加入中のサブスクリプションに追加されます",
+    "title": "Conquérantパックが解放されました！",
+    "where": "すべてインベントリにあります。名前の横のバッジボタンで称号を選べます。"
+  },
   "desktop_gate": {
     "back_to_game": "ゲームに戻る",
     "browser_fallback": "ブラウザを自動的に開くことができませんでした。上のリンクを使用してください。",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "ロイヤル シェブロン",
+    "conquerant": "Conquérant",
     "croix_du_nord": "北十字",
     "echiquier": "チェス盤",
     "etendard_emeraude": "エメラルドスタンダード",
@@ -1746,6 +1766,7 @@
     "clan_wars": "戦争",
     "clan_wars_tooltip": "今シーズンのクラン対戦の勝敗",
     "clans_tab": "クラン",
+    "conqueror_frame": "デラックス版「Conquérant」",
     "elo": "ELO",
     "error": "リーダーボードを読み込めませんでした。",
     "games": "試合数",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "残り火",
+      "conquerant": "Conquérant",
       "cuivre": "カッパー",
       "emeraude": "エメラルド",
       "foret": "フォレスト",
@@ -2722,6 +2744,9 @@
       "bastion": "稜堡",
       "briques": "レンガ",
       "chevrons": "シェブロン",
+      "conquerant_ecus": "盾",
+      "conquerant_glaives": "剣",
+      "conquerant_lauriers": "月桂冠",
       "couronne": "王冠",
       "creneaux": "狭間",
       "croix": "十字",

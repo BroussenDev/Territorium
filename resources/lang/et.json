@@ -833,6 +833,25 @@
     "tresor_imperial": "Keiserlik aare",
     "tresor_royal": "Kuninglik aare"
   },
+  "deluxe": {
+    "badge": "Ülemjuhataja",
+    "badge_desc": "Deluxe-väljaande „Conquérant“ tiitel"
+  },
+  "deluxe_reward": {
+    "body": "Täname, et valisid Deluxe-väljaande. Kogu paketi sisu on nüüd sinu kontol.",
+    "continue": "Jätka",
+    "item_badge": "Eksklusiivne tiitel sinu nime kõrval",
+    "item_emblem": "Conquérant embleem",
+    "item_emblem_detail": "Eksklusiivne lipp sinu rahvale",
+    "item_frame": "Conquérant raam",
+    "item_frame_detail": "Animeeritud, edetabelites ja profiilil",
+    "item_patterns": "3 eksklusiivset territooriumi mustrit",
+    "item_patterns_detail": "Mõõgad, Kilbid ja Loorberid, kahes paletis",
+    "item_subscription": "1 kuu Seigneur",
+    "item_subscription_detail": "Lisatakse kehtivale tellimusele",
+    "title": "Pakett Conquérant avatud!",
+    "where": "Kõik on sinu inventaris: vali tiitel nime kõrval oleva märgi nupuga."
+  },
   "desktop_gate": {
     "back_to_game": "Tagasi mängu juurde",
     "browser_fallback": "Teie brauserit ei saanud automaatselt avada – kasutage ülalolevat linki.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Kuninglik Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Põhjarist",
     "echiquier": "Malelaud",
     "etendard_emeraude": "Smaragdi standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Sõjad",
     "clan_wars_tooltip": "Sel hooajal võidetud ja kaotatud klannisõjad",
     "clans_tab": "Klanid",
+    "conqueror_frame": "Deluxe-väljaanne „Conquérant“",
     "elo": "ELO",
     "error": "Edetabeli laadimine nurjus",
     "games": "Mängud",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Hõõg",
+      "conquerant": "Conquérant",
       "cuivre": "Vask",
       "emeraude": "Smaragd",
       "foret": "Mets",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Tellised",
       "chevrons": "Sarikad",
+      "conquerant_ecus": "Kilbid",
+      "conquerant_glaives": "Mõõgad",
+      "conquerant_lauriers": "Loorberid",
       "couronne": "Kroon",
       "creneaux": "Sakmed",
       "croix": "Rist",

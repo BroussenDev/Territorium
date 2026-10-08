@@ -833,6 +833,25 @@
     "tresor_imperial": "Cesarski zaklad",
     "tresor_royal": "Kraljevi zaklad"
   },
+  "deluxe": {
+    "badge": "Vrhovni poveljnik",
+    "badge_desc": "Naziv izdaje Deluxe »Conquérant«"
+  },
+  "deluxe_reward": {
+    "body": "Hvala, ker ste izbrali izdajo Deluxe. Vsa vsebina paketa je zdaj na vašem računu.",
+    "continue": "Nadaljuj",
+    "item_badge": "Ekskluziven naziv ob vašem imenu",
+    "item_emblem": "Emblem Conquérant",
+    "item_emblem_detail": "Ekskluzivna zastava za vaš narod",
+    "item_frame": "Okvir Conquérant",
+    "item_frame_detail": "Animiran, na lestvicah in v profilu",
+    "item_patterns": "3 ekskluzivni vzorci ozemlja",
+    "item_patterns_detail": "Meči, Ščiti in Lovorike, v dveh paletah",
+    "item_subscription": "1 mesec Seigneur",
+    "item_subscription_detail": "Doda se aktivni naročnini",
+    "title": "Paket Conquérant odklenjen!",
+    "where": "Vse je v vašem inventarju: naziv izberite z gumbom značke ob imenu."
+  },
   "desktop_gate": {
     "back_to_game": "Nazaj na igro",
     "browser_fallback": "Vašega brskalnika ni bilo mogoče samodejno odpreti — uporabite zgornjo povezavo.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Severni križ",
     "echiquier": "Šahovnica",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "vojne",
     "clan_wars_tooltip": "Dobljene in izgubljene vojne klanov v tej sezoni",
     "clans_tab": "Klani",
+    "conqueror_frame": "Izdaja Deluxe »Conquérant«",
     "elo": "ELO",
     "error": "Napaka pri nalaganju lestvice najboljših",
     "games": "igre",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Žerjavica",
+      "conquerant": "Conquérant",
       "cuivre": "Baker",
       "emeraude": "Smaragd",
       "foret": "Gozd",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastijon",
       "briques": "Opeke",
       "chevrons": "Ševroni",
+      "conquerant_ecus": "Ščiti",
+      "conquerant_glaives": "Meči",
+      "conquerant_lauriers": "Lovorike",
       "couronne": "Krona",
       "creneaux": "Zobčasto obzidje",
       "croix": "Križ",

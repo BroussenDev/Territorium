@@ -833,6 +833,25 @@
     "tresor_imperial": "گنج امپراتوری",
     "tresor_royal": "گنج سلطنتی"
   },
+  "deluxe": {
+    "badge": "فرمانده عالی",
+    "badge_desc": "عنوان نسخهٔ Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "از اینکه نسخهٔ Deluxe را انتخاب کردید سپاسگزاریم. همهٔ محتوای بسته اکنون در حساب شماست.",
+    "continue": "ادامه",
+    "item_badge": "عنوان انحصاری کنار نام شما",
+    "item_emblem": "نشان Conquérant",
+    "item_emblem_detail": "پرچمی انحصاری برای ملت شما",
+    "item_frame": "قاب Conquérant",
+    "item_frame_detail": "متحرک، در رده‌بندی‌ها و نمایهٔ شما",
+    "item_patterns": "۳ طرح انحصاری قلمرو",
+    "item_patterns_detail": "شمشیرها، سپرها و برگ‌های غار، در دو پالت",
+    "item_subscription": "۱ ماه Seigneur",
+    "item_subscription_detail": "به اشتراک فعال شما افزوده می‌شود",
+    "title": "بستهٔ Conquérant باز شد!",
+    "where": "همه‌چیز در موجودی شماست: عنوان خود را با دکمهٔ نشان کنار نامتان انتخاب کنید."
+  },
   "desktop_gate": {
     "back_to_game": "بازگشت به بازی",
     "browser_fallback": "امکان باز کردن خودکار مرورگر وجود نداشت — از لینک بالا استفاده کنید.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "رویال شورون",
+    "conquerant": "Conquérant",
     "croix_du_nord": "صلیب شمال",
     "echiquier": "صفحه شطرنج",
     "etendard_emeraude": "استاندارد زمرد",
@@ -1746,6 +1766,7 @@
     "clan_wars": "جنگ ها",
     "clan_wars_tooltip": "جنگ های قبیله ای در این فصل برد و باخت",
     "clans_tab": "قبیله ها",
+    "conqueror_frame": "نسخهٔ Deluxe «Conquérant»",
     "elo": "ایلو",
     "error": "خطا در بارگیری جدول رده بندی",
     "games": "بازی ها",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "اخگر",
+      "conquerant": "Conquérant",
       "cuivre": "مسی",
       "emeraude": "زمرد",
       "foret": "جنگل",
@@ -2722,6 +2744,9 @@
       "bastion": "برج و بارو",
       "briques": "آجر",
       "chevrons": "شورون",
+      "conquerant_ecus": "سپرها",
+      "conquerant_glaives": "شمشیرها",
+      "conquerant_lauriers": "برگ‌های غار",
       "couronne": "تاج",
       "creneaux": "کنگره",
       "croix": "صلیب",

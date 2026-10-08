@@ -833,6 +833,25 @@
     "tresor_imperial": "Harta Kekaisaran",
     "tresor_royal": "Harta Kerajaan"
   },
+  "deluxe": {
+    "badge": "Panglima Tertinggi",
+    "badge_desc": "Gelar edisi Deluxe “Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Terima kasih telah memilih edisi Deluxe. Seluruh isi paket kini ada di akun Anda.",
+    "continue": "Lanjutkan",
+    "item_badge": "Gelar eksklusif di samping nama Anda",
+    "item_emblem": "Lambang Conquérant",
+    "item_emblem_detail": "Bendera eksklusif untuk bangsa Anda",
+    "item_frame": "Bingkai Conquérant",
+    "item_frame_detail": "Beranimasi, di papan peringkat dan profil Anda",
+    "item_patterns": "3 pola wilayah eksklusif",
+    "item_patterns_detail": "Pedang, Perisai, dan Laurel, dalam dua palet",
+    "item_subscription": "1 bulan Seigneur",
+    "item_subscription_detail": "Ditambahkan ke langganan yang sedang berjalan",
+    "title": "Paket Conquérant terbuka!",
+    "where": "Semuanya ada di Inventaris Anda: pilih gelar dengan tombol lencana di samping nama Anda."
+  },
   "desktop_gate": {
     "back_to_game": "Kembali ke Permainan",
     "browser_fallback": "Tidak dapat membuka browser Anda secara otomatis — gunakan tautan di atas.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Kerajaan Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Salib Utara",
     "echiquier": "Papan catur",
     "etendard_emeraude": "Standar Zamrud",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Perang",
     "clan_wars_tooltip": "Perang klan menang dan kalah musim ini",
     "clans_tab": "Klan",
+    "conqueror_frame": "Edisi Deluxe “Conquérant”",
     "elo": "ELO",
     "error": "Kesalahan memuat leaderboard",
     "games": "Permainan",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Bara",
+      "conquerant": "Conquérant",
       "cuivre": "Tembaga",
       "emeraude": "Zamrud",
       "foret": "Hutan",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Bata",
       "chevrons": "Chevron",
+      "conquerant_ecus": "Perisai",
+      "conquerant_glaives": "Pedang",
+      "conquerant_lauriers": "Laurel",
       "couronne": "Mahkota",
       "creneaux": "Gerigi benteng",
       "croix": "Salib",

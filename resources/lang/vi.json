@@ -833,6 +833,25 @@
     "tresor_imperial": "Kho báu hoàng triều",
     "tresor_royal": "Kho báu hoàng gia"
   },
+  "deluxe": {
+    "badge": "Tổng Tư lệnh",
+    "badge_desc": "Danh hiệu của phiên bản Deluxe “Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Cảm ơn bạn đã chọn phiên bản Deluxe. Toàn bộ nội dung gói đã có trong tài khoản của bạn.",
+    "continue": "Tiếp tục",
+    "item_badge": "Danh hiệu độc quyền cạnh tên bạn",
+    "item_emblem": "Huy hiệu Conquérant",
+    "item_emblem_detail": "Một lá cờ độc quyền cho quốc gia của bạn",
+    "item_frame": "Khung Conquérant",
+    "item_frame_detail": "Có hiệu ứng động, trên bảng xếp hạng và hồ sơ",
+    "item_patterns": "3 họa tiết lãnh thổ độc quyền",
+    "item_patterns_detail": "Kiếm, Khiên và Nguyệt quế, với hai bảng màu",
+    "item_subscription": "1 tháng Seigneur",
+    "item_subscription_detail": "Được cộng vào gói đăng ký đang chạy",
+    "title": "Đã mở khóa gói Conquérant!",
+    "where": "Mọi thứ đều trong Kho đồ: chọn danh hiệu bằng nút huy hiệu cạnh tên bạn."
+  },
   "desktop_gate": {
     "back_to_game": "Quay lại game",
     "browser_fallback": "Không thể tự động mở trình duyệt của bạn — hãy dùng link ở trên.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Hoàng gia Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Thập tự phương Bắc",
     "echiquier": "Bàn cờ",
     "etendard_emeraude": "Tiêu chuẩn ngọc lục bảo",
@@ -1746,6 +1766,7 @@
     "clan_wars": "chiến tranh",
     "clan_wars_tooltip": "Cuộc chiến bang hội thắng và thua trong mùa giải này",
     "clans_tab": "Clan",
+    "conqueror_frame": "Phiên bản Deluxe “Conquérant”",
     "elo": "ELO",
     "error": "Lỗi tải bảng xếp hạng",
     "games": "Số trận",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Than hồng",
+      "conquerant": "Conquérant",
       "cuivre": "Đồng",
       "emeraude": "Ngọc lục bảo",
       "foret": "Rừng",
@@ -2722,6 +2744,9 @@
       "bastion": "Tháp canh",
       "briques": "Gạch",
       "chevrons": "Hình chữ V",
+      "conquerant_ecus": "Khiên",
+      "conquerant_glaives": "Kiếm",
+      "conquerant_lauriers": "Nguyệt quế",
       "couronne": "Vương miện",
       "creneaux": "Lỗ châu mai",
       "croix": "Thập tự",

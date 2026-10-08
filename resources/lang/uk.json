@@ -833,6 +833,25 @@
     "tresor_imperial": "Імперська скарбниця",
     "tresor_royal": "Королівський скарб"
   },
+  "deluxe": {
+    "badge": "Верховний командувач",
+    "badge_desc": "Титул видання Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "Дякуємо, що обрали видання Deluxe. Увесь вміст пака вже на вашому акаунті.",
+    "continue": "Продовжити",
+    "item_badge": "Ексклюзивний титул поруч з іменем",
+    "item_emblem": "Емблема Conquérant",
+    "item_emblem_detail": "Ексклюзивний прапор для вашої нації",
+    "item_frame": "Рамка Conquérant",
+    "item_frame_detail": "Анімована, у рейтингах і в профілі",
+    "item_patterns": "3 ексклюзивні візерунки території",
+    "item_patterns_detail": "Мечі, Щити й Лаври, у двох палітрах",
+    "item_subscription": "1 місяць Seigneur",
+    "item_subscription_detail": "Додається до чинної підписки",
+    "title": "Пак Conquérant відкрито!",
+    "where": "Усе у вашому інвентарі: оберіть титул кнопкою значка поруч з іменем."
+  },
   "desktop_gate": {
     "back_to_game": "Повернутися до гри",
     "browser_fallback": "Не вдалося відкрити браузер автоматично — скористайтеся посиланням вище.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Королівський шеврон",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Північний хрест",
     "echiquier": "шахівниця",
     "etendard_emeraude": "Смарагдовий стандарт",
@@ -1746,6 +1766,7 @@
     "clan_wars": "війни",
     "clan_wars_tooltip": "Кланові війни виграні та програні цього сезону",
     "clans_tab": "Клани",
+    "conqueror_frame": "Видання Deluxe «Conquérant»",
     "elo": "ELO",
     "error": "Помилка завантаження таблиці лідерів",
     "games": "Ігри",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Жар",
+      "conquerant": "Conquérant",
       "cuivre": "Мідь",
       "emeraude": "Смарагд",
       "foret": "Ліс",
@@ -2722,6 +2744,9 @@
       "bastion": "Бастіон",
       "briques": "Цеглини",
       "chevrons": "Шеврони",
+      "conquerant_ecus": "Щити",
+      "conquerant_glaives": "Мечі",
+      "conquerant_lauriers": "Лаври",
       "couronne": "Корона",
       "creneaux": "Зубці",
       "croix": "Хрест",

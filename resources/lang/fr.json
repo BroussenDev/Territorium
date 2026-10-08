@@ -833,6 +833,25 @@
     "tresor_imperial": "Trésor impérial",
     "tresor_royal": "Trésor royal"
   },
+  "deluxe": {
+    "badge": "Haut Commandant",
+    "badge_desc": "Titre de l'édition Deluxe « Conquérant »"
+  },
+  "deluxe_reward": {
+    "body": "Merci d'avoir choisi l'édition Deluxe. Tout le contenu du pack est maintenant sur votre compte.",
+    "continue": "Continuer",
+    "item_badge": "Titre exclusif, affiché à côté de votre nom",
+    "item_emblem": "Emblème Conquérant",
+    "item_emblem_detail": "Un drapeau exclusif pour votre nation",
+    "item_frame": "Cadre Conquérant",
+    "item_frame_detail": "Animé, dans les classements et sur votre profil",
+    "item_patterns": "3 motifs de territoire exclusifs",
+    "item_patterns_detail": "Glaives, Écus et Lauriers, en deux palettes",
+    "item_subscription": "1 mois d'abonnement Seigneur",
+    "item_subscription_detail": "Ajouté à votre abonnement s'il est en cours",
+    "title": "Pack Conquérant débloqué !",
+    "where": "Tout est dans votre Inventaire : choisissez votre titre avec le bouton de badge à côté de votre nom."
+  },
   "desktop_gate": {
     "back_to_game": "Retour au jeu",
     "browser_fallback": "Impossible d'ouvrir le navigateur automatiquement — utilisez le lien ci-dessus.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Chevron royal",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Croix du Nord",
     "echiquier": "Échiquier",
     "etendard_emeraude": "Étendard d'émeraude",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Guerres",
     "clan_wars_tooltip": "Guerres de clans gagnées et perdues cette saison",
     "clans_tab": "Clans",
+    "conqueror_frame": "Édition Deluxe « Conquérant »",
     "elo": "ELO",
     "error": "Erreur lors du chargement du classement",
     "games": "Parties",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Braise",
+      "conquerant": "Conquérant",
       "cuivre": "Cuivre",
       "emeraude": "Émeraude",
       "foret": "Forêt",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Briques",
       "chevrons": "Chevrons",
+      "conquerant_ecus": "Écus",
+      "conquerant_glaives": "Glaives",
+      "conquerant_lauriers": "Lauriers",
       "couronne": "Couronne",
       "creneaux": "Créneaux",
       "croix": "Croix",

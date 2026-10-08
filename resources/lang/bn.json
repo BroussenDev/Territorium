@@ -833,6 +833,25 @@
     "tresor_imperial": "সাম্রাজ্যের ধনভান্ডার",
     "tresor_royal": "রাজকীয় ভান্ডার"
   },
+  "deluxe": {
+    "badge": "সর্বোচ্চ সেনাপতি",
+    "badge_desc": "Deluxe সংস্করণ “Conquérant”-এর উপাধি"
+  },
+  "deluxe_reward": {
+    "body": "Deluxe সংস্করণ বেছে নেওয়ার জন্য ধন্যবাদ। প্যাকের সব কিছু এখন আপনার অ্যাকাউন্টে।",
+    "continue": "চালিয়ে যান",
+    "item_badge": "আপনার নামের পাশে বিশেষ উপাধি",
+    "item_emblem": "Conquérant প্রতীক",
+    "item_emblem_detail": "আপনার জাতির জন্য একটি বিশেষ পতাকা",
+    "item_frame": "Conquérant ফ্রেম",
+    "item_frame_detail": "অ্যানিমেটেড, লিডারবোর্ডে ও আপনার প্রোফাইলে",
+    "item_patterns": "৩টি বিশেষ অঞ্চল নকশা",
+    "item_patterns_detail": "তলোয়ার, ঢাল ও লরেল, দুটি প্যালেটে",
+    "item_subscription": "Seigneur-এর ১ মাস",
+    "item_subscription_detail": "চলমান সদস্যতায় যোগ হয়",
+    "title": "Conquérant প্যাক আনলক হয়েছে!",
+    "where": "সব কিছু আপনার ইনভেন্টরিতে: নামের পাশের ব্যাজ বোতাম দিয়ে উপাধি বেছে নিন।"
+  },
   "desktop_gate": {
     "back_to_game": "খেলায় ফিরে যান",
     "browser_fallback": "আপনার ব্রাউজারটি স্বয়ংক্রিয়ভাবে খুলতে পারেনি — উপরের লিঙ্কটি ব্যবহার করুন৷",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "রয়্যাল শেভরন",
+    "conquerant": "Conquérant",
     "croix_du_nord": "উত্তরের ক্রস",
     "echiquier": "দাবাবোর্ড",
     "etendard_emeraude": "পান্না স্ট্যান্ডার্ড",
@@ -1746,6 +1766,7 @@
     "clan_wars": "যুদ্ধসমূহ",
     "clan_wars_tooltip": "এই মৌসুমে গোষ্ঠী যুদ্ধ জিতেছে এবং হেরেছে",
     "clans_tab": "গোষ্ঠী",
+    "conqueror_frame": "Deluxe সংস্করণ “Conquérant”",
     "elo": "ইএলও",
     "error": "লিডারবোর্ড লোড করার সময় ত্রুটি৷",
     "games": "গেমস",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "অঙ্গার",
+      "conquerant": "Conquérant",
       "cuivre": "তামা",
       "emeraude": "পান্না",
       "foret": "অরণ্য",
@@ -2722,6 +2744,9 @@
       "bastion": "বুরুজ",
       "briques": "ইট",
       "chevrons": "শেভরন",
+      "conquerant_ecus": "ঢাল",
+      "conquerant_glaives": "তলোয়ার",
+      "conquerant_lauriers": "লরেল",
       "couronne": "মুকুট",
       "creneaux": "প্রাচীরচূড়া",
       "croix": "ক্রস",

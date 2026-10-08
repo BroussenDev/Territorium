@@ -41,6 +41,7 @@ const toPlayerEntry = (
   winRate: entry.total > 0 ? entry.wins / entry.total : 0,
   goldFrame: entry.goldFrame,
   badge: entry.badge,
+  conquerant: entry.conquerant,
 });
 
 @customElement("leaderboard-player-list")
@@ -388,6 +389,7 @@ export class LeaderboardPlayerList extends LitElement {
                 .nameClass=${"font-bold text-emerald-300 truncate text-base hover:underline"}
                 .onNameClick=${() => this.openProfile(player.playerId)}
               ></player-name>`,
+              player.conquerant,
             )}
             ${badgeIcon(
               player.badge,

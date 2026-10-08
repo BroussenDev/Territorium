@@ -833,6 +833,25 @@
     "tresor_imperial": "Имперская сокровищница",
     "tresor_royal": "Королевское сокровище"
   },
+  "deluxe": {
+    "badge": "Верховный командующий",
+    "badge_desc": "Титул издания Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "Спасибо, что выбрали издание Deluxe. Всё содержимое пака уже на вашем аккаунте.",
+    "continue": "Продолжить",
+    "item_badge": "Эксклюзивный титул рядом с именем",
+    "item_emblem": "Эмблема Conquérant",
+    "item_emblem_detail": "Эксклюзивный флаг для вашей нации",
+    "item_frame": "Рамка Conquérant",
+    "item_frame_detail": "Анимированная, в рейтингах и в профиле",
+    "item_patterns": "3 эксклюзивных узора территории",
+    "item_patterns_detail": "Мечи, Щиты и Лавры, в двух палитрах",
+    "item_subscription": "1 месяц Seigneur",
+    "item_subscription_detail": "Добавляется к действующей подписке",
+    "title": "Пак Conquérant открыт!",
+    "where": "Всё в вашем инвентаре: выберите титул кнопкой значка рядом с именем."
+  },
   "desktop_gate": {
     "back_to_game": "Вернуться к игре",
     "browser_fallback": "Не удалось автоматически открыть браузер — воспользуйтесь ссылкой выше.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Королевский Шеврон",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Северный крест",
     "echiquier": "шахматная доска",
     "etendard_emeraude": "Изумрудный стандарт",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Войны",
     "clan_wars_tooltip": "Клановые войны выиграны и проиграны в этом сезоне",
     "clans_tab": "Кланы",
+    "conqueror_frame": "Издание Deluxe «Conquérant»",
     "elo": "ELO",
     "error": "Ошибка загрузки таблицы лидеров",
     "games": "Игры",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Жар",
+      "conquerant": "Conquérant",
       "cuivre": "Медь",
       "emeraude": "Изумруд",
       "foret": "Лес",
@@ -2722,6 +2744,9 @@
       "bastion": "Бастион",
       "briques": "Кирпичи",
       "chevrons": "Шевроны",
+      "conquerant_ecus": "Щиты",
+      "conquerant_glaives": "Мечи",
+      "conquerant_lauriers": "Лавры",
       "couronne": "Корона",
       "creneaux": "Зубцы",
       "croix": "Крест",

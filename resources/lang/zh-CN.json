@@ -833,6 +833,25 @@
     "tresor_imperial": "帝国宝藏",
     "tresor_royal": "皇家宝藏"
   },
+  "deluxe": {
+    "badge": "最高统帅",
+    "badge_desc": "豪华版「Conquérant」称号"
+  },
+  "deluxe_reward": {
+    "body": "感谢选择豪华版。礼包的全部内容已发放到你的账号。",
+    "continue": "继续",
+    "item_badge": "显示在名字旁的专属称号",
+    "item_emblem": "Conquérant徽记",
+    "item_emblem_detail": "属于你国家的专属旗帜",
+    "item_frame": "Conquérant边框",
+    "item_frame_detail": "动态效果，显示在排行榜和个人资料中",
+    "item_patterns": "3款专属领土图案",
+    "item_patterns_detail": "剑、盾与月桂，两种配色",
+    "item_subscription": "Seigneur 1个月",
+    "item_subscription_detail": "若订阅生效中，将延长其时长",
+    "title": "Conquérant礼包已解锁！",
+    "where": "所有物品都在你的物品栏中：用名字旁的徽章按钮选择称号。"
+  },
   "desktop_gate": {
     "back_to_game": "返回游戏",
     "browser_fallback": "无法自动打开您的浏览器 - 请使用上面的链接。",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "皇家雪佛龙",
+    "conquerant": "Conquérant",
     "croix_du_nord": "北方十字",
     "echiquier": "棋盘",
     "etendard_emeraude": "翡翠标准",
@@ -1746,6 +1766,7 @@
     "clan_wars": "战争",
     "clan_wars_tooltip": "本赛季部落战争的胜利和失败",
     "clans_tab": "军团",
+    "conqueror_frame": "豪华版「Conquérant」",
     "elo": "ELO",
     "error": "加载排行榜时出错",
     "games": "游戏场数",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "余烬",
+      "conquerant": "Conquérant",
       "cuivre": "紫铜",
       "emeraude": "翡翠",
       "foret": "森林",
@@ -2722,6 +2744,9 @@
       "bastion": "棱堡",
       "briques": "砖块",
       "chevrons": "人字纹",
+      "conquerant_ecus": "盾",
+      "conquerant_glaives": "剑",
+      "conquerant_lauriers": "月桂",
       "couronne": "王冠",
       "creneaux": "城垛",
       "croix": "十字",

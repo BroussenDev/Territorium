@@ -833,6 +833,25 @@
     "tresor_imperial": "كنز إمبراطوري",
     "tresor_royal": "الكنز الملكي"
   },
+  "deluxe": {
+    "badge": "القائد الأعلى",
+    "badge_desc": "لقب نسخة Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "شكرًا لاختيارك نسخة Deluxe. كل محتوى الحزمة أصبح الآن في حسابك.",
+    "continue": "متابعة",
+    "item_badge": "لقب حصري بجانب اسمك",
+    "item_emblem": "شعار Conquérant",
+    "item_emblem_detail": "علم حصري لأمتك",
+    "item_frame": "إطار Conquérant",
+    "item_frame_detail": "متحرك، في التصنيفات وفي ملفك الشخصي",
+    "item_patterns": "3 أنماط أراضٍ حصرية",
+    "item_patterns_detail": "سيوف ودروع وأكاليل غار، بلوحتي ألوان",
+    "item_subscription": "شهر واحد من Seigneur",
+    "item_subscription_detail": "يُضاف إلى اشتراكك الجاري",
+    "title": "تم فتح حزمة Conquérant!",
+    "where": "كل شيء في مخزونك: اختر لقبك بزر الشارة بجانب اسمك."
+  },
   "desktop_gate": {
     "back_to_game": "العودة إلى اللعبة",
     "browser_fallback": "تعذر فتح المتصفح تلقائيًا — استخدم الرابط أعلاه.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "رويال شيفرون",
+    "conquerant": "Conquérant",
     "croix_du_nord": "صليب الشمال",
     "echiquier": "رقعة الشطرنج",
     "etendard_emeraude": "معيار الزمرد",
@@ -1746,6 +1766,7 @@
     "clan_wars": "الحروب",
     "clan_wars_tooltip": "حروب العشائر فازت وخسرت هذا الموسم",
     "clans_tab": "العشائر",
+    "conqueror_frame": "نسخة Deluxe «Conquérant»",
     "elo": "إيلو",
     "error": "حدث خطأ أثناء تحميل لوحة الصدارة",
     "games": "العاب",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "جمر",
+      "conquerant": "Conquérant",
       "cuivre": "نحاسي",
       "emeraude": "زمرد",
       "foret": "غابة",
@@ -2722,6 +2744,9 @@
       "bastion": "حصن بارز",
       "briques": "طوب",
       "chevrons": "شيفرون",
+      "conquerant_ecus": "دروع",
+      "conquerant_glaives": "سيوف",
+      "conquerant_lauriers": "أكاليل غار",
       "couronne": "تاج",
       "creneaux": "شرفات",
       "croix": "صليب",

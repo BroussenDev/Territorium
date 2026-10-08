@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.81
+
+👑 **Deluxe edition « Conquérant »**
+
+- Owners of the Pack Conquérant on Steam receive it automatically when they open the Steam app: the High Commander title, the Conquérant emblem, 3 exclusive territory patterns (Glaives, Shields, Laurels), the animated Conquérant frame on the leaderboards and the profile, and 1 month of Seigneur (added to a running subscription).
+- A reward screen presents the pack once, after the first setup.
+
 ## v0.1.80
 
 🛡️ **Survival: new rules for the defenders**

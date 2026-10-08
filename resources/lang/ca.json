@@ -833,6 +833,25 @@
     "tresor_imperial": "Tresor imperial",
     "tresor_royal": "Tresor reial"
   },
+  "deluxe": {
+    "badge": "Alt Comandant",
+    "badge_desc": "Títol de l'edició Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "Gràcies per triar l'edició Deluxe. Tot el contingut del pack ja és al teu compte.",
+    "continue": "Continua",
+    "item_badge": "Títol exclusiu al costat del teu nom",
+    "item_emblem": "Emblema Conquérant",
+    "item_emblem_detail": "Una bandera exclusiva per a la teva nació",
+    "item_frame": "Marc Conquérant",
+    "item_frame_detail": "Animat, a les classificacions i al teu perfil",
+    "item_patterns": "3 motius de territori exclusius",
+    "item_patterns_detail": "Espases, Escuts i Llorers, en dues paletes",
+    "item_subscription": "1 mes de Seigneur",
+    "item_subscription_detail": "S'afegeix a la teva subscripció activa",
+    "title": "Pack Conquérant desbloquejat!",
+    "where": "Tot és al teu Inventari: tria el títol amb el botó d'insígnia al costat del teu nom."
+  },
   "desktop_gate": {
     "back_to_game": "Torna al joc",
     "browser_fallback": "No s'ha pogut obrir el navegador automàticament; feu servir l'enllaç anterior.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Chevron reial",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Creu del Nord",
     "echiquier": "Tauler d'escacs",
     "etendard_emeraude": "Estàndard maragda",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Guerres",
     "clan_wars_tooltip": "Les guerres de clans van guanyar i perdre aquesta temporada",
     "clans_tab": "Clans",
+    "conqueror_frame": "Edició Deluxe «Conquérant»",
     "elo": "ELO",
     "error": "Error carregant classificació",
     "games": "Partides",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Brasa",
+      "conquerant": "Conquérant",
       "cuivre": "Coure",
       "emeraude": "Maragda",
       "foret": "Bosc",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastió",
       "briques": "Maons",
       "chevrons": "Galons",
+      "conquerant_ecus": "Escuts",
+      "conquerant_glaives": "Espases",
+      "conquerant_lauriers": "Llorers",
       "couronne": "Corona",
       "creneaux": "Merlets",
       "croix": "Creu",

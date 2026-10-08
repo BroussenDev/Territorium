@@ -833,6 +833,25 @@
     "tresor_imperial": "Tesoro imperiale",
     "tresor_royal": "Tesoro reale"
   },
+  "deluxe": {
+    "badge": "Alto Comandante",
+    "badge_desc": "Titolo dell'edizione Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "Grazie per aver scelto l'edizione Deluxe. Tutto il contenuto del pack è ora sul tuo account.",
+    "continue": "Continua",
+    "item_badge": "Titolo esclusivo, accanto al tuo nome",
+    "item_emblem": "Emblema Conquérant",
+    "item_emblem_detail": "Una bandiera esclusiva per la tua nazione",
+    "item_frame": "Cornice Conquérant",
+    "item_frame_detail": "Animata, nelle classifiche e sul tuo profilo",
+    "item_patterns": "3 motivi di territorio esclusivi",
+    "item_patterns_detail": "Spade, Scudi e Allori, in due palette",
+    "item_subscription": "1 mese di Seigneur",
+    "item_subscription_detail": "Aggiunto al tuo abbonamento se attivo",
+    "title": "Pack Conquérant sbloccato!",
+    "where": "Tutto è nel tuo Inventario: scegli il titolo con il pulsante del badge accanto al tuo nome."
+  },
   "desktop_gate": {
     "back_to_game": "Torniamo al gioco",
     "browser_fallback": "Impossibile aprire automaticamente il browser: utilizza il collegamento sopra.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Chevron reale",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Croce del Nord",
     "echiquier": "Scacchiera",
     "etendard_emeraude": "Stendardo Smeraldo",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Guerre",
     "clan_wars_tooltip": "Guerre tra clan vinte e perse in questa stagione",
     "clans_tab": "Clan",
+    "conqueror_frame": "Edizione Deluxe «Conquérant»",
     "elo": "ELO",
     "error": "Errore durante il caricamento della classifica",
     "games": "Giochi",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Brace",
+      "conquerant": "Conquérant",
       "cuivre": "Rame",
       "emeraude": "Smeraldo",
       "foret": "Foresta",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastione",
       "briques": "Mattoni",
       "chevrons": "Chevron",
+      "conquerant_ecus": "Scudi",
+      "conquerant_glaives": "Spade",
+      "conquerant_lauriers": "Allori",
       "couronne": "Corona",
       "creneaux": "Merli",
       "croix": "Croce",

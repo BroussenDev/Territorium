@@ -833,6 +833,25 @@
     "tresor_imperial": "Keisarillinen aarre",
     "tresor_royal": "Kuninkaallinen aarre"
   },
+  "deluxe": {
+    "badge": "Ylipäällikkö",
+    "badge_desc": "Deluxe-version ”Conquérant” arvonimi"
+  },
+  "deluxe_reward": {
+    "body": "Kiitos, että valitsit Deluxe-version. Paketin koko sisältö on nyt tililläsi.",
+    "continue": "Jatka",
+    "item_badge": "Eksklusiivinen arvonimi nimesi vieressä",
+    "item_emblem": "Conquérant-tunnus",
+    "item_emblem_detail": "Eksklusiivinen lippu kansakunnallesi",
+    "item_frame": "Conquérant-kehys",
+    "item_frame_detail": "Animoitu, tulostauluilla ja profiilissasi",
+    "item_patterns": "3 eksklusiivista aluekuviota",
+    "item_patterns_detail": "Miekat, Kilvet ja Laakerit, kahdella paletilla",
+    "item_subscription": "1 kuukausi Seigneur",
+    "item_subscription_detail": "Lisätään voimassa olevaan tilaukseesi",
+    "title": "Conquérant-paketti avattu!",
+    "where": "Kaikki on varastossasi: valitse arvonimi nimesi vieressä olevalla merkkipainikkeella."
+  },
   "desktop_gate": {
     "back_to_game": "Takaisin peliin",
     "browser_fallback": "Selaintasi ei voitu avata automaattisesti – käytä yllä olevaa linkkiä.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Kuninkaallinen Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Pohjoinen risti",
     "echiquier": "Shakkilauta",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Sodat",
     "clan_wars_tooltip": "Klaanisodat voittivat ja hävisivät tällä kaudella",
     "clans_tab": "Klaanit",
+    "conqueror_frame": "Deluxe-versio ”Conquérant”",
     "elo": "ELO",
     "error": "Virhe tulostaulukon lataamisessa",
     "games": "Pelit",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Hiillos",
+      "conquerant": "Conquérant",
       "cuivre": "Kupari",
       "emeraude": "Smaragdi",
       "foret": "Metsä",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastioni",
       "briques": "Tiilet",
       "chevrons": "Kattotuolit",
+      "conquerant_ecus": "Kilvet",
+      "conquerant_glaives": "Miekat",
+      "conquerant_lauriers": "Laakerit",
       "couronne": "Kruunu",
       "creneaux": "Sakarat",
       "croix": "Risti",

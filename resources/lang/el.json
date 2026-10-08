@@ -833,6 +833,25 @@
     "tresor_imperial": "Αυτοκρατορικός θησαυρός",
     "tresor_royal": "Βασιλικός θησαυρός"
   },
+  "deluxe": {
+    "badge": "Ανώτατος Διοικητής",
+    "badge_desc": "Τίτλος της έκδοσης Deluxe «Conquérant»"
+  },
+  "deluxe_reward": {
+    "body": "Ευχαριστούμε που επιλέξατε την έκδοση Deluxe. Όλο το περιεχόμενο του πακέτου είναι πλέον στον λογαριασμό σας.",
+    "continue": "Συνέχεια",
+    "item_badge": "Αποκλειστικός τίτλος δίπλα στο όνομά σας",
+    "item_emblem": "Έμβλημα Conquérant",
+    "item_emblem_detail": "Μια αποκλειστική σημαία για το έθνος σας",
+    "item_frame": "Πλαίσιο Conquérant",
+    "item_frame_detail": "Κινούμενο, στις κατατάξεις και στο προφίλ σας",
+    "item_patterns": "3 αποκλειστικά μοτίβα εδάφους",
+    "item_patterns_detail": "Ξίφη, Ασπίδες και Δάφνες, σε δύο παλέτες",
+    "item_subscription": "1 μήνας Seigneur",
+    "item_subscription_detail": "Προστίθεται στη συνδρομή σας αν είναι ενεργή",
+    "title": "Το πακέτο Conquérant ξεκλειδώθηκε!",
+    "where": "Όλα είναι στο απόθεμά σας: επιλέξτε τίτλο με το κουμπί σήματος δίπλα στο όνομά σας."
+  },
   "desktop_gate": {
     "back_to_game": "Επιστροφή στο παιχνίδι",
     "browser_fallback": "Δεν ήταν δυνατό να ανοίξει αυτόματα το πρόγραμμα περιήγησής σας — χρησιμοποιήστε τον παραπάνω σύνδεσμο.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Σταυρός του Βορρά",
     "echiquier": "Σκακιέρα",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Πόλεμοι",
     "clan_wars_tooltip": "Οι πόλεμοι των φυλών κέρδισαν και έχασαν αυτή τη σεζόν",
     "clans_tab": "Clans",
+    "conqueror_frame": "Έκδοση Deluxe «Conquérant»",
     "elo": "ELO",
     "error": "Σφάλμα κατά τη φόρτωση του βαθμολογικού πίνακα",
     "games": "Παιχνίδια",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Θράκα",
+      "conquerant": "Conquérant",
       "cuivre": "Χαλκός",
       "emeraude": "Σμαράγδι",
       "foret": "Δάσος",
@@ -2722,6 +2744,9 @@
       "bastion": "Προμαχώνας",
       "briques": "Τούβλα",
       "chevrons": "Σιρίτια",
+      "conquerant_ecus": "Ασπίδες",
+      "conquerant_glaives": "Ξίφη",
+      "conquerant_lauriers": "Δάφνες",
       "couronne": "Στέμμα",
       "creneaux": "Επάλξεις",
       "croix": "Σταυρός",

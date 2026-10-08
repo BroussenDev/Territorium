@@ -833,6 +833,25 @@
     "tresor_imperial": "帝國寶藏",
     "tresor_royal": "皇家寶藏"
   },
+  "deluxe": {
+    "badge": "最高統帥",
+    "badge_desc": "豪華版「Conquérant」稱號"
+  },
+  "deluxe_reward": {
+    "body": "感謝選擇豪華版。禮包的全部內容已發放到你的帳號。",
+    "continue": "繼續",
+    "item_badge": "顯示在名字旁的專屬稱號",
+    "item_emblem": "Conquérant徽記",
+    "item_emblem_detail": "屬於你國家的專屬旗幟",
+    "item_frame": "Conquérant邊框",
+    "item_frame_detail": "動態效果，顯示在排行榜和個人檔案中",
+    "item_patterns": "3款專屬領土圖案",
+    "item_patterns_detail": "劍、盾與月桂，兩種配色",
+    "item_subscription": "Seigneur 1個月",
+    "item_subscription_detail": "若訂閱生效中，將延長其時長",
+    "title": "Conquérant禮包已解鎖！",
+    "where": "所有物品都在你的物品欄中：用名字旁的徽章按鈕選擇稱號。"
+  },
   "desktop_gate": {
     "back_to_game": "返回遊戲",
     "browser_fallback": "無法自動開啟您的瀏覽器，請改用上方的連結。",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "皇家雪佛龍",
+    "conquerant": "Conquérant",
     "croix_du_nord": "北方十字",
     "echiquier": "棋盤",
     "etendard_emeraude": "翡翠標準",
@@ -1746,6 +1766,7 @@
     "clan_wars": "戰爭",
     "clan_wars_tooltip": "本季部落戰爭的勝利與失敗",
     "clans_tab": "公會",
+    "conqueror_frame": "豪華版「Conquérant」",
     "elo": "ELO 等級分",
     "error": "載入排行榜時出錯",
     "games": "遊戲",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "餘燼",
+      "conquerant": "Conquérant",
       "cuivre": "紫銅",
       "emeraude": "翡翠",
       "foret": "森林",
@@ -2722,6 +2744,9 @@
       "bastion": "稜堡",
       "briques": "磚塊",
       "chevrons": "人字紋",
+      "conquerant_ecus": "盾",
+      "conquerant_glaives": "劍",
+      "conquerant_lauriers": "月桂",
       "couronne": "王冠",
       "creneaux": "城垛",
       "croix": "十字",

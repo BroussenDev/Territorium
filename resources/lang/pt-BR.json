@@ -833,6 +833,25 @@
     "tresor_imperial": "Tesouro imperial",
     "tresor_royal": "Tesouro real"
   },
+  "deluxe": {
+    "badge": "Alto Comandante",
+    "badge_desc": "Título da edição Deluxe “Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Obrigado por escolher a edição Deluxe. Todo o conteúdo do pack já está na sua conta.",
+    "continue": "Continuar",
+    "item_badge": "Título exclusivo, ao lado do seu nome",
+    "item_emblem": "Emblema Conquérant",
+    "item_emblem_detail": "Uma bandeira exclusiva para sua nação",
+    "item_frame": "Moldura Conquérant",
+    "item_frame_detail": "Animada, nos rankings e no seu perfil",
+    "item_patterns": "3 padrões de território exclusivos",
+    "item_patterns_detail": "Espadas, Escudos e Louros, em duas paletas",
+    "item_subscription": "1 mês de Seigneur",
+    "item_subscription_detail": "Somado à sua assinatura se houver uma ativa",
+    "title": "Pack Conquérant desbloqueado!",
+    "where": "Tudo está no seu Inventário: escolha seu título com o botão de emblema ao lado do seu nome."
+  },
   "desktop_gate": {
     "back_to_game": "De volta ao jogo",
     "browser_fallback": "Não foi possível abrir seu navegador automaticamente. Use o link acima.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Chevron Real",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Cruz do Norte",
     "echiquier": "Tabuleiro de xadrez",
     "etendard_emeraude": "Padrão Esmeralda",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Guerras",
     "clan_wars_tooltip": "Guerras de clãs vencidas e perdidas nesta temporada",
     "clans_tab": "Clãs",
+    "conqueror_frame": "Edição Deluxe “Conquérant”",
     "elo": "ELO",
     "error": "Error em carregar a tabela de classificação",
     "games": "Jogos",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Brasa",
+      "conquerant": "Conquérant",
       "cuivre": "Cobre",
       "emeraude": "Esmeralda",
       "foret": "Floresta",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastião",
       "briques": "Tijolos",
       "chevrons": "Divisas",
+      "conquerant_ecus": "Escudos",
+      "conquerant_glaives": "Espadas",
+      "conquerant_lauriers": "Louros",
       "couronne": "Coroa",
       "creneaux": "Ameias",
       "croix": "Cruz",

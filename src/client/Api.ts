@@ -945,6 +945,22 @@ export async function saveBadgeChoice(badge: string): Promise<void> {
   }
 }
 
+// POST /users/@me/deluxe/seen: the Deluxe edition's reward screen was shown.
+// On failure it shows again at the next visit.
+export async function markDeluxeSeen(): Promise<boolean> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/deluxe/seen`, {
+      method: "POST",
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (response.ok) invalidateUserMe();
+    return response.ok;
+  } catch (e) {
+    console.error("markDeluxeSeen: request failed", e);
+    return false;
+  }
+}
+
 // POST /users/@me/pioneer/seen: the "Pionnier" reward screen was shown.
 // On failure it shows again at the next visit.
 export async function markPioneerSeen(): Promise<boolean> {

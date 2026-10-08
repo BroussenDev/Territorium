@@ -833,6 +833,25 @@
     "tresor_imperial": "Kejserlig skat",
     "tresor_royal": "Kongelig skat"
   },
+  "deluxe": {
+    "badge": "Øverstkommanderende",
+    "badge_desc": "Titel for Deluxe-udgaven »Conquérant«"
+  },
+  "deluxe_reward": {
+    "body": "Tak fordi du valgte Deluxe-udgaven. Hele pakkens indhold er nu på din konto.",
+    "continue": "Fortsæt",
+    "item_badge": "Eksklusiv titel ved dit navn",
+    "item_emblem": "Conquérant-emblem",
+    "item_emblem_detail": "Et eksklusivt flag til din nation",
+    "item_frame": "Conquérant-ramme",
+    "item_frame_detail": "Animeret, på ranglisterne og din profil",
+    "item_patterns": "3 eksklusive territoriemønstre",
+    "item_patterns_detail": "Sværd, Skjolde og Laurbær, i to paletter",
+    "item_subscription": "1 måned Seigneur",
+    "item_subscription_detail": "Lægges oven i dit aktive abonnement",
+    "title": "Pakken Conquérant er låst op!",
+    "where": "Alt er i dit Inventar: vælg din titel med mærkeknappen ved dit navn."
+  },
   "desktop_gate": {
     "back_to_game": "Tilbage til spil",
     "browser_fallback": "Kunne ikke åbne din browser automatisk - brug linket ovenfor.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Nordkorset",
     "echiquier": "Skakbræt",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Krige",
     "clan_wars_tooltip": "Klankrige vandt og tabte denne sæson",
     "clans_tab": "Klaner",
+    "conqueror_frame": "Deluxe-udgaven »Conquérant«",
     "elo": "ELO",
     "error": "Fejl ved indlæsning af rangliste",
     "games": "Spil",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Glød",
+      "conquerant": "Conquérant",
       "cuivre": "Kobber",
       "emeraude": "Smaragd",
       "foret": "Skov",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Mursten",
       "chevrons": "Sparrer",
+      "conquerant_ecus": "Skjolde",
+      "conquerant_glaives": "Sværd",
+      "conquerant_lauriers": "Laurbær",
       "couronne": "Krone",
       "creneaux": "Murtinder",
       "croix": "Kors",

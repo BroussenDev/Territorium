@@ -833,6 +833,25 @@
     "tresor_imperial": "Keizerlijke schat",
     "tresor_royal": "Koninklijke schat"
   },
+  "deluxe": {
+    "badge": "Opperbevelhebber",
+    "badge_desc": "Titel van de Deluxe-editie „Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Bedankt voor het kiezen van de Deluxe-editie. De hele inhoud van het pack staat nu op je account.",
+    "continue": "Doorgaan",
+    "item_badge": "Exclusieve titel naast je naam",
+    "item_emblem": "Conquérant-embleem",
+    "item_emblem_detail": "Een exclusieve vlag voor je natie",
+    "item_frame": "Conquérant-kader",
+    "item_frame_detail": "Geanimeerd, in de ranglijsten en op je profiel",
+    "item_patterns": "3 exclusieve gebiedspatronen",
+    "item_patterns_detail": "Zwaarden, Schilden en Lauweren, in twee paletten",
+    "item_subscription": "1 maand Seigneur",
+    "item_subscription_detail": "Toegevoegd aan je abonnement als dat loopt",
+    "title": "Pack Conquérant ontgrendeld!",
+    "where": "Alles staat in je Inventaris: kies je titel met de badgeknop naast je naam."
+  },
   "desktop_gate": {
     "back_to_game": "Terug naar spel",
     "browser_fallback": "Kon je browser niet automatisch openen - gebruik de bovenstaande link.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Koninklijke Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Noorderkruis",
     "echiquier": "Schaakbord",
     "etendard_emeraude": "Smaragd standaard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Oorlogen",
     "clan_wars_tooltip": "Clanoorlogen hebben dit seizoen gewonnen en verloren",
     "clans_tab": "Clans",
+    "conqueror_frame": "Deluxe-editie „Conquérant”",
     "elo": "ELO",
     "error": "Fout bij het laden van het scorebord",
     "games": "Spellen",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Gloed",
+      "conquerant": "Conquérant",
       "cuivre": "Koper",
       "emeraude": "Smaragd",
       "foret": "Woud",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Bakstenen",
       "chevrons": "Kepers",
+      "conquerant_ecus": "Schilden",
+      "conquerant_glaives": "Zwaarden",
+      "conquerant_lauriers": "Lauweren",
       "couronne": "Kroon",
       "creneaux": "Kantelen",
       "croix": "Kruis",

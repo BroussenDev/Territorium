@@ -41,6 +41,7 @@ export class PlayerProfileModal extends BaseModal {
   @state() private staffRole: PlayerProfile["role"] = undefined;
   @state() private goldFrame = false;
   @state() private pioneer = false;
+  @state() private conquerant = false;
   @state() private statsTree: PlayerStatsTree | null = null;
   @state() private clans: NonNullable<PlayerProfile["clans"]> = [];
   @state() private ranked: PlayerProfile["ranked"] = undefined;
@@ -79,7 +80,11 @@ export class PlayerProfileModal extends BaseModal {
         ? html`<span
             class="text-white text-xl lg:text-2xl font-bold tracking-wide break-words hyphens-auto min-w-0 inline-flex items-center gap-2"
           >
-            ${goldFramed(this.goldFrame, usernameText(this.username))}
+            ${goldFramed(
+              this.goldFrame,
+              usernameText(this.username),
+              this.conquerant,
+            )}
             ${isVerifiedUsername(this.username)
               ? verifiedBadge("w-5 h-5")
               : nothing}
@@ -339,6 +344,7 @@ export class PlayerProfileModal extends BaseModal {
     this.staffRole = undefined;
     this.goldFrame = false;
     this.pioneer = false;
+    this.conquerant = false;
     this.statsTree = null;
     this.clans = [];
     this.ranked = undefined;
@@ -365,6 +371,7 @@ export class PlayerProfileModal extends BaseModal {
     this.username = profile === false ? null : (profile.username ?? null);
     this.staffRole = profile === false ? undefined : profile.role;
     this.pioneer = profile !== false && profile.pioneer === true;
+    this.conquerant = profile !== false && profile.conquerant === true;
     this.goldFrame = profile !== false && profile.goldFrame === true;
     this.clans = profile === false ? [] : (profile.clans ?? []);
     this.ranked = profile === false ? undefined : profile.ranked;

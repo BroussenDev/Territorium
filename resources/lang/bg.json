@@ -833,6 +833,25 @@
     "tresor_imperial": "Имперско съкровище",
     "tresor_royal": "Кралско съкровище"
   },
+  "deluxe": {
+    "badge": "Върховен командир",
+    "badge_desc": "Титла на изданието Deluxe „Conquérant“"
+  },
+  "deluxe_reward": {
+    "body": "Благодарим, че избрахте изданието Deluxe. Цялото съдържание на пакета вече е в акаунта ви.",
+    "continue": "Продължи",
+    "item_badge": "Ексклузивна титла до името ви",
+    "item_emblem": "Емблема Conquérant",
+    "item_emblem_detail": "Ексклузивно знаме за вашата нация",
+    "item_frame": "Рамка Conquérant",
+    "item_frame_detail": "Анимирана, в класациите и в профила ви",
+    "item_patterns": "3 ексклузивни шарки за територия",
+    "item_patterns_detail": "Мечове, Щитове и Лаври, в две палитри",
+    "item_subscription": "1 месец Seigneur",
+    "item_subscription_detail": "Добавя се към активния ви абонамент",
+    "title": "Пакетът Conquérant е отключен!",
+    "where": "Всичко е в инвентара ви: изберете титлата си с бутона за значка до името."
+  },
   "desktop_gate": {
     "back_to_game": "Назад към играта",
     "browser_fallback": "Браузърът ви не може да се отвори автоматично — използвайте връзката по-горе.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Кралски шеврон",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Северен кръст",
     "echiquier": "Шахматна дъска",
     "etendard_emeraude": "Изумруден стандарт",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Войни",
     "clan_wars_tooltip": "Кланови войни спечелени и загубени този сезон",
     "clans_tab": "Кланове",
+    "conqueror_frame": "Издание Deluxe „Conquérant“",
     "elo": "ЕЛО",
     "error": "Грешка при зареждането на класацията",
     "games": "Игри",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Жар",
+      "conquerant": "Conquérant",
       "cuivre": "Мед",
       "emeraude": "Изумруд",
       "foret": "Гора",
@@ -2722,6 +2744,9 @@
       "bastion": "Бастион",
       "briques": "Тухли",
       "chevrons": "Шеврони",
+      "conquerant_ecus": "Щитове",
+      "conquerant_glaives": "Мечове",
+      "conquerant_lauriers": "Лаври",
       "couronne": "Корона",
       "creneaux": "Бойници",
       "croix": "Кръст",

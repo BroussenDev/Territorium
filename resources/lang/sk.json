@@ -833,6 +833,25 @@
     "tresor_imperial": "Cisársky poklad",
     "tresor_royal": "Kráľovský poklad"
   },
+  "deluxe": {
+    "badge": "Najvyšší veliteľ",
+    "badge_desc": "Titul edície Deluxe „Conquérant“"
+  },
+  "deluxe_reward": {
+    "body": "Ďakujeme, že ste si vybrali edíciu Deluxe. Celý obsah balíka je už na vašom účte.",
+    "continue": "Pokračovať",
+    "item_badge": "Exkluzívny titul pri vašom mene",
+    "item_emblem": "Znak Conquérant",
+    "item_emblem_detail": "Exkluzívna vlajka pre váš národ",
+    "item_frame": "Rámik Conquérant",
+    "item_frame_detail": "Animovaný, v rebríčkoch a na profile",
+    "item_patterns": "3 exkluzívne vzory územia",
+    "item_patterns_detail": "Meče, Štíty a Vavríny, v dvoch paletách",
+    "item_subscription": "1 mesiac Seigneur",
+    "item_subscription_detail": "Pridá sa k aktívnemu predplatnému",
+    "title": "Balík Conquérant odomknutý!",
+    "where": "Všetko je vo vašom inventári: titul si vyberte tlačidlom odznaku pri mene."
+  },
   "desktop_gate": {
     "back_to_game": "Späť k hre",
     "browser_fallback": "Prehliadač sa nepodarilo otvoriť automaticky – použite odkaz vyššie.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Severný kríž",
     "echiquier": "Šachovnica",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "vojny",
     "clan_wars_tooltip": "Klanové vojny vyhrali a prehrali túto sezónu",
     "clans_tab": "Klany",
+    "conqueror_frame": "Edícia Deluxe „Conquérant“",
     "elo": "ELO",
     "error": "Chyba pri načítavaní výsledkovej tabuľky",
     "games": "Hry",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Žiar",
+      "conquerant": "Conquérant",
       "cuivre": "Meď",
       "emeraude": "Smaragd",
       "foret": "Les",
@@ -2722,6 +2744,9 @@
       "bastion": "Bašta",
       "briques": "Tehly",
       "chevrons": "Krokvy",
+      "conquerant_ecus": "Štíty",
+      "conquerant_glaives": "Meče",
+      "conquerant_lauriers": "Vavríny",
       "couronne": "Koruna",
       "creneaux": "Cimburie",
       "croix": "Kríž",

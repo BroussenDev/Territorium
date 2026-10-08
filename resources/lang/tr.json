@@ -833,6 +833,25 @@
     "tresor_imperial": "İmparatorluk Hazinesi",
     "tresor_royal": "Kraliyet Hazinesi"
   },
+  "deluxe": {
+    "badge": "Başkomutan",
+    "badge_desc": "Deluxe sürümü “Conquérant” unvanı"
+  },
+  "deluxe_reward": {
+    "body": "Deluxe sürümünü seçtiğiniz için teşekkürler. Paketin tüm içeriği artık hesabınızda.",
+    "continue": "Devam",
+    "item_badge": "Adınızın yanında özel unvan",
+    "item_emblem": "Conquérant amblemi",
+    "item_emblem_detail": "Ulusunuz için özel bir bayrak",
+    "item_frame": "Conquérant çerçevesi",
+    "item_frame_detail": "Hareketli, sıralamalarda ve profilinizde",
+    "item_patterns": "3 özel bölge deseni",
+    "item_patterns_detail": "Kılıçlar, Kalkanlar ve Defneler, iki paletle",
+    "item_subscription": "1 ay Seigneur",
+    "item_subscription_detail": "Devam eden aboneliğinize eklenir",
+    "title": "Conquérant Paketi açıldı!",
+    "where": "Her şey Envanterinizde: unvanınızı adınızın yanındaki rozet düğmesiyle seçin."
+  },
   "desktop_gate": {
     "back_to_game": "Oyuna Geri Dön",
     "browser_fallback": "Tarayıcınız otomatik olarak açılamadı; yukarıdaki bağlantıyı kullanın.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Kraliyet Şevronu",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Kuzey Haçı",
     "echiquier": "Satranç tahtası",
     "etendard_emeraude": "Zümrüt Standardı",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Savaşlar",
     "clan_wars_tooltip": "Bu sezon kazanılan ve kaybedilen klan savaşları",
     "clans_tab": "Klanlar",
+    "conqueror_frame": "Deluxe sürümü “Conquérant”",
     "elo": "ELO",
     "error": "Skor tablosu yüklenirken hata oluştu",
     "games": "Oyunlar",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Kor",
+      "conquerant": "Conquérant",
       "cuivre": "Bakır",
       "emeraude": "Zümrüt",
       "foret": "Orman",
@@ -2722,6 +2744,9 @@
       "bastion": "Burç",
       "briques": "Tuğlalar",
       "chevrons": "Şeritler",
+      "conquerant_ecus": "Kalkanlar",
+      "conquerant_glaives": "Kılıçlar",
+      "conquerant_lauriers": "Defneler",
       "couronne": "Taç",
       "creneaux": "Mazgallar",
       "croix": "Haç",

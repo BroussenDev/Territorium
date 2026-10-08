@@ -12,6 +12,9 @@ import { PIONEER_SHAPES, pioneerBadge } from "./ui/PioneerBadge";
  * It waits for the Steam app's first-launch setup to close, so a new player
  * goes language, sound, keys, then this.
  */
+/** Fired on window when the Pionnier reward screen closes. */
+export const PIONEER_REWARD_DONE_EVENT = "pioneer-reward-done";
+
 @customElement("pioneer-reward")
 export class PioneerReward extends LitElement {
   @state() private pending = false;
@@ -61,6 +64,7 @@ export class PioneerReward extends LitElement {
   private close() {
     this.pending = false;
     void markPioneerSeen();
+    window.dispatchEvent(new Event(PIONEER_REWARD_DONE_EVENT));
   }
 
   render() {

@@ -833,6 +833,25 @@
     "tresor_imperial": "Carsko blago",
     "tresor_royal": "Kraljevsko blago"
   },
+  "deluxe": {
+    "badge": "Vrhovni komandant",
+    "badge_desc": "Titula izdanja Deluxe „Conquérant“"
+  },
+  "deluxe_reward": {
+    "body": "Hvala što ste odabrali izdanje Deluxe. Sav sadržaj paketa je sada na vašem nalogu.",
+    "continue": "Nastavi",
+    "item_badge": "Ekskluzivna titula pored vašeg imena",
+    "item_emblem": "Amblem Conquérant",
+    "item_emblem_detail": "Ekskluzivna zastava za vašu naciju",
+    "item_frame": "Okvir Conquérant",
+    "item_frame_detail": "Animiran, na rang-listama i profilu",
+    "item_patterns": "3 ekskluzivna uzorka teritorije",
+    "item_patterns_detail": "Mačevi, Štitovi i Lovori, u dvije palete",
+    "item_subscription": "1 mjesec Seigneur",
+    "item_subscription_detail": "Dodaje se aktivnoj pretplati",
+    "title": "Paket Conquérant otključan!",
+    "where": "Sve je u vašem inventaru: odaberite titulu dugmetom značke pored imena."
+  },
   "desktop_gate": {
     "back_to_game": "Nazad na igru",
     "browser_fallback": "Nije moguće automatski otvoriti pregledač – koristite gornji link.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Roial Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Sjeverni krst",
     "echiquier": "Šahovska tabla",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Ratovi",
     "clan_wars_tooltip": "Ratovi klanova su pobedili i izgubili ove sezone",
     "clans_tab": "Klanovi",
+    "conqueror_frame": "Izdanje Deluxe „Conquérant“",
     "elo": "ELO",
     "error": "Greška pri učitavanju rang-liste",
     "games": "Igre",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Žar",
+      "conquerant": "Conquérant",
       "cuivre": "Bakar",
       "emeraude": "Smaragd",
       "foret": "Šuma",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Cigle",
       "chevrons": "Ševroni",
+      "conquerant_ecus": "Štitovi",
+      "conquerant_glaives": "Mačevi",
+      "conquerant_lauriers": "Lovori",
       "couronne": "Kruna",
       "creneaux": "Zupci",
       "croix": "Krst",

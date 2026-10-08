@@ -833,6 +833,25 @@
     "tresor_imperial": "शाही ख़ज़ाना",
     "tresor_royal": "शाही ख़ज़ाना"
   },
+  "deluxe": {
+    "badge": "सर्वोच्च सेनापति",
+    "badge_desc": "Deluxe संस्करण “Conquérant” की उपाधि"
+  },
+  "deluxe_reward": {
+    "body": "Deluxe संस्करण चुनने के लिए धन्यवाद। पैक की सारी सामग्री अब आपके खाते में है।",
+    "continue": "जारी रखें",
+    "item_badge": "आपके नाम के पास विशेष उपाधि",
+    "item_emblem": "Conquérant प्रतीक",
+    "item_emblem_detail": "आपके राष्ट्र के लिए एक विशेष झंडा",
+    "item_frame": "Conquérant फ़्रेम",
+    "item_frame_detail": "एनिमेटेड, लीडरबोर्ड और आपकी प्रोफ़ाइल पर",
+    "item_patterns": "3 विशेष क्षेत्र पैटर्न",
+    "item_patterns_detail": "तलवारें, ढालें और लॉरेल, दो पैलेट में",
+    "item_subscription": "Seigneur का 1 महीना",
+    "item_subscription_detail": "चल रही सदस्यता में जुड़ जाता है",
+    "title": "Conquérant पैक अनलॉक हुआ!",
+    "where": "सब कुछ आपकी इन्वेंटरी में है: नाम के पास बैज बटन से अपनी उपाधि चुनें।"
+  },
   "desktop_gate": {
     "back_to_game": "खेल में वापस",
     "browser_fallback": "आपका ब्राउज़र स्वचालित रूप से नहीं खुल सका - ऊपर दिए गए लिंक का उपयोग करें।",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "रॉयल शेवरॉन",
+    "conquerant": "Conquérant",
     "croix_du_nord": "उत्तरी क्रॉस",
     "echiquier": "बिसात",
     "etendard_emeraude": "पन्ना मानक",
@@ -1746,6 +1766,7 @@
     "clan_wars": "युद्धों",
     "clan_wars_tooltip": "इस सीज़न में कबीले युद्ध जीते और हारे",
     "clans_tab": "कुलों",
+    "conqueror_frame": "Deluxe संस्करण “Conquérant”",
     "elo": "ईएलओ",
     "error": "लीडरबोर्ड लोड करने में त्रुटि",
     "games": "खेल",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "अंगारा",
+      "conquerant": "Conquérant",
       "cuivre": "तांबा",
       "emeraude": "पन्ना",
       "foret": "जंगल",
@@ -2722,6 +2744,9 @@
       "bastion": "बुर्ज",
       "briques": "ईंटें",
       "chevrons": "शेवरॉन",
+      "conquerant_ecus": "ढालें",
+      "conquerant_glaives": "तलवारें",
+      "conquerant_lauriers": "लॉरेल",
       "couronne": "मुकुट",
       "creneaux": "कंगूरे",
       "croix": "क्रॉस",

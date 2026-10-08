@@ -833,6 +833,25 @@
     "tresor_imperial": "Comoară imperială",
     "tresor_royal": "Comoară regală"
   },
+  "deluxe": {
+    "badge": "Comandant Suprem",
+    "badge_desc": "Titlul ediției Deluxe „Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Mulțumim că ai ales ediția Deluxe. Tot conținutul pachetului este acum în contul tău.",
+    "continue": "Continuă",
+    "item_badge": "Titlu exclusiv, lângă numele tău",
+    "item_emblem": "Emblema Conquérant",
+    "item_emblem_detail": "Un steag exclusiv pentru națiunea ta",
+    "item_frame": "Ramă Conquérant",
+    "item_frame_detail": "Animată, în clasamente și pe profil",
+    "item_patterns": "3 modele de teritoriu exclusive",
+    "item_patterns_detail": "Săbii, Scuturi și Lauri, în două palete",
+    "item_subscription": "1 lună Seigneur",
+    "item_subscription_detail": "Se adaugă la abonamentul activ",
+    "title": "Pachetul Conquérant deblocat!",
+    "where": "Totul este în Inventarul tău: alege titlul cu butonul de insignă de lângă nume."
+  },
   "desktop_gate": {
     "back_to_game": "Înapoi la joc",
     "browser_fallback": "Nu s-a putut deschide automat browser-ul tău — folosește link-ul de mai sus.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Chevron regal",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Crucea Nordului",
     "echiquier": "Tablă de şah",
     "etendard_emeraude": "Standard Smarald",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Războaie",
     "clan_wars_tooltip": "Războaiele dintre clanuri au câștigat și au pierdut în acest sezon",
     "clans_tab": "Clanuri",
+    "conqueror_frame": "Ediția Deluxe „Conquérant”",
     "elo": "ELO",
     "error": "Eroare la încărcarea clasamentului",
     "games": "Jocuri",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Jar",
+      "conquerant": "Conquérant",
       "cuivre": "Cupru",
       "emeraude": "Smarald",
       "foret": "Pădure",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Cărămizi",
       "chevrons": "Căpriori",
+      "conquerant_ecus": "Scuturi",
+      "conquerant_glaives": "Săbii",
+      "conquerant_lauriers": "Lauri",
       "couronne": "Coroană",
       "creneaux": "Creneluri",
       "croix": "Cruce",

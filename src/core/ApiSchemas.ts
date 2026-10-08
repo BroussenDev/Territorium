@@ -183,6 +183,13 @@ export const UserMeResponseSchema = z.object({
     .optional(),
   // Moderation warnings the player has not acknowledged yet; the game shows
   // each one until they confirm they read it. Absent on an older API.
+  // The Deluxe edition (Pack Conquérant): since when the account has it, and
+  // whether the game has shown its reward screen. Null without it; absent on
+  // an older API.
+  deluxe: z
+    .object({ since: z.iso.datetime(), seen: z.boolean() })
+    .nullable()
+    .optional(),
   // The "Pionnier" badge: since when the player has it, and whether the
   // game has shown its reward screen. Null without the badge; absent on an
   // older API.
@@ -684,6 +691,8 @@ export const SoloLeaderboardEntrySchema = z.object({
   goldFrame: z.boolean().optional(),
   // The badge the player shows (core/Badges.ts id), when any.
   badge: z.string().max(32).optional(),
+  // Owns the Deluxe edition: the Conquérant frame and animated banner.
+  conquerant: z.boolean().optional(),
 });
 export type SoloLeaderboardEntry = z.infer<typeof SoloLeaderboardEntrySchema>;
 
@@ -776,6 +785,8 @@ export const RankedFfaLeaderboardEntrySchema = z.object({
   goldFrame: z.boolean().optional(),
   // The badge the player shows (core/Badges.ts id), when any.
   badge: z.string().max(32).optional(),
+  // Owns the Deluxe edition: the Conquérant frame and animated banner.
+  conquerant: z.boolean().optional(),
 });
 export type RankedFfaLeaderboardEntry = z.infer<
   typeof RankedFfaLeaderboardEntrySchema
@@ -1031,6 +1042,8 @@ export const PlayerProfileSchema = z.object({
   goldFrame: z.boolean().optional(),
   // The badge the player shows (core/Badges.ts id), when any.
   badge: z.string().max(32).optional(),
+  // Owns the Deluxe edition: the Conquérant frame and animated banner.
+  conquerant: z.boolean().optional(),
   // The countries this player played in Nations games (countries.json
   // index), most played first. Optional for an API without the field.
   nations: z
@@ -1115,6 +1128,8 @@ export const PlayerLeaderboardEntrySchema = z.object({
   goldFrame: z.boolean().optional(),
   // The badge the player shows (core/Badges.ts id), when any.
   badge: z.string().max(32).optional(),
+  // Owns the Deluxe edition: the Conquérant frame and animated banner.
+  conquerant: z.boolean().optional(),
 });
 export type PlayerLeaderboardEntry = z.infer<
   typeof PlayerLeaderboardEntrySchema
@@ -1142,6 +1157,8 @@ export const RankedLeaderboardEntrySchema = z.object({
   goldFrame: z.boolean().optional(),
   // The badge the player shows (core/Badges.ts id), when any.
   badge: z.string().max(32).optional(),
+  // Owns the Deluxe edition: the Conquérant frame and animated banner.
+  conquerant: z.boolean().optional(),
 });
 export type RankedLeaderboardEntry = z.infer<
   typeof RankedLeaderboardEntrySchema

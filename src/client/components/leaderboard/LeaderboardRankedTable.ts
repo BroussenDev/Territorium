@@ -172,6 +172,7 @@ export class LeaderboardRankedTable extends LitElement {
                           .onNameClick=${() =>
                             this.openProfile(player.publicId)}
                         ></player-name>`,
+                        player.conquerant,
                       )}
                       ${badgeIcon(
                         player.badge,

@@ -833,6 +833,25 @@
     "tresor_imperial": "Cesarski skarb",
     "tresor_royal": "Królewski skarb"
   },
+  "deluxe": {
+    "badge": "Naczelny Dowódca",
+    "badge_desc": "Tytuł edycji Deluxe „Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Dziękujemy za wybór edycji Deluxe. Cała zawartość pakietu jest już na Twoim koncie.",
+    "continue": "Dalej",
+    "item_badge": "Ekskluzywny tytuł obok Twojej nazwy",
+    "item_emblem": "Godło Conquérant",
+    "item_emblem_detail": "Ekskluzywna flaga dla Twojego narodu",
+    "item_frame": "Ramka Conquérant",
+    "item_frame_detail": "Animowana, w rankingach i na profilu",
+    "item_patterns": "3 ekskluzywne wzory terytorium",
+    "item_patterns_detail": "Miecze, Tarcze i Laury, w dwóch paletach",
+    "item_subscription": "1 miesiąc Seigneur",
+    "item_subscription_detail": "Dodany do aktywnej subskrypcji",
+    "title": "Pack Conquérant odblokowany!",
+    "where": "Wszystko jest w Twoim Ekwipunku: wybierz tytuł przyciskiem odznaki obok swojej nazwy."
+  },
   "desktop_gate": {
     "back_to_game": "Powrót do gry",
     "browser_fallback": "Nie można automatycznie otworzyć przeglądarki — użyj linku powyżej.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Królewski szewron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Krzyż Północy",
     "echiquier": "Szachownica",
     "etendard_emeraude": "Szmaragdowy standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Wojny",
     "clan_wars_tooltip": "Wojny klanów wygrały i przegrały w tym sezonie",
     "clans_tab": "Klany",
+    "conqueror_frame": "Edycja Deluxe „Conquérant”",
     "elo": "ELO",
     "error": "Błąd podczas ładowania tabeli liderów",
     "games": "Zawody sportowe",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Żar",
+      "conquerant": "Conquérant",
       "cuivre": "Miedź",
       "emeraude": "Szmaragd",
       "foret": "Las",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Cegły",
       "chevrons": "Szewrony",
+      "conquerant_ecus": "Tarcze",
+      "conquerant_glaives": "Miecze",
+      "conquerant_lauriers": "Laury",
       "couronne": "Korona",
       "creneaux": "Blanki",
       "croix": "Krzyż",

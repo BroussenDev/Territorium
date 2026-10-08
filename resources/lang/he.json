@@ -833,6 +833,25 @@
     "tresor_imperial": "אוצר קיסרי",
     "tresor_royal": "אוצר מלכותי"
   },
+  "deluxe": {
+    "badge": "מפקד עליון",
+    "badge_desc": "התואר של מהדורת Deluxe ‏„Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "תודה שבחרתם במהדורת Deluxe. כל תוכן החבילה נמצא עכשיו בחשבון שלכם.",
+    "continue": "המשך",
+    "item_badge": "תואר בלעדי ליד השם שלכם",
+    "item_emblem": "סמל Conquérant",
+    "item_emblem_detail": "דגל בלעדי לאומה שלכם",
+    "item_frame": "מסגרת Conquérant",
+    "item_frame_detail": "מונפשת, בטבלאות הדירוג ובפרופיל",
+    "item_patterns": "3 דוגמאות שטח בלעדיות",
+    "item_patterns_detail": "חרבות, מגינים ועלי דפנה, בשתי פלטות",
+    "item_subscription": "חודש אחד של Seigneur",
+    "item_subscription_detail": "מתווסף למנוי הפעיל שלכם",
+    "title": "חבילת Conquérant נפתחה!",
+    "where": "הכול במלאי שלכם: בחרו תואר בכפתור התג שליד השם."
+  },
   "desktop_gate": {
     "back_to_game": "חזרה למשחק",
     "browser_fallback": "לא ניתן היה לפתוח את הדפדפן שלך באופן אוטומטי - השתמש בקישור למעלה.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "רויאל שברון",
+    "conquerant": "Conquérant",
     "croix_du_nord": "צלב הצפון",
     "echiquier": "לוח שחמט",
     "etendard_emeraude": "תקן אמרלד",
@@ -1746,6 +1766,7 @@
     "clan_wars": "מלחמות",
     "clan_wars_tooltip": "מלחמות שבט ניצחו והפסידו העונה",
     "clans_tab": "שבטים",
+    "conqueror_frame": "מהדורת Deluxe ‏„Conquérant”",
     "elo": "ELO",
     "error": "שגיאה בטעינת Leaderboard",
     "games": "משחקים",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "גחלים",
+      "conquerant": "Conquérant",
       "cuivre": "נחושת",
       "emeraude": "אזמרגד",
       "foret": "יער",
@@ -2722,6 +2744,9 @@
       "bastion": "בסטיון",
       "briques": "לבנים",
       "chevrons": "שברונים",
+      "conquerant_ecus": "מגינים",
+      "conquerant_glaives": "חרבות",
+      "conquerant_lauriers": "עלי דפנה",
       "couronne": "כתר",
       "creneaux": "חומה משוננת",
       "croix": "צלב",

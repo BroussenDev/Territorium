@@ -157,6 +157,7 @@ import {
 } from "./Utils";
 import { isReplayShellHost } from "./VersionedReplay";
 import "./components/BannedModal";
+import "./components/DeluxeReward";
 import "./components/DesktopStatusBar";
 import "./components/MarketingConsentToast";
 import "./components/PioneerReward";

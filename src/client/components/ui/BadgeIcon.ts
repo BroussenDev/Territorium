@@ -1,6 +1,7 @@
 import { TemplateResult } from "lit";
 import { BadgeId, isBadgeId } from "../../../core/Badges";
 import { translateText } from "../../Utils";
+import { highCommanderBadge } from "./HighCommanderBadge";
 import { pioneerBadge } from "./PioneerBadge";
 
 // How each badge (core/Badges.ts) is drawn and named.
@@ -9,10 +10,12 @@ const ICONS: Record<
   (sizeClass: string, label?: string | null) => TemplateResult
 > = {
   pionnier: pioneerBadge,
+  haut_commandant: highCommanderBadge,
 };
 
 const NAMES: Record<BadgeId, { name: string; description: string }> = {
   pionnier: { name: "pioneer.badge", description: "pioneer.badge_desc" },
+  haut_commandant: { name: "deluxe.badge", description: "deluxe.badge_desc" },
 };
 
 /** The badge's icon, or null for an id this client does not know. */

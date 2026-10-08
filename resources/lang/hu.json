@@ -833,6 +833,25 @@
     "tresor_imperial": "Császári kincs",
     "tresor_royal": "Királyi kincs"
   },
+  "deluxe": {
+    "badge": "Főparancsnok",
+    "badge_desc": "A „Conquérant” Deluxe kiadás címe"
+  },
+  "deluxe_reward": {
+    "body": "Köszönjük, hogy a Deluxe kiadást választottad. A csomag teljes tartalma már a fiókodon van.",
+    "continue": "Tovább",
+    "item_badge": "Exkluzív cím a neved mellett",
+    "item_emblem": "Conquérant címer",
+    "item_emblem_detail": "Exkluzív zászló a nemzetednek",
+    "item_frame": "Conquérant keret",
+    "item_frame_detail": "Animált, a ranglistákon és a profilodon",
+    "item_patterns": "3 exkluzív területminta",
+    "item_patterns_detail": "Pengék, Pajzsok és Babérok, két palettával",
+    "item_subscription": "1 hónap Seigneur",
+    "item_subscription_detail": "Hozzáadódik a futó előfizetésedhez",
+    "title": "Conquérant csomag feloldva!",
+    "where": "Minden a leltáradban van: a címet a neved melletti jelvény gombbal választhatod."
+  },
   "desktop_gate": {
     "back_to_game": "Vissza a játékhoz",
     "browser_fallback": "Nem sikerült automatikusan megnyitni a böngészőt – használja a fenti hivatkozást.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Északi kereszt",
     "echiquier": "Sakktábla",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Háborúk",
     "clan_wars_tooltip": "A klánháborúk nyertek és veszítettek ebben a szezonban",
     "clans_tab": "Klánok",
+    "conqueror_frame": "„Conquérant” Deluxe kiadás",
     "elo": "ELO",
     "error": "A toplista betöltése sikertelen",
     "games": "Játék",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Parázs",
+      "conquerant": "Conquérant",
       "cuivre": "Réz",
       "emeraude": "Smaragd",
       "foret": "Erdő",
@@ -2722,6 +2744,9 @@
       "bastion": "Bástya",
       "briques": "Téglák",
       "chevrons": "Szarufák",
+      "conquerant_ecus": "Pajzsok",
+      "conquerant_glaives": "Pengék",
+      "conquerant_lauriers": "Babérok",
       "couronne": "Korona",
       "creneaux": "Pártázat",
       "croix": "Kereszt",

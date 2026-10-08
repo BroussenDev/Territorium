@@ -833,6 +833,25 @@
     "tresor_imperial": "Imperia trezoro",
     "tresor_royal": "Reĝa trezoro"
   },
+  "deluxe": {
+    "badge": "Ĉefkomandanto",
+    "badge_desc": "Titolo de la eldono Deluxe „Conquérant“"
+  },
+  "deluxe_reward": {
+    "body": "Dankon pro elekto de la eldono Deluxe. La tuta enhavo de la pako nun estas en via konto.",
+    "continue": "Daŭrigi",
+    "item_badge": "Ekskluziva titolo apud via nomo",
+    "item_emblem": "Emblemo Conquérant",
+    "item_emblem_detail": "Ekskluziva flago por via nacio",
+    "item_frame": "Kadro Conquérant",
+    "item_frame_detail": "Animaciita, en la rangolistoj kaj via profilo",
+    "item_patterns": "3 ekskluzivaj teritoriaj ŝablonoj",
+    "item_patterns_detail": "Glavoj, Ŝildoj kaj Laŭroj, en du paletroj",
+    "item_subscription": "1 monato da Seigneur",
+    "item_subscription_detail": "Aldoniĝas al via aktiva abono",
+    "title": "Pako Conquérant malŝlosita!",
+    "where": "Ĉio estas en via Inventaro: elektu titolon per la insigna butono apud via nomo."
+  },
   "desktop_gate": {
     "back_to_game": "Reen al Ludo",
     "browser_fallback": "Ne eblis malfermi vian retumilon aŭtomate — uzu la supran ligilon.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Reĝa Ĉevrono",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Norda Kruco",
     "echiquier": "Ŝaktabulo",
     "etendard_emeraude": "Smeralda Normo",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Militoj",
     "clan_wars_tooltip": "Klanmilitoj venkis kaj perdis ĉi tiun sezonon",
     "clans_tab": "Klanoj",
+    "conqueror_frame": "Eldono Deluxe „Conquérant“",
     "elo": "ELO",
     "error": "Eraro ŝargante ĉampionejon",
     "games": "Ludoj",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Ardaĵo",
+      "conquerant": "Conquérant",
       "cuivre": "Kupro",
       "emeraude": "Smeraldo",
       "foret": "Arbaro",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastiono",
       "briques": "Brikoj",
       "chevrons": "Ŝevronoj",
+      "conquerant_ecus": "Ŝildoj",
+      "conquerant_glaives": "Glavoj",
+      "conquerant_lauriers": "Laŭroj",
       "couronne": "Krono",
       "creneaux": "Krenelaro",
       "croix": "Kruco",

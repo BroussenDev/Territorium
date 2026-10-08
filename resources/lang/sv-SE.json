@@ -833,6 +833,25 @@
     "tresor_imperial": "Kejserlig skatt",
     "tresor_royal": "Kunglig skatt"
   },
+  "deluxe": {
+    "badge": "Överbefälhavare",
+    "badge_desc": "Titel för Deluxe-utgåvan ”Conquérant”"
+  },
+  "deluxe_reward": {
+    "body": "Tack för att du valde Deluxe-utgåvan. Hela paketets innehåll finns nu på ditt konto.",
+    "continue": "Fortsätt",
+    "item_badge": "Exklusiv titel bredvid ditt namn",
+    "item_emblem": "Conquérant-emblem",
+    "item_emblem_detail": "En exklusiv flagga för din nation",
+    "item_frame": "Conquérant-ram",
+    "item_frame_detail": "Animerad, på topplistorna och din profil",
+    "item_patterns": "3 exklusiva territoriemönster",
+    "item_patterns_detail": "Svärd, Sköldar och Lagrar, i två paletter",
+    "item_subscription": "1 månad Seigneur",
+    "item_subscription_detail": "Läggs till ditt pågående abonnemang",
+    "title": "Paketet Conquérant upplåst!",
+    "where": "Allt finns i ditt förråd: välj titel med märkesknappen bredvid ditt namn."
+  },
   "desktop_gate": {
     "back_to_game": "Tillbaka till spelet",
     "browser_fallback": "Det gick inte att öppna din webbläsare automatiskt – använd länken ovan.",
@@ -1145,6 +1164,7 @@
   },
   "flags": {
     "chevron_royal": "Royal Chevron",
+    "conquerant": "Conquérant",
     "croix_du_nord": "Nordkorset",
     "echiquier": "Schackbräde",
     "etendard_emeraude": "Emerald Standard",
@@ -1746,6 +1766,7 @@
     "clan_wars": "Krig",
     "clan_wars_tooltip": "Klankrig vann och förlorade den här säsongen",
     "clans_tab": "Klaner",
+    "conqueror_frame": "Deluxe-utgåvan ”Conquérant”",
     "elo": "ELO",
     "error": "Det gick inte att läsa in leaderboard",
     "games": "Spel",
@@ -2706,6 +2727,7 @@
   "territory_patterns": {
     "color_palette": {
       "braise": "Glöd",
+      "conquerant": "Conquérant",
       "cuivre": "Koppar",
       "emeraude": "Smaragd",
       "foret": "Skog",
@@ -2722,6 +2744,9 @@
       "bastion": "Bastion",
       "briques": "Tegel",
       "chevrons": "Sparrar",
+      "conquerant_ecus": "Sköldar",
+      "conquerant_glaives": "Svärd",
+      "conquerant_lauriers": "Lagrar",
       "couronne": "Krona",
       "creneaux": "Tinnar",
       "croix": "Kors",
