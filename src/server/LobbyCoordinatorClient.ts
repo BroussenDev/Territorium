@@ -381,6 +381,7 @@ export class LobbyCoordinatorClient {
           hosted: [],
           nations: [],
           conquest: [],
+          survival: [],
           "1v1": [],
           "2v2": [],
           "3v3": [],

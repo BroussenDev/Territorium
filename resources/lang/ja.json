@@ -1282,6 +1282,12 @@
     "nations_waiting": "次の試合はもうすぐです",
     "players": "{count}/{max} プレイヤー",
     "subtitle": "独自のルールを持つマルチプレイヤー ゲーム",
+    "survival_description": "全プレイヤーが同じ陣営で、波ごとに増えていくAI侵略者の襲来に立ち向かいます。最後の波まで力を合わせて耐え抜きましょう。",
+    "survival_fact_fair": "侵略者はあなたと同じルールで戦います",
+    "survival_fact_waves": "全10波、2:30ごとに新たな波",
+    "survival_fact_win": "最後の波を全滅させれば勝利",
+    "survival_join": "防衛に参加",
+    "survival_title": "サバイバル",
     "title": "ゲームモード",
     "versus_description": "2チームがトーナメントマップで対決。ルールは全員共通です。",
     "versus_open": "形式を選ぶ",
@@ -1490,6 +1496,10 @@
     "random_spawn": "ランダムスポーンが有効です。スタート地点を設定しています…",
     "random_spawn_spectator": "ランダムスポーンが有効です",
     "singleplayer_game_paused": "ゲームを一時停止",
+    "survival_first_wave": "準備せよ：第一波が来る",
+    "survival_last_wave": "最終波：残る侵略者は{count}人",
+    "survival_next_wave": "次の波まで{time}：侵略者{count}人",
+    "survival_wave": "第{wave}波 / 全{total}波",
     "versus_spawn": "チームのゾーン内で開始地点を選んでください"
   },
   "help_modal": {

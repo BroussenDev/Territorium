@@ -1282,6 +1282,12 @@
     "nations_waiting": "Naslednja igra kmalu",
     "players": "{count}/{max} igralcev",
     "subtitle": "Igre za več igralcev s svojimi pravili",
+    "survival_description": "Vsi igralci na isti strani proti valovom osvajalcev z UI, ki so z vsakim valom večji. Zdržite skupaj do zadnjega.",
+    "survival_fact_fair": "Osvajalci igrajo po enakih pravilih kot vi",
+    "survival_fact_waves": "10 valov, nov vsakih 2:30",
+    "survival_fact_win": "Uničite zadnji val za zmago",
+    "survival_join": "Pridruži se obrambi",
+    "survival_title": "Preživetje",
     "title": "Načini igre",
     "versus_description": "Dve ekipi se pomerita na turnirskem zemljevidu, z enakimi pravili za vse.",
     "versus_open": "Izberi format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Naključno drstenje je omogočeno. Izbira začetne lokacije za vas ...",
     "random_spawn_spectator": "Naključno drstenje je omogočeno",
     "singleplayer_game_paused": "Igra zaustavljena",
+    "survival_first_wave": "Pripravite se: prihaja prvi val",
+    "survival_last_wave": "Zadnji val: še {count} osvajalcev za uničiti",
+    "survival_next_wave": "Naslednji val čez {time}: {count} osvajalcev",
+    "survival_wave": "Val {wave} od {total}",
     "versus_spawn": "Izberi začetno mesto v coni svoje ekipe"
   },
   "help_modal": {

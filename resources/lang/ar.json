@@ -1282,6 +1282,12 @@
     "nations_waiting": "اللعبة القادمة قريبا",
     "players": "{count}/{max} اللاعبين",
     "subtitle": "ألعاب متعددة اللاعبين لها قواعد خاصة بها",
+    "survival_description": "جميع اللاعبين في صف واحد ضد موجات من الغزاة بالذكاء الاصطناعي، تكبر مع كل موجة. اصمدوا معًا حتى الأخيرة.",
+    "survival_fact_fair": "يلعب الغزاة بالقواعد نفسها التي تلعب بها",
+    "survival_fact_waves": "10 موجات، موجة جديدة كل 2:30",
+    "survival_fact_win": "اقضِ على الموجة الأخيرة لتفوز",
+    "survival_join": "انضم إلى الدفاع",
+    "survival_title": "البقاء",
     "title": "أوضاع اللعبة",
     "versus_description": "فريقان يتواجهان على خريطة بطولة، بالقواعد نفسها للجميع.",
     "versus_open": "اختر صيغة",
@@ -1490,6 +1496,10 @@
     "random_spawn": "تم تمكين النشر العشوائي. تحديد موقع البداية لك...",
     "random_spawn_spectator": "تم تمكين النشر العشوائي",
     "singleplayer_game_paused": "تم إيقاف اللعبة مؤقتًا",
+    "survival_first_wave": "استعدوا: الموجة الأولى قادمة",
+    "survival_last_wave": "الموجة الأخيرة: بقي {count} غزاة للقضاء عليهم",
+    "survival_next_wave": "الموجة التالية بعد {time}: {count} غزاة",
+    "survival_wave": "الموجة {wave} من {total}",
     "versus_spawn": "اختر نقطة بداية في منطقة فريقك"
   },
   "help_modal": {

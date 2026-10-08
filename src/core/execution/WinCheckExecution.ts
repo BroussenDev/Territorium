@@ -9,6 +9,7 @@ import {
   RankedType,
   Team,
 } from "../game/Game";
+import { SURVIVAL_WAVES, survivalWaveState } from "../game/Survival";
 
 export class WinEvent implements GameEvent {
   constructor(public readonly winner: Player) {}
@@ -147,6 +148,11 @@ export class WinCheckExecution implements Execution {
   checkWinnerTeam(): void {
     if (this.mg === null) throw new Error("Not initialized");
 
+    if (this.mg.config().isSurvivalMode()) {
+      this.checkWinnerSurvival();
+      return;
+    }
+
     if (
       this.mg.config().gameConfig().rankedType === RankedType.TwoVTwo ||
       this.mg.config().isVersusMode()
@@ -193,6 +199,30 @@ export class WinCheckExecution implements Execution {
       if (max[0] === ColoredTeams.Bot) return;
       this.mg.setWinner(max[0], this.mg.stats().stats());
       console.log(`${max[0]} has won the game`);
+      this.active = false;
+    }
+  }
+
+  // Survival (Survival.ts): the invaders win once no defender is left;
+  // the defenders win once the last wave has landed and every invader is
+  // gone. Land share decides nothing.
+  private checkWinnerSurvival(): void {
+    if (this.mg === null) throw new Error("Not initialized");
+    const alive = this.mg.players();
+    const defenders = alive.some(
+      (p) => p.type() === PlayerType.Human && !p.isDisconnected(),
+    );
+    if (!defenders) {
+      this.mg.setWinner(ColoredTeams.Nations, this.mg.stats().stats());
+      this.active = false;
+      return;
+    }
+    const lastWaveLanded =
+      survivalWaveState(Math.round(this.mg.elapsedGameSeconds() * 10)).wave >=
+      SURVIVAL_WAVES;
+    const invaders = alive.some((p) => p.team() === ColoredTeams.Nations);
+    if (lastWaveLanded && !invaders) {
+      this.mg.setWinner(ColoredTeams.Humans, this.mg.stats().stats());
       this.active = false;
     }
   }

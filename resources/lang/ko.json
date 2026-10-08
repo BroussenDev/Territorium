@@ -1282,6 +1282,12 @@
     "nations_waiting": "다음 게임이 곧 출시됩니다",
     "players": "{count}/{max} 플레이어",
     "subtitle": "자신만의 규칙이 있는 멀티플레이어 게임",
+    "survival_description": "모든 플레이어가 한편이 되어 웨이브마다 늘어나는 AI 침략자에 맞섭니다. 마지막 웨이브까지 함께 버티세요.",
+    "survival_fact_fair": "침략자도 당신과 같은 규칙으로 싸웁니다",
+    "survival_fact_waves": "총 10웨이브, 2:30마다 새 웨이브",
+    "survival_fact_win": "마지막 웨이브를 섬멸하면 승리",
+    "survival_join": "방어에 참여",
+    "survival_title": "생존",
     "title": "게임 모드",
     "versus_description": "두 팀이 모두에게 같은 규칙으로 토너먼트 맵에서 맞붙습니다.",
     "versus_open": "형식 선택",
@@ -1490,6 +1496,10 @@
     "random_spawn": "무작위 시작이 활성화되었습니다. 시작 위치를 선택하는 중...",
     "random_spawn_spectator": "랜덤 스폰이 활성화되었습니다",
     "singleplayer_game_paused": "게임 일시 중지됨",
+    "survival_first_wave": "준비하세요: 첫 웨이브가 옵니다",
+    "survival_last_wave": "마지막 웨이브: 남은 침략자 {count}명",
+    "survival_next_wave": "다음 웨이브까지 {time}: 침략자 {count}명",
+    "survival_wave": "웨이브 {wave}/{total}",
     "versus_spawn": "팀 구역 안에서 시작 위치를 고르세요"
   },
   "help_modal": {

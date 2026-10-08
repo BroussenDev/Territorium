@@ -1282,6 +1282,12 @@
     "nations_waiting": "بازی بعدی به زودی",
     "players": "بازیکنان {count}/{max}",
     "subtitle": "بازی های چند نفره با قوانین خاص خود",
+    "survival_description": "همهٔ بازیکنان در یک جبهه در برابر موج‌های مهاجمان هوش مصنوعی که با هر موج بزرگ‌تر می‌شوند. تا آخرین موج با هم مقاومت کنید.",
+    "survival_fact_fair": "مهاجمان با همان قوانین شما بازی می‌کنند",
+    "survival_fact_waves": "۱۰ موج، هر ۲:۳۰ یک موج تازه",
+    "survival_fact_win": "برای پیروزی آخرین موج را نابود کنید",
+    "survival_join": "پیوستن به دفاع",
+    "survival_title": "بقا",
     "title": "حالت های بازی",
     "versus_description": "دو تیم با قوانین یکسان برای همه، روی یک نقشهٔ مسابقه رودررو می‌شوند.",
     "versus_open": "انتخاب قالب",
@@ -1490,6 +1496,10 @@
     "random_spawn": "تخم ریزی تصادفی فعال است. در حال انتخاب مکان شروع برای شما...",
     "random_spawn_spectator": "اسپاون تصادفی فعال است",
     "singleplayer_game_paused": "بازی متوقف شد",
+    "survival_first_wave": "آماده شوید: نخستین موج می‌رسد",
+    "survival_last_wave": "آخرین موج: {count} مهاجم برای نابودی مانده",
+    "survival_next_wave": "موج بعدی تا {time}: {count} مهاجم",
+    "survival_wave": "موج {wave} از {total}",
     "versus_spawn": "یک نقطهٔ شروع در منطقهٔ تیم خود انتخاب کنید"
   },
   "help_modal": {

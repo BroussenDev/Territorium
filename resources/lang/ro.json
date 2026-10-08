@@ -1282,6 +1282,12 @@
     "nations_waiting": "Următorul joc vine în curând",
     "players": "{count}/{max} jucători",
     "subtitle": "Jocuri multiplayer cu reguli proprii",
+    "survival_description": "Toți jucătorii de aceeași parte împotriva valurilor de invadatori IA, tot mai mari cu fiecare val. Rezistați împreună până la ultimul.",
+    "survival_fact_fair": "Invadatorii joacă după aceleași reguli ca tine",
+    "survival_fact_waves": "10 valuri, unul nou la fiecare 2:30",
+    "survival_fact_win": "Elimină ultimul val pentru a câștiga",
+    "survival_join": "Alătură-te apărării",
+    "survival_title": "Supraviețuire",
     "title": "Moduri de joc",
     "versus_description": "Două echipe se înfruntă pe o hartă de turneu, cu aceleași reguli pentru toți.",
     "versus_open": "Alege un format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Apariția aleatorie este activată. Se selectează locația de pornire...",
     "random_spawn_spectator": "Programarea aleatorie este activată",
     "singleplayer_game_paused": "Joc întrerupt",
+    "survival_first_wave": "Pregătiți-vă: vine primul val",
+    "survival_last_wave": "Ultimul val: mai sunt {count} invadatori de eliminat",
+    "survival_next_wave": "Următorul val în {time}: {count} invadatori",
+    "survival_wave": "Valul {wave} din {total}",
     "versus_spawn": "Alege un punct de start în zona echipei tale"
   },
   "help_modal": {

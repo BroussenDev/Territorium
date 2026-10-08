@@ -6,6 +6,7 @@ import { NationsModeExecution } from "./execution/NationsModeExecution";
 import { ObjectiveExecution } from "./execution/ObjectiveExecution";
 import { RecomputeRailClusterExecution } from "./execution/RecomputeRailClusterExecution";
 import { SpawnTimerExecution } from "./execution/SpawnTimerExecution";
+import { SurvivalExecution } from "./execution/SurvivalExecution";
 import { WinCheckExecution } from "./execution/WinCheckExecution";
 import {
   AllPlayers,
@@ -124,6 +125,11 @@ export async function createGameRunner(
   gr.init();
   if (config.objectives()) {
     game.addExecution(new ObjectiveExecution(simpleHash(seed)));
+  }
+  if (config.isSurvivalMode()) {
+    game.addExecution(
+      new SurvivalExecution(gameStart.gameID, simpleHash(seed)),
+    );
   }
   return gr;
 }

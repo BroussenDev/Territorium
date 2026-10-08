@@ -1,7 +1,13 @@
 import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { assetUrl } from "../../../core/AssetUrls";
-import { GameMode, GameType, RankedType } from "../../../core/game/Game";
+import {
+  ColoredTeams,
+  GameMode,
+  GameType,
+  PlayerType,
+  RankedType,
+} from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
 import {
   CAPITAL_SHIELD_RADIUS,
@@ -13,6 +19,11 @@ import {
   conquestMajority,
   conquestSecondsLeft,
 } from "../../../core/game/Objectives";
+import {
+  SURVIVAL_WAVES,
+  survivalWaveSize,
+  survivalWaveState,
+} from "../../../core/game/Survival";
 import { friendFoeColors } from "../../ColorblindPalette";
 import { Controller } from "../../Controller";
 import { translateText } from "../../Utils";
@@ -172,7 +183,10 @@ export class HeadsUpMessage extends LitElement implements Controller {
     this.capitalShieldLeft = this.game.inSpawnPhase()
       ? 0
       : Math.ceil(capitalShieldSecondsLeft(this.game));
-    if (this.game.config().isConquestMode()) {
+    if (
+      this.game.config().isConquestMode() ||
+      this.game.config().isSurvivalMode()
+    ) {
       this.conquestTick = this.game.ticks();
     }
 
@@ -290,6 +304,7 @@ export class HeadsUpMessage extends LitElement implements Controller {
             `
           : null}
         ${this.conquestTick >= 0 ? renderConquest(this.game) : null}
+        ${this.conquestTick >= 0 ? renderSurvival(this.game) : null}
         ${this.capitalShieldLeft > 0 && this.capitalLostWait === null
           ? html`
               <div
@@ -429,6 +444,70 @@ function renderConquest(game: GameView | undefined) {
                   time: formatWait(left),
                 })}</span
               >`}
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Survival banner: ten tiles for the ten waves (red once landed), the wave
+ * the defenders are facing, and when the next one lands or, after the last,
+ * how many invaders are left to wipe out.
+ */
+function renderSurvival(game: GameView | undefined) {
+  if (game === undefined || !game.config().isSurvivalMode()) return null;
+  if (game.inSpawnPhase() || game.gameOver()) return null;
+  const sinceStart = Math.floor(game.elapsedGameSeconds() * 10);
+  const { wave, nextWaveTick } = survivalWaveState(sinceStart);
+  const invaders = game
+    .players()
+    .filter((p) => p.isAlive() && p.team() === ColoredTeams.Nations).length;
+  const defenders = game
+    .players()
+    .filter((p) => p.isAlive() && p.type() === PlayerType.Human).length;
+  const secondsToNext =
+    nextWaveTick === null ? null : Math.ceil((nextWaveTick - sinceStart) / 10);
+  const title =
+    wave === 0
+      ? translateText("heads_up_message.survival_first_wave")
+      : translateText("heads_up_message.survival_wave", {
+          wave,
+          total: SURVIVAL_WAVES,
+        });
+  const detail =
+    secondsToNext !== null
+      ? translateText("heads_up_message.survival_next_wave", {
+          time: formatWait(secondsToNext),
+          count: survivalWaveSize(wave + 1, Math.max(1, defenders)),
+        })
+      : translateText("heads_up_message.survival_last_wave", {
+          count: invaders,
+        });
+  return html`
+    <div
+      data-survival-banner
+      class="fixed top-14 left-1/2 -translate-x-1/2 z-[797] flex items-center gap-3 w-fit max-w-[92vw]
+             rounded-md border border-white/10 border-l-4 bg-[#0a1512]/90 backdrop-blur-xs
+             px-3 py-1.5 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)]"
+      style="border-left-color: ${friendFoeColors().foe}"
+      @contextmenu=${(e: MouseEvent) => e.preventDefault()}
+    >
+      <div class="flex gap-1" aria-hidden="true">
+        ${Array.from({ length: SURVIVAL_WAVES }, (_, i) => i).map(
+          (i) =>
+            html`<span
+              class="size-3 rounded-[2px] border ${i < wave
+                ? ""
+                : "border-white/40"}"
+              style=${i < wave
+                ? `background: ${friendFoeColors().foe}; border-color: ${friendFoeColors().foe}`
+                : ""}
+            ></span>`,
+        )}
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="font-display text-sm font-semibold">${title}</span>
+        <span class="text-xs tabular-nums text-white/70">${detail}</span>
       </div>
     </div>
   `;

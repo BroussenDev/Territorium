@@ -1282,6 +1282,12 @@
     "nations_waiting": "Próximo jogo em breve",
     "players": "{count}/{max} jogadores",
     "subtitle": "Jogos multijogador com regras próprias",
+    "survival_description": "Todos os jogadores do mesmo lado contra vagas de invasores de IA, maiores a cada vaga. Resistam juntos até à última.",
+    "survival_fact_fair": "Os invasores jogam com as mesmas regras que tu",
+    "survival_fact_waves": "10 vagas, uma nova a cada 2:30",
+    "survival_fact_win": "Elimina a última vaga para ganhar",
+    "survival_join": "Juntar-me à defesa",
+    "survival_title": "Sobrevivência",
     "title": "Modos de jogo",
     "versus_description": "Duas equipas defrontam-se num mapa de torneio, com as mesmas regras para todos.",
     "versus_open": "Escolher um formato",
@@ -1490,6 +1496,10 @@
     "random_spawn": "A geração aleatória está ativada. Selecionando o local de partida para si...",
     "random_spawn_spectator": "A geração aleatória está ativada",
     "singleplayer_game_paused": "Jogo pausado",
+    "survival_first_wave": "Preparem-se: a primeira vaga está a chegar",
+    "survival_last_wave": "Última vaga: faltam eliminar {count} invasores",
+    "survival_next_wave": "Próxima vaga em {time}: {count} invasores",
+    "survival_wave": "Vaga {wave} de {total}",
     "versus_spawn": "Escolhe um local de início na zona da tua equipa"
   },
   "help_modal": {

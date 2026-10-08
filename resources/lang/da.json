@@ -1282,6 +1282,12 @@
     "nations_waiting": "Næste kamp kommer snart",
     "players": "{count}/{max} spillere",
     "subtitle": "Multiplayer spil med deres egne regler",
+    "survival_description": "Alle spillere på samme side mod bølger af AI-angribere, der vokser for hver bølge. Hold stand sammen til den sidste.",
+    "survival_fact_fair": "Angriberne spiller efter de samme regler som dig",
+    "survival_fact_waves": "10 bølger, en ny hvert 2:30",
+    "survival_fact_win": "Udslet den sidste bølge for at vinde",
+    "survival_join": "Deltag i forsvaret",
+    "survival_title": "Overlevelse",
     "title": "Spiltilstande",
     "versus_description": "To hold mødes på et turneringskort med de samme regler for alle.",
     "versus_open": "Vælg format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Tilfældig spawn er aktiveret. Vælger startposition for dig...",
     "random_spawn_spectator": "Tilfældig spawn er aktiveret",
     "singleplayer_game_paused": "Spil sat på pause",
+    "survival_first_wave": "Gør jer klar: den første bølge kommer",
+    "survival_last_wave": "Sidste bølge: {count} angribere tilbage",
+    "survival_next_wave": "Næste bølge om {time}: {count} angribere",
+    "survival_wave": "Bølge {wave} af {total}",
     "versus_spawn": "Vælg et startsted i dit holds zone"
   },
   "help_modal": {

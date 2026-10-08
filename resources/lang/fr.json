@@ -1282,6 +1282,12 @@
     "nations_waiting": "Prochaine partie bientôt",
     "players": "{count}/{max} joueurs",
     "subtitle": "Des parties multijoueurs avec leurs propres règles",
+    "survival_description": "Tous les joueurs dans le même camp face à des vagues d'envahisseurs IA, plus nombreuses à chaque vague. Tenez ensemble jusqu'à la dernière.",
+    "survival_fact_fair": "Les envahisseurs jouent avec les mêmes règles que vous",
+    "survival_fact_waves": "10 vagues, une nouvelle toutes les 2:30",
+    "survival_fact_win": "Éliminez la dernière vague pour gagner",
+    "survival_join": "Rejoindre la défense",
+    "survival_title": "Survie",
     "title": "Modes de jeu",
     "versus_description": "Deux équipes s'affrontent sur une carte de tournoi, avec les mêmes règles pour tous.",
     "versus_open": "Choisir un format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Le spawn aléatoire est activé. Sélection de l'emplacement de départ pour vous...",
     "random_spawn_spectator": "Apparition aléatoire activée",
     "singleplayer_game_paused": "Jeu en pause",
+    "survival_first_wave": "Préparez-vous : la première vague arrive",
+    "survival_last_wave": "Dernière vague : encore {count} envahisseurs à éliminer",
+    "survival_next_wave": "Prochaine vague dans {time} : {count} envahisseurs",
+    "survival_wave": "Vague {wave} sur {total}",
     "versus_spawn": "Choisissez un emplacement de départ dans la zone de votre équipe"
   },
   "help_modal": {

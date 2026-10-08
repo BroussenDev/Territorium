@@ -1282,6 +1282,12 @@
     "nations_waiting": "Das nächste Spiel kommt bald",
     "players": "{count}/{max} Spieler",
     "subtitle": "Multiplayer-Spiele mit eigenen Regeln",
+    "survival_description": "Alle Spieler auf derselben Seite gegen Wellen von KI-Invasoren, die mit jeder Welle größer werden. Haltet gemeinsam bis zur letzten durch.",
+    "survival_fact_fair": "Die Invasoren spielen nach denselben Regeln wie du",
+    "survival_fact_waves": "10 Wellen, alle 2:30 eine neue",
+    "survival_fact_win": "Vernichte die letzte Welle, um zu gewinnen",
+    "survival_join": "Zur Verteidigung",
+    "survival_title": "Überleben",
     "title": "Spielmodi",
     "versus_description": "Zwei Teams treten auf einer Turnierkarte gegeneinander an, mit denselben Regeln für alle.",
     "versus_open": "Format wählen",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Zufälliger Spawn ist aktiviert. Startposition wird ausgewählt...",
     "random_spawn_spectator": "Zufälliger Spawn ist aktiviert",
     "singleplayer_game_paused": "Spiel pausiert",
+    "survival_first_wave": "Macht euch bereit: Die erste Welle kommt",
+    "survival_last_wave": "Letzte Welle: noch {count} Invasoren zu vernichten",
+    "survival_next_wave": "Nächste Welle in {time}: {count} Invasoren",
+    "survival_wave": "Welle {wave} von {total}",
     "versus_spawn": "Wähle einen Startpunkt in der Zone deines Teams"
   },
   "help_modal": {

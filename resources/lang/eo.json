@@ -1282,6 +1282,12 @@
     "nations_waiting": "Sekva ludo baldaŭ venos",
     "players": "{count}/{max} ludantoj",
     "subtitle": "Plurludantaj ludoj kun propraj reguloj",
+    "survival_description": "Ĉiuj ludantoj samflanke kontraŭ ondoj de AI-invadantoj, pli grandaj ĉe ĉiu ondo. Rezistu kune ĝis la lasta.",
+    "survival_fact_fair": "La invadantoj ludas laŭ la samaj reguloj kiel vi",
+    "survival_fact_waves": "10 ondoj, nova ĉiujn 2:30",
+    "survival_fact_win": "Neniigu la lastan ondon por venki",
+    "survival_join": "Aliĝi al la defendo",
+    "survival_title": "Postvivado",
     "title": "Ludaj reĝimoj",
     "versus_description": "Du teamoj alfrontas unu la alian sur turnira mapo, kun la samaj reguloj por ĉiuj.",
     "versus_open": "Elekti formaton",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Komenclokoj estas hazardaj. Elekto de komencloko por vi...",
     "random_spawn_spectator": "Hazarda spawn estas ebligita",
     "singleplayer_game_paused": "Ludo paŭzigita",
+    "survival_first_wave": "Pretiĝu: la unua ondo alvenas",
+    "survival_last_wave": "Lasta ondo: restas {count} invadantoj",
+    "survival_next_wave": "Sekva ondo post {time}: {count} invadantoj",
+    "survival_wave": "Ondo {wave} el {total}",
     "versus_spawn": "Elektu komencan lokon en la zono de via teamo"
   },
   "help_modal": {

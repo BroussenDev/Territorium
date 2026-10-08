@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.79
+
+🛡️ **New mode: Survival**
+
+- Every player on the same side against 10 waves of AI invaders, a new one every 2 minutes 30, each bigger than the last.
+- The invaders never cheat: they start like a player who joins and play by exactly the same rules as you (troops, growth, buildings), whatever the difficulty. They get stronger only by their numbers.
+- Wipe out the last wave to win; the game is lost when no defender is left. A banner shows the current wave and the time before the next one.
+
 ## v0.1.78
 
 🏆 **Badges on the leaderboards and the scoreboard**

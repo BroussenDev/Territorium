@@ -703,6 +703,7 @@ describe("MasterLobbyService hosted lobbies", () => {
       "ffa",
       "nations",
       "special",
+      "survival",
       "team",
     ]);
   });

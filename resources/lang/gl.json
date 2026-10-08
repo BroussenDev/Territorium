@@ -1282,6 +1282,12 @@
     "nations_waiting": "Próximamente o próximo xogo",
     "players": "{count}/{max} xogadores",
     "subtitle": "Xogos multixogador con regras propias",
+    "survival_description": "Todos os xogadores no mesmo bando contra ondas de invasores de IA, máis numerosas en cada onda. Resistide xuntos ata a última.",
+    "survival_fact_fair": "Os invasores xogan coas mesmas regras ca ti",
+    "survival_fact_waves": "10 ondas, unha nova cada 2:30",
+    "survival_fact_win": "Elimina a última onda para gañar",
+    "survival_join": "Unirse á defensa",
+    "survival_title": "Supervivencia",
     "title": "Modos de xogo",
     "versus_description": "Dous equipos enfróntanse nun mapa de torneo, coas mesmas regras para todos.",
     "versus_open": "Escoller un formato",
@@ -1490,6 +1496,10 @@
     "random_spawn": "A creación aleatoria está activada. Seleccionando o lugar de partida para ti...",
     "random_spawn_spectator": "A creación aleatoria está activada",
     "singleplayer_game_paused": "Xogo en pausa",
+    "survival_first_wave": "Preparádevos: chega a primeira onda",
+    "survival_last_wave": "Última onda: quedan {count} invasores por eliminar",
+    "survival_next_wave": "Próxima onda en {time}: {count} invasores",
+    "survival_wave": "Onda {wave} de {total}",
     "versus_spawn": "Escolle un punto de inicio na zona do teu equipo"
   },
   "help_modal": {

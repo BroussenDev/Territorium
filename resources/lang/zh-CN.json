@@ -1282,6 +1282,12 @@
     "nations_waiting": "下一场比赛即将推出",
     "players": "{count}/{max} 玩家",
     "subtitle": "有自己规则的多人游戏",
+    "survival_description": "所有玩家站在同一阵营，抵御一波比一波更多的AI入侵者。齐心协力坚持到最后一波。",
+    "survival_fact_fair": "入侵者与你遵守相同的规则",
+    "survival_fact_waves": "共10波，每2:30来一波",
+    "survival_fact_win": "消灭最后一波即可获胜",
+    "survival_join": "加入防守",
+    "survival_title": "生存",
     "title": "游戏模式",
     "versus_description": "两支队伍在锦标赛地图上对决，所有人规则相同。",
     "versus_open": "选择模式",
@@ -1490,6 +1496,10 @@
     "random_spawn": "随机出生点已启用。正在为你选择出生点……",
     "random_spawn_spectator": "随机生成已启用",
     "singleplayer_game_paused": "游戏已暂停",
+    "survival_first_wave": "做好准备：第一波来袭",
+    "survival_last_wave": "最后一波：还剩 {count} 名入侵者",
+    "survival_next_wave": "下一波 {time} 后到达：{count} 名入侵者",
+    "survival_wave": "第{wave}波 / 共{total}波",
     "versus_spawn": "在你队伍的区域内选择出生点"
   },
   "help_modal": {

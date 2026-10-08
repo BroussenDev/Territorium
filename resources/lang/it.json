@@ -1282,6 +1282,12 @@
     "nations_waiting": "La prossima partita in arrivo",
     "players": "{count}/{max} giocatori",
     "subtitle": "Giochi multiplayer con regole proprie",
+    "survival_description": "Tutti i giocatori dalla stessa parte contro ondate di invasori IA, più numerose a ogni ondata. Resistete insieme fino all'ultima.",
+    "survival_fact_fair": "Gli invasori giocano con le tue stesse regole",
+    "survival_fact_waves": "10 ondate, una nuova ogni 2:30",
+    "survival_fact_win": "Elimina l'ultima ondata per vincere",
+    "survival_join": "Unisciti alla difesa",
+    "survival_title": "Sopravvivenza",
     "title": "Modalità di gioco",
     "versus_description": "Due squadre si sfidano su una mappa da torneo, con le stesse regole per tutti.",
     "versus_open": "Scegli un formato",
@@ -1490,6 +1496,10 @@
     "random_spawn": "La generazione casuale è abilitata. Selezione della posizione di partenza per te...",
     "random_spawn_spectator": "La generazione casuale è abilitata",
     "singleplayer_game_paused": "Gioco in pausa",
+    "survival_first_wave": "Preparatevi: arriva la prima ondata",
+    "survival_last_wave": "Ultima ondata: restano {count} invasori da eliminare",
+    "survival_next_wave": "Prossima ondata tra {time}: {count} invasori",
+    "survival_wave": "Ondata {wave} di {total}",
     "versus_spawn": "Scegli un punto di partenza nella zona della tua squadra"
   },
   "help_modal": {

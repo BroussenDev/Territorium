@@ -1282,6 +1282,12 @@
     "nations_waiting": "Aviat el proper partit",
     "players": "{count}/{max} jugadors",
     "subtitle": "Jocs multijugador amb regles pròpies",
+    "survival_description": "Tots els jugadors al mateix bàndol contra onades d'invasors d'IA, més nombroses a cada onada. Resistiu junts fins a l'última.",
+    "survival_fact_fair": "Els invasors juguen amb les mateixes regles que tu",
+    "survival_fact_waves": "10 onades, una de nova cada 2:30",
+    "survival_fact_win": "Elimina l'última onada per guanyar",
+    "survival_join": "Uneix-te a la defensa",
+    "survival_title": "Supervivència",
     "title": "Modes de joc",
     "versus_description": "Dos equips s'enfronten en un mapa de torneig, amb les mateixes regles per a tothom.",
     "versus_open": "Tria un format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Està activada la selecció aleatòria del punt de partida. Tria'n-te un punt de partida...",
     "random_spawn_spectator": "La generació aleatòria està activada",
     "singleplayer_game_paused": "Partida en pausa",
+    "survival_first_wave": "Prepareu-vos: arriba la primera onada",
+    "survival_last_wave": "Última onada: queden {count} invasors per eliminar",
+    "survival_next_wave": "Propera onada d'aquí a {time}: {count} invasors",
+    "survival_wave": "Onada {wave} de {total}",
     "versus_spawn": "Tria un punt d'inici a la zona del teu equip"
   },
   "help_modal": {

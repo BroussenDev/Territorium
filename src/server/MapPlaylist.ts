@@ -32,12 +32,16 @@ import { getMapLandTiles } from "./MapLandTiles";
 
 const log = logger.child({});
 
-// Lobby types rolled from the map playlists: nations, conquest and versus
-// lobbies play their own presets instead.
+// Lobby types rolled from the map playlists: nations, conquest, survival
+// and versus lobbies play their own presets instead.
 type RolledGameType = Exclude<
   ScheduledPublicGameType,
-  "nations" | "conquest" | VersusGameType
+  "nations" | "conquest" | "survival" | VersusGameType
 >;
+
+// Defenders in a Survival lobby: every one more brings bigger waves, so the
+// lobby stays a team, not a crowd.
+const SURVIVAL_MAX_PLAYERS = 16;
 
 /**
  * Conquest lobbies rotate through regional maps (never the world map): big
@@ -208,6 +212,9 @@ export class MapPlaylist {
   // Conquest lobbies handed out so far: the next map in CONQUEST_MAPS.
   private conquestPlayed = 0;
 
+  // Survival lobbies handed out so far: the next map in CONQUEST_MAPS.
+  private survivalPlayed = 0;
+
   public async gameConfig(type: ScheduledPublicGameType): Promise<GameConfig> {
     // Nations games always seat every country: never trusted, never capped.
     if (type === "nations") {
@@ -215,6 +222,9 @@ export class MapPlaylist {
     }
     if (type === "conquest") {
       return this.getConquestConfig();
+    }
+    if (type === "survival") {
+      return this.getSurvivalConfig();
     }
     // Versus lobbies always play their format's fixed rules.
     if (isVersusGameType(type)) {
@@ -256,6 +266,41 @@ export class MapPlaylist {
       overtime: { enabled: true },
       objectives: true,
       gameVariant: "conquest",
+    } satisfies GameConfig;
+  }
+
+  // Survival (core/game/Survival.ts): the defenders against waves of
+  // invaders, on the regional maps Conquest plays (room for the waves to
+  // land). No tribes: the open land is where the invaders arrive.
+  private async getSurvivalConfig(): Promise<GameConfig> {
+    const map = CONQUEST_MAPS[(this.survivalPlayed + 3) % CONQUEST_MAPS.length];
+    this.survivalPlayed++;
+    return {
+      donateGold: true,
+      donateTroops: true,
+      gameMap: map,
+      maxPlayers: Math.min(
+        SURVIVAL_MAX_PLAYERS,
+        await this.lobbyMaxPlayers(map, GameMode.FFA, undefined),
+      ),
+      gameType: GameType.Public,
+      gameMapSize: GameMapSize.Normal,
+      publicGameModifiers: {},
+      difficulty: Difficulty.Hard,
+      infiniteGold: false,
+      infiniteTroops: false,
+      maxTimerValue: undefined,
+      instantBuild: false,
+      randomSpawn: false,
+      nations: "default",
+      gameMode: GameMode.Team,
+      playerTeams: HumansVsNations,
+      bots: 0,
+      spawnImmunityDuration: this.getSpawnImmunityDuration(undefined),
+      disabledUnits: [],
+      disableClanTags: true,
+      overtime: { enabled: false },
+      gameVariant: "survival",
     } satisfies GameConfig;
   }
 

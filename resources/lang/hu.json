@@ -1282,6 +1282,12 @@
     "nations_waiting": "Hamarosan jön a következő játék",
     "players": "{count}/{max} játékos",
     "subtitle": "Többszereplős játékok saját szabályokkal",
+    "survival_description": "Minden játékos egy oldalon az MI-hódítók hullámai ellen, amelyek minden hullámmal nagyobbak. Tartsatok ki együtt az utolsóig.",
+    "survival_fact_fair": "A hódítók ugyanazokkal a szabályokkal játszanak, mint te",
+    "survival_fact_waves": "10 hullám, 2:30-onként egy új",
+    "survival_fact_win": "Győzd le az utolsó hullámot a győzelemhez",
+    "survival_join": "Csatlakozás a védelemhez",
+    "survival_title": "Túlélés",
     "title": "Játékmódok",
     "versus_description": "Két csapat mérkőzik meg egy versenytérképen, mindenkire azonos szabályokkal.",
     "versus_open": "Formátum választása",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Véletlenszerű spawn engedélyezve. Kiválasztjuk a kezdőhelyet...",
     "random_spawn_spectator": "A véletlenszerű spawn engedélyezve",
     "singleplayer_game_paused": "A játék szünetel",
+    "survival_first_wave": "Készüljetek: jön az első hullám",
+    "survival_last_wave": "Utolsó hullám: még {count} hódítót kell legyőzni",
+    "survival_next_wave": "Következő hullám {time} múlva: {count} hódító",
+    "survival_wave": "{wave}. hullám / {total}",
     "versus_spawn": "Válassz kezdőhelyet a csapatod zónájában"
   },
   "help_modal": {

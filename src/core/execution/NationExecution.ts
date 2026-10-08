@@ -50,7 +50,11 @@ export class NationExecution implements Execution {
   constructor(
     private gameID: GameID,
     private nation: Nation, // Nation contains PlayerInfo with PlayerType.Nation
+    // True when the caller already queued this nation's spawn after the
+    // spawn phase (Survival waves): the nation waits for it to land.
+    spawnQueued = false,
   ) {
+    this.spawnExecAdded = spawnQueued;
     this.random = new PseudoRandom(
       simpleHash(nation.playerInfo.id) + simpleHash(gameID),
     );

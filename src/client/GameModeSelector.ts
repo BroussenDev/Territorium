@@ -1024,7 +1024,10 @@ export class GameModeSelector extends LitElement {
     return Object.entries(this.lobbies?.games ?? {})
       .filter(
         ([type]) =>
-          type !== "nations" && type !== "conquest" && !isVersusGameType(type),
+          type !== "nations" &&
+          type !== "conquest" &&
+          type !== "survival" &&
+          !isVersusGameType(type),
       )
       .flatMap(([, lobbies]) => lobbies).length;
   }
@@ -1216,6 +1219,7 @@ export class GameModeSelector extends LitElement {
             </span>
           </button>
           ${this.renderVersusCard()} ${this.renderConquestCard()}
+          ${this.renderSurvivalCard()}
         </div>
       </section>
     `;
@@ -1316,6 +1320,117 @@ export class GameModeSelector extends LitElement {
             class="rounded-md bg-brand px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-brand-light"
             >${lobby
               ? translateText("game_modes.conquest_join")
+              : translateText("game_modes.conquest_waiting")}</span
+          >
+          ${lobby
+            ? html`<span class="text-sm tabular-nums text-white/70"
+                >${translateText("game_modes.players", {
+                  count: lobby.numClients,
+                  max: lobby.gameConfig?.maxPlayers ?? "?",
+                })}</span
+              >`
+            : nothing}
+        </span>
+      </span>
+    </button>`;
+  }
+
+  /**
+   * Survival: a full-width card under Conquest. Ten bars rising to the right
+   * are the ten waves, each bigger than the last.
+   */
+  private renderSurvivalCard() {
+    const lobby = this.lobbies?.games?.["survival"]?.[0];
+    const blocked = shouldBlockSocketSourcedAction(
+      this.desktopUpdateState,
+      this.desktopSessionState,
+    );
+    const unavailable = !this.inputValid || lobby === undefined;
+    const time = lobby ? this.lobbyTimeDisplay(lobby) : undefined;
+    const map = lobby?.gameConfig?.gameMap;
+    const facts = [
+      translateText("game_modes.survival_fact_waves"),
+      translateText("game_modes.survival_fact_fair"),
+      translateText("game_modes.survival_fact_win"),
+    ];
+    return html`<button
+      data-survival-card
+      @click=${() => lobby && this.validateAndJoin(lobby)}
+      ?disabled=${unavailable}
+      aria-disabled=${blocked}
+      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-red-400/25 bg-[linear-gradient(90deg,#1a0a0a,#120d07)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-red-300/60 hover:shadow-[0_18px_40px_-20px_rgba(248,113,113,0.55)] focus-visible:outline-2 focus-visible:outline-red-300 sm:col-span-3 ${unavailable
+        ? DISABLED
+        : blocked
+          ? "opacity-50 cursor-not-allowed"
+          : ""}"
+    >
+      ${map
+        ? html`<img
+            src=${terrainMapFileLoader.getMapData(map).webpPath}
+            alt=""
+            draggable="false"
+            class="pointer-events-none absolute inset-y-0 right-0 h-full w-2/3 select-none object-cover opacity-40 saturate-[0.6] [mask-image:linear-gradient(to_left,#000_40%,transparent)] transition-transform duration-500 group-hover/mode:scale-[1.03]"
+          />`
+        : nothing}
+      <span
+        class="relative flex flex-1 flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-8"
+      >
+        <!-- Ten waves, each taller than the last. -->
+        <span
+          class="flex h-12 shrink-0 items-end gap-1 self-start sm:self-center"
+          aria-hidden="true"
+        >
+          ${Array.from({ length: 10 }, (_, i) => i).map(
+            (i) =>
+              html`<span
+                class="w-1.5 rounded-[1px] ${i < 3
+                  ? "bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.6)]"
+                  : "bg-white/25"}"
+                style="height: ${20 + i * 8}%"
+              ></span>`,
+          )}
+        </span>
+        <span class="flex min-w-0 flex-1 flex-col gap-2.5">
+          <span class="flex flex-wrap items-center gap-3">
+            <span
+              class="font-display text-3xl font-bold tracking-[0.08em] text-red-200"
+              >${translateText("game_modes.survival_title")}</span
+            >
+            ${time
+              ? html`<span
+                  class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
+                    ? "uppercase"
+                    : ""}"
+                  >${time.text}</span
+                >`
+              : nothing}
+            ${map
+              ? html`<span class="text-sm font-semibold text-white/70"
+                  >${getMapName(map) ?? map}</span
+                >`
+              : nothing}
+          </span>
+          <span class="max-w-2xl text-sm leading-relaxed text-white/85">
+            ${translateText("game_modes.survival_description")}
+          </span>
+          <span class="flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
+            ${facts.map(
+              (fact) =>
+                html`<span class="flex items-start gap-2 text-white/80">
+                  <span
+                    class="mt-1.5 size-1.5 shrink-0 rounded-[1px] bg-red-400"
+                    aria-hidden="true"
+                  ></span>
+                  ${fact}
+                </span>`,
+            )}
+          </span>
+        </span>
+        <span class="flex shrink-0 items-center gap-3">
+          <span
+            class="rounded-md bg-red-500/90 px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-red-500"
+            >${lobby
+              ? translateText("game_modes.survival_join")
               : translateText("game_modes.conquest_waiting")}</span
           >
           ${lobby

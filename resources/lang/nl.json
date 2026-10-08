@@ -1282,6 +1282,12 @@
     "nations_waiting": "Binnenkort het volgende spel",
     "players": "{count}/{max} spelers",
     "subtitle": "Multiplayer-spellen met eigen regels",
+    "survival_description": "Alle spelers aan dezelfde kant tegen golven AI-indringers, die met elke golf groter worden. Houd samen stand tot de laatste.",
+    "survival_fact_fair": "De indringers spelen met dezelfde regels als jij",
+    "survival_fact_waves": "10 golven, elke 2:30 een nieuwe",
+    "survival_fact_win": "Vernietig de laatste golf om te winnen",
+    "survival_join": "Doe mee met de verdediging",
+    "survival_title": "Overleven",
     "title": "Spelmodi",
     "versus_description": "Twee teams nemen het tegen elkaar op op een toernooikaart, met dezelfde regels voor iedereen.",
     "versus_open": "Kies een formaat",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Willekeurige startpositie is ingeschakeld. Positie wordt voor je gekozen...",
     "random_spawn_spectator": "Willekeurige spawn is ingeschakeld",
     "singleplayer_game_paused": "Spel gepauzeerd",
+    "survival_first_wave": "Maak je klaar: de eerste golf komt eraan",
+    "survival_last_wave": "Laatste golf: nog {count} indringers te vernietigen",
+    "survival_next_wave": "Volgende golf over {time}: {count} indringers",
+    "survival_wave": "Golf {wave} van {total}",
     "versus_spawn": "Kies een startlocatie in de zone van je team"
   },
   "help_modal": {

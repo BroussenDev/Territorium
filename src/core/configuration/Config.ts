@@ -470,6 +470,20 @@ export class Config {
   isConquestMode(): boolean {
     return this._gameConfig.gameVariant === "conquest";
   }
+  /** Survival mode: every human against waves of AI invaders (Survival.ts). */
+  isSurvivalMode(): boolean {
+    return this._gameConfig.gameVariant === "survival";
+  }
+  /**
+   * The difficulty that sets a nation's starting troops, troop cap and
+   * growth. Survival invaders never cheat: they play under the human rules
+   * (Hard, "like humans") whatever the lobby's difficulty.
+   */
+  private nationResourceDifficulty(): Difficulty {
+    return this.isSurvivalMode()
+      ? Difficulty.Hard
+      : this._gameConfig.difficulty;
+  }
   /** Nations mode: players start as real countries (see NationsMode.ts). */
   isNationsMode(): boolean {
     return this._gameConfig.gameVariant === "nations";
@@ -1116,7 +1130,8 @@ export class Config {
       return 10_000;
     }
     if (playerInfo.playerType === PlayerType.Nation) {
-      switch (this._gameConfig.difficulty) {
+      const nationDifficulty = this.nationResourceDifficulty();
+      switch (nationDifficulty) {
         case Difficulty.Easy:
           return 12_500;
         case Difficulty.Medium:
@@ -1126,7 +1141,7 @@ export class Config {
         case Difficulty.Impossible:
           return 31_250;
         default:
-          assertNever(this._gameConfig.difficulty);
+          assertNever(nationDifficulty);
       }
     }
     return this.hasInfiniteTroopsForInfo(playerInfo) ? 1_000_000 : 25_000;
@@ -1155,7 +1170,9 @@ export class Config {
       return maxTroops;
     }
 
-    switch (this._gameConfig.difficulty) {
+    const nationDifficulty = this.nationResourceDifficulty();
+
+    switch (nationDifficulty) {
       case Difficulty.Easy:
         return maxTroops * 0.5;
       case Difficulty.Medium:
@@ -1165,7 +1182,7 @@ export class Config {
       case Difficulty.Impossible:
         return maxTroops * 1.25;
       default:
-        assertNever(this._gameConfig.difficulty);
+        assertNever(nationDifficulty);
     }
   }
 
@@ -1189,7 +1206,8 @@ export class Config {
     }
 
     if (player.type() === PlayerType.Nation) {
-      switch (this._gameConfig.difficulty) {
+      const nationDifficulty = this.nationResourceDifficulty();
+      switch (nationDifficulty) {
         case Difficulty.Easy:
           toAdd *= 0.9;
           break;
@@ -1203,7 +1221,7 @@ export class Config {
           toAdd *= 1.05;
           break;
         default:
-          assertNever(this._gameConfig.difficulty);
+          assertNever(nationDifficulty);
       }
     }
 

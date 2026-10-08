@@ -1282,6 +1282,12 @@
     "nations_waiting": "Nästa match kommer snart",
     "players": "{count}/{max} spelare",
     "subtitle": "Flerspelarspel med egna regler",
+    "survival_description": "Alla spelare på samma sida mot vågor av AI-inkräktare som växer för varje våg. Håll ut tillsammans till den sista.",
+    "survival_fact_fair": "Inkräktarna spelar efter samma regler som du",
+    "survival_fact_waves": "10 vågor, en ny var 2:30",
+    "survival_fact_win": "Utplåna den sista vågen för att vinna",
+    "survival_join": "Gå med i försvaret",
+    "survival_title": "Överlevnad",
     "title": "Spellägen",
     "versus_description": "Två lag möts på en turneringskarta, med samma regler för alla.",
     "versus_open": "Välj format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Slumpmässig spawn är aktiverad. Selecting starting location for you...",
     "random_spawn_spectator": "Slumpmässig spawn är aktiverad",
     "singleplayer_game_paused": "Spelet pausades",
+    "survival_first_wave": "Gör er redo: den första vågen kommer",
+    "survival_last_wave": "Sista vågen: {count} inkräktare kvar att utplåna",
+    "survival_next_wave": "Nästa våg om {time}: {count} inkräktare",
+    "survival_wave": "Våg {wave} av {total}",
     "versus_spawn": "Välj en startplats i ditt lags zon"
   },
   "help_modal": {

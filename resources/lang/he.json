@@ -1282,6 +1282,12 @@
     "nations_waiting": "המשחק הבא בקרוב",
     "players": "{count}/{max} שחקנים",
     "subtitle": "משחקים מרובי משתתפים עם חוקים משלהם",
+    "survival_description": "כל השחקנים באותו צד מול גלים של פולשים בבינה מלאכותית, שגדלים בכל גל. החזיקו מעמד יחד עד האחרון.",
+    "survival_fact_fair": "הפולשים משחקים לפי אותם כללים כמוך",
+    "survival_fact_waves": "10 גלים, גל חדש כל 2:30",
+    "survival_fact_win": "השמידו את הגל האחרון כדי לנצח",
+    "survival_join": "הצטרף להגנה",
+    "survival_title": "הישרדות",
     "title": "מצבי משחק",
     "versus_description": "שתי קבוצות מתמודדות על מפת טורניר, עם אותם חוקים לכולם.",
     "versus_open": "בחירת פורמט",
@@ -1490,6 +1496,10 @@
     "random_spawn": "השרצה אקראית מופעלת. בוחר עבורך מיקום התחלה...",
     "random_spawn_spectator": "השרצה אקראית מופעלת",
     "singleplayer_game_paused": "המשחק הושהה",
+    "survival_first_wave": "התכוננו: הגל הראשון מגיע",
+    "survival_last_wave": "הגל האחרון: נותרו {count} פולשים להשמיד",
+    "survival_next_wave": "הגל הבא בעוד {time}: {count} פולשים",
+    "survival_wave": "גל {wave} מתוך {total}",
     "versus_spawn": "בחרו נקודת התחלה באזור של הקבוצה שלכם"
   },
   "help_modal": {

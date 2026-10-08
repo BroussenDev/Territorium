@@ -57,7 +57,11 @@ export function createNationsForGame(
     gameStart.config.playerTeams === HumansVsNations;
 
   const configNations = gameStart.config.nations;
-  if (configNations === "disabled") {
+  // Survival starts with no nation: they come in waves (SurvivalExecution).
+  if (
+    configNations === "disabled" ||
+    gameStart.config.gameVariant === "survival"
+  ) {
     return [];
   }
   // If nations count is explicitly set, use that exact count
@@ -176,7 +180,7 @@ export function getCompactMapNationCount(
   return manifestNationCount;
 }
 
-function generateUniqueNationName(
+export function generateUniqueNationName(
   random: PseudoRandom,
   usedNames: Set<string>,
 ): string {

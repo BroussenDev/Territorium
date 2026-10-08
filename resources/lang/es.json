@@ -1282,6 +1282,12 @@
     "nations_waiting": "Próximo juego próximamente",
     "players": "{count}/{max} jugadores",
     "subtitle": "Juegos multijugador con reglas propias",
+    "survival_description": "Todos los jugadores en el mismo bando contra oleadas de invasores IA, más numerosas en cada oleada. Resistid juntos hasta la última.",
+    "survival_fact_fair": "Los invasores juegan con las mismas reglas que tú",
+    "survival_fact_waves": "10 oleadas, una nueva cada 2:30",
+    "survival_fact_win": "Elimina la última oleada para ganar",
+    "survival_join": "Unirse a la defensa",
+    "survival_title": "Supervivencia",
     "title": "Modos de juego",
     "versus_description": "Dos equipos se enfrentan en un mapa de torneo, con las mismas reglas para todos.",
     "versus_open": "Elegir un formato",
@@ -1490,6 +1496,10 @@
     "random_spawn": "La generación aleatoria está habilitada. Seleccionando la ubicación de inicio para usted...",
     "random_spawn_spectator": "La generación aleatoria está habilitada",
     "singleplayer_game_paused": "Juego pausado",
+    "survival_first_wave": "Preparaos: llega la primera oleada",
+    "survival_last_wave": "Última oleada: quedan {count} invasores por eliminar",
+    "survival_next_wave": "Próxima oleada en {time}: {count} invasores",
+    "survival_wave": "Oleada {wave} de {total}",
     "versus_spawn": "Elige un punto de inicio en la zona de tu equipo"
   },
   "help_modal": {

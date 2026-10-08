@@ -1282,6 +1282,12 @@
     "nations_waiting": "Järgmine mäng peagi tulemas",
     "players": "{count}/{max} mängijat",
     "subtitle": "Mitme mängijaga mängud oma reeglitega",
+    "survival_description": "Kõik mängijad samal poolel tehisintellektiga sissetungijate lainete vastu, mis iga lainega kasvavad. Pidage koos vastu viimaseni.",
+    "survival_fact_fair": "Sissetungijad mängivad samade reeglitega kui sina",
+    "survival_fact_waves": "10 lainet, uus iga 2:30 järel",
+    "survival_fact_win": "Võitmiseks hävita viimane laine",
+    "survival_join": "Liitu kaitsega",
+    "survival_title": "Ellujäämine",
     "title": "Mängurežiimid",
     "versus_description": "Kaks meeskonda kohtuvad turniirikaardil, kõigile samade reeglitega.",
     "versus_open": "Vali formaat",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Suvaline tekke asukoht on sisse lülitatud. Sulle tekke asukohe valimine...",
     "random_spawn_spectator": "Juhuslik kudemine on lubatud",
     "singleplayer_game_paused": "Mäng pausil",
+    "survival_first_wave": "Valmistuge: esimene laine tuleb",
+    "survival_last_wave": "Viimane laine: alles {count} sissetungijat",
+    "survival_next_wave": "Järgmine laine {time} pärast: {count} sissetungijat",
+    "survival_wave": "Laine {wave}/{total}",
     "versus_spawn": "Vali alguskoht oma meeskonna tsoonis"
   },
   "help_modal": {

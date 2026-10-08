@@ -191,6 +191,7 @@ export const PublicGameTypeSchema = z.enum([
   "hosted",
   "nations",
   "conquest",
+  "survival",
   // Versus: one lobby per format, which starts as soon as it is full.
   "1v1",
   "2v2",
@@ -606,7 +607,10 @@ export const GameConfigSchema = z.object({
   // team spawning in its own zone (see Versus.ts).
   // "conquest": five map objectives; holding most of them for three minutes
   // wins (see Objectives.ts).
-  gameVariant: z.enum(["nations", "training", "versus", "conquest"]).optional(),
+  // "survival": every human against waves of AI invaders (Survival.ts).
+  gameVariant: z
+    .enum(["nations", "training", "versus", "conquest", "survival"])
+    .optional(),
 });
 
 export const TeamSchema = z.string();

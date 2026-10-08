@@ -1282,6 +1282,12 @@
     "nations_waiting": "Ďalšia hra už čoskoro",
     "players": "{count}/{max} hráčov",
     "subtitle": "Hry pre viacerých hráčov s vlastnými pravidlami",
+    "survival_description": "Všetci hráči na jednej strane proti vlnám útočníkov s UI, ktoré s každou vlnou rastú. Vydržte spolu až do poslednej.",
+    "survival_fact_fair": "Útočníci hrajú podľa rovnakých pravidiel ako vy",
+    "survival_fact_waves": "10 vĺn, nová každé 2:30",
+    "survival_fact_win": "Zničte poslednú vlnu a vyhrajte",
+    "survival_join": "Pridať sa k obrane",
+    "survival_title": "Prežitie",
     "title": "Herné režimy",
     "versus_description": "Dva tímy sa stretnú na turnajovej mape s rovnakými pravidlami pre všetkých.",
     "versus_open": "Vybrať formát",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Náhodný spawn je povolený. Vyberá sa miesto štartu...",
     "random_spawn_spectator": "Náhodný spawn je povolený",
     "singleplayer_game_paused": "Hra pozastavená",
+    "survival_first_wave": "Pripravte sa: prichádza prvá vlna",
+    "survival_last_wave": "Posledná vlna: zostáva zničiť {count} útočníkov",
+    "survival_next_wave": "Ďalšia vlna o {time}: {count} útočníkov",
+    "survival_wave": "Vlna {wave} z {total}",
     "versus_spawn": "Vyber si štartovacie miesto v zóne svojho tímu"
   },
   "help_modal": {

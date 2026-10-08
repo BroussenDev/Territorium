@@ -1282,6 +1282,12 @@
     "nations_waiting": "Następny mecz już wkrótce",
     "players": "{count}/{max} graczy",
     "subtitle": "Gry wieloosobowe z własnymi zasadami",
+    "survival_description": "Wszyscy gracze po tej samej stronie przeciwko falom najeźdźców SI, coraz liczniejszym z każdą falą. Wytrzymajcie razem do ostatniej.",
+    "survival_fact_fair": "Najeźdźcy grają według tych samych zasad co ty",
+    "survival_fact_waves": "10 fal, nowa co 2:30",
+    "survival_fact_win": "Pokonaj ostatnią falę, aby wygrać",
+    "survival_join": "Dołącz do obrony",
+    "survival_title": "Przetrwanie",
     "title": "Tryby gry",
     "versus_description": "Dwie drużyny mierzą się na mapie turniejowej, z tymi samymi zasadami dla wszystkich.",
     "versus_open": "Wybierz format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Losowe spawnowanie jest włączone. Wybieram dla Ciebie lokalizację początkową...",
     "random_spawn_spectator": "Losowe spawnowanie jest włączone",
     "singleplayer_game_paused": "Gra została wstrzymana",
+    "survival_first_wave": "Przygotujcie się: nadchodzi pierwsza fala",
+    "survival_last_wave": "Ostatnia fala: pozostało {count} najeźdźców do pokonania",
+    "survival_next_wave": "Następna fala za {time}: {count} najeźdźców",
+    "survival_wave": "Fala {wave} z {total}",
     "versus_spawn": "Wybierz miejsce startu w strefie swojej drużyny"
   },
   "help_modal": {

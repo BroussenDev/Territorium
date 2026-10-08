@@ -1282,6 +1282,12 @@
     "nations_waiting": "Next game coming soon",
     "players": "{count}/{max} players",
     "subtitle": "Multiplayer games with rules of their own",
+    "survival_description": "Every player on the same side against waves of AI invaders, bigger with each wave. Hold out together until the last one.",
+    "survival_fact_fair": "The invaders play by the same rules as you",
+    "survival_fact_waves": "10 waves, a new one every 2:30",
+    "survival_fact_win": "Wipe out the last wave to win",
+    "survival_join": "Join the defense",
+    "survival_title": "Survival",
     "title": "Game modes",
     "versus_description": "Two teams face off on a tournament map, with the same rules for everyone.",
     "versus_open": "Choose a format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Random spawn is enabled. Selecting starting location for you...",
     "random_spawn_spectator": "Random spawn is enabled",
     "singleplayer_game_paused": "Game paused",
+    "survival_first_wave": "Get ready: the first wave is coming",
+    "survival_last_wave": "Last wave: {count} invaders left to wipe out",
+    "survival_next_wave": "Next wave in {time}: {count} invaders",
+    "survival_wave": "Wave {wave} of {total}",
     "versus_spawn": "Choose a starting location in your team's zone"
   },
   "help_modal": {

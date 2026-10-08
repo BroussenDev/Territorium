@@ -1282,6 +1282,12 @@
     "nations_waiting": "Sledeća utakmica dolazi uskoro",
     "players": "{count}/{max} igrača",
     "subtitle": "Igre za više igrača sa sopstvenim pravilima",
+    "survival_description": "Svi igrači na istoj strani protiv talasa AI osvajača, sve većih sa svakim talasom. Izdržite zajedno do posljednjeg.",
+    "survival_fact_fair": "Osvajači igraju po istim pravilima kao vi",
+    "survival_fact_waves": "10 talasa, novi svakih 2:30",
+    "survival_fact_win": "Uništite posljednji talas da pobijedite",
+    "survival_join": "Pridruži se odbrani",
+    "survival_title": "Preživljavanje",
     "title": "Režimi igre",
     "versus_description": "Dva tima se sukobljavaju na turnirskoj mapi, sa istim pravilima za sve.",
     "versus_open": "Izaberi format",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Nasumično pojavljivanje je omogućeno. Biranje početne lokacije za vas...",
     "random_spawn_spectator": "Nasumično pojavljivanje je omogućeno",
     "singleplayer_game_paused": "Igra je pauzirana",
+    "survival_first_wave": "Pripremite se: stiže prvi talas",
+    "survival_last_wave": "Posljednji talas: još {count} osvajača za uništiti",
+    "survival_next_wave": "Sljedeći talas za {time}: {count} osvajača",
+    "survival_wave": "Talas {wave} od {total}",
     "versus_spawn": "Izaberi početnu lokaciju u zoni svog tima"
   },
   "help_modal": {

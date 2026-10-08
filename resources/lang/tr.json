@@ -1282,6 +1282,12 @@
     "nations_waiting": "Bir sonraki oyun yakında gelecek",
     "players": "{count}/{max} oyuncu",
     "subtitle": "Kendi kuralları olan çok oyunculu oyunlar",
+    "survival_description": "Tüm oyuncular aynı tarafta, her dalgada büyüyen yapay zekâ istilacılarına karşı. Sonuncusuna kadar birlikte dayanın.",
+    "survival_fact_fair": "İstilacılar sizinle aynı kurallarla oynar",
+    "survival_fact_waves": "10 dalga, her 2:30'da yenisi",
+    "survival_fact_win": "Kazanmak için son dalgayı yok edin",
+    "survival_join": "Savunmaya katıl",
+    "survival_title": "Hayatta Kalma",
     "title": "Oyun modları",
     "versus_description": "İki takım, herkes için aynı kurallarla bir turnuva haritasında karşı karşıya gelir.",
     "versus_open": "Bir format seç",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Rastgele doğma aktif. Başlangıç noktası senin için seçiliyor...",
     "random_spawn_spectator": "Rastgele ortaya çıkma etkin",
     "singleplayer_game_paused": "Oyun durduruldu",
+    "survival_first_wave": "Hazırlanın: ilk dalga geliyor",
+    "survival_last_wave": "Son dalga: yok edilecek {count} istilacı kaldı",
+    "survival_next_wave": "Sonraki dalga {time} içinde: {count} istilacı",
+    "survival_wave": "Dalga {wave}/{total}",
     "versus_spawn": "Takımının bölgesinde bir başlangıç noktası seç"
   },
   "help_modal": {

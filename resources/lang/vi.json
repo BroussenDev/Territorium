@@ -1282,6 +1282,12 @@
     "nations_waiting": "Trò chơi tiếp theo sắp ra mắt",
     "players": "{count}/{max} người chơi",
     "subtitle": "Trò chơi nhiều người chơi có quy tắc riêng",
+    "survival_description": "Mọi người chơi cùng một phe chống lại các đợt quân xâm lược AI, đông hơn sau mỗi đợt. Cùng nhau trụ vững đến đợt cuối.",
+    "survival_fact_fair": "Quân xâm lược chơi theo đúng luật như bạn",
+    "survival_fact_waves": "10 đợt, cứ 2:30 lại có đợt mới",
+    "survival_fact_win": "Tiêu diệt đợt cuối để chiến thắng",
+    "survival_join": "Tham gia phòng thủ",
+    "survival_title": "Sinh tồn",
     "title": "Chế độ trò chơi",
     "versus_description": "Hai đội đối đầu trên bản đồ giải đấu, với cùng một luật cho tất cả.",
     "versus_open": "Chọn thể thức",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Đã bật chế độ spawn ngẫu nhiên. Đang chọn vị trí khởi đầu cho bạn...",
     "random_spawn_spectator": "Chế độ spawn ngẫu nhiên đã được bật",
     "singleplayer_game_paused": "Trận đấu đã tạm dừng",
+    "survival_first_wave": "Chuẩn bị: đợt đầu tiên đang tới",
+    "survival_last_wave": "Đợt cuối: còn {count} quân xâm lược cần tiêu diệt",
+    "survival_next_wave": "Đợt tiếp theo sau {time}: {count} quân xâm lược",
+    "survival_wave": "Đợt {wave}/{total}",
     "versus_spawn": "Chọn vị trí xuất phát trong khu vực của đội bạn"
   },
   "help_modal": {

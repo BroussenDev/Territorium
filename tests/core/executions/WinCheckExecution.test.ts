@@ -40,6 +40,7 @@ describe("WinCheckExecution", () => {
       })),
       percentageTilesOwnedToWin: vi.fn(() => 50),
       isVersusMode: vi.fn(() => false),
+      isSurvivalMode: vi.fn(() => false),
     }));
     winCheck.init(mg, 0);
     const spy = vi.spyOn(winCheck as any, "checkWinnerTeam");

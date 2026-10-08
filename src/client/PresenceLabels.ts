@@ -25,6 +25,8 @@ export function presenceModeName(config: GameConfig): string {
   switch (config.gameVariant) {
     case "conquest":
       return translateText("game_modes.conquest_title");
+    case "survival":
+      return translateText("game_modes.survival_title");
     case "nations":
       return translateText("game_modes.nations_title");
     case "versus":

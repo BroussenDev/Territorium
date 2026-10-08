@@ -1282,6 +1282,12 @@
     "nations_waiting": "Seuraava peli tulossa pian",
     "players": "{count}/{max} pelaajaa",
     "subtitle": "Moninpelit omilla säännöillään",
+    "survival_description": "Kaikki pelaajat samalla puolella tekoälyhyökkääjien aaltoja vastaan, jotka kasvavat jokaisella aallolla. Kestäkää yhdessä viimeiseen asti.",
+    "survival_fact_fair": "Hyökkääjät pelaavat samoilla säännöillä kuin sinä",
+    "survival_fact_waves": "10 aaltoa, uusi 2:30 välein",
+    "survival_fact_win": "Tuhoa viimeinen aalto voittaaksesi",
+    "survival_join": "Liity puolustukseen",
+    "survival_title": "Selviytyminen",
     "title": "Pelitilat",
     "versus_description": "Kaksi joukkuetta kohtaa turnauskartalla, samoin säännöin kaikille.",
     "versus_open": "Valitse muoto",
@@ -1490,6 +1496,10 @@
     "random_spawn": "Random spawn on käytössä. Valitaan aloituspaikkaa sinulle...",
     "random_spawn_spectator": "Random spawn on käytössä",
     "singleplayer_game_paused": "Peli keskeytetty",
+    "survival_first_wave": "Valmistautukaa: ensimmäinen aalto tulee",
+    "survival_last_wave": "Viimeinen aalto: {count} hyökkääjää jäljellä",
+    "survival_next_wave": "Seuraava aalto {time} päästä: {count} hyökkääjää",
+    "survival_wave": "Aalto {wave}/{total}",
     "versus_spawn": "Valitse aloituspaikka joukkueesi alueelta"
   },
   "help_modal": {
