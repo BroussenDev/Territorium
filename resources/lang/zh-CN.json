@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name}拒绝你的和平条约。",
     "peace_request_sent": "向{name}提出和平条约。",
     "peace_signed": "和平是与{name}签署的。 3分钟内没有攻击。",
+    "peace_signed_short": "已与 {name} 签订和平。1 分钟内不得攻击。",
     "radar_contact": "雷达：发现 {name} 的 {unit}（×{count}）",
     "received_gold_from_captured_ship": "捕获了 {name} 的商船，获得 {gold} 黄金",
     "received_gold_from_conquest": "征服了 {name} 并获得 {gold} 黄金",

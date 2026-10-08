@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} a refuzat tratatul de pace.",
     "peace_request_sent": "Tratat de pace oferit lui {name}.",
     "peace_signed": "Pacea este semnată cu {name}. Fără atacuri timp de 3 minute.",
+    "peace_signed_short": "Pacea cu {name} a fost semnată. Fără atacuri timp de 1 minut.",
     "radar_contact": "Radar: {unit} (×{count}) de la {name} detectat",
     "received_gold_from_captured_ship": "Ai primit {gold} aur de la nava capturată de la {name}",
     "received_gold_from_conquest": "Cucerit {name}, primit {gold} aur",

@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} keeldus teie rahulepingust.",
     "peace_request_sent": "Rahuleping pakutud {name}.",
     "peace_signed": "Rahule kirjutatakse alla {name}. 3 minuti jooksul pole rünnakuid.",
+    "peace_signed_short": "Rahu sõlmitud: {name}. 1 minut rünnakuteta.",
     "radar_contact": "Radar: {unit} (×{count}) mängijalt {name} tuvastatud",
     "received_gold_from_captured_ship": "Teenisid {gold} kulda kaubalaevast, mis üle võtsid {name}'lt",
     "received_gold_from_conquest": "Vallutasid {name} ja said {gold} kulda",

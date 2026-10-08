@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} va rebutjar el teu tractat de pau.",
     "peace_request_sent": "Tractat de pau ofert a {name}.",
     "peace_signed": "La pau està signada amb {name}. Sense atacs durant 3 minuts.",
+    "peace_signed_short": "S'ha signat la pau amb {name}. Cap atac durant 1 minut.",
     "radar_contact": "Radar: {unit} (×{count}) de {name} detectat",
     "received_gold_from_captured_ship": "Has rebut {gold} or d'un vaixell de comerç capturat de {name}",
     "received_gold_from_conquest": "Has conquerit a {name} i guanyat {gold} or",

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.80
+
+🛡️ **Survival: new rules for the defenders**
+
+- Defenders cross hills and mountains as fast as plains (the troop losses stay the same), to reach the waves in time.
+- No alliances with the invaders; peace is still possible and lasts 1 minute instead of 3.
+
 ## v0.1.79
 
 🛡️ **New mode: Survival**

@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} отказа вашия мирен договор.",
     "peace_request_sent": "Мирен договор, предложен на {name}.",
     "peace_signed": "Мирът се подписва с {name}. Без атаки за 3 минути.",
+    "peace_signed_short": "Мирът с {name} е подписан. Без атаки в продължение на 1 минута.",
     "radar_contact": "Радар: засечен {unit} (×{count}) от {name}",
     "received_gold_from_captured_ship": "Получи {gold} злато от лодка на {name}, превзета от теб",
     "received_gold_from_conquest": "Превзе {name}, получи {gold} злато",

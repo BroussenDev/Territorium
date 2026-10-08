@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} megtagadta a békeszerződésedet.",
     "peace_request_sent": "{name}-nek felajánlott békeszerződés.",
     "peace_signed": "A békét {name}-vel írták alá. 3 percig nincs támadás.",
+    "peace_signed_short": "Béke köttetett ezzel: {name}. 1 percig nincs támadás.",
     "radar_contact": "Radar: {unit} (×{count}) észlelve – {name}",
     "received_gold_from_captured_ship": "{name} hajójából zsákmányoltál {gold} aranyat",
     "received_gold_from_conquest": "Meghódítottad {name}-t, {gold} aranyat kaptál",

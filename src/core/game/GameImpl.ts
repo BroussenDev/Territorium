@@ -555,7 +555,10 @@ export class GameImpl implements Game {
       [recipient, requestor],
     ]) {
       this.displayMessage(
-        "events_display.peace_signed",
+        // Survival peace lasts 1 minute (Config.peaceDuration).
+        this.config().isSurvivalMode()
+          ? "events_display.peace_signed_short"
+          : "events_display.peace_signed",
         MessageType.ALLIANCE_ACCEPTED,
         player.id(),
         undefined,

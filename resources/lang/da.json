@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} nægtede din fredsaftale.",
     "peace_request_sent": "Fredstraktat tilbudt til {name}.",
     "peace_signed": "Fred er underskrevet med {name}. Ingen angreb i 3 minutter.",
+    "peace_signed_short": "Fred er sluttet med {name}. Ingen angreb i 1 minut.",
     "radar_contact": "Radar: {unit} (×{count}) fra {name} opdaget",
     "received_gold_from_captured_ship": "Modtog {gold} guld fra skib erobret fra {name}",
     "received_gold_from_conquest": "Erobrede {name}, modtog {gold} guld",

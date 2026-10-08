@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} recusou o seu tratado de paz.",
     "peace_request_sent": "Tratado de paz oferecido a {name}.",
     "peace_signed": "A paz é assinada com {name}. Sem ataque durante 3 minutos.",
+    "peace_signed_short": "Paz assinada com {name}. Nenhum ataque durante 1 minuto.",
     "radar_contact": "Radar: {unit} (×{count}) de {name} detetado",
     "received_gold_from_captured_ship": "Recebeu {gold} ouro do navio capturado em {name}",
     "received_gold_from_conquest": "Conquistou {name}, recebeu {gold} ouro",

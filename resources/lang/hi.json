@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} ने आपकी शांति संधि को अस्वीकार कर दिया।",
     "peace_request_sent": "{name} को शांति संधि की पेशकश की गई।",
     "peace_signed": "शांति पर {name} से हस्ताक्षर किया जाता है। 3 मिनट तक कोई हमला नहीं.",
+    "peace_signed_short": "{name} के साथ शांति हुई। 1 मिनट तक कोई हमला नहीं।",
     "radar_contact": "रडार: {name} का {unit} (×{count}) देखा गया",
     "received_gold_from_captured_ship": "{name} से पकड़े गए जहाज से {gold} सोना प्राप्त हुआ",
     "received_gold_from_conquest": "{name} पर विजय प्राप्त की, {gold} सोना प्राप्त किया",

@@ -448,7 +448,10 @@ export class Config {
   disableAlliances(): boolean {
     // customAllianceDuration === 0 disables alliances (the "custom alliances"
     // control at 0). The legacy boolean is still honored for older configs.
+    // Survival has none: the defenders are one team already, and nobody
+    // allies with the invaders (peace stays possible).
     return (
+      this.isSurvivalMode() ||
       this._gameConfig.customAllianceDuration === 0 ||
       (this._gameConfig.disableAlliances ?? false)
     );
@@ -907,7 +910,8 @@ export class Config {
     return 300 * 10; // 5 minutes.
   }
   peaceDuration(): Tick {
-    return 3 * 60 * 10; // 3 minutes.
+    // 1 minute in Survival, where a wave lands every 2:30; 3 elsewhere.
+    return this.isSurvivalMode() ? 60 * 10 : 3 * 60 * 10;
   }
   peaceRequestDuration(): Tick {
     return 15 * 10;
@@ -1003,6 +1007,11 @@ export class Config {
   attackLogic(input: AttackLogicInput): AttackLogicResult {
     const { attackTroops, attacker, defender } = input;
     let { mag, tileCost } = terrainAttackBase(input.terrain);
+    // Survival: the defenders cross hills and mountains as fast as plains
+    // (the losses stay the terrain's), to reach the waves in time.
+    if (this.isSurvivalMode() && attacker.type === PlayerType.Human) {
+      tileCost = terrainAttackBase(TerrainType.Plains).tileCost;
+    }
 
     if (defender !== null && input.defenderHasDefensePost) {
       mag *= this.defensePostDefenseBonus();

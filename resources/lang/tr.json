@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} barış anlaşmanızı reddetti.",
     "peace_request_sent": "{name}'ye barış anlaşması teklif edildi.",
     "peace_signed": "Barış {name} ile imzalanır. 3 dakika boyunca saldırı yok.",
+    "peace_signed_short": "{name} ile barış imzalandı. 1 dakika boyunca saldırı yok.",
     "radar_contact": "Radar: {name} oyuncusuna ait {unit} (×{count}) tespit edildi",
     "received_gold_from_captured_ship": "{name}'den ele geçirilen gemiden {gold} altın alındı",
     "received_gold_from_conquest": "Fethedildi {name}, {gold} altın aldı",

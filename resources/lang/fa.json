@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} پیمان صلح شما را رد کرد.",
     "peace_request_sent": "معاهده صلح پیشنهادی به {name}.",
     "peace_signed": "صلح با {name} امضا شده است. 3 دقیقه بدون حمله",
+    "peace_signed_short": "صلح با {name} امضا شد. ۱ دقیقه هیچ حمله‌ای نیست.",
     "radar_contact": "رادار: {unit} (×{count}) از {name} شناسایی شد",
     "received_gold_from_captured_ship": "از کشتی توقیف شده از {name} طلا دریافت شد. {gold}",
     "received_gold_from_conquest": "{name} تسخیر شد، {gold} طلا دریافت کردید",

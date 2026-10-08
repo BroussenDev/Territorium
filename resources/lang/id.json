@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} menolak perjanjian damai Anda.",
     "peace_request_sent": "Perjanjian damai ditawarkan kepada {name}.",
     "peace_signed": "Perdamaian ditandatangani dengan {name}. Tidak ada serangan selama 3 menit.",
+    "peace_signed_short": "Damai ditandatangani dengan {name}. Tidak ada serangan selama 1 menit.",
     "radar_contact": "Radar: {unit} (×{count}) milik {name} terdeteksi",
     "received_gold_from_captured_ship": "Menerima {gold} emas dari kapal yang di tawan dari {name}",
     "received_gold_from_conquest": "Menaklukan {name}, mendapatkan {gold} emas",

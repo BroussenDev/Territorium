@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} je zavrnil vašo mirovno pogodbo.",
     "peace_request_sent": "Mirovna pogodba, ponujena {name}.",
     "peace_signed": "Mir je podpisan z {name}. Brez napadov 3 minute.",
+    "peace_signed_short": "Mir z {name} je podpisan. 1 minuto brez napadov.",
     "radar_contact": "Radar: zaznan {unit} (×{count}) igralca {name}",
     "received_gold_from_captured_ship": "Prejeto {gold} zlata z ladje, zajete iz {name}",
     "received_gold_from_conquest": "Osvojen {name}, prejet {gold} zlata",

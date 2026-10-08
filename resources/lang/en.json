@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} refused your peace treaty.",
     "peace_request_sent": "Peace treaty offered to {name}.",
     "peace_signed": "Peace is signed with {name}. No attacks for 3 minutes.",
+    "peace_signed_short": "Peace is signed with {name}. No attacks for 1 minute.",
     "radar_contact": "Radar: {unit} (×{count}) from {name} spotted",
     "received_gold_from_captured_ship": "Received {gold} gold from ship captured from {name}",
     "received_gold_from_conquest": "Conquered {name}, received {gold} gold",

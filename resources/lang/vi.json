@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} từ chối hiệp ước hòa bình của bạn.",
     "peace_request_sent": "Hiệp ước hòa bình được đưa ra cho {name}.",
     "peace_signed": "Hòa bình được ký kết với {name}. Không tấn công trong 3 phút.",
+    "peace_signed_short": "Đã ký hòa bình với {name}. Không tấn công trong 1 phút.",
     "radar_contact": "Radar: phát hiện {unit} (×{count}) của {name}",
     "received_gold_from_captured_ship": "Đã nhận {gold} vàng từ con tàu chiếm được của {name}",
     "received_gold_from_conquest": "Đã chinh phục {name} và nhận được {gold} vàng",

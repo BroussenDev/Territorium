@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} odrzucił twój traktat pokojowy.",
     "peace_request_sent": "Traktat pokojowy zaoferowany {name}.",
     "peace_signed": "Pokój jest podpisany za pomocą {name}. Żadnych ataków przez 3 minuty.",
+    "peace_signed_short": "Zawarto pokój z {name}. Brak ataków przez 1 minutę.",
     "radar_contact": "Radar: wykryto {unit} (×{count}) gracza {name}",
     "received_gold_from_captured_ship": "Otrzymano {gold} złota ze statku przechwyconego z {name}",
     "received_gold_from_conquest": "Zdobyto {name}, otrzymano {gold} złota",

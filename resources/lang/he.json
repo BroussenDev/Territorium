@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} סירב להסכם השלום שלך.",
     "peace_request_sent": "הסכם שלום הוצע ל-{name}.",
     "peace_signed": "השלום נחתם עם {name}. אין התקפות במשך 3 דקות.",
+    "peace_signed_short": "נחתם שלום עם {name}. אין התקפות במשך דקה אחת.",
     "radar_contact": "מכ״ם: זוהה {unit} (×{count}) של {name}",
     "received_gold_from_captured_ship": "קיבל {gold} זהב מספינה שנלכדה מ{name}",
     "received_gold_from_conquest": "כבש {name}, קיבל {gold} זהב",

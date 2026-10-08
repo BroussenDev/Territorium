@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} αρνήθηκε τη συνθήκη ειρήνης σας.",
     "peace_request_sent": "Η συνθήκη ειρήνης προσφέρθηκε στο {name}.",
     "peace_signed": "Η ειρήνη υπογράφεται με {name}. Καμία επίθεση για 3 λεπτά.",
+    "peace_signed_short": "Υπογράφηκε ειρήνη με {name}. Καμία επίθεση για 1 λεπτό.",
     "radar_contact": "Ραντάρ: εντοπίστηκε {unit} (×{count}) από {name}",
     "received_gold_from_captured_ship": "Έλαβε {gold} χρυσό από πλοίο που καταλήφθηκε από {name}",
     "received_gold_from_conquest": "Κατέκτησε {name}, έλαβε {gold} χρυσό",

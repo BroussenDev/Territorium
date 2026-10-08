@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} 평화 조약을 거부했습니다.",
     "peace_request_sent": "{name}에 평화 조약이 제안되었습니다.",
     "peace_signed": "평화는 {name}로 서명됩니다. 3분 동안 공격이 불가능합니다.",
+    "peace_signed_short": "{name}와(과) 평화 조약을 맺었습니다. 1분 동안 공격할 수 없습니다.",
     "radar_contact": "레이더: {name}의 {unit}(×{count}) 탐지",
     "received_gold_from_captured_ship": "{name}에게서 나포한 함선으로부터 {gold} 금을 받았습니다",
     "received_gold_from_conquest": "{name}을 정복하여 {gold} 금을 획득했습니다",

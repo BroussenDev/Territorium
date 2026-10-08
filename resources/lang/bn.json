@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} আপনার শান্তি চুক্তি প্রত্যাখ্যান করেছে।",
     "peace_request_sent": "শান্তি চুক্তির প্রস্তাব {name}.",
     "peace_signed": "শান্তি {name} দিয়ে স্বাক্ষরিত হয়েছে। 3 মিনিটের জন্য কোন আক্রমণ নেই।",
+    "peace_signed_short": "{name}-এর সাথে শান্তি স্বাক্ষরিত। ১ মিনিট কোনো আক্রমণ নয়।",
     "radar_contact": "রাডার: {name}-এর {unit} (×{count}) শনাক্ত হয়েছে",
     "received_gold_from_captured_ship": "{name} থেকে বন্দী জাহাজ থেকে {gold} স্বর্ণ প্রাপ্ত",
     "received_gold_from_conquest": "জয় করেছেন {name}, পেয়েছেন {gold} সোনা",

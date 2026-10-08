@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name}はあなたの平和条約を拒否しました。",
     "peace_request_sent": "{name}に平和条約が締結されました。",
     "peace_signed": "{name}との和平が締結されました。3分間は攻撃できません。",
+    "peace_signed_short": "{name}と和平を結びました。1分間は攻撃できません。",
     "radar_contact": "レーダー：{name}の{unit}（×{count}）を探知",
     "received_gold_from_captured_ship": "{name} から捕獲した船から資金{gold}を獲得しました",
     "received_gold_from_conquest": "{name}を征服して、{gold}ゴールドを獲得しました",

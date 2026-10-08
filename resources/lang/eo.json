@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} rifuzis vian packontrakton.",
     "peace_request_sent": "Packontrakto proponita al {name}.",
     "peace_signed": "Paco estas subskribita per {name}. Neniuj atakoj dum 3 minutoj.",
+    "peace_signed_short": "Paco subskribita kun {name}. Neniuj atakoj dum 1 minuto.",
     "radar_contact": "Radaro: {unit} (×{count}) de {name} detektita",
     "received_gold_from_captured_ship": "Ricevis {gold} da oro kaptante komercan ŝipon de {name}",
     "received_gold_from_conquest": "Konkeris {name}, ricevis {gold} da oro",

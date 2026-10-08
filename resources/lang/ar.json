@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} رفض معاهدة السلام الخاصة بك.",
     "peace_request_sent": "عرضت معاهدة السلام على {name}.",
     "peace_signed": "تم توقيع السلام بـ {name}. لا توجد هجمات لمدة 3 دقائق.",
+    "peace_signed_short": "وُقّع السلام مع {name}. لا هجمات لمدة دقيقة واحدة.",
     "radar_contact": "رادار: تم رصد {unit} (×{count}) من {name}",
     "received_gold_from_captured_ship": "تم استلام {gold} ذهب من السفينة التي تم الاستيلاء عليها من {name}",
     "received_gold_from_conquest": "غزا {name}، وحصل على {gold} ذهب",

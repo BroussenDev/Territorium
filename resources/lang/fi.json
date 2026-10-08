@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} kieltäytyi rauhansopimuksesta.",
     "peace_request_sent": "Rauhansopimus tarjottiin {name}.",
     "peace_signed": "Rauha on allekirjoitettu numerolla {name}. Ei hyökkäyksiä 3 minuuttiin.",
+    "peace_signed_short": "Rauha solmittu: {name}. Ei hyökkäyksiä 1 minuuttiin.",
     "radar_contact": "Tutka: {unit} (×{count}) pelaajalta {name} havaittu",
     "received_gold_from_captured_ship": "Sai {gold} kultaa vuodesta {name} valloitetulta alukselta",
     "received_gold_from_conquest": "Voitti {name}, sai {gold} kultaa",

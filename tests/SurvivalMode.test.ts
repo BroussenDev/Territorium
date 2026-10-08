@@ -8,6 +8,7 @@ import {
   HumansVsNations,
   PlayerInfo,
   PlayerType,
+  TerrainType,
 } from "../src/core/game/Game";
 import {
   SURVIVAL_FIRST_WAVE_DELAY_TICKS,
@@ -19,6 +20,7 @@ import {
   survivalWaveTick,
 } from "../src/core/game/Survival";
 import { playerInfo, setup } from "./util/Setup";
+import { UseRealAttackLogic } from "./util/TestConfig";
 
 const SURVIVAL = {
   gameVariant: "survival",
@@ -122,6 +124,54 @@ describe("survival mode", () => {
       capFor(invader.numTilesOwned()),
     );
     expect(config.maxTroops(a)).toBeCloseTo(capFor(a.numTilesOwned()));
+  });
+
+  it("has no alliances and a one-minute peace", async () => {
+    const { game, a } = await build();
+    expect(game.config().disableAlliances()).toBe(true);
+    expect(game.config().peaceDuration()).toBe(60 * 10);
+    run(game, SURVIVAL_FIRST_WAVE_DELAY_TICKS + 20);
+    const [invader] = invaders(game);
+    expect(a.canSendAllianceRequest(invader)).toBe(false);
+  });
+
+  it("lets defenders cross mountains as fast as plains, not invaders", async () => {
+    const game = await setup(
+      "big_plains",
+      SURVIVAL,
+      [],
+      __dirname + "/util",
+      UseRealAttackLogic,
+    );
+    const attack = (terrain: TerrainType, type: PlayerType) =>
+      game.config().attackLogic({
+        terrain,
+        attackTroops: 50_000,
+        attacker: { type, numTiles: 5_000 },
+        // An owned tile: unclaimed land costs the same everywhere.
+        defender: {
+          type: PlayerType.Nation,
+          numTiles: 5_000,
+          troops: 50_000,
+          isTraitor: false,
+          isDisconnectedTeammate: false,
+        },
+        defenderHasDefensePost: false,
+        falloutRatio: null,
+        borderSize: 100,
+      });
+    const human = PlayerType.Human;
+    const nation = PlayerType.Nation;
+    expect(attack(TerrainType.Mountain, human).tickFraction).toBeCloseTo(
+      attack(TerrainType.Plains, human).tickFraction,
+    );
+    expect(attack(TerrainType.Mountain, nation).tickFraction).toBeGreaterThan(
+      attack(TerrainType.Plains, nation).tickFraction,
+    );
+    // The mountain still costs the defenders more troops.
+    expect(
+      attack(TerrainType.Mountain, human).attackerTroopLoss,
+    ).toBeGreaterThan(attack(TerrainType.Plains, human).attackerTroopLoss);
   });
 
   it("is lost once no defender is left", async () => {

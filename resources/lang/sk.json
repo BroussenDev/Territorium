@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} odmietol vašu mierovú zmluvu.",
     "peace_request_sent": "Mierová zmluva ponúknutá {name}.",
     "peace_signed": "Mier je podpísaný s {name}. Žiadne útoky 3 minúty.",
+    "peace_signed_short": "Mier s {name} je podpísaný. 1 minútu žiadne útoky.",
     "radar_contact": "Radar: zachytený {unit} (×{count}) hráča {name}",
     "received_gold_from_captured_ship": "Získané {gold} zlata z lode zajatej z {name}",
     "received_gold_from_conquest": "Pokoril {name}, získal {gold} zlata",

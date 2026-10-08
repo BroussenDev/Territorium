@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} heeft uw vredesverdrag geweigerd.",
     "peace_request_sent": "Vredesverdrag aangeboden aan {name}.",
     "peace_signed": "De vrede wordt ondertekend met {name}. Geen aanvallen gedurende 3 minuten.",
+    "peace_signed_short": "Vrede gesloten met {name}. 1 minuut lang geen aanvallen.",
     "radar_contact": "Radar: {unit} (×{count}) van {name} gespot",
     "received_gold_from_captured_ship": "{gold} Goud ontvangen van veroverd schip van {name}",
     "received_gold_from_conquest": "Veroverde {name}, ontvangen {gold} goud",

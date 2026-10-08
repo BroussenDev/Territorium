@@ -1097,6 +1097,7 @@
     "peace_rejected": "{name} odmítl vaši mírovou smlouvu.",
     "peace_request_sent": "Mírová smlouva nabídnuta {name}.",
     "peace_signed": "Mír je podepsán s {name}. Žádné útoky po dobu 3 minut.",
+    "peace_signed_short": "Mír s {name} je podepsán. 1 minutu žádné útoky.",
     "radar_contact": "Radar: zachycen {unit} (×{count}) hráče {name}",
     "received_gold_from_captured_ship": "Získáno {gold} zlata ze zajaté lodě od {name}",
     "received_gold_from_conquest": "{name} dobyt, získano {gold} zlata",
