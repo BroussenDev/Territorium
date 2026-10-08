@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Kontoeinstellungen"
   },
+  "attack_preview": {
+    "all_tiles": "Alle",
+    "defense_post": "Verteidigungsposten",
+    "fallout": "Fallout",
+    "instant": "Sofort",
+    "lost": "Geschätzte Verluste",
+    "minutes": "{m}:{s} Min.",
+    "open_land": "Freies Land",
+    "seconds": "{s} s",
+    "sent": "Gesendete Truppen",
+    "terrain_highland": "Hügel",
+    "terrain_mountain": "Berge",
+    "terrain_plains": "Ebene",
+    "tiles": "Eroberte Felder",
+    "time": "Dauer",
+    "traitor": "Verräter"
+  },
   "ban_notice": {
     "appeal": "Wenn Sie glauben, dass dies ein Fehler ist, kontaktieren Sie uns auf Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Vürsteckt echti Spielernäme mit zuefäuige Näme uf dim Büudschirm.",
     "anonymous_names_label": "Vürborgeni näme",
     "attack_keybinds": "Agriffs-Tastenkürzel",
+    "attack_preview_desc": "Neben dem Mauszeiger die geschätzten Verluste, eroberten Felder und die Dauer eines Angriffs",
+    "attack_preview_label": "Angriffsvorschau",
     "attack_ratio_controls": "Agriffsverhäutnisstürig",
     "attack_ratio_desc": "Prozentsatz vo dine Truppe wo i Angriff gschickt werde (1–100 %)",
     "attack_ratio_down": "Agriffsverhältnis sänke",

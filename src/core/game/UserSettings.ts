@@ -461,6 +461,15 @@ export class UserSettings {
     this.setBool("settings.objectiveLabels", !this.objectiveLabels());
   }
 
+  /** The attack preview next to the cursor (AttackPreview). On by default. */
+  attackPreview(): boolean {
+    return this.getBool("settings.attackPreview", true);
+  }
+
+  toggleAttackPreview() {
+    this.setBool("settings.attackPreview", !this.attackPreview());
+  }
+
   cursorCostLabel() {
     const legacy = this.getBool("settings.ghostPricePill", true);
     return this.getBool("settings.cursorCostLabel", legacy);

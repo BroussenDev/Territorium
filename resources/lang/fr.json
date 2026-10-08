@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Paramètres de compte"
   },
+  "attack_preview": {
+    "all_tiles": "Tout",
+    "defense_post": "Poste de défense",
+    "fallout": "Retombées",
+    "instant": "Immédiat",
+    "lost": "Pertes estimées",
+    "minutes": "{m}:{s} min",
+    "open_land": "Terre libre",
+    "seconds": "{s} s",
+    "sent": "Troupes envoyées",
+    "terrain_highland": "Collines",
+    "terrain_mountain": "Montagnes",
+    "terrain_plains": "Plaine",
+    "tiles": "Cases prises",
+    "time": "Durée",
+    "traitor": "Traître"
+  },
   "ban_notice": {
     "appeal": "Si vous pensez que ceci est une erreur, contactez-nous sur Discord en faisant un ticket.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Cacher le vrai nom des joueurs avec des noms aléatoires sur votre écran.",
     "anonymous_names_label": "Noms masqués",
     "attack_keybinds": "Raccourcis d'attaque",
+    "attack_preview_desc": "À côté du curseur, les pertes, les cases prises et la durée estimées d'une attaque",
+    "attack_preview_label": "Aperçu d'attaque",
     "attack_ratio_controls": "Contrôles du ratio d'attaque",
     "attack_ratio_desc": "Quel pourcentage de vos troupes envoyer dans une attaque (1–100%)",
     "attack_ratio_down": "Diminuer le ratio d'attaque",

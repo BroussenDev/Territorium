@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Hesap Ayarları"
   },
+  "attack_preview": {
+    "all_tiles": "Hepsi",
+    "defense_post": "Savunma noktası",
+    "fallout": "Radyoaktif serpinti",
+    "instant": "Anında",
+    "lost": "Tahmini kayıp",
+    "minutes": "{m}:{s} dk",
+    "open_land": "Boş toprak",
+    "seconds": "{s} sn",
+    "sent": "Gönderilen birlik",
+    "terrain_highland": "Tepeler",
+    "terrain_mountain": "Dağlar",
+    "terrain_plains": "Ova",
+    "tiles": "Alınan kare",
+    "time": "Süre",
+    "traitor": "Hain"
+  },
   "ban_notice": {
     "appeal": "Bunun bir hata olduğunu düşünüyorsanız Discord üzerinden bizimle iletişime geçin.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Gerçek oyuncu isimlerini ekranında rastgele isimlerle gizle.",
     "anonymous_names_label": "Adları Gizle",
     "attack_keybinds": "Saldırı Kısayolları",
+    "attack_preview_desc": "İmlecin yanında bir saldırının tahmini kaybı, alacağı kareler ve süresi",
+    "attack_preview_label": "Saldırı önizlemesi",
     "attack_ratio_controls": "Saldırı Oranı Kontrolleri",
     "attack_ratio_desc": "Bir saldırıda birliklerinin yüzde kaçını göndereceksin (%1-100)",
     "attack_ratio_down": "Saldırı Oranını Azalt",

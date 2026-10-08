@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "অ্যাকাউন্ট সেটিংস"
   },
+  "attack_preview": {
+    "all_tiles": "সব",
+    "defense_post": "প্রতিরক্ষা চৌকি",
+    "fallout": "তেজস্ক্রিয় ধূলি",
+    "instant": "তাৎক্ষণিক",
+    "lost": "আনুমানিক ক্ষতি",
+    "minutes": "{m}:{s} মি",
+    "open_land": "খালি জমি",
+    "seconds": "{s} সে",
+    "sent": "পাঠানো সৈন্য",
+    "terrain_highland": "পাহাড়ি এলাকা",
+    "terrain_mountain": "পর্বত",
+    "terrain_plains": "সমভূমি",
+    "tiles": "দখল করা ঘর",
+    "time": "সময়কাল",
+    "traitor": "বিশ্বাসঘাতক"
+  },
   "ban_notice": {
     "appeal": "আপনি যদি বিশ্বাস করেন যে এটি একটি ভুল, Discord-এ আমাদের সাথে যোগাযোগ করুন।",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "আপনার স্ক্রিনে এলোমেলোদের সাথে আসল প্লেয়ারের নাম লুকান।",
     "anonymous_names_label": "লুকানো নাম",
     "attack_keybinds": "অ্যাটাক কীবাইন্ড",
+    "attack_preview_desc": "কার্সরের পাশে একটি আক্রমণের আনুমানিক ক্ষতি, দখল করা ঘর ও সময়কাল",
+    "attack_preview_label": "আক্রমণের পূর্বরূপ",
     "attack_ratio_controls": "আক্রমণ অনুপাত নিয়ন্ত্রণ",
     "attack_ratio_desc": "আক্রমণে আপনার সৈন্যদের কত শতাংশ পাঠাবেন (1-100%)",
     "attack_ratio_down": "আক্রমণের অনুপাত হ্রাস করুন",

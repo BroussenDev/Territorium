@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Configuració del compte"
   },
+  "attack_preview": {
+    "all_tiles": "Totes",
+    "defense_post": "Lloc de defensa",
+    "fallout": "Pluja radioactiva",
+    "instant": "Immediat",
+    "lost": "Baixes estimades",
+    "minutes": "{m}:{s} min",
+    "open_land": "Terra lliure",
+    "seconds": "{s} s",
+    "sent": "Tropes enviades",
+    "terrain_highland": "Turons",
+    "terrain_mountain": "Muntanyes",
+    "terrain_plains": "Plana",
+    "tiles": "Caselles preses",
+    "time": "Durada",
+    "traitor": "Traïdor"
+  },
   "ban_notice": {
     "appeal": "Si creieu que es tracta d'un error, poseu-vos en contacte amb nosaltres a Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Amaga els noms reals dels jugadors amb noms aleatoris a la teva pantalla.",
     "anonymous_names_label": "Noms Amagats",
     "attack_keybinds": "Dreceres d'atac",
+    "attack_preview_desc": "Al costat del cursor, les baixes, caselles preses i durada estimades d'un atac",
+    "attack_preview_label": "Previsualització de l'atac",
     "attack_ratio_controls": "Controls de la ràtio d'atac",
     "attack_ratio_desc": "Quin percentatge de les teves tropes s'envien en un atac (1–100%)",
     "attack_ratio_down": "Reduir la ràtio d'atac",

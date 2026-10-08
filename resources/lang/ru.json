@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Настройки аккаунта"
   },
+  "attack_preview": {
+    "all_tiles": "Все",
+    "defense_post": "Оборонный пост",
+    "fallout": "Радиоактивные осадки",
+    "instant": "Мгновенно",
+    "lost": "Ожидаемые потери",
+    "minutes": "{m}:{s} мин",
+    "open_land": "Свободная земля",
+    "seconds": "{s} с",
+    "sent": "Отправлено войск",
+    "terrain_highland": "Холмы",
+    "terrain_mountain": "Горы",
+    "terrain_plains": "Равнина",
+    "tiles": "Захвачено клеток",
+    "time": "Длительность",
+    "traitor": "Предатель"
+  },
   "ban_notice": {
     "appeal": "Если вы считаете, что это ошибка, свяжитесь с нами в Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Скрыть настоящие имена игроков и заменить их на случайные.",
     "anonymous_names_label": "Скрытые имена",
     "attack_keybinds": "Привязки клавиш атаки",
+    "attack_preview_desc": "Рядом с курсором — ожидаемые потери, захваченные клетки и длительность атаки",
+    "attack_preview_label": "Предпросмотр атаки",
     "attack_ratio_controls": "Управление соотношением атаки",
     "attack_ratio_desc": "Какой процент ваших войск отправлять в бой (1–100%)",
     "attack_ratio_down": "Уменьшить соотношение атаки",

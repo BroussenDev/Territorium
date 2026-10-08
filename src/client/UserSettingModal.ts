@@ -1637,6 +1637,14 @@ export class UserSettingModal extends BaseModal {
         @change=${this.toggleAlertFrame}
       ></setting-toggle>
 
+      <setting-toggle
+        label="${translateText("user_setting.attack_preview_label")}"
+        description="${translateText("user_setting.attack_preview_desc")}"
+        id="attack-preview-toggle"
+        .checked=${this.userSettings.attackPreview()}
+        @change=${() => this.userSettings.toggleAttackPreview()}
+      ></setting-toggle>
+
       <!-- 💰 Cursor Price Pill -->
       <setting-toggle
         label="${translateText("user_setting.cursor_cost_label_label")}"

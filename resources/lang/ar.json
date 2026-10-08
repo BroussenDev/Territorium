@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "إعدادات الحساب"
   },
+  "attack_preview": {
+    "all_tiles": "الكل",
+    "defense_post": "نقطة دفاع",
+    "fallout": "غبار نووي",
+    "instant": "فوري",
+    "lost": "الخسائر المتوقعة",
+    "minutes": "{m}:{s} د",
+    "open_land": "أرض شاغرة",
+    "seconds": "{s} ث",
+    "sent": "القوات المرسلة",
+    "terrain_highland": "تلال",
+    "terrain_mountain": "جبال",
+    "terrain_plains": "سهل",
+    "tiles": "الخانات المأخوذة",
+    "time": "المدة",
+    "traitor": "خائن"
+  },
   "ban_notice": {
     "appeal": "إذا كنت تعتقد أن هذا خطأ، فاتصل بنا على Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "إخفاء أسماء اللاعبين الحقيقية باستخدام أسماء عشوائية على شاشتك",
     "anonymous_names_label": "🥷 الأسماء المخفية",
     "attack_keybinds": "روابط مفاتيح الهجوم",
+    "attack_preview_desc": "بجانب المؤشر: الخسائر المتوقعة والخانات المأخوذة ومدة الهجوم",
+    "attack_preview_label": "معاينة الهجوم",
     "attack_ratio_controls": "ضوابط نسبة الهجوم",
     "attack_ratio_desc": "نسبة القوات المُرسلة في الهجوم (1–100%)",
     "attack_ratio_down": "تقليل نسبة الهجوم",

@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Kontaj agordoj"
   },
+  "attack_preview": {
+    "all_tiles": "Ĉiuj",
+    "defense_post": "Defendejo",
+    "fallout": "Radioaktiva polvo",
+    "instant": "Tuj",
+    "lost": "Taksitaj perdoj",
+    "minutes": "{m}:{s} min",
+    "open_land": "Libera tero",
+    "seconds": "{s} s",
+    "sent": "Senditaj trupoj",
+    "terrain_highland": "Montetoj",
+    "terrain_mountain": "Montoj",
+    "terrain_plains": "Ebenaĵo",
+    "tiles": "Prenitaj kampoj",
+    "time": "Daŭro",
+    "traitor": "Perfidulo"
+  },
   "ban_notice": {
     "appeal": "Se vi kredas, ke ĉi tio estas eraro, kontaktu nin ĉe Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Kaŝi verajn uzantnomojn kun hazardaj sur via ekrano.",
     "anonymous_names_label": "Maskitaj Nomoj",
     "attack_keybinds": "Atakaj Fulmoklavoj",
+    "attack_preview_desc": "Apud la kursoro, la taksitaj perdoj, prenitaj kampoj kaj daŭro de atako",
+    "attack_preview_label": "Antaŭrigardo de atako",
     "attack_ratio_controls": "Kontroloj de atakkvociento",
     "attack_ratio_desc": "Kian procenton de viaj trupoj sendi en atako (1–100%)",
     "attack_ratio_down": "Malpliigi atakkvocienton",

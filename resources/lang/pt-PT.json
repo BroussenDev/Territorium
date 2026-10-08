@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Configurações de Conta"
   },
+  "attack_preview": {
+    "all_tiles": "Todas",
+    "defense_post": "Posto de defesa",
+    "fallout": "Precipitação radioativa",
+    "instant": "Imediato",
+    "lost": "Perdas estimadas",
+    "minutes": "{m}:{s} min",
+    "open_land": "Terra livre",
+    "seconds": "{s} s",
+    "sent": "Tropas enviadas",
+    "terrain_highland": "Colinas",
+    "terrain_mountain": "Montanhas",
+    "terrain_plains": "Planície",
+    "tiles": "Casas tomadas",
+    "time": "Duração",
+    "traitor": "Traidor"
+  },
   "ban_notice": {
     "appeal": "Se acredita que se trata de um erro, contacte-nos no Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Ocultar nomes verdadeiros dos jogadores com nomes aleatórios no seu ecrã.",
     "anonymous_names_label": "Nomes ocultados",
     "attack_keybinds": "Teclas de Atalho para Ataque",
+    "attack_preview_desc": "Junto ao cursor, as perdas, casas tomadas e duração estimadas de um ataque",
+    "attack_preview_label": "Pré-visualização do ataque",
     "attack_ratio_controls": "Controlos do Rácio de Ataque",
     "attack_ratio_desc": "Qual a percentagem de tropas para enviar num ataque (1–100%)",
     "attack_ratio_down": "Diminuir o Rácio de Ataque",

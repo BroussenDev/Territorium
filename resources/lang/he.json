@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "הגדרות חשבון"
   },
+  "attack_preview": {
+    "all_tiles": "הכול",
+    "defense_post": "עמדת הגנה",
+    "fallout": "נשורת",
+    "instant": "מיידי",
+    "lost": "אבדות משוערות",
+    "minutes": "{m}:{s} דק׳",
+    "open_land": "אדמה פנויה",
+    "seconds": "{s} שנ׳",
+    "sent": "כוחות שנשלחו",
+    "terrain_highland": "גבעות",
+    "terrain_mountain": "הרים",
+    "terrain_plains": "מישור",
+    "tiles": "משבצות שנכבשו",
+    "time": "משך",
+    "traitor": "בוגד"
+  },
   "ban_notice": {
     "appeal": "אם אתה מאמין שזו טעות, צור איתנו קשר בדיסקורד.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "החלף את שמות השחקנים האמיתיים עם שמות רנדומליים במסך שלך.",
     "anonymous_names_label": "שמות חבויים",
     "attack_keybinds": "קיצורי מקשים להתקפה",
+    "attack_preview_desc": "ליד הסמן: האבדות, המשבצות שנכבשות ומשך ההתקפה המשוערים",
+    "attack_preview_label": "תצוגה מקדימה של התקפה",
     "attack_ratio_controls": "שליטת יחס התקפה",
     "attack_ratio_desc": "כמה אחוז מהחיילים שלך לשלוח בהתקפה (1-100%)",
     "attack_ratio_down": "הורד יחס התקפה",

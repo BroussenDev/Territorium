@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Tilin asetukset"
   },
+  "attack_preview": {
+    "all_tiles": "Kaikki",
+    "defense_post": "Puolustusasema",
+    "fallout": "Radioaktiivinen laskeuma",
+    "instant": "Heti",
+    "lost": "Arvioidut tappiot",
+    "minutes": "{m}:{s} min",
+    "open_land": "Vapaa maa",
+    "seconds": "{s} s",
+    "sent": "Lähetetyt joukot",
+    "terrain_highland": "Kukkulat",
+    "terrain_mountain": "Vuoret",
+    "terrain_plains": "Tasanko",
+    "tiles": "Vallatut ruudut",
+    "time": "Kesto",
+    "traitor": "Petturi"
+  },
   "ban_notice": {
     "appeal": "Jos uskot tämän olevan virhe, ota meihin yhteyttä Discordissa.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Korvaa pelaajien oikeat nimet satunnaisilla nimillä.",
     "anonymous_names_label": "Piilotetut nimet",
     "attack_keybinds": "Hyökkäyksen näppäinasetukset",
+    "attack_preview_desc": "Kohdistimen vieressä hyökkäyksen arvioidut tappiot, vallatut ruudut ja kesto",
+    "attack_preview_label": "Hyökkäyksen esikatselu",
     "attack_ratio_controls": "Hyökkäyksen osuus -säätimet",
     "attack_ratio_desc": "Mikä osuus joukoistasi lähetetään hyökkäykseen (1–100%)",
     "attack_ratio_down": "Vähennä hyökkäyksen osuutta",

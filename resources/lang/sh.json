@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Podešavanja naloga"
   },
+  "attack_preview": {
+    "all_tiles": "Sva",
+    "defense_post": "Odbrambeni položaj",
+    "fallout": "Radioaktivne padavine",
+    "instant": "Odmah",
+    "lost": "Procijenjeni gubici",
+    "minutes": "{m}:{s} min",
+    "open_land": "Slobodna zemlja",
+    "seconds": "{s} s",
+    "sent": "Poslane trupe",
+    "terrain_highland": "Brda",
+    "terrain_mountain": "Planine",
+    "terrain_plains": "Ravnica",
+    "tiles": "Zauzeta polja",
+    "time": "Trajanje",
+    "traitor": "Izdajnik"
+  },
   "ban_notice": {
     "appeal": "Ako misliš da je ovo greška, kontaktiraj nas na Discord-u.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Zamenjuje prava imena igrača nasumičnim na tvom ekranu.",
     "anonymous_names_label": "Skrivena imena",
     "attack_keybinds": "Prečice za napad",
+    "attack_preview_desc": "Pored kursora procijenjeni gubici, zauzeta polja i trajanje napada",
+    "attack_preview_label": "Pregled napada",
     "attack_ratio_controls": "Kontrole odnosa napada",
     "attack_ratio_desc": "Procena vojnika koje ćeš poslati u napad (1-100%)",
     "attack_ratio_down": "Smanji odnos napada",

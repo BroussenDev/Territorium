@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Настройки на акаунта"
   },
+  "attack_preview": {
+    "all_tiles": "Всички",
+    "defense_post": "Отбранителен пост",
+    "fallout": "Радиоактивни утайки",
+    "instant": "Веднага",
+    "lost": "Очаквани загуби",
+    "minutes": "{m}:{s} мин",
+    "open_land": "Свободна земя",
+    "seconds": "{s} с",
+    "sent": "Изпратени войски",
+    "terrain_highland": "Хълмове",
+    "terrain_mountain": "Планини",
+    "terrain_plains": "Равнина",
+    "tiles": "Превзети полета",
+    "time": "Продължителност",
+    "traitor": "Предател"
+  },
   "ban_notice": {
     "appeal": "Ако вярваш, че това е грешка, свържи се с нас в Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Скриване на истинските имена на играчите с произволни такива на екрана ти.",
     "anonymous_names_label": "Скрити имена",
     "attack_keybinds": "Клавиши за атака",
+    "attack_preview_desc": "До курсора — очакваните загуби, превзети полета и продължителност на атаката",
+    "attack_preview_label": "Преглед на атаката",
     "attack_ratio_controls": "Контроли за съотношение на атака",
     "attack_ratio_desc": "Какъв процент от Вашите войници да се изпратят в атака (1–100%)",
     "attack_ratio_down": "Намаляване на съотношение на атака",

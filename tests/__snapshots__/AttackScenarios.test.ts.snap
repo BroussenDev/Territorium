@@ -794,8 +794,8 @@ exports[`attack scenarios > world mountain region, 100k vs 100k, attack 20k 1`] 
 
 exports[`attack scenarios > world mountain region, human vs terra nullius, attack 20k 1`] = `
 {
-  "attackerLossPerSecond": 11760,
-  "attackerLossPerTile": 22,
+  "attackerLossPerSecond": 10530,
+  "attackerLossPerTile": 22.1,
   "attackerTiles": 5000,
   "attackerTroopsLost": 20000,
   "defenderEliminated": false,
@@ -804,9 +804,9 @@ exports[`attack scenarios > world mountain region, human vs terra nullius, attac
   "defenderTiles": 0,
   "defenderTroopsLost": 0,
   "finished": true,
-  "ticks": 17,
-  "tilesConquered": 909,
-  "tilesPerSecond": 534.7,
+  "ticks": 19,
+  "tilesConquered": 905,
+  "tilesPerSecond": 476.3,
 }
 `;
 

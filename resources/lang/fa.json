@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "تنظیمات اکانت"
   },
+  "attack_preview": {
+    "all_tiles": "همه",
+    "defense_post": "پست دفاعی",
+    "fallout": "ریزش رادیواکتیو",
+    "instant": "فوری",
+    "lost": "تلفات تخمینی",
+    "minutes": "{m}:{s} د",
+    "open_land": "زمین آزاد",
+    "seconds": "{s} ث",
+    "sent": "نیروی اعزامی",
+    "terrain_highland": "تپه‌ها",
+    "terrain_mountain": "کوه‌ها",
+    "terrain_plains": "دشت",
+    "tiles": "خانه‌های گرفته‌شده",
+    "time": "مدت",
+    "traitor": "خائن"
+  },
   "ban_notice": {
     "appeal": "اگر فکر می‌کنید این یک اشتباه است، از طریق دیسکورد با ما تماس بگیرید.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "نام واقعی بازیکنان را با نام‌های تصادفی روی صفحه مخفی کنید.",
     "anonymous_names_label": "نام‌های مخفی",
     "attack_keybinds": "کلیدهای میانبر حمله",
+    "attack_preview_desc": "کنار نشانگر: تلفات، خانه‌های گرفته‌شده و مدت تخمینی یک حمله",
+    "attack_preview_label": "پیش‌نمایش حمله",
     "attack_ratio_controls": "کنترل‌های نسبت حمله",
     "attack_ratio_desc": "چه درصدی از نیروهای خود را برای حمله بفرستید (۱–۱۰۰٪)",
     "attack_ratio_down": "کاهش نسبت حمله",

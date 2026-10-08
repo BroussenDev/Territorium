@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Cài đặt tài khoản"
   },
+  "attack_preview": {
+    "all_tiles": "Tất cả",
+    "defense_post": "Đồn phòng thủ",
+    "fallout": "Bụi phóng xạ",
+    "instant": "Tức thì",
+    "lost": "Thiệt hại ước tính",
+    "minutes": "{m}:{s} phút",
+    "open_land": "Đất trống",
+    "seconds": "{s} giây",
+    "sent": "Quân gửi đi",
+    "terrain_highland": "Đồi",
+    "terrain_mountain": "Núi",
+    "terrain_plains": "Đồng bằng",
+    "tiles": "Ô chiếm được",
+    "time": "Thời gian",
+    "traitor": "Kẻ phản bội"
+  },
   "ban_notice": {
     "appeal": "Nếu bạn cho rằng đây là lỗi, hãy liên hệ với chúng tôi trên Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Ẩn tên của người chơi thật bằng tên ngẫu nhiên trên màn hình của bạn.",
     "anonymous_names_label": "Ẩn tên",
     "attack_keybinds": "Phím tắt tấn công",
+    "attack_preview_desc": "Cạnh con trỏ: thiệt hại, số ô chiếm được và thời gian ước tính của một cuộc tấn công",
+    "attack_preview_label": "Xem trước tấn công",
     "attack_ratio_controls": "Điều khiển tỷ lệ tấn công",
     "attack_ratio_desc": "Tỷ lệ quân lính của bạn được gửi đi khi tấn công (1–100%)",
     "attack_ratio_down": "Giảm tỷ lệ tấn công",

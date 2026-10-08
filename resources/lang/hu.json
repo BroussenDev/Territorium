@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Fiók beállításai"
   },
+  "attack_preview": {
+    "all_tiles": "Mind",
+    "defense_post": "Védőállás",
+    "fallout": "Radioaktív csapadék",
+    "instant": "Azonnal",
+    "lost": "Becsült veszteség",
+    "minutes": "{m}:{s} perc",
+    "open_land": "Szabad föld",
+    "seconds": "{s} mp",
+    "sent": "Küldött csapatok",
+    "terrain_highland": "Dombok",
+    "terrain_mountain": "Hegyek",
+    "terrain_plains": "Síkság",
+    "tiles": "Elfoglalt mezők",
+    "time": "Időtartam",
+    "traitor": "Áruló"
+  },
   "ban_notice": {
     "appeal": "Ha úgy véled, hogy ez tévedés, lépj velünk kapcsolatba Discordon.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Valódi játékosnevek elrejtése és véletlenszerű nevek megjelenítése a képernyőn.",
     "anonymous_names_label": "Elrejtett nevek",
     "attack_keybinds": "Támadás billentyűkiosztások",
+    "attack_preview_desc": "A kurzor mellett egy támadás becsült vesztesége, elfoglalt mezői és időtartama",
+    "attack_preview_label": "Támadás előnézete",
     "attack_ratio_controls": "Támadási arány vezérlők",
     "attack_ratio_desc": "A katonáid hány százalékát küldöd támadásba (1-100%)",
     "attack_ratio_down": "Támadási arány csökkentése",

@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Nastavitve računa"
   },
+  "attack_preview": {
+    "all_tiles": "Vsa",
+    "defense_post": "Obrambna postojanka",
+    "fallout": "Radioaktivne padavine",
+    "instant": "Takoj",
+    "lost": "Ocenjene izgube",
+    "minutes": "{m}:{s} min",
+    "open_land": "Prosto ozemlje",
+    "seconds": "{s} s",
+    "sent": "Poslane enote",
+    "terrain_highland": "Hribi",
+    "terrain_mountain": "Gore",
+    "terrain_plains": "Ravnina",
+    "tiles": "Zavzeta polja",
+    "time": "Trajanje",
+    "traitor": "Izdajalec"
+  },
   "ban_notice": {
     "appeal": "Če menite, da je to pomota, nas kontaktirajte na Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Skrij prava imena igralcev z naključnimi na zaslonu.",
     "anonymous_names_label": "Skrita imena",
     "attack_keybinds": "Tipka za napad",
+    "attack_preview_desc": "Ob kazalcu ocenjene izgube, zavzeta polja in trajanje napada",
+    "attack_preview_label": "Predogled napada",
     "attack_ratio_controls": "Kontrole napadalnega razmerja",
     "attack_ratio_desc": "Kolikšen odstotek vaših vojakov poslati v napad (1–100 %)",
     "attack_ratio_down": "Pomanjšaj napadalno razmerje",

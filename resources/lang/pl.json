@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Ustawienia konta"
   },
+  "attack_preview": {
+    "all_tiles": "Wszystkie",
+    "defense_post": "Posterunek obronny",
+    "fallout": "Opad radioaktywny",
+    "instant": "Natychmiast",
+    "lost": "Szacowane straty",
+    "minutes": "{m}:{s} min",
+    "open_land": "Wolna ziemia",
+    "seconds": "{s} s",
+    "sent": "Wysłane wojska",
+    "terrain_highland": "Wzgórza",
+    "terrain_mountain": "Góry",
+    "terrain_plains": "Równina",
+    "tiles": "Zajęte pola",
+    "time": "Czas",
+    "traitor": "Zdrajca"
+  },
   "ban_notice": {
     "appeal": "Jeśli uważasz, że to pomyłka, skontaktuj się z nami na Discordzie.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Ukryj prawdziwe nazwy graczy, zastępując je losowymi na swoim ekranie.",
     "anonymous_names_label": "Ukryte Nazwy",
     "attack_keybinds": "Skróty klawiszowe ataku",
+    "attack_preview_desc": "Obok kursora szacowane straty, zajęte pola i czas trwania ataku",
+    "attack_preview_label": "Podgląd ataku",
     "attack_ratio_controls": "Sterowanie współczynnikiem ataku",
     "attack_ratio_desc": "Jaki procent swoich żołnierzy chcesz wysłać do ataku (1–100%)",
     "attack_ratio_down": "Zmniejsz współczynnik ataku",

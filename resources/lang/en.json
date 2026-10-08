@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Account Settings"
   },
+  "attack_preview": {
+    "all_tiles": "All",
+    "defense_post": "Defense post",
+    "fallout": "Fallout",
+    "instant": "Instant",
+    "lost": "Estimated losses",
+    "minutes": "{m}:{s} min",
+    "open_land": "Open land",
+    "seconds": "{s} s",
+    "sent": "Troops sent",
+    "terrain_highland": "Hills",
+    "terrain_mountain": "Mountains",
+    "terrain_plains": "Plains",
+    "tiles": "Tiles taken",
+    "time": "Duration",
+    "traitor": "Traitor"
+  },
   "ban_notice": {
     "appeal": "If you believe this is a mistake, contact us on Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Hide real player names with random ones on your screen.",
     "anonymous_names_label": "Hidden Names",
     "attack_keybinds": "Attack Keybinds",
+    "attack_preview_desc": "Next to the cursor, the estimated losses, tiles taken and duration of an attack",
+    "attack_preview_label": "Attack preview",
     "attack_ratio_controls": "Attack Ratio Controls",
     "attack_ratio_desc": "What percentage of your troops to send in an attack (1–100%)",
     "attack_ratio_down": "Decrease Attack Ratio",

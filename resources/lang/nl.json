@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Accountinstellingen"
   },
+  "attack_preview": {
+    "all_tiles": "Alle",
+    "defense_post": "Verdedigingspost",
+    "fallout": "Fall-out",
+    "instant": "Direct",
+    "lost": "Geschatte verliezen",
+    "minutes": "{m}:{s} min",
+    "open_land": "Vrij land",
+    "seconds": "{s} s",
+    "sent": "Verstuurde troepen",
+    "terrain_highland": "Heuvels",
+    "terrain_mountain": "Bergen",
+    "terrain_plains": "Vlakte",
+    "tiles": "Ingenomen vakken",
+    "time": "Duur",
+    "traitor": "Verrader"
+  },
   "ban_notice": {
     "appeal": "Als je denkt dat dit een fout is, neem dan contact met ons op via Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Vervang echte spelersnamen door willekeurige namen op je scherm.",
     "anonymous_names_label": "Verborgen Namen",
     "attack_keybinds": "Aanvalssneltoetsen",
+    "attack_preview_desc": "Naast de cursor de geschatte verliezen, ingenomen vakken en duur van een aanval",
+    "attack_preview_label": "Aanvalsvoorbeeld",
     "attack_ratio_controls": "Aanvalsverhouding-bediening",
     "attack_ratio_desc": "Welk percentage van je troepen je bij een aanval stuurt (1-100%)",
     "attack_ratio_down": "Verlaag Aanvalsverhouding",

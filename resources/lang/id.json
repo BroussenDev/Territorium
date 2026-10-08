@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Pengaturan Akun"
   },
+  "attack_preview": {
+    "all_tiles": "Semua",
+    "defense_post": "Pos pertahanan",
+    "fallout": "Debu radioaktif",
+    "instant": "Seketika",
+    "lost": "Perkiraan kerugian",
+    "minutes": "{m}:{s} mnt",
+    "open_land": "Tanah kosong",
+    "seconds": "{s} dtk",
+    "sent": "Pasukan dikirim",
+    "terrain_highland": "Perbukitan",
+    "terrain_mountain": "Pegunungan",
+    "terrain_plains": "Dataran",
+    "tiles": "Petak direbut",
+    "time": "Durasi",
+    "traitor": "Pengkhianat"
+  },
   "ban_notice": {
     "appeal": "Jika Anda yakin ini adalah kesalahan, hubungi kami di Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Sembunyikan nama asli pemain dengan nama acak di layar Anda.",
     "anonymous_names_label": "Sembunyikan Nama",
     "attack_keybinds": "Tombol pintas untuk Serangan",
+    "attack_preview_desc": "Di samping kursor, perkiraan kerugian, petak direbut, dan durasi serangan",
+    "attack_preview_label": "Pratinjau serangan",
     "attack_ratio_controls": "Kontrol Rasio Serangan",
     "attack_ratio_desc": "Persentase pasukan yang dikirim saat menyerang (1–100%)",
     "attack_ratio_down": "Kurangi Rasio Serangan",

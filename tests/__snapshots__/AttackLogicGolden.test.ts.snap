@@ -3390,32 +3390,32 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Highland BOT attack=10000 fallout=0": {
     "attackerLoss": 10,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland BOT attack=10000 fallout=0.5": {
     "attackerLoss": 40,
     "defenderLoss": 0,
-    "tickFraction": 0.08,
+    "tickFraction": 0.121212,
   },
   "Highland BOT attack=100000 fallout=0": {
     "attackerLoss": 10,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland BOT attack=100000 fallout=0.5": {
     "attackerLoss": 40,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.121212,
   },
   "Highland BOT attack=1000000 fallout=0": {
     "attackerLoss": 10,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland BOT attack=1000000 fallout=0.5": {
     "attackerLoss": 40,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.121212,
   },
   "Highland HUMAN attack=100 fallout=0": {
     "attackerLoss": 20,
@@ -3440,32 +3440,32 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Highland HUMAN attack=10000 fallout=0": {
     "attackerLoss": 20,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland HUMAN attack=10000 fallout=0.5": {
     "attackerLoss": 80,
     "defenderLoss": 0,
-    "tickFraction": 0.08,
+    "tickFraction": 0.121212,
   },
   "Highland HUMAN attack=100000 fallout=0": {
     "attackerLoss": 20,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland HUMAN attack=100000 fallout=0.5": {
     "attackerLoss": 80,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.121212,
   },
   "Highland HUMAN attack=1000000 fallout=0": {
     "attackerLoss": 20,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.030303,
   },
   "Highland HUMAN attack=1000000 fallout=0.5": {
     "attackerLoss": 80,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.121212,
   },
   "Mountain BOT attack=100 fallout=0": {
     "attackerLoss": 12,
@@ -3490,32 +3490,32 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Mountain BOT attack=10000 fallout=0": {
     "attackerLoss": 12,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain BOT attack=10000 fallout=0.5": {
     "attackerLoss": 48,
     "defenderLoss": 0,
-    "tickFraction": 0.1,
+    "tickFraction": 0.151515,
   },
   "Mountain BOT attack=100000 fallout=0": {
     "attackerLoss": 12,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain BOT attack=100000 fallout=0.5": {
     "attackerLoss": 48,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.151515,
   },
   "Mountain BOT attack=1000000 fallout=0": {
     "attackerLoss": 12,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain BOT attack=1000000 fallout=0.5": {
     "attackerLoss": 48,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.151515,
   },
   "Mountain HUMAN attack=100 fallout=0": {
     "attackerLoss": 24,
@@ -3540,32 +3540,32 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Mountain HUMAN attack=10000 fallout=0": {
     "attackerLoss": 24,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain HUMAN attack=10000 fallout=0.5": {
     "attackerLoss": 96,
     "defenderLoss": 0,
-    "tickFraction": 0.1,
+    "tickFraction": 0.151515,
   },
   "Mountain HUMAN attack=100000 fallout=0": {
     "attackerLoss": 24,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain HUMAN attack=100000 fallout=0.5": {
     "attackerLoss": 96,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.151515,
   },
   "Mountain HUMAN attack=1000000 fallout=0": {
     "attackerLoss": 24,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.0378788,
   },
   "Mountain HUMAN attack=1000000 fallout=0.5": {
     "attackerLoss": 96,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.151515,
   },
   "Plains BOT attack=100 fallout=0": {
     "attackerLoss": 8,
@@ -3595,7 +3595,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains BOT attack=10000 fallout=0.5": {
     "attackerLoss": 32,
     "defenderLoss": 0,
-    "tickFraction": 0.066,
+    "tickFraction": 0.1,
   },
   "Plains BOT attack=100000 fallout=0": {
     "attackerLoss": 8,
@@ -3605,7 +3605,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains BOT attack=100000 fallout=0.5": {
     "attackerLoss": 32,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.1,
   },
   "Plains BOT attack=1000000 fallout=0": {
     "attackerLoss": 8,
@@ -3615,7 +3615,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains BOT attack=1000000 fallout=0.5": {
     "attackerLoss": 32,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.1,
   },
   "Plains HUMAN attack=100 fallout=0": {
     "attackerLoss": 16,
@@ -3645,7 +3645,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains HUMAN attack=10000 fallout=0.5": {
     "attackerLoss": 64,
     "defenderLoss": 0,
-    "tickFraction": 0.066,
+    "tickFraction": 0.1,
   },
   "Plains HUMAN attack=100000 fallout=0": {
     "attackerLoss": 16,
@@ -3655,7 +3655,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains HUMAN attack=100000 fallout=0.5": {
     "attackerLoss": 64,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.1,
   },
   "Plains HUMAN attack=1000000 fallout=0": {
     "attackerLoss": 16,
@@ -3665,7 +3665,7 @@ exports[`attackLogic golden values > player vs terra nullius 1`] = `
   "Plains HUMAN attack=1000000 fallout=0.5": {
     "attackerLoss": 64,
     "defenderLoss": 0,
-    "tickFraction": 0.025,
+    "tickFraction": 0.1,
   },
 }
 `;

@@ -153,6 +153,8 @@ const BOT_DEFENDER_LOSS_MULT = 0.7;
 const TERRA_NULLIUS_COST_SCALE = 2000;
 const TERRA_NULLIUS_MIN_COST = 5;
 const TERRA_NULLIUS_MAX_COST = 100;
+// Plains' tile cost (terrainAttackBase): the unit the floor above scales by.
+const PLAINS_TILE_COST = 16.5;
 // Attacker loss = mag * clampedRatio * (BASE * largeAttackerBonus + DENSITY * troopsPerTile).
 // BASE is the old 0.48 ratio weight times the 0.965 large-defender sigmoid
 // tail that every defender used to get. DENSITY sets which stack size pays
@@ -1031,7 +1033,9 @@ export class Config {
         tickFraction:
           within(
             (TERRA_NULLIUS_COST_SCALE * tileCost) / attackTroops,
-            TERRA_NULLIUS_MIN_COST,
+            // The floor follows the terrain, so even a big army crosses
+            // hills and mountains slower than plains.
+            (TERRA_NULLIUS_MIN_COST * tileCost) / PLAINS_TILE_COST,
             TERRA_NULLIUS_MAX_COST,
           ) / tickBudget,
       };

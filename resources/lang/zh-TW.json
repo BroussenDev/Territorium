@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "帳號設定"
   },
+  "attack_preview": {
+    "all_tiles": "全部",
+    "defense_post": "防禦哨所",
+    "fallout": "放射性塵埃",
+    "instant": "瞬間",
+    "lost": "預計損失",
+    "minutes": "{m}:{s} 分",
+    "open_land": "無主之地",
+    "seconds": "{s} 秒",
+    "sent": "派出兵力",
+    "terrain_highland": "丘陵",
+    "terrain_mountain": "山地",
+    "terrain_plains": "平原",
+    "tiles": "佔領格數",
+    "time": "持續時間",
+    "traitor": "叛徒"
+  },
   "ban_notice": {
     "appeal": "如果您相信這是個錯誤，請於 Discord 上聯繫我們。",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "將真實玩家名稱替換為隨機名稱。",
     "anonymous_names_label": "隱藏名稱",
     "attack_keybinds": "攻擊快捷鍵",
+    "attack_preview_desc": "在游標旁顯示一次攻擊的預計損失、佔領格數和持續時間",
+    "attack_preview_label": "攻擊預覽",
     "attack_ratio_controls": "攻擊比例控制",
     "attack_ratio_desc": "你要派出多少百分比的軍隊參與進攻（1 - 100%）",
     "attack_ratio_down": "降低攻擊比例",

@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Kontoinställningar"
   },
+  "attack_preview": {
+    "all_tiles": "Alla",
+    "defense_post": "Försvarspost",
+    "fallout": "Radioaktivt nedfall",
+    "instant": "Direkt",
+    "lost": "Uppskattade förluster",
+    "minutes": "{m}:{s} min",
+    "open_land": "Fri mark",
+    "seconds": "{s} s",
+    "sent": "Skickade trupper",
+    "terrain_highland": "Kullar",
+    "terrain_mountain": "Berg",
+    "terrain_plains": "Slätt",
+    "tiles": "Tagna rutor",
+    "time": "Varaktighet",
+    "traitor": "Förrädare"
+  },
   "ban_notice": {
     "appeal": "Om du tror att detta är ett misstag, kontakta oss på Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Dölj riktiga spelarnamn med slumpmässiga namn på din skärm.",
     "anonymous_names_label": "Dolda Namn",
     "attack_keybinds": "Anfallstangentbindningar",
+    "attack_preview_desc": "Bredvid muspekaren: uppskattade förluster, tagna rutor och varaktighet för ett anfall",
+    "attack_preview_label": "Förhandsvisning av anfall",
     "attack_ratio_controls": "Anfallsskalningskontroller",
     "attack_ratio_desc": "Vilken procent av dina trupper som ska skickas in vid ett anfall.(1–100%)",
     "attack_ratio_down": "Minska anfallskalan",

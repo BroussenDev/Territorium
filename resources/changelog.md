@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.82
+
+⚔️ **Attack preview**
+
+- Next to the cursor, over land you can attack: the troops you send, the estimated losses, the tiles taken and how long the attack runs, with what weighs on it (terrain, defense post, fallout, traitor). On by default; Settings turns it off.
+
+⛰️ **Terrain counts on open land**
+
+- Even a big army now crosses hills and mountains a little slower than plains when taking open land.
+
 ## v0.1.81
 
 👑 **Deluxe edition « Conquérant »**

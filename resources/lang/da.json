@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Kontoindstillinger"
   },
+  "attack_preview": {
+    "all_tiles": "Alle",
+    "defense_post": "Forsvarspost",
+    "fallout": "Radioaktivt nedfald",
+    "instant": "Straks",
+    "lost": "Anslåede tab",
+    "minutes": "{m}:{s} min",
+    "open_land": "Fri jord",
+    "seconds": "{s} s",
+    "sent": "Sendte tropper",
+    "terrain_highland": "Bakker",
+    "terrain_mountain": "Bjerge",
+    "terrain_plains": "Slette",
+    "tiles": "Erobrede felter",
+    "time": "Varighed",
+    "traitor": "Forræder"
+  },
   "ban_notice": {
     "appeal": "Hvis du mener, at dette er en fejl, så kontakt os på Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Skjul rigtige spillernavne med tilfældige navne på din skærm.",
     "anonymous_names_label": "Skjulte Navne",
     "attack_keybinds": "Angrebsgenvejstaster",
+    "attack_preview_desc": "Ved markøren: anslåede tab, erobrede felter og varighed for et angreb",
+    "attack_preview_label": "Forhåndsvisning af angreb",
     "attack_ratio_controls": "Styring af angrebsforhold",
     "attack_ratio_desc": "Hvor stor en procentdel af dine tropper skal sendes i et angreb (1–100%)",
     "attack_ratio_down": "Formindsk Angrebsforhold",

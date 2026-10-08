@@ -21,6 +21,7 @@ import { GameView } from "../view";
 import { FrameProfiler } from "./FrameProfiler";
 import { ActionableEvents } from "./layers/ActionableEvents";
 import { AlertFrame } from "./layers/AlertFrame";
+import { AttackPreview } from "./layers/AttackPreview";
 import { AttacksDisplay } from "./layers/AttacksDisplay";
 import { BuildMenu } from "./layers/BuildMenu";
 import { ChatModal } from "./layers/ChatModal";
@@ -156,6 +157,17 @@ export function createRenderer(
   playerInfo.eventBus = eventBus;
   playerInfo.transform = transformHandler;
   playerInfo.game = game;
+
+  const attackPreview = document.querySelector(
+    "attack-preview",
+  ) as AttackPreview;
+  if (!(attackPreview instanceof AttackPreview)) {
+    console.error("attack preview not found");
+  }
+  attackPreview.eventBus = eventBus;
+  attackPreview.transform = transformHandler;
+  attackPreview.game = game;
+  attackPreview.uiState = uiState;
 
   const winModal = document.querySelector("win-modal") as WinModal;
   if (!(winModal instanceof WinModal)) {
@@ -384,6 +396,7 @@ export function createRenderer(
     eventHistory,
     controlPanel,
     playerInfo,
+    attackPreview,
     winModal,
     victoryCelebration,
     newLobbyPrompt,

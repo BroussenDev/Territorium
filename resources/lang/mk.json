@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Поставки за сметка"
   },
+  "attack_preview": {
+    "all_tiles": "Сите",
+    "defense_post": "Одбранбен пункт",
+    "fallout": "Радиоактивни талози",
+    "instant": "Веднаш",
+    "lost": "Проценети загуби",
+    "minutes": "{m}:{s} мин",
+    "open_land": "Слободна земја",
+    "seconds": "{s} с",
+    "sent": "Испратени војници",
+    "terrain_highland": "Ридови",
+    "terrain_mountain": "Планини",
+    "terrain_plains": "Рамнина",
+    "tiles": "Освоени полиња",
+    "time": "Траење",
+    "traitor": "Предавник"
+  },
   "ban_notice": {
     "appeal": "Ако мислите дека ова е грешка, контактирајте не на Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Скриј ги вистинските имиња на играчите со случајни имиња на твојот екран.",
     "anonymous_names_label": "Скриени имиња",
     "attack_keybinds": "Копчиња за напад",
+    "attack_preview_desc": "До курсорот — проценетите загуби, освоени полиња и траењето на нападот",
+    "attack_preview_label": "Преглед на нападот",
     "attack_ratio_controls": "Контроли за однос на напад",
     "attack_ratio_desc": "Процент од твоите војници што ќе ги испратиш во напад (1–100%)",
     "attack_ratio_down": "Намали однос на напад",

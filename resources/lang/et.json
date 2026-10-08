@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Konto seaded"
   },
+  "attack_preview": {
+    "all_tiles": "Kõik",
+    "defense_post": "Kaitsepost",
+    "fallout": "Radioaktiivne sadu",
+    "instant": "Kohe",
+    "lost": "Hinnangulised kaotused",
+    "minutes": "{m}:{s} min",
+    "open_land": "Vaba maa",
+    "seconds": "{s} s",
+    "sent": "Saadetud väed",
+    "terrain_highland": "Künkad",
+    "terrain_mountain": "Mäed",
+    "terrain_plains": "Tasandik",
+    "tiles": "Vallutatud ruudud",
+    "time": "Kestus",
+    "traitor": "Reetur"
+  },
   "ban_notice": {
     "appeal": "Kui arvate, et see on viga, võtke meiega Discordis ühendust.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Peida päris mängijate nimed suvalistega enda ekraanil.",
     "anonymous_names_label": "Peidetud nimed",
     "attack_keybinds": "Ründe Kiirklahv",
+    "attack_preview_desc": "Kursori kõrval rünnaku hinnangulised kaotused, vallutatud ruudud ja kestus",
+    "attack_preview_label": "Rünnaku eelvaade",
     "attack_ratio_controls": "Ründesuhe kontrollid",
     "attack_ratio_desc": "Kui suur protsent oma väest saata rünnakule (1–100%)",
     "attack_ratio_down": "Alanda Ründesuhet",

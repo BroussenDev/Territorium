@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "अकाउंट सेटिंग"
   },
+  "attack_preview": {
+    "all_tiles": "सभी",
+    "defense_post": "रक्षा चौकी",
+    "fallout": "रेडियोधर्मी धूल",
+    "instant": "तुरंत",
+    "lost": "अनुमानित नुकसान",
+    "minutes": "{m}:{s} मि",
+    "open_land": "खाली ज़मीन",
+    "seconds": "{s} से",
+    "sent": "भेजे गए सैनिक",
+    "terrain_highland": "पहाड़ियाँ",
+    "terrain_mountain": "पहाड़",
+    "terrain_plains": "मैदान",
+    "tiles": "कब्ज़ा किए खाने",
+    "time": "अवधि",
+    "traitor": "गद्दार"
+  },
   "ban_notice": {
     "appeal": "यदि आपको लगता है कि यह एक गलती है, तो डिस्कॉर्ड पर हमसे संपर्क करें।",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "अपनी स्क्रीन पर यादृच्छिक नामों के साथ वास्तविक खिलाड़ियों के नाम छिपाएँ।",
     "anonymous_names_label": "छिपे हुए नाम",
     "attack_keybinds": "हमला कीबाइंड",
+    "attack_preview_desc": "कर्सर के पास किसी हमले का अनुमानित नुकसान, कब्ज़ा किए खाने और अवधि",
+    "attack_preview_label": "हमले का पूर्वावलोकन",
     "attack_ratio_controls": "आक्रमण अनुपात नियंत्रण",
     "attack_ratio_desc": "आक्रमण में अपनी सेना का कितना प्रतिशत भेजें (1-100%)",
     "attack_ratio_down": "आक्रमण अनुपात कम करें",

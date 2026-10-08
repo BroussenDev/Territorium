@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Nastavenia účtu"
   },
+  "attack_preview": {
+    "all_tiles": "Všetky",
+    "defense_post": "Obranné stanovište",
+    "fallout": "Rádioaktívny spád",
+    "instant": "Okamžite",
+    "lost": "Odhadované straty",
+    "minutes": "{m}:{s} min",
+    "open_land": "Voľná zem",
+    "seconds": "{s} s",
+    "sent": "Vyslané vojsko",
+    "terrain_highland": "Kopce",
+    "terrain_mountain": "Hory",
+    "terrain_plains": "Rovina",
+    "tiles": "Obsadené polia",
+    "time": "Trvanie",
+    "traitor": "Zradca"
+  },
   "ban_notice": {
     "appeal": "Ak si myslíte, že ide o omyl, kontaktujte nás na Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Skry ozajstné mená hráčov na obrazovke náhodnými.",
     "anonymous_names_label": "Skryté mená",
     "attack_keybinds": "Klávesové skratky útoku",
+    "attack_preview_desc": "Pri kurzore odhadované straty, obsadené polia a trvanie útoku",
+    "attack_preview_label": "Náhľad útoku",
     "attack_ratio_controls": "Nastavenia pomeru útoku",
     "attack_ratio_desc": "Percento tvojich vojsk na odoslanie do útoku (1 až 100%)",
     "attack_ratio_down": "Znížiť pomer útoku",

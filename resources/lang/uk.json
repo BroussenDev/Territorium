@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Налаштування акаунту"
   },
+  "attack_preview": {
+    "all_tiles": "Усі",
+    "defense_post": "Оборонний пост",
+    "fallout": "Радіоактивні опади",
+    "instant": "Миттєво",
+    "lost": "Очікувані втрати",
+    "minutes": "{m}:{s} хв",
+    "open_land": "Вільна земля",
+    "seconds": "{s} с",
+    "sent": "Надіслано військ",
+    "terrain_highland": "Пагорби",
+    "terrain_mountain": "Гори",
+    "terrain_plains": "Рівнина",
+    "tiles": "Захоплено клітинок",
+    "time": "Тривалість",
+    "traitor": "Зрадник"
+  },
   "ban_notice": {
     "appeal": "Якщо ви вважаєте, що це помилка, зв’яжіться з нами у Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Приховати справжні імена гравців і замінити їх випадковими.",
     "anonymous_names_label": "Приховані імена",
     "attack_keybinds": "Прив’язки клавіш атаки",
+    "attack_preview_desc": "Біля курсора — очікувані втрати, захоплені клітинки й тривалість атаки",
+    "attack_preview_label": "Попередній перегляд атаки",
     "attack_ratio_controls": "Керування коефіцієнтом атаки",
     "attack_ratio_desc": "Який відсоток ваших військ відправляти у наступ (1–100%)",
     "attack_ratio_down": "Зменшити коефіцієнт атаки",

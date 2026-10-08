@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "Impostazioni dell'account"
   },
+  "attack_preview": {
+    "all_tiles": "Tutte",
+    "defense_post": "Posto di difesa",
+    "fallout": "Ricaduta radioattiva",
+    "instant": "Immediato",
+    "lost": "Perdite stimate",
+    "minutes": "{m}:{s} min",
+    "open_land": "Terra libera",
+    "seconds": "{s} s",
+    "sent": "Truppe inviate",
+    "terrain_highland": "Colline",
+    "terrain_mountain": "Montagne",
+    "terrain_plains": "Pianura",
+    "tiles": "Caselle prese",
+    "time": "Durata",
+    "traitor": "Traditore"
+  },
   "ban_notice": {
     "appeal": "Se ritieni che si tratti di un errore, contattaci su Discord.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "Nascondi i nomi dei giocatori reali sullo schermo con nomi casuali.",
     "anonymous_names_label": "🥷 Nomi Nascosti",
     "attack_keybinds": "Combinazioni di tasti di attacco",
+    "attack_preview_desc": "Accanto al cursore, perdite, caselle prese e durata stimate di un attacco",
+    "attack_preview_label": "Anteprima d'attacco",
     "attack_ratio_controls": "Controlli del rapporto di attacco",
     "attack_ratio_desc": "Quale percentuale delle tue truppe inviare in attacco (1–100%)",
     "attack_ratio_down": "Diminuisci il rapporto di attacco",

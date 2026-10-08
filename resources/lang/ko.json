@@ -135,6 +135,23 @@
   "account_settings_modal": {
     "title": "계정 설정"
   },
+  "attack_preview": {
+    "all_tiles": "전부",
+    "defense_post": "방어 초소",
+    "fallout": "방사능 낙진",
+    "instant": "즉시",
+    "lost": "예상 손실",
+    "minutes": "{m}분 {s}초",
+    "open_land": "빈 땅",
+    "seconds": "{s}초",
+    "sent": "보낼 병력",
+    "terrain_highland": "구릉",
+    "terrain_mountain": "산악",
+    "terrain_plains": "평지",
+    "tiles": "점령 칸",
+    "time": "소요 시간",
+    "traitor": "배신자"
+  },
   "ban_notice": {
     "appeal": "잘못된 조치라고 생각되시면 Discord를 통해 문의해 주세요.",
     "category": {
@@ -2886,6 +2903,8 @@
     "anonymous_names_desc": "화면에 무작위 이름을 표시하여 실제 플레이어 이름을 숨깁니다.",
     "anonymous_names_label": "이름 감추기",
     "attack_keybinds": "공격 단축키",
+    "attack_preview_desc": "커서 옆에 공격의 예상 손실, 점령 칸, 소요 시간을 표시",
+    "attack_preview_label": "공격 미리보기",
     "attack_ratio_controls": "공격 비율 제어",
     "attack_ratio_desc": "공격에 보낼 병력 비율 (1~100%)",
     "attack_ratio_down": "공격 비율 낮추기",
