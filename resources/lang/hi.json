@@ -884,6 +884,13 @@
     "ticket_unavailable": "अभी खाता लिंक करना प्रारंभ नहीं किया जा सका. आप पुनः प्रयास कर सकते हैं, या खेल जारी रख सकते हैं।",
     "title": "टेरिटोरियम - खाता सेटअप"
   },
+  "desktop_offline": {
+    "go_online": "ऑनलाइन जाएँ",
+    "offline": "Territorium से कनेक्शन नहीं: सोलो अब भी उपलब्ध है।",
+    "play_offline": "ऑफ़लाइन खेलें",
+    "staying": "ऑफ़लाइन मोड: केवल सोलो उपलब्ध है।",
+    "still_offline": "Territorium से अब भी कनेक्शन नहीं।"
+  },
   "desktop_presence": {
     "in_game": "खेल में",
     "spectating": "दर्शकों"

@@ -884,6 +884,13 @@
     "ticket_unavailable": "Die Kontoverknüpfung konnte momentan nicht gestartet werden. Sie können es erneut versuchen oder mit dem Spiel fortfahren.",
     "title": "Territorium – Kontoeinrichtung"
   },
+  "desktop_offline": {
+    "go_online": "Online gehen",
+    "offline": "Keine Verbindung zu Territorium: Solo ist weiterhin verfügbar.",
+    "play_offline": "Offline spielen",
+    "staying": "Offline-Modus: Nur Solo ist verfügbar.",
+    "still_offline": "Immer noch keine Verbindung zu Territorium."
+  },
   "desktop_presence": {
     "in_game": "Im Spiel",
     "spectating": "Zuschauen"

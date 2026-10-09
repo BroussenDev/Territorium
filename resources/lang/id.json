@@ -884,6 +884,13 @@
     "ticket_unavailable": "Tidak dapat memulai penautan akun saat ini. Anda dapat mencoba lagi, atau melanjutkan permainan.",
     "title": "Territorium - Pengaturan Akun"
   },
+  "desktop_offline": {
+    "go_online": "Kembali online",
+    "offline": "Tidak ada koneksi ke Territorium: mode solo tetap tersedia.",
+    "play_offline": "Main offline",
+    "staying": "Mode offline: hanya mode solo yang tersedia.",
+    "still_offline": "Masih belum ada koneksi ke Territorium."
+  },
   "desktop_presence": {
     "in_game": "Dalam permainan",
     "spectating": "Menonton"

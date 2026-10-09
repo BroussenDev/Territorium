@@ -49,6 +49,7 @@ import {
   ResolvedCosmetic,
   resolvedToPlayerPattern,
 } from "./Cosmetics";
+import { desktopOffline } from "./DesktopOffline";
 import { withCrestPreview } from "./NationCosmetics";
 import { translateText } from "./Utils";
 
@@ -189,8 +190,11 @@ export class InventoryModal extends BaseModal {
       const auth = await userAuth();
       if (loadId !== this.ownershipLoadId) return;
       if (auth === false) {
-        this.userMeResponse = false;
-        this.ownershipState = "guest";
+        // Offline in the Steam app: the inventory the online game last saw.
+        const offline = desktopOffline() !== null ? await getUserMe() : false;
+        if (loadId !== this.ownershipLoadId) return;
+        this.userMeResponse = offline;
+        this.ownershipState = offline === false ? "guest" : "loaded";
         return;
       }
 

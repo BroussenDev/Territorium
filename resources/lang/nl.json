@@ -884,6 +884,13 @@
     "ticket_unavailable": "Kan account koppelen nu niet starten. Je kunt het opnieuw proberen, of doorgaan met het spel.",
     "title": "Territorium - Account setup"
   },
+  "desktop_offline": {
+    "go_online": "Online gaan",
+    "offline": "Geen verbinding met Territorium: solo blijft beschikbaar.",
+    "play_offline": "Offline spelen",
+    "staying": "Offlinemodus: alleen solo is beschikbaar.",
+    "still_offline": "Nog steeds geen verbinding met Territorium."
+  },
   "desktop_presence": {
     "in_game": "In het spel",
     "spectating": "Aan het toeschouwen"

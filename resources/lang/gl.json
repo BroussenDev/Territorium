@@ -884,6 +884,13 @@
     "ticket_unavailable": "Non se puido iniciar a vinculación da conta agora mesmo. Podes tentalo de novo ou continuar co xogo.",
     "title": "Territorium - Configuración da conta"
   },
+  "desktop_offline": {
+    "go_online": "Volver conectarse",
+    "offline": "Sen conexión con Territorium: o modo en solitario segue dispoñible.",
+    "play_offline": "Xogar sen conexión",
+    "staying": "Modo sen conexión: só está dispoñible o modo en solitario.",
+    "still_offline": "Aínda non hai conexión con Territorium."
+  },
   "desktop_presence": {
     "in_game": "En xogo",
     "spectating": "Espectando"

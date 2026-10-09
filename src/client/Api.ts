@@ -76,6 +76,7 @@ import {
   userAuth,
 } from "./Auth";
 import { ClientEnv } from "./ClientEnv";
+import { offlineCopy, rememberForOffline } from "./DesktopOffline";
 import { ensureServerList } from "./ServerList";
 
 export async function fetchPlayerById(
@@ -307,7 +308,7 @@ async function requestUserMe(): Promise<{
       return { profile: false, aborted: false };
     }
     if (response.status !== 200) return { profile: false, aborted: false };
-    const body = await response.json();
+    const body: unknown = await response.json();
     const result = UserMeResponseSchema.safeParse(body);
     if (!result.success) {
       const error = z.prettifyError(result.error);
@@ -320,11 +321,21 @@ async function requestUserMe(): Promise<{
     // flight: a stale response must not reactivate the old player's scope.
     if (isSessionActive(claims.sub)) {
       UserSettings.setPlayerId(result.data.player.publicId);
+      rememberForOffline("profile", body);
     }
     return { profile: result.data, aborted: false };
   } catch (e) {
     return { profile: false, aborted: isAbortError(e) };
   }
+}
+
+// Offline in the Steam app: the profile the online game last saw
+// (DesktopOffline.ts), for the inventory and the chosen cosmetics in solo.
+async function offlineProfile(): Promise<UserMeResponse | false> {
+  const result = UserMeResponseSchema.safeParse(await offlineCopy("profile"));
+  if (!result.success) return false;
+  UserSettings.setPlayerId(result.data.player.publicId);
+  return result.data;
 }
 
 export async function getUserMe(): Promise<UserMeResponse | false> {
@@ -336,7 +347,8 @@ export async function getUserMe(): Promise<UserMeResponse | false> {
   // always before any await inside can resume.
   const attempt: { request?: Promise<UserMeResponse | false> } = {};
   attempt.request = (async () => {
-    const { profile, aborted } = await requestUserMe();
+    const { profile: online, aborted } = await requestUserMe();
+    const profile = online === false ? await offlineProfile() : online;
     // Un-cache a timeout, and ONLY a timeout. Every other falsy answer is
     // a conclusion about the account — signed out, a 401, a rejected token
     // — and stays remembered; re-deriving those would put an /auth/refresh

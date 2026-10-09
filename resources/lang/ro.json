@@ -884,6 +884,13 @@
     "ticket_unavailable": "Contul de conectare nu a putut fi pornit. Poți încerca din nou, sau să continui la joc.",
     "title": "Territorium - Configurare cont"
   },
+  "desktop_offline": {
+    "go_online": "Treci online",
+    "offline": "Nicio conexiune la Territorium: modul solo rămâne disponibil.",
+    "play_offline": "Joacă offline",
+    "staying": "Mod offline: doar modul solo este disponibil.",
+    "still_offline": "Încă nu există conexiune la Territorium."
+  },
   "desktop_presence": {
     "in_game": "În joc",
     "spectating": "Privește"

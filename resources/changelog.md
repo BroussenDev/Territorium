@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.88
+
+🖥️ **Steam: offline solo**
+
+- Without a connection, the Steam app opens the game from the disk: solo plays as usual.
+- "Play offline" keeps it offline, without checking for the connection, until you choose to go online again.
+- Your inventory and the cosmetics you own are there offline too.
+
 ## v0.1.87
 
 🏗️ **Buildings**

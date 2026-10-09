@@ -884,6 +884,13 @@
     "ticket_unavailable": "現在無法開始帳號綁定。您可以重試，或是繼續遊戲。",
     "title": "Territorium — 帳號設定"
   },
+  "desktop_offline": {
+    "go_online": "重新連線",
+    "offline": "無法連線至 Territorium：仍可單人遊戲。",
+    "play_offline": "離線遊玩",
+    "staying": "離線模式：僅可單人遊戲。",
+    "still_offline": "仍無法連線至 Territorium。"
+  },
   "desktop_presence": {
     "in_game": "遊戲中",
     "spectating": "觀戰中"

@@ -884,6 +884,13 @@
     "ticket_unavailable": "Не вдалося почати прив’язування акаунту. Ви можете спробувати знову або перейти до гри.",
     "title": "Territorium — Налаштування акаунту"
   },
+  "desktop_offline": {
+    "go_online": "Підключитися",
+    "offline": "Немає з'єднання з Territorium: одиночна гра досі доступна.",
+    "play_offline": "Грати офлайн",
+    "staying": "Офлайн-режим: доступна лише одиночна гра.",
+    "still_offline": "З'єднання з Territorium досі немає."
+  },
   "desktop_presence": {
     "in_game": "У грі",
     "spectating": "Спостерігає"

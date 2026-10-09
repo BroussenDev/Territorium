@@ -37,6 +37,7 @@ import {
   purchaseWithCurrency,
 } from "./Api";
 import { checkoutCurrency, packMoneyPrice } from "./CheckoutPrice";
+import { offlineCopy, rememberForOffline } from "./DesktopOffline";
 import { showInGameAlert, showInGameConfirm } from "./InGameModal";
 import {
   classifyPurchaseReturn,
@@ -1046,6 +1047,18 @@ export function invalidateCosmetics(): void {
   __cosmetics = null;
 }
 
+// Offline in the Steam app: the catalog the online game last saw
+// (DesktopOffline.ts), so the inventory still shows.
+async function offlineCosmetics(): Promise<Cosmetics | null> {
+  const result = CosmeticsSchema.safeParse(await offlineCopy("cosmetics"));
+  if (!result.success) return null;
+  __cosmeticsHash = simpleHash(
+    Object.keys(result.data.patterns).sort().join(","),
+  );
+  __cosmeticsCache = result.data;
+  return result.data;
+}
+
 export async function fetchCosmetics(): Promise<Cosmetics | null> {
   if (__cosmetics !== null) {
     return __cosmetics;
@@ -1057,9 +1070,10 @@ export async function fetchCosmetics(): Promise<Cosmetics | null> {
       });
       if (!response.ok) {
         console.error(`HTTP error! status: ${response.status}`);
-        return null;
+        return await offlineCosmetics();
       }
-      const result = CosmeticsSchema.safeParse(await response.json());
+      const json: unknown = await response.json();
+      const result = CosmeticsSchema.safeParse(json);
       if (!result.success) {
         console.error(`Invalid cosmetics: ${result.error.message}`);
         return null;
@@ -1068,10 +1082,11 @@ export async function fetchCosmetics(): Promise<Cosmetics | null> {
       const hashInput = patternKeys.join(",");
       __cosmeticsHash = simpleHash(hashInput);
       __cosmeticsCache = result.data;
+      rememberForOffline("cosmetics", json);
       return result.data;
     } catch (error) {
       console.error("Error getting cosmetics:", error);
-      return null;
+      return await offlineCosmetics();
     }
   })();
   __cosmetics = request;

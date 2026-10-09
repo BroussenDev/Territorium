@@ -884,6 +884,13 @@
     "ticket_unavailable": "現在アカウントのリンクを開始できませんでした。もう一度試すことも、ゲームを続行することもできます。",
     "title": "テリトリアム - アカウントのセットアップ"
   },
+  "desktop_offline": {
+    "go_online": "オンラインに戻る",
+    "offline": "Territoriumに接続できません：ソロは引き続きプレイできます。",
+    "play_offline": "オフラインでプレイ",
+    "staying": "オフラインモード：ソロのみプレイできます。",
+    "still_offline": "まだTerritoriumに接続できません。"
+  },
   "desktop_presence": {
     "in_game": "ゲーム中",
     "spectating": "観戦中"

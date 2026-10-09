@@ -884,6 +884,13 @@
     "ticket_unavailable": "Povezovanja računa trenutno ni bilo mogoče začeti. Lahko poskusite znova ali nadaljujete z igro.",
     "title": "Territorium – Nastavitev računa"
   },
+  "desktop_offline": {
+    "go_online": "Poveži se",
+    "offline": "Ni povezave s Territoriumom: igra solo je še vedno na voljo.",
+    "play_offline": "Igraj brez povezave",
+    "staying": "Način brez povezave: na voljo je le igra solo.",
+    "still_offline": "Še vedno ni povezave s Territoriumom."
+  },
   "desktop_presence": {
     "in_game": "V igri",
     "spectating": "Gledanje"

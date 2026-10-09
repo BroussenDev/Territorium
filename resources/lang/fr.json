@@ -884,6 +884,13 @@
     "ticket_unavailable": "Impossible de démarrer la liaison de compte. Vous pouvez réessayer ou continuer à jouer.",
     "title": "Territorium - Configuration du compte"
   },
+  "desktop_offline": {
+    "go_online": "Repasser en ligne",
+    "offline": "Pas de connexion à Territorium : le solo reste disponible.",
+    "play_offline": "Jouer hors ligne",
+    "staying": "Mode hors ligne : seul le solo est disponible.",
+    "still_offline": "Toujours pas de connexion à Territorium."
+  },
   "desktop_presence": {
     "in_game": "En jeu",
     "spectating": "Mode spectateur"

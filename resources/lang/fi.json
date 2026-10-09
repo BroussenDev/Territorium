@@ -884,6 +884,13 @@
     "ticket_unavailable": "Tilin linkittämistä ei voitu aloittaa juuri nyt. Voit yrittää uudelleen tai jatkaa peliä.",
     "title": "Territorium - Tilin luominen"
   },
+  "desktop_offline": {
+    "go_online": "Siirry verkkoon",
+    "offline": "Ei yhteyttä Territoriumiin: yksinpeli on yhä käytettävissä.",
+    "play_offline": "Pelaa offline-tilassa",
+    "staying": "Offline-tila: vain yksinpeli on käytettävissä.",
+    "still_offline": "Edelleen ei yhteyttä Territoriumiin."
+  },
   "desktop_presence": {
     "in_game": "Pelissä",
     "spectating": "Näyttävä"

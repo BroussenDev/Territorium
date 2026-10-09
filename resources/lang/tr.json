@@ -884,6 +884,13 @@
     "ticket_unavailable": "Hesap bağlama şu anda başlatılamadı. Tekrar deneyebilir veya oyuna devam edebilirsiniz.",
     "title": "Territorium - Hesap Kurulumu"
   },
+  "desktop_offline": {
+    "go_online": "Çevrimiçi ol",
+    "offline": "Territorium'a bağlantı yok: tek oyunculu mod hâlâ kullanılabilir.",
+    "play_offline": "Çevrimdışı oyna",
+    "staying": "Çevrimdışı mod: yalnızca tek oyunculu mod kullanılabilir.",
+    "still_offline": "Territorium'a hâlâ bağlantı yok."
+  },
   "desktop_presence": {
     "in_game": "oyunda",
     "spectating": "Seyirci"

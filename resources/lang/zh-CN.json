@@ -884,6 +884,13 @@
     "ticket_unavailable": "目前无法开始帐户关联。您可以重试，或者继续游戏。",
     "title": "Territorium - 帐户设置"
   },
+  "desktop_offline": {
+    "go_online": "重新联网",
+    "offline": "无法连接 Territorium：仍可单人游戏。",
+    "play_offline": "离线游玩",
+    "staying": "离线模式：仅可单人游戏。",
+    "still_offline": "仍无法连接 Territorium。"
+  },
   "desktop_presence": {
     "in_game": "游戏中",
     "spectating": "观看"

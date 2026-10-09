@@ -884,6 +884,13 @@
     "ticket_unavailable": "지금은 계정 연동을 시작할 수 없습니다. 다시 시도하거나 게임을 계속 진행할 수 있습니다.",
     "title": "Territorium - 계정 설정"
   },
+  "desktop_offline": {
+    "go_online": "온라인으로 전환",
+    "offline": "Territorium에 연결할 수 없습니다. 솔로는 계속 플레이할 수 있습니다.",
+    "play_offline": "오프라인으로 플레이",
+    "staying": "오프라인 모드: 솔로만 플레이할 수 있습니다.",
+    "still_offline": "아직 Territorium에 연결할 수 없습니다."
+  },
   "desktop_presence": {
     "in_game": "게임 중",
     "spectating": "관전 중"

@@ -884,6 +884,13 @@
     "ticket_unavailable": "Kunne ikke starte kontotilknytning lige nu. Du kan prøve igen eller fortsætte til spillet.",
     "title": "Territorium - Kontoopsætning"
   },
+  "desktop_offline": {
+    "go_online": "Gå online",
+    "offline": "Ingen forbindelse til Territorium: solo kan stadig spilles.",
+    "play_offline": "Spil offline",
+    "staying": "Offlinetilstand: kun solo kan spilles.",
+    "still_offline": "Stadig ingen forbindelse til Territorium."
+  },
   "desktop_presence": {
     "in_game": "I spil",
     "spectating": "Tilskuer"

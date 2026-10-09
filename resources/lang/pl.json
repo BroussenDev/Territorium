@@ -884,6 +884,13 @@
     "ticket_unavailable": "Nie można teraz rozpocząć łączenia kont. Możesz spróbować ponownie lub kontynuować grę.",
     "title": "Territorium - Konfiguracja konta"
   },
+  "desktop_offline": {
+    "go_online": "Przejdź online",
+    "offline": "Brak połączenia z Territorium: gra solo jest nadal dostępna.",
+    "play_offline": "Graj offline",
+    "staying": "Tryb offline: dostępna jest tylko gra solo.",
+    "still_offline": "Nadal brak połączenia z Territorium."
+  },
   "desktop_presence": {
     "in_game": "W grze",
     "spectating": "Oglądanie"

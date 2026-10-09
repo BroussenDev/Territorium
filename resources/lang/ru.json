@@ -884,6 +884,13 @@
     "ticket_unavailable": "Не удалось запустить привязку аккаунта. Попробуйте снова или перейдите к игре.",
     "title": "Territorium — Настройка аккаунта"
   },
+  "desktop_offline": {
+    "go_online": "Подключиться",
+    "offline": "Нет связи с Territorium: одиночная игра по-прежнему доступна.",
+    "play_offline": "Играть офлайн",
+    "staying": "Офлайн-режим: доступна только одиночная игра.",
+    "still_offline": "Связи с Territorium всё ещё нет."
+  },
   "desktop_presence": {
     "in_game": "В игре",
     "spectating": "Наблюдает"

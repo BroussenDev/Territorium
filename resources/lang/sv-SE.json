@@ -884,6 +884,13 @@
     "ticket_unavailable": "Det gick inte att starta kontolänkning just nu. Du kan försöka igen eller fortsätta till spelet.",
     "title": "Territorium - Kontoinställningar"
   },
+  "desktop_offline": {
+    "go_online": "Gå online",
+    "offline": "Ingen anslutning till Territorium: solo går fortfarande att spela.",
+    "play_offline": "Spela offline",
+    "staying": "Offlineläge: bara solo går att spela.",
+    "still_offline": "Fortfarande ingen anslutning till Territorium."
+  },
   "desktop_presence": {
     "in_game": "I spelet",
     "spectating": "Åskådare"

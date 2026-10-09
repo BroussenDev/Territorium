@@ -884,6 +884,13 @@
     "ticket_unavailable": "امکان آغاز اتصال حساب کاربری در حال حاضر وجود ندارد. می‌توانید دوباره تلاش کنید یا به بازی ادامه دهید.",
     "title": "Territorium - راه اندازی حساب"
   },
+  "desktop_offline": {
+    "go_online": "آنلاین شدن",
+    "offline": "اتصالی به Territorium نیست: بازی تک‌نفره همچنان در دسترس است.",
+    "play_offline": "بازی آفلاین",
+    "staying": "حالت آفلاین: فقط بازی تک‌نفره در دسترس است.",
+    "still_offline": "هنوز اتصالی به Territorium نیست."
+  },
   "desktop_presence": {
     "in_game": "در بازی",
     "spectating": "در حال تماشا"

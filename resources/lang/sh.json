@@ -884,6 +884,13 @@
     "ticket_unavailable": "Trenutno nije moguće započeti povezivanje naloga. Možete pokušati ponovo ili nastaviti na igru.",
     "title": "Territorium - Podešavanje naloga"
   },
+  "desktop_offline": {
+    "go_online": "Pređi na mrežu",
+    "offline": "Nema veze sa Territorium-om: solo je i dalje dostupan.",
+    "play_offline": "Igraj oflajn",
+    "staying": "Oflajn režim: dostupan je samo solo.",
+    "still_offline": "I dalje nema veze sa Territorium-om."
+  },
   "desktop_presence": {
     "in_game": "U igri",
     "spectating": "Posmatranje"

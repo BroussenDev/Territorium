@@ -884,6 +884,13 @@
     "ticket_unavailable": "Prepojenie účtu sa momentálne nepodarilo spustiť. Môžete to skúsiť znova alebo pokračovať v hre.",
     "title": "Territorium – Nastavenie účtu"
   },
+  "desktop_offline": {
+    "go_online": "Prejsť online",
+    "offline": "Žiadne pripojenie k Territorium: sólo hra je stále dostupná.",
+    "play_offline": "Hrať offline",
+    "staying": "Offline režim: dostupná je len sólo hra.",
+    "still_offline": "Stále žiadne pripojenie k Territorium."
+  },
   "desktop_presence": {
     "in_game": "V hre",
     "spectating": "Diváci"

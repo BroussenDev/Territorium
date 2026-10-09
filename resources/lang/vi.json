@@ -884,6 +884,13 @@
     "ticket_unavailable": "Không thể bắt đầu liên kết tài khoản vào bây giờ. Bạn có thể thử lại, hoặc tiếp tục vào game.",
     "title": "Territorium - Thiết lập tài khoản"
   },
+  "desktop_offline": {
+    "go_online": "Kết nối trực tuyến",
+    "offline": "Không kết nối được Territorium: vẫn có thể chơi đơn.",
+    "play_offline": "Chơi ngoại tuyến",
+    "staying": "Chế độ ngoại tuyến: chỉ có thể chơi đơn.",
+    "still_offline": "Vẫn chưa kết nối được Territorium."
+  },
   "desktop_presence": {
     "in_game": "Đang chơi",
     "spectating": "Đang xem"

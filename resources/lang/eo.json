@@ -884,6 +884,13 @@
     "ticket_unavailable": "Ne eblis komenci kontan ligon nun. Vi povas provi denove, aŭ daŭrigi la ludon.",
     "title": "Territorium - Konto-Agordo"
   },
+  "desktop_offline": {
+    "go_online": "Konektiĝi",
+    "offline": "Neniu konekto al Territorium: sola ludo daŭre disponeblas.",
+    "play_offline": "Ludi senkonekte",
+    "staying": "Senkonekta reĝimo: nur sola ludo disponeblas.",
+    "still_offline": "Ankoraŭ neniu konekto al Territorium."
+  },
   "desktop_presence": {
     "in_game": "En ludo",
     "spectating": "Spektante"

@@ -884,6 +884,13 @@
     "ticket_unavailable": "Couldn't start account linking right now. You can try again, or continue to the game.",
     "title": "Territorium - Account Setup"
   },
+  "desktop_offline": {
+    "go_online": "Go online",
+    "offline": "No connection to Territorium: solo is still available.",
+    "play_offline": "Play offline",
+    "staying": "Offline mode: only solo is available.",
+    "still_offline": "Still no connection to Territorium."
+  },
   "desktop_presence": {
     "in_game": "In game",
     "spectating": "Spectating"

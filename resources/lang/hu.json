@@ -884,6 +884,13 @@
     "ticket_unavailable": "Jelenleg nem sikerült elindítani a fiók összekapcsolását. Megpróbálhatja újra, vagy folytathatja a játékot.",
     "title": "Territorium – Fiókbeállítás"
   },
+  "desktop_offline": {
+    "go_online": "Online mód",
+    "offline": "Nincs kapcsolat a Territoriummal: az egyjátékos mód továbbra is elérhető.",
+    "play_offline": "Offline játék",
+    "staying": "Offline mód: csak az egyjátékos mód érhető el.",
+    "still_offline": "Még mindig nincs kapcsolat a Territoriummal."
+  },
   "desktop_presence": {
     "in_game": "Játékban",
     "spectating": "Néző"

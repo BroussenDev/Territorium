@@ -6,6 +6,7 @@ import { base64urlToUuid } from "../core/Base64";
 import { getApiBase, getAudience } from "./Api";
 import { ClientEnv } from "./ClientEnv";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { rememberForOffline } from "./DesktopOffline";
 import type { DesktopSessionState, SessionFailureKind } from "./DesktopShell";
 import { desktopLinkGate, isDesktopShell } from "./DesktopShell";
 import { showInGameAlert } from "./InGameModal";
@@ -294,6 +295,8 @@ export async function logOut(allSessions: boolean = false): Promise<boolean> {
     return false;
   } finally {
     clearLocalSession();
+    // The Steam app keeps no copy of a signed-out account for offline solo.
+    rememberForOffline("profile", null);
   }
 }
 

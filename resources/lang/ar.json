@@ -884,6 +884,13 @@
     "ticket_unavailable": "تعذر بدء ربط الحساب الآن. يمكنك المحاولة مرة أخرى، أو الاستمرار في اللعبة.",
     "title": "Territorium - إعداد الحساب"
   },
+  "desktop_offline": {
+    "go_online": "اتصل بالإنترنت",
+    "offline": "لا اتصال بـ Territorium: اللعب الفردي ما زال متاحًا.",
+    "play_offline": "العب دون اتصال",
+    "staying": "وضع عدم الاتصال: اللعب الفردي فقط متاح.",
+    "still_offline": "لا يزال لا يوجد اتصال بـ Territorium."
+  },
   "desktop_presence": {
     "in_game": "في اللعبة",
     "spectating": "المشاهدة"

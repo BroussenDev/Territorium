@@ -884,6 +884,13 @@
     "ticket_unavailable": "Konto linkimist ei saanud praegu alustada. Võite proovida uuesti või jätkata mänguga.",
     "title": "Territorium – konto seadistamine"
   },
+  "desktop_offline": {
+    "go_online": "Mine võrku",
+    "offline": "Ühendust Territoriumiga pole: üksikmäng on endiselt saadaval.",
+    "play_offline": "Mängi võrguühenduseta",
+    "staying": "Võrguühenduseta režiim: saadaval on ainult üksikmäng.",
+    "still_offline": "Ühendust Territoriumiga ikka pole."
+  },
   "desktop_presence": {
     "in_game": "Mängus",
     "spectating": "Vaatlemine"

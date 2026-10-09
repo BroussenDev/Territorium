@@ -2,6 +2,7 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { createRef, ref, type Ref } from "lit/directives/ref.js";
 import { getDesktopSessionState } from "../Auth";
+import { desktopOffline } from "../DesktopOffline";
 import {
   desktopLinkGate,
   desktopUpdate,
@@ -19,7 +20,7 @@ import {
   type BackendReachabilityDetail,
   type ServerListAttemptDetail,
 } from "../ServerList";
-import { translateText } from "../Utils";
+import { showToast, translateText } from "../Utils";
 
 const WIGGLE_CLASS = "animate-bounce";
 
@@ -122,6 +123,10 @@ export class DesktopStatusBar extends LitElement {
   // while EITHER this or `attempting` holds, so the two compose into "until
   // whichever ends later" without either needing to know about the other.
   @state() private coolingDown = false;
+  // The Steam app's own build, opened offline (DesktopOffline.ts): whether
+  // the player chose to stay offline, null elsewhere.
+  @state() private offline: { staying: boolean } | null = null;
+  @state() private goingOnline = false;
   private cooldownTimer: number | undefined;
 
   private unsubscribe: (() => void) | null = null;
@@ -201,6 +206,11 @@ export class DesktopStatusBar extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    void desktopOffline()
+      ?.status()
+      .then((s) => {
+        if (s.active) this.offline = { staying: s.staying };
+      });
     const bridge = desktopUpdate();
     if (bridge !== null) {
       this.unsubscribe = bridge.subscribe((state) => {
@@ -277,6 +287,7 @@ export class DesktopStatusBar extends LitElement {
   }
 
   render() {
+    if (this.offline !== null) return this.renderOffline(this.offline.staying);
     const source = barSource(
       this.updateState,
       this.sessionState,
@@ -317,6 +328,72 @@ export class DesktopStatusBar extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  /**
+   * The Steam app's offline build: solo plays. The player can try going back
+   * online, or stay offline, which stops the app checking for the site.
+   */
+  private renderOffline(staying: boolean) {
+    const button = (label: string, primary: boolean, onClick: () => void) =>
+      html`<button
+        class="shrink-0 px-4 py-2 rounded-md text-sm font-medium uppercase
+               tracking-wider disabled:opacity-50 disabled:cursor-not-allowed
+               ${primary
+          ? "bg-brand hover:bg-brand-light"
+          : "bg-white/10 hover:bg-white/15"}"
+        ?disabled=${this.goingOnline}
+        @click=${onClick}
+      >
+        ${label}
+      </button>`;
+    return html`<div
+      class="fixed bottom-0 left-0 w-full z-[300] in-[.in-game]:hidden
+             bg-gray-900/95 backdrop-blur-sm border-t border-white/10
+             px-4 py-3 flex flex-wrap items-center gap-4 text-white"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="text-sm font-medium min-w-0">
+        ${translateText(
+          staying ? "desktop_offline.staying" : "desktop_offline.offline",
+        )}
+      </div>
+      ${staying
+        ? button(translateText("desktop_offline.go_online"), true, () =>
+            this.goOnline(),
+          )
+        : html`${button(
+            this.goingOnline
+              ? translateText("desktop_status.retrying")
+              : translateText("desktop_status.retry"),
+            true,
+            () => this.goOnline(),
+          )}
+          ${button(translateText("desktop_offline.play_offline"), false, () =>
+            this.stayOffline(),
+          )}`}
+    </div>`;
+  }
+
+  private goOnline(): void {
+    const bridge = desktopOffline();
+    if (bridge === null || this.goingOnline) return;
+    this.goingOnline = true;
+    void bridge.goOnline().then((online) => {
+      this.goingOnline = false;
+      // Online, the app replaces this page with the site.
+      if (online) return;
+      this.offline = { staying: false };
+      showToast(translateText("desktop_offline.still_offline"), "red");
+    });
+  }
+
+  private stayOffline(): void {
+    const bridge = desktopOffline();
+    if (bridge === null) return;
+    this.offline = { staying: true };
+    void bridge.stay();
   }
 
   /** The one line of text for whichever source won barSource. */

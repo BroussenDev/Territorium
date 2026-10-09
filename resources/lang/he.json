@@ -884,6 +884,13 @@
     "ticket_unavailable": "לא ניתן היה להתחיל בקישור החשבון כעת. אתה יכול לנסות שוב, או להמשיך למשחק.",
     "title": "טריטוריום - הגדרת חשבון"
   },
+  "desktop_offline": {
+    "go_online": "התחבר",
+    "offline": "אין חיבור ל-Territorium: משחק יחיד עדיין זמין.",
+    "play_offline": "שחק במצב לא מקוון",
+    "staying": "מצב לא מקוון: רק משחק יחיד זמין.",
+    "still_offline": "עדיין אין חיבור ל-Territorium."
+  },
   "desktop_presence": {
     "in_game": "במשחק",
     "spectating": "צופה"

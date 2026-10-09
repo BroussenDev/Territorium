@@ -884,6 +884,13 @@
     "ticket_unavailable": "Impossibile avviare il collegamento dell'account in questo momento. Puoi riprovare o continuare il gioco.",
     "title": "Territorium - Configurazione dell'account"
   },
+  "desktop_offline": {
+    "go_online": "Torna online",
+    "offline": "Nessuna connessione a Territorium: il gioco in solitaria resta disponibile.",
+    "play_offline": "Gioca offline",
+    "staying": "Modalità offline: è disponibile solo il gioco in solitaria.",
+    "still_offline": "Ancora nessuna connessione a Territorium."
+  },
   "desktop_presence": {
     "in_game": "Nel gioco",
     "spectating": "Spettatori"

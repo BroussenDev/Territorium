@@ -884,6 +884,13 @@
     "ticket_unavailable": "Свързването на акаунта не може да започне в момента. Можете да опитате отново или да продължите към играта.",
     "title": "Territorium - Настройка на акаунт"
   },
+  "desktop_offline": {
+    "go_online": "Към онлайн",
+    "offline": "Няма връзка с Territorium: соло играта остава достъпна.",
+    "play_offline": "Играй офлайн",
+    "staying": "Офлайн режим: достъпна е само соло игра.",
+    "still_offline": "Все още няма връзка с Territorium."
+  },
   "desktop_presence": {
     "in_game": "В игра",
     "spectating": "Наблюдава"
