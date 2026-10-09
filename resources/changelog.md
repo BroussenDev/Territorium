@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.87
+
+🏗️ **Buildings**
+
+- Clicking anywhere on a building's icon now opens it for an upgrade, at any zoom, not only near its centre.
+
 ## v0.1.86
 
 🛠️ **Maintenance**

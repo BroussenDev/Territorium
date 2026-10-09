@@ -6,7 +6,6 @@ import {
   PlayerBuildableUnitType,
   UnitType,
 } from "../../../core/game/Game";
-import { TileRef } from "../../../core/game/GameMap";
 import {
   capitalRebuildTicksLeft,
   hasCapital,
@@ -18,6 +17,7 @@ import {
   MouseUpEvent,
   TouchEvent,
 } from "../../InputHandler";
+import { pickStructure } from "../../StructurePick";
 import { TransformHandler } from "../../TransformHandler";
 import {
   SendSetCapitalIntentEvent,
@@ -71,8 +71,6 @@ const CARD_TYPES: Partial<
 };
 const TYPES = Object.keys(CARD_TYPES) as UnitType[];
 
-/** How far from a structure's tile a click still picks it, in tiles. */
-const PICK_RADIUS = 2;
 const CARD_WIDTH = 264;
 
 /** Frame tier by level: bronze at 2, silver at 3, gold at 4, emerald at 5. */
@@ -151,15 +149,15 @@ export class StructureCard extends LitElement implements Controller {
       this.close();
       return;
     }
-    const cell = this.transformHandler.screenToWorldCoordinates(
+    // Anywhere on the icon picks the structure, at any zoom.
+    const unit = pickStructure(
+      this.game,
+      this.transformHandler,
       screenX,
       screenY,
+      TYPES,
+      (u) => u.owner() === me && u.isActive(),
     );
-    if (!this.game.isValidCoord(cell.x, cell.y)) {
-      this.close();
-      return;
-    }
-    const unit = this.pick(this.game.ref(cell.x, cell.y));
     if (unit === null) {
       this.close();
       return;
@@ -170,24 +168,6 @@ export class StructureCard extends LitElement implements Controller {
     this.x = screenX;
     this.y = screenY;
     this.refreshPrice(unit);
-  }
-
-  private pick(tile: TileRef): UnitView | null {
-    const me = this.game.myPlayer();
-    let best: UnitView | null = null;
-    let bestDist = Infinity;
-    for (const { unit, distSquared } of this.game.nearbyUnits(
-      tile,
-      PICK_RADIUS,
-      TYPES,
-    )) {
-      if (unit.owner() !== me || !unit.isActive()) continue;
-      if (distSquared < bestDist) {
-        best = unit;
-        bestDist = distSquared;
-      }
-    }
-    return best;
   }
 
   private refreshPrice(unit: UnitView) {

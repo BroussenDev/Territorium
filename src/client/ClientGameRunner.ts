@@ -54,6 +54,7 @@ import {
 import { pagePin } from "./PagePin";
 import { groupTokenOf, loggableStartMessage } from "./PresenceGroup";
 import { versionedPathForMismatchedGame } from "./ServerList";
+import { pickStructure } from "./StructurePick";
 import { reportGameError } from "./Telemetry";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { GoToPlayerEvent } from "./TransformHandler";
@@ -1318,7 +1319,18 @@ export class ClientGameRunner {
       return;
     }
 
-    this.findAndUpgradeNearestBuilding(tile);
+    // A click anywhere on a structure's icon means that structure: its icon
+    // spans several tiles, so the tile under the cursor may be off its own.
+    const me = this.myPlayer;
+    const picked = pickStructure(
+      this.gameView,
+      this.renderer.transformHandler,
+      event.x,
+      event.y,
+      Structures.types,
+      (u) => u.owner() === me && u.isActive(),
+    );
+    this.findAndUpgradeNearestBuilding(picked?.tile() ?? tile);
   }
 
   private findAndUpgradeNearestBuilding(clickedTile: TileRef) {
