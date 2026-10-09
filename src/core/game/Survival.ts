@@ -15,8 +15,8 @@ export const SURVIVAL_WAVES = 10;
 /** Ticks after the spawn phase before the first wave lands (1 minute). */
 export const SURVIVAL_FIRST_WAVE_DELAY_TICKS = 60 * 10;
 
-/** Ticks between two waves (2 minutes 30). */
-export const SURVIVAL_WAVE_INTERVAL_TICKS = 150 * 10;
+/** Ticks between two waves (1 minute 45). */
+export const SURVIVAL_WAVE_INTERVAL_TICKS = 105 * 10;
 
 /** Most invaders a single wave brings, whatever the number of defenders. */
 export const SURVIVAL_MAX_WAVE_SIZE = 40;

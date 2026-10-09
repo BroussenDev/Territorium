@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Vous avez envoyé {gold} ors à {name}",
     "sent_troops_to_player": "Vous avez envoyé {troops} troupes à {name}",
     "surrender_sent": "Vous vous êtes rendu à {name}. En attente de sa réponse.",
+    "survival_wave_landed": "Vague {wave} : {count} envahisseurs débarquent dans les zones rouges !",
     "trade_ship_captured": "Votre bateau de commerce a été capturé par {name}",
     "unit_destroyed": "Votre {unit} a été détruit",
     "unit_voluntarily_deleted": "Unité volontairement supprimée",
@@ -1316,7 +1317,7 @@
     "subtitle": "Des parties multijoueurs avec leurs propres règles",
     "survival_description": "Tous les joueurs dans le même camp face à des vagues d'envahisseurs IA, plus nombreuses à chaque vague. Tenez ensemble jusqu'à la dernière.",
     "survival_fact_fair": "Les envahisseurs jouent avec les mêmes règles que vous",
-    "survival_fact_waves": "10 vagues, une nouvelle toutes les 2:30",
+    "survival_fact_waves": "10 vagues, une nouvelle toutes les 1:45",
     "survival_fact_win": "Éliminez la dernière vague pour gagner",
     "survival_join": "Rejoindre la défense",
     "survival_title": "Survie",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Dernière vague : encore {count} envahisseurs à éliminer",
     "survival_next_wave": "Prochaine vague dans {time} : {count} envahisseurs",
     "survival_wave": "Vague {wave} sur {total}",
-    "survival_zones_hint": "Les zones hachurées de rouge sont réservées aux envahisseurs : ils y débarquent.",
+    "survival_zones_hint": "Les zones hachurées de rouge appartiennent aux envahisseurs : chaque vague y débarque et les reprend.",
     "versus_spawn": "Choisissez un emplacement de départ dans la zone de votre équipe"
   },
   "help_modal": {

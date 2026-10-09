@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "{gold}の資金を{name}に贈りました",
     "sent_troops_to_player": "{troops}の兵力を{name}に送信しました",
     "surrender_sent": "あなたは{name}に降伏しました。彼らの答えを待っています。",
+    "survival_wave_landed": "第{wave}波：侵略者{count}人が赤いゾーンに上陸！",
     "trade_ship_captured": "あなたの貿易船は{name}に鹵獲されました",
     "unit_destroyed": "あなたの{unit}は破壊されました",
     "unit_voluntarily_deleted": "ユニットは自己破壊しました",
@@ -1316,7 +1317,7 @@
     "subtitle": "独自のルールを持つマルチプレイヤー ゲーム",
     "survival_description": "全プレイヤーが同じ陣営で、波ごとに増えていくAI侵略者の襲来に立ち向かいます。最後の波まで力を合わせて耐え抜きましょう。",
     "survival_fact_fair": "侵略者はあなたと同じルールで戦います",
-    "survival_fact_waves": "全10波、2:30ごとに新たな波",
+    "survival_fact_waves": "全10波、1:45ごとに新たな波",
     "survival_fact_win": "最後の波を全滅させれば勝利",
     "survival_join": "防衛に参加",
     "survival_title": "サバイバル",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "最終波：残る侵略者は{count}人",
     "survival_next_wave": "次の波まで{time}：侵略者{count}人",
     "survival_wave": "第{wave}波 / 全{total}波",
-    "survival_zones_hint": "赤い斜線のゾーンは侵略者専用：彼らはそこに上陸します。",
+    "survival_zones_hint": "赤い斜線のゾーンは侵略者のもの：毎回の波がそこに上陸し、奪い返します。",
     "versus_spawn": "チームのゾーン内で開始地点を選んでください"
   },
   "help_modal": {

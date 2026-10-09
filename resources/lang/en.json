@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Sent {gold} gold to {name}",
     "sent_troops_to_player": "Sent {troops} troops to {name}",
     "surrender_sent": "You surrendered to {name}. Waiting for their answer.",
+    "survival_wave_landed": "Wave {wave}: {count} invaders land in the red zones!",
     "trade_ship_captured": "Your trade ship was captured by {name}",
     "unit_destroyed": "Your {unit} was destroyed",
     "unit_voluntarily_deleted": "Unit voluntarily deleted",
@@ -1316,7 +1317,7 @@
     "subtitle": "Multiplayer games with rules of their own",
     "survival_description": "Every player on the same side against waves of AI invaders, bigger with each wave. Hold out together until the last one.",
     "survival_fact_fair": "The invaders play by the same rules as you",
-    "survival_fact_waves": "10 waves, a new one every 2:30",
+    "survival_fact_waves": "10 waves, a new one every 1:45",
     "survival_fact_win": "Wipe out the last wave to win",
     "survival_join": "Join the defense",
     "survival_title": "Survival",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Last wave: {count} invaders left to wipe out",
     "survival_next_wave": "Next wave in {time}: {count} invaders",
     "survival_wave": "Wave {wave} of {total}",
-    "survival_zones_hint": "Red-hatched zones are kept for the invaders: they land there.",
+    "survival_zones_hint": "Red-hatched zones belong to the invaders: each wave lands there and takes them back.",
     "versus_spawn": "Choose a starting location in your team's zone"
   },
   "help_modal": {

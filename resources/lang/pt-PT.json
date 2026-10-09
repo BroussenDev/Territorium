@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Enviou {gold} ouro para {name}",
     "sent_troops_to_player": "Enviou {troops} tropas para {name}",
     "surrender_sent": "Você rendeu-se a {name}. Esperando pela resposta deles.",
+    "survival_wave_landed": "Vaga {wave}: {count} invasores desembarcam nas zonas vermelhas!",
     "trade_ship_captured": "O seu navio mercante foi capturado por {name}",
     "unit_destroyed": "O seu {unit} foi destruído",
     "unit_voluntarily_deleted": "Unidade eliminada voluntariamente",
@@ -1316,7 +1317,7 @@
     "subtitle": "Jogos multijogador com regras próprias",
     "survival_description": "Todos os jogadores do mesmo lado contra vagas de invasores de IA, maiores a cada vaga. Resistam juntos até à última.",
     "survival_fact_fair": "Os invasores jogam com as mesmas regras que tu",
-    "survival_fact_waves": "10 vagas, uma nova a cada 2:30",
+    "survival_fact_waves": "10 vagas, uma nova a cada 1:45",
     "survival_fact_win": "Elimina a última vaga para ganhar",
     "survival_join": "Juntar-me à defesa",
     "survival_title": "Sobrevivência",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Última vaga: faltam eliminar {count} invasores",
     "survival_next_wave": "Próxima vaga em {time}: {count} invasores",
     "survival_wave": "Vaga {wave} de {total}",
-    "survival_zones_hint": "As zonas tracejadas a vermelho estão reservadas aos invasores: desembarcam ali.",
+    "survival_zones_hint": "As zonas tracejadas a vermelho são dos invasores: cada vaga desembarca ali e retoma-as.",
     "versus_spawn": "Escolhe um local de início na zona da tua equipa"
   },
   "help_modal": {

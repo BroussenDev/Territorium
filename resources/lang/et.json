@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Saatsid {gold} kulda {name}'le",
     "sent_troops_to_player": "Saatsid {troops} sõdurit {name}'le",
     "surrender_sent": "Andsite end alla {name}-le. Ootan nende vastust.",
+    "survival_wave_landed": "Laine {wave}: {count} sissetungijat maabub punastel aladel!",
     "trade_ship_captured": "{name} hõivas teie kaubalaeva",
     "unit_destroyed": "Sinu {unit} hävitati",
     "unit_voluntarily_deleted": "Üksus kustutati vabatahtlikult",
@@ -1316,7 +1317,7 @@
     "subtitle": "Mitme mängijaga mängud oma reeglitega",
     "survival_description": "Kõik mängijad samal poolel tehisintellektiga sissetungijate lainete vastu, mis iga lainega kasvavad. Pidage koos vastu viimaseni.",
     "survival_fact_fair": "Sissetungijad mängivad samade reeglitega kui sina",
-    "survival_fact_waves": "10 lainet, uus iga 2:30 järel",
+    "survival_fact_waves": "10 lainet, uus iga 1:45 järel",
     "survival_fact_win": "Võitmiseks hävita viimane laine",
     "survival_join": "Liitu kaitsega",
     "survival_title": "Ellujäämine",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Viimane laine: alles {count} sissetungijat",
     "survival_next_wave": "Järgmine laine {time} pärast: {count} sissetungijat",
     "survival_wave": "Laine {wave}/{total}",
-    "survival_zones_hint": "Punaselt viirutatud alad on reserveeritud sissetungijatele: nad maabuvad seal.",
+    "survival_zones_hint": "Punaselt viirutatud alad kuuluvad sissetungijatele: iga laine maabub seal ja võtab need tagasi.",
     "versus_spawn": "Vali alguskoht oma meeskonna tsoonis"
   },
   "help_modal": {

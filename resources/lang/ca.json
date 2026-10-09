@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Enviat {gold} or a{name}",
     "sent_troops_to_player": "Enviat {troops} tropes a {name}",
     "surrender_sent": "T'has rendit a {name}. Esperant la seva resposta.",
+    "survival_wave_landed": "Onada {wave}: {count} invasors desembarquen a les zones vermelles!",
     "trade_ship_captured": "El teu vaixell comercial va ser capturat per {name}",
     "unit_destroyed": "{unit} ha estat destruït",
     "unit_voluntarily_deleted": "Estructura esborrada voluntàriament",
@@ -1316,7 +1317,7 @@
     "subtitle": "Jocs multijugador amb regles pròpies",
     "survival_description": "Tots els jugadors al mateix bàndol contra onades d'invasors d'IA, més nombroses a cada onada. Resistiu junts fins a l'última.",
     "survival_fact_fair": "Els invasors juguen amb les mateixes regles que tu",
-    "survival_fact_waves": "10 onades, una de nova cada 2:30",
+    "survival_fact_waves": "10 onades, una de nova cada 1:45",
     "survival_fact_win": "Elimina l'última onada per guanyar",
     "survival_join": "Uneix-te a la defensa",
     "survival_title": "Supervivència",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Última onada: queden {count} invasors per eliminar",
     "survival_next_wave": "Propera onada d'aquí a {time}: {count} invasors",
     "survival_wave": "Onada {wave} de {total}",
-    "survival_zones_hint": "Les zones ratllades de vermell estan reservades als invasors: hi desembarquen.",
+    "survival_zones_hint": "Les zones ratllades de vermell són dels invasors: cada onada hi desembarca i les recupera.",
     "versus_spawn": "Tria un punt d'inici a la zona del teu equip"
   },
   "help_modal": {

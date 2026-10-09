@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "{gold} 금을 {name}님께 보냈습니다",
     "sent_troops_to_player": "{troops}명의 병력을 {name}에게 보냈습니다",
     "surrender_sent": "{name}에 항복하셨습니다. 그들의 답변을 기다리고 있습니다.",
+    "survival_wave_landed": "웨이브 {wave}: 침략자 {count}명이 붉은 구역에 상륙합니다!",
     "trade_ship_captured": "{name}님에게 무역선이 나포되었습니다",
     "unit_destroyed": "당신의 {unit}이(가) 파괴되었습니다",
     "unit_voluntarily_deleted": "유닛이 해산되었습니다",
@@ -1316,7 +1317,7 @@
     "subtitle": "자신만의 규칙이 있는 멀티플레이어 게임",
     "survival_description": "모든 플레이어가 한편이 되어 웨이브마다 늘어나는 AI 침략자에 맞섭니다. 마지막 웨이브까지 함께 버티세요.",
     "survival_fact_fair": "침략자도 당신과 같은 규칙으로 싸웁니다",
-    "survival_fact_waves": "총 10웨이브, 2:30마다 새 웨이브",
+    "survival_fact_waves": "총 10웨이브, 1:45마다 새 웨이브",
     "survival_fact_win": "마지막 웨이브를 섬멸하면 승리",
     "survival_join": "방어에 참여",
     "survival_title": "생존",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "마지막 웨이브: 남은 침략자 {count}명",
     "survival_next_wave": "다음 웨이브까지 {time}: 침략자 {count}명",
     "survival_wave": "웨이브 {wave}/{total}",
-    "survival_zones_hint": "붉은 빗금 구역은 침략자 전용입니다. 그곳에 상륙합니다.",
+    "survival_zones_hint": "붉은 빗금 구역은 침략자의 것입니다. 매 웨이브가 그곳에 상륙해 되찾아 갑니다.",
     "versus_spawn": "팀 구역 안에서 시작 위치를 고르세요"
   },
   "help_modal": {

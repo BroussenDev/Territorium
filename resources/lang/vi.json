@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Đã gửi {gold} vàng đến {name}",
     "sent_troops_to_player": "Đã gửi {troops} quân đến {name}",
     "surrender_sent": "Bạn đã đầu hàng {name}. Đang chờ câu trả lời của họ.",
+    "survival_wave_landed": "Đợt {wave}: {count} quân xâm lược đổ bộ vào các vùng đỏ!",
     "trade_ship_captured": "Tàu giao thương của bạn đã bị {name} bắt giữ",
     "unit_destroyed": "{unit} của bạn đã bị phá hủy",
     "unit_voluntarily_deleted": "Đã phá huỷ công trình",
@@ -1316,7 +1317,7 @@
     "subtitle": "Trò chơi nhiều người chơi có quy tắc riêng",
     "survival_description": "Mọi người chơi cùng một phe chống lại các đợt quân xâm lược AI, đông hơn sau mỗi đợt. Cùng nhau trụ vững đến đợt cuối.",
     "survival_fact_fair": "Quân xâm lược chơi theo đúng luật như bạn",
-    "survival_fact_waves": "10 đợt, cứ 2:30 lại có đợt mới",
+    "survival_fact_waves": "10 đợt, cứ 1:45 lại có đợt mới",
     "survival_fact_win": "Tiêu diệt đợt cuối để chiến thắng",
     "survival_join": "Tham gia phòng thủ",
     "survival_title": "Sinh tồn",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Đợt cuối: còn {count} quân xâm lược cần tiêu diệt",
     "survival_next_wave": "Đợt tiếp theo sau {time}: {count} quân xâm lược",
     "survival_wave": "Đợt {wave}/{total}",
-    "survival_zones_hint": "Các vùng gạch đỏ dành cho quân xâm lược: chúng đổ bộ ở đó.",
+    "survival_zones_hint": "Các vùng gạch đỏ thuộc về quân xâm lược: mỗi đợt đổ bộ ở đó và chiếm lại chúng.",
     "versus_spawn": "Chọn vị trí xuất phát trong khu vực của đội bạn"
   },
   "help_modal": {

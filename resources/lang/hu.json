@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "{gold} arany küldése {name} részére",
     "sent_troops_to_player": "{troops} katona küldése {name} részére",
     "surrender_sent": "Ön megadta magát a {name}-nek. Válaszukat várva.",
+    "survival_wave_landed": "{wave}. hullám: {count} hódító száll partra a piros zónákban!",
     "trade_ship_captured": "{name} elfogta a kereskedelmi hajódat",
     "unit_destroyed": "Az {unit} megsemmisült",
     "unit_voluntarily_deleted": "Az egység önként törölve",
@@ -1316,7 +1317,7 @@
     "subtitle": "Többszereplős játékok saját szabályokkal",
     "survival_description": "Minden játékos egy oldalon az MI-hódítók hullámai ellen, amelyek minden hullámmal nagyobbak. Tartsatok ki együtt az utolsóig.",
     "survival_fact_fair": "A hódítók ugyanazokkal a szabályokkal játszanak, mint te",
-    "survival_fact_waves": "10 hullám, 2:30-onként egy új",
+    "survival_fact_waves": "10 hullám, 1:45-onként egy új",
     "survival_fact_win": "Győzd le az utolsó hullámot a győzelemhez",
     "survival_join": "Csatlakozás a védelemhez",
     "survival_title": "Túlélés",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Utolsó hullám: még {count} hódítót kell legyőzni",
     "survival_next_wave": "Következő hullám {time} múlva: {count} hódító",
     "survival_wave": "{wave}. hullám / {total}",
-    "survival_zones_hint": "A pirosan sraffozott zónák a hódítóké: ott szállnak partra.",
+    "survival_zones_hint": "A pirosan sraffozott zónák a hódítóké: minden hullám ott száll partra és visszaveszi őket.",
     "versus_spawn": "Válassz kezdőhelyet a csapatod zónájában"
   },
   "help_modal": {

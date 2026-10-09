@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Mengirim {gold} emas ke {name}",
     "sent_troops_to_player": "Mengirim {troops} pasukan ke {name}",
     "surrender_sent": "Anda menyerah pada {name}. Menunggu jawaban mereka.",
+    "survival_wave_landed": "Gelombang {wave}: {count} penyerbu mendarat di zona merah!",
     "trade_ship_captured": "Kapal dagang Anda ditangkap oleh {name}",
     "unit_destroyed": "{unit} Anda dihancurkan",
     "unit_voluntarily_deleted": "Unit dihapus secara sukarela",
@@ -1316,7 +1317,7 @@
     "subtitle": "Game multipemain dengan aturannya sendiri",
     "survival_description": "Semua pemain di pihak yang sama melawan gelombang penyerbu AI yang makin besar setiap gelombang. Bertahanlah bersama sampai yang terakhir.",
     "survival_fact_fair": "Para penyerbu bermain dengan aturan yang sama denganmu",
-    "survival_fact_waves": "10 gelombang, yang baru setiap 2:30",
+    "survival_fact_waves": "10 gelombang, yang baru setiap 1:45",
     "survival_fact_win": "Habisi gelombang terakhir untuk menang",
     "survival_join": "Bergabung dalam pertahanan",
     "survival_title": "Bertahan Hidup",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Gelombang terakhir: tersisa {count} penyerbu",
     "survival_next_wave": "Gelombang berikutnya dalam {time}: {count} penyerbu",
     "survival_wave": "Gelombang {wave} dari {total}",
-    "survival_zones_hint": "Zona berarsir merah disediakan untuk penyerbu: mereka mendarat di sana.",
+    "survival_zones_hint": "Zona berarsir merah milik penyerbu: setiap gelombang mendarat di sana dan merebutnya kembali.",
     "versus_spawn": "Pilih lokasi awal di zona timmu"
   },
   "help_modal": {

@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Enviouse {gold} ouro a {name}",
     "sent_troops_to_player": "Enviou {troops} tropas a {name}",
     "surrender_sent": "Entregaste a {name}. Agardando a súa resposta.",
+    "survival_wave_landed": "Onda {wave}: {count} invasores desembarcan nas zonas vermellas!",
     "trade_ship_captured": "O teu barco comercial foi capturado por {name}",
     "unit_destroyed": "O teu {unit} foi destruído",
     "unit_voluntarily_deleted": "Unidade eliminada voluntariamente",
@@ -1316,7 +1317,7 @@
     "subtitle": "Xogos multixogador con regras propias",
     "survival_description": "Todos os xogadores no mesmo bando contra ondas de invasores de IA, máis numerosas en cada onda. Resistide xuntos ata a última.",
     "survival_fact_fair": "Os invasores xogan coas mesmas regras ca ti",
-    "survival_fact_waves": "10 ondas, unha nova cada 2:30",
+    "survival_fact_waves": "10 ondas, unha nova cada 1:45",
     "survival_fact_win": "Elimina a última onda para gañar",
     "survival_join": "Unirse á defensa",
     "survival_title": "Supervivencia",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Última onda: quedan {count} invasores por eliminar",
     "survival_next_wave": "Próxima onda en {time}: {count} invasores",
     "survival_wave": "Onda {wave} de {total}",
-    "survival_zones_hint": "As zonas raiadas de vermello están reservadas aos invasores: desembarcan alí.",
+    "survival_zones_hint": "As zonas raiadas de vermello son dos invasores: cada onda desembarca alí e recupéraas.",
     "versus_spawn": "Escolle un punto de inicio na zona do teu equipo"
   },
   "help_modal": {

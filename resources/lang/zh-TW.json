@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "已向 {name} 發送 {gold} 黃金",
     "sent_troops_to_player": "已向 {name} 傳送 {troops} 軍隊",
     "surrender_sent": "你向{name}投降了。等待他們的答覆。",
+    "survival_wave_landed": "第 {wave} 波：{count} 名入侵者在紅色區域登陸！",
     "trade_ship_captured": "你的商船已被 {name} 擄獲",
     "unit_destroyed": "你的 {unit} 已被摧毀",
     "unit_voluntarily_deleted": "單位已自毀",
@@ -1316,7 +1317,7 @@
     "subtitle": "有自己規則的多人遊戲",
     "survival_description": "所有玩家站在同一陣營，抵禦一波比一波更多的AI入侵者。齊心協力撐到最後一波。",
     "survival_fact_fair": "入侵者與你遵守相同的規則",
-    "survival_fact_waves": "共10波，每2:30來一波",
+    "survival_fact_waves": "共10波，每1:45來一波",
     "survival_fact_win": "消滅最後一波即可獲勝",
     "survival_join": "加入防守",
     "survival_title": "生存",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "最後一波：還剩 {count} 名入侵者",
     "survival_next_wave": "下一波 {time} 後到達：{count} 名入侵者",
     "survival_wave": "第{wave}波 / 共{total}波",
-    "survival_zones_hint": "紅色斜線區域留給入侵者：他們會在那裡登陸。",
+    "survival_zones_hint": "紅色斜線區域屬於入侵者：每一波都會在那裡登陸並將其奪回。",
     "versus_spawn": "在你隊伍的區域內選擇出生點"
   },
   "help_modal": {

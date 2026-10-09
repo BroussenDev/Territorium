@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Ai trimis {gold} aur lui {name}",
     "sent_troops_to_player": "Ai trimis {troops} unități lui {name}",
     "surrender_sent": "Te-ai predat lui {name}. Așteptând răspunsul lor.",
+    "survival_wave_landed": "Valul {wave}: {count} invadatori debarcă în zonele roșii!",
     "trade_ship_captured": "Transportul tău a fost capturat de {name}",
     "unit_destroyed": "{unit} Tău a fost distrus",
     "unit_voluntarily_deleted": "Unitate ștearsă voluntar",
@@ -1316,7 +1317,7 @@
     "subtitle": "Jocuri multiplayer cu reguli proprii",
     "survival_description": "Toți jucătorii de aceeași parte împotriva valurilor de invadatori IA, tot mai mari cu fiecare val. Rezistați împreună până la ultimul.",
     "survival_fact_fair": "Invadatorii joacă după aceleași reguli ca tine",
-    "survival_fact_waves": "10 valuri, unul nou la fiecare 2:30",
+    "survival_fact_waves": "10 valuri, unul nou la fiecare 1:45",
     "survival_fact_win": "Elimină ultimul val pentru a câștiga",
     "survival_join": "Alătură-te apărării",
     "survival_title": "Supraviețuire",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Ultimul val: mai sunt {count} invadatori de eliminat",
     "survival_next_wave": "Următorul val în {time}: {count} invadatori",
     "survival_wave": "Valul {wave} din {total}",
-    "survival_zones_hint": "Zonele hașurate cu roșu sunt rezervate invadatorilor: acolo debarcă.",
+    "survival_zones_hint": "Zonele hașurate cu roșu aparțin invadatorilor: fiecare val debarcă acolo și le reia.",
     "versus_spawn": "Alege un punct de start în zona echipei tale"
   },
   "help_modal": {

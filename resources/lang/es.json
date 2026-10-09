@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Enviado {gold} oro a {name}",
     "sent_troops_to_player": "Envió {troops} tropas a {name}",
     "surrender_sent": "Te rendiste a {name}. Esperando su respuesta.",
+    "survival_wave_landed": "¡Oleada {wave}: {count} invasores desembarcan en las zonas rojas!",
     "trade_ship_captured": "Tu barco comercial fue capturado por {name}",
     "unit_destroyed": "Tu {unit} fue destruido",
     "unit_voluntarily_deleted": "Unidad eliminada voluntariamente",
@@ -1316,7 +1317,7 @@
     "subtitle": "Juegos multijugador con reglas propias",
     "survival_description": "Todos los jugadores en el mismo bando contra oleadas de invasores IA, más numerosas en cada oleada. Resistid juntos hasta la última.",
     "survival_fact_fair": "Los invasores juegan con las mismas reglas que tú",
-    "survival_fact_waves": "10 oleadas, una nueva cada 2:30",
+    "survival_fact_waves": "10 oleadas, una nueva cada 1:45",
     "survival_fact_win": "Elimina la última oleada para ganar",
     "survival_join": "Unirse a la defensa",
     "survival_title": "Supervivencia",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Última oleada: quedan {count} invasores por eliminar",
     "survival_next_wave": "Próxima oleada en {time}: {count} invasores",
     "survival_wave": "Oleada {wave} de {total}",
-    "survival_zones_hint": "Las zonas rayadas en rojo están reservadas a los invasores: desembarcan allí.",
+    "survival_zones_hint": "Las zonas rayadas en rojo son de los invasores: cada oleada desembarca allí y las recupera.",
     "versus_spawn": "Elige un punto de inicio en la zona de tu equipo"
   },
   "help_modal": {

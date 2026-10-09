@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "נשלח {gold} זהב ל{name}",
     "sent_troops_to_player": "שלחו {troops} חיילים ל{name}",
     "surrender_sent": "נכנעת ל-{name}. מחכה לתשובתם.",
+    "survival_wave_landed": "גל {wave}: {count} פולשים נוחתים באזורים האדומים!",
     "trade_ship_captured": "ספינת הסחר שלך נתפסה על ידי {name}",
     "unit_destroyed": "{unit} שלך הושמד",
     "unit_voluntarily_deleted": "היחידה נמחקה מרצון",
@@ -1316,7 +1317,7 @@
     "subtitle": "משחקים מרובי משתתפים עם חוקים משלהם",
     "survival_description": "כל השחקנים באותו צד מול גלים של פולשים בבינה מלאכותית, שגדלים בכל גל. החזיקו מעמד יחד עד האחרון.",
     "survival_fact_fair": "הפולשים משחקים לפי אותם כללים כמוך",
-    "survival_fact_waves": "10 גלים, גל חדש כל 2:30",
+    "survival_fact_waves": "10 גלים, גל חדש כל 1:45",
     "survival_fact_win": "השמידו את הגל האחרון כדי לנצח",
     "survival_join": "הצטרף להגנה",
     "survival_title": "הישרדות",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "הגל האחרון: נותרו {count} פולשים להשמיד",
     "survival_next_wave": "הגל הבא בעוד {time}: {count} פולשים",
     "survival_wave": "גל {wave} מתוך {total}",
-    "survival_zones_hint": "האזורים המקווקווים באדום שמורים לפולשים: שם הם נוחתים.",
+    "survival_zones_hint": "האזורים המקווקווים באדום שייכים לפולשים: כל גל נוחת שם ולוקח אותם בחזרה.",
     "versus_spawn": "בחרו נקודת התחלה באזור של הקבוצה שלכם"
   },
   "help_modal": {

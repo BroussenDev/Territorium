@@ -244,6 +244,38 @@ describe("survival landing zones", () => {
     }
   });
 
+  it("are taken back from the defenders by each wave", async () => {
+    const { game, a } = await build();
+    const z = game.survivalZones()[0];
+    // The defender ended up holding part of a zone (fighting in it).
+    for (let dx = -3; dx <= 3; dx++) a.conquer(game.ref(z.x + dx, z.y));
+    const held = () =>
+      Array.from(a.tiles()).filter((t) => game.inSurvivalZone(t)).length;
+    expect(held()).toBe(7);
+    run(game, SURVIVAL_FIRST_WAVE_DELAY_TICKS + 20);
+    expect(held()).toBe(0);
+    expect(a.isAlive()).toBe(true);
+  });
+
+  it("still take a wave when the invaders already fill them", async () => {
+    const { game, b } = await build();
+    const holder = game.addPlayer(
+      new PlayerInfo("Holder", PlayerType.Nation, null, "holder"),
+      ColoredTeams.Nations,
+    );
+    game.map().forEachTile((t) => {
+      if (game.isLand(t) && game.inSurvivalZone(t)) holder.conquer(t);
+    });
+    run(game, SURVIVAL_FIRST_WAVE_DELAY_TICKS + 20);
+    const newcomers = invaders(game).filter((p) => p !== holder);
+    expect(newcomers.length).toBe(survivalWaveSize(1, 2));
+    for (const p of newcomers) {
+      expect(p.numTilesOwned()).toBeGreaterThan(0);
+      expect(game.inSurvivalZone(p.spawnTile()!)).toBe(true);
+    }
+    expect(b.isAlive()).toBe(true);
+  });
+
   it("keep defenders from taking open land in them", async () => {
     const { game, a } = await build("big_plains", {}, false);
     const z = game.survivalZones()[0];

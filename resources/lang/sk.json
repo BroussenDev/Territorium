@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Poslané {gold} zlata na {name}",
     "sent_troops_to_player": "Poslal {troops} vojakov do {name}",
     "surrender_sent": "Vzdali ste sa {name}. Čakanie na ich odpoveď.",
+    "survival_wave_landed": "Vlna {wave}: {count} útočníkov pristáva v červených zónach!",
     "trade_ship_captured": "Vaša obchodná loď bola zajatá {name}",
     "unit_destroyed": "Vaša {unit} bola zničená",
     "unit_voluntarily_deleted": "Jednotka dobrovoľne vymazaná",
@@ -1316,7 +1317,7 @@
     "subtitle": "Hry pre viacerých hráčov s vlastnými pravidlami",
     "survival_description": "Všetci hráči na jednej strane proti vlnám útočníkov s UI, ktoré s každou vlnou rastú. Vydržte spolu až do poslednej.",
     "survival_fact_fair": "Útočníci hrajú podľa rovnakých pravidiel ako vy",
-    "survival_fact_waves": "10 vĺn, nová každé 2:30",
+    "survival_fact_waves": "10 vĺn, nová každé 1:45",
     "survival_fact_win": "Zničte poslednú vlnu a vyhrajte",
     "survival_join": "Pridať sa k obrane",
     "survival_title": "Prežitie",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Posledná vlna: zostáva zničiť {count} útočníkov",
     "survival_next_wave": "Ďalšia vlna o {time}: {count} útočníkov",
     "survival_wave": "Vlna {wave} z {total}",
-    "survival_zones_hint": "Červeno šrafované zóny sú vyhradené pre útočníkov: tam pristávajú.",
+    "survival_zones_hint": "Červeno šrafované zóny patria útočníkom: každá vlna tam pristane a vezme si ich späť.",
     "versus_spawn": "Vyber si štartovacie miesto v zóne svojho tímu"
   },
   "help_modal": {

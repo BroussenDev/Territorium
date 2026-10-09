@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "{gold} सोना {name} भेजा गया",
     "sent_troops_to_player": "{name} पर {troops} सैनिक भेजे गए",
     "surrender_sent": "आपने {name} के सामने समर्पण कर दिया। उनके जवाब का इंतजार है.",
+    "survival_wave_landed": "लहर {wave}: {count} आक्रमणकारी लाल क्षेत्रों में उतर रहे हैं!",
     "trade_ship_captured": "आपके व्यापार जहाज पर {name} द्वारा कब्जा कर लिया गया था",
     "unit_destroyed": "आपका {unit} नष्ट हो गया",
     "unit_voluntarily_deleted": "इकाई स्वेच्छा से हटा दी गई",
@@ -1316,7 +1317,7 @@
     "subtitle": "अपने स्वयं के नियमों के साथ मल्टीप्लेयर गेम",
     "survival_description": "सभी खिलाड़ी एक ही तरफ़, AI आक्रमणकारियों की लहरों के ख़िलाफ़ जो हर लहर के साथ बड़ी होती हैं। आख़िरी लहर तक साथ टिके रहें।",
     "survival_fact_fair": "आक्रमणकारी आपके ही नियमों से खेलते हैं",
-    "survival_fact_waves": "10 लहरें, हर 2:30 पर एक नई",
+    "survival_fact_waves": "10 लहरें, हर 1:45 पर एक नई",
     "survival_fact_win": "जीतने के लिए आख़िरी लहर को ख़त्म करें",
     "survival_join": "रक्षा में शामिल हों",
     "survival_title": "अस्तित्व",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "आख़िरी लहर: {count} आक्रमणकारी बाकी",
     "survival_next_wave": "अगली लहर {time} में: {count} आक्रमणकारी",
     "survival_wave": "लहर {wave} / {total}",
-    "survival_zones_hint": "लाल धारियों वाले क्षेत्र आक्रमणकारियों के लिए आरक्षित हैं: वे वहीं उतरते हैं।",
+    "survival_zones_hint": "लाल धारियों वाले क्षेत्र आक्रमणकारियों के हैं: हर लहर वहीं उतरती है और उन्हें वापस ले लेती है।",
     "versus_spawn": "अपनी टीम के क्षेत्र में शुरुआती स्थान चुनें"
   },
   "help_modal": {

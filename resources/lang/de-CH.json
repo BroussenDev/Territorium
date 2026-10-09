@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "{gold} Gold a {name} gsendet",
     "sent_troops_to_player": "{troops} Truppe a {name} gsendet",
     "surrender_sent": "Du hast dich {name} ergeben. Warten auf ihre Antwort.",
+    "survival_wave_landed": "Welle {wave}: {count} Invasoren landen in den roten Zonen!",
     "trade_ship_captured": "Ihr Handelsschiff wurde von {name} gekapert",
     "unit_destroyed": "Di {unit} isch zerstört worde",
     "unit_voluntarily_deleted": "Einheit freiwüuig glöscht",
@@ -1316,7 +1317,7 @@
     "subtitle": "Multiplayer-Spiele mit eigenen Regeln",
     "survival_description": "Alle Spieler auf derselben Seite gegen Wellen von KI-Invasoren, die mit jeder Welle grösser werden. Haltet gemeinsam bis zur letzten durch.",
     "survival_fact_fair": "Die Invasoren spielen nach denselben Regeln wie du",
-    "survival_fact_waves": "10 Wellen, alle 2:30 eine neue",
+    "survival_fact_waves": "10 Wellen, alle 1:45 eine neue",
     "survival_fact_win": "Vernichte die letzte Welle, um zu gewinnen",
     "survival_join": "Zur Verteidigung",
     "survival_title": "Überleben",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Letzte Welle: noch {count} Invasoren zu vernichten",
     "survival_next_wave": "Nächste Welle in {time}: {count} Invasoren",
     "survival_wave": "Welle {wave} von {total}",
-    "survival_zones_hint": "Rot schraffierte Zonen sind den Invasoren vorbehalten: Dort landen sie.",
+    "survival_zones_hint": "Rot schraffierte Zonen gehören den Invasoren: Jede Welle landet dort und nimmt sie zurück.",
     "versus_spawn": "Wähle einen Startpunkt in der Zone deines Teams"
   },
   "help_modal": {

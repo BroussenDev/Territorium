@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Wysłano {gold} złota do {name}",
     "sent_troops_to_player": "Wysłano {troops} żołnierzy do {name}",
     "surrender_sent": "Poddałeś się {name}. Czekam na ich odpowiedź.",
+    "survival_wave_landed": "Fala {wave}: {count} najeźdźców ląduje w czerwonych strefach!",
     "trade_ship_captured": "Twój statek handlowy został przechwycony przez {name}",
     "unit_destroyed": "Twoje {unit} zostało zniszczone",
     "unit_voluntarily_deleted": "Jednostka została dobrowolnie usunięta",
@@ -1316,7 +1317,7 @@
     "subtitle": "Gry wieloosobowe z własnymi zasadami",
     "survival_description": "Wszyscy gracze po tej samej stronie przeciwko falom najeźdźców SI, coraz liczniejszym z każdą falą. Wytrzymajcie razem do ostatniej.",
     "survival_fact_fair": "Najeźdźcy grają według tych samych zasad co ty",
-    "survival_fact_waves": "10 fal, nowa co 2:30",
+    "survival_fact_waves": "10 fal, nowa co 1:45",
     "survival_fact_win": "Pokonaj ostatnią falę, aby wygrać",
     "survival_join": "Dołącz do obrony",
     "survival_title": "Przetrwanie",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Ostatnia fala: pozostało {count} najeźdźców do pokonania",
     "survival_next_wave": "Następna fala za {time}: {count} najeźdźców",
     "survival_wave": "Fala {wave} z {total}",
-    "survival_zones_hint": "Strefy zakreskowane na czerwono są zarezerwowane dla najeźdźców: tam lądują.",
+    "survival_zones_hint": "Strefy zakreskowane na czerwono należą do najeźdźców: każda fala tam ląduje i je odbiera.",
     "versus_spawn": "Wybierz miejsce startu w strefie swojej drużyny"
   },
   "help_modal": {

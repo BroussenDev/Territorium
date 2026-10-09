@@ -2,6 +2,7 @@ import {
   ColoredTeams,
   Execution,
   Game,
+  MessageType,
   Nation,
   Player,
   PlayerInfo,
@@ -23,6 +24,10 @@ import { getSpawnTiles } from "./Util";
 // Tries to find free land for one invader before the wave falls back to
 // reinforcing the invaders already on the map.
 const LANDING_TRIES = 1_000;
+
+// Radius of the patch a newcomer takes from the invaders already in a full
+// landing zone (same as a spawn's).
+const LANDING_PATCH = 4;
 
 /**
  * Survival mode (game/Survival.ts): lands each wave of AI invaders on the
@@ -88,6 +93,7 @@ export class SurvivalExecution implements Execution {
       .players()
       .filter((p) => p.type() === PlayerType.Human).length;
     const size = survivalWaveSize(wave, Math.max(1, defenders));
+    this.reclaimZones(mg);
     let stranded = 0;
     for (let i = 0; i < size; i++) {
       const tile = this.findLanding(mg);
@@ -98,6 +104,31 @@ export class SurvivalExecution implements Execution {
       this.landInvader(mg, tile);
     }
     if (stranded > 0) this.reinforce(mg, stranded);
+    mg.displayMessage(
+      "events_display.survival_wave_landed",
+      MessageType.NAVAL_INVASION_INBOUND,
+      null,
+      undefined,
+      { wave, count: size },
+    );
+  }
+
+  // Each wave takes its landing zones back: what the defenders hold there,
+  // land and buildings, is freed for the invaders to land on. Defenders can
+  // fight in the zones between waves, never keep them.
+  private reclaimZones(mg: Game): void {
+    if (mg.survivalZones().length === 0) return;
+    for (const defender of mg.players()) {
+      if (defender.type() !== PlayerType.Human) continue;
+      for (const unit of defender.units()) {
+        if (mg.inSurvivalZone(unit.tile())) unit.delete(false);
+      }
+      const held: TileRef[] = [];
+      for (const tile of defender.tiles()) {
+        if (mg.inSurvivalZone(tile)) held.push(tile);
+      }
+      for (const tile of held) defender.relinquish(tile);
+    }
   }
 
   private landInvader(mg: Game, tile: TileRef): void {
@@ -120,7 +151,11 @@ export class SurvivalExecution implements Execution {
   // land away from the defenders, so an invader lands on open ground rather
   // than inside someone's border.
   private findLanding(mg: Game): TileRef | null {
-    return this.landingInZones(mg) ?? this.landingAnywhere(mg);
+    return (
+      this.landingInZones(mg) ??
+      this.landingOnInvaders(mg) ??
+      this.landingAnywhere(mg)
+    );
   }
 
   private landingInZones(mg: Game): TileRef | null {
@@ -138,6 +173,41 @@ export class SurvivalExecution implements Execution {
       return tile;
     }
     return null;
+  }
+
+  // A zone the earlier waves fill up still takes the next one: the newcomer
+  // lands on a patch the invaders already hold there (same side, nothing
+  // taken from the defenders), so every wave lands.
+  private landingOnInvaders(mg: Game): TileRef | null {
+    const zones = mg.survivalZones();
+    if (zones.length === 0) return null;
+    for (let tries = 0; tries < LANDING_TRIES; tries++) {
+      const z = zones[this.random.nextInt(0, zones.length)];
+      const x = z.x + this.random.nextInt(-z.radius, z.radius + 1);
+      const y = z.y + this.random.nextInt(-z.radius, z.radius + 1);
+      if (!mg.isValidCoord(x, y)) continue;
+      const tile = mg.ref(x, y);
+      if (!mg.inSurvivalZone(tile) || !mg.isLand(tile)) continue;
+      if (!this.heldByInvader(mg, tile)) continue;
+      // Free the patch the newcomer spawns on, from invaders only.
+      for (let dy = -LANDING_PATCH; dy <= LANDING_PATCH; dy++) {
+        for (let dx = -LANDING_PATCH; dx <= LANDING_PATCH; dx++) {
+          if (dx * dx + dy * dy > LANDING_PATCH * LANDING_PATCH) continue;
+          if (!mg.isValidCoord(x + dx, y + dy)) continue;
+          const t = mg.ref(x + dx, y + dy);
+          if (!mg.inSurvivalZone(t) || !this.heldByInvader(mg, t)) continue;
+          (mg.owner(t) as Player).relinquish(t);
+        }
+      }
+      if (getSpawnTiles(mg, tile, false).length === 0) continue;
+      return tile;
+    }
+    return null;
+  }
+
+  private heldByInvader(mg: Game, tile: TileRef): boolean {
+    const owner = mg.owner(tile);
+    return owner.isPlayer() && owner.team() === ColoredTeams.Nations;
   }
 
   private landingAnywhere(mg: Game): TileRef | null {

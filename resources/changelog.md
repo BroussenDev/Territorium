@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.84
+
+🛡️ **Survival, tuned for 10 waves**
+
+- Waves now come every 1 min 45 instead of 2 min 30.
+- You can take the landing zones: each wave takes them back when it lands, along with what you built there.
+- Every wave now lands in full, even when the earlier invaders fill the zones.
+- A message announces each wave as it lands.
+
 ## v0.1.83
 
 ⚔️ **A new attack preview**

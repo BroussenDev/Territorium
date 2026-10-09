@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "ارسال {gold} طلا به {name}",
     "sent_troops_to_player": "ارسال {troops} سرباز به {name}",
     "surrender_sent": "تسلیم {name} شدی. منتظر جوابشون",
+    "survival_wave_landed": "موج {wave}: {count} مهاجم در مناطق قرمز پیاده می‌شوند!",
     "trade_ship_captured": "کشتی تجاری شما توسط {name} دستگیر شد",
     "unit_destroyed": "واحد {unit} شما نابود شد",
     "unit_voluntarily_deleted": "واحد به‌صورت داوطلبانه حذف شد",
@@ -1316,7 +1317,7 @@
     "subtitle": "بازی های چند نفره با قوانین خاص خود",
     "survival_description": "همهٔ بازیکنان در یک جبهه در برابر موج‌های مهاجمان هوش مصنوعی که با هر موج بزرگ‌تر می‌شوند. تا آخرین موج با هم مقاومت کنید.",
     "survival_fact_fair": "مهاجمان با همان قوانین شما بازی می‌کنند",
-    "survival_fact_waves": "۱۰ موج، هر ۲:۳۰ یک موج تازه",
+    "survival_fact_waves": "۱۰ موج، هر ۱:۴۵ یک موج تازه",
     "survival_fact_win": "برای پیروزی آخرین موج را نابود کنید",
     "survival_join": "پیوستن به دفاع",
     "survival_title": "بقا",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "آخرین موج: {count} مهاجم برای نابودی مانده",
     "survival_next_wave": "موج بعدی تا {time}: {count} مهاجم",
     "survival_wave": "موج {wave} از {total}",
-    "survival_zones_hint": "مناطق هاشورخورده با قرمز مخصوص مهاجمان است: آن‌ها آنجا پیاده می‌شوند.",
+    "survival_zones_hint": "مناطق هاشورخورده با قرمز از آنِ مهاجمان است: هر موج آنجا پیاده می‌شود و آن‌ها را پس می‌گیرد.",
     "versus_spawn": "یک نقطهٔ شروع در منطقهٔ تیم خود انتخاب کنید"
   },
   "help_modal": {

@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Lähetetty {gold} kultaa vastaanottajalle {name}",
     "sent_troops_to_player": "Lähetti {troops} joukkoja osoitteeseen {name}",
     "surrender_sent": "Antauduit {name}:lle. Heidän vastaustaan ​​odottaen.",
+    "survival_wave_landed": "Aalto {wave}: {count} hyökkääjää rantautuu punaisille alueille!",
     "trade_ship_captured": "{name} vangitsi kauppa-aluksen",
     "unit_destroyed": "{unit}si tuhoutui",
     "unit_voluntarily_deleted": "Yksikkö poistettu vapaaehtoisesti",
@@ -1316,7 +1317,7 @@
     "subtitle": "Moninpelit omilla säännöillään",
     "survival_description": "Kaikki pelaajat samalla puolella tekoälyhyökkääjien aaltoja vastaan, jotka kasvavat jokaisella aallolla. Kestäkää yhdessä viimeiseen asti.",
     "survival_fact_fair": "Hyökkääjät pelaavat samoilla säännöillä kuin sinä",
-    "survival_fact_waves": "10 aaltoa, uusi 2:30 välein",
+    "survival_fact_waves": "10 aaltoa, uusi 1:45 välein",
     "survival_fact_win": "Tuhoa viimeinen aalto voittaaksesi",
     "survival_join": "Liity puolustukseen",
     "survival_title": "Selviytyminen",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Viimeinen aalto: {count} hyökkääjää jäljellä",
     "survival_next_wave": "Seuraava aalto {time} päästä: {count} hyökkääjää",
     "survival_wave": "Aalto {wave}/{total}",
-    "survival_zones_hint": "Punaisella viivoitetut alueet on varattu hyökkääjille: he rantautuvat sinne.",
+    "survival_zones_hint": "Punaisella viivoitetut alueet kuuluvat hyökkääjille: jokainen aalto rantautuu sinne ja ottaa ne takaisin.",
     "versus_spawn": "Valitse aloituspaikka joukkueesi alueelta"
   },
   "help_modal": {

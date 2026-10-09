@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Skickade {gold} guld till {name}",
     "sent_troops_to_player": "Skickade {troops} trupper till {name}",
     "surrender_sent": "Du gav upp till {name}. Väntar på deras svar.",
+    "survival_wave_landed": "Våg {wave}: {count} inkräktare landstiger i de röda zonerna!",
     "trade_ship_captured": "Ditt handelsfartyg fångades av {name}",
     "unit_destroyed": "Din {unit} förstördes",
     "unit_voluntarily_deleted": "Enheten raderades frivilligt",
@@ -1316,7 +1317,7 @@
     "subtitle": "Flerspelarspel med egna regler",
     "survival_description": "Alla spelare på samma sida mot vågor av AI-inkräktare som växer för varje våg. Håll ut tillsammans till den sista.",
     "survival_fact_fair": "Inkräktarna spelar efter samma regler som du",
-    "survival_fact_waves": "10 vågor, en ny var 2:30",
+    "survival_fact_waves": "10 vågor, en ny var 1:45",
     "survival_fact_win": "Utplåna den sista vågen för att vinna",
     "survival_join": "Gå med i försvaret",
     "survival_title": "Överlevnad",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Sista vågen: {count} inkräktare kvar att utplåna",
     "survival_next_wave": "Nästa våg om {time}: {count} inkräktare",
     "survival_wave": "Våg {wave} av {total}",
-    "survival_zones_hint": "Rödrandiga zoner är reserverade för inkräktarna: där landstiger de.",
+    "survival_zones_hint": "Rödrandiga zoner tillhör inkräktarna: varje våg landstiger där och tar tillbaka dem.",
     "versus_spawn": "Välj en startplats i ditt lags zon"
   },
   "help_modal": {

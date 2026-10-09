@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Inviato {gold} oro a {name}",
     "sent_troops_to_player": "Inviato {troops} truppe a {name}",
     "surrender_sent": "Ti sei arreso a {name}. In attesa della loro risposta.",
+    "survival_wave_landed": "Ondata {wave}: {count} invasori sbarcano nelle zone rosse!",
     "trade_ship_captured": "La tua nave mercantile è stata catturata da {name}",
     "unit_destroyed": "Il tuo {unit} è stato distrutto",
     "unit_voluntarily_deleted": "Unità cancellata volontariamente",
@@ -1316,7 +1317,7 @@
     "subtitle": "Giochi multiplayer con regole proprie",
     "survival_description": "Tutti i giocatori dalla stessa parte contro ondate di invasori IA, più numerose a ogni ondata. Resistete insieme fino all'ultima.",
     "survival_fact_fair": "Gli invasori giocano con le tue stesse regole",
-    "survival_fact_waves": "10 ondate, una nuova ogni 2:30",
+    "survival_fact_waves": "10 ondate, una nuova ogni 1:45",
     "survival_fact_win": "Elimina l'ultima ondata per vincere",
     "survival_join": "Unisciti alla difesa",
     "survival_title": "Sopravvivenza",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Ultima ondata: restano {count} invasori da eliminare",
     "survival_next_wave": "Prossima ondata tra {time}: {count} invasori",
     "survival_wave": "Ondata {wave} di {total}",
-    "survival_zones_hint": "Le zone tratteggiate in rosso sono riservate agli invasori: sbarcano lì.",
+    "survival_zones_hint": "Le zone tratteggiate in rosso sono degli invasori: ogni ondata sbarca lì e le riprende.",
     "versus_spawn": "Scegli un punto di partenza nella zona della tua squadra"
   },
   "help_modal": {

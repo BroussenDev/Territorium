@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Sendis {gold} da oro al {name}",
     "sent_troops_to_player": "Sendis {troops} trupojn al {name}",
     "surrender_sent": "Vi kapitulacis al {name}. Atendante ilian respondon.",
+    "survival_wave_landed": "Ondo {wave}: {count} invadantoj surteriĝas en la ruĝaj zonoj!",
     "trade_ship_captured": "Via komerca ŝipo estis kaptita de {name}",
     "unit_destroyed": "Via {unit} estis detruita",
     "unit_voluntarily_deleted": "Trupuno libervole forigita",
@@ -1316,7 +1317,7 @@
     "subtitle": "Plurludantaj ludoj kun propraj reguloj",
     "survival_description": "Ĉiuj ludantoj samflanke kontraŭ ondoj de AI-invadantoj, pli grandaj ĉe ĉiu ondo. Rezistu kune ĝis la lasta.",
     "survival_fact_fair": "La invadantoj ludas laŭ la samaj reguloj kiel vi",
-    "survival_fact_waves": "10 ondoj, nova ĉiujn 2:30",
+    "survival_fact_waves": "10 ondoj, nova ĉiujn 1:45",
     "survival_fact_win": "Neniigu la lastan ondon por venki",
     "survival_join": "Aliĝi al la defendo",
     "survival_title": "Postvivado",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Lasta ondo: restas {count} invadantoj",
     "survival_next_wave": "Sekva ondo post {time}: {count} invadantoj",
     "survival_wave": "Ondo {wave} el {total}",
-    "survival_zones_hint": "La ruĝe striitaj zonoj estas rezervitaj por la invadantoj: ili surteriĝas tie.",
+    "survival_zones_hint": "La ruĝe striitaj zonoj apartenas al la invadantoj: ĉiu ondo surteriĝas tie kaj reprenas ilin.",
     "versus_spawn": "Elektu komencan lokon en la zono de via teamo"
   },
   "help_modal": {

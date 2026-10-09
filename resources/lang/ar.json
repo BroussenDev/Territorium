@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "تم إرسال {gold} ذهب إلى {name}",
     "sent_troops_to_player": "تم إرسال {troops} قوات إلى {name}",
     "surrender_sent": "لقد استسلمت ل {name}. في انتظار جوابهم.",
+    "survival_wave_landed": "الموجة {wave}: {count} غزاة ينزلون في المناطق الحمراء!",
     "trade_ship_captured": "تم الاستيلاء على سفينتك التجارية بواسطة {name}",
     "unit_destroyed": "تم تدمير {unit} الخاص بك",
     "unit_voluntarily_deleted": "تم حذف الوحدة طوعا",
@@ -1316,7 +1317,7 @@
     "subtitle": "ألعاب متعددة اللاعبين لها قواعد خاصة بها",
     "survival_description": "جميع اللاعبين في صف واحد ضد موجات من الغزاة بالذكاء الاصطناعي، تكبر مع كل موجة. اصمدوا معًا حتى الأخيرة.",
     "survival_fact_fair": "يلعب الغزاة بالقواعد نفسها التي تلعب بها",
-    "survival_fact_waves": "10 موجات، موجة جديدة كل 2:30",
+    "survival_fact_waves": "10 موجات، موجة جديدة كل 1:45",
     "survival_fact_win": "اقضِ على الموجة الأخيرة لتفوز",
     "survival_join": "انضم إلى الدفاع",
     "survival_title": "البقاء",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "الموجة الأخيرة: بقي {count} غزاة للقضاء عليهم",
     "survival_next_wave": "الموجة التالية بعد {time}: {count} غزاة",
     "survival_wave": "الموجة {wave} من {total}",
-    "survival_zones_hint": "المناطق المخططة بالأحمر محجوزة للغزاة: ينزلون فيها.",
+    "survival_zones_hint": "المناطق المخططة بالأحمر للغزاة: كل موجة تنزل فيها وتستعيدها.",
     "versus_spawn": "اختر نقطة بداية في منطقة فريقك"
   },
   "help_modal": {

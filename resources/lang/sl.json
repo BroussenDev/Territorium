@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Poslano {gold} zlata na {name}",
     "sent_troops_to_player": "Poslal {troops} vojakov v {name}",
     "surrender_sent": "Predal si se {name}. Čakam na njihov odgovor.",
+    "survival_wave_landed": "Val {wave}: {count} osvajalcev se izkrca v rdečih območjih!",
     "trade_ship_captured": "Vašo trgovsko ladjo je ujel {name}",
     "unit_destroyed": "Vaš {unit} je bil uničen",
     "unit_voluntarily_deleted": "Enota je bila prostovoljno odstranjena",
@@ -1316,7 +1317,7 @@
     "subtitle": "Igre za več igralcev s svojimi pravili",
     "survival_description": "Vsi igralci na isti strani proti valovom osvajalcev z UI, ki so z vsakim valom večji. Zdržite skupaj do zadnjega.",
     "survival_fact_fair": "Osvajalci igrajo po enakih pravilih kot vi",
-    "survival_fact_waves": "10 valov, nov vsakih 2:30",
+    "survival_fact_waves": "10 valov, nov vsakih 1:45",
     "survival_fact_win": "Uničite zadnji val za zmago",
     "survival_join": "Pridruži se obrambi",
     "survival_title": "Preživetje",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Zadnji val: še {count} osvajalcev za uničiti",
     "survival_next_wave": "Naslednji val čez {time}: {count} osvajalcev",
     "survival_wave": "Val {wave} od {total}",
-    "survival_zones_hint": "Rdeče šrafirana območja so rezervirana za osvajalce: tam se izkrcajo.",
+    "survival_zones_hint": "Rdeče šrafirana območja pripadajo osvajalcem: vsak val se tam izkrca in jih vzame nazaj.",
     "versus_spawn": "Izberi začetno mesto v coni svoje ekipe"
   },
   "help_modal": {

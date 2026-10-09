@@ -1144,6 +1144,7 @@
     "sent_gold_to_player": "Igraču {name} je poslato {gold} zlatnika",
     "sent_troops_to_player": "Igraču {name} je poslato {troops} trupa",
     "surrender_sent": "Predali ste se {name}. Čeka se njihov odgovor.",
+    "survival_wave_landed": "Talas {wave}: {count} osvajača se iskrcava u crvenim zonama!",
     "trade_ship_captured": "Vaš brod za trgovinu je zauzeo igrač {name}",
     "unit_destroyed": "Vaš {unit} je uništen",
     "unit_voluntarily_deleted": "Jedinica je dobrovoljno obrisana",
@@ -1316,7 +1317,7 @@
     "subtitle": "Igre za više igrača sa sopstvenim pravilima",
     "survival_description": "Svi igrači na istoj strani protiv talasa AI osvajača, sve većih sa svakim talasom. Izdržite zajedno do posljednjeg.",
     "survival_fact_fair": "Osvajači igraju po istim pravilima kao vi",
-    "survival_fact_waves": "10 talasa, novi svakih 2:30",
+    "survival_fact_waves": "10 talasa, novi svakih 1:45",
     "survival_fact_win": "Uništite posljednji talas da pobijedite",
     "survival_join": "Pridruži se odbrani",
     "survival_title": "Preživljavanje",
@@ -1532,7 +1533,7 @@
     "survival_last_wave": "Posljednji talas: još {count} osvajača za uništiti",
     "survival_next_wave": "Sljedeći talas za {time}: {count} osvajača",
     "survival_wave": "Talas {wave} od {total}",
-    "survival_zones_hint": "Crveno šrafirane zone su rezervisane za osvajače: tu se iskrcavaju.",
+    "survival_zones_hint": "Crveno šrafirane zone pripadaju osvajačima: svaki talas se tu iskrcava i vraća ih.",
     "versus_spawn": "Izaberi početnu lokaciju u zoni svog tima"
   },
   "help_modal": {
