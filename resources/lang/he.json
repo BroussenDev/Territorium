@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "הכול",
+    "costs": "עולה {troops} חיילים",
     "defense_post": "עמדת הגנה",
-    "fallout": "נשורת",
-    "instant": "מיידי",
-    "lost": "אבדות משוערות",
     "minutes": "{m}:{s} דק׳",
-    "open_land": "אדמה פנויה",
+    "runs_out": "תיגמר לפני הפריצה",
     "seconds": "{s} שנ׳",
-    "sent": "כוחות שנשלחו",
     "terrain_highland": "גבעות",
     "terrain_mountain": "הרים",
-    "terrain_plains": "מישור",
-    "tiles": "משבצות שנכבשו",
-    "time": "משך",
-    "traitor": "בוגד"
+    "tiles_unit": "משבצות"
   },
   "ban_notice": {
     "appeal": "אם אתה מאמין שזו טעות, צור איתנו קשר בדיסקורד.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "הגל האחרון: נותרו {count} פולשים להשמיד",
     "survival_next_wave": "הגל הבא בעוד {time}: {count} פולשים",
     "survival_wave": "גל {wave} מתוך {total}",
+    "survival_zones_hint": "האזורים המקווקווים באדום שמורים לפולשים: שם הם נוחתים.",
     "versus_spawn": "בחרו נקודת התחלה באזור של הקבוצה שלכם"
   },
   "help_modal": {

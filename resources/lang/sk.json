@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Všetky",
+    "costs": "stojí {troops} vojakov",
     "defense_post": "Obranné stanovište",
-    "fallout": "Rádioaktívny spád",
-    "instant": "Okamžite",
-    "lost": "Odhadované straty",
     "minutes": "{m}:{s} min",
-    "open_land": "Voľná zem",
+    "runs_out": "vyčerpá sa pred prielomom",
     "seconds": "{s} s",
-    "sent": "Vyslané vojsko",
     "terrain_highland": "Kopce",
     "terrain_mountain": "Hory",
-    "terrain_plains": "Rovina",
-    "tiles": "Obsadené polia",
-    "time": "Trvanie",
-    "traitor": "Zradca"
+    "tiles_unit": "polí"
   },
   "ban_notice": {
     "appeal": "Ak si myslíte, že ide o omyl, kontaktujte nás na Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Posledná vlna: zostáva zničiť {count} útočníkov",
     "survival_next_wave": "Ďalšia vlna o {time}: {count} útočníkov",
     "survival_wave": "Vlna {wave} z {total}",
+    "survival_zones_hint": "Červeno šrafované zóny sú vyhradené pre útočníkov: tam pristávajú.",
     "versus_spawn": "Vyber si štartovacie miesto v zóne svojho tímu"
   },
   "help_modal": {

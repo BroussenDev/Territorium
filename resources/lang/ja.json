@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "すべて",
+    "costs": "兵力 {troops} を消費",
     "defense_post": "防衛拠点",
-    "fallout": "放射性降下物",
-    "instant": "即時",
-    "lost": "予想損失",
     "minutes": "{m}分{s}秒",
-    "open_land": "空き地",
+    "runs_out": "突破する前に尽きる",
     "seconds": "{s}秒",
-    "sent": "送り出す兵力",
     "terrain_highland": "丘陵",
     "terrain_mountain": "山岳",
-    "terrain_plains": "平地",
-    "tiles": "占領マス数",
-    "time": "所要時間",
-    "traitor": "裏切り者"
+    "tiles_unit": "マス"
   },
   "ban_notice": {
     "appeal": "これが間違いであると思われる場合は、公式Discordサーバーでお問い合わせください。",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "最終波：残る侵略者は{count}人",
     "survival_next_wave": "次の波まで{time}：侵略者{count}人",
     "survival_wave": "第{wave}波 / 全{total}波",
+    "survival_zones_hint": "赤い斜線のゾーンは侵略者専用：彼らはそこに上陸します。",
     "versus_spawn": "チームのゾーン内で開始地点を選んでください"
   },
   "help_modal": {

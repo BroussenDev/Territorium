@@ -1,5 +1,16 @@
 # Territorium — Changelog
 
+## v0.1.83
+
+⚔️ **A new attack preview**
+
+- The tiles an attack would take now show on the map, striped in emerald, wherever you point.
+- A small label by the cursor gives the tiles and the duration, and against a player what the attack costs. Smoother when moving the mouse.
+
+🛡️ **Survival: landing zones**
+
+- Red-hatched zones are kept for the invaders: the waves land there and defenders cannot take their open land (you can still fight the invaders inside them). The map can no longer fill up before the last waves.
+
 ## v0.1.82
 
 ⚔️ **Attack preview**

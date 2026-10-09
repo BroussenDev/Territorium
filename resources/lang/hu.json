@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Mind",
+    "costs": "{troops} katonába kerül",
     "defense_post": "Védőállás",
-    "fallout": "Radioaktív csapadék",
-    "instant": "Azonnal",
-    "lost": "Becsült veszteség",
     "minutes": "{m}:{s} perc",
-    "open_land": "Szabad föld",
+    "runs_out": "kifullad az áttörés előtt",
     "seconds": "{s} mp",
-    "sent": "Küldött csapatok",
     "terrain_highland": "Dombok",
     "terrain_mountain": "Hegyek",
-    "terrain_plains": "Síkság",
-    "tiles": "Elfoglalt mezők",
-    "time": "Időtartam",
-    "traitor": "Áruló"
+    "tiles_unit": "mező"
   },
   "ban_notice": {
     "appeal": "Ha úgy véled, hogy ez tévedés, lépj velünk kapcsolatba Discordon.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Utolsó hullám: még {count} hódítót kell legyőzni",
     "survival_next_wave": "Következő hullám {time} múlva: {count} hódító",
     "survival_wave": "{wave}. hullám / {total}",
+    "survival_zones_hint": "A pirosan sraffozott zónák a hódítóké: ott szállnak partra.",
     "versus_spawn": "Válassz kezdőhelyet a csapatod zónájában"
   },
   "help_modal": {

@@ -22,6 +22,7 @@ import {
   OBJECTIVE_CAPTURE_SECONDS,
   type ObjectiveState,
 } from "../core/game/Objectives";
+import type { SurvivalZone } from "../core/game/Survival";
 import {
   versusExclusionRadius,
   versusSpawnArea,
@@ -269,6 +270,7 @@ export class WebGLFrameBuilder {
     this.effectPalette.fill(0);
     this.lastSpawnTile.clear();
     this.lastObjectives = [];
+    this.lastSurvivalZones = [];
     this.lastObjectiveHighlight = -1;
     this.localPlayerSmallID = 0;
     this.skinsInitialized = false;
@@ -321,6 +323,7 @@ export class WebGLFrameBuilder {
   private glowRescanTick = 0;
 
   private lastObjectives: readonly ObjectiveState[] = [];
+  private lastSurvivalZones: readonly SurvivalZone[] = [];
   private lastObjectiveHighlight = -1;
   private capitalShieldShown = false;
 
@@ -587,6 +590,11 @@ export class WebGLFrameBuilder {
    * (it replaces the array on each Objectives update).
    */
   private syncObjectives(gameView: GameView): void {
+    const survivalZones = gameView.survivalZones();
+    if (survivalZones !== this.lastSurvivalZones) {
+      this.lastSurvivalZones = survivalZones;
+      this.view.setSurvivalZones(survivalZones);
+    }
     const objectives = gameView.objectives();
     if (objectives.length > 0) {
       const highlight = gameView.inSpawnPhase()

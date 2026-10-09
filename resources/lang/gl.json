@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Todas",
+    "costs": "custa {troops} tropas",
     "defense_post": "Posto de defensa",
-    "fallout": "Precipitación radioactiva",
-    "instant": "Inmediato",
-    "lost": "Baixas estimadas",
     "minutes": "{m}:{s} min",
-    "open_land": "Terra libre",
+    "runs_out": "esgótase antes de romper",
     "seconds": "{s} s",
-    "sent": "Tropas enviadas",
     "terrain_highland": "Outeiros",
     "terrain_mountain": "Montañas",
-    "terrain_plains": "Chaira",
-    "tiles": "Casas tomadas",
-    "time": "Duración",
-    "traitor": "Traidor"
+    "tiles_unit": "casas"
   },
   "ban_notice": {
     "appeal": "Se cres que se trata dun erro, ponte en contacto connosco en Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Última onda: quedan {count} invasores por eliminar",
     "survival_next_wave": "Próxima onda en {time}: {count} invasores",
     "survival_wave": "Onda {wave} de {total}",
+    "survival_zones_hint": "As zonas raiadas de vermello están reservadas aos invasores: desembarcan alí.",
     "versus_spawn": "Escolle un punto de inicio na zona do teu equipo"
   },
   "help_modal": {

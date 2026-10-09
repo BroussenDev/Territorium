@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Totes",
+    "costs": "costa {troops} tropes",
     "defense_post": "Lloc de defensa",
-    "fallout": "Pluja radioactiva",
-    "instant": "Immediat",
-    "lost": "Baixes estimades",
     "minutes": "{m}:{s} min",
-    "open_land": "Terra lliure",
+    "runs_out": "s'esgota abans d'obrir-se pas",
     "seconds": "{s} s",
-    "sent": "Tropes enviades",
     "terrain_highland": "Turons",
     "terrain_mountain": "Muntanyes",
-    "terrain_plains": "Plana",
-    "tiles": "Caselles preses",
-    "time": "Durada",
-    "traitor": "Traïdor"
+    "tiles_unit": "caselles"
   },
   "ban_notice": {
     "appeal": "Si creieu que es tracta d'un error, poseu-vos en contacte amb nosaltres a Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Última onada: queden {count} invasors per eliminar",
     "survival_next_wave": "Propera onada d'aquí a {time}: {count} invasors",
     "survival_wave": "Onada {wave} de {total}",
+    "survival_zones_hint": "Les zones ratllades de vermell estan reservades als invasors: hi desembarquen.",
     "versus_spawn": "Tria un punt d'inici a la zona del teu equip"
   },
   "help_modal": {

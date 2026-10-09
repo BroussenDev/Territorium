@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Усі",
+    "costs": "коштує {troops} військ",
     "defense_post": "Оборонний пост",
-    "fallout": "Радіоактивні опади",
-    "instant": "Миттєво",
-    "lost": "Очікувані втрати",
     "minutes": "{m}:{s} хв",
-    "open_land": "Вільна земля",
+    "runs_out": "виснажиться, не прорвавшись",
     "seconds": "{s} с",
-    "sent": "Надіслано військ",
     "terrain_highland": "Пагорби",
     "terrain_mountain": "Гори",
-    "terrain_plains": "Рівнина",
-    "tiles": "Захоплено клітинок",
-    "time": "Тривалість",
-    "traitor": "Зрадник"
+    "tiles_unit": "клітинок"
   },
   "ban_notice": {
     "appeal": "Якщо ви вважаєте, що це помилка, зв’яжіться з нами у Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Остання хвиля: залишилось знищити {count} загарбників",
     "survival_next_wave": "Наступна хвиля через {time}: {count} загарбників",
     "survival_wave": "Хвиля {wave} з {total}",
+    "survival_zones_hint": "Зони з червоним штрихуванням відведено загарбникам: вони висаджуються там.",
     "versus_spawn": "Виберіть точку старту в зоні своєї команди"
   },
   "help_modal": {

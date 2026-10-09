@@ -14,6 +14,7 @@ import { MotionPlanRecord } from "./MotionPlans";
 import { ObjectiveState } from "./Objectives";
 import { RailNetwork } from "./RailNetwork";
 import { Stats } from "./Stats";
+import type { SurvivalZone } from "./Survival";
 import { ReadonlyTileSet } from "./TileSet";
 import { UnitPredicate } from "./UnitGrid";
 
@@ -889,6 +890,13 @@ export interface Game extends GameMap {
   playerBySmallID(id: number): Player | TerraNullius;
   hasPlayer(id: PlayerID): boolean;
   addPlayer(playerInfo: PlayerInfo, team?: Team | null): Player;
+  /** Survival's landing zones (Survival.ts); empty in other modes. */
+  survivalZones(): readonly SurvivalZone[];
+  setSurvivalZones(zones: SurvivalZone[]): void;
+  /** Sends the landing zones to the client view. */
+  publishSurvivalZones(): void;
+  /** Whether `tile` lies in a Survival landing zone. */
+  inSurvivalZone(tile: TileRef): boolean;
   terraNullius(): TerraNullius;
   owner(ref: TileRef): Player | TerraNullius;
 

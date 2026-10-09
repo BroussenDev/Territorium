@@ -3,6 +3,7 @@ import { UserSettings } from "../../core/game/UserSettings";
 import { Controller } from "../Controller";
 import { AmbienceController } from "../controllers/AmbienceController";
 import { AttackingTroopsController } from "../controllers/AttackingTroopsController";
+import { AttackPreviewController } from "../controllers/AttackPreviewController";
 import { BuildPreviewController } from "../controllers/BuildPreviewController";
 import { HoverHighlightController } from "../controllers/HoverHighlightController";
 import { LiveStatsController } from "../controllers/LiveStatsController";
@@ -164,10 +165,6 @@ export function createRenderer(
   if (!(attackPreview instanceof AttackPreview)) {
     console.error("attack preview not found");
   }
-  attackPreview.eventBus = eventBus;
-  attackPreview.transform = transformHandler;
-  attackPreview.game = game;
-  attackPreview.uiState = uiState;
 
   const winModal = document.querySelector("win-modal") as WinModal;
   if (!(winModal instanceof WinModal)) {
@@ -366,6 +363,14 @@ export function createRenderer(
       userSettings,
     ),
     new HoverHighlightController(game, eventBus, transformHandler, view),
+    new AttackPreviewController(
+      game,
+      eventBus,
+      transformHandler,
+      view,
+      uiState,
+      attackPreview,
+    ),
     new LiveStatsController(game, eventBus),
     new StructureHighlightController(eventBus, view),
     new ViewModeController(eventBus, view),
@@ -396,7 +401,6 @@ export function createRenderer(
     eventHistory,
     controlPanel,
     playerInfo,
-    attackPreview,
     winModal,
     victoryCelebration,
     newLobbyPrompt,

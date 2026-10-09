@@ -24,6 +24,7 @@ import {
   unpackMotionPlans,
 } from "../../core/game/MotionPlans";
 import { ConquestState, ObjectiveState } from "../../core/game/Objectives";
+import type { SurvivalZone } from "../../core/game/Survival";
 import { TerrainMapData } from "../../core/game/TerrainMapLoader";
 import { TerraNulliusImpl } from "../../core/game/TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "../../core/game/UnitGrid";
@@ -356,6 +357,10 @@ export class GameView implements GameMap {
     }
     if (gu.updates[GameUpdateType.Win].length > 0) {
       this._gameOver = true;
+    }
+    const zonesUpdates = gu.updates[GameUpdateType.SurvivalZones];
+    if (zonesUpdates.length > 0) {
+      this._survivalZones = zonesUpdates[zonesUpdates.length - 1].zones;
     }
     const objectivesUpdates = gu.updates[GameUpdateType.Objectives];
     if (objectivesUpdates.length > 0) {
@@ -1243,6 +1248,12 @@ export class GameView implements GameMap {
   private _gameOver = false;
   private _objectives: ObjectiveState[] = [];
   private _conquest: ConquestState | null = null;
+  private _survivalZones: SurvivalZone[] = [];
+
+  /** Survival's landing zones (core/game/Survival.ts); empty otherwise. */
+  survivalZones(): readonly SurvivalZone[] {
+    return this._survivalZones;
+  }
   gameOver(): boolean {
     return this._gameOver;
   }

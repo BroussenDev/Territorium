@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Ĉiuj",
+    "costs": "kostas {troops} trupojn",
     "defense_post": "Defendejo",
-    "fallout": "Radioaktiva polvo",
-    "instant": "Tuj",
-    "lost": "Taksitaj perdoj",
     "minutes": "{m}:{s} min",
-    "open_land": "Libera tero",
+    "runs_out": "elĉerpiĝos antaŭ trarompo",
     "seconds": "{s} s",
-    "sent": "Senditaj trupoj",
     "terrain_highland": "Montetoj",
     "terrain_mountain": "Montoj",
-    "terrain_plains": "Ebenaĵo",
-    "tiles": "Prenitaj kampoj",
-    "time": "Daŭro",
-    "traitor": "Perfidulo"
+    "tiles_unit": "kampoj"
   },
   "ban_notice": {
     "appeal": "Se vi kredas, ke ĉi tio estas eraro, kontaktu nin ĉe Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Lasta ondo: restas {count} invadantoj",
     "survival_next_wave": "Sekva ondo post {time}: {count} invadantoj",
     "survival_wave": "Ondo {wave} el {total}",
+    "survival_zones_hint": "La ruĝe striitaj zonoj estas rezervitaj por la invadantoj: ili surteriĝas tie.",
     "versus_spawn": "Elektu komencan lokon en la zono de via teamo"
   },
   "help_modal": {

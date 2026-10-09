@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Alle",
+    "costs": "kostet {troops} Truppen",
     "defense_post": "Verteidigungsposten",
-    "fallout": "Fallout",
-    "instant": "Sofort",
-    "lost": "Geschätzte Verluste",
     "minutes": "{m}:{s} Min.",
-    "open_land": "Freies Land",
+    "runs_out": "erschöpft sich vor dem Durchbruch",
     "seconds": "{s} s",
-    "sent": "Gesendete Truppen",
     "terrain_highland": "Hügel",
     "terrain_mountain": "Berge",
-    "terrain_plains": "Ebene",
-    "tiles": "Eroberte Felder",
-    "time": "Dauer",
-    "traitor": "Verräter"
+    "tiles_unit": "Felder"
   },
   "ban_notice": {
     "appeal": "Wenn Sie glauben, dass dies ein Fehler ist, kontaktieren Sie uns auf Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Letzte Welle: noch {count} Invasoren zu vernichten",
     "survival_next_wave": "Nächste Welle in {time}: {count} Invasoren",
     "survival_wave": "Welle {wave} von {total}",
+    "survival_zones_hint": "Rot schraffierte Zonen sind den Invasoren vorbehalten: Dort landen sie.",
     "versus_spawn": "Wähle einen Startpunkt in der Zone deines Teams"
   },
   "help_modal": {

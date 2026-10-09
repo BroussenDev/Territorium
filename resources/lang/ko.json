@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "전부",
+    "costs": "병력 {troops} 소모",
     "defense_post": "방어 초소",
-    "fallout": "방사능 낙진",
-    "instant": "즉시",
-    "lost": "예상 손실",
     "minutes": "{m}분 {s}초",
-    "open_land": "빈 땅",
+    "runs_out": "돌파 전에 소진됨",
     "seconds": "{s}초",
-    "sent": "보낼 병력",
     "terrain_highland": "구릉",
     "terrain_mountain": "산악",
-    "terrain_plains": "평지",
-    "tiles": "점령 칸",
-    "time": "소요 시간",
-    "traitor": "배신자"
+    "tiles_unit": "칸"
   },
   "ban_notice": {
     "appeal": "잘못된 조치라고 생각되시면 Discord를 통해 문의해 주세요.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "마지막 웨이브: 남은 침략자 {count}명",
     "survival_next_wave": "다음 웨이브까지 {time}: 침략자 {count}명",
     "survival_wave": "웨이브 {wave}/{total}",
+    "survival_zones_hint": "붉은 빗금 구역은 침략자 전용입니다. 그곳에 상륙합니다.",
     "versus_spawn": "팀 구역 안에서 시작 위치를 고르세요"
   },
   "help_modal": {

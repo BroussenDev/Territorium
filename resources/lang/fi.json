@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Kaikki",
+    "costs": "maksaa {troops} joukkoa",
     "defense_post": "Puolustusasema",
-    "fallout": "Radioaktiivinen laskeuma",
-    "instant": "Heti",
-    "lost": "Arvioidut tappiot",
     "minutes": "{m}:{s} min",
-    "open_land": "Vapaa maa",
+    "runs_out": "uupuu ennen läpimurtoa",
     "seconds": "{s} s",
-    "sent": "Lähetetyt joukot",
     "terrain_highland": "Kukkulat",
     "terrain_mountain": "Vuoret",
-    "terrain_plains": "Tasanko",
-    "tiles": "Vallatut ruudut",
-    "time": "Kesto",
-    "traitor": "Petturi"
+    "tiles_unit": "ruutua"
   },
   "ban_notice": {
     "appeal": "Jos uskot tämän olevan virhe, ota meihin yhteyttä Discordissa.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Viimeinen aalto: {count} hyökkääjää jäljellä",
     "survival_next_wave": "Seuraava aalto {time} päästä: {count} hyökkääjää",
     "survival_wave": "Aalto {wave}/{total}",
+    "survival_zones_hint": "Punaisella viivoitetut alueet on varattu hyökkääjille: he rantautuvat sinne.",
     "versus_spawn": "Valitse aloituspaikka joukkueesi alueelta"
   },
   "help_modal": {

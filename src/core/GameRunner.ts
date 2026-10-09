@@ -37,6 +37,7 @@ import {
   seatNationsGame,
   vassalSide,
 } from "./game/NationsMode";
+import { placeSurvivalZones } from "./game/Survival";
 import { loadTerrainMap as loadGameMap } from "./game/TerrainMapLoader";
 import { PseudoRandom } from "./PseudoRandom";
 import { ClientID, GameStartInfo, Turn } from "./Schemas";
@@ -127,6 +128,10 @@ export async function createGameRunner(
     game.addExecution(new ObjectiveExecution(simpleHash(seed)));
   }
   if (config.isSurvivalMode()) {
+    // Placed now, so spawning in the spawn phase already respects them.
+    game.setSurvivalZones(
+      placeSurvivalZones(game.map(), simpleHash(seed) + 11),
+    );
     game.addExecution(
       new SurvivalExecution(gameStart.gameID, simpleHash(seed)),
     );

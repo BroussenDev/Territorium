@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Сите",
+    "costs": "чини {troops} војници",
     "defense_post": "Одбранбен пункт",
-    "fallout": "Радиоактивни талози",
-    "instant": "Веднаш",
-    "lost": "Проценети загуби",
     "minutes": "{m}:{s} мин",
-    "open_land": "Слободна земја",
+    "runs_out": "ќе се исцрпи пред пробивот",
     "seconds": "{s} с",
-    "sent": "Испратени војници",
     "terrain_highland": "Ридови",
     "terrain_mountain": "Планини",
-    "terrain_plains": "Рамнина",
-    "tiles": "Освоени полиња",
-    "time": "Траење",
-    "traitor": "Предавник"
+    "tiles_unit": "полиња"
   },
   "ban_notice": {
     "appeal": "Ако мислите дека ова е грешка, контактирајте не на Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Последен бран: уште {count} напаѓачи за уништување",
     "survival_next_wave": "Следен бран за {time}: {count} напаѓачи",
     "survival_wave": "Бран {wave} од {total}",
+    "survival_zones_hint": "Зоните со црвено шрафирање се резервирани за напаѓачите: тие слетуваат таму.",
     "versus_spawn": "Избери почетна локација во зоната на твојот тим"
   },
   "help_modal": {

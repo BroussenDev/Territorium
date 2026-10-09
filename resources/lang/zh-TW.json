@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "全部",
+    "costs": "消耗 {troops} 兵力",
     "defense_post": "防禦哨所",
-    "fallout": "放射性塵埃",
-    "instant": "瞬間",
-    "lost": "預計損失",
     "minutes": "{m}:{s} 分",
-    "open_land": "無主之地",
+    "runs_out": "突破前就會耗盡",
     "seconds": "{s} 秒",
-    "sent": "派出兵力",
     "terrain_highland": "丘陵",
     "terrain_mountain": "山地",
-    "terrain_plains": "平原",
-    "tiles": "佔領格數",
-    "time": "持續時間",
-    "traitor": "叛徒"
+    "tiles_unit": "格"
   },
   "ban_notice": {
     "appeal": "如果您相信這是個錯誤，請於 Discord 上聯繫我們。",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "最後一波：還剩 {count} 名入侵者",
     "survival_next_wave": "下一波 {time} 後到達：{count} 名入侵者",
     "survival_wave": "第{wave}波 / 共{total}波",
+    "survival_zones_hint": "紅色斜線區域留給入侵者：他們會在那裡登陸。",
     "versus_spawn": "在你隊伍的區域內選擇出生點"
   },
   "help_modal": {

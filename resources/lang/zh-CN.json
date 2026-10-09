@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "全部",
+    "costs": "消耗 {troops} 兵力",
     "defense_post": "防御哨所",
-    "fallout": "放射性尘埃",
-    "instant": "瞬间",
-    "lost": "预计损失",
     "minutes": "{m}:{s} 分",
-    "open_land": "无主之地",
+    "runs_out": "突破前就会耗尽",
     "seconds": "{s} 秒",
-    "sent": "派出兵力",
     "terrain_highland": "丘陵",
     "terrain_mountain": "山地",
-    "terrain_plains": "平原",
-    "tiles": "占领格数",
-    "time": "持续时间",
-    "traitor": "叛徒"
+    "tiles_unit": "格"
   },
   "ban_notice": {
     "appeal": "如果您认为这是一个错误，请通过 Discord 联系我们。",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "最后一波：还剩 {count} 名入侵者",
     "survival_next_wave": "下一波 {time} 后到达：{count} 名入侵者",
     "survival_wave": "第{wave}波 / 共{total}波",
+    "survival_zones_hint": "红色斜线区域留给入侵者：他们会在那里登陆。",
     "versus_spawn": "在你队伍的区域内选择出生点"
   },
   "help_modal": {

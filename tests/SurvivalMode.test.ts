@@ -1,3 +1,4 @@
+import { AttackExecution } from "../src/core/execution/AttackExecution";
 import { SurvivalExecution } from "../src/core/execution/SurvivalExecution";
 import { WinCheckExecution } from "../src/core/execution/WinCheckExecution";
 import {
@@ -11,10 +12,12 @@ import {
   TerrainType,
 } from "../src/core/game/Game";
 import {
+  placeSurvivalZones,
   SURVIVAL_FIRST_WAVE_DELAY_TICKS,
   SURVIVAL_MAX_WAVE_SIZE,
   SURVIVAL_WAVE_INTERVAL_TICKS,
   SURVIVAL_WAVES,
+  SURVIVAL_ZONES,
   survivalWaveSize,
   survivalWaveState,
   survivalWaveTick,
@@ -42,6 +45,7 @@ async function build(
     { ...SURVIVAL, ...extra },
     ["a", "b"].map((n) => playerInfo(n, PlayerType.Human)),
   );
+  game.setSurvivalZones(placeSurvivalZones(game.map(), 5));
   if (withWaves) game.addExecution(new SurvivalExecution("game", 99));
   game.addExecution(new WinCheckExecution());
   game.executeNextTick();
@@ -212,5 +216,47 @@ describe("survival mode", () => {
       );
     }
     expect(troopsBefore).toBeGreaterThan(0);
+  });
+});
+
+describe("survival landing zones", () => {
+  it("cover a share of the land with a few zones", async () => {
+    const { game } = await build();
+    const zones = game.survivalZones();
+    expect(zones.length).toBeGreaterThan(0);
+    expect(zones.length).toBeLessThanOrEqual(SURVIVAL_ZONES);
+    let inZones = 0;
+    game.map().forEachTile((tile) => {
+      if (game.isLand(tile) && game.inSurvivalZone(tile)) inZones++;
+    });
+    const share = inZones / game.map().numLandTiles();
+    expect(share).toBeGreaterThan(0.04);
+    expect(share).toBeLessThan(0.2);
+  });
+
+  it("land the waves in the zones", async () => {
+    const { game } = await build();
+    run(game, SURVIVAL_FIRST_WAVE_DELAY_TICKS + 20);
+    const wave = invaders(game);
+    expect(wave.length).toBeGreaterThan(0);
+    for (const invader of wave) {
+      expect(game.inSurvivalZone(invader.spawnTile()!)).toBe(true);
+    }
+  });
+
+  it("keep defenders from taking open land in them", async () => {
+    const { game, a } = await build("big_plains", {}, false);
+    const z = game.survivalZones()[0];
+    const edge = game.ref(z.x + z.radius + 2, z.y);
+    a.conquer(edge);
+    a.addTroops(2_000_000);
+    game.addExecution(
+      new AttackExecution(1_500_000, a, game.terraNullius().id()),
+    );
+    run(game, 300);
+    let taken = 0;
+    for (const tile of a.tiles()) if (game.inSurvivalZone(tile)) taken++;
+    expect(a.numTilesOwned()).toBeGreaterThan(50);
+    expect(taken).toBe(0);
   });
 });

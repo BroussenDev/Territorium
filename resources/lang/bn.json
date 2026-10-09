@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "সব",
+    "costs": "{troops} সৈন্য লাগবে",
     "defense_post": "প্রতিরক্ষা চৌকি",
-    "fallout": "তেজস্ক্রিয় ধূলি",
-    "instant": "তাৎক্ষণিক",
-    "lost": "আনুমানিক ক্ষতি",
     "minutes": "{m}:{s} মি",
-    "open_land": "খালি জমি",
+    "runs_out": "ভেদ করার আগেই ফুরিয়ে যাবে",
     "seconds": "{s} সে",
-    "sent": "পাঠানো সৈন্য",
     "terrain_highland": "পাহাড়ি এলাকা",
     "terrain_mountain": "পর্বত",
-    "terrain_plains": "সমভূমি",
-    "tiles": "দখল করা ঘর",
-    "time": "সময়কাল",
-    "traitor": "বিশ্বাসঘাতক"
+    "tiles_unit": "ঘর"
   },
   "ban_notice": {
     "appeal": "আপনি যদি বিশ্বাস করেন যে এটি একটি ভুল, Discord-এ আমাদের সাথে যোগাযোগ করুন।",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "শেষ ঢেউ: আরও {count} আক্রমণকারী বাকি",
     "survival_next_wave": "পরের ঢেউ {time} পরে: {count} আক্রমণকারী",
     "survival_wave": "ঢেউ {wave} / {total}",
+    "survival_zones_hint": "লাল দাগ দেওয়া এলাকাগুলো আক্রমণকারীদের জন্য সংরক্ষিত: তারা সেখানেই নামে।",
     "versus_spawn": "আপনার দলের অঞ্চলে একটি শুরুর স্থান বেছে নিন"
   },
   "help_modal": {

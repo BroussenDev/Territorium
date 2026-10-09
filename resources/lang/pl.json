@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Wszystkie",
+    "costs": "kosztuje {troops} wojsk",
     "defense_post": "Posterunek obronny",
-    "fallout": "Opad radioaktywny",
-    "instant": "Natychmiast",
-    "lost": "Szacowane straty",
     "minutes": "{m}:{s} min",
-    "open_land": "Wolna ziemia",
+    "runs_out": "wyczerpie się przed przełamaniem",
     "seconds": "{s} s",
-    "sent": "Wysłane wojska",
     "terrain_highland": "Wzgórza",
     "terrain_mountain": "Góry",
-    "terrain_plains": "Równina",
-    "tiles": "Zajęte pola",
-    "time": "Czas",
-    "traitor": "Zdrajca"
+    "tiles_unit": "pól"
   },
   "ban_notice": {
     "appeal": "Jeśli uważasz, że to pomyłka, skontaktuj się z nami na Discordzie.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Ostatnia fala: pozostało {count} najeźdźców do pokonania",
     "survival_next_wave": "Następna fala za {time}: {count} najeźdźców",
     "survival_wave": "Fala {wave} z {total}",
+    "survival_zones_hint": "Strefy zakreskowane na czerwono są zarezerwowane dla najeźdźców: tam lądują.",
     "versus_spawn": "Wybierz miejsce startu w strefie swojej drużyny"
   },
   "help_modal": {

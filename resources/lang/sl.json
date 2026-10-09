@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Vsa",
+    "costs": "stane {troops} enot",
     "defense_post": "Obrambna postojanka",
-    "fallout": "Radioaktivne padavine",
-    "instant": "Takoj",
-    "lost": "Ocenjene izgube",
     "minutes": "{m}:{s} min",
-    "open_land": "Prosto ozemlje",
+    "runs_out": "se izčrpa pred prebojem",
     "seconds": "{s} s",
-    "sent": "Poslane enote",
     "terrain_highland": "Hribi",
     "terrain_mountain": "Gore",
-    "terrain_plains": "Ravnina",
-    "tiles": "Zavzeta polja",
-    "time": "Trajanje",
-    "traitor": "Izdajalec"
+    "tiles_unit": "polj"
   },
   "ban_notice": {
     "appeal": "Če menite, da je to pomota, nas kontaktirajte na Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Zadnji val: še {count} osvajalcev za uničiti",
     "survival_next_wave": "Naslednji val čez {time}: {count} osvajalcev",
     "survival_wave": "Val {wave} od {total}",
+    "survival_zones_hint": "Rdeče šrafirana območja so rezervirana za osvajalce: tam se izkrcajo.",
     "versus_spawn": "Izberi začetno mesto v coni svoje ekipe"
   },
   "help_modal": {

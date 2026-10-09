@@ -76,6 +76,15 @@ export class SpawnExecution implements Execution {
       return;
     }
 
+    // Survival: the landing zones are kept for the invaders.
+    if (
+      this.fromIntent &&
+      this.tile !== undefined &&
+      this.mg.inSurvivalZone(this.tile)
+    ) {
+      return;
+    }
+
     // Nations mode places every country itself; nobody picks a spawn.
     if (this.fromIntent && this.mg.config().isNationsMode()) {
       return;
@@ -162,6 +171,13 @@ export class SpawnExecution implements Execution {
         !this.mg.isLand(center) ||
         this.mg.hasOwner(center) ||
         this.mg.isBorder(center)
+      ) {
+        continue;
+      }
+      // Survival: only invaders land in the landing zones.
+      if (
+        this.playerInfo.playerType === PlayerType.Human &&
+        this.mg.inSurvivalZone(center)
       ) {
         continue;
       }

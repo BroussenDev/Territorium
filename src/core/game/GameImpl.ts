@@ -53,6 +53,7 @@ import { RailNetwork } from "./RailNetwork";
 import { createRailNetwork } from "./RailNetworkImpl";
 import { Stats } from "./Stats";
 import { StatsImpl } from "./StatsImpl";
+import { inSurvivalZone, SurvivalZone } from "./Survival";
 import { assignTeams, resolveTeamsList } from "./TeamAssignment";
 import { TerraNulliusImpl } from "./TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "./UnitGrid";
@@ -108,6 +109,7 @@ export class GameImpl implements Game {
 
   private updates: GameUpdates = createGameUpdatesMap();
   private _objectives: ObjectiveState[] = [];
+  private _survivalZones: SurvivalZone[] = [];
   private tileUpdatePairs: number[] = [];
   /** [smallID, tilesOwned, gold, troops] quads — see PlayerImpl.toUpdate. */
   private playerStatsQuads: number[] = [];
@@ -961,6 +963,25 @@ export class GameImpl implements Game {
 
   setObjectives(objectives: ObjectiveState[]): void {
     this._objectives = objectives;
+  }
+
+  survivalZones(): readonly SurvivalZone[] {
+    return this._survivalZones;
+  }
+
+  setSurvivalZones(zones: SurvivalZone[]): void {
+    this._survivalZones = zones;
+  }
+
+  publishSurvivalZones(): void {
+    this.addUpdate({
+      type: GameUpdateType.SurvivalZones,
+      zones: this._survivalZones,
+    });
+  }
+
+  inSurvivalZone(tile: TileRef): boolean {
+    return inSurvivalZone(this._map, this._survivalZones, tile);
   }
 
   objectivesHeldBy(smallID: number): number {

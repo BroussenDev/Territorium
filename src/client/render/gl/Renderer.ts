@@ -1169,6 +1169,22 @@ export class GPURenderer {
   // Queries
   // ---------------------------------------------------------------------------
 
+  /** Survival's landing zones: hatched where the land is still open. */
+  setSurvivalZones(
+    zones: readonly { x: number; y: number; radius: number }[],
+  ): void {
+    this.territoryPass.setReservedZones(zones);
+  }
+
+  /** The tiles an attack would take (AttackPreviewController). */
+  setAttackPreview(refs: ArrayLike<number>, count: number): void {
+    this.territoryPass.setAttackPreview(refs, count);
+  }
+
+  clearAttackPreview(): void {
+    this.territoryPass.clearAttackPreview();
+  }
+
   setHighlightOwner(ownerID: number): void {
     this.borderPass.setHighlightOwner(ownerID);
     this.territoryPass.setHighlightOwner(ownerID);

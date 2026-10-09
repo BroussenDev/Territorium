@@ -508,6 +508,11 @@ function renderSurvival(game: GameView | undefined) {
       <div class="flex flex-col leading-tight">
         <span class="font-display text-sm font-semibold">${title}</span>
         <span class="text-xs tabular-nums text-white/70">${detail}</span>
+        ${wave === 0 && game.survivalZones().length > 0
+          ? html`<span class="text-xs text-red-200/80"
+              >${translateText("heads_up_message.survival_zones_hint")}</span
+            >`
+          : null}
       </div>
     </div>
   `;

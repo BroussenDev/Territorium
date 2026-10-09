@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Hepsi",
+    "costs": "{troops} birliğe mal olur",
     "defense_post": "Savunma noktası",
-    "fallout": "Radyoaktif serpinti",
-    "instant": "Anında",
-    "lost": "Tahmini kayıp",
     "minutes": "{m}:{s} dk",
-    "open_land": "Boş toprak",
+    "runs_out": "yarmadan önce tükenir",
     "seconds": "{s} sn",
-    "sent": "Gönderilen birlik",
     "terrain_highland": "Tepeler",
     "terrain_mountain": "Dağlar",
-    "terrain_plains": "Ova",
-    "tiles": "Alınan kare",
-    "time": "Süre",
-    "traitor": "Hain"
+    "tiles_unit": "kare"
   },
   "ban_notice": {
     "appeal": "Bunun bir hata olduğunu düşünüyorsanız Discord üzerinden bizimle iletişime geçin.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Son dalga: yok edilecek {count} istilacı kaldı",
     "survival_next_wave": "Sonraki dalga {time} içinde: {count} istilacı",
     "survival_wave": "Dalga {wave}/{total}",
+    "survival_zones_hint": "Kırmızı taralı bölgeler istilacılara ayrılmıştır: oraya çıkarma yaparlar.",
     "versus_spawn": "Takımının bölgesinde bir başlangıç noktası seç"
   },
   "help_modal": {

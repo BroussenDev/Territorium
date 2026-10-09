@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "All",
+    "costs": "costs {troops} troops",
     "defense_post": "Defense post",
-    "fallout": "Fallout",
-    "instant": "Instant",
-    "lost": "Estimated losses",
     "minutes": "{m}:{s} min",
-    "open_land": "Open land",
+    "runs_out": "runs out before breaking through",
     "seconds": "{s} s",
-    "sent": "Troops sent",
     "terrain_highland": "Hills",
     "terrain_mountain": "Mountains",
-    "terrain_plains": "Plains",
-    "tiles": "Tiles taken",
-    "time": "Duration",
-    "traitor": "Traitor"
+    "tiles_unit": "tiles"
   },
   "ban_notice": {
     "appeal": "If you believe this is a mistake, contact us on Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Last wave: {count} invaders left to wipe out",
     "survival_next_wave": "Next wave in {time}: {count} invaders",
     "survival_wave": "Wave {wave} of {total}",
+    "survival_zones_hint": "Red-hatched zones are kept for the invaders: they land there.",
     "versus_spawn": "Choose a starting location in your team's zone"
   },
   "help_modal": {

@@ -18,6 +18,7 @@ import {
 } from "./Game";
 import { TileRef } from "./GameMap";
 import { ConquestState, ObjectiveState } from "./Objectives";
+import type { SurvivalZone } from "./Survival";
 
 export interface GameUpdateViewData {
   tick: number;
@@ -110,6 +111,7 @@ export enum GameUpdateType {
   Objectives,
   PeaceRequest,
   PeaceRequestReply,
+  SurvivalZones,
 }
 
 export type GameUpdate =
@@ -138,7 +140,14 @@ export type GameUpdate =
   | DonateEventUpdate
   | ObjectivesUpdate
   | PeaceRequestUpdate
-  | PeaceRequestReplyUpdate;
+  | PeaceRequestReplyUpdate
+  | SurvivalZonesUpdate;
+
+/** Survival mode's landing zones (Survival.ts), sent once at the start. */
+export interface SurvivalZonesUpdate {
+  type: GameUpdateType.SurvivalZones;
+  zones: SurvivalZone[];
+}
 
 /** Every map objective's state, sent whenever any of them changes. */
 export interface ObjectivesUpdate {

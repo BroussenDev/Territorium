@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "الكل",
+    "costs": "تكلّف {troops} جنديًا",
     "defense_post": "نقطة دفاع",
-    "fallout": "غبار نووي",
-    "instant": "فوري",
-    "lost": "الخسائر المتوقعة",
     "minutes": "{m}:{s} د",
-    "open_land": "أرض شاغرة",
+    "runs_out": "تنفد قبل الاختراق",
     "seconds": "{s} ث",
-    "sent": "القوات المرسلة",
     "terrain_highland": "تلال",
     "terrain_mountain": "جبال",
-    "terrain_plains": "سهل",
-    "tiles": "الخانات المأخوذة",
-    "time": "المدة",
-    "traitor": "خائن"
+    "tiles_unit": "خانة"
   },
   "ban_notice": {
     "appeal": "إذا كنت تعتقد أن هذا خطأ، فاتصل بنا على Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "الموجة الأخيرة: بقي {count} غزاة للقضاء عليهم",
     "survival_next_wave": "الموجة التالية بعد {time}: {count} غزاة",
     "survival_wave": "الموجة {wave} من {total}",
+    "survival_zones_hint": "المناطق المخططة بالأحمر محجوزة للغزاة: ينزلون فيها.",
     "versus_spawn": "اختر نقطة بداية في منطقة فريقك"
   },
   "help_modal": {

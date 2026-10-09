@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Alle",
+    "costs": "kost {troops} troepen",
     "defense_post": "Verdedigingspost",
-    "fallout": "Fall-out",
-    "instant": "Direct",
-    "lost": "Geschatte verliezen",
     "minutes": "{m}:{s} min",
-    "open_land": "Vrij land",
+    "runs_out": "raakt uitgeput voor de doorbraak",
     "seconds": "{s} s",
-    "sent": "Verstuurde troepen",
     "terrain_highland": "Heuvels",
     "terrain_mountain": "Bergen",
-    "terrain_plains": "Vlakte",
-    "tiles": "Ingenomen vakken",
-    "time": "Duur",
-    "traitor": "Verrader"
+    "tiles_unit": "vakken"
   },
   "ban_notice": {
     "appeal": "Als je denkt dat dit een fout is, neem dan contact met ons op via Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Laatste golf: nog {count} indringers te vernietigen",
     "survival_next_wave": "Volgende golf over {time}: {count} indringers",
     "survival_wave": "Golf {wave} van {total}",
+    "survival_zones_hint": "Rood gearceerde zones zijn voor de indringers: daar landen ze.",
     "versus_spawn": "Kies een startlocatie in de zone van je team"
   },
   "help_modal": {

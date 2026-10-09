@@ -291,6 +291,12 @@ export class MapRenderer {
     this.renderer?.updateNukeTelegraphs(data);
   }
 
+  setSurvivalZones(
+    zones: readonly { x: number; y: number; radius: number }[],
+  ): void {
+    this.renderer?.setSurvivalZones(zones);
+  }
+
   updateObjectives(zones: ObjectiveZone[]): void {
     this.renderer?.updateObjectives(zones);
   }
@@ -402,6 +408,14 @@ export class MapRenderer {
   setGridView(active: boolean): void {
     this.renderer?.setGridView(active);
   }
+  setAttackPreview(refs: ArrayLike<number>, count: number): void {
+    this.renderer?.setAttackPreview(refs, count);
+  }
+
+  clearAttackPreview(): void {
+    this.renderer?.clearAttackPreview();
+  }
+
   setHighlightOwner(ownerID: number): void {
     this.renderer?.setHighlightOwner(ownerID);
   }

@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Alle",
+    "costs": "koster {troops} tropper",
     "defense_post": "Forsvarspost",
-    "fallout": "Radioaktivt nedfald",
-    "instant": "Straks",
-    "lost": "Anslåede tab",
     "minutes": "{m}:{s} min",
-    "open_land": "Fri jord",
+    "runs_out": "løber tør før gennembruddet",
     "seconds": "{s} s",
-    "sent": "Sendte tropper",
     "terrain_highland": "Bakker",
     "terrain_mountain": "Bjerge",
-    "terrain_plains": "Slette",
-    "tiles": "Erobrede felter",
-    "time": "Varighed",
-    "traitor": "Forræder"
+    "tiles_unit": "felter"
   },
   "ban_notice": {
     "appeal": "Hvis du mener, at dette er en fejl, så kontakt os på Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Sidste bølge: {count} angribere tilbage",
     "survival_next_wave": "Næste bølge om {time}: {count} angribere",
     "survival_wave": "Bølge {wave} af {total}",
+    "survival_zones_hint": "Rødskraverede zoner er forbeholdt angriberne: de lander der.",
     "versus_spawn": "Vælg et startsted i dit holds zone"
   },
   "help_modal": {

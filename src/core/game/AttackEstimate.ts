@@ -32,27 +32,23 @@ export function estimateAttack(
   attackTroops: number,
   maxTiles: number = ESTIMATE_MAX_TILES,
 ): AttackEstimate {
+  // One input reused for every tile: this runs on each preview refresh.
+  const defender = base.defender === null ? null : { ...base.defender };
+  const input: AttackLogicInput = { ...base, defender, attackTroops };
+  const limit =
+    defender === null ? maxTiles : Math.min(maxTiles, defender.numTiles);
   let troops = attackTroops;
   let ticks = 0;
   let tiles = 0;
-  let defender = base.defender === null ? null : { ...base.defender };
-  const limit =
-    defender === null ? maxTiles : Math.min(maxTiles, defender.numTiles);
   while (troops >= 1 && tiles < limit) {
-    const result = config.attackLogic({
-      ...base,
-      defender,
-      attackTroops: troops,
-    });
+    input.attackTroops = troops;
+    const result = config.attackLogic(input);
     troops -= result.attackerTroopLoss;
     ticks += result.tickFraction;
     tiles++;
     if (defender !== null) {
-      defender = {
-        ...defender,
-        troops: Math.max(0, defender.troops - result.defenderTroopLoss),
-        numTiles: Math.max(1, defender.numTiles - 1),
-      };
+      defender.troops = Math.max(0, defender.troops - result.defenderTroopLoss);
+      defender.numTiles = Math.max(1, defender.numTiles - 1);
     }
   }
   return {

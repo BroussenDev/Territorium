@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Tất cả",
+    "costs": "tốn {troops} quân",
     "defense_post": "Đồn phòng thủ",
-    "fallout": "Bụi phóng xạ",
-    "instant": "Tức thì",
-    "lost": "Thiệt hại ước tính",
     "minutes": "{m}:{s} phút",
-    "open_land": "Đất trống",
+    "runs_out": "kiệt sức trước khi đột phá",
     "seconds": "{s} giây",
-    "sent": "Quân gửi đi",
     "terrain_highland": "Đồi",
     "terrain_mountain": "Núi",
-    "terrain_plains": "Đồng bằng",
-    "tiles": "Ô chiếm được",
-    "time": "Thời gian",
-    "traitor": "Kẻ phản bội"
+    "tiles_unit": "ô"
   },
   "ban_notice": {
     "appeal": "Nếu bạn cho rằng đây là lỗi, hãy liên hệ với chúng tôi trên Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Đợt cuối: còn {count} quân xâm lược cần tiêu diệt",
     "survival_next_wave": "Đợt tiếp theo sau {time}: {count} quân xâm lược",
     "survival_wave": "Đợt {wave}/{total}",
+    "survival_zones_hint": "Các vùng gạch đỏ dành cho quân xâm lược: chúng đổ bộ ở đó.",
     "versus_spawn": "Chọn vị trí xuất phát trong khu vực của đội bạn"
   },
   "help_modal": {

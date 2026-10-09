@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Всички",
+    "costs": "струва {troops} войници",
     "defense_post": "Отбранителен пост",
-    "fallout": "Радиоактивни утайки",
-    "instant": "Веднага",
-    "lost": "Очаквани загуби",
     "minutes": "{m}:{s} мин",
-    "open_land": "Свободна земя",
+    "runs_out": "ще се изтощи преди пробива",
     "seconds": "{s} с",
-    "sent": "Изпратени войски",
     "terrain_highland": "Хълмове",
     "terrain_mountain": "Планини",
-    "terrain_plains": "Равнина",
-    "tiles": "Превзети полета",
-    "time": "Продължителност",
-    "traitor": "Предател"
+    "tiles_unit": "полета"
   },
   "ban_notice": {
     "appeal": "Ако вярваш, че това е грешка, свържи се с нас в Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Последна вълна: остават {count} нашественици",
     "survival_next_wave": "Следваща вълна след {time}: {count} нашественици",
     "survival_wave": "Вълна {wave} от {total}",
+    "survival_zones_hint": "Зоните с червена щриховка са запазени за нашествениците: те кацат там.",
     "versus_spawn": "Изберете начална позиция в зоната на своя отбор"
   },
   "help_modal": {

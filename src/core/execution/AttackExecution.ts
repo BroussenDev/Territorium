@@ -312,6 +312,14 @@ export class AttackExecution implements Execution {
       if (this.map.ownerID(tileToConquer) !== this.targetSmallID || !onBorder) {
         continue;
       }
+      // Survival: open land in a landing zone is kept for the invaders.
+      if (
+        this.targetSmallID === 0 &&
+        this._owner.type() === PlayerType.Human &&
+        this.mg.inSurvivalZone(tileToConquer)
+      ) {
+        continue;
+      }
       if (
         !this.map.isLand(tileToConquer) ||
         this.map.isImpassable(tileToConquer)

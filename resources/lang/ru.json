@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Все",
+    "costs": "стоит {troops} войск",
     "defense_post": "Оборонный пост",
-    "fallout": "Радиоактивные осадки",
-    "instant": "Мгновенно",
-    "lost": "Ожидаемые потери",
     "minutes": "{m}:{s} мин",
-    "open_land": "Свободная земля",
+    "runs_out": "выдохнется, не прорвавшись",
     "seconds": "{s} с",
-    "sent": "Отправлено войск",
     "terrain_highland": "Холмы",
     "terrain_mountain": "Горы",
-    "terrain_plains": "Равнина",
-    "tiles": "Захвачено клеток",
-    "time": "Длительность",
-    "traitor": "Предатель"
+    "tiles_unit": "клеток"
   },
   "ban_notice": {
     "appeal": "Если вы считаете, что это ошибка, свяжитесь с нами в Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Последняя волна: осталось уничтожить {count} захватчиков",
     "survival_next_wave": "Следующая волна через {time}: {count} захватчиков",
     "survival_wave": "Волна {wave} из {total}",
+    "survival_zones_hint": "Зоны с красной штриховкой отведены захватчикам: они высаживаются там.",
     "versus_spawn": "Выберите точку старта в зоне своей команды"
   },
   "help_modal": {

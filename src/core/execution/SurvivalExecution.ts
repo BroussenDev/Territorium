@@ -40,6 +40,7 @@ export class SurvivalExecution implements Execution {
   private wavesLanded = 0;
   private readonly usedNames = new Set<string>();
   private active = true;
+  private zonesPublished = false;
 
   constructor(
     private gameID: GameID,
@@ -58,6 +59,10 @@ export class SurvivalExecution implements Execution {
   tick(): void {
     const mg = this.mg;
     if (mg === null) throw new Error("Not initialized");
+    if (!this.zonesPublished) {
+      this.zonesPublished = true;
+      mg.publishSurvivalZones();
+    }
     if (mg.inSpawnPhase()) return;
     if (mg.getWinner() !== null) {
       this.active = false;
@@ -111,9 +116,31 @@ export class SurvivalExecution implements Execution {
     );
   }
 
-  // Free land away from the defenders, so an invader lands on the map's
-  // open ground rather than inside someone's border.
+  // Free land in a landing zone first (kept free for the waves), else free
+  // land away from the defenders, so an invader lands on open ground rather
+  // than inside someone's border.
   private findLanding(mg: Game): TileRef | null {
+    return this.landingInZones(mg) ?? this.landingAnywhere(mg);
+  }
+
+  private landingInZones(mg: Game): TileRef | null {
+    const zones = mg.survivalZones();
+    if (zones.length === 0) return null;
+    for (let tries = 0; tries < LANDING_TRIES; tries++) {
+      const z = zones[this.random.nextInt(0, zones.length)];
+      const x = z.x + this.random.nextInt(-z.radius, z.radius + 1);
+      const y = z.y + this.random.nextInt(-z.radius, z.radius + 1);
+      if (!mg.isValidCoord(x, y)) continue;
+      const tile = mg.ref(x, y);
+      if (!mg.inSurvivalZone(tile)) continue;
+      if (!mg.isLand(tile) || mg.hasOwner(tile) || mg.isBorder(tile)) continue;
+      if (getSpawnTiles(mg, tile, false).length === 0) continue;
+      return tile;
+    }
+    return null;
+  }
+
+  private landingAnywhere(mg: Game): TileRef | null {
     const humans = mg.players().filter((p) => p.type() === PlayerType.Human);
     const minDistance = mg.config().minDistanceBetweenPlayers();
     for (let tries = 0; tries < LANDING_TRIES; tries++) {
@@ -173,6 +200,7 @@ export class SurvivalExecution implements Execution {
   }
 
   activeDuringSpawnPhase(): boolean {
-    return false;
+    // Publishes the landing zones from the first tick.
+    return true;
   }
 }

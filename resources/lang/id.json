@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Semua",
+    "costs": "memakan {troops} pasukan",
     "defense_post": "Pos pertahanan",
-    "fallout": "Debu radioaktif",
-    "instant": "Seketika",
-    "lost": "Perkiraan kerugian",
     "minutes": "{m}:{s} mnt",
-    "open_land": "Tanah kosong",
+    "runs_out": "habis sebelum menembus",
     "seconds": "{s} dtk",
-    "sent": "Pasukan dikirim",
     "terrain_highland": "Perbukitan",
     "terrain_mountain": "Pegunungan",
-    "terrain_plains": "Dataran",
-    "tiles": "Petak direbut",
-    "time": "Durasi",
-    "traitor": "Pengkhianat"
+    "tiles_unit": "petak"
   },
   "ban_notice": {
     "appeal": "Jika Anda yakin ini adalah kesalahan, hubungi kami di Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Gelombang terakhir: tersisa {count} penyerbu",
     "survival_next_wave": "Gelombang berikutnya dalam {time}: {count} penyerbu",
     "survival_wave": "Gelombang {wave} dari {total}",
+    "survival_zones_hint": "Zona berarsir merah disediakan untuk penyerbu: mereka mendarat di sana.",
     "versus_spawn": "Pilih lokasi awal di zona timmu"
   },
   "help_modal": {

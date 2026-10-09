@@ -75,6 +75,22 @@ export class TerritoryPass {
   /** R32UI: when each tile was last captured (flashStamp), 0 = never. */
   private flashTex: WebGLTexture;
   private flashScatter: TileScatterPass;
+
+  /** R8UI: 1 where a Survival landing zone reserves the land. */
+  private reservedTex: WebGLTexture;
+
+  /** R32UI: the attack preview generation that marked each tile. */
+  private previewTex: WebGLTexture;
+  private previewScatter: TileScatterPass;
+  // Bumped per preview; a tile shows while it carries the current one, so
+  // an old preview needs no clearing. Stays under 2^24 (the scatter writes
+  // floats) for any realistic session.
+  private previewGen = 0;
+  private previewActive = false;
+  private previewColor: [number, number, number] = [0.204, 0.827, 0.6];
+  private uPreviewGen: WebGLUniformLocation;
+  private uPreviewTime: WebGLUniformLocation;
+  private uPreviewColor: WebGLUniformLocation;
   private isTeamMode = false;
 
   private vao: WebGLVertexArrayObject;
@@ -219,6 +235,9 @@ export class TerritoryPass {
       "uFlashStrength",
     )!;
     this.uFlashUnits = gl.getUniformLocation(this.program, "uFlashUnits")!;
+    this.uPreviewGen = gl.getUniformLocation(this.program, "uPreviewGen")!;
+    this.uPreviewTime = gl.getUniformLocation(this.program, "uPreviewTime")!;
+    this.uPreviewColor = gl.getUniformLocation(this.program, "uPreviewColor")!;
 
     gl.useProgram(this.program);
     gl.uniform1i(gl.getUniformLocation(this.program, "uTileTex"), 0);
@@ -232,6 +251,8 @@ export class TerritoryPass {
     gl.uniform1i(gl.getUniformLocation(this.program, "uBorderTex"), 8);
     gl.uniform1i(gl.getUniformLocation(this.program, "uAffiliation"), 9);
     gl.uniform1i(gl.getUniformLocation(this.program, "uFlashTex"), 10);
+    gl.uniform1i(gl.getUniformLocation(this.program, "uPreviewTex"), 11);
+    gl.uniform1i(gl.getUniformLocation(this.program, "uReservedTex"), 12);
 
     this.vao = createMapQuad(gl, mapW, mapH);
 
@@ -255,6 +276,101 @@ export class TerritoryPass {
       null,
     );
     this.flashScatter = new TileScatterPass(gl, mapW, mapH, this.flashTex);
+
+    this.previewTex = gl.createTexture()!;
+    gl.bindTexture(gl.TEXTURE_2D, this.previewTex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.R32UI,
+      mapW,
+      mapH,
+      0,
+      gl.RED_INTEGER,
+      gl.UNSIGNED_INT,
+      null,
+    );
+    this.previewScatter = new TileScatterPass(gl, mapW, mapH, this.previewTex);
+
+    this.reservedTex = gl.createTexture()!;
+    gl.bindTexture(gl.TEXTURE_2D, this.reservedTex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.R8UI,
+      mapW,
+      mapH,
+      0,
+      gl.RED_INTEGER,
+      gl.UNSIGNED_BYTE,
+      new Uint8Array(mapW * mapH),
+    );
+  }
+
+  /** Marks the Survival landing zones (circles), uploaded once. */
+  setReservedZones(
+    zones: readonly { x: number; y: number; radius: number }[],
+  ): void {
+    const mask = new Uint8Array(this.mapW * this.mapH);
+    for (const z of zones) {
+      const r2 = z.radius * z.radius;
+      const y0 = Math.max(0, z.y - z.radius);
+      const y1 = Math.min(this.mapH - 1, z.y + z.radius);
+      for (let y = y0; y <= y1; y++) {
+        const dy = y - z.y;
+        const x0 = Math.max(0, z.x - z.radius);
+        const x1 = Math.min(this.mapW - 1, z.x + z.radius);
+        for (let x = x0; x <= x1; x++) {
+          const dx = x - z.x;
+          if (dx * dx + dy * dy <= r2) mask[y * this.mapW + x] = 1;
+        }
+      }
+    }
+    const gl = this.gl;
+    gl.bindTexture(gl.TEXTURE_2D, this.reservedTex);
+    gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.texSubImage2D(
+      gl.TEXTURE_2D,
+      0,
+      0,
+      0,
+      this.mapW,
+      this.mapH,
+      gl.RED_INTEGER,
+      gl.UNSIGNED_BYTE,
+      mask,
+    );
+  }
+
+  /**
+   * Shows the tiles an attack would take (refs, the first `count` used).
+   * Only those tiles are written: the new generation hides the old ones.
+   */
+  setAttackPreview(refs: ArrayLike<number>, count: number): void {
+    this.previewGen++;
+    const gen = this.previewGen;
+    for (let i = 0; i < count; i++) {
+      const ref = refs[i];
+      this.previewScatter.push(ref % this.mapW, (ref / this.mapW) | 0, gen);
+    }
+    this.previewActive = count > 0;
+  }
+
+  clearAttackPreview(): void {
+    this.previewActive = false;
+  }
+
+  setAttackPreviewColor(r: number, g: number, b: number): void {
+    this.previewColor = [r, g, b];
   }
 
   /** Marks a tile that changed hands, for the conquest flash. */
@@ -413,6 +529,7 @@ export class TerritoryPass {
     if (this.flashScatter.count > 0 && !this.fullUploadPending) {
       this.flashScatter.flush();
     }
+    if (this.previewScatter.count > 0) this.previewScatter.flush();
     if (!this.tilesDirty) return "none";
     const gl = this.gl;
 
@@ -524,6 +641,9 @@ export class TerritoryPass {
       this.settings.passEnabled.conquestFlash ? FLASH_STRENGTH : 0,
     );
     gl.uniform1f(this.uFlashUnits, FLASH_MS / FLASH_UNIT_MS);
+    gl.uniform1ui(this.uPreviewGen, this.previewActive ? this.previewGen : 0);
+    gl.uniform1f(this.uPreviewTime, (performance.now() / 1000) % 1000);
+    gl.uniform3f(this.uPreviewColor, ...this.previewColor);
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.tileTex);
@@ -553,6 +673,10 @@ export class TerritoryPass {
     }
     gl.activeTexture(gl.TEXTURE10);
     gl.bindTexture(gl.TEXTURE_2D, this.flashTex);
+    gl.activeTexture(gl.TEXTURE11);
+    gl.bindTexture(gl.TEXTURE_2D, this.previewTex);
+    gl.activeTexture(gl.TEXTURE12);
+    gl.bindTexture(gl.TEXTURE_2D, this.reservedTex);
 
     gl.bindVertexArray(this.vao);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -565,6 +689,9 @@ export class TerritoryPass {
     this.scatter.dispose();
     this.flashScatter.dispose();
     gl.deleteTexture(this.flashTex);
+    this.previewScatter.dispose();
+    gl.deleteTexture(this.previewTex);
+    gl.deleteTexture(this.reservedTex);
     // tileTex, paletteTex, patternMetaTex, patternDataTex owned by GPUResources / renderer
   }
 }

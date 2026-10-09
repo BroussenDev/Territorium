@@ -1,3 +1,6 @@
+import { GameMap, TileRef } from "./GameMap";
+import { placeCircles } from "./Objectives";
+
 // Survival mode (gameVariant "survival"): every human on one team against
 // waves of AI invaders that grow with each wave. Survive the last wave and
 // wipe it out to win; the game is lost when no defender is left.
@@ -55,4 +58,53 @@ export function survivalWaveState(sinceStart: number): {
     wave,
     nextWaveTick: wave < SURVIVAL_WAVES ? survivalWaveTick(wave + 1) : null,
   };
+}
+
+/** Landing zones reserved for the invaders. */
+export const SURVIVAL_ZONES = 4;
+
+// Share of the land the landing zones cover together.
+const SURVIVAL_ZONE_LAND_SHARE = 0.12;
+
+/**
+ * A landing zone: open land the defenders cannot take, kept for the waves
+ * to land on (they can still fight the invaders inside it).
+ */
+export interface SurvivalZone {
+  x: number;
+  y: number;
+  radius: number;
+}
+
+/** Radius of each landing zone, so that together they cover ~12% of land. */
+export function survivalZoneRadius(landTiles: number): number {
+  const area = (landTiles * SURVIVAL_ZONE_LAND_SHARE) / SURVIVAL_ZONES;
+  return Math.max(8, Math.round(Math.sqrt(area / Math.PI)));
+}
+
+/** The landing zones of a game, spread over the map (deterministic). */
+export function placeSurvivalZones(map: GameMap, seed: number): SurvivalZone[] {
+  const radius = survivalZoneRadius(map.numLandTiles());
+  return placeCircles(map, seed, SURVIVAL_ZONES, radius).map((tile) => ({
+    x: map.x(tile),
+    y: map.y(tile),
+    radius,
+  }));
+}
+
+/** Whether `tile` lies in one of the landing zones. */
+export function inSurvivalZone(
+  map: GameMap,
+  zones: readonly SurvivalZone[],
+  tile: TileRef,
+): boolean {
+  if (zones.length === 0) return false;
+  const x = map.x(tile);
+  const y = map.y(tile);
+  for (const z of zones) {
+    const dx = x - z.x;
+    const dy = y - z.y;
+    if (dx * dx + dy * dy <= z.radius * z.radius) return true;
+  }
+  return false;
 }

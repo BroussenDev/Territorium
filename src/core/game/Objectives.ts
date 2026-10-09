@@ -134,8 +134,29 @@ export function placeObjectives(
   seed: number,
   count: number = objectiveCount(map.numLandTiles()),
 ): ObjectiveState[] {
-  const random = new PseudoRandom(seed);
   const radius = objectiveRadius(map.numLandTiles());
+  return placeCircles(map, seed, count, radius).map((tile, id) => ({
+    id,
+    tile,
+    radius,
+    holder: 0,
+    capturer: 0,
+    progress: 0,
+  }));
+}
+
+/**
+ * Centers of up to `count` circles of `radius` on mostly-land ground, kept
+ * as far apart as the samples allow and never overlapping (the objectives,
+ * the Survival landing zones). Deterministic for a seed.
+ */
+export function placeCircles(
+  map: GameMap,
+  seed: number,
+  count: number,
+  radius: number,
+): TileRef[] {
+  const random = new PseudoRandom(seed);
   const w = map.width();
   const h = map.height();
   const mx = Math.max(radius, Math.floor((w * EDGE_MARGIN_PERCENT) / 100));
@@ -173,12 +194,5 @@ export function placeObjectives(
     placed.push(best);
   }
 
-  return placed.map((tile, id) => ({
-    id,
-    tile,
-    radius,
-    holder: 0,
-    capturer: 0,
-    progress: 0,
-  }));
+  return placed;
 }

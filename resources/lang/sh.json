@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Sva",
+    "costs": "košta {troops} vojnika",
     "defense_post": "Odbrambeni položaj",
-    "fallout": "Radioaktivne padavine",
-    "instant": "Odmah",
-    "lost": "Procijenjeni gubici",
     "minutes": "{m}:{s} min",
-    "open_land": "Slobodna zemlja",
+    "runs_out": "iscrpit će se prije proboja",
     "seconds": "{s} s",
-    "sent": "Poslane trupe",
     "terrain_highland": "Brda",
     "terrain_mountain": "Planine",
-    "terrain_plains": "Ravnica",
-    "tiles": "Zauzeta polja",
-    "time": "Trajanje",
-    "traitor": "Izdajnik"
+    "tiles_unit": "polja"
   },
   "ban_notice": {
     "appeal": "Ako misliš da je ovo greška, kontaktiraj nas na Discord-u.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Posljednji talas: još {count} osvajača za uništiti",
     "survival_next_wave": "Sljedeći talas za {time}: {count} osvajača",
     "survival_wave": "Talas {wave} od {total}",
+    "survival_zones_hint": "Crveno šrafirane zone su rezervisane za osvajače: tu se iskrcavaju.",
     "versus_spawn": "Izaberi početnu lokaciju u zoni svog tima"
   },
   "help_modal": {

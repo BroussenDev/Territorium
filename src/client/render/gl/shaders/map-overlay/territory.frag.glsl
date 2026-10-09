@@ -33,6 +33,21 @@ uniform usampler2D uFlashTex;      // R32UI — capture time per tile (0 = never
 uniform uint uFlashNow;            // current time, same units as uFlashTex
 uniform float uFlashStrength;      // conquest flash peak; 0 = disabled
 uniform float uFlashUnits;         // flash duration, in uFlashTex units
+uniform usampler2D uPreviewTex;    // R32UI — attack preview generation per tile
+uniform uint uPreviewGen;          // current preview generation; 0 = none
+uniform float uPreviewTime;        // seconds, animates the preview stripes
+uniform vec3 uPreviewColor;        // preview stripe color
+uniform usampler2D uReservedTex;   // R8UI — 1 = Survival landing zone
+
+// Attack preview: diagonal stripes drifting across the tiles an attack
+// would take (AttackPreviewController), over the owner's fill or bare land.
+vec4 previewOver(vec4 base, ivec2 tc) {
+  float d = (float(tc.x) + float(tc.y)) * 0.25 - uPreviewTime * 0.8;
+  float stripe = step(0.5, fract(d));
+  vec3 rgb = mix(base.rgb, uPreviewColor, base.a > 0.0 ? 0.35 + 0.3 * stripe : 1.0);
+  float a = base.a > 0.0 ? base.a : 0.35 + 0.35 * stripe;
+  return vec4(rgb, a);
+}
 
 in vec2 vWorldPos;
 out vec4 fragColor;
@@ -46,7 +61,18 @@ void main() {
   uint owner = raw & uint(OWNER_MASK);
   bool fallout = (raw & (1u << FALLOUT_BIT)) != 0u;
 
-  if (owner == 0u && !fallout) discard;
+  bool previewed = uPreviewGen != 0u && texelFetch(uPreviewTex, tc, 0).r == uPreviewGen;
+  if (owner == 0u && !fallout) {
+    // Survival landing zone: open land kept for the invaders, hatched red.
+    if (!previewed && texelFetch(uReservedTex, tc, 0).r != 0u) {
+      float hatch = step(0.62, fract((float(tc.x) - float(tc.y)) * 0.2));
+      fragColor = vec4(0.86, 0.2, 0.2, 0.12 + 0.22 * hatch);
+      return;
+    }
+    if (!previewed) discard;
+    fragColor = previewOver(vec4(0.0), tc);
+    return;
+  }
 
   // --- Stale-nuke ground (any fallout tile, owned or not) ---
   // Renders for owned tiles too so the player's territory color can't bleed
@@ -153,6 +179,8 @@ void main() {
   }
 
   color.a = uTerritoryAlpha;
+
+  if (previewed) color = previewOver(color, tc);
 
   fragColor = color;
 }

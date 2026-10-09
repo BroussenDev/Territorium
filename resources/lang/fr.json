@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Tout",
+    "costs": "coûte {troops} troupes",
     "defense_post": "Poste de défense",
-    "fallout": "Retombées",
-    "instant": "Immédiat",
-    "lost": "Pertes estimées",
     "minutes": "{m}:{s} min",
-    "open_land": "Terre libre",
+    "runs_out": "s'épuise avant de percer",
     "seconds": "{s} s",
-    "sent": "Troupes envoyées",
     "terrain_highland": "Collines",
     "terrain_mountain": "Montagnes",
-    "terrain_plains": "Plaine",
-    "tiles": "Cases prises",
-    "time": "Durée",
-    "traitor": "Traître"
+    "tiles_unit": "cases"
   },
   "ban_notice": {
     "appeal": "Si vous pensez que ceci est une erreur, contactez-nous sur Discord en faisant un ticket.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Dernière vague : encore {count} envahisseurs à éliminer",
     "survival_next_wave": "Prochaine vague dans {time} : {count} envahisseurs",
     "survival_wave": "Vague {wave} sur {total}",
+    "survival_zones_hint": "Les zones hachurées de rouge sont réservées aux envahisseurs : ils y débarquent.",
     "versus_spawn": "Choisissez un emplacement de départ dans la zone de votre équipe"
   },
   "help_modal": {

@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Toate",
+    "costs": "costă {troops} trupe",
     "defense_post": "Post de apărare",
-    "fallout": "Precipitații radioactive",
-    "instant": "Imediat",
-    "lost": "Pierderi estimate",
     "minutes": "{m}:{s} min",
-    "open_land": "Teren liber",
+    "runs_out": "se epuizează înainte de a străpunge",
     "seconds": "{s} s",
-    "sent": "Trupe trimise",
     "terrain_highland": "Dealuri",
     "terrain_mountain": "Munți",
-    "terrain_plains": "Câmpie",
-    "tiles": "Căsuțe cucerite",
-    "time": "Durată",
-    "traitor": "Trădător"
+    "tiles_unit": "căsuțe"
   },
   "ban_notice": {
     "appeal": "Dacă crezi că este o greșeală, contactează-ne pe Discord.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Ultimul val: mai sunt {count} invadatori de eliminat",
     "survival_next_wave": "Următorul val în {time}: {count} invadatori",
     "survival_wave": "Valul {wave} din {total}",
+    "survival_zones_hint": "Zonele hașurate cu roșu sunt rezervate invadatorilor: acolo debarcă.",
     "versus_spawn": "Alege un punct de start în zona echipei tale"
   },
   "help_modal": {

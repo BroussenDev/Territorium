@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "सभी",
+    "costs": "{troops} सैनिक लगेंगे",
     "defense_post": "रक्षा चौकी",
-    "fallout": "रेडियोधर्मी धूल",
-    "instant": "तुरंत",
-    "lost": "अनुमानित नुकसान",
     "minutes": "{m}:{s} मि",
-    "open_land": "खाली ज़मीन",
+    "runs_out": "सफलता से पहले ही थक जाएगा",
     "seconds": "{s} से",
-    "sent": "भेजे गए सैनिक",
     "terrain_highland": "पहाड़ियाँ",
     "terrain_mountain": "पहाड़",
-    "terrain_plains": "मैदान",
-    "tiles": "कब्ज़ा किए खाने",
-    "time": "अवधि",
-    "traitor": "गद्दार"
+    "tiles_unit": "खाने"
   },
   "ban_notice": {
     "appeal": "यदि आपको लगता है कि यह एक गलती है, तो डिस्कॉर्ड पर हमसे संपर्क करें।",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "आख़िरी लहर: {count} आक्रमणकारी बाकी",
     "survival_next_wave": "अगली लहर {time} में: {count} आक्रमणकारी",
     "survival_wave": "लहर {wave} / {total}",
+    "survival_zones_hint": "लाल धारियों वाले क्षेत्र आक्रमणकारियों के लिए आरक्षित हैं: वे वहीं उतरते हैं।",
     "versus_spawn": "अपनी टीम के क्षेत्र में शुरुआती स्थान चुनें"
   },
   "help_modal": {

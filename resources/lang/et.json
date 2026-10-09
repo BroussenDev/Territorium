@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "Kõik",
+    "costs": "maksab {troops} sõdurit",
     "defense_post": "Kaitsepost",
-    "fallout": "Radioaktiivne sadu",
-    "instant": "Kohe",
-    "lost": "Hinnangulised kaotused",
     "minutes": "{m}:{s} min",
-    "open_land": "Vaba maa",
+    "runs_out": "väsib enne läbimurret",
     "seconds": "{s} s",
-    "sent": "Saadetud väed",
     "terrain_highland": "Künkad",
     "terrain_mountain": "Mäed",
-    "terrain_plains": "Tasandik",
-    "tiles": "Vallutatud ruudud",
-    "time": "Kestus",
-    "traitor": "Reetur"
+    "tiles_unit": "ruutu"
   },
   "ban_notice": {
     "appeal": "Kui arvate, et see on viga, võtke meiega Discordis ühendust.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "Viimane laine: alles {count} sissetungijat",
     "survival_next_wave": "Järgmine laine {time} pärast: {count} sissetungijat",
     "survival_wave": "Laine {wave}/{total}",
+    "survival_zones_hint": "Punaselt viirutatud alad on reserveeritud sissetungijatele: nad maabuvad seal.",
     "versus_spawn": "Vali alguskoht oma meeskonna tsoonis"
   },
   "help_modal": {

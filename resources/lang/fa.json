@@ -137,20 +137,14 @@
   },
   "attack_preview": {
     "all_tiles": "همه",
+    "costs": "{troops} سرباز هزینه دارد",
     "defense_post": "پست دفاعی",
-    "fallout": "ریزش رادیواکتیو",
-    "instant": "فوری",
-    "lost": "تلفات تخمینی",
     "minutes": "{m}:{s} د",
-    "open_land": "زمین آزاد",
+    "runs_out": "پیش از رخنه از نفس می‌افتد",
     "seconds": "{s} ث",
-    "sent": "نیروی اعزامی",
     "terrain_highland": "تپه‌ها",
     "terrain_mountain": "کوه‌ها",
-    "terrain_plains": "دشت",
-    "tiles": "خانه‌های گرفته‌شده",
-    "time": "مدت",
-    "traitor": "خائن"
+    "tiles_unit": "خانه"
   },
   "ban_notice": {
     "appeal": "اگر فکر می‌کنید این یک اشتباه است، از طریق دیسکورد با ما تماس بگیرید.",
@@ -1538,6 +1532,7 @@
     "survival_last_wave": "آخرین موج: {count} مهاجم برای نابودی مانده",
     "survival_next_wave": "موج بعدی تا {time}: {count} مهاجم",
     "survival_wave": "موج {wave} از {total}",
+    "survival_zones_hint": "مناطق هاشورخورده با قرمز مخصوص مهاجمان است: آن‌ها آنجا پیاده می‌شوند.",
     "versus_spawn": "یک نقطهٔ شروع در منطقهٔ تیم خود انتخاب کنید"
   },
   "help_modal": {
