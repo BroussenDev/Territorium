@@ -633,6 +633,7 @@
     "invalid_token": "Je sessie token is geweigerd.",
     "lobby_full": "De lobby is vol.",
     "login_required": "Je moet ingelogd zijn om op deze server te kunnen spelen.",
+    "mode_closed": "Deze modus is voorlopig gesloten, of er is onderhoud begonnen.",
     "no_heartbeat": "De server heeft niet meer van je gehoord.",
     "not_allowlisted": "Je staat niet op de toegestane lijst voor deze lobby.",
     "not_trusted": "Deze lobby is beperkt tot vertrouwde accounts. Je kunt nog steeds deelnemen aan een andere lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Jouw nu beschikbare troepen",
     "capacity_note": "Ontvanger kan momenteel alleen {amount} accepteren.",
     "title_with_name": "Stuur Troepen naar {name}"
+  },
+  "server_status": {
+    "active_body": "Nieuwe spellen zijn gepauzeerd terwijl we Territorium bijwerken.",
+    "active_title": "Onderhoud bezig",
+    "ahead_at": "Onderhoud om {time}",
+    "ahead_body": "Vanaf dan geen nieuwe spellen meer. Lopende spellen kunnen worden uitgespeeld.",
+    "ahead_in": "Onderhoud over {minutes} min",
+    "back_at": "Terug rond {time}.",
+    "closed_title": "Voorlopig gesloten",
+    "game_ahead_at": "Onderhoud om {time}: je kunt dit spel uitspelen.",
+    "game_ahead_in": "Onderhoud over {minutes} min: je kunt dit spel uitspelen.",
+    "maintenance_blocked": "Onderhoud bezig: nieuwe spellen zijn gepauzeerd.",
+    "mode_closed": "Voorlopig gesloten: {mode}. Probeer het later opnieuw.",
+    "private_games": "Privéspellen"
   },
   "single_modal": {
     "max_timer_invalid": "Voer een geldige max. timertijd in (1-120 minuten)",

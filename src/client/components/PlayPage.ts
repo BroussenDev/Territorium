@@ -135,6 +135,7 @@ export class PlayPage extends LitElement {
         </div>
 
         <resume-game-button></resume-game-button>
+        <server-status-banner></server-status-banner>
         <game-mode-selector></game-mode-selector>
       </div>
     `;

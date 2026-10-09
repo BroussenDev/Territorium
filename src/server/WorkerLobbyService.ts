@@ -9,6 +9,7 @@ import {
   PublicGames,
   PublicLobbyMessage,
 } from "../core/Schemas";
+import { OPEN_SERVER_STATUS, ServerStatus } from "../core/ServerStatus";
 import { encodeLobbyMessage } from "../core/ZbinWire";
 import { GameManager } from "./GameManager";
 import {
@@ -19,6 +20,7 @@ import {
   WorkerReady,
 } from "./IPCBridgeSchema";
 import { logger } from "./Logger";
+import { runningGame } from "./RunningGames";
 import { ServerEnv } from "./ServerEnv";
 
 // The game config advertised for a listed private lobby: everything the
@@ -56,6 +58,10 @@ export class WorkerLobbyService {
   // ranked check-in loop so a draining server stops offering matches too
   // (RankedCheckin.ts, OPE-469).
   private deploymentActive = true;
+  // What the operators closed, from the master's broadcast (ServerControl.ts).
+  private status: ServerStatus = OPEN_SERVER_STATUS;
+  // Solo games in progress, counted from heartbeats (SingleplayerPresence).
+  private soloGames: () => number = () => 0;
 
   constructor(
     private readonly server: http.Server,
@@ -79,6 +85,16 @@ export class WorkerLobbyService {
    */
   isDeploymentActive(): boolean {
     return this.deploymentActive;
+  }
+
+  /** What the operators closed, as the master last said. */
+  serverStatus(): ServerStatus {
+    return this.status;
+  }
+
+  /** Where the solo game count reported to the master comes from. */
+  countSoloGamesWith(count: () => number) {
+    this.soloGames = count;
   }
 
   /** Browsers currently connected to this worker's /lobbies socket. */
@@ -130,6 +146,7 @@ export class WorkerLobbyService {
           this.deploymentActive = msg.active ?? true;
           this.lastFullGameIds = null;
         }
+        if (msg.serverStatus !== undefined) this.status = msg.serverStatus;
         this.lastPublicGames = msg.publicGames;
         // Forward message to all clients
         this.broadcastLobbiesToClients(msg.publicGames);
@@ -219,6 +236,11 @@ export class WorkerLobbyService {
       type: "lobbyList",
       lobbies: [...publicLobbies, ...hostedLobbies],
       liveGames: this.gm.activeGames(),
+      games: this.gm
+        .all()
+        .map(runningGame)
+        .filter((g) => g !== null),
+      soloGames: this.soloGames(),
     } satisfies WorkerLobbyList);
   }
 

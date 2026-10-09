@@ -633,6 +633,7 @@
     "invalid_token": "您的会话令牌被拒绝。",
     "lobby_full": "大堂已满。",
     "login_required": "您必须登录才能在此服务器上玩。",
+    "mode_closed": "此模式暂时关闭，或维护已开始。",
     "no_heartbeat": "服务器不再收到您的消息。",
     "not_allowlisted": "您不在该大厅的允许名单上。",
     "not_trusted": "该大厅仅限受信任的帐户使用。您仍然可以加入任何其他大厅。",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "你的剩余军队",
     "capacity_note": "接收者现在仅能接收 {amount}。",
     "title_with_name": "向 {name} 发送军队"
+  },
+  "server_status": {
+    "active_body": "在我们更新 Territorium 期间，新游戏暂停。",
+    "active_title": "维护中",
+    "ahead_at": "{time}维护",
+    "ahead_body": "届时起不再开始新游戏，进行中的游戏可以打完。",
+    "ahead_in": "{minutes}分钟后维护",
+    "back_at": "预计 {time} 左右恢复。",
+    "closed_title": "暂时关闭",
+    "game_ahead_at": "{time}维护：你可以打完这局。",
+    "game_ahead_in": "{minutes}分钟后维护：你可以打完这局。",
+    "maintenance_blocked": "维护中：新游戏已暂停。",
+    "mode_closed": "暂时关闭：{mode}。请稍后再试。",
+    "private_games": "私人游戏"
   },
   "single_modal": {
     "max_timer_invalid": "请输入一个有效的最大计时器值（1-120分钟）",

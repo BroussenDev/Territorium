@@ -20,6 +20,7 @@ import {
   MAX_HOSTED_LOBBIES,
   ServerErrorMessage,
 } from "../core/Schemas";
+import { acceptsNewGames } from "../core/ServerStatus";
 import { generateID, replacer } from "../core/Util";
 import { CreateGameInputSchema } from "../core/WorkerSchemas";
 import { decodeClientMessage, encodeServerMessage } from "../core/ZbinWire";
@@ -45,6 +46,7 @@ import { MapPlaylist } from "./MapPlaylist";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
 import { PrivilegeRefresher } from "./PrivilegeRefresher";
 import { startRankedCheckinLoops } from "./RankedCheckin";
+import { gameKind } from "./RunningGames";
 import { ServerEnv } from "./ServerEnv";
 import { SingleplayerPresence } from "./SingleplayerPresence";
 import { applyStaticAssetCacheControl } from "./StaticAssetCache";
@@ -89,6 +91,7 @@ export async function startWorker() {
   // Initialize lobby service (handles WebSocket upgrade routing)
   const lobbyService = new WorkerLobbyService(server, wss, gm, log);
   const singleplayerPresence = new SingleplayerPresence();
+  lobbyService.countSoloGamesWith(() => singleplayerPresence.activeGames());
 
   setTimeout(
     () => {
@@ -100,7 +103,9 @@ export async function startWorker() {
         playlist,
         workerId,
         log,
-        isActive: () => lobbyService.isDeploymentActive(),
+        isActive: () =>
+          lobbyService.isDeploymentActive() &&
+          acceptsNewGames(lobbyService.serverStatus(), "ranked", Date.now()),
       });
     },
     1000 + Math.random() * 2000,
@@ -190,6 +195,10 @@ export async function startWorker() {
     const parsed = CreateGameInputSchema.safeParse(req.body);
     if (!parsed.success) {
       return res.status(400).json({ error: z.prettifyError(parsed.error) });
+    }
+    // Closed by the operators (admin panel), or a maintenance has begun.
+    if (!acceptsNewGames(lobbyService.serverStatus(), "private", Date.now())) {
+      return res.status(503).json({ error: "closed" });
     }
     let gc = parsed.data;
     // Public games are scheduled by the master over IPC, never created here.
@@ -823,6 +832,24 @@ export async function startWorker() {
           clientMsg.platform,
           queuePriority,
         );
+
+        // A lobby of a kind the operators closed takes nobody new; a game
+        // already playing is untouched (rejoins go through above), and so is
+        // a ranked match already made (its players were invited).
+        const target = gm.game(clientMsg.gameID);
+        if (
+          target !== null &&
+          !target.hasStarted() &&
+          gameKind(target) !== "ranked" &&
+          !acceptsNewGames(
+            lobbyService.serverStatus(),
+            gameKind(target),
+            Date.now(),
+          )
+        ) {
+          ws.close(CloseCode.GameClosed, CloseReason.ModeClosed);
+          return;
+        }
 
         const joinResult = gm.joinClient(client, clientMsg.gameID);
 

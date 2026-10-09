@@ -633,6 +633,7 @@
     "invalid_token": "Oturum belirteciniz reddedildi.",
     "lobby_full": "Lobi dolu.",
     "login_required": "Bu sunucuda oynamak için giriş yapmalısınız.",
+    "mode_closed": "Bu mod şimdilik kapalı veya bakım başladı.",
     "no_heartbeat": "Sunucu sizden haber almayı durdurdu.",
     "not_allowlisted": "Bu lobinin izin verilenler listesinde değilsiniz.",
     "not_trusted": "Bu lobi güvenilir hesaplarla sınırlıdır. Yine de başka bir lobiye katılabilirsiniz.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Şu anda mevcut olan birliklerin",
     "capacity_note": "Alıcı ancak {amount} kadar alabilir.",
     "title_with_name": "{name}'e Birlik Gönder"
+  },
+  "server_status": {
+    "active_body": "Territorium'u güncellerken yeni oyunlar durduruldu.",
+    "active_title": "Bakım sürüyor",
+    "ahead_at": "Saat {time} bakım",
+    "ahead_body": "O andan itibaren yeni oyun yok. Süren oyunlar bitirilebilir.",
+    "ahead_in": "{minutes} dk sonra bakım",
+    "back_at": "Dönüş saat {time} civarı.",
+    "closed_title": "Şimdilik kapalı",
+    "game_ahead_at": "Saat {time} bakım: bu oyunu bitirebilirsin.",
+    "game_ahead_in": "{minutes} dk sonra bakım: bu oyunu bitirebilirsin.",
+    "maintenance_blocked": "Bakım sürüyor: yeni oyunlar durduruldu.",
+    "mode_closed": "Şimdilik kapalı: {mode}. Daha sonra tekrar dene.",
+    "private_games": "Özel oyunlar"
   },
   "single_modal": {
     "max_timer_invalid": "Lütfen geçerli bir maksimum zamanlayıcı değeri girin (1-120 dakika)",

@@ -1761,6 +1761,11 @@ export class GameServer {
     return this.stage !== "lobby";
   }
 
+  /** When the game started (ms since epoch), null while in the lobby. */
+  startedAt(): number | null {
+    return this._startTime;
+  }
+
   isPaused(): boolean {
     return this.paused;
   }

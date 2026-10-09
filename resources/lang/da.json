@@ -633,6 +633,7 @@
     "invalid_token": "Dit sessionstoken blev afvist.",
     "lobby_full": "Lobbyen er fuld.",
     "login_required": "Du skal være logget ind for at spille på denne server.",
+    "mode_closed": "Denne tilstand er lukket indtil videre, eller en vedligeholdelse er begyndt.",
     "no_heartbeat": "Serveren holdt op med at høre fra dig.",
     "not_allowlisted": "Du er ikke på denne lobbys tilladelsesliste.",
     "not_trusted": "Denne lobby er begrænset til betroede konti. Du kan stadig deltage i enhver anden lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Dine nuværende tilgængelige tropper",
     "capacity_note": "Modtageren kan kun acceptere {amount} tropper lige nu.",
     "title_with_name": "Send tropper til {name}"
+  },
+  "server_status": {
+    "active_body": "Nye spil er sat på pause, mens vi opdaterer Territorium.",
+    "active_title": "Vedligeholdelse i gang",
+    "ahead_at": "Vedligeholdelse kl. {time}",
+    "ahead_body": "Derefter ingen nye spil. Igangværende spil kan spilles færdig.",
+    "ahead_in": "Vedligeholdelse om {minutes} min",
+    "back_at": "Tilbage omkring {time}.",
+    "closed_title": "Lukket indtil videre",
+    "game_ahead_at": "Vedligeholdelse kl. {time}: du kan spille dette spil færdigt.",
+    "game_ahead_in": "Vedligeholdelse om {minutes} min: du kan spille dette spil færdigt.",
+    "maintenance_blocked": "Vedligeholdelse i gang: nye spil er sat på pause.",
+    "mode_closed": "Lukket indtil videre: {mode}. Prøv igen senere.",
+    "private_games": "Private spil"
   },
   "single_modal": {
     "max_timer_invalid": "Angiv venligst en gyldig maks. tidsbegrænsning (1-120 minutter)",

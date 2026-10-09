@@ -633,6 +633,7 @@
     "invalid_token": "Via sesioĵetono estis malakceptita.",
     "lobby_full": "La vestiblo estas plena.",
     "login_required": "Vi devas esti ensalutinta por ludi sur ĉi tiu servilo.",
+    "mode_closed": "Ĉi tiu reĝimo estas fermita nuntempe, aŭ prizorgado komenciĝis.",
     "no_heartbeat": "La servilo ĉesis aŭdi de vi.",
     "not_allowlisted": "Vi ne estas en la permesillisto de ĉi tiu vestiblo.",
     "not_trusted": "Ĉi tiu vestiblo estas limigita al fidindaj kontoj. Vi ankoraŭ povas aliĝi al iu ajn alia vestiblo.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Viaj nuntempe disponeblaj trupoj",
     "capacity_note": "Ricevonto povas akcepti nur {amount} nuntempe.",
     "title_with_name": "Sendi Trupojn al {name}"
+  },
+  "server_status": {
+    "active_body": "Novaj ludoj estas paŭzigitaj dum ni ĝisdatigas Territorium.",
+    "active_title": "Prizorgado okazas",
+    "ahead_at": "Prizorgado je {time}",
+    "ahead_body": "Ekde tiam neniuj novaj ludoj. Daŭrantaj ludoj povos finiĝi.",
+    "ahead_in": "Prizorgado post {minutes} min",
+    "back_at": "Reveno ĉirkaŭ {time}.",
+    "closed_title": "Fermita nuntempe",
+    "game_ahead_at": "Prizorgado je {time}: vi povas fini ĉi tiun ludon.",
+    "game_ahead_in": "Prizorgado post {minutes} min: vi povas fini ĉi tiun ludon.",
+    "maintenance_blocked": "Prizorgado okazas: novaj ludoj estas paŭzigitaj.",
+    "mode_closed": "Fermita nuntempe: {mode}. Reprovu poste.",
+    "private_games": "Privataj ludoj"
   },
   "single_modal": {
     "max_timer_invalid": "Bonvolu entajpi validan maksimuman valoron (1-120 minutoj)",

@@ -633,6 +633,7 @@
     "invalid_token": "Votre jeton de session a été rejeté.",
     "lobby_full": "Le salon est plein.",
     "login_required": "Vous devez vous connecter afin de jouer dans ce serveur.",
+    "mode_closed": "Ce mode est fermé pour le moment, ou une maintenance a commencé.",
     "no_heartbeat": "Le serveur a cessé de recevoir de vos nouvelles.",
     "not_allowlisted": "Vous n'êtes pas sur la whitelist de ce salon.",
     "not_trusted": "Ce salon est limité aux comptes fiables. Vous pouvez néanmoins rejoindre les autres salons en attendant d'avoir le statut nécessaire.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Vos troupes actuellement disponibles",
     "capacity_note": "Le destinataire ne peut accepter que {amount} pour le moment.",
     "title_with_name": "Envoyer des troupes à {name}"
+  },
+  "server_status": {
+    "active_body": "Les nouvelles parties sont suspendues le temps de mettre Territorium à jour.",
+    "active_title": "Maintenance en cours",
+    "ahead_at": "Maintenance à {time}",
+    "ahead_body": "Plus de nouvelle partie à partir de là. Les parties en cours pourront se terminer.",
+    "ahead_in": "Maintenance dans {minutes} min",
+    "back_at": "Retour prévu vers {time}.",
+    "closed_title": "Fermé pour le moment",
+    "game_ahead_at": "Maintenance à {time} : vous pouvez finir cette partie.",
+    "game_ahead_in": "Maintenance dans {minutes} min : vous pouvez finir cette partie.",
+    "maintenance_blocked": "Maintenance en cours : les nouvelles parties sont suspendues.",
+    "mode_closed": "Fermé pour le moment : {mode}. Réessayez plus tard.",
+    "private_games": "Parties privées"
   },
   "single_modal": {
     "max_timer_invalid": "Veuillez entrer une valeur max valide pour le minuteur (1-120 minutes)",

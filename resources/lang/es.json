@@ -633,6 +633,7 @@
     "invalid_token": "Su token de sesión fue rechazado.",
     "lobby_full": "El vestíbulo está lleno.",
     "login_required": "Debes iniciar sesión para jugar en este servidor.",
+    "mode_closed": "Este modo está cerrado por ahora, o ha comenzado un mantenimiento.",
     "no_heartbeat": "El servidor dejó de recibir noticias tuyas.",
     "not_allowlisted": "No estás en la lista de permitidos de este lobby.",
     "not_trusted": "Este lobby está limitado a cuentas confiables. Aún puedes unirte a cualquier otro lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Tus tropas disponibles actualmente",
     "capacity_note": "El receptor solo puede aceptar {amount} en este momento.",
     "title_with_name": "Enviar tropas a {name}"
+  },
+  "server_status": {
+    "active_body": "Las partidas nuevas están en pausa mientras actualizamos Territorium.",
+    "active_title": "Mantenimiento en curso",
+    "ahead_at": "Mantenimiento a las {time}",
+    "ahead_body": "A partir de entonces no habrá partidas nuevas. Las partidas en curso podrán terminar.",
+    "ahead_in": "Mantenimiento en {minutes} min",
+    "back_at": "Vuelta prevista hacia las {time}.",
+    "closed_title": "Cerrado por ahora",
+    "game_ahead_at": "Mantenimiento a las {time}: puedes terminar esta partida.",
+    "game_ahead_in": "Mantenimiento en {minutes} min: puedes terminar esta partida.",
+    "maintenance_blocked": "Mantenimiento en curso: las partidas nuevas están en pausa.",
+    "mode_closed": "Cerrado por ahora: {mode}. Inténtalo más tarde.",
+    "private_games": "Partidas privadas"
   },
   "single_modal": {
     "max_timer_invalid": "Ingrese un valor máximo de temporizador válido (1-120 minutos)",

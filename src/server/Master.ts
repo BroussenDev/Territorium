@@ -23,11 +23,20 @@ import {
 import { logger } from "./Logger";
 import { MapPlaylist } from "./MapPlaylist";
 import { MasterLobbyService } from "./MasterLobbyService";
-import { AdminSessions, NewsStore, registerNewsRoutes } from "./NewsAdmin";
+import {
+  adminGuard,
+  AdminSessions,
+  NewsStore,
+  registerNewsRoutes,
+} from "./NewsAdmin";
 import { deeplTranslator } from "./NewsTranslator";
 import { setNoStoreHeaders } from "./NoStoreHeaders";
 import { startPolling } from "./PollingLoop";
 import { renderAppShell } from "./RenderHtml";
+import {
+  registerServerControlRoutes,
+  ServerControlStore,
+} from "./ServerControl";
 import { ServerEnv } from "./ServerEnv";
 import { startSoloVerifier } from "./SoloVerifier";
 import { applyStaticAssetCacheControl } from "./StaticAssetCache";
@@ -157,6 +166,7 @@ app.use("/api", (_req, res, next) => {
 });
 
 // Homepage news feed and the /admin.html panel that edits it.
+const adminSessions = new AdminSessions();
 registerNewsRoutes({
   app,
   store: new NewsStore(
@@ -164,11 +174,25 @@ registerNewsRoutes({
     path.join(__dirname, "../../resources/news.json"),
     log,
   ),
-  sessions: new AdminSessions(),
+  sessions: adminSessions,
   adminPassword: () => ServerEnv.adminPassword(),
   translate: ServerEnv.deeplApiKey()
     ? deeplTranslator(ServerEnv.deeplApiKey()!)
     : null,
+  log,
+});
+
+// Closed game kinds and maintenance (ServerControl.ts), kept next to the news.
+const serverControl = new ServerControlStore(
+  path.join(path.dirname(ServerEnv.newsFile()), "server-control.json"),
+  log,
+);
+registerServerControlRoutes({
+  app,
+  store: serverControl,
+  requireAdmin: adminGuard(adminSessions, () => ServerEnv.adminPassword()),
+  running: () => lobbyService?.runningGames() ?? { games: [], soloGames: 0 },
+  onChange: (status) => lobbyService?.setServerStatus(status),
   log,
 });
 
@@ -187,6 +211,7 @@ export async function startMaster() {
   // mistyped letter must not mint lobbies under a letter routed elsewhere.
   const registers = checkinBody(0) !== null;
   lobbyService = new MasterLobbyService(playlist, log, registers);
+  lobbyService.setServerStatus(serverControl.get());
 
   const INSTANCE_ID =
     ServerEnv.env() === GameEnv.Dev

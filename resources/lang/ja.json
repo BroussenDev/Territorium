@@ -633,6 +633,7 @@
     "invalid_token": "セッショントークンが拒否されました。",
     "lobby_full": "ロビーが満員です。",
     "login_required": "このサーバーでプレイするにはログインが必要です。",
+    "mode_closed": "このモードは現在閉鎖中か、メンテナンスが始まりました。",
     "no_heartbeat": "サーバーからの応答がなくなりました。",
     "not_allowlisted": "あなたはこのロビーの許可を受けていません。",
     "not_trusted": "このロビーは優良アカウントに限定されています。",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "あなたの兵士数",
     "capacity_note": "現在、受取主は{amount}のみ受け取ることができます。",
     "title_with_name": "{name}へ軍隊を送信"
+  },
+  "server_status": {
+    "active_body": "Territoriumの更新中は新しいゲームを一時停止しています。",
+    "active_title": "メンテナンス中",
+    "ahead_at": "{time}にメンテナンス",
+    "ahead_body": "それ以降は新しいゲームを開始できません。進行中のゲームは最後までプレイできます。",
+    "ahead_in": "{minutes}分後にメンテナンス",
+    "back_at": "{time}頃に再開予定です。",
+    "closed_title": "現在閉鎖中",
+    "game_ahead_at": "{time}にメンテナンス：このゲームは最後までプレイできます。",
+    "game_ahead_in": "{minutes}分後にメンテナンス：このゲームは最後までプレイできます。",
+    "maintenance_blocked": "メンテナンス中：新しいゲームは一時停止しています。",
+    "mode_closed": "現在閉鎖中：{mode}。後でもう一度お試しください。",
+    "private_games": "プライベートゲーム"
   },
   "single_modal": {
     "max_timer_invalid": "適切な最大プレイ時間（1～120分）を入力してください",

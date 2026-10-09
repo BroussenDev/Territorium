@@ -633,6 +633,7 @@
     "invalid_token": "Teie seansi tunnus lükati tagasi.",
     "lobby_full": "Fuajee on täis.",
     "login_required": "Selles serveris mängimiseks peate olema sisse logitud.",
+    "mode_closed": "See režiim on praegu suletud või algas hooldus.",
     "no_heartbeat": "Server lõpetas sinust kuulmise.",
     "not_allowlisted": "Te ei ole selle fuajee lubatud loendis.",
     "not_trusted": "See fuajee on piiratud usaldusväärsete kontodega. Saate endiselt liituda mis tahes muu fuajeega.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Hetkel sinul kõik saadaval olevad väed",
     "capacity_note": "Vastuvõttja sab ainult vastu võtta praegu {amount}.",
     "title_with_name": "Saada vägesid {name}'le"
+  },
+  "server_status": {
+    "active_body": "Uued mängud on peatatud, kuni uuendame Territoriumi.",
+    "active_title": "Hooldus käib",
+    "ahead_at": "Hooldus kell {time}",
+    "ahead_body": "Sellest ajast uusi mänge ei ole. Käimasolevad mängud saab lõpuni mängida.",
+    "ahead_in": "Hooldus {minutes} min pärast",
+    "back_at": "Tagasi umbes kell {time}.",
+    "closed_title": "Praegu suletud",
+    "game_ahead_at": "Hooldus kell {time}: saad selle mängu lõpuni mängida.",
+    "game_ahead_in": "Hooldus {minutes} min pärast: saad selle mängu lõpuni mängida.",
+    "maintenance_blocked": "Hooldus käib: uued mängud on peatatud.",
+    "mode_closed": "Praegu suletud: {mode}. Proovi hiljem uuesti.",
+    "private_games": "Privaatmängud"
   },
   "single_modal": {
     "max_timer_invalid": "Palun sisesta kehtiv maksimaalne taimeri väärtus (1–120 minutit)",

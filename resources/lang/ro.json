@@ -633,6 +633,7 @@
     "invalid_token": "Codul tău de sesiune a fost respins.",
     "lobby_full": "Lobby-ul este plin.",
     "login_required": "Trebuie să fii autentificat pentru a putea juca pe acest server.",
+    "mode_closed": "Acest mod este închis deocamdată sau a început o mentenanță.",
     "no_heartbeat": "Serverul nu mai aude de la tine.",
     "not_allowlisted": "Nu ești în lista de permise a acestui lobby.",
     "not_trusted": "Acest lobby este limitat la conturi de încredere. Încă vă puteți alătura oricărui alt lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Trupele tale disponibile",
     "capacity_note": "Destinatarul poate accepta doar {amount} acum.",
     "title_with_name": "Trimite trupe lui {name}"
+  },
+  "server_status": {
+    "active_body": "Jocurile noi sunt suspendate cât timp actualizăm Territorium.",
+    "active_title": "Mentenanță în curs",
+    "ahead_at": "Mentenanță la {time}",
+    "ahead_body": "De atunci, niciun joc nou. Jocurile în desfășurare se vor putea termina.",
+    "ahead_in": "Mentenanță în {minutes} min",
+    "back_at": "Revenire în jur de {time}.",
+    "closed_title": "Închis deocamdată",
+    "game_ahead_at": "Mentenanță la {time}: poți termina acest joc.",
+    "game_ahead_in": "Mentenanță în {minutes} min: poți termina acest joc.",
+    "maintenance_blocked": "Mentenanță în curs: jocurile noi sunt suspendate.",
+    "mode_closed": "Închis deocamdată: {mode}. Încearcă mai târziu.",
+    "private_games": "Jocuri private"
   },
   "single_modal": {
     "max_timer_invalid": "Introdu o valoare maximă validă pentru temporizator (1-120 de minute)",

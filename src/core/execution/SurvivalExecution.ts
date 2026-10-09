@@ -45,6 +45,9 @@ export class SurvivalExecution implements Execution {
   private wavesLanded = 0;
   private readonly usedNames = new Set<string>();
   private active = true;
+  // The landings of the wave being placed: their spawns only run next tick,
+  // so later invaders of the same wave keep clear of them.
+  private pending: TileRef[] = [];
   private zonesPublished = false;
 
   constructor(
@@ -94,6 +97,7 @@ export class SurvivalExecution implements Execution {
       .filter((p) => p.type() === PlayerType.Human).length;
     const size = survivalWaveSize(wave, Math.max(1, defenders));
     this.reclaimZones(mg);
+    this.pending = [];
     let stranded = 0;
     for (let i = 0; i < size; i++) {
       const tile = this.findLanding(mg);
@@ -101,6 +105,7 @@ export class SurvivalExecution implements Execution {
         stranded++;
         continue;
       }
+      this.pending.push(tile);
       this.landInvader(mg, tile);
     }
     if (stranded > 0) this.reinforce(mg, stranded);
@@ -169,6 +174,7 @@ export class SurvivalExecution implements Execution {
       const tile = mg.ref(x, y);
       if (!mg.inSurvivalZone(tile)) continue;
       if (!mg.isLand(tile) || mg.hasOwner(tile) || mg.isBorder(tile)) continue;
+      if (this.nearPending(mg, tile)) continue;
       if (getSpawnTiles(mg, tile, false).length === 0) continue;
       return tile;
     }
@@ -188,7 +194,7 @@ export class SurvivalExecution implements Execution {
       if (!mg.isValidCoord(x, y)) continue;
       const tile = mg.ref(x, y);
       if (!mg.inSurvivalZone(tile) || !mg.isLand(tile)) continue;
-      if (!this.heldByInvader(mg, tile)) continue;
+      if (!this.heldByInvader(mg, tile) || this.nearPending(mg, tile)) continue;
       // Free the patch the newcomer spawns on, from invaders only.
       for (let dy = -LANDING_PATCH; dy <= LANDING_PATCH; dy++) {
         for (let dx = -LANDING_PATCH; dx <= LANDING_PATCH; dx++) {
@@ -203,6 +209,14 @@ export class SurvivalExecution implements Execution {
       return tile;
     }
     return null;
+  }
+
+  // Whether a spawn at `tile` would overlap one already placed this wave.
+  private nearPending(mg: Game, tile: TileRef): boolean {
+    const gap = 2 * LANDING_PATCH + 1;
+    return this.pending.some(
+      (p) => mg.euclideanDistSquared(p, tile) < gap * gap,
+    );
   }
 
   private heldByInvader(mg: Game, tile: TileRef): boolean {
@@ -221,6 +235,7 @@ export class SurvivalExecution implements Execution {
       if (!mg.isLand(tile) || mg.hasOwner(tile) || mg.isBorder(tile)) {
         continue;
       }
+      if (this.nearPending(mg, tile)) continue;
       if (
         tries < LANDING_TRIES / 2 &&
         humans.some((h) => {

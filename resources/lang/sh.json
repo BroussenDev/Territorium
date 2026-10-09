@@ -633,6 +633,7 @@
     "invalid_token": "Vaš token sesije je odbijen.",
     "lobby_full": "Soba (Lobby) je puna.",
     "login_required": "Morate biti prijavljeni da biste igrali na ovom serveru.",
+    "mode_closed": "Ovaj mod je zasad zatvoren ili je počelo održavanje.",
     "no_heartbeat": "Prekinuta je komunikacija sa serverom.",
     "not_allowlisted": "Niste na listi dozvoljenih igrača za ovu sobu.",
     "not_trusted": "Ova soba je ograničena samo na poverljive naloge.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Vaše trenutno dostupne trupe",
     "capacity_note": "Primalac trenutno može prihvatiti samo {amount}.",
     "title_with_name": "Pošaljite trupe igraču {name}"
+  },
+  "server_status": {
+    "active_body": "Nove igre su pauzirane dok ažuriramo Territorium.",
+    "active_title": "Održavanje u toku",
+    "ahead_at": "Održavanje u {time}",
+    "ahead_body": "Od tada nema novih igara. Igre u toku mogu da se završe.",
+    "ahead_in": "Održavanje za {minutes} min",
+    "back_at": "Povratak oko {time}.",
+    "closed_title": "Zasad zatvoreno",
+    "game_ahead_at": "Održavanje u {time}: možeš da završiš ovu igru.",
+    "game_ahead_in": "Održavanje za {minutes} min: možeš da završiš ovu igru.",
+    "maintenance_blocked": "Održavanje u toku: nove igre su pauzirane.",
+    "mode_closed": "Zasad zatvoreno: {mode}. Pokušaj kasnije.",
+    "private_games": "Privatne igre"
   },
   "single_modal": {
     "max_timer_invalid": "Unesite važeću maksimalnu vrednost tajmera (1-120 minuta)",

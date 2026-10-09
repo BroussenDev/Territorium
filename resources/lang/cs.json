@@ -633,6 +633,7 @@
     "invalid_token": "Váš token relace byl odmítnut.",
     "lobby_full": "Vestibul je plný.",
     "login_required": "Pro hraní na tomto serveru musíte být přihlášeni.",
+    "mode_closed": "Tento režim je zatím zavřený, nebo začala údržba.",
     "no_heartbeat": "Server o vás přestal slyšet.",
     "not_allowlisted": "Nejste na seznamu povolených v této lobby.",
     "not_trusted": "Tato lobby je omezena na důvěryhodné účty. Stále se můžete připojit k jakékoli jiné lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Vaše aktuálně dostupné jednotky",
     "capacity_note": "Nyní může přijemce přijmout pouze {amount}.",
     "title_with_name": "Poslat jednotky: {name}"
+  },
+  "server_status": {
+    "active_body": "Nové hry jsou pozastaveny, dokud aktualizujeme Territorium.",
+    "active_title": "Probíhá údržba",
+    "ahead_at": "Údržba v {time}",
+    "ahead_body": "Od té chvíle žádné nové hry. Rozehrané hry půjde dohrát.",
+    "ahead_in": "Údržba za {minutes} min",
+    "back_at": "Zpět kolem {time}.",
+    "closed_title": "Zatím zavřeno",
+    "game_ahead_at": "Údržba v {time}: tuto hru můžeš dohrát.",
+    "game_ahead_in": "Údržba za {minutes} min: tuto hru můžeš dohrát.",
+    "maintenance_blocked": "Probíhá údržba: nové hry jsou pozastaveny.",
+    "mode_closed": "Zatím zavřeno: {mode}. Zkus to později.",
+    "private_games": "Soukromé hry"
   },
   "single_modal": {
     "max_timer_invalid": "Zadejte platnou délku hry (1–120 minut)",

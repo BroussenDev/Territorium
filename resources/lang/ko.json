@@ -633,6 +633,7 @@
     "invalid_token": "세션 토큰이 거부되었습니다.",
     "lobby_full": "로비가 가득 찼습니다.",
     "login_required": "이 서버에서 플레이하려면 로그인해야 합니다.",
+    "mode_closed": "이 모드는 현재 닫혀 있거나 점검이 시작되었습니다.",
     "no_heartbeat": "서버와 클라이언트 간의 응답이 끊어졌습니다.",
     "not_allowlisted": "이 로비의 허용 목록에 등록되어 있지 않습니다.",
     "not_trusted": "이 로비는 인증된 계정 전용입니다.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "현재 지원 가능한 병력",
     "capacity_note": "수신자는 지금 {amount}개만 받을 수 있습니다.",
     "title_with_name": "{name}에게 병력 보내기"
+  },
+  "server_status": {
+    "active_body": "Territorium을 업데이트하는 동안 새 게임이 일시 중지됩니다.",
+    "active_title": "점검 중",
+    "ahead_at": "{time}에 점검",
+    "ahead_body": "그때부터 새 게임은 없습니다. 진행 중인 게임은 끝까지 할 수 있습니다.",
+    "ahead_in": "{minutes}분 후 점검",
+    "back_at": "{time}경 재개 예정입니다.",
+    "closed_title": "현재 닫힘",
+    "game_ahead_at": "{time}에 점검: 이 게임은 끝까지 할 수 있습니다.",
+    "game_ahead_in": "{minutes}분 후 점검: 이 게임은 끝까지 할 수 있습니다.",
+    "maintenance_blocked": "점검 중: 새 게임이 일시 중지되었습니다.",
+    "mode_closed": "현재 닫힘: {mode}. 나중에 다시 시도하세요.",
+    "private_games": "비공개 게임"
   },
   "single_modal": {
     "max_timer_invalid": "유효한 최대 타이머 값(1-120분)을 입력하세요",

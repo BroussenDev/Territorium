@@ -633,6 +633,7 @@
     "invalid_token": "El vostre testimoni de sessió s'ha rebutjat.",
     "lobby_full": "El vestíbul és ple.",
     "login_required": "Has d'haver iniciat sessió per jugar en aquest servidor.",
+    "mode_closed": "Aquest mode està tancat de moment, o ha començat un manteniment.",
     "no_heartbeat": "El servidor ha deixat de saber de tu.",
     "not_allowlisted": "No esteu a la llista de permisos d'aquest lobby.",
     "not_trusted": "Aquest lobby està limitat als comptes de confiança. Encara us podeu unir a qualsevol altre lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Les teves tropes",
     "capacity_note": "El receptor només pot acceptar {amount} ara mateix.",
     "title_with_name": "Envia Tropes a {name}"
+  },
+  "server_status": {
+    "active_body": "Les partides noves estan en pausa mentre actualitzem Territorium.",
+    "active_title": "Manteniment en curs",
+    "ahead_at": "Manteniment a les {time}",
+    "ahead_body": "A partir d'aleshores no hi haurà partides noves. Les partides en curs es podran acabar.",
+    "ahead_in": "Manteniment d'aquí a {minutes} min",
+    "back_at": "Tornada prevista cap a les {time}.",
+    "closed_title": "Tancat de moment",
+    "game_ahead_at": "Manteniment a les {time}: pots acabar aquesta partida.",
+    "game_ahead_in": "Manteniment d'aquí a {minutes} min: pots acabar aquesta partida.",
+    "maintenance_blocked": "Manteniment en curs: les partides noves estan en pausa.",
+    "mode_closed": "Tancat de moment: {mode}. Torna-ho a provar més tard.",
+    "private_games": "Partides privades"
   },
   "single_modal": {
     "max_timer_invalid": "Introduïu un valor vàlid per la duració màxima (1-120 minuts)",

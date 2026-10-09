@@ -633,6 +633,7 @@
     "invalid_token": "Din sessionstoken avvisades.",
     "lobby_full": "Lobbyn är full.",
     "login_required": "Du måste vara inloggad för att spela på denna server.",
+    "mode_closed": "Det här läget är stängt för tillfället, eller så har ett underhåll börjat.",
     "no_heartbeat": "Servern slutade höra från dig.",
     "not_allowlisted": "Du finns inte på denna lobbys godkännandelista.",
     "not_trusted": "Denna lobby är begränsad till betrodda konton. Du kan fortfarande gå med i vilken annan lobby som helst.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Dina nuvarande tillgängliga trupper",
     "capacity_note": "Mottagaren kan bara acceptera {amount} just nu.",
     "title_with_name": "Skicka trupper till {name}"
+  },
+  "server_status": {
+    "active_body": "Nya spel är pausade medan vi uppdaterar Territorium.",
+    "active_title": "Underhåll pågår",
+    "ahead_at": "Underhåll kl. {time}",
+    "ahead_body": "Därefter inga nya spel. Pågående spel kan spelas klart.",
+    "ahead_in": "Underhåll om {minutes} min",
+    "back_at": "Tillbaka runt {time}.",
+    "closed_title": "Stängt för tillfället",
+    "game_ahead_at": "Underhåll kl. {time}: du kan spela klart det här spelet.",
+    "game_ahead_in": "Underhåll om {minutes} min: du kan spela klart det här spelet.",
+    "maintenance_blocked": "Underhåll pågår: nya spel är pausade.",
+    "mode_closed": "Stängt för tillfället: {mode}. Försök igen senare.",
+    "private_games": "Privata spel"
   },
   "single_modal": {
     "max_timer_invalid": "Ange ett giltigt max timervärde (1-120 minuter)",

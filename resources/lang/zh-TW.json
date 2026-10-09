@@ -633,6 +633,7 @@
     "invalid_token": "您的 session token 被拒絕。",
     "lobby_full": "大廳已滿。",
     "login_required": "您必須登入才能在這個伺服器上遊玩。",
+    "mode_closed": "此模式暫時關閉，或維護已開始。",
     "no_heartbeat": "伺服器已停止接收您的請求。",
     "not_allowlisted": "您不在該大廳的允許列表中。",
     "not_trusted": "這個大廳只允許信任帳號加入。您仍可加入其他大廳。",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "你目前可用的軍隊",
     "capacity_note": "接收者現在僅能接收 {amount}。",
     "title_with_name": "向 {name} 傳送軍隊"
+  },
+  "server_status": {
+    "active_body": "在我們更新 Territorium 期間，新遊戲暫停。",
+    "active_title": "維護中",
+    "ahead_at": "{time}維護",
+    "ahead_body": "屆時起不再開始新遊戲，進行中的遊戲可以打完。",
+    "ahead_in": "{minutes}分鐘後維護",
+    "back_at": "預計 {time} 左右恢復。",
+    "closed_title": "暫時關閉",
+    "game_ahead_at": "{time}維護：你可以打完這局。",
+    "game_ahead_in": "{minutes}分鐘後維護：你可以打完這局。",
+    "maintenance_blocked": "維護中：新遊戲已暫停。",
+    "mode_closed": "暫時關閉：{mode}。請稍後再試。",
+    "private_games": "私人遊戲"
   },
   "single_modal": {
     "max_timer_invalid": "請輸入有效的最大計時器值（1 - 120 分鐘）",

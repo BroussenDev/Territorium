@@ -633,6 +633,7 @@
     "invalid_token": "Token sesi Anda ditolak.",
     "lobby_full": "Lobi penuh.",
     "login_required": "Anda harus login untuk bermain di server ini.",
+    "mode_closed": "Mode ini sedang ditutup, atau pemeliharaan telah dimulai.",
     "no_heartbeat": "Server berhenti mendengar kabar dari Anda.",
     "not_allowlisted": "Anda tidak termasuk dalam daftar yang diizinkan di lobi ini.",
     "not_trusted": "Lobi ini terbatas pada akun tepercaya. Anda masih dapat bergabung dengan lobi lainnya.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Pasukan Anda yang tersedia saat ini",
     "capacity_note": "Penerima hanya dapat menerima {amount} saat ini.",
     "title_with_name": "Kirim Pasukan ke {name}"
+  },
+  "server_status": {
+    "active_body": "Permainan baru dijeda selama kami memperbarui Territorium.",
+    "active_title": "Pemeliharaan berlangsung",
+    "ahead_at": "Pemeliharaan pukul {time}",
+    "ahead_body": "Sejak saat itu tidak ada permainan baru. Permainan yang berjalan bisa diselesaikan.",
+    "ahead_in": "Pemeliharaan dalam {minutes} mnt",
+    "back_at": "Kembali sekitar pukul {time}.",
+    "closed_title": "Ditutup untuk sementara",
+    "game_ahead_at": "Pemeliharaan pukul {time}: kamu bisa menyelesaikan permainan ini.",
+    "game_ahead_in": "Pemeliharaan dalam {minutes} mnt: kamu bisa menyelesaikan permainan ini.",
+    "maintenance_blocked": "Pemeliharaan berlangsung: permainan baru dijeda.",
+    "mode_closed": "Ditutup untuk sementara: {mode}. Coba lagi nanti.",
+    "private_games": "Permainan privat"
   },
   "single_modal": {
     "max_timer_invalid": "Silakan masukkan nilai pengatur waktu maksimum yang valid (1-120 menit)",

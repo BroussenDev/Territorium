@@ -633,6 +633,7 @@
     "invalid_token": "A munkamenet-tokenedet elutasították.",
     "lobby_full": "A várószoba tele van.",
     "login_required": "A szerveren való játékhoz be kell jelentkezned.",
+    "mode_closed": "Ez a mód egyelőre zárva van, vagy karbantartás kezdődött.",
     "no_heartbeat": "A szerver nem kapott több jelzést tőled.",
     "not_allowlisted": "Nem szerepelsz ennek a várószobának az engedélyezési listáján.",
     "not_trusted": "Ez a várószoba csak megbízható fiókok számára érhető el.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Jelenleg elérhető csapataid",
     "capacity_note": "A címzett jelenleg csak {amount} csapatot tud fogadni.",
     "title_with_name": "Küldj csapatokat {name} részére"
+  },
+  "server_status": {
+    "active_body": "Az új játékok szünetelnek, amíg frissítjük a Territoriumot.",
+    "active_title": "Karbantartás folyik",
+    "ahead_at": "Karbantartás {time}-kor",
+    "ahead_body": "Onnantól nincs új játék. A folyamatban lévő játékok befejezhetők.",
+    "ahead_in": "Karbantartás {minutes} perc múlva",
+    "back_at": "Visszatérés {time} körül.",
+    "closed_title": "Egyelőre zárva",
+    "game_ahead_at": "Karbantartás {time}-kor: ezt a játékot befejezheted.",
+    "game_ahead_in": "Karbantartás {minutes} perc múlva: ezt a játékot befejezheted.",
+    "maintenance_blocked": "Karbantartás folyik: az új játékok szünetelnek.",
+    "mode_closed": "Egyelőre zárva: {mode}. Próbáld újra később.",
+    "private_games": "Privát játékok"
   },
   "single_modal": {
     "max_timer_invalid": "Kérjük, adjon meg egy érvényes értéket (1-120 perc)",

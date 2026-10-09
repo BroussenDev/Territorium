@@ -633,6 +633,7 @@
     "invalid_token": "Vaš žeton seje je bil zavrnjen.",
     "lobby_full": "Avla je polna.",
     "login_required": "Za igranje na tem strežniku morate biti prijavljeni.",
+    "mode_closed": "Ta način je zaenkrat zaprt ali pa se je začelo vzdrževanje.",
     "no_heartbeat": "Strežnik vas ni več slišal.",
     "not_allowlisted": "Niste na seznamu dovoljenih tega lobija.",
     "not_trusted": "Ta lobi je omejen na zaupanja vredne račune. Še vedno se lahko pridružite kateremu koli drugemu lobiju.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Vaše trenutno razpoložljive enote",
     "capacity_note": "Prejemnik lahko trenutno sprejme samo {amount}.",
     "title_with_name": "Pošlji vojake na {name}"
+  },
+  "server_status": {
+    "active_body": "Nove igre so ustavljene, medtem ko posodabljamo Territorium.",
+    "active_title": "Vzdrževanje poteka",
+    "ahead_at": "Vzdrževanje ob {time}",
+    "ahead_body": "Od takrat ni novih iger. Igre v teku se lahko končajo.",
+    "ahead_in": "Vzdrževanje čez {minutes} min",
+    "back_at": "Nazaj okoli {time}.",
+    "closed_title": "Zaenkrat zaprto",
+    "game_ahead_at": "Vzdrževanje ob {time}: to igro lahko dokončaš.",
+    "game_ahead_in": "Vzdrževanje čez {minutes} min: to igro lahko dokončaš.",
+    "maintenance_blocked": "Vzdrževanje poteka: nove igre so začasno ustavljene.",
+    "mode_closed": "Zaenkrat zaprto: {mode}. Poskusi pozneje.",
+    "private_games": "Zasebne igre"
   },
   "single_modal": {
     "max_timer_invalid": "Vnesite veljavno največjo vrednost časovnika (1–120 minut)",

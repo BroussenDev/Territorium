@@ -633,6 +633,7 @@
     "invalid_token": "Twój token sesji został odrzucony.",
     "lobby_full": "Hol jest pełny.",
     "login_required": "Aby grać na tym serwerze musisz być zalogowany.",
+    "mode_closed": "Ten tryb jest na razie zamknięty albo rozpoczęła się konserwacja.",
     "no_heartbeat": "Serwer przestał się z Tobą kontaktować.",
     "not_allowlisted": "Nie jesteś na liście dozwolonych tego lobby.",
     "not_trusted": "To lobby jest ograniczone do zaufanych kont. Nadal możesz dołączyć do dowolnego innego lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Obecnie dostępne wojsko",
     "capacity_note": "Odbiorca może teraz zaakceptować tylko {amount}.",
     "title_with_name": "Wyślij wojsko do {name}"
+  },
+  "server_status": {
+    "active_body": "Nowe gry są wstrzymane na czas aktualizacji Territorium.",
+    "active_title": "Trwa konserwacja",
+    "ahead_at": "Konserwacja o {time}",
+    "ahead_body": "Od tej chwili żadnych nowych gier. Trwające gry będzie można dokończyć.",
+    "ahead_in": "Konserwacja za {minutes} min",
+    "back_at": "Powrót około {time}.",
+    "closed_title": "Na razie zamknięte",
+    "game_ahead_at": "Konserwacja o {time}: możesz dokończyć tę grę.",
+    "game_ahead_in": "Konserwacja za {minutes} min: możesz dokończyć tę grę.",
+    "maintenance_blocked": "Trwa konserwacja: nowe gry są wstrzymane.",
+    "mode_closed": "Na razie zamknięte: {mode}. Spróbuj później.",
+    "private_games": "Gry prywatne"
   },
   "single_modal": {
     "max_timer_invalid": "Proszę wprowadzić prawidłową maksymalną wartość timera (1-120 minut)",

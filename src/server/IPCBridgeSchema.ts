@@ -4,6 +4,7 @@ import {
   PublicGameInfoSchema,
   PublicGameTypeSchema,
 } from "../core/Schemas";
+import { ClosableGameSchema, ServerStatusSchema } from "../core/ServerStatus";
 
 export type InternalGameInfo = z.infer<typeof InternalGameInfoSchema>;
 export type InternalPublicGames = z.infer<typeof InternalPublicGamesSchema>;
@@ -13,6 +14,7 @@ export type MasterLobbiesBroadcast = z.infer<
   typeof MasterLobbiesBroadcastSchema
 >;
 
+export type RunningGame = z.infer<typeof RunningGameSchema>;
 export type MasterUpdateGame = z.infer<typeof MasterUpdateGameSchema>;
 export type MasterCreateGame = z.infer<typeof MasterCreateGameSchema>;
 export type WorkerMessage = z.infer<typeof WorkerMessageSchema>;
@@ -36,6 +38,18 @@ export const InternalPublicGamesSchema = z.object({
   games: z.partialRecord(PublicGameTypeSchema, z.array(InternalGameInfoSchema)),
 });
 
+/** One game a worker runs, as the admin panel's server page lists it. */
+export const RunningGameSchema = z.object({
+  gameID: z.string(),
+  kind: ClosableGameSchema,
+  phase: z.enum(["lobby", "active"]),
+  players: z.number().int().nonnegative(),
+  map: z.string(),
+  mode: z.string(),
+  createdAt: z.number(),
+  startedAt: z.number().nullable(),
+});
+
 // --- Worker Messages ---
 
 // Worker tells the master about its lobbies. Entries are deliberately not
@@ -51,6 +65,11 @@ const WorkerLobbyListSchema = z.object({
   // when a draining server is empty. Optional for a worker build that
   // predates it; absent counts as zero.
   liveGames: z.number().int().min(0).optional(),
+  // For the admin panel's server page: the games this worker runs (empty
+  // lobbies left out; validated one by one like lobbies) and the solo games
+  // its heartbeats count.
+  games: z.array(z.unknown()).optional(),
+  soloGames: z.number().int().min(0).optional(),
 });
 
 const WorkerReadySchema = z.object({
@@ -87,6 +106,9 @@ const MasterLobbiesBroadcastSchema = z.object({
   // deployment learn to reload (see PublicLobbyFullSchema.active). Optional
   // only for old fixtures; the master always sends it, absent means active.
   active: z.boolean().optional(),
+  // What the operators closed (src/core/ServerStatus.ts): workers refuse
+  // new private games, joins and ranked matches accordingly.
+  serverStatus: ServerStatusSchema.optional(),
 });
 
 // Master sends a message to worker to schedule a new public game/lobby.

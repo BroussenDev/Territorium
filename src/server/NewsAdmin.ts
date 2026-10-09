@@ -150,6 +150,26 @@ function bearerToken(req: Request): string | null {
   return header.slice("Bearer ".length);
 }
 
+// 404 when the panel is disabled (no password set) so the routes aren't
+// advertised; 401 on a missing or expired session.
+export function adminGuard(
+  sessions: AdminSessions,
+  adminPassword: () => string | undefined,
+) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (adminPassword() === undefined) {
+      res.status(404).end();
+      return;
+    }
+    const token = bearerToken(req);
+    if (token === null || !sessions.isValid(token)) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+    next();
+  };
+}
+
 export function registerNewsRoutes(opts: {
   app: Express;
   store: NewsStore;
@@ -171,20 +191,7 @@ export function registerNewsRoutes(opts: {
     res.json({ enabled: adminPassword() !== undefined });
   });
 
-  // 404 when the panel is disabled (no password set) so the routes aren't
-  // advertised; 401 on a missing or expired session.
-  const requireAdmin = (req: Request, res: Response, next: NextFunction) => {
-    if (adminPassword() === undefined) {
-      res.status(404).end();
-      return;
-    }
-    const token = bearerToken(req);
-    if (token === null || !sessions.isValid(token)) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
-    }
-    next();
-  };
+  const requireAdmin = adminGuard(sessions, adminPassword);
 
   const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,

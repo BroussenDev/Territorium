@@ -54,6 +54,8 @@ export const CloseReason = {
   InvalidClan: "close_reason.invalid_clan",
   ClanVerificationFailed: "close_reason.clan_verification_failed",
   SteamAppRequired: "close_reason.steam_app_required",
+  // The operators closed this kind of game, or a maintenance began.
+  ModeClosed: "close_reason.mode_closed",
   // Shown for a terminal close whose reason is not one of ours.
   Unknown: "close_reason.unknown",
 } as const;

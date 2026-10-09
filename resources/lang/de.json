@@ -633,6 +633,7 @@
     "invalid_token": "Sitzungstoken wurde abgelehnt.",
     "lobby_full": "Die Lobby ist voll.",
     "login_required": "Zum Spielen auf diesem Server musst du angemeldet sein.",
+    "mode_closed": "Dieser Modus ist vorerst geschlossen, oder eine Wartung hat begonnen.",
     "no_heartbeat": "Der Server erhält keine Daten mehr von dir.",
     "not_allowlisted": "Du bist nicht auf der Zulassungsliste dieser Lobby.",
     "not_trusted": "Diese Lobby ist auf vertrauenswürdige Konten beschränkt.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Verfügbare Truppen",
     "capacity_note": "Der Empfänger kann derzeit nur {amount} empfangen.",
     "title_with_name": "Truppen an {name} senden"
+  },
+  "server_status": {
+    "active_body": "Neue Spiele sind pausiert, während wir Territorium aktualisieren.",
+    "active_title": "Wartung läuft",
+    "ahead_at": "Wartung um {time}",
+    "ahead_body": "Ab dann keine neuen Spiele mehr. Laufende Spiele können zu Ende gespielt werden.",
+    "ahead_in": "Wartung in {minutes} Min.",
+    "back_at": "Zurück gegen {time}.",
+    "closed_title": "Vorerst geschlossen",
+    "game_ahead_at": "Wartung um {time}: Du kannst dieses Spiel beenden.",
+    "game_ahead_in": "Wartung in {minutes} Min.: Du kannst dieses Spiel beenden.",
+    "maintenance_blocked": "Wartung läuft: Neue Spiele sind pausiert.",
+    "mode_closed": "Vorerst geschlossen: {mode}. Versuche es später erneut.",
+    "private_games": "Private Spiele"
   },
   "single_modal": {
     "max_timer_invalid": "Bitte geben Sie einen gültigen maximalen Zeitwert ein (1-120 Minuten)",

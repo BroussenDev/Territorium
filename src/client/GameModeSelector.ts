@@ -18,6 +18,7 @@ import {
   versusTeamSize,
 } from "../core/game/Versus";
 import { PublicGameInfo, PublicGames } from "../core/Schemas";
+import { closableOfLobby } from "../core/ServerStatus";
 import { fetchRankedSeason } from "./Api";
 import { getDesktopSessionState } from "./Auth";
 import "./components/IOSAddToHomeScreenBanner";
@@ -56,6 +57,7 @@ import {
   retryServerList,
   type BackendReachabilityDetail,
 } from "./ServerList";
+import { gameOpenOrExplain, watchServerStatus } from "./ServerStatusClient";
 import { SinglePlayerModal } from "./SinglePlayerModal";
 import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
@@ -429,6 +431,7 @@ export class GameModeSelector extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    watchServerStatus();
     this.defaultLobbyTime = ClientEnv.gameCreationRate() / 1000;
     window.addEventListener(
       "username-validity-change",
@@ -876,6 +879,7 @@ export class GameModeSelector extends LitElement {
     }
     if (this.blockedFromApiAction()) return;
     if (!this.validateUsername()) return;
+    if (!gameOpenOrExplain("ranked")) return;
     window.showPage?.("page-ranked");
   };
 
@@ -891,6 +895,7 @@ export class GameModeSelector extends LitElement {
 
   private openSinglePlayerModal = () => {
     if (!this.validateUsername()) return;
+    if (!gameOpenOrExplain("solo")) return;
     (
       document.querySelector("single-player-modal") as SinglePlayerModal
     )?.open();
@@ -905,6 +910,7 @@ export class GameModeSelector extends LitElement {
   private openHostLobby = () => {
     if (this.blockedFromApiAction()) return;
     if (!this.validateUsername()) return;
+    if (!gameOpenOrExplain("private")) return;
     (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open();
   };
 
@@ -924,6 +930,7 @@ export class GameModeSelector extends LitElement {
     if (mode === "private") {
       if (this.blockedFromApiAction()) return;
       if (!this.validateUsername()) return;
+      if (!gameOpenOrExplain("private")) return;
       (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open({
         versusSize: teamSize,
       });
@@ -1563,6 +1570,12 @@ export class GameModeSelector extends LitElement {
   private validateAndJoin(lobby: PublicGameInfo) {
     if (this.blockedFromLobbyJoin()) return;
     if (!this.validateUsername()) return;
+    if (
+      lobby.publicGameType !== undefined &&
+      !gameOpenOrExplain(closableOfLobby(lobby.publicGameType))
+    ) {
+      return;
+    }
     if (!canJoinTrustedLobby(lobby, this.viewerTrusted)) {
       this.showTrustRequired = true;
       return;

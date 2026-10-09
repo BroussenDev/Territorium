@@ -633,6 +633,7 @@
     "invalid_token": "Your session token was rejected.",
     "lobby_full": "The lobby is full.",
     "login_required": "You must be logged in to play on this server.",
+    "mode_closed": "This mode is closed for now, or a maintenance has begun.",
     "no_heartbeat": "The server stopped hearing from you.",
     "not_allowlisted": "You are not on this lobby's allowlist.",
     "not_trusted": "This lobby is limited to trusted accounts. You can still join any other lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Your current available troops",
     "capacity_note": "Receiver can accept only {amount} right now.",
     "title_with_name": "Send Troops to {name}"
+  },
+  "server_status": {
+    "active_body": "New games are paused while we update Territorium.",
+    "active_title": "Maintenance in progress",
+    "ahead_at": "Maintenance at {time}",
+    "ahead_body": "No new games from then on. Games in progress can finish.",
+    "ahead_in": "Maintenance in {minutes} min",
+    "back_at": "Back around {time}.",
+    "closed_title": "Closed for now",
+    "game_ahead_at": "Maintenance at {time}: you can finish this game.",
+    "game_ahead_in": "Maintenance in {minutes} min: you can finish this game.",
+    "maintenance_blocked": "Maintenance in progress: new games are paused.",
+    "mode_closed": "Closed for now: {mode}. Try again later.",
+    "private_games": "Private games"
   },
   "single_modal": {
     "max_timer_invalid": "Please enter a valid max timer value (1-120 minutes)",

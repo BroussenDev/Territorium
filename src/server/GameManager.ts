@@ -35,6 +35,10 @@ export class GameManager {
     return this.games.get(id) ?? null;
   }
 
+  public all(): GameServer[] {
+    return Array.from(this.games.values());
+  }
+
   public publicLobbies(): GameServer[] {
     return Array.from(this.games.values()).filter(
       (g) => g.phase() === GamePhase.Lobby && g.isPublic(),

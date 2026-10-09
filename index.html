@@ -494,6 +494,11 @@
     <player-info-overlay></player-info-overlay>
     <attack-preview></attack-preview>
     <heads-up-message></heads-up-message>
+    <!-- A coming maintenance, shown during a match only. -->
+    <server-status-banner
+      variant="game"
+      class="hidden in-[.in-game]:block"
+    ></server-status-banner>
 
     <!-- Featured stream: direct <body> child (NOT inside the in-[.in-game]:hidden
          home container) so the Twitch iframe is never display:none'd during a game,

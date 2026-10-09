@@ -633,6 +633,7 @@
     "invalid_token": "Mã xác thực phiên đăng nhập của bạn bị từ chối.",
     "lobby_full": "Phòng đã đầy.",
     "login_required": "Bạn cần đăng nhập để chơi trên máy chủ này.",
+    "mode_closed": "Chế độ này tạm thời đóng, hoặc đã bắt đầu bảo trì.",
     "no_heartbeat": "Máy chủ không còn nhận được tín hiệu từ bạn.",
     "not_allowlisted": "Bạn không có trong danh sách cho phép của phòng này.",
     "not_trusted": "Phòng này chỉ dành cho tài khoản đáng tin cậy. Bạn vẫn có thể tham gia các phòng khác.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Số quân hiện có của bạn",
     "capacity_note": "Người nhận hiện chỉ có thể nhận tối đa {amount}.",
     "title_with_name": "Gửi quân đến {name}"
+  },
+  "server_status": {
+    "active_body": "Các trận mới tạm dừng trong lúc chúng tôi cập nhật Territorium.",
+    "active_title": "Đang bảo trì",
+    "ahead_at": "Bảo trì lúc {time}",
+    "ahead_body": "Từ lúc đó không có trận mới. Các trận đang diễn ra vẫn có thể kết thúc.",
+    "ahead_in": "Bảo trì sau {minutes} phút",
+    "back_at": "Dự kiến trở lại khoảng {time}.",
+    "closed_title": "Tạm thời đóng",
+    "game_ahead_at": "Bảo trì lúc {time}: bạn có thể chơi hết trận này.",
+    "game_ahead_in": "Bảo trì sau {minutes} phút: bạn có thể chơi hết trận này.",
+    "maintenance_blocked": "Đang bảo trì: các trận mới tạm dừng.",
+    "mode_closed": "Tạm thời đóng: {mode}. Hãy thử lại sau.",
+    "private_games": "Trận riêng tư"
   },
   "single_modal": {
     "max_timer_invalid": "Vui lòng nhập thời gian tối đa hợp lệ (1–120 phút)",

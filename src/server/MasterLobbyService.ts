@@ -6,6 +6,12 @@ import {
   PublicGameType,
   SCHEDULED_PUBLIC_GAME_TYPES,
 } from "../core/Schemas";
+import {
+  acceptsNewGames,
+  closableOfLobby,
+  OPEN_SERVER_STATUS,
+  ServerStatus,
+} from "../core/ServerStatus";
 import { DiscordLobbyAnnouncer } from "./DiscordLobbyAnnouncer";
 import {
   InternalGameInfo,
@@ -13,6 +19,8 @@ import {
   MasterCreateGame,
   MasterLobbiesBroadcast,
   MasterUpdateGame,
+  RunningGame,
+  RunningGameSchema,
   WorkerMessageSchema,
 } from "./IPCBridgeSchema";
 import {
@@ -45,6 +53,11 @@ export class MasterLobbyService {
   private readonly workerLobbies = new Map<number, InternalGameInfo[]>();
   // Worker id => games it last reported running (lobbies included).
   private readonly workerLiveGames = new Map<number, number>();
+  // Worker id => its games and solo games, for the admin panel's server page.
+  private readonly workerGames = new Map<number, RunningGame[]>();
+  private readonly workerSoloGames = new Map<number, number>();
+  // What the operators closed (ServerControl.ts), pushed to the workers.
+  private serverStatus: ServerStatus = OPEN_SERVER_STATUS;
   private readonly readyWorkers = new Set<number>();
   // gameID => consecutive broadcast cycles a hosted lobby has lost the
   // per-creator dedup or overflowed the cluster-wide cap. Losing once can be
@@ -113,6 +126,8 @@ export class MasterLobbyService {
         case "lobbyList":
           this.workerLobbies.set(workerId, this.validLobbies(msg.lobbies));
           this.workerLiveGames.set(workerId, msg.liveGames ?? 0);
+          this.workerGames.set(workerId, this.validGames(msg.games ?? []));
+          this.workerSoloGames.set(workerId, msg.soloGames ?? 0);
           // The client coalesces: at most one report a second, plus a
           // heartbeat. Every change is offered so a numClients-only change
           // still reaches the site roster within a second.
@@ -140,8 +155,52 @@ export class MasterLobbyService {
     return valid;
   }
 
+  private validGames(games: unknown[]): RunningGame[] {
+    const valid: RunningGame[] = [];
+    for (const game of games) {
+      const result = RunningGameSchema.safeParse(game);
+      if (result.success) valid.push(result.data);
+    }
+    return valid;
+  }
+
+  /** The games running on this server, as the workers last reported them. */
+  runningGames(): { games: RunningGame[]; soloGames: number } {
+    let soloGames = 0;
+    for (const n of this.workerSoloGames.values()) soloGames += n;
+    return { games: [...this.workerGames.values()].flat(), soloGames };
+  }
+
+  setServerStatus(status: ServerStatus) {
+    this.serverStatus = status;
+  }
+
+  // Lobbies of a closed kind (or all of them in a maintenance) leave the
+  // lists players see; those already counting down still start.
+  private openLobbies(
+    games: Partial<Record<PublicGameType, InternalGameInfo[]>>,
+  ): Partial<Record<PublicGameType, InternalGameInfo[]>> {
+    const now = Date.now();
+    const open: Partial<Record<PublicGameType, InternalGameInfo[]>> = {};
+    for (const [type, lobbies] of Object.entries(games) as [
+      PublicGameType,
+      InternalGameInfo[],
+    ][]) {
+      open[type] = acceptsNewGames(
+        this.serverStatus,
+        closableOfLobby(type),
+        now,
+      )
+        ? lobbies
+        : [];
+    }
+    return open;
+  }
+
   removeWorker(workerId: number) {
     this.workers.delete(workerId);
+    this.workerGames.delete(workerId);
+    this.workerSoloGames.delete(workerId);
     this.workerLobbies.delete(workerId);
     this.workerLiveGames.delete(workerId);
     this.readyWorkers.delete(workerId);
@@ -202,6 +261,12 @@ export class MasterLobbyService {
   // recentMaps (what the site just played) is not yet fed to the playlist —
   // its no-consecutive-repeat rule stays per server for now.
   private async handleCoordinatorCreate(msg: CoordinatorCreateGame) {
+    if (!acceptsNewGames(this.serverStatus, msg.publicGameType, Date.now())) {
+      this.log.info(
+        `refusing coordinator createGame (${msg.publicGameType}): closed`,
+      );
+      return;
+    }
     if (!this.active || !this.started) {
       this.log.info(
         `refusing coordinator createGame (${msg.publicGameType}): ${
@@ -390,7 +455,7 @@ export class MasterLobbyService {
   }
 
   private broadcastLobbies() {
-    let games: Record<PublicGameType, InternalGameInfo[]>;
+    let games: Partial<Record<PublicGameType, InternalGameInfo[]>>;
     let delist: string[];
     if (this.isCoordinated() && this.roster !== null) {
       // The site's merged roster for this build, stamped with our own
@@ -409,6 +474,7 @@ export class MasterLobbyService {
       games = own.games;
       delist = this.delistGameIDs(own.losers);
     }
+    games = this.openLobbies(games);
     const msg = {
       type: "lobbiesBroadcast",
       publicGames: {
@@ -417,6 +483,7 @@ export class MasterLobbyService {
       },
       delistGameIDs: delist.length > 0 ? delist : undefined,
       active: this.active || !this.stateKnown,
+      serverStatus: this.serverStatus,
     } satisfies MasterLobbiesBroadcast;
     if (this.announcer !== null) {
       // Each server announces its own lobbies; a coordinated roster also
@@ -473,7 +540,11 @@ export class MasterLobbyService {
       // An inactive deployment still starts what it already queued (the
       // countdown above), it just stops adding to the queue.
       const queued = versus ? 1 : QUEUED_LOBBIES_PER_TYPE;
-      if (!this.active || lobbies.length >= queued) {
+      if (
+        !this.active ||
+        lobbies.length >= queued ||
+        !acceptsNewGames(this.serverStatus, type, Date.now())
+      ) {
         continue;
       }
 

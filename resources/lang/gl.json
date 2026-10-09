@@ -633,6 +633,7 @@
     "invalid_token": "Rexeitouse o teu token de sesión.",
     "lobby_full": "O vestíbulo está cheo.",
     "login_required": "Debes iniciar sesión para xogar neste servidor.",
+    "mode_closed": "Este modo está pechado polo momento, ou comezou un mantemento.",
     "no_heartbeat": "O servidor deixou de saber de ti.",
     "not_allowlisted": "Non estás na lista de permisos deste lobby.",
     "not_trusted": "Este lobby está limitado a contas de confianza. Aínda podes unirte a calquera outro lobby.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "As túas tropas dispoñibles actuais",
     "capacity_note": "O receptor só pode aceptar {amount} neste momento.",
     "title_with_name": "Enviar tropas a {name}"
+  },
+  "server_status": {
+    "active_body": "As partidas novas están en pausa mentres actualizamos Territorium.",
+    "active_title": "Mantemento en curso",
+    "ahead_at": "Mantemento ás {time}",
+    "ahead_body": "Desde entón non haberá partidas novas. As partidas en curso poderán rematar.",
+    "ahead_in": "Mantemento en {minutes} min",
+    "back_at": "Volta prevista arredor das {time}.",
+    "closed_title": "Pechado polo momento",
+    "game_ahead_at": "Mantemento ás {time}: podes rematar esta partida.",
+    "game_ahead_in": "Mantemento en {minutes} min: podes rematar esta partida.",
+    "maintenance_blocked": "Mantemento en curso: as partidas novas están en pausa.",
+    "mode_closed": "Pechado polo momento: {mode}. Téntao máis tarde.",
+    "private_games": "Partidas privadas"
   },
   "single_modal": {
     "max_timer_invalid": "Introduce un valor máximo de temporizador válido (1-120 minutos)",

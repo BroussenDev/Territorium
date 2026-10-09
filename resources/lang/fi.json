@@ -633,6 +633,7 @@
     "invalid_token": "Istuntotunnus hylättiin.",
     "lobby_full": "Aula on täynnä.",
     "login_required": "Sinun on kirjauduttava sisään pelataksesi tällä palvelimella.",
+    "mode_closed": "Tämä tila on toistaiseksi suljettu, tai huolto on alkanut.",
     "no_heartbeat": "Palvelin ei enää kuullut sinusta.",
     "not_allowlisted": "Et ole tämän aulan sallittujen luettelossa.",
     "not_trusted": "Tämä aula on rajoitettu luotettuihin tileihin. Voit silti liittyä mihin tahansa muuhun aulaan.",
@@ -2473,6 +2474,20 @@
     "available_tooltip": "Nykyiset käytettävissä olevat joukkosi",
     "capacity_note": "Vastaanottaja voi hyväksyä vain {amount} juuri nyt.",
     "title_with_name": "Lähetä joukkoja numeroon {name}"
+  },
+  "server_status": {
+    "active_body": "Uudet pelit on keskeytetty, kun päivitämme Territoriumia.",
+    "active_title": "Huolto käynnissä",
+    "ahead_at": "Huolto klo {time}",
+    "ahead_body": "Siitä lähtien ei uusia pelejä. Käynnissä olevat pelit voi pelata loppuun.",
+    "ahead_in": "Huolto {minutes} min päästä",
+    "back_at": "Takaisin noin klo {time}.",
+    "closed_title": "Toistaiseksi suljettu",
+    "game_ahead_at": "Huolto klo {time}: voit pelata tämän pelin loppuun.",
+    "game_ahead_in": "Huolto {minutes} min päästä: voit pelata tämän pelin loppuun.",
+    "maintenance_blocked": "Huolto käynnissä: uudet pelit on keskeytetty.",
+    "mode_closed": "Toistaiseksi suljettu: {mode}. Yritä myöhemmin uudelleen.",
+    "private_games": "Yksityiset pelit"
   },
   "single_modal": {
     "max_timer_invalid": "Anna kelvollinen ajastimen enimmäisarvo (1–120 minuuttia)",

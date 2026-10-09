@@ -1,5 +1,16 @@
 # Territorium — Changelog
 
+## v0.1.85
+
+🛠️ **Maintenance and closed modes**
+
+- When a maintenance is planned, a banner on the home page and a small notice in game say when it starts. Games in progress always play to their end.
+- During a maintenance, or when a mode is closed for a while, its lobbies leave the home page and its buttons explain why.
+
+🛡️ **Survival**
+
+- Invaders of the same wave now land apart from each other.
+
 ## v0.1.84
 
 🛡️ **Survival, tuned for 10 waves**
