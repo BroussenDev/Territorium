@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Maintenance in {minutes} min: you can finish this game.",
     "maintenance_blocked": "Maintenance in progress: new games are paused.",
     "mode_closed": "Closed for now: {mode}. Try again later.",
-    "private_games": "Private games"
+    "private_games": "Private games",
+    "staff_can_play": "You're on the team: you can start test games."
   },
   "single_modal": {
     "max_timer_invalid": "Please enter a valid max timer value (1-120 minutes)",

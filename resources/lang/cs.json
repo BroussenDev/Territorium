@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Údržba za {minutes} min: tuto hru můžeš dohrát.",
     "maintenance_blocked": "Probíhá údržba: nové hry jsou pozastaveny.",
     "mode_closed": "Zatím zavřeno: {mode}. Zkus to později.",
-    "private_games": "Soukromé hry"
+    "private_games": "Soukromé hry",
+    "staff_can_play": "Jsi v týmu: můžeš spouštět testovací hry."
   },
   "single_modal": {
     "max_timer_invalid": "Zadejte platnou délku hry (1–120 minut)",

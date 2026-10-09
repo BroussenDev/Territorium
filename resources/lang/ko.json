@@ -2487,7 +2487,8 @@
     "game_ahead_in": "{minutes}분 후 점검: 이 게임은 끝까지 할 수 있습니다.",
     "maintenance_blocked": "점검 중: 새 게임이 일시 중지되었습니다.",
     "mode_closed": "현재 닫힘: {mode}. 나중에 다시 시도하세요.",
-    "private_games": "비공개 게임"
+    "private_games": "비공개 게임",
+    "staff_can_play": "팀원이므로 테스트 게임을 시작할 수 있습니다."
   },
   "single_modal": {
     "max_timer_invalid": "유효한 최대 타이머 값(1-120분)을 입력하세요",

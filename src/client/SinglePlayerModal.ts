@@ -30,6 +30,7 @@ import { GameStartingModal } from "./GameStartingModal";
 import { showInGameAlert } from "./InGameModal";
 import { JoinLobbyEvent } from "./Main";
 import { fallbackPlayerName, ResolvedPlayerName } from "./PlayerName";
+import { gameOpenOrExplain } from "./ServerStatusClient";
 import { UsernameInput } from "./UsernameInput";
 import {
   getBotsForCompactMap,
@@ -1069,6 +1070,8 @@ export class SinglePlayerModal extends BaseModal {
     // A second click while the first is still resolving would dispatch a
     // second join-lobby for a different gameID.
     if (this.starting) return;
+    // Closed meanwhile (maintenance, or solo closed for now)?
+    if (!gameOpenOrExplain("solo")) return;
     // Validate and clamp maxTimer setting before starting
     let finalMaxTimerValue: number | undefined = undefined;
     if (this.maxTimer) {

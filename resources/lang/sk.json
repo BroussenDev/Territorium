@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Údržba o {minutes} min: túto hru môžeš dohrať.",
     "maintenance_blocked": "Prebieha údržba: nové hry sú pozastavené.",
     "mode_closed": "Zatiaľ zatvorené: {mode}. Skús to neskôr.",
-    "private_games": "Súkromné hry"
+    "private_games": "Súkromné hry",
+    "staff_can_play": "Si v tíme: môžeš spúšťať testovacie hry."
   },
   "single_modal": {
     "max_timer_invalid": "Zadajte platnú maximálnu hodnotu časovača (1 – 120 minút)",

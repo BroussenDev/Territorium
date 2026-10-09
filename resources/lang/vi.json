@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Bảo trì sau {minutes} phút: bạn có thể chơi hết trận này.",
     "maintenance_blocked": "Đang bảo trì: các trận mới tạm dừng.",
     "mode_closed": "Tạm thời đóng: {mode}. Hãy thử lại sau.",
-    "private_games": "Trận riêng tư"
+    "private_games": "Trận riêng tư",
+    "staff_can_play": "Bạn thuộc đội ngũ: bạn có thể bắt đầu các trận thử nghiệm."
   },
   "single_modal": {
     "max_timer_invalid": "Vui lòng nhập thời gian tối đa hợp lệ (1–120 phút)",

@@ -2487,7 +2487,8 @@
     "game_ahead_in": "{minutes}分鐘後維護：你可以打完這局。",
     "maintenance_blocked": "維護中：新遊戲已暫停。",
     "mode_closed": "暫時關閉：{mode}。請稍後再試。",
-    "private_games": "私人遊戲"
+    "private_games": "私人遊戲",
+    "staff_can_play": "你是團隊成員：可以開始測試遊戲。"
   },
   "single_modal": {
     "max_timer_invalid": "請輸入有效的最大計時器值（1 - 120 分鐘）",

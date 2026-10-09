@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Prizorgado post {minutes} min: vi povas fini ĉi tiun ludon.",
     "maintenance_blocked": "Prizorgado okazas: novaj ludoj estas paŭzigitaj.",
     "mode_closed": "Fermita nuntempe: {mode}. Reprovu poste.",
-    "private_games": "Privataj ludoj"
+    "private_games": "Privataj ludoj",
+    "staff_can_play": "Vi estas en la teamo: vi povas komenci testajn ludojn."
   },
   "single_modal": {
     "max_timer_invalid": "Bonvolu entajpi validan maksimuman valoron (1-120 minutoj)",

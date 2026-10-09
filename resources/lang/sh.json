@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Održavanje za {minutes} min: možeš da završiš ovu igru.",
     "maintenance_blocked": "Održavanje u toku: nove igre su pauzirane.",
     "mode_closed": "Zasad zatvoreno: {mode}. Pokušaj kasnije.",
-    "private_games": "Privatne igre"
+    "private_games": "Privatne igre",
+    "staff_can_play": "Član si tima: možeš da pokreneš test igre."
   },
   "single_modal": {
     "max_timer_invalid": "Unesite važeću maksimalnu vrednost tajmera (1-120 minuta)",

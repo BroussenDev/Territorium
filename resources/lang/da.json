@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Vedligeholdelse om {minutes} min: du kan spille dette spil færdigt.",
     "maintenance_blocked": "Vedligeholdelse i gang: nye spil er sat på pause.",
     "mode_closed": "Lukket indtil videre: {mode}. Prøv igen senere.",
-    "private_games": "Private spil"
+    "private_games": "Private spil",
+    "staff_can_play": "Du er en del af holdet: du kan starte testspil."
   },
   "single_modal": {
     "max_timer_invalid": "Angiv venligst en gyldig maks. tidsbegrænsning (1-120 minutter)",

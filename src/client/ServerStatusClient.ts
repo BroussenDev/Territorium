@@ -6,16 +6,18 @@ import {
   type ServerStatus,
   ServerStatusSchema,
 } from "../core/ServerStatus";
+import { userAuth } from "./Auth";
 import { ClientEnv } from "./ClientEnv";
 import { showToast, translateText } from "./Utils";
 
 // What the operators closed and the maintenance they announced
 // (src/core/ServerStatus.ts), read from our own game server, same origin as
-// the page like the news. Refreshed every half minute while the page is open;
-// a failed read keeps the last answer (open when there never was one: the
-// server refuses closed games anyway).
+// the page like the news. Refreshed every 10 seconds while the page is open
+// and when the tab comes back; a failed read
+// keeps the last answer (open when there never was one: the server refuses
+// closed games anyway).
 
-const REFRESH_MS = 30_000;
+const REFRESH_MS = 10_000;
 
 export const SERVER_STATUS_EVENT = "server-status";
 
@@ -23,6 +25,8 @@ let status: ServerStatus = OPEN_SERVER_STATUS;
 // Server clock minus ours, so a maintenance starts at the server's time.
 let offsetMs = 0;
 let started = false;
+// The signed-in player's account role, for staff tests in a maintenance.
+let role: string | null = null;
 
 export function serverStatus(): ServerStatus {
   return status;
@@ -69,6 +73,22 @@ export function watchServerStatus(): void {
   started = true;
   void refresh();
   setInterval(() => void refresh(), REFRESH_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") void refresh();
+  });
+  const readRole = () => void myRole().then((r) => (role = r));
+  readRole();
+  document.addEventListener("userMeResponse", readRole);
+}
+
+/** The signed-in player's account role (staff or not), if any. */
+export async function myRole(): Promise<string | null> {
+  try {
+    const auth = await userAuth();
+    return auth === false ? null : (auth.claims.role ?? null);
+  } catch {
+    return null;
+  }
 }
 
 /** The name players know a closable kind of game by. */
@@ -98,11 +118,12 @@ export function closableGameName(game: ClosableGame): string {
 }
 
 /**
- * Whether a new game of this kind may start; when not, tells the player why
- * (maintenance, or this mode closed for now).
+ * Whether a new game of this kind may start, from the last status read (at
+ * most 10 seconds old); when not, tells the player why (maintenance, or this
+ * mode closed for now). The server refuses closed games whatever this says.
  */
 export function gameOpenOrExplain(game: ClosableGame): boolean {
-  if (acceptsNewGames(status, game, serverNow())) return true;
+  if (acceptsNewGames(status, game, serverNow(), role)) return true;
   showToast(
     inMaintenance(status, serverNow())
       ? translateText("server_status.maintenance_blocked")

@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Manteniment d'aquí a {minutes} min: pots acabar aquesta partida.",
     "maintenance_blocked": "Manteniment en curs: les partides noves estan en pausa.",
     "mode_closed": "Tancat de moment: {mode}. Torna-ho a provar més tard.",
-    "private_games": "Partides privades"
+    "private_games": "Partides privades",
+    "staff_can_play": "Formes part de l'equip: pots iniciar partides de prova."
   },
   "single_modal": {
     "max_timer_invalid": "Introduïu un valor vàlid per la duració màxima (1-120 minuts)",

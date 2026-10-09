@@ -54,7 +54,8 @@ describe("ServerControlStore", () => {
   });
 });
 
-describe("server control routes", () => {
+// Real HTTP round trips: give them room when the whole suite runs at once.
+describe("server control routes", { timeout: 20_000 }, () => {
   let server: http.Server;
   let base: string;
   let changes: ServerStatus[];

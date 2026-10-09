@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Underhåll om {minutes} min: du kan spela klart det här spelet.",
     "maintenance_blocked": "Underhåll pågår: nya spel är pausade.",
     "mode_closed": "Stängt för tillfället: {mode}. Försök igen senare.",
-    "private_games": "Privata spel"
+    "private_games": "Privata spel",
+    "staff_can_play": "Du är med i teamet: du kan starta testspel."
   },
   "single_modal": {
     "max_timer_invalid": "Ange ett giltigt max timervärde (1-120 minuter)",

@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Wartung in {minutes} Min.: Du kannst dieses Spiel beenden.",
     "maintenance_blocked": "Wartung läuft: Neue Spiele sind pausiert.",
     "mode_closed": "Vorerst geschlossen: {mode}. Versuche es später erneut.",
-    "private_games": "Private Spiele"
+    "private_games": "Private Spiele",
+    "staff_can_play": "Du gehörst zum Team: Du kannst Testspiele starten."
   },
   "single_modal": {
     "max_timer_invalid": "Bitte geben Sie einen gültigen maximalen Zeitwert ein (1-120 Minuten)",

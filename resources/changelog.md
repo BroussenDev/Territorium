@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.86
+
+🛠️ **Maintenance**
+
+- The maintenance banner and closed modes now show up within seconds, without reloading the page.
+- During a maintenance, the team can start test games before the game reopens.
+
 ## v0.1.85
 
 🛠️ **Maintenance and closed modes**

@@ -2,11 +2,13 @@ import { html, LitElement, nothing, svg } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import {
   inMaintenance,
+  isStaffRole,
   maintenanceAhead,
   type ServerStatus,
 } from "../../core/ServerStatus";
 import {
   closableGameName,
+  myRole,
   SERVER_STATUS_EVENT,
   serverNow,
   serverStatus,
@@ -28,6 +30,8 @@ export class ServerStatusBanner extends LitElement {
   @property({ type: String }) variant: "home" | "game" = "home";
   @state() private status: ServerStatus = serverStatus();
   @state() private now = serverNow();
+  // Staff may start test games in a maintenance that allows it.
+  @state() private staff = false;
   private timer: number | undefined;
 
   createRenderRoot() {
@@ -38,6 +42,8 @@ export class ServerStatusBanner extends LitElement {
     super.connectedCallback();
     watchServerStatus();
     document.addEventListener(SERVER_STATUS_EVENT, this.onStatus);
+    document.addEventListener("userMeResponse", this.onAccount);
+    this.onAccount();
     // The countdown moves on its own between two status reads.
     this.timer = window.setInterval(() => (this.now = serverNow()), 15_000);
   }
@@ -45,8 +51,13 @@ export class ServerStatusBanner extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     document.removeEventListener(SERVER_STATUS_EVENT, this.onStatus);
+    document.removeEventListener("userMeResponse", this.onAccount);
     window.clearInterval(this.timer);
   }
+
+  private onAccount = () => {
+    void myRole().then((role) => (this.staff = isStaffRole(role)));
+  };
 
   private onStatus = () => {
     this.status = serverStatus();
@@ -97,6 +108,9 @@ export class ServerStatusBanner extends LitElement {
             ? translateText("server_status.back_at", {
                 time: this.time(m.endsAt),
               })
+            : null,
+          m.staffCanPlay === true && this.staff
+            ? translateText("server_status.staff_can_play")
             : null,
         ],
       );

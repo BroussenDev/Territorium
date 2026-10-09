@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Mentenanță în {minutes} min: poți termina acest joc.",
     "maintenance_blocked": "Mentenanță în curs: jocurile noi sunt suspendate.",
     "mode_closed": "Închis deocamdată: {mode}. Încearcă mai târziu.",
-    "private_games": "Jocuri private"
+    "private_games": "Jocuri private",
+    "staff_can_play": "Faci parte din echipă: poți porni jocuri de test."
   },
   "single_modal": {
     "max_timer_invalid": "Introdu o valoare maximă validă pentru temporizator (1-120 de minute)",

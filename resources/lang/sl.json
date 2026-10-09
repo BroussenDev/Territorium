@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Vzdrževanje čez {minutes} min: to igro lahko dokončaš.",
     "maintenance_blocked": "Vzdrževanje poteka: nove igre so začasno ustavljene.",
     "mode_closed": "Zaenkrat zaprto: {mode}. Poskusi pozneje.",
-    "private_games": "Zasebne igre"
+    "private_games": "Zasebne igre",
+    "staff_can_play": "Si del ekipe: lahko zaženeš testne igre."
   },
   "single_modal": {
     "max_timer_invalid": "Vnesite veljavno največjo vrednost časovnika (1–120 minut)",

@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Manutenzione tra {minutes} min: puoi finire questa partita.",
     "maintenance_blocked": "Manutenzione in corso: le nuove partite sono sospese.",
     "mode_closed": "Chiuso per ora: {mode}. Riprova più tardi.",
-    "private_games": "Partite private"
+    "private_games": "Partite private",
+    "staff_can_play": "Fai parte del team: puoi avviare partite di prova."
   },
   "single_modal": {
     "max_timer_invalid": "Inserisci un valore timer massimo valido (1-120 minuti)",

@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Karbantartás {minutes} perc múlva: ezt a játékot befejezheted.",
     "maintenance_blocked": "Karbantartás folyik: az új játékok szünetelnek.",
     "mode_closed": "Egyelőre zárva: {mode}. Próbáld újra később.",
-    "private_games": "Privát játékok"
+    "private_games": "Privát játékok",
+    "staff_can_play": "A csapat tagja vagy: indíthatsz tesztjátékokat."
   },
   "single_modal": {
     "max_timer_invalid": "Kérjük, adjon meg egy érvényes értéket (1-120 perc)",

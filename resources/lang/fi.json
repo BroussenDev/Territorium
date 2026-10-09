@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Huolto {minutes} min päästä: voit pelata tämän pelin loppuun.",
     "maintenance_blocked": "Huolto käynnissä: uudet pelit on keskeytetty.",
     "mode_closed": "Toistaiseksi suljettu: {mode}. Yritä myöhemmin uudelleen.",
-    "private_games": "Yksityiset pelit"
+    "private_games": "Yksityiset pelit",
+    "staff_can_play": "Kuulut tiimiin: voit aloittaa testipelejä."
   },
   "single_modal": {
     "max_timer_invalid": "Anna kelvollinen ajastimen enimmäisarvo (1–120 minuuttia)",

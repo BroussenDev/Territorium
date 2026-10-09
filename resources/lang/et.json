@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Hooldus {minutes} min pärast: saad selle mängu lõpuni mängida.",
     "maintenance_blocked": "Hooldus käib: uued mängud on peatatud.",
     "mode_closed": "Praegu suletud: {mode}. Proovi hiljem uuesti.",
-    "private_games": "Privaatmängud"
+    "private_games": "Privaatmängud",
+    "staff_can_play": "Oled meeskonnas: saad alustada testmänge."
   },
   "single_modal": {
     "max_timer_invalid": "Palun sisesta kehtiv maksimaalne taimeri väärtus (1–120 minutit)",

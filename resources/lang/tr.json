@@ -2487,7 +2487,8 @@
     "game_ahead_in": "{minutes} dk sonra bakım: bu oyunu bitirebilirsin.",
     "maintenance_blocked": "Bakım sürüyor: yeni oyunlar durduruldu.",
     "mode_closed": "Şimdilik kapalı: {mode}. Daha sonra tekrar dene.",
-    "private_games": "Özel oyunlar"
+    "private_games": "Özel oyunlar",
+    "staff_can_play": "Ekiptesin: test oyunları başlatabilirsin."
   },
   "single_modal": {
     "max_timer_invalid": "Lütfen geçerli bir maksimum zamanlayıcı değeri girin (1-120 dakika)",

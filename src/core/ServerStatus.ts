@@ -22,6 +22,8 @@ export const MaintenanceSchema = z.object({
   startsAt: z.number().int().nonnegative(),
   /** When players can expect the game back, if known. */
   endsAt: z.number().int().nonnegative().optional(),
+  /** Staff (admins, moderators) may still start games, to test an update. */
+  staffCanPlay: z.boolean().optional(),
 });
 export type Maintenance = z.infer<typeof MaintenanceSchema>;
 
@@ -46,13 +48,26 @@ export function maintenanceAhead(status: ServerStatus, now: number): boolean {
   return status.maintenance !== null && now < status.maintenance.startsAt;
 }
 
-/** Whether players may start or join a new game of this kind. */
+/** Account roles (token claims) that count as staff. */
+export const STAFF_ROLES = ["root", "admin", "mod"] as const;
+
+export function isStaffRole(role: string | null | undefined): boolean {
+  return (STAFF_ROLES as readonly string[]).includes(role ?? "");
+}
+
+/**
+ * Whether a player with this account role may start or join a new game of
+ * this kind. In a maintenance that lets staff test, staff still may.
+ */
 export function acceptsNewGames(
   status: ServerStatus,
   game: ClosableGame,
   now: number,
+  role?: string | null,
 ): boolean {
-  return !inMaintenance(status, now) && !status.closed.includes(game);
+  if (status.closed.includes(game)) return false;
+  if (!inMaintenance(status, now)) return true;
+  return status.maintenance?.staffCanPlay === true && isStaffRole(role);
 }
 
 /** The closable kind a public lobby belongs to ("hosted" are private). */

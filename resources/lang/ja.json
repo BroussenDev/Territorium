@@ -2487,7 +2487,8 @@
     "game_ahead_in": "{minutes}分後にメンテナンス：このゲームは最後までプレイできます。",
     "maintenance_blocked": "メンテナンス中：新しいゲームは一時停止しています。",
     "mode_closed": "現在閉鎖中：{mode}。後でもう一度お試しください。",
-    "private_games": "プライベートゲーム"
+    "private_games": "プライベートゲーム",
+    "staff_can_play": "あなたはチームの一員です：テストゲームを開始できます。"
   },
   "single_modal": {
     "max_timer_invalid": "適切な最大プレイ時間（1～120分）を入力してください",

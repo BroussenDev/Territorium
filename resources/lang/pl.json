@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Konserwacja za {minutes} min: możesz dokończyć tę grę.",
     "maintenance_blocked": "Trwa konserwacja: nowe gry są wstrzymane.",
     "mode_closed": "Na razie zamknięte: {mode}. Spróbuj później.",
-    "private_games": "Gry prywatne"
+    "private_games": "Gry prywatne",
+    "staff_can_play": "Jesteś w zespole: możesz uruchamiać gry testowe."
   },
   "single_modal": {
     "max_timer_invalid": "Proszę wprowadzić prawidłową maksymalną wartość timera (1-120 minut)",

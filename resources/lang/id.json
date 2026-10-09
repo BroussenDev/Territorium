@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Pemeliharaan dalam {minutes} mnt: kamu bisa menyelesaikan permainan ini.",
     "maintenance_blocked": "Pemeliharaan berlangsung: permainan baru dijeda.",
     "mode_closed": "Ditutup untuk sementara: {mode}. Coba lagi nanti.",
-    "private_games": "Permainan privat"
+    "private_games": "Permainan privat",
+    "staff_can_play": "Kamu anggota tim: kamu bisa memulai permainan uji coba."
   },
   "single_modal": {
     "max_timer_invalid": "Silakan masukkan nilai pengatur waktu maksimum yang valid (1-120 menit)",

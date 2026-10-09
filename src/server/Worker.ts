@@ -197,7 +197,14 @@ export async function startWorker() {
       return res.status(400).json({ error: z.prettifyError(parsed.error) });
     }
     // Closed by the operators (admin panel), or a maintenance has begun.
-    if (!acceptsNewGames(lobbyService.serverStatus(), "private", Date.now())) {
+    if (
+      !acceptsNewGames(
+        lobbyService.serverStatus(),
+        "private",
+        Date.now(),
+        auth.claims?.role,
+      )
+    ) {
       return res.status(503).json({ error: "closed" });
     }
     let gc = parsed.data;
@@ -845,6 +852,7 @@ export async function startWorker() {
             lobbyService.serverStatus(),
             gameKind(target),
             Date.now(),
+            claims?.role,
           )
         ) {
           ws.close(CloseCode.GameClosed, CloseReason.ModeClosed);

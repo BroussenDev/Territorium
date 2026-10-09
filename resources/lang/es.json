@@ -2487,7 +2487,8 @@
     "game_ahead_in": "Mantenimiento en {minutes} min: puedes terminar esta partida.",
     "maintenance_blocked": "Mantenimiento en curso: las partidas nuevas están en pausa.",
     "mode_closed": "Cerrado por ahora: {mode}. Inténtalo más tarde.",
-    "private_games": "Partidas privadas"
+    "private_games": "Partidas privadas",
+    "staff_can_play": "Formas parte del equipo: puedes iniciar partidas de prueba."
   },
   "single_modal": {
     "max_timer_invalid": "Ingrese un valor máximo de temporizador válido (1-120 minutos)",

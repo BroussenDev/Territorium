@@ -34,6 +34,22 @@ describe("server status", () => {
     }
   });
 
+  it("lets staff test during a maintenance that allows it", () => {
+    const strict = { closed: [], maintenance: { startsAt: 0 } };
+    expect(acceptsNewGames(strict, "private", 1, "admin")).toBe(false);
+    const testing = {
+      closed: ["survival" as const],
+      maintenance: { startsAt: 0, staffCanPlay: true },
+    };
+    for (const role of ["root", "admin", "mod"]) {
+      expect(acceptsNewGames(testing, "private", 1, role)).toBe(true);
+    }
+    expect(acceptsNewGames(testing, "private", 1, null)).toBe(false);
+    expect(acceptsNewGames(testing, "private", 1, "banned")).toBe(false);
+    // A closed mode stays closed, staff included.
+    expect(acceptsNewGames(testing, "survival", 1, "admin")).toBe(false);
+  });
+
   it("counts listed private lobbies as private games", () => {
     expect(closableOfLobby("hosted")).toBe("private");
     expect(closableOfLobby("conquest")).toBe("conquest");
