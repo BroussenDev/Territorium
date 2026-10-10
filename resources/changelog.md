@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.94
+
+🔁 **Workshop: update your maps**
+
+- Publishing a map again from the Steam app now updates its Workshop item, with the same page and subscribers, instead of making a new one. The button says Update.
+- The new version goes through our review, and replaces the old one in the gallery once approved; the play count is kept.
+- My creations marks the maps on the Workshop, everywhere you play.
+- A Workshop map our team rejects no longer shows in your Workshop tab.
+
 ## v0.1.93
 
 🛒 **Store: editions**
