@@ -1,4 +1,5 @@
 import { GameConfig } from "../core/Schemas";
+import { isApprovedCommunityMap } from "./CommunityMapIds";
 
 // The host edits its lobby through update_game_config, which carries a
 // partial GameConfig. Only the keys listed here are taken from it. gameType,
@@ -86,6 +87,16 @@ export function applyGameConfigPatch(
   // (the full config it sends has hostCheats: undefined when the toggle is
   // off), so `undefined` here means "clear", not "leave unchanged".
   target.hostCheats = patch.hostCheats;
+  // A community map: only one our moderators approved. The host's client
+  // sends its whole config, gameMap included, so a patch with a gameMap and
+  // no customMap goes back to the official map.
+  if (patch.customMap !== undefined) {
+    if (isApprovedCommunityMap(patch.customMap.id)) {
+      target.customMap = patch.customMap;
+    }
+  } else if (patch.gameMap !== undefined) {
+    delete target.customMap;
+  }
 }
 
 // Whether the host-only cheat block actually grants anything: mere presence

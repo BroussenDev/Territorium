@@ -40,6 +40,7 @@ import {
 import "./ChangeUsernameModal";
 import "./ClanModal";
 import { joinLobby, type JoinLobbyResult } from "./ClientGameRunner";
+import "./CommunityMapsModal";
 import {
   broadcastFreshUserMe,
   getPlayerCosmeticsRefs,
@@ -466,6 +467,10 @@ class Client {
     modalRouter.register("map-editor", {
       tag: "map-editor-modal",
       pageId: "page-map-editor",
+    });
+    modalRouter.register("community-maps", {
+      tag: "community-maps-modal",
+      pageId: "page-community-maps",
     });
     modalRouter.register("detailed-view", {
       tag: "detailed-view-modal",

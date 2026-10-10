@@ -222,6 +222,7 @@ describe("joinLobby lobby-phase messages", () => {
       "medium",
       expect.anything(),
       false,
+      null,
     );
   });
 

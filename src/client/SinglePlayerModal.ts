@@ -186,8 +186,11 @@ export class SinglePlayerModal extends BaseModal {
   @state() private nations: number = 0;
   @state() private defaultNationCount: number = 0;
   // A map from the map editor, played instead of the picked official map.
-  @state() private customMap: { ref: CustomMapRef; thumbnail: string } | null =
-    null;
+  @state() private customMap: {
+    ref: CustomMapRef;
+    thumbnail: string;
+    community: boolean;
+  } | null = null;
   @state() private bots: number = DEFAULT_OPTIONS.bots;
   @state() private infiniteGold: boolean = DEFAULT_OPTIONS.infiniteGold;
   @state() private infiniteTroops: boolean = DEFAULT_OPTIONS.infiniteTroops;
@@ -511,10 +514,12 @@ export class SinglePlayerModal extends BaseModal {
                 useRandom: this.useRandomMap,
                 showMedals: this.showAchievements,
                 mapWins: this.mapWins,
+                community: true,
                 custom: this.customMap
                   ? {
                       name: this.customMap.ref.name,
                       thumbnail: this.customMap.thumbnail,
+                      community: this.customMap.community,
                       onLeave: () => {
                         this.customMap = null;
                         void this.loadNationCount();
@@ -697,9 +702,13 @@ export class SinglePlayerModal extends BaseModal {
   }
 
   /** Opens the solo setup on a map just made in the map editor. */
-  public openWithCustomMap(ref: CustomMapRef, thumbnail: string): void {
+  public openWithCustomMap(
+    ref: CustomMapRef,
+    thumbnail: string,
+    community = false,
+  ): void {
     this.open();
-    this.customMap = { ref, thumbnail };
+    this.customMap = { ref, thumbnail, community };
     void this.loadNationCount();
   }
 

@@ -1,3 +1,8 @@
+import {
+  type MapSource,
+  SOURCE_VOID,
+  SOURCE_WATER,
+} from "../../core/game/CommunityMaps";
 import type { GeneratorImage } from "../../core/game/MapGenerator";
 
 // The map being drawn in the map editor: one terrain value per tile, at the
@@ -267,6 +272,26 @@ export class EditorMap {
       }
     }
     return { width: this.width, height: this.height, rgba };
+  }
+
+  /** What was drawn, as it is published (core/game/CommunityMaps.ts). */
+  toSource(name: string): MapSource {
+    const tiles = new Uint8Array(this.width * this.height);
+    for (let i = 0; i < tiles.length; i++) {
+      tiles[i] =
+        this.terrain[i] === Terrain.Water
+          ? SOURCE_WATER
+          : this.terrain[i] === Terrain.Void
+            ? SOURCE_VOID
+            : this.relief[i];
+    }
+    return {
+      name,
+      width: this.width,
+      height: this.height,
+      tiles,
+      nations: this.nations.map((n) => ({ ...n })),
+    };
   }
 
   /** An image read the way the generator reads it (alpha, then blue). */

@@ -14,6 +14,7 @@ import {
   registeredSite,
   sendCheckin,
 } from "./ClusterCheckin";
+import { registerCommunityMapRoutes } from "./CommunityMapUpload";
 import { getDescriptor } from "./DesktopRelease";
 import { DiscordLobbyAnnouncer, isWebhookUrl } from "./DiscordLobbyAnnouncer";
 import {
@@ -181,6 +182,9 @@ registerNewsRoutes({
     : null,
   log,
 });
+
+// Publishing maps from the map editor (CommunityMapUpload.ts).
+registerCommunityMapRoutes(app, log);
 
 // Closed game kinds and maintenance (ServerControl.ts), kept next to the news.
 const serverControl = new ServerControlStore(

@@ -147,6 +147,11 @@ function createChatMatcher(): RegExpMatcher {
 const chatMatcher = createChatMatcher();
 const chatCensor = new TextCensor().setStrategy(asteriskCensorStrategy());
 
+/** Whether a name contains a banned word (community map and nation names). */
+export function isProfane(text: string): boolean {
+  return profanityMatcher.hasMatch(text);
+}
+
 export function censorChat(text: string): string {
   return chatCensor.applyTo(text, chatMatcher.getAllMatches(text));
 }

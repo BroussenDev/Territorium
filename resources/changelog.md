@@ -1,5 +1,15 @@
 # Territorium — Changelog
 
+## v0.1.90
+
+🌍 **Community maps**
+
+- Publish the map you made in the editor. Our team checks it, then it shows in the new community maps gallery.
+- The gallery, from the solo and private lobby screens or the editor: search a map, sort by newest or most played, and play it in solo or host a private lobby on it.
+- "My maps" shows the maps you published, whether they are waiting, published or refused (with the reason), and lets you delete them.
+- Report a map that is offensive, not its author's own or broken.
+- Community maps are played in solo and private games only, never in ranked. Those games give no medals.
+
 ## v0.1.89
 
 🗺️ **The map editor**

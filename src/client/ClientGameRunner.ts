@@ -13,6 +13,7 @@ import {
   ServerMessage,
 } from "../core/Schemas";
 import { findClosestBy, replacer } from "../core/Util";
+import type { CustomMapRef } from "../core/game/CustomMaps";
 import {
   BuildableUnit,
   PlayerType,
@@ -35,6 +36,7 @@ import {
 } from "../core/game/UserSettings";
 import { isVersusSpawnCell } from "../core/game/Versus";
 import { WorkerClient } from "../core/worker/WorkerClient";
+import { getApiBase } from "./ApiBase";
 import { isDesktopShell } from "./DesktopShell";
 import { GameMetrics } from "./GameMetrics";
 import { showInGameAlert } from "./InGameModal";
@@ -170,11 +172,15 @@ export function joinLobby(
   // the streak reaches the debounce threshold.
   let pendingPreloadKey: string | null = null;
   let pendingPreloadStreak = 0;
+  // The lobby's community map, if any: the prestart message names only the
+  // official map, which a community map game uses as a fallback name.
+  let lobbyCustomMap: CustomMapRef | null = null;
   const requestTerrainLoad = (
     map: Parameters<typeof loadTerrainMap>[0],
     mapSize: Parameters<typeof loadTerrainMap>[1],
+    customMap: CustomMapRef | null = null,
   ): Promise<TerrainMapData> => {
-    const key = `${map}:${mapSize}`;
+    const key = `${customMap ? `custom:${customMap.id}` : map}:${mapSize}`;
     const existing = terrainLoads.get(key);
     if (existing !== undefined) {
       terrainLoad = existing;
@@ -185,6 +191,7 @@ export function joinLobby(
       mapSize,
       terrainMapFileLoader,
       false, // Layer images loaded off the critical path after game start.
+      customMap,
     );
     terrainLoads.set(key, load);
     terrainLoad = load;
@@ -237,7 +244,8 @@ export function joinLobby(
         pendingPreloadKey = null;
         pendingPreloadStreak = 0;
       } else {
-        const key = `${gameConfig.gameMap}:${gameConfig.gameMapSize}`;
+        lobbyCustomMap = gameConfig.customMap ?? null;
+        const key = `${lobbyCustomMap ? `custom:${lobbyCustomMap.id}` : gameConfig.gameMap}:${gameConfig.gameMapSize}`;
         if (pendingPreloadKey === key) {
           pendingPreloadStreak++;
         } else {
@@ -245,7 +253,11 @@ export function joinLobby(
           pendingPreloadStreak = 1;
         }
         if (pendingPreloadStreak >= MAP_PRELOAD_DEBOUNCE_STREAK) {
-          requestTerrainLoad(gameConfig.gameMap, gameConfig.gameMapSize);
+          requestTerrainLoad(
+            gameConfig.gameMap,
+            gameConfig.gameMapSize,
+            lobbyCustomMap,
+          );
         }
       }
       return;
@@ -254,7 +266,7 @@ export function joinLobby(
       console.log(
         `lobby: game prestarting: ${JSON.stringify(message, replacer)}`,
       );
-      requestTerrainLoad(message.gameMap, message.gameMapSize);
+      requestTerrainLoad(message.gameMap, message.gameMapSize, lobbyCustomMap);
       resolvePrestart();
     }
     if (message.type === "start") {
@@ -699,6 +711,13 @@ async function createClientGame(
       false, // Layer images loaded off the critical path after game start.
       lobbyConfig.gameStartInfo.config.customMap ?? null,
     );
+  }
+  // A game on a community map counts for the gallery's "most played".
+  const playedMap = lobbyConfig.gameStartInfo.config.customMap;
+  if (playedMap && lobbyConfig.gameRecord === undefined) {
+    void fetch(`${getApiBase()}/community-maps/${playedMap.id}/play`, {
+      method: "POST",
+    }).catch(() => {});
   }
   // Kick off the font-atlas fetch so it overlaps with worker init; the
   // render passes need it parsed before createWebGLView runs.

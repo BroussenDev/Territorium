@@ -1,5 +1,6 @@
 import { html, nothing, svg } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
+import { publishCommunityMap } from "./CommunityMapsApi";
 import { BaseModal } from "./components/BaseModal";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { loadDraft, saveDraft } from "./editor/EditorDraft";
@@ -62,6 +63,7 @@ export class MapEditorModal extends BaseModal {
   @state() private grid = false;
   @state() private busy = false;
   @state() private confirmNew = false;
+  @state() private publishing: "ask" | "sending" | null = null;
   @state() private cursor: { x: number; y: number } | null = null;
   // Bumped on every change, so the side panel re-reads the map.
   @state() private revision = 0;
@@ -573,6 +575,101 @@ export class MapEditorModal extends BaseModal {
     }
   }
 
+  private async publish(): Promise<void> {
+    if (this.publishing === "sending") return;
+    this.publishing = "sending";
+    try {
+      const name =
+        this.mapName.trim() || translateText("map_editor.default_name");
+      const result = await publishCommunityMap(this.map, name);
+      if (result.ok) {
+        this.publishing = null;
+        showToast(
+          translateText(
+            result.map.status === "approved"
+              ? "map_editor.publish_already_live"
+              : "map_editor.published",
+          ),
+          "green",
+          6000,
+        );
+        return;
+      }
+      const known: Record<string, string> = {
+        sign_in: "sign_in",
+        too_many_pending: "too_many_pending",
+        too_many_maps: "too_many_maps",
+        name_refused: "name_refused",
+        already_published: "already_published",
+        too_large: "too_large",
+        "map too large": "too_large",
+        "map too small": "too_small",
+        banned: "banned",
+        too_many: "too_many",
+      };
+      this.publishing = null;
+      showToast(
+        translateText(
+          `map_editor.publish_error_${known[result.error] ?? "generic"}`,
+        ),
+        "red",
+        6000,
+      );
+    } catch {
+      this.publishing = null;
+      showToast(translateText("map_editor.publish_error_generic"), "red");
+    }
+  }
+
+  private renderPublishDialog() {
+    if (this.publishing === null) return nothing;
+    return html`<div
+      class="fixed inset-0 z-[60] grid place-items-center bg-black/70 p-4"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="w-full max-w-md rounded-lg border border-white/10 bg-[#0a1512] p-5 flex flex-col gap-3 text-white"
+      >
+        <h3 class="font-display text-xl font-bold">
+          ${translateText("map_editor.publish_title")}
+        </h3>
+        <p class="text-sm text-white/80">
+          ${translateText("map_editor.publish_intro", {
+            name:
+              this.mapName.trim() || translateText("map_editor.default_name"),
+          })}
+        </p>
+        <ul class="list-disc pl-5 text-sm text-white/65 flex flex-col gap-1">
+          <li>${translateText("map_editor.publish_rule_review")}</li>
+          <li>${translateText("map_editor.publish_rule_content")}</li>
+          <li>${translateText("map_editor.publish_rule_play")}</li>
+        </ul>
+        <div class="flex justify-end gap-2 pt-2">
+          <button
+            class="rounded-md border border-white/10 px-4 py-2 text-sm font-semibold text-white/80 hover:bg-white/5"
+            ?disabled=${this.publishing === "sending"}
+            @click=${() => (this.publishing = null)}
+          >
+            ${translateText("map_editor.publish_cancel")}
+          </button>
+          <button
+            class="inline-flex items-center gap-2 rounded-md bg-[linear-gradient(160deg,#10b981,#059669_60%,#047857)] px-4 py-2 text-sm font-bold text-white hover:brightness-110 disabled:opacity-60"
+            ?disabled=${this.publishing === "sending"}
+            @click=${() => void this.publish()}
+          >
+            ${this.publishing === "sending"
+              ? html`<span
+                  class="size-4 rounded-full border-2 border-white/30 border-t-white animate-spin"
+                ></span>`
+              : ICON_PUBLISH}
+            ${translateText("map_editor.publish_send")}
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }
+
   // ---- Rendering ----------------------------------------------------------
 
   protected renderBody() {
@@ -921,6 +1018,7 @@ export class MapEditorModal extends BaseModal {
           if (file) void this.importImage(file);
         }}
       />
+      ${this.renderPublishDialog()}
       ${this.confirmNew
         ? html`<confirm-dialog
             .message=${translateText("map_editor.new_map_confirm")}
@@ -978,14 +1076,21 @@ export class MapEditorModal extends BaseModal {
       </button>
       <button
         class=${button}
-        disabled
-        title=${translateText("map_editor.publish_soon")}
+        @click=${() => window.showPage?.("page-community-maps")}
+      >
+        ${ICON_GALLERY} ${translateText("community_maps.title")}
+      </button>
+      <button
+        class=${button}
+        @click=${() => {
+          if (this.map.landShare() === 0) {
+            showToast(translateText("map_editor.check_no_land"), "red");
+            return;
+          }
+          this.publishing = "ask";
+        }}
       >
         ${ICON_PUBLISH} ${translateText("map_editor.publish")}
-        <span
-          class="rounded border border-amber-700/70 px-1 text-[10px] font-bold text-amber-300"
-          >${translateText("map_editor.soon")}</span
-        >
       </button>
     </div>`;
   }
@@ -1133,6 +1238,16 @@ const ICON_PLAY = html`<svg
   fill="currentColor"
 >
   ${svg`<path d="M7 4v16l13-8z"/>`}
+</svg>`;
+const ICON_GALLERY = html`<svg
+  class="size-4"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+>
+  ${svg`<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>`}
 </svg>`;
 const ICON_PUBLISH = html`<svg
   class="size-4"

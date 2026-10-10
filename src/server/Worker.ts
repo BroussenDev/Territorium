@@ -27,6 +27,10 @@ import { decodeClientMessage, encodeServerMessage } from "../core/ZbinWire";
 import { registerAdminBotRoutes } from "./AdminBotRoutes";
 import { censorPlayer } from "./Censor";
 import { Client } from "./Client";
+import {
+  isApprovedCommunityMap,
+  startCommunityMapIdsPoller,
+} from "./CommunityMapIds";
 import { gameApiCors } from "./GameApiCors";
 import { GameManager } from "./GameManager";
 import { registerGamePreviewRoute } from "./GamePreviewRoute";
@@ -91,6 +95,7 @@ export async function startWorker() {
   // Initialize lobby service (handles WebSocket upgrade routing)
   const lobbyService = new WorkerLobbyService(server, wss, gm, log);
   const singleplayerPresence = new SingleplayerPresence();
+  startCommunityMapIdsPoller(log);
   lobbyService.countSoloGamesWith(() => singleplayerPresence.activeGames());
 
   setTimeout(
@@ -208,11 +213,12 @@ export async function startWorker() {
       return res.status(503).json({ error: "closed" });
     }
     let gc = parsed.data;
-    // Player-made maps are solo only until our servers host them.
-    if (gc?.customMap !== undefined) {
-      return res
-        .status(400)
-        .json({ error: "Custom maps are not available in multiplayer yet" });
+    // Community maps: only the ones our moderators approved.
+    if (
+      gc?.customMap !== undefined &&
+      !isApprovedCommunityMap(gc.customMap.id)
+    ) {
+      return res.status(400).json({ error: "Community map not approved" });
     }
     // Public games are scheduled by the master over IPC, never created here.
     if (gc?.gameType === GameType.Public) {

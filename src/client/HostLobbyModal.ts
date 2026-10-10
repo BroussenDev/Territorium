@@ -10,6 +10,7 @@ import {
 } from "../client/Utils";
 import { GameEnv } from "../core/configuration/Config";
 import { EventBus } from "../core/EventBus";
+import type { CustomMapRef } from "../core/game/CustomMaps";
 import { DoomsdayClockSpeed } from "../core/game/DoomsdayClock";
 import {
   Difficulty,
@@ -67,6 +68,9 @@ import {
 @customElement("host-lobby-modal")
 export class HostLobbyModal extends BaseModal {
   @state() private selectedMap: GameMapType = GameMapType.World;
+  // A community map from the gallery, played instead of selectedMap.
+  @state() private customMap: { ref: CustomMapRef; thumbnail: string } | null =
+    null;
   @state() private selectedDifficulty: Difficulty = Difficulty.Easy;
   @state() private nations: number = 0;
   @state() private defaultNationCount: number = 0;
@@ -172,7 +176,31 @@ export class HostLobbyModal extends BaseModal {
     if (versus !== null) {
       this.versusSize = versus;
     }
+    this.syncCustomMap(lobby.gameConfig?.customMap?.id);
   };
+
+  // The lobby is created with the default rules: its community map is sent
+  // once the host is in it. Still missing a few updates later means the
+  // server refused it (not approved).
+  private customMapUpdatesSincePush = -1;
+  private syncCustomMap(serverId: string | undefined): void {
+    const wanted = this.customMap?.ref.id;
+    if (wanted === undefined || serverId === wanted) {
+      this.customMapUpdatesSincePush = -1;
+      return;
+    }
+    if (this.customMapUpdatesSincePush < 0) {
+      this.customMapUpdatesSincePush = 0;
+      this.putGameConfig();
+      return;
+    }
+    if (++this.customMapUpdatesSincePush >= 4) {
+      this.customMapUpdatesSincePush = -1;
+      this.customMap = null;
+      showToast(translateText("community_maps.not_approved"), "red");
+      void this.loadNationCount().then(() => this.putGameConfig());
+    }
+  }
 
   private getRandomString(): string {
     const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -546,6 +574,20 @@ export class HostLobbyModal extends BaseModal {
                 selected: this.selectedMap,
                 useRandom: this.useRandomMap,
                 randomMapDivider: true,
+                community: this.versusSize === null,
+                custom: this.customMap
+                  ? {
+                      name: this.customMap.ref.name,
+                      thumbnail: this.customMap.thumbnail,
+                      community: true,
+                      onLeave: () => {
+                        this.customMap = null;
+                        void this.loadNationCount().then(() =>
+                          this.putGameConfig(),
+                        );
+                      },
+                    }
+                  : undefined,
               },
               difficulty: {
                 selected: this.selectedDifficulty,
@@ -799,6 +841,12 @@ export class HostLobbyModal extends BaseModal {
       return;
     }
 
+    // A lobby on a community map, from the gallery.
+    const custom = args?.customMap as
+      | { ref: CustomMapRef; thumbnail: string }
+      | undefined;
+    this.customMap = custom?.ref ? custom : null;
+
     // A versus lobby is created with its format's fixed rules.
     this.versusSize = isVersusTeamSize(args?.versusSize)
       ? args.versusSize
@@ -927,6 +975,8 @@ export class HostLobbyModal extends BaseModal {
     }
 
     // Reset all transient form state to ensure clean slate
+    this.customMap = null;
+    this.customMapUpdatesSincePush = -1;
     this.selectedMap = GameMapType.World;
     this.selectedDifficulty = Difficulty.Easy;
     this.nations = 0;
@@ -992,6 +1042,7 @@ export class HostLobbyModal extends BaseModal {
   };
 
   private async handleMapSelection(value: GameMapType) {
+    this.customMap = null;
     this.selectedMap = value;
     this.useRandomMap = false;
     await this.loadNationCount();
@@ -1514,6 +1565,7 @@ export class HostLobbyModal extends BaseModal {
         detail: {
           config: {
             gameMap: this.selectedMap,
+            customMap: this.customMap?.ref,
             gameMapSize: this.compactMap
               ? GameMapSize.Compact
               : GameMapSize.Normal,
@@ -1627,11 +1679,15 @@ export class HostLobbyModal extends BaseModal {
 
   private async loadNationCount() {
     const currentMap = this.selectedMap;
+    const currentCustom = this.customMap;
     try {
-      const mapData = this.mapLoader.getMapData(currentMap);
+      const mapData = this.mapLoader.getMapData(
+        currentMap,
+        currentCustom?.ref ?? null,
+      );
       const manifest = await mapData.manifest();
       // Only update if the map hasn't changed
-      if (this.selectedMap === currentMap) {
+      if (this.selectedMap === currentMap && this.customMap === currentCustom) {
         this.defaultNationCount = manifest.nations.length;
         this.nations = this.compactMap
           ? Math.max(0, Math.floor(manifest.nations.length * 0.25))

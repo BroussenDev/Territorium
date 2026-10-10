@@ -25,6 +25,13 @@ export interface CustomMapFileUrls {
 }
 
 const files = new Map<string, CustomMapFileUrls>();
+// Where published maps are served (the API's base URL), set by the page.
+let server: (() => string) | null = null;
+
+/** Published maps' files come from here when the page has no copy. */
+export function setCustomMapServer(base: () => string): void {
+  server = base;
+}
 
 /** Makes a custom map's files available to the game on this page. */
 export function registerCustomMapFiles(
@@ -35,7 +42,18 @@ export function registerCustomMapFiles(
 }
 
 export function customMapFiles(id: string): CustomMapFileUrls | null {
-  return files.get(id) ?? null;
+  const local = files.get(id);
+  if (local !== undefined) return local;
+  if (server === null || !/^[0-9a-f]{64}$/.test(id)) return null;
+  const base = server().replace(/\/+$/, "");
+  const at = (file: string) => `${base}/community-maps/${id}/${file}`;
+  return {
+    mapBin: at("map.bin"),
+    map4xBin: at("map4x.bin"),
+    map16xBin: at("map16x.bin"),
+    manifest: at("manifest.json"),
+    thumbnail: at("thumbnail.png"),
+  };
 }
 
 /** A nation placed in the editor: full-scale tile coordinates. */

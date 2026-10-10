@@ -199,7 +199,15 @@ export interface GameConfigSettingsData {
     showMedals?: boolean;
     mapWins?: Map<GameMapType, Set<Difficulty>>;
     /** A map from the map editor, shown instead of the picker. */
-    custom?: { name: string; thumbnail: string; onLeave: () => void };
+    custom?: {
+      name: string;
+      thumbnail: string;
+      /** From the community maps gallery, not the player's own test. */
+      community?: boolean;
+      onLeave: () => void;
+    };
+    /** Shows the way to the community maps gallery. */
+    community?: boolean;
   };
   difficulty: {
     selected: Difficulty;
@@ -400,6 +408,7 @@ export class GameConfigSettings extends LitElement {
   private renderCustomMap(custom: {
     name: string;
     thumbnail: string;
+    community?: boolean;
     onLeave: () => void;
   }): TemplateResult {
     return html`<div
@@ -413,13 +422,21 @@ export class GameConfigSettings extends LitElement {
       <div class="flex-1 min-w-0 flex flex-col gap-1 text-center sm:text-left">
         <span
           class="text-[11px] font-bold uppercase tracking-wider text-emerald-300"
-          >${translateText("map_editor.custom_map")}</span
+          >${translateText(
+            custom.community
+              ? "map_editor.community_map"
+              : "map_editor.custom_map",
+          )}</span
         >
         <span class="font-display text-lg font-bold text-white break-words"
           >${custom.name}</span
         >
         <span class="text-xs text-white/55"
-          >${translateText("map_editor.custom_map_note")}</span
+          >${translateText(
+            custom.community
+              ? "map_editor.community_map_note"
+              : "map_editor.custom_map_note",
+          )}</span
         >
       </div>
       <button
@@ -491,7 +508,17 @@ export class GameConfigSettings extends LitElement {
                 .searchQuery=${this.mapSearchQuery}
               ></map-picker>`,
           undefined,
-          settings.map.custom ? undefined : this.renderMapSearchInput(),
+          html`<div class="flex flex-wrap items-center gap-2">
+            ${settings.map.community
+              ? html`<button
+                  class="rounded-md border border-emerald-800/70 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-300 hover:bg-emerald-500/20"
+                  @click=${() => window.showPage?.("page-community-maps")}
+                >
+                  ${translateText("community_maps.title")}
+                </button>`
+              : null}
+            ${settings.map.custom ? null : this.renderMapSearchInput()}
+          </div>`,
         )}
         ${renderSection(
           DIFFICULTY_ICON,
