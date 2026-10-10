@@ -86,6 +86,8 @@ export class MapEditorModal extends BaseModal {
   @state() private libraryMaps: LibraryMap[] = [];
   @state() private sync: EditorSyncStatus = "local";
   @state() private steamOnly = false;
+  // The Workshop item the open map was published as: publishing updates it.
+  @state() private workshopId: string | null = null;
   @state() private publishing: "ask" | "sending" | null = null;
   @state() private cursor: { x: number; y: number } | null = null;
   // Bumped on every change, so the side panel re-reads the map.
@@ -152,6 +154,7 @@ export class MapEditorModal extends BaseModal {
   /** Opens a map of the library in the editor. */
   private show(saved: LibraryMap): void {
     this.currentId = saved.id;
+    this.workshopId = saved.workshopId ?? null;
     this.map = EditorMap.fromData(saved);
     this.mapName = saved.name;
     this.sizeKey = this.sizeOf(saved.width, saved.height);
@@ -165,6 +168,7 @@ export class MapEditorModal extends BaseModal {
   /** Starts a new map in the library and opens it. */
   private startMap(map: EditorMap, sample = false): void {
     this.currentId = newMapId();
+    this.workshopId = null;
     this.map = map;
     this.mapName = translateText(
       sample ? "map_editor.sample_name" : "map_editor.default_name",
@@ -550,7 +554,11 @@ export class MapEditorModal extends BaseModal {
       thumbnail: previewOf(source),
     };
     const saved = getMap(id).then((prev) =>
-      putMap({ ...record, syncedAt: prev?.syncedAt ?? null }),
+      putMap({
+        ...record,
+        syncedAt: prev?.syncedAt ?? null,
+        workshopId: prev?.workshopId ?? null,
+      }),
     );
     if (this.syncTimer !== null) clearTimeout(this.syncTimer);
     this.syncTimer = setTimeout(() => void this.syncNow(), SYNC_DELAY_MS);
@@ -770,12 +778,14 @@ export class MapEditorModal extends BaseModal {
             ? "map_editor.publish_already_live"
             : "map_editor.published";
         let color: "green" | "red" = "green";
-        // In the Steam app, on the Workshop too (once per map).
+        // In the Steam app, on the Workshop too (once per version): a new
+        // version of the item this map was published as before.
         if (workshop() !== null && !result.map.workshopId) {
           const ws = await publishToWorkshop({
             mapId: result.map.id,
             name: result.map.name,
             upload: result.upload,
+            update: this.workshopId,
             description: translateText("map_editor.workshop_description", {
               w: result.map.width,
               h: result.map.height,
@@ -788,7 +798,10 @@ export class MapEditorModal extends BaseModal {
           } else {
             message = ws.needsAgreement
               ? "map_editor.workshop_agreement"
-              : "map_editor.published_workshop";
+              : ws.updated
+                ? "map_editor.updated_workshop"
+                : "map_editor.published_workshop";
+            await this.rememberWorkshopItem(ws.id);
           }
         }
         this.publishing = null;
@@ -820,6 +833,17 @@ export class MapEditorModal extends BaseModal {
       this.publishing = null;
       showToast(translateText("map_editor.publish_error_generic"), "red");
     }
+  }
+
+  /** Links the open map to its Workshop item, on every device. */
+  private async rememberWorkshopItem(id: string): Promise<void> {
+    this.workshopId = id;
+    await this.flushDraft();
+    const saved = await getMap(this.currentId);
+    if (saved !== null && saved.workshopId !== id) {
+      await putMap({ ...saved, workshopId: id, updatedAt: Date.now() });
+    }
+    void this.syncNow();
   }
 
   private renderSteamOnlyDialog() {
@@ -876,13 +900,22 @@ export class MapEditorModal extends BaseModal {
         class="w-full max-w-md rounded-lg border border-white/10 bg-[#0a1512] p-5 flex flex-col gap-3 text-white"
       >
         <h3 class="font-display text-xl font-bold">
-          ${translateText("map_editor.publish_title")}
+          ${translateText(
+            this.workshopId
+              ? "map_editor.update_title"
+              : "map_editor.publish_title",
+          )}
         </h3>
         <p class="text-sm text-white/80">
-          ${translateText("map_editor.publish_intro", {
-            name:
-              this.mapName.trim() || translateText("map_editor.default_name"),
-          })}
+          ${translateText(
+            this.workshopId
+              ? "map_editor.update_intro"
+              : "map_editor.publish_intro",
+            {
+              name:
+                this.mapName.trim() || translateText("map_editor.default_name"),
+            },
+          )}
         </p>
         <ul class="list-disc pl-5 text-sm text-white/65 flex flex-col gap-1">
           <li>${translateText("map_editor.publish_rule_review")}</li>
@@ -1369,7 +1402,12 @@ export class MapEditorModal extends BaseModal {
           this.publishing = "ask";
         }}
       >
-        ${ICON_PUBLISH} ${translateText("map_editor.publish")}
+        ${ICON_PUBLISH}
+        ${translateText(
+          this.workshopId && workshop() !== null
+            ? "map_editor.update"
+            : "map_editor.publish",
+        )}
       </button>
     </div>`;
   }

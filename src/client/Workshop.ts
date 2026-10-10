@@ -23,6 +23,7 @@ interface WorkshopBridge {
     description: string;
     data: string;
     preview: string;
+    update?: string;
   }): Promise<{
     ok: boolean;
     id?: string | null;
@@ -81,7 +82,7 @@ export function fromBase64(text: string): Uint8Array {
 }
 
 export type WorkshopPublish =
-  | { ok: true; id: string; needsAgreement: boolean }
+  | { ok: true; id: string; needsAgreement: boolean; updated: boolean }
   | { ok: false };
 
 /**
@@ -93,6 +94,8 @@ export async function publishToWorkshop(opts: {
   name: string;
   upload: Uint8Array;
   description: string;
+  /** The item it was published as before: a new version of it. */
+  update?: string | null;
 }): Promise<WorkshopPublish> {
   const w = workshop();
   if (w === null) return { ok: false };
@@ -100,12 +103,17 @@ export async function publishToWorkshop(opts: {
     `${getApiBase()}/community-maps/${opts.mapId}/thumbnail.png`,
   ).catch(() => null);
   if (preview === null) return { ok: false };
-  const result = await w.publish({
+  const item = {
     title: opts.name,
     description: opts.description,
     data: toBase64(opts.upload),
     preview: toBase64(preview),
-  });
+  };
+  let result = await w.publish(
+    opts.update ? { ...item, update: opts.update } : item,
+  );
+  // The item is gone from the Workshop (deleted there): a new one.
+  if (!result.ok && opts.update) result = await w.publish(item);
   if (!result.ok || !result.id) return { ok: false };
   const needsAgreement = result.needsAgreement === true;
   try {
@@ -121,7 +129,12 @@ export async function publishToWorkshop(opts: {
     // The item is on the Workshop all the same.
   }
   if (needsAgreement) openInSteamOverlay(AGREEMENT_URL);
-  return { ok: true, id: result.id, needsAgreement };
+  return {
+    ok: true,
+    id: result.id,
+    needsAgreement,
+    updated: opts.update === result.id,
+  };
 }
 
 /** The map's thumbnail on a 16:9 PNG (Steam's previews stay under 1 MB). */
@@ -165,6 +178,24 @@ export async function readWorkshopMap(
   return source !== null && checkMapSource(source) === null ? source : null;
 }
 
+/** Of these Workshop items, the ones our moderators rejected (none offline). */
+async function rejectedItems(ids: string[]): Promise<Set<string>> {
+  if (ids.length === 0) return new Set();
+  try {
+    const res = await fetch(
+      `${getApiBase()}/community-maps/workshop-rejected?ids=${ids.join(",")}`,
+      { signal: AbortSignal.timeout(8_000) },
+    );
+    if (!res.ok) return new Set();
+    const list: unknown = await res.json();
+    return new Set(
+      Array.isArray(list) ? list.filter((i) => typeof i === "string") : [],
+    );
+  } catch {
+    return new Set();
+  }
+}
+
 /** The maps the player subscribed to that Steam has installed. */
 export async function subscribedWorkshopMaps(): Promise<{
   maps: WorkshopMap[];
@@ -173,8 +204,11 @@ export async function subscribedWorkshopMaps(): Promise<{
   const w = workshop();
   if (w === null) return null;
   const items = await w.items();
+  const rejected = await rejectedItems(items.maps.map((m) => m.id));
   const maps: WorkshopMap[] = [];
   for (const item of items.maps) {
+    // Rejected by our moderators: banned from the Workshop, gone here too.
+    if (rejected.has(item.id)) continue;
     const source = await readWorkshopMap(fromBase64(item.data));
     if (source === null) continue;
     maps.push({

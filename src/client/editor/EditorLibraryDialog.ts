@@ -161,6 +161,13 @@ export class EditorLibraryDialog extends LitElement {
                 >${translateText("map_editor.library_current")}</span
               >`
             : nothing}
+          ${m.workshopId
+            ? html`<span
+                class="shrink-0 rounded border border-sky-800 px-1.5 text-[11px] font-bold text-sky-300"
+                title=${translateText("map_editor.library_on_workshop_hint")}
+                >${translateText("map_editor.library_on_workshop")}</span
+              >`
+            : nothing}
         </div>
         <p class="text-xs text-white/50 tabular-nums">
           ${m.width.toLocaleString()} × ${m.height.toLocaleString()} ·

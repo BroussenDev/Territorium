@@ -22,6 +22,8 @@ export interface LibraryMap {
   deleted: boolean;
   /** A small picture, for the list. */
   thumbnail: string;
+  /** The Steam Workshop item it was published as: publishing updates it. */
+  workshopId?: string | null;
 }
 
 /** Changed since the last sync (or never synced). */

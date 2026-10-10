@@ -31,7 +31,10 @@ vi.mock("../../src/client/editor/MapPack", async (orig) => ({
 const { syncLibrary } = await import("../../src/client/editor/EditorSync");
 
 // The account's maps on the API.
-let server: Map<string, { data: Uint8Array; updatedAt: number }>;
+let server: Map<
+  string,
+  { data: Uint8Array; updatedAt: number; workshopId?: string | null }
+>;
 let tooLarge: Set<string>;
 
 function fakeFetch(url: string, init: RequestInit = {}) {
@@ -47,6 +50,7 @@ function fakeFetch(url: string, init: RequestInit = {}) {
           width: 1,
           height: 1,
           updatedAt: m.updatedAt,
+          workshopId: m.workshopId ?? null,
         })),
       ),
     );
@@ -62,9 +66,14 @@ function fakeFetch(url: string, init: RequestInit = {}) {
     return new Response("{}");
   }
   if (tooLarge.has(id)) return new Response("{}", { status: 413 });
-  const at = Number(new URL(url).searchParams.get("updatedAt"));
+  const params = new URL(url).searchParams;
+  const at = Number(params.get("updatedAt"));
   return (init.body as Blob).arrayBuffer().then((b) => {
-    server.set(id, { data: new Uint8Array(b), updatedAt: at });
+    server.set(id, {
+      data: new Uint8Array(b),
+      updatedAt: at,
+      workshopId: params.get("workshopId"),
+    });
     return new Response(JSON.stringify({ id, updatedAt: at }));
   });
 }
@@ -134,6 +143,19 @@ describe("map editor sync", () => {
     // Nothing more to do the next time.
     const again = await syncLibrary();
     expect(again.changed).toEqual([]);
+  });
+
+  it("carries the Workshop item a map was published as", async () => {
+    device.maps.set("map-0001", {
+      ...record("map-0001", "Mine", 10, null),
+      workshopId: "3816860584",
+    });
+    await syncLibrary();
+    expect(server.get("map-0001")?.workshopId).toBe("3816860584");
+    // Another device gets it with the map.
+    device.maps.clear();
+    await syncLibrary();
+    expect(device.maps.get("map-0001")?.workshopId).toBe("3816860584");
   });
 
   it("follows changes and deletions made elsewhere", async () => {

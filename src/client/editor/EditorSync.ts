@@ -25,6 +25,7 @@ const RemoteSchema = z.array(
     width: z.number(),
     height: z.number(),
     updatedAt: z.number(),
+    workshopId: z.string().nullable().optional(),
   }),
 );
 
@@ -80,7 +81,11 @@ async function run(): Promise<SyncReport> {
     const remote = new Map(parsed.data.map((r) => [r.id, r]));
     const local = new Map((await allRecords()).map((m) => [m.id, m]));
 
-    const download = async (id: string, updatedAt: number) => {
+    const download = async (
+      id: string,
+      updatedAt: number,
+      workshopId: string | null,
+    ) => {
       const r = await call(`/${encodeURIComponent(id)}`);
       if (!r.ok) throw new Error(`download ${r.status}`);
       const source = await unpackSource(new Uint8Array(await r.arrayBuffer()));
@@ -98,6 +103,7 @@ async function run(): Promise<SyncReport> {
         syncedAt: updatedAt,
         deleted: false,
         thumbnail: previewOf(source),
+        workshopId,
       });
       report.changed.push(id);
     };
@@ -106,7 +112,9 @@ async function run(): Promise<SyncReport> {
       const source = EditorMap.fromData(m).toSource(m.name);
       const body = await packSource(source);
       const r = await call(
-        `/${encodeURIComponent(m.id)}?updatedAt=${m.updatedAt}`,
+        `/${encodeURIComponent(m.id)}?updatedAt=${m.updatedAt}${
+          m.workshopId ? `&workshopId=${m.workshopId}` : ""
+        }`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/octet-stream" },
@@ -144,16 +152,22 @@ async function run(): Promise<SyncReport> {
     for (const r of remote.values()) {
       const m = local.get(r.id);
       if (m === undefined) {
-        await download(r.id, r.updatedAt);
+        await download(r.id, r.updatedAt, r.workshopId ?? null);
       } else if (r.updatedAt !== m.syncedAt) {
         if (isDirty(m)) {
-          // Changed on both sides: ours goes on as a copy.
-          const copy: LibraryMap = { ...m, id: newMapId(), syncedAt: null };
+          // Changed on both sides: ours goes on as a copy (a map of its own,
+          // which publishing would make a new Workshop item).
+          const copy: LibraryMap = {
+            ...m,
+            id: newMapId(),
+            syncedAt: null,
+            workshopId: null,
+          };
           await putMap(copy);
           local.set(copy.id, copy);
           report.conflicts.push(m.name);
         }
-        await download(r.id, r.updatedAt);
+        await download(r.id, r.updatedAt, r.workshopId ?? m.workshopId ?? null);
         local.delete(r.id);
       }
     }
