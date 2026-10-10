@@ -1,12 +1,7 @@
-import {
-  checkMapSource,
-  type MapSource,
-  SOURCE_VOID,
-  SOURCE_WATER,
-  unpackUpload,
-} from "../core/game/CommunityMaps";
+import { checkMapSource, type MapSource } from "../core/game/CommunityMaps";
 import { getApiBase } from "./ApiBase";
 import { getAuthHeader } from "./Auth";
+import { previewOf, unpackSource } from "./editor/MapPack";
 
 // Community maps on the Steam Workshop, in the Steam app (its workshop.rs).
 // A map the player publishes goes to our servers first (they wait there for
@@ -166,18 +161,8 @@ export interface WorkshopMap {
 export async function readWorkshopMap(
   data: Uint8Array,
 ): Promise<MapSource | null> {
-  const upload = unpackUpload(data);
-  if (upload === null) return null;
-  try {
-    const inflated = new Response(upload.tiles.slice()).body!.pipeThrough(
-      new DecompressionStream("gzip"),
-    );
-    const tiles = new Uint8Array(await new Response(inflated).arrayBuffer());
-    const source: MapSource = { ...upload.header, tiles };
-    return checkMapSource(source) === null ? source : null;
-  } catch {
-    return null;
-  }
+  const source = await unpackSource(data);
+  return source !== null && checkMapSource(source) === null ? source : null;
 }
 
 /** The maps the player subscribed to that Steam has installed. */
@@ -199,31 +184,4 @@ export async function subscribedWorkshopMaps(): Promise<{
     });
   }
   return { maps, downloading: items.downloading };
-}
-
-/** A quick picture of a source: water blue, void black, land by relief. */
-function previewOf(s: MapSource): string {
-  const scale = Math.max(1, Math.ceil(s.width / 320));
-  const w = Math.floor(s.width / scale);
-  const h = Math.floor(s.height / scale);
-  const canvas = document.createElement("canvas");
-  canvas.width = w;
-  canvas.height = h;
-  const ctx = canvas.getContext("2d")!;
-  const img = ctx.createImageData(w, h);
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      const t = s.tiles[y * scale * s.width + x * scale];
-      const o = (y * w + x) * 4;
-      let rgb: [number, number, number];
-      if (t === SOURCE_WATER) rgb = [44, 98, 146];
-      else if (t === SOURCE_VOID) rgb = [12, 12, 12];
-      else if (t < 10) rgb = [190, 220, 140];
-      else if (t < 20) rgb = [230, 214, 170];
-      else rgb = [240, 240, 240];
-      img.data.set([...rgb, 255], o);
-    }
-  }
-  ctx.putImageData(img, 0, 0);
-  return canvas.toDataURL("image/png");
 }

@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.92
+
+🗂️ **Map editor: My creations**
+
+- Keep as many maps as you like: My creations lists them all, to open, duplicate or delete, and New map starts another one.
+- Your maps save as you draw, and a Save button saves right away.
+- Signed in, they sync with your account: the same maps in the browser and in the Steam app. A map changed on two devices at once is kept in both versions.
+- The editor stays open to everyone in the browser; maps are published from the Steam app, on the Steam Workshop.
+
 ## v0.1.91
 
 🛠️ **Steam Workshop**

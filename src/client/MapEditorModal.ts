@@ -3,7 +3,18 @@ import { customElement, query, state } from "lit/decorators.js";
 import { publishCommunityMap } from "./CommunityMapsApi";
 import { BaseModal } from "./components/BaseModal";
 import { modalHeader } from "./components/ui/ModalHeader";
-import { loadDraft, saveDraft } from "./editor/EditorDraft";
+import {
+  currentMapId,
+  deleteMap,
+  getMap,
+  type LibraryMap,
+  listMaps,
+  newMapId,
+  putMap,
+  setCurrentMapId,
+} from "./editor/EditorLibrary";
+import "./editor/EditorLibraryDialog";
+import { type EditorSyncStatus, syncBadge } from "./editor/EditorLibraryDialog";
 import {
   EditorMap,
   fitImageSize,
@@ -14,14 +25,18 @@ import {
   Terrain,
 } from "./editor/EditorMap";
 import { prepareCustomMap } from "./editor/EditorPlay";
+import { syncLibrary } from "./editor/EditorSync";
+import { previewOf } from "./editor/MapPack";
 import type { SinglePlayerModal } from "./SinglePlayerModal";
 import { showToast, translateText } from "./Utils";
 import { publishToWorkshop, workshop } from "./Workshop";
 
 // The map editor (its own page): paint water, land with its relief and void
 // tiles, place nations, import an image, and try the map in a solo game. The
-// map is kept on this device as a draft. Publishing comes with the community
-// maps gallery.
+// player keeps as many maps as they like ("My creations", EditorLibrary.ts),
+// saved as they draw and, signed in, synced with their account so the browser
+// and the Steam app show the same. Publishing happens in the Steam app only:
+// maps go to our gallery and to the Steam Workshop.
 
 type Tool = "water" | "land" | "void" | "fill" | "nation";
 
@@ -35,6 +50,9 @@ type SizeKey = keyof typeof SIZES | "image";
 const MIN_BRUSH = 1;
 const MAX_BRUSH = 120;
 const DRAFT_DELAY_MS = 1500;
+// The account copy follows a little after the last change.
+const SYNC_DELAY_MS = 5000;
+const STEAM_STORE_URL = "https://store.steampowered.com/app/5369890/";
 
 // Editor colours: the thumbnail palette for land, a calm sea, void as the
 // background the game paints it with.
@@ -63,7 +81,10 @@ export class MapEditorModal extends BaseModal {
   @state() private sizeKey: SizeKey = "medium";
   @state() private grid = false;
   @state() private busy = false;
-  @state() private confirmNew = false;
+  @state() private libraryOpen = false;
+  @state() private libraryMaps: LibraryMap[] = [];
+  @state() private sync: EditorSyncStatus = "local";
+  @state() private steamOnly = false;
   @state() private publishing: "ask" | "sending" | null = null;
   @state() private cursor: { x: number; y: number } | null = null;
   // Bumped on every change, so the side panel re-reads the map.
@@ -86,7 +107,10 @@ export class MapEditorModal extends BaseModal {
   private lastPaint: { x: number; y: number } | null = null;
   private resizeObserver: ResizeObserver | null = null;
   private draftTimer: ReturnType<typeof setTimeout> | null = null;
+  private syncTimer: ReturnType<typeof setTimeout> | null = null;
   private draftLoaded = false;
+  // The open map's id in the library.
+  private currentId = "";
 
   constructor() {
     super();
@@ -100,29 +124,68 @@ export class MapEditorModal extends BaseModal {
   protected override async onOpen(): Promise<void> {
     window.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener("visibilitychange", this.onVisibility);
     if (!this.draftLoaded) {
       this.draftLoaded = true;
-      const draft = await loadDraft();
-      if (draft !== null) {
-        this.map = EditorMap.fromData(draft);
-        this.mapName = draft.name;
-        this.sizeKey = this.sizeOf(draft.width, draft.height);
-      } else {
-        this.map = sampleMap();
-        this.mapName = translateText("map_editor.default_name");
+      const id = await currentMapId();
+      let saved =
+        (id !== null ? await getMap(id) : null) ?? (await listMaps())[0];
+      // Nothing here yet: the account may have maps from another device.
+      if (saved === undefined) {
+        this.sync = "syncing";
+        this.sync = (await syncLibrary()).state;
+        saved = (await listMaps())[0];
       }
-      this.rebuildImage();
+      if (saved !== undefined && saved !== null) this.show(saved);
+      else this.startMap(sampleMap(), true);
     }
     await this.updateComplete;
     this.attachCanvas();
+    void this.syncNow();
+  }
+
+  private onVisibility = () => {
+    if (document.visibilityState === "visible") void this.syncNow();
+  };
+
+  /** Opens a map of the library in the editor. */
+  private show(saved: LibraryMap): void {
+    this.currentId = saved.id;
+    this.map = EditorMap.fromData(saved);
+    this.mapName = saved.name;
+    this.sizeKey = this.sizeOf(saved.width, saved.height);
+    this.rebuildImage();
+    this.fitted = false;
+    this.revision++;
+    void setCurrentMapId(saved.id);
+    if (this.canvas) this.attachCanvas();
+  }
+
+  /** Starts a new map in the library and opens it. */
+  private startMap(map: EditorMap, sample = false): void {
+    this.currentId = newMapId();
+    this.map = map;
+    this.mapName = translateText(
+      sample ? "map_editor.sample_name" : "map_editor.default_name",
+    );
+    this.sizeKey = this.sizeOf(map.width, map.height);
+    this.rebuildImage();
+    this.fitted = false;
+    void setCurrentMapId(this.currentId);
+    this.changed();
+    void this.flushDraft();
+    if (this.canvas) this.attachCanvas();
   }
 
   protected override onClose(): void {
     window.removeEventListener("keydown", this.onKeyDown);
     window.removeEventListener("keyup", this.onKeyUp);
+    document.removeEventListener("visibilitychange", this.onVisibility);
     this.resizeObserver?.disconnect();
     this.resizeObserver = null;
-    this.flushDraft();
+    void this.flushDraft();
+    this.libraryOpen = false;
+    this.steamOnly = false;
   }
 
   private sizeOf(width: number, height: number): SizeKey {
@@ -461,22 +524,143 @@ export class MapEditorModal extends BaseModal {
     this.revision++;
     this.draw();
     if (this.draftTimer !== null) clearTimeout(this.draftTimer);
-    this.draftTimer = setTimeout(() => this.flushDraft(), DRAFT_DELAY_MS);
+    this.draftTimer = setTimeout(() => void this.flushDraft(), DRAFT_DELAY_MS);
   }
 
-  private flushDraft(): void {
-    if (this.draftTimer === null) return;
+  /** Saves the open map now if it changed; resolves once it is saved. */
+  private flushDraft(): Promise<void> {
+    if (this.draftTimer === null) return Promise.resolve();
     clearTimeout(this.draftTimer);
     this.draftTimer = null;
-    void saveDraft({
-      name: this.mapName,
+    const id = this.currentId;
+    const name =
+      this.mapName.trim() || translateText("map_editor.default_name");
+    const source = this.map.toSource(name);
+    const record = {
+      id,
+      name,
       width: this.map.width,
       height: this.map.height,
       terrain: this.map.terrain.slice(),
       relief: this.map.relief.slice(),
-      nations: this.map.nations,
-      savedAt: Date.now(),
+      nations: this.map.nations.map((n) => ({ ...n })),
+      updatedAt: Date.now(),
+      deleted: false,
+      thumbnail: previewOf(source),
+    };
+    const saved = getMap(id).then((prev) =>
+      putMap({ ...record, syncedAt: prev?.syncedAt ?? null }),
+    );
+    if (this.syncTimer !== null) clearTimeout(this.syncTimer);
+    this.syncTimer = setTimeout(() => void this.syncNow(), SYNC_DELAY_MS);
+    return saved;
+  }
+
+  /** Syncs the library with the account, then follows what changed. */
+  private async syncNow(): Promise<void> {
+    if (this.syncTimer !== null) clearTimeout(this.syncTimer);
+    this.syncTimer = null;
+    await this.flushDraft();
+    // Saving just now scheduled this very sync.
+    if (this.syncTimer !== null) clearTimeout(this.syncTimer);
+    this.syncTimer = null;
+    if (this.sync !== "signed-out") this.sync = "syncing";
+    const report = await syncLibrary();
+    this.sync = report.state;
+    for (const name of report.conflicts) {
+      showToast(
+        translateText("map_editor.sync_conflict", { name }),
+        "red",
+        8000,
+      );
+    }
+    for (const name of report.tooLarge) {
+      showToast(
+        translateText("map_editor.sync_too_large", { name }),
+        "red",
+        8000,
+      );
+    }
+    if (report.full) {
+      showToast(translateText("map_editor.sync_full"), "red", 8000);
+    }
+    // The open map changed or went elsewhere: follow, unless it is being edited.
+    if (this.draftTimer === null) {
+      if (report.deleted.includes(this.currentId)) {
+        const next = (await listMaps())[0];
+        if (next) this.show(next);
+        else this.startMap(this.blankMap());
+        showToast(translateText("map_editor.deleted_elsewhere"), "red");
+      } else if (report.changed.includes(this.currentId)) {
+        const fresh = await getMap(this.currentId);
+        if (fresh) this.show(fresh);
+      }
+    }
+    if (this.libraryOpen) this.libraryMaps = await listMaps();
+  }
+
+  private async save(): Promise<void> {
+    this.changed();
+    await this.flushDraft();
+    showToast(translateText("map_editor.saved"), "green");
+    void this.syncNow();
+  }
+
+  private async openLibrary(): Promise<void> {
+    await this.flushDraft();
+    this.libraryMaps = await listMaps();
+    this.libraryOpen = true;
+    void this.syncNow();
+  }
+
+  private async openMap(id: string): Promise<void> {
+    await this.flushDraft();
+    const saved = await getMap(id);
+    if (saved === null) return;
+    this.show(saved);
+    this.libraryOpen = false;
+  }
+
+  private async duplicateMap(id: string): Promise<void> {
+    await this.flushDraft();
+    const saved = await getMap(id);
+    if (saved === null) return;
+    await putMap({
+      ...saved,
+      id: newMapId(),
+      name: translateText("map_editor.copy_name", { name: saved.name }).slice(
+        0,
+        40,
+      ),
+      updatedAt: Date.now(),
+      syncedAt: null,
     });
+    this.libraryMaps = await listMaps();
+    void this.syncNow();
+  }
+
+  private async removeMap(id: string): Promise<void> {
+    if (id === this.currentId && this.draftTimer !== null) {
+      clearTimeout(this.draftTimer);
+      this.draftTimer = null;
+    }
+    await deleteMap(id);
+    this.libraryMaps = await listMaps();
+    if (id === this.currentId) {
+      const next = this.libraryMaps[0];
+      if (next) this.show(next);
+      else {
+        this.startMap(this.blankMap());
+        await this.flushDraft();
+        this.libraryMaps = await listMaps();
+      }
+    }
+    void this.syncNow();
+  }
+
+  private blankMap(): EditorMap {
+    const s = this.sizeKey === "image" ? SIZES.medium : SIZES[this.sizeKey];
+    return new EditorMap(s.width, s.height);
   }
 
   private undo(): void {
@@ -497,14 +681,10 @@ export class MapEditorModal extends BaseModal {
     this.changed();
   }
 
-  private newMap(): void {
-    this.confirmNew = false;
-    const s = this.sizeKey === "image" ? SIZES.medium : SIZES[this.sizeKey];
-    this.map = new EditorMap(s.width, s.height);
-    if (this.sizeKey === "image") this.sizeKey = "medium";
-    this.mapName = translateText("map_editor.default_name");
-    this.rebuildImage();
-    this.changed();
+  private async newMap(): Promise<void> {
+    await this.flushDraft();
+    this.libraryOpen = false;
+    this.startMap(this.blankMap());
   }
 
   private async importImage(file: File): Promise<void> {
@@ -563,7 +743,7 @@ export class MapEditorModal extends BaseModal {
           6000,
         );
       }
-      this.flushDraft();
+      void this.flushDraft();
       const solo = document.querySelector(
         "single-player-modal",
       ) as SinglePlayerModal | null;
@@ -625,6 +805,7 @@ export class MapEditorModal extends BaseModal {
         "map too small": "too_small",
         banned: "banned",
         too_many: "too_many",
+        steam_only: "steam_only",
       };
       this.publishing = null;
       showToast(
@@ -638,6 +819,49 @@ export class MapEditorModal extends BaseModal {
       this.publishing = null;
       showToast(translateText("map_editor.publish_error_generic"), "red");
     }
+  }
+
+  private renderSteamOnlyDialog() {
+    if (!this.steamOnly) return nothing;
+    return html`<div
+      class="fixed inset-0 z-[60] grid place-items-center bg-black/70 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="editor-steam-only-title"
+      @click=${(e: Event) => {
+        if (e.target === e.currentTarget) this.steamOnly = false;
+      }}
+    >
+      <div
+        class="w-full max-w-md rounded-lg border border-white/10 bg-[#0a1512] p-5 flex flex-col gap-3 text-white"
+      >
+        <h3 id="editor-steam-only-title" class="font-display text-xl font-bold">
+          ${translateText("map_editor.steam_only_title")}
+        </h3>
+        <p class="text-sm text-white/80">
+          ${translateText("map_editor.steam_only_body")}
+        </p>
+        <p class="text-sm text-white/60">
+          ${translateText("map_editor.steam_only_sync")}
+        </p>
+        <div class="flex flex-wrap justify-end gap-2 pt-2">
+          <button
+            class="rounded-md border border-white/10 px-4 py-2 text-sm font-semibold text-white/80 hover:bg-white/5"
+            @click=${() => (this.steamOnly = false)}
+          >
+            ${translateText("map_editor.steam_only_close")}
+          </button>
+          <a
+            class="inline-flex items-center gap-2 rounded-md bg-[linear-gradient(160deg,#10b981,#059669_60%,#047857)] px-4 py-2 text-sm font-bold text-white hover:brightness-110"
+            href=${STEAM_STORE_URL}
+            target="_blank"
+            rel="noopener"
+          >
+            ${ICON_PUBLISH} ${translateText("map_editor.steam_only_open")}
+          </a>
+        </div>
+      </div>
+    </div>`;
   }
 
   private renderPublishDialog() {
@@ -1027,7 +1251,13 @@ export class MapEditorModal extends BaseModal {
           class="flex flex-wrap justify-between gap-2 px-4 pb-3 text-xs text-white/45"
         >
           <span>${translateText("map_editor.controls")}</span>
-          <span>${translateText("map_editor.draft_note")}</span>
+          <button
+            class="hover:text-white"
+            title=${translateText("map_editor.sync_now")}
+            @click=${() => void this.syncNow()}
+          >
+            ${syncBadge(this.sync)}
+          </button>
         </footer>
       </div>
       <input
@@ -1042,14 +1272,21 @@ export class MapEditorModal extends BaseModal {
           if (file) void this.importImage(file);
         }}
       />
-      ${this.renderPublishDialog()}
-      ${this.confirmNew
-        ? html`<confirm-dialog
-            .message=${translateText("map_editor.new_map_confirm")}
-            variant="warning"
-            @confirm=${() => this.newMap()}
-            @cancel=${() => (this.confirmNew = false)}
-          ></confirm-dialog>`
+      ${this.renderPublishDialog()} ${this.renderSteamOnlyDialog()}
+      ${this.libraryOpen
+        ? html`<editor-library-dialog
+            .maps=${this.libraryMaps}
+            .currentId=${this.currentId}
+            .sync=${this.sync}
+            @close-library=${() => (this.libraryOpen = false)}
+            @new-map=${() => void this.newMap()}
+            @open-map=${(e: CustomEvent<string>) => void this.openMap(e.detail)}
+            @duplicate-map=${(e: CustomEvent<string>) =>
+              void this.duplicateMap(e.detail)}
+            @delete-map=${(e: CustomEvent<string>) =>
+              void this.removeMap(e.detail)}
+            @sync-now=${() => void this.syncNow()}
+          ></editor-library-dialog>`
         : nothing}
     `;
   }
@@ -1078,15 +1315,23 @@ export class MapEditorModal extends BaseModal {
           this.changed();
         }}
       />
-      <button class=${button} @click=${() => (this.confirmNew = true)}>
+      <button class=${button} @click=${() => void this.openLibrary()}>
+        ${ICON_LIBRARY} ${translateText("map_editor.library")}
+      </button>
+      <button class=${button} @click=${() => void this.newMap()}>
         ${ICON_NEW} ${translateText("map_editor.new_map")}
+      </button>
+      <button class=${button} @click=${() => void this.save()}>
+        ${ICON_SAVE} ${translateText("map_editor.save")}
       </button>
       <button
         class=${button}
         ?disabled=${!this.map.canUndo()}
+        aria-label=${translateText("map_editor.undo")}
+        title=${translateText("map_editor.undo")}
         @click=${() => this.undo()}
       >
-        ${ICON_UNDO} ${translateText("map_editor.undo")}
+        ${ICON_UNDO}
       </button>
       <button class=${button} @click=${() => this.fileInput?.click()}>
         ${ICON_IMAGE} ${translateText("map_editor.import")}
@@ -1100,13 +1345,20 @@ export class MapEditorModal extends BaseModal {
       </button>
       <button
         class=${button}
+        aria-label=${translateText("community_maps.title")}
+        title=${translateText("community_maps.title")}
         @click=${() => window.showPage?.("page-community-maps")}
       >
-        ${ICON_GALLERY} ${translateText("community_maps.title")}
+        ${ICON_GALLERY}
       </button>
       <button
         class=${button}
         @click=${() => {
+          // Publishing goes through the Steam Workshop: the Steam app.
+          if (workshop() === null) {
+            this.steamOnly = true;
+            return;
+          }
           if (this.map.landShare() === 0) {
             showToast(translateText("map_editor.check_no_land"), "red");
             return;
@@ -1236,6 +1488,28 @@ function sampleMap(): EditorMap {
   return map;
 }
 
+const ICON_LIBRARY = html`<svg
+  class="size-4"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  ${svg`<rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/>`}
+</svg>`;
+const ICON_SAVE = html`<svg
+  class="size-4"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  ${svg`<path d="M5 3h11l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M8 3v5h7V3M8 21v-6h8v6"/>`}
+</svg>`;
 const ICON_UNDO = html`<svg
   class="size-4"
   viewBox="0 0 24 24"

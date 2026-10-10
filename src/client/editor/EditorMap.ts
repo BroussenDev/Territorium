@@ -294,6 +294,25 @@ export class EditorMap {
     };
   }
 
+  /** Back from a source (a map synced or from the Workshop). */
+  static fromSource(source: MapSource): EditorMap {
+    const map = new EditorMap(source.width, source.height);
+    for (let i = 0; i < source.tiles.length; i++) {
+      const t = source.tiles[i];
+      if (t === SOURCE_WATER) map.terrain[i] = Terrain.Water;
+      else if (t === SOURCE_VOID) map.terrain[i] = Terrain.Void;
+      else {
+        map.terrain[i] = Terrain.Land;
+        map.relief[i] = Math.min(t, MAX_RELIEF);
+      }
+    }
+    map.nations = source.nations
+      .filter((n) => map.inside(n.x, n.y))
+      .slice(0, MAX_NATIONS)
+      .map((n) => ({ name: n.name, x: n.x, y: n.y }));
+    return map;
+  }
+
   /** An image read the way the generator reads it (alpha, then blue). */
   static fromImage(image: GeneratorImage): EditorMap {
     const map = new EditorMap(image.width, image.height);
