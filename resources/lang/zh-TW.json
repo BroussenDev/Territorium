@@ -3297,6 +3297,8 @@
     "tab_gameplay": "遊戲",
     "tab_graphics": "圖形",
     "tab_keybinds": "快捷鍵",
+    "target_player": "標記目標玩家",
+    "target_player_desc": "將游標下的玩家標記為你和盟友的目標。",
     "title": "設定",
     "toggle_terrain": "切換地勢圖",
     "toggle_view": "切換視圖",

@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.100
+
+⌨️ **Player panel shortcuts**
+
+- Hovering another player now shows what you can do to them on the right of the player panel: send or break an alliance, target them, or send a boat. Click a button, or press its key.
+- New key to target the player under your cursor: N (change it in Settings, next to the alliance keys).
+- A button disappears as soon as you use it, so you never send the same request twice.
+- Shown on screens at least 1400 pixels wide with a mouse.
+
 ## v0.1.99
 
 🤖 **Smarter nations**

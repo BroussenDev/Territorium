@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gameplay",
     "tab_graphics": "Grafik",
     "tab_keybinds": "Tastenbelegung",
+    "target_player": "Spieler anvisieren",
+    "target_player_desc": "Markiert den Spieler unter deinem Mauszeiger als Ziel für dich und deine Verbündeten.",
     "title": "Einstellungen",
     "toggle_terrain": "Gelände anzeigen/verbergen",
     "toggle_view": "Ansicht umschalten",

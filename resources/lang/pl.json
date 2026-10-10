@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Rozgrywka",
     "tab_graphics": "Grafika",
     "tab_keybinds": "Skróty klawiszowe",
+    "target_player": "Oznacz gracza jako cel",
+    "target_player_desc": "Oznacza gracza pod kursorem jako cel dla ciebie i twoich sojuszników.",
     "title": "Ustawienia użytkownika",
     "toggle_terrain": "Przełącz teren",
     "toggle_view": "Przełącz widok",

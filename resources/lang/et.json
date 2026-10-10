@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Mängu käik",
     "tab_graphics": "Graafika",
     "tab_keybinds": "Otseteed",
+    "target_player": "Märgi mängija sihtmärgiks",
+    "target_player_desc": "Märgib kursori all oleva mängija sihtmärgiks sulle ja su liitlastele.",
     "title": "Seaded",
     "toggle_terrain": "Lülita sisse/välja maa-alasid",
     "toggle_view": "Muuda vaadet",

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Pelin kulku",
     "tab_graphics": "Grafiikka",
     "tab_keybinds": "Näppäinasetukset",
+    "target_player": "Merkitse pelaaja kohteeksi",
+    "target_player_desc": "Merkitsee kursorin alla olevan pelaajan kohteeksi sinulle ja liittolaisillesi.",
     "title": "Käyttäjäasetukset",
     "toggle_terrain": "Vaihda maastoa",
     "toggle_view": "Vaihda näkymää",

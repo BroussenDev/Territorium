@@ -4,6 +4,7 @@ import {
   CloseViewEvent,
   ConfirmGhostStructureEvent,
   ContextMenuEvent,
+  DoTargetPlayerEvent,
   DragEvent,
   InputHandler,
   MouseOverEvent,
@@ -1553,6 +1554,17 @@ describe("InputHandler teardown (OPE-411)", () => {
   });
 
   afterEach(() => inputHandler.destroy());
+
+  it("emits DoTargetPlayerEvent on N, for the tile under the cursor", () => {
+    const targets: DoTargetPlayerEvent[] = [];
+    eventBus.on(DoTargetPlayerEvent, (e) => targets.push(e));
+
+    window.dispatchEvent(new KeyboardEvent("keyup", { code: "KeyN" }));
+
+    expect(targets).toHaveLength(1);
+    // No tile: the runner uses the one under the cursor.
+    expect(targets[0].tile).toBeUndefined();
+  });
 
   it("emits AlternateViewEvent on Space while alive", () => {
     const emit = vi.spyOn(eventBus, "emit");

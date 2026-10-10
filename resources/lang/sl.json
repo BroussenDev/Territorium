@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Igranje",
     "tab_graphics": "Grafika",
     "tab_keybinds": "Bližnjice",
+    "target_player": "Označi igralca kot tarčo",
+    "target_player_desc": "Označi igralca pod kazalcem kot tarčo zate in tvoje zaveznike.",
     "title": "Uporabniške nastavitve",
     "toggle_terrain": "Omogoči teren",
     "toggle_view": "Preklopite pogled",

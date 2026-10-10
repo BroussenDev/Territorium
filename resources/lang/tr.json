@@ -3297,6 +3297,8 @@
     "tab_gameplay": "oynanış",
     "tab_graphics": "Grafik",
     "tab_keybinds": "Kısayollar",
+    "target_player": "Oyuncuyu hedefle",
+    "target_player_desc": "İmlecinin altındaki oyuncuyu sen ve müttefiklerin için hedef olarak işaretler.",
     "title": "Seçenekler",
     "toggle_terrain": "Araziyi Göster",
     "toggle_view": "Görüntüyü Değiştir",

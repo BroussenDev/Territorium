@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Hrateľnosť",
     "tab_graphics": "Grafika",
     "tab_keybinds": "Skratky",
+    "target_player": "Označiť hráča ako cieľ",
+    "target_player_desc": "Označí hráča pod kurzorom ako cieľ pre teba a tvojich spojencov.",
     "title": "Užívateľské nastavenia",
     "toggle_terrain": "Prepnúť povrch",
     "toggle_view": "Prepnúť zobrazenie",

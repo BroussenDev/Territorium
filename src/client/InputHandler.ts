@@ -1,5 +1,6 @@
 import { EventBus, GameEvent } from "../core/EventBus";
-import { PlayerBuildableUnitType, UnitType } from "../core/game/Game";
+import { PlayerBuildableUnitType, PlayerID, UnitType } from "../core/game/Game";
+import { TileRef } from "../core/game/GameMap";
 import {
   KEYBINDS_KEY,
   USER_SETTINGS_CHANGED_EVENT,
@@ -154,15 +155,39 @@ export class ShowEmojiMenuEvent implements GameEvent {
   ) {}
 }
 
-export class DoBoatAttackEvent implements GameEvent {}
+// The player actions below act on the tile under the cursor (their
+// keybinds), or on `tile` when given (the player info panel's buttons).
+// `playerID` is the player the panel showed: if the tile has changed hands
+// since, the action is dropped rather than hitting its new owner.
+
+export class DoBoatAttackEvent implements GameEvent {
+  constructor(public readonly tile?: TileRef) {}
+}
 
 export class DoGroundAttackEvent implements GameEvent {}
 
 export class DoRetaliateAttackEvent implements GameEvent {}
 
-export class DoRequestAllianceEvent implements GameEvent {}
+export class DoRequestAllianceEvent implements GameEvent {
+  constructor(
+    public readonly tile?: TileRef,
+    public readonly playerID?: PlayerID,
+  ) {}
+}
 
-export class DoBreakAllianceEvent implements GameEvent {}
+export class DoBreakAllianceEvent implements GameEvent {
+  constructor(
+    public readonly tile?: TileRef,
+    public readonly playerID?: PlayerID,
+  ) {}
+}
+
+export class DoTargetPlayerEvent implements GameEvent {
+  constructor(
+    public readonly tile?: TileRef,
+    public readonly playerID?: PlayerID,
+  ) {}
+}
 
 export class AttackRatioEvent implements GameEvent {
   constructor(public readonly attackRatio: number) {}
@@ -366,6 +391,9 @@ export class InputHandler {
     });
     this.addKeybindAndEvent(this.keybinds.breakAlliance, () => {
       this.eventBus.emit(new DoBreakAllianceEvent());
+    });
+    this.addKeybindAndEvent(this.keybinds.targetPlayer, () => {
+      this.eventBus.emit(new DoTargetPlayerEvent());
     });
     this.addKeybindAndEvent(
       this.keybinds.pauseGame,

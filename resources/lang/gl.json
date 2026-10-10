@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Jogabilidade",
     "tab_graphics": "Gráficos",
     "tab_keybinds": "Atallos de tecla",
+    "target_player": "Marcar xogador como obxectivo",
+    "target_player_desc": "Marca o xogador baixo o cursor como obxectivo para ti e os teus aliados.",
     "title": "Axustes do usuario",
     "toggle_terrain": "Activar terreo",
     "toggle_view": "Alternar vista",

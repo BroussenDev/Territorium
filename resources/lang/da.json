@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gameplay",
     "tab_graphics": "Grafik",
     "tab_keybinds": "Genvejstaster",
+    "target_player": "Markér spiller som mål",
+    "target_player_desc": "Markerer spilleren under din markør som mål for dig og dine allierede.",
     "title": "Indstillinger",
     "toggle_terrain": "Slå Terræn Til/Fra",
     "toggle_view": "Skift Visning",

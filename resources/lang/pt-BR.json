@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Jogabilidade",
     "tab_graphics": "Gráficos",
     "tab_keybinds": "Atalhos de Tecla",
+    "target_player": "Marcar jogador como alvo",
+    "target_player_desc": "Marca o jogador sob o seu cursor como alvo para você e seus aliados.",
     "title": "Configurações",
     "toggle_terrain": "Habilitar relevo",
     "toggle_view": "Alternar visualização",

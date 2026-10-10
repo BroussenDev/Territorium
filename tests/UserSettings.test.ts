@@ -581,6 +581,7 @@ describe("getDefaultKeybinds", () => {
     expect(keybinds.boxSelectWarships).toBe("ShiftLeft");
     expect(keybinds.resetGfx).toBe("KeyR");
     expect(keybinds.selectAllWarships).toBe("KeyF");
+    expect(keybinds.targetPlayer).toBe("KeyN");
     expect(keybinds.buildMenuModifier).toBe("ControlLeft");
   });
 

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "ゲームプレイ",
     "tab_graphics": "グラフィックス",
     "tab_keybinds": "キーの割り当て",
+    "target_player": "プレイヤーを標的にする",
+    "target_player_desc": "カーソルの下のプレイヤーを、あなたと同盟国の標的としてマークします。",
     "title": "設定",
     "toggle_terrain": "地形表示の切り替え",
     "toggle_view": "表示モードの切り替え",

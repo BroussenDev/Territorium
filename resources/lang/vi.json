@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Lối chơi",
     "tab_graphics": "Đồ họa",
     "tab_keybinds": "Tổ hợp phím",
+    "target_player": "Nhắm mục tiêu người chơi",
+    "target_player_desc": "Đánh dấu người chơi dưới con trỏ là mục tiêu cho bạn và đồng minh.",
     "title": "Cài đặt",
     "toggle_terrain": "Chuyển đổi Địa hình",
     "toggle_view": "Chuyển đổi chế độ xem",

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Joc",
     "tab_graphics": "Gràfics",
     "tab_keybinds": "Dreceres",
+    "target_player": "Marcar jugador com a objectiu",
+    "target_player_desc": "Marca el jugador sota el cursor com a objectiu per a tu i els teus aliats.",
     "title": "Configuració",
     "toggle_terrain": "Canvia la visualització del terreny",
     "toggle_view": "Canviar Visualització",

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gameplay",
     "tab_graphics": "Graphiques",
     "tab_keybinds": "Raccourcis clavier",
+    "target_player": "Cibler un joueur",
+    "target_player_desc": "Marque le joueur sous votre curseur comme cible pour vous et vos alliés.",
     "title": "Paramètres",
     "toggle_terrain": "Activer/désactiver le terrain",
     "toggle_view": "Activer/désactiver l'affichage",

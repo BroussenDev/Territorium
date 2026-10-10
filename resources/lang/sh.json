@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Igra",
     "tab_graphics": "Grafika",
     "tab_keybinds": "Prečice",
+    "target_player": "Označi igrača kao metu",
+    "target_player_desc": "Označava igrača ispod kursora kao metu za tebe i tvoje saveznike.",
     "title": "Podešavanja",
     "toggle_terrain": "Uključi/isključi teren",
     "toggle_view": "Promeni prikaz",

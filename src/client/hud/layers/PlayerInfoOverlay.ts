@@ -11,15 +11,22 @@ import {
 } from "../../../core/game/Game";
 import { TileRef } from "../../../core/game/GameMap";
 import { AllianceView } from "../../../core/game/GameUpdates";
+import { UserSettings } from "../../../core/game/UserSettings";
 import { Controller } from "../../Controller";
 import {
   ContextMenuEvent,
+  DoBoatAttackEvent,
+  DoBreakAllianceEvent,
+  DoRequestAllianceEvent,
+  DoTargetPlayerEvent,
   MouseMoveEvent,
   TouchEvent,
 } from "../../InputHandler";
+import { Platform } from "../../Platform";
 import { themeProvider } from "../../theme/ThemeProvider";
 import { TransformHandler } from "../../TransformHandler";
 import {
+  formatKeyForDisplay,
   getTranslatedPlayerTeamLabel,
   renderDuration,
   renderNumber,
@@ -49,6 +56,10 @@ const portIcon = assetUrl("images/PortLevel1IconWhite.svg");
 const samLauncherIcon = assetUrl("images/SamLauncherLevel1IconWhite.svg");
 const radarIcon = assetUrl("images/RadarLevel1IconWhite.svg");
 const soldierIcon = assetUrl("images/SoldierIcon.svg");
+const requestAllianceIcon = assetUrl("images/AllianceIconWhite.svg");
+const breakAllianceIcon = assetUrl("images/TraitorIconWhite.svg");
+const targetIcon = assetUrl("images/TargetIconWhite.svg");
+const boatIcon = assetUrl("images/BoatIconWhite.svg");
 
 function euclideanDistWorld(
   coord: { x: number; y: number },
@@ -83,6 +94,20 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
 
   @state()
   private player: PlayerView | null = null;
+  /** The tile the panel was shown for; the action buttons act on it. */
+  private tile: TileRef | null = null;
+  /** What I can do to the hovered player, for its action buttons. */
+  @state() private playerActions: {
+    player: PlayerView;
+    requestAlliance: boolean;
+    breakAlliance: boolean;
+    target: boolean;
+    boat: boolean;
+  } | null = null;
+  private playerActionsFor: PlayerView | null = null;
+  private playerActionsFetchedAt = 0;
+  /** Bumped per fetch and per action I take; older answers are dropped. */
+  private playerActionsVersion = 0;
 
   @state()
   private playerProfile: PlayerProfile | null = null;
@@ -106,6 +131,15 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
 
   private lastMouseUpdate = 0;
 
+  private userSettings = new UserSettings();
+
+  // The action buttons (and the panel width they need) only show on wide
+  // screens with a mouse: narrower, the wider panel covers the leaderboard
+  // and the alerts bell, and touch devices have no keyboard shortcut to show.
+  private showShortcutButtons(): boolean {
+    return window.innerWidth >= 1400 && !Platform.isTouch;
+  }
+
   init() {
     this.eventBus.on(MouseMoveEvent, (e: MouseMoveEvent) =>
       this.onMouseEvent(e),
@@ -121,10 +155,50 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
     this.eventBus.on(ImmunityBarVisibleEvent, (e) => {
       this.immunityBarVisible = e.visible;
     });
+    this.eventBus.on(DoRequestAllianceEvent, (e) =>
+      this.markActionTaken(e.tile, "requestAlliance"),
+    );
+    this.eventBus.on(DoBreakAllianceEvent, (e) =>
+      this.markActionTaken(e.tile, "breakAlliance"),
+    );
+    this.eventBus.on(DoTargetPlayerEvent, (e) =>
+      this.markActionTaken(e.tile, "target"),
+    );
     this._isActive = true;
   }
 
+  // Once I act on the shown player (button or keybind), drop that button
+  // right away: the game only sees the intent a turn later, so asking now
+  // would still offer it. The next refresh, a second later, shows the real
+  // state. A keybind (no tile) acts under the cursor, which is the shown
+  // player unless the pointer is on the panel.
+  private markActionTaken(
+    tile: TileRef | undefined,
+    action: "requestAlliance" | "breakAlliance" | "target",
+  ) {
+    const actions = this.playerActions;
+    if (!actions || actions.player !== this.player) return;
+    const onShownPlayer =
+      tile === undefined
+        ? this._isInfoVisible && !this.pointerOnPanel
+        : tile === this.tile;
+    if (!onShownPlayer) return;
+    this.playerActionsVersion++;
+    this.playerActionsFetchedAt = Date.now();
+    this.playerActions = { ...actions, [action]: false };
+  }
+
+  // While the pointer is on the panel (moving to an action button), keep the
+  // target: mouse moves still arrive from the window, and the tile under the
+  // panel would otherwise retarget or hide it.
+  private pointerOnPanel = false;
+  private onPanelEnter = () => (this.pointerOnPanel = true);
+  private onPanelLeave = () => (this.pointerOnPanel = false);
+
   private onMouseEvent(event: MouseMoveEvent) {
+    if (this.pointerOnPanel) {
+      return;
+    }
     const now = Date.now();
     if (now - this.lastMouseUpdate < 100) {
       return;
@@ -134,6 +208,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
   }
 
   public hide() {
+    this.pointerOnPanel = false;
     this.setVisible(false);
     this.unit = null;
     this.player = null;
@@ -153,9 +228,11 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
 
     if (owner && owner.isPlayer()) {
       this.player = owner as PlayerView;
+      this.tile = tile;
       this.player.profile().then((p) => {
         this.playerProfile = p;
       });
+      this.refreshPlayerActions(this.player, tile);
       this.setVisible(true);
     } else if (!this.game.isLand(tile)) {
       const units = this.game
@@ -170,7 +247,57 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
     }
   }
 
+  // Asks what I can do to the hovered player when it changes, and at most
+  // once a second while it stays (alliances and boat reach change in play).
+  private refreshPlayerActions(player: PlayerView, tile: TileRef) {
+    const myPlayer = this.game.myPlayer();
+    if (!myPlayer || player === myPlayer || !this.showShortcutButtons()) {
+      return;
+    }
+    // No buttons while players spawn (the game would drop the actions), or
+    // once the shown tile has changed hands (the answer would be about its
+    // new owner).
+    if (this.game.inSpawnPhase() || this.game.owner(tile) !== player) {
+      this.playerActionsVersion++;
+      this.playerActionsFor = null;
+      this.playerActions = null;
+      return;
+    }
+    const now = Date.now();
+    if (
+      this.playerActionsFor === player &&
+      now - this.playerActionsFetchedAt < 1000
+    ) {
+      return;
+    }
+    this.playerActionsFor = player;
+    this.playerActionsFetchedAt = now;
+    const version = ++this.playerActionsVersion;
+    myPlayer
+      .actions(tile, [UnitType.TransportShip])
+      .then((actions) => {
+        if (version !== this.playerActionsVersion) return;
+        const can = actions.interaction;
+        this.playerActions = {
+          player,
+          requestAlliance: can?.canSendAllianceRequest ?? false,
+          breakAlliance: can?.canBreakAlliance ?? false,
+          target: can?.canTarget ?? false,
+          boat: actions.buildableUnits.some(
+            (u) => u.type === UnitType.TransportShip && u.canBuild !== false,
+          ),
+        };
+      })
+      .catch((error) => {
+        console.warn("Failed to check player actions:", error);
+      });
+  }
+
   tick() {
+    // Keep the action buttons current while the mouse rests on a player.
+    if (this._isInfoVisible && this.player && this.tile !== null) {
+      this.refreshPlayerActions(this.player, this.tile);
+    }
     this.requestUpdate();
   }
 
@@ -489,9 +616,7 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
           </div>
         </div>
         <!-- Right: Player identity + Units below -->
-        <div
-          class="flex flex-col justify-between self-stretch w-[100%] flex-grow-1"
-        >
+        <div class="flex flex-col justify-between self-stretch flex-1 min-w-0">
           <div
             class="flex items-center gap-1 lg:gap-2 font-bold text-sm lg:text-lg ${this.getPlayerNameColor(
               isFriendly ?? false,
@@ -555,8 +680,97 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
             ${this.displayUnitCount(player, UnitType.Warship, warshipIcon)}
           </div>
         </div>
+        ${myPlayer && this.showShortcutButtons()
+          ? this.renderActionButtons(player, myPlayer)
+          : ""}
       </div>
     `;
+  }
+
+  private renderShortcutButton(
+    icon: string,
+    title: string,
+    keybind: string | undefined,
+    onClick: () => void,
+  ) {
+    const key = keybind ? formatKeyForDisplay(keybind) : "";
+    // Icon only, with the key as a corner badge, to keep the panel narrow.
+    return html`<button
+      class="relative flex items-center justify-center size-6.5 border rounded-md border-plate-500 hover:bg-white/10 cursor-pointer"
+      title=${title}
+      @click=${(e: MouseEvent) => {
+        e.stopPropagation();
+        onClick();
+        this.hide();
+      }}
+    >
+      <img src=${icon} alt="" class="size-5 object-contain" />
+      ${key
+        ? html`<span
+            class="pointer-events-none absolute -bottom-1 -right-1 px-0.5 rounded-sm bg-plate-800 text-[9px] leading-tight font-mono text-white/70"
+            translate="no"
+            >${key}</span
+          >`
+        : ""}
+    </button>`;
+  }
+
+  // Right side: what I can do to the player, each with its keybind. Request
+  // and break alliance share a slot, as only one applies at a time. The
+  // column keeps its width when empty, so the panel doesn't shift.
+  private renderActionButtons(player: PlayerView, myPlayer: PlayerView) {
+    const can =
+      player !== myPlayer && this.playerActions?.player === player
+        ? this.playerActions
+        : null;
+    const keybinds = this.userSettings.keybinds(Platform.isMac);
+    const tile = this.tile ?? undefined;
+    const buttons: TemplateResult[] = [];
+    if (can?.requestAlliance) {
+      buttons.push(
+        this.renderShortcutButton(
+          requestAllianceIcon,
+          translateText("player_panel.send_alliance"),
+          keybinds.requestAlliance,
+          () =>
+            this.eventBus.emit(new DoRequestAllianceEvent(tile, player.id())),
+        ),
+      );
+    } else if (can?.breakAlliance) {
+      buttons.push(
+        this.renderShortcutButton(
+          breakAllianceIcon,
+          translateText("player_panel.break_alliance"),
+          keybinds.breakAlliance,
+          () => this.eventBus.emit(new DoBreakAllianceEvent(tile, player.id())),
+        ),
+      );
+    }
+    if (can?.target) {
+      buttons.push(
+        this.renderShortcutButton(
+          targetIcon,
+          translateText("player_panel.target"),
+          keybinds.targetPlayer,
+          () => this.eventBus.emit(new DoTargetPlayerEvent(tile, player.id())),
+        ),
+      );
+    }
+    if (can?.boat) {
+      buttons.push(
+        this.renderShortcutButton(
+          boatIcon,
+          translateText("user_setting.boat_attack"),
+          keybinds.boatAttack,
+          () => this.eventBus.emit(new DoBoatAttackEvent(tile)),
+        ),
+      );
+    }
+    return html`<div
+      class="grid grid-rows-2 grid-flow-col auto-cols-max justify-end gap-1 self-center shrink-0 w-14"
+    >
+      ${buttons}
+    </div>`;
   }
 
   private renderTroopBar(
@@ -657,7 +871,11 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
         @contextmenu=${(e: MouseEvent) => e.preventDefault()}
       >
         <div
-          class="bg-plate-800/92 backdrop-blur-sm shadow-xs min-[1200px]:rounded-lg sm:rounded-b-lg shadow-lg text-white text-lg lg:text-base w-full sm:w-[500px] overflow-hidden ${containerClasses}"
+          class="bg-plate-800/92 backdrop-blur-sm shadow-xs min-[1200px]:rounded-lg sm:rounded-b-lg shadow-lg text-white text-lg lg:text-base w-full ${this.showShortcutButtons()
+            ? "sm:w-[564px]"
+            : "sm:w-[500px]"} overflow-hidden ${containerClasses}"
+          @mouseenter=${this.onPanelEnter}
+          @mouseleave=${this.onPanelLeave}
         >
           ${this.player ? this.renderPlayerInfo(this.player) : ""}
           ${this.unit ? this.renderUnitInfo(this.unit) : ""}

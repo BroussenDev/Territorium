@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Játékmenet",
     "tab_graphics": "Grafika",
     "tab_keybinds": "Billentyűkiosztások",
+    "target_player": "Játékos megjelölése célpontként",
+    "target_player_desc": "A kurzor alatti játékost célpontként jelöli meg neked és a szövetségeseidnek.",
     "title": "Beállítások",
     "toggle_terrain": "Domborzat váltása",
     "toggle_view": "Nézet váltás",

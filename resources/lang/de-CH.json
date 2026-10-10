@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gameplay",
     "tab_graphics": "Grafiken",
     "tab_keybinds": "Tastenkombinationen",
+    "target_player": "Spieler anvisieren",
+    "target_player_desc": "Markiert den Spieler unter deinem Mauszeiger als Ziel für dich und deine Verbündeten.",
     "title": "Isteuige",
     "toggle_terrain": "Gländ azeige/verberge",
     "toggle_view": "Asicht umschaute",

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gioco",
     "tab_graphics": "Grafica",
     "tab_keybinds": "Tasti",
+    "target_player": "Bersaglia giocatore",
+    "target_player_desc": "Segna il giocatore sotto il cursore come bersaglio per te e i tuoi alleati.",
     "title": "Impostazioni Utente",
     "toggle_terrain": "Attiva/disattiva il terreno",
     "toggle_view": "Attiva/Disattiva Vista",

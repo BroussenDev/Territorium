@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Spelverloop",
     "tab_graphics": "Grafisch",
     "tab_keybinds": "Sneltoetsen",
+    "target_player": "Speler als doelwit markeren",
+    "target_player_desc": "Markeert de speler onder je cursor als doelwit voor jou en je bondgenoten.",
     "title": "Instellingen",
     "toggle_terrain": "Terrein Aan/Uit",
     "toggle_view": "Weergave wisselen",

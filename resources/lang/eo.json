@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Ludado",
     "tab_graphics": "Grafikoj",
     "tab_keybinds": "Fulmoklavoj",
+    "target_player": "Celi ludanton",
+    "target_player_desc": "Markas la ludanton sub via kursoro kiel celon por vi kaj viaj aliancanoj.",
     "title": "Agordoj",
     "toggle_terrain": "(Mal)ŝalti Terenon",
     "toggle_view": "Baskuli vidon",

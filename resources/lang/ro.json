@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Joc",
     "tab_graphics": "Grafică",
     "tab_keybinds": "Comenzi rapide",
+    "target_player": "Marchează jucătorul ca țintă",
+    "target_player_desc": "Marchează jucătorul de sub cursor ca țintă pentru tine și aliații tăi.",
     "title": "Setări",
     "toggle_terrain": "Arată/Ascunde Terenul",
     "toggle_view": "Comutează modul de vizualizare",

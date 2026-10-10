@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Permainan",
     "tab_graphics": "Grafik",
     "tab_keybinds": "Tombol pintasan",
+    "target_player": "Tandai pemain sebagai target",
+    "target_player_desc": "Menandai pemain di bawah kursor sebagai target untukmu dan sekutumu.",
     "title": "Pengaturan",
     "toggle_terrain": "Tampilkan / Sembunyikan Medan",
     "toggle_view": "Alihkan Tampilan",

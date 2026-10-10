@@ -3297,6 +3297,8 @@
     "tab_gameplay": "游戏玩法",
     "tab_graphics": "图形",
     "tab_keybinds": "热键绑定",
+    "target_player": "标记目标玩家",
+    "target_player_desc": "将光标下的玩家标记为你和盟友的目标。",
     "title": "设置",
     "toggle_terrain": "切换地形视图",
     "toggle_view": "切换视图",

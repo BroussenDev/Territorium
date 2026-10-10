@@ -3297,6 +3297,8 @@
     "tab_gameplay": "משחקיות",
     "tab_graphics": "גרָפִיקָה",
     "tab_keybinds": "קיצורי מקלדת",
+    "target_player": "סימון שחקן כמטרה",
+    "target_player_desc": "מסמן את השחקן שמתחת לסמן כמטרה עבורך ועבור בעלי בריתך.",
     "title": "הגדרות משתמש",
     "toggle_terrain": "החלף שטח",
     "toggle_view": "החלף תצוגה",

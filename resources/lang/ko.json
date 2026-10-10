@@ -3297,6 +3297,8 @@
     "tab_gameplay": "게임 플레이",
     "tab_graphics": "그래픽",
     "tab_keybinds": "키 설정",
+    "target_player": "플레이어 표적 지정",
+    "target_player_desc": "커서 아래의 플레이어를 나와 동맹의 표적으로 표시합니다.",
     "title": "설정",
     "toggle_terrain": "지형 보기",
     "toggle_view": "보기 전환",

@@ -3297,6 +3297,8 @@
     "tab_gameplay": "طريقة اللعب",
     "tab_graphics": "الرسومات",
     "tab_keybinds": "اختصارات المفاتيح",
+    "target_player": "استهداف لاعب",
+    "target_player_desc": "يحدد اللاعب الموجود تحت المؤشر كهدف لك ولحلفائك.",
     "title": "إعدادات المستخدم",
     "toggle_terrain": "تبديل التضاريس",
     "toggle_view": "تبديل العرض",

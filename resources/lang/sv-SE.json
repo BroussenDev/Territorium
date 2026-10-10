@@ -3297,6 +3297,8 @@
     "tab_gameplay": "Gameplay",
     "tab_graphics": "Grafik",
     "tab_keybinds": "Tangentbindningar",
+    "target_player": "Markera spelare som mål",
+    "target_player_desc": "Markerar spelaren under markören som mål för dig och dina allierade.",
     "title": "Användarinställningar",
     "toggle_terrain": "Växla Terräng",
     "toggle_view": "Växla vy",
