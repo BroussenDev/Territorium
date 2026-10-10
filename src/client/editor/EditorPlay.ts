@@ -1,4 +1,7 @@
-import { buildCommunityMap } from "../../core/game/CommunityMaps";
+import {
+  buildCommunityMap,
+  type MapSource,
+} from "../../core/game/CommunityMaps";
 import {
   type CustomMapRef,
   registerCustomMapFiles,
@@ -23,7 +26,14 @@ export async function prepareCustomMap(
   map: EditorMap,
   name: string,
 ): Promise<PreparedMap> {
-  const built = await buildCommunityMap(map.toSource(name));
+  return prepareMapSource(map.toSource(name));
+}
+
+/** The same for a map as it travels (a Steam Workshop item's file). */
+export async function prepareMapSource(
+  source: MapSource,
+): Promise<PreparedMap> {
+  const built = await buildCommunityMap(source);
   const generated = built.generated;
 
   for (const url of previousUrls) URL.revokeObjectURL(url);

@@ -12,16 +12,26 @@ import {
 } from "./CommunityMapsApi";
 import { BaseModal } from "./components/BaseModal";
 import { modalHeader } from "./components/ui/ModalHeader";
+import { prepareMapSource } from "./editor/EditorPlay";
 import type { HostLobbyModal } from "./HostLobbyModal";
 import { gameOpenOrExplain } from "./ServerStatusClient";
 import type { SinglePlayerModal } from "./SinglePlayerModal";
 import { showToast, translateText } from "./Utils";
+import {
+  openInSteamOverlay,
+  subscribedWorkshopMaps,
+  workshop,
+  WORKSHOP_URL,
+  workshopItemUrl,
+  type WorkshopMap,
+} from "./Workshop";
 
 // The community maps gallery (its own page): the maps players made in the map
 // editor and our moderators approved, to play in solo or in a private game,
-// and the player's own maps with where their review stands.
+// and the player's own maps with where their review stands. In the Steam app,
+// also the maps the player subscribed to on the Steam Workshop.
 
-type Tab = "gallery" | "mine";
+type Tab = "gallery" | "mine" | "workshop";
 
 @customElement("community-maps-modal")
 export class CommunityMapsModal extends BaseModal {
@@ -38,6 +48,9 @@ export class CommunityMapsModal extends BaseModal {
   @state() private mine: CommunityMap[] | null | "signed-out" = null;
   @state() private reporting: string | null = null;
   @state() private confirmDelete: CommunityMap | null = null;
+  @state() private workshopMaps: WorkshopMap[] | null = null;
+  @state() private workshopDownloading = 0;
+  @state() private preparing: string | null = null;
   private searchTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
@@ -50,9 +63,13 @@ export class CommunityMapsModal extends BaseModal {
   }
 
   protected override onOpen(args?: Record<string, unknown>): void {
-    this.tab = args?.tab === "mine" ? "mine" : "gallery";
+    this.tab =
+      args?.tab === "mine" || (args?.tab === "workshop" && workshop() !== null)
+        ? args.tab
+        : "gallery";
     void this.load(true);
     if (this.tab === "mine") void this.loadMine();
+    if (this.tab === "workshop") void this.loadWorkshop();
   }
 
   private async load(reset: boolean): Promise<void> {
@@ -79,9 +96,34 @@ export class CommunityMapsModal extends BaseModal {
     this.mine = mine ?? "signed-out";
   }
 
+  private async loadWorkshop(): Promise<void> {
+    this.workshopMaps = null;
+    const items = await subscribedWorkshopMaps();
+    this.workshopMaps = items?.maps ?? [];
+    this.workshopDownloading = items?.downloading ?? 0;
+  }
+
   private setTab(tab: Tab): void {
     this.tab = tab;
     if (tab === "mine") void this.loadMine();
+    if (tab === "workshop") void this.loadWorkshop();
+  }
+
+  private async playWorkshop(m: WorkshopMap): Promise<void> {
+    if (this.preparing !== null || !gameOpenOrExplain("solo")) return;
+    this.preparing = m.workshopId;
+    try {
+      const prepared = await prepareMapSource(m.source);
+      (
+        document.querySelector(
+          "single-player-modal",
+        ) as SinglePlayerModal | null
+      )?.openWithCustomMap(prepared.ref, prepared.thumbnail, true);
+    } catch {
+      showToast(translateText("community_maps.workshop_failed"), "red");
+    } finally {
+      this.preparing = null;
+    }
   }
 
   private playSolo(map: CommunityMap): void {
@@ -121,6 +163,8 @@ export class CommunityMapsModal extends BaseModal {
   private async deleteMap(map: CommunityMap) {
     this.confirmDelete = null;
     const ok = await deleteCommunityMap(map.id);
+    // Off the Steam Workshop too, from the Steam app.
+    if (ok && map.workshopId) void workshop()?.remove(map.workshopId);
     showToast(
       translateText(
         ok ? "community_maps.deleted" : "community_maps.delete_failed",
@@ -145,7 +189,10 @@ export class CommunityMapsModal extends BaseModal {
           </button>`,
         })}
         <div class="flex gap-2 px-4 pt-3 lg:px-6">
-          ${(["gallery", "mine"] as const).map(
+          ${(workshop() !== null
+            ? (["gallery", "mine", "workshop"] as const)
+            : (["gallery", "mine"] as const)
+          ).map(
             (t) =>
               html`<button
                 class="rounded-md px-4 py-2 text-sm font-semibold ${this.tab ===
@@ -160,7 +207,11 @@ export class CommunityMapsModal extends BaseModal {
           )}
         </div>
         <div class="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 lg:p-6">
-          ${this.tab === "gallery" ? this.renderGallery() : this.renderMine()}
+          ${this.tab === "gallery"
+            ? this.renderGallery()
+            : this.tab === "mine"
+              ? this.renderMine()
+              : this.renderWorkshop()}
         </div>
       </div>
       ${this.confirmDelete
@@ -299,6 +350,17 @@ export class CommunityMapsModal extends BaseModal {
           >
             ${translateText("community_maps.host")}
           </button>
+          ${m.workshopId && workshop() !== null
+            ? html`<button
+                class="grid size-9 place-items-center rounded-md border border-white/10 text-white/60 hover:text-white"
+                aria-label=${translateText("community_maps.workshop_view")}
+                title=${translateText("community_maps.workshop_view")}
+                @click=${() =>
+                  openInSteamOverlay(workshopItemUrl(m.workshopId!))}
+              >
+                ${ICON_EXTERNAL}
+              </button>`
+            : nothing}
           <button
             class="grid size-9 place-items-center rounded-md border border-white/10 text-white/50 hover:text-red-300"
             aria-label=${translateText("community_maps.report")}
@@ -329,6 +391,105 @@ export class CommunityMapsModal extends BaseModal {
           : nothing}
       </div>
     </article>`;
+  }
+
+  private renderWorkshop() {
+    const head = html`<div
+      class="mb-4 flex flex-wrap items-center justify-between gap-3"
+    >
+      <p class="max-w-2xl text-sm text-white/70">
+        ${translateText("community_maps.workshop_intro")}
+      </p>
+      <div class="flex gap-2">
+        <button
+          class="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
+          @click=${() => void this.loadWorkshop()}
+        >
+          ${translateText("community_maps.workshop_refresh")}
+        </button>
+        <button
+          class="inline-flex items-center gap-2 rounded-md bg-brand hover:bg-brand-light px-3 py-2 text-sm font-bold text-white"
+          @click=${() => openInSteamOverlay(WORKSHOP_URL)}
+        >
+          ${ICON_EXTERNAL} ${translateText("community_maps.workshop_browse")}
+        </button>
+      </div>
+    </div>`;
+    if (this.workshopMaps === null) {
+      return html`${head}
+        <div class="flex justify-center py-10">
+          <span
+            class="size-8 rounded-full border-4 border-emerald-500/30 border-t-emerald-500 animate-spin"
+          ></span>
+        </div>`;
+    }
+    return html`${head}
+    ${this.workshopDownloading > 0
+      ? html`<p class="mb-3 text-sm text-amber-300">
+          ${translateText("community_maps.workshop_downloading", {
+            count: this.workshopDownloading,
+          })}
+        </p>`
+      : nothing}
+    ${this.workshopMaps.length === 0
+      ? html`<p class="py-10 text-center text-white/70">
+          ${translateText("community_maps.workshop_empty")}
+        </p>`
+      : html`<div
+          class="grid gap-4 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]"
+        >
+          ${this.workshopMaps.map(
+            (m) =>
+              html`<article
+                class="flex flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0a1512]"
+              >
+                <img
+                  src=${m.preview}
+                  alt=""
+                  class="aspect-[5/3] w-full object-contain bg-[#2c6292] [image-rendering:pixelated]"
+                />
+                <div class="flex flex-1 flex-col gap-1 p-3">
+                  <h3
+                    class="font-display text-base font-bold text-white break-words"
+                  >
+                    ${m.source.name}
+                  </h3>
+                  <p class="text-xs text-white/45 tabular-nums">
+                    ${translateText("community_maps.workshop_details", {
+                      w: m.source.width.toLocaleString(),
+                      h: m.source.height.toLocaleString(),
+                      nations: m.source.nations.length,
+                    })}
+                  </p>
+                  <div class="mt-2 flex gap-2">
+                    <button
+                      class="flex-1 inline-flex items-center justify-center gap-2 rounded-md bg-[linear-gradient(160deg,#10b981,#059669_60%,#047857)] px-3 py-2 text-sm font-bold text-white hover:brightness-110 disabled:opacity-60"
+                      ?disabled=${this.preparing !== null}
+                      @click=${() => void this.playWorkshop(m)}
+                    >
+                      ${this.preparing === m.workshopId
+                        ? html`<span
+                            class="size-4 rounded-full border-2 border-white/30 border-t-white animate-spin"
+                          ></span>`
+                        : nothing}
+                      ${translateText("community_maps.play_solo")}
+                    </button>
+                    <button
+                      class="grid size-9 place-items-center rounded-md border border-white/10 text-white/60 hover:text-white"
+                      aria-label=${translateText(
+                        "community_maps.workshop_view",
+                      )}
+                      title=${translateText("community_maps.workshop_view")}
+                      @click=${() =>
+                        openInSteamOverlay(workshopItemUrl(m.workshopId))}
+                    >
+                      ${ICON_EXTERNAL}
+                    </button>
+                  </div>
+                </div>
+              </article>`,
+          )}
+        </div>`}`;
   }
 
   private renderMine() {
@@ -434,6 +595,18 @@ const ICON_EDIT = html`<svg
   stroke-linejoin="round"
 >
   ${svg`<path d="M9 6.75 3.75 4.5v12.75L9 19.5m0-12.75 6-2.25m-6 2.25v12.75m6-15 5.25 2.25v4.5M15 4.5v6m-6 9 3.75-1.5m5.25-3.75 2.25 2.25-4.5 4.5H15v-2.25l4.5-4.5Z"/>`}
+</svg>`;
+// Opens a page in the Steam overlay.
+const ICON_EXTERNAL = html`<svg
+  class="size-4"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  ${svg`<path d="M14 4h6v6M20 4l-8 8"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>`}
 </svg>`;
 const ICON_FLAG = html`<svg
   class="size-4"

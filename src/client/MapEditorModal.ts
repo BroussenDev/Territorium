@@ -16,6 +16,7 @@ import {
 import { prepareCustomMap } from "./editor/EditorPlay";
 import type { SinglePlayerModal } from "./SinglePlayerModal";
 import { showToast, translateText } from "./Utils";
+import { publishToWorkshop, workshop } from "./Workshop";
 
 // The map editor (its own page): paint water, land with its relief and void
 // tiles, place nations, import an image, and try the map in a solo game. The
@@ -583,16 +584,34 @@ export class MapEditorModal extends BaseModal {
         this.mapName.trim() || translateText("map_editor.default_name");
       const result = await publishCommunityMap(this.map, name);
       if (result.ok) {
+        let message =
+          result.map.status === "approved"
+            ? "map_editor.publish_already_live"
+            : "map_editor.published";
+        let color: "green" | "red" = "green";
+        // In the Steam app, on the Workshop too (once per map).
+        if (workshop() !== null && !result.map.workshopId) {
+          const ws = await publishToWorkshop({
+            mapId: result.map.id,
+            name: result.map.name,
+            upload: result.upload,
+            description: translateText("map_editor.workshop_description", {
+              w: result.map.width,
+              h: result.map.height,
+              nations: result.map.nations,
+            }),
+          });
+          if (!ws.ok) {
+            message = "map_editor.workshop_failed";
+            color = "red";
+          } else {
+            message = ws.needsAgreement
+              ? "map_editor.workshop_agreement"
+              : "map_editor.published_workshop";
+          }
+        }
         this.publishing = null;
-        showToast(
-          translateText(
-            result.map.status === "approved"
-              ? "map_editor.publish_already_live"
-              : "map_editor.published",
-          ),
-          "green",
-          6000,
-        );
+        showToast(translateText(message), color, 8000);
         return;
       }
       const known: Record<string, string> = {
@@ -644,6 +663,11 @@ export class MapEditorModal extends BaseModal {
           <li>${translateText("map_editor.publish_rule_review")}</li>
           <li>${translateText("map_editor.publish_rule_content")}</li>
           <li>${translateText("map_editor.publish_rule_play")}</li>
+          ${workshop() !== null
+            ? html`<li>
+                ${translateText("map_editor.publish_rule_workshop")}
+              </li>`
+            : nothing}
         </ul>
         <div class="flex justify-end gap-2 pt-2">
           <button

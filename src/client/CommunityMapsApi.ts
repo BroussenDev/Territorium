@@ -22,6 +22,7 @@ export const CommunityMapSchema = z.object({
   reason: z.string().nullable(),
   createdAt: z.number(),
   approvedAt: z.number().nullable(),
+  workshopId: z.string().nullable().optional(),
 });
 export type CommunityMap = z.infer<typeof CommunityMapSchema>;
 
@@ -117,7 +118,13 @@ export async function deleteCommunityMap(id: string): Promise<boolean> {
 }
 
 export type PublishResult =
-  | { ok: true; map: CommunityMap; droppedNations: number }
+  | {
+      ok: true;
+      map: CommunityMap;
+      droppedNations: number;
+      /** What was sent: a Steam Workshop item carries the same. */
+      upload: Uint8Array;
+    }
   | { ok: false; error: string };
 
 /**
@@ -171,6 +178,7 @@ export async function publishCommunityMap(
           ok: true,
           map: parsed.data,
           droppedNations: Number(json.droppedNations ?? 0),
+          upload: body,
         };
       }
     }
