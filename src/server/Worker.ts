@@ -28,7 +28,7 @@ import { registerAdminBotRoutes } from "./AdminBotRoutes";
 import { censorPlayer } from "./Censor";
 import { Client } from "./Client";
 import {
-  isApprovedCommunityMap,
+  ensureApprovedCommunityMap,
   startCommunityMapIdsPoller,
 } from "./CommunityMapIds";
 import { gameApiCors } from "./GameApiCors";
@@ -216,7 +216,7 @@ export async function startWorker() {
     // Community maps: only the ones our moderators approved.
     if (
       gc?.customMap !== undefined &&
-      !isApprovedCommunityMap(gc.customMap.id)
+      !(await ensureApprovedCommunityMap(gc.customMap.id))
     ) {
       return res.status(400).json({ error: "Community map not approved" });
     }

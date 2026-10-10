@@ -168,9 +168,7 @@ export const ANON_WORDS: readonly string[] = [
 //
 // NO "Anon" prefix: this feeds the in-game anonymisation setting, where every
 // player is anonymous, so the word adds nothing but noise to a crowded map and
-// costs a third of the name's width. Callers that need to advertise anonymity —
-// the default handle for a signed-out player — add the prefix themselves (see
-// genAnonUsername).
+// costs a third of the name's width.
 //
 // Consecutive slots map to DISTINCT handles: the 125 words fill first (round 0
 // → a bare name), then the round counts up. So for a fixed offset, two different

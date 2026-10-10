@@ -202,7 +202,7 @@ describe("UsernameInput Steam reseeding", () => {
   });
 
   it("does not reseed off Steam", async () => {
-    localStorage.setItem("username", "AnonAnchor");
+    localStorage.setItem("username", "IronEnvoy66");
     localStorage.setItem("usernameIsGenerated", "true");
     vi.spyOn(steamSDK, "isOnSteam").mockReturnValue(false);
     const getUser = vi.spyOn(steamSDK, "getUser");
@@ -212,7 +212,25 @@ describe("UsernameInput Steam reseeding", () => {
     await new Promise((r) => setTimeout(r, 0));
 
     expect(getUser).not.toHaveBeenCalled();
-    expect(el.getUsername()).toBe("AnonAnchor");
+    expect(el.getUsername()).toBe("IronEnvoy66");
+  });
+
+  it("swaps a generated Anon name for a guest name, never a chosen one", async () => {
+    vi.spyOn(steamSDK, "isOnSteam").mockReturnValue(false);
+    localStorage.setItem("username", "AnonAnchor");
+    localStorage.setItem("usernameIsGenerated", "true");
+    const generated = new UsernameInput();
+    generated.connectedCallback();
+    await new Promise((r) => setTimeout(r, 0));
+    expect(generated.getUsername()).not.toMatch(/^Anon/);
+    expect(localStorage.getItem("username")).toBe(generated.getUsername());
+
+    localStorage.setItem("username", "AnonAnchor");
+    localStorage.setItem("usernameIsGenerated", "false");
+    const chosen = new UsernameInput();
+    chosen.connectedCallback();
+    await new Promise((r) => setTimeout(r, 0));
+    expect(chosen.getUsername()).toBe("AnonAnchor");
   });
 });
 

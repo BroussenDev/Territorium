@@ -1,11 +1,18 @@
 import { describe, expect, it } from "vitest";
 import {
+  GUEST_ADJECTIVES,
+  GUEST_NOUNS,
+  guestName,
+  guestNameCount,
+} from "../../src/client/GuestNames";
+import {
   accountHiddenName,
   accountNameHeld,
   accountVerifiedName,
   clampUsername,
   fallbackPlayerName,
-  genAnonUsername,
+  genGuestUsername,
+  isLegacyAnonName,
   lapseNoticeDue,
   lapseNoticeMarker,
   looksGenerated,
@@ -346,11 +353,19 @@ describe("sanitizePersona", () => {
 });
 
 describe("looksGenerated", () => {
-  it("recognises what genAnonUsername produces", () => {
+  it("recognises what genGuestUsername produces", () => {
     for (let i = 0; i < 200; i++) {
-      const name = genAnonUsername();
+      const name = genGuestUsername();
       expect(looksGenerated(name), name).toBe(true);
     }
+  });
+
+  it("still recognises the Anon names generated before", () => {
+    for (const name of ["AnonComet", "AnonEclipse5", "AnonAnchor3"]) {
+      expect(looksGenerated(name), name).toBe(true);
+      expect(isLegacyAnonName(name), name).toBe(true);
+    }
+    expect(isLegacyAnonName("ValiantFalcon42")).toBe(false);
   });
 
   it("does not claim an ordinary name", () => {
@@ -363,6 +378,10 @@ describe("looksGenerated", () => {
       "NotAnonBadger",
       "anonbadger",
       "José",
+      "ValiantFalcon",
+      "ValiantFalcon420",
+      "PurpleFalcon42",
+      "valiantfalcon42",
     ]) {
       expect(looksGenerated(name), name).toBe(false);
     }
@@ -611,13 +630,30 @@ describe("fallbackPlayerName", () => {
   });
 });
 
-describe("genAnonUsername", () => {
-  it("produces wire-valid names", () => {
-    for (let i = 0; i < 200; i++) {
-      const name = genAnonUsername();
-      expect(name.startsWith("Anon")).toBe(true);
+describe("genGuestUsername", () => {
+  it("produces wire-valid names without Anon", () => {
+    for (let i = 0; i < 300; i++) {
+      const name = genGuestUsername();
+      expect(name.startsWith("Anon"), name).toBe(false);
+      expect(name).toMatch(/^[A-Z][a-z]+[A-Z][a-z]+[1-9]\d$/);
       expect(UsernameSchema.safeParse(name).success, name).toBe(true);
     }
+  });
+
+  it("fits the longest pair in a username", () => {
+    const longest = (words: readonly string[]) =>
+      Math.max(...words.map((w) => w.length));
+    expect(
+      longest(GUEST_ADJECTIVES) + longest(GUEST_NOUNS) + 2,
+    ).toBeLessThanOrEqual(MAX_USERNAME_LENGTH);
+  });
+
+  it("covers every combination once", () => {
+    const seen = new Set<string>();
+    for (let s = 0; s < guestNameCount(); s += 997) seen.add(guestName(s));
+    expect(seen.size).toBe(Math.ceil(guestNameCount() / 997));
+    expect(guestName(0)).toBe("AmberAdmiral10");
+    expect(guestName(guestNameCount() - 1)).toBe("WiseWolf99");
   });
 });
 

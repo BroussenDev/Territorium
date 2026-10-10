@@ -32,7 +32,8 @@ import {
   accountNameHeld,
   accountVerifiedName,
   clampUsername,
-  genAnonUsername,
+  genGuestUsername,
+  isLegacyAnonName,
   LAPSE_NOTICE_KEY,
   lapseNoticeMarker,
   looksGenerated,
@@ -160,7 +161,7 @@ export class UsernameInput extends LitElement {
   private persona: string | null = null;
   // Minted once so re-resolving is stable: the player must never watch their
   // placeholder name change under them.
-  private readonly generatedName: string = genAnonUsername();
+  private readonly generatedName: string = genGuestUsername();
   // Whether the name in baseUsername is one we generated rather than one the
   // player chose. Persisted, because one localStorage string cannot tell the
   // two apart and the reseed rule turns entirely on the difference.
@@ -773,9 +774,18 @@ export class UsernameInput extends LitElement {
     // On CrazyGames the username is never persisted, so ignore any stored value
     // and start from a fresh guest name; the account name (if signed in) is
     // applied afterwards in connectedCallback.
-    const storedUsername = this.onCrazyGames
+    let storedUsername = this.onCrazyGames
       ? null
       : localStorage.getItem(usernameKey);
+    // An "Anon…" name the game generated before guest names: a fresh guest
+    // name instead. A name the player chose is never touched.
+    if (
+      storedUsername &&
+      isLegacyAnonName(storedUsername) &&
+      this.storedNameIsGenerated()
+    ) {
+      storedUsername = null;
+    }
     if (storedUsername) {
       this.clanTag = localStorage.getItem(clanTagKey) ?? "";
     }
@@ -799,8 +809,8 @@ export class UsernameInput extends LitElement {
   // Whether the name already in localStorage is one we generated.
   //
   // Installs that predate the flag have no key to read, so fall back to the
-  // name's shape: genAnonUsername produces "Anon" + a word from a fixed bank,
-  // which is recognisable. That is what un-poisons a Steam install whose one
+  // name's shape: the game's generated names (guest names, and the "Anon" +
+  // word names before them) are recognisable. That is what un-poisons a Steam install whose one
   // and only seed attempt happened before this fix — without it, everyone who
   // has already launched the game keeps their guest name forever.
   private storedNameIsGenerated(): boolean {

@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.97
+
+🏷️ **Guest names, and community map fixes**
+
+- Players without a name of their own now get a real one, like ValiantFalcon42 or NorthernWarden17, instead of Anon…. Generated Anon names are replaced; a name you chose never changes.
+- A private lobby on a community map approved moments before no longer falls back to the World map for the other players.
+- A map our team rejects is now removed from the Steam Workshop without penalizing its author; only offensive content gets a Steam ban.
+
 ## v0.1.96
 
 🎨 **A cleaner interface**

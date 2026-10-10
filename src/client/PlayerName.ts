@@ -1,4 +1,4 @@
-import { ANON_WORDS, anonWordName } from "../core/AnonNames";
+import { ANON_WORDS } from "../core/AnonNames";
 import { isTemporaryUsername, type UserMeResponse } from "../core/ApiSchemas";
 import {
   RENDERABLE_NAME_CHAR_RE,
@@ -12,6 +12,7 @@ import {
   MIN_USERNAME_LENGTH,
   validateAccountUsername,
 } from "../core/validations/username";
+import { guestName, guestNameCount, isGuestName } from "./GuestNames";
 
 // What name a player plays under, resolved in one place.
 //
@@ -403,8 +404,8 @@ export function lapseNoticeDue(
   return storedMarker !== lapseNoticeMarker(grace);
 }
 
-// Whether a stored name has the exact shape genAnonUsername produces:
-// "Anon" + a word from the bank + an optional round digit.
+// Whether a stored name has the exact shape the game generates: a guest name
+// (genGuestUsername), or the "Anon" + word (+ digit) names it gave before.
 //
 // Only used to recognise names generated before the usernameIsGenerated flag
 // existed, so that an install already poisoned by the one-shot seed can be
@@ -412,6 +413,11 @@ export function lapseNoticeDue(
 // from their own Steam persona, which is the same thing they would have got
 // had the seed worked in the first place.
 export function looksGenerated(name: string): boolean {
+  return isLegacyAnonName(name) || isGuestName(name);
+}
+
+/** The "Anon" + word (+ digit) names the game generated before guest names. */
+export function isLegacyAnonName(name: string): boolean {
   const match = /^Anon([A-Za-z]+)\d?$/u.exec(name);
   return match !== null && ANON_WORDS.includes(match[1]);
 }
@@ -464,22 +470,19 @@ export function resolvePlayerName(
  * always branch 4.
  */
 export function fallbackPlayerName(): ResolvedPlayerName {
-  return { name: genAnonUsername(), source: "generated", verified: false };
+  return { name: genGuestUsername(), source: "generated", verified: false };
 }
 
-// A memorable anonymous username: "Anon" + animal (+ digit). Draws from the same
-// word bank as the server-side anonymisation overlay, but keeps the "Anon" prefix
-// that the overlay drops — here it tells the player their name is a placeholder.
-// Client-side fallback for players who never set a name — no roster here, so it
-// draws a random slot (best-effort-unique); the overlay is what guarantees
-// uniqueness in-game.
+// The name a player gets until they choose one (GuestNames.ts): an
+// adjective, a noun and a number, "ValiantFalcon42". Client-side fallback for
+// players who never set a name; no roster here, so it draws a random slot.
 //
 // Rejection-sample a uniform slot in [0, bound) from the CSPRNG: drawing a raw
 // uint32 and taking `% bound` would be very slightly biased (the top partial
 // bucket), so we discard the unrepresentable tail first. The bias is cosmetically
 // irrelevant here, but this keeps the draw provably uniform.
-export function genAnonUsername(): string {
-  const bound = ANON_WORDS.length * 10;
+export function genGuestUsername(): string {
+  const bound = guestNameCount();
   const limit = Math.floor(0x1_0000_0000 / bound) * bound;
   const buf = new Uint32Array(1);
   let rand: number;
@@ -487,8 +490,5 @@ export function genAnonUsername(): string {
     crypto.getRandomValues(buf);
     rand = buf[0] ?? 0;
   } while (rand >= limit);
-  // The "Anon" prefix lives HERE, not in anonWordName: a signed-out player's
-  // handle should say it is a placeholder, whereas the in-game anonymisation
-  // setting makes everyone anonymous and gains nothing from repeating the word.
-  return `Anon${anonWordName(rand % bound)}`;
+  return guestName(rand % bound);
 }

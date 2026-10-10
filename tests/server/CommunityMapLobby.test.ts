@@ -1,9 +1,10 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { GameMapType } from "../../src/core/game/Game";
 import {
+  ensureApprovedCommunityMap,
   isApprovedCommunityMap,
   setApprovedCommunityMaps,
 } from "../../src/server/CommunityMapIds";
@@ -43,6 +44,47 @@ describe("community maps in private lobbies", () => {
     applyGameConfigPatch(config, { gameMap: GameMapType.Europe });
     expect(config.customMap).toBeUndefined();
     expect(config.gameMap).toBe(GameMapType.Europe);
+  });
+});
+
+describe("maps approved since the last read of the list", () => {
+  beforeAll(() => {
+    process.env.API_URL ??= "https://api.test";
+  });
+
+  const answer = (status: number, body: unknown) =>
+    vi.fn(async () => new Response(JSON.stringify(body), { status }));
+
+  it("asks the API, then remembers an approved map", async () => {
+    setApprovedCommunityMaps([]);
+    const api = answer(200, { status: "approved" });
+    expect(await ensureApprovedCommunityMap(PENDING.id, api)).toBe(true);
+    expect(isApprovedCommunityMap(PENDING.id)).toBe(true);
+    expect(await ensureApprovedCommunityMap(PENDING.id, api)).toBe(true);
+    expect(api).toHaveBeenCalledTimes(1);
+  });
+
+  it("refuses a map the API does not show, and waits before asking again", async () => {
+    setApprovedCommunityMaps([]);
+    const api = answer(404, { error: "Not found" });
+    expect(await ensureApprovedCommunityMap(PENDING.id, api, 1_000)).toBe(
+      false,
+    );
+    expect(await ensureApprovedCommunityMap(PENDING.id, api, 5_000)).toBe(
+      false,
+    );
+    expect(api).toHaveBeenCalledTimes(1);
+    expect(await ensureApprovedCommunityMap(PENDING.id, api, 30_000)).toBe(
+      false,
+    );
+    expect(api).toHaveBeenCalledTimes(2);
+    // Not even asked about a malformed id, or with the API down.
+    expect(await ensureApprovedCommunityMap("nope", api)).toBe(false);
+    expect(api).toHaveBeenCalledTimes(2);
+    const down = vi.fn(async () => {
+      throw new Error("down");
+    });
+    expect(await ensureApprovedCommunityMap(APPROVED.id, down)).toBe(false);
   });
 });
 

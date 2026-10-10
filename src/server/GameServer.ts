@@ -61,6 +61,7 @@ import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
 import { ChatModerator } from "./ChatModeration";
 import { Client } from "./Client";
+import { ensureApprovedCommunityMap } from "./CommunityMapIds";
 import { applyGameConfigPatch, hostCheatsEnabled } from "./ConfigPatch";
 import { LiveStatsVote, WinnerVote } from "./Consensus";
 import { fetchCustomTribes } from "./CustomTribes";
@@ -377,7 +378,19 @@ export class GameServer {
 
   public updateGameConfig(gameConfig: Partial<GameConfig>): void {
     applyGameConfigPatch(this.gameConfig, gameConfig);
+    // A community map this server does not know yet (approved since its
+    // last read of the list): asked about, then taken if still wanted.
+    const wanted = gameConfig.customMap;
+    this.wantedCustomMapId = wanted?.id ?? null;
+    if (wanted && this.gameConfig.customMap?.id !== wanted.id) {
+      void ensureApprovedCommunityMap(wanted.id).then((ok) => {
+        if (ok && !this.hasStarted() && this.wantedCustomMapId === wanted.id) {
+          applyGameConfigPatch(this.gameConfig, { customMap: wanted });
+        }
+      });
+    }
   }
+  private wantedCustomMapId: string | null = null;
 
   // Dispatch a control/gameplay intent from either a websocket client or the
   // trusted admin-bot HTTP API. `actor` carries the authority; the guards are
