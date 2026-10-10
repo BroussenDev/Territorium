@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.95
+
+🧭 **A Modes page, and your modes on the home page**
+
+- A new Modes page, from the top bar, gathers every game mode with rules of its own: Nations, Versus, Conquest and Survival, each with its rules and its next game.
+- The home page now shows only your two modes: the ones you join the most, or the busiest ones when you start. The rest is one click away with All modes.
+- Pin up to two modes on the Modes page to always keep them on the home page.
+
 ## v0.1.94
 
 🔁 **Workshop: update your maps**

@@ -1351,6 +1351,8 @@
     "teams": "Echipe"
   },
   "game_modes": {
+    "all_modes": "Toate modurile",
+    "all_modes_detail": "{count} moduri, fiecare cu regulile lui",
     "conquest_description": "Cinci obiective apar pe o hartă regională. Ia-le pe cele mai multe și ține-le trei minute ca să câștigi, oricât de mare ar fi teritoriul tău.",
     "conquest_fact_hold": "Ține 3 dintre ele 3 minute la rând ca să câștigi",
     "conquest_fact_maps": "O hartă regională diferită la fiecare meci",
@@ -1368,6 +1370,9 @@
     "nations_join": "Alege tara mea",
     "nations_title": "Națiunile",
     "nations_waiting": "Următorul joc vine în curând",
+    "page_intro": "Fixează până la {max} moduri ca să le găsești pe pagina principală.",
+    "pin": "Fixează pe pagina principală",
+    "pin_limit": "Poți fixa cel mult {max} moduri: scoate mai întâi unul.",
     "players": "{count}/{max} jucători",
     "subtitle": "Jocuri multiplayer cu reguli proprii",
     "survival_description": "Toți jucătorii de aceeași parte împotriva valurilor de invadatori IA, tot mai mari cu fiecare val. Rezistați împreună până la ultimul.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Alătură-te apărării",
     "survival_title": "Supraviețuire",
     "title": "Moduri de joc",
+    "unpin": "Scoate de pe pagina principală",
     "versus_description": "Două echipe se înfruntă pe o hartă de turneu, cu aceleași reguli pentru toți.",
     "versus_open": "Alege un format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} așteaptă"
+    "versus_waiting": "{count} așteaptă",
+    "your_modes": "Modurile tale",
+    "your_modes_hint": "Modurile pe care le joci cel mai des, sau cele fixate de tine"
   },
   "game_settings": {
     "bots": "Triburi: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Conectează-te cu Google",
     "login_steam": "Conectează-te cu Steam",
     "menu": "Meniu",
+    "modes": "Moduri",
     "news": "Noutăți",
     "play": "Joacă",
     "privacy_policy": "Politică de Confidențialitate",

@@ -1351,6 +1351,8 @@
     "teams": "Equipos"
   },
   "game_modes": {
+    "all_modes": "Todos los modos",
+    "all_modes_detail": "{count} modos, cada uno con sus reglas",
     "conquest_description": "Cinco objetivos aparecen en un mapa regional. Toma la mayoría y mantenlos tres minutos para ganar, sea cual sea el tamaño de tu territorio.",
     "conquest_fact_hold": "Mantén 3 durante 3 minutos seguidos para ganar",
     "conquest_fact_maps": "Un mapa regional distinto en cada partida",
@@ -1368,6 +1370,9 @@
     "nations_join": "Elige mi país",
     "nations_title": "Naciones",
     "nations_waiting": "Próximo juego próximamente",
+    "page_intro": "Fija hasta {max} modos para tenerlos en la página de inicio.",
+    "pin": "Fijar en el inicio",
+    "pin_limit": "Puedes fijar {max} modos como máximo: quita uno primero.",
     "players": "{count}/{max} jugadores",
     "subtitle": "Juegos multijugador con reglas propias",
     "survival_description": "Todos los jugadores en el mismo bando contra oleadas de invasores IA, más numerosas en cada oleada. Resistid juntos hasta la última.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Unirse a la defensa",
     "survival_title": "Supervivencia",
     "title": "Modos de juego",
+    "unpin": "Quitar del inicio",
     "versus_description": "Dos equipos se enfrentan en un mapa de torneo, con las mismas reglas para todos.",
     "versus_open": "Elegir un formato",
     "versus_title": "Versus",
-    "versus_waiting": "{count} esperando"
+    "versus_waiting": "{count} esperando",
+    "your_modes": "Tus modos",
+    "your_modes_hint": "Los modos que más juegas, o los que fijas"
   },
   "game_settings": {
     "bots": "Tribus: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Iniciar sesión con Google",
     "login_steam": "Iniciar sesión con Steam",
     "menu": "Menú",
+    "modes": "Modos",
     "news": "Noticias",
     "play": "Jugar",
     "privacy_policy": "Política de privacidad",

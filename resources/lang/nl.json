@@ -1351,6 +1351,8 @@
     "teams": "Teams"
   },
   "game_modes": {
+    "all_modes": "Alle modi",
+    "all_modes_detail": "{count} modi, elk met eigen regels",
     "conquest_description": "Vijf doelen verschijnen op een regionale kaart. Neem de meeste in en houd ze drie minuten vast om te winnen, hoe groot je gebied ook is.",
     "conquest_fact_hold": "Houd er 3 drie minuten achter elkaar vast om te winnen",
     "conquest_fact_maps": "Elke partij een andere regionale kaart",
@@ -1368,6 +1370,9 @@
     "nations_join": "Kies mijn land",
     "nations_title": "Naties",
     "nations_waiting": "Binnenkort het volgende spel",
+    "page_intro": "Zet tot {max} modi vast om ze op de startpagina te vinden.",
+    "pin": "Vastzetten op de startpagina",
+    "pin_limit": "Je kunt hoogstens {max} modi vastzetten: haal er eerst een weg.",
     "players": "{count}/{max} spelers",
     "subtitle": "Multiplayer-spellen met eigen regels",
     "survival_description": "Alle spelers aan dezelfde kant tegen golven AI-indringers, die met elke golf groter worden. Houd samen stand tot de laatste.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Doe mee met de verdediging",
     "survival_title": "Overleven",
     "title": "Spelmodi",
+    "unpin": "Van de startpagina halen",
     "versus_description": "Twee teams nemen het tegen elkaar op op een toernooikaart, met dezelfde regels voor iedereen.",
     "versus_open": "Kies een formaat",
     "versus_title": "Versus",
-    "versus_waiting": "{count} wachtend"
+    "versus_waiting": "{count} wachtend",
+    "your_modes": "Jouw modi",
+    "your_modes_hint": "De modi die je het meest speelt, of die je vastzet"
   },
   "game_settings": {
     "bots": "Stammen: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Log in met Google",
     "login_steam": "Log in met Steam",
     "menu": "Menu",
+    "modes": "Modi",
     "news": "Nieuws",
     "play": "Spelen",
     "privacy_policy": "Privacybeleid",

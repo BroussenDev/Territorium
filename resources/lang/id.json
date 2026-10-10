@@ -1351,6 +1351,8 @@
     "teams": "Tim-tim"
   },
   "game_modes": {
+    "all_modes": "Semua mode",
+    "all_modes_detail": "{count} mode, masing-masing dengan aturannya",
     "conquest_description": "Lima target muncul di peta regional. Kuasai sebagian besar dan pertahankan selama tiga menit untuk menang, berapa pun luas wilayahmu.",
     "conquest_fact_hold": "Pertahankan 3 di antaranya selama 3 menit berturut-turut untuk menang",
     "conquest_fact_maps": "Peta regional berbeda di setiap permainan",
@@ -1368,6 +1370,9 @@
     "nations_join": "Pilih negara saya",
     "nations_title": "Bangsa",
     "nations_waiting": "Pertandingan berikutnya segera hadir",
+    "page_intro": "Sematkan hingga {max} mode agar ada di beranda.",
+    "pin": "Sematkan ke beranda",
+    "pin_limit": "Kamu bisa menyematkan paling banyak {max} mode: lepas satu dulu.",
     "players": "{count}/{max} pemain",
     "subtitle": "Game multipemain dengan aturannya sendiri",
     "survival_description": "Semua pemain di pihak yang sama melawan gelombang penyerbu AI yang makin besar setiap gelombang. Bertahanlah bersama sampai yang terakhir.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Bergabung dalam pertahanan",
     "survival_title": "Bertahan Hidup",
     "title": "Mode permainan",
+    "unpin": "Hapus dari beranda",
     "versus_description": "Dua tim berhadapan di peta turnamen, dengan aturan yang sama untuk semua.",
     "versus_open": "Pilih format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} menunggu"
+    "versus_waiting": "{count} menunggu",
+    "your_modes": "Mode kamu",
+    "your_modes_hint": "Mode yang paling sering kamu mainkan, atau yang kamu sematkan"
   },
   "game_settings": {
     "bots": "Suku:",
@@ -1897,6 +1905,7 @@
     "login_google": "Masuk dengan Google",
     "login_steam": "Masuk dengan Steam",
     "menu": "Menu",
+    "modes": "Mode",
     "news": "Berita",
     "play": "Main",
     "privacy_policy": "Kebijakan Privasi",

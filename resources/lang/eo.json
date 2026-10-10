@@ -1351,6 +1351,8 @@
     "teams": "Teamoj"
   },
   "game_modes": {
+    "all_modes": "Ĉiuj reĝimoj",
+    "all_modes_detail": "{count} reĝimoj, ĉiu kun propraj reguloj",
     "conquest_description": "Kvin celoj aperas sur regiona mapo. Prenu la plimulton kaj tenu ilin tri minutojn por venki, kiom ajn granda estas via teritorio.",
     "conquest_fact_hold": "Tenu 3 el ili dum 3 minutoj sinsekve por venki",
     "conquest_fact_maps": "Malsama regiona mapo en ĉiu ludo",
@@ -1368,6 +1370,9 @@
     "nations_join": "Elektu mian landon",
     "nations_title": "Nacioj",
     "nations_waiting": "Sekva ludo baldaŭ venos",
+    "page_intro": "Alpinglu ĝis {max} reĝimojn por trovi ilin en la hejmpaĝo.",
+    "pin": "Alpingli al la hejmpaĝo",
+    "pin_limit": "Vi povas alpingli maksimume {max} reĝimojn: unue malpinglu unu.",
     "players": "{count}/{max} ludantoj",
     "subtitle": "Plurludantaj ludoj kun propraj reguloj",
     "survival_description": "Ĉiuj ludantoj samflanke kontraŭ ondoj de AI-invadantoj, pli grandaj ĉe ĉiu ondo. Rezistu kune ĝis la lasta.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Aliĝi al la defendo",
     "survival_title": "Postvivado",
     "title": "Ludaj reĝimoj",
+    "unpin": "Forigi el la hejmpaĝo",
     "versus_description": "Du teamoj alfrontas unu la alian sur turnira mapo, kun la samaj reguloj por ĉiuj.",
     "versus_open": "Elekti formaton",
     "versus_title": "Versus",
-    "versus_waiting": "{count} atendas"
+    "versus_waiting": "{count} atendas",
+    "your_modes": "Viaj reĝimoj",
+    "your_modes_hint": "La reĝimoj, kiujn vi plej ludas, aŭ kiujn vi alpinglas"
   },
   "game_settings": {
     "bots": "Triboj: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Ensalutu kun Google",
     "login_steam": "Ensalutu kun Steam",
     "menu": "Menuo",
+    "modes": "Reĝimoj",
     "news": "Novaĵoj",
     "play": "Ludi",
     "privacy_policy": "Privateca politiko",

@@ -1351,6 +1351,8 @@
     "teams": "Ekipe"
   },
   "game_modes": {
+    "all_modes": "Vsi načini",
+    "all_modes_detail": "Načini: {count}, vsak s svojimi pravili",
     "conquest_description": "Na regionalnem zemljevidu se pojavi pet ciljev. Zavzemite večino in jih držite tri minute, da zmagate, ne glede na velikost vašega ozemlja.",
     "conquest_fact_hold": "Držite 3 od njih 3 minute zapored in zmagajte",
     "conquest_fact_maps": "Vsaka igra na drugem regionalnem zemljevidu",
@@ -1368,6 +1370,9 @@
     "nations_join": "Izberi mojo državo",
     "nations_title": "Narodi",
     "nations_waiting": "Naslednja igra kmalu",
+    "page_intro": "Pripni do {max} načina, da ju najdeš na začetni strani.",
+    "pin": "Pripni na začetno stran",
+    "pin_limit": "Pripneš lahko največ {max} načina: najprej odpni enega.",
     "players": "{count}/{max} igralcev",
     "subtitle": "Igre za več igralcev s svojimi pravili",
     "survival_description": "Vsi igralci na isti strani proti valovom osvajalcev z UI, ki so z vsakim valom večji. Zdržite skupaj do zadnjega.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Pridruži se obrambi",
     "survival_title": "Preživetje",
     "title": "Načini igre",
+    "unpin": "Odstrani z začetne strani",
     "versus_description": "Dve ekipi se pomerita na turnirskem zemljevidu, z enakimi pravili za vse.",
     "versus_open": "Izberi format",
     "versus_title": "Versus",
-    "versus_waiting": "Čaka: {count}"
+    "versus_waiting": "Čaka: {count}",
+    "your_modes": "Tvoji načini",
+    "your_modes_hint": "Načini, ki jih največ igraš, ali tisti, ki jih pripneš"
   },
   "game_settings": {
     "bots": "Plemena:",
@@ -1897,6 +1905,7 @@
     "login_google": "Prijavite se z Googlom",
     "login_steam": "Prijavite se s Steamom",
     "menu": "meni",
+    "modes": "Načini",
     "news": "Novice",
     "play": "Igraj",
     "privacy_policy": "Politika zasebnosti",

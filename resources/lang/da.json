@@ -1351,6 +1351,8 @@
     "teams": "Hold"
   },
   "game_modes": {
+    "all_modes": "Alle tilstande",
+    "all_modes_detail": "{count} tilstande, hver med egne regler",
     "conquest_description": "Fem mål dukker op på et regionalt kort. Tag de fleste og hold dem i tre minutter for at vinde, uanset hvor stort dit område er.",
     "conquest_fact_hold": "Hold 3 af dem i 3 minutter i træk for at vinde",
     "conquest_fact_maps": "Et nyt regionalt kort hver gang",
@@ -1368,6 +1370,9 @@
     "nations_join": "Vælg mit land",
     "nations_title": "Nationer",
     "nations_waiting": "Næste kamp kommer snart",
+    "page_intro": "Fastgør op til {max} tilstande for at finde dem på forsiden.",
+    "pin": "Fastgør på forsiden",
+    "pin_limit": "Du kan højst fastgøre {max} tilstande: frigør en først.",
     "players": "{count}/{max} spillere",
     "subtitle": "Multiplayer spil med deres egne regler",
     "survival_description": "Alle spillere på samme side mod bølger af AI-angribere, der vokser for hver bølge. Hold stand sammen til den sidste.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Deltag i forsvaret",
     "survival_title": "Overlevelse",
     "title": "Spiltilstande",
+    "unpin": "Fjern fra forsiden",
     "versus_description": "To hold mødes på et turneringskort med de samme regler for alle.",
     "versus_open": "Vælg format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} venter"
+    "versus_waiting": "{count} venter",
+    "your_modes": "Dine tilstande",
+    "your_modes_hint": "De tilstande, du spiller mest, eller dem du fastgør"
   },
   "game_settings": {
     "bots": "Stammer: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Log ind med Google",
     "login_steam": "Log ind med Steam",
     "menu": "Menu",
+    "modes": "Tilstande",
     "news": "Nyheder",
     "play": "Spil",
     "privacy_policy": "Privatlivspolitik",

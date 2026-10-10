@@ -1351,6 +1351,8 @@
     "teams": "Takımlar"
   },
   "game_modes": {
+    "all_modes": "Tüm modlar",
+    "all_modes_detail": "{count} mod, her biri kendi kurallarıyla",
     "conquest_description": "Bölgesel bir haritada beş hedef belirir. Çoğunu ele geçir ve kazanmak için üç dakika elinde tut; toprağının büyüklüğü fark etmez.",
     "conquest_fact_hold": "Kazanmak için 3 tanesini 3 dakika boyunca elinde tut",
     "conquest_fact_maps": "Her oyunda farklı bir bölgesel harita",
@@ -1368,6 +1370,9 @@
     "nations_join": "Ülkemi seç",
     "nations_title": "Milletler",
     "nations_waiting": "Bir sonraki oyun yakında gelecek",
+    "page_intro": "Ana sayfada bulmak için en fazla {max} modu sabitle.",
+    "pin": "Ana sayfaya sabitle",
+    "pin_limit": "En fazla {max} mod sabitleyebilirsin: önce birini kaldır.",
     "players": "{count}/{max} oyuncu",
     "subtitle": "Kendi kuralları olan çok oyunculu oyunlar",
     "survival_description": "Tüm oyuncular aynı tarafta, her dalgada büyüyen yapay zekâ istilacılarına karşı. Sonuncusuna kadar birlikte dayanın.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Savunmaya katıl",
     "survival_title": "Hayatta Kalma",
     "title": "Oyun modları",
+    "unpin": "Ana sayfadan kaldır",
     "versus_description": "İki takım, herkes için aynı kurallarla bir turnuva haritasında karşı karşıya gelir.",
     "versus_open": "Bir format seç",
     "versus_title": "Versus",
-    "versus_waiting": "{count} bekliyor"
+    "versus_waiting": "{count} bekliyor",
+    "your_modes": "Modların",
+    "your_modes_hint": "En çok oynadığın ya da sabitlediğin modlar"
   },
   "game_settings": {
     "bots": "Kabileler:",
@@ -1897,6 +1905,7 @@
     "login_google": "Google ile giriş yap",
     "login_steam": "Steam'le giriş yap",
     "menu": "Menü",
+    "modes": "Modlar",
     "news": "Haberler",
     "play": "Oyna",
     "privacy_policy": "Gizlilik Politikası",

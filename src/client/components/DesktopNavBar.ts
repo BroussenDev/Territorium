@@ -21,6 +21,11 @@ const PAGES: NavPage[] = [
     icon: svg`<polygon points="7 4 19 12 7 20 7 4" />`,
   },
   {
+    page: "page-game-modes",
+    i18n: "main.modes",
+    icon: svg`<rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" />`,
+  },
+  {
     page: "page-item-store",
     i18n: "main.store",
     noCrazyGames: true,

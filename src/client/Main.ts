@@ -68,6 +68,7 @@ import {
   reportMultiplayerRefusal,
   shouldBlockJoin,
 } from "./GameModeSelector";
+import "./GameModesPage";
 import { GameStartingModal } from "./GameStartingModal";
 import "./GameStatsModal";
 import { HelpModal } from "./HelpModal";
@@ -467,6 +468,10 @@ class Client {
     modalRouter.register("map-editor", {
       tag: "map-editor-modal",
       pageId: "page-map-editor",
+    });
+    modalRouter.register("modes", {
+      tag: "game-modes-page",
+      pageId: "page-game-modes",
     });
     modalRouter.register("community-maps", {
       tag: "community-maps-modal",

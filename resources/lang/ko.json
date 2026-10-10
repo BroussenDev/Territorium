@@ -1351,6 +1351,8 @@
     "teams": "팀전"
   },
   "game_modes": {
+    "all_modes": "모든 모드",
+    "all_modes_detail": "{count}개 모드, 각자 고유한 규칙",
     "conquest_description": "지역 지도에 목표 5개가 나타납니다. 과반을 차지하고 3분 동안 지키면 승리합니다. 영토 크기는 상관없습니다.",
     "conquest_fact_hold": "그중 3개를 3분 연속 지키면 승리",
     "conquest_fact_maps": "매 판 다른 지역 지도",
@@ -1368,6 +1370,9 @@
     "nations_join": "내 국가를 선택하세요",
     "nations_title": "민족 국가",
     "nations_waiting": "다음 게임이 곧 출시됩니다",
+    "page_intro": "최대 {max}개 모드를 고정하면 홈에 표시됩니다.",
+    "pin": "홈에 고정",
+    "pin_limit": "최대 {max}개까지만 고정할 수 있습니다. 먼저 하나를 해제하세요.",
     "players": "{count}/{max} 플레이어",
     "subtitle": "자신만의 규칙이 있는 멀티플레이어 게임",
     "survival_description": "모든 플레이어가 한편이 되어 웨이브마다 늘어나는 AI 침략자에 맞섭니다. 마지막 웨이브까지 함께 버티세요.",
@@ -1377,10 +1382,13 @@
     "survival_join": "방어에 참여",
     "survival_title": "생존",
     "title": "게임 모드",
+    "unpin": "홈에서 제거",
     "versus_description": "두 팀이 모두에게 같은 규칙으로 토너먼트 맵에서 맞붙습니다.",
     "versus_open": "형식 선택",
     "versus_title": "대전",
-    "versus_waiting": "{count}명 대기 중"
+    "versus_waiting": "{count}명 대기 중",
+    "your_modes": "내 모드",
+    "your_modes_hint": "가장 많이 하는 모드 또는 고정한 모드"
   },
   "game_settings": {
     "bots": "부족: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Google로 로그인",
     "login_steam": "Steam으로 로그인",
     "menu": "메뉴",
+    "modes": "모드",
     "news": "소식",
     "play": "플레이",
     "privacy_policy": "개인정보보호정책",

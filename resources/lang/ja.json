@@ -1351,6 +1351,8 @@
     "teams": "チーム"
   },
   "game_modes": {
+    "all_modes": "すべてのモード",
+    "all_modes_detail": "{count} 種類のモード、それぞれ独自のルール",
     "conquest_description": "地域マップに5つの目標が現れます。過半数を奪い、3分間守り抜けば勝利。領土の広さは関係ありません。",
     "conquest_fact_hold": "そのうち3つを3分間連続で守れば勝利",
     "conquest_fact_maps": "毎試合ちがう地域マップ",
@@ -1368,6 +1370,9 @@
     "nations_join": "私の国を選択してください",
     "nations_title": "国家",
     "nations_waiting": "次の試合はもうすぐです",
+    "page_intro": "最大 {max} つのモードをピン留めするとホームに表示されます。",
+    "pin": "ホームにピン留め",
+    "pin_limit": "ピン留めできるのは {max} つまでです。先に1つ外してください。",
     "players": "{count}/{max} プレイヤー",
     "subtitle": "独自のルールを持つマルチプレイヤー ゲーム",
     "survival_description": "全プレイヤーが同じ陣営で、波ごとに増えていくAI侵略者の襲来に立ち向かいます。最後の波まで力を合わせて耐え抜きましょう。",
@@ -1377,10 +1382,13 @@
     "survival_join": "防衛に参加",
     "survival_title": "サバイバル",
     "title": "ゲームモード",
+    "unpin": "ホームから外す",
     "versus_description": "2チームがトーナメントマップで対決。ルールは全員共通です。",
     "versus_open": "形式を選ぶ",
     "versus_title": "バーサス",
-    "versus_waiting": "{count}人が待機中"
+    "versus_waiting": "{count}人が待機中",
+    "your_modes": "あなたのモード",
+    "your_modes_hint": "よく遊ぶモード、またはピン留めしたモード"
   },
   "game_settings": {
     "bots": "部隊： ",
@@ -1897,6 +1905,7 @@
     "login_google": "Googleでログイン",
     "login_steam": "Steamでログイン",
     "menu": "メニュー",
+    "modes": "モード",
     "news": "更新情報",
     "play": "プレイ",
     "privacy_policy": "プライバシーポリシー",

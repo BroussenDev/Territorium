@@ -1351,6 +1351,8 @@
     "teams": "Drużyny"
   },
   "game_modes": {
+    "all_modes": "Wszystkie tryby",
+    "all_modes_detail": "Tryby: {count}, każdy z własnymi zasadami",
     "conquest_description": "Na mapie regionalnej pojawia się pięć celów. Zdobądź większość i utrzymaj je przez trzy minuty, by wygrać, niezależnie od wielkości twojego terytorium.",
     "conquest_fact_hold": "Utrzymaj 3 z nich przez 3 minuty bez przerwy, by wygrać",
     "conquest_fact_maps": "Inna mapa regionalna w każdej grze",
@@ -1368,6 +1370,9 @@
     "nations_join": "Wybierz mój kraj",
     "nations_title": "Narody",
     "nations_waiting": "Następny mecz już wkrótce",
+    "page_intro": "Przypnij do {max} trybów, by mieć je na stronie głównej.",
+    "pin": "Przypnij do strony głównej",
+    "pin_limit": "Możesz przypiąć najwyżej {max} tryby: najpierw odepnij jeden.",
     "players": "{count}/{max} graczy",
     "subtitle": "Gry wieloosobowe z własnymi zasadami",
     "survival_description": "Wszyscy gracze po tej samej stronie przeciwko falom najeźdźców SI, coraz liczniejszym z każdą falą. Wytrzymajcie razem do ostatniej.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Dołącz do obrony",
     "survival_title": "Przetrwanie",
     "title": "Tryby gry",
+    "unpin": "Usuń ze strony głównej",
     "versus_description": "Dwie drużyny mierzą się na mapie turniejowej, z tymi samymi zasadami dla wszystkich.",
     "versus_open": "Wybierz format",
     "versus_title": "Versus",
-    "versus_waiting": "Czeka: {count}"
+    "versus_waiting": "Czeka: {count}",
+    "your_modes": "Twoje tryby",
+    "your_modes_hint": "Tryby, w które grasz najczęściej, albo te, które przypniesz"
   },
   "game_settings": {
     "bots": "Plemiona:",
@@ -1897,6 +1905,7 @@
     "login_google": "Zaloguj się za pomocą Google",
     "login_steam": "Zaloguj się za pomocą Steama",
     "menu": "Menu",
+    "modes": "Tryby",
     "news": "Aktualności",
     "play": "Grać",
     "privacy_policy": "Polityka prywatności",

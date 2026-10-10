@@ -102,6 +102,13 @@ export class MobileNavBar extends LitElement {
           data-page="page-play"
           data-i18n="main.play"
         ></button>
+        <button
+          class="${MOBILE_ITEM} ${currentPage === "page-game-modes"
+            ? "active"
+            : ""}"
+          data-page="page-game-modes"
+          data-i18n="main.modes"
+        ></button>
         <div
           class="no-crazygames nav-menu-item flex items-center w-full cursor-pointer"
           data-page="page-item-store"

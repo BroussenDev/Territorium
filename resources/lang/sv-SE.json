@@ -1351,6 +1351,8 @@
     "teams": "Lag"
   },
   "game_modes": {
+    "all_modes": "Alla lägen",
+    "all_modes_detail": "{count} lägen, vart och ett med egna regler",
     "conquest_description": "Fem mål dyker upp på en regional karta. Ta de flesta och håll dem i tre minuter för att vinna, oavsett hur stort ditt område är.",
     "conquest_fact_hold": "Håll 3 av dem i 3 minuter i rad för att vinna",
     "conquest_fact_maps": "En ny regional karta varje match",
@@ -1368,6 +1370,9 @@
     "nations_join": "Välj mitt land",
     "nations_title": "Nationer",
     "nations_waiting": "Nästa match kommer snart",
+    "page_intro": "Fäst upp till {max} lägen för att hitta dem på startsidan.",
+    "pin": "Fäst på startsidan",
+    "pin_limit": "Du kan fästa högst {max} lägen: lossa ett först.",
     "players": "{count}/{max} spelare",
     "subtitle": "Flerspelarspel med egna regler",
     "survival_description": "Alla spelare på samma sida mot vågor av AI-inkräktare som växer för varje våg. Håll ut tillsammans till den sista.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Gå med i försvaret",
     "survival_title": "Överlevnad",
     "title": "Spellägen",
+    "unpin": "Ta bort från startsidan",
     "versus_description": "Två lag möts på en turneringskarta, med samma regler för alla.",
     "versus_open": "Välj format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} väntar"
+    "versus_waiting": "{count} väntar",
+    "your_modes": "Dina lägen",
+    "your_modes_hint": "Lägena du spelar mest, eller de du fäster"
   },
   "game_settings": {
     "bots": "Stammar:",
@@ -1897,6 +1905,7 @@
     "login_google": "Logga in med Google",
     "login_steam": "Logga in med Steam",
     "menu": "Meny",
+    "modes": "Lägen",
     "news": "Nyheter",
     "play": "Spela",
     "privacy_policy": "Sekretesspolicy",

@@ -1351,6 +1351,8 @@
     "teams": "团队"
   },
   "game_modes": {
+    "all_modes": "全部模式",
+    "all_modes_detail": "{count} 种模式，各有规则",
     "conquest_description": "区域地图上会出现五个目标。占领其中大多数并坚守三分钟即可获胜，领土大小无关紧要。",
     "conquest_fact_hold": "连续坚守其中 3 个达 3 分钟即可获胜",
     "conquest_fact_maps": "每局都是不同的区域地图",
@@ -1368,6 +1370,9 @@
     "nations_join": "选择我的国家",
     "nations_title": "国家",
     "nations_waiting": "下一场比赛即将推出",
+    "page_intro": "最多置顶 {max} 个模式，即可在首页看到。",
+    "pin": "置顶到首页",
+    "pin_limit": "最多只能置顶 {max} 个模式：请先取消一个。",
     "players": "{count}/{max} 玩家",
     "subtitle": "有自己规则的多人游戏",
     "survival_description": "所有玩家站在同一阵营，抵御一波比一波更多的AI入侵者。齐心协力坚持到最后一波。",
@@ -1377,10 +1382,13 @@
     "survival_join": "加入防守",
     "survival_title": "生存",
     "title": "游戏模式",
+    "unpin": "从首页移除",
     "versus_description": "两支队伍在锦标赛地图上对决，所有人规则相同。",
     "versus_open": "选择模式",
     "versus_title": "对战",
-    "versus_waiting": "{count} 人等待中"
+    "versus_waiting": "{count} 人等待中",
+    "your_modes": "你的模式",
+    "your_modes_hint": "你玩得最多或已置顶的模式"
   },
   "game_settings": {
     "bots": "部落：",
@@ -1897,6 +1905,7 @@
     "login_google": "使用谷歌登录",
     "login_steam": "使用 Steam 登录",
     "menu": "菜单",
+    "modes": "模式",
     "news": "公告",
     "play": "游戏",
     "privacy_policy": "隐私政策",

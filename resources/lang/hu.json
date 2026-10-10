@@ -1351,6 +1351,8 @@
     "teams": "Csapatok"
   },
   "game_modes": {
+    "all_modes": "Minden mód",
+    "all_modes_detail": "{count} mód, mindegyik saját szabályokkal",
     "conquest_description": "Öt célpont jelenik meg egy regionális térképen. Foglald el a többségüket, és tartsd három percig a győzelemhez, bármekkora is a területed.",
     "conquest_fact_hold": "Tarts meg 3-at 3 percig egyhuzamban a győzelemhez",
     "conquest_fact_maps": "Minden meccsen más regionális térkép",
@@ -1368,6 +1370,9 @@
     "nations_join": "Válaszd az országomat",
     "nations_title": "Nemzetek",
     "nations_waiting": "Hamarosan jön a következő játék",
+    "page_intro": "Tűzz ki legfeljebb {max} módot, hogy a kezdőlapon legyenek.",
+    "pin": "Kitűzés a kezdőlapra",
+    "pin_limit": "Legfeljebb {max} módot tűzhetsz ki: előbb vegyél le egyet.",
     "players": "{count}/{max} játékos",
     "subtitle": "Többszereplős játékok saját szabályokkal",
     "survival_description": "Minden játékos egy oldalon az MI-hódítók hullámai ellen, amelyek minden hullámmal nagyobbak. Tartsatok ki együtt az utolsóig.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Csatlakozás a védelemhez",
     "survival_title": "Túlélés",
     "title": "Játékmódok",
+    "unpin": "Levétel a kezdőlapról",
     "versus_description": "Két csapat mérkőzik meg egy versenytérképen, mindenkire azonos szabályokkal.",
     "versus_open": "Formátum választása",
     "versus_title": "Versus",
-    "versus_waiting": "{count} vár"
+    "versus_waiting": "{count} vár",
+    "your_modes": "Saját módjaid",
+    "your_modes_hint": "A legtöbbet játszott vagy kitűzött módjaid"
   },
   "game_settings": {
     "bots": "Törzsek: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Bejelentkezés Google-fiókkal",
     "login_steam": "Bejelentkezés Steam fiókkal",
     "menu": "Menü",
+    "modes": "Módok",
     "news": "Újdonságok",
     "play": "Indítás",
     "privacy_policy": "Adatvédelmi irányelvek",

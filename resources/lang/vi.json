@@ -1351,6 +1351,8 @@
     "teams": "Đội"
   },
   "game_modes": {
+    "all_modes": "Tất cả chế độ",
+    "all_modes_detail": "{count} chế độ, mỗi chế độ có luật riêng",
     "conquest_description": "Năm mục tiêu xuất hiện trên một bản đồ khu vực. Chiếm phần lớn và giữ chúng ba phút để thắng, dù lãnh thổ của bạn lớn đến đâu.",
     "conquest_fact_hold": "Giữ 3 mục tiêu trong 3 phút liên tục để thắng",
     "conquest_fact_maps": "Mỗi trận một bản đồ khu vực khác",
@@ -1368,6 +1370,9 @@
     "nations_join": "Chọn quốc gia của tôi",
     "nations_title": "quốc gia",
     "nations_waiting": "Trò chơi tiếp theo sắp ra mắt",
+    "page_intro": "Ghim tối đa {max} chế độ để thấy chúng trên trang chủ.",
+    "pin": "Ghim lên trang chủ",
+    "pin_limit": "Bạn chỉ ghim được tối đa {max} chế độ: hãy bỏ ghim một cái trước.",
     "players": "{count}/{max} người chơi",
     "subtitle": "Trò chơi nhiều người chơi có quy tắc riêng",
     "survival_description": "Mọi người chơi cùng một phe chống lại các đợt quân xâm lược AI, đông hơn sau mỗi đợt. Cùng nhau trụ vững đến đợt cuối.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Tham gia phòng thủ",
     "survival_title": "Sinh tồn",
     "title": "Chế độ trò chơi",
+    "unpin": "Bỏ khỏi trang chủ",
     "versus_description": "Hai đội đối đầu trên bản đồ giải đấu, với cùng một luật cho tất cả.",
     "versus_open": "Chọn thể thức",
     "versus_title": "Đối kháng",
-    "versus_waiting": "{count} đang chờ"
+    "versus_waiting": "{count} đang chờ",
+    "your_modes": "Chế độ của bạn",
+    "your_modes_hint": "Các chế độ bạn chơi nhiều nhất, hoặc bạn ghim"
   },
   "game_settings": {
     "bots": "Bộ tộc: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Đăng nhập bằng Google",
     "login_steam": "Đăng nhập bằng Steam",
     "menu": "Menu",
+    "modes": "Chế độ",
     "news": "Tin mới",
     "play": "Chơi",
     "privacy_policy": "Chính Sách Quyền Riêng Tư",

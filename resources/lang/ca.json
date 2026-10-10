@@ -1351,6 +1351,8 @@
     "teams": "Equips"
   },
   "game_modes": {
+    "all_modes": "Tots els modes",
+    "all_modes_detail": "{count} modes, cadascun amb les seves regles",
     "conquest_description": "Cinc objectius apareixen en un mapa regional. Pren-ne la majoria i mantén-los tres minuts per guanyar, sigui quina sigui la mida del teu territori.",
     "conquest_fact_hold": "Mantén-ne 3 durant 3 minuts seguits per guanyar",
     "conquest_fact_maps": "Un mapa regional diferent a cada partida",
@@ -1368,6 +1370,9 @@
     "nations_join": "Tria el meu país",
     "nations_title": "Nacions",
     "nations_waiting": "Aviat el proper partit",
+    "page_intro": "Fixa fins a {max} modes per trobar-los a la pàgina d'inici.",
+    "pin": "Fixa a l'inici",
+    "pin_limit": "Pots fixar {max} modes com a màxim: treu-ne un primer.",
     "players": "{count}/{max} jugadors",
     "subtitle": "Jocs multijugador amb regles pròpies",
     "survival_description": "Tots els jugadors al mateix bàndol contra onades d'invasors d'IA, més nombroses a cada onada. Resistiu junts fins a l'última.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Uneix-te a la defensa",
     "survival_title": "Supervivència",
     "title": "Modes de joc",
+    "unpin": "Treu de l'inici",
     "versus_description": "Dos equips s'enfronten en un mapa de torneig, amb les mateixes regles per a tothom.",
     "versus_open": "Tria un format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} esperant"
+    "versus_waiting": "{count} esperant",
+    "your_modes": "Els teus modes",
+    "your_modes_hint": "Els modes que més jugues, o els que fixes"
   },
   "game_settings": {
     "bots": "Tribus: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Inicieu sessió amb Google",
     "login_steam": "Inicieu sessió amb Steam",
     "menu": "Menú",
+    "modes": "Modes",
     "news": "Notícies",
     "play": "Jugar",
     "privacy_policy": "Política de Privacitat",

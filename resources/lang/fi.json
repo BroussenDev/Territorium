@@ -1351,6 +1351,8 @@
     "teams": "Joukkueet"
   },
   "game_modes": {
+    "all_modes": "Kaikki tilat",
+    "all_modes_detail": "{count} tilaa, kullakin omat sääntönsä",
     "conquest_description": "Alueelliselle kartalle ilmestyy viisi kohdetta. Valtaa useimmat ja pidä ne kolme minuuttia voittaaksesi, olipa alueesi kuinka suuri tahansa.",
     "conquest_fact_hold": "Pidä niistä 3 hallussa 3 minuuttia putkeen voittaaksesi",
     "conquest_fact_maps": "Joka pelissä eri alueellinen kartta",
@@ -1368,6 +1370,9 @@
     "nations_join": "Valitse maani",
     "nations_title": "Kansakunnat",
     "nations_waiting": "Seuraava peli tulossa pian",
+    "page_intro": "Kiinnitä enintään {max} tilaa, niin löydät ne etusivulta.",
+    "pin": "Kiinnitä etusivulle",
+    "pin_limit": "Voit kiinnittää enintään {max} tilaa: irrota ensin yksi.",
     "players": "{count}/{max} pelaajaa",
     "subtitle": "Moninpelit omilla säännöillään",
     "survival_description": "Kaikki pelaajat samalla puolella tekoälyhyökkääjien aaltoja vastaan, jotka kasvavat jokaisella aallolla. Kestäkää yhdessä viimeiseen asti.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Liity puolustukseen",
     "survival_title": "Selviytyminen",
     "title": "Pelitilat",
+    "unpin": "Poista etusivulta",
     "versus_description": "Kaksi joukkuetta kohtaa turnauskartalla, samoin säännöin kaikille.",
     "versus_open": "Valitse muoto",
     "versus_title": "Versus",
-    "versus_waiting": "{count} odottaa"
+    "versus_waiting": "{count} odottaa",
+    "your_modes": "Omat tilasi",
+    "your_modes_hint": "Tilat, joita pelaat eniten, tai jotka kiinnität"
   },
   "game_settings": {
     "bots": "Heimot:",
@@ -1897,6 +1905,7 @@
     "login_google": "Kirjaudu sisään Googlella",
     "login_steam": "Kirjaudu sisään Steamin avulla",
     "menu": "Valikko",
+    "modes": "Tilat",
     "news": "Uutiset",
     "play": "Pelata",
     "privacy_policy": "Tietosuojaseloste",

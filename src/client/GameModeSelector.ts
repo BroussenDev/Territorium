@@ -13,7 +13,6 @@ import {
 } from "../core/game/Game";
 import {
   isVersusGameType,
-  VERSUS_TEAM_SIZES,
   versusGameType,
   versusTeamSize,
 } from "../core/game/Versus";
@@ -21,6 +20,8 @@ import { PublicGameInfo, PublicGames } from "../core/Schemas";
 import { closableOfLobby } from "../core/ServerStatus";
 import { fetchRankedSeason } from "./Api";
 import { getDesktopSessionState } from "./Auth";
+import "./components/GameModeCards";
+import { lobbyTime, type ModeJoinDetail } from "./components/GameModeCards";
 import "./components/IOSAddToHomeScreenBanner";
 import {
   canJoinTrustedLobby,
@@ -33,7 +34,6 @@ import {
 import { isNewSeason, newSeasonTag } from "./components/ranked/RankedTier";
 import { lockIcon } from "./components/SteamLaunchDialog";
 import { betaTag } from "./components/ui/BetaTag";
-import { versusZoneMap } from "./components/VersusLobby";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import {
@@ -44,6 +44,7 @@ import {
   type DesktopSessionState,
   type DesktopUpdateState,
 } from "./DesktopShell";
+import { favoriteModes, MODE_KEYS, recordModePlay } from "./GameModes";
 import { HostLobbyModal } from "./HostLobbyModal";
 import { showInGameAlert } from "./InGameModal";
 import { JoinLobbyModal } from "./JoinLobbyModal";
@@ -61,15 +62,11 @@ import {
 import { gameOpenOrExplain, watchServerStatus } from "./ServerStatusClient";
 import { SinglePlayerModal } from "./SinglePlayerModal";
 import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
-import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { UsernameInput } from "./UsernameInput";
 import {
   calculateServerTimeOffset,
   getGamesPlayed,
-  getMapName,
-  getSecondsUntilServerTimestamp,
   reloadForUpdate,
-  renderDuration,
   showToast,
   translateText,
 } from "./Utils";
@@ -446,6 +443,10 @@ export class GameModeSelector extends LitElement {
       this.onDesktopUpdateState,
     );
     document.addEventListener("userMeResponse", this.onUserMe);
+    // The mode cards, here and on the Modes page.
+    document.addEventListener("mode-join", this.onModeJoin);
+    document.addEventListener("mode-versus", this.onModeVersus);
+    window.addEventListener("mode-pins-changed", this.onModePinsChanged);
     if (isDesktopShell()) {
       // Seed BOTH from their current values. This element is rendered by
       // <play-page> on a Lit microtask, so it cannot exist yet when the status
@@ -499,6 +500,9 @@ export class GameModeSelector extends LitElement {
       this.onDesktopUpdateState,
     );
     document.removeEventListener("userMeResponse", this.onUserMe);
+    document.removeEventListener("mode-join", this.onModeJoin);
+    document.removeEventListener("mode-versus", this.onModeVersus);
+    window.removeEventListener("mode-pins-changed", this.onModePinsChanged);
     document.removeEventListener(
       "desktop-session-state",
       this.onDesktopSessionState,
@@ -692,7 +696,6 @@ export class GameModeSelector extends LitElement {
     const ffa = this.lobbies?.games?.["ffa"]?.[0];
     const teams = this.lobbies?.games?.["team"]?.[0];
     const special = this.lobbies?.games?.["special"]?.[0];
-    const nations = this.lobbies?.games?.["nations"]?.[0];
     // The hero slot holds the spinner, then the FFA card; loaded without one
     // it goes and the upcoming column takes the whole row.
     const heroSlot = this.lobbies === null || ffa !== undefined;
@@ -831,7 +834,7 @@ export class GameModeSelector extends LitElement {
           ${this.renderUpcomingHeading()}
         </section>
 
-        ${this.renderGameModes(nations)}
+        ${this.renderFavoriteModes()}
         ${this.showTrustRequired
           ? trustRequiredDialog(
               this.viewerSignedIn,
@@ -934,6 +937,104 @@ export class GameModeSelector extends LitElement {
     if (!gameOpenOrExplain("private")) return;
     (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open();
   };
+
+  // A mode card picked its lobby. From the Modes page, back to the play
+  // page first: the join's own dialogs live here.
+  private onModeJoin = (e: Event) => {
+    const { mode, lobby } = (e as CustomEvent<ModeJoinDetail>).detail;
+    if (!this.contains(e.target as Node)) window.showPage?.("page-play");
+    recordModePlay(mode);
+    this.validateAndJoin(lobby);
+    this.requestUpdate();
+  };
+
+  private onModeVersus = () => {
+    recordModePlay("versus");
+    this.openVersus();
+    this.requestUpdate();
+  };
+
+  private onModePinsChanged = () => this.requestUpdate();
+
+  /** The player's two modes, and the way to the others. */
+  private renderFavoriteModes() {
+    const favorites = favoriteModes(
+      this.lobbies,
+      STEAM_LAUNCH_LOCKED ? ["versus"] : [],
+    );
+    const blocked = shouldBlockSocketSourcedAction(
+      this.desktopUpdateState,
+      this.desktopSessionState,
+    );
+    return html`
+      <section
+        class="flex flex-col gap-3 min-w-0 sm:col-span-2 sm:row-start-4 lg:col-span-3 lg:row-start-3"
+        aria-labelledby="your-modes-heading"
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <h2
+            id="your-modes-heading"
+            class="font-display text-xl font-bold tracking-wide text-white"
+          >
+            ${translateText("game_modes.your_modes")}
+          </h2>
+          <p class="hidden text-sm text-white/60 sm:block">
+            ${translateText("game_modes.your_modes_hint")}
+          </p>
+        </div>
+        <div
+          class="grid gap-4 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_minmax(13rem,0.7fr)]"
+        >
+          <game-mode-cards
+            class="contents"
+            variant="compact"
+            .modes=${favorites}
+            .lobbies=${this.lobbies}
+            ?inputValid=${this.inputValid}
+            ?blocked=${blocked}
+            .serverTimeOffset=${this.serverTimeOffset}
+            .defaultLobbyTime=${this.defaultLobbyTime}
+          ></game-mode-cards>
+          <button
+            data-all-modes
+            @click=${() => window.showPage?.("page-game-modes")}
+            class="group/all flex min-h-20 items-center sm:min-h-36 gap-4 rounded-xl border border-dashed border-white/20 bg-white/[0.03] p-4 text-left text-white transition-colors hover:border-white/45 hover:bg-white/[0.06] focus-visible:outline-2 focus-visible:outline-white sm:col-span-2 lg:col-span-1"
+          >
+            <span class="grid shrink-0 grid-cols-2 gap-1" aria-hidden="true">
+              <span class="size-4 rounded-[3px] bg-amber-300"></span>
+              <span
+                class="size-4 rounded-[3px] bg-[linear-gradient(90deg,#e04a5a_50%,#5b8def_50%)]"
+              ></span>
+              <span class="size-4 rounded-[3px] bg-brand-bright"></span>
+              <span class="size-4 rounded-[3px] bg-red-400"></span>
+            </span>
+            <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span class="font-display text-lg font-bold"
+                >${translateText("game_modes.all_modes")}</span
+              >
+              <span class="text-sm text-white/60"
+                >${translateText("game_modes.all_modes_detail", {
+                  count: MODE_KEYS.length,
+                })}</span
+              >
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              class="size-5 shrink-0 text-white/50 transition-transform group-hover/all:translate-x-0.5 group-hover/all:text-white"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+    `;
+  }
 
   private openVersus = () => {
     if (STEAM_LAUNCH_LOCKED) {
@@ -1149,418 +1250,9 @@ export class GameModeSelector extends LitElement {
    * Game modes with rules of their own, under the regular lobbies: Nations,
    * a wide card that joins its lobby, and Versus, which opens its own page.
    */
-  private renderGameModes(nations: PublicGameInfo | undefined) {
-    const blocked = shouldBlockSocketSourcedAction(
-      this.desktopUpdateState,
-      this.desktopSessionState,
-    );
-    const unavailable = !this.inputValid || nations === undefined;
-    const facts = [
-      translateText("game_modes.nations_fact_country"),
-      translateText("game_modes.nations_fact_capital"),
-      translateText("game_modes.nations_fact_alliance"),
-      translateText("game_modes.nations_fact_vassal"),
-      translateText("game_modes.nations_fact_ai"),
-      translateText("game_modes.nations_fact_win"),
-    ];
-    const time = nations ? this.lobbyTimeDisplay(nations) : undefined;
-    return html`
-      <section
-        class="flex flex-col gap-3 min-w-0 sm:col-span-2 sm:row-start-4 lg:col-span-3 lg:row-start-3"
-        aria-labelledby="game-modes-heading"
-      >
-        <div class="flex items-baseline justify-between gap-3">
-          <h2
-            id="game-modes-heading"
-            class="font-display text-xl font-bold tracking-wide text-white"
-          >
-            ${translateText("game_modes.title")}
-          </h2>
-          <p class="hidden text-sm text-white/60 sm:block">
-            ${translateText("game_modes.subtitle")}
-          </p>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-3">
-          <button
-            @click=${() => nations && this.validateAndJoin(nations)}
-            ?disabled=${unavailable}
-            aria-disabled=${blocked}
-            class="group/mode relative flex min-h-56 overflow-hidden rounded-2xl border border-amber-300/25 bg-[#1a1408] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-amber-300/60 hover:shadow-[0_18px_40px_-20px_rgba(251,191,36,0.6)] focus-visible:outline-2 focus-visible:outline-amber-300 sm:col-span-2 ${unavailable
-              ? DISABLED
-              : blocked
-                ? "opacity-50 cursor-not-allowed"
-                : ""}"
-          >
-            <img
-              src=${terrainMapFileLoader.getMapData(GameMapType.GiantWorldMap)
-                .webpPath}
-              alt=""
-              draggable="false"
-              class="pointer-events-none absolute inset-0 size-full select-none object-cover opacity-45 saturate-[0.7] transition-transform duration-500 group-hover/mode:scale-[1.03]"
-            />
-            <span
-              class="absolute inset-0 bg-[linear-gradient(100deg,#1a1408_30%,rgba(26,20,8,0.75)_60%,rgba(26,20,8,0.2))]"
-            ></span>
-            <span class="relative flex flex-1 flex-col gap-3 p-5">
-              <span class="flex items-center gap-3">
-                <span
-                  class="font-display text-3xl font-bold tracking-[0.08em] text-amber-200"
-                  >${translateText("game_modes.nations_title")}</span
-                >
-                ${time
-                  ? html`<span
-                      class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
-                        ? "uppercase"
-                        : ""}"
-                      >${time.text}</span
-                    >`
-                  : nothing}
-              </span>
-              <span class="max-w-xl text-sm leading-relaxed text-white/85">
-                ${translateText("game_modes.nations_description")}
-              </span>
-              <span
-                class="grid max-w-xl gap-x-5 gap-y-1.5 text-sm sm:grid-cols-2"
-              >
-                ${facts.map(
-                  (fact) =>
-                    html`<span class="flex items-start gap-2 text-white/80">
-                      <span
-                        class="mt-1.5 size-1.5 shrink-0 rotate-45 bg-amber-300"
-                        aria-hidden="true"
-                      ></span>
-                      ${fact}
-                    </span>`,
-                )}
-              </span>
-              <span class="mt-auto flex items-center gap-3 pt-1">
-                <span
-                  class="rounded-md bg-capital px-4 py-2 font-display text-sm font-bold text-capital-ink transition-colors group-hover/mode:bg-capital-light"
-                  >${nations
-                    ? translateText("game_modes.nations_join")
-                    : translateText("game_modes.nations_waiting")}</span
-                >
-                ${nations
-                  ? html`<span class="text-sm tabular-nums text-white/70"
-                      >${translateText("game_modes.players", {
-                        count: nations.numClients,
-                        max: nations.gameConfig?.maxPlayers ?? "?",
-                      })}</span
-                    >`
-                  : nothing}
-              </span>
-            </span>
-          </button>
-          ${this.renderVersusCard()} ${this.renderConquestCard()}
-          ${this.renderSurvivalCard()}
-        </div>
-      </section>
-    `;
-  }
-
-  /**
-   * Conquest: a full-width card under Nations and Versus. The five objective
-   * tiles on the left echo the rule, the lobby's map shows through on the right.
-   */
-  private renderConquestCard() {
-    const lobby = this.lobbies?.games?.["conquest"]?.[0];
-    const blocked = shouldBlockSocketSourcedAction(
-      this.desktopUpdateState,
-      this.desktopSessionState,
-    );
-    const unavailable = !this.inputValid || lobby === undefined;
-    const time = lobby ? this.lobbyTimeDisplay(lobby) : undefined;
-    const map = lobby?.gameConfig?.gameMap;
-    const facts = [
-      translateText("game_modes.conquest_fact_objectives"),
-      translateText("game_modes.conquest_fact_hold"),
-      translateText("game_modes.conquest_fact_maps"),
-    ];
-    return html`<button
-      data-conquest-card
-      @click=${() => lobby && this.validateAndJoin(lobby)}
-      ?disabled=${unavailable}
-      aria-disabled=${blocked}
-      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-emerald-400/25 bg-[#07130f] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-emerald-300/60 hover:shadow-[0_18px_40px_-20px_rgba(16,185,129,0.6)] focus-visible:outline-2 focus-visible:outline-emerald-300 sm:col-span-3 ${unavailable
-        ? DISABLED
-        : blocked
-          ? "opacity-50 cursor-not-allowed"
-          : ""}"
-    >
-      ${map
-        ? html`<img
-            src=${terrainMapFileLoader.getMapData(map).webpPath}
-            alt=""
-            draggable="false"
-            class="pointer-events-none absolute inset-y-0 right-0 h-full w-2/3 select-none object-cover opacity-50 saturate-[0.8] [mask-image:linear-gradient(to_left,#000_40%,transparent)] transition-transform duration-500 group-hover/mode:scale-[1.03]"
-          />`
-        : nothing}
-      <span
-        class="relative flex flex-1 flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-8"
-      >
-        <!-- Five objectives: three already held, the majority that wins. -->
-        <span
-          class="grid shrink-0 grid-cols-5 gap-1.5 self-start sm:self-center"
-          aria-hidden="true"
-        >
-          ${[0, 1, 2, 3, 4].map(
-            (i) =>
-              html`<span
-                class="size-5 rounded-[3px] border-2 ${i < 3
-                  ? "border-brand-bright bg-brand-bright shadow-[0_0_12px_rgba(52,211,153,0.6)]"
-                  : "border-white/35"}"
-              ></span>`,
-          )}
-        </span>
-        <span class="flex min-w-0 flex-1 flex-col gap-2.5">
-          <span class="flex flex-wrap items-center gap-3">
-            <span
-              class="font-display text-3xl font-bold tracking-[0.08em] text-emerald-200"
-              >${translateText("game_modes.conquest_title")}</span
-            >
-            ${time
-              ? html`<span
-                  class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
-                    ? "uppercase"
-                    : ""}"
-                  >${time.text}</span
-                >`
-              : nothing}
-            ${map
-              ? html`<span class="text-sm font-semibold text-white/70"
-                  >${getMapName(map) ?? map}</span
-                >`
-              : nothing}
-          </span>
-          <span class="max-w-2xl text-sm leading-relaxed text-white/85">
-            ${translateText("game_modes.conquest_description")}
-          </span>
-          <span class="flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
-            ${facts.map(
-              (fact) =>
-                html`<span class="flex items-start gap-2 text-white/80">
-                  <span
-                    class="mt-1.5 size-1.5 shrink-0 rounded-[1px] bg-brand-bright"
-                    aria-hidden="true"
-                  ></span>
-                  ${fact}
-                </span>`,
-            )}
-          </span>
-        </span>
-        <span class="flex shrink-0 items-center gap-3">
-          <span
-            class="rounded-md bg-brand px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-brand-light"
-            >${lobby
-              ? translateText("game_modes.conquest_join")
-              : translateText("game_modes.conquest_waiting")}</span
-          >
-          ${lobby
-            ? html`<span class="text-sm tabular-nums text-white/70"
-                >${translateText("game_modes.players", {
-                  count: lobby.numClients,
-                  max: lobby.gameConfig?.maxPlayers ?? "?",
-                })}</span
-              >`
-            : nothing}
-        </span>
-      </span>
-    </button>`;
-  }
-
-  /**
-   * Survival: a full-width card under Conquest. Ten bars rising to the right
-   * are the ten waves, each bigger than the last.
-   */
-  private renderSurvivalCard() {
-    const lobby = this.lobbies?.games?.["survival"]?.[0];
-    const blocked = shouldBlockSocketSourcedAction(
-      this.desktopUpdateState,
-      this.desktopSessionState,
-    );
-    const unavailable = !this.inputValid || lobby === undefined;
-    const time = lobby ? this.lobbyTimeDisplay(lobby) : undefined;
-    const map = lobby?.gameConfig?.gameMap;
-    const facts = [
-      translateText("game_modes.survival_fact_waves"),
-      translateText("game_modes.survival_fact_fair"),
-      translateText("game_modes.survival_fact_win"),
-    ];
-    return html`<button
-      data-survival-card
-      @click=${() => lobby && this.validateAndJoin(lobby)}
-      ?disabled=${unavailable}
-      aria-disabled=${blocked}
-      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-red-400/25 bg-[linear-gradient(90deg,#1a0a0a,#120d07)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-red-300/60 hover:shadow-[0_18px_40px_-20px_rgba(248,113,113,0.55)] focus-visible:outline-2 focus-visible:outline-red-300 sm:col-span-3 ${unavailable
-        ? DISABLED
-        : blocked
-          ? "opacity-50 cursor-not-allowed"
-          : ""}"
-    >
-      ${map
-        ? html`<img
-            src=${terrainMapFileLoader.getMapData(map).webpPath}
-            alt=""
-            draggable="false"
-            class="pointer-events-none absolute inset-y-0 right-0 h-full w-2/3 select-none object-cover opacity-40 saturate-[0.6] [mask-image:linear-gradient(to_left,#000_40%,transparent)] transition-transform duration-500 group-hover/mode:scale-[1.03]"
-          />`
-        : nothing}
-      <span
-        class="relative flex flex-1 flex-col gap-3 p-5 sm:flex-row sm:items-center sm:gap-8"
-      >
-        <!-- Ten waves, each taller than the last. -->
-        <span
-          class="flex h-12 shrink-0 items-end gap-1 self-start sm:self-center"
-          aria-hidden="true"
-        >
-          ${Array.from({ length: 10 }, (_, i) => i).map(
-            (i) =>
-              html`<span
-                class="w-1.5 rounded-[1px] ${i < 3
-                  ? "bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.6)]"
-                  : "bg-white/25"}"
-                style="height: ${20 + i * 8}%"
-              ></span>`,
-          )}
-        </span>
-        <span class="flex min-w-0 flex-1 flex-col gap-2.5">
-          <span class="flex flex-wrap items-center gap-3">
-            <span
-              class="font-display text-3xl font-bold tracking-[0.08em] text-red-200"
-              >${translateText("game_modes.survival_title")}</span
-            >
-            ${time
-              ? html`<span
-                  class="rounded-sm bg-black/50 px-2.5 py-0.5 text-xs font-bold tabular-nums text-white/90 ${time.uppercase
-                    ? "uppercase"
-                    : ""}"
-                  >${time.text}</span
-                >`
-              : nothing}
-            ${map
-              ? html`<span class="text-sm font-semibold text-white/70"
-                  >${getMapName(map) ?? map}</span
-                >`
-              : nothing}
-          </span>
-          <span class="max-w-2xl text-sm leading-relaxed text-white/85">
-            ${translateText("game_modes.survival_description")}
-          </span>
-          <span class="flex flex-wrap gap-x-5 gap-y-1.5 text-sm">
-            ${facts.map(
-              (fact) =>
-                html`<span class="flex items-start gap-2 text-white/80">
-                  <span
-                    class="mt-1.5 size-1.5 shrink-0 rounded-[1px] bg-red-400"
-                    aria-hidden="true"
-                  ></span>
-                  ${fact}
-                </span>`,
-            )}
-          </span>
-        </span>
-        <span class="flex shrink-0 items-center gap-3">
-          <span
-            class="rounded-md bg-red-500/90 px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-red-500"
-            >${lobby
-              ? translateText("game_modes.survival_join")
-              : translateText("game_modes.conquest_waiting")}</span
-          >
-          ${lobby
-            ? html`<span class="text-sm tabular-nums text-white/70"
-                >${translateText("game_modes.players", {
-                  count: lobby.numClients,
-                  max: lobby.gameConfig?.maxPlayers ?? "?",
-                })}</span
-              >`
-            : nothing}
-        </span>
-      </span>
-    </button>`;
-  }
-
-  private renderVersusCard() {
-    const waiting = VERSUS_TEAM_SIZES.map(
-      (size) =>
-        this.lobbies?.games?.[versusGameType(size)]?.[0]?.numClients ?? 0,
-    );
-    const total = waiting.reduce((a, b) => a + b, 0);
-    return html`<button
-      @click=${this.openVersus}
-      ?disabled=${!this.inputValid}
-      class="group/mode relative flex min-h-56 overflow-hidden rounded-2xl border border-white/15 bg-[linear-gradient(90deg,#2a0d10,#0d1830)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-white/45 hover:shadow-[0_18px_40px_-20px_rgba(147,197,253,0.6)] focus-visible:outline-2 focus-visible:outline-white ${this
-        .inputValid
-        ? ""
-        : DISABLED}"
-    >
-      <span
-        class="pointer-events-none absolute -right-10 -top-10 w-44 opacity-60 transition-transform duration-500 group-hover/mode:scale-[1.04]"
-        >${versusZoneMap(1)}</span
-      >
-      <span class="relative flex flex-1 flex-col gap-3 p-5">
-        <span
-          class="font-display text-3xl font-bold tracking-[0.08em] text-white"
-          >${translateText("game_modes.versus_title")}</span
-        >
-        <span class="max-w-[14rem] text-sm leading-relaxed text-white/85">
-          ${translateText("game_modes.versus_description")}
-        </span>
-        <span class="flex flex-wrap gap-1.5">
-          ${VERSUS_TEAM_SIZES.map(
-            (size, i) =>
-              html`<span
-                class="rounded-md bg-black/45 px-2 py-0.5 text-sm font-bold tabular-nums ${waiting[
-                  i
-                ] > 0
-                  ? "text-emerald-300"
-                  : "text-white/85"}"
-                >${versusGameType(size)}</span
-              >`,
-          )}
-        </span>
-        <span class="mt-auto flex flex-wrap items-center gap-3 pt-1">
-          ${STEAM_LAUNCH_LOCKED
-            ? html`<span
-                data-steam-locked
-                class="flex items-center gap-2 rounded-md bg-capital px-4 py-2 font-display text-sm font-bold text-capital-ink transition-colors group-hover/mode:bg-capital-light"
-                >${lockIcon("size-4")}${translateText(
-                  "steam_launch.coming",
-                )}</span
-              >`
-            : html`<span
-                class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#0d1830] transition-colors group-hover/mode:bg-blue-100"
-                >${translateText("game_modes.versus_open")}</span
-              >`}
-          ${!STEAM_LAUNCH_LOCKED && total > 0
-            ? html`<span class="text-sm tabular-nums text-white/70"
-                >${translateText("game_modes.versus_waiting", {
-                  count: total,
-                })}</span
-              >`
-            : nothing}
-        </span>
-      </span>
-    </button>`;
-  }
-
   /** Countdown shown on a lobby card, or "starting" once it runs out. */
-  private lobbyTimeDisplay(lobby: PublicGameInfo): {
-    text: string;
-    uppercase: boolean;
-  } {
-    const timeRemaining = lobby.startsAt
-      ? getSecondsUntilServerTimestamp(lobby.startsAt, this.serverTimeOffset)
-      : undefined;
-    if (timeRemaining === undefined) {
-      return { text: renderDuration(this.defaultLobbyTime), uppercase: false };
-    }
-    if (timeRemaining > 0) {
-      return { text: renderDuration(timeRemaining), uppercase: false };
-    }
-    return {
-      text: translateText("public_lobby.starting_game"),
-      uppercase: true,
-    };
+  private lobbyTimeDisplay(lobby: PublicGameInfo) {
+    return lobbyTime(lobby, this.serverTimeOffset, this.defaultLobbyTime);
   }
 
   private renderLobbyCard(

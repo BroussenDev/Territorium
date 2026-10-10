@@ -1351,6 +1351,8 @@
     "teams": "Teams"
   },
   "game_modes": {
+    "all_modes": "All modes",
+    "all_modes_detail": "{count} modes, each with rules of its own",
     "conquest_description": "Five objectives appear on a regional map. Take most of them and hold them for three minutes to win, whatever the size of your territory.",
     "conquest_fact_hold": "Hold 3 of them for 3 minutes in a row to win",
     "conquest_fact_maps": "A different regional map every game",
@@ -1368,6 +1370,9 @@
     "nations_join": "Choose my country",
     "nations_title": "Nations",
     "nations_waiting": "Next game coming soon",
+    "page_intro": "Pin up to {max} modes to find them on the home page.",
+    "pin": "Pin to the home page",
+    "pin_limit": "You can pin {max} modes at most: unpin one first.",
     "players": "{count}/{max} players",
     "subtitle": "Multiplayer games with rules of their own",
     "survival_description": "Every player on the same side against waves of AI invaders, bigger with each wave. Hold out together until the last one.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Join the defense",
     "survival_title": "Survival",
     "title": "Game modes",
+    "unpin": "Remove from the home page",
     "versus_description": "Two teams face off on a tournament map, with the same rules for everyone.",
     "versus_open": "Choose a format",
     "versus_title": "Versus",
-    "versus_waiting": "{count} waiting"
+    "versus_waiting": "{count} waiting",
+    "your_modes": "Your modes",
+    "your_modes_hint": "The modes you play the most, or the ones you pin"
   },
   "game_settings": {
     "bots": "Tribes: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Login with Google",
     "login_steam": "Login with Steam",
     "menu": "Menu",
+    "modes": "Modes",
     "news": "News",
     "play": "Play",
     "privacy_policy": "Privacy Policy",

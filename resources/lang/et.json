@@ -1351,6 +1351,8 @@
     "teams": "Tiimid"
   },
   "game_modes": {
+    "all_modes": "Kõik režiimid",
+    "all_modes_detail": "{count} režiimi, igaühel omad reeglid",
     "conquest_description": "Piirkondlikule kaardile ilmub viis sihtmärki. Vallutage enamik ja hoidke neid kolm minutit, et võita, olenemata teie ala suurusest.",
     "conquest_fact_hold": "Hoidke neist 3 kolm minutit järjest, et võita",
     "conquest_fact_maps": "Igas mängus erinev piirkondlik kaart",
@@ -1368,6 +1370,9 @@
     "nations_join": "Valige minu riik",
     "nations_title": "Rahvad",
     "nations_waiting": "Järgmine mäng peagi tulemas",
+    "page_intro": "Kinnita kuni {max} režiimi, et need oleksid avalehel.",
+    "pin": "Kinnita avalehele",
+    "pin_limit": "Kinnitada saab kuni {max} režiimi: eemalda enne üks.",
     "players": "{count}/{max} mängijat",
     "subtitle": "Mitme mängijaga mängud oma reeglitega",
     "survival_description": "Kõik mängijad samal poolel tehisintellektiga sissetungijate lainete vastu, mis iga lainega kasvavad. Pidage koos vastu viimaseni.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Liitu kaitsega",
     "survival_title": "Ellujäämine",
     "title": "Mängurežiimid",
+    "unpin": "Eemalda avalehelt",
     "versus_description": "Kaks meeskonda kohtuvad turniirikaardil, kõigile samade reeglitega.",
     "versus_open": "Vali formaat",
     "versus_title": "Versus",
-    "versus_waiting": "{count} ootel"
+    "versus_waiting": "{count} ootel",
+    "your_modes": "Sinu režiimid",
+    "your_modes_hint": "Režiimid, mida mängid kõige rohkem, või mille kinnitad"
   },
   "game_settings": {
     "bots": "Hõimud: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Logige sisse Google'iga",
     "login_steam": "Logige sisse Steamiga",
     "menu": "Menüü",
+    "modes": "Režiimid",
     "news": "Uudised",
     "play": "Mängi",
     "privacy_policy": "Privaatsuspoliitika",

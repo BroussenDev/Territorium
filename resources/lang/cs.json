@@ -1351,6 +1351,8 @@
     "teams": "Týmy"
   },
   "game_modes": {
+    "all_modes": "Všechny režimy",
+    "all_modes_detail": "Režimy: {count}, každý s vlastními pravidly",
     "conquest_description": "Na regionální mapě se objeví pět cílů. Obsaďte většinu a držte je tři minuty, abyste vyhráli, ať je vaše území jakkoli velké.",
     "conquest_fact_hold": "Držte 3 z nich 3 minuty v kuse a vyhrajete",
     "conquest_fact_maps": "Každá hra na jiné regionální mapě",
@@ -1368,6 +1370,9 @@
     "nations_join": "Vyberte mou zemi",
     "nations_title": "národy",
     "nations_waiting": "Další hra již brzy",
+    "page_intro": "Připni až {max} režimy a najdeš je na úvodní stránce.",
+    "pin": "Připnout na úvodní stránku",
+    "pin_limit": "Připnout můžeš nejvýš {max} režimy: nejdřív jeden odepni.",
     "players": "{count}/{max} hráčů",
     "subtitle": "Hry pro více hráčů s vlastními pravidly",
     "survival_description": "Všichni hráči na jedné straně proti vlnám útočníků s AI, které s každou vlnou rostou. Vydržte spolu až do poslední.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Přidat se k obraně",
     "survival_title": "Přežití",
     "title": "Herní režimy",
+    "unpin": "Odebrat z úvodní stránky",
     "versus_description": "Dva týmy se utkají na turnajové mapě se stejnými pravidly pro všechny.",
     "versus_open": "Vybrat formát",
     "versus_title": "Versus",
-    "versus_waiting": "Čeká: {count}"
+    "versus_waiting": "Čeká: {count}",
+    "your_modes": "Tvé režimy",
+    "your_modes_hint": "Režimy, které hraješ nejvíc, nebo ty, které připneš"
   },
   "game_settings": {
     "bots": "Kmeny!",
@@ -1897,6 +1905,7 @@
     "login_google": "Přihlásit se přes Google",
     "login_steam": "Přihlaste se pomocí služby Steam",
     "menu": "Nabídka",
+    "modes": "Režimy",
     "news": "Novinky",
     "play": "Hrát",
     "privacy_policy": "Zásady ochrany osobních údajů",

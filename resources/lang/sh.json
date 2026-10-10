@@ -1351,6 +1351,8 @@
     "teams": "Timski"
   },
   "game_modes": {
+    "all_modes": "Svi modovi",
+    "all_modes_detail": "Modova: {count}, svaki sa svojim pravilima",
     "conquest_description": "Pet ciljeva pojavljuje se na regionalnoj mapi. Zauzmite većinu i držite ih tri minute da pobijedite, bez obzira na veličinu teritorija.",
     "conquest_fact_hold": "Držite 3 od njih 3 minute zaredom da pobijedite",
     "conquest_fact_maps": "Druga regionalna mapa u svakoj partiji",
@@ -1368,6 +1370,9 @@
     "nations_join": "Izaberi moju zemlju",
     "nations_title": "Nacije",
     "nations_waiting": "Sledeća utakmica dolazi uskoro",
+    "page_intro": "Zakači do {max} moda da ih imaš na početnoj stranici.",
+    "pin": "Zakači na početnu",
+    "pin_limit": "Možeš zakačiti najviše {max} moda: prvo otkači jedan.",
     "players": "{count}/{max} igrača",
     "subtitle": "Igre za više igrača sa sopstvenim pravilima",
     "survival_description": "Svi igrači na istoj strani protiv talasa AI osvajača, sve većih sa svakim talasom. Izdržite zajedno do posljednjeg.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Pridruži se odbrani",
     "survival_title": "Preživljavanje",
     "title": "Režimi igre",
+    "unpin": "Ukloni sa početne",
     "versus_description": "Dva tima se sukobljavaju na turnirskoj mapi, sa istim pravilima za sve.",
     "versus_open": "Izaberi format",
     "versus_title": "Versus",
-    "versus_waiting": "Čeka: {count}"
+    "versus_waiting": "Čeka: {count}",
+    "your_modes": "Tvoji modovi",
+    "your_modes_hint": "Modovi koje najviše igraš, ili oni koje zakačiš"
   },
   "game_settings": {
     "bots": "Plemena: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Prijavi se putem Google-a",
     "login_steam": "Prijavi se putem Steam-a",
     "menu": "Meni",
+    "modes": "Modovi",
     "news": "Vesti",
     "play": "Igraj",
     "privacy_policy": "Pravila Privatnosti",

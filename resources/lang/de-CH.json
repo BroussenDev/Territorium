@@ -1351,6 +1351,8 @@
     "teams": "Teams"
   },
   "game_modes": {
+    "all_modes": "Alle Modi",
+    "all_modes_detail": "{count} Modi, jeder mit eigenen Regeln",
     "conquest_description": "Fünf Ziele erscheinen auf einer Regionalkarte. Nimm die meisten davon ein und halte sie drei Minuten, um zu gewinnen, egal wie gross dein Gebiet ist.",
     "conquest_fact_hold": "Halte 3 davon 3 Minuten am Stück, um zu gewinnen",
     "conquest_fact_maps": "Jede Partie eine andere Regionalkarte",
@@ -1368,6 +1370,9 @@
     "nations_join": "Wählen Sie mein Land",
     "nations_title": "Nationen",
     "nations_waiting": "Das nächste Spiel kommt bald",
+    "page_intro": "Hefte bis zu {max} Modi an, um sie auf der Startseite zu finden.",
+    "pin": "An die Startseite anheften",
+    "pin_limit": "Du kannst höchstens {max} Modi anheften: Löse zuerst einen.",
     "players": "{count}/{max} Spieler",
     "subtitle": "Multiplayer-Spiele mit eigenen Regeln",
     "survival_description": "Alle Spieler auf derselben Seite gegen Wellen von KI-Invasoren, die mit jeder Welle grösser werden. Haltet gemeinsam bis zur letzten durch.",
@@ -1377,10 +1382,13 @@
     "survival_join": "Zur Verteidigung",
     "survival_title": "Überleben",
     "title": "Spielmodi",
+    "unpin": "Von der Startseite lösen",
     "versus_description": "Zwei Teams treten auf einer Turnierkarte gegeneinander an, mit denselben Regeln für alle.",
     "versus_open": "Format wählen",
     "versus_title": "Versus",
-    "versus_waiting": "{count} warten"
+    "versus_waiting": "{count} warten",
+    "your_modes": "Deine Modi",
+    "your_modes_hint": "Die Modi, die du am meisten spielst, oder die du anheftest"
   },
   "game_settings": {
     "bots": "Stämme: ",
@@ -1897,6 +1905,7 @@
     "login_google": "Melden Sie sich mit Google an",
     "login_steam": "Melden Sie sich mit Steam an",
     "menu": "Menü",
+    "modes": "Modi",
     "news": "Neuigkeite",
     "play": "Spiele",
     "privacy_policy": "Dateschutzerklärig",

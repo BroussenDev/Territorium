@@ -1351,6 +1351,8 @@
     "teams": "團隊"
   },
   "game_modes": {
+    "all_modes": "全部模式",
+    "all_modes_detail": "{count} 種模式，各有規則",
     "conquest_description": "區域地圖上會出現五個目標。占領其中大多數並堅守三分鐘即可獲勝，領土大小無關緊要。",
     "conquest_fact_hold": "連續堅守其中 3 個達 3 分鐘即可獲勝",
     "conquest_fact_maps": "每局都是不同的區域地圖",
@@ -1368,6 +1370,9 @@
     "nations_join": "選擇我的國家",
     "nations_title": "國家",
     "nations_waiting": "下一場比賽即將推出",
+    "page_intro": "最多釘選 {max} 個模式，即可在首頁看到。",
+    "pin": "釘選到首頁",
+    "pin_limit": "最多只能釘選 {max} 個模式：請先取消一個。",
     "players": "{count}/{max} 玩家",
     "subtitle": "有自己規則的多人遊戲",
     "survival_description": "所有玩家站在同一陣營，抵禦一波比一波更多的AI入侵者。齊心協力撐到最後一波。",
@@ -1377,10 +1382,13 @@
     "survival_join": "加入防守",
     "survival_title": "生存",
     "title": "遊戲模式",
+    "unpin": "從首頁移除",
     "versus_description": "兩支隊伍在錦標賽地圖上對決，所有人規則相同。",
     "versus_open": "選擇模式",
     "versus_title": "對戰",
-    "versus_waiting": "{count} 人等待中"
+    "versus_waiting": "{count} 人等待中",
+    "your_modes": "你的模式",
+    "your_modes_hint": "你玩得最多或已釘選的模式"
   },
   "game_settings": {
     "bots": "部族： ",
@@ -1897,6 +1905,7 @@
     "login_google": "透過 Google 登入",
     "login_steam": "透過 Steam 登入",
     "menu": "選單",
+    "modes": "模式",
     "news": "訊息",
     "play": "遊玩",
     "privacy_policy": "隱私權政策",
