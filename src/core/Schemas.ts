@@ -8,6 +8,7 @@ import {
   PatternDataSchema,
 } from "./CosmeticSchemas";
 import type { GameEvent } from "./EventBus";
+import { CustomMapRefSchema } from "./game/CustomMaps";
 import {
   AllPlayers,
   Difficulty,
@@ -516,6 +517,9 @@ export const OvertimeConfigSchema = z.object({
 
 export const GameConfigSchema = z.object({
   gameMap: z.enum(GameMapType),
+  // A player-made map (CustomMaps.ts) played instead of gameMap, which then
+  // only names a fallback. Solo only until our servers host the maps.
+  customMap: CustomMapRefSchema.optional(),
   difficulty: z.enum(Difficulty),
   donateGold: z.boolean(), // Configures donations to humans only
   donateTroops: z.boolean(), // Configures donations to humans only

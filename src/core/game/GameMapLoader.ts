@@ -1,9 +1,14 @@
+import type { CustomMapRef } from "./CustomMaps";
 import { GameMapType } from "./Game";
 import { NationsCountriesFile } from "./NationsMode";
 import { MapManifest } from "./TerrainMapLoader";
 
 export interface GameMapLoader {
-  getMapData(map: GameMapType): MapData;
+  /**
+   * A map's files. With `customMap` (CustomMaps.ts), the files of that
+   * player-made map instead of the official `map`.
+   */
+  getMapData(map: GameMapType, customMap?: CustomMapRef | null): MapData;
 }
 
 export interface MapData {

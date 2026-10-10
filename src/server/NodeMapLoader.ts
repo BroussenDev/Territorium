@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import type { AssetManifest } from "../core/AssetUrls";
+import type { CustomMapRef } from "../core/game/CustomMaps";
 import { GameMapType } from "../core/game/Game";
 import { GameMapLoader, MapData } from "../core/game/GameMapLoader";
 import { NationsCountriesFile } from "../core/game/NationsMode";
@@ -41,7 +42,8 @@ export class NodeMapLoader implements GameMapLoader {
     return path.join(this.staticDir, decodeURIComponent(hashed));
   }
 
-  getMapData(map: GameMapType): MapData {
+  getMapData(map: GameMapType, customMap?: CustomMapRef | null): MapData {
+    if (customMap) throw new Error("Custom maps are not served here");
     const key = Object.keys(GameMapType).find(
       (k) => GameMapType[k as keyof typeof GameMapType] === map,
     );

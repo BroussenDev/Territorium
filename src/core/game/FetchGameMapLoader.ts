@@ -1,3 +1,4 @@
+import { type CustomMapRef, customMapFiles } from "./CustomMaps";
 import { GameMapType } from "./Game";
 import { GameMapLoader, MapData } from "./GameMapLoader";
 
@@ -10,7 +11,11 @@ export class FetchGameMapLoader implements GameMapLoader {
     this.maps = new Map<GameMapType, MapData>();
   }
 
-  public getMapData(map: GameMapType): MapData {
+  public getMapData(
+    map: GameMapType,
+    customMap?: CustomMapRef | null,
+  ): MapData {
+    if (customMap) return this.customMapData(customMap);
     const cachedMap = this.maps.get(map);
     if (cachedMap) {
       return cachedMap;
@@ -41,6 +46,22 @@ export class FetchGameMapLoader implements GameMapLoader {
 
     this.maps.set(map, mapData);
     return mapData;
+  }
+
+  // A player-made map: its files where this page registered them.
+  private customMapData(ref: CustomMapRef): MapData {
+    const urls = customMapFiles(ref.id);
+    if (urls === null) throw new Error(`Custom map not available: ${ref.name}`);
+    const none = () =>
+      Promise.reject(new Error("Custom maps have no layers or countries"));
+    return {
+      mapBin: () => this.loadBinaryFromUrl(urls.mapBin),
+      map4xBin: () => this.loadBinaryFromUrl(urls.map4xBin),
+      map16xBin: () => this.loadBinaryFromUrl(urls.map16xBin),
+      manifest: () => this.loadJsonFromUrl(urls.manifest),
+      webpPath: urls.thumbnail,
+      layerPng: none,
+    };
   }
 
   private resolveUrl(path: string): string {

@@ -299,6 +299,11 @@ export class LocalServer {
     if (this.archived || this.archiveInFlight) {
       return;
     }
+    // A player-made map: not one of the maps the stats and boards count.
+    if (this.lobbyConfig.gameStartInfo?.config.customMap !== undefined) {
+      this.archived = true;
+      return;
+    }
     const players: PlayerRecord[] = [
       {
         persistentID: getPersistentID(),

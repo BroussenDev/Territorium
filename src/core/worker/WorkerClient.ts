@@ -1,4 +1,5 @@
 import { workerCdnBase } from "../AssetUrls";
+import { customMapFiles } from "../game/CustomMaps";
 import {
   BuildableUnit,
   Cell,
@@ -94,6 +95,10 @@ export class WorkerClient {
         gameStartInfo: this.gameStartInfo,
         clientID: this.clientID,
         cdnBase: workerCdnBase(),
+        customMapFiles: this.gameStartInfo.config.customMap
+          ? (customMapFiles(this.gameStartInfo.config.customMap.id) ??
+            undefined)
+          : undefined,
       });
 
       setTimeout(() => {

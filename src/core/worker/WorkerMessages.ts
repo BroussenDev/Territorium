@@ -1,3 +1,4 @@
+import type { CustomMapFileUrls } from "../game/CustomMaps";
 import {
   BuildableUnit,
   PlayerActions,
@@ -43,6 +44,9 @@ export interface InitMessage extends BaseWorkerMessage {
   gameStartInfo: GameStartInfo;
   clientID: ClientID | undefined;
   cdnBase: string;
+  // The files of the player-made map the game is on, when it is one: the
+  // worker has its own registry (CustomMaps.ts).
+  customMapFiles?: CustomMapFileUrls;
 }
 
 export interface TurnMessage extends BaseWorkerMessage {

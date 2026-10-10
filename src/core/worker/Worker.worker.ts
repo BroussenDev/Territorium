@@ -1,4 +1,5 @@
 import { assetUrl } from "../AssetUrls";
+import { registerCustomMapFiles } from "../game/CustomMaps";
 import { FetchGameMapLoader } from "../game/FetchGameMapLoader";
 import { ErrorUpdate, GameUpdateViewData } from "../game/GameUpdates";
 import { createGameRunner, GameRunner } from "../GameRunner";
@@ -147,6 +148,10 @@ ctx.addEventListener("message", async (e: MessageEvent<MainThreadMessage>) => {
         // Set before createGameRunner so map fetches via mapLoader pick up the
         // CDN base. Workers have no `window`, so AssetUrls falls back to this.
         globalThis.__CDN_BASE__ = message.cdnBase;
+        const customMap = message.gameStartInfo.config.customMap;
+        if (customMap && message.customMapFiles) {
+          registerCustomMapFiles(customMap.id, message.customMapFiles);
+        }
         gameRunner = createGameRunner(
           message.gameStartInfo,
           message.clientID,

@@ -208,6 +208,12 @@ export async function startWorker() {
       return res.status(503).json({ error: "closed" });
     }
     let gc = parsed.data;
+    // Player-made maps are solo only until our servers host them.
+    if (gc?.customMap !== undefined) {
+      return res
+        .status(400)
+        .json({ error: "Custom maps are not available in multiplayer yet" });
+    }
     // Public games are scheduled by the master over IPC, never created here.
     if (gc?.gameType === GameType.Public) {
       return res

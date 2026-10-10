@@ -697,6 +697,7 @@ async function createClientGame(
       lobbyConfig.gameStartInfo.config.gameMapSize,
       mapLoader,
       false, // Layer images loaded off the critical path after game start.
+      lobbyConfig.gameStartInfo.config.customMap ?? null,
     );
   }
   // Kick off the font-atlas fetch so it overlaps with worker init; the

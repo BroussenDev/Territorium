@@ -61,6 +61,7 @@ export async function createGameRunner(
     gameStart.config.gameMapSize,
     mapLoader,
     false, // Worker never renders layers — skip image loading to save memory.
+    gameStart.config.customMap ?? null,
   );
   const seed = gameSeed(gameStart);
   const random = new PseudoRandom(simpleHash(seed));

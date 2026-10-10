@@ -1,4 +1,5 @@
 import { assetUrl } from "../AssetUrls";
+import type { CustomMapRef } from "./CustomMaps";
 import { GameMapType } from "./Game";
 import { GameMapLoader, MapData } from "./GameMapLoader";
 import { NationsCountriesFile } from "./NationsMode";
@@ -19,7 +20,8 @@ export class BinaryLoaderGameMapLoader implements GameMapLoader {
     };
   }
 
-  getMapData(map: GameMapType): MapData {
+  getMapData(map: GameMapType, customMap?: CustomMapRef | null): MapData {
+    if (customMap) throw new Error("Custom maps are not served here");
     const cachedMap = this.maps.get(map);
     if (cachedMap) {
       return cachedMap;

@@ -1,3 +1,4 @@
+import type { CustomMapRef } from "./CustomMaps";
 import { GameMapSize, GameMapType, TeamGameSpawnAreas } from "./Game";
 import { GameMap, GameMapImpl } from "./GameMap";
 import { GameMapLoader } from "./GameMapLoader";
@@ -72,11 +73,13 @@ export async function loadTerrainMap(
   /** Whether to load layer PNG images inline. The Web Worker path should
    *  pass false — it never renders layers and should not retain ImageBitmaps. */
   loadImages: boolean = true,
+  /** A player-made map played instead of `map` (CustomMaps.ts). */
+  customMap: CustomMapRef | null = null,
 ): Promise<TerrainMapData> {
-  const cacheKey = `${map}:${mapSize}`;
+  const cacheKey = `${customMap ? `custom:${customMap.id}` : map}:${mapSize}`;
   const cached = loadedMaps.get(cacheKey);
   if (cached !== undefined) return cached;
-  const mapFiles = terrainMapFileLoader.getMapData(map);
+  const mapFiles = terrainMapFileLoader.getMapData(map, customMap);
   const manifest = await mapFiles.manifest();
 
   const gameMap =
