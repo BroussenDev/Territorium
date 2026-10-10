@@ -87,33 +87,38 @@ export function registerCommunityMapRoutes(app: Express, log: Logger): void {
           `${ServerEnv.jwtIssuer()}/community-maps`,
           {
             method: "POST",
+            // Compressed: the map files shrink a lot, and the API sits
+            // behind the same body-size limit as everything else.
             headers: {
               "Content-Type": "application/json",
+              "Content-Encoding": "gzip",
               "x-api-key": ServerEnv.apiKey(),
             },
-            body: JSON.stringify({
-              author: verified.persistentId,
-              id: built.id,
-              name: built.manifest.name,
-              width: source.width,
-              height: source.height,
-              nations: built.manifest.nations.length,
-              landTiles: g.map.numLandTiles,
-              files: {
-                "map.bin": Buffer.from(g.map.data).toString("base64"),
-                "map4x.bin": Buffer.from(g.map4x.data).toString("base64"),
-                "map16x.bin": Buffer.from(g.map16x.data).toString("base64"),
-                "manifest.json": Buffer.from(
-                  JSON.stringify(built.manifest),
-                ).toString("base64"),
-                "thumbnail.png": encodePng(
-                  g.thumbnail.width,
-                  g.thumbnail.height,
-                  g.thumbnail.rgba,
-                ).toString("base64"),
-                "source.gz": gzSource.toString("base64"),
-              },
-            }),
+            body: zlib.gzipSync(
+              JSON.stringify({
+                author: verified.persistentId,
+                id: built.id,
+                name: built.manifest.name,
+                width: source.width,
+                height: source.height,
+                nations: built.manifest.nations.length,
+                landTiles: g.map.numLandTiles,
+                files: {
+                  "map.bin": Buffer.from(g.map.data).toString("base64"),
+                  "map4x.bin": Buffer.from(g.map4x.data).toString("base64"),
+                  "map16x.bin": Buffer.from(g.map16x.data).toString("base64"),
+                  "manifest.json": Buffer.from(
+                    JSON.stringify(built.manifest),
+                  ).toString("base64"),
+                  "thumbnail.png": encodePng(
+                    g.thumbnail.width,
+                    g.thumbnail.height,
+                    g.thumbnail.rgba,
+                  ).toString("base64"),
+                  "source.gz": gzSource.toString("base64"),
+                },
+              }),
+            ),
             signal: AbortSignal.timeout(30_000),
           },
         );
