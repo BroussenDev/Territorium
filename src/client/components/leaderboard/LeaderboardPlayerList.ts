@@ -314,7 +314,7 @@ export class LeaderboardPlayerList extends LitElement {
           <td class="py-3 px-4">
             <div class="flex flex-col">
               <span
-                class="text-[10px] uppercase font-bold text-emerald-200/80 leading-tight"
+                class="text-[10px] font-bold text-emerald-200/80 leading-tight"
                 >${translateText("leaderboard_modal.your_ranking")}</span
               >
               <player-name
@@ -336,8 +336,7 @@ export class LeaderboardPlayerList extends LitElement {
               <span class="font-mono font-bold text-white"
                 >${(entry.winRate * 100).toFixed(1)}%</span
               >
-              <span
-                class="text-[10px] uppercase text-emerald-200/80 font-bold tracking-wider"
+              <span class="text-[10px] text-emerald-200/80 font-bold"
                 >${translateText("leaderboard_modal.ratio")}</span
               >
             </div>
@@ -411,8 +410,7 @@ export class LeaderboardPlayerList extends LitElement {
                 : "text-red-400"}"
               >${(player.winRate * 100).toFixed(1)}%</span
             >
-            <span
-              class="text-[10px] uppercase text-white/30 font-bold tracking-wider"
+            <span class="text-[10px] text-white/30 font-bold"
               >${translateText("leaderboard_modal.ratio")}</span
             >
           </div>
@@ -428,7 +426,7 @@ export class LeaderboardPlayerList extends LitElement {
           <div
             class="w-4 h-4 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mr-2"
           ></div>
-          <span class="text-[10px] font-bold uppercase tracking-widest">
+          <span class="text-[10px] font-bold ">
             ${translateText("common.loading")}
           </span>
         </div>
@@ -439,7 +437,7 @@ export class LeaderboardPlayerList extends LitElement {
       return html`
         <div class="flex items-center justify-center py-4">
           <button
-            class="px-6 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-xl text-xs font-bold uppercase transition-all active:scale-95"
+            class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light active:scale-95"
             @click=${() => this.loadPlayerLeaderboard()}
           >
             ${translateText("leaderboard_modal.try_again")}
@@ -459,9 +457,7 @@ export class LeaderboardPlayerList extends LitElement {
         <div
           class="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mb-6"
         ></div>
-        <p
-          class="text-emerald-200/80 text-sm font-bold tracking-widest uppercase"
-        >
+        <p class="text-emerald-200/80 text-sm font-bold ">
           ${translateText("common.loading")}
         </p>
       </div>
@@ -495,7 +491,7 @@ export class LeaderboardPlayerList extends LitElement {
           ${this.error ?? translateText("leaderboard_modal.error")}
         </p>
         <button
-          class="px-8 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-xl text-sm font-bold uppercase transition-all active:scale-95"
+          class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light active:scale-95"
           @click=${() => this.loadPlayerLeaderboard(true)}
         >
           ${translateText("leaderboard_modal.try_again")}

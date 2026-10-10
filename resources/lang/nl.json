@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Dismiss",
+    "firefox_title": "Firefox maakt het spel traag",
     "firefox_warning": "Territorium presteert niet goed op [Firefox-gebaseerde browsers](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). We raden je aan om een [Chromium-gebaseerde browser] (https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) te gebruiken voor de beste prestaties.",
     "go_to_item": "Ga naar item nr. {num}",
     "news": "NIEUWS",
     "tournament": "TOURNOOI",
     "tutorial": "HANDLEIDING",
-    "warning": "WAARSCHUWING"
+    "tutorial_description": "De regels, de interface en een begeleid oefenspel.",
+    "tutorial_title": "Nieuw? Begin hier",
+    "warning": "WAARSCHUWING",
+    "welcome_description": "Verover de wereld, grens na grens.",
+    "welcome_title": "Welkom bij Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% goud, +{troops}% troepen",
@@ -2558,6 +2563,7 @@
     "started": "Begonnen",
     "starting_game": "Starten…",
     "starting_in": "Begint in {time}",
+    "starts_in_label": "Begint over",
     "status": "Status",
     "teams": "{num} Teams",
     "teams_hvn": "Mensen vs Naties",

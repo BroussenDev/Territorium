@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Afvis",
+    "firefox_title": "Spillet kører langsomt i Firefox",
     "firefox_warning": "Territorium fungerer ikke godt med [Firefox-baserede browsere](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Vi anbefaler dig at bruge en [Chromium-baseret browser](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) for den bedste ydeevne.",
     "go_to_item": "Gå til element {num}",
     "news": "NYHEDER",
     "tournament": "TURNERING",
     "tutorial": "TUTORIAL",
-    "warning": "ADVARSEL"
+    "tutorial_description": "Reglerne, brugerfladen og et guidet træningsspil.",
+    "tutorial_title": "Ny? Start her",
+    "warning": "ADVARSEL",
+    "welcome_description": "Erobr verden, én grænse ad gangen.",
+    "welcome_title": "Velkommen til Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% guld, +{troops}% tropper",
@@ -2558,6 +2563,7 @@
     "started": "Startet",
     "starting_game": "Starter…",
     "starting_in": "Starter om {time}",
+    "starts_in_label": "Starter om",
     "status": "Status",
     "teams": "{num} hold",
     "teams_hvn": "Mennesker mod Nationer",

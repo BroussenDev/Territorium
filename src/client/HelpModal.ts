@@ -86,9 +86,7 @@ export class HelpModal extends BaseModal {
             ${icon}
           </svg>
         </div>
-        <h3
-          class="!m-0 text-xl font-bold uppercase tracking-widest text-white/90"
-        >
+        <h3 class="!m-0 font-display text-xl font-bold text-white/90">
           ${translateText(key)}
         </h3>
         <div
@@ -116,8 +114,7 @@ export class HelpModal extends BaseModal {
         class="bg-black/20 rounded-xl border border-white/10 p-5 flex flex-col md:flex-row gap-5"
       >
         <div class="flex flex-col items-center gap-2 shrink-0">
-          <span
-            class="text-xs font-bold uppercase tracking-wider text-emerald-300"
+          <span class="text-xs font-bold text-emerald-300"
             >${translateText(`help_modal.${titleKey}`)}</span
           >
           <img
@@ -187,18 +184,16 @@ export class HelpModal extends BaseModal {
           <thead class="bg-white/10">
             <tr>
               <th
-                class="py-3 ps-4 text-start text-xs font-bold uppercase tracking-wider text-emerald-300 w-[20%]"
+                class="py-3 ps-4 text-start text-xs font-bold text-emerald-300 w-[20%]"
               >
                 ${translateText("help_modal.build_name")}
               </th>
               <th
-                class="py-3 text-start text-xs font-bold uppercase tracking-wider text-emerald-300 w-[8%]"
+                class="py-3 text-start text-xs font-bold text-emerald-300 w-[8%]"
               >
                 ${translateText("help_modal.build_icon")}
               </th>
-              <th
-                class="py-3 text-start text-xs font-bold uppercase tracking-wider text-emerald-300"
-              >
+              <th class="py-3 text-start text-xs font-bold text-emerald-300">
                 ${translateText("help_modal.build_desc")}
               </th>
             </tr>
@@ -251,9 +246,7 @@ export class HelpModal extends BaseModal {
         <div class="pt-2 pb-4 px-4 overflow-x-auto">
           <table class="w-full text-sm border-separate border-spacing-y-1">
             <thead>
-              <tr
-                class="text-white/40 text-xs uppercase tracking-wider text-start"
-              >
+              <tr class="text-white/40 text-xs text-start">
                 <th class="pb-2 ps-4">
                   ${translateText("help_modal.table_key")}
                 </th>
@@ -534,7 +527,7 @@ export class HelpModal extends BaseModal {
             </p>
           </div>
           <button
-            class="shrink-0 hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-brand/20 text-brand-light border border-brand/30 shadow-[var(--shadow-brand)]"
+            class="shrink-0 rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light"
             @click=${() =>
               document.dispatchEvent(new CustomEvent("start-tutorial"))}
           >
@@ -604,8 +597,7 @@ export class HelpModal extends BaseModal {
             "max-w-[200px]",
           )}
           <div class="bg-black/20 rounded-xl border border-white/10 p-5">
-            <span
-              class="text-xs font-bold uppercase tracking-wider text-emerald-300"
+            <span class="text-xs font-bold text-emerald-300"
               >${translateText("help_modal.ui_events")}</span
             >
             <p class="mt-2 !mb-0 text-sm">
@@ -658,8 +650,7 @@ export class HelpModal extends BaseModal {
             "max-w-[220px]",
           )}
           <div class="bg-black/20 rounded-xl border border-white/10 p-5">
-            <span
-              class="text-xs font-bold uppercase tracking-wider text-emerald-300"
+            <span class="text-xs font-bold text-emerald-300"
               >${translateText("help_modal.allies_title")}</span
             >
             <div class="mt-2 text-sm">
@@ -751,7 +742,7 @@ export class HelpModal extends BaseModal {
           </p>
           <button
             id="troubleshooting-button"
-            class="hover:bg-white/5 px-6 py-2 text-xs font-bold transition-all duration-200 rounded-lg uppercase tracking-widest bg-brand/20 text-brand-light border border-brand/30 shadow-[var(--shadow-brand)]"
+            class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light"
             @click="${this.openTroubleshooting}"
           >
             ${translateText("main.go_to_troubleshooting")}

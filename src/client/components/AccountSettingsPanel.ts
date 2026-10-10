@@ -134,9 +134,7 @@ export class AccountSettingsPanel extends LitElement {
         ${this.renderEmailField()}
         <div class="flex items-center gap-4 py-1">
           <div class="h-px bg-white/10 flex-1"></div>
-          <span
-            class="text-[10px] uppercase tracking-widest text-white/30 font-bold"
-          >
+          <span class="text-[10px] text-white/30 font-bold">
             ${translateText("account_modal.or")}
           </span>
           <div class="h-px bg-white/10 flex-1"></div>

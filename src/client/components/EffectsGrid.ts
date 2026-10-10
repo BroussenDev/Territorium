@@ -299,7 +299,7 @@ export class EffectsGrid extends LitElement {
         ${NUKE_EXPLOSION_TYPES.map((nt) => {
           const active = this.activeNukeType === nt;
           return html`<button
-            class="px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider transition-colors ${active
+            class="px-4 py-1.5 rounded-full text-xs font-black transition-colors ${active
               ? "bg-emerald-600 text-white"
               : "bg-white/5 text-white/50 hover:text-white/80 hover:bg-white/10"}"
             @click=${() => this.selectNukeType(nt)}
@@ -344,7 +344,7 @@ export class EffectsGrid extends LitElement {
         type="button"
         data-effects-unequip
         ?disabled=${selected === null}
-        class="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-black uppercase tracking-wider text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+        class="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-black text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
         @click=${() => this.select(slot, null)}
       >
         ${translateText("inventory.unequip")}
@@ -394,7 +394,7 @@ export class EffectsGrid extends LitElement {
           : activeType
             ? html`<div class="p-4"></div>`
             : html`<div
-                class="text-white/40 text-sm font-bold uppercase tracking-wider text-center py-8"
+                class="text-white/40 text-sm font-bold text-center py-8"
               >
                 ${translateText("store.no_effects")}
               </div>`;
@@ -412,7 +412,7 @@ export class EffectsGrid extends LitElement {
                 ${activeType
                   ? nothing
                   : html`<h3
-                      class="text-white/70 text-sm font-black uppercase tracking-wider px-2 pb-2 mb-2 border-b border-white/10"
+                      class="text-white/70 text-sm font-black px-2 pb-2 mb-2 border-b border-white/10"
                     >
                       ${translateText(`effects.type.${s.type}`)}
                     </h3>`}

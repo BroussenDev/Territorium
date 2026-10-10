@@ -4,7 +4,7 @@ import { assetUrl } from "../../core/AssetUrls";
 import { NavNotificationsController } from "./NavNotificationsController";
 
 const MOBILE_ITEM =
-  "nav-menu-item block w-full text-left font-bold uppercase tracking-[0.05em] " +
+  "nav-menu-item block w-full text-left font-bold tracking-[0.05em] " +
   "text-white/70 transition-all duration-200 cursor-pointer " +
   "hover:text-emerald-600 hover:translate-x-2.5 " +
   "hover:drop-shadow-[0_0_20px_rgba(16,185,129,0.5)] " +

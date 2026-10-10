@@ -337,7 +337,7 @@ export class DesktopStatusBar extends LitElement {
   private renderOffline(staying: boolean) {
     const button = (label: string, primary: boolean, onClick: () => void) =>
       html`<button
-        class="shrink-0 px-4 py-2 rounded-md text-sm font-medium uppercase
+        class="shrink-0 px-4 py-2 rounded-md text-sm font-medium 
                tracking-wider disabled:opacity-50 disabled:cursor-not-allowed
                ${primary
           ? "bg-brand hover:bg-brand-light"
@@ -441,7 +441,7 @@ export class DesktopStatusBar extends LitElement {
     const disabled = this.retryDisabled();
     return html`<button
       class="shrink-0 px-4 py-2 rounded-md bg-brand hover:bg-brand-light
-             text-sm font-medium uppercase tracking-wider
+             text-sm font-medium 
              disabled:opacity-50 disabled:cursor-not-allowed
              disabled:hover:bg-brand"
       ?disabled=${disabled}
@@ -505,7 +505,7 @@ export class DesktopStatusBar extends LitElement {
     if (s.status === "staged") {
       return html`<button
         class="shrink-0 px-4 py-2 rounded-md bg-brand hover:bg-brand-light
-               text-sm font-medium uppercase tracking-wider"
+               text-sm font-medium"
         @click=${() => {
           bridge.apply().catch((err: unknown) => {
             console.error("desktop-status-bar: apply failed", err);
@@ -518,7 +518,7 @@ export class DesktopStatusBar extends LitElement {
     if (s.status === "failed") {
       return html`<button
         class="shrink-0 px-4 py-2 rounded-md bg-surface hover:brightness-110
-               text-sm font-medium uppercase tracking-wider"
+               text-sm font-medium"
         @click=${() => {
           bridge.retry().catch((err: unknown) => {
             console.error("desktop-status-bar: retry failed", err);
@@ -562,7 +562,7 @@ export class DesktopStatusBar extends LitElement {
     if (s.status === "signed-out" && s.reason === "needs-account") {
       return html`<button
         class="shrink-0 px-4 py-2 rounded-md bg-brand hover:bg-brand-light
-               text-sm font-medium uppercase tracking-wider"
+               text-sm font-medium"
         @click=${() => {
           // desktopLinkGate() is null on the web and on a shell too old to
           // expose showLinkGate -- see its own doc comment in DesktopShell.ts.
@@ -588,7 +588,7 @@ export class DesktopStatusBar extends LitElement {
     }
     return html`<button
       class="shrink-0 px-4 py-2 rounded-md bg-brand hover:bg-brand-light
-             text-sm font-medium uppercase tracking-wider"
+             text-sm font-medium"
       @click=${() => {
         this.sessionAtRetry = s;
         // Main.ts owns the retry, because a successful sign-in also has to

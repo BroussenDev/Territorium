@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Odpusti",
+    "firefox_title": "V Firefoxu igra teče počasi",
     "firefox_warning": "Territorium ne deluje dobro z [brskalniki, ki temeljijo na Firefoxu](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Priporočamo, da za najboljšo učinkovitost uporabite [brskalnik, ki temelji na Chromiumu](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).",
     "go_to_item": "Pojdi na element {num}",
     "news": "NOVICE",
     "tournament": "TURNIR",
     "tutorial": "VODNIK",
-    "warning": "OPOZORILO"
+    "tutorial_description": "Pravila, vmesnik in vodena vadbena igra.",
+    "tutorial_title": "Si nov? Začni tukaj",
+    "warning": "OPOZORILO",
+    "welcome_description": "Osvoji svet, mejo za mejo.",
+    "welcome_title": "Dobrodošel v Territoriumu"
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% vojakov",
@@ -2558,6 +2563,7 @@
     "started": "Začelo",
     "starting_game": "Začetek ...",
     "starting_in": "Začetek v {time}",
+    "starts_in_label": "Začetek čez",
     "status": "Stanje",
     "teams": "{num} ekipe",
     "teams_hvn": "Ljudje proti narodom",

@@ -264,7 +264,7 @@ export class HostLobbyModal extends BaseModal {
     return modalHeader({
       titleContent: html`
         <span
-          class="text-white text-xl lg:text-2xl font-bold uppercase tracking-widest break-words hyphens-auto"
+          class="text-white text-xl lg:text-2xl font-bold break-words hyphens-auto"
         >
           ${this.versusSize === null
             ? translateText("host_modal.title")
@@ -311,7 +311,7 @@ export class HostLobbyModal extends BaseModal {
   private renderVisibilityToggle() {
     const segment = (labelKey: string, isPublic: boolean) => html`
       <button
-        class="px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full transition-all ${this
+        class="px-3 py-1 text-[10px] font-bold rounded-full transition-all ${this
           .publiclyListed === isPublic
           ? "bg-brand text-white"
           : "text-white/50 hover:text-white"}"

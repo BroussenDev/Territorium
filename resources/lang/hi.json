@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "नकार देना",
+    "firefox_title": "Firefox में खेल धीमा चलता है",
     "firefox_warning": "टेरिटोरियम [फ़ायरफ़ॉक्स-आधारित ब्राउज़र](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox) पर अच्छा प्रदर्शन नहीं करता। सर्वोत्तम प्रदर्शन के लिए हम [क्रोमियम-आधारित ब्राउज़र](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) का उपयोग करने की सलाह देते हैं।",
     "go_to_item": "आइटम पर जाएं {num}",
     "news": "समाचार",
     "tournament": "टूर्नामेंट",
     "tutorial": "ट्यूटोरियल",
-    "warning": "चेतावनी"
+    "tutorial_description": "नियम, इंटरफ़ेस और एक निर्देशित अभ्यास खेल।",
+    "tutorial_title": "नए हैं? यहाँ से शुरू करें",
+    "warning": "चेतावनी",
+    "welcome_description": "दुनिया जीतें, एक-एक सीमा करके।",
+    "welcome_title": "Territorium में स्वागत है"
   },
   "objectives": {
     "bonus": "+{gold}% सोना, +{troops}% सैनिक",
@@ -2558,6 +2563,7 @@
     "started": "शुरू कर दिया",
     "starting_game": "शुरू हो रहा है...",
     "starting_in": "{time} से शुरू",
+    "starts_in_label": "शुरू होने में",
     "status": "स्थिति",
     "teams": "{num} टीमें",
     "teams_hvn": "मनुष्य बनाम राष्ट्र",

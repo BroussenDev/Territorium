@@ -420,8 +420,7 @@ export class GameConfigSettings extends LitElement {
         class="w-full sm:w-48 aspect-[5/3] object-contain rounded-md bg-[#2c6292]"
       />
       <div class="flex-1 min-w-0 flex flex-col gap-1 text-center sm:text-left">
-        <span
-          class="text-[11px] font-bold uppercase tracking-wider text-emerald-300"
+        <span class="text-[11px] font-bold text-emerald-300"
           >${translateText(
             custom.community
               ? "map_editor.community_map"

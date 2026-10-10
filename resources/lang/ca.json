@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Descartar",
+    "firefox_title": "Firefox fa anar lent el joc",
     "firefox_warning": "Territorium no funciona bé amb [navegadors basats en Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Us recomanem que utilitzeu un [navegador basat en Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) per obtenir el millor rendiment.",
     "go_to_item": "Vés a l'element {num}",
     "news": "NOTÍCIES",
     "tournament": "TORNEIG",
     "tutorial": "TUTORIAL",
-    "warning": "ADVERTIMENT"
+    "tutorial_description": "Les regles, la interfície i una partida d'entrenament guiada.",
+    "tutorial_title": "Ets nou? Comença aquí",
+    "warning": "ADVERTIMENT",
+    "welcome_description": "Conquereix el món, frontera a frontera.",
+    "welcome_title": "Benvingut a Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% d'or, +{troops}% de tropes",
@@ -2558,6 +2563,7 @@
     "started": "Iniciat",
     "starting_game": "Començant la partida…",
     "starting_in": "Comencem en {time}",
+    "starts_in_label": "Comença en",
     "status": "Estat",
     "teams": "{num} equips",
     "teams_hvn": "Humans contra Nacions",

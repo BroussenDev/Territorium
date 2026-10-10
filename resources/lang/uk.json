@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Відхилити",
+    "firefox_title": "У Firefox гра гальмує",
     "firefox_warning": "Territorium погано працює з [браузерами на основі Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Ми рекомендуємо використовувати [браузери на основі Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) для найкращої продуктивності.",
     "go_to_item": "Перейти до пункту {num}",
     "news": "НОВИНИ",
     "tournament": "ТУРНІР",
     "tutorial": "ПОСІБНИК",
-    "warning": "УВАГА"
+    "tutorial_description": "Правила, інтерфейс і навчальна гра з підказками.",
+    "tutorial_title": "Новачок? Почніть тут",
+    "warning": "УВАГА",
+    "welcome_description": "Завоюйте світ, кордон за кордоном.",
+    "welcome_title": "Ласкаво просимо до Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% золота, +{troops}% військ",
@@ -2558,6 +2563,7 @@
     "started": "Почато",
     "starting_game": "Запуск…",
     "starting_in": "Початок через {time}",
+    "starts_in_label": "Початок через",
     "status": "Статус",
     "teams": "Команди: {num}",
     "teams_hvn": "Люди проти націй",

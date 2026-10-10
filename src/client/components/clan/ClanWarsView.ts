@@ -125,7 +125,7 @@ export class ClanWarsView extends LitElement {
           <button
             type="button"
             @click=${() => this.load()}
-            class="text-xs font-bold text-white/60 hover:text-white uppercase tracking-wider px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/5 transition-colors"
+            class="text-xs font-bold text-white/60 hover:text-white px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/5 transition-colors"
           >
             ${translateText("leaderboard_modal.try_again")}
           </button>
@@ -138,9 +138,7 @@ export class ClanWarsView extends LitElement {
     return html`
       <div class="space-y-4">
         <div>
-          <h3
-            class="text-xs font-bold text-white/40 uppercase tracking-wider mb-2"
-          >
+          <h3 class="text-xs font-bold text-white/40 mb-2">
             ${translateText("clan_modal.wars_season", {
               season: season.number,
             })}
@@ -201,7 +199,7 @@ export class ClanWarsView extends LitElement {
                   (this.opponent = (e.target as HTMLInputElement).value)}
                 placeholder=${translateText("clan_modal.war_opponent_tag")}
                 aria-label=${translateText("clan_modal.war_opponent_tag")}
-                class="flex-1 min-w-0 px-3 py-2 rounded-lg bg-black/30 border border-white/10 text-white text-sm uppercase placeholder:normal-case placeholder:text-white/30 focus:outline-none focus:border-red-400/60"
+                class="flex-1 min-w-0 px-3 py-2 rounded-lg bg-black/30 border border-white/10 text-white text-sm placeholder:normal-case placeholder:text-white/30 focus:outline-none focus:border-red-400/60"
               />
               <button
                 type="submit"
@@ -268,11 +266,7 @@ export class ClanWarsView extends LitElement {
     if (wars.length === 0) return "";
     return html`
       <div>
-        <h3
-          class="text-xs font-bold text-white/40 uppercase tracking-wider mb-2"
-        >
-          ${title}
-        </h3>
+        <h3 class="text-xs font-bold text-white/40 mb-2">${title}</h3>
         <div class="space-y-2">${wars.map((w) => this.renderWar(w))}</div>
       </div>
     `;
@@ -321,7 +315,7 @@ export class ClanWarsView extends LitElement {
   private renderOutcome(war: ClanWar): TemplateResult {
     const chip = (text: string, colors: string) =>
       html`<span
-        class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${colors}"
+        class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${colors}"
         >${text}</span
       >`;
     if (war.status === "done") {

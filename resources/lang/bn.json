@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "খারিজ",
+    "firefox_title": "Firefox-এ খেলা ধীর চলে",
     "firefox_warning": "টেরিটোরিয়াম [ফায়ারফক্স-ভিত্তিক ব্রাউজার](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox) এর সাথে ভাল পারফর্ম করে না। সেরা পারফরম্যান্সের জন্য আমরা আপনাকে একটি [Chromium-ভিত্তিক ব্রাউজার](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) ব্যবহার করার পরামর্শ দিই।",
     "go_to_item": "আইটেম {num} যান",
     "news": "সংবাদ",
     "tournament": "টুর্নামেন্ট",
     "tutorial": "টিউটোরিয়াল",
-    "warning": "সতর্কতা"
+    "tutorial_description": "নিয়ম, ইন্টারফেস ও একটি নির্দেশিত অনুশীলন খেলা।",
+    "tutorial_title": "নতুন? এখান থেকে শুরু করুন",
+    "warning": "সতর্কতা",
+    "welcome_description": "বিশ্ব জয় করুন, এক সীমান্ত করে।",
+    "welcome_title": "Territorium-এ স্বাগতম"
   },
   "objectives": {
     "bonus": "+{gold}% স্বর্ণ, +{troops}% সৈন্য",
@@ -2558,6 +2563,7 @@
     "started": "শুরু হয়েছে",
     "starting_game": "শুরু হচ্ছে...",
     "starting_in": "{time} এ শুরু হচ্ছে",
+    "starts_in_label": "শুরু হবে",
     "status": "স্ট্যাটাস",
     "teams": "{num} দল",
     "teams_hvn": "মানুষ বনাম জাতি",

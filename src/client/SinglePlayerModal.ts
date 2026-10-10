@@ -361,8 +361,7 @@ export class SinglePlayerModal extends BaseModal {
                 class="w-4 h-4 opacity-80 shrink-0"
                 style="${this.showAchievements ? "" : "filter: grayscale(1);"}"
               />
-              <span
-                class="text-xs font-bold uppercase tracking-wider whitespace-nowrap"
+              <span class="text-xs font-bold whitespace-nowrap"
                 >${translateText("single_modal.toggle_achievements")}</span
               >
             </button>
@@ -381,9 +380,7 @@ export class SinglePlayerModal extends BaseModal {
       <div
         class="flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-2.5 rounded-xl border border-yellow-500/20 bg-yellow-500/5"
       >
-        <span
-          class="text-[11px] font-bold uppercase tracking-wider text-yellow-400/80 shrink-0"
-        >
+        <span class="text-[11px] font-bold text-yellow-400/80 shrink-0">
           ${translateText("single_modal.medals_earned")}
         </span>
         <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5">
@@ -391,9 +388,7 @@ export class SinglePlayerModal extends BaseModal {
             this.renderMedalStat(difficulty, counts[difficulty]),
           )}
         </div>
-        <span
-          class="ml-auto text-[11px] font-semibold uppercase tracking-wider text-white/40 shrink-0"
-        >
+        <span class="ml-auto text-[11px] font-semibold text-white/40 shrink-0">
           ${translateText("single_modal.medals_of_maps", {
             total: total ?? "…",
           })}
@@ -611,7 +606,7 @@ export class SinglePlayerModal extends BaseModal {
           ${responseHasLinkedIdentity(this.userMeResponse) &&
           this.hasOptionsChanged()
             ? html`<div
-                class="mb-4 px-4 py-3 rounded-xl bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 text-xs font-bold uppercase tracking-wider text-center"
+                class="mb-4 px-4 py-3 rounded-xl bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 text-xs font-bold text-center"
               >
                 ${translateText("single_modal.options_changed_no_achievements")}
               </div>`

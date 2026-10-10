@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "無視",
+    "firefox_title": "Firefoxではゲームが重くなります",
     "firefox_warning": "Territoriumは[Firefoxベースのブラウザ](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox)でうまく動作しません。良いパフォーマンスのために[Chromiumベースのブラウザ](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)を使用するのをおすすめします。",
     "go_to_item": "{num}番目のアイテムに移動",
     "news": "お知らせ",
     "tournament": "トーナメント",
     "tutorial": "チュートリアル",
-    "warning": "警告"
+    "tutorial_description": "ルール、画面の見かた、ガイド付きの練習試合。",
+    "tutorial_title": "はじめての方はこちら",
+    "warning": "警告",
+    "welcome_description": "国境をひとつずつ越えて、世界を征服しよう。",
+    "welcome_title": "Territoriumへようこそ"
   },
   "objectives": {
     "bonus": "+{gold}% ゴールド、+{troops}% 軍隊",
@@ -2558,6 +2563,7 @@
     "started": "開始しています",
     "starting_game": "開始します…",
     "starting_in": "{time}で開始します",
+    "starts_in_label": "開始まで",
     "status": "状況",
     "teams": "{num} チーム",
     "teams_hvn": "人類 vs 国家",

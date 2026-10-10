@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "닫기",
+    "firefox_title": "Firefox에서는 게임이 느립니다",
     "firefox_warning": "Territorium는 [Firefox 기반 브라우저](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox)에서 원활하게 작동하지 않습니다. 최상의 성능을 위해 [Chromium 기반 브라우저](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)를 사용하는 것을 권장합니다.",
     "go_to_item": "{num}번 항목으로 이동",
     "news": "뉴스",
     "tournament": "토너먼트",
     "tutorial": "튜토리얼",
-    "warning": "경고"
+    "tutorial_description": "규칙, 인터페이스, 안내가 있는 연습 게임.",
+    "tutorial_title": "처음이신가요? 여기서 시작하세요",
+    "warning": "경고",
+    "welcome_description": "국경을 하나씩 넘어 세계를 정복하세요.",
+    "welcome_title": "Territorium에 오신 것을 환영합니다"
   },
   "objectives": {
     "bonus": "금 +{gold}%, 병력 +{troops}%",
@@ -2558,6 +2563,7 @@
     "started": "시작됨",
     "starting_game": "시작 중…",
     "starting_in": "{time}후에 시작",
+    "starts_in_label": "시작까지",
     "status": "상태",
     "teams": "{num} 팀",
     "teams_hvn": "인간 대 국가",

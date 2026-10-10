@@ -922,9 +922,7 @@ export class GraphicsAdvancedSettings extends LitElement {
   // ---- Rendering ----
 
   private static section(labelKey: string) {
-    return html`<div
-      class="text-white/60 text-xs font-semibold uppercase tracking-wider px-1 pt-3"
-    >
+    return html`<div class="text-white/60 text-xs font-semibold px-1 pt-3">
       ${translateText(labelKey)}
     </div>`;
   }

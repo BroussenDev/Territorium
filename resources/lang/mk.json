@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Отфрли",
+    "firefox_title": "Во Firefox играта е бавна",
     "firefox_warning": "Териториум не работи добро со [прелистувачи базирани на Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Ви препорачуваме да користите [прелистувач базиран на Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) за најдобри перформанси.",
     "go_to_item": "Одете на ставката {num}",
     "news": "ВЕСТИ",
     "tournament": "ТУРНИР",
     "tutorial": "УПАТСТВО",
-    "warning": "ПРЕДУПРЕДУВАЊЕ"
+    "tutorial_description": "Правилата, интерфејсот и водена игра за вежбање.",
+    "tutorial_title": "Нови сте? Почнете тука",
+    "warning": "ПРЕДУПРЕДУВАЊЕ",
+    "welcome_description": "Освојте го светот, граница по граница.",
+    "welcome_title": "Добредојдовте во Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% злато, +{troops}% војници",
@@ -2558,6 +2563,7 @@
     "started": "Започна",
     "starting_game": "Почнува…",
     "starting_in": "Со почеток во {time}",
+    "starts_in_label": "Почнува за",
     "status": "Статус",
     "teams": "{num} тимови",
     "teams_hvn": "Луѓето против нациите",

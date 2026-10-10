@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "לְפַטֵר",
+    "firefox_title": "ב-Firefox המשחק איטי",
     "firefox_warning": "Territorium אינו מתפקד היטב עם [דפדפנים מבוססי Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). אנו ממליצים לך להשתמש ב[דפדפן מבוסס Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) לקבלת הביצועים הטובים ביותר.",
     "go_to_item": "עבור לפריט {num}",
     "news": "חֲדָשׁוֹת",
     "tournament": "טוּרנִיר",
     "tutorial": "שֶׁל מוֹרֶה",
-    "warning": "אַזהָרָה"
+    "tutorial_description": "החוקים, הממשק ומשחק אימון מודרך.",
+    "tutorial_title": "חדשים? התחילו כאן",
+    "warning": "אַזהָרָה",
+    "welcome_description": "כבשו את העולם, גבול אחרי גבול.",
+    "welcome_title": "ברוכים הבאים ל-Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% זהב, +{troops}% חיילים",
@@ -2558,6 +2563,7 @@
     "started": "התחיל",
     "starting_game": "מתחיל...",
     "starting_in": "מתחיל ב{time}",
+    "starts_in_label": "מתחיל בעוד",
     "status": "סטָטוּס",
     "teams": "{num} קבוצות",
     "teams_hvn": "בני אדם נגד אומות",

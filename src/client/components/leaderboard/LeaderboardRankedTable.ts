@@ -82,7 +82,7 @@ export class LeaderboardRankedTable extends LitElement {
             ${this.error}
           </p>
           <button
-            class="px-8 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-xl text-sm font-bold uppercase transition-all active:scale-95"
+            class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light active:scale-95"
             @click=${() => this.load()}
           >
             ${translateText("leaderboard_modal.try_again")}

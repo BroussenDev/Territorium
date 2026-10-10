@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Odbaci",
+    "firefox_title": "U Firefoxu igra sporo radi",
     "firefox_warning": "Territorium ne radi dobro na pregledačima [zasnovanim na Firefox-u.](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox) Preporučujemo da koristite pregledač [zasnovan na Chromium-u](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) za najbolje performanse.",
     "go_to_item": "Idi na stavku {num}",
     "news": "VESTI",
     "tournament": "TURNIR",
     "tutorial": "TUTORIJAL",
-    "warning": "UPOZORENJE"
+    "tutorial_description": "Pravila, interfejs i vođena partija za vežbu.",
+    "tutorial_title": "Nov si? Počni ovde",
+    "warning": "UPOZORENJE",
+    "welcome_description": "Osvoji svet, granicu po granicu.",
+    "welcome_title": "Dobrodošli u Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% trupa",
@@ -2558,6 +2563,7 @@
     "started": "Započeto",
     "starting_game": "Započinje…",
     "starting_in": "Počinje za {time}",
+    "starts_in_label": "Počinje za",
     "status": "Status",
     "teams": "{num} timova",
     "teams_hvn": "Ljudi protiv Nacija",

@@ -293,7 +293,7 @@ export class CosmeticPreview extends LitElement {
       )}
       ${hidden > 0
         ? html`<span
-            class="absolute bottom-1 right-1 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white"
+            class="absolute bottom-1 right-1 rounded-full bg-black/70 px-2 py-0.5 text-[10px] font-black tracking-wide text-white"
             >${translateText("cosmetics.pack_more_items", {
               count: hidden,
             })}</span
@@ -304,7 +304,7 @@ export class CosmeticPreview extends LitElement {
 
   private renderDefaultPreview(): TemplateResult {
     return html`<div
-      class="w-full h-full flex items-center justify-center text-white/40 text-xs uppercase"
+      class="w-full h-full flex items-center justify-center text-white/40 text-xs "
     >
       ${translateText("territory_patterns.pattern.default")}
     </div>`;

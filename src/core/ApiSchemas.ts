@@ -1210,6 +1210,8 @@ export type SendFriendRequestResponse = z.infer<
 export const NewsItemSchema = z.object({
   id: z.string(),
   title: z.string(),
+  // The game's own items (the bundled fallback) name translation keys.
+  titleTranslationKey: z.string().optional(),
   description: z.string().optional(),
   descriptionTranslationKey: z.string().optional(),
   url: z.string().nullable().optional(),

@@ -134,7 +134,7 @@ export class PlayerRow extends LitElement {
           ${this.player.clanTag
             ? html`<div
                 data-player-clan-tag
-                class="inline-flex min-w-0 max-w-[40%] shrink-0 rounded-md border border-brand/20 bg-brand/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-brand-light/85"
+                class="inline-flex min-w-0 max-w-[40%] shrink-0 rounded-md border border-brand/20 bg-brand/10 px-2 py-0.5 text-[9px] font-bold text-brand-light/85"
               >
                 <span class="truncate">${this.player.clanTag}</span>
               </div>`
@@ -267,7 +267,7 @@ export class PlayerRow extends LitElement {
     return html`
       <div
         data-player-avatar="fallback"
-        class="flex size-10 items-center justify-center rounded-xl border border-brand/15 bg-gradient-to-br from-brand/20 to-white/[0.04] text-xs font-bold uppercase tracking-wide text-brand-light/80"
+        class="flex size-10 items-center justify-center rounded-xl border border-brand/15 bg-gradient-to-br from-brand/20 to-white/[0.04] text-xs font-bold tracking-wide text-brand-light/80"
         aria-hidden="true"
       >
         ${this.initials()}

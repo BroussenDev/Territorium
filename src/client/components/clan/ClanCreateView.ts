@@ -6,8 +6,7 @@ import { translateText } from "../../Utils";
 
 const INPUT_CLASS =
   "w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand/50 transition-all font-medium hover:bg-white/10 text-sm";
-const LABEL_CLASS =
-  "block text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2";
+const LABEL_CLASS = "block text-[10px] font-bold text-white/40 mb-2";
 
 /**
  * Form that founds a clan. Fires `clan-created` with the new ClanInfo on
@@ -63,7 +62,7 @@ export class ClanCreateView extends LitElement {
     return html`
       <div class="bg-white/5 rounded-2xl border border-white/10 p-6 space-y-5">
         <div>
-          <h3 class="text-sm font-bold text-white/60 uppercase tracking-wider">
+          <h3 class="text-sm font-bold text-white/60 ">
             ${translateText("clan_modal.create_clan")}
           </h3>
           <p class="text-white/40 text-xs mt-1">
@@ -89,7 +88,7 @@ export class ClanCreateView extends LitElement {
               }}
               maxlength="5"
               placeholder="TRM"
-              class="${INPUT_CLASS} font-mono uppercase tracking-widest"
+              class="${INPUT_CLASS} font-mono"
             />
           </div>
           <div>
@@ -164,14 +163,14 @@ export class ClanCreateView extends LitElement {
                   composed: true,
                 }),
               )}
-            class="px-6 py-3 text-sm font-bold text-white/60 uppercase tracking-wider bg-white/5 hover:bg-white/10 rounded-xl transition-all"
+            class="px-6 py-3 text-sm font-bold text-white/60 bg-white/5 hover:bg-white/10 rounded-xl transition-all"
           >
             ${translateText("clan_modal.cancel_request")}
           </button>
           <button
             @click=${() => this.submit()}
             ?disabled=${!this.canSubmit}
-            class="flex-1 px-6 py-3 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-xl transition-all disabled:opacity-50"
+            class="flex-1 px-6 py-3 text-sm font-bold text-white bg-brand hover:bg-brand-light active:bg-brand/80 rounded-xl transition-all disabled:opacity-50"
           >
             ${this.saving
               ? translateText("clan_modal.saving")

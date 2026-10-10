@@ -98,9 +98,7 @@ export class LeaderboardNationsTable extends LitElement {
         <div
           class="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mb-6"
         ></div>
-        <p
-          class="text-emerald-200/80 text-sm font-bold tracking-widest uppercase"
-        >
+        <p class="text-emerald-200/80 text-sm font-bold ">
           ${translateText("common.loading")}
         </p>
       </div>
@@ -116,7 +114,7 @@ export class LeaderboardNationsTable extends LitElement {
           ${this.error ?? translateText("leaderboard_modal.error")}
         </p>
         <button
-          class="px-8 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-xl text-sm font-bold uppercase transition-all active:scale-95"
+          class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light active:scale-95"
           @click=${() => this.loadNationsLeaderboard()}
         >
           ${translateText("leaderboard_modal.try_again")}

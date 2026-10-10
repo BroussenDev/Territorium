@@ -85,20 +85,17 @@ type BoundKey =
   | "maxTeamSize";
 
 const CHIP_BASE =
-  "px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider " +
-  "border transition-colors";
+  "px-2.5 py-1 rounded-lg text-[11px] font-bold " + "border transition-colors";
 const CHIP_ON = "bg-brand text-white border-brand";
 const CHIP_OFF =
   "bg-white/5 text-white/60 border-white/10 hover:bg-white/10 hover:text-white";
-const PANE_HEADING =
-  "block text-sm font-bold uppercase tracking-widest text-white";
-const SECTION_LABEL =
-  "block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1.5";
+const PANE_HEADING = "block text-sm font-bold text-white";
+const SECTION_LABEL = "block text-[10px] font-bold text-white/40 mb-1.5";
 const FIELD_CLASS =
   "px-2 py-1.5 rounded-lg bg-black/30 border border-white/10 text-white " +
   "text-xs focus:outline-none focus:border-brand";
 const BUTTON_CLASS =
-  "px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider " +
+  "px-3 py-1.5 rounded-lg text-[11px] font-bold " +
   "border border-white/10 bg-white/5 text-white/80 hover:bg-white/10 " +
   "hover:text-white transition-colors";
 
@@ -422,7 +419,7 @@ export class DetailedGameViewModal extends BaseModal {
         <span
           class="w-8 h-8 border-[3px] border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin"
         ></span>
-        <span class="text-xs uppercase tracking-widest text-white/50">
+        <span class="text-xs text-white/50">
           ${translateText("detailed_view.spawning")}
         </span>
       </div>

@@ -198,9 +198,7 @@ export class ClanMapView extends LitElement {
           </div>
         </div>
         <div>
-          <h4
-            class="text-xs font-bold text-white/40 uppercase tracking-wider mb-2"
-          >
+          <h4 class="text-xs font-bold text-white/40 mb-2">
             ${translateText("clan_modal.territory_leaders")}
           </h4>
           ${leaders.length === 0

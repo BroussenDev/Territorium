@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Membubarkan",
+    "firefox_title": "Di Firefox gim berjalan lambat",
     "firefox_warning": "Territorium tidak bekerja dengan baik pada [browser berbasis Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Kami menyarankan Anda untuk menggunakan [browser berbasis Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) untuk performa terbaik.",
     "go_to_item": "Pergi ke butir {num}",
     "news": "BERITA",
     "tournament": "TURNAMEN",
     "tutorial": "TUTORIAL",
-    "warning": "PERINGATAN"
+    "tutorial_description": "Aturan, antarmuka, dan permainan latihan berpemandu.",
+    "tutorial_title": "Pemain baru? Mulai di sini",
+    "warning": "PERINGATAN",
+    "welcome_description": "Taklukkan dunia, satu perbatasan demi satu.",
+    "welcome_title": "Selamat datang di Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% emas, +{troops}% pasukan",
@@ -2558,6 +2563,7 @@
     "started": "Dimulai",
     "starting_game": "Memulai…",
     "starting_in": "Dimulai dalam {time}",
+    "starts_in_label": "Mulai dalam",
     "status": "Status",
     "teams": "{num} tim",
     "teams_hvn": "Pemain vs Negara",

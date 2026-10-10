@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "نادیده گرفتن",
+    "firefox_title": "بازی در Firefox کند است",
     "firefox_warning": "Territorium با [مرورگرهای مبتنی بر فایرفاکس](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox) عملکرد خوبی ندارد. برای بهترین عملکرد، توصیه می‌کنیم از [مرورگر مبتنی بر کرومیوم](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) استفاده کنید.",
     "go_to_item": "رفتن به آیتم {num}",
     "news": "تازه‌ها",
     "tournament": "تورنمنت",
     "tutorial": "آموزشی",
-    "warning": "هشدار"
+    "tutorial_description": "قوانین، رابط کاربری و یک بازی تمرینی راهنمادار.",
+    "tutorial_title": "تازه‌وارد هستید؟ از اینجا شروع کنید",
+    "warning": "هشدار",
+    "welcome_description": "جهان را فتح کنید، مرز به مرز.",
+    "welcome_title": "به Territorium خوش آمدید"
   },
   "objectives": {
     "bonus": "+{gold}% طلا، +{troops}% سرباز",
@@ -2558,6 +2563,7 @@
     "started": "شروع شد",
     "starting_game": "در حال آغاز…",
     "starting_in": "شروع در {time}",
+    "starts_in_label": "شروع تا",
     "status": "وضعیت",
     "teams": "تیم‌ها {num}",
     "teams_hvn": "انسان‌ها در برابر ملت‌ها",

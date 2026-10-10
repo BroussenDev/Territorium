@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Odrzucać",
+    "firefox_title": "Firefox spowalnia grę",
     "firefox_warning": "Territorium nie działa dobrze w [przeglądarkach opartych na przeglądarce Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Aby uzyskać najlepszą wydajność, zalecamy użycie [przeglądarki opartej na Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).",
     "go_to_item": "Przejdź do pozycji {num}",
     "news": "AKTUALNOŚCI",
     "tournament": "TURNIEJ",
     "tutorial": "SEMINARIUM",
-    "warning": "OSTRZEŻENIE"
+    "tutorial_description": "Zasady, interfejs i prowadzona gra treningowa.",
+    "tutorial_title": "Nowy? Zacznij tutaj",
+    "warning": "OSTRZEŻENIE",
+    "welcome_description": "Podbij świat, granica po granicy.",
+    "welcome_title": "Witaj w Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% złota, +{troops}% żołnierzy",
@@ -2558,6 +2563,7 @@
     "started": "Rozpoczęło się",
     "starting_game": "Startowy…",
     "starting_in": "Zaczynamy od {time}",
+    "starts_in_label": "Start za",
     "status": "Status",
     "teams": "{num} drużyn",
     "teams_hvn": "Ludzie Kontra Narody",

@@ -50,6 +50,33 @@ export function localizeNewsItem(item: NewsItem, lang: string): NewsItem {
   };
 }
 
+// Firefox runs the game slowly: its players, and only them, are told so.
+const FIREFOX_WARNING: NewsItem = {
+  id: "firefox-performance",
+  title: "Firefox",
+  titleTranslationKey: "news_box.firefox_title",
+  descriptionTranslationKey: "news_box.firefox_warning",
+  url: null,
+  type: "warning",
+};
+
+export function withBrowserWarning(
+  items: NewsItem[],
+  userAgent: string,
+): NewsItem[] {
+  return /Firefox\//.test(userAgent) ? [FIREFOX_WARNING, ...items] : items;
+}
+
+/** A link into the game itself (a page of it): opened here, not in a new tab. */
+export function inGameLink(url: string): boolean {
+  if (url.startsWith("#")) return true;
+  try {
+    return new URL(url, location.href).origin === location.origin;
+  } catch {
+    return false;
+  }
+}
+
 const typeLabelKeys: Record<string, string> = {
   tournament: "news_box.tournament",
   tutorial: "news_box.tutorial",
@@ -81,7 +108,10 @@ export class NewsBox extends LitElement {
 
   private async loadNews() {
     try {
-      const allItems = filterNewsByPlatform(await getNews(), clientPlatform());
+      const allItems = withBrowserWarning(
+        filterNewsByPlatform(await getNews(), clientPlatform()),
+        navigator.userAgent,
+      );
       // Reset stale dismissed list when all items would be hidden
       const visible = getVisibleNewsItems(allItems);
       if (visible.length === 0 && allItems.length > 0) {
@@ -140,6 +170,9 @@ export class NewsBox extends LitElement {
       this.items[this.activeIndex],
       currentLanguage(),
     );
+    const title = item.titleTranslationKey
+      ? translateText(item.titleTranslationKey)
+      : item.title;
 
     return html`
       <div
@@ -158,14 +191,14 @@ export class NewsBox extends LitElement {
             ${item.url
               ? html`<a
                   href="${item.url}"
-                  target="_blank"
+                  target=${inGameLink(item.url) ? "_self" : "_blank"}
                   rel="noopener noreferrer"
                   class="shrink-0 text-sm font-semibold text-white hover:text-emerald-300 transition-colors truncate block lg:max-w-[45%]"
-                  >${item.title}</a
+                  >${title}</a
                 >`
               : html`<span
                   class="shrink-0 text-sm font-semibold text-white truncate block lg:max-w-[45%]"
-                  >${item.title}</span
+                  >${title}</span
                 >`}
             <span
               class="text-xs text-white/55 block min-w-0 lg:truncate [&_a]:text-emerald-300 [&_a:hover]:text-emerald-200"

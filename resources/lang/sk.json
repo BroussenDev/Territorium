@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Odmietnuť",
+    "firefox_title": "Vo Firefoxe hra beží pomaly",
     "firefox_warning": "Territorium nefunguje dobre s [prehliadačmi založenými na Firefoxe](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Na dosiahnutie najlepšieho výkonu vám odporúčame použiť [prehliadač založený na prehliadači Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).",
     "go_to_item": "Prejsť na položku {num}",
     "news": "NOVINKY",
     "tournament": "TURNAJ",
     "tutorial": "TUTORIAL",
-    "warning": "POZOR"
+    "tutorial_description": "Pravidlá, rozhranie a sprevádzaná tréningová hra.",
+    "tutorial_title": "Si nový? Začni tu",
+    "warning": "POZOR",
+    "welcome_description": "Dobi svet, hranicu po hranici.",
+    "welcome_title": "Vitaj v Territoriu"
   },
   "objectives": {
     "bonus": "+{gold}% zlata, +{troops}% vojakov",
@@ -2558,6 +2563,7 @@
     "started": "Začaté",
     "starting_game": "Začína sa…",
     "starting_in": "Začína o {time}",
+    "starts_in_label": "Začína o",
     "status": "Stav",
     "teams": "{num} tímy",
     "teams_hvn": "Ľudia vs národy",

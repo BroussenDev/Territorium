@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Elvetés",
+    "firefox_title": "Firefoxban lassú a játék",
     "firefox_warning": "Az Territorium nem működik jól [Firefox-alapú böngészőkkel](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). A legjobb teljesítmény érdekében [Chromium-alapú böngésző](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) használatát javasoljuk.",
     "go_to_item": "Ugrás a(z) {num} elemre",
     "news": "HÍREK",
     "tournament": "BAJNOKSÁG",
     "tutorial": "BEMUTATÓ",
-    "warning": "FIGYELEM"
+    "tutorial_description": "A szabályok, a felület és egy vezetett gyakorlójáték.",
+    "tutorial_title": "Új vagy? Kezdd itt",
+    "warning": "FIGYELEM",
+    "welcome_description": "Hódítsd meg a világot, határról határra.",
+    "welcome_title": "Üdv a Territoriumban"
   },
   "objectives": {
     "bonus": "+{gold}% arany, +{troops}% csapatok",
@@ -2558,6 +2563,7 @@
     "started": "Elindítva",
     "starting_game": "Indítás…",
     "starting_in": "Kezdés {time} múlva",
+    "starts_in_label": "Kezdés",
     "status": "Státusz",
     "teams": "{num} csapat",
     "teams_hvn": "Emberek vs Nemzetek",

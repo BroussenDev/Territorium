@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Hylkää",
+    "firefox_title": "Firefoxissa peli on hidas",
     "firefox_warning": "Territorium ei toimi hyvin [Firefox-pohjaisilla selaimilla](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Suosittelemme käyttämään [Chromium-pohjaista selainta](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) parhaan suorituskyvyn saavuttamiseksi.",
     "go_to_item": "Siirry kohteeseen {num}",
     "news": "UUTISET",
     "tournament": "TURNAUS",
     "tutorial": "OPETUSOHJE",
-    "warning": "VAROITUS"
+    "tutorial_description": "Säännöt, käyttöliittymä ja opastettu harjoituspeli.",
+    "tutorial_title": "Uusi pelaaja? Aloita tästä",
+    "warning": "VAROITUS",
+    "welcome_description": "Valloita maailma raja kerrallaan.",
+    "welcome_title": "Tervetuloa Territoriumiin"
   },
   "objectives": {
     "bonus": "+{gold}% kultaa, +{troops}% joukkoja",
@@ -2558,6 +2563,7 @@
     "started": "Aloitettu",
     "starting_game": "Alkaen…",
     "starting_in": "Alkaen {time}",
+    "starts_in_label": "Alkaa",
     "status": "Status",
     "teams": "{num} joukkuetta",
     "teams_hvn": "Ihmiset vs kansakunnat",

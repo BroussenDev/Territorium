@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.96
+
+🎨 **A cleaner interface**
+
+- The game waiting screen now shows the map large, the mode, a big countdown and a gameplay tip.
+- Labels and buttons across the menus read in normal case instead of capitals, and the retry buttons share one style.
+- The news banner speaks your language, and only Firefox players see the Firefox notice.
+- Smaller fixes: the help page's headings and buttons, and the map editor's card on phones.
+
 ## v0.1.95
 
 🧭 **A Modes page, and your modes on the home page**

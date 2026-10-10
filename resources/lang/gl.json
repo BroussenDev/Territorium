@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Descartar",
+    "firefox_title": "Firefox fai que o xogo vaia lento",
     "firefox_warning": "Territorium non funciona ben cos [navegadores baseados en Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Recomendámosche que utilices un [navegador baseado en Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) para obter o mellor rendemento.",
     "go_to_item": "Ir ao elemento {num}",
     "news": "NOVAS",
     "tournament": "TORNEO",
     "tutorial": "TUTORIAL",
-    "warning": "AVISO"
+    "tutorial_description": "As regras, a interface e unha partida de adestramento guiada.",
+    "tutorial_title": "Es novo? Comeza aquí",
+    "warning": "AVISO",
+    "welcome_description": "Conquista o mundo, fronteira a fronteira.",
+    "welcome_title": "Benvido a Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% de ouro, +{troops}% de tropas",
@@ -2558,6 +2563,7 @@
     "started": "Comezou",
     "starting_game": "Comezando…",
     "starting_in": "Comeza en {time}",
+    "starts_in_label": "Comeza en",
     "status": "Estado",
     "teams": "{num} equipos",
     "teams_hvn": "Humanos vs Nacións",

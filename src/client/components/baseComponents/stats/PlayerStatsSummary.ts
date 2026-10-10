@@ -330,7 +330,7 @@ export class PlayerStatsSummary extends LitElement {
         <div
           data-label
           aria-hidden="true"
-          class="truncate text-[10px] font-bold uppercase tracking-wider text-emerald-200/55"
+          class="truncate text-[10px] font-bold text-emerald-200/55"
         >
           ${translateText(shortLabel)}
         </div>
@@ -404,9 +404,7 @@ export class PlayerStatsSummary extends LitElement {
             fixed. -->
             <div class="flex flex-wrap items-start gap-x-8 gap-y-3">
               <div>
-                <div
-                  class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-200/60"
-                >
+                <div class="text-[10px] font-bold text-emerald-200/60">
                   ${translateText("player_stats_tree.stats_win_rate")}
                 </div>
                 <div
@@ -418,9 +416,7 @@ export class PlayerStatsSummary extends LitElement {
               ${showRecentWinRate
                 ? html`
                     <div data-last-100>
-                      <div
-                        class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-200/60"
-                      >
+                      <div class="text-[10px] font-bold text-emerald-200/60">
                         ${translateText("player_stats_tree.stats_last_100")}
                       </div>
                       <div
@@ -445,7 +441,7 @@ export class PlayerStatsSummary extends LitElement {
                       : "border-l border-white/10"}"
                   >
                     <div
-                      class="truncate text-[10px] font-bold uppercase tracking-wider text-emerald-200/55"
+                      class="truncate text-[10px] font-bold text-emerald-200/55"
                       title=${translateText(stat.label)}
                     >
                       ${translateText(stat.label)}
@@ -466,9 +462,7 @@ export class PlayerStatsSummary extends LitElement {
           ${METRIC_GROUPS.map(
             (group) => html`
               <div data-metric-group=${group.heading}>
-                <div
-                  class="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-200/45"
-                >
+                <div class="mb-1.5 text-[10px] font-bold text-emerald-200/45">
                   ${translateText(group.heading)}
                 </div>
                 <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">

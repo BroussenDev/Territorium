@@ -30,7 +30,8 @@ const DYNAMIC_KEY_PATTERNS: RegExp[] = [
   /^(cosmetic_packs|currency_packs)\.[a-z0-9_]+$/,
   /^build_menu\.desc\.[^.]+$/,
   /^unit_type\.[^.]+$/,
-  /^news_box\.(tournament|tutorial|news|warning|firefox_warning)$/,
+  // The bundled news (resources/news.json) and the Firefox notice name theirs.
+  /^news_box\.(tournament|tutorial|news|warning|firefox_warning|firefox_title|welcome_title|welcome_description|tutorial_title|tutorial_description)$/,
   // Built-in graphics preset names/descriptions are referenced from
   // src/client/render/gl/graphics-presets.json, not translateText literals.
   /^graphics_setting\.preset_(default|night|evans_pick|colorblind)(_desc)?$/,

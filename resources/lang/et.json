@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Loobu",
+    "firefox_title": "Firefoxis on mäng aeglane",
     "firefox_warning": "Territorium ei toimi [Firefoxi-põhiste brauseritega] hästi (https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Parima jõudluse saavutamiseks soovitame teil kasutada [Chromiumi-põhist brauserit](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).",
     "go_to_item": "Mine üksuse {num} juurde",
     "news": "UUDISED",
     "tournament": "TURNIIR",
     "tutorial": "ÕPETUS",
-    "warning": "HOIATUS"
+    "tutorial_description": "Reeglid, kasutajaliides ja juhendatud harjutusmäng.",
+    "tutorial_title": "Uus? Alusta siit",
+    "warning": "HOIATUS",
+    "welcome_description": "Vallutage maailm, piir piiri haaval.",
+    "welcome_title": "Tere tulemast Territoriumi"
   },
   "objectives": {
     "bonus": "+{gold}% kulda, +{troops}% sõdureid",
@@ -2558,6 +2563,7 @@
     "started": "Algas",
     "starting_game": "Mängu alustamine…",
     "starting_in": "Alustamine {time}",
+    "starts_in_label": "Algab",
     "status": "Seisund",
     "teams": "{num} meeskonda,",
     "teams_hvn": "Inim-mängijad vs robot-riigid",

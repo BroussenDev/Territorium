@@ -49,9 +49,7 @@ export class ClanCrestEditor extends LitElement {
   }
 
   private label(key: string): TemplateResult {
-    return html`<div
-      class="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2"
-    >
+    return html`<div class="text-[10px] font-bold text-white/40 mb-2">
       ${translateText(key)}
     </div>`;
   }
@@ -102,8 +100,7 @@ export class ClanCrestEditor extends LitElement {
     const crest = this.crest;
     return html`
       <div>
-        <label
-          class="block text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2"
+        <label class="block text-[10px] font-bold text-white/40 mb-2"
           >${translateText("clan_modal.crest")}</label
         >
         <div

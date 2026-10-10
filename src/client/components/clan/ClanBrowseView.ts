@@ -129,9 +129,7 @@ export class ClanBrowseView extends LitElement {
             </p>`
           : ""}
         ${this.searchQuery.trim() === "" && clans.length > 0
-          ? html`<h3
-              class="text-xs font-bold text-white/40 uppercase tracking-wider"
-            >
+          ? html`<h3 class="text-xs font-bold text-white/40">
               ${translateText("clan_modal.popular_clans")}
             </h3>`
           : ""}

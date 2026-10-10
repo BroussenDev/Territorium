@@ -140,7 +140,7 @@ export class GameInfoView extends LitElement {
         <button
           type="button"
           @click=${() => this.retry()}
-          class="rounded-lg border border-brand/40 bg-brand/20 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-brand-light transition-colors hover:border-brand/60 hover:bg-brand/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light/70"
+          class="rounded-lg border border-brand/40 bg-brand/20 px-5 py-2.5 text-xs font-bold text-brand-light transition-colors hover:border-brand/60 hover:bg-brand/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light/70"
         >
           ${translateText("game_info_modal.retry")}
         </button>
@@ -202,7 +202,7 @@ export class GameInfoView extends LitElement {
             <div>
               <div class="mb-2 flex flex-wrap items-center gap-2">
                 <span
-                  class="rounded-md border border-brand/25 bg-brand/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-light"
+                  class="rounded-md border border-brand/25 bg-brand/15 px-2.5 py-1 text-[10px] font-bold text-brand-light"
                 >
                   ${translateText(
                     info.config.gameMode === GameMode.Team
@@ -211,7 +211,7 @@ export class GameInfoView extends LitElement {
                   )}
                 </span>
                 <span
-                  class="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white/45"
+                  class="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold text-white/45"
                 >
                   ${this.gameTypeLabel(info.config.gameType)}
                 </span>
@@ -260,7 +260,7 @@ export class GameInfoView extends LitElement {
     return html`
       <div class="rounded-xl border border-white/[0.08] bg-black/15 p-2.5">
         <div
-          class="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white/35"
+          class="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold text-white/35"
         >
           <span class="text-brand-light/70" aria-hidden="true">${icon}</span>
           ${label}

@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Απόρριψη",
+    "firefox_title": "Στο Firefox το παιχνίδι είναι αργό",
     "firefox_warning": "Το Territorium δεν έχει καλή απόδοση με [προγράμματα περιήγησης που βασίζονται σε Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Σας συνιστούμε να χρησιμοποιήσετε ένα [πρόγραμμα περιήγησης που βασίζεται σε Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) για καλύτερη απόδοση.",
     "go_to_item": "Μετάβαση στο στοιχείο {num}",
     "news": "ΝΕΑ",
     "tournament": "ΤΟΥΡΝΟΥΑ",
     "tutorial": "ΦΡΟΝΤΙΣΤΗΡΙΟ",
-    "warning": "ΠΡΟΕΙΔΟΠΟΙΗΣΗ"
+    "tutorial_description": "Οι κανόνες, η διεπαφή και ένα καθοδηγούμενο παιχνίδι εξάσκησης.",
+    "tutorial_title": "Νέος; Ξεκίνα εδώ",
+    "warning": "ΠΡΟΕΙΔΟΠΟΙΗΣΗ",
+    "welcome_description": "Κατάκτησε τον κόσμο, σύνορο με σύνορο.",
+    "welcome_title": "Καλώς ήρθες στο Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% χρυσός, +{troops}% στρατεύματα",
@@ -2558,6 +2563,7 @@
     "started": "Ξεκίνησε",
     "starting_game": "Έναρξη…",
     "starting_in": "Έναρξη στις {time}",
+    "starts_in_label": "Ξεκινά σε",
     "status": "Κατάσταση",
     "teams": "{num} ομάδες",
     "teams_hvn": "Άνθρωποι εναντίον Εθνών",

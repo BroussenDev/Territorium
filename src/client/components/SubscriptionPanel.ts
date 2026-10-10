@@ -136,7 +136,7 @@ export class SubscriptionPanel extends LitElement {
   // payment-problem states (past_due, unpaid, …).
   private renderStatusPill(): TemplateResult {
     const base =
-      "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider border";
+      "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold border";
 
     if (this.sub.cancelAtPeriodEnd) {
       return html`<span
@@ -236,8 +236,7 @@ export class SubscriptionPanel extends LitElement {
           <span class="text-sm font-bold text-white leading-tight"
             >${value.toLocaleString()}</span
           >
-          <span
-            class="text-[10px] uppercase tracking-wider text-white/50 leading-tight"
+          <span class="text-[10px] text-white/50 leading-tight"
             >${translateText(labelKey)}</span
           >
         </div>
@@ -363,7 +362,7 @@ export class SubscriptionPanel extends LitElement {
         ${note}
         <button
           @click=${this.handleCancel}
-          class="self-center text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-red-400 transition-colors py-1 cursor-pointer"
+          class="self-center text-[11px] font-bold text-white/30 hover:text-red-400 transition-colors py-1 cursor-pointer"
         >
           ${translateText("account_modal.cancel_subscription")}
         </button>
@@ -420,7 +419,7 @@ export class SubscriptionPanel extends LitElement {
         ${onDesktop ? this.renderManageOnWeb() : nothing}
         <button
           @click=${this.handleCancel}
-          class="self-center text-[11px] font-bold uppercase tracking-widest text-white/30 hover:text-red-400 transition-colors py-1 cursor-pointer"
+          class="self-center text-[11px] font-bold text-white/30 hover:text-red-400 transition-colors py-1 cursor-pointer"
         >
           ${translateText("account_modal.cancel_subscription")}
         </button>

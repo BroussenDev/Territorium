@@ -304,7 +304,7 @@ export class CosmeticPreviewModal extends LitElement {
               ${name}
             </h2>
             <span
-              class="rounded-full px-2.5 py-0.5 text-xs font-black uppercase tracking-wider border ${cosmeticRarityBadgeClass(
+              class="rounded-full px-2.5 py-0.5 text-xs font-black border ${cosmeticRarityBadgeClass(
                 this.resolved,
               )}"
             >

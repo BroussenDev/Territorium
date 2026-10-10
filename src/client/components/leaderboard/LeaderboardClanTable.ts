@@ -129,9 +129,7 @@ export class LeaderboardClanTable extends LitElement {
         <div
           class="w-12 h-12 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mb-6"
         ></div>
-        <p
-          class="text-emerald-200/80 text-sm font-bold tracking-widest uppercase"
-        >
+        <p class="text-emerald-200/80 text-sm font-bold ">
           ${translateText("common.loading")}
         </p>
       </div>
@@ -165,7 +163,7 @@ export class LeaderboardClanTable extends LitElement {
           ${this.error ?? translateText("leaderboard_modal.error")}
         </p>
         <button
-          class="px-8 py-3 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-xl text-sm font-bold uppercase transition-all active:scale-95"
+          class="rounded-md bg-brand px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-brand-light active:scale-95"
           @click=${() => this.loadClanLeaderboard()}
         >
           ${translateText("leaderboard_modal.try_again")}
@@ -319,7 +317,7 @@ export class LeaderboardClanTable extends LitElement {
                     class="py-4 px-4 text-right font-bold cursor-pointer hover:text-white/60 transition-colors"
                   >
                     <button
-                      class="whitespace-nowrap uppercase"
+                      class="whitespace-nowrap "
                       @click=${() => this.handleSort("games")}
                       aria-sort=${this.sortBy === "games"
                         ? this.sortOrder === "asc"
@@ -342,7 +340,7 @@ export class LeaderboardClanTable extends LitElement {
                     )}
                   >
                     <button
-                      class="whitespace-nowrap uppercase"
+                      class="whitespace-nowrap "
                       @click=${() => this.handleSort("winScore")}
                       aria-sort=${this.sortBy === "winScore"
                         ? this.sortOrder === "asc"
@@ -365,7 +363,7 @@ export class LeaderboardClanTable extends LitElement {
                     )}
                   >
                     <button
-                      class="whitespace-nowrap uppercase"
+                      class="whitespace-nowrap "
                       @click=${() => this.handleSort("lossScore")}
                       aria-sort=${this.sortBy === "lossScore"
                         ? this.sortOrder === "asc"
@@ -389,7 +387,7 @@ export class LeaderboardClanTable extends LitElement {
                         )}
                       >
                         <button
-                          class="whitespace-nowrap uppercase"
+                          class="whitespace-nowrap "
                           @click=${() => this.handleSort("wars")}
                           aria-sort=${this.sortBy === "wars"
                             ? this.sortOrder === "asc"
@@ -410,7 +408,7 @@ export class LeaderboardClanTable extends LitElement {
                     class="py-4 px-4 text-right font-bold pr-6 cursor-pointer hover:text-white/60 transition-colors"
                   >
                     <button
-                      class="whitespace-nowrap uppercase"
+                      class="whitespace-nowrap "
                       @click=${() => this.handleSort("ratio")}
                       aria-sort=${this.sortBy === "ratio"
                         ? this.sortOrder === "asc"
@@ -536,8 +534,7 @@ export class LeaderboardClanTable extends LitElement {
                               maximumFractionDigits: 2,
                             })}</span
                           >
-                          <span
-                            class="text-[10px] uppercase text-white/30 font-bold tracking-wider"
+                          <span class="text-[10px] text-white/30 font-bold"
                             >${translateText("leaderboard_modal.ratio")}</span
                           >
                         </div>

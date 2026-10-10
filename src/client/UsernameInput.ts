@@ -895,7 +895,7 @@ export class UsernameInput extends LitElement {
           @click=${this.toggleClanMenu}
         >
           <span
-            class="min-w-0 flex-1 truncate text-base font-semibold uppercase text-left ${tag
+            class="min-w-0 flex-1 truncate text-base font-semibold text-left ${tag
               ? "text-white"
               : "text-white/45"}"
             >${tag || translateText("username.tag")}</span
@@ -1078,9 +1078,7 @@ export class UsernameInput extends LitElement {
       >
         ${clans.length > 0
           ? html`
-              <div
-                class="px-2 pt-1 pb-1.5 text-[11px] font-bold uppercase tracking-wider text-white/40"
-              >
+              <div class="px-2 pt-1 pb-1.5 text-[11px] font-bold text-white/40">
                 ${translateText("username.clan_your_clans")}
               </div>
               <div class="max-h-56 overflow-y-auto">
@@ -1095,7 +1093,7 @@ export class UsernameInput extends LitElement {
                       @click=${() => this.selectClan(clan.tag)}
                     >
                       <span
-                        class="shrink-0 rounded bg-white/10 px-1.5 py-0.5 text-sm font-bold uppercase tracking-wider text-white"
+                        class="shrink-0 rounded bg-white/10 px-1.5 py-0.5 text-sm font-bold text-white"
                         >${clan.tag}</span
                       >
                       <span

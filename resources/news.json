@@ -2,22 +2,19 @@
   {
     "id": "territorium-welcome-2026",
     "title": "Welcome to Territorium",
-    "description": "Conquer the world, one border at a time. Follow development on GitHub!",
-    "url": "https://github.com/BroussenDev/Territorium",
+    "titleTranslationKey": "news_box.welcome_title",
+    "description": "Conquer the world, one border at a time.",
+    "descriptionTranslationKey": "news_box.welcome_description",
+    "url": null,
     "type": "announcement"
   },
   {
-    "id": "firefox-performance-issues-2026",
-    "title": "Firefox Performance Issues",
-    "descriptionTranslationKey": "news_box.firefox_warning",
-    "url": null,
-    "type": "warning"
-  },
-  {
     "id": "tutorial-2026",
-    "title": "New Player Tutorial",
-    "description": "Learn the basics of Territorium in this video guide",
-    "url": "https://www.youtube.com/watch?v=EN2oOog3pSs",
+    "title": "New player? Start here",
+    "titleTranslationKey": "news_box.tutorial_title",
+    "description": "The rules, the interface and a guided training game.",
+    "descriptionTranslationKey": "news_box.tutorial_description",
+    "url": "#modal=help",
     "type": "tutorial"
   }
 ]

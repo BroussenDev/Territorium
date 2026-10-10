@@ -1081,7 +1081,7 @@ export class MapEditorModal extends BaseModal {
           >
             <section class="flex flex-col gap-3">
               <h3
-                class="font-display font-bold text-xs uppercase tracking-[0.08em] text-white/55"
+                class="font-display font-bold text-xs tracking-[0.08em] text-white/55"
               >
                 ${translateText("map_editor.brush")}
               </h3>
@@ -1145,7 +1145,7 @@ export class MapEditorModal extends BaseModal {
 
             <section class="flex flex-col gap-3">
               <h3
-                class="font-display font-bold text-xs uppercase tracking-[0.08em] text-white/55"
+                class="font-display font-bold text-xs tracking-[0.08em] text-white/55"
               >
                 ${translateText("map_editor.map")}
               </h3>
@@ -1200,7 +1200,7 @@ export class MapEditorModal extends BaseModal {
 
             <section class="flex flex-col gap-2">
               <h3
-                class="font-display font-bold text-xs uppercase tracking-[0.08em] text-white/55"
+                class="font-display font-bold text-xs tracking-[0.08em] text-white/55"
               >
                 ${translateText("map_editor.checks")}
               </h3>
@@ -1220,7 +1220,7 @@ export class MapEditorModal extends BaseModal {
 
             <section class="flex flex-col gap-2">
               <h3
-                class="font-display font-bold text-xs uppercase tracking-[0.08em] text-white/55"
+                class="font-display font-bold text-xs tracking-[0.08em] text-white/55"
               >
                 ${translateText("map_editor.nations")}
               </h3>

@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Avfärda",
+    "firefox_title": "Spelet går segt i Firefox",
     "firefox_warning": "Territorium fungerar inte bra med [Firefox-baserade webbläsare](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Vi rekommenderar att du använder en [Chromium-baserad webbläsare](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) för bästa prestanda.",
     "go_to_item": "Gå till objekt {num}",
     "news": "NYHETER",
     "tournament": "TURNERING",
     "tutorial": "HANDLEDNING",
-    "warning": "VARNING"
+    "tutorial_description": "Reglerna, gränssnittet och en guidad träningsmatch.",
+    "tutorial_title": "Ny? Börja här",
+    "warning": "VARNING",
+    "welcome_description": "Erövra världen, en gräns i taget.",
+    "welcome_title": "Välkommen till Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% guld, +{troops}% trupper",
@@ -2558,6 +2563,7 @@
     "started": "Startade",
     "starting_game": "Startande…",
     "starting_in": "Börjar om {time}",
+    "starts_in_label": "Börjar om",
     "status": "Status",
     "teams": "{num} lag",
     "teams_hvn": "Människor vs nationer",

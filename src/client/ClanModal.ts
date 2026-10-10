@@ -200,7 +200,7 @@ export class ClanModal extends BaseModal {
 
   private tagPill(tag: string) {
     return html`<span
-      class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-white/50 border border-white/10"
+      class="text-xs font-bold px-3 py-1 rounded-full bg-white/10 text-white/50 border border-white/10"
       >[${tag}]</span
     >`;
   }
@@ -797,7 +797,7 @@ export class ClanModal extends BaseModal {
     const canCreate = ![...this.myClanRoles.values()].includes("leader");
     const createButton = html`<button
       @click=${() => (this.creatingClan = true)}
-      class="px-6 py-2 text-sm font-bold text-brand-light uppercase tracking-wider bg-brand/10 hover:bg-brand/20 border border-brand/30 rounded-lg transition-all"
+      class="px-6 py-2 text-sm font-bold text-brand-light bg-brand/10 hover:bg-brand/20 border border-brand/30 rounded-lg transition-all"
     >
       ${translateText("clan_modal.create_clan")}
     </button>`;
@@ -811,7 +811,7 @@ export class ClanModal extends BaseModal {
           <div class="flex flex-wrap justify-center gap-3">
             <button
               @click=${() => this.setActiveTab("browse")}
-              class="px-6 py-2 text-sm font-bold text-white uppercase tracking-wider bg-brand hover:bg-brand-light active:bg-brand/80 rounded-lg transition-all"
+              class="px-6 py-2 text-sm font-bold text-white bg-brand hover:bg-brand-light active:bg-brand/80 rounded-lg transition-all"
             >
               ${translateText("clan_modal.browse")}
             </button>

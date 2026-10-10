@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "忽略",
+    "firefox_title": "遊戲在 Firefox 中執行緩慢",
     "firefox_warning": "Territorium 在 [基於 Firefox 的瀏覽器](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox) 上表現不佳。我們推薦你使用 [基於 Chromium 的瀏覽器](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) 來獲得最佳效能體驗。",
     "go_to_item": "跳轉到第 {num} 項",
     "news": "新聞",
     "tournament": "錦標賽",
     "tutorial": "教學",
-    "warning": "警告"
+    "tutorial_description": "規則、介面和一場有引導的訓練對局。",
+    "tutorial_title": "新玩家？從這裡開始",
+    "warning": "警告",
+    "welcome_description": "一條邊界接一條邊界，征服世界。",
+    "welcome_title": "歡迎來到 Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% 金幣，+{troops}% 兵力",
@@ -2558,6 +2563,7 @@
     "started": "已開始",
     "starting_game": "正在開始……",
     "starting_in": "在 {time} 後開始",
+    "starts_in_label": "開始倒數",
     "status": "狀態",
     "teams": "{num} 支隊伍",
     "teams_hvn": "人類 vs 國家",

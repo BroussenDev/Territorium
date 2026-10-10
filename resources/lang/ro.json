@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Renunțați",
+    "firefox_title": "Firefox încetinește jocul",
     "firefox_warning": "Territorium nu are rezultate bune cu [browserele Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Vă recomandăm să utilizați un [browser Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) pentru cea mai bună performanță.",
     "go_to_item": "Mergeți la articol {num}",
     "news": "NOUTĂŢI",
     "tournament": "TURNAȚIE",
     "tutorial": "TUTORIALE",
-    "warning": "ATENŢIE"
+    "tutorial_description": "Regulile, interfața și un joc de antrenament ghidat.",
+    "tutorial_title": "Nou aici? Începe de aici",
+    "warning": "ATENŢIE",
+    "welcome_description": "Cucerește lumea, graniță cu graniță.",
+    "welcome_title": "Bun venit în Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% aur, +{troops}% trupe",
@@ -2558,6 +2563,7 @@
     "started": "Început",
     "starting_game": "Se pornește…",
     "starting_in": "Începând cu {time}",
+    "starts_in_label": "Începe în",
     "status": "Statut",
     "teams": "{num} Echipe",
     "teams_hvn": "Oameni vs Națiuni",

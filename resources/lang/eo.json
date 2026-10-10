@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Ignori",
+    "firefox_title": "En Firefox la ludo malrapidas",
     "firefox_warning": "Territorium ne funkcias efike kun [retnavigiloj bazitaj sur Fajrovulpo](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Ni rekomendas al vi uzi [retnavigilon bazitan sur Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) por plej bonaj rendimentoj.",
     "go_to_item": "Iri al {num}a ero ",
     "news": "NOVAĴOJ",
     "tournament": "TURNIRO",
     "tutorial": "LERNILO",
-    "warning": "AVERTO"
+    "tutorial_description": "La reguloj, la interfaco kaj gvidata trejna ludo.",
+    "tutorial_title": "Nova? Komencu ĉi tie",
+    "warning": "AVERTO",
+    "welcome_description": "Konkeru la mondon, limon post limo.",
+    "welcome_title": "Bonvenon al Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% oro, +{troops}% trupoj",
@@ -2558,6 +2563,7 @@
     "started": "Komencita",
     "starting_game": "Ekante…",
     "starting_in": "Ekas post {time}",
+    "starts_in_label": "Komenciĝos post",
     "status": "Statuso",
     "teams": "{num} teamoj",
     "teams_hvn": "Homoj kontraŭ Nacioj",

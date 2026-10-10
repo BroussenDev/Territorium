@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Azletmek",
+    "firefox_title": "Firefox oyunu yavaşlatıyor",
     "firefox_warning": "Territorium, [Firefox tabanlı tarayıcılarla](https://simple.wikipedia.org/wiki/Web_browsers_ Based_on_Firefox) iyi performans göstermiyor. En iyi performans için [Chromium tabanlı bir tarayıcı](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_ Based_on_Chromium) kullanmanızı öneririz.",
     "go_to_item": "{num} öğeye git",
     "news": "HABERLER",
     "tournament": "TURNUVA",
     "tutorial": "ÖĞRETİCİ",
-    "warning": "UYARI"
+    "tutorial_description": "Kurallar, arayüz ve rehberli bir antrenman oyunu.",
+    "tutorial_title": "Yeni misin? Buradan başla",
+    "warning": "UYARI",
+    "welcome_description": "Dünyayı fethet, sınır sınır.",
+    "welcome_title": "Territorium'a hoş geldin"
   },
   "objectives": {
     "bonus": "+{gold}% altın, +{troops}% birlik",
@@ -2558,6 +2563,7 @@
     "started": "Başladı",
     "starting_game": "Oyun başlatılıyor…",
     "starting_in": "{time}'da başlıyor",
+    "starts_in_label": "Başlamasına",
     "status": "Durum",
     "teams": "{num} takımlar",
     "teams_hvn": "İnsanlar vs Ülkeler",

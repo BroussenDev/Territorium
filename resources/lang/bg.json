@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "Отхвърли",
+    "firefox_title": "Във Firefox играта е бавна",
     "firefox_warning": "Territorium не работи добре с [браузъри, базирани на Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). Препоръчваме ти да ползваш [браузър, базиран на Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) за най-добро качество.",
     "go_to_item": "Отиди на предмет {num}",
     "news": "НОВИНИ",
     "tournament": "ТУРНИР",
     "tutorial": "НАРЪЧНИК",
-    "warning": "ВНИМАНИЕ"
+    "tutorial_description": "Правилата, интерфейсът и тренировъчна игра с насоки.",
+    "tutorial_title": "Нов сте? Започнете оттук",
+    "warning": "ВНИМАНИЕ",
+    "welcome_description": "Завладейте света, граница след граница.",
+    "welcome_title": "Добре дошли в Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% злато, +{troops}% войски",
@@ -2558,6 +2563,7 @@
     "started": "Стартирана",
     "starting_game": "Започване…",
     "starting_in": "Започва след {time}",
+    "starts_in_label": "Започва след",
     "status": "Състояние",
     "teams": "{num} отбора",
     "teams_hvn": "Хора срещу Нации",

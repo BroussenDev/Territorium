@@ -50,9 +50,7 @@ export class TribeStatsView extends LitElement {
       <div
         class="bg-surface rounded-lg border border-white/10 px-3 py-2 flex flex-col"
       >
-        <span
-          class="text-[11px] font-bold uppercase tracking-wider text-white/40"
-        >
+        <span class="text-[11px] font-bold text-white/40">
           ${translateText("store.tribe_stats_games")}
         </span>
         <span class="font-mono text-lg text-white">
@@ -65,9 +63,7 @@ export class TribeStatsView extends LitElement {
           count: figures.playerReach.toLocaleString(),
         })}
       >
-        <span
-          class="text-[11px] font-bold uppercase tracking-wider text-white/40"
-        >
+        <span class="text-[11px] font-bold text-white/40">
           ${translateText("leaderboard_modal.tribes_reach")}
         </span>
         <span class="font-mono text-lg text-white">
@@ -105,13 +101,11 @@ export class TribeStatsView extends LitElement {
         ></player-name>
       </div>
       <section class="flex flex-col gap-2">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-white/60">
-          ${windowHeading}
-        </h3>
+        <h3 class="text-xs font-bold text-white/60">${windowHeading}</h3>
         ${this.renderFigures(stats.window)}
       </section>
       <section class="flex flex-col gap-2">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-white/60">
+        <h3 class="text-xs font-bold text-white/60">
           ${translateText("store.tribe_stats_lifetime")}
         </h3>
         ${this.renderFigures(stats.lifetime)}

@@ -94,9 +94,7 @@ export class CreatorDashboardPanel extends LitElement {
 
   private renderPayoutAccount(dashboard: CreatorDashboard): TemplateResult {
     const details = dashboard.payoutDetails ?? null;
-    const label = html`<span
-      class="text-[10px] uppercase tracking-widest text-white/40 font-bold"
-    >
+    const label = html`<span class="text-[10px] text-white/40 font-bold">
       ${translateText("creator_dashboard.payout_account")}
     </span>`;
     if (details !== null && !this.editingPayout) {
@@ -284,9 +282,7 @@ export class CreatorDashboardPanel extends LitElement {
         class="rounded-xl border border-rose-300/20 bg-gradient-to-br from-rose-400/10 to-white/[0.02] p-5 flex flex-col gap-4"
       >
         <div class="flex flex-col gap-1">
-          <span
-            class="text-[10px] uppercase tracking-widest text-white/40 font-bold"
-          >
+          <span class="text-[10px] text-white/40 font-bold">
             ${translateText("creator_dashboard.title")}
           </span>
           <div class="text-xl font-bold text-white leading-tight break-all">
@@ -355,9 +351,7 @@ export class CreatorDashboardPanel extends LitElement {
       </p>
       ${dashboard.payouts.length > 0
         ? html`<div class="flex flex-col gap-1 border-t border-white/10 pt-3">
-            <span
-              class="text-[10px] uppercase tracking-widest text-white/40 font-bold"
-            >
+            <span class="text-[10px] text-white/40 font-bold">
               ${translateText("creator_dashboard.history")}
             </span>
             ${dashboard.payouts.map(

@@ -645,7 +645,7 @@ export class GameModeSelector extends LitElement {
       ${translateText(message)}
       ${canRetry
         ? html`<button
-            class="px-4 py-2 rounded-md bg-brand hover:bg-brand-light text-white text-sm font-medium uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-brand"
+            class="px-4 py-2 rounded-md bg-brand hover:bg-brand-light text-white text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-brand"
             ?disabled=${this.retryCoolingDown}
             @click=${this.retryLobbies}
           >
@@ -1239,9 +1239,7 @@ export class GameModeSelector extends LitElement {
               ></span
             >`
           : nothing}
-        ${beta
-          ? betaTag("absolute -top-2 -right-2 lg:static lg:ml-auto")
-          : nothing}
+        ${beta ? betaTag("hidden lg:inline-flex lg:ml-auto") : nothing}
       </button>
     `;
   }

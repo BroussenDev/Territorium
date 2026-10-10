@@ -32,8 +32,7 @@ export class ClanCard extends LitElement {
   }
 
   private renderBadge() {
-    const base =
-      "text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0";
+    const base = "text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0";
     if (this.clanRole) {
       const colors =
         this.clanRole === "leader"

@@ -2288,12 +2288,17 @@
   },
   "news_box": {
     "dismiss": "استبعاد",
+    "firefox_title": "اللعبة بطيئة على Firefox",
     "firefox_warning": "لا يعمل Territorium بشكل جيد مع [المتصفحات المستندة إلى Firefox](https://simple.wikipedia.org/wiki/Web_browsers_based_on_Firefox). ننصحك باستخدام [متصفح يستند إلى Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium) للحصول على أفضل أداء.",
     "go_to_item": "اذهب إلى العنصر {num}",
     "news": "أخبار",
     "tournament": "البطولة",
     "tutorial": "تعليمي",
-    "warning": "تحذير"
+    "tutorial_description": "القواعد والواجهة ومباراة تدريبية موجَّهة.",
+    "tutorial_title": "جديد؟ ابدأ من هنا",
+    "warning": "تحذير",
+    "welcome_description": "اغزُ العالم، حدًّا بعد حد.",
+    "welcome_title": "مرحبًا بك في Territorium"
   },
   "objectives": {
     "bonus": "+{gold}% ذهب، +{troops}% قوات",
@@ -2558,6 +2563,7 @@
     "started": "بدأت",
     "starting_game": "جارٍ البدء…",
     "starting_in": "ابتداءً من {time}",
+    "starts_in_label": "تبدأ خلال",
     "status": "الحالة",
     "teams": "فرق {num}",
     "teams_hvn": "البشر مقابل الأمم",

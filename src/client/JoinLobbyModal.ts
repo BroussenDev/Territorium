@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import { html, TemplateResult } from "lit";
+import { html, nothing, TemplateResult } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { ClientEnv } from "src/client/ClientEnv";
 import {
@@ -31,6 +31,7 @@ import {
 import { versusTeamSize } from "../core/game/Versus";
 import { getApiBase } from "./Api";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { LOADING_TIPS } from "./GameStartingModal";
 import { showInGameConfirm } from "./InGameModal";
 import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
@@ -76,6 +77,8 @@ export class JoinLobbyModal extends BaseModal {
   // Deliberately not persisted: the bell starts off and is re-armed by hand
   // for each game (reset in startTrackingLobby).
   @state() private notifyOnStart = false;
+  // The tip shown under the players while the game waits.
+  @state() private tipIndex = Math.floor(Math.random() * LOADING_TIPS.length);
   // Own Howl rather than SoundManager: that only exists once the game is
   // running, and this has to play during the lobby wait. Fixed volume on
   // purpose -- the SFX slider defaults to 0, and an alert the player asked
@@ -289,7 +292,7 @@ export class JoinLobbyModal extends BaseModal {
     if (this.isConnecting) return html``;
     const spectating = this.isSpectating;
     const cls = (on: boolean) =>
-      `px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest transition ${
+      `px-3 py-1 rounded-lg text-xs font-bold transition ${
         on ? "bg-white text-black" : "text-white/60 hover:text-white"
       }`;
     return html`
@@ -404,6 +407,7 @@ export class JoinLobbyModal extends BaseModal {
                         ></lobby-player-view>
                       `
                     : ""}
+                  ${this.renderTip()}
                 `}
         </div>
 
@@ -415,8 +419,7 @@ export class JoinLobbyModal extends BaseModal {
               class="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between gap-3"
             >
               <div class="flex flex-col">
-                <span
-                  class="text-[10px] font-bold uppercase tracking-widest text-white/40"
+                <span class="text-[10px] font-bold text-white/40"
                   >${translateText("public_lobby.status")}</span
                 >
                 <span class="text-sm font-bold text-white">${statusLabel}</span>
@@ -425,7 +428,7 @@ export class JoinLobbyModal extends BaseModal {
               ${maxPlayers > 0
                 ? html`
                     <div
-                      class="flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-widest"
+                      class="flex items-center gap-2 text-white/80 text-xs font-bold"
                     >
                       <span>${playerCount}/${maxPlayers}</span>
                       <svg
@@ -524,9 +527,7 @@ export class JoinLobbyModal extends BaseModal {
     }
     return html`
       <div class="pt-2">
-        <div
-          class="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2"
-        >
+        <div class="text-[10px] font-bold text-white/40 mb-2">
           ${translateText("private_lobby.open_lobbies")}
         </div>
         ${content}
@@ -1024,18 +1025,31 @@ export class JoinLobbyModal extends BaseModal {
     );
 
     return html`
-      <div class="flex items-center gap-3 mb-6">
+      <div
+        data-lobby-hero
+        class="relative mb-4 flex min-h-40 overflow-hidden rounded-xl border border-white/10 bg-[#07130f]"
+      >
         <img
           src=${thumbnailUrl}
-          alt=${mapName ?? c.gameMap}
-          class="w-20 h-20 rounded-lg object-cover border border-white/10 shrink-0"
+          alt=""
+          class="pointer-events-none absolute inset-y-0 right-0 h-full w-full select-none object-cover opacity-55 saturate-[0.85] [mask-image:linear-gradient(to_left,#000_45%,transparent)] sm:w-2/3"
           @error=${(e: Event) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
         />
-        <div class="flex flex-col gap-1">
-          <span class="text-lg font-bold text-white">${mapName}</span>
-          <span class="text-sm text-white/60">${modeSubtitle}</span>
+        <div
+          class="relative flex flex-1 flex-col justify-end gap-4 p-5 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <div class="flex min-w-0 flex-col gap-1">
+            <span class="text-sm font-semibold text-emerald-200/80"
+              >${modeSubtitle}</span
+            >
+            <span
+              class="font-display text-3xl font-bold leading-tight text-white [text-shadow:0_2px_14px_rgb(0_0_0/0.7)]"
+              >${mapName ?? c.gameMap}</span
+            >
+          </div>
+          ${this.renderCountdown()}
         </div>
       </div>
       ${cards.length > 0
@@ -1045,6 +1059,82 @@ export class JoinLobbyModal extends BaseModal {
         : html``}
       ${this.renderDisabledUnits()} ${this.renderHostCheats()}
     `;
+  }
+
+  /** When the game starts: big, at the hero's corner. */
+  private renderCountdown(): TemplateResult {
+    const seconds =
+      this.lobbyStartAt !== null
+        ? getSecondsUntilServerTimestamp(
+            this.lobbyStartAt,
+            this.serverTimeOffset,
+          )
+        : null;
+    if (seconds === null) {
+      return html`<span
+        class="rounded-md bg-black/45 px-3 py-1.5 text-sm font-semibold text-white/80"
+        >${translateText(
+          this.isPrivateLobby()
+            ? "private_lobby.joined_waiting"
+            : "public_lobby.waiting_for_players",
+        )}</span
+      >`;
+    }
+    return html`<span
+      class="flex flex-col items-start rounded-lg bg-black/45 px-4 py-2 sm:items-end"
+    >
+      <span class="text-xs font-semibold text-white/60"
+        >${translateText(
+          seconds > 0 ? "public_lobby.starts_in_label" : "public_lobby.started",
+        )}</span
+      >
+      ${seconds > 0
+        ? html`<span
+            class="font-display text-4xl font-bold tabular-nums leading-none text-white"
+            >${renderDuration(seconds)}</span
+          >`
+        : nothing}
+    </span>`;
+  }
+
+  /** A gameplay tip while the game fills up, as on the loading screen. */
+  private renderTip(): TemplateResult {
+    const tip = LOADING_TIPS[this.tipIndex % LOADING_TIPS.length];
+    return html`<aside
+      data-lobby-tip
+      class="mt-6 flex items-start gap-3 rounded-lg border border-amber-300/20 bg-amber-300/[0.05] p-4"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        class="mt-0.5 size-5 shrink-0 text-amber-300"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M9 18h6M10 22h4" />
+        <path
+          d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"
+        />
+      </svg>
+      <div class="flex min-w-0 flex-1 flex-col gap-1">
+        <span class="text-xs font-bold text-amber-300"
+          >${translateText("game_starting_modal.tip_label")}</span
+        >
+        <p class="text-sm leading-relaxed text-white/80">
+          ${translateText(`game_starting_modal.tips.${tip}`)}
+        </p>
+      </div>
+      <button
+        type="button"
+        class="shrink-0 rounded-md px-2 py-1 text-xs font-semibold text-white/60 transition-colors hover:bg-white/5 hover:text-white"
+        @click=${() => (this.tipIndex = this.tipIndex + 1)}
+      >
+        ${translateText("game_starting_modal.next_tip")}
+      </button>
+    </aside>`;
   }
 
   private renderDisabledUnits(): TemplateResult {
@@ -1076,9 +1166,7 @@ export class JoinLobbyModal extends BaseModal {
       <div
         class="mt-4 mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-lg"
       >
-        <div
-          class="text-xs font-bold text-red-400 uppercase tracking-widest mb-2"
-        >
+        <div class="text-xs font-bold text-red-400 mb-2">
           ${translateText("private_lobby.disabled_units")}
         </div>
         <div class="flex flex-wrap gap-2">
@@ -1147,9 +1235,7 @@ export class JoinLobbyModal extends BaseModal {
       <div
         class="mt-4 mb-6 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg"
       >
-        <div
-          class="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-2"
-        >
+        <div class="text-xs font-bold text-yellow-400 mb-2">
           ${translateText("private_lobby.host_cheats")}
         </div>
         <div class="flex flex-wrap gap-2">${items}</div>

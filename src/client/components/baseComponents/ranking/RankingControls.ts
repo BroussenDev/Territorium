@@ -86,7 +86,7 @@ export class RankingControls extends LitElement {
         type="button"
         data-ranking-category=${type}
         aria-pressed=${active}
-        class="flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-lg border px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-all duration-200 sm:gap-2 sm:px-4 sm:text-xs sm:tracking-widest ${active
+        class="flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-lg border px-2 py-2.5 text-[10px] font-bold transition-all duration-200 sm:gap-2 sm:px-4 sm:text-xs sm:tracking-widest ${active
           ? "border-brand/30 bg-brand/20 text-brand-light shadow-(--shadow-brand-soft)"
           : "border-transparent text-white/40 hover:bg-white/5 hover:text-white/75"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light/70"
         @click=${() => this.onSort(type)}
@@ -135,7 +135,7 @@ export class RankingControls extends LitElement {
         aria-pressed=${active}
         @click=${() => this.onSort(type)}
         title=${translateText(label)}
-        class="${mobileSpan} min-h-11 min-w-0 rounded-lg border px-1.5 py-2 text-[10px] font-bold uppercase leading-tight tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light/70 sm:col-span-1 sm:px-2 ${active
+        class="${mobileSpan} min-h-11 min-w-0 rounded-lg border px-1.5 py-2 text-[10px] font-bold leading-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light/70 sm:col-span-1 sm:px-2 ${active
           ? "border-brand/30 bg-brand/15 text-brand-light"
           : "border-transparent text-white/40 hover:border-white/10 hover:bg-white/[0.06] hover:text-white/75"}"
       >
