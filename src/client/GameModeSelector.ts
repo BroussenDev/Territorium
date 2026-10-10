@@ -93,6 +93,9 @@ const ICON_FLAG =
   "M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5";
 const ICON_BOLT = "m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z";
 const ICON_PLUS = "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z";
+// A folded map with a pencil: the map editor.
+const ICON_MAP_EDIT =
+  "M9 6.75 3.75 4.5v12.75L9 19.5m0-12.75 6-2.25m-6 2.25v12.75m6-15 5.25 2.25v4.5M15 4.5v6m-6 9 3.75-1.5m5.25-3.75 2.25 2.25-4.5 4.5H15v-2.25l4.5-4.5Z";
 const ICON_ENTER =
   "M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25";
 const ICON_TROPHY =
@@ -737,6 +740,16 @@ export class GameModeSelector extends LitElement {
                 ICON_BOLT,
               )}
             </div>
+            <div class="flex-1 lg:flex-none lg:h-14">
+              ${this.renderSmallActionCard(
+                translateText("map_editor.title"),
+                this.openMapEditor,
+                SECONDARY_ACTION,
+                undefined,
+                true,
+                ICON_MAP_EDIT,
+              )}
+            </div>
             ${getGamesPlayed() < TUTORIAL_CARD_MAX_GAMES
               ? html`<div class="flex-1 lg:flex-none lg:h-12">
                   ${this.renderSmallActionCard(
@@ -881,6 +894,10 @@ export class GameModeSelector extends LitElement {
     if (!this.validateUsername()) return;
     if (!gameOpenOrExplain("ranked")) return;
     window.showPage?.("page-ranked");
+  };
+
+  private openMapEditor = () => {
+    window.showPage?.("page-map-editor");
   };
 
   private openChallenges = () => {

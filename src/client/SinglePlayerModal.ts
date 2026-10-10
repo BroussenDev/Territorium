@@ -3,6 +3,7 @@ import { customElement, state } from "lit/decorators.js";
 import { translateText } from "../client/Utils";
 import { UserMeResponse } from "../core/ApiSchemas";
 import { assetUrl } from "../core/AssetUrls";
+import type { CustomMapRef } from "../core/game/CustomMaps";
 import { DoomsdayClockSpeed } from "../core/game/DoomsdayClock";
 import {
   Difficulty,
@@ -184,6 +185,9 @@ export class SinglePlayerModal extends BaseModal {
     DEFAULT_OPTIONS.selectedDifficulty;
   @state() private nations: number = 0;
   @state() private defaultNationCount: number = 0;
+  // A map from the map editor, played instead of the picked official map.
+  @state() private customMap: { ref: CustomMapRef; thumbnail: string } | null =
+    null;
   @state() private bots: number = DEFAULT_OPTIONS.bots;
   @state() private infiniteGold: boolean = DEFAULT_OPTIONS.infiniteGold;
   @state() private infiniteTroops: boolean = DEFAULT_OPTIONS.infiniteTroops;
@@ -507,6 +511,16 @@ export class SinglePlayerModal extends BaseModal {
                 useRandom: this.useRandomMap,
                 showMedals: this.showAchievements,
                 mapWins: this.mapWins,
+                custom: this.customMap
+                  ? {
+                      name: this.customMap.ref.name,
+                      thumbnail: this.customMap.thumbnail,
+                      onLeave: () => {
+                        this.customMap = null;
+                        void this.loadNationCount();
+                      },
+                    }
+                  : undefined,
               },
               difficulty: {
                 selected: this.selectedDifficulty,
@@ -682,8 +696,16 @@ export class SinglePlayerModal extends BaseModal {
     await this.startGame();
   }
 
+  /** Opens the solo setup on a map just made in the map editor. */
+  public openWithCustomMap(ref: CustomMapRef, thumbnail: string): void {
+    this.open();
+    this.customMap = { ref, thumbnail };
+    void this.loadNationCount();
+  }
+
   // Reset all transient form state to ensure clean slate
   private resetOptions(): void {
+    this.customMap = null;
     // Belt and braces with the finally in startGame(): closing and reopening
     // the modal must always give the player a live Start button back, whatever
     // left the previous attempt in flight.
@@ -1165,6 +1187,7 @@ export class SinglePlayerModal extends BaseModal {
               ],
               config: {
                 gameMap: this.selectedMap,
+                customMap: this.customMap?.ref,
                 gameMapSize: this.compactMap
                   ? GameMapSize.Compact
                   : GameMapSize.Normal,
@@ -1252,11 +1275,15 @@ export class SinglePlayerModal extends BaseModal {
 
   private async loadNationCount() {
     const currentMap = this.selectedMap;
+    const currentCustom = this.customMap;
     try {
-      const mapData = this.mapLoader.getMapData(currentMap);
+      const mapData = this.mapLoader.getMapData(
+        currentMap,
+        currentCustom?.ref ?? null,
+      );
       const manifest = await mapData.manifest();
       // Only update if the map hasn't changed
-      if (this.selectedMap === currentMap) {
+      if (this.selectedMap === currentMap && this.customMap === currentCustom) {
         this.defaultNationCount = manifest.nations.length;
         this.nations = this.compactMap
           ? Math.max(0, Math.floor(manifest.nations.length * 0.25))

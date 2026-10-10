@@ -198,6 +198,8 @@ export interface GameConfigSettingsData {
     randomMapDivider?: boolean;
     showMedals?: boolean;
     mapWins?: Map<GameMapType, Set<Difficulty>>;
+    /** A map from the map editor, shown instead of the picker. */
+    custom?: { name: string; thumbnail: string; onLeave: () => void };
   };
   difficulty: {
     selected: Difficulty;
@@ -393,6 +395,42 @@ export class GameConfigSettings extends LitElement {
     });
   }
 
+  // A map made in the map editor: its preview, its name, and the way back to
+  // the official maps.
+  private renderCustomMap(custom: {
+    name: string;
+    thumbnail: string;
+    onLeave: () => void;
+  }): TemplateResult {
+    return html`<div
+      class="flex flex-col sm:flex-row items-center gap-4 rounded-lg border border-emerald-800/70 bg-emerald-500/10 p-3"
+    >
+      <img
+        src=${custom.thumbnail}
+        alt=""
+        class="w-full sm:w-48 aspect-[5/3] object-contain rounded-md bg-[#2c6292]"
+      />
+      <div class="flex-1 min-w-0 flex flex-col gap-1 text-center sm:text-left">
+        <span
+          class="text-[11px] font-bold uppercase tracking-wider text-emerald-300"
+          >${translateText("map_editor.custom_map")}</span
+        >
+        <span class="font-display text-lg font-bold text-white break-words"
+          >${custom.name}</span
+        >
+        <span class="text-xs text-white/55"
+          >${translateText("map_editor.custom_map_note")}</span
+        >
+      </div>
+      <button
+        class="shrink-0 rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
+        @click=${custom.onLeave}
+      >
+        ${translateText("map_editor.back_to_official")}
+      </button>
+    </div>`;
+  }
+
   private renderMapSearchInput(): TemplateResult {
     return html`<div class="relative">
       <input
@@ -440,18 +478,20 @@ export class GameConfigSettings extends LitElement {
           "text-brand-light",
           "bg-brand/20",
           "map.map",
-          html`<map-picker
-            .selectedMap=${settings.map.selected}
-            .useRandomMap=${settings.map.useRandom}
-            .randomMapDivider=${settings.map.randomMapDivider ?? false}
-            .showMedals=${settings.map.showMedals ?? false}
-            .mapWins=${settings.map.mapWins ?? new Map()}
-            .onSelectMap=${this.handleSelectMap}
-            .onSelectRandom=${this.handleSelectRandom}
-            .searchQuery=${this.mapSearchQuery}
-          ></map-picker>`,
+          settings.map.custom
+            ? this.renderCustomMap(settings.map.custom)
+            : html`<map-picker
+                .selectedMap=${settings.map.selected}
+                .useRandomMap=${settings.map.useRandom}
+                .randomMapDivider=${settings.map.randomMapDivider ?? false}
+                .showMedals=${settings.map.showMedals ?? false}
+                .mapWins=${settings.map.mapWins ?? new Map()}
+                .onSelectMap=${this.handleSelectMap}
+                .onSelectRandom=${this.handleSelectRandom}
+                .searchQuery=${this.mapSearchQuery}
+              ></map-picker>`,
           undefined,
-          this.renderMapSearchInput(),
+          settings.map.custom ? undefined : this.renderMapSearchInput(),
         )}
         ${renderSection(
           DIFFICULTY_ICON,

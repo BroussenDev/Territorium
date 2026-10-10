@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.89
+
+🗺️ **The map editor**
+
+- A new Map editor, from the home page: paint water, land with its relief (plains, hills, mountains) and impassable areas, fill whole areas, and place nations played by the AI.
+- Import an image to start from: it is read like the official maps' images.
+- Test your map in solo straight away, with every usual setting. These test games do not count in the stats.
+- Your map is saved on your device as you draw. Publishing comes with the community maps gallery.
+
 ## v0.1.88
 
 🖥️ **Steam: offline solo**

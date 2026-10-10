@@ -79,6 +79,7 @@ import "./LangSelector";
 import { LangSelector } from "./LangSelector";
 import { initLayout } from "./Layout";
 import "./LeaderboardModal";
+import "./MapEditorModal";
 import "./Matchmaking";
 import { MatchmakingModal } from "./Matchmaking";
 import {
@@ -161,8 +162,8 @@ import "./components/DeluxeReward";
 import "./components/DesktopStatusBar";
 import "./components/MarketingConsentToast";
 import "./components/PioneerReward";
-import "./components/ServerStatusBanner";
 import "./components/PurchaseNudgeModal";
+import "./components/ServerStatusBanner";
 import "./components/WarningModal";
 import { initAudioMixer } from "./sound/AudioMixer";
 import { startMenuMusic } from "./sound/MenuMusic";
@@ -461,6 +462,10 @@ class Client {
     modalRouter.register("challenges", {
       tag: "challenges-modal",
       pageId: "page-challenges",
+    });
+    modalRouter.register("map-editor", {
+      tag: "map-editor-modal",
+      pageId: "page-map-editor",
     });
     modalRouter.register("detailed-view", {
       tag: "detailed-view-modal",

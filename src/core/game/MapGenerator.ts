@@ -37,7 +37,7 @@ export interface GeneratorImage {
 
 /** One scale of a generated map: the packed tiles, as map.bin holds them. */
 export interface GeneratedMapScale {
-  data: Uint8Array;
+  data: Uint8Array<ArrayBuffer>;
   width: number;
   height: number;
   numLandTiles: number;
