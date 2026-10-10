@@ -32,6 +32,7 @@ import {
 } from "./components/LobbyCard";
 import { isNewSeason, newSeasonTag } from "./components/ranked/RankedTier";
 import { lockIcon } from "./components/SteamLaunchDialog";
+import { betaTag } from "./components/ui/BetaTag";
 import { versusZoneMap } from "./components/VersusLobby";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
@@ -748,6 +749,9 @@ export class GameModeSelector extends LitElement {
                 undefined,
                 true,
                 ICON_MAP_EDIT,
+                false,
+                false,
+                true,
               )}
             </div>
             ${getGamesPlayed() < TUTORIAL_CARD_MAX_GAMES
@@ -1075,6 +1079,8 @@ export class GameModeSelector extends LitElement {
     newSeason: boolean = false,
     // Opens with the Steam release: a padlock where the badge would sit.
     steamLocked: boolean = false,
+    // Still in beta: a tag where the badge would sit.
+    beta: boolean = false,
   ) {
     const blocked =
       gated &&
@@ -1131,6 +1137,9 @@ export class GameModeSelector extends LitElement {
                 >Steam</span
               ></span
             >`
+          : nothing}
+        ${beta
+          ? betaTag("absolute -top-2 -right-2 lg:static lg:ml-auto")
           : nothing}
       </button>
     `;

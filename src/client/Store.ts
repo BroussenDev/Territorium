@@ -25,6 +25,7 @@ import { ProgressiveList } from "./components/ProgressiveList";
 import "./components/PurchaseButton";
 import { alignPurchaseRows } from "./components/PurchaseButton";
 import "./components/SteamEditionCard";
+import "./components/StoreEditions";
 import "./components/SupportCreatorDialog";
 import "./components/TribesPanel";
 import { modalHeader } from "./components/ui/ModalHeader";
@@ -59,6 +60,7 @@ type StoreTab =
   | "effects"
   | "packs"
   | "subscriptions"
+  | "editions"
   | "tribes";
 
 const COSMETICS_SUB_TABS = ["patterns", "flags", "crowns"] as const;
@@ -108,6 +110,7 @@ export class StoreModal extends BaseModal {
       tabs: [
         { key: "packs", label: translateText("store.packs") },
         { key: "subscriptions", label: translateText("store.subscriptions") },
+        { key: "editions", label: translateText("store.editions.tab") },
         { key: "bundles", label: translateText("store.bundles") },
         { key: "cosmetics", label: translateText("store.cosmetics") },
         { key: "effects", label: translateText("store.effects") },
@@ -802,6 +805,12 @@ export class StoreModal extends BaseModal {
         return this.renderEffectGrid();
       case "subscriptions":
         return this.renderSubscriptionGrid();
+      case "editions":
+        // Says whether the player owns the Deluxe: wait for the session.
+        if (!this.authSettled) return html``;
+        return html`<store-editions
+          .userMeResponse=${this.userMeResponse}
+        ></store-editions>`;
       case "tribes":
         return this.renderTribeGrid();
       case "packs":

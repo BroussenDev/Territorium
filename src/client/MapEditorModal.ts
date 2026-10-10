@@ -2,6 +2,7 @@ import { html, nothing, svg } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 import { publishCommunityMap } from "./CommunityMapsApi";
 import { BaseModal } from "./components/BaseModal";
+import { betaTag } from "./components/ui/BetaTag";
 import { modalHeader } from "./components/ui/ModalHeader";
 import {
   currentMapId,
@@ -954,7 +955,9 @@ export class MapEditorModal extends BaseModal {
     return html`
       <div class="flex flex-col h-full min-h-0">
         ${modalHeader({
-          title: translateText("map_editor.title"),
+          title: html`<span class="inline-flex items-center gap-3"
+            >${translateText("map_editor.title")} ${betaTag()}</span
+          >`,
           onBack: () => this.close(),
           ariaLabel: translateText("common.back"),
           rightContent: this.renderActions(),

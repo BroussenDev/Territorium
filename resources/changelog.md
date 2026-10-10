@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.93
+
+🛒 **Store: editions**
+
+- A new Editions tab in the store compares the game on Steam and its Deluxe edition, row by row: the Deluxe adds the Conquérant pack (the Haut Commandant title, the Conquérant emblem, frame and patterns, a month of Seigneur subscription), cosmetics only.
+- The map editor shows a Beta tag: it is still changing, and your feedback is welcome.
+
 ## v0.1.92
 
 🗂️ **Map editor: My creations**
