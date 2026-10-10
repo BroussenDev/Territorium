@@ -50,6 +50,7 @@ import { modalHeader } from "./components/ui/ModalHeader";
 import "./components/VersusLobby";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { JoinLobbyEvent } from "./Main";
+import { navigateTo } from "./PageTransition";
 import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { SendPickTeamEvent } from "./Transport";
@@ -751,7 +752,7 @@ export class HostLobbyModal extends BaseModal {
               @cancel=${() => (this.showSubscriptionRequired = false)}
               @confirm=${() => {
                 this.showSubscriptionRequired = false;
-                window.location.href = "/#modal=store&tab=subscriptions";
+                navigateTo("/#modal=store&tab=subscriptions");
               }}
             ></confirm-dialog>`
           : ""}

@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.101
+
+🎬 **The Steam app feels like a game**
+
+- Moving between the menu and a game is now a scene change: the screen fades to the Territorium title while the next screen loads, instead of going blank.
+- Menu pages rise into place as they open, and dialogs fade in and lift up.
+- Buttons in the menus answer with a click sound (follows the interface volume, silent in games).
+- The browser is gone from the app: no more reload with F5, find, print or page zoom shortcuts, no right-click menu outside text fields, no selecting the menus' text or dragging images, no link address in the corner, and the mouse's back button no longer leaves the game. Links to other sites open in your own browser.
+
 ## v0.1.100
 
 ⌨️ **Player panel shortcuts**

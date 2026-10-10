@@ -2,6 +2,7 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { GameID } from "../../core/Schemas";
 import { ClientEnv } from "../ClientEnv";
+import { navigateTo } from "../PageTransition";
 import { ensureServerList } from "../ServerList";
 import { translateText } from "../Utils";
 
@@ -91,7 +92,7 @@ export class ResumeGameButton extends LitElement {
 
   private resume() {
     if (this.gameID === null) return;
-    window.location.href = ClientEnv.gamePath(this.gameID);
+    navigateTo(ClientEnv.gamePath(this.gameID));
   }
 
   private dismiss() {

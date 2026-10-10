@@ -13,6 +13,7 @@ import { crazyGamesSDK } from "../../CrazyGamesSDK";
 import { isDesktopShell } from "../../DesktopShell";
 import { showInGameAlert, showInGameConfirm } from "../../InGameModal";
 import { TogglePauseIntentEvent } from "../../InputHandler";
+import { navigateTo } from "../../PageTransition";
 import { PauseGameIntentEvent, SendWinnerEvent } from "../../Transport";
 import { homeHref, showToast, translateText } from "../../Utils";
 import { GameView } from "../../view";
@@ -265,7 +266,7 @@ export class GameRightSidebar extends LitElement implements Controller {
       const lobby = await createNextLobby(this.game.gameID());
       const id = lobby.gameID;
       // ?host routes the creator back into the host view on load.
-      window.location.href = `${window.location.origin}${ClientEnv.gamePath(id)}?host`;
+      navigateTo(`${window.location.origin}${ClientEnv.gamePath(id)}?host`);
     } catch (error) {
       console.error("Failed to create successor lobby", error);
       this.newLobbyRequested = false;
@@ -286,7 +287,7 @@ export class GameRightSidebar extends LitElement implements Controller {
     await crazyGamesSDK.gameplayStop();
     // redirect to the home page
     forgetActiveGame();
-    window.location.href = homeHref();
+    navigateTo(homeHref());
   }
 
   private onSettingsButtonClick() {

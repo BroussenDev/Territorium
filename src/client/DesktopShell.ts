@@ -1,7 +1,6 @@
-// The Electron desktop (Steam) shell exposes this global via a contextBridge
-// preload script — see openfront-desktop's src/preload/preload.ts. Its mere
-// presence is a reliable signal we're running inside that shell, since only
-// the desktop build's preload script ever sets it.
+// The desktop (Steam) app defines this global in a script it runs before any
+// page script. Its mere presence is a reliable signal we're running inside the
+// app, since nothing else ever sets it.
 declare global {
   interface Window {
     openfrontDesktop?: unknown;

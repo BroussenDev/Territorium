@@ -141,8 +141,8 @@ function desktopWebAccountSettingsUrl(): string {
 // account they use here; the copy on the button says as much.
 export async function linkGoogle(): Promise<boolean> {
   if (isDesktopShell()) {
-    // Routed to the system browser by the shell's window-open policy
-    // (openfront-desktop's navigationPolicy.ts), like every https link.
+    // The desktop app opens it in the player's own browser, as it does every
+    // link to another site or new window.
     window.open(
       desktopWebAccountSettingsUrl(),
       "_blank",

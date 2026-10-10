@@ -168,6 +168,7 @@ import "./components/PurchaseNudgeModal";
 import "./components/ServerStatusBanner";
 import "./components/WarningModal";
 import { initAudioMixer } from "./sound/AudioMixer";
+import { startMenuClicks } from "./sound/MenuClicks";
 import { startMenuMusic } from "./sound/MenuMusic";
 import {
   installCtrlWheelZoomBlocker,
@@ -384,7 +385,9 @@ class Client {
 
     // One mixer for the page: the menu theme here and the SoundManager a game
     // creates later both route through it, so the volume sliders reach both.
-    startMenuMusic(initAudioMixer(this.userSettings));
+    const mixer = initAudioMixer(this.userSettings);
+    startMenuMusic(mixer);
+    startMenuClicks(mixer);
 
     // Snapshot the lapse-notice marker SYNCHRONOUSLY, before the first await.
     //

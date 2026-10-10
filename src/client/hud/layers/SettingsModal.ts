@@ -9,6 +9,7 @@ import {
   AlternateViewEvent,
   ToggleRenderDebugGuiEvent,
 } from "../../InputHandler";
+import { navigateTo } from "../../PageTransition";
 import type { UserSettingModal } from "../../UserSettingModal";
 import { homeHref, translateText } from "../../Utils";
 import { forgetActiveGame } from "../../components/ResumeGameButton";
@@ -159,7 +160,7 @@ export class SettingsModal extends LitElement implements Controller {
   private onExitButtonClick() {
     // redirect to the home page
     forgetActiveGame();
-    window.location.href = homeHref();
+    navigateTo(homeHref());
   }
 
   render() {

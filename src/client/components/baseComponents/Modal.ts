@@ -125,15 +125,22 @@ export class OModal extends LitElement {
       return html``;
     }
 
+    // In the desktop app a dialog opens like a game's: the backdrop fades in
+    // and the dialog rises into place (styles.css).
+    const motion =
+      !this.inline &&
+      document.documentElement.classList.contains("desktop-shell");
     const backdropClass = this.inline
       ? "relative z-10 w-full h-full flex items-stretch bg-transparent"
-      : "fixed inset-0 z-[9999] bg-black/60 flex items-center justify-center overflow-hidden";
+      : `fixed inset-0 z-[9999] bg-black/60 flex items-center justify-center overflow-hidden${
+          motion ? " desktop-modal-backdrop" : ""
+        }`;
 
     const wrapperClass = this.inline
       ? "relative flex flex-col w-full h-full m-0 max-w-full max-h-none shadow-none"
       : `relative flex flex-col w-full h-full lg:w-[90%] lg:h-auto lg:min-w-[400px] lg:max-w-[900px] lg:m-8 lg:rounded-lg lg:max-h-[calc(100vh-4rem)] ${
           this.alwaysMaximized ? "h-auto" : ""
-        }`;
+        }${motion ? " desktop-modal-pop" : ""}`;
     const wrapperStyle =
       !this.inline && this.maxWidth ? `max-width: ${this.maxWidth};` : "";
 

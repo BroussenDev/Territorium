@@ -35,6 +35,7 @@ import { LOADING_TIPS } from "./GameStartingModal";
 import { showInGameConfirm } from "./InGameModal";
 import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
+import { navigateTo } from "./PageTransition";
 import { ensureServerList, redirectToGameVersion } from "./ServerList";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import {
@@ -1662,7 +1663,7 @@ export class JoinLobbyModal extends BaseModal {
     } catch {
       return false;
     }
-    window.location.href = url;
+    navigateTo(url);
     return true;
   }
 }

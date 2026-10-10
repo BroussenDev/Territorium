@@ -5,6 +5,7 @@ import { EventBus } from "../../../core/EventBus";
 import { ClientEnv } from "../../ClientEnv";
 import { Controller } from "../../Controller";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
+import { navigateTo } from "../../PageTransition";
 import { NewLobbyEvent } from "../../Transport";
 import { GameView } from "../../view";
 
@@ -36,7 +37,7 @@ export class NewLobbyPrompt extends LitElement implements Controller {
     // The host asked for this lobby, so send them back to the host view. The
     // ?host flag routes them there instead of the join flow on reload.
     if (this.game?.myPlayer()?.isLobbyCreator()) {
-      window.location.href = this.lobbyUrl(true);
+      navigateTo(this.lobbyUrl(true));
       return;
     }
     this.isVisible = true;
@@ -70,7 +71,7 @@ export class NewLobbyPrompt extends LitElement implements Controller {
         }
       }
     }
-    window.location.href = this.lobbyUrl(false);
+    navigateTo(this.lobbyUrl(false));
   }
 
   private _handleDismiss() {

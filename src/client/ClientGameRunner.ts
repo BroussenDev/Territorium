@@ -55,6 +55,7 @@ import {
   ToggleRenderDebugGuiEvent,
 } from "./InputHandler";
 import { pagePin } from "./PagePin";
+import { reloadPage } from "./PageTransition";
 import { groupTokenOf, loggableStartMessage } from "./PresenceGroup";
 import { versionedPathForMismatchedGame } from "./ServerList";
 import { pickStructure } from "./StructurePick";
@@ -1807,7 +1808,7 @@ function showErrorModal(
   reload.textContent = translateText("error_modal.reload");
   reload.className =
     "flex-1 rounded-md bg-capital px-4 py-2.5 font-display text-sm font-bold text-capital-ink transition-colors hover:bg-capital-light";
-  reload.addEventListener("click", () => window.location.reload());
+  reload.addEventListener("click", () => reloadPage());
   actions.append(button, reload);
 
   if (closable) {

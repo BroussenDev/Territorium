@@ -33,6 +33,36 @@
         transition: opacity 0.5s ease-out;
       }
 
+      /* The desktop app's curtain: the game's title on the launch screens'
+         backdrop while a page loads, and again when one is left
+         (PageTransition.ts), so moving between the menu and a game reads as
+         a scene change rather than a page reload. Below the launch screens,
+         which are drawn on top of everything. */
+      html.desktop-shell::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 2147483646;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.45s ease-out;
+        background:
+          var(--desktop-curtain-title, none) center / min(520px, 46vw) auto
+            no-repeat,
+          radial-gradient(
+            ellipse 55% 45% at 50% 50%,
+            rgba(16, 185, 129, 0.16),
+            transparent 70%
+          ),
+          #000;
+      }
+      html.desktop-shell.preload::after,
+      html.desktop-shell.page-leaving::after {
+        opacity: 1;
+        pointer-events: auto;
+        transition-duration: 0.22s;
+      }
+
       /* iOS safe area support */
       body {
         padding-top: env(safe-area-inset-top);
@@ -183,6 +213,12 @@
           new URLSearchParams(location.search).has("desktop-layout"))
       ) {
         document.documentElement.classList.add("desktop-shell");
+        if (typeof window.__TERRITORIUM_SPLASH_TITLE__ === "string") {
+          document.documentElement.style.setProperty(
+            "--desktop-curtain-title",
+            `url("${window.__TERRITORIUM_SPLASH_TITLE__}")`,
+          );
+        }
       }
       document.documentElement.style.setProperty(
         "--background-image-url",
