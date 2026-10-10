@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.99
+
+🤖 **Smarter nations**
+
+- Nations now see boat landings coming and defend the beach where the troops come ashore.
+- Nations no longer stack defense posts on top of each other, and skip building one when their front is already covered.
+- Nations aim their nukes better: no two bombs on the same spot, no blasts wasted on water or fallout, and an atom bomb instead of a hydrogen bomb on small islands.
+- Nations never nuke their allies or teammates by accident.
+
 ## v0.1.98
 
 🛡️ **Fixes**
