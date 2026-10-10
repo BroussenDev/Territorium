@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.91
+
+🛠️ **Steam Workshop**
+
+- In the Steam app, publishing a map also puts it on the Steam Workshop. Our team still checks it for the gallery; a map it rejects is removed from the Workshop.
+- A new Steam Workshop tab in the community maps page lists the maps you subscribed to: play them in solo straight away, even offline.
+- Deleting one of your maps also deletes it from the Workshop.
+
 ## v0.1.90
 
 🌍 **Community maps**
