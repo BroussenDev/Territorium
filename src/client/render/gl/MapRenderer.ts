@@ -109,15 +109,32 @@ export class MapRenderer {
   };
 
   private handleContextLost = (e: Event) => {
+    // preventDefault is what asks the browser to restore the context. Disposal
+    // must then leave the context alone: calling loseContext() re-loses it
+    // *manually*, which switches Chromium to manual recovery, so
+    // webglcontextrestored never arrives and the map stays blank for the rest
+    // of the session under a HUD that carries on updating.
     e.preventDefault();
+    console.warn("[Renderer] WebGL context lost — awaiting restore");
     if (this.renderer) {
-      this.renderer.dispose();
+      this.renderer.dispose({ releaseContext: false });
       this.renderer = null;
     }
   };
 
   private handleContextRestored = () => {
-    this.initRenderer();
+    console.warn("[Renderer] WebGL context restored");
+    try {
+      this.initRenderer();
+    } catch (err) {
+      // After repeated GPU-process crashes Chromium turns hardware
+      // acceleration off, so the context can come back software-only and
+      // initGL rejects it. The map stays blank; without this the throw would
+      // escape the event handler unlogged.
+      this.renderer = null;
+      console.error("[Renderer] context restore failed", err);
+      return;
+    }
     // Re-apply stored layers to the new renderer.
     if (this.storedLayers.length > 0 && this.storedLayerImages.size > 0) {
       this.renderer?.setMapLayers(this.storedLayers, this.storedLayerImages);

@@ -41,7 +41,7 @@ import {
   planJoinVerify,
   verifyJoin,
 } from "./JoinVerify";
-import { getUserMe, verifyClientToken } from "./jwt";
+import { getUserMe, userMeFailureClose, verifyClientToken } from "./jwt";
 import { logger } from "./Logger";
 import { applyHiddenName, resolveVerifiedJoin, stampBadge } from "./Privilege";
 import { startTgsStatusPoller } from "./TgsApi";
@@ -743,7 +743,9 @@ export async function startWorker() {
               persistentID: persistentId,
               gameID: clientMsg.gameID,
             });
-            ws.close(CloseCode.InternalError, CloseReason.AccountLookupFailed);
+            // A 401/403 is terminal: retrying the same token cannot succeed.
+            const { code, reason } = userMeFailureClose(result);
+            ws.close(code, reason);
             return;
           }
           flares = result.response.player.flares;

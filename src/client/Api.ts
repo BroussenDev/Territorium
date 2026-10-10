@@ -2270,7 +2270,14 @@ export async function setLobbyListed(
 // self-owned id and returns it.
 // `config` fixes the new lobby's rules from the start (versus lobbies);
 // without it the server uses the default private lobby settings.
-export async function createLobby(config?: GameConfig): Promise<GameInfo> {
+// The lobby, and the play token it was created under: the host must join with
+// that same token. A guest without a refresh cookie (blocked third-party
+// cookies, some iframes) gets a new identity on each JWT refresh, and a
+// refresh between create and join left the host in their own lobby as someone
+// who is not its creator, unable to start it or change its settings.
+export type CreatedLobby = GameInfo & { creatorToken: string };
+
+export async function createLobby(config?: GameConfig): Promise<CreatedLobby> {
   // A new game needs a server that takes new games on this build: ask the
   // API (multi-server v2), falling back to the page's own server. When the
   // list says nothing runs this build any more, creating against the page's
@@ -2321,7 +2328,7 @@ export async function createLobby(config?: GameConfig): Promise<GameInfo> {
     const data = await response.json();
     console.log("Success:", data);
 
-    return data as GameInfo;
+    return { ...(data as GameInfo), creatorToken: token };
   } catch (error) {
     console.error("Error creating lobby:", error);
     throw error;

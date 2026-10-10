@@ -874,13 +874,15 @@ export class HostLobbyModal extends BaseModal {
         this.updateLobbyHistory(url);
         await this.updateComplete;
         void (this.querySelector("copy-button") as CopyButton)?.handleCopy();
+        return lobby.creatorToken;
       })
-      .then(() => {
+      .then((creatorToken) => {
         this.dispatchEvent(
           new CustomEvent("join-lobby", {
             detail: {
               gameID: this.lobbyId,
               source: "host",
+              creatorToken,
             } as JoinLobbyEvent,
             bubbles: true,
             composed: true,

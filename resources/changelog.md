@@ -1,5 +1,16 @@
 # Territorium — Changelog
 
+## v0.1.98
+
+🛡️ **Fixes**
+
+- Closed an exploit that let players grow their troops past the troop cap by sending attacks at targets they don't border.
+- The map now recovers on its own after a graphics crash, instead of going blank mid-game.
+- A short outage of the login server no longer logs you out; an expired session now says so instead of reconnecting endlessly.
+- Private lobby hosts are always recognised as the host, so they can start and configure their lobby.
+- No more white flash when the page loads.
+- Smaller fixes: Ctrl+click on a Mac no longer also attacks, building previews sit right next to existing buildings, releasing a build off the map no longer builds, the attack ratio slider, keybind capture and the quick chat.
+
 ## v0.1.97
 
 🏷️ **Guest names, and community map fixes**

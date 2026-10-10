@@ -1551,7 +1551,12 @@ export class GPURenderer {
   // Lifecycle
   // ---------------------------------------------------------------------------
 
-  dispose(): void {
+  /**
+   * @param releaseContext Also drop the WebGL context itself. Must be false
+   *   when disposing *because* the context was lost: see
+   *   MapRenderer.handleContextLost.
+   */
+  dispose({ releaseContext = true }: { releaseContext?: boolean } = {}): void {
     this.stopLoop();
     for (const p of this.mapLayerPasses.values()) p.dispose();
     this.mapLayerPasses.clear();
@@ -1609,6 +1614,8 @@ export class GPURenderer {
     // Deleting GL resources isn't enough — the context itself counts against
     // the browser's WebGL context limit until it's GC'd, which is unreliable
     // on mobile. Explicitly drop it so repeated game starts don't overflow.
-    this.gl.getExtension("WEBGL_lose_context")?.loseContext();
+    if (releaseContext) {
+      this.gl.getExtension("WEBGL_lose_context")?.loseContext();
+    }
   }
 }
