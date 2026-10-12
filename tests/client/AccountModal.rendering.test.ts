@@ -18,6 +18,7 @@ vi.mock("../../src/client/Auth", () => ({
   linkSteam: vi.fn(async () => true),
   steamLogin: vi.fn(),
   logOut: vi.fn(async () => true),
+  openWebsiteAccountSettings: vi.fn(),
   reauthAfterCrazyGamesChange: vi.fn(async () => false),
   sendMagicLink: vi.fn(async () => true),
   getAuthHeader: vi.fn(async () => "Bearer test-token"),
@@ -182,9 +183,9 @@ describe("AccountModal — rendering", () => {
     expect(text).not.toContain("nav_account_menu.log_out");
   });
 
-  // Desktop re-entry to the account-linking gate. The Electron preload exposes
-  // `window.openfrontDesktop.showLinkGate()` for exactly this purpose; it is
-  // absent entirely on plain web, which is the signal the action guards on.
+  // In the desktop app, the way to the website's account settings, where the
+  // player links their Steam account to another sign-in. The desktop bridge
+  // is absent entirely on plain web, which is the signal the action guards on.
   describe("desktop link-gate action", () => {
     function findLinkGateButton(): HTMLButtonElement | undefined {
       return Array.from(modal.querySelectorAll("button")).find((b) =>
@@ -192,11 +193,11 @@ describe("AccountModal — rendering", () => {
       );
     }
 
-    it("renders and calls showLinkGate() when the desktop bridge is present", async () => {
-      const showLinkGate = vi.fn(async () => undefined);
-      (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop = {
-        showLinkGate,
-      };
+    it("renders and opens the website's account settings in the desktop app", async () => {
+      (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop =
+        {};
+      const { openWebsiteAccountSettings } =
+        await import("../../src/client/Auth");
 
       const userMe = makeUserMe({
         discord: {
@@ -213,32 +214,10 @@ describe("AccountModal — rendering", () => {
       expect(button).toBeTruthy();
 
       button!.click();
-      expect(showLinkGate).toHaveBeenCalledTimes(1);
+      expect(openWebsiteAccountSettings).toHaveBeenCalledTimes(1);
     });
 
     it("does not render when the desktop bridge is absent (plain web)", async () => {
-      const userMe = makeUserMe({
-        discord: {
-          id: "1",
-          avatar: null,
-          username: "player",
-          global_name: null,
-          discriminator: "0",
-        },
-      });
-      await setLoggedInUser(userMe);
-
-      expect(findLinkGateButton()).toBeUndefined();
-    });
-
-    // Pins the resolved ambiguity from the plan: guard on the function we
-    // actually call, not a sibling property. A bridge exposing `linkGate` but
-    // no callable `showLinkGate` must not render a dead button.
-    it("does not render when the bridge exists but showLinkGate is not a function", async () => {
-      (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop = {
-        linkGate: { open: vi.fn() },
-      };
-
       const userMe = makeUserMe({
         discord: {
           id: "1",
@@ -291,11 +270,10 @@ describe("AccountModal — rendering", () => {
     );
   });
 
-  // OPE-343. On the desktop shell the provider buttons cannot run an OAuth
-  // redirect (the redirect_uri would be app://openfront), so Auth.ts routes
-  // them through the shell's browser link flow -- and the captions must say
-  // so, keyed on the same bridge check Auth.ts routes on. On the web the
-  // login screen is untouched.
+  // OPE-343. In the desktop app the provider buttons do not run an OAuth
+  // redirect in the game's window: Auth.ts opens the website in the browser
+  // instead -- and the captions must say so, keyed on the same check Auth.ts
+  // routes on. On the web the login screen is untouched.
   describe("desktop login screen", () => {
     function findButtonByText(key: string): HTMLButtonElement | undefined {
       return Array.from(modal.querySelectorAll("button")).find(

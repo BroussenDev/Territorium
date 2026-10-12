@@ -25,7 +25,6 @@
     "delete_account_warning": "확인 후 24시간이 지나면 계정이 영구적으로 삭제되며, 모든 기기에서 즉시 로그아웃됩니다. 다시 로그인해도 삭제가 취소되지 않으며, 해당 24시간 이내에 고객지원에 문의해야만 취소할 수 있습니다.",
     "desktop_login_discord": "브라우저에서 Discord로 계속하기",
     "desktop_login_google": "브라우저에서 Google로 계속하기",
-    "desktop_login_needs_update": "로그인하려면 데스크톱 앱의 최신 버전이 필요합니다. Steam을 다시 시작하여 업데이트한 후 다시 시도해 주세요.",
     "desktop_sign_in_desc": "로그인하면 브라우저에서 Territorium 웹사이트가 열립니다. 웹사이트에서 로그인하여 Steam 계정 연동을 확인하면 게임에 반영됩니다.",
     "email_placeholder": "이메일 주소를 입력하세요",
     "enter_email_address": "이메일 주소를 입력해 주세요",
@@ -911,26 +910,6 @@
     "title": "Conquérant 팩 잠금 해제!",
     "where": "모든 것은 인벤토리에 있습니다. 이름 옆 배지 버튼으로 칭호를 고르세요."
   },
-  "desktop_gate": {
-    "back_to_game": "게임으로 돌아가기",
-    "browser_fallback": "브라우저를 자동으로 열 수 없습니다 — 위의 링크를 사용하세요.",
-    "cancel": "취소",
-    "code_destination_generic": "계정을 연동하려면 Territorium 웹사이트에 이 코드를 입력하세요:",
-    "code_destination_site": "계정을 연동하려면 {site}에 이 코드를 입력하세요:",
-    "continue_to_game": "게임 계속하기",
-    "expired": "만료된 코드입니다. 새 코드를 발급받으려면 처음부터 다시 시도하세요.",
-    "heading": "Territorium에 오신 것을 환영합니다",
-    "link_existing": "기존 계정 연동",
-    "linking_failed_reason": "연동 실패: {reason}",
-    "linking_failed_unknown": "알 수 없는 이유로 연동에 실패했습니다.",
-    "new_player": "신규 플레이어",
-    "not_found": "더 이상 유효하지 않은 코드입니다. 새 코드를 발급받으려면 처음부터 다시 시도하세요.",
-    "prompt": "처음 플레이하시나요, 아니면 이미 계정이 있으신가요?",
-    "retry": "다시 시도",
-    "starting_link": "계정 연동을 시작하는 중…",
-    "ticket_unavailable": "지금은 계정 연동을 시작할 수 없습니다. 다시 시도하거나 게임을 계속 진행할 수 있습니다.",
-    "title": "Territorium - 계정 설정"
-  },
   "desktop_offline": {
     "go_online": "온라인으로 전환",
     "offline": "Territorium에 연결할 수 없습니다. 솔로는 계속 플레이할 수 있습니다.",
@@ -938,13 +917,8 @@
     "staying": "오프라인 모드: 솔로만 플레이할 수 있습니다.",
     "still_offline": "아직 Territorium에 연결할 수 없습니다."
   },
-  "desktop_presence": {
-    "in_game": "게임 중",
-    "spectating": "관전 중"
-  },
   "desktop_session": {
     "generic": "Territorium 계정에 로그인할 수 없습니다",
-    "needs_account": "온라인으로 플레이하려면 Territorium 계정을 설정하세요",
     "network": "Territorium에 연결할 수 없습니다. 네트워크 연결 상태를 확인하세요.",
     "retry": "다시 시도",
     "retrying": "로그인 중…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam 세션을 확인할 수 없습니다. Steam을 재시작하면 대부분 해결됩니다."
   },
   "desktop_status": {
-    "go_online": "온라인 전환",
     "offline": "오프라인: Territorium 서버에 연결할 수 없음",
     "retry": "다시 시도",
     "retrying": "다시 시도하는 중…"
-  },
-  "desktop_update": {
-    "blocked": "최신 버전을 플레이하려면 Steam 업데이트가 필요합니다",
-    "downloading": "업데이트 다운로드 중… {percent}%",
-    "failed": "업데이트를 다운로드할 수 없습니다",
-    "ready": "업데이트 준비 완료",
-    "reload": "새로고침",
-    "retry": "다시 시도"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium에서 그래픽 카드를 인식하지 못해 게임을 실행할 수 없습니다. 대개 일시적인 현상입니다. 해결 방법:",
@@ -2725,37 +2690,9 @@
     "wishlist": "찜 목록에 추가"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Steam 데스크톱 앱에 표시된 코드를 입력하세요.",
-    "code_submit": "계속",
-    "confirm": "계정 연동",
-    "confirm_prompt": "Steam {persona}을(를) {username} 계정에 연동하시겠습니까?",
-    "confirm_prompt_no_persona": "Steam 계정을 {username} 계정에 연동하시겠습니까?",
-    "conflict_confirm": "삭제하고 연동",
-    "conflict_deleting": "삭제 중…",
-    "conflict_explain": "해당 계정은 Steam에서 게임을 처음 실행했을 때 생성된 계정입니다. 연동하면 해당 계정과 모든 데이터가 영구적으로 삭제됩니다.",
-    "conflict_games": "{games, plural, =0 {플레이한 게임 없음} other {플레이한 게임 #회}}",
-    "conflict_games_capped": "플레이한 게임 {games}회 이상",
-    "conflict_keep": "{username} 계정은 유지되며, Steam에서 구매한 내역은 연동 시 함께 이전됩니다.",
-    "conflict_prompt": "Steam {persona} 계정이 이미 다른 Territorium 계정에 연결되어 있습니다.",
-    "conflict_prompt_no_persona": "이 Steam 계정은 이미 다른 Territorium 계정에 연결되어 있습니다.",
-    "conflict_warning": "이 작업은 되돌릴 수 없습니다.",
-    "invalid_code": "유효한 코드가 아닌 것 같습니다. 확인 후 다시 시도하세요.",
-    "linking": "연동 중…",
-    "load_error": "계정 정보를 불러올 수 없습니다. Steam에서 다시 시도해 주세요.",
-    "load_error_code": "계정 정보를 불러올 수 없습니다. 다시 시도해 주세요.",
     "reason_account_already_has_steam": "계정이 이미 다른 Steam 계정에 연동되어 있습니다.",
-    "reason_discard_blocked": "이 Steam 계정에 연결된 Territorium 계정을 자동으로 삭제할 수 없습니다. 고객지원에 문의해 주세요.",
-    "reason_discard_blocked_paid": "이 Steam 계정에 연결된 Territorium 계정에 구매 내역이 있어 자동으로 삭제할 수 없습니다. 고객지원에 문의해 주세요.",
-    "reason_discard_deferred": "해당 계정에서 결제가 아직 진행 중입니다. 몇 분 후에 다시 시도해 주세요.",
-    "reason_discard_not_linked": "연동이 완료되지 않았습니다. 연동을 다시 시작해 주세요.",
-    "reason_expired": "연동이 만료되었습니다. Steam에서 다시 시도해 주세요.",
-    "reason_offer_unavailable": "확인 시간이 만료되었습니다. 연동을 다시 시작해 주세요.",
-    "reason_rate_limited": "시도 횟수가 너무 많습니다. {seconds, plural, =0 {잠시} other {#초}} 동안 기다린 후 다시 시도해 주세요.",
     "reason_steam_has_progress": "이 Steam 계정에는 이미 별도의 진행 내역이 있어 병합할 수 없습니다.",
-    "reason_steam_linked_elsewhere": "이 Steam 계정은 이미 다른 Territorium 계정에 연동되어 있습니다.",
-    "success": "Steam 계정이 연동되었습니다.",
-    "title": "Steam 계정 연동"
+    "reason_steam_linked_elsewhere": "이 Steam 계정은 이미 다른 Territorium 계정에 연동되어 있습니다."
   },
   "steam_user_header": {
     "avatar_alt": "Steam 아바타",
@@ -3125,6 +3062,12 @@
     "message": "Territorium의 새로운 버전을 이용할 수 있습니다. 업데이트를 위해 페이지를 새로고침합니다."
   },
   "user_setting": {
+    "about_language": "언어",
+    "about_language_change": "언어 변경",
+    "about_legal": "법적 고지",
+    "about_license": "라이선스 및 크레딧",
+    "about_source": "소스 코드",
+    "about_version": "버전",
     "alert_frame_desc": "경고창을 켜고 끕니다. 활성화하면 배신을 당하거나 지상으로 공격받을 때 경고창이 표시됩니다.",
     "alert_frame_label": "경고 프레임",
     "ally_keybinds": "동맹 단축키",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Steam에서 로비 링크 열기",
     "swap_direction": "로켓 방향 전환",
     "swap_direction_desc": "로켓 발사 방향 전환 (상/하).",
+    "tab_about": "정보",
     "tab_audio": "오디오",
     "tab_display": "디스플레이",
     "tab_gameplay": "게임 플레이",

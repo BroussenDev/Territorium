@@ -25,7 +25,6 @@
     "delete_account_warning": "A túa conta eliminarase permanentemente 24 horas despois da confirmación e pecharase inmediatamente en todos os dispositivos. Ao iniciar sesión de novo non o cancela; só o soporte pode, dentro desas 24 horas.",
     "desktop_login_discord": "Continúa con Discord no teu navegador",
     "desktop_login_google": "Continúa con Google no teu navegador",
-    "desktop_login_needs_update": "Para iniciar sesión necesitas unha versión máis recente da aplicación de escritorio. Reinicia Steam para actualizar e téntao de novo.",
     "desktop_sign_in_desc": "Ao iniciar sesión abre o sitio web de Territorium no teu navegador. Inicia sesión alí, confirma a ligazón á túa conta de Steam e o xogo recollerao.",
     "email_placeholder": "Introduce o teu enderezo de correo electrónico",
     "enter_email_address": "Introduce un enderezo de correo electrónico",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant desbloqueado!",
     "where": "Todo está no teu Inventario: escolle o título co botón de insignia xunto ao teu nome."
   },
-  "desktop_gate": {
-    "back_to_game": "Volver ao xogo",
-    "browser_fallback": "Non se puido abrir o navegador automaticamente. Utiliza a ligazón anterior.",
-    "cancel": "Cancelar",
-    "code_destination_generic": "Introduce este código no sitio web de Territorium para vincular a túa conta:",
-    "code_destination_site": "Introduce este código en {site} para vincular a túa conta:",
-    "continue_to_game": "Continúa ao xogo",
-    "expired": "Este código caducou. Comeza de novo para conseguir un novo.",
-    "heading": "Benvido ao Territorium",
-    "link_existing": "Vincular conta existente",
-    "linking_failed_reason": "Produciuse un erro na ligazón: {reason}",
-    "linking_failed_unknown": "Fallou a ligazón por un motivo descoñecido.",
-    "new_player": "Novo xogador",
-    "not_found": "Este código xa non é válido. Comeza de novo para conseguir un novo.",
-    "prompt": "É a primeira vez que xogas ou xa tes unha conta?",
-    "retry": "Volve tentar",
-    "starting_link": "Iniciando a vinculación da conta...",
-    "ticket_unavailable": "Non se puido iniciar a vinculación da conta agora mesmo. Podes tentalo de novo ou continuar co xogo.",
-    "title": "Territorium - Configuración da conta"
-  },
   "desktop_offline": {
     "go_online": "Volver conectarse",
     "offline": "Sen conexión con Territorium: o modo en solitario segue dispoñible.",
@@ -938,13 +917,8 @@
     "staying": "Modo sen conexión: só está dispoñible o modo en solitario.",
     "still_offline": "Aínda non hai conexión con Territorium."
   },
-  "desktop_presence": {
-    "in_game": "En xogo",
-    "spectating": "Espectando"
-  },
   "desktop_session": {
     "generic": "Non se puido iniciar sesión na túa conta de Territorium",
-    "needs_account": "Configura a túa conta de Territorium para xogar en liña",
     "network": "Non se pode chegar a Territorium. Comproba a túa conexión.",
     "retry": "Volve tentar",
     "retrying": "Iniciando sesión...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam non puido verificar a túa sesión. Reiniciar Steam normalmente soluciona isto."
   },
   "desktop_status": {
-    "go_online": "Entra en liña",
     "offline": "Sen conexión: non se pode acceder aos servidores de Territorium",
     "retry": "Volve tentar",
     "retrying": "Tentando de novo…"
-  },
-  "desktop_update": {
-    "blocked": "É necesaria unha actualización de Steam para a última versión",
-    "downloading": "Descargando actualización... {percent}%",
-    "failed": "Non se puido descargar a actualización",
-    "ready": "Actualización lista",
-    "reload": "Recarga",
-    "retry": "Volve tentar"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium non puido usar a túa tarxeta gráfica, polo que o xogo non se pode executar. Isto xeralmente é temporal. Para solucionalo:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Engadir á lista de desexos"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Introduce o código que aparece na túa aplicación de escritorio Steam.",
-    "code_submit": "Continuar",
-    "confirm": "Ligazón conta",
-    "confirm_prompt": "Ligar Steam {persona} coa conta {username}?",
-    "confirm_prompt_no_persona": "Vincular a túa conta de Steam coa conta {username}?",
-    "conflict_confirm": "Elimínao e liga",
-    "conflict_deleting": "Eliminando…",
-    "conflict_explain": "Esa conta creouse para ti a primeira vez que iniciaches o xogo en Steam. A ligazón eliminarase permanentemente e todo o que hai nel.",
-    "conflict_games": "{games, plural, =0 {Non se xogou ningún xogo} one {# xogo xogado} other {# xogos xogados}}",
-    "conflict_games_capped": "{games}+ xogos xogados",
-    "conflict_keep": "Manteras {username} e as túas compras de Steam avanzan coa ligazón.",
-    "conflict_prompt": "Steam {persona} xa está adxunto a unha conta de Territorium separada.",
-    "conflict_prompt_no_persona": "Esta conta de Steam xa está unida a unha conta de Territorium separada.",
-    "conflict_warning": "Isto non se pode desfacer.",
-    "invalid_code": "Non parece un código válido. Comprobe e ténteo de novo.",
-    "linking": "Vinculando…",
-    "load_error": "Non se puideron cargar os detalles da túa conta. Téntao de novo desde Steam.",
-    "load_error_code": "Non se puideron cargar os detalles da túa conta. Téntao de novo.",
     "reason_account_already_has_steam": "A túa conta xa está ligada a outra conta de Steam diferente.",
-    "reason_discard_blocked": "A conta Territorium desta conta de Steam non se pode eliminar automaticamente. Ponte en contacto co servizo de asistencia e resolverémolo por ti.",
-    "reason_discard_blocked_paid": "A conta Territorium desta conta de Steam ten compras, polo que non podemos eliminala automaticamente. Ponte en contacto co servizo de asistencia e resolverémolo por ti.",
-    "reason_discard_deferred": "Aínda se está a realizar unha compra nesa conta. Téntao de novo nuns minutos.",
-    "reason_discard_not_linked": "A ligazón non se completou. Inicia a ligazón de novo.",
-    "reason_expired": "Esta ligazón caducou. Téntao de novo desde Steam.",
-    "reason_offer_unavailable": "Esta confirmación caducou. Inicia a ligazón de novo.",
-    "reason_rate_limited": "Demasiados intentos. Agarda {seconds, plural, =0 {un momento} one {# segundo} other {# segundos}} e téntao de novo.",
     "reason_steam_has_progress": "Esta conta de Steam xa ten o seu propio progreso e non se pode combinar.",
-    "reason_steam_linked_elsewhere": "Esta conta de Steam xa está ligada a unha conta de Territorium diferente.",
-    "success": "A túa conta de Steam agora está ligada.",
-    "title": "Vincular conta de Steam"
+    "reason_steam_linked_elsewhere": "Esta conta de Steam xa está ligada a unha conta de Territorium diferente."
   },
   "steam_user_header": {
     "avatar_alt": "Avatar de Steam",
@@ -3125,6 +3062,12 @@
     "message": "Hai unha nova versión de Territorium dispoñible. Agora a páxina actualizarase para actualizar."
   },
   "user_setting": {
+    "about_language": "Idioma",
+    "about_language_change": "Cambiar o idioma",
+    "about_legal": "Información legal",
+    "about_license": "Licenza e créditos",
+    "about_source": "Código fonte",
+    "about_version": "Versión",
     "alert_frame_desc": "Alternar o cadro de alerta. Se está activado, o cadro mostrarase cando te traizoen.",
     "alert_frame_label": "Cadro de alerta",
     "ally_keybinds": "Teclas de aliado",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Abre as ligazóns do vestíbulo en Steam",
     "swap_direction": "Cambiar a dirección do foguete",
     "swap_direction_desc": "Cambia a dirección de lanzamento do foguete (arriba/abaixo).",
+    "tab_about": "Acerca de",
     "tab_audio": "Audio",
     "tab_display": "Mostrar",
     "tab_gameplay": "Jogabilidade",

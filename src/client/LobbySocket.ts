@@ -155,8 +155,8 @@ export class PublicLobbySocket {
       // fresh full message, and a stale base could mis-merge incoming deltas.
       this.lastFull = null;
 
-      // WS origin comes from ClientEnv (same-origin on web, audience-derived on
-      // the desktop app://openfront origin), not window.location.host.
+      // WS origin comes from ClientEnv (the server that rendered the page, or
+      // the one the API's list picked), not window.location.host.
       // ?platform= is only for the server's per-platform lobby gauge: the
       // lobby socket has no join message to carry it in.
       const wsUrl = `${ClientEnv.serverWsBase()}${this.workerPath}/lobbies?platform=${clientPlatform()}`;

@@ -5,10 +5,10 @@ import { deriveServerWsBase } from "../../src/client/ClientEnv";
 // public-lobby socket (LobbySocket) and the in-game socket (Transport).
 //
 // The web build injects no serverHost, so it must keep the historical
-// same-origin behaviour (derive scheme + host from window.location). The
-// desktop app loads from app://openfront — where location.host is not a real
-// server — and injects an EXPLICIT game-server host (the host is branch-variable
-// on dev and not derivable from the API audience), which is targeted over TLS.
+// same-origin behaviour (derive scheme + host from window.location). A page
+// rendered by a game server injects an EXPLICIT game-server host (the host is
+// branch-variable on dev and not derivable from the API audience), which is
+// targeted over TLS.
 describe("deriveServerWsBase", () => {
   describe("web build (no injected serverHost) is unchanged", () => {
     it("uses same-origin wss on https", () => {

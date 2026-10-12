@@ -25,7 +25,6 @@
     "delete_account_warning": "Contul tău va fi șters permanent la 24 de ore după ce îl confirmi și vei fi deconectat de pe toate dispozitivele imediat. Conectarea din nou nu o anulează; doar suportul poate, în aceste 24 de ore.",
     "desktop_login_discord": "Continuă cu Discord în browser-ul tău",
     "desktop_login_google": "Continuă cu Discord în browser-ul tău",
-    "desktop_login_needs_update": "Conectarea necesită o versiune mai nouă a aplicației desktop. Reporniți Steam pentru a o actualiza, apoi încercați din nou.",
     "desktop_sign_in_desc": "Conectarea deschide site-ul Territorium în browser-ul dumneavoastră. Conectează-te acolo, confirmă link-ul către contul tău de Steam, iar jocul îl va prelua.",
     "email_placeholder": "Introdu adresa ta de email",
     "enter_email_address": "Introdu o adresă de email",
@@ -911,26 +910,6 @@
     "title": "Pachetul Conquérant deblocat!",
     "where": "Totul este în Inventarul tău: alege titlul cu butonul de insignă de lângă nume."
   },
-  "desktop_gate": {
-    "back_to_game": "Înapoi la joc",
-    "browser_fallback": "Nu s-a putut deschide automat browser-ul tău — folosește link-ul de mai sus.",
-    "cancel": "Anulează",
-    "code_destination_generic": "Introduceți acest cod pe site-ul Territorium pentru a vă conecta contul:",
-    "code_destination_site": "Introduceți acest cod la {site} pentru a vă lega contul:",
-    "continue_to_game": "Continuă la joc",
-    "expired": "Acest cod a expirat. Începeți pentru a obține unul nou.",
-    "heading": "Bun venit la Territorium",
-    "link_existing": "Asociază un cont existent",
-    "linking_failed_reason": "Conectare eșuată: {reason}",
-    "linking_failed_unknown": "Conectarea a eșuat dintr-un motiv necunoscut.",
-    "new_player": "Jucător nou",
-    "not_found": "Acest cod nu mai este valid. Începeți pentru a obține unul nou.",
-    "prompt": "Se joacă asta pentru prima dată sau ai deja un cont?",
-    "retry": "Reîncercați",
-    "starting_link": "Se pornește contul…",
-    "ticket_unavailable": "Contul de conectare nu a putut fi pornit. Poți încerca din nou, sau să continui la joc.",
-    "title": "Territorium - Configurare cont"
-  },
   "desktop_offline": {
     "go_online": "Treci online",
     "offline": "Nicio conexiune la Territorium: modul solo rămâne disponibil.",
@@ -938,13 +917,8 @@
     "staying": "Mod offline: doar modul solo este disponibil.",
     "still_offline": "Încă nu există conexiune la Territorium."
   },
-  "desktop_presence": {
-    "in_game": "În joc",
-    "spectating": "Privește"
-  },
   "desktop_session": {
     "generic": "Nu s-a putut conecta la contul dvs. Territorium",
-    "needs_account": "Configurați contul dvs. Territorium pentru a juca online",
     "network": "Nu se poate ajunge la Territorium. Verificați conexiunea.",
     "retry": "Reîncercați",
     "retrying": "Se conectează…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam nu a putut verifica sesiunea. Repornirea Steam rezolvă de obicei asta."
   },
   "desktop_status": {
-    "go_online": "Mergeți online",
     "offline": "Off line: nu pot ajunge la serverele Territorium",
     "retry": "Reîncercați",
     "retrying": "Se reîncearcă..."
-  },
-  "desktop_update": {
-    "blocked": "O actualizare Steam este necesară pentru ultima versiune",
-    "downloading": "Se descarcă actualizarea… {percent}%",
-    "failed": "Nu s-a putut descărca actualizarea",
-    "ready": "Actualizarea este pregătită",
-    "reload": "Reîncarcă",
-    "retry": "Reîncercați"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium nu a putut folosi cardul grafic, deci jocul nu poate rula. Acesta este de obicei temporar. Pentru a-l repara:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Adaugă în lista de dorințe"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Introdu codul afișat pe aplicația ta pentru desktop Steam.",
-    "code_submit": "Continuați",
-    "confirm": "Asociază contul",
-    "confirm_prompt": "Link Steam {persona} cu contul {username}?",
-    "confirm_prompt_no_persona": "Legați contul de Steam cu contul {username}?",
-    "conflict_confirm": "Ștergere și link",
-    "conflict_deleting": "Se șterge…",
-    "conflict_explain": "Acest cont a fost creat pentru tine prima dată când ai lansat jocul pe Steam. Legarea îl va șterge permanent și tot ce este pe el.",
-    "conflict_games": "{games, plural, =0 {Niciun joc jucat} one {# a jucat} few {# jocuri jucate} other {# jocuri jucate}}",
-    "conflict_games_capped": "{games}+ jocuri jucate",
-    "conflict_keep": "Îl vei păstra pe {username}și achizițiile tale Steam se vor deplasa cu linkul.",
-    "conflict_prompt": "Steam {persona} este deja atașat la un cont Territorium separat.",
-    "conflict_prompt_no_persona": "Acest cont de Steam este deja atașat la un cont Territorium separat.",
-    "conflict_warning": " Acest lucru nu poate fi anulat.",
-    "invalid_code": "Asta nu arată ca un cod valid. Verifică-l și încearcă din nou.",
-    "linking": "Se conectează…",
-    "load_error": "Nu s-au putut încărca detaliile contului tău. Te rugăm să încerci din nou de pe Steam.",
-    "load_error_code": "Nu s-au putut încărca detaliile contului tău. Te rugăm să încerci din nou.",
     "reason_account_already_has_steam": "Contul tău este deja conectat la un alt cont Steam.",
-    "reason_discard_blocked": "Contul Territorium al contului Steam nu poate fi șters automat. Contactați asistența și o vom rezolva pentru dvs.",
-    "reason_discard_blocked_paid": "Acest cont Territorium are cumpărături în contul Steam, deci nu îl putem șterge automat. Vă rugăm să contactați serviciul de asistență și îl vom rezolva pentru dvs.",
-    "reason_discard_deferred": "O achiziție a acestui cont este încă în curs. Te rugăm să încerci din nou în câteva minute.",
-    "reason_discard_not_linked": "Link-ul nu a fost finalizat. Vă rugăm să începeți din nou linkul.",
-    "reason_expired": "Acest link a expirat. Vă rugăm să încercați din nou de la Steam.",
-    "reason_offer_unavailable": "Această confirmare a expirat. Vă rugăm să reporniți linkul.",
-    "reason_rate_limited": "Prea multe încercări. Vă rugăm să aşteptați {seconds, plural, =0 {un moment} one {# secundă} few {# secunde} other {# secunde}} şi încercați din nou.",
     "reason_steam_has_progress": "Acest cont de Steam are deja propriul său progres și nu poate fi unit.",
-    "reason_steam_linked_elsewhere": "Acest cont Steam este deja conectat la un alt cont Territorium.",
-    "success": "Contul tău de Steam este acum conectat.",
-    "title": "Link cont Steam"
+    "reason_steam_linked_elsewhere": "Acest cont Steam este deja conectat la un alt cont Territorium."
   },
   "steam_user_header": {
     "avatar_alt": "Avatarul Steam",
@@ -3125,6 +3062,12 @@
     "message": "O nouă versiune de Territorium este disponibilă. Pagina va fi reîmprospătată pentru actualizare."
   },
   "user_setting": {
+    "about_language": "Limbă",
+    "about_language_change": "Schimbă limba",
+    "about_legal": "Informații legale",
+    "about_license": "Licență și credite",
+    "about_source": "Cod sursă",
+    "about_version": "Versiune",
     "alert_frame_desc": "Activează rama de alertă. Când este activată, rama va fi afișată atunci când ești trădat sau atacat pe uscat.",
     "alert_frame_label": "Ramă de alertă",
     "ally_keybinds": "Toată tastatura se leagă",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Deschide link-uri Lobby în Steam",
     "swap_direction": "Schimbă Direcția Rachetei",
     "swap_direction_desc": "Comută direcția de lansare a rachetei (sus/jos).",
+    "tab_about": "Despre",
     "tab_audio": "Audio",
     "tab_display": "Afișare",
     "tab_gameplay": "Joc",

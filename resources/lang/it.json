@@ -25,7 +25,6 @@
     "delete_account_warning": "Il tuo account verrà eliminato definitivamente 24 ore dopo la conferma e verrai disconnesso immediatamente su tutti i dispositivi. L'accesso successivo non lo annulla; solo il supporto può, entro quelle 24 ore.",
     "desktop_login_discord": "Continua con Discord nel tuo browser",
     "desktop_login_google": "Continua con Google nel tuo browser",
-    "desktop_login_needs_update": "Per accedere è necessaria una versione più recente dell'app desktop. Riavvia Steam per aggiornare, quindi riprova.",
     "desktop_sign_in_desc": "L'accesso apre il sito web di Territorium nel tuo browser. Accedi lì, conferma il collegamento al tuo account Steam e il gioco lo rileverà.",
     "email_placeholder": "Inserisci il tuo indirizzo email",
     "enter_email_address": "Inserisci un indirizzo email",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant sbloccato!",
     "where": "Tutto è nel tuo Inventario: scegli il titolo con il pulsante del badge accanto al tuo nome."
   },
-  "desktop_gate": {
-    "back_to_game": "Torniamo al gioco",
-    "browser_fallback": "Impossibile aprire automaticamente il browser: utilizza il collegamento sopra.",
-    "cancel": "Cancellare",
-    "code_destination_generic": "Inserisci questo codice sul sito web di Territorium per collegare il tuo account:",
-    "code_destination_site": "Inserisci questo codice su {site} per collegare il tuo account:",
-    "continue_to_game": "Continua al gioco",
-    "expired": "Questo codice è scaduto. Ricominciare da capo per ottenerne uno nuovo.",
-    "heading": "Benvenuti su Territorium",
-    "link_existing": "Collega account esistente",
-    "linking_failed_reason": "Collegamento non riuscito: {reason}",
-    "linking_failed_unknown": "Il collegamento non è riuscito per un motivo sconosciuto.",
-    "new_player": "Nuovo giocatore",
-    "not_found": "Questo codice non è più valido. Ricominciare da capo per ottenerne uno nuovo.",
-    "prompt": "È la prima volta che giochi o hai già un account?",
-    "retry": "Riprova",
-    "starting_link": "Avvio del collegamento dell'account…",
-    "ticket_unavailable": "Impossibile avviare il collegamento dell'account in questo momento. Puoi riprovare o continuare il gioco.",
-    "title": "Territorium - Configurazione dell'account"
-  },
   "desktop_offline": {
     "go_online": "Torna online",
     "offline": "Nessuna connessione a Territorium: il gioco in solitaria resta disponibile.",
@@ -938,13 +917,8 @@
     "staying": "Modalità offline: è disponibile solo il gioco in solitaria.",
     "still_offline": "Ancora nessuna connessione a Territorium."
   },
-  "desktop_presence": {
-    "in_game": "Nel gioco",
-    "spectating": "Spettatori"
-  },
   "desktop_session": {
     "generic": "Impossibile accedere al tuo account Territorium",
-    "needs_account": "Configura il tuo account Territorium per giocare online",
     "network": "Impossibile raggiungere Territorium. Controlla la tua connessione.",
     "retry": "Riprova",
     "retrying": "Accesso…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam non è riuscito a verificare la tua sessione. Il riavvio di Steam di solito risolve questo problema."
   },
   "desktop_status": {
-    "go_online": "Vai in linea",
     "offline": "Offline: non può raggiungere i server del Territorium",
     "retry": "Riprova",
     "retrying": "Nuovo tentativo…"
-  },
-  "desktop_update": {
-    "blocked": "Per l'ultima versione è necessario un aggiornamento Steam",
-    "downloading": "Download dell'aggiornamento in corso... {percent}%",
-    "failed": "Impossibile scaricare l'aggiornamento",
-    "ready": "Aggiornamento pronto",
-    "reload": "Ricaricare",
-    "retry": "Riprova"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium non può utilizzare la tua scheda grafica, quindi il gioco non può essere eseguito. Questo di solito è temporaneo. Per risolverlo:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Aggiungi alla lista dei desideri"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Inserisci il codice mostrato sull'app desktop Steam.",
-    "code_submit": "Continuare",
-    "confirm": "Collega account",
-    "confirm_prompt": "Collegare Steam {persona} all'account {username}?",
-    "confirm_prompt_no_persona": "Collegare il tuo account Steam all'account {username}?",
-    "conflict_confirm": "Eliminalo e collegalo",
-    "conflict_deleting": "Eliminazione…",
-    "conflict_explain": "L'account è stato creato per te la prima volta che hai avviato il gioco su Steam. Il collegamento lo eliminerà definitivamente insieme a tutto ciò che contiene.",
-    "conflict_games": "{games, plural, =0 {Nessuna partita giocata} one {# partita giocata} other {# partite giocate}}",
-    "conflict_games_capped": "{games}+ partite giocate",
-    "conflict_keep": "Manterrai {username} e i tuoi acquisti su Steam si sposteranno con il collegamento.",
-    "conflict_prompt": "Steam {persona} è già collegato a un account Territorium separato.",
-    "conflict_prompt_no_persona": "Questo account Steam è già collegato a un account Territorium separato.",
-    "conflict_warning": "L'operazione non può essere annullata.",
-    "invalid_code": "Non sembra un codice valido. Controllalo e riprova.",
-    "linking": "Collegamento…",
-    "load_error": "Impossibile caricare i dettagli del tuo account. Riprova da Steam.",
-    "load_error_code": "Impossibile caricare i dettagli del tuo account. Per favore riprova.",
     "reason_account_already_has_steam": "Il tuo account è già collegato a un altro account Steam.",
-    "reason_discard_blocked": "L'account Territorium di questo account Steam non può essere rimosso automaticamente. Contatta l'assistenza e risolveremo la cosa per te.",
-    "reason_discard_blocked_paid": "L'account Territorium di questo account Steam contiene acquisti, quindi non possiamo eliminarlo automaticamente. Contatta l'assistenza e risolveremo la cosa per te.",
-    "reason_discard_deferred": "Un acquisto su quell'account è ancora in corso. Riprova tra qualche minuto.",
-    "reason_discard_not_linked": "Il collegamento non è stato completato. Si prega di riavviare il collegamento.",
-    "reason_expired": "Questo collegamento è scaduto. Riprova da Steam.",
-    "reason_offer_unavailable": "Questa conferma è scaduta. Si prega di riavviare il collegamento.",
-    "reason_rate_limited": "Troppi tentativi. Attendi {seconds, plural, =0 {un momento} one {# secondo} other {# secondi}} e riprova.",
     "reason_steam_has_progress": "Questo account Steam ha già i propri progressi e non può essere unito.",
-    "reason_steam_linked_elsewhere": "Questo account Steam è già collegato a un altro account Territorium.",
-    "success": "Il tuo account Steam è ora collegato.",
-    "title": "Collega l'account Steam"
+    "reason_steam_linked_elsewhere": "Questo account Steam è già collegato a un altro account Territorium."
   },
   "steam_user_header": {
     "avatar_alt": "Avatar di Steam",
@@ -3125,6 +3062,12 @@
     "message": "È disponibile una nuova versione di Territorium. La pagina verrà ora aggiornata per l'aggiornamento."
   },
   "user_setting": {
+    "about_language": "Lingua",
+    "about_language_change": "Cambia lingua",
+    "about_legal": "Note legali",
+    "about_license": "Licenza e riconoscimenti",
+    "about_source": "Codice sorgente",
+    "about_version": "Versione",
     "alert_frame_desc": "Attiva/disattiva il riquadro di avviso. Se abilitato, il riquadro verrà visualizzato quando vieni tradito o attaccato via terra.",
     "alert_frame_label": "Cornice di avviso",
     "ally_keybinds": "Combinazioni di tasti degli alleati",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Apri i collegamenti alla lobby su Steam",
     "swap_direction": "Scambia la direzione del razzo",
     "swap_direction_desc": "Attiva/disattiva la direzione di lancio del razzo (su/giù).",
+    "tab_about": "Informazioni",
     "tab_audio": "Audio",
     "tab_display": "Display",
     "tab_gameplay": "Gioco",

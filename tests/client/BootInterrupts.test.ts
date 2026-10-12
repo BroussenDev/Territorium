@@ -356,24 +356,21 @@ describe("parseClaimPromptStore", () => {
 });
 
 describe("isCleanHomepage", () => {
-  // The blocking case. The desktop shell serves the renderer from
-  // app://openfront/index.html, so a bare pathname === "/" test is never true
-  // there and every interrupt below it is unreachable on Steam — including
-  // the TEMPORARY#### prompt and the rewards popup, which have both been dead
-  // in the Steam build for exactly this reason.
-  it("accepts the desktop shell's index.html", () => {
-    expect(isCleanHomepage({ pathname: "/index.html", hash: "" }, true)).toBe(
+  // The Steam app's offline build starts on /offline.html, so a bare
+  // pathname === "/" test is never true there and every interrupt below it
+  // would be unreachable offline.
+  it("accepts the desktop app's offline start page", () => {
+    expect(isCleanHomepage({ pathname: "/offline.html", hash: "" }, true)).toBe(
       true,
     );
   });
 
-  // On the web "/index.html" is a real, reachable URL that is not the
-  // homepage, so widening the rule there would put an overlay somewhere it
-  // has never appeared.
-  it("does not accept index.html on the web", () => {
-    expect(isCleanHomepage({ pathname: "/index.html", hash: "" }, false)).toBe(
-      false,
-    );
+  // On the web "/offline.html" is not the homepage, so widening the rule
+  // there would put an overlay somewhere it has never appeared.
+  it("does not accept offline.html on the web", () => {
+    expect(
+      isCleanHomepage({ pathname: "/offline.html", hash: "" }, false),
+    ).toBe(false);
   });
 
   it("accepts the plain homepage either way", () => {
@@ -386,7 +383,7 @@ describe("isCleanHomepage", () => {
     for (const desktop of [true, false]) {
       for (const location of [
         { pathname: "/", hash: "#modal=account" },
-        { pathname: "/index.html", hash: "#purchase-completed" },
+        { pathname: "/offline.html", hash: "#purchase-completed" },
         { pathname: "/w0/game/abc123", hash: "" },
         { pathname: "/join/abc123", hash: "" },
         { pathname: "/streamer-mode", hash: "" },
@@ -530,7 +527,11 @@ describe("bootInterruptsAllowed", () => {
   it("allows an idle clean homepage", () => {
     expect(bootInterruptsAllowed(home, false, idle)).toBe(true);
     expect(
-      bootInterruptsAllowed({ pathname: "/index.html", hash: "" }, true, idle),
+      bootInterruptsAllowed(
+        { pathname: "/offline.html", hash: "" },
+        true,
+        idle,
+      ),
     ).toBe(true);
   });
 
@@ -562,7 +563,12 @@ describe("bootInterruptsAllowed", () => {
   it("refuses when any one part says no", () => {
     for (const [label, location, desktop, lobby] of [
       ["deep link", { pathname: "/", hash: "#modal=account" }, false, idle],
-      ["web index.html", { pathname: "/index.html", hash: "" }, false, idle],
+      [
+        "web offline.html",
+        { pathname: "/offline.html", hash: "" },
+        false,
+        idle,
+      ],
       ["joining", home, false, { joinInFlight: true, lobbyHandle: null }],
       ["in lobby", home, false, { joinInFlight: false, lobbyHandle: {} }],
     ] as const) {

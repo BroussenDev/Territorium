@@ -9,6 +9,7 @@ import {
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
 } from "../core/game/UserSettings";
+import { ClientEnv } from "./ClientEnv";
 import "./components/baseComponents/setting/SettingKeybind";
 import { SettingKeybind } from "./components/baseComponents/setting/SettingKeybind";
 import "./components/baseComponents/setting/SettingNumber";
@@ -33,8 +34,14 @@ import {
   type DesktopDisplayPrefsPatch,
   type DesktopDisplaySnapshot,
 } from "./DesktopDisplay";
-import { isDesktopShell } from "./DesktopShell";
+import {
+  composeVersionDisplay,
+  desktopVersion,
+  isDesktopShell,
+} from "./DesktopShell";
+import { currentGameVersion } from "./GameVersion";
 import { keybindConflicts, readUserKeybinds } from "./KeybindRules";
+import type { LangSelector } from "./LangSelector";
 import { pushMapLayerState } from "./MapLayerSettings";
 import { Platform } from "./Platform";
 import type { AudioControls } from "./sound/CuePlayer";
@@ -671,6 +678,11 @@ export class UserSettingModal extends BaseModal {
                 label: translateText("user_setting.tab_keybinds"),
               },
             ]),
+        // The desktop app has no website footer: its language, version and
+        // legal links live here instead.
+        ...(isDesktopShell()
+          ? [{ key: "about", label: translateText("user_setting.tab_about") }]
+          : []),
       ],
     };
   }
@@ -698,6 +710,9 @@ export class UserSettingModal extends BaseModal {
         break;
       case "display":
         body = this.renderDisplaySettings();
+        break;
+      case "about":
+        body = this.renderAbout();
         break;
       default:
         body = this.renderGameplaySettings();
@@ -983,11 +998,10 @@ export class UserSettingModal extends BaseModal {
   };
 
   private displayOptionLabel(info: DesktopDisplayInfo, index: number): string {
-    // Never a bare id. An Electron display id is an opaque OS number that
-    // means nothing to a player and is not stable across sessions. The shell
-    // already substitutes "Display N" for an empty label; this enforces the
-    // same guarantee on our side of the boundary instead of assuming it
-    // across a versioned one.
+    // Never a bare id: a display id is a position in the OS list that means
+    // nothing to a player and is not stable across sessions. This enforces a
+    // readable label on our side of the boundary instead of assuming the app
+    // always sends one.
     const trimmed = info.label.trim();
     const label =
       trimmed === ""
@@ -996,6 +1010,91 @@ export class UserSettingModal extends BaseModal {
     return info.primary
       ? `${label} (${translateText("user_setting.display_primary")})`
       : label;
+  }
+
+  @state() private aboutVersion = currentGameVersion();
+  private aboutVersionAsked = false;
+
+  private renderAbout() {
+    if (!this.aboutVersionAsked) {
+      this.aboutVersionAsked = true;
+      void desktopVersion().then((shell) => {
+        this.aboutVersion = composeVersionDisplay(currentGameVersion(), shell);
+      });
+    }
+    // Absolute links: the app opens them in the player's browser, and the
+    // offline build has no site of its own to resolve them against.
+    const site = ClientEnv.siteOrigin() ?? "https://territorium.gg";
+    const link = (href: string, label: string) =>
+      html`<a
+        href=${href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-emerald-300 hover:text-emerald-200 underline decoration-emerald-300/30 transition-colors"
+        >${label}</a
+      >`;
+    const row = (label: string, value: unknown) =>
+      html`<div
+        class="flex flex-wrap items-center justify-between gap-3 px-4 py-3 rounded-lg bg-white/5 border border-white/10"
+      >
+        <span class="text-white/80 text-sm font-medium">${label}</span>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+          ${value}
+        </div>
+      </div>`;
+    const langSelector = document.querySelector(
+      "lang-selector",
+    ) as LangSelector | null;
+    return html`
+      ${row(
+        translateText("user_setting.about_language"),
+        html`<button
+          id="about-language"
+          class="px-3 py-1 text-sm font-medium rounded-lg border border-white/10 text-white bg-white/5 hover:bg-white/15 transition-colors"
+          @click=${() => langSelector?.openLanguagePicker()}
+        >
+          ${translateText("user_setting.about_language_change")}
+        </button>`,
+      )}
+      ${row(
+        translateText("user_setting.about_version"),
+        html`<span class="text-white/60" translate="no"
+          >${this.aboutVersion}</span
+        >`,
+      )}
+      ${row(
+        translateText("user_setting.about_legal"),
+        html`${link(
+          `${site}/terms-of-service.html#mentions`,
+          translateText("main.legal_notice"),
+        )}
+        ${link(
+          `${site}/terms-of-service.html`,
+          translateText("main.terms_of_service"),
+        )}
+        ${link(
+          `${site}/privacy-policy.html`,
+          translateText("main.privacy_policy"),
+        )}`,
+      )}
+      ${row(
+        translateText("user_setting.about_license"),
+        html`<span class="text-white/60"
+            >${translateText("game_starting_modal.code_license")}</span
+          >
+          ${link(
+            "https://github.com/BroussenDev/Territorium",
+            translateText("user_setting.about_source"),
+          )}
+          ${link(
+            "https://github.com/BroussenDev/Territorium/blob/main/CREDITS.md",
+            translateText("game_starting_modal.credits"),
+          )}`,
+      )}
+      <p class="px-1 pt-1 text-xs text-white/40">
+        ${translateText("main.copyright")}
+      </p>
+    `;
   }
 
   private renderDisplaySettings() {

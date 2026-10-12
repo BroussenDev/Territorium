@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   composeVersionDisplay,
-  desktopLinkGate,
   desktopQuit,
   desktopSteamLocale,
   desktopVersion,
@@ -81,39 +80,10 @@ describe("desktopVersion", () => {
   });
 });
 
-// The bridge Auth.ts routes every desktop provider login through (OPE-343).
-// Guarded on the function actually invoked, not on the shell's presence: a
-// bridge that exists but lacks a callable showLinkGate must read as "no link
-// flow", so the caller falls through rather than calling undefined.
-describe("desktopLinkGate", () => {
-  afterEach(() => {
-    window.openfrontDesktop = undefined;
-  });
-
-  it("is null in the browser, with no bridge present", () => {
-    window.openfrontDesktop = undefined;
-    expect(desktopLinkGate()).toBeNull();
-  });
-
-  it("is null when the bridge exists but showLinkGate is not a function", () => {
-    window.openfrontDesktop = { linkGate: { requestTicket: () => null } };
-    expect(desktopLinkGate()).toBeNull();
-  });
-
-  it("returns the bridge when showLinkGate is callable", async () => {
-    const showLinkGate = vi.fn(async () => undefined);
-    window.openfrontDesktop = { showLinkGate };
-    const gate = desktopLinkGate();
-    expect(gate).not.toBeNull();
-    await gate!.showLinkGate();
-    expect(showLinkGate).toHaveBeenCalledTimes(1);
-  });
-});
-
-// The in-app exit (OPE-402). Same feature-detection rule as desktopLinkGate
-// above, and the same reason: the shell ships in the Steam depot on Steam's
-// schedule while this client updates at runtime, so a client that is newer
-// than its shell must hide the control rather than wire a button to nothing.
+// The in-app exit (OPE-402). Feature-detected on the method, because the app
+// ships in the Steam depot on Steam's schedule while this client updates at
+// runtime, so a client that is newer than its app must hide the control
+// rather than wire a button to nothing.
 describe("desktopQuit", () => {
   afterEach(() => {
     window.openfrontDesktop = undefined;
@@ -216,9 +186,9 @@ describe("desktopSteamLocale", () => {
     expect(desktopSteamLocale()).toBeNull();
   });
 
-  // The value reaches the shell as a process-argv string and is about to be
-  // interpolated into an asset URL by loadLanguage, so it is validated rather
-  // than trusted for arriving from our own preload.
+  // The value arrives as a string the app writes into the page and is about
+  // to be interpolated into an asset URL by loadLanguage, so it is validated
+  // rather than trusted for arriving from our own app.
   it("rejects anything that is not a language tag", () => {
     for (const locale of [
       "../../etc/passwd",

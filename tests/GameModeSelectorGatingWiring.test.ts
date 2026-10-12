@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ClientEnv } from "../src/client/ClientEnv";
-import type { DesktopUpdateState } from "../src/client/DesktopShell";
+import type { DesktopSessionState } from "../src/client/DesktopShell";
 import { GameMapType, GameMode } from "../src/core/game/Game";
 import type {
   GameConfig,
@@ -49,10 +49,10 @@ function publicLobby(gameID: string): PublicGameInfo {
  * The pure predicate is covered in GameModeSelectorGating.test.ts. What that
  * cannot see is whether the predicate is actually CONSULTED at each entry
  * point -- a call site that forgets to ask still passes every unit test while
- * letting a stale client into a multiplayer game. So this mounts the real
- * component, drives it into a gated state through the real
- * `desktop-update-state` event the shell bridge dispatches, clicks the real
- * buttons, and asserts nothing proceeded.
+ * letting a signed-out player into a multiplayer game. So this mounts the
+ * real component, drives it into a gated state through the real
+ * `desktop-session-state` event Auth dispatches, clicks the real buttons, and
+ * asserts nothing proceeded.
  */
 let selector: HTMLElement & { updateComplete: Promise<unknown> };
 let joinOpen: ReturnType<typeof vi.fn>;
@@ -66,14 +66,18 @@ function stub(tag: string, methods: Record<string, unknown>): void {
   document.body.appendChild(el);
 }
 
-async function setUpdateState(state: DesktopUpdateState | null): Promise<void> {
-  if (state !== null) {
-    document.dispatchEvent(
-      new CustomEvent("desktop-update-state", { detail: state }),
-    );
-  }
+async function setSessionState(state: DesktopSessionState): Promise<void> {
+  document.dispatchEvent(
+    new CustomEvent("desktop-session-state", { detail: state }),
+  );
   await selector.updateComplete;
 }
+
+const SIGNED_IN: DesktopSessionState = { status: "signed-in" };
+const SIGNED_OUT: DesktopSessionState = {
+  status: "signed-out",
+  reason: "steam-wedged",
+};
 
 /** Clicks every button the selector renders. Returns how many it clicked. */
 function clickEveryButton(): number {
@@ -155,7 +159,7 @@ afterEach(() => {
 
 describe("the multiplayer gate at its real call sites", () => {
   it("mounts and, ungated, the multiplayer entry points do proceed", async () => {
-    await setUpdateState({ status: "current", bytes: 0, total: 0 });
+    await setSessionState(SIGNED_IN);
 
     expect(clickEveryButton()).toBeGreaterThan(0);
 
@@ -166,89 +170,24 @@ describe("the multiplayer gate at its real call sites", () => {
     expect(wiggle).not.toHaveBeenCalled();
   });
 
-  it("refuses every multiplayer entry point while an update is downloading", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+  it("refuses every multiplayer entry point while signed out", async () => {
+    await setSessionState(SIGNED_OUT);
 
     clickEveryButton();
 
     expect(joinOpen).not.toHaveBeenCalled();
     expect(hostOpen).not.toHaveBeenCalled();
     // Refusing silently would look like a broken button; the click has to land
-    // somewhere, and it lands on the snackbar.
+    // somewhere, and it lands on the status bar.
     expect(wiggle).toHaveBeenCalled();
   });
 
-  it("refuses while an update is staged, and marks the buttons aria-disabled", async () => {
-    await setUpdateState({ status: "staged", bytes: 100, total: 100 });
+  it("marks the refused buttons aria-disabled", async () => {
+    await setSessionState(SIGNED_OUT);
 
     expect(
       selector.querySelectorAll('button[aria-disabled="true"]').length,
     ).toBeGreaterThan(0);
-
-    clickEveryButton();
-
-    expect(joinOpen).not.toHaveBeenCalled();
-    expect(hostOpen).not.toHaveBeenCalled();
-  });
-
-  it("does not refuse on a failure the player cannot retry away", async () => {
-    await setUpdateState({
-      status: "failed",
-      bytes: 0,
-      total: 0,
-      error: { kind: "refused", message: "403 from the WAF" },
-    });
-
-    clickEveryButton();
-
-    expect(joinOpen).toHaveBeenCalled();
-    expect(hostOpen).toHaveBeenCalled();
-  });
-
-  it("does refuse on a network failure, where Retry is a real remedy", async () => {
-    await setUpdateState({
-      status: "failed",
-      bytes: 0,
-      total: 0,
-      error: { kind: "network", message: "offline" },
-    });
-
-    clickEveryButton();
-
-    expect(joinOpen).not.toHaveBeenCalled();
-    expect(hostOpen).not.toHaveBeenCalled();
-  });
-
-  it("does refuse on a hash-verification failure, which Retry can also fix", async () => {
-    // Newly gating: the descriptor parsed, so we KNOW a newer version exists,
-    // and the CDN bytes not matching it is something Retry can genuinely
-    // resolve. Asserted here and not only against the pure predicate, so the
-    // real call sites are covered for this kind too.
-    await setUpdateState({
-      status: "failed",
-      bytes: 0,
-      total: 0,
-      error: { kind: "verify", message: "sha256 mismatch" },
-    });
-
-    clickEveryButton();
-
-    expect(joinOpen).not.toHaveBeenCalled();
-    expect(hostOpen).not.toHaveBeenCalled();
-  });
-
-  it("does not refuse on a malformed descriptor, which Retry cannot fix", async () => {
-    await setUpdateState({
-      status: "failed",
-      bytes: 0,
-      total: 0,
-      error: { kind: "parse", message: "unsupported schemaVersion" },
-    });
-
-    clickEveryButton();
-
-    expect(joinOpen).toHaveBeenCalled();
-    expect(hostOpen).toHaveBeenCalled();
   });
 
   it("never gates the single-player card", async () => {
@@ -259,7 +198,7 @@ describe("the multiplayer gate at its real call sites", () => {
       }
     ).open = solo;
 
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+    await setSessionState(SIGNED_OUT);
     clickEveryButton();
 
     expect(solo).toHaveBeenCalled();
@@ -267,7 +206,7 @@ describe("the multiplayer gate at its real call sites", () => {
 });
 
 /**
- * The four cases above never render a public-lobby card at all -- the mocked
+ * The cases above never render a public-lobby card at all -- the mocked
  * socket never called back, so `lobbies` stayed `null` and `validateAndJoin`
  * (the fourth gated entry point, wired to the card's own click handler
  * rather than to a modal's open()) went completely unexercised. This block
@@ -286,7 +225,7 @@ describe("the public lobby card (validateAndJoin)", () => {
   });
 
   it("emits join-lobby when ungated", async () => {
-    await setUpdateState({ status: "current", bytes: 0, total: 0 });
+    await setSessionState(SIGNED_IN);
 
     const card = lobbyCardButton();
     expect(card).not.toBeNull();
@@ -296,27 +235,6 @@ describe("the public lobby card (validateAndJoin)", () => {
     const detail = joinLobby.mock.calls[0][0].detail;
     expect(detail.gameID).toBe("game-1");
     expect(detail.source).toBe("public");
-  });
-
-  it("refuses to emit join-lobby while an update is downloading", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
-
-    const card = lobbyCardButton();
-    expect(card).not.toBeNull();
-    card!.click();
-
-    expect(joinLobby).not.toHaveBeenCalled();
-    expect(wiggle).toHaveBeenCalled();
-  });
-
-  it("refuses to emit join-lobby while an update is staged", async () => {
-    await setUpdateState({ status: "staged", bytes: 100, total: 100 });
-
-    const card = lobbyCardButton();
-    expect(card).not.toBeNull();
-    card!.click();
-
-    expect(joinLobby).not.toHaveBeenCalled();
   });
 });
 

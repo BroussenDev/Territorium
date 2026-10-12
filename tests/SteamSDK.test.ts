@@ -47,24 +47,9 @@ describe("SteamSDK", () => {
     expect(await steamSDK.getUser()).toBeNull();
   });
 
-  // A shell older than this client's SteamTicketResult contract may still
-  // return the legacy `string | null` shape getAuthTicket() had before. A
-  // successful sign-in against that shell must not be read as a failure
-  // (result.ok undefined), and null must not throw.
-  it("normalises a legacy string ticket into a successful result", async () => {
-    (window as any).openfrontDesktop = {
-      steam: {
-        getAuthTicket: vi.fn().mockResolvedValue("deadbeef"),
-        getUser: vi.fn(),
-      },
-    };
-    expect(await steamSDK.getTicket()).toEqual({
-      ok: true,
-      ticket: "deadbeef",
-    });
-  });
-
-  it("normalises a legacy null ticket into steam-unavailable without throwing", async () => {
+  // The bridge's answer crosses from the app as `unknown`: a missing answer
+  // must not throw.
+  it("normalises a null ticket into steam-unavailable without throwing", async () => {
     (window as any).openfrontDesktop = {
       steam: {
         getAuthTicket: vi.fn().mockResolvedValue(null),

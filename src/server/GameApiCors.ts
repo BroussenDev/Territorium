@@ -1,15 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { ServerEnv } from "./ServerEnv";
 
-/**
- * Origin the desktop app's renderer runs from. It loads from a privileged
- * custom scheme rather than https, so `app://openfront` is a real, fixed
- * origin — see the desktop repo's `src/main/protocol.ts`.
- */
-export const DESKTOP_APP_ORIGIN = "app://openfront";
-
 function isAllowedOrigin(origin: string): boolean {
-  if (origin === DESKTOP_APP_ORIGIN) return true;
   const siteHost = ServerEnv.siteHost();
   if (siteHost !== undefined && origin === `https://${siteHost}`) return true;
   // This server's own game host — harmless (same-origin requests skip CORS)
@@ -31,8 +23,8 @@ function isAllowedOrigin(origin: string): boolean {
 }
 
 /**
- * Grant the game server's `/api` routes to the desktop app and to the page
- * host the players came from.
+ * Grant the game server's `/api` routes to the page host the players came
+ * from. The desktop app loads that same site, so it needs nothing of its own.
  *
  * A deployment has two hostnames (docs/MultiServer.md, "Two hostnames per
  * deployment"): the page host players load from — the apex `openfront.io`, or
@@ -41,8 +33,7 @@ function isAllowedOrigin(origin: string): boolean {
  * `main.server.openfront.dev`; see ServerEnv.publicHost). Those are different
  * origins, so every `/api` call the page makes is cross-origin — which is why
  * the page host is allowed here alongside this server's own game host. The
- * desktop client's renderer is cross-origin for a different reason: it loads
- * from `app://openfront`. The POSTs send Authorization and Content-Type,
+ * POSTs send Authorization and Content-Type,
  * which makes them non-simple, so the browser preflights.
  *
  * Deliberately no `Access-Control-Allow-Credentials`: the play token travels

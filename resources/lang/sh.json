@@ -25,7 +25,6 @@
     "delete_account_warning": "Vaš nalog će biti trajno izbrisan 24 sata nakon što potvrdite, i bićete odmah odjavljeni sa svih uređaja. Ponovno prijavljivanje ne otkazuje brisanje; to može učiniti samo podrška u roku od ta 24 sata.",
     "desktop_login_discord": "Nastavi sa Discord-om u pregledaču",
     "desktop_login_google": "Nastavi sa Google-om u pregledaču",
-    "desktop_login_needs_update": "Prijavljivanje zahteva noviju verziju aplikacije za računar. Ponovo pokrenite Steam da biste je ažurirali, a zatim pokušajte ponovo.",
     "desktop_sign_in_desc": "Prijavljivanje otvara veb-sajt Territorium u vašem pregledaču. Prijavite se tamo, potvrdite povezivanje sa Steam nalogom i igra će ga automatski prepoznati.",
     "email_placeholder": "Unesite Vašu email adresu",
     "enter_email_address": "Molimo Vas unesite email adresu",
@@ -911,26 +910,6 @@
     "title": "Paket Conquérant otključan!",
     "where": "Sve je u vašem inventaru: odaberite titulu dugmetom značke pored imena."
   },
-  "desktop_gate": {
-    "back_to_game": "Nazad na igru",
-    "browser_fallback": "Nije moguće automatski otvoriti pregledač – koristite gornji link.",
-    "cancel": "Otkaži",
-    "code_destination_generic": "Unesite ovaj kod na veb lokaciju Territorium da biste povezali svoj nalog:",
-    "code_destination_site": "Unesite ovaj kod na {site} da biste povezali svoj nalog:",
-    "continue_to_game": "Nastavite do igre",
-    "expired": "Ovaj kod je istekao. Počnite ispočetka da biste dobili novi.",
-    "heading": "Dobrodošli u Territorium",
-    "link_existing": "Povežite postojeći nalog",
-    "linking_failed_reason": "Povezivanje nije uspelo: {reason}",
-    "linking_failed_unknown": "Povezivanje nije uspelo iz nepoznatog razloga.",
-    "new_player": "Novi igrač",
-    "not_found": "Ovaj kod više ne važi. Počnite ispočetka da biste dobili novi.",
-    "prompt": "Da li ovo prvi put igrate ili već imate nalog?",
-    "retry": "Pokušajte ponovo",
-    "starting_link": "Počinje povezivanje naloga…",
-    "ticket_unavailable": "Trenutno nije moguće započeti povezivanje naloga. Možete pokušati ponovo ili nastaviti na igru.",
-    "title": "Territorium - Podešavanje naloga"
-  },
   "desktop_offline": {
     "go_online": "Pređi na mrežu",
     "offline": "Nema veze sa Territorium-om: solo je i dalje dostupan.",
@@ -938,13 +917,8 @@
     "staying": "Oflajn režim: dostupan je samo solo.",
     "still_offline": "I dalje nema veze sa Territorium-om."
   },
-  "desktop_presence": {
-    "in_game": "U igri",
-    "spectating": "Posmatranje"
-  },
   "desktop_session": {
     "generic": "Prijavljivanje na vaš Territorium nalog nije uspelo",
-    "needs_account": "Podesite svoj Territorium nalog za igranje onlajn",
     "network": "Povezivanje sa Territorium serverom nije uspelo. Proverite vašu internet vezu.",
     "retry": "Pokušaj ponovo",
     "retrying": "Prijavljivanje u toku…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam nije uspeo da verifikuje vašu sesiju. Ponovno pokretanje Steam-a obično rešava ovaj problem."
   },
   "desktop_status": {
-    "go_online": "Idi na internet",
     "offline": "Oflajn: ne mogu da dođu do servera Territoriuma",
     "retry": "Pokušajte ponovo",
     "retrying": "Ponovni pokušaj…"
-  },
-  "desktop_update": {
-    "blocked": "Steam ažuriranje je potrebno za najnoviju verziju",
-    "downloading": "Preuzimanje ažuriranja… {percent}%",
-    "failed": "Nije moguće skinuti ažuriranje",
-    "ready": "Ažuriranje je spremno",
-    "reload": "Osveži",
-    "retry": "Pokušaj ponovo"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium nije mogao da koristi vašu grafičku karticu, tako da igra ne može da radi. Ovo je obično privremeno. Da biste to popravili:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Dodaj na listu želja"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Unesite kod prikazan u vašoj Steam aplikaciji za računar.",
-    "code_submit": "Nastavi",
-    "confirm": "Povežite nalog",
-    "confirm_prompt": "Želite li da povežete Steam {persona} sa nalogom {username}?",
-    "confirm_prompt_no_persona": "Želite li da povežete svoj Steam nalog sa nalogom {username}?",
-    "conflict_confirm": "Izbrišite ga i povežite",
-    "conflict_deleting": "Brisanje…",
-    "conflict_explain": "Taj nalog je napravljen za vas kada ste prvi put pokrenuli igru na Steam-u. Povezivanje će trajno izbrisati njega i sve na njemu.",
-    "conflict_games": "{games, plural, =0 {Nema odigranih utakmica} one {# igra odigrana} other {# odigranih igara}}",
-    "conflict_games_capped": "{games}+ odigranih igara",
-    "conflict_keep": "Zadržaćete {username}, a vaše kupovine u Steam-u se kreću dalje uz vezu.",
-    "conflict_prompt": "Steam {persona} je već povezan sa posebnim nalogom Territoriuma.",
-    "conflict_prompt_no_persona": "Ovaj Steam nalog je već vezan za poseban nalog Territoriuma.",
-    "conflict_warning": "Ovo se ne može poništiti.",
-    "invalid_code": "To ne izgleda kao važeći kod. Proverite ga i pokušajte ponovo.",
-    "linking": "Povezivanje…",
-    "load_error": "Nije uspelo učitavanje detalja vašeg naloga. Pokušajte ponovo sa Steam-a.",
-    "load_error_code": "Nije uspelo učitavanje detalja vašeg naloga. Pokušajte ponovo.",
     "reason_account_already_has_steam": "Vaš nalog je već povezan sa drugim Steam nalogom.",
-    "reason_discard_blocked": "Nalog Territoriuma ovog Steam naloga ne može se automatski ukloniti. Kontaktirajte podršku i mi ćemo to rešiti za vas.",
-    "reason_discard_blocked_paid": "Territorium nalog ovog Steam naloga ima kupovine na njemu, tako da ne možemo da ga izbrišemo automatski. Kontaktirajte podršku i mi ćemo to rešiti za vas.",
-    "reason_discard_deferred": "Kupovina na taj račun još uvek traje. Pokušajte ponovo za nekoliko minuta.",
-    "reason_discard_not_linked": "Veza nije završena. Pokrenite vezu ponovo.",
-    "reason_expired": "Ova veza je istekla. Pokušajte ponovo sa Steam-a.",
-    "reason_offer_unavailable": "Ova potvrda je istekla. Pokrenite vezu ponovo.",
-    "reason_rate_limited": "Previše pokušaja. Sačekajte {seconds, plural, =0 {trenutak} one {# sekundu} few {# sekunde} other {# sekundi}} i pokušajte ponovo.",
     "reason_steam_has_progress": "Ovaj Steam nalog već ima sopstveni napredak i ne može se spojiti.",
-    "reason_steam_linked_elsewhere": "Ovaj Steam nalog je već povezan sa drugim Territorium nalogom.",
-    "success": "Vaš Steam nalog je sada povezan.",
-    "title": "Povežite Steam nalog"
+    "reason_steam_linked_elsewhere": "Ovaj Steam nalog je već povezan sa drugim Territorium nalogom."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
@@ -3125,6 +3062,12 @@
     "message": "Dostupna je nova verzija Territorium-a. Stranica će se sada osvežiti radi ažuriranja."
   },
   "user_setting": {
+    "about_language": "Jezik",
+    "about_language_change": "Promeni jezik",
+    "about_legal": "Pravne informacije",
+    "about_license": "Licenca i zasluge",
+    "about_source": "Izvorni kod",
+    "about_version": "Verzija",
     "alert_frame_desc": "Uključi/isključi okvir za upozorenja. Kada je omogućen, okvir će se prikazati kada vas neko izda ili napadne preko kopna.",
     "alert_frame_label": "Okvir za upozorenja",
     "ally_keybinds": "Tasteri za saveznike",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Otvorite Lobbi Links u Steam-u",
     "swap_direction": "Zameni putanju rakete",
     "swap_direction_desc": "Promeni smer lansiranja rakete (gore/dole).",
+    "tab_about": "O igri",
     "tab_audio": "Zvuk",
     "tab_display": "Prikaz",
     "tab_gameplay": "Igra",

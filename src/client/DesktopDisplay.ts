@@ -1,14 +1,11 @@
-// The renderer half of the desktop shell's display-preferences bridge
-// (OPE-173). Window mode and monitor selection are owned by the Electron
-// shell rather than by browser storage: the mode has to be decided by the
-// BrowserWindow constructor, which is well before any renderer exists to read
-// localStorage.
+// The page's half of the desktop app's display-preferences bridge. Window
+// mode and monitor selection are owned by the app rather than by browser
+// storage: the mode has to be decided when the window is created, well before
+// any page exists to read localStorage.
 //
-// openfront-desktop's `src/main/displayTypes.ts` is the SOURCE OF TRUTH for
-// every shape below. The two repositories cannot import from each other -- the
-// client is a submodule built from a public AGPL repo -- so these are mirrored
-// by hand, the same arrangement `DesktopUpdateState` in DesktopShell.ts
-// already relies on. If you change one, change both.
+// The app's `display.rs` is the SOURCE OF TRUTH for every shape below. The two
+// repositories cannot import from each other, so these are mirrored by hand.
+// If you change one, change both.
 
 export type DesktopDisplayMode = "windowed" | "borderless";
 
@@ -20,10 +17,9 @@ export interface DesktopDisplayBounds {
 }
 
 export interface DesktopDisplayInfo {
-  // Electron's screen.Display.id. NOT stable across sessions -- the shell
-  // derives it from the OS, and macOS in particular renumbers. Never render
-  // it: the shell keeps a second-chance label match precisely because the id
-  // is not something a player could recognise.
+  // The monitor's 1-based position in the OS list. NOT stable across
+  // sessions: the app stores the choice by monitor name for that reason.
+  // Never render it: it is not something a player could recognise.
   id: number;
   label: string;
   primary: boolean;
@@ -161,8 +157,7 @@ export function isDisplaySnapshot(
   return prefs.displayId === null || typeof prefs.displayId === "number";
 }
 
-// Mirrors UI_SCALE_STEPS in openfront-desktop's uiScaleKeys.ts, which the
-// zoom keys step through. Values outside UI_SCALE_MIN/MAX are refused.
+// Mirrors UI_SCALES in the app's display.rs. Values outside it are refused.
 export const UI_SCALE_OPTIONS: readonly number[] = [
   0.75, 0.9, 1, 1.1, 1.25, 1.5,
 ];

@@ -1,5 +1,5 @@
-// Thin renderer wrapper over the desktop shell's presence bridge. Mirrors
-// SteamSDK.ts; all Steam-specific work lives in the Electron main process.
+// Thin wrapper over the desktop app's presence bridge. Mirrors SteamSDK.ts;
+// all Steam-specific work lives in the app (presence.rs).
 //
 // This module deliberately knows NOTHING about Steam. It reports game state;
 // the shell decides what Steam and Discord make of it.
@@ -44,7 +44,7 @@ interface PresenceBridge {
 }
 
 // window.openfrontDesktop is declared `unknown` by DesktopShell.ts (kept loose
-// there on purpose). We know the shape the Electron preload exposes, so narrow
+// there on purpose). We know the shape the app's bridge exposes, so narrow
 // it locally rather than re-declaring the global (a second `declare global`
 // with a different type triggers TS2717).
 function bridge(): PresenceBridge | undefined {

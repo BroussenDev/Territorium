@@ -25,7 +25,6 @@
     "delete_account_warning": "Je account wordt 24 uur na bevestiging permanent verwijderd en u wordt op alle apparaten onmiddellijk uitgelogd. Opnieuw aanmelden kan het niet annuleren; alleen het ondersteuningsteam kan het binnen die 24 uur annuleren.",
     "desktop_login_discord": "Ga verder met Discord in je browser",
     "desktop_login_google": "Ga verder met Google in je browser",
-    "desktop_login_needs_update": "Inloggen vereist een nieuwere versie van de desktopapp. Herstart Steam om te updaten, en probeer het opnieuw.",
     "desktop_sign_in_desc": "Inloggen opent de Territorium website in uw browser. Meld je hier aan, bevestig de link naar je Steam account en het spel zal het ophalen.",
     "email_placeholder": "Voer je e-mailadres in",
     "enter_email_address": "Voer een e-mailadres in alsjeblieft",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant ontgrendeld!",
     "where": "Alles staat in je Inventaris: kies je titel met de badgeknop naast je naam."
   },
-  "desktop_gate": {
-    "back_to_game": "Terug naar spel",
-    "browser_fallback": "Kon je browser niet automatisch openen - gebruik de bovenstaande link.",
-    "cancel": "Annuleer",
-    "code_destination_generic": "Voer deze code in op de Territorium website om je account te koppelen:",
-    "code_destination_site": "Voer deze code in bij {site} om je account te koppelen:",
-    "continue_to_game": "Doorgaan naar Spel",
-    "expired": "Deze code is verlopen. Begin opnieuw om een nieuwe te krijgen.",
-    "heading": "Welkom bij Territorium",
-    "link_existing": "Koppel bestaand account",
-    "linking_failed_reason": "Koppelen mislukt: {reason}",
-    "linking_failed_unknown": "Koppelen mislukt om onbekende reden.",
-    "new_player": "Nieuwe speler",
-    "not_found": "Deze code is niet meer geldig. Begin opnieuw om een nieuwe code te krijgen.",
-    "prompt": "Is dit je eerste keer dat je speelt, of heb je al een account?",
-    "retry": "Probeer opnieuw",
-    "starting_link": "Account koppelen Starten…",
-    "ticket_unavailable": "Kan account koppelen nu niet starten. Je kunt het opnieuw proberen, of doorgaan met het spel.",
-    "title": "Territorium - Account setup"
-  },
   "desktop_offline": {
     "go_online": "Online gaan",
     "offline": "Geen verbinding met Territorium: solo blijft beschikbaar.",
@@ -938,13 +917,8 @@
     "staying": "Offlinemodus: alleen solo is beschikbaar.",
     "still_offline": "Nog steeds geen verbinding met Territorium."
   },
-  "desktop_presence": {
-    "in_game": "In het spel",
-    "spectating": "Aan het toeschouwen"
-  },
   "desktop_session": {
     "generic": "Kan niet inloggen op je Territorium account",
-    "needs_account": "Stel je Territorium account in om online te spelen",
     "network": "Kan Territorium niet bereiken. Controleer je verbinding.",
     "retry": "Probeer opnieuw",
     "retrying": "Aanmelden…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam kon je sessie niet verifiëren. Steam herstarten lost dit meestal op."
   },
   "desktop_status": {
-    "go_online": "Ga online",
     "offline": "Offline: kan de Territorium servers niet bereiken",
     "retry": "Probeer opnieuw",
     "retrying": "Opnieuw proberen…"
-  },
-  "desktop_update": {
-    "blocked": "Een Steam update is vereist voor de laatste versie",
-    "downloading": "Update downloaden… {percent}%",
-    "failed": "Kan de update niet downloaden",
-    "ready": "Update gereed",
-    "reload": "Vernieuwen",
-    "retry": "Probeer opnieuw"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium kan je grafische kaart niet gebruiken, waardoor het spel niet kan worden uitgevoerd. Dit is meestal tijdelijk. Om het op te lossen:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Op mijn verlanglijst"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Voer de code in die getoond wordt op je Steam desktop app.",
-    "code_submit": "Doorgaan",
-    "confirm": "Account koppelen",
-    "confirm_prompt": "Verbind Steam {persona} met account {username}?",
-    "confirm_prompt_no_persona": "Je Steam account koppelen aan account {username}?",
-    "conflict_confirm": "Verwijder het en link",
-    "conflict_deleting": "Verwijderen…",
-    "conflict_explain": "Dat account werd voor je gemaakt voor de eerste keer dat je het spel op Steam lanceerde. Koppelen zal het permanent verwijderen en alles erop verwijderen.",
-    "conflict_games": "{games, plural, =0 {Geen spellen gespeeld} one {# spel gespeeld} other {# spellen gespeeld}}",
-    "conflict_games_capped": "{games}+ gespeelde spellen",
-    "conflict_keep": "Je zal {username} houden, en je Steam aankopen bewegen over de link.",
-    "conflict_prompt": "Steam {persona} is al gekoppeld aan een ander Territorium account.",
-    "conflict_prompt_no_persona": "Dit Steam account is al gekoppeld aan een ander Territorium account.",
-    "conflict_warning": "Dit kan niet ongedaan worden gemaakt.",
-    "invalid_code": "Dat ziet er niet uit als een geldige code. Controleer en probeer het opnieuw.",
-    "linking": "Koppelen…",
-    "load_error": "Kan je accountgegevens niet laden. Probeer het opnieuw vanuit Steam.",
-    "load_error_code": "Kan je accountgegevens niet laden. Probeer het opnieuw.",
     "reason_account_already_has_steam": "Je account is al gekoppeld aan een ander Steam account.",
-    "reason_discard_blocked": "Het Territorium account van dit Steam account kan niet automatisch worden verwijderd. Neem contact op met support en we zullen het voor je regelen.",
-    "reason_discard_blocked_paid": "Het Territorium account van dit Steam account heeft aankopen gemaakt, we kunnen het dus niet automatisch verwijderen. Neem contact op met support en we zullen het voor je regelen.",
-    "reason_discard_deferred": "Een aankoop op dat account is nog steeds gaande. Probeer het over een paar minuten opnieuw.",
-    "reason_discard_not_linked": "De link is niet voltooid. Start de link opnieuw.",
-    "reason_expired": "Deze link is verlopen. Probeer het opnieuw via Steam.",
-    "reason_offer_unavailable": "Deze bevestiging is verlopen. Start de link opnieuw.",
-    "reason_rate_limited": "Te veel pogingen. Wacht aub {seconds, plural, =0 {een moment} one {# seconde} other {# seconden}} en probeer het opnieuw.",
     "reason_steam_has_progress": "Dit Steam account heeft al zijn eigen voortgang en kan niet worden samengevoegd.",
-    "reason_steam_linked_elsewhere": "Dit Steam account is al gekoppeld aan een ander Territorium account.",
-    "success": "Je Steam account is nu gekoppeld.",
-    "title": "Koppel Steam Account"
+    "reason_steam_linked_elsewhere": "Dit Steam account is al gekoppeld aan een ander Territorium account."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
@@ -3125,6 +3062,12 @@
     "message": "Een nieuwe versie van Territorium is beschikbaar. De pagina zal nu ververst worden om te updaten."
   },
   "user_setting": {
+    "about_language": "Taal",
+    "about_language_change": "Taal wijzigen",
+    "about_legal": "Juridische informatie",
+    "about_license": "Licentie en credits",
+    "about_source": "Broncode",
+    "about_version": "Versie",
     "alert_frame_desc": "Schakel het waarschuwingskader aan/uit. Als ingeschakeld, wordt het kader getoond wanneer je wordt verraden of over land wordt aangevallen.",
     "alert_frame_label": "Waarshuwingskader",
     "ally_keybinds": "Alliantie sneltoetsen",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Open Lobby Links in Steam",
     "swap_direction": "Omdraaien boogrichting atoom- / waterstofbom",
     "swap_direction_desc": "Draai boogrichting raket om (opwaarts/neerwaarts).",
+    "tab_about": "Over",
     "tab_audio": "Geluid",
     "tab_display": "Beeldscherm",
     "tab_gameplay": "Spelverloop",

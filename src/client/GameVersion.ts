@@ -17,10 +17,7 @@ const SHORT_COMMIT_LENGTH = 7;
  * The label identifying this client build.
  *
  * Show the version when the build has one, and the 7-char commit when it does
- * not -- the same rule the Electron shell applies to its own half of the
- * footer line (OPE-358), so "v0.33.18 (Steam v0.1.0)" and
- * "bf739f8 (Steam a1b2c3d)" are both self-consistent rather than one half
- * naming a build and the other a placeholder.
+ * not, so a build is always named rather than given a placeholder.
  *
  * Pure, and takes both inputs, so the nav bar and the footer cannot drift:
  * they are two renderings of one answer, not two derivations of it.
@@ -38,9 +35,8 @@ export function composeGameVersion(
   if (SHA_RE.test(commit)) {
     return commit.slice(0, SHORT_COMMIT_LENGTH).toLowerCase();
   }
-  // Not a sha, but not nothing either: "DEV" from the local dev server, or
-  // the "desktop" placeholder an Electron shell predating OPE-358 injects.
-  // Both say strictly more than the version placeholder does.
+  // Not a sha, but not nothing either: "DEV" from the local dev server says
+  // strictly more than the version placeholder does.
   if (commit !== "") return commit;
   // Unreachable in a live client -- ClientEnv.get() throws long before this
   // if BOOTSTRAP_CONFIG is absent -- but the label must never come back

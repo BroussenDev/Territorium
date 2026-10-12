@@ -25,7 +25,6 @@
     "delete_account_warning": "確認後您的帳號將會在 24 小時候永久刪除，且您將會在所有裝置上立即登出。重新登入並不會取消操作，只有支援團隊可以在 24 小時內取消操作。",
     "desktop_login_discord": "在瀏覽器中以 Discord 繼續",
     "desktop_login_google": "在瀏覽器中以 Google 繼續",
-    "desktop_login_needs_update": "登入需要最新版本的桌面程式。請先重啟 Steam 並更新後再試。",
     "desktop_sign_in_desc": "登入將會在瀏覽器中開啟 Territorium 網站。登入並確認綁定至您的 Steam 帳號，遊戲將會辨識並登入。",
     "email_placeholder": "請輸入您的電子信箱地址",
     "enter_email_address": "請輸入電子信箱地址",
@@ -911,26 +910,6 @@
     "title": "Conquérant禮包已解鎖！",
     "where": "所有物品都在你的物品欄中：用名字旁的徽章按鈕選擇稱號。"
   },
-  "desktop_gate": {
-    "back_to_game": "返回遊戲",
-    "browser_fallback": "無法自動開啟您的瀏覽器，請改用上方的連結。",
-    "cancel": "取消",
-    "code_destination_generic": "請在 Territorium 網站中輸入這個驗證碼以連結您的帳號：",
-    "code_destination_site": "在 {site} 上輸入這個驗證碼以連結您的帳號：",
-    "continue_to_game": "繼續遊戲",
-    "expired": "該驗證碼已過期。請重新開始以取得新的驗證碼。",
-    "heading": "歡迎來到 Territorium",
-    "link_existing": "綁定現有帳號",
-    "linking_failed_reason": "綁定失敗：{reason}",
-    "linking_failed_unknown": "綁定失敗，原因不明。",
-    "new_player": "新玩家",
-    "not_found": "該驗證碼已失效。情重新開始以取得新的驗證碼。",
-    "prompt": "這是您初次遊玩嗎？還是您已經擁有帳號了？",
-    "retry": "重試",
-    "starting_link": "開始帳號綁定中……",
-    "ticket_unavailable": "現在無法開始帳號綁定。您可以重試，或是繼續遊戲。",
-    "title": "Territorium — 帳號設定"
-  },
   "desktop_offline": {
     "go_online": "重新連線",
     "offline": "無法連線至 Territorium：仍可單人遊戲。",
@@ -938,13 +917,8 @@
     "staying": "離線模式：僅可單人遊戲。",
     "still_offline": "仍無法連線至 Territorium。"
   },
-  "desktop_presence": {
-    "in_game": "遊戲中",
-    "spectating": "觀戰中"
-  },
   "desktop_session": {
     "generic": "無法登入至您的 Territorium 帳號",
-    "needs_account": "設定您的 Territorium 帳號即可線上遊玩",
     "network": "無法連線至 Territorium。請檢查您的網路連線。",
     "retry": "重試",
     "retrying": "登入中…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam 無法驗證您的工作階段。重新啟動 Steam 通常可以修復這個問題。"
   },
   "desktop_status": {
-    "go_online": "改為線上",
     "offline": "離線：無法連線至 Territorium 伺服器",
     "retry": "重試",
     "retrying": "正在重試……"
-  },
-  "desktop_update": {
-    "blocked": "最新版本需要 Steam 更新",
-    "downloading": "下載更新中… {percent}%",
-    "failed": "無法下載更新",
-    "ready": "更新已就緒",
-    "reload": "重新載入",
-    "retry": "重試"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium 無法使用您的顯示卡，因此遊戲無法啟動。這種狀況通常是暫時的。若要解決這個問題：",
@@ -2725,37 +2690,9 @@
     "wishlist": "加入願望清單"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "請輸入在 Steam 桌面程式上顯示的驗證碼。",
-    "code_submit": "繼續",
-    "confirm": "綁定帳號",
-    "confirm_prompt": "確定要綁定 Steam {persona} 到 {username} 上嗎？",
-    "confirm_prompt_no_persona": "確定要綁定 Steam 帳號到 {username} 嗎？",
-    "conflict_confirm": "刪除並綁定",
-    "conflict_deleting": "正在刪除……",
-    "conflict_explain": "那個帳號是為您第一次在 Steam 啟動遊戲而創建的。綁定將會永久刪除那個帳號及所有的資料。",
-    "conflict_games": "{games, plural, =0 {未遊玩任何遊戲} other {已遊玩 # 場遊戲}}",
-    "conflict_games_capped": "已遊玩 {games}+ 場遊戲",
-    "conflict_keep": "您將保留 {username}，且您的 Steam 購買紀錄將會因綁定一併遷移。",
-    "conflict_prompt": "Steam {persona} 已經綁定到另一個 Territorium 帳號。",
-    "conflict_prompt_no_persona": "這個 Steam 帳號已經綁定到另一個 Territorium 帳號。",
-    "conflict_warning": "這是無法還原的。",
-    "invalid_code": "您輸入了一個錯誤的驗證碼。請檢查並再試一次。",
-    "linking": "綁定中…",
-    "load_error": "無法載入您的帳號細節。請從 Steam 再試一次。",
-    "load_error_code": "無法載入您的帳號細節。請再試一次。",
     "reason_account_already_has_steam": "您的帳號已綁定到其他 Steam 帳號。",
-    "reason_discard_blocked": "這個 Steam 帳號的 Territorium 帳號無法被自動移除。請聯絡支援團隊，我們將會為您解決。",
-    "reason_discard_blocked_paid": "這個 Steam 帳號的 Territorium 帳號擁有購買紀錄，因此無法被自動移除。請聯絡支援團隊，我們將會為您解決。",
-    "reason_discard_deferred": "仍有一個購買正在該帳號上進行中。請稍後再試。",
-    "reason_discard_not_linked": "綁定未完成。請重新開始綁定。",
-    "reason_expired": "這個網址已過期。請從 Steam 再試一次。",
-    "reason_offer_unavailable": "該確認已過期。請重新開始綁定。",
-    "reason_rate_limited": "嘗試次數過多。請{seconds, plural,  =0 {稍後} other {稍等 # 秒後}}再試一次。",
     "reason_steam_has_progress": "這個 Steam 帳號已經有自己的進度，因此無法合併。",
-    "reason_steam_linked_elsewhere": "這個 Steam 帳號已經綁定到其他 Territorium 帳號。",
-    "success": "您的 Steam 帳號已綁定。",
-    "title": "綁定 Steam 帳戶"
+    "reason_steam_linked_elsewhere": "這個 Steam 帳號已經綁定到其他 Territorium 帳號。"
   },
   "steam_user_header": {
     "avatar_alt": "Steam 頭像",
@@ -3125,6 +3062,12 @@
     "message": "新的 Territorium 版本已可用。網頁將會立即刷新以更新。"
   },
   "user_setting": {
+    "about_language": "語言",
+    "about_language_change": "變更語言",
+    "about_legal": "法律資訊",
+    "about_license": "授權與致謝",
+    "about_source": "原始碼",
+    "about_version": "版本",
     "alert_frame_desc": "切換警示框顯示。當啟用，當您被背叛或被路上攻擊時警示框將會顯示。",
     "alert_frame_label": "警告框",
     "ally_keybinds": "結盟相關快捷鍵",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "在 Steam 中打開大廳連結",
     "swap_direction": "調換火箭方向",
     "swap_direction_desc": "切換火箭發射方向（上 / 下）。",
+    "tab_about": "關於",
     "tab_audio": "音效",
     "tab_display": "顯示",
     "tab_gameplay": "遊戲",

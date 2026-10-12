@@ -8,11 +8,10 @@ import { ClientEnv } from "./ClientEnv";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { rememberForOffline } from "./DesktopOffline";
 import type { DesktopSessionState, SessionFailureKind } from "./DesktopShell";
-import { desktopLinkGate, isDesktopShell } from "./DesktopShell";
-import { showInGameAlert } from "./InGameModal";
+import { isDesktopShell } from "./DesktopShell";
 import type { SteamTicketResult } from "./SteamSDK";
 import { steamSDK } from "./SteamSDK";
-import { generateCryptoRandomUUID, translateText } from "./Utils";
+import { generateCryptoRandomUUID } from "./Utils";
 
 export type UserAuth = { jwt: string; claims: TokenPayload } | false;
 
@@ -41,50 +40,19 @@ function setSessionState(state: DesktopSessionState): void {
   );
 }
 
-// On the desktop shell a provider login cannot be an OAuth redirect: the
-// redirect_uri would be this window's own `app://openfront/...` URL, which
-// the API's allowlist refuses (rightly -- the shell registers no scheme
-// handler, so a browser-completed OAuth flow would have nowhere to return
-// to). The player used to get a browser tab showing a bare JSON 400.
+// In the desktop app a provider login is not an OAuth redirect in the game's
+// window: the app opens every other site in the player's own browser, and
+// signing in there would not reach the game. The player signs in on the
+// website instead -- with Discord, Google or email, the choice is made there,
+// not by which button was clicked here -- and links their Steam account to
+// it; the game's Steam sign-in then resolves to that account.
 //
-// Instead the shell's account-linking gate is re-opened (see
-// DesktopShell.ts's desktopLinkGate): it sends the browser to the website
-// with a link ticket, the player signs in THERE -- with Discord, Google or
-// email, the choice is made on the website, not by which button was clicked
-// here -- and confirms linking that account to their Steam account, and the
-// shell reloads the game into it. The one thing this cannot do is merge a
-// Steam account that already has its own progress into a web account (the
-// server refuses that as `steam_has_progress`, and the website says so);
-// that is the same rule the first-launch gate lives under.
-//
-// Returns true whenever this is the desktop shell at all -- the caller must
-// not build the redirect there under any circumstances -- and false only on
-// the web, where the redirect is the right thing.
-//
-// A shell that exists but has no callable showLinkGate is a real case, not a
-// hypothetical: this client updates at runtime while the shell ships in the
-// Steam depot and updates on Steam's schedule, so a client newer than its
-// shell is ordinary. Falling through to the redirect there would be the
-// original bug (a browser tab showing a JSON 400) on exactly the shells that
-// cannot be fixed from this side, so that case says what to do instead.
+// Returns true in the desktop app, where the caller must not build the
+// redirect, and false on the web, where the redirect is the right thing.
 function startDesktopLinkFlow(): boolean {
-  const gate = desktopLinkGate();
-  if (gate !== null) {
-    // An IPC round trip to the Electron main process, so it can genuinely
-    // reject (no window, a main-process throw); log rather than surface as a
-    // button that silently does nothing.
-    gate.showLinkGate().catch((err) => {
-      console.error("Failed to open the desktop link flow", err);
-    });
-    return true;
-  }
-  if (isDesktopShell()) {
-    void showInGameAlert(
-      translateText("account_modal.desktop_login_needs_update"),
-    );
-    return true;
-  }
-  return false;
+  if (!isDesktopShell()) return false;
+  openWebsiteAccountSettings();
+  return true;
 }
 
 export function discordLogin() {
@@ -112,18 +80,17 @@ export function steamLogin() {
   window.location.href = `${getApiBase()}/auth/login/steam?redirect_uri=${redirectUri}`;
 }
 
-// The website's account-settings page, for the desktop shell to open in the
-// browser. Never from window.location, which is app://openfront in the shell.
-//
-// The precedence this used to spell out for itself -- siteOrigin() (NOT
-// serverHttpBase(), which answers with whichever game server the API's list
-// picked, a deployment host with no website on it), then the audience with the
-// same localhost:9000 special case as the shell's own siteUrlForAudience
-// (openfront-desktop's linkApi.ts) -- is now ClientEnv.shareOrigin(), which is
-// that same question asked by every outbound link in the client. See
-// deriveShareOrigin.
+// The website's account-settings page, for the desktop app to open in the
+// browser. From ClientEnv.shareOrigin(), the site every outbound link in the
+// client points at, never from window.location: the offline build's page has
+// no site of its own.
 function desktopWebAccountSettingsUrl(): string {
   return `${ClientEnv.shareOrigin()}/#modal=account-settings`;
+}
+
+/** Opens the website's account settings in the player's own browser. */
+export function openWebsiteAccountSettings(): void {
+  window.open(desktopWebAccountSettingsUrl(), "_blank", "noopener,noreferrer");
 }
 
 // Link a Google account to the currently logged-in player. Unlike login this is
@@ -143,11 +110,7 @@ export async function linkGoogle(): Promise<boolean> {
   if (isDesktopShell()) {
     // The desktop app opens it in the player's own browser, as it does every
     // link to another site or new window.
-    window.open(
-      desktopWebAccountSettingsUrl(),
-      "_blank",
-      "noopener,noreferrer",
-    );
+    openWebsiteAccountSettings();
     return true;
   }
   const authHeader = await getAuthHeader();
@@ -495,11 +458,11 @@ async function doRefreshJwt(): Promise<void> {
       // On Steam we exchange a Steam Web-API ticket for our session.
       return doSteamLogin(result.ticket);
     }
-    // TERMINAL, deliberately: this used to fall through to /auth/refresh,
-    // which cannot succeed in the shell (the Electron profile has no refresh
-    // cookie). That was a guaranteed 401 followed by logOut(), costing two
-    // pointless round trips and the player's stored persistent ID every time
-    // Steam hiccuped. Record why and stop.
+    // TERMINAL, deliberately: on Steam the session IS the Steam account, so
+    // falling through to /auth/refresh could only sign the player in as some
+    // other account the browser engine remembers, or fail and log out,
+    // costing the player's stored persistent ID every time Steam hiccuped.
+    // Record why and stop.
     __jwt = null;
     setSessionState({ status: "signed-out", reason: ticketReason(result) });
     return;
@@ -554,14 +517,11 @@ async function doRefreshJwt(): Promise<void> {
   }
 }
 
-// Total mapping from the shell's six ticket failures. Kept exhaustive by
-// the parameter type: adding a SteamTicketFailure value fails the build here.
-// The `default` is not reachable through that exhaustive type, but the shell
-// lives in a separate repo and the bridge shape reaches us as `unknown` at
-// the boundary (see SteamSDK.getTicket's normalisation) -- a malformed
-// `reason` from an old or misbehaving shell must still map to something
-// rather than return `undefined` at runtime despite the non-optional return
-// type.
+// Total mapping from the app's three ticket failures. The `default` is not
+// reachable through the exhaustive parameter type, but the app lives in a
+// separate repo and the bridge shape reaches us as `unknown` at the boundary
+// (see SteamSDK.getTicket's normalisation) -- a malformed `reason` must still
+// map to something rather than return `undefined` at runtime.
 function ticketReason(
   result: Extract<SteamTicketResult, { ok: false }>,
 ): SessionFailureKind {
@@ -572,19 +532,6 @@ function ticketReason(
       return "steam-wedged";
     case "error":
       return "steam-error";
-    case "needs-account":
-      return "needs-account";
-    case "ticket-rejected":
-      // A completed 401 from the status check. The player's own /auth/steam
-      // call would be refused identically, so this is the same situation the
-      // web path already has a message for.
-      return "steam-ticket-rejected";
-    case "api-unreachable":
-      // The shell could not reach OUR api to ask about the account -- nothing
-      // to do with Steam, and nothing the player does to their account
-      // changes it. "Can't reach OpenFront. Check your connection." is
-      // exactly right, and `network` already says that.
-      return "network";
     default:
       return "steam-error";
   }
@@ -618,8 +565,8 @@ async function doCrazyGamesLogin(token: string): Promise<void> {
 }
 
 // Exchange a Steam Web-API ticket for our session. Like CrazyGames, the
-// refresh cookie isn't usable from app://openfront (cross-site), so we
-// re-exchange a fresh ticket on expiry rather than hitting /auth/refresh.
+// session follows the platform's account: we re-exchange a fresh ticket on
+// expiry rather than hitting /auth/refresh.
 async function doSteamLogin(ticket: string): Promise<void> {
   try {
     console.log("Logging in with Steam");
@@ -742,9 +689,9 @@ export async function sendMagicLink(email: string): Promise<boolean> {
       body: JSON.stringify({
         // The domain the server builds the emailed link on, so it has to be a
         // real website: the recipient opens it in a browser, possibly on
-        // another device. window.location.origin is `app://openfront` in the
-        // shell, which would email a link nothing can open. See
-        // deriveShareOrigin in ClientEnv.ts.
+        // another device. The desktop app's offline build has an origin of
+        // its own that nothing else can open. See deriveShareOrigin in
+        // ClientEnv.ts.
         redirectDomain: ClientEnv.shareOrigin(),
         email: email,
       }),

@@ -25,7 +25,6 @@
     "delete_account_warning": "Tài khoản của bạn sẽ bị xóa vĩnh viễn sau 24 giờ kể từ lúc bạn xác nhận, và bạn sẽ bị đăng xuất khỏi mọi thiết bị ngay lập tức. Đăng nhập lại không thể hủy bỏ quá trình này; chỉ có đội ngũ hỗ trợ mới làm được điều đó trong vòng 24 giờ.",
     "desktop_login_discord": "Tiếp tục với Discord trong trình duyệt của bạn",
     "desktop_login_google": "Tiếp tục với Google trong trình duyệt của bạn",
-    "desktop_login_needs_update": "Đăng nhập yêu cầu phiên bản mới hơn của ứng dụng trên máy tính. Khởi động lại Steam để cập nhật, sau đó thử lại.",
     "desktop_sign_in_desc": "Đăng nhập sẽ mở website của Territorium trong trình duyệt của bạn. Hãy đăng nhập ở đó, xác nhận liên kết với tài khoản Steam của bạn, và trò chơi sẽ tự động nhận diện.",
     "email_placeholder": "Nhập địa chỉ email của bạn",
     "enter_email_address": "Vui lòng nhập địa chỉ email",
@@ -911,26 +910,6 @@
     "title": "Đã mở khóa gói Conquérant!",
     "where": "Mọi thứ đều trong Kho đồ: chọn danh hiệu bằng nút huy hiệu cạnh tên bạn."
   },
-  "desktop_gate": {
-    "back_to_game": "Quay lại game",
-    "browser_fallback": "Không thể tự động mở trình duyệt của bạn — hãy dùng link ở trên.",
-    "cancel": "Huỷ",
-    "code_destination_generic": "Nhập mã này trên trang web Territorium để liên kết tài khoản của bạn:",
-    "code_destination_site": "Nhập mã này tại {site} để liên kết tài khoản của bạn:",
-    "continue_to_game": "Tiếp tục game",
-    "expired": "Mã này đã hết hạn. Hãy bắt đầu lại để nhận mã mới.",
-    "heading": "Chào mừng đến Territorium",
-    "link_existing": "Liên kết với tài khoản đang có",
-    "linking_failed_reason": "Liên kết thất bại: {reason}",
-    "linking_failed_unknown": "Liên kết thất bị vì một lí do chưa rõ.",
-    "new_player": "Người chơi mói",
-    "not_found": "Mã này không còn hiệu lực nữa. Hãy bắt đầu lại để nhận mã mới.",
-    "prompt": "Đây là lần đầu bạn chơi, hay bạn đã có tài khoản rồi?",
-    "retry": "Thử lại",
-    "starting_link": "Bắt đầu liên kết tài khoản…",
-    "ticket_unavailable": "Không thể bắt đầu liên kết tài khoản vào bây giờ. Bạn có thể thử lại, hoặc tiếp tục vào game.",
-    "title": "Territorium - Thiết lập tài khoản"
-  },
   "desktop_offline": {
     "go_online": "Kết nối trực tuyến",
     "offline": "Không kết nối được Territorium: vẫn có thể chơi đơn.",
@@ -938,13 +917,8 @@
     "staying": "Chế độ ngoại tuyến: chỉ có thể chơi đơn.",
     "still_offline": "Vẫn chưa kết nối được Territorium."
   },
-  "desktop_presence": {
-    "in_game": "Đang chơi",
-    "spectating": "Đang xem"
-  },
   "desktop_session": {
     "generic": "Không thể đăng nhập vào tài khoản Territorium của bạn",
-    "needs_account": "Thiết lập tài khoản Territorium của bạn để có thể chơi online",
     "network": "Không thể kết nối với Territorium. Vui lòng kiểm tra kết nối của bạn.",
     "retry": "Thử lại",
     "retrying": "Đang đăng nhập…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam không thể xác minh phiên đăng nhập của bạn. Khởi động lại Steam thường sẽ khắc phục được vấn đề này."
   },
   "desktop_status": {
-    "go_online": "Chơi online",
     "offline": "Offline: không thể kết nối với máy chủ Territorium",
     "retry": "Thử lại",
     "retrying": "Đang thử lại…"
-  },
-  "desktop_update": {
-    "blocked": "Cần cập nhật Steam để sử dụng phiên bản mới nhất",
-    "downloading": "Đang tải bản cập nhật… {percent}%",
-    "failed": "Không thể tải bản cập nhật",
-    "ready": "Bản cập nhật đã sẵn sàng",
-    "reload": "Tải lại",
-    "retry": "Thử lại"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium không thể sử dụng card đồ họa của bạn, nên game không thể chạy. Lỗi này thường chỉ tạm thời. Để khắc phục:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Thêm vào danh sách mong muốn"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Nhập mã được hiển thị trên ứng dụng Steam trên máy tính của bạn.",
-    "code_submit": "Tiếp tục",
-    "confirm": "Liên kết tài khoản",
-    "confirm_prompt": "Liên kết tài khoản Steam “{persona}” với tài khoản {username}?",
-    "confirm_prompt_no_persona": "Liên kết tài khoản Steam của bạn với tài khoản {username}?",
-    "conflict_confirm": "Xóa nó và link",
-    "conflict_deleting": "Đang xóa…",
-    "conflict_explain": "Tài khoản đó được tạo cho bạn trong lần đầu bạn mở game trên Steam. Việc liên kết sẽ xóa vĩnh viễn nó và mọi thứ trên đó.",
-    "conflict_games": "{games, plural, =0 {Chưa chơi trận nào} one {# trận đã chơi} other {# trận đã chơi}}",
-    "conflict_games_capped": "{games}+ trận đã chơi",
-    "conflict_keep": "Bạn sẽ giữ {username}, và các giao dịch mua trên Steam sẽ được chuyển theo khi liên kết.",
-    "conflict_prompt": "Tài khoản Steam {persona} đã được gắn vào một tài khoản Territorium khác.",
-    "conflict_prompt_no_persona": "Tài khoản Steam này đã được gắn với một tài khoản Territorium khác.",
-    "conflict_warning": "Điều này không thể hoàn tác.",
-    "invalid_code": "Mã đó có vẻ không hợp lệ. Hãy kiểm tra và thử lại.",
-    "linking": "Đang liên kết…",
-    "load_error": "Không thể tải thông tin tài khoản của bạn. Vui lòng thử lại từ Steam.",
-    "load_error_code": "Không thể tải thông tin tài khoản của bạn. Vui lòng thử lại.",
     "reason_account_already_has_steam": "Tài khoản của bạn đã được liên kết với một tài khoản Steam khác.",
-    "reason_discard_blocked": "Tài khoản Territorium của tài khoản Steam này không thể được gỡ tự động. Vui lòng liên hệ bộ phận hỗ trợ và chúng tôi sẽ giải quyết cho bạn.",
-    "reason_discard_blocked_paid": "Tài khoản Territorium của Steam này có các giao dịch mua, nên chúng tôi không thể xóa nó tự động. Vui lòng liên hệ bộ phận hỗ trợ và chúng tôi sẽ giải quyết cho bạn.",
-    "reason_discard_deferred": "Giao dịch mua trên tài khoản đó vẫn đang được xử lý. Vui lòng thử lại sau vài phút.",
-    "reason_discard_not_linked": "Quá trình liên kết không hoàn thành. Vui lòng bắt đầu liên kết lại.",
-    "reason_expired": "Liên kết này đã hết hạn. Vui lòng thử lại từ Steam.",
-    "reason_offer_unavailable": "Xác nhận này đã hết hạn. Vui lòng bắt đầu liên kết lại.",
-    "reason_rate_limited": "Bạn đã thử quá nhiều lần. Vui lòng đợi {seconds, plural, =0 {một lát} one {# giây} other {# giây}} rồi thử lại.",
     "reason_steam_has_progress": "Tài khoản Steam này đã có tiến trình riêng và không thể hợp nhất.",
-    "reason_steam_linked_elsewhere": "Tài khoản Steam này đã được liên kết với một tài khoản Territorium khác.",
-    "success": "Tài khoản Steam của bạn đã được liên kết.",
-    "title": "Liên kết tài khoản Steam"
+    "reason_steam_linked_elsewhere": "Tài khoản Steam này đã được liên kết với một tài khoản Territorium khác."
   },
   "steam_user_header": {
     "avatar_alt": "Ảnh đại diện Steam",
@@ -3125,6 +3062,12 @@
     "message": "Đã có phiên bản mới của Territorium. Trang sẽ tự động tải lại để cập nhật."
   },
   "user_setting": {
+    "about_language": "Ngôn ngữ",
+    "about_language_change": "Đổi ngôn ngữ",
+    "about_legal": "Thông tin pháp lý",
+    "about_license": "Giấy phép và ghi công",
+    "about_source": "Mã nguồn",
+    "about_version": "Phiên bản",
     "alert_frame_desc": "Bật hoặc tắt khung cảnh báo. Khi bật, khung sẽ xuất hiện khi bạn bị phản bội hoặc bị tấn công qua đường bộ.",
     "alert_frame_label": "Khung cảnh báo",
     "ally_keybinds": "Phím tắt đồng minh",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Mở link của phòng trong Steam",
     "swap_direction": "Đổi hướng tên lửa",
     "swap_direction_desc": "Đổi hướng phóng tên lửa (lên/xuống).",
+    "tab_about": "Giới thiệu",
     "tab_audio": "Âm thanh",
     "tab_display": "Hiển thị",
     "tab_gameplay": "Lối chơi",

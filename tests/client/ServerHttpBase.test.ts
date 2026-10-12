@@ -52,12 +52,12 @@ describe("deriveServerHttpBase", () => {
       ).toBe("https://my-feature.openfront.dev");
     });
 
-    it("never falls through to the desktop app:// origin", () => {
-      // The bug this fixes: relative /api fetches resolved against
-      // app://openfront, which serves local files and 404s every API route.
+    it("never falls through to the desktop app's own origin", () => {
+      // The bug this fixes: relative /api fetches resolved against the app's
+      // offline origin, which serves local files and 404s every API route.
       expect(
-        deriveServerHttpBase("openfront.io", "app:", "openfront"),
-      ).not.toContain("openfront/");
+        deriveServerHttpBase("territorium.gg", "game:", "localhost"),
+      ).not.toContain("localhost");
     });
 
     it("ignores location entirely when a serverHost is configured", () => {

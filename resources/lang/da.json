@@ -25,7 +25,6 @@
     "delete_account_warning": "Din konto vil blive slettet permanent 24 timer efter du har bekræftet, og du bliver logget ud på alle enheder med det samme. Log ind igen annullerer det ikke; kun support kan inden for disse 24 timer.",
     "desktop_login_discord": "Fortsæt med Discord i din browser",
     "desktop_login_google": "Fortsæt med Google i din browser",
-    "desktop_login_needs_update": "Log ind kræver en nyere version af desktop-appen. Genstart Steam for at opdatere, og prøv derefter igen.",
     "desktop_sign_in_desc": "Log på åbner Territorium-webstedet i din browser. Log ind der, bekræft linket til din Steam-konto, og spillet vil hente det.",
     "email_placeholder": "Skriv din e-mailadresse",
     "enter_email_address": "Angiv venligst en emailadresse",
@@ -911,26 +910,6 @@
     "title": "Pakken Conquérant er låst op!",
     "where": "Alt er i dit Inventar: vælg din titel med mærkeknappen ved dit navn."
   },
-  "desktop_gate": {
-    "back_to_game": "Tilbage til spil",
-    "browser_fallback": "Kunne ikke åbne din browser automatisk - brug linket ovenfor.",
-    "cancel": "Annuller",
-    "code_destination_generic": "Indtast denne kode på Territorium-webstedet for at linke din konto:",
-    "code_destination_site": "Indtast denne kode på {site} for at linke din konto:",
-    "continue_to_game": "Fortsæt til spil",
-    "expired": "Denne kode er udløbet. Start forfra for at få en ny.",
-    "heading": "Velkommen til Territorium",
-    "link_existing": "Tilknyt eksisterende konto",
-    "linking_failed_reason": "Linkning mislykkedes: {reason}",
-    "linking_failed_unknown": "Linkning mislykkedes af en ukendt årsag.",
-    "new_player": "Ny spiller",
-    "not_found": "Denne kode er ikke længere gyldig. Start forfra for at få en ny.",
-    "prompt": "Er det første gang, du spiller, eller har du allerede en konto?",
-    "retry": "Prøv igen",
-    "starting_link": "Starter kontotilknytning...",
-    "ticket_unavailable": "Kunne ikke starte kontotilknytning lige nu. Du kan prøve igen eller fortsætte til spillet.",
-    "title": "Territorium - Kontoopsætning"
-  },
   "desktop_offline": {
     "go_online": "Gå online",
     "offline": "Ingen forbindelse til Territorium: solo kan stadig spilles.",
@@ -938,13 +917,8 @@
     "staying": "Offlinetilstand: kun solo kan spilles.",
     "still_offline": "Stadig ingen forbindelse til Territorium."
   },
-  "desktop_presence": {
-    "in_game": "I spil",
-    "spectating": "Tilskuer"
-  },
   "desktop_session": {
     "generic": "Kunne ikke logge ind på din Territorium-konto",
-    "needs_account": "Konfigurer din Territorium-konto for at spille online",
     "network": "Kan ikke nå Territorium. Tjek din forbindelse.",
     "retry": "Prøv igen",
     "retrying": "Logger ind...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam kunne ikke bekræfte din session. Genstart af Steam løser normalt dette."
   },
   "desktop_status": {
-    "go_online": "Gå online",
     "offline": "Offline: kan ikke nå Territorium-serverne",
     "retry": "Prøv igen",
     "retrying": "Prøver igen..."
-  },
-  "desktop_update": {
-    "blocked": "Der kræves en Steam-opdatering til den seneste version",
-    "downloading": "Downloader opdatering... {percent}%",
-    "failed": "Kunne ikke downloade opdateringen",
-    "ready": "Opdatering klar",
-    "reload": "Genindlæs",
-    "retry": "Prøv igen"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium kunne ikke bruge dit grafikkort, så spillet kan ikke køre. Dette er normalt midlertidigt. Sådan rettes det:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Føj til min ønskeliste"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Indtast koden vist på din Steam-skrivebordsapp.",
-    "code_submit": "Fortsæt",
-    "confirm": "Link konto",
-    "confirm_prompt": "Link Steam {persona} med konto {username}?",
-    "confirm_prompt_no_persona": "Link din Steam-konto med konto {username}?",
-    "conflict_confirm": "Slet den og link",
-    "conflict_deleting": "Sletter...",
-    "conflict_explain": "Den konto blev oprettet til dig, første gang du lancerede spillet på Steam. Linkning vil slette den permanent og alt på den.",
-    "conflict_games": "{games, plural, =0 {Ingen spil spillet} one {# spillet spillet} other {# spil spillet}}",
-    "conflict_games_capped": "{games}+ spil spillet",
-    "conflict_keep": "Du beholder {username}, og dine Steam-køb flyttes over med linket.",
-    "conflict_prompt": "Steam {persona} er allerede knyttet til en separat Territorium-konto.",
-    "conflict_prompt_no_persona": "Denne Steam-konto er allerede knyttet til en separat Territorium-konto.",
-    "conflict_warning": "Dette kan ikke fortrydes.",
-    "invalid_code": "Det ligner ikke en gyldig kode. Tjek det og prøv igen.",
-    "linking": "Linker...",
-    "load_error": "Dine kontooplysninger kunne ikke indlæses. Prøv venligst igen fra Steam.",
-    "load_error_code": "Dine kontooplysninger kunne ikke indlæses. Prøv venligst igen.",
     "reason_account_already_has_steam": "Din konto er allerede knyttet til en anden Steam-konto.",
-    "reason_discard_blocked": "Denne Steam-kontos Territorium-konto kan ikke fjernes automatisk. Kontakt venligst support, så ordner vi det for dig.",
-    "reason_discard_blocked_paid": "Denne Steam-kontos Territorium-konto har køb på den, så vi kan ikke slette den automatisk. Kontakt venligst support, så ordner vi det for dig.",
-    "reason_discard_deferred": "Et køb på den konto er stadig i gang. Prøv venligst igen om et par minutter.",
-    "reason_discard_not_linked": "Linket blev ikke fuldført. Start venligst linket igen.",
-    "reason_expired": "Dette link er udløbet. Prøv venligst igen fra Steam.",
-    "reason_offer_unavailable": "Denne bekræftelse er udløbet. Start venligst linket igen.",
-    "reason_rate_limited": "For mange forsøg. Vent venligst {seconds, plural, =0 {et øjeblik} one {# sekund} other {# sekunder}} og prøv igen.",
     "reason_steam_has_progress": "Denne Steam-konto har allerede sin egen fremgang og kan ikke flettes.",
-    "reason_steam_linked_elsewhere": "Denne Steam-konto er allerede knyttet til en anden Territorium-konto.",
-    "success": "Din Steam-konto er nu forbundet.",
-    "title": "Link Steam-konto"
+    "reason_steam_linked_elsewhere": "Denne Steam-konto er allerede knyttet til en anden Territorium-konto."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
@@ -3125,6 +3062,12 @@
     "message": "En ny version af Territorium er tilgængelig. Siden vil nu opdateres for at opdatere."
   },
   "user_setting": {
+    "about_language": "Sprog",
+    "about_language_change": "Skift sprog",
+    "about_legal": "Juridiske oplysninger",
+    "about_license": "Licens og medvirkende",
+    "about_source": "Kildekode",
+    "about_version": "Version",
     "alert_frame_desc": "Skift advarsel ramme. Når denne er aktiveret vil rammen blive vist når du bliver forrådt eller angrebet via land.",
     "alert_frame_label": "Advarselsramme",
     "ally_keybinds": "Allieret-taster",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Åbn Lobby Links i Steam",
     "swap_direction": "Skift Raketretning",
     "swap_direction_desc": "Skift retning for raketaffyring (op/ned).",
+    "tab_about": "Om",
     "tab_audio": "Lyd",
     "tab_display": "Display",
     "tab_gameplay": "Gameplay",

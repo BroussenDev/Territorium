@@ -20,9 +20,9 @@ import { ClientEnv } from "../../src/client/ClientEnv";
 import "../../src/client/components/CopyButton";
 import type { CopyButton } from "../../src/client/components/CopyButton";
 
-// Every link that LEAVES the client, checked from the desktop shell — the one
-// place where the document's own origin (`app://openfront`) is not something
-// anyone else can open. Each of these strings is copied to a clipboard or
+// Every link that LEAVES the client, checked from the desktop app's offline
+// build — the one place where the document's own origin (`game://localhost`)
+// is not something anyone else can open. Each of these strings is copied to a clipboard or
 // handed to a server that will send it on to a human.
 //
 // The pure resolution rules live in ShareBase.test.ts; this file pins the call
@@ -34,19 +34,18 @@ const realLocationDescriptor = Object.getOwnPropertyDescriptor(
   "location",
 )!;
 
-// What a real desktop launch reports: the shell serves the renderer from its
-// own privileged scheme (openfront-desktop's protocol.ts).
-const DESKTOP_HREF = "app://openfront/index.html";
+// What the app's offline build reports on Linux: the app serves it from its
+// own `game` scheme (offline.rs in its repository).
+const DESKTOP_HREF = "game://localhost/offline.html";
 const WEB_HREF = "https://openfront.io/";
 
 function stubLocation(href: string) {
   const url = new URL(href);
-  // Chromium registers app:// as a standard scheme (the shell's protocol.ts),
-  // so the real renderer reports origin "app://openfront". jsdom's URL parser
-  // has no such registration and yields "null" — spell the real value out, so
-  // what leaks on a regression is what would leak in the shipped app.
+  // jsdom's URL parser yields "null" for the origin of a custom scheme —
+  // spell the real value out, so what leaks on a regression is what would
+  // leak in the shipped app.
   const origin =
-    url.protocol === "app:" ? `${url.protocol}//${url.hostname}` : url.origin;
+    url.protocol === "game:" ? `${url.protocol}//${url.hostname}` : url.origin;
   Object.defineProperty(window, "location", {
     configurable: true,
     value: {
@@ -91,7 +90,7 @@ afterEach(() => {
 });
 
 describe("ClientEnv share helpers under a real desktop location", () => {
-  it("resolves the injected website host, not app://openfront", () => {
+  it("resolves the injected website host, not the app's own origin", () => {
     stubLocation(DESKTOP_HREF);
     expect(ClientEnv.shareOrigin()).toBe("https://openfront.io");
     expect(ClientEnv.shareBase()).toBe("https://openfront.io/");
@@ -148,9 +147,9 @@ describe("the magic-link email's return domain", () => {
     return JSON.parse(init.body as string).redirectDomain;
   }
 
-  it("names the website, not the shell, so the emailed link opens", async () => {
+  it("names the website, not the app, so the emailed link opens", async () => {
     // The player reads this email in a browser, possibly on another device:
-    // app://openfront would be a link nothing on earth can follow.
+    // the app's own origin would be a link nothing on earth can follow.
     expect(await redirectDomainFor(DESKTOP_HREF)).toBe("https://openfront.io");
   });
 

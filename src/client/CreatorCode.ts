@@ -1,8 +1,8 @@
 // A player can arrive at `openfront.io/c/<code>` while logged out. Binding
 // the code to an account requires an authenticated `PUT /users/@me/creator`
 // call (see Task 1's Api.ts), so an anonymous visit has to send the player
-// through login first -- Discord/Google OAuth or a magic link, same as
-// SteamLink.ts's account-linking gate. A magic link in particular only
+// through login first -- Discord/Google OAuth or a magic link. A magic link
+// in particular only
 // round-trips the site's origin, never the path it was clicked from, so the
 // code cannot ride along in the URL: it has to be stashed in localStorage
 // before redirecting, and read back once the player returns signed in.
@@ -142,8 +142,7 @@ export function consumeCreatorCodePath(): void {
 
 // Resumes a creator-code binding flow that was interrupted by a login
 // redirect. Takes a plain callback rather than a modal/element reference
-// (contrast SteamLink.ts's PendingLinkModal interface) because there is
-// nothing structural to call besides "open the binding UI with this code" --
+// because there is nothing structural to call besides "open the binding UI with this code" --
 // keeping this a plain function with no Lit/DOM dependency is what makes it
 // unit-testable without mounting anything. Returns true when a valid code
 // was resumed (callers should treat that as "handled"), false when there was

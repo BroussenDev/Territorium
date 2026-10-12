@@ -188,9 +188,8 @@ export function resetServerList(): void {
  * present: while game servers still render the page they inject serverHost
  * as their own host (blue.openfront.io), which is not a site.
  *
- * - Desktop: the injected serverHost, whose values are exactly the sites
- *   (openfront.io, nightly.openfront.dev, main.openfront.dev). Under
- *   app://openfront the document host means nothing.
+ * - Desktop: the injected serverHost, whose values are exactly the sites.
+ *   In the app's offline build the document host means nothing.
  * - Web: the apex when the page was rendered behind one (siteHost), else
  *   the document host. A page fetched straight from a deployment host
  *   still asks for its site's list rather than a host nobody registers.

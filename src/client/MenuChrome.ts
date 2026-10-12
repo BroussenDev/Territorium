@@ -84,11 +84,11 @@ export function hideMenuChrome(): void {
  * their real layout from the stylesheet, and a slot the page had its own
  * reason to hide must not be forced visible by us.
  *
- * The promos call is best-effort and must not throw. On the desktop shell --
+ * The promos call is best-effort and must not throw. In the desktop app --
  * the only place the in-place leave path can currently be reached -- ads never
  * load (`window.adsEnabled` is false there), so <homepage-promos> may not be
  * upgraded and may expose no show() at all, and its own close() reaches into
- * Playwire globals that are a bare stub on the app:// origin. A throw here
+ * ad globals that are a bare stub there. A throw here
  * would abort handleLeaveLobby partway: not the lobby-socket restart, which
  * has already run by this point, but the joinModal.close() and the
  * `full-lobby` message that follow it -- leaving a stale modal open and the

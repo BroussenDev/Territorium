@@ -25,7 +25,6 @@
     "delete_account_warning": "アカウントは直ちに完全に削除されます。猶予期間はなく、復元することもできません。すべてのデバイスからログアウトされます。",
     "desktop_login_discord": "ブラウザでDiscordを使って続行",
     "desktop_login_google": "ブラウザでGoogleを使って続行",
-    "desktop_login_needs_update": "ログインには新しいバージョンのデスクトップアプリが必要です。Steamを再起動して更新してから、もう一度お試しください。",
     "desktop_sign_in_desc": "ログインすると、ブラウザでTerritoriumのウェブサイトが開きます。そこでログインし、Steamアカウントとの連携を確認すると、ゲームに反映されます。",
     "email_placeholder": "メールアドレスを入力してください。",
     "enter_email_address": "メールアドレスを入力してください。",
@@ -911,26 +910,6 @@
     "title": "Conquérantパックが解放されました！",
     "where": "すべてインベントリにあります。名前の横のバッジボタンで称号を選べます。"
   },
-  "desktop_gate": {
-    "back_to_game": "ゲームに戻る",
-    "browser_fallback": "ブラウザを自動的に開くことができませんでした。上のリンクを使用してください。",
-    "cancel": "キャンセル",
-    "code_destination_generic": "Territorium Web サイトに次のコードを入力してアカウントをリンクします。",
-    "code_destination_site": "{site} にこのコードを入力してアカウントをリンクしてください:",
-    "continue_to_game": "ゲームを続ける",
-    "expired": "このコードの有効期限は切れています。新しいものを取得するには最初からやり直してください。",
-    "heading": "テリトリアムへようこそ",
-    "link_existing": "既存のアカウントをリンクする",
-    "linking_failed_reason": "リンクに失敗しました: {reason}",
-    "linking_failed_unknown": "不明な理由によりリンクに失敗しました。",
-    "new_player": "新しいプレイヤー",
-    "not_found": "このコードはもう無効です。新しいものを取得するには最初からやり直してください。",
-    "prompt": "初めてプレイしますか、それともすでにアカウントをお持ちですか?",
-    "retry": "リトライ",
-    "starting_link": "アカウントリンクを開始しています…",
-    "ticket_unavailable": "現在アカウントのリンクを開始できませんでした。もう一度試すことも、ゲームを続行することもできます。",
-    "title": "テリトリアム - アカウントのセットアップ"
-  },
   "desktop_offline": {
     "go_online": "オンラインに戻る",
     "offline": "Territoriumに接続できません：ソロは引き続きプレイできます。",
@@ -938,13 +917,8 @@
     "staying": "オフラインモード：ソロのみプレイできます。",
     "still_offline": "まだTerritoriumに接続できません。"
   },
-  "desktop_presence": {
-    "in_game": "ゲーム中",
-    "spectating": "観戦中"
-  },
   "desktop_session": {
     "generic": "Territoriumアカウントにログインできませんでした",
-    "needs_account": "オンラインでプレイするために Territorium アカウントをセットアップする",
     "network": "Territoriumに接続できません。接続を確認してください。",
     "retry": "再試行",
     "retrying": "ログイン中…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steamでアカウントを確認できませんでした。Steamを再起動すると通常は解決します。"
   },
   "desktop_status": {
-    "go_online": "オンラインに接続する",
     "offline": "オフライン: Territorium サーバーにアクセスできません",
     "retry": "リトライ",
     "retrying": "再試行中…"
-  },
-  "desktop_update": {
-    "blocked": "最新バージョンにはSteamのアップデートが必要です",
-    "downloading": "アップデートをダウンロード中…{percent}%",
-    "failed": "アップデートをダウンロードできませんでした",
-    "ready": "アップデートの準備完了",
-    "reload": "リロード",
-    "retry": "やり直す"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium はグラフィック カードを使用できなかったため、ゲームを実行できません。通常、これは一時的なものです。それを修正するには:",
@@ -2725,37 +2690,9 @@
     "wishlist": "ウィッシュリストに追加"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Steamデスクトップアプリに表示されたコードを入力してください。",
-    "code_submit": "続行",
-    "confirm": "アカウントを連携",
-    "confirm_prompt": "Steamの{persona}をアカウント{username}に連携しますか？",
-    "confirm_prompt_no_persona": "Steamアカウントを{username}に連携しますか？",
-    "conflict_confirm": "削除してリンクしてください",
-    "conflict_deleting": "削除中…",
-    "conflict_explain": "このアカウントは、Steam でゲームを初めて起動したときに作成されました。リンクすると、そのリンクとその上のすべてが完全に削除されます。",
-    "conflict_games": "{games, plural, =0 {ゲームはプレイされませんでした} one {# ゲームがプレイされました} other {# ゲームがプレイされました}}",
-    "conflict_games_capped": "{games}+ ゲームをプレイしました",
-    "conflict_keep": "{username} を保持すると、Steam での購入はリンクに移動します。",
-    "conflict_prompt": "Steam {persona} はすでに別の Territorium アカウントに関連付けられています。",
-    "conflict_prompt_no_persona": "この Steam アカウントはすでに別の Territorium アカウントに関連付けられています。",
-    "conflict_warning": "これを元に戻すことはできません。",
-    "invalid_code": "有効なコードではないようです。確認してもう一度お試しください。",
-    "linking": "連携中…",
-    "load_error": "アカウント情報を読み込めませんでした。Steamからもう一度お試しください。",
-    "load_error_code": "アカウント情報を読み込めませんでした。もう一度お試しください。",
     "reason_account_already_has_steam": "このアカウントはすでに別のSteamアカウントと連携されています。",
-    "reason_discard_blocked": "この Steam アカウントの Territorium アカウントは自動的に削除できません。サポートにご連絡ください。問題を解決いたします。",
-    "reason_discard_blocked_paid": "この Steam アカウントの Territorium アカウントには購入済みのアイテムがあるため、自動的に削除することはできません。サポートにご連絡ください。問題を解決いたします。",
-    "reason_discard_deferred": "そのアカウントでの購入はまだ進行中です。数分後にもう一度試してください。",
-    "reason_discard_not_linked": "リンクが完了しませんでした。再度リンクを開始してください。",
-    "reason_expired": "この連携リンクの有効期限が切れています。Steamからもう一度お試しください。",
-    "reason_offer_unavailable": "この確認の有効期限は切れています。再度リンクを開始してください。",
-    "reason_rate_limited": "試行回数が多すぎます。{seconds, plural, =0 {少し} other {#秒}}待ってからもう一度お試しください。",
     "reason_steam_has_progress": "このSteamアカウントにはすでに独自のゲーム進行状況があるため、統合できません。",
-    "reason_steam_linked_elsewhere": "この Steam アカウントは既に別の Territorium アカウントにリンクされています。",
-    "success": "あなたのSteamアカウントがリンクされました。",
-    "title": "Steamアカウントと連携する"
+    "reason_steam_linked_elsewhere": "この Steam アカウントは既に別の Territorium アカウントにリンクされています。"
   },
   "steam_user_header": {
     "avatar_alt": "Steamアバター",
@@ -3125,6 +3062,12 @@
     "message": "Territoriumの新しいバージョンが利用可能です。更新のため、ページを再読み込みします。"
   },
   "user_setting": {
+    "about_language": "言語",
+    "about_language_change": "言語を変更",
+    "about_legal": "法的情報",
+    "about_license": "ライセンスとクレジット",
+    "about_source": "ソースコード",
+    "about_version": "バージョン",
     "alert_frame_desc": "警告フレームの表示を切り替えます。有効時、裏切られたときや陸上から攻撃を受けたときにフレームが表示されます。",
     "alert_frame_label": "アラートフレーム",
     "ally_keybinds": "同盟",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Steam でロビーリンクを開く",
     "swap_direction": "ミサイルの軌道を逆転",
     "swap_direction_desc": "ミサイルの軌道を切り替えます。 (上方向/下方向)",
+    "tab_about": "このゲームについて",
     "tab_audio": "音声",
     "tab_display": "表示設定",
     "tab_gameplay": "ゲームプレイ",

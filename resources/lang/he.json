@@ -25,7 +25,6 @@
     "delete_account_warning": "החשבון שלך יימחק לצמיתות 24 שעות לאחר שתאשר, ותתנתק מכל המכשירים מיד. כניסה שוב אינה מבטלת אותה; רק תמיכה יכולה, בתוך 24 שעות אלה.",
     "desktop_login_discord": "המשך עם Discord בדפדפן שלך",
     "desktop_login_google": "המשך עם גוגל בדפדפן שלך",
-    "desktop_login_needs_update": "הכניסה דורשת גרסה חדשה יותר של אפליקציית שולחן העבודה. הפעל מחדש את Steam כדי לעדכן, ולאחר מכן נסה שוב.",
     "desktop_sign_in_desc": "כניסה פותחת את אתר טריטוריום בדפדפן שלך. היכנס לשם, אשר את הקישור לחשבון Steam שלך, והמשחק יאסוף אותו.",
     "email_placeholder": "הזן את כתובת הדוא\"ל שלך",
     "enter_email_address": "נא להזין כתובת אימייל",
@@ -911,26 +910,6 @@
     "title": "חבילת Conquérant נפתחה!",
     "where": "הכול במלאי שלכם: בחרו תואר בכפתור התג שליד השם."
   },
-  "desktop_gate": {
-    "back_to_game": "חזרה למשחק",
-    "browser_fallback": "לא ניתן היה לפתוח את הדפדפן שלך באופן אוטומטי - השתמש בקישור למעלה.",
-    "cancel": "לְבַטֵל",
-    "code_destination_generic": "הזן את הקוד הזה באתר טריטוריום כדי לקשר את חשבונך:",
-    "code_destination_site": "הזן קוד זה ב-{site} כדי לקשר את חשבונך:",
-    "continue_to_game": "המשך למשחק",
-    "expired": "תוקף הקוד הזה פג. התחל מחדש כדי לקבל אחד חדש.",
-    "heading": "ברוכים הבאים לטריטוריום",
-    "link_existing": "קישור חשבון קיים",
-    "linking_failed_reason": "הקישור נכשל: {reason}",
-    "linking_failed_unknown": "הקישור נכשל מסיבה לא ידועה.",
-    "new_player": "שחקן חדש",
-    "not_found": "קוד זה אינו תקף יותר. התחל מחדש כדי לקבל אחד חדש.",
-    "prompt": "האם זו הפעם הראשונה שאתה משחק, או שכבר יש לך חשבון?",
-    "retry": "נסה שוב",
-    "starting_link": "מתחיל בקישור חשבון...",
-    "ticket_unavailable": "לא ניתן היה להתחיל בקישור החשבון כעת. אתה יכול לנסות שוב, או להמשיך למשחק.",
-    "title": "טריטוריום - הגדרת חשבון"
-  },
   "desktop_offline": {
     "go_online": "התחבר",
     "offline": "אין חיבור ל-Territorium: משחק יחיד עדיין זמין.",
@@ -938,13 +917,8 @@
     "staying": "מצב לא מקוון: רק משחק יחיד זמין.",
     "still_offline": "עדיין אין חיבור ל-Territorium."
   },
-  "desktop_presence": {
-    "in_game": "במשחק",
-    "spectating": "צופה"
-  },
   "desktop_session": {
     "generic": "לא ניתן היה להיכנס לחשבון ה-Territorium שלך",
-    "needs_account": "הגדר את חשבון ה-Territorium שלך כדי לשחק באינטרנט",
     "network": "לא יכול להגיע לטריטוריום. בדוק את החיבור שלך.",
     "retry": "נסה שוב",
     "retrying": "נכנס...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam לא הצליח לאמת את ההפעלה שלך. הפעלה מחדש של Steam בדרך כלל מתקן את זה."
   },
   "desktop_status": {
-    "go_online": "עבור לאינטרנט",
     "offline": "לא מקוון: לא יכול להגיע לשרתי טריטוריום",
     "retry": "נסה שוב",
     "retrying": "מנסה שוב..."
-  },
-  "desktop_update": {
-    "blocked": "נדרש עדכון Steam עבור הגרסה האחרונה",
-    "downloading": "מוריד עדכון... {percent}%",
-    "failed": "לא ניתן היה להוריד את העדכון",
-    "ready": "עדכון מוכן",
-    "reload": "לִטעוֹן מִחָדָשׁ",
-    "retry": "נסה שוב"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium לא הצליח להשתמש בכרטיס המסך שלך, אז המשחק לא יכול לפעול. זה בדרך כלל זמני. כדי לתקן את זה:",
@@ -2725,37 +2690,9 @@
     "wishlist": "הוספה לרשימת המשאלות"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "הזן את הקוד המוצג באפליקציית Steam שולחן העבודה שלך.",
-    "code_submit": "לְהַמשִׁיך",
-    "confirm": "קישור חשבון",
-    "confirm_prompt": "לקשר את Steam {persona} לחשבון {username}?",
-    "confirm_prompt_no_persona": "לקשר את חשבון Steam שלך לחשבון {username}?",
-    "conflict_confirm": "מחק אותו וקשר",
-    "conflict_deleting": "מוחק...",
-    "conflict_explain": "החשבון הזה נוצר עבורך בפעם הראשונה שהשקת את המשחק ב-Steam. הקישור ימחק אותו לצמיתות ואת כל מה שעליו.",
-    "conflict_games": "{games, plural, =0 {לא שיחקו משחקים} one {# משחק שיחק} other {# משחקים ששיחקו}}",
-    "conflict_games_capped": "{games}+ משחקים ששיחקו",
-    "conflict_keep": "אתה תשמור על {username}, והרכישות שלך ב-Steam יעברו עם הקישור.",
-    "conflict_prompt": "Steam {persona} כבר מצורף לחשבון טריטוריום נפרד.",
-    "conflict_prompt_no_persona": "חשבון Steam זה כבר מצורף לחשבון טריטוריום נפרד.",
-    "conflict_warning": "לא ניתן לבטל את זה.",
-    "invalid_code": "זה לא נראה כמו קוד חוקי. בדוק ונסה שוב.",
-    "linking": "מְקַשֵׁר…",
-    "load_error": "לא ניתן היה לטעון את פרטי החשבון שלך. אנא נסה שוב מ-Steam.",
-    "load_error_code": "לא ניתן היה לטעון את פרטי החשבון שלך. אנא נסה שוב.",
     "reason_account_already_has_steam": "החשבון שלך כבר מקושר לחשבון Steam אחר.",
-    "reason_discard_blocked": "לא ניתן להסיר את חשבון טריטוריום של חשבון Steam זה באופן אוטומטי. אנא צור קשר עם התמיכה ואנו נסדר לך את זה.",
-    "reason_discard_blocked_paid": "בחשבון טריטוריום של חשבון Steam זה יש רכישות, כך שלא נוכל למחוק אותו אוטומטית. אנא צור קשר עם התמיכה ואנו נסדר לך את זה.",
-    "reason_discard_deferred": "רכישה בחשבון זה עדיין מתבצעת. אנא נסה שוב בעוד מספר דקות.",
-    "reason_discard_not_linked": "הקישור לא הושלם. אנא התחל את הקישור שוב.",
-    "reason_expired": "פג תוקף הקישור הזה. אנא נסה שוב מ-Steam.",
-    "reason_offer_unavailable": "תוקף האישור הזה פג. אנא התחל את הקישור שוב.",
-    "reason_rate_limited": "יותר מדי ניסיונות. אנא המתן {seconds, plural, =0 {רגע} one {# שניות} other {# שניות}} ונסה שוב.",
     "reason_steam_has_progress": "לחשבון Steam זה כבר יש התקדמות משלו ולא ניתן למזג אותו.",
-    "reason_steam_linked_elsewhere": "חשבון Steam זה כבר מקושר לחשבון טריטוריום אחר.",
-    "success": "חשבון Steam שלך מקושר כעת.",
-    "title": "קישור חשבון Steam"
+    "reason_steam_linked_elsewhere": "חשבון Steam זה כבר מקושר לחשבון טריטוריום אחר."
   },
   "steam_user_header": {
     "avatar_alt": "אווטאר של Steam",
@@ -3125,6 +3062,12 @@
     "message": "גרסה חדשה של טריטוריום זמינה. העמוד ירענן כעת כדי לעדכן."
   },
   "user_setting": {
+    "about_language": "שפה",
+    "about_language_change": "שינוי שפה",
+    "about_legal": "מידע משפטי",
+    "about_license": "רישיון וקרדיטים",
+    "about_source": "קוד מקור",
+    "about_version": "גרסה",
     "alert_frame_desc": "הפעל את מסגרת האזהרה. כשהיא מופעלת, המסגרת תופיע כשבן ברית בוגד בך.",
     "alert_frame_label": "מסגרת אזהרה",
     "ally_keybinds": "אלי קיבינדס",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "פתח את קישורי הלובי ב-Steam",
     "swap_direction": "החלף כיוון רקטה",
     "swap_direction_desc": "החלף את כיוון שיגור הרקטות (מעלה/מטה).",
+    "tab_about": "אודות",
     "tab_audio": "שֶׁמַע",
     "tab_display": "לְהַצִיג",
     "tab_gameplay": "משחקיות",

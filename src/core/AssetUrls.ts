@@ -44,16 +44,16 @@ export function normalizeAssetPath(path: string): string {
   return normalizedPath;
 }
 
-// Any scheme, not just http(s): the desktop shell resolves assets against an
-// absolute app://openfront base (its cdnBase), and an already-resolved URL
-// can be handed back to assetUrl() (e.g. WebGLFrameBuilder re-resolves
-// player cosmetic refs that a singleplayer start resolved at join time).
-// Matching only http(s) sent those through normalizeAssetPath, which mangled
-// "app://openfront/_assets/flags/US.<hash>.svg" into
-// "/app%3A/openfront/_assets/..." — a 404, and a country flag that silently
-// never rendered in game on desktop. Inline data: URLs (images drawn on the
-// client, e.g. the Nation pack's country-matched flag and crown) are
-// self-contained and pass through too.
+// Any scheme, not just http(s): the desktop app's offline build resolves
+// assets against its own `game://localhost` base on Linux, and an
+// already-resolved URL can be handed back to assetUrl() (e.g.
+// WebGLFrameBuilder re-resolves player cosmetic refs that a singleplayer start
+// resolved at join time). Matching only http(s) would send those through
+// normalizeAssetPath, which mangles "game://localhost/_assets/flags/US.svg"
+// into "/game%3A/localhost/_assets/..." — a 404, and a flag that silently
+// never renders. Inline data: URLs (images drawn on the client, e.g. the
+// Nation pack's country-matched flag and crown) are self-contained and pass
+// through too.
 function isAbsoluteUrl(path: string): boolean {
   return /^(?:[a-z][a-z0-9+.-]*:\/\/|data:)/i.test(path);
 }

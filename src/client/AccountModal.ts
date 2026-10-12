@@ -15,6 +15,7 @@ import {
   linkGoogle,
   linkSteam,
   logOut,
+  openWebsiteAccountSettings,
   reauthAfterCrazyGamesChange,
   sendMagicLink,
   steamLogin,
@@ -40,7 +41,7 @@ import { googleLinkButton } from "./components/ui/GoogleLinkButton";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { steamGlyph, steamLinkButton } from "./components/ui/SteamLinkButton";
 import { crazyGamesSDK, type CrazyGamesUser } from "./CrazyGamesSDK";
-import { desktopLinkGate, isDesktopShell } from "./DesktopShell";
+import { isDesktopShell } from "./DesktopShell";
 import { showInGameAlert } from "./InGameModal";
 import { consumeLinkResult } from "./LinkResult";
 import { consumeLoginResult, LoginResult } from "./LoginResult";
@@ -281,37 +282,20 @@ export class AccountModal extends BaseModal {
     `;
   }
 
-  // Re-entry to the desktop shell's account-linking gate shown at first
-  // launch. Absent entirely on plain web (no window.openfrontDesktop there),
-  // present whenever the desktop bridge exposes a callable showLinkGate —
-  // see desktopLinkGate() in DesktopShell.ts for why the guard is scoped
-  // that way. Needed because the desktop app's menu bar will eventually be
-  // hidden and the game runs fullscreen borderless, so a dismissed or
-  // since-linked player needs another way back to that gate.
+  // In the desktop app, the way to the website's account settings, where the
+  // player signs in with another account and links their Steam account to it
+  // (see startDesktopLinkFlow in Auth.ts). Absent on the web.
   private renderDesktopLinkGateAction(): TemplateResult | typeof nothing {
-    if (desktopLinkGate() === null) return nothing;
+    if (!isDesktopShell()) return nothing;
     return html`
       <o-button
         variant="secondary"
         width="block"
         size="md"
         translationKey="account_modal.link_existing_account"
-        @click=${this.handleShowLinkGate}
+        @click=${() => openWebsiteAccountSettings()}
       ></o-button>
     `;
-  }
-
-  private handleShowLinkGate(): void {
-    // The bare `void` form swallowed a rejection into an unhandled promise.
-    // This is an IPC round trip to the Electron main process, so it can
-    // genuinely reject (no window, a main-process throw); catching keeps the
-    // failure visible in the console instead of surfacing as a button that
-    // silently does nothing.
-    desktopLinkGate()
-      ?.showLinkGate()
-      .catch((err) => {
-        console.error("AccountModal: showLinkGate failed", err);
-      });
   }
 
   // CrazyGames "connected as" view: avatar + username from the SDK, plus
@@ -706,13 +690,9 @@ export class AccountModal extends BaseModal {
   }
 
   private renderLoginOptions() {
-    // On the desktop shell both provider buttons open the shell's browser
-    // link flow rather than an in-place OAuth redirect (see discordLogin /
-    // googleLogin in Auth.ts), and the captions say so. Keyed on the shell
-    // itself, not on the link-flow bridge: Auth.ts never builds the redirect
-    // on ANY desktop shell (a shell too old to expose showLinkGate gets an
-    // update prompt instead), so the web caption would be wrong on every one
-    // of them.
+    // In the desktop app both provider buttons open the website in the
+    // browser rather than an in-place OAuth redirect (see discordLogin /
+    // googleLogin in Auth.ts), and the captions say so.
     const viaBrowser = isDesktopShell();
     return html`
       <div class="flex items-center justify-center p-6 min-h-full">

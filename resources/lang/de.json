@@ -25,7 +25,6 @@
     "delete_account_warning": "Dein Konto wird nach 24 Stunden dauerhaft gelöscht. Es gibt keine Kulanzfrist und keine Möglichkeit zur Wiederherstellung. Du wirst auf allen Geräten abgemeldet. Erneutes Anmelden wird das Löschen nicht stoppen, nur der Support kann dies.",
     "desktop_login_discord": "Mit Discord in deinem Browser fortfahren",
     "desktop_login_google": "Mit Google im Browser fortfahren",
-    "desktop_login_needs_update": "Die Anmeldung benötigt eine neuere Version der Desktop-App. Starte Steam neu, um zu aktualisieren, dann versuche es erneut.",
     "desktop_sign_in_desc": "Die Anmeldung öffnet die Territorium‑Website in deinem Browser. Melde dich dort an, bestätige die Verknüpfung mit deinem Steam‑Account, und das Spiel übernimmt sie automatisch.",
     "email_placeholder": "E-Mail-Adresse eingeben",
     "enter_email_address": "Bitte gib deine E-Mail-Adresse ein",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant freigeschaltet!",
     "where": "Alles ist in deinem Inventar: Wähle deinen Titel mit der Abzeichen-Schaltfläche neben deinem Namen."
   },
-  "desktop_gate": {
-    "back_to_game": "Zurück zum Spiel",
-    "browser_fallback": "Ihr Browser konnte nicht automatisch geöffnet werden – verwenden Sie den Link oben.",
-    "cancel": "Abbrechen",
-    "code_destination_generic": "Geben Sie diesen Code auf der Territorium-Website ein, um Ihr Konto zu verknüpfen:",
-    "code_destination_site": "Geben Sie diesen Code bei {site} ein, um Ihr Konto zu verknüpfen:",
-    "continue_to_game": "Weiter zum Spiel",
-    "expired": "Dieser Code ist abgelaufen. Beginnen Sie von vorne, um ein neues zu bekommen.",
-    "heading": "Willkommen im Territorium",
-    "link_existing": "Vorhandenes Konto verknüpfen",
-    "linking_failed_reason": "Verknüpfung fehlgeschlagen: {reason}",
-    "linking_failed_unknown": "Die Verknüpfung ist aus unbekanntem Grund fehlgeschlagen.",
-    "new_player": "Neuer Spieler",
-    "not_found": "Dieser Code ist nicht mehr gültig. Beginnen Sie von vorne, um ein neues zu bekommen.",
-    "prompt": "Spielen Sie zum ersten Mal oder haben Sie bereits ein Konto?",
-    "retry": "Versuchen Sie es noch einmal",
-    "starting_link": "Kontoverknüpfung wird gestartet…",
-    "ticket_unavailable": "Die Kontoverknüpfung konnte momentan nicht gestartet werden. Sie können es erneut versuchen oder mit dem Spiel fortfahren.",
-    "title": "Territorium – Kontoeinrichtung"
-  },
   "desktop_offline": {
     "go_online": "Online gehen",
     "offline": "Keine Verbindung zu Territorium: Solo ist weiterhin verfügbar.",
@@ -938,13 +917,8 @@
     "staying": "Offline-Modus: Nur Solo ist verfügbar.",
     "still_offline": "Immer noch keine Verbindung zu Territorium."
   },
-  "desktop_presence": {
-    "in_game": "Im Spiel",
-    "spectating": "Zuschauen"
-  },
   "desktop_session": {
     "generic": "Anmeldung zu deinem Territorium-Konto fehlgeschlagen",
-    "needs_account": "Richten Sie Ihr Territorium-Konto ein, um online zu spielen",
     "network": "Konnte Territorium nicht erreichen. Überprüfe deine Verbindung.",
     "retry": "Wiederholen",
     "retrying": "Einloggen…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam konnte deine Sitzung nicht verifizieren. Ein Neustart von Steam behebt dies in der Regel."
   },
   "desktop_status": {
-    "go_online": "Gehen Sie online",
     "offline": "Offline: Die Territorium-Server können nicht erreicht werden",
     "retry": "Versuchen Sie es noch einmal",
     "retrying": "Erneuter Versuch…"
-  },
-  "desktop_update": {
-    "blocked": "Für die neueste Version ist ein Steam-Update erforderlich",
-    "downloading": "Update wird heruntergeladen… {percent} %",
-    "failed": "Das Update konnte nicht heruntergeladen werden",
-    "ready": "Update bereit",
-    "reload": "Neu laden",
-    "retry": "wiederholen"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium konnte Ihre Grafikkarte nicht verwenden, daher kann das Spiel nicht ausgeführt werden. Dies ist in der Regel vorübergehend. Um das Problem zu beheben:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Auf meine Wunschliste"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Geben Sie den Code ein, der in Ihrer Steam Desktop-App angezeigt wird.",
-    "code_submit": "Fortsetzen",
-    "confirm": "Konto verknüpfen",
-    "confirm_prompt": "Verbinde Steam {persona} mit Konto {username}?",
-    "confirm_prompt_no_persona": "Verbinde dein Steam Konto mit dem Nutzerkonto {username}?",
-    "conflict_confirm": "Löschen und verlinken",
-    "conflict_deleting": "Löschen…",
-    "conflict_explain": "Dieses Konto wurde für Sie erstellt, als Sie das Spiel zum ersten Mal auf Steam starteten. Durch das Verknüpfen wird es und alles darauf dauerhaft gelöscht.",
-    "conflict_games": "{games, plural, =0 {Keine Spiele gespielt} one {# Spiel gespielt} other {# Spiele gespielt}}",
-    "conflict_games_capped": "{games}+ Spiele gespielt",
-    "conflict_keep": "Sie behalten {username} und Ihre Steam-Käufe werden mit dem Link verschoben.",
-    "conflict_prompt": "Steam {persona} ist bereits mit einem separaten Territorium-Konto verknüpft.",
-    "conflict_prompt_no_persona": "Dieses Steam-Konto ist bereits mit einem separaten Territorium-Konto verknüpft.",
-    "conflict_warning": "Dies kann nicht rückgängig gemacht werden.",
-    "invalid_code": "Das sieht nicht aus wie ein gültiger Code. Überprüfe ihn und probier es erneut.",
-    "linking": "Verknüpfen…",
-    "load_error": "Konnte deine Kontodaten nicht laden. Bitte versuche es von Steam erneut.",
-    "load_error_code": "Konnte deine Kontodaten nicht laden. Bitte versuche es von Steam erneut.",
     "reason_account_already_has_steam": "Dein Account ist bereits mit einem anderen Steam Account verbunden.",
-    "reason_discard_blocked": "Das Territorium-Konto dieses Steam-Kontos kann nicht automatisch entfernt werden. Bitte kontaktieren Sie den Support und wir werden das Problem für Sie regeln.",
-    "reason_discard_blocked_paid": "Auf dem Territorium-Konto dieses Steam-Kontos befinden sich Käufe, daher können wir es nicht automatisch löschen. Bitte kontaktieren Sie den Support und wir werden das Problem für Sie regeln.",
-    "reason_discard_deferred": "Ein Kauf auf diesem Konto läuft noch. Bitte versuchen Sie es in ein paar Minuten noch einmal.",
-    "reason_discard_not_linked": "Der Link wurde nicht abgeschlossen. Bitte starten Sie den Link erneut.",
-    "reason_expired": "Dieser Link ist abgelaufen. Bitte versuche es erneut von Steam.",
-    "reason_offer_unavailable": "Diese Bestätigung ist abgelaufen. Bitte starten Sie den Link erneut.",
-    "reason_rate_limited": "Zu viele Versuche. Bitte warte {seconds, plural, =0 {Einen Moment} one {# Sekunde} other {# Sekunden}} und versuche es erneut.",
     "reason_steam_has_progress": "Dieser Steam-Account hat bereits einen eigenen Fortschritt und kann nicht zusammengeführt werden.",
-    "reason_steam_linked_elsewhere": "Dieses Steam-Konto ist bereits mit einem anderen Territorium-Konto verknüpft.",
-    "success": "Dein Steam Account ist jetzt verknüpft.",
-    "title": "Steam Konto verknüpfen"
+    "reason_steam_linked_elsewhere": "Dieses Steam-Konto ist bereits mit einem anderen Territorium-Konto verknüpft."
   },
   "steam_user_header": {
     "avatar_alt": "Steam Avatar",
@@ -3125,6 +3062,12 @@
     "message": "Eine neue Version von Territorium ist verfügbar. Die Seite wird nun aktualisiert."
   },
   "user_setting": {
+    "about_language": "Sprache",
+    "about_language_change": "Sprache ändern",
+    "about_legal": "Rechtliche Hinweise",
+    "about_license": "Lizenz und Mitwirkende",
+    "about_source": "Quellcode",
+    "about_version": "Version",
     "alert_frame_desc": "Aktiviere oder deaktiviere den Alarmrahmen. Wenn aktiviert, wird der Rahmen angezeigt, wenn du verraten wirst oder einen Landangriff erleidest.",
     "alert_frame_label": "Warnrahmen",
     "ally_keybinds": "Allianz Tastaturkürzel",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Öffnen Sie Lobby-Links in Steam",
     "swap_direction": "Raketenrichtung wechseln",
     "swap_direction_desc": "Umschalten der Raketenstartrichtung (hoch/runter).",
+    "tab_about": "Über",
     "tab_audio": "Audio",
     "tab_display": "Anzeige",
     "tab_gameplay": "Gameplay",

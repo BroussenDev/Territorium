@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ClientEnv } from "../src/client/ClientEnv";
-import type { DesktopUpdateState } from "../src/client/DesktopShell";
+import type { DesktopSessionState } from "../src/client/DesktopShell";
 import {
   backendUnreachableConfirmed,
   ensureServerList,
@@ -61,7 +61,7 @@ function lobby(gameID: string, publicGameType: PublicGameType): PublicGameInfo {
  * Neither can see whether DetailedGameViewModal's join() -- a separate call
  * site reached from Solo -> Detailed View -> any lobby card -- actually
  * consults the gate. So this mounts the real component, drives it into a
- * gated state through the real `desktop-update-state` event, clicks a real
+ * gated state through the real `desktop-session-state` event, clicks a real
  * rendered lobby card, and asserts nothing proceeded.
  */
 let modal: HTMLElement & { updateComplete: Promise<unknown> };
@@ -75,12 +75,18 @@ function stub(tag: string, methods: Record<string, unknown>): void {
   document.body.appendChild(el);
 }
 
-async function setUpdateState(state: DesktopUpdateState): Promise<void> {
+async function setSessionState(state: DesktopSessionState): Promise<void> {
   document.dispatchEvent(
-    new CustomEvent("desktop-update-state", { detail: state }),
+    new CustomEvent("desktop-session-state", { detail: state }),
   );
   await modal.updateComplete;
 }
+
+const SIGNED_IN: DesktopSessionState = { status: "signed-in" };
+const SIGNED_OUT: DesktopSessionState = {
+  status: "signed-out",
+  reason: "steam-wedged",
+};
 
 /**
  * Pushes a full lobby snapshot through the (mocked) socket's own update
@@ -141,7 +147,7 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
   });
 
   it("emits join-lobby when ungated (public lobby)", async () => {
-    await setUpdateState({ status: "current", bytes: 0, total: 0 });
+    await setSessionState(SIGNED_IN);
 
     const card = cardButton("public-1");
     expect(card).not.toBeNull();
@@ -154,8 +160,8 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
     expect(wiggle).not.toHaveBeenCalled();
   });
 
-  it("refuses to emit join-lobby and nudges the bar while an update is downloading", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+  it("refuses to emit join-lobby and nudges the bar while signed out", async () => {
+    await setSessionState(SIGNED_OUT);
 
     const card = cardButton("public-1");
     expect(card).not.toBeNull();
@@ -166,7 +172,7 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
   });
 
   it("does not close the modal (or drop its lobby list) on a blocked attempt", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+    await setSessionState(SIGNED_OUT);
 
     const card = cardButton("public-1");
     card!.click();
@@ -178,7 +184,7 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
   });
 
   it("marks cards aria-disabled while blocked", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+    await setSessionState(SIGNED_OUT);
 
     const card = cardButton("public-1");
     expect(card?.getAttribute("aria-disabled")).toBe("true");
@@ -187,7 +193,7 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
   });
 
   it("opens join-lobby-modal for a hosted lobby when ungated", async () => {
-    await setUpdateState({ status: "current", bytes: 0, total: 0 });
+    await setSessionState(SIGNED_IN);
 
     const card = cardButton("hosted-1");
     expect(card).not.toBeNull();
@@ -198,7 +204,7 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
   });
 
   it("refuses to open join-lobby-modal for a hosted lobby while blocked", async () => {
-    await setUpdateState({ status: "downloading", bytes: 1, total: 100 });
+    await setSessionState(SIGNED_OUT);
 
     const card = cardButton("hosted-1");
     expect(card).not.toBeNull();
@@ -207,34 +213,11 @@ describe("the multiplayer gate at DetailedGameViewModal's join()", () => {
     expect(joinModalOpen).not.toHaveBeenCalled();
     expect(wiggle).toHaveBeenCalled();
   });
-
-  it("refuses while an update is staged", async () => {
-    await setUpdateState({ status: "staged", bytes: 100, total: 100 });
-
-    cardButton("public-1")!.click();
-    cardButton("hosted-1")!.click();
-
-    expect(joinLobby).not.toHaveBeenCalled();
-    expect(joinModalOpen).not.toHaveBeenCalled();
-  });
-
-  it("does not refuse on a failure the player cannot retry away", async () => {
-    await setUpdateState({
-      status: "failed",
-      bytes: 0,
-      total: 0,
-      error: { kind: "refused", message: "403 from the WAF" },
-    });
-
-    cardButton("public-1")!.click();
-
-    expect(joinLobby).toHaveBeenCalled();
-  });
 });
 
 /**
- * OPE-439, from the other side. The update and session halves above are
- * desktop-only and they DO refuse a card click. A confirmed backend outage
+ * OPE-439, from the other side. The session half above is desktop-only and
+ * it DOES refuse a card click. A confirmed backend outage
  * must not, on either shell: every lobby this browser lists arrived over a
  * live game-server socket, and the outage signal tracks the separate
  * server-list API, whose health says nothing about that server. That is the
@@ -357,11 +340,11 @@ describe("DetailedGameViewModal and a confirmed backend outage", () => {
 
   it("still refuses on a DESKTOP reason during an outage", async () => {
     // The control that keeps this from being "the gate was deleted": the
-    // update state is a statement about this client rather than about any
-    // server, so it refuses the same card the outage may not.
+    // session is a statement about this client rather than about any server,
+    // so it refuses the same card the outage may not.
     await confirmOutage();
     await remountModal();
-    await setUpdateState({ status: "staged", bytes: 0, total: 0 });
+    await setSessionState(SIGNED_OUT);
 
     cardButton("public-1")!.click();
 

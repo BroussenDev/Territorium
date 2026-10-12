@@ -25,7 +25,6 @@
     "delete_account_warning": "Via konto estos konstante forigita 24 horojn post kiam vi konfirmas, kaj vi estos elsalutita en ĉiuj aparatoj tuj. Ensaluti denove ne nuligas ĝin; nur subteno povas, ene de tiuj 24 horoj.",
     "desktop_login_discord": "Daŭrigu per Discord en via retumilo",
     "desktop_login_google": "Daŭrigu kun Google en via retumilo",
-    "desktop_login_needs_update": "Ensaluti bezonas pli novan version de la labortabla programo. Rekomencu Steam por ĝisdatigi, poste provu denove.",
     "desktop_sign_in_desc": "Ensaluti malfermas la retejon Territorium en via retumilo. Ensalutu tie, konfirmu la ligon al via Steam-konto, kaj la ludo prenos ĝin.",
     "email_placeholder": "Entajpu vian retadreson",
     "enter_email_address": "Bonvolu entajpi retadreson",
@@ -911,26 +910,6 @@
     "title": "Pako Conquérant malŝlosita!",
     "where": "Ĉio estas en via Inventaro: elektu titolon per la insigna butono apud via nomo."
   },
-  "desktop_gate": {
-    "back_to_game": "Reen al Ludo",
-    "browser_fallback": "Ne eblis malfermi vian retumilon aŭtomate — uzu la supran ligilon.",
-    "cancel": "Nuligi",
-    "code_destination_generic": "Enigu ĉi tiun kodon en la retejo de Territorium por ligi vian konton:",
-    "code_destination_site": "Enigu ĉi tiun kodon ĉe {site} por ligi vian konton:",
-    "continue_to_game": "Daŭrigu al Ludo",
-    "expired": "Ĉi tiu kodo eksvalidiĝis. Rekomencu por akiri novan.",
-    "heading": "Bonvenon al Territorium",
-    "link_existing": "Ligi Ekzistantan Konton",
-    "linking_failed_reason": "Ligo malsukcesis: {reason}",
-    "linking_failed_unknown": "Ligo malsukcesis pro nekonata kialo.",
-    "new_player": "Nova Ludanto",
-    "not_found": "Ĉi tiu kodo ne plu validas. Rekomencu por akiri novan.",
-    "prompt": "Ĉu vi ludas la unuan fojon, aŭ ĉu vi jam havas konton?",
-    "retry": "Reprovi",
-    "starting_link": "Komencante kontan ligon...",
-    "ticket_unavailable": "Ne eblis komenci kontan ligon nun. Vi povas provi denove, aŭ daŭrigi la ludon.",
-    "title": "Territorium - Konto-Agordo"
-  },
   "desktop_offline": {
     "go_online": "Konektiĝi",
     "offline": "Neniu konekto al Territorium: sola ludo daŭre disponeblas.",
@@ -938,13 +917,8 @@
     "staying": "Senkonekta reĝimo: nur sola ludo disponeblas.",
     "still_offline": "Ankoraŭ neniu konekto al Territorium."
   },
-  "desktop_presence": {
-    "in_game": "En ludo",
-    "spectating": "Spektante"
-  },
   "desktop_session": {
     "generic": "Ne eblis ensaluti al via Territorium-konto",
-    "needs_account": "Agordu vian Territorium-konton por ludi interrete",
     "network": "Ne povas atingi Territorium. Kontrolu vian konekton.",
     "retry": "Reprovi",
     "retrying": "Ensaltante...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam ne povis kontroli vian seancon. Rekomenci Steam kutime riparas ĉi tion."
   },
   "desktop_status": {
-    "go_online": "Iru interrete",
     "offline": "Senrete: ne povas atingi la servilojn de Territorium",
     "retry": "Reprovi",
     "retrying": "Reprovante…"
-  },
-  "desktop_update": {
-    "blocked": "Steam-ĝisdatigo estas postulata por la plej nova versio",
-    "downloading": "Elŝutante ĝisdatigon... {percent}%",
-    "failed": "Ne eblis elŝuti la ĝisdatigon",
-    "ready": "Ĝisdatigo preta",
-    "reload": "Reŝargi",
-    "retry": "Reprovi"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium ne povis uzi vian grafikan karton, do la ludo ne povas funkcii. Ĉi tio estas kutime provizora. Por ripari ĝin:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Aldoni al mia dezirlisto"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Enigu la kodon montritan en via labortabla programo Steam.",
-    "code_submit": "Daŭrigu",
-    "confirm": "Ligi Konton",
-    "confirm_prompt": "Ligi Steam {persona} kun konto {username}?",
-    "confirm_prompt_no_persona": "Ligi vian Steam-konton kun konto {username}?",
-    "conflict_confirm": "Forigu ĝin kaj ligu",
-    "conflict_deleting": "Forigante…",
-    "conflict_explain": "Tiu konto estis kreita por vi la unuan fojon kiam vi lanĉis la ludon sur Steam. Ligado konstante forigos ĝin kaj ĉion sur ĝi.",
-    "conflict_games": "{games, plural, =0 {Neniuj ludoj ludis} one {# ludo ludita} other {# ludoj ludis}}",
-    "conflict_games_capped": "{games}+ ludoj ludis",
-    "conflict_keep": "Vi konservos {username}, kaj viaj Steam-aĉetoj transiras per la ligilo.",
-    "conflict_prompt": "Steam {persona} jam estas ligita al aparta Territorium-konto.",
-    "conflict_prompt_no_persona": "Ĉi tiu Steam-konto jam estas ligita al aparta Territorium-konto.",
-    "conflict_warning": "Ĉi tio ne povas esti malfarita.",
-    "invalid_code": "Tio ne aspektas kiel valida kodo. Kontrolu ĝin kaj provu denove.",
-    "linking": "Ligado…",
-    "load_error": "Ne eblis ŝargi viajn kontajn detalojn. Bonvolu provi denove de Steam.",
-    "load_error_code": "Ne eblis ŝargi viajn kontajn detalojn. Bonvolu provi denove.",
     "reason_account_already_has_steam": "Via konto jam estas ligita al alia Steam-konto.",
-    "reason_discard_blocked": "La konto Territorium de ĉi tiu Steam-konto ne povas esti forigita aŭtomate. Bonvolu kontakti subtenon kaj ni ordigos ĝin por vi.",
-    "reason_discard_blocked_paid": "La Territorium-konto de ĉi tiu Steam-konto havas aĉetojn sur ĝi, do ni ne povas forigi ĝin aŭtomate. Bonvolu kontakti subtenon kaj ni ordigos ĝin por vi.",
-    "reason_discard_deferred": "Aĉeto en tiu konto ankoraŭ okazas. Bonvolu provi denove post kelkaj minutoj.",
-    "reason_discard_not_linked": "La ligilo ne finiĝis. Bonvolu rekomenci la ligilon.",
-    "reason_expired": "Ĉi tiu ligo eksvalidiĝis. Bonvolu provi denove de Steam.",
-    "reason_offer_unavailable": "Ĉi tiu konfirmo eksvalidiĝis. Bonvolu rekomenci la ligilon.",
-    "reason_rate_limited": "Tro da provoj. Bonvolu atendi {seconds, plural, =0 {momenton} one {# sekundon} other {# sekundojn}} kaj reprovi.",
     "reason_steam_has_progress": "Ĉi tiu Steam-konto jam havas sian propran progreson kaj ne povas esti kunfandita.",
-    "reason_steam_linked_elsewhere": "Ĉi tiu Steam-konto jam estas ligita al malsama Territorium-konto.",
-    "success": "Via Steam-konto nun estas ligita.",
-    "title": "Ligu Steam-Konton"
+    "reason_steam_linked_elsewhere": "Ĉi tiu Steam-konto jam estas ligita al malsama Territorium-konto."
   },
   "steam_user_header": {
     "avatar_alt": "Steam-avataro",
@@ -3125,6 +3062,12 @@
     "message": "Nova versio de Territorium estas havebla. La paĝo nun refreŝiĝos por ĝisdatigi."
   },
   "user_setting": {
+    "about_language": "Lingvo",
+    "about_language_change": "Ŝanĝi lingvon",
+    "about_legal": "Juraj informoj",
+    "about_license": "Permesilo kaj kontribuintoj",
+    "about_source": "Fontkodo",
+    "about_version": "Versio",
     "alert_frame_desc": "(Mal)ŝalti la avertkadron. Se ŝaltita, la kadro estos montrata kiam vi estos perfidita aŭ atakita grunde.",
     "alert_frame_label": "Avertkadro",
     "ally_keybinds": "Aliancaj Fulmklavoj",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Malfermu Lobiajn Ligilojn en Steam",
     "swap_direction": "Ŝanĝi Lanĉdirekton de Misiloj",
     "swap_direction_desc": "Ŝanĝas la lanĉdirekton de misiloj (supre/sube).",
+    "tab_about": "Pri",
     "tab_audio": "Aŭdio",
     "tab_display": "Montru",
     "tab_gameplay": "Ludado",

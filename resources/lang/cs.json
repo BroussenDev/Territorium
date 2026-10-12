@@ -25,7 +25,6 @@
     "delete_account_warning": "Váš účet bude trvale smazán 24 hodin po potvrzení a ze všech zařízení budete okamžitě odhlášeni. Opětovné přihlášení žádost o smazání nezruší; během těchto 24 hodin ji může zrušit pouze podpora.",
     "desktop_login_discord": "Pokračujte s Discord ve vašem prohlížeči",
     "desktop_login_google": "Pokračujte s Google ve svém prohlížeči",
-    "desktop_login_needs_update": "Přihlášení vyžaduje novější verzi desktopové aplikace. Pro aktualizaci restartujte Steam a zkuste to znovu.",
     "desktop_sign_in_desc": "Přihlášením se ve vašem prohlížeči otevře web Territorium. Přihlaste se tam, potvrďte odkaz na svůj Steam účet a hra to vyzvedne.",
     "email_placeholder": "Zadejte svou e-mailovou adresu",
     "enter_email_address": "Zadejte prosím e-mailovou adresu",
@@ -911,26 +910,6 @@
     "title": "Balíček Conquérant odemčen!",
     "where": "Vše je ve vašem inventáři: titul si vyberte tlačítkem odznaku u jména."
   },
-  "desktop_gate": {
-    "back_to_game": "Zpět ke hře",
-    "browser_fallback": "Prohlížeč se nepodařilo otevřít automaticky – použijte výše uvedený odkaz.",
-    "cancel": "Zrušit",
-    "code_destination_generic": "Chcete-li propojit svůj účet, zadejte tento kód na webu Territorium:",
-    "code_destination_site": "Pro propojení účtu zadejte tento kód na {site}:",
-    "continue_to_game": "Pokračujte do hry",
-    "expired": "Platnost tohoto kódu vypršela. Začněte znovu, abyste získali nový.",
-    "heading": "Vítejte v Territorium",
-    "link_existing": "Propojit stávající účet",
-    "linking_failed_reason": "Propojení se nezdařilo: {reason}",
-    "linking_failed_unknown": "Propojení se z neznámého důvodu nezdařilo.",
-    "new_player": "Nový přehrávač",
-    "not_found": "Tento kód již není platný. Začněte znovu, abyste získali nový.",
-    "prompt": "Hrajete poprvé, nebo už máte účet?",
-    "retry": "Zkuste to znovu",
-    "starting_link": "Spouštění propojování účtů…",
-    "ticket_unavailable": "Propojení účtu se teď nepodařilo spustit. Můžete to zkusit znovu nebo pokračovat ve hře.",
-    "title": "Territorium - Nastavení účtu"
-  },
   "desktop_offline": {
     "go_online": "Přejít online",
     "offline": "Žádné připojení k Territorium: sólo hra je stále k dispozici.",
@@ -938,13 +917,8 @@
     "staying": "Offline režim: k dispozici je jen sólo hra.",
     "still_offline": "Stále žádné připojení k Territorium."
   },
-  "desktop_presence": {
-    "in_game": "Ve hře",
-    "spectating": "Sleduje hru"
-  },
   "desktop_session": {
     "generic": "K vašemu účtu Territorium se nepodařilo přihlásit",
-    "needs_account": "Nastavte si účet Territorium pro hraní online",
     "network": "K Territorium se nelze připojit. Zkontrolujte své připojení.",
     "retry": "Zkusit znovu",
     "retrying": "Přihlašování…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steamu se nepodařilo ověřit vaši relaci. Restartování Steamu tento problém obvykle vyřeší."
   },
   "desktop_status": {
-    "go_online": "Přejít online",
     "offline": "Offline: nelze se spojit se servery Territoria",
     "retry": "Zkuste to znovu",
     "retrying": "Opakování…"
-  },
-  "desktop_update": {
-    "blocked": "Pro nejnovější verzi je nutná aktualizace přes Steam",
-    "downloading": "Stahování aktualizace… {percent}%",
-    "failed": "Aktualizaci se nepodařilo stáhnout",
-    "ready": "Aktualizace je připravena",
-    "reload": "Znovu načíst",
-    "retry": "Zkusit znovu"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium nemohlo použít vaši grafickou kartu, takže hru nelze spustit. To je obvykle dočasné. Chcete-li to opravit:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Přidat do seznamu přání"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Zadejte kód zobrazený v aplikaci Steam na počítači.",
-    "code_submit": "Pokračovat",
-    "confirm": "Propojit účet",
-    "confirm_prompt": "Propojit účet Steam „{persona}“ s účtem „{username}“?",
-    "confirm_prompt_no_persona": "Propojit váš účet Steam s účtem „{username}“?",
-    "conflict_confirm": "Smazat a propojit",
-    "conflict_deleting": "Mazání…",
-    "conflict_explain": "Tento účet byl pro vás vytvořen při prvním spuštění hry na Steamu. Propojením se trvale smaže i se vším, co na něm je.",
-    "conflict_games": "{games, plural, =0 {Žádné odehrané hry} one {Odehraná hra #} other {# odehraných her}}",
-    "conflict_games_capped": "{games}+ odehraných her",
-    "conflict_keep": "Zůstane vám {username} a vaše nákupy na Steamu se přesunou pomocí odkazu.",
-    "conflict_prompt": "Steam {persona} je již připojen k samostatnému účtu Territorium.",
-    "conflict_prompt_no_persona": "Tento účet Steam je již připojen k samostatnému účtu Territorium.",
-    "conflict_warning": "Toto nelze vrátit zpět.",
-    "invalid_code": "Toto nevypadá jako platný kód. Zkontrolujte ho a zkuste to znovu.",
-    "linking": "Propojuji…",
-    "load_error": "Nepodařilo se načíst údaje o vašem účtu. Zkuste propojení znovu spustit ze Steamu.",
-    "load_error_code": "Nepodařilo se načíst údaje o vašem účtu. Zkuste to prosím znovu.",
     "reason_account_already_has_steam": "Váš účet je již propojen s jiným účtem Steam.",
-    "reason_discard_blocked": "Účet Territorium tohoto účtu Steam nelze automaticky odstranit. Kontaktujte prosím podporu a my to za vás vyřešíme.",
-    "reason_discard_blocked_paid": "Účet Territorium tohoto účtu Steam obsahuje nákupy, takže jej nemůžeme automaticky smazat. Kontaktujte prosím podporu a my to za vás vyřešíme.",
-    "reason_discard_deferred": "Nákup na tento účet stále probíhá. Zkuste to znovu za několik minut.",
-    "reason_discard_not_linked": "Odkaz nebyl dokončen. Spusťte odkaz znovu.",
-    "reason_expired": "Platnost tohoto odkazu vypršela. Zkuste propojení znovu spustit ze Steamu.",
-    "reason_offer_unavailable": "Platnost tohoto potvrzení vypršela. Spusťte odkaz znovu.",
-    "reason_rate_limited": "Příliš mnoho pokusů. Počkejte {seconds, plural, =0 {chvíli} one {# sekundu} few {# sekundy} other {# sekund}} a zkuste to znovu.",
     "reason_steam_has_progress": "Tento účet Steam již obsahuje vlastní postup ve hře a nelze ho sloučit.",
-    "reason_steam_linked_elsewhere": "Tento účet Steam je již propojen s jiným účtem Territorium.",
-    "success": "Váš účet Steam je nyní propojen.",
-    "title": "Propojit účet Steam"
+    "reason_steam_linked_elsewhere": "Tento účet Steam je již propojen s jiným účtem Territorium."
   },
   "steam_user_header": {
     "avatar_alt": "Profilový obrázek na Steamu",
@@ -3125,6 +3062,12 @@
     "message": "K dispozici je nová verze Territoria. Stránka se nyní aktualizuje."
   },
   "user_setting": {
+    "about_language": "Jazyk",
+    "about_language_change": "Změnit jazyk",
+    "about_legal": "Právní informace",
+    "about_license": "Licence a autoři",
+    "about_source": "Zdrojový kód",
+    "about_version": "Verze",
     "alert_frame_desc": "Zapne/vypne rámeček s upozorněním. Pokud je povolený, zobrazí se při zradě nebo útoku přes pevninu.",
     "alert_frame_label": "Rámeček s upozorněním",
     "ally_keybinds": "Klávesové zkratky pro spojenectví",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Otevřete Lobby Links ve službě Steam",
     "swap_direction": "Změnit směr rakety",
     "swap_direction_desc": "Změnit směr odpalu rakety (nahoru/dolů).",
+    "tab_about": "O hře",
     "tab_audio": "Zvuk",
     "tab_display": "Displej",
     "tab_gameplay": "Hratelnost",

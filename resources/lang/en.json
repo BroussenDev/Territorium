@@ -25,7 +25,6 @@
     "delete_account_warning": "Your account will be permanently deleted 24 hours after you confirm, and you will be logged out on all devices right away. Signing in again does not cancel it; only support can, within those 24 hours.",
     "desktop_login_discord": "Continue with Discord in your browser",
     "desktop_login_google": "Continue with Google in your browser",
-    "desktop_login_needs_update": "Signing in needs a newer version of the desktop app. Restart Steam to update, then try again.",
     "desktop_sign_in_desc": "Signing in opens the Territorium website in your browser. Sign in there, confirm the link to your Steam account, and the game will pick it up.",
     "email_placeholder": "Enter your email address",
     "enter_email_address": "Please enter an email address",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant unlocked!",
     "where": "Everything is in your Inventory: choose your title with the badge button next to your name."
   },
-  "desktop_gate": {
-    "back_to_game": "Back to Game",
-    "browser_fallback": "Couldn't open your browser automatically — use the link above.",
-    "cancel": "Cancel",
-    "code_destination_generic": "Enter this code on the Territorium website to link your account:",
-    "code_destination_site": "Enter this code at {site} to link your account:",
-    "continue_to_game": "Continue to Game",
-    "expired": "This code has expired. Start over to get a new one.",
-    "heading": "Welcome to Territorium",
-    "link_existing": "Link Existing Account",
-    "linking_failed_reason": "Linking failed: {reason}",
-    "linking_failed_unknown": "Linking failed for an unknown reason.",
-    "new_player": "New Player",
-    "not_found": "This code is no longer valid. Start over to get a new one.",
-    "prompt": "Is this your first time playing, or do you already have an account?",
-    "retry": "Retry",
-    "starting_link": "Starting account linking…",
-    "ticket_unavailable": "Couldn't start account linking right now. You can try again, or continue to the game.",
-    "title": "Territorium - Account Setup"
-  },
   "desktop_offline": {
     "go_online": "Go online",
     "offline": "No connection to Territorium: solo is still available.",
@@ -938,13 +917,8 @@
     "staying": "Offline mode: only solo is available.",
     "still_offline": "Still no connection to Territorium."
   },
-  "desktop_presence": {
-    "in_game": "In game",
-    "spectating": "Spectating"
-  },
   "desktop_session": {
     "generic": "Couldn't sign in to your Territorium account",
-    "needs_account": "Set up your Territorium account to play online",
     "network": "Can't reach Territorium. Check your connection.",
     "retry": "Retry",
     "retrying": "Signing in…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam couldn't verify your session. Restarting Steam usually fixes this."
   },
   "desktop_status": {
-    "go_online": "Go online",
     "offline": "Offline: can't reach the Territorium servers",
     "retry": "Retry",
     "retrying": "Retrying…"
-  },
-  "desktop_update": {
-    "blocked": "A Steam update is required for the latest version",
-    "downloading": "Downloading update… {percent}%",
-    "failed": "Couldn't download the update",
-    "ready": "Update ready",
-    "reload": "Reload",
-    "retry": "Retry"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium couldn't use your graphics card, so the game can't run. This is usually temporary. To fix it:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Add to my wishlist"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Enter the code shown on your Steam desktop app.",
-    "code_submit": "Continue",
-    "confirm": "Link Account",
-    "confirm_prompt": "Link Steam {persona} with account {username}?",
-    "confirm_prompt_no_persona": "Link your Steam account with account {username}?",
-    "conflict_confirm": "Delete it and link",
-    "conflict_deleting": "Deleting…",
-    "conflict_explain": "That account was created for you the first time you launched the game on Steam. Linking will permanently delete it and everything on it.",
-    "conflict_games": "{games, plural, =0 {No games played} one {# game played} other {# games played}}",
-    "conflict_games_capped": "{games}+ games played",
-    "conflict_keep": "You'll keep {username}, and your Steam purchases move across with the link.",
-    "conflict_prompt": "Steam {persona} is already attached to a separate Territorium account.",
-    "conflict_prompt_no_persona": "This Steam account is already attached to a separate Territorium account.",
-    "conflict_warning": "This can't be undone.",
-    "invalid_code": "That doesn't look like a valid code. Check it and try again.",
-    "linking": "Linking…",
-    "load_error": "Couldn't load your account details. Please try again from Steam.",
-    "load_error_code": "Couldn't load your account details. Please try again.",
     "reason_account_already_has_steam": "Your account is already linked to a different Steam account.",
-    "reason_discard_blocked": "This Steam account's Territorium account can't be removed automatically. Please contact support and we'll sort it out for you.",
-    "reason_discard_blocked_paid": "This Steam account's Territorium account has purchases on it, so we can't delete it automatically. Please contact support and we'll sort it out for you.",
-    "reason_discard_deferred": "A purchase on that account is still going through. Please try again in a few minutes.",
-    "reason_discard_not_linked": "The link didn't complete. Please start the link again.",
-    "reason_expired": "This link has expired. Please try again from Steam.",
-    "reason_offer_unavailable": "This confirmation has expired. Please start the link again.",
-    "reason_rate_limited": "Too many attempts. Please wait {seconds, plural, =0 {a moment} one {# second} other {# seconds}} and try again.",
     "reason_steam_has_progress": "This Steam account already has its own progress and can't be merged.",
-    "reason_steam_linked_elsewhere": "This Steam account is already linked to a different Territorium account.",
-    "success": "Your Steam account is now linked.",
-    "title": "Link Steam Account"
+    "reason_steam_linked_elsewhere": "This Steam account is already linked to a different Territorium account."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
@@ -3125,6 +3062,12 @@
     "message": "A new version of Territorium is available. The page will now refresh to update."
   },
   "user_setting": {
+    "about_language": "Language",
+    "about_language_change": "Change language",
+    "about_legal": "Legal information",
+    "about_license": "Licence and credits",
+    "about_source": "Source code",
+    "about_version": "Version",
     "alert_frame_desc": "Toggle the alert frame. When enabled, the frame will be displayed when you are betrayed or attacked over land.",
     "alert_frame_label": "Alert Frame",
     "ally_keybinds": "Ally Keybinds",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Open Lobby Links in Steam",
     "swap_direction": "Swap Rocket Direction",
     "swap_direction_desc": "Toggle rocket launch direction (up/down).",
+    "tab_about": "About",
     "tab_audio": "Audio",
     "tab_display": "Display",
     "tab_gameplay": "Gameplay",

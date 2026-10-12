@@ -25,7 +25,6 @@
     "delete_account_warning": "Akun Anda akan dihapus secara permanen 24 jam setelah Anda mengonfirmasi, dan Anda akan segera keluar dari semua perangkat. Masuk lagi tidak membatalkannya; hanya support yang bisa, dalam waktu 24 jam tersebut.",
     "desktop_login_discord": "Lanjutkan dengan Discord di browser Anda",
     "desktop_login_google": "Lanjutkan dengan Google di browser Anda",
-    "desktop_login_needs_update": "Proses masuk memerlukan versi aplikasi desktop yang lebih baru. Mulai ulang Steam untuk memperbarui, lalu coba lagi.",
     "desktop_sign_in_desc": "Masuk akan membuka situs web Territorium di browser Anda. Masuk di sana, konfirmasikan tautan ke akun Steam Anda, dan permainan akan mengambilnya.",
     "email_placeholder": "Masukkan alamat email Anda",
     "enter_email_address": "Silahkan masukan alamat email",
@@ -911,26 +910,6 @@
     "title": "Paket Conquérant terbuka!",
     "where": "Semuanya ada di Inventaris Anda: pilih gelar dengan tombol lencana di samping nama Anda."
   },
-  "desktop_gate": {
-    "back_to_game": "Kembali ke Permainan",
-    "browser_fallback": "Tidak dapat membuka browser Anda secara otomatis — gunakan tautan di atas.",
-    "cancel": "Membatalkan",
-    "code_destination_generic": "Masukkan kode ini di situs web Territorium untuk menautkan akun Anda:",
-    "code_destination_site": "Masukkan kode ini di {site} untuk menautkan akun Anda:",
-    "continue_to_game": "Lanjutkan ke Permainan",
-    "expired": "Kode ini telah kedaluwarsa. Mulailah dari awal untuk mendapatkan yang baru.",
-    "heading": "Selamat datang di Territorium",
-    "link_existing": "Tautkan Akun yang Ada",
-    "linking_failed_reason": "Tautan gagal: {reason}",
-    "linking_failed_unknown": "Penautan gagal karena alasan yang tidak diketahui.",
-    "new_player": "Pemain Baru",
-    "not_found": "Kode ini tidak berlaku lagi. Mulailah dari awal untuk mendapatkan yang baru.",
-    "prompt": "Apakah ini pertama kalinya Anda bermain atau sudah memiliki akun?",
-    "retry": "Mencoba kembali",
-    "starting_link": "Memulai penautan akun…",
-    "ticket_unavailable": "Tidak dapat memulai penautan akun saat ini. Anda dapat mencoba lagi, atau melanjutkan permainan.",
-    "title": "Territorium - Pengaturan Akun"
-  },
   "desktop_offline": {
     "go_online": "Kembali online",
     "offline": "Tidak ada koneksi ke Territorium: mode solo tetap tersedia.",
@@ -938,13 +917,8 @@
     "staying": "Mode offline: hanya mode solo yang tersedia.",
     "still_offline": "Masih belum ada koneksi ke Territorium."
   },
-  "desktop_presence": {
-    "in_game": "Dalam permainan",
-    "spectating": "Menonton"
-  },
   "desktop_session": {
     "generic": "Tidak dapat masuk ke akun Territorium Anda",
-    "needs_account": "Siapkan akun Territorium Anda untuk bermain online",
     "network": "Tidak dapat mencapai Territorium. Periksa koneksi Anda.",
     "retry": "Mencoba kembali",
     "retrying": "Masuk…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam tidak dapat memverifikasi sesi Anda. Memulai ulang Steam biasanya memperbaikinya."
   },
   "desktop_status": {
-    "go_online": "Sambungkan ke internet",
     "offline": "Offline: tidak dapat menjangkau server Territorium",
     "retry": "Mencoba kembali",
     "retrying": "Mencoba lagi…"
-  },
-  "desktop_update": {
-    "blocked": "Pembaruan Steam diperlukan untuk versi terbaru",
-    "downloading": "Mengunduh pembaruan… {percent}%",
-    "failed": "Tidak dapat mengunduh pembaruan",
-    "ready": "Pembaruan siap",
-    "reload": "Muat ulang",
-    "retry": "Mencoba kembali"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium tidak dapat menggunakan kartu grafis Anda, sehingga game tidak dapat dijalankan. Ini biasanya bersifat sementara. Untuk memperbaikinya:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Tambahkan ke daftar keinginan"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Masukkan kode yang ditampilkan di aplikasi desktop Steam Anda.",
-    "code_submit": "Melanjutkan",
-    "confirm": "Tautkan Akun",
-    "confirm_prompt": "Tautkan Steam {persona} dengan akun {username}?",
-    "confirm_prompt_no_persona": "Tautkan akun Steam Anda dengan akun {username}?",
-    "conflict_confirm": "Hapus dan tautkan",
-    "conflict_deleting": "Menghapus…",
-    "conflict_explain": "Akun itu dibuat untuk Anda saat pertama kali meluncurkan game di Steam. Menautkan akan menghapusnya secara permanen dan semua yang ada di dalamnya.",
-    "conflict_games": "{games, plural, =0 {Tidak ada permainan yang dimainkan} one {# permainan dimainkan} other {# permainan dimainkan}}",
-    "conflict_games_capped": "{games}+ permainan dimainkan",
-    "conflict_keep": "Anda akan tetap menggunakan {username}, dan pembelian Steam Anda akan diteruskan dengan tautan tersebut.",
-    "conflict_prompt": "Steam {persona} sudah terpasang pada akun Territorium terpisah.",
-    "conflict_prompt_no_persona": "Akun Steam ini sudah terpasang pada akun Territorium terpisah.",
-    "conflict_warning": "Hal ini tidak dapat dibatalkan.",
-    "invalid_code": "Sepertinya itu bukan kode yang valid. Periksa dan coba lagi.",
-    "linking": "Menghubungkan…",
-    "load_error": "Tidak dapat memuat detail akun Anda. Silakan coba lagi dari Steam.",
-    "load_error_code": "Tidak dapat memuat detail akun Anda. Silakan coba lagi.",
     "reason_account_already_has_steam": "Akun Anda sudah tertaut ke akun Steam lain.",
-    "reason_discard_blocked": "Akun Territorium akun Steam ini tidak dapat dihapus secara otomatis. Silakan hubungi dukungan dan kami akan menyelesaikannya untuk Anda.",
-    "reason_discard_blocked_paid": "Akun Territorium akun Steam ini ada pembeliannya, jadi kami tidak bisa menghapusnya secara otomatis. Silakan hubungi dukungan dan kami akan menyelesaikannya untuk Anda.",
-    "reason_discard_deferred": "Pembelian pada akun itu masih berlangsung. Silakan coba lagi dalam beberapa menit.",
-    "reason_discard_not_linked": "Tautannya tidak lengkap. Silakan mulai tautannya lagi.",
-    "reason_expired": "Tautan ini telah kedaluwarsa. Silakan coba lagi dari Steam.",
-    "reason_offer_unavailable": "Konfirmasi ini telah kedaluwarsa. Silakan mulai tautannya lagi.",
-    "reason_rate_limited": "Terlalu banyak percobaan. Harap tunggu {seconds, plural, =0 {sebentar} other {# detik}} lalu coba lagi.",
     "reason_steam_has_progress": "Akun Steam ini sudah ada progresnya sendiri dan tidak bisa digabungkan.",
-    "reason_steam_linked_elsewhere": "Akun Steam ini sudah tertaut ke akun Territorium lain.",
-    "success": "Akun Steam Anda sekarang tertaut.",
-    "title": "Tautkan Akun Steam"
+    "reason_steam_linked_elsewhere": "Akun Steam ini sudah tertaut ke akun Territorium lain."
   },
   "steam_user_header": {
     "avatar_alt": "Avatar uap",
@@ -3125,6 +3062,12 @@
     "message": "Territorium versi baru telah tersedia. Halaman sekarang akan disegarkan untuk diperbarui."
   },
   "user_setting": {
+    "about_language": "Bahasa",
+    "about_language_change": "Ganti bahasa",
+    "about_legal": "Informasi hukum",
+    "about_license": "Lisensi dan kredit",
+    "about_source": "Kode sumber",
+    "about_version": "Versi",
     "alert_frame_desc": "Aktifkan / Nonaktifkan bingkai peringatan. Saat diaktifkan, bingkai akan ditampilkan ketika kamu dikhianati atau diserang melalui darat.",
     "alert_frame_label": "Bingkai Peringatan",
     "ally_keybinds": "Pengikat Kunci Sekutu",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Buka Tautan Lobi di Steam",
     "swap_direction": "Tukar Arah Roket",
     "swap_direction_desc": "Ubah arah peluncuran roket (atas/bawah).",
+    "tab_about": "Tentang",
     "tab_audio": "Audio",
     "tab_display": "Menampilkan",
     "tab_gameplay": "Permainan",

@@ -103,7 +103,7 @@ function filterSignal(item: TransportItem): TransportItem | null {
 /**
  * Faro stamps location.href onto every signal (page meta) and the navigation
  * event carries the from/to URLs. The auth flows land single-use credentials
- * in the URL hash — `#steam-link?token=…`, `#token-login?token-login=…` — and
+ * in the URL hash — `#token-login?token-login=…` — and
  * handleUrl() only strips them after userAuth() resolves, well after the SDK
  * has initialized. So every URL that leaves the page is cut to origin +
  * path: no query, no hash.

@@ -7,12 +7,7 @@ import { isVersusGameType } from "../../core/game/Versus";
 import { PublicGameInfo, PublicGames } from "../../core/Schemas";
 import { getDesktopSessionState } from "../Auth";
 import { crazyGamesSDK } from "../CrazyGamesSDK";
-import {
-  getDesktopUpdateState,
-  isDesktopShell,
-  type DesktopSessionState,
-  type DesktopUpdateState,
-} from "../DesktopShell";
+import { isDesktopShell, type DesktopSessionState } from "../DesktopShell";
 import {
   reportMultiplayerRefusal,
   shouldBlockSocketSourcedAction,
@@ -115,7 +110,6 @@ export class DetailedGameViewModal extends BaseModal {
   @state() private profiles: Record<string, LobbyFilters> = {};
   @state() private selectedProfile = "";
   @state() private profileName = "";
-  @state() private desktopUpdateState: DesktopUpdateState | null = null;
   @state() private viewerTrusted: boolean = false;
   @state() private viewerSignedIn: boolean = false;
   @state() private showTrustRequired: boolean = false;
@@ -179,16 +173,10 @@ export class DetailedGameViewModal extends BaseModal {
 
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener(
-      "desktop-update-state",
-      this.onDesktopUpdateState,
-    );
     document.addEventListener("userMeResponse", this.onUserMe);
     if (isDesktopShell()) {
-      // Seed BOTH from their current values -- this modal mounts well after
-      // the update bridge's synchronous replay has already been dispatched
-      // and lost, so without the seed its join() gate sees null (OPE-396).
-      this.desktopUpdateState = getDesktopUpdateState();
+      // Seeded from its current value: this modal mounts well after Auth may
+      // have published it.
       this.desktopSessionState = getDesktopSessionState();
     }
     document.addEventListener(
@@ -198,10 +186,6 @@ export class DetailedGameViewModal extends BaseModal {
   }
 
   disconnectedCallback() {
-    document.removeEventListener(
-      "desktop-update-state",
-      this.onDesktopUpdateState,
-    );
     document.removeEventListener("userMeResponse", this.onUserMe);
     document.removeEventListener(
       "desktop-session-state",
@@ -210,10 +194,6 @@ export class DetailedGameViewModal extends BaseModal {
     this.onClose();
     super.disconnectedCallback();
   }
-
-  private onDesktopUpdateState = (e: Event) => {
-    this.desktopUpdateState = (e as CustomEvent<DesktopUpdateState>).detail;
-  };
 
   private onUserMe = (e: Event) => {
     const me = (e as CustomEvent<UserMeResponse | false>).detail;
@@ -462,12 +442,9 @@ export class DetailedGameViewModal extends BaseModal {
       // swallow the click that's supposed to make the update bar wiggle. join()
       // does the actual refusing.
       //
-      // Socket-sourced: the desktop update and session states dim a card, a
-      // list-API outage never does. Same predicate join() refuses on.
-      blocked: shouldBlockSocketSourcedAction(
-        this.desktopUpdateState,
-        this.desktopSessionState,
-      ),
+      // Socket-sourced: the desktop session dims a card, a list-API outage
+      // never does. Same predicate join() refuses on.
+      blocked: shouldBlockSocketSourcedAction(this.desktopSessionState),
       viewerTrusted: this.viewerTrusted,
       onClick: () => this.join(lobby),
     });
@@ -800,13 +777,7 @@ export class DetailedGameViewModal extends BaseModal {
    * all the update and session states need.
    */
   private blockedFromLobbyJoin(): boolean {
-    if (
-      !shouldBlockSocketSourcedAction(
-        this.desktopUpdateState,
-        this.desktopSessionState,
-      )
-    )
-      return false;
+    if (!shouldBlockSocketSourcedAction(this.desktopSessionState)) return false;
     reportMultiplayerRefusal(false);
     return true;
   }

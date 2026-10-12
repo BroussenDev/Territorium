@@ -237,8 +237,9 @@ describe("a page a game server rendered", () => {
     expect(ClientEnv.serverWsBase()).toBe("wss://localhost:3000");
   });
 
-  it("targets the injected serverHost, not the document, on desktop", () => {
-    // app://openfront — `window.location.host` is the string "openfront".
+  it("targets the injected serverHost, not the document", () => {
+    // The desktop app's offline build — `window.location.host` is the app's
+    // own "localhost", not a server.
     bootstrap({ serverHost: "blue.openfront.io" });
     expect(ClientEnv.serverWsBase()).toBe("wss://blue.openfront.io");
     expect(ClientEnv.serverHttpBase()).toBe("https://blue.openfront.io");

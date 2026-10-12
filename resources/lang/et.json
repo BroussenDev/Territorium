@@ -25,7 +25,6 @@
     "delete_account_warning": "Teie konto kustutatakse jäädavalt 24 tundi pärast kinnitamist ja teid logitakse kohe kõigist seadmetest välja. Uuesti sisselogimine seda ei tühista; selle 24 tunni jooksul saab ainult tuge.",
     "desktop_login_discord": "Jätkake oma brauseris Discordiga",
     "desktop_login_google": "Jätkake oma brauseris Google'iga",
-    "desktop_login_needs_update": "Sisselogimiseks on vaja töölauarakenduse uuemat versiooni. Värskendamiseks taaskäivitage Steam ja proovige seejärel uuesti.",
     "desktop_sign_in_desc": "Sisselogimine avab teie brauseris Territoriumi veebisaidi. Logige seal sisse, kinnitage oma Steami konto link ja mäng võtab selle üles.",
     "email_placeholder": "Sisesta oma emaili aadress",
     "enter_email_address": "Palun sisesta oma e-posti aadress",
@@ -911,26 +910,6 @@
     "title": "Pakett Conquérant avatud!",
     "where": "Kõik on sinu inventaris: vali tiitel nime kõrval oleva märgi nupuga."
   },
-  "desktop_gate": {
-    "back_to_game": "Tagasi mängu juurde",
-    "browser_fallback": "Teie brauserit ei saanud automaatselt avada – kasutage ülalolevat linki.",
-    "cancel": "Tühista",
-    "code_destination_generic": "Konto linkimiseks sisestage Territoriumi veebisaidile see kood:",
-    "code_destination_site": "Konto linkimiseks sisestage see kood aadressil {site}:",
-    "continue_to_game": "Jätkake mänguga",
-    "expired": "See kood on aegunud. Uue hankimiseks alusta otsast.",
-    "heading": "Tere tulemast Territoriumisse",
-    "link_existing": "Linkige olemasolev konto",
-    "linking_failed_reason": "Linkimine ebaõnnestus: {reason}",
-    "linking_failed_unknown": "Linkimine ebaõnnestus teadmata põhjusel.",
-    "new_player": "Uus mängija",
-    "not_found": "See kood ei kehti enam. Uue hankimiseks alusta otsast.",
-    "prompt": "Kas see on teie esimene kord, kui mängite või on teil juba konto?",
-    "retry": "Proovi uuesti",
-    "starting_link": "Konto linkimise alustamine…",
-    "ticket_unavailable": "Konto linkimist ei saanud praegu alustada. Võite proovida uuesti või jätkata mänguga.",
-    "title": "Territorium – konto seadistamine"
-  },
   "desktop_offline": {
     "go_online": "Mine võrku",
     "offline": "Ühendust Territoriumiga pole: üksikmäng on endiselt saadaval.",
@@ -938,13 +917,8 @@
     "staying": "Võrguühenduseta režiim: saadaval on ainult üksikmäng.",
     "still_offline": "Ühendust Territoriumiga ikka pole."
   },
-  "desktop_presence": {
-    "in_game": "Mängus",
-    "spectating": "Vaatlemine"
-  },
   "desktop_session": {
     "generic": "Teie Territoriumi kontole ei saanud sisse logida",
-    "needs_account": "Seadistage oma Territoriumi konto võrgus mängimiseks",
     "network": "Territoriumisse ei pääse. Kontrollige ühendust.",
     "retry": "Proovi uuesti",
     "retrying": "Sisselogimine…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam ei saanud teie seanssi kinnitada. Steami taaskäivitamine lahendab selle tavaliselt."
   },
   "desktop_status": {
-    "go_online": "Minge võrku",
     "offline": "Võrguühenduseta: Territoriumi serveritega ei saa ühendust",
     "retry": "Proovi uuesti",
     "retrying": "Uuesti proovimine…"
-  },
-  "desktop_update": {
-    "blocked": "Uusima versiooni jaoks on vaja Steami värskendust",
-    "downloading": "Värskenduse allalaadimine… {percent}%",
-    "failed": "Värskendust ei saanud alla laadida",
-    "ready": "Värskendus valmis",
-    "reload": "Laadi uuesti",
-    "retry": "Proovi uuesti"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium ei saanud teie graafikakaarti kasutada, seega ei saa mängu käitada. See on tavaliselt ajutine. Selle parandamiseks tehke järgmist.",
@@ -2725,37 +2690,9 @@
     "wishlist": "Lisa soovinimekirja"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX–XXXX",
-    "code_prompt": "Sisestage oma Steami töölauarakenduses kuvatav kood.",
-    "code_submit": "Jätka",
-    "confirm": "Linkige konto",
-    "confirm_prompt": "Kas siduda Steam {persona} kontoga {username}?",
-    "confirm_prompt_no_persona": "Kas siduda oma Steami konto kontoga {username}?",
-    "conflict_confirm": "Kustutage see ja linkige",
-    "conflict_deleting": "Kustutamine…",
-    "conflict_explain": "See konto loodi teile, kui mängu Steamis esimest korda käivitasite. Linkimine kustutab selle ja kõik sellel olevad jäädavalt.",
-    "conflict_games": "{games, plural, =0 {Mänge pole mängitud} one {# mäng mängitud} other {# mängitud mänge}}",
-    "conflict_games_capped": "{games}+ mängu mängitud",
-    "conflict_keep": "Säilitate numbri {username} ja teie Steami ostud liiguvad lingiga edasi.",
-    "conflict_prompt": "Steam {persona} on juba ühendatud eraldi Territoriumi kontoga.",
-    "conflict_prompt_no_persona": "See Steami konto on juba ühendatud eraldi Territoriumi kontoga.",
-    "conflict_warning": "Seda ei saa tagasi võtta.",
-    "invalid_code": "See ei tundu kehtiva koodina. Kontrollige seda ja proovige uuesti.",
-    "linking": "Linkimine…",
-    "load_error": "Teie konto üksikasju ei saanud laadida. Proovige uuesti Steamist.",
-    "load_error_code": "Teie konto üksikasju ei saanud laadida. Palun proovi uuesti.",
     "reason_account_already_has_steam": "Teie konto on juba lingitud teise Steami kontoga.",
-    "reason_discard_blocked": "Selle Steami konto Territoriumi kontot ei saa automaatselt eemaldada. Võtke ühendust toega ja me lahendame selle teie eest.",
-    "reason_discard_blocked_paid": "Selle Steami konto Territoriumi kontol on oste, seega ei saa me seda automaatselt kustutada. Võtke ühendust toega ja me lahendame selle teie eest.",
-    "reason_discard_deferred": "Selle konto ost on endiselt pooleli. Proovige mõne minuti pärast uuesti.",
-    "reason_discard_not_linked": "Link ei lõpetatud. Palun käivitage link uuesti.",
-    "reason_expired": "See link on aegunud. Proovige uuesti Steamist.",
-    "reason_offer_unavailable": "See kinnitus on aegunud. Palun käivitage link uuesti.",
-    "reason_rate_limited": "Liiga palju katseid. Palun oota {seconds, plural, =0 {hetk} one {# sekund} other {# sekundit}} ja proovi uuesti.",
     "reason_steam_has_progress": "Sellel Steami kontol on juba oma edenemine ja seda ei saa ühendada.",
-    "reason_steam_linked_elsewhere": "See Steami konto on juba lingitud teise Territoriumi kontoga.",
-    "success": "Teie Steami konto on nüüd lingitud.",
-    "title": "Linkige Steami konto"
+    "reason_steam_linked_elsewhere": "See Steami konto on juba lingitud teise Territoriumi kontoga."
   },
   "steam_user_header": {
     "avatar_alt": "Steami avatar",
@@ -3125,6 +3062,12 @@
     "message": "Territoriumi uus versioon on saadaval. Nüüd värskendatakse lehte värskendamiseks."
   },
   "user_setting": {
+    "about_language": "Keel",
+    "about_language_change": "Vaheta keelt",
+    "about_legal": "Õiguslik teave",
+    "about_license": "Litsents ja tegijad",
+    "about_source": "Lähtekood",
+    "about_version": "Versioon",
     "alert_frame_desc": "Lülita hoiatusraam. Kui see on sisse lülitatud, kuvatakse raam, kui sind reedetakse või rünnatakse maismaal.\n",
     "alert_frame_label": "Hoiatusraam",
     "ally_keybinds": "Ally Keybinds",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Avage Steamis fuajee lingid",
     "swap_direction": "Pööra Raketi Trajektoori",
     "swap_direction_desc": "Vali raketi laskmise Trajektoor (Ülesse/alla).",
+    "tab_about": "Teave",
     "tab_audio": "Heli",
     "tab_display": "Ekraan",
     "tab_gameplay": "Mängu käik",

@@ -9,7 +9,7 @@ import {
 import { ClientEnv } from "../../src/client/ClientEnv";
 import { subscribeDesktopSessionRecovery } from "../../src/client/DesktopSessionRecovery";
 import { multiplayerAllowedForSession } from "../../src/client/DesktopShell";
-import { steamSDK, type SteamTicketFailure } from "../../src/client/SteamSDK";
+import { steamSDK } from "../../src/client/SteamSDK";
 
 function setBootstrapConfig() {
   (window as any).BOOTSTRAP_CONFIG = {
@@ -59,14 +59,15 @@ describe("Steam login", () => {
     expect(getDesktopSessionState()).toEqual({ status: "signed-in" });
   });
 
-  // A shell older than this client's SteamTicketResult contract may still
-  // return the legacy `string | null` shape from getAuthTicket(). These two
-  // exercise SteamSDK's normalisation end-to-end through Auth.ts, so they
-  // mock the raw bridge rather than steamSDK.getTicket directly.
-  it("signs in via /auth/steam when the bridge returns a legacy string ticket", async () => {
+  // The bridge's answer crosses from the app as `unknown`. These two exercise
+  // SteamSDK's normalisation end-to-end through Auth.ts, so they mock the raw
+  // bridge rather than steamSDK.getTicket directly.
+  it("signs in via /auth/steam with the ticket the app's bridge returns", async () => {
     (window as any).openfrontDesktop = {
       steam: {
-        getAuthTicket: vi.fn().mockResolvedValue("legacyhexticket"),
+        getAuthTicket: vi
+          .fn()
+          .mockResolvedValue({ ok: true, ticket: "a1b2c3hexticket" }),
         getUser: vi.fn(),
       },
     };
@@ -96,7 +97,7 @@ describe("Steam login", () => {
     }
   });
 
-  it("yields signed-out/steam-unavailable without throwing when the bridge returns a legacy null", async () => {
+  it("yields signed-out/steam-unavailable without throwing when the bridge returns null", async () => {
     (window as any).openfrontDesktop = {
       steam: {
         getAuthTicket: vi.fn().mockResolvedValue(null),
@@ -119,9 +120,9 @@ describe("Steam login", () => {
   });
 
   // Replaces "falls through to the guest/refresh flow when no Steam ticket is
-  // available". The Electron profile has no refresh cookie, so that
-  // fallthrough was a guaranteed 401 that then ran logOut() and dropped the
-  // player's persistent ID. The Steam branch is now terminal.
+  // available". On Steam the session is the Steam account, so that
+  // fallthrough could only fail and run logOut(), dropping the player's
+  // persistent ID. The Steam branch is now terminal.
   // The initial sign-in had no equivalent of the retry path's guarantee: an
   // unexpected throw inside doRefreshJwt reaches userAuth's catch, which
   // returns false without publishing, leaving "unknown" -- which does NOT
@@ -229,53 +230,7 @@ describe("Steam login", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  // The shell declines to mint a ticket until the player answers the
-  // account-link gate. That must land as a diagnosed signed-out state --
-  // and, critically, must never attempt the /auth/steam exchange, because
-  // that exchange is what silently creates a throwaway account.
-  it("does not exchange a ticket when the shell reports needs-account", async () => {
-    vi.spyOn(steamSDK, "isOnSteam").mockReturnValue(true);
-    vi.spyOn(steamSDK, "getTicket").mockResolvedValue({
-      ok: false,
-      reason: "needs-account",
-    });
-    const fetchMock = vi.spyOn(globalThis, "fetch");
-
-    await getAuthHeader();
-
-    expect(getDesktopSessionState()).toEqual({
-      status: "signed-out",
-      reason: "needs-account",
-    });
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  // The shell distinguishes three reasons it may decline to mint, and only
-  // one of them is "set up an account". Collapsing them is the bug this
-  // mapping exists to prevent: an OpenFront API outage used to tell a player
-  // with a perfectly good account to set one up. None of them may attempt the
-  // exchange.
-  it.each([
-    ["ticket-rejected", "steam-ticket-rejected"],
-    ["api-unreachable", "network"],
-  ])("maps the shell's %s to %s without exchanging", async (from, to) => {
-    vi.spyOn(steamSDK, "isOnSteam").mockReturnValue(true);
-    vi.spyOn(steamSDK, "getTicket").mockResolvedValue({
-      ok: false,
-      reason: from as SteamTicketFailure,
-    });
-    const fetchMock = vi.spyOn(globalThis, "fetch");
-
-    await getAuthHeader();
-
-    expect(getDesktopSessionState()).toEqual({
-      status: "signed-out",
-      reason: to,
-    });
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  // An old client talking to a new shell can receive a ticket failure reason
+  // An old client talking to a newer app can receive a ticket failure reason
   // outside its own SteamTicketFailure union. That must still fall through to
   // the safe default rather than return undefined at runtime: signed-out with
   // "steam-error", never attempting an exchange.

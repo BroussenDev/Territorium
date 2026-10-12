@@ -25,7 +25,6 @@
     "delete_account_warning": "您确认后的 24 小时后，您的帐户将被永久删除，并且您将立即在所有设备上注销。再次登录并不会取消；只有支持才能在这 24 小时内完成。",
     "desktop_login_discord": "在浏览器中继续使用 Discord",
     "desktop_login_google": "继续在浏览器中使用 Google",
-    "desktop_login_needs_update": "登录需要较新版本的桌面应用程序。重新启动 Steam 进行更新，然后重试。",
     "desktop_sign_in_desc": "登录后会在浏览器中打开 Territorium 网站。在那里登录，确认您的 Steam 帐户的链接，游戏就会选择它。",
     "email_placeholder": "请输入您的电子邮件地址",
     "enter_email_address": "请输入电子邮件地址",
@@ -911,26 +910,6 @@
     "title": "Conquérant礼包已解锁！",
     "where": "所有物品都在你的物品栏中：用名字旁的徽章按钮选择称号。"
   },
-  "desktop_gate": {
-    "back_to_game": "返回游戏",
-    "browser_fallback": "无法自动打开您的浏览器 - 请使用上面的链接。",
-    "cancel": "取消",
-    "code_destination_generic": "在 Territorium 网站上输入此代码以链接您的帐户：",
-    "code_destination_site": "在 {site} 输入此代码以链接您的帐户：",
-    "continue_to_game": "继续游戏",
-    "expired": "该代码已过期。重新开始以获得一个新的。",
-    "heading": "欢迎来到 Territorium",
-    "link_existing": "链接现有帐户",
-    "linking_failed_reason": "链接失败：{reason}",
-    "linking_failed_unknown": "由于未知原因，链接失败。",
-    "new_player": "新玩家",
-    "not_found": "该代码不再有效。重新开始以获得一个新的。",
-    "prompt": "这是您第一次玩，还是已经有帐户？",
-    "retry": "重试",
-    "starting_link": "正在开始帐户链接...",
-    "ticket_unavailable": "目前无法开始帐户关联。您可以重试，或者继续游戏。",
-    "title": "Territorium - 帐户设置"
-  },
   "desktop_offline": {
     "go_online": "重新联网",
     "offline": "无法连接 Territorium：仍可单人游戏。",
@@ -938,13 +917,8 @@
     "staying": "离线模式：仅可单人游戏。",
     "still_offline": "仍无法连接 Territorium。"
   },
-  "desktop_presence": {
-    "in_game": "游戏中",
-    "spectating": "观看"
-  },
   "desktop_session": {
     "generic": "无法登录您的 Territorium 帐户",
-    "needs_account": "设置您的 Territorium 帐户以进行在线游戏",
     "network": "无法到达 Territorium。检查您的连接。",
     "retry": "重试",
     "retrying": "正在登录...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam 无法验证您的会话。重新启动 Steam 通常可以解决此问题。"
   },
   "desktop_status": {
-    "go_online": "上网",
     "offline": "离线：无法访问 Territorium 服务器",
     "retry": "重试",
     "retrying": "正在重试..."
-  },
-  "desktop_update": {
-    "blocked": "需要 Steam 更新才能获得最新版本",
-    "downloading": "正在下载更新…{percent}%",
-    "failed": "无法下载更新",
-    "ready": "更新准备就绪",
-    "reload": "重新加载",
-    "retry": "重试"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium 无法使用您的显卡，因此游戏无法运行。这通常是暂时的。要修复它：",
@@ -2725,37 +2690,9 @@
     "wishlist": "加入愿望单"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "输入 Steam 桌面应用程序上显示的代码。",
-    "code_submit": "继续",
-    "confirm": "关联账户",
-    "confirm_prompt": "将 Steam {persona} 与帐户 {username} 关联？",
-    "confirm_prompt_no_persona": "将您的 Steam 帐户与帐户 {username} 关联？",
-    "conflict_confirm": "删了再链接",
-    "conflict_deleting": "正在删除...",
-    "conflict_explain": "该帐户是您第一次在 Steam 上启动游戏时为您创建的。链接将永久删除它及其上的所有内容。",
-    "conflict_games": "{games, plural, =0 {没有玩过任何游戏} one {# 玩过的游戏} other {# 玩过的游戏}}",
-    "conflict_games_capped": "{games}+ 玩过的游戏",
-    "conflict_keep": "您将保留 {username}，并且您的 Steam 购买会随着链接移动。",
-    "conflict_prompt": "Steam {persona} 已附加到单独的 Territorium 帐户。",
-    "conflict_prompt_no_persona": "此 Steam 帐户已附加到一个单独的 Territorium 帐户。",
-    "conflict_warning": "这无法撤消。",
-    "invalid_code": "这看起来不像是有效的代码。检查并重试。",
-    "linking": "正在链接…",
-    "load_error": "无法加载您的帐户详细信息。请从 Steam 重试。",
-    "load_error_code": "无法加载您的帐户详细信息。请再试一次。",
     "reason_account_already_has_steam": "您的帐户已链接到另一个 Steam 帐户。",
-    "reason_discard_blocked": "此 Steam 帐户的 Territorium 帐户无法自动删除。请联系支持人员，我们将为您解决。",
-    "reason_discard_blocked_paid": "此 Steam 帐户的 Territorium 帐户上有购买内容，因此我们无法自动删除它。请联系支持人员，我们将为您解决。",
-    "reason_discard_deferred": "该帐户的购买仍在进行中。请几分钟后重试。",
-    "reason_discard_not_linked": "链接未完成。请重新启动链接。",
-    "reason_expired": "该链接已过期。请从 Steam 重试。",
-    "reason_offer_unavailable": "此确认已过期。请重新启动链接。",
-    "reason_rate_limited": "尝试次数太多。请等待{seconds, plural, =0 {一会儿} one {# 第二} other {#秒}}，然后重试。",
     "reason_steam_has_progress": "该Steam帐户已有自己的进度，无法合并。",
-    "reason_steam_linked_elsewhere": "此 Steam 帐户已链接到另一个 Territorium 帐户。",
-    "success": "您的 Steam 帐户现已关联。",
-    "title": "链接 Steam 帐户"
+    "reason_steam_linked_elsewhere": "此 Steam 帐户已链接到另一个 Territorium 帐户。"
   },
   "steam_user_header": {
     "avatar_alt": "蒸汽头像",
@@ -3125,6 +3062,12 @@
     "message": "新版本的 Territorium 现已推出。该页面现在将刷新以进行更新。"
   },
   "user_setting": {
+    "about_language": "语言",
+    "about_language_change": "更改语言",
+    "about_legal": "法律信息",
+    "about_license": "许可与致谢",
+    "about_source": "源代码",
+    "about_version": "版本",
     "alert_frame_desc": "切换警告框显示。若启用，则当你被背叛或被陆上攻击时将会显示此警告框。",
     "alert_frame_label": "警告框",
     "ally_keybinds": "结盟相关按键绑定",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "在 Steam 中打开大厅链接",
     "swap_direction": "调换火箭方向",
     "swap_direction_desc": "切换火箭发射方向（上/下）。",
+    "tab_about": "关于",
     "tab_audio": "声音的",
     "tab_display": "展示",
     "tab_gameplay": "游戏玩法",

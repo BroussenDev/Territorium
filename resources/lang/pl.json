@@ -25,7 +25,6 @@
     "delete_account_warning": "Twoje konto zostanie trwale usunięte w ciągu 24 godzin od potwierdzenia i nastąpi natychmiastowe wylogowanie ze wszystkich urządzeń. Ponowne zalogowanie się nie anuluje; tylko wsparcie może w ciągu tych 24 godzin.",
     "desktop_login_discord": "Kontynuuj korzystanie z Discorda w przeglądarce",
     "desktop_login_google": "Kontynuuj korzystanie z Google w przeglądarce",
-    "desktop_login_needs_update": "Do zalogowania potrzebna jest nowsza wersja aplikacji komputerowej. Uruchom ponownie Steam, aby zaktualizować, a następnie spróbuj ponownie.",
     "desktop_sign_in_desc": "Zalogowanie się otwiera stronę Territorium w Twojej przeglądarce. Zaloguj się tam, potwierdź link do swojego konta Steam, a gra go odbierze.",
     "email_placeholder": "Wpisz swój adres e-mail",
     "enter_email_address": "Proszę podać adres e-mail",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant odblokowany!",
     "where": "Wszystko jest w Twoim Ekwipunku: wybierz tytuł przyciskiem odznaki obok swojej nazwy."
   },
-  "desktop_gate": {
-    "back_to_game": "Powrót do gry",
-    "browser_fallback": "Nie można automatycznie otworzyć przeglądarki — użyj linku powyżej.",
-    "cancel": "Anulować",
-    "code_destination_generic": "Wpisz ten kod na stronie Territorium, aby połączyć swoje konto:",
-    "code_destination_site": "Wpisz ten kod pod numerem {site}, aby połączyć swoje konto:",
-    "continue_to_game": "Kontynuuj grę",
-    "expired": "Ten kod wygasł. Zacznij od nowa, aby zdobyć nowy.",
-    "heading": "Witamy w Territorium",
-    "link_existing": "Połącz istniejące konto",
-    "linking_failed_reason": "Połączenie nie powiodło się: {reason}",
-    "linking_failed_unknown": "Połączenie nie powiodło się z nieznanego powodu.",
-    "new_player": "Nowy gracz",
-    "not_found": "Ten kod jest już nieważny. Zacznij od nowa, aby zdobyć nowy.",
-    "prompt": "Czy grasz po raz pierwszy, czy masz już konto?",
-    "retry": "Spróbować ponownie",
-    "starting_link": "Rozpoczynam łączenie kont…",
-    "ticket_unavailable": "Nie można teraz rozpocząć łączenia kont. Możesz spróbować ponownie lub kontynuować grę.",
-    "title": "Territorium - Konfiguracja konta"
-  },
   "desktop_offline": {
     "go_online": "Przejdź online",
     "offline": "Brak połączenia z Territorium: gra solo jest nadal dostępna.",
@@ -938,13 +917,8 @@
     "staying": "Tryb offline: dostępna jest tylko gra solo.",
     "still_offline": "Nadal brak połączenia z Territorium."
   },
-  "desktop_presence": {
-    "in_game": "W grze",
-    "spectating": "Oglądanie"
-  },
   "desktop_session": {
     "generic": "Nie udało się zalogować na Twoje konto Territorium",
-    "needs_account": "Skonfiguruj swoje konto Territorium, aby grać online",
     "network": "Nie można połączyć się z Territorium. Sprawdź swoje połączenie.",
     "retry": "Spróbować ponownie",
     "retrying": "Logowanie…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam nie mógł zweryfikować Twojej sesji. Ponowne uruchomienie Steam zwykle rozwiązuje ten problem."
   },
   "desktop_status": {
-    "go_online": "Przejdź do trybu online",
     "offline": "Offline: nie można połączyć się z serwerami Territorium",
     "retry": "Spróbować ponownie",
     "retrying": "Ponawiam próbę…"
-  },
-  "desktop_update": {
-    "blocked": "Do najnowszej wersji wymagana jest aktualizacja Steam",
-    "downloading": "Pobieram aktualizację… {percent}%",
-    "failed": "Nie udało się pobrać aktualizacji",
-    "ready": "Aktualizacja gotowa",
-    "reload": "Przeładować",
-    "retry": "Spróbować ponownie"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium nie mogło użyć twojej karty graficznej, więc gra nie może zostać uruchomiona. Zwykle jest to tymczasowe. Aby to naprawić:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Dodaj do listy życzeń"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Wpisz kod wyświetlony w aplikacji komputerowej Steam.",
-    "code_submit": "Kontynuować",
-    "confirm": "Połącz konto",
-    "confirm_prompt": "Połączyć Steam {persona} z kontem {username}?",
-    "confirm_prompt_no_persona": "Połączyć swoje konto Steam z kontem {username}?",
-    "conflict_confirm": "Usuń go i połącz",
-    "conflict_deleting": "Usuwanie…",
-    "conflict_explain": "To konto zostało utworzone dla Ciebie przy pierwszym uruchomieniu gry na Steamie. Połączenie spowoduje trwałe usunięcie tego pliku i wszystkiego, co się na nim znajduje.",
-    "conflict_games": "{games, plural, =0 {Brak rozegranych gier} one {# rozegrano grę} other {# rozegranych gier}}",
-    "conflict_games_capped": "{games}+ rozegranych gier",
-    "conflict_keep": "Zachowasz {username}, a Twoje zakupy na Steam zostaną przeniesione wraz z linkiem.",
-    "conflict_prompt": "Steam {persona} jest już podłączony do osobnego konta Territorium.",
-    "conflict_prompt_no_persona": "To konto Steam jest już połączone z oddzielnym kontem Territorium.",
-    "conflict_warning": "Tego nie można cofnąć.",
-    "invalid_code": "To nie wygląda na prawidłowy kod. Sprawdź i spróbuj ponownie.",
-    "linking": "Łączenie…",
-    "load_error": "Nie udało się wczytać szczegółów Twojego konta. Spróbuj ponownie ze Steam.",
-    "load_error_code": "Nie udało się wczytać szczegółów Twojego konta. Spróbuj ponownie.",
     "reason_account_already_has_steam": "Twoje konto jest już połączone z innym kontem Steam.",
-    "reason_discard_blocked": "Konta Territorium tego konta Steam nie można usunąć automatycznie. Skontaktuj się z pomocą techniczną, a my zajmiemy się tym za Ciebie.",
-    "reason_discard_blocked_paid": "Konto Territorium tego konta Steam zawiera zakupy, więc nie możemy go automatycznie usunąć. Skontaktuj się z pomocą techniczną, a my zajmiemy się tym za Ciebie.",
-    "reason_discard_deferred": "Zakup na tym koncie jest nadal realizowany. Spróbuj ponownie za kilka minut.",
-    "reason_discard_not_linked": "Link nie został ukończony. Uruchom łącze ponownie.",
-    "reason_expired": "Ten link wygasł. Spróbuj ponownie ze Steam.",
-    "reason_offer_unavailable": "To potwierdzenie wygasło. Uruchom łącze ponownie.",
-    "reason_rate_limited": "Zbyt wiele prób. Poczekaj {seconds, plural, =0 {chwilę} one {# sekunda} other {# sekund}} i spróbuj ponownie.",
     "reason_steam_has_progress": "To konto Steam ma już swój własny postęp i nie można go połączyć.",
-    "reason_steam_linked_elsewhere": "To konto Steam jest już połączone z innym kontem Territorium.",
-    "success": "Twoje konto Steam jest teraz połączone.",
-    "title": "Połącz konto Steam"
+    "reason_steam_linked_elsewhere": "To konto Steam jest już połączone z innym kontem Territorium."
   },
   "steam_user_header": {
     "avatar_alt": "Awatar Steama",
@@ -3125,6 +3062,12 @@
     "message": "Dostępna jest nowa wersja Territorium. Strona zostanie teraz odświeżona w celu aktualizacji."
   },
   "user_setting": {
+    "about_language": "Język",
+    "about_language_change": "Zmień język",
+    "about_legal": "Informacje prawne",
+    "about_license": "Licencja i autorzy",
+    "about_source": "Kod źródłowy",
+    "about_version": "Wersja",
     "alert_frame_desc": "Przełącz ramkę ostrzeżenia. Po włączeniu ramka wyświetli się, gdy zostaniesz zdradzony.",
     "alert_frame_label": "Ramka ostrzeżenia",
     "ally_keybinds": "Skróty klawiszowe Ally",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Otwórz linki do lobby w Steam",
     "swap_direction": "Zmień kierunek rakiety",
     "swap_direction_desc": "Przełącz kierunek startu rakiety (góra/dół).",
+    "tab_about": "O grze",
     "tab_audio": "Audio",
     "tab_display": "Wyświetlacz",
     "tab_gameplay": "Rozgrywka",

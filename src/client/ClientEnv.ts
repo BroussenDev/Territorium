@@ -511,13 +511,10 @@ function shareBootstrap(): { siteOrigin?: string; jwtAudience: string } {
  * that same host. A future multi-server client (picking a host at load time
  * from /cluster.json) changes this function and both bases follow.
  *
- * When an explicit `serverHost` is configured, target it over TLS. Only the
- * desktop app sets this: it loads the renderer from `app://openfront`, where
- * `window.location.host` is just "openfront" (not a real server), and the
- * game-server host is NOT derivable from the API audience — it is the bare
- * audience host in prod (`openfront.io`) but a branch-variable subdomain on
- * dev/staging (default `main.openfront.dev`, or `<branch>.openfront.dev`). So
- * the host is injected explicitly rather than derived.
+ * When an explicit `serverHost` is configured, target it over TLS: a page a
+ * game server rendered names that server, and the game-server host is NOT
+ * derivable from the API audience. So the host is injected explicitly rather
+ * than derived.
  *
  * When no `serverHost` is configured — the normal web build — the game server
  * is same-origin as the document, so we keep the historical behaviour: scheme
@@ -606,24 +603,17 @@ function isWebScheme(locationProtocol: string): boolean {
  * On the web that is the document's own origin: the page the copier is looking
  * at is the page the recipient should get.
  *
- * The desktop shell is the exception, and the reason this exists. It serves the
- * renderer from its own privileged scheme — `app://openfront/index.html` — so a
- * link built from `window.location` reads
- * `app://openfront/index.html#modal=profile&publicID=…`, which resolves to
- * nothing anywhere except inside that one Electron app. It is not even a link
- * the desktop client itself can take back: the friends box only unwraps http(s)
- * URLs. So the shell's links go to siteOrigin() — the website it was downloaded
- * from (openfront.io in prod, a branch subdomain on staging) — with the same
- * audience fallback desktopWebAccountSettingsUrl in Auth.ts already used for
- * this question, localhost dev port included, for a shell that injects neither
- * host.
+ * The desktop app's offline build is the exception, and the reason this
+ * exists. On Linux the app serves it from its own `game` scheme
+ * (`game://localhost/offline.html`), so a link built from `window.location`
+ * resolves to nothing anywhere except inside that one app. Its links go to
+ * siteOrigin() — the website — with the API audience as the fallback,
+ * localhost dev port included, for a page that injects neither host.
  *
  * Keyed on the document's scheme rather than on siteOrigin's presence, because
- * the `app:` scheme is itself what makes a link unshareable, and because a
+ * a non-web scheme is itself what makes a link unshareable, and because a
  * server-rendered web page is a site in its own right: whatever host the copier
- * is reading right now is a host their recipient can open. (A desktop build
- * pointed at a local dev server with OPENFRONT_DEV_URL is on http and gets the
- * web answer for exactly that reason.)
+ * is reading right now is a host their recipient can open.
  */
 export function deriveShareOrigin(
   bootstrap: () => { siteOrigin?: string; jwtAudience: string },
@@ -643,8 +633,8 @@ export function deriveShareOrigin(
  * modal's copy-link button wants, since the modals are hash-routed.
  *
  * The web keeps the current path, so a link copied from `/c/CODE` still carries
- * the creator code. The desktop shell drops it: its path is the shell's local
- * `/index.html`, which means nothing on the website.
+ * the creator code. The app's offline build drops it: its path is the app's
+ * local `/offline.html`, which means nothing on the website.
  */
 export function deriveShareBase(
   bootstrap: () => { siteOrigin?: string; jwtAudience: string },

@@ -8,120 +8,30 @@ import {
 } from "../src/client/GameModeSelector";
 import { GameType } from "../src/core/game/Game";
 
-describe("shouldBlockMultiplayerAction", () => {
-  it("allows everything when no desktop update state has arrived", () => {
-    expect(shouldBlockMultiplayerAction(null, null, false)).toBe(false);
-  });
-
-  it("allows multiplayer when the client is current", () => {
-    expect(
-      shouldBlockMultiplayerAction(
-        { status: "current", bytes: 0, total: 0 },
-        null,
-        false,
-      ),
-    ).toBe(false);
-  });
-
-  it("blocks while downloading and while staged", () => {
-    expect(
-      shouldBlockMultiplayerAction(
-        {
-          status: "downloading",
-          bytes: 1,
-          total: 2,
-        },
-        null,
-        false,
-      ),
-    ).toBe(true);
-    expect(
-      shouldBlockMultiplayerAction(
-        { status: "staged", bytes: 2, total: 2 },
-        null,
-        false,
-      ),
-    ).toBe(true);
-  });
-
-  it("does not block when the shell is too old to update", () => {
-    expect(
-      shouldBlockMultiplayerAction(
-        { status: "blocked", bytes: 0, total: 0 },
-        null,
-        false,
-      ),
-    ).toBe(false);
-  });
-
-  // All four kinds asserted explicitly at the call site's own predicate, so a
-  // future edit collapsing the gating/non-gating split fails here too.
-  const failed = (kind: string) => ({
-    status: "failed" as const,
-    bytes: 0,
-    total: 0,
-    error: { kind, message: kind },
-  });
-
-  it("blocks a failed check when Retry is a real remedy", () => {
-    expect(shouldBlockMultiplayerAction(failed("network"), null, false)).toBe(
-      true,
-    );
-    expect(shouldBlockMultiplayerAction(failed("verify"), null, false)).toBe(
-      true,
-    );
-  });
-
-  it("does not block failures no player-side action can change", () => {
-    expect(shouldBlockMultiplayerAction(failed("refused"), null, false)).toBe(
-      false,
-    );
-    expect(shouldBlockMultiplayerAction(failed("parse"), null, false)).toBe(
-      false,
-    );
-  });
-});
-
 describe("shouldBlockMultiplayerAction with a session", () => {
-  const healthyUpdate = { status: "current", bytes: 0, total: 0 } as const;
-
-  it("does not block when both are healthy", () => {
-    expect(
-      shouldBlockMultiplayerAction(
-        healthyUpdate,
-        { status: "signed-in" },
-        false,
-      ),
-    ).toBe(false);
+  it("does not block when signed in", () => {
+    expect(shouldBlockMultiplayerAction({ status: "signed-in" }, false)).toBe(
+      false,
+    );
   });
 
-  it("blocks on a signed-out session even when the update is current", () => {
+  it("does not block while the first sign-in is still in flight", () => {
+    expect(shouldBlockMultiplayerAction({ status: "unknown" }, false)).toBe(
+      false,
+    );
+  });
+
+  it("blocks on a signed-out session", () => {
     expect(
       shouldBlockMultiplayerAction(
-        healthyUpdate,
-        {
-          status: "signed-out",
-          reason: "steam-wedged",
-        },
+        { status: "signed-out", reason: "steam-wedged" },
         false,
       ),
     ).toBe(true);
   });
 
-  it("blocks on a pending update even when signed in", () => {
-    expect(
-      shouldBlockMultiplayerAction(
-        { status: "staged", bytes: 0, total: 0 },
-        {
-          status: "signed-in",
-        },
-        false,
-      ),
-    ).toBe(true);
-  });
-
-  it("does not block on the web, where neither state exists", () => {
-    expect(shouldBlockMultiplayerAction(null, null, false)).toBe(false);
+  it("does not block on the web, where there is no session state", () => {
+    expect(shouldBlockMultiplayerAction(null, false)).toBe(false);
   });
 });
 
@@ -141,19 +51,18 @@ describe("multiplayerAllowedForBackend", () => {
 });
 
 describe("shouldBlockMultiplayerAction with a backend outage", () => {
-  it("blocks on the web, where both desktop states are absent", () => {
-    expect(shouldBlockMultiplayerAction(null, null, true)).toBe(true);
+  it("blocks on the web, where there is no session state", () => {
+    expect(shouldBlockMultiplayerAction(null, true)).toBe(true);
   });
 
   it("does not block while the backend is fine", () => {
-    expect(shouldBlockMultiplayerAction(null, null, false)).toBe(false);
+    expect(shouldBlockMultiplayerAction(null, false)).toBe(false);
   });
 
-  it("still blocks on a desktop reason while the backend is fine", () => {
+  it("still blocks on a missing session while the backend is fine", () => {
     expect(
       shouldBlockMultiplayerAction(
-        { status: "staged", bytes: 0, total: 0 },
-        { status: "signed-in" },
+        { status: "signed-out", reason: "network" },
         false,
       ),
     ).toBe(true);
@@ -206,49 +115,21 @@ describe("shouldBlockJoin", () => {
     source: "private",
     gameStartInfo: { config: { gameType: GameType.Singleplayer } },
   } as any;
-  const healthy = { status: "current", bytes: 0, total: 0 } as const;
 
-  it("allows a multiplayer join when both states are healthy", () => {
-    expect(shouldBlockJoin(mp, healthy, { status: "signed-in" })).toBe(false);
+  it("allows a multiplayer join when signed in", () => {
+    expect(shouldBlockJoin(mp, { status: "signed-in" })).toBe(false);
   });
 
   it("blocks a multiplayer join when signed out", () => {
     expect(
-      shouldBlockJoin(mp, healthy, {
-        status: "signed-out",
-        reason: "steam-wedged",
-      }),
+      shouldBlockJoin(mp, { status: "signed-out", reason: "steam-wedged" }),
     ).toBe(true);
   });
 
-  // The claim that update-gating inherits the funnel fix, actually pinned.
-  it("blocks a multiplayer join on a pending update even when signed in", () => {
+  it("never blocks single-player, whatever the session says", () => {
     expect(
-      shouldBlockJoin(
-        mp,
-        { status: "staged", bytes: 0, total: 0 },
-        {
-          status: "signed-in",
-        },
-      ),
-    ).toBe(true);
-  });
-
-  it("never blocks single-player, whatever the states say", () => {
-    expect(
-      shouldBlockJoin(
-        solo,
-        { status: "staged", bytes: 0, total: 0 },
-        {
-          status: "signed-out",
-          reason: "steam-wedged",
-        },
-      ),
+      shouldBlockJoin(solo, { status: "signed-out", reason: "steam-wedged" }),
     ).toBe(false);
-  });
-
-  it("does not block on the web, where neither desktop state exists", () => {
-    expect(shouldBlockJoin(mp, null, null)).toBe(false);
   });
 
   // OPE-439. Reachability is not a funnel input at all: by the time a join
@@ -256,9 +137,8 @@ describe("shouldBlockJoin", () => {
   // createLobby, a live lobby socket, or the matchmaking queue), so the
   // server-list API's health cannot make this join wrong. Refusing would
   // eject a player whose reload just proved their game is live.
-  it("never blocks a join, whatever the reachability signal says", () => {
-    expect(shouldBlockJoin(mp, null, null)).toBe(false);
-    expect(shouldBlockJoin(mp, healthy, { status: "signed-in" })).toBe(false);
+  it("does not block on the web, where there is no session state", () => {
+    expect(shouldBlockJoin(mp, null)).toBe(false);
   });
 });
 
@@ -271,36 +151,21 @@ describe("shouldBlockJoin", () => {
  *
  * This predicate takes no reachability argument AT ALL, which is the point:
  * there is no value a caller could pass that would make a card refuse on the
- * list API's health. The desktop update and session states still apply --
- * those are statements about this client, not about any server.
+ * list API's health. The desktop session still applies -- it is a statement
+ * about this client, not about any server.
  */
 describe("shouldBlockSocketSourcedAction", () => {
-  const healthy = { status: "current", bytes: 0, total: 0 } as const;
-
-  it("allows a card click on the web, where no desktop state exists", () => {
-    expect(shouldBlockSocketSourcedAction(null, null)).toBe(false);
+  it("allows a card click on the web, where there is no session state", () => {
+    expect(shouldBlockSocketSourcedAction(null)).toBe(false);
   });
 
-  it("allows a card click when both desktop states are healthy", () => {
-    expect(
-      shouldBlockSocketSourcedAction(healthy, { status: "signed-in" }),
-    ).toBe(false);
-  });
-
-  it("still blocks a card click while an update is pending", () => {
-    expect(
-      shouldBlockSocketSourcedAction(
-        { status: "staged", bytes: 0, total: 0 },
-        {
-          status: "signed-in",
-        },
-      ),
-    ).toBe(true);
+  it("allows a card click when signed in", () => {
+    expect(shouldBlockSocketSourcedAction({ status: "signed-in" })).toBe(false);
   });
 
   it("still blocks a card click while signed out", () => {
     expect(
-      shouldBlockSocketSourcedAction(healthy, {
+      shouldBlockSocketSourcedAction({
         status: "signed-out",
         reason: "steam-wedged",
       }),
@@ -312,20 +177,14 @@ describe("shouldBlockSocketSourcedAction", () => {
   // step earlier, on exactly the same lobby. Now both ask the same question.
   it("agrees with the funnel on the join its card produces", () => {
     const publicJoin = { gameID: "g", source: "public" } as any;
-    for (const update of [
+    for (const session of [
       null,
-      healthy,
-      { status: "staged", bytes: 0, total: 0 } as const,
+      { status: "signed-in" } as const,
+      { status: "signed-out", reason: "steam-wedged" } as const,
     ]) {
-      for (const session of [
-        null,
-        { status: "signed-in" } as const,
-        { status: "signed-out", reason: "steam-wedged" } as const,
-      ]) {
-        expect(shouldBlockSocketSourcedAction(update, session)).toBe(
-          shouldBlockJoin(publicJoin, update, session),
-        );
-      }
+      expect(shouldBlockSocketSourcedAction(session)).toBe(
+        shouldBlockJoin(publicJoin, session),
+      );
     }
   });
 });

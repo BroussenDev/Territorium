@@ -25,7 +25,6 @@
     "delete_account_warning": "Onaylamanızdan 24 saat sonra hesabınız kalıcı olarak silinecek ve tüm cihazlardan hemen çıkış yapacaksınız. Tekrar oturum açmanız işlemi iptal etmez; Bu 24 saat içinde yalnızca destek destek verebilir.",
     "desktop_login_discord": "Tarayıcınızda Discord ile devam edin",
     "desktop_login_google": "Tarayıcınızda Google ile devam edin",
-    "desktop_login_needs_update": "Oturum açmak için masaüstü uygulamasının daha yeni bir sürümü gerekiyor. Güncellemek için Steam'i yeniden başlatın ve tekrar deneyin.",
     "desktop_sign_in_desc": "Oturum açtığınızda tarayıcınızda Territorium web sitesi açılır. Orada oturum açın, Steam hesabınızın bağlantısını onaylayın; oyun onu alacaktır.",
     "email_placeholder": "E-posta adresini gir",
     "enter_email_address": "Lütfen bir e-posta adresi giriniz",
@@ -911,26 +910,6 @@
     "title": "Conquérant Paketi açıldı!",
     "where": "Her şey Envanterinizde: unvanınızı adınızın yanındaki rozet düğmesiyle seçin."
   },
-  "desktop_gate": {
-    "back_to_game": "Oyuna Geri Dön",
-    "browser_fallback": "Tarayıcınız otomatik olarak açılamadı; yukarıdaki bağlantıyı kullanın.",
-    "cancel": "İptal etmek",
-    "code_destination_generic": "Hesabınızı bağlamak için Territorium web sitesine bu kodu girin:",
-    "code_destination_site": "Hesabınızı bağlamak için {site} alanına bu kodu girin:",
-    "continue_to_game": "Oyuna Devam Et",
-    "expired": "Bu kodun süresi doldu. Yeni bir tane almak için baştan başlayın.",
-    "heading": "Territorium'a hoş geldiniz",
-    "link_existing": "Mevcut Hesabı Bağla",
-    "linking_failed_reason": "Bağlantı başarısız oldu: {reason}",
-    "linking_failed_unknown": "Bağlantı bilinmeyen bir nedenden dolayı başarısız oldu.",
-    "new_player": "Yeni Oyuncu",
-    "not_found": "Bu kod artık geçerli değil. Yeni bir tane almak için baştan başlayın.",
-    "prompt": "İlk defa mı oynuyorsunuz yoksa zaten bir hesabınız var mı?",
-    "retry": "Yeniden dene",
-    "starting_link": "Hesap bağlama başlatılıyor…",
-    "ticket_unavailable": "Hesap bağlama şu anda başlatılamadı. Tekrar deneyebilir veya oyuna devam edebilirsiniz.",
-    "title": "Territorium - Hesap Kurulumu"
-  },
   "desktop_offline": {
     "go_online": "Çevrimiçi ol",
     "offline": "Territorium'a bağlantı yok: tek oyunculu mod hâlâ kullanılabilir.",
@@ -938,13 +917,8 @@
     "staying": "Çevrimdışı mod: yalnızca tek oyunculu mod kullanılabilir.",
     "still_offline": "Territorium'a hâlâ bağlantı yok."
   },
-  "desktop_presence": {
-    "in_game": "oyunda",
-    "spectating": "Seyirci"
-  },
   "desktop_session": {
     "generic": "Territorium hesabınızda oturum açılamadı",
-    "needs_account": "Çevrimiçi oynamak için Territorium hesabınızı kurun",
     "network": "Territorium'a ulaşılamıyor. Bağlantınızı kontrol edin.",
     "retry": "Yeniden dene",
     "retrying": "Oturum açılıyor…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam oturumunuzu doğrulayamadı. Steam'i yeniden başlatmak genellikle bu sorunu çözer."
   },
   "desktop_status": {
-    "go_online": "Çevrimiçi olmak",
     "offline": "Çevrimdışı: Territorium sunucularına erişilemiyor",
     "retry": "Yeniden dene",
     "retrying": "Yeniden deneniyor…"
-  },
-  "desktop_update": {
-    "blocked": "En son sürüm için Steam güncellemesi gerekiyor",
-    "downloading": "Güncelleme indiriliyor… {percent}%",
-    "failed": "Güncelleme indirilemedi",
-    "ready": "Güncelleme hazır",
-    "reload": "Yeniden yükle",
-    "retry": "Yeniden dene"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium grafik kartınızı kullanamadığından oyun çalışamıyor. Bu genellikle geçicidir. Düzeltmek için:",
@@ -2725,37 +2690,9 @@
     "wishlist": "İstek listeme ekle"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Steam masaüstü uygulamanızda gösterilen kodu girin.",
-    "code_submit": "Devam etmek",
-    "confirm": "Hesabı Bağla",
-    "confirm_prompt": "Steam {persona}'ı {username} hesabına bağlamak ister misiniz?",
-    "confirm_prompt_no_persona": "Steam hesabınızı {username} hesabına bağlamak ister misiniz?",
-    "conflict_confirm": "Silin ve bağlantı kurun",
-    "conflict_deleting": "Siliniyor…",
-    "conflict_explain": "Bu hesap, oyunu Steam'de ilk başlattığınızda sizin için oluşturuldu. Bağlama onu ve içindeki her şeyi kalıcı olarak silecektir.",
-    "conflict_games": "{games, plural, =0 {Hiçbir oyun oynanmadı} one {# oynanan oyun} other {# oynanan oyunlar}}",
-    "conflict_games_capped": "{games}+ oynanan oyunlar",
-    "conflict_keep": "{username} sizde kalacak ve Steam satın alımlarınız bağlantıyla devam edecek.",
-    "conflict_prompt": "Steam {persona} zaten ayrı bir Territorium hesabına bağlı.",
-    "conflict_prompt_no_persona": "Bu Steam hesabı zaten ayrı bir Territorium hesabına bağlı.",
-    "conflict_warning": "Bu geri alınamaz.",
-    "invalid_code": "Bu geçerli bir kod gibi görünmüyor. Kontrol edip tekrar deneyin.",
-    "linking": "Bağlanıyor…",
-    "load_error": "Hesap ayrıntılarınız yüklenemedi. Lütfen Steam'den tekrar deneyin.",
-    "load_error_code": "Hesap ayrıntılarınız yüklenemedi. Lütfen tekrar deneyin.",
     "reason_account_already_has_steam": "Hesabınız zaten farklı bir Steam hesabına bağlı.",
-    "reason_discard_blocked": "Bu Steam hesabının Territorium hesabı otomatik olarak kaldırılamaz. Lütfen destekle iletişime geçin, biz sizin için sorunu çözelim.",
-    "reason_discard_blocked_paid": "Bu Steam hesabının Territorium hesabında satın alma işlemleri mevcut olduğundan bu hesabı otomatik olarak silemeyiz. Lütfen destekle iletişime geçin, biz sizin için sorunu çözelim.",
-    "reason_discard_deferred": "Bu hesapta bir satın alma işlemi hâlâ devam ediyor. Lütfen birkaç dakika sonra tekrar deneyin.",
-    "reason_discard_not_linked": "Bağlantı tamamlanmadı. Lütfen bağlantıyı yeniden başlatın.",
-    "reason_expired": "Bu bağlantının süresi doldu. Lütfen Steam'den tekrar deneyin.",
-    "reason_offer_unavailable": "Bu onayın süresi doldu. Lütfen bağlantıyı yeniden başlatın.",
-    "reason_rate_limited": "Çok fazla deneme. Lütfen {seconds, plural, =0 {bir an} one {# saniye} other {# saniye}} bekleyin ve tekrar deneyin.",
     "reason_steam_has_progress": "Bu Steam hesabının zaten kendi ilerlemesi var ve birleştirilemez.",
-    "reason_steam_linked_elsewhere": "Bu Steam hesabı zaten farklı bir Territorium hesabına bağlı.",
-    "success": "Artık Steam hesabınız bağlandı.",
-    "title": "Steam Hesabını Bağla"
+    "reason_steam_linked_elsewhere": "Bu Steam hesabı zaten farklı bir Territorium hesabına bağlı."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatarı",
@@ -3125,6 +3062,12 @@
     "message": "Territorium'un yeni bir sürümü mevcut. Sayfa şimdi güncellemek için yenilenecek."
   },
   "user_setting": {
+    "about_language": "Dil",
+    "about_language_change": "Dili değiştir",
+    "about_legal": "Yasal bilgiler",
+    "about_license": "Lisans ve emeği geçenler",
+    "about_source": "Kaynak kodu",
+    "about_version": "Sürüm",
     "alert_frame_desc": "Uyarı çerçevesini etkinleştir. Etkinleştirildiğinde, ihanete uğradığınızda veya kara saldırısına uğradığınızda çerçeve gözükür.",
     "alert_frame_label": "Uyarı Çerçevesi",
     "ally_keybinds": "Müttefik Tuş Bağlantıları",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Steam'de Lobi Bağlantılarını Açın",
     "swap_direction": "Roket Yönünü Değiştir",
     "swap_direction_desc": "Roket fırlatma yönünü aç/kapat (yukarı/aşağı).",
+    "tab_about": "Hakkında",
     "tab_audio": "Ses",
     "tab_display": "Görüntülemek",
     "tab_gameplay": "oynanış",

@@ -82,13 +82,9 @@ describe("subscription-panel", () => {
     expect(window.location.hash).toBe("#modal=store&tab=subscriptions");
   });
 
-  // OPE-314. In the packaged Steam build a Manage click cannot reach Stripe:
-  // navigationPolicy refuses payment-origin link-outs, per the rule that the
-  // desktop build must never steer to a payment page. Rendering the button
-  // anyway produces a dead control -- and once infra accepts app://openfront
-  // as a returnUrl it gets worse, because the click then raises the shell's
-  // "Purchase unavailable / nothing has been charged" modal at a player who
-  // is trying to STOP paying. Render static copy instead of a button.
+  // OPE-314. The Steam app must never steer a player to a payment page
+  // outside Steam, so the Manage button, which goes through the web billing
+  // portal, is replaced by static copy.
   describe("inside the desktop shell", () => {
     beforeEach(async () => {
       (window as unknown as { openfrontDesktop?: unknown }).openfrontDesktop = {

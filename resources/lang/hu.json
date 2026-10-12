@@ -25,7 +25,6 @@
     "delete_account_warning": "A fiókod azonnal és véglegesen töröljük. Nincs türelmi időszak, és a fiók nem állítható helyre. A rendszer minden eszközről kijelentkeztet téged.",
     "desktop_login_discord": "Folytatás a Discorddal a böngészőben",
     "desktop_login_google": "Folytatás Google-lel a böngészőben",
-    "desktop_login_needs_update": "A bejelentkezéshez az asztali alkalmazás újabb verziójára van szükség. Indítsd újra a Steamet a frissítéshez, majd próbáld meg újra.",
     "desktop_sign_in_desc": "A bejelentkezéssel megnyílik az Territorium weboldala a böngésződben. Jelentkezz be ott, hagyd jóvá a Steam-fiókod összekapcsolását, és a játék automatikusan érzékelni fogja.",
     "email_placeholder": "Add meg az email címed",
     "enter_email_address": "Kérjük, adjon meg egy e-mail címet",
@@ -911,26 +910,6 @@
     "title": "Conquérant csomag feloldva!",
     "where": "Minden a leltáradban van: a címet a neved melletti jelvény gombbal választhatod."
   },
-  "desktop_gate": {
-    "back_to_game": "Vissza a játékhoz",
-    "browser_fallback": "Nem sikerült automatikusan megnyitni a böngészőt – használja a fenti hivatkozást.",
-    "cancel": "Mégsem",
-    "code_destination_generic": "Fiókja összekapcsolásához írja be ezt a kódot a Territorium webhelyén:",
-    "code_destination_site": "Fiókja összekapcsolásához írja be ezt a kódot a {site} címen:",
-    "continue_to_game": "Tovább a játékhoz",
-    "expired": "Ez a kód lejárt. Kezdje elölről, hogy újat vegyen.",
-    "heading": "Üdvözöljük a Territoriumban",
-    "link_existing": "Kapcsolja össze a meglévő fiókot",
-    "linking_failed_reason": "Az összekapcsolás sikertelen: {reason}",
-    "linking_failed_unknown": "Az összekapcsolás ismeretlen okból sikertelen.",
-    "new_player": "Új játékos",
-    "not_found": "Ez a kód már nem érvényes. Kezdje elölről, hogy újat vegyen.",
-    "prompt": "Most játszol először, vagy már van fiókod?",
-    "retry": "Próbálja újra",
-    "starting_link": "Fiók összekapcsolásának indítása…",
-    "ticket_unavailable": "Jelenleg nem sikerült elindítani a fiók összekapcsolását. Megpróbálhatja újra, vagy folytathatja a játékot.",
-    "title": "Territorium – Fiókbeállítás"
-  },
   "desktop_offline": {
     "go_online": "Online mód",
     "offline": "Nincs kapcsolat a Territoriummal: az egyjátékos mód továbbra is elérhető.",
@@ -938,13 +917,8 @@
     "staying": "Offline mód: csak az egyjátékos mód érhető el.",
     "still_offline": "Még mindig nincs kapcsolat a Territoriummal."
   },
-  "desktop_presence": {
-    "in_game": "Játékban",
-    "spectating": "Néző"
-  },
   "desktop_session": {
     "generic": "Nem sikerült bejelentkezni az Territorium-fiókodba.",
-    "needs_account": "Állítsa be Territorium fiókját az online játékhoz",
     "network": "Az Territorium nem érhető el. Ellenőrizze a kapcsolatot.",
     "retry": "Újra",
     "retrying": "Bejelentkezés…",
@@ -954,18 +928,9 @@
     "steam_wedged": "A Steam nem tudta ellenőrizni a munkamenetet. A Steam újraindítása általában megoldja a problémát."
   },
   "desktop_status": {
-    "go_online": "Menj online",
     "offline": "Offline: nem érhető el a Territorium szerverei",
     "retry": "Próbálja újra",
     "retrying": "Újrapróbálkozás…"
-  },
-  "desktop_update": {
-    "blocked": "A legújabb verzióhoz Steam-frissítés szükséges",
-    "downloading": "Frissítés letöltése… {percent}%",
-    "failed": "Nem sikerült letölteni a frissítést",
-    "ready": "A frissítés készen áll",
-    "reload": "Újratöltés",
-    "retry": "Újra"
   },
   "desktop_webgl_gate": {
     "intro": "A Territorium nem tudta használni a grafikus kártyáját, ezért a játék nem fut. Ez általában átmeneti. A javításhoz:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Hozzáadás a kívánságlistához"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Add meg a Steam asztali alkalmazásban látható kódot.",
-    "code_submit": "Tovább",
-    "confirm": "Fiók összekapcsolása",
-    "confirm_prompt": "Összekapcsolod a(z) {persona} Steam-fiókot a(z) {username} fiókkal?",
-    "confirm_prompt_no_persona": "Összekapcsolod a Steam-fiókod a(z) {username} fiókkal?",
-    "conflict_confirm": "Töröld és linkeld",
-    "conflict_deleting": "Törlés…",
-    "conflict_explain": "Ezt a fiókot akkor hozták létre, amikor először elindítottad a játékot a Steamen. Az összekapcsolás véglegesen törli azt és minden rajta lévőt.",
-    "conflict_games": "{games, plural, =0 {Nem játszottak játékokat} one {# játékot játszott} other {# játszott játékok}}",
-    "conflict_games_capped": "{games}+ játék",
-    "conflict_keep": "Megtartod a {username}-t, és a Steam-vásárlásaid átkerülnek a linkre.",
-    "conflict_prompt": "A Steam {persona} már hozzá van kapcsolva egy külön Territorium-fiókhoz.",
-    "conflict_prompt_no_persona": "Ez a Steam-fiók már hozzá van kapcsolva egy külön Territorium-fiókhoz.",
-    "conflict_warning": "Ezt nem lehet visszavonni.",
-    "invalid_code": "Ez nem tűnik érvényes kódnak. Ellenőrizd, és próbáld újra.",
-    "linking": "Összekapcsolás…",
-    "load_error": "Nem sikerült betölteni a fiókadataidat. Kérjük, próbáld meg újra a Steamen keresztül.",
-    "load_error_code": "Nem sikerült betölteni a fiókadataidat. Kérjük, próbáld újra.",
     "reason_account_already_has_steam": "Fiókod már össze van kapcsolva egy másik Steam-fiókkal.",
-    "reason_discard_blocked": "Ennek a Steam-fióknak a Territorium-fiókja nem távolítható el automatikusan. Kérjük, lépjen kapcsolatba az ügyfélszolgálattal, és mi megoldjuk Önnek.",
-    "reason_discard_blocked_paid": "Ennek a Steam-fióknak a Territorium-fiókjában vásárlások találhatók, ezért nem tudjuk automatikusan törölni. Kérjük, lépjen kapcsolatba az ügyfélszolgálattal, és mi megoldjuk Önnek.",
-    "reason_discard_deferred": "Még mindig folyamatban van egy vásárlás ezen a számlán. Kérjük, próbálja újra néhány perc múlva.",
-    "reason_discard_not_linked": "A link nem készült el. Kérjük, indítsa újra a linket.",
-    "reason_expired": "Ez a hivatkozás lejárt. Kérjük, próbáld meg újra a Steamről.",
-    "reason_offer_unavailable": "Ez a megerősítés lejárt. Kérjük, indítsa újra a linket.",
-    "reason_rate_limited": "Túl sok próbálkozás. Kérjük, várjon {seconds, plural, =0 {egy pillanatot} one {# másodpercet} other {# másodpercet}}, majd próbálja újra.",
     "reason_steam_has_progress": "Ehhez a Steam-fiókhoz már tartozik saját előrehaladás, így nem vonható össze.",
-    "reason_steam_linked_elsewhere": "Ez a Steam-fiók már össze van kapcsolva egy másik Territorium-fiókkal.",
-    "success": "Steam-fiókod most már össze van kapcsolva.",
-    "title": "Steam fiók összekapcsolása"
+    "reason_steam_linked_elsewhere": "Ez a Steam-fiók már össze van kapcsolva egy másik Territorium-fiókkal."
   },
   "steam_user_header": {
     "avatar_alt": "Steam profilkép",
@@ -3125,6 +3062,12 @@
     "message": "Elérhető az Territorium új verziója. Az oldal a frissítés érdekében most újratöltődik."
   },
   "user_setting": {
+    "about_language": "Nyelv",
+    "about_language_change": "Nyelv módosítása",
+    "about_legal": "Jogi információk",
+    "about_license": "Licenc és közreműködők",
+    "about_source": "Forráskód",
+    "about_version": "Verzió",
     "alert_frame_desc": "Kapcsolja be a riasztási keretet. Ha engedélyezve van, a keret akkor jelenik meg, ha elárulnak vagy megtámadnak a szárazföldön.",
     "alert_frame_label": "Riasztási keret",
     "ally_keybinds": "Szövetségi billentyűk",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Nyissa meg a Lobby Linkeket a Steamben",
     "swap_direction": "Módosítsd a rakéta irányát",
     "swap_direction_desc": "Rakétaindítási irány váltása (fel/le).",
+    "tab_about": "Névjegy",
     "tab_audio": "Hang",
     "tab_display": "Megjelenítés",
     "tab_gameplay": "Játékmenet",

@@ -55,11 +55,7 @@ import {
 } from "./CreatorCode";
 import { desktopPresence, type PresencePayload } from "./DesktopPresence";
 import { subscribeDesktopSessionRecovery } from "./DesktopSessionRecovery";
-import {
-  desktopUpdate,
-  isDesktopShell,
-  type DesktopUpdateState,
-} from "./DesktopShell";
+import { isDesktopShell } from "./DesktopShell";
 import "./FeaturedStream";
 import "./GameModeSelector";
 import {
@@ -121,13 +117,6 @@ import {
 import { steamHandoffMode } from "./SteamHandoff";
 import "./SteamHandoffModal";
 import { SteamHandoffModal } from "./SteamHandoffModal";
-import {
-  isSteamLinkHash,
-  parseSteamLinkToken,
-  resumePendingSteamLink,
-} from "./SteamLink";
-import "./SteamLinkModal";
-import { SteamLinkModal } from "./SteamLinkModal";
 import { StoreModal } from "./Store";
 import "./SubscriptionModal";
 import { initTelemetry } from "./Telemetry";
@@ -282,30 +271,17 @@ export interface JoinLobbyEvent {
 /**
  * The single point where "a match is running" is published.
  *
- * Three consumers, and they must never disagree:
+ * Two consumers, and they must never disagree:
  *   - the `.in-game` body class, which the client's own markup keys off to hide
- *     the footer, the nav bars and the desktop update snackbar;
- *   - the Electron shell's updater, which pauses asset downloads and version
- *     polling in-game so a cache-bust cannot saturate a player's connection
- *     mid-match;
+ *     the footer, the nav bars and the desktop status bar;
  *   - the server-list heartbeat, which pauses in-game: a running match already
  *     knows its server, so polling /cluster.json through it buys nothing.
  *
- * Every add/remove of that class goes through here. Setting the class without
- * telling the shell leaves the updater's pause dead; telling the shell without
- * setting the class leaves downloads paused at a menu forever.
- *
- * `setInGame` is optional by the shell contract (the web build has no bridge at
- * all, and a Steam shell older than the updater has no such method), and the
- * IPC round trip is fire-and-forget: a rejection must never surface as an
- * unhandled rejection in the client.
+ * Every add/remove of that class goes through here.
  */
 function setInGameSignal(inGame: boolean): void {
   document.body.classList.toggle("in-game", inGame);
   setServerListInGame(inGame);
-  void desktopUpdate()
-    ?.setInGame?.(inGame)
-    ?.catch(() => {});
 }
 
 class Client {
@@ -324,7 +300,6 @@ class Client {
   private tokenLoginModal: TokenLoginModal;
   private matchmakingModal: MatchmakingModal;
   private rewardsModal: RewardsModal;
-  private steamLinkModal: SteamLinkModal;
   private steamHandoffModal: SteamHandoffModal | null = null;
   private steamHandoffDeclinedFor: string | null = null;
   private mostRecentJoinEvent: number;
@@ -698,16 +673,6 @@ class Client {
       console.warn("Rewards modal element not found");
     }
 
-    this.steamLinkModal = document.querySelector(
-      "steam-link-modal",
-    ) as SteamLinkModal;
-    if (
-      !this.steamLinkModal ||
-      !(this.steamLinkModal instanceof SteamLinkModal)
-    ) {
-      console.warn("Steam link modal element not found");
-    }
-
     this.steamHandoffModal = document.querySelector("steam-handoff-modal");
 
     const onUserMe = async (userMeResponse: UserMeResponse | false) => {
@@ -772,31 +737,11 @@ class Client {
             "Sharing this ID will allow others to view your game history and stats.",
         );
 
-        // Resume a Steam-link flow that was interrupted by a login redirect
-        // (Discord/Google OAuth, magic link): the modal stashed either a
-        // token or a bare code-entry intent and sent the player to log in
-        // via #modal=account, so a login redirect commonly lands back there
-        // rather than on a clean "/" — this must NOT be gated on
-        // cleanHomepage below. Only resume once login is confirmed:
-        // resumePendingSteamLink() consumes the stash on read, so a
-        // speculative call while logged out would burn an entry that a
-        // *later* successful login should still get to resume.
-        //
-        // The response is passed in rather than the check being made here:
-        // the enclosing `userMeResponse !== false` is NOT that confirmation,
-        // because a guest account satisfies it (POST /auth/refresh mints one
-        // for any visitor). resumePendingSteamLink owns the real predicate,
-        // next to the consumption it protects — see its comment.
-        if (resumePendingSteamLink(userMeResponse, this.steamLinkModal)) {
-          return;
-        }
-
         // Resume a creator-code binding flow interrupted by the same kind of
-        // login redirect (see CreatorCode.ts's stash comment) -- also not
-        // gated on cleanHomepage below, for the same reason as steam-link
-        // above: the /c/CODE deep link's stash routinely lands back on
-        // #modal=account (or wherever the login round-trip returns to)
-        // rather than a clean "/".
+        // login redirect (see CreatorCode.ts's stash comment) -- not gated on
+        // cleanHomepage below: the /c/CODE deep link's stash routinely lands
+        // back on #modal=account (or wherever the login round-trip returns
+        // to) rather than a clean "/".
         if (
           resumePendingCreatorCode((code) => {
             window.location.hash = `modal=account&creatorCode=${encodeURIComponent(code)}`;
@@ -934,19 +879,6 @@ class Client {
           ? applyUserMe(generation)(false)
           : getUserMe().then(applyUserMe(generation)),
       );
-    });
-
-    // Subscribe to the bridge directly rather than to the status bar's
-    // re-broadcast. The bar subscribes when its element upgrades and the
-    // bridge replays the current state immediately, so that event fires long
-    // before this code runs (it sits after `await userAuth()`), and a listener
-    // added here would miss it. That matters most for a `staged` update, which
-    // is persisted across restarts and then never re-emitted -- the gate would
-    // sit on a null update state forever. subscribe() replays on subscribe and
-    // the updater supports multiple subscribers, so this is safe alongside the
-    // bar's own subscription.
-    desktopUpdate()?.subscribe((state) => {
-      this.desktopUpdateState = state;
     });
 
     this.hostModal = document.querySelector(
@@ -1158,32 +1090,6 @@ class Client {
       return;
     }
 
-    // The desktop Electron shell's account-linking gate opens the browser
-    // here (see SteamLink.ts for the full handoff). Checked against the raw
-    // hash, not decodedHash — parseSteamLinkToken's prefix match is exact
-    // and the token itself is opaque, so no decoding is needed or expected.
-    const steamLinkToken = parseSteamLinkToken(hash);
-    if (steamLinkToken) {
-      // Only the token form: the desktop gate opened it in this browser, so
-      // the Steam build is on this machine. A typed code can come from a phone.
-      this.userSettings.markSteamBuildSeen();
-      strip();
-      void this.steamLinkModal?.openWithToken(steamLinkToken);
-      return;
-    }
-
-    // Fallback: the gate's browser handoff itself can fail (wrong default
-    // browser, an odd Linux setup, Steam's overlay browser), in which case it
-    // shows an 8-character code instead and tells the player to enter it on
-    // the website. There's no token in that case, so parseSteamLinkToken
-    // above returns null — this is the bare `#steam-link` hash the code path
-    // lands on instead (see SteamLink.ts's isSteamLinkHash).
-    if (isSteamLinkHash(hash)) {
-      strip();
-      void this.steamLinkModal?.openForCodeEntry();
-      return;
-    }
-
     // On a versioned replay shell the pathname IS the game id: the worker
     // serves the record's matching build at replay.<domain>/<gameId> (see
     // VersionedReplay.ts).
@@ -1300,8 +1206,6 @@ class Client {
     return mode;
   }
 
-  private desktopUpdateState: DesktopUpdateState | null = null;
-
   // See the call site in handleUrl. True when a navigation was issued.
   private redirectUnknownLetterToApex(gameID: string): boolean {
     if (!ClientEnv.gameLetterUnknown(gameID)) return false;
@@ -1345,13 +1249,7 @@ class Client {
    */
   private blockedJoin(lobby: JoinLobbyEvent): boolean {
     const desktop = isDesktopShell();
-    if (
-      !shouldBlockJoin(
-        lobby,
-        desktop ? this.desktopUpdateState : null,
-        desktop ? getDesktopSessionState() : null,
-      )
-    ) {
+    if (!shouldBlockJoin(lobby, desktop ? getDesktopSessionState() : null)) {
       return false;
     }
     // The dispatcher may already have told the player they are in a lobby:
@@ -1561,7 +1459,6 @@ class Client {
         "account-button",
         "leaderboard-button",
         "token-login",
-        "steam-link-modal",
         "steam-handoff-modal",
         "matchmaking-modal",
         "clan-modal",
@@ -1709,12 +1606,10 @@ class Client {
       // which consumePendingInvite() has already taken. Same guard, for the
       // same reason, as handleJoinLobby and updateJoinUrlForShare above.
       //
-      // Not reachable from the desktop shell today: it classifies every
-      // https:// URL as open-externally, so redirectToVersionedShell() hands
-      // the replay host to the OS browser and this window stays on
-      // app://openfront/. That is a policy in a different repo though, and
-      // nothing here would notice if it changed -- so guard rather than depend
-      // on it. On the replay host, fall back to the in-place leave.
+      // The desktop app keeps the site's own subdomains in its window
+      // (game_window.rs in its repository), the replay host among them, so
+      // this guard covers it too. On the replay host, fall back to the
+      // in-place leave.
       if (!isReplayShellHost(window.location.hostname)) {
         this.resetPresenceToMenu();
         window.location.href = currentPagePath(ClientEnv.gamePath(gameId));

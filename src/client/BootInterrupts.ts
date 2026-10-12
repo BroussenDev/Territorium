@@ -72,18 +72,14 @@ export interface BootInterruptInputs {
  * Is this a clean homepage load — the only thing any of the interrupts below
  * may appear over?
  *
- * `pathname === "/"` alone is wrong in the Steam build, and silently so. The
- * desktop shell serves the renderer from its own privileged scheme at
- * `app://openfront/index.html` (openfront-desktop src/main/protocol.ts,
- * GAME_URL), so the pathname there is ALWAYS "/index.html" and a bare "/" test
- * is never true. That is not new — the TEMPORARY#### rename prompt and the
- * unclaimed-rewards popup have both been dead on Steam for the same reason —
- * but the claim prompt is aimed squarely at Steam buyers, so it would have
- * shipped never having fired for the population it exists for.
+ * `pathname === "/"` alone is wrong for the Steam app's offline build: the
+ * app serves it from its own `game` scheme with `/offline.html` as the start
+ * page (offline.rs in the app's repository), so its homepage is never "/".
+ * The online app loads the site itself and is at "/" like the web.
  *
- * Gated on the shell rather than accepted everywhere: on the web "/index.html"
- * is reachable directly and is not the homepage, and widening the rule there
- * would put an overlay somewhere it has never appeared.
+ * Gated on the app rather than accepted everywhere: on the web
+ * "/offline.html" is not the homepage, and widening the rule there would put
+ * an overlay somewhere it has never appeared.
  */
 export function isCleanHomepage(
   location: { pathname: string; hash: string },
@@ -91,7 +87,7 @@ export function isCleanHomepage(
 ): boolean {
   if (location.hash !== "") return false;
   if (location.pathname === "/") return true;
-  return desktopShell && location.pathname === "/index.html";
+  return desktopShell && location.pathname === "/offline.html";
 }
 
 /**

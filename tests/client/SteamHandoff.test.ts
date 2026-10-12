@@ -21,9 +21,11 @@ function settings(
 }
 
 describe("steamJoinUrl", () => {
-  it("passes the game id as a +join_game launch argument", () => {
+  // The app reads `--territorium-join=<id>` (presence.rs in its repository),
+  // the same connect string Steam hands it when a friend joins.
+  it("passes the game id as the app's join launch argument", () => {
     expect(steamJoinUrl("aB3xY9zQ12")).toBe(
-      "steam://run/5369890//+join_game%20aB3xY9zQ12/",
+      "steam://run/5369890//--territorium-join%3DaB3xY9zQ12/",
     );
   });
 });

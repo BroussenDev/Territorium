@@ -25,7 +25,6 @@
     "delete_account_warning": "سيتم حذف حسابك نهائيًا بعد 24 ساعة من التأكيد، وسيتم تسجيل خروجك على جميع الأجهزة على الفور. تسجيل الدخول مرة أخرى لا يلغي ذلك؛ يمكن فقط للدعم، خلال تلك الـ 24 ساعة.",
     "desktop_login_discord": "تابع مع Discord في متصفحك",
     "desktop_login_google": "تابع مع Google في متصفحك",
-    "desktop_login_needs_update": "يحتاج تسجيل الدخول إلى إصدار أحدث من تطبيق سطح المكتب. أعد تشغيل Steam للتحديث، ثم حاول مرة أخرى.",
     "desktop_sign_in_desc": "يؤدي تسجيل الدخول إلى فتح موقع Territorium الإلكتروني في متصفحك. قم بتسجيل الدخول هناك، وقم بتأكيد الارتباط بحساب Steam الخاص بك، وسوف تلتقطه اللعبة.",
     "email_placeholder": "أدخل عنوان بريدك الإلكتروني",
     "enter_email_address": "الرجاء إدخال عنوان بريد إلكتروني",
@@ -911,26 +910,6 @@
     "title": "تم فتح حزمة Conquérant!",
     "where": "كل شيء في مخزونك: اختر لقبك بزر الشارة بجانب اسمك."
   },
-  "desktop_gate": {
-    "back_to_game": "العودة إلى اللعبة",
-    "browser_fallback": "تعذر فتح المتصفح تلقائيًا — استخدم الرابط أعلاه.",
-    "cancel": "إلغاء",
-    "code_destination_generic": "أدخل هذا الرمز على موقع Territorium لربط حسابك:",
-    "code_destination_site": "أدخل هذا الرمز على {site} لربط حسابك:",
-    "continue_to_game": "الاستمرار في اللعبة",
-    "expired": "لقد انتهت صلاحية هذا الرمز. البدء من جديد للحصول على واحدة جديدة.",
-    "heading": "مرحبا بكم في تيريتوريوم",
-    "link_existing": "ربط الحساب الموجود",
-    "linking_failed_reason": "فشل الربط: {reason}",
-    "linking_failed_unknown": "فشل الارتباط لسبب غير معروف.",
-    "new_player": "لاعب جديد",
-    "not_found": "هذا الرمز لم يعد صالحا. البدء من جديد للحصول على واحدة جديدة.",
-    "prompt": "هل هذه هي المرة الأولى التي تلعب فيها، أم أن لديك حسابًا بالفعل؟",
-    "retry": "أعد المحاولة",
-    "starting_link": "جارٍ بدء ربط الحساب…",
-    "ticket_unavailable": "تعذر بدء ربط الحساب الآن. يمكنك المحاولة مرة أخرى، أو الاستمرار في اللعبة.",
-    "title": "Territorium - إعداد الحساب"
-  },
   "desktop_offline": {
     "go_online": "اتصل بالإنترنت",
     "offline": "لا اتصال بـ Territorium: اللعب الفردي ما زال متاحًا.",
@@ -938,13 +917,8 @@
     "staying": "وضع عدم الاتصال: اللعب الفردي فقط متاح.",
     "still_offline": "لا يزال لا يوجد اتصال بـ Territorium."
   },
-  "desktop_presence": {
-    "in_game": "في اللعبة",
-    "spectating": "المشاهدة"
-  },
   "desktop_session": {
     "generic": "تعذر تسجيل الدخول إلى حساب Territorium الخاص بك",
-    "needs_account": "قم بإعداد حساب Territorium الخاص بك للعب عبر الإنترنت",
     "network": "لا يمكن الوصول إلى Territorium. تحقق من اتصالك.",
     "retry": "أعد المحاولة",
     "retrying": "تسجيل الدخول...",
@@ -954,18 +928,9 @@
     "steam_wedged": "تعذر على Steam التحقق من جلستك. عادةً ما تؤدي إعادة تشغيل Steam إلى إصلاح هذه المشكلة."
   },
   "desktop_status": {
-    "go_online": "اتصل بالإنترنت",
     "offline": "غير متصل: لا يمكن الوصول إلى خوادم Territorium",
     "retry": "أعد المحاولة",
     "retrying": "جارٍ إعادة المحاولة..."
-  },
-  "desktop_update": {
-    "blocked": "مطلوب تحديث Steam للحصول على أحدث إصدار",
-    "downloading": "جارٍ تنزيل التحديث... {percent}%",
-    "failed": "تعذر تنزيل التحديث",
-    "ready": "التحديث جاهز",
-    "reload": "إعادة تحميل",
-    "retry": "أعد المحاولة"
   },
   "desktop_webgl_gate": {
     "intro": "لم يتمكن Territorium من استخدام بطاقة الرسومات الخاصة بك، لذا لا يمكن تشغيل اللعبة. هذا عادة ما يكون مؤقتا. لإصلاحه:",
@@ -2725,37 +2690,9 @@
     "wishlist": "أضف إلى قائمة أمنياتي"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "أدخل الرمز الموضح في تطبيق Steam لسطح المكتب.",
-    "code_submit": "متابعة",
-    "confirm": "ربط الحساب",
-    "confirm_prompt": "ربط ستيم {persona} بالحساب {username}؟",
-    "confirm_prompt_no_persona": "ربط حسابك على Steam بالحساب {username}؟",
-    "conflict_confirm": "احذفه واربطه",
-    "conflict_deleting": "جارٍ الحذف...",
-    "conflict_explain": "تم إنشاء هذا الحساب لك في المرة الأولى التي قمت فيها بتشغيل اللعبة على Steam. سيؤدي الارتباط إلى حذفه نهائيًا وكل شيء عليه.",
-    "conflict_games": "{games, plural, =0 {لم يتم لعب أي مباريات} one {# لعبت اللعبة} other {# الألعاب التي تم لعبها}}",
-    "conflict_games_capped": "{games}+ الألعاب التي تم لعبها",
-    "conflict_keep": "ستحتفظ بـ {username}، وستنتقل مشترياتك عبر Steam عبر الرابط.",
-    "conflict_prompt": "Steam {persona} مرتبط بالفعل بحساب Territorium منفصل.",
-    "conflict_prompt_no_persona": "حساب Steam هذا مرتبط بالفعل بحساب Territorium منفصل.",
-    "conflict_warning": "لا يمكن التراجع عن هذا.",
-    "invalid_code": "هذا لا يبدو وكأنه رمز صالح. التحقق من ذلك وحاول مرة أخرى.",
-    "linking": "ربط…",
-    "load_error": "تعذر تحميل تفاصيل حسابك. يرجى المحاولة مرة أخرى من Steam.",
-    "load_error_code": "تعذر تحميل تفاصيل حسابك. يرجى المحاولة مرة أخرى.",
     "reason_account_already_has_steam": "حسابك مرتبط بالفعل بحساب Steam مختلف.",
-    "reason_discard_blocked": "لا يمكن إزالة حساب Territorium الخاص بحساب Steam هذا تلقائيًا. يرجى الاتصال بالدعم وسنقوم بحل المشكلة لك.",
-    "reason_discard_blocked_paid": "يحتوي حساب Territorium الخاص بحساب Steam هذا على مشتريات، لذا لا يمكننا حذفه تلقائيًا. يرجى الاتصال بالدعم وسنقوم بحل المشكلة لك.",
-    "reason_discard_deferred": "لا تزال عملية الشراء على هذا الحساب مستمرة. يرجى المحاولة مرة أخرى خلال بضع دقائق.",
-    "reason_discard_not_linked": "الرابط لم يكتمل. الرجاء تشغيل الرابط مرة أخرى.",
-    "reason_expired": "انتهت صلاحية هذا الرابط. يرجى المحاولة مرة أخرى من Steam.",
-    "reason_offer_unavailable": "انتهت صلاحية هذا التأكيد. الرجاء تشغيل الرابط مرة أخرى.",
-    "reason_rate_limited": "محاولات كثيرة جدًا. من فضلك انتظر {seconds, plural, =0 {لحظة} one {# ثانية} other {# ثانية}} وحاول مرة أخرى.",
     "reason_steam_has_progress": "يحتوي حساب Steam هذا بالفعل على تقدم خاص به ولا يمكن دمجه.",
-    "reason_steam_linked_elsewhere": "حساب Steam هذا مرتبط بالفعل بحساب Territorium مختلف.",
-    "success": "تم الآن ربط حساب Steam الخاص بك.",
-    "title": "ربط حساب ستيم"
+    "reason_steam_linked_elsewhere": "حساب Steam هذا مرتبط بالفعل بحساب Territorium مختلف."
   },
   "steam_user_header": {
     "avatar_alt": "الصورة الرمزية للبخار",
@@ -3125,6 +3062,12 @@
     "message": "يتوفر إصدار جديد من Territorium. سيتم الآن تحديث الصفحة للتحديث."
   },
   "user_setting": {
+    "about_language": "اللغة",
+    "about_language_change": "تغيير اللغة",
+    "about_legal": "معلومات قانونية",
+    "about_license": "الترخيص والمساهمون",
+    "about_source": "الشيفرة المصدرية",
+    "about_version": "الإصدار",
     "alert_frame_desc": "تبديل إطار التنبيه. عند التمكين، سيتم عرض الإطار عند تعرضك للخيانة أو الهجوم على الأرض.",
     "alert_frame_label": "إطار التنبيه",
     "ally_keybinds": "حليف Keybinds",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "افتح روابط الردهة في Steam",
     "swap_direction": "تبديل اتجاه الصاروخ",
     "swap_direction_desc": "تبديل اتجاه إطلاق الصاروخ (أعلى / أسفل).",
+    "tab_about": "حول",
     "tab_audio": "الصوت",
     "tab_display": "عرض",
     "tab_gameplay": "طريقة اللعب",

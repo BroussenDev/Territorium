@@ -15,17 +15,17 @@ vi.mock("../../src/client/InGameModal", () => ({
 
 // The three provider call sites in Auth.ts, in both directions (OPE-343).
 //
-// On the desktop shell `window.location.href` is `app://openfront/...`, so
-// the OAuth redirect_uri the web path builds is one the API's allowlist
-// refuses -- the player got a browser tab showing a bare JSON 400. There the
-// call sites must go through the shell's browser link flow (the bridge's
-// showLinkGate) or the website, and must never navigate to
-// `/auth/login/*?redirect_uri=app://...`. On the web nothing changes, and
-// that half is pinned here too so the desktop branch cannot leak.
+// In the desktop app a provider login is not an OAuth redirect in the game's
+// window: the app opens other sites in the player's browser, and signing in
+// there would not reach the game. The call sites open the website's account
+// settings in the browser instead, where the player signs in and links their
+// Steam account, and must never navigate to `/auth/login/*`. On the web
+// nothing changes, and that half is pinned here too so the desktop branch
+// cannot leak.
 
-// serverHost is what the desktop shell injects (absent on the web): the game
-// server AND website host, which is the bare audience only in production and
-// a branch subdomain on dev/staging -- see resolveServerOrigin in ClientEnv.ts.
+// serverHost is what a server-rendered page carries: the game server AND
+// website host, which is the bare audience only in production and a branch
+// subdomain on dev/staging -- see resolveServerOrigin in ClientEnv.ts.
 function setBootstrapConfig(
   overrides: { jwtAudience?: string; serverHost?: string } = {},
 ) {
@@ -61,10 +61,9 @@ const realLocationDescriptor = Object.getOwnPropertyDescriptor(
   "location",
 )!;
 
-// What a real desktop launch reports. Only href matters to the code under
-// test, but it must be the shell's own origin: that is the value that used to
-// leak into redirect_uri.
-const DESKTOP_HREF = "app://openfront/index.html#modal=account";
+// The desktop app's offline build on Linux, the one page whose own origin is
+// no website: what is opened in the browser must come from the site instead.
+const DESKTOP_HREF = "game://localhost/offline.html#modal=account";
 const WEB_HREF = "https://openfront.dev/#modal=account";
 
 function stubLocation(href: string): { href: string } {
@@ -91,17 +90,13 @@ afterEach(() => {
   delete (window as { openfrontDesktop?: unknown }).openfrontDesktop;
 });
 
-describe("provider login on the desktop shell", () => {
-  let showLinkGate: ReturnType<typeof vi.fn>;
+describe("provider login in the desktop app", () => {
   let location: { href: string };
   let fetchMock: ReturnType<typeof vi.spyOn>;
   let openMock: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
-    showLinkGate = vi.fn(async () => undefined);
-    (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop = {
-      showLinkGate,
-    };
+    (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop = {};
     location = stubLocation(DESKTOP_HREF);
     fetchMock = vi
       .spyOn(globalThis, "fetch")
@@ -111,27 +106,30 @@ describe("provider login on the desktop shell", () => {
       .mockReturnValue(null as unknown as Window);
   });
 
-  it("discordLogin opens the shell's link flow and never builds an app:// redirect", () => {
-    discordLogin();
+  it.each([
+    ["discordLogin", discordLogin],
+    ["googleLogin", googleLogin],
+  ])(
+    "%s opens the website's account settings and never redirects",
+    (_, login) => {
+      setBootstrapConfig({
+        serverHost: "territorium.gg",
+        jwtAudience: "territorium.gg",
+      });
 
-    expect(showLinkGate).toHaveBeenCalledTimes(1);
-    expect(location.href).toBe(DESKTOP_HREF);
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
+      login();
 
-  it("googleLogin opens the shell's link flow and never builds an app:// redirect", () => {
-    googleLogin();
+      expect(openMock).toHaveBeenCalledTimes(1);
+      expect(openMock.mock.calls[0][0]).toBe(
+        "https://territorium.gg/#modal=account-settings",
+      );
+      expect(location.href).toBe(DESKTOP_HREF);
+      expect(fetchMock).not.toHaveBeenCalled();
+    },
+  );
 
-    expect(showLinkGate).toHaveBeenCalledTimes(1);
-    expect(location.href).toBe(DESKTOP_HREF);
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  // The link flow cannot attach Google to an account that already holds this
-  // Steam identity (redeeming the ticket there is an idempotent no-op), and
-  // that is the only account the button is ever shown to. So this one goes
-  // to the website's account settings instead, where the real OAuth flow
-  // runs -- and, crucially, never to /auth/link/google with an app:// URL.
+  // Linking Google goes to the same place, where the real OAuth flow runs --
+  // and, crucially, never to /auth/link/google from the game's window.
   it("linkGoogle opens the website's account settings in the browser", async () => {
     setBootstrapConfig({
       serverHost: "openfront.io",
@@ -144,7 +142,6 @@ describe("provider login on the desktop shell", () => {
     expect(openMock.mock.calls[0][0]).toBe(
       "https://openfront.io/#modal=account-settings",
     );
-    expect(showLinkGate).not.toHaveBeenCalled();
     expect(location.href).toBe(DESKTOP_HREF);
     expect(fetchMock).not.toHaveBeenCalled();
   });
@@ -165,7 +162,7 @@ describe("provider login on the desktop shell", () => {
   // The API's server list (multi-server v2) picks a GAME server, and once
   // it is applied serverHttpBase() answers with that deployment host --
   // falk2-b.openfront.io, which serves no website. The account-settings
-  // link reads the site the shell was launched against, not the game
+  // link reads the site the app was launched against, not the game
   // server, so it must be unmoved by the list.
   it("linkGoogle still targets the website after a server list is applied", async () => {
     setBootstrapConfig({
@@ -195,8 +192,8 @@ describe("provider login on the desktop shell", () => {
     );
   });
 
-  // A shell that injects no serverHost falls back to the audience-derived
-  // origin, keeping the shell's own localhost:9000 dev case.
+  // A page that injects no serverHost falls back to the audience-derived
+  // origin, keeping the localhost:9000 dev case.
   it("linkGoogle falls back to the audience origin without a serverHost", async () => {
     setBootstrapConfig({ jwtAudience: "localhost" });
 
@@ -205,52 +202,6 @@ describe("provider login on the desktop shell", () => {
     expect(openMock.mock.calls[0][0]).toBe(
       "http://localhost:9000/#modal=account-settings",
     );
-  });
-
-  // The failure mode this exists to log is an IPC rejection; it must not
-  // become an unhandled rejection out of a click handler.
-  it("discordLogin survives the bridge rejecting", async () => {
-    showLinkGate.mockRejectedValue(new Error("no window"));
-    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-
-    expect(() => discordLogin()).not.toThrow();
-    await Promise.resolve();
-    await Promise.resolve();
-
-    expect(errorSpy).toHaveBeenCalled();
-    expect(location.href).toBe(DESKTOP_HREF);
-  });
-
-  // A shell too old to expose the bridge is not "the web": the redirect
-  // cannot work there either, and this client updates at runtime while the
-  // shell updates on Steam's schedule, so a newer client on an older shell
-  // is an ordinary deployment. It must get an update prompt, never the
-  // app:// redirect that was the original bug.
-  describe("on a shell without showLinkGate", () => {
-    beforeEach(() => {
-      (window as unknown as { openfrontDesktop: unknown }).openfrontDesktop = {
-        linkGate: {},
-      };
-    });
-
-    it("discordLogin shows the update prompt and never navigates", () => {
-      discordLogin();
-
-      expect(showInGameAlert).toHaveBeenCalledTimes(1);
-      expect(vi.mocked(showInGameAlert).mock.calls[0][0]).toContain(
-        "desktop_login_needs_update",
-      );
-      expect(location.href).toBe(DESKTOP_HREF);
-      expect(fetchMock).not.toHaveBeenCalled();
-    });
-
-    it("googleLogin shows the update prompt and never navigates", () => {
-      googleLogin();
-
-      expect(showInGameAlert).toHaveBeenCalledTimes(1);
-      expect(location.href).toBe(DESKTOP_HREF);
-      expect(fetchMock).not.toHaveBeenCalled();
-    });
   });
 });
 

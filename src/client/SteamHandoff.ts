@@ -6,11 +6,12 @@ const STEAM_APP_ID = 5369890;
 
 export type SteamHandoffMode = "none" | "ask" | "steam";
 
-// The desktop shell reads `+join_game <gameID>` from its launch arguments
-// (openfront-desktop, inviteIds.ts). The flag name is a contract with builds
+// The desktop app reads `--territorium-join=<gameID>` from its launch
+// arguments (presence.rs in the app's repository), the same connect string
+// Steam hands it when a friend joins. The flag name is a contract with builds
 // already installed on players' machines.
 export function steamJoinUrl(gameId: string): string {
-  return `steam://run/${STEAM_APP_ID}//+join_game%20${gameId}/`;
+  return `steam://run/${STEAM_APP_ID}//${encodeURIComponent(`--territorium-join=${gameId}`)}/`;
 }
 
 // A custom-scheme navigation leaves this page in place, which is what lets

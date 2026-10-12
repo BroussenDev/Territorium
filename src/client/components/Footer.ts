@@ -1,7 +1,11 @@
 import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { assetUrl } from "../../core/AssetUrls";
-import { composeVersionDisplay, desktopVersion } from "../DesktopShell";
+import {
+  composeVersionDisplay,
+  desktopVersion,
+  isDesktopShell,
+} from "../DesktopShell";
 import { currentGameVersion } from "../GameVersion";
 
 @customElement("page-footer")
@@ -29,6 +33,24 @@ export class Footer extends LitElement {
   }
 
   render() {
+    // The desktop app is a game, not a website: no footer bar. Its language,
+    // version and legal links are in Settings > About. What stays is the
+    // notice the licence's section 7(b) terms keep visible on the main menu,
+    // and the language selector, hidden: translateText() reads the active
+    // language from it, so it must stay mounted.
+    if (isDesktopShell()) {
+      return html`
+        <footer
+          class="[.in-game_&]:hidden w-full shrink-0 relative z-50 pb-2 pt-1 text-center"
+        >
+          <span
+            data-i18n="main.copyright"
+            class="text-[10px] text-white/30"
+          ></span>
+          <lang-selector class="hidden"></lang-selector>
+        </footer>
+      `;
+    }
     return html`
       <!-- One row at lg: repo and build on the left, legal in the middle,
            language on the right. Stacked and centred below that. -->

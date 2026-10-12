@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.102
+
+🎮 **A cleaner Steam app**
+
+- The website footer is gone from the Steam app. Language, version, legal information, licence and source code are now in Settings > About.
+- "Open in Steam" from the website now drops you straight into the lobby instead of just starting the game.
+- Signing in with Discord or Google from the Steam app now opens the website in your browser, where you link your Steam account, instead of a message asking for an update.
+- Behind the scenes: everything left over from OpenFront's old desktop app has been removed, so the Steam app runs on Territorium's own code only.
+
 ## v0.1.101
 
 🎬 **The Steam app feels like a game**

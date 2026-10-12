@@ -25,25 +25,11 @@ import {
  *   and delays the message telling the player what to do.
  * - `steam-ticket-rejected` — a completed 401. Steam looked at the ticket and
  *   said no; the next ticket is refused identically.
- *
- * `needs-account` IS included, deliberately, though it is now the weakest
- * member of this set. It used to be here mainly because the shell reported an
- * unreachable status endpoint as `needs-account`, which made it genuinely
- * transient; openfront-desktop#91 and #5465 fixed that, so an API outage now
- * arrives as `network` and this reason means what it says.
- *
- * What keeps it here is the remaining case: a player can complete linking on
- * the website while the game is open, after which an account exists and a
- * retry signs them in. Reconnecting is a weak proxy for "they finished
- * linking in a browser", so this is one cheap, single-flighted attempt on a
- * chance — not a reason a connectivity change reliably fixes. Drop it if that
- * ever looks like wasted work.
  */
 const AUTO_RETRY_REASONS: ReadonlySet<SessionFailureKind> = new Set([
   "network",
   "steam-backend",
   "steam-error",
-  "needs-account",
 ]);
 
 /** Whether an automatic (connectivity-driven) retry is worth attempting. */

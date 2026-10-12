@@ -256,7 +256,34 @@ describe("Keybinds tab on touch devices", () => {
     vi.spyOn(Platform, "isTouch", "get").mockReturnValue(true);
     fakeBridge().install();
     const el = await mount();
-    expect(tabKeys(el)).toEqual(["gameplay", "graphics", "display", "audio"]);
+    expect(tabKeys(el)).toEqual([
+      "gameplay",
+      "graphics",
+      "display",
+      "audio",
+      "about",
+    ]);
+  });
+});
+
+describe("About tab", () => {
+  beforeEach(resetDom);
+
+  afterEach(() => {
+    window.openfrontDesktop = undefined;
+  });
+
+  // The desktop app has no website footer, so its legal links and version
+  // move here; the web keeps them in the footer.
+  it("is in the desktop app only", async () => {
+    vi.spyOn(Platform, "isTouch", "get").mockReturnValue(false);
+    const web = await mount();
+    expect(tabKeys(web)).not.toContain("about");
+
+    resetDom();
+    fakeBridge().install();
+    const app = await mount();
+    expect(tabKeys(app)).toContain("about");
   });
 });
 

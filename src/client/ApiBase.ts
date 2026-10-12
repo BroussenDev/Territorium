@@ -22,7 +22,8 @@ export function getApiBase() {
 }
 
 export function getAudience() {
-  // Sourced from BOOTSTRAP_CONFIG (server/desktop-injected) rather than
-  // window.location, so the desktop app (app://openfront) targets real infra.
+  // Sourced from BOOTSTRAP_CONFIG (server-injected) rather than
+  // window.location, so the desktop app's offline build (on its own `game`
+  // scheme) still names the real site.
   return ClientEnv.jwtAudience();
 }

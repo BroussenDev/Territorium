@@ -247,12 +247,8 @@ export class SubscriptionPanel extends LitElement {
   /**
    * Static copy replacing the Manage/Reactivate button in the desktop build.
    *
-   * Both of those go through the Stripe billing portal, and the packaged Steam
-   * build must never steer a player to a payment page -- `navigationPolicy.ts`
-   * refuses the link-out, so the button is dead. Worse than dead, once infra
-   * accepts `app://openfront` as a returnUrl: the click then raises the
-   * shell's "Purchase unavailable / nothing has been charged" dialog at a
-   * player who is trying to STOP paying.
+   * Both of those go through the web billing portal, and the Steam app must
+   * never steer a player to a payment page outside Steam.
    *
    * Deliberately NOT a link. Naming the website as a fact is not steering to a
    * payment page; handing over a clickable route to one is exactly what the

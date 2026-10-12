@@ -514,16 +514,8 @@ export async function startWorker() {
         // tab left open across a deploy) would desync the game. Reject it
         // with a typed error the client answers by refreshing. A missing
         // commit means a pre-feature bundle, which is stale by definition.
-        // The "desktop" placeholder is exempt: an Electron shell predating
-        // OPE-358 injects it no matter how fresh its self-updating bundle is
-        // (GameVersion.ts documents the shape as live), so treating it as a
-        // mismatch would lock those players out permanently — and the
-        // desktop error path is a terminal alert with no retry. The grace
-        // dies with the last pre-OPE-358 shell.
-        if (
-          clientMsg.gitCommit !== ServerEnv.gitCommit() &&
-          clientMsg.gitCommit !== "desktop"
-        ) {
+        // The desktop app loads this same site, so it carries the same commit.
+        if (clientMsg.gitCommit !== ServerEnv.gitCommit()) {
           log.info("rejecting version-mismatched client", {
             gameID: clientMsg.gameID,
             clientCommit: clientMsg.gitCommit,

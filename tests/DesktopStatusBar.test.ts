@@ -13,134 +13,31 @@ import {
 const COOLDOWN_MS = 5_000;
 
 describe("barSource", () => {
-  it("shows nothing when both states are healthy", () => {
-    expect(
-      barSource(
-        { status: "current", bytes: 0, total: 0 },
-        { status: "signed-in" },
-        false,
-      ),
-    ).toBe("none");
+  it("shows nothing when signed in and the backend is fine", () => {
+    expect(barSource({ status: "signed-in" }, false)).toBe("none");
   });
 
-  it("shows the update when the session is fine", () => {
+  it("shows the session when signed out", () => {
     expect(
-      barSource(
-        { status: "downloading", bytes: 1, total: 2 },
-        { status: "signed-in" },
-        false,
-      ),
-    ).toBe("update");
-  });
-
-  // Session wins over EVERY update state, downloading and staged included:
-  // the update's remedy is a reload, which leads straight back to the same
-  // wall -- and a reload re-runs the update flow anyway, so nothing is lost.
-  it.each([
-    "checking",
-    "current",
-    "downloading",
-    "staged",
-    "blocked",
-    "failed",
-  ] as const)("shows the session over update state %s", (status) => {
-    expect(
-      barSource(
-        { status, bytes: 0, total: 0 },
-        {
-          status: "signed-out",
-          reason: "steam-wedged",
-        },
-        false,
-      ),
+      barSource({ status: "signed-out", reason: "steam-wedged" }, false),
     ).toBe("session");
   });
 
-  // OPE-194 pairs with this: an unrecognised error kind now GATES multiplayer,
-  // so it must never gate silently. The bar's visibility and its label/action
-  // key off `status`, not `error.kind`, so a failure this client cannot
-  // classify still surfaces "couldn't download the update" plus Retry -- a
-  // visible reason and an action, which is what keeps gating from being
-  // punishment without recourse.
-  it("surfaces a failure whose error kind is unrecognised", () => {
-    expect(
-      barSource(
-        {
-          status: "failed",
-          bytes: 0,
-          total: 0,
-          error: { kind: "quota-exceeded", message: "from a newer shell" },
-        },
-        { status: "signed-in" },
-        false,
-      ),
-    ).toBe("update");
+  it("shows nothing on the web, where there is no session state", () => {
+    expect(barSource(null, false)).toBe("none");
   });
 
-  it("shows nothing on the web, where neither bridge exists", () => {
-    expect(barSource(null, null, false)).toBe("none");
-  });
-
-  // OPE-439. Reachability sits between the two: below the session, because a
-  // session failure names a more specific remedy, and above the update,
-  // because an update failure while the backend is unreachable is a SYMPTOM
-  // of it -- "Couldn't download the update -- Retry" points at a button that
-  // provably cannot work until the network is back.
-  it("shows the offline state over any update state", () => {
-    expect(
-      barSource({ status: "current", bytes: 0, total: 0 }, null, true),
-    ).toBe("reachability");
-    expect(
-      barSource(
-        {
-          status: "failed",
-          bytes: 0,
-          total: 0,
-          error: { kind: "network", message: "offline" },
-        },
-        { status: "signed-in" },
-        true,
-      ),
-    ).toBe("reachability");
+  // OPE-439. Below the session, because a session failure names a more
+  // specific remedy.
+  it("shows the offline state when the backend is unreachable", () => {
+    expect(barSource(null, true)).toBe("reachability");
+    expect(barSource({ status: "signed-in" }, true)).toBe("reachability");
   });
 
   it("still shows the session over the offline state", () => {
-    expect(
-      barSource(null, { status: "signed-out", reason: "network" }, true),
-    ).toBe("session");
-  });
-
-  // "needs-account" is the one signed-out reason whose remedy (reopening the
-  // gate) is itself a network call, so it is the one exception to "session
-  // always outranks reachability" -- see barSource's own comment.
-  it("shows the account prompt when the backend is reachable", () => {
-    expect(
-      barSource(
-        null,
-        { status: "signed-out", reason: "needs-account" },
-        /* backendOutage */ false,
-      ),
-    ).toBe("session");
-  });
-
-  it("yields to the reachability slot while the backend is unreachable", () => {
-    expect(
-      barSource(
-        null,
-        { status: "signed-out", reason: "needs-account" },
-        /* backendOutage */ true,
-      ),
-    ).toBe("reachability");
-  });
-
-  it("does not change the priority for other signed-out reasons", () => {
-    expect(
-      barSource(
-        null,
-        { status: "signed-out", reason: "steam-wedged" },
-        /* backendOutage */ true,
-      ),
-    ).toBe("session");
+    expect(barSource({ status: "signed-out", reason: "network" }, true)).toBe(
+      "session",
+    );
   });
 
   // The argument is the CONFIRMED outage, so "unsettled" and "missed once"
@@ -148,10 +45,8 @@ describe("barSource", () => {
   // this bar to hang a "Checking…" on, and inventing one would put a strip
   // across the bottom of a healthy game every time one request timed out.
   it("shows nothing until an outage is confirmed", () => {
-    expect(barSource(null, { status: "signed-in" }, false)).toBe("none");
-    expect(
-      barSource({ status: "current", bytes: 0, total: 0 }, null, false),
-    ).toBe("none");
+    expect(barSource({ status: "signed-in" }, false)).toBe("none");
+    expect(barSource(null, false)).toBe("none");
   });
 });
 
@@ -440,114 +335,6 @@ describe("the rendered offline state", () => {
   });
 });
 
-/**
- * "needs-account" is diagnosed, not a failure: nothing broke, the player
- * simply has no account yet. Both assertions below exist because the switch
- * in sessionLabel/sessionAction falls through to a "something went wrong"
- * default that would be actively wrong here -- see this suite's own
- * mutation check, which confirms that by deleting each case.
- */
-describe("the rendered needs-account session state", () => {
-  function mountBar(): HTMLElement & { updateComplete: Promise<unknown> } {
-    const bar = document.createElement("desktop-status-bar") as HTMLElement & {
-      updateComplete: Promise<unknown>;
-    };
-    document.body.appendChild(bar);
-    return bar;
-  }
-
-  afterEach(() => {
-    document.body.innerHTML = "";
-  });
-
-  it("labels the bar with the needs-account key, not the generic fallback", async () => {
-    const bar = mountBar();
-    document.dispatchEvent(
-      new CustomEvent("desktop-session-state", {
-        detail: { status: "signed-out", reason: "needs-account" },
-      }),
-    );
-    await bar.updateComplete;
-
-    expect(bar.textContent).toContain("desktop_session.needs_account");
-    expect(bar.textContent).not.toContain("desktop_session.generic");
-  });
-
-  it("offers Go online rather than the generic Retry", async () => {
-    const bar = mountBar();
-    document.dispatchEvent(
-      new CustomEvent("desktop-session-state", {
-        detail: { status: "signed-out", reason: "needs-account" },
-      }),
-    );
-    await bar.updateComplete;
-
-    const button = bar.querySelector("button");
-    expect(button?.textContent?.trim()).toBe("desktop_status.go_online");
-  });
-
-  // The two above only check the label; this checks the WIRING -- that a
-  // click actually reaches the bridge, not just that a button with the right
-  // text exists. See desktopLinkGate() in DesktopShell.ts: it reads
-  // window.openfrontDesktop.showLinkGate.
-  it("invokes showLinkGate when Go online is clicked", async () => {
-    const showLinkGate = vi.fn(() => Promise.resolve());
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = {
-      showLinkGate,
-    };
-
-    const bar = mountBar();
-    document.dispatchEvent(
-      new CustomEvent("desktop-session-state", {
-        detail: { status: "signed-out", reason: "needs-account" },
-      }),
-    );
-    await bar.updateComplete;
-
-    bar.querySelector("button")!.click();
-
-    expect(showLinkGate).toHaveBeenCalledTimes(1);
-
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = undefined;
-  });
-
-  // A rejected showLinkGate() must be caught, not left to become an
-  // unhandled rejection -- see the handler's own comment on why it uses
-  // `.catch` instead of the bare `void` form used elsewhere in this file.
-  it("handles a rejected showLinkGate without an unhandled rejection", async () => {
-    const showLinkGate = vi.fn(() => Promise.reject(new Error("no bridge")));
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = {
-      showLinkGate,
-    };
-    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-
-    const bar = mountBar();
-    document.dispatchEvent(
-      new CustomEvent("desktop-session-state", {
-        detail: { status: "signed-out", reason: "needs-account" },
-      }),
-    );
-    await bar.updateComplete;
-
-    bar.querySelector("button")!.click();
-
-    // Flush the promise's microtask queue so the `.catch` has run before
-    // this test ends -- otherwise a missing `.catch` would surface as an
-    // unhandled rejection on a LATER test rather than a failure here.
-    await Promise.resolve();
-    await Promise.resolve();
-
-    expect(showLinkGate).toHaveBeenCalledTimes(1);
-    expect(errorSpy).toHaveBeenCalledWith(
-      "desktop-status-bar: showLinkGate failed",
-      expect.any(Error),
-    );
-
-    errorSpy.mockRestore();
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = undefined;
-  });
-});
-
 // A Retry on a gated session that lands back on the same reason (Steam is
 // still not running) repaints nothing: the shell answers in milliseconds, so
 // not even "Signing in…" is seen. The bar wiggles instead, so the press is
@@ -611,80 +398,5 @@ describe("Retry on a session state that does not change", () => {
     await bar.updateComplete;
 
     expect(strip(bar).classList.contains("animate-bounce")).toBe(false);
-  });
-});
-
-// barSource ranks the session above the update, so a release staged while the
-// session was gated never showed its Reload. The bar applies it itself when
-// the session signs in -- but only from a gated state, and never where a
-// reload would throw the player out of something.
-describe("a staged update when a gated session signs in", () => {
-  let apply: ReturnType<typeof vi.fn>;
-
-  function mountBar(status: string) {
-    apply = vi.fn(() => Promise.resolve());
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = {
-      update: {
-        subscribe(cb: (s: unknown) => void) {
-          cb({ status, bytes: 0, total: 0 });
-          return () => {};
-        },
-        apply,
-        retry: () => Promise.resolve(),
-      },
-    };
-    const bar = document.createElement("desktop-status-bar");
-    document.body.appendChild(bar);
-    return bar;
-  }
-
-  function setSession(detail: { status: string; reason?: string }) {
-    document.dispatchEvent(
-      new CustomEvent("desktop-session-state", { detail }),
-    );
-  }
-
-  afterEach(() => {
-    document.body.innerHTML = "";
-    document.body.classList.remove("in-game");
-    (window as { openfrontDesktop?: unknown }).openfrontDesktop = undefined;
-  });
-
-  it("applies it when Retry signs the player in", () => {
-    mountBar("staged");
-    setSession({ status: "signed-out", reason: "steam-unavailable" });
-    setSession({ status: "retrying" });
-    setSession({ status: "signed-in" });
-    expect(apply).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not reload on an ordinary first sign-in", () => {
-    mountBar("staged");
-    setSession({ status: "unknown" });
-    setSession({ status: "signed-in" });
-    expect(apply).not.toHaveBeenCalled();
-  });
-
-  it("does nothing when no update is staged", () => {
-    mountBar("downloading");
-    setSession({ status: "signed-out", reason: "steam-unavailable" });
-    setSession({ status: "signed-in" });
-    expect(apply).not.toHaveBeenCalled();
-  });
-
-  it("does not reload a player out of a lobby wait", () => {
-    mountBar("staged");
-    setSession({ status: "signed-out", reason: "network" });
-    document.dispatchEvent(new CustomEvent("join-lobby"));
-    setSession({ status: "signed-in" });
-    expect(apply).not.toHaveBeenCalled();
-  });
-
-  it("does not reload mid-game", () => {
-    mountBar("staged");
-    setSession({ status: "signed-out", reason: "network" });
-    document.body.classList.add("in-game");
-    setSession({ status: "signed-in" });
-    expect(apply).not.toHaveBeenCalled();
   });
 });

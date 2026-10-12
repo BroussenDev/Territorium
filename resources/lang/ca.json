@@ -25,7 +25,6 @@
     "delete_account_warning": "El vostre compte se suprimirà permanentment 24 hores després de la confirmació i se us tancarà la sessió a tots els dispositius immediatament. Tornar a iniciar la sessió no el cancel·la; només el suport pot, dins d'aquestes 24 hores.",
     "desktop_login_discord": "Continueu amb Discord al vostre navegador",
     "desktop_login_google": "Continueu amb Google al vostre navegador",
-    "desktop_login_needs_update": "Per iniciar la sessió cal una versió més recent de l'aplicació d'escriptori. Reinicieu Steam per actualitzar-lo i, a continuació, torneu-ho a provar.",
     "desktop_sign_in_desc": "En iniciar la sessió s'obre el lloc web de Territorium al vostre navegador. Inicieu la sessió allà, confirmeu l'enllaç al vostre compte de Steam i el joc el recollirà.",
     "email_placeholder": "Introdueix la teva adreça de correu electrònic",
     "enter_email_address": "Introduïu una adreça de correu electrònic",
@@ -911,26 +910,6 @@
     "title": "Pack Conquérant desbloquejat!",
     "where": "Tot és al teu Inventari: tria el títol amb el botó d'insígnia al costat del teu nom."
   },
-  "desktop_gate": {
-    "back_to_game": "Torna al joc",
-    "browser_fallback": "No s'ha pogut obrir el navegador automàticament; feu servir l'enllaç anterior.",
-    "cancel": "Cancel·la",
-    "code_destination_generic": "Introduïu aquest codi al lloc web de Territorium per enllaçar el vostre compte:",
-    "code_destination_site": "Introduïu aquest codi a {site} per enllaçar el vostre compte:",
-    "continue_to_game": "Continueu amb el joc",
-    "expired": "Aquest codi ha caducat. Comenceu de nou per obtenir-ne un de nou.",
-    "heading": "Benvingut a Territorium",
-    "link_existing": "Enllaça el compte existent",
-    "linking_failed_reason": "S'ha produït un error en l'enllaç: {reason}",
-    "linking_failed_unknown": "L'enllaç ha fallat per un motiu desconegut.",
-    "new_player": "Jugador nou",
-    "not_found": "Aquest codi ja no és vàlid. Comenceu de nou per obtenir-ne un de nou.",
-    "prompt": "És la primera vegada que jugues o ja tens un compte?",
-    "retry": "Torna-ho a provar",
-    "starting_link": "S'està iniciant l'enllaç del compte...",
-    "ticket_unavailable": "No s'ha pogut iniciar l'enllaç del compte ara mateix. Pots tornar-ho a provar o continuar amb el joc.",
-    "title": "Territorium - Configuració del compte"
-  },
   "desktop_offline": {
     "go_online": "Torna a connectar-te",
     "offline": "Sense connexió amb Territorium: el mode solitari continua disponible.",
@@ -938,13 +917,8 @@
     "staying": "Mode sense connexió: només hi ha el mode solitari.",
     "still_offline": "Encara no hi ha connexió amb Territorium."
   },
-  "desktop_presence": {
-    "in_game": "En joc",
-    "spectating": "Espectant"
-  },
   "desktop_session": {
     "generic": "No s'ha pogut iniciar la sessió al vostre compte de Territorium",
-    "needs_account": "Configura el teu compte de Territorium per jugar en línia",
     "network": "No es pot arribar a Territorium. Comproveu la vostra connexió.",
     "retry": "Torna-ho a provar",
     "retrying": "S'està iniciant la sessió...",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam no ha pogut verificar la vostra sessió. Reiniciar Steam normalment soluciona això."
   },
   "desktop_status": {
-    "go_online": "Aneu en línia",
     "offline": "Fora de línia: no es pot accedir als servidors de Territorium",
     "retry": "Torna-ho a provar",
     "retrying": "S'està tornant a provar..."
-  },
-  "desktop_update": {
-    "blocked": "Es requereix una actualització de Steam per a la darrera versió",
-    "downloading": "S'està baixant l'actualització... {percent}%",
-    "failed": "No s'ha pogut descarregar l'actualització",
-    "ready": "Actualització a punt",
-    "reload": "Torna a carregar",
-    "retry": "Torna-ho a provar"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium no ha pogut utilitzar la teva targeta gràfica, de manera que el joc no es pot executar. Això sol ser temporal. Per arreglar-ho:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Afegeix a la llista de desitjos"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Introduïu el codi que es mostra a la vostra aplicació d'escriptori Steam.",
-    "code_submit": "Continua",
-    "confirm": "Enllaça el compte",
-    "confirm_prompt": "Enllaçar Steam {persona} amb el compte {username}?",
-    "confirm_prompt_no_persona": "Enllaçar el teu compte de Steam amb el compte {username}?",
-    "conflict_confirm": "Suprimeix-lo i enllaça",
-    "conflict_deleting": "S'està suprimint…",
-    "conflict_explain": "Aquest compte es va crear per a tu la primera vegada que vas llançar el joc a Steam. L'enllaç l'eliminarà permanentment i tot el que hi ha.",
-    "conflict_games": "{games, plural, =0 {No s'ha jugat cap partit} one {# joc jugat} other {# jocs jugats}}",
-    "conflict_games_capped": "{games}+ jocs jugats",
-    "conflict_keep": "Et mantindràs {username} i les teves compres a Steam es mouran amb l'enllaç.",
-    "conflict_prompt": "Steam {persona} ja està connectat a un compte de Territorium separat.",
-    "conflict_prompt_no_persona": "Aquest compte de Steam ja està connectat a un compte de Territorium independent.",
-    "conflict_warning": "Això no es pot desfer.",
-    "invalid_code": "Això no sembla un codi vàlid. Comprova-ho i torna-ho a provar.",
-    "linking": "S'està enllaçant...",
-    "load_error": "No s'han pogut carregar les dades del vostre compte. Torna-ho a provar des de Steam.",
-    "load_error_code": "No s'han pogut carregar les dades del vostre compte. Si us plau, torna-ho a provar.",
     "reason_account_already_has_steam": "El teu compte ja està enllaçat a un altre compte de Steam.",
-    "reason_discard_blocked": "El compte Territorium d'aquest compte de Steam no es pot eliminar automàticament. Poseu-vos en contacte amb el servei d'assistència i us ho solucionarem.",
-    "reason_discard_blocked_paid": "El compte Territorium d'aquest compte de Steam té compres, de manera que no el podem suprimir automàticament. Poseu-vos en contacte amb el servei d'assistència i us ho solucionarem.",
-    "reason_discard_deferred": "Encara s'està realitzant una compra amb aquest compte. Si us plau, torna-ho a provar d'aquí a uns minuts.",
-    "reason_discard_not_linked": "L'enllaç no s'ha completat. Si us plau, torneu a iniciar l'enllaç.",
-    "reason_expired": "Aquest enllaç ha caducat. Torna-ho a provar des de Steam.",
-    "reason_offer_unavailable": "Aquesta confirmació ha caducat. Si us plau, torneu a iniciar l'enllaç.",
-    "reason_rate_limited": "Massa intents. Espereu {seconds, plural, =0 {un moment} one {# segon} other {# segons}} i torneu-ho a provar.",
     "reason_steam_has_progress": "Aquest compte de Steam ja té el seu propi progrés i no es pot combinar.",
-    "reason_steam_linked_elsewhere": "Aquest compte de Steam ja està enllaçat a un altre de Territorium.",
-    "success": "El vostre compte de Steam ara està enllaçat.",
-    "title": "Enllaça el compte de Steam"
+    "reason_steam_linked_elsewhere": "Aquest compte de Steam ja està enllaçat a un altre de Territorium."
   },
   "steam_user_header": {
     "avatar_alt": "Avatar de Steam",
@@ -3125,6 +3062,12 @@
     "message": "Hi ha disponible una nova versió de Territorium. La pàgina s'actualitzarà ara per actualitzar-la."
   },
   "user_setting": {
+    "about_language": "Idioma",
+    "about_language_change": "Canvia l'idioma",
+    "about_legal": "Informació legal",
+    "about_license": "Llicència i crèdits",
+    "about_source": "Codi font",
+    "about_version": "Versió",
     "alert_frame_desc": "Activa o desactiva el marc d'alerta. Quan estigui activat, el marc es mostrarà quan siguis traït o atacat per terra.",
     "alert_frame_label": "Marc d'alerta",
     "ally_keybinds": "Tecles d'Ally",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Obriu els enllaços del vestíbul a Steam",
     "swap_direction": "Canvia la direcció del míssil",
     "swap_direction_desc": "Canvia la direcció de l'arc de llançament del míssil (amunt/avall).",
+    "tab_about": "Quant a",
     "tab_audio": "Àudio",
     "tab_display": "Mostra",
     "tab_gameplay": "Joc",

@@ -19,7 +19,7 @@ function resolvedDefaultLanguage(): string {
   return priv.getClosestSupportedLang(priv.defaultLocale());
 }
 
-/** What the Steam shell's preload would expose, or nothing off the shell. */
+/** What the Steam app's bridge would expose, or nothing off the app. */
 function withShellLocale(locale: string | null): void {
   window.openfrontDesktop =
     locale === null ? undefined : { steamLocale: locale };

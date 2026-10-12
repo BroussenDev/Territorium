@@ -11,10 +11,9 @@ import { playerProfileUrl } from "../../src/client/utilities/PlayerProfileUrl";
 // a player sends a friend, the domain the magic-link email comes back to.
 //
 // On the web the answer is the document itself. The case they exist for is the
-// desktop shell, which serves the renderer from `app://openfront/index.html`:
-// a link built from window.location there resolves nowhere outside that one
-// Electron app, and is not even a link the desktop client's own friends box
-// will take back (it only unwraps http(s) URLs).
+// desktop app's offline build, which the app serves from its own scheme
+// (`game://localhost/offline.html` on Linux): a link built from window.location
+// there resolves nowhere outside that one app.
 
 /** What ClientEnv reads out of BOOTSTRAP_CONFIG, as the helpers take it. */
 function bootstrap(siteOrigin?: string, jwtAudience = "openfront.io") {
@@ -61,13 +60,13 @@ describe("deriveShareOrigin", () => {
     });
   });
 
-  describe("desktop shell: app:// is not a shareable origin", () => {
+  describe("desktop app: its own scheme is not a shareable origin", () => {
     it("targets the injected site host over TLS", () => {
       expect(
         deriveShareOrigin(
           bootstrap("https://openfront.io"),
-          "app:",
-          "app://openfront",
+          "game:",
+          "game://localhost",
         ),
       ).toBe("https://openfront.io");
     });
@@ -76,29 +75,29 @@ describe("deriveShareOrigin", () => {
       expect(
         deriveShareOrigin(
           bootstrap("https://nightly.openfront.dev", "openfront.dev"),
-          "app:",
-          "app://openfront",
+          "game:",
+          "game://localhost",
         ),
       ).toBe("https://nightly.openfront.dev");
     });
 
-    it("never leaks the app:// origin", () => {
+    it("never leaks the app's own origin", () => {
       expect(
         deriveShareOrigin(
           bootstrap("https://openfront.io"),
-          "app:",
-          "app://openfront",
+          "game:",
+          "game://localhost",
         ),
-      ).not.toContain("app:");
+      ).not.toContain("game:");
     });
 
-    describe("a shell that injects no site host falls back to the audience", () => {
+    describe("a page that injects no site host falls back to the audience", () => {
       it("uses the audience host over TLS", () => {
         expect(
           deriveShareOrigin(
             bootstrap(undefined, "openfront.io"),
-            "app:",
-            "app://openfront",
+            "game:",
+            "game://localhost",
           ),
         ).toBe("https://openfront.io");
       });
@@ -107,8 +106,8 @@ describe("deriveShareOrigin", () => {
         expect(
           deriveShareOrigin(
             bootstrap(undefined, "localhost"),
-            "app:",
-            "app://openfront",
+            "game:",
+            "game://localhost",
           ),
         ).toBe("http://localhost:9000");
       });
@@ -123,14 +122,14 @@ describe("deriveShareBase", () => {
     ).toBe("https://openfront.io/c/abc");
   });
 
-  it("drops the shell's local index.html path on desktop", () => {
-    // The reported bug: the Steam build copied
-    // app://openfront/index.html#modal=profile&publicID=…
+  it("drops the app's local offline.html path on desktop", () => {
+    // A link copied there must not carry
+    // game://localhost/offline.html#modal=profile&publicID=…
     const base = deriveShareBase(
       bootstrap("https://openfront.io"),
-      "app:",
-      "app://openfront",
-      "/index.html",
+      "game:",
+      "game://localhost",
+      "/offline.html",
     );
     expect(base).toBe("https://openfront.io/");
     expect(base).not.toContain("index.html");

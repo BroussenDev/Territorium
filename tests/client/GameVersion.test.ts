@@ -45,10 +45,9 @@ describe("composeGameVersion", () => {
     expect(composeGameVersion("x.xx.xx", "bf739f86c4e1")).toBe("bf739f8");
   });
 
-  // "DEV" is what the local dev server injects, and "desktop" is what an
-  // Electron shell predating OPE-358 injects. Neither is a sha, and both say
+  // "DEV" is what the local dev server injects. Not a sha, and it says
   // strictly more than the placeholder.
-  it.each(["DEV", "desktop"])("passes through a non-sha commit (%s)", (c) => {
+  it.each(["DEV"])("passes through a non-sha commit (%s)", (c) => {
     expect(composeGameVersion("x.xx.xx", c)).toBe(c);
   });
 

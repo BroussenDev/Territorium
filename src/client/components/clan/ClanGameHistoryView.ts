@@ -223,8 +223,8 @@ export class ClanGameHistoryView extends LitElement {
 
   private async copyGameLink(gameId: string) {
     // shareOrigin(), not window.location.origin: this is copied to be sent to
-    // someone else, and the desktop shell's own origin (`app://openfront`)
-    // resolves nowhere outside that Electron app. See deriveShareOrigin.
+    // someone else, and the desktop app's offline build has an origin nothing
+    // else can open. See deriveShareOrigin.
     const url = `${ClientEnv.shareOrigin()}${ClientEnv.gamePath(gameId)}`;
 
     try {

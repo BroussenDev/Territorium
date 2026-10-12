@@ -25,7 +25,6 @@
     "delete_account_warning": "Tilisi poistetaan pysyvästi 24 tunnin kuluttua vahvistamisesta, ja sinut kirjataan ulos kaikista laitteista välittömästi. Uudelleen kirjautuminen ei peruuta sitä. vain tuki voi näiden 24 tunnin sisällä.",
     "desktop_login_discord": "Jatka Discordin käyttöä selaimessasi",
     "desktop_login_google": "Jatka Googlella selaimessasi",
-    "desktop_login_needs_update": "Kirjautuminen vaatii uudemman version työpöytäsovelluksesta. Päivitä käynnistämällä Steam uudelleen ja yritä sitten uudelleen.",
     "desktop_sign_in_desc": "Kirjautuminen avaa Territorium-verkkosivuston selaimessasi. Kirjaudu sisään, vahvista linkki Steam-tiliisi, niin peli hakee sen.",
     "email_placeholder": "Kirjoita sähköpostiosoitteesi",
     "enter_email_address": "Anna sähköpostiosoite",
@@ -911,26 +910,6 @@
     "title": "Conquérant-paketti avattu!",
     "where": "Kaikki on varastossasi: valitse arvonimi nimesi vieressä olevalla merkkipainikkeella."
   },
-  "desktop_gate": {
-    "back_to_game": "Takaisin peliin",
-    "browser_fallback": "Selaintasi ei voitu avata automaattisesti – käytä yllä olevaa linkkiä.",
-    "cancel": "Peruuttaa",
-    "code_destination_generic": "Linkitä tilisi antamalla tämä koodi Territorium-verkkosivustolle:",
-    "code_destination_site": "Anna tämä koodi osoitteeseen {site} liittääksesi tilisi:",
-    "continue_to_game": "Jatka peliin",
-    "expired": "Tämä koodi on vanhentunut. Aloita alusta saadaksesi uuden.",
-    "heading": "Tervetuloa Territoriumiin",
-    "link_existing": "Linkitä olemassa oleva tili",
-    "linking_failed_reason": "Linkitys epäonnistui: {reason}",
-    "linking_failed_unknown": "Linkittäminen epäonnistui tuntemattomasta syystä.",
-    "new_player": "Uusi pelaaja",
-    "not_found": "Tämä koodi ei ole enää voimassa. Aloita alusta saadaksesi uuden.",
-    "prompt": "Onko tämä ensimmäinen kerta, kun pelaat, vai onko sinulla jo tili?",
-    "retry": "Yritä uudelleen",
-    "starting_link": "Aloitetaan tilin yhdistämistä…",
-    "ticket_unavailable": "Tilin linkittämistä ei voitu aloittaa juuri nyt. Voit yrittää uudelleen tai jatkaa peliä.",
-    "title": "Territorium - Tilin luominen"
-  },
   "desktop_offline": {
     "go_online": "Siirry verkkoon",
     "offline": "Ei yhteyttä Territoriumiin: yksinpeli on yhä käytettävissä.",
@@ -938,13 +917,8 @@
     "staying": "Offline-tila: vain yksinpeli on käytettävissä.",
     "still_offline": "Edelleen ei yhteyttä Territoriumiin."
   },
-  "desktop_presence": {
-    "in_game": "Pelissä",
-    "spectating": "Näyttävä"
-  },
   "desktop_session": {
     "generic": "Ei voitu kirjautua sisään Territorium-tilillesi",
-    "needs_account": "Määritä Territorium-tilisi pelataksesi verkossa",
     "network": "Territoriumiin ei pääse. Tarkista yhteys.",
     "retry": "Yritä uudelleen",
     "retrying": "Kirjaudutaan sisään…",
@@ -954,18 +928,9 @@
     "steam_wedged": "Steam ei voinut vahvistaa istuntoa. Steamin uudelleenkäynnistäminen yleensä korjaa tämän."
   },
   "desktop_status": {
-    "go_online": "Siirry verkkoon",
     "offline": "Offline: ei saa yhteyttä Territorium-palvelimiin",
     "retry": "Yritä uudelleen",
     "retrying": "Yritetään uudelleen…"
-  },
-  "desktop_update": {
-    "blocked": "Steam-päivitys vaaditaan uusimpaan versioon",
-    "downloading": "Ladataan päivitystä… {percent}%",
-    "failed": "Päivitystä ei voitu ladata",
-    "ready": "Päivitys valmis",
-    "reload": "Lataa uudelleen",
-    "retry": "Yritä uudelleen"
   },
   "desktop_webgl_gate": {
     "intro": "Territorium ei voinut käyttää näytönohjaintasi, joten peli ei voi toimia. Tämä on yleensä väliaikaista. Korjaa se seuraavasti:",
@@ -2725,37 +2690,9 @@
     "wishlist": "Lisää toivelistalle"
   },
   "steam_link_modal": {
-    "code_placeholder": "XXXX-XXXX",
-    "code_prompt": "Anna Steam-työpöytäsovelluksessa näkyvä koodi.",
-    "code_submit": "Jatkaa",
-    "confirm": "Linkitä tili",
-    "confirm_prompt": "Linkitetäänkö Steam {persona} tiliin {username}?",
-    "confirm_prompt_no_persona": "Liitä Steam-tilisi tiliin {username}?",
-    "conflict_confirm": "Poista se ja linkitä",
-    "conflict_deleting": "Poistetaan…",
-    "conflict_explain": "Tämä tili luotiin sinulle, kun käynnistit pelin ensimmäisen kerran Steamissa. Linkittäminen poistaa sen ja kaiken sen pysyvästi.",
-    "conflict_games": "{games, plural, =0 {Ei pelattuja pelejä} one {# peli pelattu} other {# pelattua peliä}}",
-    "conflict_games_capped": "{games}+ peliä pelattu",
-    "conflict_keep": "Säilytät {username}, ja Steam-ostoksesi siirtyvät linkin kautta.",
-    "conflict_prompt": "Steam {persona} on jo liitetty erilliseen Territorium-tiliin.",
-    "conflict_prompt_no_persona": "Tämä Steam-tili on jo liitetty erilliseen Territorium-tiliin.",
-    "conflict_warning": "Tätä ei voi kumota.",
-    "invalid_code": "Se ei näytä kelvolliselta koodilta. Tarkista se ja yritä uudelleen.",
-    "linking": "Linkitetään…",
-    "load_error": "Tilitietojasi ei voitu ladata. Yritä uudelleen Steamista.",
-    "load_error_code": "Tilitietojasi ei voitu ladata. Yritä uudelleen.",
     "reason_account_already_has_steam": "Tilisi on jo linkitetty toiseen Steam-tiliin.",
-    "reason_discard_blocked": "Tämän Steam-tilin Territorium-tiliä ei voi poistaa automaattisesti. Ota yhteyttä tukeen, niin selvitämme asian puolestasi.",
-    "reason_discard_blocked_paid": "Tämän Steam-tilin Territorium-tilillä on ostoksia, joten emme voi poistaa sitä automaattisesti. Ota yhteyttä tukeen, niin selvitämme asian puolestasi.",
-    "reason_discard_deferred": "Ostos tällä tilillä on edelleen käynnissä. Yritä uudelleen muutaman minuutin kuluttua.",
-    "reason_discard_not_linked": "Linkki ei valmistunut. Aloita linkki uudelleen.",
-    "reason_expired": "Tämä linkki on vanhentunut. Yritä uudelleen Steamista.",
-    "reason_offer_unavailable": "Tämä vahvistus on vanhentunut. Aloita linkki uudelleen.",
-    "reason_rate_limited": "Liian monta yritystä. Odota {seconds, plural, =0 {hetki} one {# sekunti} other {# sekuntia}} ja yritä uudelleen.",
     "reason_steam_has_progress": "Tällä Steam-tilillä on jo oma edistyminen, eikä sitä voi yhdistää.",
-    "reason_steam_linked_elsewhere": "Tämä Steam-tili on jo linkitetty toiseen Territorium-tiliin.",
-    "success": "Steam-tilisi on nyt linkitetty.",
-    "title": "Linkitä Steam-tili"
+    "reason_steam_linked_elsewhere": "Tämä Steam-tili on jo linkitetty toiseen Territorium-tiliin."
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
@@ -3125,6 +3062,12 @@
     "message": "Territoriumin uusi versio on saatavilla. Sivu päivittyy nyt päivitystä varten."
   },
   "user_setting": {
+    "about_language": "Kieli",
+    "about_language_change": "Vaihda kieli",
+    "about_legal": "Oikeudelliset tiedot",
+    "about_license": "Lisenssi ja tekijät",
+    "about_source": "Lähdekoodi",
+    "about_version": "Versio",
     "alert_frame_desc": "Laita hälytyskehys pois tai päälle. Kun päällä, kehys näkyy, kun sinut petetään.",
     "alert_frame_label": "Hälytyskehys",
     "ally_keybinds": "Ally Keybinds",
@@ -3292,6 +3235,7 @@
     "steam_lobby_links_label": "Avaa aulalinkit Steamissä",
     "swap_direction": "Vaihda raketin suuntaa",
     "swap_direction_desc": "Vaihda raketin laukaisusuuntaa (ylös/alas).",
+    "tab_about": "Tietoja",
     "tab_audio": "Audio",
     "tab_display": "Näyttö",
     "tab_gameplay": "Pelin kulku",

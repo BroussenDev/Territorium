@@ -384,7 +384,7 @@ export class LangSelector extends LitElement {
     return text;
   }
 
-  private async openModal() {
+  public async openLanguagePicker() {
     this.debugMode = this.debugKeyPressed;
     await this.loadLanguageList();
 
@@ -428,7 +428,7 @@ export class LangSelector extends LitElement {
       <button
         id="lang-selector"
         title="Change Language"
-        @click=${this.openModal}
+        @click=${this.openLanguagePicker}
         class="border-none bg-none cursor-pointer p-0 flex items-center justify-center transition-transform duration-200 hover:scale-[1.1] active:scale-[0.9] opacity-60 hover:opacity-100 w-[40px] h-[40px] lg:w-[56px] lg:h-[56px]"
       >
         <img
