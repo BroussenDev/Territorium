@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.104
+
+⚙️ **Graphics quality**
+
+- New Graphics quality setting: Low, Normal, High (the default, as before) or Ultra. Lower levels render the map at a lower resolution and drop the heaviest effects, for weaker computers; Ultra renders sharper on 4K and high-density screens. It combines with any style (Night, Evan's pick…), and changes live in a game.
+- The frame rate limit now also offers 144, 240 and 360 frames per second, for high refresh rate screens.
+
 ## v0.1.103
 
 🎞️ **Frame rate limit**

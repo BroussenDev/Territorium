@@ -61,8 +61,18 @@ export function getDefaultKeybinds(isMac: boolean): Record<string, string> {
   };
 }
 
-/** The frame-rate caps Settings offers; 0 is the display's own rate. */
-export const FRAME_RATE_CAPS: readonly number[] = [0, 120, 60, 30];
+/**
+ * The frame-rate caps Settings offers; 0 is the display's own rate. A cap
+ * above the display's rate changes nothing: frames follow the display.
+ */
+export const FRAME_RATE_CAPS: readonly number[] = [
+  0, 360, 240, 144, 120, 60, 30,
+];
+
+/** Graphics quality levels, lowest first. */
+export const GRAPHICS_QUALITIES = ["low", "normal", "high", "ultra"] as const;
+export type GraphicsQuality = (typeof GRAPHICS_QUALITIES)[number];
+export const GRAPHICS_QUALITY_KEY = "settings.graphicsQuality";
 
 export const USER_SETTINGS_CHANGED_EVENT = "event:user-settings-changed";
 
@@ -426,6 +436,19 @@ export class UserSettings {
 
   setBadgeChoice(value: string) {
     this.setString("settings.badge", value);
+  }
+
+  /** How much rendering work the map does; "high" is the full look. */
+  graphicsQuality(): GraphicsQuality {
+    const value = this.getString(GRAPHICS_QUALITY_KEY, "high");
+    return (GRAPHICS_QUALITIES as readonly string[]).includes(value)
+      ? (value as GraphicsQuality)
+      : "high";
+  }
+
+  setGraphicsQuality(value: GraphicsQuality) {
+    if (!(GRAPHICS_QUALITIES as readonly string[]).includes(value)) return;
+    this.setString(GRAPHICS_QUALITY_KEY, value);
   }
 
   /** Frames a second the map draws at; 0 is the display's own rate. */

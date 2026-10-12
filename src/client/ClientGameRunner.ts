@@ -31,6 +31,7 @@ import {
 import { loadTerrainMap, TerrainMapData } from "../core/game/TerrainMapLoader";
 import {
   GRAPHICS_KEY,
+  GRAPHICS_QUALITY_KEY,
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
 } from "../core/game/UserSettings";
@@ -95,6 +96,7 @@ import {
   showGLGate,
   trackGLInit,
 } from "./render/gl";
+import { qualityOverrides } from "./render/gl/GraphicsQuality";
 import { ALL_UNIT_TYPES, UnitState } from "./render/types";
 import { audioMixer, initAudioMixer } from "./sound/AudioMixer";
 import { SoundManager } from "./sound/SoundManager";
@@ -768,6 +770,11 @@ async function createClientGame(
     // right colors on the first build.
     const resolveRenderSettings = (): RenderSettings => {
       const settings = createRenderSettings();
+      // The quality level first, so the player's own overrides win.
+      applyGraphicsOverrides(
+        settings,
+        qualityOverrides(userSettings.graphicsQuality()),
+      );
       applyGraphicsOverrides(settings, userSettings.graphicsOverrides());
       return settings;
     };
@@ -854,6 +861,15 @@ async function createClientGame(
     globalThis.addEventListener(
       `${USER_SETTINGS_CHANGED_EVENT}:${GRAPHICS_KEY}`,
       onGraphicsChanged,
+      { signal: graphicsListenerAbort.signal },
+    );
+    // A quality change switches effects and the render resolution live.
+    globalThis.addEventListener(
+      `${USER_SETTINGS_CHANGED_EVENT}:${GRAPHICS_QUALITY_KEY}`,
+      () => {
+        regenerateRenderSettings();
+        view.refreshResolution();
+      },
       { signal: graphicsListenerAbort.signal },
     );
 

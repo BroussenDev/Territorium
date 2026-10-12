@@ -7,8 +7,10 @@ import {
   FRAME_RATE_CAPS,
   getDefaultKeybinds,
   GRAPHICS_KEY,
+  GRAPHICS_QUALITIES,
   USER_SETTINGS_CHANGED_EVENT,
   UserSettings,
+  type GraphicsQuality,
 } from "../core/game/UserSettings";
 import { ClientEnv } from "./ClientEnv";
 import "./components/baseComponents/setting/SettingKeybind";
@@ -965,6 +967,12 @@ export class UserSettingModal extends BaseModal {
     this.displaySettleTimer = undefined;
   }
 
+  private handleGraphicsQualityChange = (
+    e: CustomEvent<{ value: unknown }>,
+  ) => {
+    this.userSettings.setGraphicsQuality(e.detail?.value as GraphicsQuality);
+  };
+
   private handleFrameRateCapChange = (e: CustomEvent<{ value: unknown }>) => {
     this.userSettings.setFrameRateCap(Number(e.detail?.value));
   };
@@ -1679,6 +1687,19 @@ export class UserSettingModal extends BaseModal {
    */
   private renderGraphicsSettings() {
     return html`
+      <!-- ⚙️ Graphics quality -->
+      <setting-select
+        id="graphics-quality-select"
+        label=${translateText("user_setting.graphics_quality_label")}
+        description=${translateText("user_setting.graphics_quality_desc")}
+        .value=${this.userSettings.graphicsQuality()}
+        .options=${GRAPHICS_QUALITIES.map((quality) => ({
+          value: quality,
+          label: translateText(`user_setting.graphics_quality_${quality}`),
+        }))}
+        @change=${this.handleGraphicsQualityChange}
+      ></setting-select>
+
       <!-- 🎨 Graphics preset -->
       <div
         class="flex flex-col w-full p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all gap-3"

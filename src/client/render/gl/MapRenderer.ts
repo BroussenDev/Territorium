@@ -108,6 +108,12 @@ export class MapRenderer {
     if (rect.width > 0) this.renderer.resize(rect.width, rect.height);
   };
 
+  /** Re-sizes the backing store after the render resolution changed. */
+  refreshResolution(): void {
+    const rect = this.canvas.getBoundingClientRect();
+    if (rect.width > 0) this.renderer?.resize(rect.width, rect.height);
+  }
+
   private handleContextLost = (e: Event) => {
     // preventDefault is what asks the browser to restore the context. Disposal
     // must then leave the context alone: calling loseContext() re-loses it
