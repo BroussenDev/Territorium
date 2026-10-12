@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.103
+
+🎞️ **Frame rate limit**
+
+- New setting in Settings > Graphics: limit the map to 120, 60 or 30 frames per second, or follow your screen (the default, as before). A laptop runs cooler, quieter and longer on battery at 30 or 60; the game itself runs exactly the same.
+
 ## v0.1.102
 
 🎮 **A cleaner Steam app**

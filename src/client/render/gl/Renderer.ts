@@ -30,6 +30,7 @@ import type {
   UnitState,
 } from "../types";
 import { Camera } from "./Camera";
+import { frameRateCap, shouldDrawFrame } from "./FrameCap";
 import { GLUnavailableError, initGL } from "./initGL";
 import { AttackFrontPass } from "./passes/AttackFrontPass";
 import { BarPass } from "./passes/BarPass";
@@ -684,8 +685,13 @@ export class GPURenderer {
     this.startLoop();
   }
 
-  private renderLoop = (): void => {
-    this.draw();
+  private lastDrawnAt: number | null = null;
+
+  private renderLoop = (now: number): void => {
+    if (shouldDrawFrame(now, this.lastDrawnAt, frameRateCap())) {
+      this.lastDrawnAt = now;
+      this.draw();
+    }
     this.animId = this.raf(this.renderLoop);
   };
 

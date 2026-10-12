@@ -61,6 +61,9 @@ export function getDefaultKeybinds(isMac: boolean): Record<string, string> {
   };
 }
 
+/** The frame-rate caps Settings offers; 0 is the display's own rate. */
+export const FRAME_RATE_CAPS: readonly number[] = [0, 120, 60, 30];
+
 export const USER_SETTINGS_CHANGED_EVENT = "event:user-settings-changed";
 
 /**
@@ -423,6 +426,17 @@ export class UserSettings {
 
   setBadgeChoice(value: string) {
     this.setString("settings.badge", value);
+  }
+
+  /** Frames a second the map draws at; 0 is the display's own rate. */
+  frameRateCap(): number {
+    const value = Number(this.getString("settings.frameRateCap", "0"));
+    return FRAME_RATE_CAPS.includes(value) ? value : 0;
+  }
+
+  setFrameRateCap(value: number) {
+    if (!FRAME_RATE_CAPS.includes(value)) return;
+    this.setString("settings.frameRateCap", String(value));
   }
 
   steamLobbyLinks(): "ask" | "steam" | "browser" {

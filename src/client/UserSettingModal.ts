@@ -4,6 +4,7 @@ import { formatKeyForDisplay, translateText } from "../client/Utils";
 import type { MapLayer } from "../core/game/TerrainMapLoader";
 import {
   AudioCategory,
+  FRAME_RATE_CAPS,
   getDefaultKeybinds,
   GRAPHICS_KEY,
   USER_SETTINGS_CHANGED_EVENT,
@@ -964,6 +965,10 @@ export class UserSettingModal extends BaseModal {
     this.displaySettleTimer = undefined;
   }
 
+  private handleFrameRateCapChange = (e: CustomEvent<{ value: unknown }>) => {
+    this.userSettings.setFrameRateCap(Number(e.detail?.value));
+  };
+
   private handleDisplayModeChange = (e: CustomEvent<{ value: unknown }>) => {
     const value = e.detail?.value;
     // Validated here rather than trusted: the shell refuses an unknown mode,
@@ -1710,6 +1715,24 @@ export class UserSettingModal extends BaseModal {
         .checked=${this.userSettings.gameChat()}
         @change=${this.toggleGameChat}
       ></setting-toggle>
+
+      <!-- 🎞️ Frame-rate cap -->
+      <setting-select
+        id="frame-rate-cap-select"
+        label=${translateText("user_setting.frame_rate_cap_label")}
+        description=${translateText("user_setting.frame_rate_cap_desc")}
+        .value=${String(this.userSettings.frameRateCap())}
+        .options=${FRAME_RATE_CAPS.map((cap) => ({
+          value: String(cap),
+          label:
+            cap === 0
+              ? translateText("user_setting.frame_rate_cap_display")
+              : translateText("user_setting.frame_rate_cap_fps", {
+                  fps: cap,
+                }),
+        }))}
+        @change=${this.handleFrameRateCapChange}
+      ></setting-select>
 
       <!-- 📱 Performance Overlay -->
       <setting-toggle
