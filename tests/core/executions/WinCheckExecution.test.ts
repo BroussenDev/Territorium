@@ -64,6 +64,9 @@ describe("WinCheckExecution", () => {
     const player = {
       numTilesOwned: vi.fn(() => 10),
       name: vi.fn(() => "P1"),
+      // Read by the tick's neighbour sampling (TGS-103): a bot is skipped.
+      type: vi.fn(() => PlayerType.Bot),
+      clientID: vi.fn(() => null),
     };
     mg.players = vi.fn(() => [player]);
     mg.numLandTiles = vi.fn(() => 100);

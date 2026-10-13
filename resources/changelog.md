@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.105
+
+🛡️ **TGS-103: cross-teaming watch**
+
+- At the end of a free-for-all game, the Territorium Game Shield flags players who stayed neighbours for a long time without ever attacking each other (8 minutes for players of the same clan, 15 otherwise) for the staff to review in the replay. Nobody is disconnected or sanctioned automatically: playing alongside your clan is still allowed.
+
 ## v0.1.104
 
 ⚙️ **Graphics quality**

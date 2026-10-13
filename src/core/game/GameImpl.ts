@@ -60,6 +60,10 @@ import { UnitGrid, UnitPredicate } from "./UnitGrid";
 import { versusSpawnArea, versusTeamIndex } from "./Versus";
 import { WaterManager } from "./WaterManager";
 
+// How often the human players' shared borders are sampled for TGS-103 (the
+// cross-teaming watch): every 5 seconds of game time.
+export const NEIGHBOR_SAMPLE_TICKS = 50;
+
 export function createGame(
   humans: PlayerInfo[],
   nations: Nation[],
@@ -776,6 +780,42 @@ export class GameImpl implements Game {
     return this._ticks;
   }
 
+  /**
+   * Credits every pair of human players sharing a border with the sample's
+   * span of game time (TGS-103). One scan of each player's border tiles,
+   * collecting the human owners next to them; each pair counted once.
+   */
+  private sampleHumanNeighbors(): void {
+    const humans = this.players().filter(
+      (p) => p.type() === PlayerType.Human && p.clientID() !== null,
+    );
+    if (humans.length < 2) return;
+    const isHuman = new Set(humans.map((p) => p.smallID()));
+    const scratch: TileRef[] = [];
+    for (const player of humans) {
+      const own = player.smallID();
+      const seen = new Set<number>();
+      for (const border of player.borderTiles()) {
+        const n = this.map().neighbors4(border, scratch);
+        for (let i = 0; i < n; i++) {
+          const other = this.map().ownerID(scratch[i]);
+          // Each pair once: from its lower small ID.
+          if (other > own && isHuman.has(other)) seen.add(other);
+        }
+      }
+      for (const otherID of seen) {
+        const other = this.playerBySmallID(otherID);
+        if (!other.isPlayer()) continue;
+        this.stats().neighborTime(
+          player,
+          other,
+          NEIGHBOR_SAMPLE_TICKS,
+          player.isAlliedWith(other),
+        );
+      }
+    }
+  }
+
   executeNextTick(): GameUpdates {
     this.updates = createGameUpdatesMap();
     this.tileUpdatePairs.length = 0;
@@ -819,6 +859,9 @@ export class GameImpl implements Game {
         this.attackTroopsQuads,
       );
       if (update !== null) this.addUpdate(update);
+    }
+    if (!this.inSpawnPhase() && this.ticks() % NEIGHBOR_SAMPLE_TICKS === 0) {
+      this.sampleHumanNeighbors();
     }
     if (this.ticks() % 10 === 0) {
       this.addUpdate({

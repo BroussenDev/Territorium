@@ -45,9 +45,12 @@ describe("Stats", () => {
     expect(stats.stats()).toStrictEqual({
       client1: {
         attacks: [1n],
+        // Attacks between two humans also count for TGS-103.
+        neighbors: [{ client: "client2", ticks: 0, allied: 0, attacks: 1 }],
       },
       client2: {
         attacks: [0n, 1n],
+        neighbors: [{ client: "client1", ticks: 0, allied: 0, attacks: 1 }],
       },
     });
   });

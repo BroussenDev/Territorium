@@ -1259,7 +1259,7 @@ export const TgsReportSchema = z.object({
   incidents: z
     .object({
       clientID: ID,
-      code: z.enum(["TGS-101", "TGS-102"]),
+      code: z.enum(["TGS-101", "TGS-102", "TGS-103"]),
       turn: z.number().int().nonnegative(),
       details: z.string().max(200),
     })

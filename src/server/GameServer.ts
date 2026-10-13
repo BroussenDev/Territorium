@@ -90,7 +90,7 @@ import {
   TGS_DESYNC_CODE,
   TGS_FLOOD_CODE,
   TGS_KICK_REASONS,
-  TgsCode,
+  TgsKickCode,
   TgsMonitor,
 } from "./Tgs";
 import { reportTgsIncident } from "./TgsApi";
@@ -1958,7 +1958,7 @@ export class GameServer {
    * replays the game and puts them back in step. Either way the staff gets
    * the incident at once, then again with the match's record.
    */
-  private tgsDisconnect(clientID: ClientID, code: TgsCode): void {
+  private tgsDisconnect(clientID: ClientID, code: TgsKickCode): void {
     const client = this.clients.get(clientID);
     const reasonKey = TGS_KICK_REASONS[code];
     this.log.warn("TGS disconnection", {
@@ -2062,6 +2062,23 @@ export class GameServer {
         } satisfies PlayerRecord;
       },
     );
+    // TGS-103: a free-for-all match's long peaceful neighbours, for review.
+    // Team modes and Survival are played together by design.
+    if (
+      winner !== null &&
+      this.gameStartInfo.config.gameMode === GameMode.FFA &&
+      this.gameStartInfo.config.gameVariant !== "survival"
+    ) {
+      this.tgs.observeCrossTeaming(
+        this.gameStartInfo.players.map((p) => ({
+          clientID: p.clientID,
+          username: p.username,
+          clanTag: p.clanTag ?? null,
+        })),
+        winner.allPlayersStats,
+        this.turns.length,
+      );
+    }
     this.telemetry.noteArchiveAttempted();
     this.deps.archive(
       createPartialGameRecord(

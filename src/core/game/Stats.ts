@@ -38,6 +38,12 @@ export interface Stats {
   // Player betrays another player
   betray(player: Player): void;
 
+  /**
+   * Two human players shared a border for `ticks` game ticks, allied or not
+   * (TGS-103, the cross-teaming watch).
+   */
+  neighborTime(a: Player, b: Player, ticks: number, allied: boolean): void;
+
   // Player entered an alliance. Called for BOTH parties.
   allianceFormed(player: Player): void;
 

@@ -162,6 +162,9 @@ function toBigInt(v: unknown): bigint {
 }
 
 const AtLeastOneNumberSchema = BigIntStringSchema.array().min(1);
+
+/** Most neighbours kept per player in its stats (TGS-103). */
+export const MAX_TRACKED_NEIGHBORS = 64;
 export type AtLeastOneNumber = z.infer<typeof AtLeastOneNumberSchema>;
 
 export const PlayerStatsSchema = z
@@ -192,6 +195,20 @@ export const PlayerStatsSchema = z
     alliances: AtLeastOneNumberSchema.optional(),
     peakTroops: BigIntStringSchema.optional(),
     donations: AtLeastOneNumberSchema.optional(),
+    // The other human players this one shared a border with, for TGS-103
+    // (server/Tgs.ts): game ticks spent as neighbours, how many of those as
+    // allies, and the attacks between the two in either direction. Kept on
+    // both players of a pair.
+    neighbors: z
+      .object({
+        client: z.string(),
+        ticks: zb.uint(),
+        allied: zb.uint(),
+        attacks: zb.uint(),
+      })
+      .array()
+      .max(MAX_TRACKED_NEIGHBORS)
+      .optional(),
   })
   .optional();
 export type PlayerStats = z.infer<typeof PlayerStatsSchema>;

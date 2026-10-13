@@ -30,6 +30,7 @@ import {
   GOLD_INDEX_TRAIN_SELF,
   GOLD_INDEX_WAR,
   GOLD_INDEX_WORK,
+  MAX_TRACKED_NEIGHBORS,
   NukeType,
   OTHER_INDEX_BUILT,
   OTHER_INDEX_CAPTURE,
@@ -67,6 +68,8 @@ const conquest_by_type: Record<PlayerType, number> = {
   [PlayerType.Bot]: PLAYER_INDEX_BOT,
 };
 
+type NeighborEntry = NonNullable<NonNullable<PlayerStats>["neighbors"]>[number];
+
 export class StatsImpl implements Stats {
   private readonly data: AllPlayersStats = {};
 
@@ -84,6 +87,39 @@ export class StatsImpl implements Stats {
 
   stats() {
     return this.data;
+  }
+
+  neighborTime(a: Player, b: Player, ticks: number, allied: boolean): void {
+    this._neighborPair(a, b, (n) => {
+      n.ticks += ticks;
+      if (allied) n.allied += ticks;
+    });
+  }
+
+  // Applies `update` to the pair's entry on both players, creating it.
+  private _neighborPair(
+    a: Player,
+    b: Player,
+    update: (n: NeighborEntry) => void,
+  ): void {
+    const aID = a.clientID();
+    const bID = b.clientID();
+    if (aID === null || bID === null || aID === bID) return;
+    for (const [player, other] of [
+      [a, bID],
+      [b, aID],
+    ] as const) {
+      const stats = this._makePlayerStats(player);
+      if (stats === undefined) continue;
+      stats.neighbors ??= [];
+      let entry = stats.neighbors.find((n) => n.client === other);
+      if (entry === undefined) {
+        if (stats.neighbors.length >= MAX_TRACKED_NEIGHBORS) continue;
+        entry = { client: other, ticks: 0, allied: 0, attacks: 0 };
+        stats.neighbors.push(entry);
+      }
+      update(entry);
+    }
   }
 
   private _makePlayerStats(player: Player): PlayerStats {
@@ -235,6 +271,7 @@ export class StatsImpl implements Stats {
     this._addAttack(player, ATTACK_INDEX_SENT, troops);
     if (target.isPlayer()) {
       this._addAttack(target, ATTACK_INDEX_RECV, troops);
+      this._neighborPair(player, target, (n) => n.attacks++);
     }
   }
 
