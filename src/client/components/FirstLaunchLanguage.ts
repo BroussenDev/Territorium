@@ -20,6 +20,7 @@ import {
 } from "../Utils";
 import "./baseComponents/setting/SettingKeybind";
 import "./baseComponents/setting/SettingSlider";
+import "./GraphicsCheck";
 
 export interface FirstLaunchLanguageEntry {
   code: string;
@@ -28,7 +29,7 @@ export interface FirstLaunchLanguageEntry {
   svg: string;
 }
 
-type Step = "language" | "audio" | "keys";
+type Step = "language" | "audio" | "graphics" | "keys";
 
 /** Fired on window when the first-launch setup closes. */
 export const FIRST_LAUNCH_DONE_EVENT = "first-launch-done";
@@ -69,7 +70,8 @@ const PREVIEW_CEILING_MS = 10_000;
 /**
  * The Steam app's first screens after the studio splash: the language
  * (already set to the one Steam or the system reports, so most players only
- * press Continue), then the sound, then the main keys, then the game.
+ * press Continue), then the sound, then the graphics quality (measured by a
+ * short test), then the main keys, then the game.
  *
  * Picking a language switches the game to it at once (these screens
  * included, through LangSelector). Shown once: LangSelector opens it only
@@ -116,8 +118,8 @@ export class FirstLaunchLanguage extends LitElement {
 
   private steps(): Step[] {
     return Platform.isTouch
-      ? ["language", "audio"]
-      : ["language", "audio", "keys"];
+      ? ["language", "audio", "graphics"]
+      : ["language", "audio", "graphics", "keys"];
   }
 
   private onKeyDown = (e: KeyboardEvent) => {
@@ -389,6 +391,26 @@ export class FirstLaunchLanguage extends LitElement {
     `;
   }
 
+  private renderGraphics() {
+    return html`
+      <div class="text-center">
+        <h1
+          id="first-launch-title"
+          class="font-display text-3xl font-bold text-balance"
+        >
+          ${translateText("graphics_check.title")}
+        </h1>
+        <p class="mt-2 text-sm text-white/60 text-balance">
+          ${translateText("graphics_check.subtitle")}
+        </p>
+      </div>
+
+      <div class="w-full max-w-3xl">
+        <graphics-check autostart></graphics-check>
+      </div>
+    `;
+  }
+
   private renderKeys() {
     return html`
       <div class="text-center">
@@ -438,7 +460,9 @@ export class FirstLaunchLanguage extends LitElement {
         ? this.renderLanguage()
         : this.step === "audio"
           ? this.renderAudio()
-          : this.renderKeys();
+          : this.step === "graphics"
+            ? this.renderGraphics()
+            : this.renderKeys();
     return html`
       <div
         role="dialog"

@@ -81,6 +81,7 @@ import {
 } from "./Transport";
 import { createCanvas } from "./Utils";
 import { WebGLFrameBuilder } from "./WebGLFrameBuilder";
+import { QualitySuggestionController } from "./components/QualitySuggestion";
 import { MapLayerController } from "./controllers/MapLayerController";
 import { createRenderer, GameRenderer } from "./hud/GameRenderer";
 import { goldRateTracker } from "./hud/layers/lib/GoldRateTracker";
@@ -913,6 +914,7 @@ async function createClientGame(
     );
 
     const metrics = new GameMetrics();
+    const qualitySuggestion = new QualitySuggestionController(userSettings);
     const { builder: webglBuilder, stopFrameLoop } = mountWebGLFrameLoop(
       gameMap,
       view,
@@ -921,7 +923,10 @@ async function createClientGame(
       gameRenderer.transformHandler,
       gameView,
       eventBus,
-      (nowMs) => metrics.recordFrame(nowMs),
+      (nowMs) => {
+        metrics.recordFrame(nowMs);
+        qualitySuggestion.recordFrame(nowMs);
+      },
     );
 
     // Releases all WebGL/DOM resources this game created. Without it, stopping
@@ -933,6 +938,7 @@ async function createClientGame(
       if (rendererDisposed) return;
       rendererDisposed = true;
       stopFrameLoop();
+      qualitySuggestion.dispose();
       view.dispose();
       glCanvas.remove();
       inputOverlay.remove();

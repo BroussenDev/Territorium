@@ -23,6 +23,7 @@ import "./components/baseComponents/setting/SettingToggle";
 import { BaseModal } from "./components/BaseModal";
 import "./components/GraphicsAdvancedSettings";
 import type { GraphicsAdvancedSettings } from "./components/GraphicsAdvancedSettings";
+import "./components/GraphicsCheck";
 import "./components/GraphicsPresetSelector";
 import "./components/GraphicsPresetTools";
 import { modalHeader } from "./components/ui/ModalHeader";
@@ -133,6 +134,7 @@ export class UserSettingModal extends BaseModal {
 
   @state() private keySequence: string[] = [];
   @state() private graphicsAdvancedOpen = false;
+  @state() private graphicsCheckOpen = false;
   @state() private showEasterEggSettings = false;
 
   @state() private userKeybinds: Record<
@@ -742,6 +744,10 @@ export class UserSettingModal extends BaseModal {
     );
     if (advanced === null) return;
     advanced.mapLayers = this.mapLayers;
+  }
+
+  private togglePowerSaving() {
+    this.userSettings.setPowerSaving(!this.userSettings.powerSaving());
   }
 
   private toggleGraphicsAdvanced() {
@@ -1700,6 +1706,39 @@ export class UserSettingModal extends BaseModal {
         @change=${this.handleGraphicsQualityChange}
       ></setting-select>
 
+      <!-- 🧪 Performance test -->
+      <div
+        class="flex flex-col w-full p-4 bg-white/5 border border-white/10 rounded-xl gap-3"
+        data-graphics-test-row
+      >
+        <div class="flex items-center gap-4">
+          <div class="flex flex-col min-w-0 flex-1">
+            <div class="text-white font-bold text-base block mb-1">
+              ${translateText("graphics_check.settings_label")}
+            </div>
+            <div class="text-white/50 text-sm leading-snug">
+              ${translateText("graphics_check.settings_desc")}
+            </div>
+          </div>
+          ${this.graphicsCheckOpen
+            ? null
+            : html`<button
+                type="button"
+                data-graphics-test-open
+                class="shrink-0 rounded-md bg-emerald-500 px-4 py-2 text-sm font-bold text-emerald-950 transition-colors hover:bg-emerald-400"
+                @click=${() => (this.graphicsCheckOpen = true)}
+              >
+                ${translateText("graphics_check.run")}
+              </button>`}
+        </div>
+        ${this.graphicsCheckOpen
+          ? html`<graphics-check
+              autostart
+              @quality-change=${() => this.requestUpdate()}
+            ></graphics-check>`
+          : null}
+      </div>
+
       <!-- 🎨 Graphics preset -->
       <div
         class="flex flex-col w-full p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all gap-3"
@@ -1754,6 +1793,15 @@ export class UserSettingModal extends BaseModal {
         }))}
         @change=${this.handleFrameRateCapChange}
       ></setting-select>
+
+      <!-- 🔋 Power saving -->
+      <setting-toggle
+        label="${translateText("user_setting.power_saving_label")}"
+        description="${translateText("user_setting.power_saving_desc")}"
+        id="power-saving-toggle"
+        .checked=${this.userSettings.powerSaving()}
+        @change=${this.togglePowerSaving}
+      ></setting-toggle>
 
       <!-- 📱 Performance Overlay -->
       <setting-toggle

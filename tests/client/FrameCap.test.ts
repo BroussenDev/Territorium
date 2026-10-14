@@ -1,5 +1,10 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { shouldDrawFrame } from "../../src/client/render/gl/FrameCap";
+import {
+  effectiveCap,
+  HIDDEN_CAP,
+  shouldDrawFrame,
+  UNFOCUSED_CAP,
+} from "../../src/client/render/gl/FrameCap";
 import {
   FRAME_RATE_CAPS,
   UserSettings,
@@ -54,5 +59,34 @@ describe("UserSettings.frameRateCap", () => {
     localStorage.setItem("settings.frameRateCap", "999");
     (UserSettings as unknown as { cache: Map<string, unknown> }).cache.clear();
     expect(new UserSettings().frameRateCap()).toBe(0);
+  });
+});
+
+describe("power saving", () => {
+  it("leaves the active window at the player's cap", () => {
+    expect(effectiveCap(0, "active", true)).toBe(0);
+    expect(effectiveCap(144, "active", true)).toBe(144);
+  });
+
+  it("slows a window behind another one, and a hidden one more", () => {
+    expect(effectiveCap(0, "unfocused", true)).toBe(UNFOCUSED_CAP);
+    expect(effectiveCap(240, "hidden", true)).toBe(HIDDEN_CAP);
+  });
+
+  it("never raises a cap the player set lower", () => {
+    expect(effectiveCap(30, "unfocused", true)).toBe(
+      Math.min(30, UNFOCUSED_CAP),
+    );
+  });
+
+  it("does nothing when the player turned it off", () => {
+    expect(effectiveCap(0, "hidden", false)).toBe(0);
+    expect(effectiveCap(60, "unfocused", false)).toBe(60);
+  });
+
+  it("is on by default", () => {
+    localStorage.clear();
+    (UserSettings as unknown as { cache: Map<string, unknown> }).cache.clear();
+    expect(new UserSettings().powerSaving()).toBe(true);
   });
 });

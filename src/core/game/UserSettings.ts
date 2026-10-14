@@ -73,6 +73,7 @@ export const FRAME_RATE_CAPS: readonly number[] = [
 export const GRAPHICS_QUALITIES = ["low", "normal", "high", "ultra"] as const;
 export type GraphicsQuality = (typeof GRAPHICS_QUALITIES)[number];
 export const GRAPHICS_QUALITY_KEY = "settings.graphicsQuality";
+export const POWER_SAVING_KEY = "settings.powerSaving";
 
 export const USER_SETTINGS_CHANGED_EVENT = "event:user-settings-changed";
 
@@ -460,6 +461,30 @@ export class UserSettings {
   setFrameRateCap(value: number) {
     if (!FRAME_RATE_CAPS.includes(value)) return;
     this.setString("settings.frameRateCap", String(value));
+  }
+
+  /**
+   * Draw only a few frames a second while the game window is not the one
+   * the player is using (another window in front, minimised, another tab).
+   */
+  powerSaving(): boolean {
+    return this.getBool(POWER_SAVING_KEY, true);
+  }
+
+  setPowerSaving(value: boolean) {
+    this.setBool(POWER_SAVING_KEY, value);
+  }
+
+  /**
+   * Whether the player answered "Keep it" to the in-game offer of a lower
+   * graphics quality: the game asks no more.
+   */
+  qualitySuggestionDone(): boolean {
+    return this.getBool("settings.qualitySuggestionDone", false);
+  }
+
+  markQualitySuggestionDone() {
+    this.setBool("settings.qualitySuggestionDone", true);
   }
 
   steamLobbyLinks(): "ask" | "steam" | "browser" {

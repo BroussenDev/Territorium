@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.107
+
+🖥️ **Graphics that fit your computer**
+
+- The first-launch setup of the Steam app has a new Graphics step: a short test measures your computer, shows the frame rate to expect at each quality and picks the recommended one. You can still choose another level.
+- The same test is in Settings > Graphics, to run again at any time.
+- If your games run slowly for a while, the game offers to switch to a lower quality, without leaving the game. It never changes it on its own, and "Keep my quality" stops it asking.
+- Power saving: while the game window is behind another one, it draws 30 frames a second, and 5 when it is minimised or hidden. The game itself keeps running normally. It can be turned off in Settings > Graphics.
+
 ## v0.1.106
 
 🚫 **No ads, no trackers**

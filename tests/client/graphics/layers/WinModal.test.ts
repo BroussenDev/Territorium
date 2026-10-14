@@ -40,6 +40,7 @@ vi.mock("../../../../src/client/CrazyGamesSDK", () => ({
     happytime: vi.fn(),
     requestAd: vi.fn(),
     gameplayStop: vi.fn(),
+    isOnCrazyGames: vi.fn(() => false),
   },
 }));
 

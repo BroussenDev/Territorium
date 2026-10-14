@@ -12,6 +12,16 @@ vi.mock("../../src/client/Platform", () => ({ Platform: platform }));
 vi.mock("../../src/client/sound/CuePlayer", () => ({
   audioControls: () => null,
 }));
+// No WebGL here: the graphics step's test answers at once.
+vi.mock("../../src/client/render/gl/GraphicsBenchmark", () => ({
+  chipName: (renderer: string) => renderer,
+  runGraphicsBenchmark: vi.fn(async () => ({
+    fps: { low: 150, normal: 90, high: 48, ultra: 48 },
+    recommended: "normal",
+    renderer: "Test GPU",
+    software: false,
+  })),
+}));
 
 import {
   FIRST_LAUNCH_MASTER_VOLUME,
@@ -111,13 +121,15 @@ describe("first launch language step", () => {
   });
 });
 
-describe("first launch sound and keys steps", () => {
-  it("goes language, sound, keys, then closes on Play", async () => {
+describe("first launch sound, graphics and keys steps", () => {
+  it("goes language, sound, graphics, keys, then closes on Play", async () => {
     const picker = await open(null);
     const closed = vi.fn();
     picker.addEventListener("close", closed);
     await proceed(picker);
     expect(picker.querySelector("[data-first-launch-audio]")).not.toBeNull();
+    await proceed(picker);
+    expect(picker.querySelector("[data-graphics-check]")).not.toBeNull();
     await proceed(picker);
     expect(picker.querySelector("[data-first-launch-keys]")).not.toBeNull();
     expect(closed).not.toHaveBeenCalled();
@@ -149,8 +161,26 @@ describe("first launch sound and keys steps", () => {
     expect(settings.audioVolume("music")).toBeCloseTo(0.2);
   });
 
+  it("tests the graphics and picks the recommended quality", async () => {
+    new UserSettings().setGraphicsQuality("ultra");
+    const picker = await open(null);
+    await proceed(picker);
+    await proceed(picker);
+    await vi.waitFor(() =>
+      expect(picker.querySelector("[data-graphics-result]")).not.toBeNull(),
+    );
+    expect(new UserSettings().graphicsQuality()).toBe("normal");
+    const recommended = picker.querySelector('[data-quality="normal"]')!;
+    expect(recommended.getAttribute("aria-checked")).toBe("true");
+    expect(recommended.textContent).toContain("graphics_check.recommended");
+    // The player may still pick another level.
+    picker.querySelector<HTMLButtonElement>('[data-quality="high"]')!.click();
+    expect(new UserSettings().graphicsQuality()).toBe("high");
+  });
+
   it("saves a new key and refuses one another action already uses", async () => {
     const picker = await open(null);
+    await proceed(picker);
     await proceed(picker);
     await proceed(picker);
     const change = (action: string, value: string) =>
@@ -182,6 +212,7 @@ describe("first launch sound and keys steps", () => {
     const picker = await open(null);
     const closed = vi.fn();
     picker.addEventListener("close", closed);
+    await proceed(picker);
     await proceed(picker);
     await proceed(picker);
     expect(closed).toHaveBeenCalledOnce();
