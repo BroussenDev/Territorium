@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Tähistaevas su territooriumi kohal ja lõpetuseks supernoova."
   },
   "cosmetics": {
-    "adfree": "eluks ajaks reklaamivaba!",
     "artist_label": "Kunstnik:",
     "color_label": "Värv:",
     "common": "Levinud",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} alistus {overlord}-le ja saab 10 minutiks nende vasalliks.",
     "wants_to_renew_alliance": "{name} soovib uuendata sinuga liitu"
   },
-  "featured_stream": {
-    "expand": "Laienda",
-    "hide_today": "Peida täna",
-    "live": "LIVE",
-    "minimize": "Minimeeri",
-    "open_on_twitch": "Avage Twitchis {channel}"
-  },
   "first_launch": {
     "audio_subtitle": "Saad seda igal ajal seadetes muuta.",
     "audio_test": "Testi heli",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Teie konto, statistika, sõbrad ja kosmeetika",
-    "ad_free_steam": "Steami rakenduses pole kunagi reklaame",
     "custom_lobbies": "Privaatsed kohandatud fuajeed koos sõpradega",
     "free_heading": "Tasuta mängimine sisaldab",
     "full_game": "Täismäng: iga kaart ja režiim, võrgus ja ühe mängijaga",
@@ -1397,6 +1388,8 @@
       "peace": "Kaotada sõda? Paku rahu mängijale, kellega võitled: kolm minutit ilma rünnakuteta, ilma liiduta. Igaüks, kes selle rikub, märgitakse kõigi mängijate ees reeturiks.",
       "radar": "Radar tuvastab vaenlase paate, sõjalaevu ja rakette 100 plaadi raadiuses, nii et näete sissetungi lähenemas.",
       "sam": "SAM-i kanderaketid tulistavad alla rakette. Iga SAM-i tase lisab tulistamisvalmis raketi ja rohkem laskekaugust.",
+      "steam_ranked": "Reitingumänge, Versust ja avalikke lobisid mängitakse Steami Territoriumi rakenduses.",
+      "steam_workshop": "Steamis avalda oma kaardid Workshopis ja mängi kogukonna kaarte.",
       "trade": "Sadamad kauplevad teiste riikidega iseseisvalt ja mõlemad pooled teenivad kulda. Mängija ründamine peatab teie tehingu temaga 5 minutiks.",
       "traitor": "Alliansi katkestamine teeb sinust 30 sekundiks reeturi: sinu kaitsevõime langeb poole võrra ja teised mängijad usaldavad sind vähem.",
       "upgrade": "Selle uuendamiseks klõpsake ühel oma hoonetest: suurem linn mahutab rohkem inimesi, suurem sadam saadab rohkem laevu ja suurem tehas saadab rohkem ronge. Igal hoonel on maksimaalne tase."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Mängijate ootamine"
   },
   "purchase_nudge": {
-    "body": "Näib, et teile meeldib Territoriumi mängida! Palun kaaluge meie toetamist ostu sooritades – iga ost muudab teid eluks ajaks reklaamivabaks.",
+    "body_support": "Meeldib Territorium? Toeta meid poe kosmeetilise esemega või ostes mängu Steamist: see hoiab mängu reklaamivabana.",
     "close": "Sule",
     "title": "Kas teile meeldib Territorium?",
     "visit_store": "Külastage kauplust"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Teie konto on juba lingitud teise Steami kontoga.",
     "reason_steam_has_progress": "Sellel Steami kontol on juba oma edenemine ja seda ei saa ühendada.",
     "reason_steam_linked_elsewhere": "See Steami konto on juba lingitud teise Territoriumi kontoga."
+  },
+  "steam_promo": {
+    "compact": "Reitingumängud, Versus ja avalikud lobid on Steamis.",
+    "dismiss": "Peida nädalaks",
+    "editions": "Võrdle väljaandeid",
+    "feature_cloud": "Seaded sünkroonitud Steam Cloudi kaudu",
+    "feature_offline": "Soolo võrguühenduseta",
+    "feature_public": "Avalikud lobid",
+    "feature_ranked": "Reitingumängud",
+    "feature_versus": "Versus 1v1 kuni 4v4",
+    "feature_workshop": "Steami Workshop",
+    "subtitle": "Täismäng koos sellega, mida brauseris pole.",
+    "title": "Territorium Steamis"
   },
   "steam_user_header": {
     "avatar_alt": "Steami avatar",

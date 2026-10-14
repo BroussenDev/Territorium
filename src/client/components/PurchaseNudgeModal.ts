@@ -16,8 +16,8 @@ const MIN_GAMES_PLAYED = 50;
  * It reads the `userMeResponse` document event (dispatched after login / on
  * load, `false` when logged out). Ad-free players have already purchased —
  * seeing one marks the nudge as shown, so it stays off even if they later
- * log out in this browser. CrazyGames has its own storefront and the desktop
- * shell never shows ads, so neither sees it. Closing takes an explicit click
+ * log out in this browser. CrazyGames has its own storefront, and the Steam
+ * app's players have already bought the game, so neither sees it. Closing takes an explicit click
  * on the X (or on "Visit store"); there is no backdrop-click dismissal.
  */
 @customElement("purchase-nudge-modal")
@@ -93,7 +93,7 @@ export class PurchaseNudgeModal extends LitElement {
             </button>
           </div>
           <p class="mb-6 text-gray-200">
-            ${translateText("purchase_nudge.body")}
+            ${translateText("purchase_nudge.body_support")}
           </p>
           <div class="flex justify-end">
             <o-button

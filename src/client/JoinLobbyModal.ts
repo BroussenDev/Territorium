@@ -31,7 +31,7 @@ import {
 import { versusTeamSize } from "../core/game/Versus";
 import { getApiBase } from "./Api";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
-import { LOADING_TIPS } from "./GameStartingModal";
+import { loadingTips } from "./GameStartingModal";
 import { showInGameConfirm } from "./InGameModal";
 import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
@@ -79,7 +79,7 @@ export class JoinLobbyModal extends BaseModal {
   // for each game (reset in startTrackingLobby).
   @state() private notifyOnStart = false;
   // The tip shown under the players while the game waits.
-  @state() private tipIndex = Math.floor(Math.random() * LOADING_TIPS.length);
+  @state() private tipIndex = Math.floor(Math.random() * loadingTips().length);
   // Own Howl rather than SoundManager: that only exists once the game is
   // running, and this has to play during the lobby wait. Fixed volume on
   // purpose -- the SFX slider defaults to 0, and an alert the player asked
@@ -1100,7 +1100,8 @@ export class JoinLobbyModal extends BaseModal {
 
   /** A gameplay tip while the game fills up, as on the loading screen. */
   private renderTip(): TemplateResult {
-    const tip = LOADING_TIPS[this.tipIndex % LOADING_TIPS.length];
+    const tips = loadingTips();
+    const tip = tips[this.tipIndex % tips.length];
     return html`<aside
       data-lobby-tip
       class="mt-6 flex items-start gap-3 rounded-lg border border-amber-300/20 bg-amber-300/[0.05] p-4"

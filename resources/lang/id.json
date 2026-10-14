@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Malam berbintang di atas wilayahmu, ditutup dengan supernova."
   },
   "cosmetics": {
-    "adfree": "bebas iklan seumur hidup!",
     "artist_label": "Artis:",
     "color_label": "Warna:",
     "common": "Umum",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} menyerah kepada {overlord} dan menjadi pengikut mereka selama 10 menit.",
     "wants_to_renew_alliance": "{name} ingin memperpanjang aliansi"
   },
-  "featured_stream": {
-    "expand": "Memperluas",
-    "hide_today": "Sembunyikan untuk hari ini",
-    "live": "HIDUP",
-    "minimize": "Memperkecil",
-    "open_on_twitch": "Buka {channel} di Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Anda dapat mengubahnya kapan saja di pengaturan.",
     "audio_test": "Uji suara",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Akun, statistik, teman, dan kosmetik Anda",
-    "ad_free_steam": "Tidak pernah ada iklan di aplikasi Steam",
     "custom_lobbies": "Lobi khusus pribadi dengan teman-teman",
     "free_heading": "Bermain secara gratis termasuk",
     "full_game": "Game lengkap: setiap peta dan mode, online dan pemain tunggal",
@@ -1397,6 +1388,8 @@
       "peace": "Kalah perang? Tawarkan kedamaian kepada pemain yang Anda lawan: tiga menit tanpa serangan, tanpa perlu aliansi. Siapa pun yang melanggarnya ditandai sebagai pengkhianat di depan semua pemain.",
       "radar": "Radar mendeteksi kapal musuh, kapal perang, dan rudal dalam jarak 100 ubin, sehingga Anda melihat invasi datang.",
       "sam": "Peluncur SAM menembak jatuh rudal dalam jangkauannya. Setiap level SAM menambahkan rudal yang siap ditembakkan dan jangkauan yang lebih jauh.",
+      "steam_ranked": "Peringkat, Versus, dan lobi publik dimainkan di aplikasi Territorium di Steam.",
+      "steam_workshop": "Di Steam, terbitkan petamu di Workshop dan mainkan peta komunitas.",
       "trade": "Pelabuhan berdagang sendiri dengan negara lain, dan kedua belah pihak mendapatkan emas. Menyerang pemain menghentikan perdagangan Anda dengan mereka selama 5 menit.",
       "traitor": "Menghancurkan aliansi membuat Anda menjadi pengkhianat selama 30 detik: pertahanan Anda turun setengahnya dan pemain lain kurang mempercayai Anda.",
       "upgrade": "Klik salah satu bangunan Anda untuk meningkatkannya: kota yang lebih besar menampung lebih banyak orang, pelabuhan yang lebih besar mengirimkan lebih banyak kapal, dan pabrik yang lebih besar mengirimkan lebih banyak kereta. Setiap bangunan memiliki level maksimum."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Menunggu pemain"
   },
   "purchase_nudge": {
-    "body": "Sepertinya Anda menikmati bermain Territorium! Harap pertimbangkan untuk mendukung kami dengan melakukan pembelian — pembelian apa pun membuat Anda bebas iklan seumur hidup.",
+    "body_support": "Suka Territorium? Dukung kami dengan kosmetik dari toko atau dengan membeli game di Steam: itulah yang membuat game tetap tanpa iklan.",
     "close": "Menutup",
     "title": "Menikmati Territorium?",
     "visit_store": "Kunjungi toko"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Akun Anda sudah tertaut ke akun Steam lain.",
     "reason_steam_has_progress": "Akun Steam ini sudah ada progresnya sendiri dan tidak bisa digabungkan.",
     "reason_steam_linked_elsewhere": "Akun Steam ini sudah tertaut ke akun Territorium lain."
+  },
+  "steam_promo": {
+    "compact": "Peringkat, Versus, dan lobi publik ada di Steam.",
+    "dismiss": "Sembunyikan seminggu",
+    "editions": "Bandingkan edisi",
+    "feature_cloud": "Pengaturan tersinkron lewat Steam Cloud",
+    "feature_offline": "Solo offline",
+    "feature_public": "Lobi publik",
+    "feature_ranked": "Peringkat",
+    "feature_versus": "Versus 1v1 hingga 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Game lengkap, dengan yang tidak ada di browser.",
+    "title": "Territorium di Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Avatar uap",

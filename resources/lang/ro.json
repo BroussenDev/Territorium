@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Noaptea înstelată peste teritoriul tău și o supernovă pentru final."
   },
   "cosmetics": {
-    "adfree": "Fără reclame pentru viață!",
     "artist_label": "Artistul:",
     "color_label": "Culoarea:",
     "common": "Comun",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} s-a predat lui {overlord} și devine vasalul lor timp de 10 minute.",
     "wants_to_renew_alliance": "{name} Dorește să reînnoiască alianța"
   },
-  "featured_stream": {
-    "expand": "Extindeți",
-    "hide_today": "Ascunde pentru astăzi",
-    "live": "ÎN DIRECT",
-    "minimize": "Micșorează",
-    "open_on_twitch": "Deschide {channel} pe Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Îl poți modifica oricând din setări.",
     "audio_test": "Testează sunetul",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Contul dvs., statisticile, prietenii și produsele cosmetice",
-    "ad_free_steam": "Niciodată nicio reclamă în aplicația Steam",
     "custom_lobbies": "Lobby-uri personalizate private cu prietenii",
     "free_heading": "Jocul gratuit include",
     "full_game": "Jocul complet: fiecare hartă și mod, online și single-player",
@@ -1397,6 +1388,8 @@
       "peace": "Pierderea unui război? Oferă pace jucătorului cu care te lupți: trei minute fără atacuri, fără nicio alianță necesară. Oricine o rupe este marcat ca trădător în fața tuturor jucătorilor.",
       "radar": "Un radar observă bărci inamice, nave de război și rachete în decurs de 100 de plăci, așa că vedeți o invazie care se apropie.",
       "sam": "Lansatoarele SAM doboară rachete în raza de acțiune. Fiecare nivel SAM adaugă o rachetă gata de tragere și mai multă rază de acțiune.",
+      "steam_ranked": "Clasamentul, Versus și lobby-urile publice se joacă în aplicația Territorium pe Steam.",
+      "steam_workshop": "Pe Steam, publică-ți hărțile în Workshop și joacă hărțile comunității.",
       "trade": "Porturile fac comerț cu alte țări pe cont propriu și ambele părți câștigă aur. Atacul unui jucător vă oprește schimbul cu el timp de 5 minute.",
       "traitor": "Ruperea unei alianțe te face trădător timp de 30 de secunde: apărarea ta scade la jumătate, iar alți jucători au mai puțină încredere în tine.",
       "upgrade": "Faceți clic pe una dintre clădirile dvs. pentru a o moderniza: un oraș mai mare găzduiește mai mulți oameni, un port mai mare trimite mai multe nave și o fabrică mai mare trimite mai multe trenuri. Fiecare clădire are un nivel maxim."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Se așteaptă jucători"
   },
   "purchase_nudge": {
-    "body": "Se pare că îți place să joci Territorium! Te rugăm să iei în considerare să ne susții făcând o achiziție — orice achiziție te face fără publicitate pe viață.",
+    "body_support": "Îți place Territorium? Susține-ne cu un obiect cosmetic din magazin sau luând jocul pe Steam: așa jocul rămâne fără reclame.",
     "close": "Închide",
     "title": "Îți place de Territorium?",
     "visit_store": "Vizitează magazinul"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Contul tău este deja conectat la un alt cont Steam.",
     "reason_steam_has_progress": "Acest cont de Steam are deja propriul său progres și nu poate fi unit.",
     "reason_steam_linked_elsewhere": "Acest cont Steam este deja conectat la un alt cont Territorium."
+  },
+  "steam_promo": {
+    "compact": "Clasamentul, Versus și lobby-urile publice sunt pe Steam.",
+    "dismiss": "Ascunde o săptămână",
+    "editions": "Compară edițiile",
+    "feature_cloud": "Setări sincronizate prin Steam Cloud",
+    "feature_offline": "Solo offline",
+    "feature_public": "Lobby-uri publice",
+    "feature_ranked": "Clasament",
+    "feature_versus": "Versus de la 1v1 la 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Jocul complet, cu ce nu are browserul.",
+    "title": "Territorium pe Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Avatarul Steam",

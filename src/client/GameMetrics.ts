@@ -1,13 +1,14 @@
 import { reportMeasurement } from "./Telemetry";
 
 /**
- * In-game performance metrics for Grafana: frame interval, sim tick
+ * In-game performance metrics, sent anonymously to Territorium's own API
+ * (Telemetry.ts) for the admin panel's Performances page: frame interval, sim tick
  * execution time and the gap between consecutive turn messages from the
  * server. Each is sampled continuously and summarised as p50/p90/p99 once
  * per window, so a 60fps client costs one measurement per series per window
  * rather than one event per frame.
  *
- * Series (Faro measurement type → values p50/p90/p99/count, all ms except
+ * Series (measurement type → values p50/p90/p99/count, all ms except
  * count):
  * - frame_time: time between consecutive animation frames of the game's
  *   render loop. 16.7 is 60fps; the p99 is the jank.
@@ -49,11 +50,7 @@ export class GameMetrics {
   private lastFrameAt: number | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
 
-  constructor(
-    private readonly gameID: string,
-    private readonly clientID: string | undefined,
-    private readonly flushIntervalMs: number = FLUSH_INTERVAL_MS,
-  ) {}
+  constructor(private readonly flushIntervalMs: number = FLUSH_INTERVAL_MS) {}
 
   start(): void {
     if (this.timer !== null) return;
@@ -87,7 +84,6 @@ export class GameMetrics {
   }
 
   flush(): void {
-    const context = { gameID: this.gameID, clientID: this.clientID ?? "" };
     for (const [type, samples] of [
       ["frame_time", this.frameTime],
       ["tick_execution", this.tickExecution],
@@ -95,7 +91,7 @@ export class GameMetrics {
     ] as const) {
       const values = percentiles(samples);
       if (values === undefined) continue;
-      reportMeasurement(type, { ...values }, context);
+      reportMeasurement(type, { ...values });
       samples.length = 0;
     }
   }

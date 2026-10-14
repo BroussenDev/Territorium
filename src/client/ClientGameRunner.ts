@@ -912,7 +912,7 @@ async function createClientGame(
       mapLayerController,
     );
 
-    const metrics = new GameMetrics(lobbyConfig.gameID, clientID);
+    const metrics = new GameMetrics();
     const { builder: webglBuilder, stopFrameLoop } = mountWebGLFrameLoop(
       gameMap,
       view,
@@ -1738,7 +1738,7 @@ function showErrorModal(
     return;
   }
 
-  reportGameError(error, message, gameID, clientID, heading);
+  reportGameError(error, heading);
 
   const translatedError = translateText(error);
   const displayError = translatedError === error ? error : translatedError;

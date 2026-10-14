@@ -759,7 +759,6 @@
     "voute_celeste_desc": "在你的領土上鋪滿星空，並以一顆超新星收尾。"
   },
   "cosmetics": {
-    "adfree": "永久移除廣告！",
     "artist_label": "作者：",
     "color_label": "顏色：",
     "common": "普通",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal}向{overlord}投降並成為他們的附庸10分鐘。",
     "wants_to_renew_alliance": "{name} 想與你續簽盟約"
   },
-  "featured_stream": {
-    "expand": "展開",
-    "hide_today": "今日不再顯示",
-    "live": "即時",
-    "minimize": "最小化",
-    "open_on_twitch": "在 Twitch 上開啟 {channel}"
-  },
   "first_launch": {
     "audio_subtitle": "您可以隨時在設定中更改。",
     "audio_test": "測試聲音",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "您的帳戶、統計數據、好友和化妝品",
-    "ad_free_steam": "Steam 應用程式中永遠沒有廣告",
     "custom_lobbies": "與朋友一起的私人訂製大廳",
     "free_heading": "免費玩遊戲包括",
     "full_game": "完整的遊戲：每個地圖和模式，線上和單人遊戲",
@@ -1397,6 +1388,8 @@
       "peace": "輸掉一場戰爭？為你正在戰鬥的玩家提供和平：三分鐘沒有攻擊，不需要聯盟。任何破壞它的人都會在所有玩家面前被標記為叛徒。",
       "radar": "雷達可以發現 100 格內的敵方船隻、軍艦和飛彈，讓您看到入侵即將到來。",
       "sam": "地對空飛彈發射器擊落射程內的飛彈。每個 SAM 等級增加了一枚準備發射的飛彈和更大的射程。",
+      "steam_ranked": "排位賽、Versus 和公開大廳在 Steam 上的 Territorium 應用程式中進行。",
+      "steam_workshop": "在 Steam 上，將你的地圖發布到工作坊，並遊玩社群的地圖。",
       "trade": "港口自行與其他國家進行貿易，雙方都賺取黃金。攻擊玩家會導致您與他們的交易停止 5 分鐘。",
       "traitor": "破壞聯盟會讓你成為叛徒 30 秒：你的防禦力下降一半，其他玩家對你的信任也會降低。",
       "upgrade": "點擊您的一棟建築物進行升級：更大的城市容納更多的人口，更大的港口發送更多的船隻，更大的工廠發送更多的火車。每棟建築都有最高等級。"
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "正在等待玩家"
   },
   "purchase_nudge": {
-    "body": "看起來您很喜歡 Territorium！請考慮以購買支持我們──任何購買將會永遠移除廣告。",
+    "body_support": "喜歡 Territorium 嗎？購買商店裡的外觀物品或在 Steam 上購買遊戲來支持我們：這正是遊戲保持無廣告的原因。",
     "close": "關閉",
     "title": "喜歡 Territorium？",
     "visit_store": "前往商店"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "您的帳號已綁定到其他 Steam 帳號。",
     "reason_steam_has_progress": "這個 Steam 帳號已經有自己的進度，因此無法合併。",
     "reason_steam_linked_elsewhere": "這個 Steam 帳號已經綁定到其他 Territorium 帳號。"
+  },
+  "steam_promo": {
+    "compact": "排位賽、Versus 和公開大廳在 Steam 上。",
+    "dismiss": "隱藏一週",
+    "editions": "比較版本",
+    "feature_cloud": "透過 Steam 雲端同步設定",
+    "feature_offline": "離線單人",
+    "feature_public": "公開大廳",
+    "feature_ranked": "排位賽",
+    "feature_versus": "Versus 1v1 至 4v4",
+    "feature_workshop": "Steam 工作坊",
+    "subtitle": "完整遊戲，包含瀏覽器版沒有的內容。",
+    "title": "Steam 版 Territorium"
   },
   "steam_user_header": {
     "avatar_alt": "Steam 頭像",

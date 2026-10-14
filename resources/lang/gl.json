@@ -759,7 +759,6 @@
     "voute_celeste_desc": "A noite estrelada sobre o teu territorio, e unha supernova para rematar."
   },
   "cosmetics": {
-    "adfree": "sen anuncios de por vida!",
     "artist_label": "Artista:",
     "color_label": "Cor:",
     "common": "Común",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} entregouse a {overlord} e convértese no seu vasalo durante 10 minutos.",
     "wants_to_renew_alliance": "{name} quere renovar a túa alianza"
   },
-  "featured_stream": {
-    "expand": "Expandir",
-    "hide_today": "Escóndete por hoxe",
-    "live": "EN VIVO",
-    "minimize": "Minimizar",
-    "open_on_twitch": "Abre {channel} en Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Podes cambialo en calquera momento na configuración.",
     "audio_test": "Probar o son",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "A túa conta, estatísticas, amigos e cosméticos",
-    "ad_free_steam": "Non hai anuncios na aplicación Steam, nunca",
     "custom_lobbies": "Vestíbulos personalizados privados cos amigos",
     "free_heading": "Xogar de balde inclúe",
     "full_game": "O xogo completo: todos os mapas e modos, en liña e para un só xogador",
@@ -1397,6 +1388,8 @@
       "peace": "Perder unha guerra? Ofrécelle paz ao xogador co que estás loitando: tres minutos sen ataques, sen necesidade de alianzas. Calquera persoa que o rompa está marcado como traidor diante de todos os xogadores.",
       "radar": "Un radar detecta barcos, buques de guerra e mísiles inimigos dentro de 100 fichas, polo que ves chegar unha invasión.",
       "sam": "Os lanzadores SAM derriban mísiles ao alcance. Cada nivel SAM engade un mísil listo para disparar e máis alcance.",
+      "steam_ranked": "A clasificatoria, o Versus e as salas públicas xóganse na app de Territorium en Steam.",
+      "steam_workshop": "En Steam, publica os teus mapas no Workshop e xoga os da comunidade.",
       "trade": "Os portos comercian con outros países por conta propia, e ambos os dous lados gañan ouro. Atacar a un xogador detén o teu intercambio con el durante 5 minutos.",
       "traitor": "Romper unha alianza convértete nun traidor durante 30 segundos: a túa defensa cae á metade e os demais xogadores confían menos en ti.",
       "upgrade": "Fai clic nun dos teus edificios para actualizalo: unha cidade máis grande alberga máis xente, un porto máis grande envía máis barcos e unha fábrica máis grande envía máis trens. Cada edificio ten un nivel máximo."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Agardando xogadores"
   },
   "purchase_nudge": {
-    "body": "Parece que che gusta xogar a Territorium! Considera apoiarnos facendo unha compra: calquera compra fai que non teñas publicidade de por vida.",
+    "body_support": "Gústache Territorium? Apóianos cun cosmético da tenda ou mercando o xogo en Steam: é o que mantén o xogo sen anuncios.",
     "close": "Pechar",
     "title": "Goza de Territorium?",
     "visit_store": "Visita tenda"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "A túa conta xa está ligada a outra conta de Steam diferente.",
     "reason_steam_has_progress": "Esta conta de Steam xa ten o seu propio progreso e non se pode combinar.",
     "reason_steam_linked_elsewhere": "Esta conta de Steam xa está ligada a unha conta de Territorium diferente."
+  },
+  "steam_promo": {
+    "compact": "A clasificatoria, o Versus e as salas públicas están en Steam.",
+    "dismiss": "Agochar unha semana",
+    "editions": "Comparar edicións",
+    "feature_cloud": "Axustes sincronizados con Steam Cloud",
+    "feature_offline": "Solo sen conexión",
+    "feature_public": "Salas públicas",
+    "feature_ranked": "Clasificatoria",
+    "feature_versus": "Versus de 1v1 a 4v4",
+    "feature_workshop": "Workshop de Steam",
+    "subtitle": "O xogo completo, co que o navegador non ten.",
+    "title": "Territorium en Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Avatar de Steam",

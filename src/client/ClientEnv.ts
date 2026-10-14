@@ -170,8 +170,6 @@ export class ClientEnv {
       // Optional: a deployment without a key (or a desktop shell, which
       // buys on Steam) omits it, and the inline Stripe flow stays off.
       stripePublishableKey: bc.stripePublishableKey,
-      // Optional: absent keeps client telemetry off (see Telemetry.ts).
-      faroCollectorUrl: bc.faroCollectorUrl,
       // Optional: absent means the API is at the default api.<jwtAudience>.
       apiUrl: bc.apiUrl,
       // Absent on a static page: only a server that renders the page knows
@@ -196,9 +194,6 @@ export class ClientEnv {
   }
   static stripePublishableKey(): string | undefined {
     return ClientEnv.get().stripePublishableKey;
-  }
-  static faroCollectorUrl(): string | undefined {
-    return ClientEnv.get().faroCollectorUrl;
   }
   static apiUrl(): string | undefined {
     return ClientEnv.get().apiUrl;
@@ -668,8 +663,6 @@ export interface ClientEnvValues {
   // shells). Environment-scoped like turnstileSiteKey, so a static page
   // carries it too.
   stripePublishableKey?: string;
-  // Optional: absent keeps client telemetry off (Telemetry.ts).
-  faroCollectorUrl?: string;
   // Optional: absent means the API is at the default api.<jwtAudience>.
   apiUrl?: string;
   // "" on a static page, which no server rendered.

@@ -56,7 +56,6 @@ import {
 import { desktopPresence, type PresencePayload } from "./DesktopPresence";
 import { subscribeDesktopSessionRecovery } from "./DesktopSessionRecovery";
 import { isDesktopShell } from "./DesktopShell";
-import "./FeaturedStream";
 import "./GameModeSelector";
 import {
   GameModeSelector,
@@ -68,7 +67,6 @@ import "./GameModesPage";
 import { GameStartingModal } from "./GameStartingModal";
 import "./GameStatsModal";
 import { HelpModal } from "./HelpModal";
-import "./HomepagePromos";
 import { HostLobbyModal as HostPrivateLobbyModal } from "./HostLobbyModal";
 import { showInGameAlert, showInGameConfirm } from "./InGameModal";
 import "./InventoryModal";
@@ -192,7 +190,6 @@ import "./styles/theme/ingame-theme.css";
 declare global {
   interface Window {
     turnstile?: TurnstileApi;
-    adsEnabled: boolean;
     gtag?: (...args: any[]) => void;
     PageOS: {
       session: {
@@ -681,10 +678,6 @@ class Client {
       } else {
         updateAccountNavButton(userMeResponse);
       }
-      // Territorium shows no ads: no ad network, adblock detector or other
-      // third-party tag ever loads, so nothing tracks players without their
-      // consent (GDPR / ePrivacy).
-      window.adsEnabled = false;
       // Before the dispatch: <username-input> reads this store when it picks
       // the lapse notice's wording, and the record has to be current by then.
       const grantStoreBefore = parseSteamGrantStore(
@@ -1466,7 +1459,6 @@ class Client {
         "change-username-modal",
         "subscription-modal",
         "lang-selector",
-        "homepage-promos",
       ].forEach((tag) => {
         const modal = document.querySelector(tag) as HTMLElement & {
           close?: () => void;
@@ -1824,7 +1816,7 @@ const hideCrazyGamesElements = () => {
 const bootstrap = () => {
   // First, so the error hooks are in place for everything below. No-op
   // without a collector URL (see Telemetry.ts); never awaited.
-  void initTelemetry();
+  initTelemetry();
 
   // Keys then show the letters printed on the player's keyboard (ZQSD on
   // AZERTY); never awaited, a keyboard the browser cannot read stays QWERTY.

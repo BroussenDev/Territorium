@@ -5,7 +5,6 @@ import "../../src/client/components/CosmeticCard";
 import type { CosmeticCard } from "../../src/client/components/CosmeticCard";
 
 const translations = {
-  "cosmetics.adfree": "ad-free for life!",
   "cosmetics.artist_label": "Artist:",
   "cosmetics.rare": "Rare",
   "cosmetics.usd_value": "Value: {usd}",
@@ -280,7 +279,8 @@ describe("CosmeticCard", () => {
     ).toBe(card);
   });
 
-  it("shows the ad-free entitlement for purchasable cosmetics", async () => {
+  // Territorium shows no ads anywhere, so the shop never promises "ad-free".
+  it("never promises an ad-free entitlement", async () => {
     installTranslations();
     await createCard();
     card!.resolved = {
@@ -293,9 +293,9 @@ describe("CosmeticCard", () => {
     };
     await card!.updateComplete;
 
-    expect(card!.querySelector("[data-cosmetic-info]")?.textContent).toContain(
-      "ad-free for life!",
-    );
+    expect(
+      card!.querySelector("[data-cosmetic-info]")?.textContent ?? "",
+    ).not.toMatch(/ad-free|adfree/i);
   });
 
   it("omits the ad-free entitlement in the desktop shell, which has no ads", async () => {

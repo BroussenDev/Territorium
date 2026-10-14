@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Zvjezdana noć nad tvojom teritorijom i supernova za kraj."
   },
   "cosmetics": {
-    "adfree": "doživotno bez reklama!",
     "artist_label": "Umetnik:",
     "color_label": "Boja:",
     "common": "Često",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} se predao {overlord} i postaje njihov vazal na 10 minuta.",
     "wants_to_renew_alliance": "{name} želi da obnovi savez sa Vama"
   },
-  "featured_stream": {
-    "expand": "Prikaži Još",
-    "hide_today": "Sakrij za danas",
-    "live": "UŽIVO",
-    "minimize": "Minimiziraj",
-    "open_on_twitch": "Otvori {channel} na Twitch-u"
-  },
   "first_launch": {
     "audio_subtitle": "Možete ga promijeniti u bilo kojem trenutku u postavkama.",
     "audio_test": "Testiraj zvuk",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Vaš nalog, statistika, prijatelji i kozmetika",
-    "ad_free_steam": "Nikada nema oglasa u aplikaciji Steam",
     "custom_lobbies": "Privatni prilagođeni lobiji sa prijateljima",
     "free_heading": "Igranje besplatno uključuje",
     "full_game": "Cela igra: svaka mapa i režim, onlajn i za jednog igrača",
@@ -1397,6 +1388,8 @@
       "peace": "Izgubiti rat? Ponudite mir igraču protiv koga se borite: tri minuta bez napada, bez potrebe za savezom. Svako ko ga prekrši označava se kao izdajnik pred svim igračima.",
       "radar": "Radar uočava neprijateljske čamce, ratne brodove i projektile unutar 100 pločica, tako da vidite da dolazi invazija.",
       "sam": "SAM lanseri obaraju projektile u dometu. Svaki SAM nivo dodaje raketu spremnu za ispaljivanje i veći domet.",
+      "steam_ranked": "Rangirane igre, Versus i javni lobiji igraju se u aplikaciji Territorium na Steamu.",
+      "steam_workshop": "Na Steamu objavi svoje mape na Workshopu i igraj mape zajednice.",
       "trade": "Luke samostalno trguju sa drugim zemljama, a obe strane zarađuju zlato. Napad na igrača zaustavlja vašu trgovinu sa njim na 5 minuta.",
       "traitor": "Raskid saveza čini vas izdajnikom na 30 sekundi: vaša odbrana pada za polovinu i drugi igrači vam manje veruju.",
       "upgrade": "Kliknite na jednu od svojih zgrada da biste je nadogradili: veći grad drži više ljudi, veća luka šalje više brodova, a veća fabrika šalje više vozova. Svaka zgrada ima maksimalan nivo."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Čekanje igrača"
   },
   "purchase_nudge": {
-    "body": "Izgleda da uživate u igranju Territorium-a! Razmislite o tome da nas podržite kupovinom — bilo koja kupovina vam trajno uklanja reklame.",
+    "body_support": "Sviđa ti se Territorium? Podrži nas kozmetičkim predmetom iz prodavnice ili kupovinom igre na Steamu: tako igra ostaje bez reklama.",
     "close": "Zatvori",
     "title": "Uživate u Territorium-u?",
     "visit_store": "Poseti prodavnicu"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Vaš nalog je već povezan sa drugim Steam nalogom.",
     "reason_steam_has_progress": "Ovaj Steam nalog već ima sopstveni napredak i ne može se spojiti.",
     "reason_steam_linked_elsewhere": "Ovaj Steam nalog je već povezan sa drugim Territorium nalogom."
+  },
+  "steam_promo": {
+    "compact": "Rangirane igre, Versus i javni lobiji su na Steamu.",
+    "dismiss": "Sakrij na nedelju dana",
+    "editions": "Uporedi izdanja",
+    "feature_cloud": "Podešavanja sinhronizovana preko Steam Clouda",
+    "feature_offline": "Solo bez interneta",
+    "feature_public": "Javni lobiji",
+    "feature_ranked": "Rangirane igre",
+    "feature_versus": "Versus od 1v1 do 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Cela igra, sa onim što pregledač nema.",
+    "title": "Territorium na Steamu"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",

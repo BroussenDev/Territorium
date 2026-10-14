@@ -6,7 +6,6 @@ import {
   subscriptionPerks,
   translateCosmetic,
 } from "../Cosmetics";
-import { isDesktopShell } from "../DesktopShell";
 import { translateText } from "../Utils";
 import "./CosmeticInfo";
 import {
@@ -472,8 +471,6 @@ export class CosmeticCard extends LitElement {
                 .artist=${priced?.artist}
                 .rarity=${rarity}
                 .colorPalette=${active.colorPalette?.name}
-                .showAdFree=${active.relationship === "purchasable" &&
-                !isDesktopShell()}
                 .usdValue=${usdValue}
                 .perks=${this.subscriptionPerks()}
                 .items=${(active.packItems ?? []).map(cosmeticSelectionLabel)}

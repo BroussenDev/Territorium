@@ -759,7 +759,6 @@
     "voute_celeste_desc": "De sterrennacht boven je gebied, met een supernova als slot."
   },
   "cosmetics": {
-    "adfree": "advertentievrij voor altijd!",
     "artist_label": "Artiest:",
     "color_label": "Kleur:",
     "common": "Gewoon",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} gaf zich over aan {overlord} en wordt gedurende 10 minuten hun vazal.",
     "wants_to_renew_alliance": "{name} wil jullie alliantie vernieuwen"
   },
-  "featured_stream": {
-    "expand": "Uitklappen",
-    "hide_today": "Verbergen voor vandaag",
-    "live": "LIVE",
-    "minimize": "Minimaliseren",
-    "open_on_twitch": "Open {channel} op Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Je kunt het op elk moment wijzigen in de instellingen.",
     "audio_test": "Geluid testen",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Je account, statistieken, vrienden en cosmetica",
-    "ad_free_steam": "Geen advertenties in de Steam-app, ooit",
     "custom_lobbies": "Privé-lobby's op maat met vrienden",
     "free_heading": "Gratis spelen omvat",
     "full_game": "De volledige game: elke kaart en modus, online en singleplayer",
@@ -1397,6 +1388,8 @@
       "peace": "Een oorlog verliezen? Bied vrede aan de speler tegen wie je vecht: drie minuten zonder aanvallen, zonder alliantie. Iedereen die deze overtreedt, wordt in het bijzijn van alle spelers als verrader gemarkeerd.",
       "radar": "Een radar signaleert vijandelijke boten, oorlogsschepen en raketten binnen 100 tegels, dus je ziet een invasie aankomen.",
       "sam": "SAM-lanceerinrichtingen schieten raketten binnen bereik neer. Elk SAM-niveau voegt een raket toe die gereed is om te vuren en een groter bereik.",
+      "steam_ranked": "Ranked, Versus en openbare lobby's speel je in de Territorium-app op Steam.",
+      "steam_workshop": "Publiceer op Steam je kaarten in de Workshop en speel die van de community.",
       "trade": "Havens handelen op eigen kracht met andere landen, en beide partijen verdienen goud. Als je een speler aanvalt, wordt je ruil met hem gedurende 5 minuten stopgezet.",
       "traitor": "Als je een alliantie verbreekt, ben je voor 30 seconden een verrader: je verdediging daalt met de helft en andere spelers vertrouwen je minder.",
       "upgrade": "Klik op een van je gebouwen om het te upgraden: een grotere stad biedt plaats aan meer mensen, een grotere haven stuurt meer schepen en een grotere fabriek stuurt meer treinen. Elk gebouw heeft een maximaal niveau."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Wachten op spelers"
   },
   "purchase_nudge": {
-    "body": "Het lijkt erop dat je geniet van het spelen van Territorium! Overweeg om ons te steunen door een aankoop te doen - elke aankoop maakt je advertentievrij voor het leven.",
+    "body_support": "Vind je Territorium leuk? Steun ons met een cosmetisch item uit de winkel of door het spel op Steam te kopen: zo blijft het spel zonder advertenties.",
     "close": "Sluiten",
     "title": "Tevreden met Territorium?",
     "visit_store": "Bezoek winkel"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Je account is al gekoppeld aan een ander Steam account.",
     "reason_steam_has_progress": "Dit Steam account heeft al zijn eigen voortgang en kan niet worden samengevoegd.",
     "reason_steam_linked_elsewhere": "Dit Steam account is al gekoppeld aan een ander Territorium account."
+  },
+  "steam_promo": {
+    "compact": "Ranked, Versus en openbare lobby's zijn op Steam.",
+    "dismiss": "Een week verbergen",
+    "editions": "Edities vergelijken",
+    "feature_cloud": "Instellingen gesynchroniseerd via Steam Cloud",
+    "feature_offline": "Solo offline",
+    "feature_public": "Openbare lobby's",
+    "feature_ranked": "Ranked",
+    "feature_versus": "Versus 1v1 tot 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Het volledige spel, met wat de browser niet heeft.",
+    "title": "Territorium op Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",

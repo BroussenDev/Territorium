@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Csillagos éj a területed felett, a végén egy szupernóvával."
   },
   "cosmetics": {
-    "adfree": "reklámmentes egy életre!",
     "artist_label": "Készítő:",
     "color_label": "Színek:",
     "common": "Általános",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} megadta magát {overlord}-nek, és 10 percre a vazallusuk lesz.",
     "wants_to_renew_alliance": "{name} meg akarja újítani a szövetséget"
   },
-  "featured_stream": {
-    "expand": "Kibontás",
-    "hide_today": "Elrejtés mára",
-    "live": "ÉLŐ",
-    "minimize": "Kicsinyítés",
-    "open_on_twitch": "Nyisd meg a(z) {channel} csatornát a Twitchen"
-  },
   "first_launch": {
     "audio_subtitle": "Bármikor módosíthatod a beállításokban.",
     "audio_test": "Hang tesztelése",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Fiókod, statisztikák, barátok és kozmetikumok",
-    "ad_free_steam": "Soha nincsenek hirdetések a Steam alkalmazásban",
     "custom_lobbies": "Személyre szabott előcsarnokok barátokkal",
     "free_heading": "Az ingyenes játék magában foglalja",
     "full_game": "A teljes játék: minden térkép és mód, online és egyjátékos",
@@ -1397,6 +1388,8 @@
       "peace": "Egy háború elvesztése? Kínálj békét a játékosnak, akivel harcolsz: három perc támadások nélkül, szövetség nélkül. Aki megszegi, azt minden játékos előtt árulónak minősítik.",
       "radar": "Egy radar ellenséges hajókat, hadihajókat és rakétákat észlel 100 lapkán belül, tehát inváziót látunk közeledni.",
       "sam": "A SAM hordozórakéták hatótávolságon belül lőnek le rakétákat. Minden SAM szint egy tüzelésre kész rakétát és nagyobb hatótávolságot ad.",
+      "steam_ranked": "A rangsorolt, a Versus és a nyilvános lobbik a Steames Territorium alkalmazásban játszhatók.",
+      "steam_workshop": "A Steamen közzéteheted a pályáidat a Workshopban, és játszhatsz a közösségéivel.",
       "trade": "A kikötők önállóan kereskednek más országokkal, és mindkét fél aranyat keres. Ha megtámad egy játékost, az 5 percre leállítja vele a kereskedést.",
       "traitor": "Egy szövetség feltörése 30 másodpercre árulóvá tesz: a védekezés a felére csökken, és a többi játékos kevésbé bízik benned.",
       "upgrade": "Kattintson az egyik épületre a frissítéshez: egy nagyobb város több embert, egy nagyobb kikötő több hajót és egy nagyobb gyár több vonatot küld. Minden épületnek van egy maximális szintje."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Várakozás játékosokra"
   },
   "purchase_nudge": {
-    "body": "Úgy tűnik, élvezed az Territorium játékot! Kérjük, fontold meg a támogatásunkat egy vásárlással — bármilyen vásárlás révén örökre megszabadulhatsz a hirdetésektől.",
+    "body_support": "Tetszik a Territorium? Támogass minket egy kozmetikai tárggyal a boltból vagy a játék Steames megvásárlásával: ettől marad reklámmentes a játék.",
     "close": "Bezár",
     "title": "Tetszik az Territorium?",
     "visit_store": "Áruház felkeresése"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Fiókod már össze van kapcsolva egy másik Steam-fiókkal.",
     "reason_steam_has_progress": "Ehhez a Steam-fiókhoz már tartozik saját előrehaladás, így nem vonható össze.",
     "reason_steam_linked_elsewhere": "Ez a Steam-fiók már össze van kapcsolva egy másik Territorium-fiókkal."
+  },
+  "steam_promo": {
+    "compact": "A rangsorolt, a Versus és a nyilvános lobbik a Steamen érhetők el.",
+    "dismiss": "Elrejtés egy hétre",
+    "editions": "Kiadások összehasonlítása",
+    "feature_cloud": "Steam Cloudon szinkronizált beállítások",
+    "feature_offline": "Egyjátékos offline",
+    "feature_public": "Nyilvános lobbik",
+    "feature_ranked": "Rangsorolt",
+    "feature_versus": "Versus 1v1-től 4v4-ig",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "A teljes játék, azzal, ami a böngészőből hiányzik.",
+    "title": "Territorium a Steamen"
   },
   "steam_user_header": {
     "avatar_alt": "Steam profilkép",

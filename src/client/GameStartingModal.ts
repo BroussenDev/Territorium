@@ -1,6 +1,7 @@
 import { LitElement, html, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import "./components/TerritoriumEmblem";
+import { isDesktopShell } from "./DesktopShell";
 import { translateText } from "./Utils";
 
 // Keys under game_starting_modal.tips in the language files.
@@ -23,6 +24,15 @@ export const LOADING_TIPS = [
   "peace",
   "boat",
 ] as const;
+
+// On the web, two more tips present the Steam app (our own promotion; there
+// is no advertising).
+export const STEAM_TIPS = ["steam_ranked", "steam_workshop"] as const;
+
+/** The tips shown here and in the lobby: the Steam ones only on the web. */
+export function loadingTips(): readonly string[] {
+  return isDesktopShell() ? LOADING_TIPS : [...LOADING_TIPS, ...STEAM_TIPS];
+}
 
 // Long enough to read the longest tip twice, short enough that a slow load
 // shows more than one.
@@ -49,7 +59,8 @@ export class GameStartingModal extends LitElement {
 
   render() {
     const isVisible = this.isVisible;
-    const tip = LOADING_TIPS[this.tipIndex];
+    const tips = loadingTips();
+    const tip = tips[this.tipIndex % tips.length];
     return html`
       <div
         class="fixed inset-0 z-[9998] flex flex-col items-center justify-center overflow-hidden bg-surface px-6 text-white transition-opacity duration-300 ${isVisible
@@ -140,7 +151,7 @@ export class GameStartingModal extends LitElement {
   }
 
   show() {
-    this.tipIndex = Math.floor(Math.random() * LOADING_TIPS.length);
+    this.tipIndex = Math.floor(Math.random() * loadingTips().length);
     this.isVisible = true;
     this.startTips();
     this.requestUpdate();
@@ -153,7 +164,7 @@ export class GameStartingModal extends LitElement {
   }
 
   private nextTip() {
-    this.tipIndex = (this.tipIndex + 1) % LOADING_TIPS.length;
+    this.tipIndex = (this.tipIndex + 1) % loadingTips().length;
     // A manual skip restarts the clock so the new tip gets its full time.
     this.startTips();
   }
@@ -161,7 +172,7 @@ export class GameStartingModal extends LitElement {
   private startTips() {
     this.stopTips();
     this.tipTimer = setInterval(() => {
-      this.tipIndex = (this.tipIndex + 1) % LOADING_TIPS.length;
+      this.tipIndex = (this.tipIndex + 1) % loadingTips().length;
     }, TIP_INTERVAL_MS);
   }
 

@@ -1,5 +1,4 @@
 import { html, TemplateResult } from "lit";
-import { isDesktopShell } from "../DesktopShell";
 import { translateText } from "../Utils";
 
 const PERK_KEYS = [
@@ -13,15 +12,9 @@ const PERK_KEYS = [
  * What a player keeps with no subscription at all. Shown wherever the client
  * talks about a subscription ending, so "ends" is never read as "the game
  * stops".
- *
- * The ad-free line is only true in the desktop build, where Main switches ads
- * off for every session regardless of tier; a free player on the website does
- * see ads, so the same list there must not promise otherwise.
  */
 export function renderFreePlayPerks(headingKey: string): TemplateResult {
-  const keys = isDesktopShell()
-    ? [...PERK_KEYS, "free_play.ad_free_steam"]
-    : PERK_KEYS;
+  const keys = PERK_KEYS;
   return html`
     <div class="flex flex-col gap-1.5">
       <div class="text-[10px] text-white/50">${translateText(headingKey)}</div>

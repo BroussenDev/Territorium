@@ -33,6 +33,7 @@ import {
 } from "./components/LobbyCard";
 import { isNewSeason, newSeasonTag } from "./components/ranked/RankedTier";
 import { lockIcon } from "./components/SteamLaunchDialog";
+import "./components/SteamPromo";
 import { betaTag } from "./components/ui/BetaTag";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
@@ -810,6 +811,11 @@ export class GameModeSelector extends LitElement {
         </section>
 
         ${this.renderFavoriteModes()}
+        <!-- Our own promotion of the Steam app, instead of advertising. -->
+        <steam-promo
+          campaign="homepage"
+          class="block min-w-0 [&:empty]:hidden sm:col-span-2 sm:row-start-5 lg:col-span-3 lg:row-start-4"
+        ></steam-promo>
         ${this.showTrustRequired
           ? trustRequiredDialog(
               this.viewerSignedIn,

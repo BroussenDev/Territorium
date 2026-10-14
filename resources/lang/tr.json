@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Toprakların üzerinde yıldızlı gece ve kapanışta bir süpernova."
   },
   "cosmetics": {
-    "adfree": "ömür boyu reklamsız!",
     "artist_label": "Sanatçı:",
     "color_label": "Renk:",
     "common": "Yaygın",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} {overlord}'e teslim olur ve 10 dakika boyunca onların vassalı olur.",
     "wants_to_renew_alliance": "{name} ittifakı yenilemek istiyor"
   },
-  "featured_stream": {
-    "expand": "Genişletmek",
-    "hide_today": "Bugün için gizle",
-    "live": "CANLI",
-    "minimize": "Küçült",
-    "open_on_twitch": "Twitch'te {channel}'ı açın"
-  },
   "first_launch": {
     "audio_subtitle": "Ayarlardan istediğiniz zaman değiştirebilirsiniz.",
     "audio_test": "Sesi test et",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Hesabınız, istatistikleriniz, arkadaşlarınız ve kozmetikleriniz",
-    "ad_free_steam": "Steam uygulamasında hiçbir zaman reklam yok",
     "custom_lobbies": "Arkadaşlarla özel özel lobiler",
     "free_heading": "Ücretsiz oynamak şunları içerir:",
     "full_game": "Oyunun tamamı: tüm haritalar ve modlar, çevrimiçi ve tek oyunculu",
@@ -1397,6 +1388,8 @@
       "peace": "Bir savaşı kaybetmek mi? Dövüştüğünüz oyuncuya barış teklif edin: üç dakika boyunca saldırı olmadan, ittifak gerektirmeden. Bunu bozan herkes tüm oyuncuların önünde hain olarak işaretlenir.",
       "radar": "Bir radar, 100 karo içindeki düşman teknelerini, savaş gemilerini ve füzelerini tespit eder, böylece bir istilanın yaklaştığını görürsünüz.",
       "sam": "SAM rampaları menzildeki füzeleri vuruyor. Her SAM seviyesi, ateş etmeye hazır bir füze ve daha fazla menzil ekler.",
+      "steam_ranked": "Dereceli, Versus ve herkese açık lobiler Steam'deki Territorium uygulamasında oynanır.",
+      "steam_workshop": "Steam'de haritalarını Atölye'de yayınla ve topluluğun haritalarını oyna.",
       "trade": "Limanlar diğer ülkelerle kendi başlarına ticaret yapıyor ve her iki taraf da altın kazanıyor. Bir oyuncuya saldırmak, onunla olan ticaretinizi 5 dakika süreyle durdurur.",
       "traitor": "Bir ittifakı bozmak sizi 30 saniye boyunca hain yapar: savunmanız yarı yarıya düşer ve diğer oyuncular size daha az güvenir.",
       "upgrade": "Yükseltmek için binalarınızdan birine tıklayın: Daha büyük bir şehir daha fazla insanı barındırır, daha büyük bir liman daha fazla gemi gönderir ve daha büyük bir fabrika daha fazla tren gönderir. Her binanın bir maksimum seviyesi vardır."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Oyuncular bekleniyor"
   },
   "purchase_nudge": {
-    "body": "Görünüşe göre Territorium oynamaktan hoşlanıyorsunuz! Lütfen bir satın alma işlemi yaparak bizi desteklemeyi düşünün; herhangi bir satın alma işlemi sizi ömür boyu reklamsız hale getirir.",
+    "body_support": "Territorium'u sevdin mi? Mağazadan bir kozmetikle ya da oyunu Steam'den alarak bizi destekle: oyunu reklamsız tutan budur.",
     "close": "Kapalı",
     "title": "Territorium'dan memnun musunuz?",
     "visit_store": "Mağazayı ziyaret edin"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Hesabınız zaten farklı bir Steam hesabına bağlı.",
     "reason_steam_has_progress": "Bu Steam hesabının zaten kendi ilerlemesi var ve birleştirilemez.",
     "reason_steam_linked_elsewhere": "Bu Steam hesabı zaten farklı bir Territorium hesabına bağlı."
+  },
+  "steam_promo": {
+    "compact": "Dereceli, Versus ve herkese açık lobiler Steam'de.",
+    "dismiss": "Bir hafta gizle",
+    "editions": "Sürümleri karşılaştır",
+    "feature_cloud": "Steam Cloud ile eşitlenen ayarlar",
+    "feature_offline": "Çevrimdışı tek oyunculu",
+    "feature_public": "Herkese açık lobiler",
+    "feature_ranked": "Dereceli",
+    "feature_versus": "1v1'den 4v4'e Versus",
+    "feature_workshop": "Steam Atölyesi",
+    "subtitle": "Tarayıcıda olmayanlarla birlikte oyunun tamamı.",
+    "title": "Steam'de Territorium"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatarı",

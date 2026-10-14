@@ -759,7 +759,6 @@
     "voute_celeste_desc": "The starry night over your territory, with a supernova to finish it off."
   },
   "cosmetics": {
-    "adfree": "ad-free for life!",
     "artist_label": "Artist:",
     "color_label": "Color:",
     "common": "Common",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} surrendered to {overlord} and becomes their vassal for 10 minutes.",
     "wants_to_renew_alliance": "{name} wants to renew your alliance"
   },
-  "featured_stream": {
-    "expand": "Expand",
-    "hide_today": "Hide for today",
-    "live": "LIVE",
-    "minimize": "Minimize",
-    "open_on_twitch": "Open {channel} on Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "You can change it at any time in Settings.",
     "audio_test": "Test the sound",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Your account, stats, friends and cosmetics",
-    "ad_free_steam": "No ads in the Steam app, ever",
     "custom_lobbies": "Private custom lobbies with friends",
     "free_heading": "Playing for free includes",
     "full_game": "The full game: every map and mode, online and single-player",
@@ -1397,6 +1388,8 @@
       "peace": "Losing a war? Offer peace to the player you're fighting: three minutes without attacks, with no alliance needed. Anyone who breaks it is marked as a traitor in front of all players.",
       "radar": "A radar spots enemy boats, warships and missiles within 100 tiles, so you see an invasion coming.",
       "sam": "SAM launchers shoot down missiles in range. Each SAM level adds a missile ready to fire and more range.",
+      "steam_ranked": "Ranked, Versus and public lobbies are played in the Territorium app on Steam.",
+      "steam_workshop": "On Steam, publish your maps to the Workshop and play the community's.",
       "trade": "Ports trade with other countries on their own, and both sides earn gold. Attacking a player stops your trade with them for 5 minutes.",
       "traitor": "Breaking an alliance makes you a traitor for 30 seconds: your defense drops by half and other players trust you less.",
       "upgrade": "Click one of your buildings to upgrade it: a bigger city holds more people, a bigger port sends more ships and a bigger factory sends more trains. Every building has a maximum level."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Waiting for players"
   },
   "purchase_nudge": {
-    "body": "Looks like you enjoy playing Territorium! Please consider supporting us by making a purchase — any purchase makes you ad-free for life.",
+    "body_support": "Enjoying Territorium? Support us with a cosmetic from the store or by getting the game on Steam: it is what keeps the game free of ads.",
     "close": "Close",
     "title": "Enjoying Territorium?",
     "visit_store": "Visit store"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Your account is already linked to a different Steam account.",
     "reason_steam_has_progress": "This Steam account already has its own progress and can't be merged.",
     "reason_steam_linked_elsewhere": "This Steam account is already linked to a different Territorium account."
+  },
+  "steam_promo": {
+    "compact": "Ranked, Versus and public lobbies are on Steam.",
+    "dismiss": "Hide for a week",
+    "editions": "Compare editions",
+    "feature_cloud": "Settings synced with Steam Cloud",
+    "feature_offline": "Solo offline",
+    "feature_public": "Public lobbies",
+    "feature_ranked": "Ranked",
+    "feature_versus": "Versus 1v1 to 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "The full game, with what the browser doesn't have.",
+    "title": "Territorium on Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",

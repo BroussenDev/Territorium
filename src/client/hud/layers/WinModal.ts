@@ -25,6 +25,7 @@ import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
 import "../../components/PurchaseButton";
 import { forgetActiveGame } from "../../components/ResumeGameButton";
+import "../../components/SteamPromo";
 import { Controller } from "../../Controller";
 import {
   fetchCosmetics,
@@ -108,6 +109,11 @@ export class WinModal extends LitElement implements Controller {
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
           ${this.renderGameResult()} ${this.renderReplayShare()}
           ${this.renderRecap()} ${this.innerHtml()}
+          <steam-promo
+            variant="compact"
+            campaign="winmodal"
+            class="mt-3 block [&:empty]:hidden"
+          ></steam-promo>
         </div>
         <div class="mt-4 flex justify-between gap-2.5 shrink-0">
           <o-button

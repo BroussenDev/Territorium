@@ -71,80 +71,6 @@
         padding-left: env(safe-area-inset-left);
       }
 
-      /* Prevent Playwire bottom rail from affecting flex layout,
-         and keep it below the bottom HUD (z-[200]) so it can't cover the control panel */
-      [id^="pw-oop-bottom_rail"] {
-        position: fixed !important;
-        z-index: 150 !important;
-      }
-
-      /* Playwire flex leaderboard (header ad): Playwire inlines
-         z-index 2147483647 on it — cap it below modals and the mobile drawer,
-         like the bottom rail. The sticky nav shifts below it via
-         --top-ad-height, and page content via --top-ad-pad, both measured by
-         HomepagePromos, so it never covers the menu bar. */
-      #pw-oop-flex,
-      #adBanner.leaderboard_ad {
-        z-index: 150 !important;
-      }
-
-      /* Gutter rails (left/right) get the same inline max z-index, which put
-         them over the featured Twitch player (z-[45000]) and its close
-         button. Cap them like the other units. */
-      [id^="pw-oop-left_rail"],
-      [id^="pw-oop-right_rail"] {
-        z-index: 150 !important;
-      }
-
-      /* The flex unit's inline (expanded) state renders into
-         #pw-oop-flex_container, a direct <body> child. Body is a flex row,
-         which squeezed it to width 0 — the unit could never show its
-         expanded state or sense scrolling, so it latched permanently into
-         the docked leaderboard. Give it its own full-width line at the top
-         of the page (body wraps; the content area follows on the next
-         line), so it expands at the top and docks once scrolled past.
-         HomepagePromos locks its min-height to the expanded ad height once
-         seen, so dock/undock never changes the document height (which would
-         jump the scroll position mid-scroll). */
-      #pw-oop-flex_container {
-        order: -1;
-        flex-basis: 100%;
-        width: 100%;
-      }
-      /* While an inline page (store, settings, ...) is open the document is
-         locked at scroll 0 (see styles.css), so the unit would sit expanded
-         (350px tall) in flow above the modal for as long as the page is open,
-         squeezing the modal to a sliver. Playwire docks the unit through an
-         IntersectionObserver on this container, so park the container just
-         above the viewport instead: the unit then collapses to its fixed
-         leaderboard (measured into --top-ad-height, which pads the content
-         area below), and re-expands in flow when the page closes. No
-         transform here — the docked unit is position: fixed and must keep
-         the viewport as its containing block. */
-      body.page-open #pw-oop-flex_container {
-        position: fixed;
-        bottom: 100%;
-        left: 0;
-        width: 100%;
-      }
-      /* Playwire docks the unit with position: fixed and top: auto, i.e. at
-         its static (in-flow) position — which is now above the viewport. */
-      body.page-open #pw-oop-flex {
-        top: 0;
-      }
-
-      /* Google Funding Choices CCPA link override */
-      .fc-dns-link,
-      .fc-ccpa-root,
-      .fc-consent-root {
-        position: fixed !important;
-        z-index: 999999 !important;
-      }
-      .fc-dns-link {
-        bottom: 15px !important;
-        left: 15px !important;
-      }
-
       /* Ensure full viewport height on iOS; body grows with content so the
          document scrolls (see styles.css) */
       html {
@@ -202,7 +128,7 @@
         cdnBase: <%- cdnBase %>,
         gameEnv: <%- gameEnv %>,<%- typeof cluster !== "undefined" && cluster ? "\n        cluster: " + cluster + "," : "" %><%- typeof instanceLetter !== "undefined" && instanceLetter ? "\n        instanceLetter: " + instanceLetter + "," : "" %>
         turnstileSiteKey: <%- turnstileSiteKey %>,
-        jwtAudience: <%- jwtAudience %>,<%- typeof stripePublishableKey !== "undefined" && stripePublishableKey ? "\n        stripePublishableKey: " + stripePublishableKey + "," : "" %><%- typeof faroCollectorUrl !== "undefined" && faroCollectorUrl ? "\n        faroCollectorUrl: " + faroCollectorUrl + "," : "" %><%- typeof apiUrl !== "undefined" && apiUrl ? "\n        apiUrl: " + apiUrl + "," : "" %><%- typeof instanceId !== "undefined" && instanceId ? "\n        instanceId: " + instanceId + "," : "" %><%- typeof serverHost !== "undefined" && serverHost ? "\n        serverHost: " + serverHost + "," : "" %><%- typeof siteHost !== "undefined" && siteHost ? "\n        siteHost: " + siteHost + "," : "" %>
+        jwtAudience: <%- jwtAudience %>,<%- typeof stripePublishableKey !== "undefined" && stripePublishableKey ? "\n        stripePublishableKey: " + stripePublishableKey + "," : "" %><%- typeof apiUrl !== "undefined" && apiUrl ? "\n        apiUrl: " + apiUrl + "," : "" %><%- typeof instanceId !== "undefined" && instanceId ? "\n        instanceId: " + instanceId + "," : "" %><%- typeof serverHost !== "undefined" && serverHost ? "\n        serverHost: " + serverHost + "," : "" %><%- typeof siteHost !== "undefined" && siteHost ? "\n        siteHost: " + siteHost + "," : "" %>
       };
       // Set here rather than from the bundle so the first paint already has the
       // desktop layout. The shell's preload defines openfrontDesktop before
@@ -240,25 +166,6 @@
       async
       defer
     ></script>
-
-    <script data-cfasync="false">
-      window.ramp = window.ramp || {};
-      window.ramp.que = window.ramp.que || [];
-      window.ramp.passiveMode = true;
-      // ramp.js (ad network) is not loaded: no-op the calls the client makes.
-      window.ramp.destroyUnits = window.ramp.destroyUnits || function () {};
-      window.ramp.spaAddAds = window.ramp.spaAddAds || function () {};
-    </script>
-
-    <script>
-      // Ad and analytics hooks stay stubbed so the client's guarded calls are
-      // no-ops. Territorium loads no third-party ad or tracking tags.
-      window.googletag = window.googletag || { cmd: [] };
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-    </script>
   </head>
 
   <body
@@ -314,14 +221,14 @@
 
     <!-- MAIN CONTENT AREA -->
     <div
-      class="in-[.in-game]:hidden flex-1 basis-full min-w-0 min-h-dvh in-[.page-open]:min-h-0 in-[.page-open]:overflow-hidden relative pt-[var(--top-ad-pad,0px)] in-[.page-open]:pt-[var(--top-ad-height,0px)] transition-[margin] duration-500 ease-out will-change-[margin-left] flex flex-col"
+      class="in-[.in-game]:hidden flex-1 basis-full min-w-0 min-h-dvh in-[.page-open]:min-h-0 in-[.page-open]:overflow-hidden relative transition-[margin] duration-500 ease-out will-change-[margin-left] flex flex-col"
     >
       <!-- Desktop Top Bar (sticky so it stays visible while the page scrolls,
            offset below the header ad when one is showing; static while an
            inline page is open, when the content area is padded below the ad
            instead and nothing scrolls) -->
       <desktop-nav-bar
-        class="sticky top-[var(--top-ad-height,0px)] z-[60] in-[.page-open]:static"
+        class="sticky top-0 z-[60] in-[.page-open]:static"
       ></desktop-nav-bar>
 
       <div
@@ -329,7 +236,6 @@
         class="fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-99999"
       ></div>
 
-      <homepage-promos></homepage-promos>
       <banned-modal></banned-modal>
       <warning-modal></warning-modal>
       <pioneer-reward></pioneer-reward>
@@ -550,7 +456,6 @@
     <player-panel></player-panel>
     <spawn-timer></spawn-timer>
     <immunity-timer></immunity-timer>
-    <in-game-promo></in-game-promo>
     <alert-frame></alert-frame>
     <chat-modal></chat-modal>
     <multi-tab-modal></multi-tab-modal>
@@ -569,7 +474,6 @@
          home container) so the Twitch iframe is never display:none'd during a game,
          which would unmount the player and break ToS-compliant playback. The
          component is position:fixed and self-manages visibility (pauses in-game). -->
-    <featured-stream></featured-stream>
 
     <!-- Steam shell status bar. A direct <body> child, like
          featured-stream above, so it is not inside the home container -- but

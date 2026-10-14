@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Die Sternennacht über deinem Gebiet – und eine Supernova als Finale."
   },
   "cosmetics": {
-    "adfree": "Lebenslang Werbefrei!",
     "artist_label": "Künstler:",
     "color_label": "Farben:",
     "common": "Allgemein",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} hat sich {overlord} ergeben und wird für 10 Minuten ihr Vasall.",
     "wants_to_renew_alliance": "{name} möchte eure Allianz erneuern"
   },
-  "featured_stream": {
-    "expand": "Ausklappen",
-    "hide_today": "Für heute ausblenden",
-    "live": "LIVE",
-    "minimize": "Minimieren",
-    "open_on_twitch": "Öffne {channel} auf Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Du kannst ihn jederzeit in den Einstellungen ändern.",
     "audio_test": "Ton testen",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Ihr Konto, Statistiken, Freunde und Kosmetika",
-    "ad_free_steam": "Keine Werbung in der Steam-App, niemals",
     "custom_lobbies": "Private, individuelle Lobbys mit Freunden",
     "free_heading": "Kostenloses Spielen beinhaltet",
     "full_game": "Das komplette Spiel: alle Karten und Modi, online und im Einzelspielermodus",
@@ -1397,6 +1388,8 @@
       "peace": "Einen Krieg verlieren? Bieten Sie dem Spieler, gegen den Sie kämpfen, Frieden: drei Minuten ohne Angriffe, ohne dass eine Allianz erforderlich ist. Wer es bricht, wird vor allen Spielern als Verräter markiert.",
       "radar": "Ein Radar erkennt feindliche Boote, Kriegsschiffe und Raketen im Umkreis von 100 Feldern, sodass Sie eine bevorstehende Invasion erkennen können.",
       "sam": "SAM-Werfer schießen Raketen in Reichweite ab. Jede SAM-Stufe fügt eine schussbereite Rakete und mehr Reichweite hinzu.",
+      "steam_ranked": "Ranked, Versus und öffentliche Lobbys spielst du in der Territorium-App auf Steam.",
+      "steam_workshop": "Auf Steam kannst du deine Karten im Workshop veröffentlichen und die der Community spielen.",
       "trade": "Häfen handeln selbstständig mit anderen Ländern und beide Seiten verdienen Gold. Wenn Sie einen Spieler angreifen, wird Ihr Handel mit ihm für 5 Minuten gestoppt.",
       "traitor": "Wenn Sie eine Allianz brechen, werden Sie 30 Sekunden lang zum Verräter: Ihre Verteidigung sinkt um die Hälfte und andere Spieler vertrauen Ihnen weniger.",
       "upgrade": "Klicken Sie auf eines Ihrer Gebäude, um es zu verbessern: Eine größere Stadt fasst mehr Menschen, ein größerer Hafen schickt mehr Schiffe und eine größere Fabrik schickt mehr Züge. Jedes Gebäude hat ein maximales Level."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Warte auf Spieler"
   },
   "purchase_nudge": {
-    "body": "Es scheint, als würde dir Territorium Spaß machen! Bitte überlege, uns zu helfen, indem du einen Einkauf tätigst — jeder Einkauf entfernt alle Werbung für dich, für immer.",
+    "body_support": "Gefällt dir Territorium? Unterstütze uns mit einem Kosmetikartikel aus dem Shop oder mit dem Spiel auf Steam: So bleibt das Spiel werbefrei.",
     "close": "Schließen",
     "title": "Gefällt dir Territorium?",
     "visit_store": "Zum Shop"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Dein Account ist bereits mit einem anderen Steam Account verbunden.",
     "reason_steam_has_progress": "Dieser Steam-Account hat bereits einen eigenen Fortschritt und kann nicht zusammengeführt werden.",
     "reason_steam_linked_elsewhere": "Dieses Steam-Konto ist bereits mit einem anderen Territorium-Konto verknüpft."
+  },
+  "steam_promo": {
+    "compact": "Ranked, Versus und öffentliche Lobbys gibt es auf Steam.",
+    "dismiss": "Eine Woche ausblenden",
+    "editions": "Editionen vergleichen",
+    "feature_cloud": "Einstellungen per Steam Cloud synchronisiert",
+    "feature_offline": "Solo offline",
+    "feature_public": "Öffentliche Lobbys",
+    "feature_ranked": "Ranked",
+    "feature_versus": "Versus 1v1 bis 4v4",
+    "feature_workshop": "Steam-Workshop",
+    "subtitle": "Das komplette Spiel, mit allem, was der Browser nicht hat.",
+    "title": "Territorium auf Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Steam Avatar",

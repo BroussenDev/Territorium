@@ -16,7 +16,6 @@ export class CosmeticInfo extends LitElement {
   @property({ type: String }) artist?: string;
   @property({ type: String }) rarity?: string;
   @property({ type: String }) colorPalette?: string;
-  @property({ type: Boolean }) showAdFree = false;
   @property({ type: Number }) usdValue?: number;
   @property({ type: Array }) perks: Array<{ label: string; info: string }> = [];
   /** Display names of a pack's contents, listed under "Includes:". */
@@ -31,7 +30,6 @@ export class CosmeticInfo extends LitElement {
       !this.artist &&
       !this.rarity &&
       !this.colorPalette &&
-      !this.showAdFree &&
       this.usdValue === undefined &&
       this.perks.length === 0 &&
       this.items.length === 0
@@ -63,11 +61,6 @@ export class CosmeticInfo extends LitElement {
         ${this.rarity
           ? html`<div class="font-bold ${rarityColor}">
               ${translateText(`cosmetics.${this.rarity}`)}
-            </div>`
-          : nothing}
-        ${this.showAdFree
-          ? html`<div class="font-bold text-green-400">
-              ${translateText("cosmetics.adfree")}
             </div>`
           : nothing}
         ${this.usdValue !== undefined

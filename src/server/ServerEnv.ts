@@ -73,17 +73,9 @@ export class ServerEnv {
     if (!v) return undefined;
     return v;
   }
-  // Optional: the Grafana Faro collector the browser client reports to.
-  // Absent keeps client telemetry off. A public ingest URL, not a secret,
-  // so it travels through BOOTSTRAP_CONFIG like the Stripe key.
-  static faroCollectorUrl(): string | undefined {
-    const v = process.env.FARO_COLLECTOR_URL;
-    if (!v) return undefined;
-    return v;
-  }
   // Optional: where the account API lives, when it isn't the default
   // api.<DOMAIN> (e.g. a path on the game's own domain). Environment-scoped,
-  // so it travels through BOOTSTRAP_CONFIG like the Faro URL.
+  // so it travels through BOOTSTRAP_CONFIG like the Stripe key.
   static apiUrl(): string | undefined {
     const v = process.env.API_URL?.trim().replace(/\/+$/, "");
     if (!v) return undefined;

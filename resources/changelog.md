@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.106
+
+🚫 **No ads, no trackers**
+
+- Territorium shows no advertising and loads no tracker: the advertising code inherited from OpenFront, the Twitch player on the home page and the Steam store widget are gone.
+- The shop no longer mentions "ad-free for life": there were never any ads to remove.
+- On the website, a card presents the Steam app (Ranked, Versus, public lobbies, Workshop, offline solo, Steam Cloud), with a reminder at the end of a game and two loading tips. Never inside the Steam app.
+- Game performance and errors are now measured anonymously on our own server (no account, game or IP address), to make the game smoother. The privacy policy explains it.
+
 ## v0.1.105
 
 🛡️ **TGS-103: cross-teaming watch**

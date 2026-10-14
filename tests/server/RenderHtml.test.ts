@@ -223,7 +223,9 @@ describe("RenderHtml stripePublishableKey injection", () => {
   });
 });
 
-describe("RenderHtml faroCollectorUrl injection", () => {
+// Territorium sends no telemetry to a third party (client/Telemetry.ts
+// reports to its own API), so the page never names a collector.
+describe("RenderHtml without a telemetry collector", () => {
   beforeEach(() => {
     stubIdentity();
     vi.stubEnv("TURNSTILE_SITE_KEY", "test-key");
@@ -237,19 +239,11 @@ describe("RenderHtml faroCollectorUrl injection", () => {
     clearAppShellContentCache();
   });
 
-  test("carries the collector URL into the page", async () => {
+  test("never injects a collector URL, even if one is set", async () => {
     vi.stubEnv("FARO_COLLECTOR_URL", "https://faro.example/collect/k");
     const html = await renderHtmlContent(REAL_TEMPLATE);
-    expect(html).toContain(
-      '\n        faroCollectorUrl: "https://faro.example/collect/k",',
-    );
-  });
-
-  test("omits the line entirely when no collector is configured", async () => {
-    vi.stubEnv("FARO_COLLECTOR_URL", "");
-    const html = await renderHtmlContent(REAL_TEMPLATE);
     expect(html).not.toContain("faroCollectorUrl");
-    expect(bootstrapConfig(html)).not.toHaveProperty("faroCollectorUrl");
+    expect(html).not.toContain("faro.example");
   });
 });
 
@@ -345,7 +339,6 @@ describe("RenderHtml environment-only render", () => {
     // Environment-scoped, so the static per-version page must carry it:
     // it is how a page served by the static Worker still gets a key.
     ["stripePublishableKey"],
-    ["faroCollectorUrl"],
     ["cdnBase"],
     ["assetManifest"],
   ])("keeps the build/environment value %s", async (field) => {
@@ -390,7 +383,6 @@ describe("RenderHtml environment-only render", () => {
         '        turnstileSiteKey: "test-key",',
         '        jwtAudience: "openfront.io",',
         '        stripePublishableKey: "pk_test_abc",',
-        '        faroCollectorUrl: "https://faro.example/collect/k",',
         '        instanceId: "i-1",',
         '        serverHost: "blue.openfront.io",',
         '        siteHost: "openfront.io",',

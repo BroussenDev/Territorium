@@ -759,7 +759,6 @@
     "voute_celeste_desc": "あなたの領土に星降る夜を。締めくくりは超新星。"
   },
   "cosmetics": {
-    "adfree": "ずっと広告なし！",
     "artist_label": "作者 :",
     "color_label": "色 :",
     "common": "コモン",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} は {overlord} に降伏し、10 分間彼らの家臣になります。",
     "wants_to_renew_alliance": "{name}が同盟の更新を要請しています"
   },
-  "featured_stream": {
-    "expand": "開く",
-    "hide_today": "今日は表示しない",
-    "live": "配信中",
-    "minimize": "最小化",
-    "open_on_twitch": "Twitchの {channel} を開く"
-  },
   "first_launch": {
     "audio_subtitle": "設定からいつでも変更できます。",
     "audio_test": "サウンドをテスト",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "あなたのアカウント、統計、友達、コスメティック",
-    "ad_free_steam": "Steam アプリに広告は一切ありません",
     "custom_lobbies": "友達とのプライベートカスタムロビー",
     "free_heading": "無料でプレイできる内容",
     "full_game": "ゲーム全体: すべてのマップとモード、オンラインおよびシングルプレイヤー",
@@ -1397,6 +1388,8 @@
       "peace": "戦争に負けた？戦っているプレイヤーに平和を提供します。攻撃なしで 3 分間、同盟は必要ありません。これを破った者は、プレイヤー全員の前で裏切り者としてマークされます。",
       "radar": "レーダーは 100 タイル以内に敵のボート、軍艦、ミサイルを発見するため、侵略が近づいていることがわかります。",
       "sam": "SAM ランチャーは射程内のミサイルを撃ち落とします。 SAM レベルごとに、発射可能なミサイルが追加され、射程が長くなります。",
+      "steam_ranked": "ランク戦、Versus、公開ロビーはSteamのTerritoriumアプリで遊べます。",
+      "steam_workshop": "Steamでは自作マップをワークショップに公開し、コミュニティのマップで遊べます。",
       "trade": "港は独自に他国と貿易し、双方とも金を獲得します。プレイヤーを攻撃すると、そのプレイヤーとの取引が 5 分間停止されます。",
       "traitor": "同盟を破ると、30 秒間裏切り者になります。防御力が半分に下がり、他のプレイヤーからの信頼が下がります。",
       "upgrade": "建物の 1 つをクリックしてアップグレードします。都市が大きければ、より多くの人々が滞在でき、港が大きければ、船が多くなり、工場が大きくなれば、列車も多くなります。すべての建物には最大レベルがあります。"
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "プレイヤーを待っています"
   },
   "purchase_nudge": {
-    "body": "Territoriumを楽しんでいただけて何よりです！もしよかったらご支援をいただけると嬉しいです。何か1つでも購入すると、以降は広告なしでゲームをお楽しみできます。",
+    "body_support": "Territoriumを気に入っていただけましたか？ショップのコスメティックやSteam版の購入で応援してください。それが広告のないゲームを支えています。",
     "close": "閉じる",
     "title": "Territoriumを楽しんでいますか？",
     "visit_store": "ストアを見る"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "このアカウントはすでに別のSteamアカウントと連携されています。",
     "reason_steam_has_progress": "このSteamアカウントにはすでに独自のゲーム進行状況があるため、統合できません。",
     "reason_steam_linked_elsewhere": "この Steam アカウントは既に別の Territorium アカウントにリンクされています。"
+  },
+  "steam_promo": {
+    "compact": "ランク戦、Versus、公開ロビーはSteam版で遊べます。",
+    "dismiss": "1週間非表示にする",
+    "editions": "エディションを比較",
+    "feature_cloud": "Steamクラウドで設定を同期",
+    "feature_offline": "オフラインのソロ",
+    "feature_public": "公開ロビー",
+    "feature_ranked": "ランク戦",
+    "feature_versus": "Versus 1v1〜4v4",
+    "feature_workshop": "Steamワークショップ",
+    "subtitle": "ブラウザ版にない要素もそろった完全版。",
+    "title": "Steam版 Territorium"
   },
   "steam_user_header": {
     "avatar_alt": "Steamアバター",

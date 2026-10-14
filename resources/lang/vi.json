@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Đêm đầy sao trên lãnh thổ của bạn, khép lại bằng một siêu tân tinh."
   },
   "cosmetics": {
-    "adfree": "không quảng cáo trọn đời!",
     "artist_label": "Họa sĩ:",
     "color_label": "Màu:",
     "common": "Thường",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} đầu hàng {overlord} và trở thành chư hầu của họ trong 10 phút.",
     "wants_to_renew_alliance": "{name} muốn gia hạn liên minh với bạn"
   },
-  "featured_stream": {
-    "expand": "Mở rộng",
-    "hide_today": "Ẩn trong hôm nay",
-    "live": "LIVE",
-    "minimize": "Thu nhỏ",
-    "open_on_twitch": "Mở {channel} trên Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Bạn có thể thay đổi bất cứ lúc nào trong phần cài đặt.",
     "audio_test": "Thử âm thanh",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Tài khoản, số liệu thống kê, bạn bè và mỹ phẩm của bạn",
-    "ad_free_steam": "Không bao giờ có quảng cáo trong ứng dụng Steam",
     "custom_lobbies": "Hành lang tùy chỉnh riêng tư với bạn bè",
     "free_heading": "Chơi miễn phí bao gồm",
     "full_game": "Trò chơi đầy đủ: mọi bản đồ và chế độ, trực tuyến và chơi đơn",
@@ -1397,6 +1388,8 @@
       "peace": "Thất bại trong một cuộc chiến? Mang lại hòa bình cho người chơi mà bạn đang chiến đấu: ba phút không tấn công, không cần liên minh. Bất cứ ai phá vỡ nó đều bị coi là kẻ phản bội trước mặt tất cả người chơi.",
       "radar": "Radar phát hiện thuyền, tàu chiến và tên lửa của đối phương trong phạm vi 100 ô, do đó bạn thấy một cuộc xâm lược sắp xảy ra.",
       "sam": "Bệ phóng SAM bắn hạ tên lửa trong tầm bắn. Mỗi cấp độ SAM bổ sung thêm một tên lửa sẵn sàng khai hỏa và có tầm bắn xa hơn.",
+      "steam_ranked": "Xếp hạng, Versus và sảnh công khai được chơi trong ứng dụng Territorium trên Steam.",
+      "steam_workshop": "Trên Steam, đăng bản đồ của bạn lên Workshop và chơi bản đồ của cộng đồng.",
       "trade": "Các cảng tự mình buôn bán với các nước khác và cả hai bên đều kiếm được vàng. Tấn công người chơi sẽ dừng giao dịch của bạn với họ trong 5 phút.",
       "traitor": "Phá vỡ một liên minh sẽ khiến bạn trở thành kẻ phản bội trong 30 giây: khả năng phòng thủ của bạn giảm một nửa và những người chơi khác ít tin tưởng bạn hơn.",
       "upgrade": "Nhấp vào một trong các tòa nhà của bạn để nâng cấp nó: một thành phố lớn hơn chứa được nhiều người hơn, một cảng lớn hơn gửi nhiều tàu hơn và một nhà máy lớn hơn gửi nhiều tàu hơn. Mỗi tòa nhà đều có mức tối đa."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Đang chờ người chơi"
   },
   "purchase_nudge": {
-    "body": "Có vẻ bạn thích chơi Territorium! Hãy cân nhắc ủng hộ chúng tôi bằng cách mua một vật phẩm — bất kỳ giao dịch nào cũng giúp bạn loại bỏ quảng cáo vĩnh viễn.",
+    "body_support": "Bạn thích Territorium? Hãy ủng hộ chúng tôi bằng một vật phẩm trang trí trong cửa hàng hoặc mua trò chơi trên Steam: nhờ vậy trò chơi không có quảng cáo.",
     "close": "Đóng",
     "title": "Thích chơi Territorium?",
     "visit_store": "Ghé qua cửa hàng"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Tài khoản của bạn đã được liên kết với một tài khoản Steam khác.",
     "reason_steam_has_progress": "Tài khoản Steam này đã có tiến trình riêng và không thể hợp nhất.",
     "reason_steam_linked_elsewhere": "Tài khoản Steam này đã được liên kết với một tài khoản Territorium khác."
+  },
+  "steam_promo": {
+    "compact": "Xếp hạng, Versus và sảnh công khai có trên Steam.",
+    "dismiss": "Ẩn trong một tuần",
+    "editions": "So sánh các phiên bản",
+    "feature_cloud": "Cài đặt đồng bộ qua Steam Cloud",
+    "feature_offline": "Chơi đơn ngoại tuyến",
+    "feature_public": "Sảnh công khai",
+    "feature_ranked": "Xếp hạng",
+    "feature_versus": "Versus từ 1v1 đến 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Trò chơi đầy đủ, với những gì trình duyệt không có.",
+    "title": "Territorium trên Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Ảnh đại diện Steam",

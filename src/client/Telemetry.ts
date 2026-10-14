@@ -1,189 +1,136 @@
-import type { Faro, TransportItem } from "@grafana/faro-web-sdk";
 import { GameEnv } from "../core/configuration/Config";
+import { UserSettings } from "../core/game/UserSettings";
+import { getApiBase } from "./Api";
 import { ClientEnv } from "./ClientEnv";
 import { clientPlatform } from "./ClientPlatform";
+import { currentGameVersion } from "./GameVersion";
 
 /**
- * Browser telemetry via Grafana Faro: uncaught errors, unhandled rejections,
- * web vitals, in-game performance summaries (GameMetrics.ts) and
- * session/view metadata, shipped to the collector named by
- * BOOTSTRAP_CONFIG.faroCollectorUrl (FARO_COLLECTOR_URL on the server).
+ * Anonymous, first-party telemetry: the in-game performance summaries
+ * (GameMetrics.ts) and the game-ending errors players hit, sent to
+ * Territorium's own API (POST /telemetry), never to a third party.
  *
- * Off entirely when no URL is injected — dev, desktop shells without one,
- * any deployment that has not opted in. The SDK is loaded lazily so a page
- * without telemetry never downloads it and boot is never blocked on it.
- *
- * Console capture is deliberately off: the client logs freely through
- * console.error, and forwarding all of it would drown the signal. Game
- * crashes go through reportGameError instead, which is what the error modal
- * calls.
+ * Nothing in a report identifies a player: no account, session, game or
+ * client id, and nothing is kept in the browser for it. A report says "a web
+ * player on v0.1.106 at High quality saw these frame times", never who. The
+ * API sums reports per day and deletes them after 30 days; the privacy
+ * policy describes it. Off in development.
  */
 
-// Fraction of sessions that report at all. Faro samples per session, so an
-// unsampled session sends nothing — errors included. Prod has enough
-// players that 1% is plenty of signal; everywhere else every session
-// reports, so a staging or dev deployment shows its errors right away.
-export function sessionSamplingRate(env: GameEnv): number {
-  return env === GameEnv.Prod ? 0.01 : 1;
+// Reports are batched: one request a minute at most, and one when the page
+// is left.
+export const FLUSH_INTERVAL_MS = 60_000;
+// The most errors kept between two flushes, so a crash loop cannot grow it.
+const MAX_ERRORS = 10;
+
+export interface MeasurementSummary {
+  p50: number;
+  p90: number;
+  p99: number;
+  count: number;
 }
 
-let faroPromise: Promise<Faro | null> | null = null;
+interface PendingError {
+  type: string;
+  error: string;
+  count: number;
+}
 
-export function initTelemetry(): Promise<Faro | null> {
-  if (faroPromise !== null) return faroPromise;
-  // Telemetry must never take the page down: a shell with no
-  // BOOTSTRAP_CONFIG at all (a bare test DOM, say) just runs without it.
-  let url: string | undefined;
+interface TelemetryReport {
+  platform: string;
+  version: string;
+  quality: string;
+  fpsCap: number;
+  measurements: Array<MeasurementSummary & { type: string }>;
+  errors: PendingError[];
+}
+
+let measurements: TelemetryReport["measurements"] = [];
+let errors: PendingError[] = [];
+let started = false;
+
+function enabled(): boolean {
   try {
-    url = ClientEnv.faroCollectorUrl();
+    return ClientEnv.env() !== GameEnv.Dev;
   } catch {
-    url = undefined;
-  }
-  if (url === undefined) {
-    faroPromise = Promise.resolve(null);
-    return faroPromise;
-  }
-  const env = ClientEnv.env();
-  faroPromise = import("@grafana/faro-web-sdk")
-    .then(({ initializeFaro, getWebInstrumentations }) =>
-      initializeFaro({
-        url,
-        app: {
-          name: "openfront-client",
-          version: ClientEnv.gitCommit(),
-          environment: environmentName(env),
-        },
-        sessionTracking: {
-          samplingRate: sessionSamplingRate(env),
-          // localStorage-backed, so a session (and its sampling decision)
-          // survives the reloads the client performs itself — the apex
-          // redirect, the versioned-path join, a rejoin after a crash.
-          persistent: true,
-          session: { attributes: { platform: clientPlatform() } },
-        },
-        // Resource timings are one event per fetch/XHR — every CDN asset,
-        // API call and ad beacon, all match long — and were >90% of the
-        // volume of a staging session at ~2KB a line. Navigation timing and
-        // web vitals cover page load; the rest is not worth the ingest.
-        trackResources: false,
-        instrumentations: getWebInstrumentations({ captureConsole: false }),
-        beforeSend: filterSignal,
-      }),
-    )
-    .catch((e: unknown) => {
-      console.warn("Telemetry init failed", e);
-      return null;
-    });
-  return faroPromise;
-}
-
-// Cloudflare's script monitor puts a report-only CSP (`connect-src 'none'`,
-// disposition=report) on every page, and the browser then raises a
-// securitypolicyviolation event for every fetch that policy would have
-// blocked: each CDN asset, API call, and the Faro collector itself. Faro's
-// default instrumentation forwards them all, which made them ~85% of prod
-// event volume, none of it actionable since nothing is actually blocked.
-const DROPPED_EVENTS = new Set(["securitypolicyviolation"]);
-
-// Faro runs this hook unguarded on its flush path. Anything it cannot handle
-// is dropped (null) rather than thrown or sent as-is: telemetry must neither
-// reach the player nor leak what it was meant to cut.
-function filterSignal(item: TransportItem): TransportItem | null {
-  try {
-    if (item.type === "event") {
-      const name = (item.payload as { name?: unknown } | null)?.name;
-      if (typeof name === "string" && DROPPED_EVENTS.has(name)) return null;
-    }
-    return scrubUrls(item);
-  } catch {
-    return null;
+    // No BOOTSTRAP_CONFIG (a bare test page): no telemetry.
+    return false;
   }
 }
 
-/**
- * Faro stamps location.href onto every signal (page meta) and the navigation
- * event carries the from/to URLs. The auth flows land single-use credentials
- * in the URL hash — `#token-login?token-login=…` — and
- * handleUrl() only strips them after userAuth() resolves, well after the SDK
- * has initialized. So every URL that leaves the page is cut to origin +
- * path: no query, no hash.
- */
-export function stripUrl(url: string): string {
-  return url.split(/[?#]/, 1)[0];
+/** Starts the periodic sending; safe to call more than once. */
+export function initTelemetry(): void {
+  if (started || !enabled()) return;
+  started = true;
+  setInterval(() => flushTelemetry(false), FLUSH_INTERVAL_MS);
+  // The last batch goes out as the page is left (a reload, a game exit).
+  addEventListener("pagehide", () => flushTelemetry(true));
 }
 
-function scrubUrls(item: TransportItem): TransportItem {
-  const page = item.meta.page;
-  if (page?.url !== undefined) {
-    item.meta = { ...item.meta, page: { ...page, url: stripUrl(page.url) } };
-  }
-  const attributes = (
-    item.payload as { attributes?: Record<string, unknown> } | null
-  )?.attributes;
-  if (attributes !== undefined && attributes !== null) {
-    for (const key of ["fromUrl", "toUrl"]) {
-      const value = attributes[key];
-      if (typeof value === "string") attributes[key] = stripUrl(value);
-    }
-  }
-  return item;
-}
-
-/** Test-only. */
-export function resetTelemetry(): void {
-  faroPromise = null;
+/** A summarised in-game measurement (see GameMetrics.ts). */
+export function reportMeasurement(
+  type: string,
+  values: MeasurementSummary,
+): void {
+  if (!enabled()) return;
+  measurements.push({ type, ...values });
 }
 
 /**
  * A game-ending error the client showed the player: a sim crash, a worker
  * failure, a desync. `type` is the error-modal heading key, so the same
- * class of crash groups together in Grafana.
+ * class of crash groups together.
  */
-export function reportGameError(
-  error: string,
-  message: string | undefined,
-  gameID: string,
-  clientID: string | undefined,
-  type: string,
-): void {
-  void initTelemetry().then((faro) => {
-    if (faro === null) return;
-    faro.api.pushError(new Error(error), {
-      type,
-      context: {
-        gameID,
-        clientID: clientID ?? "",
-        message: message ?? "",
-      },
+export function reportGameError(error: string, type: string): void {
+  if (!enabled()) return;
+  const same = errors.find((e) => e.type === type && e.error === error);
+  if (same !== undefined) same.count++;
+  else if (errors.length < MAX_ERRORS) errors.push({ type, error, count: 1 });
+}
+
+/** What would be sent now, or null when there is nothing. Exported for tests. */
+export function pendingReport(): TelemetryReport | null {
+  if (measurements.length === 0 && errors.length === 0) return null;
+  const settings = new UserSettings();
+  return {
+    platform: clientPlatform(),
+    version: currentGameVersion(),
+    quality: settings.graphicsQuality(),
+    fpsCap: settings.frameRateCap(),
+    measurements,
+    errors,
+  };
+}
+
+/** Sends what is pending; `leaving` uses a beacon, which outlives the page. */
+export function flushTelemetry(leaving: boolean): void {
+  const report = pendingReport();
+  if (report === null) return;
+  measurements = [];
+  errors = [];
+  const url = `${getApiBase()}/telemetry`;
+  const body = JSON.stringify(report);
+  try {
+    if (leaving && typeof navigator.sendBeacon === "function") {
+      navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+      return;
+    }
+    void fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+    }).catch(() => {
+      // Lost: telemetry never bothers the player.
     });
-  });
-}
-
-/**
- * A summarised in-game measurement (see GameMetrics.ts): one Faro
- * measurement of the given type, with the game and client it came from as
- * its context.
- */
-export function reportMeasurement(
-  type: string,
-  values: Record<string, number>,
-  context: Record<string, string>,
-): void {
-  void initTelemetry().then((faro) => {
-    if (faro === null) return;
-    faro.api.pushMeasurement({ type, values }, { context });
-  });
-}
-
-function environmentName(env: GameEnv): string {
-  switch (env) {
-    case GameEnv.Prod:
-      return "prod";
-    // Matches ServerEnv.gameEnvName, so browser and server signals for one
-    // deployment share an environment label in Grafana.
-    case GameEnv.Preprod:
-      return "staging";
-    default:
-      return "dev";
+  } catch {
+    // Same.
   }
+}
+
+/** Test-only. */
+export function resetTelemetry(): void {
+  measurements = [];
+  errors = [];
+  started = false;
 }

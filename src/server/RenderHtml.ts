@@ -97,11 +97,6 @@ export async function renderHtmlContent(
         ? undefined
         : JSON.stringify(ServerEnv.stripePublishableKey()),
     // Same shape: environment-scoped, optional, line dropped when unset.
-    faroCollectorUrl:
-      ServerEnv.faroCollectorUrl() === undefined
-        ? undefined
-        : JSON.stringify(ServerEnv.faroCollectorUrl()),
-    // Same shape: environment-scoped, optional, line dropped when unset.
     apiUrl:
       ServerEnv.apiUrl() === undefined
         ? undefined

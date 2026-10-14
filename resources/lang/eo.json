@@ -759,7 +759,6 @@
     "voute_celeste_desc": "La stelplena nokto super via teritorio, kun supernovao por fini."
   },
   "cosmetics": {
-    "adfree": "sen-reklama eterne!",
     "artist_label": "Artisto:",
     "color_label": "Koloro:",
     "common": "Ordinara",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} kapitulacis al {overlord} kaj iĝas ilia vasalo dum 10 minutoj.",
     "wants_to_renew_alliance": "{name} volas renovigi aliancon kun vi"
   },
-  "featured_stream": {
-    "expand": "Vastigi",
-    "hide_today": "Kaŝu por hodiaŭ",
-    "live": "VIVU",
-    "minimize": "Minimumigi",
-    "open_on_twitch": "Malfermu {channel} ĉe Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Vi povas ŝanĝi ĝin iam ajn en la agordoj.",
     "audio_test": "Testi la sonon",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Via konto, statistiko, amikoj kaj kosmetikaĵoj",
-    "ad_free_steam": "Neniuj reklamoj en la Steam-apo neniam",
     "custom_lobbies": "Privataj kutimaj vestibloj kun amikoj",
     "free_heading": "Ludado senpage inkluzivas",
     "full_game": "La plena ludo: ĉiu mapo kaj reĝimo, interreta kaj unu-ludanta",
@@ -1397,6 +1388,8 @@
       "peace": "Perdi militon? Oferu pacon al la ludanto, kiun vi batalas: tri minutojn sen atakoj, sen alianco necesa. Ĉiu, kiu rompas ĝin, estas markita kiel perfidulo antaŭ ĉiuj ludantoj.",
       "radar": "Radaro ekvidas malamikajn boatojn, batalŝipojn kaj misilojn ene de 100 kaheloj, do vi vidas invadon venanta.",
       "sam": "SAM-lanĉiloj malflugigas misilojn en intervalo. Ĉiu SAM-nivelo aldonas misilon pretan pafi kaj pli da atingo.",
+      "steam_ranked": "Rangaj ludoj, Versus kaj publikaj atendejoj ludiĝas en la aplikaĵo Territorium ĉe Steam.",
+      "steam_workshop": "Ĉe Steam, publikigu viajn mapojn en la Laborejo kaj ludu tiujn de la komunumo.",
       "trade": "Havenoj komercas kun aliaj landoj memstare, kaj ambaŭ flankoj gajnas oron. Ataki ludanton ĉesigas vian komercon kun ili dum 5 minutoj.",
       "traitor": "Rompi aliancon igas vin perfidulo dum 30 sekundoj: via defendo malpliiĝas je duono kaj aliaj ludantoj malpli fidas vin.",
       "upgrade": "Alklaku unu el viaj konstruaĵoj por altgradigi ĝin: pli granda urbo enhavas pli da homoj, pli granda haveno sendas pli da ŝipoj kaj pli granda fabriko sendas pli da trajnoj. Ĉiu konstruaĵo havas maksimuman nivelon."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Atendante ludantojn"
   },
   "purchase_nudge": {
-    "body": "Ŝajnas, ke vi ĝuas ludi Territorium! Bonvolu konsideri subteni nin per aĉeto — ajna aĉeto faras vin sen reklamoj dumvive.",
+    "body_support": "Ĉu vi ŝatas Territorium? Subtenu nin per kosmetikaĵo el la vendejo aŭ aĉetante la ludon ĉe Steam: tio tenas la ludon sen reklamoj.",
     "close": "Fermu",
     "title": "Ĉu vi ĝuas Territorium?",
     "visit_store": "Vizitu vendejon"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Via konto jam estas ligita al alia Steam-konto.",
     "reason_steam_has_progress": "Ĉi tiu Steam-konto jam havas sian propran progreson kaj ne povas esti kunfandita.",
     "reason_steam_linked_elsewhere": "Ĉi tiu Steam-konto jam estas ligita al malsama Territorium-konto."
+  },
+  "steam_promo": {
+    "compact": "Rangaj ludoj, Versus kaj publikaj atendejoj estas ĉe Steam.",
+    "dismiss": "Kaŝi dum semajno",
+    "editions": "Kompari eldonojn",
+    "feature_cloud": "Agordoj sinkronigitaj per Steam Cloud",
+    "feature_offline": "Solludo sen konekto",
+    "feature_public": "Publikaj atendejoj",
+    "feature_ranked": "Rangaj ludoj",
+    "feature_versus": "Versus de 1v1 ĝis 4v4",
+    "feature_workshop": "Steam-Laborejo",
+    "subtitle": "La plena ludo, kun tio, kion la retumilo ne havas.",
+    "title": "Territorium ĉe Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Steam-avataro",

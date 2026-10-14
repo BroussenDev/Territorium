@@ -759,7 +759,6 @@
     "voute_celeste_desc": "在你的领土上铺满星空，并以一颗超新星收尾。"
   },
   "cosmetics": {
-    "adfree": "永久去除广告！",
     "artist_label": "艺术家：",
     "color_label": "颜色：",
     "common": "普通",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal}向{overlord}投降并成为他们的附庸10分钟。",
     "wants_to_renew_alliance": "{name} 想与你续签盟约"
   },
-  "featured_stream": {
-    "expand": "扩张",
-    "hide_today": "今天隐藏",
-    "live": "居住",
-    "minimize": "最小化",
-    "open_on_twitch": "在 Twitch 上打开 {channel}"
-  },
   "first_launch": {
     "audio_subtitle": "您可以随时在设置中更改。",
     "audio_test": "测试声音",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "您的帐户、统计数据、好友和化妆品",
-    "ad_free_steam": "Steam 应用程序中永远没有广告",
     "custom_lobbies": "与朋友一起的私人定制大厅",
     "free_heading": "免费玩游戏包括",
     "full_game": "完整的游戏：每个地图和模式，在线和单人游戏",
@@ -1397,6 +1388,8 @@
       "peace": "输掉一场战争？为你正在战斗的玩家提供和平：三分钟没有攻击，不需要联盟。任何破坏它的人都会在所有玩家面前被标记为叛徒。",
       "radar": "雷达可以发现 100 格内的敌方船只、军舰和导弹，让您看到入侵即将到来。",
       "sam": "地对空导弹发射器击落射程内的导弹。每个 SAM 级别都增加了一枚准备发射的导弹和更大的射程。",
+      "steam_ranked": "排位赛、Versus 和公开大厅在 Steam 上的 Territorium 应用中进行。",
+      "steam_workshop": "在 Steam 上，将你的地图发布到创意工坊，并游玩社区的地图。",
       "trade": "港口自行与其他国家进行贸易，双方都赚取黄金。攻击玩家会导致您与他们的交易停止 5 分钟。",
       "traitor": "破坏联盟会让你成为叛徒 30 秒：你的防御力下降一半，其他玩家对你的信任也会降低。",
       "upgrade": "单击您的一栋建筑物进行升级：更大的城市容纳更多的人口，更大的港口发送更多的船只，更大的工厂发送更多的火车。每栋建筑都有最高等级。"
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "正在等待玩家"
   },
   "purchase_nudge": {
-    "body": "看起来你很喜欢玩 Territorium！请考虑通过购买来支持我们——任何购买都会让您终生免受广告打扰。",
+    "body_support": "喜欢 Territorium 吗？购买商店里的装饰品或在 Steam 上购买游戏来支持我们：这正是游戏保持无广告的原因。",
     "close": "关闭",
     "title": "喜欢 Territorium 吗？",
     "visit_store": "参观商店"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "您的帐户已链接到另一个 Steam 帐户。",
     "reason_steam_has_progress": "该Steam帐户已有自己的进度，无法合并。",
     "reason_steam_linked_elsewhere": "此 Steam 帐户已链接到另一个 Territorium 帐户。"
+  },
+  "steam_promo": {
+    "compact": "排位赛、Versus 和公开大厅在 Steam 上。",
+    "dismiss": "隐藏一周",
+    "editions": "比较版本",
+    "feature_cloud": "通过 Steam 云同步设置",
+    "feature_offline": "离线单人",
+    "feature_public": "公开大厅",
+    "feature_ranked": "排位赛",
+    "feature_versus": "Versus 1v1 至 4v4",
+    "feature_workshop": "Steam 创意工坊",
+    "subtitle": "完整游戏，包含浏览器版没有的内容。",
+    "title": "Steam 版 Territorium"
   },
   "steam_user_header": {
     "avatar_alt": "蒸汽头像",

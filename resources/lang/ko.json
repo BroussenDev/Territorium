@@ -759,7 +759,6 @@
     "voute_celeste_desc": "당신의 영토 위로 별이 빛나는 밤, 그리고 마무리는 초신성."
   },
   "cosmetics": {
-    "adfree": "평생 광고 없이 이용하세요!",
     "artist_label": "작가:",
     "color_label": "색상:",
     "common": "일반",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal}는 {overlord}에게 항복하고 10분 동안 그들의 가신이 됩니다.",
     "wants_to_renew_alliance": "{name}님이 동맹 갱신을 원합니다"
   },
-  "featured_stream": {
-    "expand": "펼치기",
-    "hide_today": "오늘 하루 숨기기",
-    "live": "생방송",
-    "minimize": "최소화",
-    "open_on_twitch": "Twitch에서 {channel} 채널 열기"
-  },
   "first_launch": {
     "audio_subtitle": "설정에서 언제든지 변경할 수 있습니다.",
     "audio_test": "사운드 테스트",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "귀하의 계정, 통계, 친구 및 화장품",
-    "ad_free_steam": "Steam 앱에는 광고가 전혀 없습니다.",
     "custom_lobbies": "친구들과 함께하는 비공개 맞춤형 로비",
     "free_heading": "무료 플레이에는 다음이 포함됩니다.",
     "full_game": "정식 게임: 모든 맵과 모드, 온라인 및 싱글 플레이어",
@@ -1397,6 +1388,8 @@
       "peace": "전쟁에서 졌나요? 싸우고 있는 플레이어에게 평화를 제공하세요. 공격 없이 3분, 동맹이 필요하지 않습니다. 그것을 깨뜨린 사람은 모든 플레이어 앞에서 반역자로 표시됩니다.",
       "radar": "레이더는 100타일 이내의 적 보트, 군함, 미사일을 탐지하므로 침공이 다가오는 것을 볼 수 있습니다.",
       "sam": "SAM 발사대는 범위 내에서 미사일을 격추합니다. 각 SAM 레벨에는 발사 준비가 된 미사일과 더 많은 사거리가 추가됩니다.",
+      "steam_ranked": "랭크, Versus, 공개 로비는 Steam의 Territorium 앱에서 플레이합니다.",
+      "steam_workshop": "Steam에서 내 지도를 창작마당에 올리고 커뮤니티의 지도를 플레이하세요.",
       "trade": "항구는 스스로 다른 나라와 무역을 하고, 양쪽 모두 금을 얻습니다. 플레이어를 공격하면 5분 동안 거래가 중단됩니다.",
       "traitor": "동맹을 깨면 30초 동안 배신자가 됩니다. 방어력이 절반으로 떨어지고 다른 플레이어가 당신을 덜 신뢰하게 됩니다.",
       "upgrade": "건물 중 하나를 클릭하여 업그레이드하세요. 도시가 클수록 더 많은 사람이 거주하고, 항구가 클수록 더 많은 배를 보내고, 공장이 클수록 더 많은 기차를 보냅니다. 모든 건물에는 최대 레벨이 있습니다."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "플레이어를 기다리는 중"
   },
   "purchase_nudge": {
-    "body": "Territorium를 즐겁게 플레이하고 계신 것 같네요! 구매를 통해 개발을 후원해 주세요 — 어떤 상품이든 한 번만 구매하면 평생 광고가 제거됩니다.",
+    "body_support": "Territorium이 마음에 드시나요? 상점의 꾸미기 아이템이나 Steam에서 게임을 구매해 응원해 주세요. 그것이 광고 없는 게임을 지켜 줍니다.",
     "close": "닫기",
     "title": "Territorium가 마음에 드시나요?",
     "visit_store": "상점 방문"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "계정이 이미 다른 Steam 계정에 연동되어 있습니다.",
     "reason_steam_has_progress": "이 Steam 계정에는 이미 별도의 진행 내역이 있어 병합할 수 없습니다.",
     "reason_steam_linked_elsewhere": "이 Steam 계정은 이미 다른 Territorium 계정에 연동되어 있습니다."
+  },
+  "steam_promo": {
+    "compact": "랭크, Versus, 공개 로비는 Steam에서 즐길 수 있습니다.",
+    "dismiss": "일주일 동안 숨기기",
+    "editions": "에디션 비교",
+    "feature_cloud": "Steam 클라우드로 동기화되는 설정",
+    "feature_offline": "오프라인 솔로",
+    "feature_public": "공개 로비",
+    "feature_ranked": "랭크",
+    "feature_versus": "Versus 1v1~4v4",
+    "feature_workshop": "Steam 창작마당",
+    "subtitle": "브라우저에 없는 것까지 담은 완전한 게임.",
+    "title": "Steam의 Territorium"
   },
   "steam_user_header": {
     "avatar_alt": "Steam 아바타",

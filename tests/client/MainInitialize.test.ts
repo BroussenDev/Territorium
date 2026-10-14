@@ -235,9 +235,6 @@ describe("Client.initialize() booted from Main.ts module scope", () => {
   it("runs the signed-out boot: onUserMe(false) and the missing-version warn", () => {
     // renderNavVersion() === 0 branch (line 411).
     expect(warnSpy).toHaveBeenCalledWith("Game version element not found");
-    // userAuth() === false → onUserMe(false), which keeps ads off: Territorium
-    // loads no ad or tracking tags for anyone.
-    expect(window.adsEnabled).toBe(false);
   });
 
   it("clears the stale achievements.pushed record", () => {

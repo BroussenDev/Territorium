@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Stjernenatten over dit territorium, med en supernova til sidst."
   },
   "cosmetics": {
-    "adfree": "reklamefri for livet!",
     "artist_label": "Kunstner:",
     "color_label": "Farve:",
     "common": "Almindelig",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} overgav sig til {overlord} og bliver deres vasal i 10 minutter.",
     "wants_to_renew_alliance": "{name} ønsker at forny din alliance."
   },
-  "featured_stream": {
-    "expand": "Udvid",
-    "hide_today": "Skjul for i dag",
-    "live": "LIVE",
-    "minimize": "Minimer",
-    "open_on_twitch": "Åbn {channel} på Twitch"
-  },
   "first_launch": {
     "audio_subtitle": "Du kan ændre den når som helst i indstillingerne.",
     "audio_test": "Test lyden",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Din konto, statistik, venner og kosmetik",
-    "ad_free_steam": "Ingen annoncer i Steam-appen nogensinde",
     "custom_lobbies": "Private tilpassede lobbyer med venner",
     "free_heading": "Gratis at spille inkluderer",
     "full_game": "Det fulde spil: alle kort og tilstande, online og single-player",
@@ -1397,6 +1388,8 @@
       "peace": "At tabe en krig? Tilbyd fred til den spiller, du kæmper mod: tre minutter uden angreb, uden behov for alliance. Enhver, der bryder det, er markeret som en forræder foran alle spillere.",
       "radar": "En radar opdager fjendtlige både, krigsskibe og missiler inden for 100 fliser, så du ser en invasion komme.",
       "sam": "SAM-raketter skyder missiler ned inden for rækkevidde. Hvert SAM-niveau tilføjer et missil klar til at skyde og mere rækkevidde.",
+      "steam_ranked": "Rangeret, Versus og offentlige lobbyer spilles i Territorium-appen på Steam.",
+      "steam_workshop": "På Steam kan du udgive dine kort i Workshop og spille fællesskabets.",
       "trade": "Havne handler med andre lande på egen hånd, og begge sider tjener guld. At angribe en spiller stopper din handel med dem i 5 minutter.",
       "traitor": "At bryde en alliance gør dig til en forræder i 30 sekunder: Dit forsvar falder til det halve, og andre spillere stoler mindre på dig.",
       "upgrade": "Klik på en af dine bygninger for at opgradere den: en større by rummer flere mennesker, en større havn sender flere skibe og en større fabrik sender flere tog. Hver bygning har et maksimalt niveau."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Venter på spillere"
   },
   "purchase_nudge": {
-    "body": "Det ser ud til, at du nyder at spille Territorium! Overvej venligst at støtte os ved at foretage et køb – ethvert køb gør dig annoncefri for livet.",
+    "body_support": "Kan du lide Territorium? Støt os med en kosmetisk genstand fra butikken eller ved at købe spillet på Steam: det er det, der holder spillet fri for reklamer.",
     "close": "Luk",
     "title": "Nyder du Territorium?",
     "visit_store": "Besøg butikken"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Din konto er allerede knyttet til en anden Steam-konto.",
     "reason_steam_has_progress": "Denne Steam-konto har allerede sin egen fremgang og kan ikke flettes.",
     "reason_steam_linked_elsewhere": "Denne Steam-konto er allerede knyttet til en anden Territorium-konto."
+  },
+  "steam_promo": {
+    "compact": "Rangeret, Versus og offentlige lobbyer findes på Steam.",
+    "dismiss": "Skjul i en uge",
+    "editions": "Sammenlign udgaver",
+    "feature_cloud": "Indstillinger synkroniseret med Steam Cloud",
+    "feature_offline": "Solo offline",
+    "feature_public": "Offentlige lobbyer",
+    "feature_ranked": "Rangeret",
+    "feature_versus": "Versus 1v1 til 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Hele spillet, med det, browseren ikke har.",
+    "title": "Territorium på Steam"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",

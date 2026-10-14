@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Hviezdna noc nad tvojím územím a supernova na záver."
   },
   "cosmetics": {
-    "adfree": "doživotne bez reklám!",
     "artist_label": "Umelec:",
     "color_label": "Farba:",
     "common": "Spoločné",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} sa vzdal {overlord} a stal sa ich vazalom na 10 minút.",
     "wants_to_renew_alliance": "{name} chce obnoviť vašu alianciu"
   },
-  "featured_stream": {
-    "expand": "Rozbaliť",
-    "hide_today": "Skryť na dnes",
-    "live": "NAŽIVO",
-    "minimize": "Minimalizovať",
-    "open_on_twitch": "Otvorte {channel} na Twitchi"
-  },
   "first_launch": {
     "audio_subtitle": "Kedykoľvek ho môžete zmeniť v nastaveniach.",
     "audio_test": "Otestovať zvuk",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Váš účet, štatistiky, priatelia a kozmetika",
-    "ad_free_steam": "V aplikácii Steam nikdy žiadne reklamy",
     "custom_lobbies": "Súkromné vlastné lobby s priateľmi",
     "free_heading": "Hranie zadarmo zahŕňa",
     "full_game": "Plná hra: každá mapa a režim, online a pre jedného hráča",
@@ -1397,6 +1388,8 @@
       "peace": "Prehrať vojnu? Ponúknite mier hráčovi, proti ktorému bojujete: tri minúty bez útokov, bez potreby spojenectva. Každý, kto ho poruší, je pred všetkými hráčmi označený za zradcu.",
       "radar": "Radar zaznamená nepriateľské člny, vojnové lode a rakety v okruhu 100 dlaždíc, takže vidíte blížiacu sa inváziu.",
       "sam": "Odpaľovacie zariadenia SAM zostreľujú rakety v dosahu. Každá úroveň SAM pridáva raketu pripravenú na streľbu a väčší dosah.",
+      "steam_ranked": "Hodnotené hry, Versus a verejné lobby sa hrajú v aplikácii Territorium na Steame.",
+      "steam_workshop": "Na Steame zverejňuj svoje mapy vo Workshope a hraj mapy komunity.",
       "trade": "Prístavy obchodujú s inými krajinami samostatne a obe strany zarábajú zlato. Útok na hráča zastaví váš obchod s ním na 5 minút.",
       "traitor": "Rozbitím aliancie sa na 30 sekúnd stanete zradcom: vaša obrana klesne na polovicu a ostatní hráči vám menej veria.",
       "upgrade": "Kliknutím na jednu zo svojich budov ju vylepšíte: väčšie mesto má viac ľudí, väčší prístav posiela viac lodí a väčšia továreň viac vlakov. Každá budova má maximálnu úroveň."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Čakanie na hráčov"
   },
   "purchase_nudge": {
-    "body": "Zdá sa, že sa vám páči hrať Territorium! Zvážte, či nás podporíte nákupom – pri každom nákupe budete na celý život bez reklám.",
+    "body_support": "Páči sa ti Territorium? Podpor nás kozmetickým predmetom z obchodu alebo kúpou hry na Steame: vďaka tomu hra zostáva bez reklám.",
     "close": "Zavrieť",
     "title": "Tešíte sa na Territorium?",
     "visit_store": "Navštívte predajňu"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Váš účet je už prepojený s iným účtom Steam.",
     "reason_steam_has_progress": "Tento účet Steam už má svoj vlastný pokrok a nedá sa zlúčiť.",
     "reason_steam_linked_elsewhere": "Tento účet Steam je už prepojený s iným účtom Territorium."
+  },
+  "steam_promo": {
+    "compact": "Hodnotené hry, Versus a verejné lobby sú na Steame.",
+    "dismiss": "Skryť na týždeň",
+    "editions": "Porovnať edície",
+    "feature_cloud": "Nastavenia synchronizované cez Steam Cloud",
+    "feature_offline": "Sólo offline",
+    "feature_public": "Verejné lobby",
+    "feature_ranked": "Hodnotené hry",
+    "feature_versus": "Versus od 1v1 do 4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Celá hra, s tým, čo prehliadač nemá.",
+    "title": "Territorium na Steame"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",

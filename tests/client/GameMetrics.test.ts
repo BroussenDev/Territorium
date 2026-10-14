@@ -42,7 +42,7 @@ describe("GameMetrics", () => {
   });
 
   it("reports each series once per window and starts the window over", () => {
-    const metrics = new GameMetrics("game1234", "c0000001", 1000);
+    const metrics = new GameMetrics(1000);
     metrics.start();
     for (const t of [0, 16, 32, 48, 100]) metrics.recordFrame(t);
     metrics.recordTickExecution(3);
@@ -53,38 +53,38 @@ describe("GameMetrics", () => {
 
     vi.advanceTimersByTime(1000);
 
-    const context = { gameID: "game1234", clientID: "c0000001" };
     expect(reportMeasurement.mock.calls).toEqual([
-      ["frame_time", { p50: 16, p90: 52, p99: 52, count: 4 }, context],
-      ["tick_execution", { p50: 3, p90: 9, p99: 9, count: 2 }, context],
-      ["tick_interval", { p50: 101, p90: 400, p99: 400, count: 3 }, context],
+      ["frame_time", { p50: 16, p90: 52, p99: 52, count: 4 }],
+      ["tick_execution", { p50: 3, p90: 9, p99: 9, count: 2 }],
+      ["tick_interval", { p50: 101, p90: 400, p99: 400, count: 3 }],
     ]);
 
     reportMeasurement.mockClear();
     metrics.recordTickExecution(5);
     vi.advanceTimersByTime(1000);
     expect(reportMeasurement.mock.calls).toEqual([
-      ["tick_execution", { p50: 5, p90: 5, p99: 5, count: 1 }, context],
+      ["tick_execution", { p50: 5, p90: 5, p99: 5, count: 1 }],
     ]);
   });
 
   it("reports nothing for an empty window", () => {
-    const metrics = new GameMetrics("game1234", undefined, 1000);
+    const metrics = new GameMetrics(1000);
     metrics.start();
     vi.advanceTimersByTime(3000);
     expect(reportMeasurement).not.toHaveBeenCalled();
   });
 
   it("flushes the partial window on stop and stops reporting after", () => {
-    const metrics = new GameMetrics("game1234", undefined, 1000);
+    const metrics = new GameMetrics(1000);
     metrics.start();
     metrics.recordTickExecution(7);
     metrics.stop();
-    expect(reportMeasurement).toHaveBeenCalledWith(
-      "tick_execution",
-      { p50: 7, p90: 7, p99: 7, count: 1 },
-      { gameID: "game1234", clientID: "" },
-    );
+    expect(reportMeasurement).toHaveBeenCalledWith("tick_execution", {
+      p50: 7,
+      p90: 7,
+      p99: 7,
+      count: 1,
+    });
 
     reportMeasurement.mockClear();
     metrics.recordTickExecution(7);
@@ -96,7 +96,7 @@ describe("GameMetrics", () => {
   // Frames stop while the tab is hidden; the first one back must not count
   // the whole absence as one frame.
   it("restarts the frame interval when the tab's visibility changes", () => {
-    const metrics = new GameMetrics("game1234", undefined, 1000);
+    const metrics = new GameMetrics(1000);
     metrics.start();
     metrics.recordFrame(0);
     metrics.recordFrame(16);
@@ -104,10 +104,11 @@ describe("GameMetrics", () => {
     metrics.recordFrame(60_000);
     metrics.recordFrame(60_016);
     metrics.flush();
-    expect(reportMeasurement).toHaveBeenCalledWith(
-      "frame_time",
-      { p50: 16, p90: 16, p99: 16, count: 2 },
-      expect.anything(),
-    );
+    expect(reportMeasurement).toHaveBeenCalledWith("frame_time", {
+      p50: 16,
+      p90: 16,
+      p99: 16,
+      count: 2,
+    });
   });
 });

@@ -64,9 +64,6 @@ declare global {
       // without one (dev, desktop shells) just keeps the inline Stripe flow
       // off.
       stripePublishableKey?: string;
-      // Environment-scoped and optional like stripePublishableKey: the
-      // Grafana Faro collector URL. Absent keeps client telemetry off.
-      faroCollectorUrl?: string;
       // Environment-scoped and optional: the account API origin, when it
       // isn't the default api.<jwtAudience>.
       apiUrl?: string;

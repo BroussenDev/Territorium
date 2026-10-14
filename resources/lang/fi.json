@@ -759,7 +759,6 @@
     "voute_celeste_desc": "Tähtiyö alueesi yllä ja supernova huipennukseksi."
   },
   "cosmetics": {
-    "adfree": "ilman mainoksia koko elämän ajan!",
     "artist_label": "Taiteilija:",
     "color_label": "Väri:",
     "common": "Yleistä",
@@ -1171,13 +1170,6 @@
     "vassal_signed": "{vassal} antautui {overlord}:lle ja hänestä tulee heidän vasallinsa 10 minuutiksi.",
     "wants_to_renew_alliance": "{name} haluaa uusia liittosi"
   },
-  "featured_stream": {
-    "expand": "Laajentaa",
-    "hide_today": "Piilota tänään",
-    "live": "ELÄÄ",
-    "minimize": "Minimoida",
-    "open_on_twitch": "Avaa {channel} Twitchissä"
-  },
   "first_launch": {
     "audio_subtitle": "Voit muuttaa sitä milloin tahansa asetuksista.",
     "audio_test": "Testaa ääni",
@@ -1212,7 +1204,6 @@
   },
   "free_play": {
     "account": "Tilisi, tilastot, ystävät ja kosmetiikka",
-    "ad_free_steam": "Ei mainoksia Steam-sovelluksessa koskaan",
     "custom_lobbies": "Yksityiset mukautetut aulat ystävien kanssa",
     "free_heading": "Ilmainen pelaaminen sisältää",
     "full_game": "Koko peli: jokainen kartta ja tila, verkossa ja yksinpelissä",
@@ -1397,6 +1388,8 @@
       "peace": "Häviätkö sodan? Tarjoa rauhaa pelaajalle, jota vastaan taistelet: kolme minuuttia ilman hyökkäyksiä, ilman liittoutumaa. Jokainen, joka rikkoo sen, merkitään petturiksi kaikkien pelaajien edessä.",
       "radar": "Tutka havaitsee vihollisen veneitä, sota-aluksia ja ohjuksia 100 ruudun säteellä, joten näet hyökkäyksen tulossa.",
       "sam": "SAM-laukaisimet ampuvat alas ohjuksia kantamalla. Jokainen SAM-taso lisää ampumaan valmiin ohjuksen ja lisää kantamaa.",
+      "steam_ranked": "Rankattua, Versusta ja julkisia auloja pelataan Steamin Territorium-sovelluksessa.",
+      "steam_workshop": "Julkaise Steamissa karttasi Workshopissa ja pelaa yhteisön karttoja.",
       "trade": "Satamat käyvät kauppaa muiden maiden kanssa yksin, ja molemmat osapuolet ansaitsevat kultaa. Pelaajaa vastaan hyökkääminen keskeyttää kaupankäynnin hänen kanssaan 5 minuutiksi.",
       "traitor": "Liiton rikkominen tekee sinusta petturin 30 sekunniksi: puolustus putoaa puoleen ja muut pelaajat luottavat sinuun vähemmän.",
       "upgrade": "Napsauta yhtä rakennuksistasi päivittääksesi sitä: isompi kaupunki mahtuu enemmän ihmisiä, suurempi satama lähettää enemmän laivoja ja suurempi tehdas lähettää enemmän junia. Jokaisella rakennuksella on enimmäistaso."
@@ -2547,7 +2540,7 @@
     "waiting_for_players": "Pelaajia odotellessa"
   },
   "purchase_nudge": {
-    "body": "Näyttää siltä, että pidät Territoriumin pelaamisesta! Harkitse meidän tukemista tekemällä ostos – kaikki ostokset tekevät sinusta ilman mainoksia koko elämäsi.",
+    "body_support": "Pidätkö Territoriumista? Tue meitä kaupan kosmeettisella esineellä tai ostamalla pelin Steamista: se pitää pelin mainoksettomana.",
     "close": "Lähellä",
     "title": "Nautitko Territoriumista?",
     "visit_store": "Vieraile kaupassa"
@@ -2693,6 +2686,19 @@
     "reason_account_already_has_steam": "Tilisi on jo linkitetty toiseen Steam-tiliin.",
     "reason_steam_has_progress": "Tällä Steam-tilillä on jo oma edistyminen, eikä sitä voi yhdistää.",
     "reason_steam_linked_elsewhere": "Tämä Steam-tili on jo linkitetty toiseen Territorium-tiliin."
+  },
+  "steam_promo": {
+    "compact": "Rankattu, Versus ja julkiset aulat ovat Steamissa.",
+    "dismiss": "Piilota viikoksi",
+    "editions": "Vertaa versioita",
+    "feature_cloud": "Asetukset synkronoitu Steam Cloudin kautta",
+    "feature_offline": "Yksinpeli ilman yhteyttä",
+    "feature_public": "Julkiset aulat",
+    "feature_ranked": "Rankattu",
+    "feature_versus": "Versus 1v1–4v4",
+    "feature_workshop": "Steam Workshop",
+    "subtitle": "Koko peli, ja se mitä selaimessa ei ole.",
+    "title": "Territorium Steamissa"
   },
   "steam_user_header": {
     "avatar_alt": "Steam avatar",
