@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.108
+
+🎓 **Start with a guided game**
+
+- The first-launch setup of the Steam app ends with a choice: a guided training game (recommended), which teaches the essentials step by step against easy opponents, or the menu. Training stays available from the menu.
+- The licence notice "© OpenFront and Contributors" is now always shown in its exact wording, in every language.
+- Frame rate measurements only count while the game window is in use, so power saving no longer looks like a slow computer.
+
 ## v0.1.107
 
 🖥️ **Graphics that fit your computer**

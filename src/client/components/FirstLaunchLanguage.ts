@@ -29,10 +29,16 @@ export interface FirstLaunchLanguageEntry {
   svg: string;
 }
 
-type Step = "language" | "audio" | "graphics" | "keys";
+type Step = "language" | "audio" | "graphics" | "keys" | "ready";
 
 /** Fired on window when the first-launch setup closes. */
 export const FIRST_LAUNCH_DONE_EVENT = "first-launch-done";
+
+/**
+ * Fired on document to start the guided training game (Main.ts handles it,
+ * as for the play page's Training card).
+ */
+export const START_TUTORIAL_EVENT = "start-tutorial";
 
 /** Where the master volume starts on a first launch. */
 export const FIRST_LAUNCH_MASTER_VOLUME = 0.5;
@@ -71,7 +77,9 @@ const PREVIEW_CEILING_MS = 10_000;
  * The Steam app's first screens after the studio splash: the language
  * (already set to the one Steam or the system reports, so most players only
  * press Continue), then the sound, then the graphics quality (measured by a
- * short test), then the main keys, then the game.
+ * short test), then the main keys, and last the choice between a guided
+ * training game (recommended: a new player learns the game there rather
+ * than losing their first game without knowing why) and the menu.
  *
  * Picking a language switches the game to it at once (these screens
  * included, through LangSelector). Shown once: LangSelector opens it only
@@ -118,8 +126,8 @@ export class FirstLaunchLanguage extends LitElement {
 
   private steps(): Step[] {
     return Platform.isTouch
-      ? ["language", "audio", "graphics"]
-      : ["language", "audio", "graphics", "keys"];
+      ? ["language", "audio", "graphics", "ready"]
+      : ["language", "audio", "graphics", "keys", "ready"];
   }
 
   private onKeyDown = (e: KeyboardEvent) => {
@@ -143,15 +151,26 @@ export class FirstLaunchLanguage extends LitElement {
         }),
       );
     }
-    const steps = this.steps();
-    const at = steps.indexOf(this.step);
-    if (at === steps.length - 1) {
-      this.dispatchEvent(new CustomEvent("close"));
-      window.dispatchEvent(new Event(FIRST_LAUNCH_DONE_EVENT));
+    // Enter on the last step takes the recommended choice.
+    if (this.step === "ready") {
+      this.finish(true);
       return;
     }
+    const steps = this.steps();
     this.conflict = null;
-    this.step = steps[at + 1];
+    this.step = steps[steps.indexOf(this.step) + 1];
+  }
+
+  /** Closes the setup, into the guided training game or the menu. */
+  private finish(training: boolean) {
+    this.dispatchEvent(new CustomEvent("close"));
+    window.dispatchEvent(new Event(FIRST_LAUNCH_DONE_EVENT));
+    if (training) {
+      // After the overlay is gone, so the game starts on a clean page.
+      setTimeout(() =>
+        document.dispatchEvent(new CustomEvent(START_TUTORIAL_EVENT)),
+      );
+    }
   }
 
   private back() {
@@ -411,6 +430,123 @@ export class FirstLaunchLanguage extends LitElement {
     `;
   }
 
+  private renderReady() {
+    const choice = (
+      training: boolean,
+      icon: unknown,
+      title: string,
+      desc: string,
+    ) =>
+      html`<button
+        type="button"
+        data-first-launch-choice=${training ? "training" : "menu"}
+        @click=${() => this.finish(training)}
+        class="group flex flex-1 flex-col items-start gap-3 rounded-lg border p-5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 ${training
+          ? "border-emerald-400/60 bg-emerald-500/[0.12] hover:bg-emerald-500/20"
+          : "border-white/10 bg-black/30 hover:border-white/25 hover:bg-white/[0.04]"}"
+      >
+        <span class="flex w-full items-center gap-3">
+          ${icon}
+          ${training
+            ? html`<span
+                class="ml-auto rounded-sm bg-emerald-400/20 px-2 py-0.5 text-xs font-semibold text-emerald-200"
+                >${translateText("first_launch.ready_recommended")}</span
+              >`
+            : null}
+        </span>
+        <span class="font-display text-xl font-bold text-balance"
+          >${title}</span
+        >
+        <span class="text-sm leading-snug text-white/65">${desc}</span>
+      </button>`;
+    // A flag planted on conquered ground: the training game.
+    const trainingIcon = html`<svg
+      viewBox="0 0 32 32"
+      class="size-8 shrink-0 text-emerald-300"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 26h24"
+        stroke="currentColor"
+        stroke-width="2.4"
+        stroke-linecap="round"
+      />
+      <path
+        d="M11 26V5"
+        stroke="currentColor"
+        stroke-width="2.4"
+        stroke-linecap="round"
+      />
+      <path d="M12 6h13l-3.5 4.5L25 15H12z" fill="currentColor" />
+    </svg>`;
+    // Four tiles: the menu's modes.
+    const menuIcon = html`<svg
+      viewBox="0 0 32 32"
+      class="size-8 shrink-0 text-white/70"
+      aria-hidden="true"
+    >
+      <rect x="5" y="5" width="9.5" height="9.5" rx="2" fill="currentColor" />
+      <rect
+        x="17.5"
+        y="5"
+        width="9.5"
+        height="9.5"
+        rx="2"
+        fill="currentColor"
+        opacity="0.55"
+      />
+      <rect
+        x="5"
+        y="17.5"
+        width="9.5"
+        height="9.5"
+        rx="2"
+        fill="currentColor"
+        opacity="0.55"
+      />
+      <rect
+        x="17.5"
+        y="17.5"
+        width="9.5"
+        height="9.5"
+        rx="2"
+        fill="currentColor"
+        opacity="0.3"
+      />
+    </svg>`;
+    return html`
+      <div class="text-center">
+        <h1
+          id="first-launch-title"
+          class="font-display text-3xl font-bold text-balance"
+        >
+          ${translateText("first_launch.ready_title")}
+        </h1>
+        <p class="mt-2 text-sm text-white/60 text-balance">
+          ${translateText("first_launch.ready_subtitle")}
+        </p>
+      </div>
+
+      <div
+        class="flex w-full max-w-3xl flex-col gap-3 md:flex-row"
+        data-first-launch-ready
+      >
+        ${choice(
+          true,
+          trainingIcon,
+          translateText("first_launch.ready_training"),
+          translateText("first_launch.ready_training_desc"),
+        )}
+        ${choice(
+          false,
+          menuIcon,
+          translateText("first_launch.ready_menu"),
+          translateText("first_launch.ready_menu_desc"),
+        )}
+      </div>
+    `;
+  }
+
   private renderKeys() {
     return html`
       <div class="text-center">
@@ -453,8 +589,6 @@ export class FirstLaunchLanguage extends LitElement {
   }
 
   render() {
-    const steps = this.steps();
-    const last = steps.indexOf(this.step) === steps.length - 1;
     const body =
       this.step === "language"
         ? this.renderLanguage()
@@ -462,7 +596,9 @@ export class FirstLaunchLanguage extends LitElement {
           ? this.renderAudio()
           : this.step === "graphics"
             ? this.renderGraphics()
-            : this.renderKeys();
+            : this.step === "keys"
+              ? this.renderKeys()
+              : this.renderReady();
     return html`
       <div
         role="dialog"
@@ -499,16 +635,16 @@ export class FirstLaunchLanguage extends LitElement {
                   ${translateText("first_launch.back")}
                 </button>`
               : null}
-            <button
-              type="button"
-              data-first-launch-continue
-              @click=${() => this.next()}
-              class="min-w-56 rounded-md bg-capital px-10 py-3 font-display text-base font-bold text-capital-ink transition-colors hover:bg-capital-light"
-            >
-              ${translateText(
-                last ? "first_launch.play" : "first_launch.continue",
-              )}
-            </button>
+            ${this.step !== "ready"
+              ? html`<button
+                  type="button"
+                  data-first-launch-continue
+                  @click=${() => this.next()}
+                  class="min-w-56 rounded-md bg-capital px-10 py-3 font-display text-base font-bold text-capital-ink transition-colors hover:bg-capital-light"
+                >
+                  ${translateText("first_launch.continue")}
+                </button>`
+              : null}
           </div>
         </div>
       </div>

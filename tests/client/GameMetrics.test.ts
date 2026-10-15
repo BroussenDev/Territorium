@@ -42,7 +42,7 @@ describe("GameMetrics", () => {
   });
 
   it("reports each series once per window and starts the window over", () => {
-    const metrics = new GameMetrics(1000);
+    const metrics = new GameMetrics(1000, () => true);
     metrics.start();
     for (const t of [0, 16, 32, 48, 100]) metrics.recordFrame(t);
     metrics.recordTickExecution(3);
@@ -68,14 +68,14 @@ describe("GameMetrics", () => {
   });
 
   it("reports nothing for an empty window", () => {
-    const metrics = new GameMetrics(1000);
+    const metrics = new GameMetrics(1000, () => true);
     metrics.start();
     vi.advanceTimersByTime(3000);
     expect(reportMeasurement).not.toHaveBeenCalled();
   });
 
   it("flushes the partial window on stop and stops reporting after", () => {
-    const metrics = new GameMetrics(1000);
+    const metrics = new GameMetrics(1000, () => true);
     metrics.start();
     metrics.recordTickExecution(7);
     metrics.stop();
@@ -96,7 +96,7 @@ describe("GameMetrics", () => {
   // Frames stop while the tab is hidden; the first one back must not count
   // the whole absence as one frame.
   it("restarts the frame interval when the tab's visibility changes", () => {
-    const metrics = new GameMetrics(1000);
+    const metrics = new GameMetrics(1000, () => true);
     metrics.start();
     metrics.recordFrame(0);
     metrics.recordFrame(16);
@@ -110,5 +110,23 @@ describe("GameMetrics", () => {
       p99: 16,
       count: 2,
     });
+  });
+
+  it("leaves out the frames drawn while the window is not in use", () => {
+    let active = true;
+    const metrics = new GameMetrics(1000, () => active);
+    metrics.recordFrame(0);
+    metrics.recordFrame(16);
+    active = false;
+    metrics.recordFrame(216);
+    active = true;
+    // The first frame back starts over rather than measuring the absence.
+    metrics.recordFrame(416);
+    metrics.recordFrame(432);
+    metrics.flush();
+    expect(reportMeasurement).toHaveBeenCalledWith(
+      "frame_time",
+      expect.objectContaining({ count: 2, p99: 16 }),
+    );
   });
 });

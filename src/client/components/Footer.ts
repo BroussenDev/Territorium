@@ -7,6 +7,7 @@ import {
   isDesktopShell,
 } from "../DesktopShell";
 import { currentGameVersion } from "../GameVersion";
+import { OPENFRONT_NOTICE } from "../LegalNotice";
 
 @customElement("page-footer")
 export class Footer extends LitElement {
@@ -44,9 +45,12 @@ export class Footer extends LitElement {
           class="[.in-game_&]:hidden w-full shrink-0 relative z-50 pb-2 pt-1 text-center"
         >
           <span
-            data-i18n="main.copyright"
+            data-i18n="main.based_on_openfront"
             class="text-[10px] text-white/30"
           ></span>
+          <span class="text-[10px] text-white/30" data-openfront-notice
+            >· ${OPENFRONT_NOTICE}</span
+          >
           <lang-selector class="hidden"></lang-selector>
         </footer>
       `;
@@ -105,10 +109,10 @@ export class Footer extends LitElement {
             ></a>
           </div>
           <!-- Kept visible (AGPL section 7(b) notice), but low-key. -->
-          <span
-            data-i18n="main.copyright"
-            class="text-[10px] text-white/30 text-center"
-          ></span>
+          <span class="text-[10px] text-white/30 text-center">
+            <span data-i18n="main.based_on_openfront"></span>
+            <span data-openfront-notice>· ${OPENFRONT_NOTICE}</span>
+          </span>
         </div>
 
         <!-- Single instance: translateText() resolves the active language via

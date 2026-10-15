@@ -121,8 +121,26 @@ describe("first launch language step", () => {
   });
 });
 
-describe("first launch sound, graphics and keys steps", () => {
-  it("goes language, sound, graphics, keys, then closes on Play", async () => {
+// Clicks a choice of the last step; resolves with whether the guided
+// training game was asked for.
+async function choose(picker: FirstLaunchLanguage, choice: string) {
+  const tutorial = vi.fn();
+  document.addEventListener("start-tutorial", tutorial);
+  try {
+    picker
+      .querySelector<HTMLButtonElement>(
+        `[data-first-launch-choice="${choice}"]`,
+      )!
+      .click();
+    await new Promise((resolve) => setTimeout(resolve));
+    return tutorial.mock.calls.length > 0;
+  } finally {
+    document.removeEventListener("start-tutorial", tutorial);
+  }
+}
+
+describe("first launch sound, graphics, keys and ready steps", () => {
+  it("goes language, sound, graphics, keys, then offers the training", async () => {
     const picker = await open(null);
     const closed = vi.fn();
     picker.addEventListener("close", closed);
@@ -132,11 +150,21 @@ describe("first launch sound, graphics and keys steps", () => {
     expect(picker.querySelector("[data-graphics-check]")).not.toBeNull();
     await proceed(picker);
     expect(picker.querySelector("[data-first-launch-keys]")).not.toBeNull();
-    expect(closed).not.toHaveBeenCalled();
-    expect(
-      picker.querySelector("[data-first-launch-continue]")!.textContent,
-    ).toContain("first_launch.play");
     await proceed(picker);
+    expect(picker.querySelector("[data-first-launch-ready]")).not.toBeNull();
+    // The two choices are the way out: no Continue button.
+    expect(picker.querySelector("[data-first-launch-continue]")).toBeNull();
+    expect(closed).not.toHaveBeenCalled();
+    expect(await choose(picker, "training")).toBe(true);
+    expect(closed).toHaveBeenCalledOnce();
+  });
+
+  it("goes to the menu without starting a game", async () => {
+    const picker = await open(null);
+    const closed = vi.fn();
+    picker.addEventListener("close", closed);
+    for (let i = 0; i < 4; i++) await proceed(picker);
+    expect(await choose(picker, "menu")).toBe(false);
     expect(closed).toHaveBeenCalledOnce();
   });
 
@@ -215,6 +243,8 @@ describe("first launch sound, graphics and keys steps", () => {
     await proceed(picker);
     await proceed(picker);
     await proceed(picker);
+    expect(picker.querySelector("[data-first-launch-ready]")).not.toBeNull();
+    expect(await choose(picker, "menu")).toBe(false);
     expect(closed).toHaveBeenCalledOnce();
   });
 });

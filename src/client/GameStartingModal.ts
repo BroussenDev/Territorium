@@ -2,6 +2,7 @@ import { LitElement, html, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import "./components/TerritoriumEmblem";
 import { isDesktopShell } from "./DesktopShell";
+import { OPENFRONT_NOTICE } from "./LegalNotice";
 import { translateText } from "./Utils";
 
 // Keys under game_starting_modal.tips in the language files.
@@ -134,7 +135,9 @@ export class GameStartingModal extends LitElement {
         <div
           class="absolute inset-x-0 bottom-4 text-center text-[11px] leading-relaxed text-white/35"
         >
-          <div>${translateText("main.copyright")}</div>
+          <div>
+            ${translateText("main.based_on_openfront")} · ${OPENFRONT_NOTICE}
+          </div>
           <div>
             ${translateText("game_starting_modal.code_license")} ·
             <a

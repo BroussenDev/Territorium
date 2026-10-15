@@ -1,3 +1,4 @@
+import { windowState } from "./render/gl/FrameCap";
 import { reportMeasurement } from "./Telemetry";
 
 /**
@@ -11,7 +12,8 @@ import { reportMeasurement } from "./Telemetry";
  * Series (measurement type → values p50/p90/p99/count, all ms except
  * count):
  * - frame_time: time between consecutive animation frames of the game's
- *   render loop. 16.7 is 60fps; the p99 is the jank.
+ *   render loop. 16.7 is 60fps; the p99 is the jank. Only while the game
+ *   window is the one in use: power saving slows the others on purpose.
  * - tick_execution: how long the worker took to run one sim tick, as it
  *   reports in each GameUpdate.
  * - tick_interval: time between consecutive turn messages arriving over the
@@ -50,7 +52,11 @@ export class GameMetrics {
   private lastFrameAt: number | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
 
-  constructor(private readonly flushIntervalMs: number = FLUSH_INTERVAL_MS) {}
+  constructor(
+    private readonly flushIntervalMs: number = FLUSH_INTERVAL_MS,
+    private readonly windowActive: () => boolean = () =>
+      windowState() === "active",
+  ) {}
 
   start(): void {
     if (this.timer !== null) return;
@@ -69,6 +75,11 @@ export class GameMetrics {
 
   /** Called once per animation frame with the frame's timestamp. */
   recordFrame(nowMs: number): void {
+    if (!this.windowActive()) {
+      // Power saving draws few frames on purpose: not a slow computer.
+      this.lastFrameAt = null;
+      return;
+    }
     if (this.lastFrameAt !== null) {
       this.frameTime.push(nowMs - this.lastFrameAt);
     }

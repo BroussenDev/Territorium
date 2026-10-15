@@ -46,6 +46,7 @@ import {
 import { currentGameVersion } from "./GameVersion";
 import { keybindConflicts, readUserKeybinds } from "./KeybindRules";
 import type { LangSelector } from "./LangSelector";
+import { OPENFRONT_NOTICE } from "./LegalNotice";
 import { pushMapLayerState } from "./MapLayerSettings";
 import { Platform } from "./Platform";
 import type { AudioControls } from "./sound/CuePlayer";
@@ -1111,7 +1112,7 @@ export class UserSettingModal extends BaseModal {
           )}`,
       )}
       <p class="px-1 pt-1 text-xs text-white/40">
-        ${translateText("main.copyright")}
+        ${translateText("main.based_on_openfront")} · ${OPENFRONT_NOTICE}
       </p>
     `;
   }

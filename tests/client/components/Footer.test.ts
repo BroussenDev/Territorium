@@ -55,7 +55,13 @@ describe("page-footer version line", () => {
     await mount();
 
     expect(footer.querySelector(".footer-version")).toBeNull();
-    expect(footer.querySelector('[data-i18n="main.copyright"]')).not.toBeNull();
+    expect(
+      footer.querySelector('[data-i18n="main.based_on_openfront"]'),
+    ).not.toBeNull();
+    // The licence's exact words, never translated.
+    expect(
+      footer.querySelector("[data-openfront-notice]")?.textContent,
+    ).toContain("© OpenFront and Contributors");
     // Kept mounted, hidden: translateText() reads the language from it.
     expect(footer.querySelector("lang-selector")).not.toBeNull();
   });
