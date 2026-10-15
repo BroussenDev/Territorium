@@ -235,11 +235,9 @@ export default defineConfig(({ mode }) => {
       env.TURNSTILE_SITE_KEY ?? "1x00000000000000000000AA",
     ),
     jwtAudience: JSON.stringify(env.DOMAIN ?? "localhost"),
-    // Dev only: set FARO_COLLECTOR_URL in .env to point a local client at a
-    // collector; unset drops the guarded line, exactly as in production.
-    faroCollectorUrl: env.FARO_COLLECTOR_URL
-      ? JSON.stringify(env.FARO_COLLECTOR_URL)
-      : undefined,
+    // API_URL points a local client at another account API (a local test
+    // one); unset drops the guarded line, exactly as in production.
+    apiUrl: env.API_URL ? JSON.stringify(env.API_URL) : undefined,
     instanceId: JSON.stringify(env.INSTANCE_ID ?? "DEV_ID"),
     manifestHref: buildAssetUrl("manifest.json", assetManifest, cdnBase),
     faviconHref: buildAssetUrl("images/Favicon.svg", assetManifest, cdnBase),
@@ -356,9 +354,9 @@ export default defineConfig(({ mode }) => {
 
     // Vite's JS preload helper (`__vitePreload`, used by dynamic import())
     // resolves a chunk's dependency list against `base`, so with base "/" the
-    // helper chunks behind e.g. the lazy Faro import were requested from the
-    // page origin, where nothing serves /assets/ (openfront.io answered 503,
-    // and the import() rejected, so telemetry never started). Emitting those
+    // helper chunks behind a lazy import() were requested from the
+    // page origin, where nothing serves /assets/, and the import() rejected.
+    // Emitting those
     // references relative makes the helper resolve them against
     // import.meta.url, i.e. wherever the importing chunk itself was loaded
     // from -- the CDN in production, same-origin in dev -- without baking

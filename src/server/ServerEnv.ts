@@ -1,21 +1,15 @@
 import { JWK } from "jose";
-import { z } from "zod";
 import { ClusterConfig, InstanceLetterSchema } from "../core/ClusterConfig";
 import { GameEnv, parseGameEnv } from "../core/configuration/Config";
+import {
+  defaultJwtIssuer,
+  fetchJwk,
+  gameCreationRateFor,
+  TURN_INTERVAL_MS,
+  workerIndexFor,
+} from "../core/configuration/EnvShared";
 import { GameID } from "../core/Schemas";
-import { generateGameID, simpleHash } from "../core/Util";
-
-const JwksSchema = z.object({
-  keys: z
-    .object({
-      alg: z.literal("EdDSA"),
-      crv: z.literal("Ed25519"),
-      kty: z.literal("OKP"),
-      x: z.string(),
-    })
-    .array()
-    .min(1),
-});
+import { generateGameID } from "../core/Util";
 
 export class ServerEnv {
   private static readonly gameEnv: GameEnv = parseGameEnv(process.env.GAME_ENV);
@@ -24,11 +18,6 @@ export class ServerEnv {
   // Values that also flow to the client via index.html, but on the server
   // are read from process.env directly. Server code never reaches into
   // ClientEnv — that's reserved for the browser/worker hydrated path.
-  //
-  // TODO: the following methods are duplicated on ClientEnv. The two classes
-  // read from different sources (process.env vs window.BOOTSTRAP_CONFIG) but
-  // the derived logic is identical. Consolidate into a shared helper that
-  // takes a source so we don't have to keep them in sync by hand.
   static env(): GameEnv {
     return ServerEnv.gameEnv;
   }
@@ -106,39 +95,20 @@ export class ServerEnv {
     return process.env.CDN_BASE ?? "";
   }
   static jwtIssuer(): string {
-    const apiUrl = ServerEnv.apiUrl();
-    if (apiUrl !== undefined) return apiUrl;
-    const audience = ServerEnv.jwtAudience();
-    return audience === "localhost"
-      ? "http://localhost:8787"
-      : `https://api.${audience}`;
+    return ServerEnv.apiUrl() ?? defaultJwtIssuer(ServerEnv.jwtAudience());
   }
   static async jwkPublicKey(): Promise<JWK> {
-    if (ServerEnv.publicKey) return ServerEnv.publicKey;
-    const jwksUrl = ServerEnv.jwtIssuer() + "/.well-known/jwks.json";
-    console.log(`Fetching JWKS from ${jwksUrl}`);
-    const response = await fetch(jwksUrl);
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`JWKS fetch failed: ${response.status} ${body}`);
-    }
-    const result = JwksSchema.safeParse(await response.json());
-    if (!result.success) {
-      const error = z.prettifyError(result.error);
-      console.error("Error parsing JWKS", error);
-      throw new Error("Invalid JWKS");
-    }
-    ServerEnv.publicKey = result.data.keys[0];
+    ServerEnv.publicKey ??= await fetchJwk(ServerEnv.jwtIssuer());
     return ServerEnv.publicKey;
   }
   static turnIntervalMs(): number {
-    return 100;
+    return TURN_INTERVAL_MS;
   }
   static gameCreationRate(): number {
-    return ServerEnv.gameEnv === GameEnv.Dev ? 5 * 1000 : 2 * 60 * 1000;
+    return gameCreationRateFor(ServerEnv.gameEnv);
   }
   static workerIndex(gameID: GameID): number {
-    return simpleHash(gameID) % ServerEnv.numWorkers();
+    return workerIndexFor(gameID, ServerEnv.numWorkers());
   }
   static workerPath(gameID: GameID): string {
     return `w${ServerEnv.workerIndex(gameID)}`;

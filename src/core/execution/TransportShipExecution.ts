@@ -22,7 +22,7 @@ const malusForRetreat = 25;
 export class TransportShipExecution implements Execution {
   private active = true;
 
-  // TODO: make this configurable
+  // Boats move one tile every tick.
   private ticksPerMove = 1;
   private lastMove: number;
 
@@ -154,10 +154,13 @@ export class TransportShipExecution implements Execution {
     if (this.target.id() !== mg.terraNullius().id()) {
       mg.displayIncomingUnit(
         this.boat.id(),
-        // TODO TranslateText
-        `Naval invasion incoming from ${this.attacker.displayName()} (${renderTroops(this.boat.troops())})`,
+        "events_display.naval_invasion_inbound",
         MessageType.NAVAL_INVASION_INBOUND,
         this.target.id(),
+        {
+          name: this.attacker.displayName(),
+          troops: renderTroops(this.boat.troops()),
+        },
       );
     }
 
@@ -296,7 +299,7 @@ export class TransportShipExecution implements Execution {
         this.boat.move(result.node);
         break;
       case PathStatus.NOT_FOUND: {
-        // TODO: add to poisoned port list
+        // No way to the destination any more: the troops come home.
         const map = this.mg.map();
         const boatTile = this.boat.tile();
         console.warn(

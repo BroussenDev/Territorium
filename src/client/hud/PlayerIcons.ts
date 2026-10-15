@@ -96,7 +96,6 @@ export function getPlayerIcons(
 
   // Alliance request icon (theme dependent)
   if (myPlayer !== null && player.isRequestingAllianceWith(myPlayer)) {
-    // TODO: default white icon to align with name-pass, make Graphics preset default/night pick the black/white version for name-pass and here?
     const allianceRequestIcon = isDarkMode
       ? allianceRequestBlackIcon
       : allianceRequestWhiteIcon;
@@ -135,7 +134,6 @@ export function getPlayerIcons(
 
   // Embargo icon (theme dependent)
   if (myPlayer?.hasEmbargo(player)) {
-    // TODO: default white icon to align with name-pass, make Graphics preset default/night pick the black/white version for name-pass and here?
     const embargoIcon = isDarkMode ? embargoBlackIcon : embargoWhiteIcon;
     icons.push({
       id: EMBARGO_ICON_ID,

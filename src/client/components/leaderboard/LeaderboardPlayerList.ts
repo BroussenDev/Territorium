@@ -225,7 +225,7 @@ export class LeaderboardPlayerList extends LitElement {
       ?.openFromLeaderboard(publicId);
   }
 
-  // TODO: consider IntersectionObserver for better visibility detection?
+  // Laid out on the page (not in a closed modal or a hidden tab).
   private isVisible() {
     return this.isConnected && this.getClientRects().length > 0;
   }

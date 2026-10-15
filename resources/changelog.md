@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.109
+
+🧹 **Clean-up and fixes**
+
+- The warnings for an incoming atom bomb, hydrogen bomb, MIRV or naval invasion are now in your language (they were always in English).
+- Fixed 31 translations that showed a fixed number instead of the real one (attack ratio step, starting gold, refresh key) or no player name.
+- The game no longer logs an error in the browser console every 30 seconds.
+- Code clean-up: no leftover to-do notes, dead code removed, shared settings code between the game and its server.
+
 ## v0.1.108
 
 🎓 **Start with a guided game**

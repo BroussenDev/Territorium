@@ -521,6 +521,34 @@ describe("Translation System", () => {
     expect(errors).toEqual([]);
   });
 
+  // A translation that drops {amount} shows a stale number (or none), and one
+  // that invents {userName} shows the raw braces: each language must use the
+  // same arguments as English. Plural and select branches are not arguments.
+  test("translations use the same arguments as English", () => {
+    const { files, errors } = loadTranslationFiles();
+    const argument = /\{\s*(\w+)\s*(?=[},])/g;
+    const argsOf = (message: string) =>
+      [...new Set([...message.matchAll(argument)].map((m) => m[1]))]
+        .sort()
+        .join(",");
+    const english = files.find((f) => path.basename(f.file) === "en.json");
+    expect(english).toBeDefined();
+
+    for (const { file, flatMessages } of files) {
+      if (file === english!.file) continue;
+      for (const [key, message] of Object.entries(flatMessages)) {
+        const reference = english!.flatMessages[key];
+        if (reference === undefined) continue;
+        if (argsOf(message) !== argsOf(reference)) {
+          errors.push(
+            `${path.basename(file)}:${key} uses {${argsOf(message)}}, English uses {${argsOf(reference)}}`,
+          );
+        }
+      }
+    }
+    expect(errors).toEqual([]);
+  });
+
   test("en.json keys stay in sync with source usage", () => {
     const enJsonPath = path.join(LANGUAGE_DIR, "en.json");
     const enJson = JSON.parse(fs.readFileSync(enJsonPath, "utf-8"));

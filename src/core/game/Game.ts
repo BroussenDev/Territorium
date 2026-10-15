@@ -484,7 +484,6 @@ export class PlayerInfo {
     public readonly playerType: PlayerType,
     // null if tribe.
     public readonly clientID: ClientID | null,
-    // TODO: make player id the small id
     public readonly id: PlayerID,
     public readonly isLobbyCreator: boolean = false,
     public readonly clanTag: string | null = null,
@@ -1001,11 +1000,13 @@ export interface Game extends GameMap {
     unitID?: number,
     focusPlayerID?: PlayerID,
   ): void;
+  /** `message` is a translation key, filled in with `params`. */
   displayIncomingUnit(
     unitID: number,
     message: string,
     type: MessageType,
     playerID: PlayerID | null,
+    params?: Record<string, string | number>,
   ): void;
 
   displayChat(

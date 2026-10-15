@@ -1,14 +1,15 @@
 import { JWK } from "jose";
-import { z } from "zod";
 import { ClusterConfig } from "../core/ClusterConfig";
+import { GameEnv, parseGameEnv } from "../core/configuration/Config";
+import {
+  defaultJwtIssuer,
+  fetchJwk,
+  gameCreationRateFor,
+  TURN_INTERVAL_MS,
+  workerIndexFor,
+} from "../core/configuration/EnvShared";
 import { GameID } from "../core/Schemas";
 import { ServerList } from "../core/ServerList";
-import { simpleHash } from "../core/Util";
-import {
-  GameEnv,
-  JwksSchema,
-  parseGameEnv,
-} from "../core/configuration/Config";
 
 /**
  * No server is known: the API's list has not loaded (or carries none for
@@ -185,10 +186,6 @@ export class ClientEnv {
     return ClientEnv.values;
   }
 
-  // TODO: the following methods are duplicated on ServerEnv. The two classes
-  // read from different sources (window.BOOTSTRAP_CONFIG vs process.env) but
-  // the derived logic is identical. Consolidate into a shared helper that
-  // takes a source so we don't have to keep them in sync by hand.
   static env(): GameEnv {
     return ClientEnv.get().gameEnv;
   }
@@ -245,39 +242,20 @@ export class ClientEnv {
     return ClientEnv.get().gitCommit;
   }
   static jwtIssuer(): string {
-    const apiUrl = ClientEnv.apiUrl();
-    if (apiUrl !== undefined) return apiUrl;
-    const audience = ClientEnv.jwtAudience();
-    return audience === "localhost"
-      ? "http://localhost:8787"
-      : `https://api.${audience}`;
+    return ClientEnv.apiUrl() ?? defaultJwtIssuer(ClientEnv.jwtAudience());
   }
   static async jwkPublicKey(): Promise<JWK> {
-    if (ClientEnv.publicKey) return ClientEnv.publicKey;
-    const jwksUrl = ClientEnv.jwtIssuer() + "/.well-known/jwks.json";
-    console.log(`Fetching JWKS from ${jwksUrl}`);
-    const response = await fetch(jwksUrl);
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`JWKS fetch failed: ${response.status} ${body}`);
-    }
-    const result = JwksSchema.safeParse(await response.json());
-    if (!result.success) {
-      const error = z.prettifyError(result.error);
-      console.error("Error parsing JWKS", error);
-      throw new Error("Invalid JWKS");
-    }
-    ClientEnv.publicKey = result.data.keys[0];
+    ClientEnv.publicKey ??= await fetchJwk(ClientEnv.jwtIssuer());
     return ClientEnv.publicKey;
   }
   static turnIntervalMs(): number {
-    return 100;
+    return TURN_INTERVAL_MS;
   }
   static gameCreationRate(): number {
-    return ClientEnv.env() === GameEnv.Dev ? 5 * 1000 : 2 * 60 * 1000;
+    return gameCreationRateFor(ClientEnv.env());
   }
   static workerIndex(gameID: GameID): number {
-    return simpleHash(gameID) % ClientEnv.numWorkers();
+    return workerIndexFor(gameID, ClientEnv.numWorkers());
   }
   static workerPath(gameID: GameID): string {
     return `w${ClientEnv.workerIndex(gameID)}`;
@@ -387,7 +365,7 @@ export class ClientEnv {
   static gameWorkerPath(gameID: GameID): string {
     const r = ClientEnv.resolveGame(gameID);
     return r.kind === "cross"
-      ? `w${simpleHash(gameID) % r.numWorkers}`
+      ? `w${workerIndexFor(gameID, r.numWorkers)}`
       : ClientEnv.workerPath(gameID);
   }
   // Explicit game-server host, injected by the desktop app (absent on web).

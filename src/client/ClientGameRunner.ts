@@ -1701,10 +1701,8 @@ export class ClientGameRunner {
     const canBuild = this.canBoatAttack(buildables);
     if (canBuild === false) return false;
 
-    // TODO: honor a global auto-boat enable flag once it exists.
-    // if (!this.userSettings.autoBoat()) return false;
-    // TODO: honor a global "limit auto-boat to nearby shore" flag once it exists.
-    // if (!this.userSettings.autoBoatNearbyOnly()) return true;
+    // Only for a shore close to the click: farther away, the click more
+    // likely meant something else than a landing.
     const distanceSquared = this.gameView.euclideanDistSquared(tile, canBuild);
     const limit = 100;
     const limitSquared = limit * limit;

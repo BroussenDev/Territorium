@@ -1482,16 +1482,8 @@ export class Config {
     return 25;
   }
 
-  defensePostShellAttackRate(): number {
-    return 100;
-  }
-
   safeFromPiratesCooldownMax(): number {
     return 20;
-  }
-
-  defensePostTargettingRange(): number {
-    return 75;
   }
 
   allianceExtensionPromptOffset(): number {

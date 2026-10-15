@@ -596,7 +596,7 @@ export class EventsDisplay extends LitElement implements Controller {
     const unitView = this.game.unit(event.unitID);
 
     this.addEvent({
-      description: event.message,
+      description: translateText(event.message, event.params),
       type: event.messageType,
       unsafeDescription: false,
       highlight: true,

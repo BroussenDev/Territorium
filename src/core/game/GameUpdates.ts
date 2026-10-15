@@ -207,7 +207,6 @@ export interface UnitUpdate {
   id: number;
   ownerID: number;
   lastOwnerID?: number;
-  // TODO: make these tilerefs
   pos: TileRef;
   lastPos: TileRef;
   isActive: boolean;
@@ -402,9 +401,11 @@ export interface HashUpdate {
 export interface UnitIncomingUpdate {
   type: GameUpdateType.UnitIncoming;
   unitID: number;
+  /** Translation key (events_display.*), filled in with params. */
   message: string;
   messageType: MessageType;
   playerID: number;
+  params?: Record<string, string | number>;
 }
 
 export interface EmbargoUpdate {

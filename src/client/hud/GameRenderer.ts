@@ -75,7 +75,6 @@ export function createRenderer(
   ) as GameStartingModal;
   startingModal.hide();
 
-  // TODO maybe append this to document instead of querying for them?
   const emojiTable = document.querySelector("emoji-table") as EmojiTable;
   if (!emojiTable || !(emojiTable instanceof EmojiTable)) {
     console.error("EmojiTable element not found in the DOM");

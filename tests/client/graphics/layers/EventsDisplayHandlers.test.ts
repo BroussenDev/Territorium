@@ -290,15 +290,19 @@ describe("EventsDisplay handlers", () => {
     const incoming = (playerID: number) => ({
       type: GameUpdateType.UnitIncoming,
       unitID: 7,
-      message: "nuke inbound",
+      message: "events_display.atom_bomb_inbound",
       messageType: MessageType.NUKE_INBOUND,
       playerID,
+      params: { name: "Bob" },
     });
 
     it("shows incoming-unit warnings addressed to me", () => {
       ed.onUnitIncomingEvent(incoming(1) as never);
       expect(events()).toHaveLength(1);
-      expect(events()[0].description).toBe("nuke inbound");
+      // Translated on arrival, with the sender's name.
+      expect(events()[0].description).toBe(
+        'events_display.atom_bomb_inbound {"name":"Bob"}',
+      );
       expect(events()[0].type).toBe(MessageType.NUKE_INBOUND);
     });
 

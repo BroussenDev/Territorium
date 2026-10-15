@@ -137,7 +137,8 @@ describe("Shell Random Damage", () => {
     });
   });
 
-  test("Defense post shell attacks have random damage", () => {
+  // Defense posts slow land attacks; they fire at nothing, ships included.
+  test("Defense posts do not fire at ships", () => {
     player1.conquer(game.ref(coastX, 5));
     const spawn = player1.canBuild(UnitType.DefensePost, game.ref(coastX, 5));
     if (spawn === false) {
@@ -145,49 +146,20 @@ describe("Shell Random Damage", () => {
     }
     const defensePostUnit = player1.buildUnit(UnitType.DefensePost, spawn, {});
     const defensePost = new DefensePostExecution(defensePostUnit);
-
     const target = player2.buildUnit(
       UnitType.Warship,
       game.ref(coastX + 1, 10),
-      {
-        patrolTile: game.ref(coastX + 1, 10),
-      },
+      { patrolTile: game.ref(coastX + 1, 10) },
     );
     const initialHealth = target.health();
 
     defensePost.init(game, game.ticks());
-
-    const damages: number[] = [];
-    const maxAttempts = 100;
-    let attempts = 0;
-
-    while (damages.length < 5 && attempts < maxAttempts) {
-      const healthBefore = target.health();
+    for (let i = 0; i < 200; i++) {
       defensePost.tick(game.ticks());
       game.executeNextTick();
-      const healthAfter = target.health();
-
-      if (healthAfter < healthBefore) {
-        damages.push(healthBefore - healthAfter);
-        target.modifyHealth(-(healthBefore - initialHealth));
-      }
-
-      attempts++;
     }
-
-    if (damages.length > 0) {
-      const uniqueDamages = new Set(damages);
-      expect(uniqueDamages.size).toBeGreaterThan(1);
-
-      const baseDamage = game.config().unitInfo(UnitType.Shell).damage ?? 250;
-      const minExpectedDamage = Math.round((baseDamage / 250) * 200);
-      const maxExpectedDamage = Math.round((baseDamage / 250) * 300);
-
-      damages.forEach((damage) => {
-        expect(damage).toBeGreaterThanOrEqual(minExpectedDamage);
-        expect(damage).toBeLessThanOrEqual(maxExpectedDamage);
-      });
-    }
+    expect(target.health()).toBe(initialHealth);
+    expect(defensePost.isActive()).toBe(true);
   });
 
   test("Shell damage distribution follows expected pattern", () => {
