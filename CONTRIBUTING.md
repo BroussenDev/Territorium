@@ -15,7 +15,13 @@ a public issue. Contact the maintainer privately instead.
 
 ## Sending a pull request
 
-1. Discuss anything bigger than a small fix in an issue first.
+Pull requests are checked automatically when they are opened. One goes
+through if it is a small fix (50 changed lines or less), or if it closes an
+issue labelled `approved` that you are assigned to (`Closes #123` in its
+description). Others are closed with a message explaining how to proceed.
+
+1. Discuss anything bigger than a small fix in an issue first, and ask to be
+   assigned once it is labelled `approved`.
 2. Keep pull requests small and focused on one change.
 3. Run `npm run lint` and `npm test` before opening it.
 4. Changes to `src/core` (the deterministic simulation) must come with tests.
