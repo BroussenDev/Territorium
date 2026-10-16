@@ -66,6 +66,83 @@ describe("WinnerVote", () => {
   });
 });
 
+// The stats every client sends with its winner vote.
+const withStats = (
+  winner: ClientSendWinnerMessage["winner"],
+  gold: number,
+): ClientSendWinnerMessage => ({
+  type: "winner",
+  winner,
+  allPlayersStats: { [P1]: { gold: [BigInt(gold)] } } as never,
+});
+
+describe("WinnerVote and forged stats", () => {
+  it("does not let a first voter's forged stats ride the majority's winner", () => {
+    const vote = new WinnerVote();
+    vote.cast(withStats(["player", P1], 999_999), "1.1.1.1");
+    vote.cast(withStats(["player", P1], 100), "2.2.2.2");
+    vote.cast(withStats(["player", P1], 100), "3.3.3.3");
+    const result = vote.tally(3);
+    expect(result?.votes).toBe(2);
+    expect(result?.value.allPlayersStats).toEqual(
+      withStats(["player", P1], 100).allPlayersStats,
+    );
+  });
+
+  it("matches stats whatever their key order", () => {
+    const vote = new WinnerVote();
+    vote.cast(
+      {
+        type: "winner",
+        winner: ["player", P1],
+        allPlayersStats: { [P1]: { gold: [1n], units: {} } } as never,
+      },
+      "1.1.1.1",
+    );
+    vote.cast(
+      {
+        type: "winner",
+        winner: ["player", P1],
+        allPlayersStats: { [P1]: { units: {}, gold: [1n] } } as never,
+      },
+      "2.2.2.2",
+    );
+    expect(vote.tally(2)?.votes).toBe(2);
+  });
+
+  // A 1v1 whose two players agree on the winner but not on the stats: the
+  // result still counts, without stats nobody can vouch for.
+  it("keeps an agreed winner without the disputed stats", () => {
+    const vote = new WinnerVote();
+    vote.cast(withStats(["player", P1], 100), "1.1.1.1");
+    expect(vote.tally(2)).toBeNull();
+    vote.cast(withStats(["player", P1], 999_999), "2.2.2.2");
+    const result = vote.tally(2);
+    expect(result?.value.winner).toEqual(["player", P1]);
+    expect(result?.value.allPlayersStats).toEqual({});
+  });
+
+  it("waits for everyone before giving up on the stats", () => {
+    const vote = new WinnerVote();
+    vote.cast(withStats(["player", P1], 100), "1.1.1.1");
+    vote.cast(withStats(["player", P1], 999_999), "2.2.2.2");
+    // A third voter may still side with either: no decision yet.
+    expect(vote.tally(3)).toBeNull();
+    vote.cast(withStats(["player", P1], 100), "3.3.3.3");
+    expect(vote.tally(3)?.value.allPlayersStats).toEqual(
+      withStats(["player", P1], 100).allPlayersStats,
+    );
+  });
+
+  it("never crowns a winner the voters disagree on", () => {
+    const vote = new WinnerVote();
+    vote.cast(withStats(["player", P1], 100), "1.1.1.1");
+    vote.cast(withStats(["player", P2], 100), "2.2.2.2");
+    expect(vote.tally(2)).toBeNull();
+    expect(vote.tallyAmong(new Set(["1.1.1.1", "2.2.2.2"]))).toBeNull();
+  });
+});
+
 describe("LiveStatsVote", () => {
   const stats = (turn: number, tilesOwned: number): LiveStats => ({
     turn,

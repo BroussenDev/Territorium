@@ -1,16 +1,79 @@
+import { Config, NukeMagnitude } from "../src/core/configuration/Config";
 import { MissileSiloExecution } from "../src/core/execution/MissileSiloExecution";
+import { NationAllianceBehavior } from "../src/core/execution/nation/NationAllianceBehavior";
+import { NationEmojiBehavior } from "../src/core/execution/nation/NationEmojiBehavior";
+import { NationNukeBehavior } from "../src/core/execution/nation/NationNukeBehavior";
 import { NationExecution } from "../src/core/execution/NationExecution";
 import { SAMLauncherExecution } from "../src/core/execution/SAMLauncherExecution";
+import { AiAttackBehavior } from "../src/core/execution/utils/AiAttackBehavior";
 import {
   Cell,
   Difficulty,
+  Game,
   Nation,
+  Player,
   PlayerInfo,
   PlayerType,
   UnitType,
 } from "../src/core/game/Game";
+import { PseudoRandom } from "../src/core/PseudoRandom";
 import { setup } from "./util/Setup";
+import { TestConfig } from "./util/TestConfig";
 import { executeTicks } from "./util/utils";
+
+class RealNukeRadiusConfig extends TestConfig {
+  nukeMagnitudes(unitType: UnitType): NukeMagnitude {
+    return Config.prototype.nukeMagnitudes.call(this, unitType);
+  }
+}
+
+function conquerRect(
+  game: Game,
+  player: Player,
+  x0: number,
+  y0: number,
+  x1: number,
+  y1: number,
+) {
+  for (let x = x0; x < x1; x++) {
+    for (let y = y0; y < y1; y++) {
+      player.conquer(game.ref(x, y));
+    }
+  }
+}
+
+function sendNukes(game: Game, nation: Player) {
+  const emojiBehavior = new NationEmojiBehavior(
+    new PseudoRandom(1),
+    game,
+    nation,
+  );
+  const attackBehavior = new AiAttackBehavior(
+    new PseudoRandom(1),
+    game,
+    nation,
+    0.5,
+    0.3,
+    0.2,
+    new NationAllianceBehavior(
+      new PseudoRandom(1),
+      game,
+      nation,
+      emojiBehavior,
+    ),
+    emojiBehavior,
+  );
+  new NationNukeBehavior(
+    new PseudoRandom(2),
+    game,
+    nation,
+    attackBehavior,
+    emojiBehavior,
+  ).maybeSendNuke();
+  // First tick initializes the NukeExecutions, the second launches the bombs
+  game.executeNextTick();
+  game.executeNextTick();
+}
 
 describe("NationNukeBehavior - maybeDestroyEnemySam", () => {
   test("nation overwhelms enemy SAM with atom bomb salvo on Impossible difficulty", async () => {
@@ -121,4 +184,52 @@ describe("NationNukeBehavior - maybeDestroyEnemySam", () => {
       expect(bomb.targetTile()).toBe(samTile);
     }
   });
+
+  it.each([
+    [false, 2],
+    [true, 0],
+  ])(
+    "only overwhelms a SAM whose blast would hit a third player if not allied with them (allied: %s)",
+    async (allied, expectedBombs) => {
+      const game = await setup(
+        "big_plains",
+        {
+          difficulty: Difficulty.Impossible,
+          // A SAM-only target is worth nothing to an atom bomb, so the nation falls back to overwhelming the SAM
+          disabledUnits: [UnitType.HydrogenBomb],
+        },
+        [
+          new PlayerInfo("nation", PlayerType.Nation, null, "nation_id"),
+          new PlayerInfo("human", PlayerType.Human, null, "human_id"),
+          new PlayerInfo("other", PlayerType.Nation, null, "other_id"),
+        ],
+        undefined,
+        RealNukeRadiusConfig,
+      );
+      const nation = game.player("nation_id");
+      const human = game.player("human_id");
+      const other = game.player("other_id");
+
+      conquerRect(game, nation, 0, 0, 15, 15);
+      nation.buildUnit(UnitType.MissileSilo, game.ref(5, 5), {});
+      nation.buildUnit(UnitType.MissileSilo, game.ref(10, 10), {});
+      nation.addGold(10_000_000n);
+      conquerRect(game, human, 130, 130, 170, 170);
+      const samTile = game.ref(150, 150);
+      human.buildUnit(UnitType.SAMLauncher, samTile, {});
+      // 20 tiles from the SAM, inside the atom bomb's 30-tile blast
+      conquerRect(game, other, 170, 130, 185, 170);
+      nation.updateRelation(human, -100);
+      if (allied) nation.createAllianceRequest(other)?.accept();
+
+      sendNukes(game, nation);
+
+      const atomBombs = nation.units(UnitType.AtomBomb);
+      expect(atomBombs).toHaveLength(expectedBombs);
+      for (const bomb of atomBombs) {
+        expect(bomb.targetTile()).toBe(samTile);
+      }
+      expect(nation.isAlliedWith(other)).toBe(allied);
+    },
+  );
 });

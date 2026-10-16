@@ -1,4 +1,10 @@
-import { ClientID, ClientSendWinnerMessage, LiveStats } from "../core/Schemas";
+import { createHash } from "crypto";
+import {
+  AllPlayersStats,
+  ClientID,
+  ClientSendWinnerMessage,
+  LiveStats,
+} from "../core/Schemas";
 import { VoteRound } from "./VoteTally";
 
 // The simulation runs on the clients, so the outcomes the server has to
@@ -13,10 +19,45 @@ export interface VoteOutcome<T> {
   votes: number;
 }
 
-// The end-of-game winner vote. Decided once; the game guards against votes
-// arriving after that.
+// A fingerprint of a winner vote's per-player stats, so votes can be compared
+// on their stats and not just their winner. The stats come from the
+// deterministic simulation, so in-sync clients hold the same values, but not
+// necessarily in the same key order: keys are sorted at every level before
+// hashing. Bigints hash as decimal strings, the form the archive writes them
+// in.
+export function statsDigest(stats: AllPlayersStats): string {
+  const canonical = JSON.stringify(stats, (_key, value: unknown) => {
+    if (typeof value === "bigint") return value.toString();
+    if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+      const obj = value as Record<string, unknown>;
+      return Object.fromEntries(
+        Object.keys(obj)
+          .sort()
+          .map((k) => [k, obj[k]]),
+      );
+    }
+    return value;
+  });
+  return createHash("sha256").update(canonical).digest("hex");
+}
+
+// A cancelled match ends with winner omitted; JSON.stringify(undefined) is
+// not a string, so those votes are keyed "null".
+function winnerKey(msg: ClientSendWinnerMessage): string {
+  return JSON.stringify(msg.winner ?? null);
+}
+
+// The end-of-game winner vote. A vote is the whole message: the winner and
+// every player's stats, so one voter can't put forged stats in the record by
+// agreeing with the majority on the winner (they back a candidate of their
+// own). When the stats split but every voter has voted and a majority agrees
+// on the winner, the winner is decided without any stats: the result still
+// counts (a ranked 1v1 keeps its rating change), and no unverified stats are
+// archived. Decided once; the game guards against votes arriving after that.
 export class WinnerVote {
   private readonly round = new VoteRound<ClientSendWinnerMessage>();
+  private readonly winners = new VoteRound<ClientSendWinnerMessage>();
+  private readonly voters = new Set<string>();
   private decided: ClientSendWinnerMessage | null = null;
 
   // The winning message once a majority has backed one, else null.
@@ -30,16 +71,27 @@ export class WinnerVote {
     msg: ClientSendWinnerMessage,
     ip: string,
   ): { key: string; votes: number } {
-    // A cancelled match ends with winner omitted; JSON.stringify(undefined)
-    // is not a string, so key those votes as "null".
-    const key = JSON.stringify(msg.winner ?? null);
-    return { key, votes: this.round.add(key, msg, ip) };
+    const key = winnerKey(msg);
+    this.voters.add(ip);
+    this.winners.add(key, msg, ip);
+    return {
+      key,
+      votes: this.round.add(
+        JSON.stringify([key, statsDigest(msg.allPlayersStats)]),
+        msg,
+        ip,
+      ),
+    };
   }
 
   // Decides the vote if some candidate holds a strict majority of an
   // electorate of `electorate` unique IPs.
   tally(electorate: number): VoteOutcome<ClientSendWinnerMessage> | null {
-    const result = this.round.result(electorate);
+    const result =
+      this.round.result(electorate) ??
+      (this.voters.size >= electorate
+        ? withoutStats(this.winners.result(electorate))
+        : null);
     if (result !== null) {
       this.decided = result.value;
     }
@@ -51,12 +103,26 @@ export class WinnerVote {
   tallyAmong(
     activeIPs: Set<string>,
   ): VoteOutcome<ClientSendWinnerMessage> | null {
-    const result = this.round.resultAmong(activeIPs);
+    const allVoted = [...activeIPs].every((ip) => this.voters.has(ip));
+    const result =
+      this.round.resultAmong(activeIPs) ??
+      (allVoted ? withoutStats(this.winners.resultAmong(activeIPs)) : null);
     if (result !== null) {
       this.decided = result.value;
     }
     return result;
   }
+}
+
+// A winner the voters agree on, with the stats they don't agree on left out.
+function withoutStats(
+  result: VoteOutcome<ClientSendWinnerMessage> | null,
+): VoteOutcome<ClientSendWinnerMessage> | null {
+  if (result === null) return null;
+  return {
+    votes: result.votes,
+    value: { ...result.value, allPlayersStats: {} },
+  };
 }
 
 // The running live-stats vote. Clients each send a snapshot every ~10s

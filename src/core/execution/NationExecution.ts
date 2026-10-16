@@ -186,6 +186,9 @@ export class NationExecution implements Execution {
       return;
     }
 
+    this.attackBehavior.followUpLandings();
+    this.nukeBehavior.followUpStrikes();
+
     if (ticks % this.attackRate !== this.attackTick) {
       // Call handleStructures twice between regular attack ticks (at 1/3 and 2/3 of the interval)
       // Otherwise it is possible that we earn more gold than we can spend
@@ -253,6 +256,7 @@ export class NationExecution implements Execution {
       this.expandRatio,
       this.allianceBehavior,
       this.emojiBehavior,
+      this.warshipBehavior,
     );
     this.nukeBehavior = new NationNukeBehavior(
       this.random,
@@ -308,13 +312,13 @@ export class NationExecution implements Execution {
     others.forEach((other: Player) => {
       const embargoMalus = -20;
       if (
-        other.hasEmbargoAgainst(player) &&
+        other.hasManualEmbargoAgainst(player) &&
         !this.embargoMalusApplied.has(other.id())
       ) {
         player.updateRelation(other, embargoMalus);
         this.embargoMalusApplied.add(other.id());
       } else if (
-        !other.hasEmbargoAgainst(player) &&
+        !other.hasManualEmbargoAgainst(player) &&
         this.embargoMalusApplied.has(other.id())
       ) {
         player.updateRelation(other, -embargoMalus);

@@ -1,7 +1,72 @@
-import { Cell, Game, Player, Structures, UnitType } from "../../game/Game";
+import {
+  Cell,
+  Difficulty,
+  Game,
+  GameMode,
+  Gold,
+  Player,
+  PlayerType,
+  Structures,
+  UnitType,
+} from "../../game/Game";
 import { TileRef } from "../../game/GameMap";
 import { PseudoRandom } from "../../PseudoRandom";
-import { calculateBoundingBox } from "../../Util";
+import { assertNever, calculateBoundingBox } from "../../Util";
+
+/** Starting gold from which nations place many structures at once, ballooning their max troops */
+const HIGH_STARTING_GOLD = 3_000_000n;
+
+// Gold a nation has already committed this tick. Its constructions,
+// upgrades and nukes are paid when their executions first run, on the next
+// tick, so every decision of the tick sees the same gold: without this, a
+// nuke decided after a city was ordered would find the gold gone and fail.
+const committedGold = new WeakMap<Player, { tick: number; gold: Gold }>();
+
+/** Records gold just committed to an order that is paid on the next tick. */
+export function commitGold(game: Game, player: Player, gold: Gold): void {
+  const tick = game.ticks();
+  const entry = committedGold.get(player);
+  committedGold.set(player, {
+    tick,
+    gold: (entry?.tick === tick ? entry.gold : 0n) + gold,
+  });
+}
+
+/** The player's gold minus what this tick's orders will take. */
+export function uncommittedGold(game: Game, player: Player): Gold {
+  const entry = committedGold.get(player);
+  return entry?.tick === game.ticks()
+    ? player.gold() - entry.gold
+    : player.gold();
+}
+
+export function hasHighStartingGold(game: Game, player: Player): boolean {
+  return game.config().startingGold(player.info()) >= HIGH_STARTING_GOLD;
+}
+
+/** Most minutes of income a nation saves up for; a target further off isn't worth holding back for, keyed by difficulty */
+const SAVE_UP_HORIZON_MINUTES: Record<Difficulty, number> = {
+  [Difficulty.Easy]: Infinity,
+  [Difficulty.Medium]: Infinity,
+  [Difficulty.Hard]: 5,
+  [Difficulty.Impossible]: 6,
+};
+
+/** Whether `target` gold is close enough to save up for, given the nation's current income. */
+export function isSaveUpWithinReach(
+  game: Game,
+  player: Player,
+  target: Gold,
+): boolean {
+  const horizon =
+    SAVE_UP_HORIZON_MINUTES[game.config().gameConfig().difficulty];
+  const missing = Number(target - player.gold());
+  if (horizon === Infinity || missing <= 0) return true;
+  // Income grows about linearly over a game, so the current rate is about twice the average
+  const minutes = Math.max(1, game.ticks() / 600);
+  const incomePerMinute = (2 * Number(player.goldEarned())) / minutes;
+  return missing <= incomePerMinute * horizon;
+}
 
 export function randTerritoryTileArray(
   random: PseudoRandom,
@@ -101,4 +166,49 @@ export function findJuiciestTarget(
     }
   }
   return best;
+}
+
+// How many times the runner-up's land the leader must own to count as a
+// runaway leader. Easy nations never notice one.
+function runawayLeadFactor(difficulty: Difficulty): number | null {
+  switch (difficulty) {
+    case Difficulty.Easy:
+      return null;
+    case Difficulty.Medium:
+      return 3;
+    case Difficulty.Hard:
+      return 2;
+    case Difficulty.Impossible:
+      return 1.5;
+    default:
+      assertNever(difficulty);
+  }
+}
+
+// The FFA player (not a bot) owning the most land, if it is far enough ahead
+// of the runner-up that nations should stop helping it and start pressuring it
+export function findRunawayLeader(game: Game): Player | null {
+  const { difficulty, gameMode } = game.config().gameConfig();
+  if (gameMode !== GameMode.FFA) return null;
+  const factor = runawayLeadFactor(difficulty);
+  if (factor === null) return null;
+
+  let leader: Player | null = null;
+  let runnerUp: Player | null = null;
+  for (const p of game.players()) {
+    if (p.type() === PlayerType.Bot) continue;
+    if (leader === null || p.numTilesOwned() > leader.numTilesOwned()) {
+      runnerUp = leader;
+      leader = p;
+    } else if (
+      runnerUp === null ||
+      p.numTilesOwned() > runnerUp.numTilesOwned()
+    ) {
+      runnerUp = p;
+    }
+  }
+  if (leader === null || runnerUp === null) return null;
+  return leader.numTilesOwned() >= runnerUp.numTilesOwned() * factor
+    ? leader
+    : null;
 }

@@ -158,6 +158,8 @@ const PLAINS_TILE_COST = 16.5;
 // the old 0.0052 density weight: at 0.0039 a stack of 3/4 the defender's
 // army matches the old cost, bigger stacks pay less, smaller pay more.
 const ATTACKER_LOSS_BASE = 0.463;
+/** Defender troops per attacking troop at or below which the attacker's losses stop shrinking */
+export const CHEAPEST_TROOP_RATIO = 0.6;
 const ATTACKER_LOSS_PER_DENSITY = 0.0039;
 // Speed divisor: 8.25 / 0.965, absorbing the same sigmoid tail. 8.25 is the
 // old 7.5 raised ~10%: v34 pace feedback said attacks felt a bit too slow, so
@@ -1078,7 +1080,7 @@ export class Config {
       mag *
       traitorLossMod *
       capitalMod *
-      within(troopRatio, 0.6, 2) *
+      within(troopRatio, CHEAPEST_TROOP_RATIO, 2) *
       (ATTACKER_LOSS_BASE * largeAttackerBonus * largeDefenderBonus +
         ATTACKER_LOSS_PER_DENSITY * defenderTroopLoss);
 
@@ -1158,19 +1160,29 @@ export class Config {
   }
 
   maxTroops(player: Player | PlayerView): number {
+    return this.troopCap(player, true);
+  }
+
+  /** maxTroops without what cities add (nations judge their economy on it) */
+  maxTroopsWithoutCities(player: Player | PlayerView): number {
+    return this.troopCap(player, false);
+  }
+
+  private troopCap(player: Player | PlayerView, withCities: boolean): number {
     const tiles = this.isNationsMode()
       ? Math.max(player.numTilesOwned(), NATIONS_MIN_TROOP_CAP_TILES)
       : player.numTilesOwned();
+    const cityTroops = withCities
+      ? player
+          .units(UnitType.City)
+          .filter((u) => !u.isUnderConstruction())
+          .map((city) => city.level())
+          .reduce((a, b) => a + b, 0) * this.cityTroopIncrease()
+      : 0;
     const maxTroops =
       player.type() === PlayerType.Human && this.hasInfiniteTroopsFor(player)
         ? 1_000_000_000
-        : 2 * (pow(tiles, 0.6) * 1000 + 50000) +
-          player
-            .units(UnitType.City)
-            .filter((u) => !u.isUnderConstruction())
-            .map((city) => city.level())
-            .reduce((a, b) => a + b, 0) *
-            this.cityTroopIncrease();
+        : 2 * (pow(tiles, 0.6) * 1000 + 50000) + cityTroops;
 
     if (player.type() === PlayerType.Bot) {
       return maxTroops / 3;

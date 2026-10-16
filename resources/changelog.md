@@ -1,5 +1,20 @@
 # Territorium — Changelog
 
+## v0.1.110
+
+🧠 **Smarter nations**
+
+- Nations play more like the players who win: they keep building, upgrade several levels at once with spare gold, wall bots in to annex them, fortify behind the front, follow their nukes with a land attack, MIRV only targets their warheads can reach, answer attacks, and in free-for-all gang up on a runaway leader. Easy nations keep their old behaviour.
+- Hard and Impossible nations land with small 1% boats and attack from the beachhead the moment they touch shore, and route their boats around warships.
+- Nations no longer try to launch nukes or build warships with gold they have already spent that turn.
+
+🛠️ **Fixes**
+
+- Land a nuke cuts off from the rest of a territory goes to the enemy around it again (it had stopped working whenever the main territory touched the coast).
+- A rare invalid troop count no longer disconnects the player: the attack is simply not sent.
+- End-of-game results can no longer be forged by the first player to report them: the stats archived are the ones the majority agrees on.
+- The team name in the victory message is translated.
+
 ## v0.1.109
 
 🧹 **Clean-up and fixes**

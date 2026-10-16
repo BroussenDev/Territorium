@@ -117,6 +117,19 @@ export class SendAttackIntentEvent implements GameEvent {
   ) {}
 }
 
+/**
+ * Troops for a counter-attack: the incoming attack's size, capped at what the
+ * player would send. An attack whose count is not a finite number is ignored
+ * rather than turning the whole intent into NaN.
+ */
+export function counterAttackTroops(
+  incomingTroops: number,
+  available: number,
+): number {
+  if (!Number.isFinite(incomingTroops)) return available;
+  return Math.min(incomingTroops, available);
+}
+
 export class SendBoatAttackIntentEvent implements GameEvent {
   constructor(
     public readonly dst: TileRef,
@@ -843,6 +856,7 @@ export class Transport {
   }
 
   private onSendAttackIntent(event: SendAttackIntentEvent) {
+    if (!this.isSendableTroops("attack", event.troops)) return;
     this.sendIntent({
       type: "attack",
       targetID: event.targetID,
@@ -851,6 +865,7 @@ export class Transport {
   }
 
   private onSendBoatAttackIntent(event: SendBoatAttackIntentEvent) {
+    if (!this.isSendableTroops("boat", event.troops)) return;
     this.sendIntent({
       type: "boat",
       troops: event.troops,
@@ -1053,6 +1068,17 @@ export class Transport {
 
   private onSendToggleGameStartTimer(event: SendToggleGameStartTimer) {
     this.sendIntent({ type: "toggle_game_start_timer" });
+  }
+
+  // The intent schemas take troops as a finite number >= 0, and the server
+  // kicks a client whose message fails to parse: drop the one intent instead
+  // of ending the player's game, and log it so the caller shows up.
+  private isSendableTroops(type: Intent["type"], troops: number): boolean {
+    if (Number.isFinite(troops) && troops >= 0) return true;
+    console.error(
+      new Error(`Dropped ${type} intent with invalid troops: ${troops}`),
+    );
+    return false;
   }
 
   private sendIntent(intent: Intent) {
