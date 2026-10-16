@@ -12,6 +12,9 @@ import { TileRef } from "../game/GameMap";
 import { generateUniqueNationName } from "../game/NationCreation";
 import {
   SURVIVAL_WAVES,
+  SurvivalDefenderLevel,
+  survivalLandingStrength,
+  survivalWaveKind,
   survivalWaveSize,
   survivalWaveState,
 } from "../game/Survival";
@@ -29,15 +32,33 @@ const LANDING_TRIES = 1_000;
 // landing zone (same as a spawn's).
 const LANDING_PATCH = 4;
 
+// The warlords leading the boss waves (names, the same in every language).
+const WARLORD_NAMES = [
+  "Kragor",
+  "Morvath",
+  "Zarkhan",
+  "Vesperion",
+  "Draegor",
+  "Ulgrim",
+  "Tharok",
+  "Azhrael",
+];
+
+/** What one invader lands with (survivalLandingStrength). */
+interface LandingStrength {
+  troops: number;
+  capTiles: number;
+}
+
 /**
  * Survival mode (game/Survival.ts): lands each wave of AI invaders on the
  * schedule. Each invader is a nation on the Nations team, playing the same
- * AI as every nation and starting like a player who joins: on free land,
- * with a player's starting troops.
+ * AI as every nation, landing on free land with troops measured against the
+ * defenders (survivalLandingStrength). A boss wave is led by a warlord.
  *
  * When the map has no free land left, the invaders that would have landed
- * reinforce the invaders still alive with the same starting troops instead,
- * within their usual troop cap: the same strength, nothing extra.
+ * reinforce the invaders still alive with their troops instead, within
+ * their troop cap.
  */
 export class SurvivalExecution implements Execution {
   private mg: Game | null = null;
@@ -92,13 +113,16 @@ export class SurvivalExecution implements Execution {
   }
 
   private landWave(mg: Game, wave: number): void {
-    const defenders = mg
-      .players()
-      .filter((p) => p.type() === PlayerType.Human).length;
-    const size = survivalWaveSize(wave, Math.max(1, defenders));
+    const defenders = mg.players().filter((p) => p.type() === PlayerType.Human);
+    const kind = survivalWaveKind(wave);
+    const size = survivalWaveSize(wave, Math.max(1, defenders.length));
+    const level = defenderLevel(defenders);
+    const start = this.startingTroops(mg);
+    const escort = survivalLandingStrength(wave, "invader", level, start);
     this.reclaimZones(mg);
     this.pending = [];
     let stranded = 0;
+    let boss: Player | null = null;
     for (let i = 0; i < size; i++) {
       const tile = this.findLanding(mg);
       if (tile === null) {
@@ -106,16 +130,36 @@ export class SurvivalExecution implements Execution {
         continue;
       }
       this.pending.push(tile);
-      this.landInvader(mg, tile);
+      const leads = kind === "boss" && boss === null;
+      const invader = this.landInvader(
+        mg,
+        tile,
+        leads ? survivalLandingStrength(wave, "boss", level, start) : escort,
+        leads,
+      );
+      if (leads) boss = invader;
     }
-    if (stranded > 0) this.reinforce(mg, stranded);
-    mg.displayMessage(
-      "events_display.survival_wave_landed",
-      MessageType.NAVAL_INVASION_INBOUND,
-      null,
-      undefined,
-      { wave, count: size },
-    );
+    if (stranded > 0) this.reinforce(mg, stranded * escort.troops);
+    mg.recordSurvivalWave(wave, boss);
+    if (boss !== null) {
+      mg.displayMessage(
+        "events_display.survival_boss_landed",
+        MessageType.NAVAL_INVASION_INBOUND,
+        null,
+        undefined,
+        { wave, name: boss.displayName(), count: size - 1 },
+      );
+    } else {
+      mg.displayMessage(
+        kind === "blitz"
+          ? "events_display.survival_blitz_landed"
+          : "events_display.survival_wave_landed",
+        MessageType.NAVAL_INVASION_INBOUND,
+        null,
+        undefined,
+        { wave, count: size },
+      );
+    }
   }
 
   // Each wave takes its landing zones back: what the defenders hold there,
@@ -136,8 +180,15 @@ export class SurvivalExecution implements Execution {
     }
   }
 
-  private landInvader(mg: Game, tile: TileRef): void {
-    const name = generateUniqueNationName(this.random, this.usedNames);
+  private landInvader(
+    mg: Game,
+    tile: TileRef,
+    strength: LandingStrength,
+    warlord: boolean,
+  ): Player {
+    const name = warlord
+      ? this.warlordName()
+      : generateUniqueNationName(this.random, this.usedNames);
     this.usedNames.add(name);
     const info = new PlayerInfo(
       name,
@@ -145,11 +196,25 @@ export class SurvivalExecution implements Execution {
       null,
       this.random.nextID(),
     );
-    mg.addPlayer(info, ColoredTeams.Nations);
+    const invader = mg.addPlayer(info, ColoredTeams.Nations);
+    // The troops it lands with fit under its cap, so they don't drain away.
+    invader.setTroopCapTiles(strength.capTiles);
+    const troops = Math.min(strength.troops, mg.config().maxTroops(invader));
+    invader.addTroops(troops - invader.troops());
     mg.addExecution(
       new SpawnExecution(this.gameID, info, tile),
       new NationExecution(this.gameID, new Nation(undefined, info), true),
     );
+    return invader;
+  }
+
+  private warlordName(): string {
+    const free = WARLORD_NAMES.filter((n) => !this.usedNames.has(n));
+    const pool = free.length > 0 ? free : WARLORD_NAMES;
+    const name = pool[this.random.nextInt(0, pool.length)];
+    return this.usedNames.has(name)
+      ? generateUniqueNationName(this.random, this.usedNames)
+      : name;
   }
 
   // Free land in a landing zone first (kept free for the waves), else free
@@ -253,7 +318,7 @@ export class SurvivalExecution implements Execution {
     return null;
   }
 
-  private reinforce(mg: Game, stranded: number): void {
+  private reinforce(mg: Game, troops: number): void {
     const invaders = mg
       .players()
       .filter(
@@ -261,7 +326,6 @@ export class SurvivalExecution implements Execution {
           p.type() === PlayerType.Nation && p.team() === ColoredTeams.Nations,
       );
     if (invaders.length === 0) return;
-    const troops = this.startingTroops(mg) * stranded;
     const share = Math.floor(troops / invaders.length);
     for (const invader of invaders) {
       const room = Math.max(
@@ -288,4 +352,20 @@ export class SurvivalExecution implements Execution {
     // Publishes the landing zones from the first tick.
     return true;
   }
+}
+
+/** The defenders' average troops and land, over those still holding land. */
+function defenderLevel(defenders: Player[]): SurvivalDefenderLevel {
+  const standing = defenders.filter((d) => d.numTilesOwned() > 0);
+  if (standing.length === 0) return { troops: 0, tiles: 0 };
+  let troops = 0;
+  let tiles = 0;
+  for (const d of standing) {
+    troops += d.troops();
+    tiles += d.numTilesOwned();
+  }
+  return {
+    troops: troops / standing.length,
+    tiles: tiles / standing.length,
+  };
 }

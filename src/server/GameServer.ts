@@ -16,6 +16,7 @@ import {
   RankedType,
 } from "../core/game/Game";
 import { maps } from "../core/game/Maps.gen";
+import { survivalGameConfig } from "../core/game/Survival";
 import {
   assignTeamsLobbyPreview,
   resolveTeamsList,
@@ -468,6 +469,16 @@ export class GameServer {
       case "update_game_config": {
         if (this.isVersus()) {
           return finish({ status: 409, error: "versus rules are fixed" });
+        }
+        // Survival rules are fixed too: the host only picks the map.
+        if (this.gameConfig.gameVariant === "survival") {
+          this.updateGameConfig(
+            survivalGameConfig(
+              GameType.Private,
+              stamped.config.gameMap ?? this.gameConfig.gameMap,
+            ),
+          );
+          return finish({ status: 200 });
         }
         this.updateGameConfig(stamped.config);
         return finish({ status: 200 });

@@ -434,6 +434,7 @@ export class GameModeSelector extends LitElement {
     // The mode cards, here and on the Modes page.
     document.addEventListener("mode-join", this.onModeJoin);
     document.addEventListener("mode-versus", this.onModeVersus);
+    document.addEventListener("mode-survival", this.onModeSurvival);
     window.addEventListener("mode-pins-changed", this.onModePinsChanged);
     if (isDesktopShell()) {
       // Seeded from its current value: Auth may have published it before this
@@ -482,6 +483,7 @@ export class GameModeSelector extends LitElement {
     document.removeEventListener("userMeResponse", this.onUserMe);
     document.removeEventListener("mode-join", this.onModeJoin);
     document.removeEventListener("mode-versus", this.onModeVersus);
+    document.removeEventListener("mode-survival", this.onModeSurvival);
     window.removeEventListener("mode-pins-changed", this.onModePinsChanged);
     document.removeEventListener(
       "desktop-session-state",
@@ -926,6 +928,26 @@ export class GameModeSelector extends LitElement {
     recordModePlay("versus");
     this.openVersus();
     this.requestUpdate();
+  };
+
+  // From the Survival card: a solo game, or a private Survival lobby,
+  // through the same gates as the Solo and Create buttons.
+  private onModeSurvival = (e: Event) => {
+    const how = (e as CustomEvent<"solo" | "private">).detail;
+    if (!this.validateUsername()) return;
+    recordModePlay("survival");
+    if (how === "solo") {
+      if (!gameOpenOrExplain("solo")) return;
+      void (
+        document.querySelector("single-player-modal") as SinglePlayerModal
+      )?.startSurvival();
+      return;
+    }
+    if (this.blockedFromApiAction()) return;
+    if (!gameOpenOrExplain("private")) return;
+    (document.querySelector("host-lobby-modal") as HostLobbyModal)?.open({
+      survival: true,
+    });
   };
 
   private onModePinsChanged = () => this.requestUpdate();

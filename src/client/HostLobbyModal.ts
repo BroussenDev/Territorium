@@ -3,6 +3,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import { ClientEnv } from "src/client/ClientEnv";
 import {
   calculateServerTimeOffset,
+  getMapName,
   getSecondsUntilServerTimestamp,
   renderDuration,
   showToast,
@@ -20,6 +21,7 @@ import {
   GameType,
   UnitType,
 } from "../core/game/Game";
+import { SURVIVAL_MAPS, survivalGameConfig } from "../core/game/Survival";
 import { UserSettings } from "../core/game/UserSettings";
 import {
   isVersusTeamSize,
@@ -137,6 +139,8 @@ export class HostLobbyModal extends BaseModal {
   // Players per team of a versus lobby, whose rules are fixed: no settings,
   // no public listing, and the game starts only once every seat is taken.
   @state() private versusSize: VersusTeamSize | null = null;
+  // A Survival lobby: its map (the only rule the host picks), null otherwise.
+  @state() private survivalMap: GameMapType | null = null;
 
   @property({ attribute: false }) eventBus: EventBus | null = null;
   // Timers for debouncing slider changes
@@ -176,6 +180,9 @@ export class HostLobbyModal extends BaseModal {
     const versus = lobby.gameConfig ? versusTeamSize(lobby.gameConfig) : null;
     if (versus !== null) {
       this.versusSize = versus;
+    }
+    if (lobby.gameConfig?.gameVariant === "survival") {
+      this.survivalMap = lobby.gameConfig.gameMap;
     }
     this.syncCustomMap(lobby.gameConfig?.customMap?.id);
   };
@@ -267,13 +274,17 @@ export class HostLobbyModal extends BaseModal {
         <span
           class="text-white text-xl lg:text-2xl font-bold break-words hyphens-auto"
         >
-          ${this.versusSize === null
-            ? translateText("host_modal.title")
-            : translateText("versus.private_title", {
-                format: versusGameType(this.versusSize),
-              })}
+          ${this.survivalMap !== null
+            ? translateText("survival_lobby.title")
+            : this.versusSize === null
+              ? translateText("host_modal.title")
+              : translateText("versus.private_title", {
+                  format: versusGameType(this.versusSize),
+                })}
         </span>
-        ${this.versusSize === null ? this.renderVisibilityToggle() : nothing}
+        ${this.versusSize === null && this.survivalMap === null
+          ? this.renderVisibilityToggle()
+          : nothing}
       `,
       onBack: () => {
         this.leaveLobbyOnClose = true;
@@ -382,6 +393,9 @@ export class HostLobbyModal extends BaseModal {
   protected renderBody() {
     if (this.versusSize !== null) {
       return this.renderVersusBody(this.versusSize);
+    }
+    if (this.survivalMap !== null) {
+      return this.renderSurvivalBody(this.survivalMap);
     }
     const secondsRemaining =
       this.lobbyStartAt !== null
@@ -760,6 +774,85 @@ export class HostLobbyModal extends BaseModal {
     `;
   }
 
+  // Survival's rules are fixed (survivalGameConfig): the host only picks
+  // the map, among Survival's, and starts when the defenders are in.
+  private renderSurvivalBody(map: GameMapType) {
+    const secondsRemaining =
+      this.lobbyStartAt !== null
+        ? getSecondsUntilServerTimestamp(
+            this.lobbyStartAt,
+            this.serverTimeOffset,
+          )
+        : null;
+    const statusLabel =
+      secondsRemaining !== null
+        ? translateText("host_modal.starting_in", {
+            time: renderDuration(secondsRemaining),
+          })
+        : translateText("game_settings.start");
+    return html`
+      <div class="flex flex-col h-full" data-survival-lobby>
+        <div
+          class="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-4 sm:p-6 mx-auto w-full max-w-5xl"
+        >
+          <p class="mb-4 text-sm leading-relaxed text-white/80">
+            ${translateText("survival_lobby.description")}
+          </p>
+          <h3 class="mb-2 text-sm font-semibold text-white/70">
+            ${translateText("survival_lobby.map")}
+          </h3>
+          <div class="mb-8 flex flex-wrap gap-2">
+            ${SURVIVAL_MAPS.map(
+              (m) =>
+                html`<button
+                  type="button"
+                  data-survival-map=${m}
+                  aria-pressed=${m === map}
+                  class="rounded-md border px-3 py-1.5 text-sm font-semibold transition-colors ${m ===
+                  map
+                    ? "border-red-300/70 bg-red-500/25 text-white"
+                    : "border-white/15 bg-white/5 text-white/70 hover:bg-white/10"}"
+                  @click=${() => this.pickSurvivalMap(m)}
+                >
+                  ${getMapName(m) ?? m}
+                </button>`,
+            )}
+          </div>
+          <lobby-player-view
+            .hideNations=${true}
+            .gameMode=${GameMode.FFA}
+            .clients=${this.clients}
+            .lobbyCreatorClientID=${this.lobbyCreatorClientID}
+            .currentClientID=${this.lobbyCreatorClientID}
+            .onKickPlayer=${(clientID: string) => this.kickPlayer(clientID)}
+          ></lobby-player-view>
+        </div>
+        <div class="p-6 pt-4 border-t border-white/10 bg-black/20 shrink-0">
+          <o-button
+            variant=${secondsRemaining !== null ? "warning" : "primary"}
+            width="block"
+            size="lg"
+            .title=${statusLabel}
+            .uppercase=${secondsRemaining === null}
+            @click=${this.toggleGameStartTimer}
+          ></o-button>
+        </div>
+      </div>
+    `;
+  }
+
+  private pickSurvivalMap(map: GameMapType) {
+    if (this.lobbyStartAt !== null) return;
+    this.survivalMap = map;
+    this.dispatchEvent(
+      new CustomEvent("update-game-config", {
+        detail: { config: survivalGameConfig(GameType.Private, map) },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
   private renderVersusBody(teamSize: VersusTeamSize) {
     const secondsRemaining =
       this.lobbyStartAt !== null
@@ -852,15 +945,22 @@ export class HostLobbyModal extends BaseModal {
     this.versusSize = isVersusTeamSize(args?.versusSize)
       ? args.versusSize
       : null;
+    // So is a Survival lobby, on one of its maps picked at random.
+    this.survivalMap =
+      args?.survival === true
+        ? SURVIVAL_MAPS[Math.floor(Math.random() * SURVIVAL_MAPS.length)]
+        : null;
 
     // The server mints the game id, so we don't know it until createLobby
     // resolves. clientID is assigned by the server when we join the lobby.
 
     // Pass auth token for creator identification (server extracts persistentID from it)
     createLobby(
-      this.versusSize === null
-        ? undefined
-        : versusGameConfig(this.versusSize, GameType.Private),
+      this.survivalMap !== null
+        ? survivalGameConfig(GameType.Private, this.survivalMap)
+        : this.versusSize === null
+          ? undefined
+          : versusGameConfig(this.versusSize, GameType.Private),
     )
       .then(async (lobby) => {
         this.lobbyId = lobby.gameID;
@@ -897,7 +997,9 @@ export class HostLobbyModal extends BaseModal {
     // BaseModal.firstUpdated() owns modalEl.onClose so the o-modal close path
     // (backdrop / close button) runs confirmBeforeClose(). Don't override it
     // here — doing so would bypass the leave-lobby confirmation.
-    if (this.versusSize === null) this.loadNationCount();
+    if (this.versusSize === null && this.survivalMap === null) {
+      this.loadNationCount();
+    }
   }
 
   // Bind the host view to a lobby the server already created (the successor of a
@@ -1031,6 +1133,7 @@ export class HostLobbyModal extends BaseModal {
     this.showSubscriptionRequired = false;
     this.autoStartAt = null;
     this.versusSize = null;
+    this.survivalMap = null;
   }
 
   private async handleSelectRandomMap() {
@@ -1654,7 +1757,9 @@ export class HostLobbyModal extends BaseModal {
 
   private async toggleGameStartTimer() {
     // A versus lobby's rules can't change (the server refuses any update).
-    if (this.versusSize === null) await this.putGameConfig();
+    if (this.versusSize === null && this.survivalMap === null) {
+      await this.putGameConfig();
+    }
     console.log(
       `Starting private game with map: ${GameMapType[this.selectedMap as keyof typeof GameMapType]} ${this.useRandomMap ? " (Randomly selected)" : ""}`,
     );

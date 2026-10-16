@@ -14,7 +14,7 @@ import { MotionPlanRecord } from "./MotionPlans";
 import { ObjectiveState } from "./Objectives";
 import { RailNetwork } from "./RailNetwork";
 import { Stats } from "./Stats";
-import type { SurvivalZone } from "./Survival";
+import type { SurvivalStatus, SurvivalZone } from "./Survival";
 import { ReadonlyTileSet } from "./TileSet";
 import { UnitPredicate } from "./UnitGrid";
 
@@ -817,6 +817,10 @@ export interface Player {
   // Nations mode: tick the player's capital fell, -1 while it stands (or
   // once a new one is proclaimed).
   capitalLostTick(): Tick;
+  // Survival invaders: the land their troop cap counts at least (see
+  // survivalLandingStrength), 0 for everyone else.
+  troopCapTiles(): number;
+  setTroopCapTiles(tiles: number): void;
   setCapitalLostTick(tick: Tick): void;
   // Nations mode: tiles of the country the player started with.
   homeTiles(): number;
@@ -900,6 +904,10 @@ export interface Game extends GameMap {
   publishSurvivalZones(): void;
   /** Whether `tile` lies in a Survival landing zone. */
   inSurvivalZone(tile: TileRef): boolean;
+  /** Where a Survival game stands (waves, warlords, eliminations). */
+  survivalStatus(): Readonly<SurvivalStatus>;
+  /** Survival: wave `wave` landed, led by the warlord `boss` if any. */
+  recordSurvivalWave(wave: number, boss: Player | null): void;
   terraNullius(): TerraNullius;
   owner(ref: TileRef): Player | TerraNullius;
 

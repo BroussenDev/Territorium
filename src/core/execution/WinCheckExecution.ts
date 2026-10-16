@@ -9,7 +9,12 @@ import {
   RankedType,
   Team,
 } from "../game/Game";
-import { SURVIVAL_WAVES, survivalWaveState } from "../game/Survival";
+import {
+  SURVIVAL_HOLD_TICKS,
+  SURVIVAL_WAVES,
+  survivalWaveState,
+  survivalWaveTick,
+} from "../game/Survival";
 
 export class WinEvent implements GameEvent {
   constructor(public readonly winner: Player) {}
@@ -204,8 +209,9 @@ export class WinCheckExecution implements Execution {
   }
 
   // Survival (Survival.ts): the invaders win once no defender is left;
-  // the defenders win once the last wave has landed and every invader is
-  // gone. Land share decides nothing.
+  // the defenders win once the last wave has landed and they have held out
+  // SURVIVAL_HOLD_TICKS since, or every invader is gone, or the warlord
+  // leading the last wave has fallen. Land share decides nothing.
   private checkWinnerSurvival(): void {
     if (this.mg === null) throw new Error("Not initialized");
     const alive = this.mg.players();
@@ -217,11 +223,20 @@ export class WinCheckExecution implements Execution {
       this.active = false;
       return;
     }
-    const lastWaveLanded =
-      survivalWaveState(Math.round(this.mg.elapsedGameSeconds() * 10)).wave >=
-      SURVIVAL_WAVES;
+    const sinceStart = Math.round(this.mg.elapsedGameSeconds() * 10);
+    if (survivalWaveState(sinceStart).wave < SURVIVAL_WAVES) return;
+    const heldOut =
+      sinceStart >= survivalWaveTick(SURVIVAL_WAVES) + SURVIVAL_HOLD_TICKS;
     const invaders = alive.some((p) => p.team() === ColoredTeams.Nations);
-    if (lastWaveLanded && !invaders) {
+    const finalBoss = this.mg
+      .survivalStatus()
+      .bosses.find((b) => b.wave === SURVIVAL_WAVES);
+    const boss =
+      finalBoss === undefined
+        ? null
+        : this.mg.playerBySmallID(finalBoss.smallID);
+    const finalBossDown = boss?.isPlayer() === true && !boss.isAlive();
+    if (heldOut || !invaders || finalBossDown) {
       this.mg.setWinner(ColoredTeams.Humans, this.mg.stats().stats());
       this.active = false;
     }

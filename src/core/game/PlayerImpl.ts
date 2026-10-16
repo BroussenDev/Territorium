@@ -174,6 +174,7 @@ export class PlayerImpl implements Player {
 
   private lastDeleteUnitTick: Tick = -1;
   private _capitalLostTick: Tick = -1;
+  private _troopCapTiles = 0;
   private _homeTiles = 0;
   private lastEmbargoAllTick: Tick = -1;
 
@@ -404,6 +405,7 @@ export class PlayerImpl implements Player {
       lastDeleteUnitTick: this.lastDeleteUnitTick,
       isLobbyCreator: this.isLobbyCreator(),
       capitalLostTick: this._capitalLostTick,
+      troopCapTiles: this._troopCapTiles,
     };
   }
 
@@ -1283,6 +1285,14 @@ export class PlayerImpl implements Player {
 
   capitalLostTick(): Tick {
     return this._capitalLostTick;
+  }
+
+  troopCapTiles(): number {
+    return this._troopCapTiles;
+  }
+
+  setTroopCapTiles(tiles: number): void {
+    this._troopCapTiles = Math.max(0, Math.floor(tiles));
   }
 
   setCapitalLostTick(tick: Tick): void {

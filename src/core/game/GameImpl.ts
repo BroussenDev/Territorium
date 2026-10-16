@@ -53,7 +53,12 @@ import { RailNetwork } from "./RailNetwork";
 import { createRailNetwork } from "./RailNetworkImpl";
 import { Stats } from "./Stats";
 import { StatsImpl } from "./StatsImpl";
-import { inSurvivalZone, SurvivalZone } from "./Survival";
+import {
+  emptySurvivalStatus,
+  inSurvivalZone,
+  SurvivalStatus,
+  SurvivalZone,
+} from "./Survival";
 import { assignTeams, resolveTeamsList } from "./TeamAssignment";
 import { TerraNulliusImpl } from "./TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "./UnitGrid";
@@ -114,6 +119,7 @@ export class GameImpl implements Game {
   private updates: GameUpdates = createGameUpdatesMap();
   private _objectives: ObjectiveState[] = [];
   private _survivalZones: SurvivalZone[] = [];
+  private _survivalStatus: SurvivalStatus = emptySurvivalStatus();
   private tileUpdatePairs: number[] = [];
   /** [smallID, tilesOwned, gold, troops] quads — see PlayerImpl.toUpdate. */
   private playerStatsQuads: number[] = [];
@@ -1027,6 +1033,49 @@ export class GameImpl implements Game {
     return inSurvivalZone(this._map, this._survivalZones, tile);
   }
 
+  survivalStatus(): Readonly<SurvivalStatus> {
+    return this._survivalStatus;
+  }
+
+  recordSurvivalWave(wave: number, boss: Player | null): void {
+    this._survivalStatus.wavesLanded = wave;
+    if (boss !== null) {
+      this._survivalStatus.bosses.push({ smallID: boss.smallID(), wave });
+    }
+    this.publishSurvivalStatus();
+  }
+
+  // Survival: a defender eliminated an invader. Counted for the end-of-game
+  // report; a warlord's fall is announced to everyone.
+  private recordSurvivalElimination(defender: Player, invader: Player): void {
+    const counts = this._survivalStatus.eliminations;
+    counts[defender.smallID()] = (counts[defender.smallID()] ?? 0) + 1;
+    this.publishSurvivalStatus();
+    if (
+      this._survivalStatus.bosses.some((b) => b.smallID === invader.smallID())
+    ) {
+      this.displayMessage(
+        "events_display.survival_boss_defeated",
+        MessageType.CONQUERED_PLAYER,
+        null,
+        undefined,
+        { name: invader.displayName(), player: defender.displayName() },
+      );
+    }
+  }
+
+  private publishSurvivalStatus(): void {
+    const s = this._survivalStatus;
+    this.addUpdate({
+      type: GameUpdateType.SurvivalStatus,
+      status: {
+        wavesLanded: s.wavesLanded,
+        bosses: s.bosses.map((b) => ({ ...b })),
+        eliminations: { ...s.eliminations },
+      },
+    });
+  }
+
   objectivesHeldBy(smallID: number): number {
     let held = 0;
     for (const o of this._objectives) {
@@ -1810,6 +1859,13 @@ export class GameImpl implements Game {
 
     // OFM: per-kill log for standings (humans-only filtered in recordKill).
     this.stats().recordKill(conqueror, conquered, this.ticks());
+    if (
+      this._config.isSurvivalMode() &&
+      conqueror.type() === PlayerType.Human &&
+      conquered.team() === ColoredTeams.Nations
+    ) {
+      this.recordSurvivalElimination(conqueror, conquered);
+    }
     // OFM live standings: attribute the elimination so the live snapshot can
     // credit the kill (null when the conqueror has no client, e.g. a bot/nation),
     // and stamp the finishing place NOW rather than deferring to PlayerExecution:

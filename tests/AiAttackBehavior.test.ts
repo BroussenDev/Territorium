@@ -4,9 +4,11 @@ import { NationAllianceBehavior } from "../src/core/execution/nation/NationAllia
 import { NationEmojiBehavior } from "../src/core/execution/nation/NationEmojiBehavior";
 import { AiAttackBehavior } from "../src/core/execution/utils/AiAttackBehavior";
 import {
+  ColoredTeams,
   Difficulty,
   Game,
   GameMode,
+  HumansVsNations,
   Player,
   PlayerInfo,
   PlayerType,
@@ -1222,5 +1224,71 @@ describe("City troops and expansion", () => {
     expect(behavior.sendAttack(game.terraNullius())).toBe(false);
     behavior["attackBestTarget"]([], [bot, human]);
     expect(sent()).toEqual([]);
+  });
+});
+
+describe("Survival invaders' targets - end-to-end via maybeAttack", () => {
+  it("go for the strongest defender they border, not the weakest", async () => {
+    const testGame = await setup(
+      "big_plains",
+      {
+        difficulty: Difficulty.Hard,
+        gameMode: GameMode.Team,
+        playerTeams: HumansVsNations,
+        gameVariant: "survival",
+      },
+      [
+        new PlayerInfo("weak", PlayerType.Human, null, "weak_id"),
+        new PlayerInfo("strong", PlayerType.Human, null, "strong_id"),
+      ],
+    );
+    const invader = testGame.addPlayer(
+      new PlayerInfo("invader", PlayerType.Nation, null, "invader_id"),
+      ColoredTeams.Nations,
+    );
+    const weak = testGame.player("weak_id");
+    const strong = testGame.player("strong_id");
+    // Three stripes, weak | invader | strong: no open land anywhere.
+    const map = testGame.map();
+    for (let x = 0; x < map.width(); x++) {
+      for (let y = 0; y < map.height(); y++) {
+        const tile = testGame.ref(x, y);
+        if (!map.isLand(tile)) continue;
+        if (x < 40) weak.conquer(tile);
+        else if (x < 60) invader.conquer(tile);
+        else strong.conquer(tile);
+      }
+    }
+    invader.setTroops(5_000_000);
+    weak.setTroops(50_000);
+    strong.setTroops(800_000);
+
+    const emojiBehavior = new NationEmojiBehavior(
+      new PseudoRandom(42),
+      testGame,
+      invader,
+    );
+    const behavior = new AiAttackBehavior(
+      new PseudoRandom(42),
+      testGame,
+      invader,
+      0.0,
+      0.0,
+      0.2,
+      new NationAllianceBehavior(
+        new PseudoRandom(42),
+        testGame,
+        invader,
+        emojiBehavior,
+      ),
+      emojiBehavior,
+    );
+
+    behavior.maybeAttack();
+    executeTicks(testGame, 1);
+
+    const attacks = invader.outgoingAttacks();
+    expect(attacks.length).toBeGreaterThan(0);
+    for (const attack of attacks) expect(attack.target()).toBe(strong);
   });
 });

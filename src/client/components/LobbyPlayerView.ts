@@ -44,6 +44,8 @@ export class LobbyTeamView extends LitElement {
   @property({ type: Array }) nameReveals: string[] = [];
   @property({ type: Boolean }) anonymizeNames: boolean = false;
   @property({ type: Number }) nationCount: number = 0;
+  // A lobby whose nations aren't set up front (Survival's come in waves).
+  @property({ type: Boolean }) hideNations = false;
   @property({ type: Boolean }) isPublicGame: boolean = false;
 
   private get theme(): Theme {
@@ -119,11 +121,13 @@ export class LobbyTeamView extends LitElement {
             ${this.activePlayers.length === 1
               ? translateText("host_modal.player")
               : translateText("host_modal.players")}
-            <span style="margin: 0 8px;">•</span>
-            ${this.effectiveNationCount}
-            ${this.effectiveNationCount === 1
-              ? translateText("host_modal.nation_player")
-              : translateText("host_modal.nation_players")}
+            ${this.hideNations
+              ? null
+              : html`<span style="margin: 0 8px;">•</span> ${this
+                    .effectiveNationCount}
+                  ${this.effectiveNationCount === 1
+                    ? translateText("host_modal.nation_player")
+                    : translateText("host_modal.nation_players")}`}
           </div>
         </div>
         <div

@@ -2,7 +2,6 @@ import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { assetUrl } from "../../../core/AssetUrls";
 import {
-  ColoredTeams,
   GameMode,
   GameType,
   PlayerType,
@@ -20,13 +19,17 @@ import {
   conquestSecondsLeft,
 } from "../../../core/game/Objectives";
 import {
+  SURVIVAL_HOLD_TICKS,
   SURVIVAL_WAVES,
+  type SurvivalWaveKind,
+  survivalWaveKind,
   survivalWaveSize,
   survivalWaveState,
+  survivalWaveTick,
 } from "../../../core/game/Survival";
 import { friendFoeColors } from "../../ColorblindPalette";
 import { Controller } from "../../Controller";
-import { translateText } from "../../Utils";
+import { renderTroops, translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
 
 const COLLUSION_WARNING_CLOSED_KEY = "hasClosedCollusionWarning";
@@ -450,23 +453,20 @@ function renderConquest(game: GameView | undefined) {
 }
 
 /**
- * Survival banner: ten tiles for the ten waves (red once landed), the wave
- * the defenders are facing, and when the next one lands or, after the last,
- * how many invaders are left to wipe out.
+ * Survival banner: a tile per wave (red once landed, marked with a bolt for
+ * a blitz and a crown for a warlord), the wave the defenders are facing,
+ * what comes next and when, the warlord on the map if one is, and after the
+ * last wave how long is left to hold out.
  */
 function renderSurvival(game: GameView | undefined) {
   if (game === undefined || !game.config().isSurvivalMode()) return null;
   if (game.inSpawnPhase() || game.gameOver()) return null;
   const sinceStart = Math.floor(game.elapsedGameSeconds() * 10);
   const { wave, nextWaveTick } = survivalWaveState(sinceStart);
-  const invaders = game
-    .players()
-    .filter((p) => p.isAlive() && p.team() === ColoredTeams.Nations).length;
   const defenders = game
     .players()
     .filter((p) => p.isAlive() && p.type() === PlayerType.Human).length;
-  const secondsToNext =
-    nextWaveTick === null ? null : Math.ceil((nextWaveTick - sinceStart) / 10);
+  const foe = friendFoeColors().foe;
   const title =
     wave === 0
       ? translateText("heads_up_message.survival_first_wave")
@@ -474,40 +474,51 @@ function renderSurvival(game: GameView | undefined) {
           wave,
           total: SURVIVAL_WAVES,
         });
-  const detail =
-    secondsToNext !== null
-      ? translateText("heads_up_message.survival_next_wave", {
-          time: formatWait(secondsToNext),
-          count: survivalWaveSize(wave + 1, Math.max(1, defenders)),
-        })
-      : translateText("heads_up_message.survival_last_wave", {
-          count: invaders,
-        });
+  let detail: string;
+  if (nextWaveTick !== null) {
+    const next = wave + 1;
+    detail = translateText(NEXT_WAVE_KEYS[survivalWaveKind(next)], {
+      time: formatWait(Math.ceil((nextWaveTick - sinceStart) / 10)),
+      count: survivalWaveSize(next, Math.max(1, defenders)),
+    });
+  } else {
+    const holdEnd = survivalWaveTick(SURVIVAL_WAVES) + SURVIVAL_HOLD_TICKS;
+    detail = translateText("heads_up_message.survival_hold", {
+      time: formatWait(Math.max(0, Math.ceil((holdEnd - sinceStart) / 10))),
+    });
+  }
+  const warlord = aliveWarlord(game);
   return html`
     <div
       data-survival-banner
-      class="fixed top-14 left-1/2 -translate-x-1/2 z-[797] flex items-center gap-3 w-fit max-w-[92vw]
+      class="fixed top-14 left-1/2 -translate-x-1/2 z-[797] flex items-center gap-3 w-fit max-w-[min(92vw,34rem)]
              rounded-md border border-white/10 border-l-4 bg-[#0a1512]/90 backdrop-blur-xs
              px-3 py-1.5 text-white shadow-[0_12px_28px_-14px_rgb(0_0_0/0.9)]"
-      style="border-left-color: ${friendFoeColors().foe}"
+      style="border-left-color: ${foe}"
       @contextmenu=${(e: MouseEvent) => e.preventDefault()}
     >
-      <div class="flex gap-1" aria-hidden="true">
-        ${Array.from({ length: SURVIVAL_WAVES }, (_, i) => i).map(
-          (i) =>
-            html`<span
-              class="size-3 rounded-[2px] border ${i < wave
-                ? ""
-                : "border-white/40"}"
-              style=${i < wave
-                ? `background: ${friendFoeColors().foe}; border-color: ${friendFoeColors().foe}`
-                : ""}
-            ></span>`,
+      <div class="flex items-center gap-1" aria-hidden="true">
+        ${Array.from({ length: SURVIVAL_WAVES }, (_, i) =>
+          waveTile(survivalWaveKind(i + 1), i < wave, foe),
         )}
       </div>
       <div class="flex flex-col leading-tight">
         <span class="font-display text-sm font-semibold">${title}</span>
         <span class="text-xs tabular-nums text-white/70">${detail}</span>
+        ${warlord !== null
+          ? html`<span
+              data-survival-warlord
+              class="flex items-center gap-1 text-xs font-semibold tabular-nums"
+              style="color: ${foe}"
+              >${crownIcon(foe)}${translateText(
+                "heads_up_message.survival_warlord",
+                {
+                  name: warlord.displayName(),
+                  troops: renderTroops(warlord.troops()),
+                },
+              )}</span
+            >`
+          : null}
         ${wave === 0 && game.survivalZones().length > 0
           ? html`<span class="text-xs text-red-200/80"
               >${translateText("heads_up_message.survival_zones_hint")}</span
@@ -516,6 +527,56 @@ function renderSurvival(game: GameView | undefined) {
       </div>
     </div>
   `;
+}
+
+/** What the banner says of the next wave, by its kind. */
+const NEXT_WAVE_KEYS: Record<SurvivalWaveKind, string> = {
+  normal: "heads_up_message.survival_next_wave",
+  blitz: "heads_up_message.survival_next_blitz",
+  boss: "heads_up_message.survival_next_boss",
+};
+
+/** The latest warlord still on the map, if any. */
+function aliveWarlord(game: GameView): PlayerView | null {
+  const bosses = game.survivalStatus().bosses;
+  for (let i = bosses.length - 1; i >= 0; i--) {
+    const boss = game.playerBySmallID(bosses[i].smallID);
+    if (boss.isPlayer() && boss.isAlive()) return boss;
+  }
+  return null;
+}
+
+/** One wave on the banner: filled once landed, with its kind's mark. */
+function waveTile(kind: SurvivalWaveKind, landed: boolean, foe: string) {
+  const mark = landed ? "#ffffff" : "rgb(255 255 255 / 0.6)";
+  return html`<span
+    data-wave-kind=${kind}
+    class="flex items-center justify-center rounded-[2px] border ${kind ===
+    "boss"
+      ? "size-4"
+      : "size-3"} ${landed ? "" : "border-white/40"}"
+    style=${landed ? `background: ${foe}; border-color: ${foe}` : ""}
+    >${kind === "blitz"
+      ? boltIcon(mark)
+      : kind === "boss"
+        ? crownIcon(mark)
+        : null}</span
+  >`;
+}
+
+function boltIcon(color: string) {
+  return html`<svg viewBox="0 0 10 10" class="size-2.5" aria-hidden="true">
+    <path d="M6 0.5 L2 5.6 H4.6 L3.6 9.5 L8 4.2 H5.3 Z" fill=${color} />
+  </svg>`;
+}
+
+function crownIcon(color: string) {
+  return html`<svg viewBox="0 0 12 10" class="h-2.5 w-3" aria-hidden="true">
+    <path
+      d="M1 8.5 L0.5 2.5 L3.6 5 L6 1 L8.4 5 L11.5 2.5 L11 8.5 Z"
+      fill=${color}
+    />
+  </svg>`;
 }
 
 function formatWait(seconds: number): string {

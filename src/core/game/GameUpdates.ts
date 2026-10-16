@@ -18,7 +18,7 @@ import {
 } from "./Game";
 import { TileRef } from "./GameMap";
 import { ConquestState, ObjectiveState } from "./Objectives";
-import type { SurvivalZone } from "./Survival";
+import type { SurvivalStatus, SurvivalZone } from "./Survival";
 
 export interface GameUpdateViewData {
   tick: number;
@@ -112,6 +112,7 @@ export enum GameUpdateType {
   PeaceRequest,
   PeaceRequestReply,
   SurvivalZones,
+  SurvivalStatus,
 }
 
 export type GameUpdate =
@@ -141,12 +142,19 @@ export type GameUpdate =
   | ObjectivesUpdate
   | PeaceRequestUpdate
   | PeaceRequestReplyUpdate
-  | SurvivalZonesUpdate;
+  | SurvivalZonesUpdate
+  | SurvivalStatusUpdate;
 
 /** Survival mode's landing zones (Survival.ts), sent once at the start. */
 export interface SurvivalZonesUpdate {
   type: GameUpdateType.SurvivalZones;
   zones: SurvivalZone[];
+}
+
+/** Where a Survival game stands, sent whenever it changes. */
+export interface SurvivalStatusUpdate {
+  type: GameUpdateType.SurvivalStatus;
+  status: SurvivalStatus;
 }
 
 /** Every map objective's state, sent whenever any of them changes. */
@@ -297,6 +305,8 @@ export interface PlayerUpdate {
   isLobbyCreator?: boolean;
   /** Nations mode: tick the player's capital fell, -1 while it stands. */
   capitalLostTick?: Tick;
+  /** Survival invaders: the land their troop cap counts at least. */
+  troopCapTiles?: number;
 }
 
 export interface AllianceView {

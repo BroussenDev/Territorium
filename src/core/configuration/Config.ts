@@ -1177,9 +1177,12 @@ export class Config {
   }
 
   private troopCap(player: Player | PlayerView, withCities: boolean): number {
-    const tiles = this.isNationsMode()
-      ? Math.max(player.numTilesOwned(), NATIONS_MIN_TROOP_CAP_TILES)
-      : player.numTilesOwned();
+    const tiles = Math.max(
+      this.isNationsMode()
+        ? Math.max(player.numTilesOwned(), NATIONS_MIN_TROOP_CAP_TILES)
+        : player.numTilesOwned(),
+      player.troopCapTiles(),
+    );
     const cityTroops = withCities
       ? player
           .units(UnitType.City)

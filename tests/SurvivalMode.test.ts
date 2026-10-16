@@ -5,7 +5,9 @@ import {
   ColoredTeams,
   Difficulty,
   Game,
+  GameMapType,
   GameMode,
+  GameType,
   HumansVsNations,
   PlayerInfo,
   PlayerType,
@@ -13,11 +15,19 @@ import {
 } from "../src/core/game/Game";
 import {
   placeSurvivalZones,
+  SURVIVAL_BLITZ_DELAY_TICKS,
   SURVIVAL_FIRST_WAVE_DELAY_TICKS,
+  SURVIVAL_HOLD_TICKS,
+  SURVIVAL_MAPS,
+  SURVIVAL_MAX_PLAYERS,
   SURVIVAL_MAX_WAVE_SIZE,
+  SURVIVAL_SCHEDULE,
   SURVIVAL_WAVE_INTERVAL_TICKS,
   SURVIVAL_WAVES,
   SURVIVAL_ZONES,
+  survivalGameConfig,
+  survivalLandingStrength,
+  survivalWaveKind,
   survivalWaveSize,
   survivalWaveState,
   survivalWaveTick,
@@ -60,17 +70,37 @@ const invaders = (game: Game) =>
   game.players().filter((p) => p.team() === ColoredTeams.Nations);
 
 describe("survival waves", () => {
-  it("grow with each wave, capped", () => {
-    expect(survivalWaveSize(1, 4)).toBe(3);
-    expect(survivalWaveSize(SURVIVAL_WAVES, 4)).toBe(12);
-    expect(survivalWaveSize(1, 1)).toBe(1);
-    expect(survivalWaveSize(SURVIVAL_WAVES, 100)).toBe(SURVIVAL_MAX_WAVE_SIZE);
+  it("mix normal waves, two blitz waves and two warlords, the last leading the final wave", () => {
+    expect(SURVIVAL_SCHEDULE.filter((k) => k === "blitz")).toHaveLength(2);
+    expect(SURVIVAL_SCHEDULE.filter((k) => k === "boss")).toHaveLength(2);
+    expect(survivalWaveKind(1)).toBe("normal");
+    expect(survivalWaveKind(SURVIVAL_WAVES)).toBe("boss");
   });
 
-  it("land on a fixed schedule after the spawn phase", () => {
+  it("grow with each wave, capped; a blitz brings half, a warlord half as escort", () => {
+    expect(survivalWaveSize(1, 4)).toBe(3);
+    expect(survivalWaveSize(2, 4)).toBe(4);
+    // Wave 3 is a blitz: half of the five a normal wave would bring.
+    expect(survivalWaveKind(3)).toBe("blitz");
+    expect(survivalWaveSize(3, 4)).toBe(3);
+    // The last wave: the warlord and half of twelve.
+    expect(survivalWaveSize(SURVIVAL_WAVES, 4)).toBe(7);
+    expect(survivalWaveSize(1, 1)).toBe(1);
+    expect(survivalWaveSize(SURVIVAL_WAVES - 1, 100)).toBe(
+      SURVIVAL_MAX_WAVE_SIZE,
+    );
+  });
+
+  it("land on a fixed schedule after the spawn phase, a blitz soon after the wave before", () => {
     expect(survivalWaveTick(1)).toBe(SURVIVAL_FIRST_WAVE_DELAY_TICKS);
     expect(survivalWaveTick(2)).toBe(
       SURVIVAL_FIRST_WAVE_DELAY_TICKS + SURVIVAL_WAVE_INTERVAL_TICKS,
+    );
+    expect(survivalWaveTick(3) - survivalWaveTick(2)).toBe(
+      SURVIVAL_BLITZ_DELAY_TICKS,
+    );
+    expect(SURVIVAL_BLITZ_DELAY_TICKS).toBeLessThan(
+      SURVIVAL_WAVE_INTERVAL_TICKS,
     );
     expect(survivalWaveState(0)).toEqual({
       wave: 0,
@@ -84,6 +114,70 @@ describe("survival waves", () => {
       wave: SURVIVAL_WAVES,
       nextWaveTick: null,
     });
+  });
+});
+
+describe("survival landing strength", () => {
+  const start = 25_000;
+
+  it("lands fresh invaders like a new player against a fresh start", () => {
+    expect(
+      survivalLandingStrength(
+        1,
+        "invader",
+        { troops: 30_000, tiles: 50 },
+        start,
+      ).troops,
+    ).toBe(start);
+  });
+
+  it("measures each wave against the defenders, rising wave after wave", () => {
+    const level = { troops: 1_000_000, tiles: 20_000 };
+    const early = survivalLandingStrength(2, "invader", level, start);
+    const late = survivalLandingStrength(9, "invader", level, start);
+    expect(early.troops).toBeGreaterThan(start);
+    expect(late.troops).toBeGreaterThan(early.troops);
+    // An invader stays smaller than the average defender...
+    expect(late.troops).toBeLessThan(level.troops);
+    expect(late.capTiles).toBeLessThan(level.tiles);
+    // ...a warlord does not, the final one least of all.
+    const boss = survivalLandingStrength(5, "boss", level, start);
+    const finalBoss = survivalLandingStrength(
+      SURVIVAL_WAVES,
+      "boss",
+      level,
+      start,
+    );
+    expect(boss.troops).toBeGreaterThan(level.troops);
+    expect(finalBoss.troops).toBeGreaterThan(boss.troops);
+    expect(boss.capTiles).toBeGreaterThan(level.tiles);
+  });
+});
+
+describe("survival game config", () => {
+  it("has the same fixed rules for every host, only the map is theirs", () => {
+    for (const type of [
+      GameType.Public,
+      GameType.Private,
+      GameType.Singleplayer,
+    ]) {
+      const c = survivalGameConfig(type, SURVIVAL_MAPS[2]);
+      expect(c.gameVariant).toBe("survival");
+      expect(c.gameMode).toBe(GameMode.Team);
+      expect(c.playerTeams).toBe(HumansVsNations);
+      expect(c.gameMap).toBe(SURVIVAL_MAPS[2]);
+      expect(c.bots).toBe(0);
+      expect(c.difficulty).toBe(Difficulty.Hard);
+    }
+    expect(
+      survivalGameConfig(GameType.Private, SURVIVAL_MAPS[0]).maxPlayers,
+    ).toBe(SURVIVAL_MAX_PLAYERS);
+    // A map Survival doesn't play falls back to one it does.
+    expect(
+      SURVIVAL_MAPS.includes(
+        survivalGameConfig(GameType.Private, GameMapType.World).gameMap,
+      ),
+    ).toBe(true);
   });
 });
 
@@ -197,6 +291,43 @@ describe("survival mode", () => {
     expect(game.getWinner()).toBe(ColoredTeams.Humans);
   });
 
+  it("is won by holding out after the last wave, invaders or not", async () => {
+    const { game } = await build("plains", {}, false);
+    const left = game.addPlayer(
+      new PlayerInfo("Left", PlayerType.Nation, null, "left"),
+      ColoredTeams.Nations,
+    );
+    left.conquer(game.ref(50, 50));
+    run(game, survivalWaveTick(SURVIVAL_WAVES) + SURVIVAL_HOLD_TICKS - 20);
+    expect(game.getWinner()).toBeNull();
+    run(game, 40);
+    expect(game.getWinner()).toBe(ColoredTeams.Humans);
+  });
+
+  it("is won at once when the final warlord falls", async () => {
+    const { game, a } = await build("plains", {}, false);
+    const warlord = game.addPlayer(
+      new PlayerInfo("Kragor", PlayerType.Nation, null, "warlord"),
+      ColoredTeams.Nations,
+    );
+    const escort = game.addPlayer(
+      new PlayerInfo("Escort", PlayerType.Nation, null, "escort"),
+      ColoredTeams.Nations,
+    );
+    warlord.conquer(game.ref(50, 50));
+    escort.conquer(game.ref(80, 80));
+    run(game, survivalWaveTick(SURVIVAL_WAVES) + 10);
+    game.recordSurvivalWave(SURVIVAL_WAVES, warlord);
+    run(game, 20);
+    expect(game.getWinner()).toBeNull();
+    // The warlord falls; its escort is still around.
+    game.conquerPlayer(a, warlord);
+    for (const t of Array.from(warlord.tiles())) a.conquer(t);
+    run(game, 20);
+    expect(escort.isAlive()).toBe(true);
+    expect(game.getWinner()).toBe(ColoredTeams.Humans);
+  });
+
   it("reinforces the invaders with the same troops when no land is free", async () => {
     const { game, a } = await build("plains");
     run(game, SURVIVAL_FIRST_WAVE_DELAY_TICKS + 20);
@@ -216,6 +347,64 @@ describe("survival mode", () => {
       );
     }
     expect(troopsBefore).toBeGreaterThan(0);
+  });
+});
+
+describe("survival waves against the defenders' level", () => {
+  it("land invaders with troops and a troop cap measured against the defenders", async () => {
+    const { game, a, b } = await build();
+    // Two strong defenders: a million troops each, on 2000 tiles.
+    for (const [d, x0] of [
+      [a, 0],
+      [b, 100],
+    ] as const) {
+      for (let i = 0; i < 2000; i++)
+        d.conquer(game.ref(x0 + (i % 50), 150 + Math.floor(i / 50)));
+      d.addTroops(1_000_000 - d.troops());
+    }
+    run(game, survivalWaveTick(2) + 1);
+    const level = { troops: 1_000_000, tiles: 2001 };
+    const start = game
+      .config()
+      .startManpower(new PlayerInfo("", PlayerType.Nation, null, "x"));
+    const expected = survivalLandingStrength(2, "invader", level, start);
+    const second = invaders(game).filter(
+      (p) => p.troopCapTiles() === expected.capTiles,
+    );
+    expect(second.length).toBeGreaterThan(0);
+    // Their cap counts the beachhead, so what they land with doesn't drain.
+    for (const invader of second) {
+      expect(game.config().maxTroops(invader)).toBeGreaterThanOrEqual(
+        expected.troops,
+      );
+    }
+  });
+
+  it("are led by a warlord on a boss wave, announced to everyone", async () => {
+    // The waves start just before the boss wave, which lands at once with
+    // the ones before it.
+    const { game } = await build("plains", {}, false);
+    const bossWave = SURVIVAL_SCHEDULE.indexOf("boss") + 1;
+    run(game, survivalWaveTick(bossWave) - 5);
+    game.addExecution(new SurvivalExecution("game", 99));
+    run(game, 10);
+    const status = game.survivalStatus();
+    expect(status.wavesLanded).toBe(bossWave);
+    expect(status.bosses).toHaveLength(1);
+    expect(status.bosses[0].wave).toBe(bossWave);
+    const boss = game.playerBySmallID(status.bosses[0].smallID);
+    expect(boss.isPlayer() && boss.team()).toBe(ColoredTeams.Nations);
+  });
+
+  it("count the invaders each defender eliminates", async () => {
+    const { game, a } = await build("plains", {}, false);
+    const invader = game.addPlayer(
+      new PlayerInfo("Raider", PlayerType.Nation, null, "raider"),
+      ColoredTeams.Nations,
+    );
+    invader.conquer(game.ref(50, 50));
+    game.conquerPlayer(a, invader);
+    expect(game.survivalStatus().eliminations).toEqual({ [a.smallID()]: 1 });
   });
 });
 

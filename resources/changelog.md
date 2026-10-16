@@ -1,5 +1,17 @@
 # Territorium — Changelog
 
+## v0.1.117
+
+🛡️ **Survival, reworked**
+
+- Waves now grow with you: each one is measured against the defenders as they stand when it lands, so a late wave threatens a late-game empire the way the first one threatens a fresh start.
+- Blitz waves (3 and 7): fewer invaders, landing only 50 seconds after the wave before.
+- Warlords (waves 5 and 10): one invader far stronger than any defender, leading an escort. The banner shows the warlord on the map and its troops, and everyone is told who brings it down.
+- New way to win: hold out 2:30 after the last wave, or bring down its warlord to win at once. No more hunting the last invaders across the map.
+- The invaders go for the strongest defenders first, so the newest players aren't crushed while the big empires sit safe.
+- End-of-game report: wave reached, best defender, land held, warlords brought down.
+- Play Survival solo or in a private game with friends, from the Survival card on the Modes page.
+
 ## v0.1.116
 
 ⛵ **New boat models in the shop**

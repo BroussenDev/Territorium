@@ -86,6 +86,17 @@ export class GameModeCards extends LitElement {
     );
   }
 
+  // Survival solo, or a private Survival lobby (GameModeSelector).
+  private playSurvival(how: "solo" | "private") {
+    this.dispatchEvent(
+      new CustomEvent<"solo" | "private">("mode-survival", {
+        detail: how,
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
   private togglePin(mode: ModeKey) {
     this.dispatchEvent(
       new CustomEvent<ModeKey>("mode-pin", {
@@ -335,7 +346,8 @@ export class GameModeCards extends LitElement {
 
   /**
    * Survival: a full-width card under Conquest. Ten bars rising to the right
-   * are the ten waves, each bigger than the last.
+   * are the ten waves, each bigger than the last. Joins the public defense,
+   * or starts Survival solo or in a private lobby.
    */
   private renderSurvivalCard() {
     const MODE = "survival";
@@ -349,16 +361,11 @@ export class GameModeCards extends LitElement {
       translateText("game_modes.survival_fact_fair"),
       translateText("game_modes.survival_fact_win"),
     ];
-    return html`<button
+    return html`<div
       data-survival-card
-      @click=${() => lobby && this.join(MODE, lobby)}
-      ?disabled=${unavailable}
-      aria-disabled=${blocked}
-      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-red-400/25 bg-[linear-gradient(90deg,#1a0a0a,#120d07)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-red-300/60 hover:shadow-[0_18px_40px_-20px_rgba(248,113,113,0.55)] focus-visible:outline-2 focus-visible:outline-red-300 ${unavailable
-        ? DISABLED
-        : blocked
-          ? "opacity-50 cursor-not-allowed"
-          : ""}"
+      class="group/mode relative flex min-h-48 overflow-hidden rounded-2xl border border-red-400/25 bg-[linear-gradient(90deg,#1a0a0a,#120d07)] text-left text-white transition-[border-color,box-shadow] duration-200 hover:border-red-300/60 hover:shadow-[0_18px_40px_-20px_rgba(248,113,113,0.55)] ${blocked
+        ? "opacity-50"
+        : ""}"
     >
       ${map
         ? html`<img
@@ -422,24 +429,48 @@ export class GameModeCards extends LitElement {
             )}
           </span>
         </span>
-        <span class="flex shrink-0 items-center gap-3">
-          <span
-            class="rounded-md bg-red-500/90 px-4 py-2 font-display text-sm font-bold text-white transition-colors group-hover/mode:bg-red-500"
-            >${lobby
-              ? translateText("game_modes.survival_join")
-              : translateText("game_modes.conquest_waiting")}</span
+        <span class="flex shrink-0 flex-col items-stretch gap-2 sm:w-64">
+          <button
+            type="button"
+            data-survival-join
+            @click=${() => lobby && this.join(MODE, lobby)}
+            ?disabled=${unavailable}
+            aria-disabled=${blocked}
+            class="rounded-md bg-red-500/90 px-4 py-2 font-display text-sm font-bold text-white transition-colors hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-red-300 disabled:cursor-not-allowed disabled:opacity-50"
           >
+            ${lobby
+              ? translateText("game_modes.survival_join")
+              : translateText("game_modes.conquest_waiting")}
+          </button>
           ${lobby
-            ? html`<span class="text-sm tabular-nums text-white/70"
+            ? html`<span class="text-center text-xs tabular-nums text-white/70"
                 >${translateText("game_modes.players", {
                   count: lobby.numClients,
                   max: lobby.gameConfig?.maxPlayers ?? "?",
                 })}</span
               >`
             : nothing}
+          <span class="flex gap-2">
+            <button
+              type="button"
+              data-survival-solo
+              @click=${() => this.playSurvival("solo")}
+              class="flex-1 rounded-md border border-red-300/30 bg-black/40 px-3 py-1.5 text-xs font-bold text-red-100 transition-colors hover:bg-red-500/20 focus-visible:outline-2 focus-visible:outline-red-300"
+            >
+              ${translateText("game_modes.survival_solo")}
+            </button>
+            <button
+              type="button"
+              data-survival-private
+              @click=${() => this.playSurvival("private")}
+              class="flex-1 rounded-md border border-red-300/30 bg-black/40 px-3 py-1.5 text-xs font-bold text-red-100 transition-colors hover:bg-red-500/20 focus-visible:outline-2 focus-visible:outline-red-300"
+            >
+              ${translateText("game_modes.survival_private")}
+            </button>
+          </span>
         </span>
       </span>
-    </button>`;
+    </div>`;
   }
 
   private renderVersusCard() {

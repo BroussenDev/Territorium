@@ -16,6 +16,11 @@ import {
 } from "../core/game/Game";
 import { NATIONS_MAX_PLAYERS } from "../core/game/NationsMode";
 import {
+  SURVIVAL_MAPS,
+  SURVIVAL_MAX_PLAYERS,
+  survivalGameConfig,
+} from "../core/game/Survival";
+import {
   isVersusGameType,
   versusGameConfig,
   VersusGameType,
@@ -38,10 +43,6 @@ type RolledGameType = Exclude<
   ScheduledPublicGameType,
   "nations" | "conquest" | "survival" | VersusGameType
 >;
-
-// Defenders in a Survival lobby: every one more brings bigger waves, so the
-// lobby stays a team, not a crowd.
-const SURVIVAL_MAX_PLAYERS = 16;
 
 /**
  * Conquest lobbies rotate through regional maps (never the world map): big
@@ -270,37 +271,17 @@ export class MapPlaylist {
   }
 
   // Survival (core/game/Survival.ts): the defenders against waves of
-  // invaders, on the regional maps Conquest plays (room for the waves to
-  // land). No tribes: the open land is where the invaders arrive.
+  // invaders, its fixed rules on the next of its maps.
   private async getSurvivalConfig(): Promise<GameConfig> {
-    const map = CONQUEST_MAPS[(this.survivalPlayed + 3) % CONQUEST_MAPS.length];
+    const map = SURVIVAL_MAPS[(this.survivalPlayed + 3) % SURVIVAL_MAPS.length];
     this.survivalPlayed++;
     return {
-      donateGold: true,
-      donateTroops: true,
-      gameMap: map,
+      ...survivalGameConfig(GameType.Public, map),
       maxPlayers: Math.min(
         SURVIVAL_MAX_PLAYERS,
         await this.lobbyMaxPlayers(map, GameMode.FFA, undefined),
       ),
-      gameType: GameType.Public,
-      gameMapSize: GameMapSize.Normal,
-      publicGameModifiers: {},
-      difficulty: Difficulty.Hard,
-      infiniteGold: false,
-      infiniteTroops: false,
-      maxTimerValue: undefined,
-      instantBuild: false,
-      randomSpawn: false,
-      nations: "default",
-      gameMode: GameMode.Team,
-      playerTeams: HumansVsNations,
-      bots: 0,
       spawnImmunityDuration: this.getSpawnImmunityDuration(undefined),
-      disabledUnits: [],
-      disableClanTags: true,
-      overtime: { enabled: false },
-      gameVariant: "survival",
     } satisfies GameConfig;
   }
 

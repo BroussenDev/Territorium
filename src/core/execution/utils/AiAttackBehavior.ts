@@ -2,6 +2,7 @@ import { CHEAPEST_TROOP_RATIO } from "../../configuration/Config";
 import {
   Attack,
   Cell,
+  ColoredTeams,
   Difficulty,
   Game,
   GameMode,
@@ -514,6 +515,12 @@ export class AiAttackBehavior {
       return false;
     };
 
+    const strongest = (): boolean => {
+      // Groups are sorted by troops (ascending), so the last is the strongest
+      const target = pick((enemies) => enemies[enemies.length - 1] ?? null);
+      return target !== null ? this.sendAttack(target) : false;
+    };
+
     const weakest = (): boolean => {
       // Groups are sorted by troops (ascending), so the first match is the weakest.
       // In FFA, don't attack if they have more troops than us
@@ -546,6 +553,17 @@ export class AiAttackBehavior {
         this.sendLandAttack(leader, undefined, leader)
       );
     };
+
+    // Survival invaders take on the strongest defender they can reach, then
+    // the leader, and only then the weakest: a wave shouldn't wipe out
+    // whoever is newest on the map while the big empires sit safe.
+    if (
+      this.game.config().isSurvivalMode() &&
+      this.player.team() === ColoredTeams.Nations
+    ) {
+      // prettier-ignore
+      return [assist, nuked, strongest, crown, weakest, island, donate];
+    }
 
     // Return strategies in order based on difficulty
     // Easy nations get the dumbest order, impossible nations get the smartest order

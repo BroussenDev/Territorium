@@ -76,6 +76,20 @@ describe("diffPlayerUpdate", () => {
     expect(diff.hasSpawned).toBeUndefined();
   });
 
+  it("carries a Survival invader's troop cap land once it changes", () => {
+    const prev = makePlayerUpdate({ troopCapTiles: 0 });
+    const next = makePlayerUpdate({ troopCapTiles: 4_000 });
+    expect(diffPlayerUpdate(prev, next)?.troopCapTiles).toBe(4_000);
+    expect(diffPlayerUpdate(next, next)).toBeNull();
+    const state = makePlayerState();
+    applyStateUpdate(state, {
+      type: GameUpdateType.Player,
+      id: "x",
+      troopCapTiles: 4_000,
+    });
+    expect(state.troopCapTiles).toBe(4_000);
+  });
+
   it("carries a changed clanTag and stays quiet when it is unchanged", () => {
     expect(
       diffPlayerUpdate(

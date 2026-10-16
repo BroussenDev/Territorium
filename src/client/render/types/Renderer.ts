@@ -87,6 +87,8 @@ export interface PlayerState {
   lastDeleteUnitTick: number;
   /** Nations mode: tick the capital fell, -1 while it stands. */
   capitalLostTick: number;
+  /** Survival invaders: the land their troop cap counts at least. */
+  troopCapTiles?: number;
   allies: number[];
   embargoes: number[];
   targets: number[];

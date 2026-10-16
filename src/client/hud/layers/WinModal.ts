@@ -12,8 +12,9 @@ import {
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
-import { GameType } from "../../../core/game/Game";
+import { ColoredTeams, GameType, PlayerType } from "../../../core/game/Game";
 import { GameUpdateType } from "../../../core/game/GameUpdates";
+import { SURVIVAL_WAVES } from "../../../core/game/Survival";
 import { responseHasLinkedIdentity } from "../../AccountIdentity";
 import {
   fetchMyGameResult,
@@ -109,7 +110,8 @@ export class WinModal extends LitElement implements Controller {
         </h2>
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
           ${this.renderGameResult()} ${this.renderReplayShare()}
-          ${this.renderRecap()} ${this.innerHtml()}
+          ${this.renderSurvivalReport()} ${this.renderRecap()}
+          ${this.innerHtml()}
           <steam-promo
             variant="compact"
             campaign="winmodal"
@@ -209,6 +211,56 @@ export class WinModal extends LitElement implements Controller {
     // shareOrigin(), not window.location.origin: the desktop shell's own
     // origin resolves nowhere outside the app.
     this.replayLink = `${ClientEnv.shareOrigin()}${ClientEnv.gamePath(gameID)}`;
+  }
+
+  // Survival's end-of-game report: how far the defense held, who led it,
+  // the land kept and the warlords brought down.
+  private renderSurvivalReport() {
+    if (!this.game?.config().isSurvivalMode() || !this.game.gameOver()) {
+      return null;
+    }
+    const report = survivalReport(this.game);
+    const stat = (label: string, value: string) =>
+      html`<div class="rounded-sm bg-black/30 px-3 py-2">
+        <div class="text-xs text-white/60">${label}</div>
+        <div class="text-lg font-bold text-white">${value}</div>
+      </div>`;
+    return html`<div data-survival-report class="mb-4">
+      <h3 class="mb-2 text-center text-lg font-semibold text-white">
+        ${translateText("win_modal.survival_report_title")}
+      </h3>
+      <div class="grid grid-cols-2 gap-2">
+        ${stat(
+          translateText("win_modal.survival_wave_reached"),
+          translateText("win_modal.survival_wave_value", {
+            wave: report.wave,
+            total: SURVIVAL_WAVES,
+          }),
+        )}
+        ${stat(
+          translateText("win_modal.survival_best_defender"),
+          report.best === null
+            ? "—"
+            : translateText("win_modal.survival_best_defender_value", {
+                name: report.best.name,
+                count: report.best.eliminations,
+              }),
+        )}
+        ${stat(
+          translateText("win_modal.survival_land_held"),
+          translateText("win_modal.survival_land_held_value", {
+            share: report.landShare.toFixed(1),
+          }),
+        )}
+        ${stat(
+          translateText("win_modal.survival_warlords"),
+          translateText("win_modal.survival_warlords_value", {
+            down: report.warlordsDown,
+            total: report.warlords,
+          }),
+        )}
+      </div>
+    </div>`;
   }
 
   private renderRecap() {
@@ -500,7 +552,13 @@ export class WinModal extends LitElement implements Controller {
         this.show();
       } else if (wu.winner[0] === "team") {
         this.eventBus.emit(new SendWinnerEvent(wu.winner, wu.allPlayersStats));
-        if (wu.winner[1] === this.game.myPlayer()?.team()) {
+        if (this.game.config().isSurvivalMode()) {
+          this.isWin = wu.winner[1] === ColoredTeams.Humans;
+          this._title = translateText(
+            this.isWin ? "win_modal.survival_won" : "win_modal.survival_lost",
+          );
+          if (this.isWin) crazyGamesSDK.happytime();
+        } else if (wu.winner[1] === this.game.myPlayer()?.team()) {
           this._title = translateText("win_modal.your_team");
           this.isWin = true;
           crazyGamesSDK.happytime();
@@ -579,6 +637,38 @@ export class WinModal extends LitElement implements Controller {
       this.eventBus.emit(new PlaySoundEffectEvent("defeat"));
     }
   }
+}
+
+/** What the Survival report shows, from the game's Survival status. */
+export function survivalReport(game: GameView): {
+  wave: number;
+  best: { name: string; eliminations: number } | null;
+  landShare: number;
+  warlords: number;
+  warlordsDown: number;
+} {
+  const status = game.survivalStatus();
+  let best: { name: string; eliminations: number } | null = null;
+  for (const [smallID, count] of Object.entries(status.eliminations)) {
+    const p = game.playerBySmallID(Number(smallID));
+    if (!p.isPlayer() || count <= (best?.eliminations ?? 0)) continue;
+    best = { name: p.displayName(), eliminations: count };
+  }
+  const held = game
+    .players()
+    .filter((p) => p.type() === PlayerType.Human)
+    .reduce((sum, p) => sum + p.numTilesOwned(), 0);
+  const warlordsDown = status.bosses.filter((b) => {
+    const p = game.playerBySmallID(b.smallID);
+    return p.isPlayer() && !p.isAlive();
+  }).length;
+  return {
+    wave: status.wavesLanded,
+    best,
+    landShare: (100 * held) / Math.max(1, game.numLandTiles()),
+    warlords: status.bosses.length,
+    warlordsDown,
+  };
 }
 
 function clock(seconds: number): string {

@@ -1,7 +1,10 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchCosmetics } from "../../../../src/client/Cosmetics";
 import "../../../../src/client/hud/layers/WinModal";
-import type { WinModal } from "../../../../src/client/hud/layers/WinModal";
+import {
+  survivalReport,
+  type WinModal,
+} from "../../../../src/client/hud/layers/WinModal";
 import { SendWinnerEvent } from "../../../../src/client/Transport";
 import type { GameView } from "../../../../src/client/view";
 import { EventBus } from "../../../../src/core/EventBus";
@@ -58,6 +61,7 @@ function makeGame(opts: {
   myTeam?: string;
   myClientID?: string;
   gameType?: string;
+  survival?: boolean;
   winnerPlayer?: {
     isPlayer: () => boolean;
     clientID: () => string | null;
@@ -81,7 +85,30 @@ function makeGame(opts: {
     config: () => ({
       gameConfig: () => ({ rankedType: undefined, gameType: opts.gameType }),
       numSpawnPhaseTurns: () => 100,
+      isSurvivalMode: () => opts.survival ?? false,
     }),
+    // A Survival defense: Ann (smallID 1) took 3 invaders and Bo (2) one,
+    // holding 250 of 1000 land tiles; one of the two warlords fell.
+    gameOver: () => true,
+    survivalStatus: () => ({
+      wavesLanded: 10,
+      bosses: [
+        { smallID: 10, wave: 5 },
+        { smallID: 11, wave: 10 },
+      ],
+      eliminations: { 1: 3, 2: 1 },
+    }),
+    playerBySmallID: (id: number) => ({
+      isPlayer: () => true,
+      displayName: () => ({ 1: "Ann", 2: "Bo" })[id] ?? `p${id}`,
+      isAlive: () => id === 11,
+    }),
+    players: () => [
+      { type: () => "HUMAN", numTilesOwned: () => 200 },
+      { type: () => "HUMAN", numTilesOwned: () => 50 },
+      { type: () => "NATION", numTilesOwned: () => 400 },
+    ],
+    numLandTiles: () => 1000,
   } as unknown as GameView;
 }
 
@@ -129,6 +156,43 @@ describe("WinModal tick win handling", () => {
       team: "Rood",
     });
     await vi.waitFor(() => expect(modal!.isVisible).toBe(true));
+  });
+
+  it("titles a Survival game by the defense's fate", async () => {
+    const events = setup(
+      makeGame({
+        winner: ["team", "Humans"],
+        myTeam: "Humans",
+        survival: true,
+      }),
+    );
+    modal!.tick();
+
+    expect(events[0].winner).toEqual(["team", "Humans"]);
+    expect(translateText).toHaveBeenCalledWith("win_modal.survival_won");
+    expect(crazyGamesSDK.happytime).toHaveBeenCalled();
+
+    setup(
+      makeGame({
+        winner: ["team", "Nations"],
+        myTeam: "Humans",
+        survival: true,
+      }),
+    );
+    modal!.tick();
+    expect(translateText).toHaveBeenCalledWith("win_modal.survival_lost");
+  });
+
+  it("reports how far a Survival defense held and who led it", () => {
+    expect(
+      survivalReport(makeGame({ winner: ["team", "Humans"], survival: true })),
+    ).toEqual({
+      wave: 10,
+      best: { name: "Ann", eliminations: 3 },
+      landShare: 25,
+      warlords: 2,
+      warlordsDown: 1,
+    });
   });
 
   it("emits a player winner resolved through playerByClientID", async () => {

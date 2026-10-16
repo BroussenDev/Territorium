@@ -14,6 +14,7 @@ import {
   maps,
   UnitType,
 } from "../core/game/Game";
+import { SURVIVAL_MAPS, survivalGameConfig } from "../core/game/Survival";
 import { UserSettings } from "../core/game/UserSettings";
 import { PlayerCosmetics, TeamCountConfig } from "../core/Schemas";
 import { generateID } from "../core/Util";
@@ -231,7 +232,7 @@ export class SinglePlayerModal extends BaseModal {
   @state() private overtimeStartMinutes: number | undefined =
     DEFAULT_OPTIONS.overtimeStartMinutes;
   // Set only by startTutorial(): the modal has no control for it.
-  private gameVariant: "training" | undefined = undefined;
+  private gameVariant: "training" | "survival" | undefined = undefined;
   // Drives the Start Game button's busy state. Without it the click produces
   // nothing visible until every await in startGame() settles, which reads as
   // a hang rather than as loading whenever the network is slow or absent.
@@ -693,6 +694,19 @@ export class SinglePlayerModal extends BaseModal {
     this.nations = TRAINING_OPTIONS.nations;
     this.gameVariant = "training";
     new UserSettings().setTutorialDismissed(false);
+    await this.startGame();
+  }
+
+  /**
+   * Starts a solo Survival game: its fixed rules (survivalGameConfig) on one
+   * of its maps, picked at random. From the Survival card of the Modes page.
+   */
+  public async startSurvival(): Promise<void> {
+    void prewarmCosmetics();
+    this.resetOptions();
+    this.selectedMap =
+      SURVIVAL_MAPS[Math.floor(Math.random() * SURVIVAL_MAPS.length)];
+    this.gameVariant = "survival";
     await this.startGame();
   }
 
@@ -1189,65 +1203,74 @@ export class SinglePlayerModal extends BaseModal {
                   cosmetics,
                 },
               ],
-              config: {
-                gameMap: this.selectedMap,
-                customMap: this.customMap?.ref,
-                gameMapSize: this.compactMap
-                  ? GameMapSize.Compact
-                  : GameMapSize.Normal,
-                gameType: GameType.Singleplayer,
-                gameMode: this.gameMode,
-                playerTeams: this.teamCount,
-                difficulty: this.selectedDifficulty,
-                maxTimerValue: finalMaxTimerValue,
-                bots: this.bots,
-                infiniteGold: this.infiniteGold,
-                donateGold: this.gameMode === GameMode.Team,
-                donateTroops: this.gameMode === GameMode.Team,
-                infiniteTroops: this.infiniteTroops,
-                instantBuild: this.instantBuild,
-                randomSpawn: this.randomSpawn,
-                disabledUnits: this.disabledUnits.filter(
-                  (unit): unit is UnitType =>
-                    Object.values(UnitType).includes(unit),
-                ),
-                nations: sliderToNationsConfig(
-                  this.nations,
-                  this.defaultNationCount,
-                ),
-                ...(this.goldMultiplier && this.goldMultiplierValue
-                  ? { goldMultiplier: this.goldMultiplierValue }
-                  : {}),
-                ...(this.startingGold && this.startingGoldValue !== undefined
-                  ? {
-                      startingGold: Math.round(
-                        this.startingGoldValue * 1_000_000,
+              config:
+                this.gameVariant === "survival"
+                  ? survivalGameConfig(GameType.Singleplayer, this.selectedMap)
+                  : {
+                      gameMap: this.selectedMap,
+                      customMap: this.customMap?.ref,
+                      gameMapSize: this.compactMap
+                        ? GameMapSize.Compact
+                        : GameMapSize.Normal,
+                      gameType: GameType.Singleplayer,
+                      gameMode: this.gameMode,
+                      playerTeams: this.teamCount,
+                      difficulty: this.selectedDifficulty,
+                      maxTimerValue: finalMaxTimerValue,
+                      bots: this.bots,
+                      infiniteGold: this.infiniteGold,
+                      donateGold: this.gameMode === GameMode.Team,
+                      donateTroops: this.gameMode === GameMode.Team,
+                      infiniteTroops: this.infiniteTroops,
+                      instantBuild: this.instantBuild,
+                      randomSpawn: this.randomSpawn,
+                      disabledUnits: this.disabledUnits.filter(
+                        (unit): unit is UnitType =>
+                          Object.values(UnitType).includes(unit),
                       ),
-                    }
-                  : {}),
-                ...(this.customAlliances
-                  ? { customAllianceDuration: this.customAllianceMinutes ?? 0 }
-                  : {}),
-                ...(this.waterNukes ? { waterNukes: true } : {}),
-                ...(this.objectives ? { objectives: true } : {}),
-                ...(this.gameVariant ? { gameVariant: this.gameVariant } : {}),
-                ...(this.doomsdayClock
-                  ? {
-                      doomsdayClock: {
-                        enabled: true,
-                        speed: this.doomsdayClockSpeed,
-                      },
-                    }
-                  : {}),
-                ...(this.overtime
-                  ? {
-                      overtime: {
-                        enabled: true,
-                        startMinutes: this.overtimeStartMinutes ?? 30,
-                      },
-                    }
-                  : {}),
-              },
+                      nations: sliderToNationsConfig(
+                        this.nations,
+                        this.defaultNationCount,
+                      ),
+                      ...(this.goldMultiplier && this.goldMultiplierValue
+                        ? { goldMultiplier: this.goldMultiplierValue }
+                        : {}),
+                      ...(this.startingGold &&
+                      this.startingGoldValue !== undefined
+                        ? {
+                            startingGold: Math.round(
+                              this.startingGoldValue * 1_000_000,
+                            ),
+                          }
+                        : {}),
+                      ...(this.customAlliances
+                        ? {
+                            customAllianceDuration:
+                              this.customAllianceMinutes ?? 0,
+                          }
+                        : {}),
+                      ...(this.waterNukes ? { waterNukes: true } : {}),
+                      ...(this.objectives ? { objectives: true } : {}),
+                      ...(this.gameVariant
+                        ? { gameVariant: this.gameVariant }
+                        : {}),
+                      ...(this.doomsdayClock
+                        ? {
+                            doomsdayClock: {
+                              enabled: true,
+                              speed: this.doomsdayClockSpeed,
+                            },
+                          }
+                        : {}),
+                      ...(this.overtime
+                        ? {
+                            overtime: {
+                              enabled: true,
+                              startMinutes: this.overtimeStartMinutes ?? 30,
+                            },
+                          }
+                        : {}),
+                    },
               lobbyCreatedAt: Date.now(), // ms; server should be authoritative in MP
             },
             source: "singleplayer",

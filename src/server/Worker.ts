@@ -10,6 +10,7 @@ import { z } from "zod";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { GameEnv } from "../core/configuration/Config";
 import { GameType } from "../core/game/Game";
+import { survivalGameConfig } from "../core/game/Survival";
 import { versusGameConfig, versusTeamSize } from "../core/game/Versus";
 import { stampNationCrest } from "../core/NationPack";
 import {
@@ -280,6 +281,10 @@ export async function startWorker() {
         return res.status(400).json({ error: "Invalid versus format" });
       }
       gc = versusGameConfig(size, GameType.Private);
+    }
+    // So are Survival's: only the map is the host's.
+    if (versusSource?.gameVariant === "survival") {
+      gc = survivalGameConfig(GameType.Private, versusSource.gameMap);
     }
 
     const id = ServerEnv.generateGameIdForWorker(workerId);

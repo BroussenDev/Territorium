@@ -24,7 +24,11 @@ import {
   unpackMotionPlans,
 } from "../../core/game/MotionPlans";
 import { ConquestState, ObjectiveState } from "../../core/game/Objectives";
-import type { SurvivalZone } from "../../core/game/Survival";
+import {
+  emptySurvivalStatus,
+  type SurvivalStatus,
+  type SurvivalZone,
+} from "../../core/game/Survival";
 import { TerrainMapData } from "../../core/game/TerrainMapLoader";
 import { TerraNulliusImpl } from "../../core/game/TerraNulliusImpl";
 import { UnitGrid, UnitPredicate } from "../../core/game/UnitGrid";
@@ -361,6 +365,10 @@ export class GameView implements GameMap {
     const zonesUpdates = gu.updates[GameUpdateType.SurvivalZones];
     if (zonesUpdates.length > 0) {
       this._survivalZones = zonesUpdates[zonesUpdates.length - 1].zones;
+    }
+    const survivalUpdates = gu.updates[GameUpdateType.SurvivalStatus];
+    if (survivalUpdates.length > 0) {
+      this._survivalStatus = survivalUpdates[survivalUpdates.length - 1].status;
     }
     const objectivesUpdates = gu.updates[GameUpdateType.Objectives];
     if (objectivesUpdates.length > 0) {
@@ -1249,10 +1257,15 @@ export class GameView implements GameMap {
   private _objectives: ObjectiveState[] = [];
   private _conquest: ConquestState | null = null;
   private _survivalZones: SurvivalZone[] = [];
+  private _survivalStatus: SurvivalStatus = emptySurvivalStatus();
 
   /** Survival's landing zones (core/game/Survival.ts); empty otherwise. */
   survivalZones(): readonly SurvivalZone[] {
     return this._survivalZones;
+  }
+  /** Where a Survival game stands: waves landed, warlords, eliminations. */
+  survivalStatus(): Readonly<SurvivalStatus> {
+    return this._survivalStatus;
   }
   gameOver(): boolean {
     return this._gameOver;
