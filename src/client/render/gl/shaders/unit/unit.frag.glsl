@@ -32,6 +32,7 @@ flat in float vOwnerID;
 flat in float vFlags;
 flat in float vHash;
 flat in float vGlow;
+flat in float vTurns;
 
 out vec4 fragColor;
 
@@ -106,7 +107,13 @@ void main() {
   bool inSprite = vCellUV.x >= 0.0 && vCellUV.x <= 1.0 &&
                   vCellUV.y >= 0.0 && vCellUV.y <= 1.0;
   if (inSprite) {
-    vec2 atlasUV = vec2((vAtlasCol + vCellUV.x) / float(ATLAS_COLS), vCellUV.y);
+    // Warships turn by quarter turns, so their pixels stay crisp: each
+    // clockwise turn reads the source at (v, 1 - u).
+    vec2 cellUV = vCellUV;
+    for (int i = 0; i < int(vTurns + 0.5); i++) {
+      cellUV = vec2(cellUV.y, 1.0 - cellUV.x);
+    }
+    vec2 atlasUV = vec2((vAtlasCol + cellUV.x) / float(ATLAS_COLS), cellUV.y);
     texel = texture(uAtlas, atlasUV);
   }
 
@@ -148,7 +155,8 @@ void main() {
   // the player color so ownership stays readable, and combat signals win: the
   // angry (attacking) override below replaces this with red, and the retreat
   // blink still darkens the center band.
-  if (abs(vAtlasCol - float(WARSHIP_COL)) < 0.1) {
+  if (abs(vAtlasCol - float(WARSHIP_COL)) < 0.1 ||
+      abs(vAtlasCol - float(WARSHIP_DIAGONAL_COL)) < 0.1) {
     vec3 effectRGB;
     float dn = (vCellUV.x + vCellUV.y) * 0.5; // sprite diagonal, 0..1
     if (spriteEffectColor(WARSHIP_EFFECT_ROW_BASE, int(vOwnerID + 0.5), dn, true, effectRGB)) {
@@ -165,7 +173,9 @@ void main() {
   // 5×5 train sprites fill only the middle of the 13-tile unit cell, so an
   // icon-space gradient would show a sliver of the palette per car, whereas a
   // world-space one runs along the whole train.
-  if (vAtlasCol > float(TRAIN_FIRST_COL) - 0.1) {
+  // The three train sprites (engine, carriage, loaded carriage).
+  if (vAtlasCol > float(TRAIN_FIRST_COL) - 0.1 &&
+      vAtlasCol < float(TRAIN_FIRST_COL) + 2.1) {
     vec3 effectRGB;
     float diag = vWorldPos.x + vWorldPos.y;
     if (spriteEffectColor(TRAIN_EFFECT_ROW_BASE, int(vOwnerID + 0.5), diag, false, effectRGB)) {

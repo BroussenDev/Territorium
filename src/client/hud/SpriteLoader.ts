@@ -144,7 +144,11 @@ export const colorizeCanvas = (
       g = data[i + 1],
       b = data[i + 2];
 
-    if (r === 180 && g === 180 && b === 180) {
+    // 100 is the warship's bridge: the hull's color, as in the unit shader.
+    if (
+      (r === 180 && g === 180 && b === 180) ||
+      (r === 100 && g === 100 && b === 100)
+    ) {
       data[i] = colorARgb.r;
       data[i + 1] = colorARgb.g;
       data[i + 2] = colorARgb.b;

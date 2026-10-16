@@ -2,8 +2,9 @@
  * UnitPass — GPU-rendered mobile unit sprites.
  *
  * Renders all mobile (non-structure) units: boats, nukes, shells, SAM
- * missiles, and MIRV warheads. All unit types are rotationally symmetric
- * — no rotation needed. Sprites are tiny grayscale PNGs colorized on the
+ * missiles, and MIRV warheads. Warships point where they sail (eight
+ * headings, see WarshipHeading.ts); every other unit is rotationally
+ * symmetric. Sprites are tiny grayscale PNGs colorized on the
  * GPU using the standard 3-band gray replacement (180/130/70). MIRV
  * Warhead uses a programmatic 3×3 white square (colorized to border
  * color); Shell is a single white pixel.
@@ -16,7 +17,7 @@
  * Atlas layout (12 columns × 13px cells, pre-built by generate-sprite-atlases.mjs):
  *   Col 0: Transport (5×5)
  *   Col 1: Trade Ship (5×5)
- *   Col 2: Warship (11×11)
+ *   Col 2: Warship, bow up (13×13)
  *   Col 3: Atom Bomb (7×7)
  *   Col 4: Hydrogen Bomb (9×9)
  *   Col 5: MIRV (13×13, grayscale colorized)
@@ -26,6 +27,7 @@
  *   Col 9: Train Engine (5×5)
  *   Col 10: Train Carriage (5×5)
  *   Col 11: Train Carriage Loaded (5×5)
+ *   Col 12: Warship, bow up-right (13×13)
  *
  * Data flow:
  *   FrameSnapshot.units → filter by typeToAtlasIdx → instance VBO → GPU
@@ -61,6 +63,7 @@ import {
   WARSHIP_EFFECT_BLOCK,
 } from "../utils/ColorUtils";
 import { createProgram, shaderSrc } from "../utils/GlUtils";
+import { WarshipCourses, warshipSprite } from "./WarshipHeading";
 
 const unitAtlasUrl = assetUrl("atlases/unit-atlas.png");
 
@@ -86,6 +89,7 @@ const UNIT_ORDER = [
   "TrainEngine",
   "TrainCarriage",
   "TrainCarriageLoaded",
+  "WarshipDiagonal",
 ] as const;
 
 const ATLAS_COLS = UNIT_ORDER.length;
@@ -95,6 +99,8 @@ const HYDROGEN_BOMB_COL = UNIT_ORDER.indexOf(UT_HYDROGEN_BOMB);
 
 /** Atlas column of the warship — gates the warship cosmetic effect. */
 const WARSHIP_COL = UNIT_ORDER.indexOf(UT_WARSHIP);
+/** Atlas column of the warship drawn bow up-right. */
+const WARSHIP_DIAGONAL_COL = UNIT_ORDER.indexOf("WarshipDiagonal");
 
 /** First atlas column of the train sprites (engine, carriage, loaded
  *  carriage are contiguous) — gates the train cosmetic effect. */
@@ -110,7 +116,7 @@ const TRAIN_FIRST_COL = UNIT_ORDER.indexOf("TrainEngine");
  *   uint8 atlasIdx         —  1 byte  (atlas column 0–11)
  *   uint8 flags            —  1 byte  (0 = normal, 1 = flicker, 2 = angry, 3 = trade-friendly, 4 = retreating, 5 = flicker-untargetable)
  *   uint8 flickerHash      —  1 byte  (per-instance flicker phase offset)
- *   1 byte padding         — aligns to 4-byte boundary
+ *   uint8 quarterTurns     —  1 byte  (warships: clockwise sprite turns, 0–3)
  */
 const FLOATS_PER_INSTANCE = 4;
 const BYTES_PER_INSTANCE = FLOATS_PER_INSTANCE * 4;
@@ -189,9 +195,9 @@ function createUnitVao(
   gl.vertexAttribPointer(1, 3, gl.FLOAT, false, BYTES_PER_INSTANCE, 0);
   gl.vertexAttribDivisor(1, 1);
 
-  // Attribute 2: per-instance (atlasIdx, flags, flickerHash) — 3 uint8s at offset 12, converted to float
+  // Attribute 2: per-instance (atlasIdx, flags, flickerHash, quarterTurns) — 4 uint8s at offset 12, converted to float
   gl.enableVertexAttribArray(2);
-  gl.vertexAttribPointer(2, 3, gl.UNSIGNED_BYTE, false, BYTES_PER_INSTANCE, 12);
+  gl.vertexAttribPointer(2, 4, gl.UNSIGNED_BYTE, false, BYTES_PER_INSTANCE, 12);
   gl.vertexAttribDivisor(2, 1);
 
   gl.bindVertexArray(null);
@@ -264,6 +270,8 @@ export class UnitPass {
   private localPlayerID = 0;
   private friendlyOwners = new Set<number>();
   private structures: Map<number, UnitState> = new Map();
+  /** Each warship's recent track, which way it points. */
+  private readonly warshipCourses = new WarshipCourses();
 
   constructor(
     gl: WebGL2RenderingContext,
@@ -300,6 +308,7 @@ export class UnitPass {
         PALETTE_SIZE: getPaletteSize(),
         ATLAS_COLS,
         WARSHIP_COL,
+        WARSHIP_DIAGONAL_COL,
         WARSHIP_EFFECT_ROW_BASE: WARSHIP_EFFECT_BLOCK * MAX_TRAIL_COLORS,
         TRAIN_FIRST_COL,
         TRAIN_EFFECT_ROW_BASE: TRAIN_EFFECT_BLOCK * MAX_TRAIL_COLORS,
@@ -414,6 +423,7 @@ export class UnitPass {
     ownerID: number,
     atlasIdx: number,
     flags: number,
+    quarterTurns = 0,
   ): void {
     this.groundBuf.ensureCapacity(this.groundCount + 1);
     const off = this.groundCount * FLOATS_PER_INSTANCE;
@@ -424,6 +434,7 @@ export class UnitPass {
     this.groundBuf.uint8[byteOff + 12] = atlasIdx;
     this.groundBuf.uint8[byteOff + 13] = flags;
     this.groundBuf.uint8[byteOff + 14] = flickerHashByte(x, y);
+    this.groundBuf.uint8[byteOff + 15] = quarterTurns;
     this.groundCount++;
   }
 
@@ -443,6 +454,7 @@ export class UnitPass {
     this.missileBuf.uint8[byteOff + 12] = atlasIdx;
     this.missileBuf.uint8[byteOff + 13] = flags;
     this.missileBuf.uint8[byteOff + 14] = flickerHashByte(x, y);
+    this.missileBuf.uint8[byteOff + 15] = 0;
     this.missileCount++;
   }
 
@@ -459,7 +471,7 @@ export class UnitPass {
     this.missileCount = 0;
     this.smoothSegs.length = 0;
 
-    for (const unit of units.values()) {
+    for (const [id, unit] of units) {
       if (!unit.isActive || unit.waitTicks > 0) continue;
 
       let atlasIdx = this.typeToAtlasCol.get(unit.unitType);
@@ -545,10 +557,23 @@ export class UnitPass {
           const ly = (unit.lastPos - lx) / this.mapW;
           this.emitMissile(lx, ly, unit.ownerID, atlasIdx, flags);
         }
+      } else if (unit.unitType === UT_WARSHIP) {
+        const sprite = warshipSprite(
+          this.warshipCourses.heading(id, unit.pos, this.mapW),
+        );
+        this.emitGround(
+          x,
+          y,
+          unit.ownerID,
+          sprite.diagonal ? WARSHIP_DIAGONAL_COL : atlasIdx,
+          flags,
+          sprite.quarterTurns,
+        );
       } else {
         this.emitGround(x, y, unit.ownerID, atlasIdx, flags);
       }
     }
+    this.warshipCourses.sweep();
 
     const gl = this.gl;
     if (this.groundCount > 0) {

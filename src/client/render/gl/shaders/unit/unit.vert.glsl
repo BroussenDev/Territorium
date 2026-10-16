@@ -5,7 +5,7 @@ layout(location = 0) in vec2 aPos;
 
 // Per-instance attributes
 layout(location = 1) in vec3 aInstPos;   // x, y, ownerID
-layout(location = 2) in vec3 aInstFlags; // atlasIdx, flags, flickerHash (uint8→float)
+layout(location = 2) in vec4 aInstFlags; // atlasIdx, flags, flickerHash, quarterTurns (uint8→float)
 
 uniform mat3  uCamera;
 
@@ -20,6 +20,7 @@ flat out float vOwnerID;
 flat out float vFlags;  // 0.0 = normal, 1.0 = flicker, 2.0 = angry
 flat out float vHash;   // per-instance hash for flicker phase offset
 flat out float vGlow;   // 1.0 if this instance is a hydrogen bomb (draw glow), else 0.0
+flat out float vTurns;  // clockwise quarter turns of the sprite (warships)
 
 void main() {
   float worldX = aInstPos.x;
@@ -29,6 +30,7 @@ void main() {
   float atlasCol = aInstFlags.x;
   vFlags = aInstFlags.y;
   vAtlasCol = atlasCol;
+  vTurns = aInstFlags.w;
 
   // Per-instance hash so each unit flickers independently. Computed CPU-side
   // from the tick position — hashing worldX/Y here would re-roll the phase

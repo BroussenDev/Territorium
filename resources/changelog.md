@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.113
+
+⚓ **New warships**
+
+- Warships are now real battleships seen from above: a pointed bow, two gun turrets and a bridge, in your colors.
+- They point where they sail, in eight directions, and keep their heading when they stop. Every direction stays pixel-sharp.
+
 ## v0.1.112
 
 🗺️ **New maps**
