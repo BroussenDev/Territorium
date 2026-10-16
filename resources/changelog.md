@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.116
+
+⛵ **New boat models in the shop**
+
+- Warships and transport ships now come in new models: an aircraft carrier, a galleon and a drakkar for warships, a hovercraft and a junk for transport ships. Find them under Effects in the shop.
+- A model changes only how your boats look, for everyone in the game. They sail and fight exactly like the default boats.
+- A model works with your warship color effect: equip both and your galleon takes its colors.
+- You can hide other players' boat models in the advanced graphics settings.
+
 ## v0.1.115
 
 🛶 **Sleeker transport ships**

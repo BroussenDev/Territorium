@@ -16,7 +16,8 @@ export type CosmeticPackItem = z.infer<typeof CosmeticPackItemSchema>;
 export type Subscription = z.infer<typeof SubscriptionSchema>;
 // An effect cosmetic of any type — discriminated on effectType (today
 // transportShipTrail + nukeTrail + nukeExplosion + structures + warship +
-// train + railroad + victory; gains a member per effectType).
+// warshipModel + transportModel + train + railroad + victory; gains a member
+// per effectType).
 export type Effect = z.infer<typeof EffectSchema>;
 export type EffectType = z.infer<typeof EffectTypeSchema>;
 /** The catalog attribute shape of effects of the given effectType. */
@@ -44,6 +45,16 @@ export type TrainEffectAttributes = z.infer<typeof TrainEffectAttributesSchema>;
 export type RailroadEffectAttributes = z.infer<
   typeof RailroadEffectAttributesSchema
 >;
+// Attributes of a boat-model effect (the hull drawn for warships / transport
+// ships, not a recolor).
+export type WarshipModelAttributes = z.infer<
+  typeof WarshipModelAttributesSchema
+>;
+export type TransportModelAttributes = z.infer<
+  typeof TransportModelAttributesSchema
+>;
+export type WarshipModel = (typeof WARSHIP_MODELS)[number];
+export type TransportModel = (typeof TRANSPORT_MODELS)[number];
 // Attributes of a victory effect (a celebration played when its owner wins).
 export type VictoryEffectAttributes = z.infer<
   typeof VictoryEffectAttributesSchema
@@ -144,6 +155,8 @@ export const EFFECT_TYPES = [
   "nukeExplosion",
   "structures",
   "warship",
+  "warshipModel",
+  "transportModel",
   "train",
   "railroad",
   "victory",
@@ -319,6 +332,33 @@ const WarshipEffectSchema = CosmeticSchema.extend({
   url: z.string().optional(),
 });
 
+// Boat models: another hull drawn for the owner's warships / transport
+// ships in place of the default battleship / landing craft. `type` names the
+// model; a model this client doesn't draw is dropped by lenientRecord (the
+// boat keeps its default hull). Purely visual: every model fills the same
+// tile and sails exactly like the default boat. Stacks with the warship
+// color effect, which recolors whichever hull is drawn.
+export const WARSHIP_MODELS = ["carrier", "galleon", "drakkar"] as const;
+export const TRANSPORT_MODELS = ["hovercraft", "junk"] as const;
+export const WarshipModelAttributesSchema = z.object({
+  type: z.enum(WARSHIP_MODELS),
+});
+export const TransportModelAttributesSchema = z.object({
+  type: z.enum(TRANSPORT_MODELS),
+});
+
+const WarshipModelEffectSchema = CosmeticSchema.extend({
+  effectType: z.literal("warshipModel"),
+  attributes: WarshipModelAttributesSchema,
+  url: z.string().optional(),
+});
+
+const TransportModelEffectSchema = CosmeticSchema.extend({
+  effectType: z.literal("transportModel"),
+  attributes: TransportModelAttributesSchema,
+  url: z.string().optional(),
+});
+
 // Train-effect attributes: the same gradient/transition shapes as the trail
 // effects, with trail (world-space) semantics — a train is a line of tiny
 // sprites, so "gradient" bands the map like a trail (colorSize = band width in
@@ -398,6 +438,8 @@ export const EffectSchema = z.discriminatedUnion("effectType", [
   NukeExplosionEffectSchema,
   StructuresEffectSchema,
   WarshipEffectSchema,
+  WarshipModelEffectSchema,
+  TransportModelEffectSchema,
   TrainEffectSchema,
   RailroadEffectSchema,
   VictoryEffectSchema,
@@ -422,6 +464,19 @@ export function isNukeExplosionEffect(
   return effect.effectType === "nukeExplosion";
 }
 
+/** Narrows an Effect to a boat-model effect (warship or transport ship). */
+export function isBoatModelEffect(
+  effect: Effect,
+): effect is Extract<
+  Effect,
+  { effectType: "warshipModel" | "transportModel" }
+> {
+  return (
+    effect.effectType === "warshipModel" ||
+    effect.effectType === "transportModel"
+  );
+}
+
 /** Narrows an Effect to a victory effect. */
 export function isVictoryEffect(
   effect: Effect,
@@ -431,8 +486,8 @@ export function isVictoryEffect(
 
 /**
  * A player selects one effect per "slot". A slot is the effectType itself for
- * per-type effects (transportShipTrail, nukeTrail, structures, warship, train,
- * railroad) and the nukeType for nuke explosions (atom, hydro, mirvWarhead) — so a player can
+ * per-type effects (transportShipTrail, nukeTrail, structures, warship,
+ * warshipModel, transportModel, train, railroad) and the nukeType for nuke explosions (atom, hydro, mirvWarhead) — so a player can
  * equip a distinct explosion per bomb. Returns the effectType a slot resolves
  * to for catalog lookup, or undefined for an unknown/stale slot (e.g. a bare
  * "nukeExplosion" key from before the per-nukeType split).
@@ -605,6 +660,8 @@ export const CosmeticsSchema = z.object({
       nukeExplosion: lenientRecord(NukeExplosionEffectSchema).optional(),
       structures: lenientRecord(StructuresEffectSchema).optional(),
       warship: lenientRecord(WarshipEffectSchema).optional(),
+      warshipModel: lenientRecord(WarshipModelEffectSchema).optional(),
+      transportModel: lenientRecord(TransportModelEffectSchema).optional(),
       train: lenientRecord(TrainEffectSchema).optional(),
       railroad: lenientRecord(RailroadEffectSchema).optional(),
       victory: lenientRecord(VictoryEffectSchema).optional(),

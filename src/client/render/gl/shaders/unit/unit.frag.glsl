@@ -155,8 +155,11 @@ void main() {
   // the player color so ownership stays readable, and combat signals win: the
   // angry (attacking) override below replaces this with red, and the retreat
   // blink still darkens the center band.
+  // The warship models (a run of columns) take it like the default hull.
   if (abs(vAtlasCol - float(WARSHIP_COL)) < 0.1 ||
-      abs(vAtlasCol - float(WARSHIP_DIAGONAL_COL)) < 0.1) {
+      abs(vAtlasCol - float(WARSHIP_DIAGONAL_COL)) < 0.1 ||
+      (vAtlasCol > float(WARSHIP_MODEL_FIRST_COL) - 0.1 &&
+       vAtlasCol < float(WARSHIP_MODEL_LAST_COL) + 0.1)) {
     vec3 effectRGB;
     float dn = (vCellUV.x + vCellUV.y) * 0.5; // sprite diagonal, 0..1
     if (spriteEffectColor(WARSHIP_EFFECT_ROW_BASE, int(vOwnerID + 0.5), dn, true, effectRGB)) {

@@ -81,6 +81,16 @@ const COSMETIC_CATEGORIES: ReadonlyArray<{
     descKey: "graphics_setting.cosmetics_warships_desc",
   },
   {
+    key: "warshipModel",
+    labelKey: "graphics_setting.cosmetics_warship_models_label",
+    descKey: "graphics_setting.cosmetics_warship_models_desc",
+  },
+  {
+    key: "transportModel",
+    labelKey: "graphics_setting.cosmetics_transport_models_label",
+    descKey: "graphics_setting.cosmetics_transport_models_desc",
+  },
+  {
     key: "train",
     labelKey: "graphics_setting.cosmetics_trains_label",
     descKey: "graphics_setting.cosmetics_trains_desc",

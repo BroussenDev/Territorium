@@ -67,8 +67,9 @@ describe("EffectScene", () => {
     const scroll = grad.querySelector("animateTransform")!;
     expect(scroll.getAttribute("dur")).toBe("2s");
     expect(scroll.getAttribute("to")).toBe("3 3");
-    // The ship itself keeps the player's colors (three paths: trail + 2 bands).
-    expect(el.querySelectorAll("path").length).toBe(3);
+    // The ship itself keeps the player's colors: trail + hull, mid and
+    // outline bands + the mid band's shade toward the border color.
+    expect(el.querySelectorAll("path").length).toBe(5);
   });
 
   it("holds a gradient still when movementSpeed is 0 and reverses when negative", async () => {
@@ -124,13 +125,26 @@ describe("EffectScene", () => {
     );
   });
 
-  it("recolors the warship's light band only", async () => {
+  it("recolors the warship's hull and mid bands, not its outline", async () => {
     const el = await render(effect("warship", gradient));
     const paths = [...el.querySelectorAll("path")];
     expect(
       paths.filter((p) => p.getAttribute("fill")?.startsWith("url(#")),
-    ).toHaveLength(1);
-    expect(el.querySelector("linearGradient")?.getAttribute("x2")).toBe("13");
+    ).toHaveLength(2);
+    // The palette spans the 13-pixel sprite once.
+    expect(el.querySelector("linearGradient")?.getAttribute("x2")).toBe("14");
+  });
+
+  it("draws a boat model in the player's colors", async () => {
+    const el = await render({
+      ...base,
+      effectType: "warshipModel",
+      attributes: { type: "galleon" },
+    });
+    expect(el.querySelector("[data-effect-scene='warshipModel']")).toBeTruthy();
+    // Hull, mid and outline bands + the mid band's shade.
+    expect(el.querySelectorAll("path").length).toBe(4);
+    expect(el.querySelector("linearGradient")).toBeNull();
   });
 
   it("recolors both train bands, the dark band darkened", async () => {

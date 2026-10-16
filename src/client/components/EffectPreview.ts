@@ -10,10 +10,12 @@ import {
 import { customElement, property } from "lit/decorators.js";
 import {
   Effect,
+  isBoatModelEffect,
   NukeExplosionAttributes,
   StructuresEffectAttributes,
   TrailEffectAttributes,
 } from "../../core/CosmeticSchemas";
+import { BOAT_SPRITES, type BoatSpriteName } from "../render/BoatSprites";
 
 // ---------------------------------------------------------------------------
 // Scene previews — a tiny slice of the map, in tile units, drawn the way the
@@ -69,20 +71,19 @@ const CITY_GLYPH =
 // L = 180 (light → territory color), M = 130 (mid → spawn color),
 // D = 70 (dark → border color). One character per tile.
 type Band = "L" | "M" | "D";
-const TRANSPORT_SHIP = ["..D..", ".DLD.", "DLLLD", ".DLD.", "..D.."];
-const WARSHIP = [
-  ".....L.....",
-  "..LLLDLLL..",
-  ".LLLDDDLLL.",
-  ".LLDDDDDLL.",
-  ".LDDDLDDDL.",
-  "LDDDLLLDDDL",
-  ".LDDDLDDDL.",
-  ".LLDDDDDLL.",
-  ".LLLDDDLLL.",
-  "..LLLDLLL..",
-  ".....L.....",
-];
+/** A boat from the unit atlas (BoatSprites) in the scene's bands: outline
+ *  and detail dark, hull and helm light, the mid band M. */
+function boatRows(
+  name: BoatSpriteName,
+  heading: "straight" | "diagonal",
+): string[] {
+  return BOAT_SPRITES[name][heading].map((row) =>
+    row.replace(/[X:]/g, "D").replace(/[#B]/g, "L").replace(/o/g, "M"),
+  );
+}
+// Outline of the boat-model cards: darker than the default border so the
+// hull's shape, which is what a model changes, reads at card size.
+const MODEL_OUTLINE = PLAYER.darken(0.3).toHex();
 const TRAIN_ENGINE = [".....", "..D..", ".DDD.", "..D..", "....."];
 const TRAIN_CARRIAGE = [".....", ".LLL.", ".LDL.", ".LLL.", "....."];
 const ATOM_BOMB = [
@@ -379,7 +380,7 @@ function transportShipTrailScene(
       <path data-trail d=${stampPath(path)} fill=${paint.fill} opacity=${TRAIL_ALPHA} shape-rendering="crispEdges">
         ${paint.anim}
       </path>
-      ${sprite(TRANSPORT_SHIP, 18, 8, { L: solid(PLAYER_COLOR), D: solid(BORDER_COLOR) })}`,
+      ${boatSprite(boatRows("transport", "diagonal"), 18, 8, solid(PLAYER_COLOR))}`,
   );
 }
 
@@ -502,13 +503,38 @@ function warshipScene(
   const S = 15;
   const { paint, defs } =
     colors.length > 0
-      ? effectPaint(id, attrs, colors, { space: "icon", x: 2, y: 2, size: 11 })
+      ? effectPaint(id, attrs, colors, { space: "icon", x: 1, y: 1, size: 13 })
       : { paint: solid(PLAYER_COLOR), defs: nothing };
   return scene(
     S,
     defs,
     svg`${water(S)}
-      ${sprite(WARSHIP, 7, 7, { L: paint, D: solid(BORDER_COLOR) })}`,
+      ${boatSprite(boatRows("warship", "straight"), 7, 7, paint)}`,
+  );
+}
+
+/** A boat sprite: the hull in `hull` (the player color or an effect), the
+ *  mid band that paint shaded halfway to the outline color, the outline in
+ *  `outline` — the unit shader's bands. */
+function boatSprite(
+  rows: readonly string[],
+  cx: number,
+  cy: number,
+  hull: Paint,
+  outline = BORDER_COLOR,
+): SVGTemplateResult {
+  return svg`${sprite(rows, cx, cy, { L: hull, M: hull, D: solid(outline) })}
+    ${sprite(rows, cx, cy, { M: solid(`${outline}80`) })}`;
+}
+
+/** A boat model bow up-right on open water, in the player's colors. */
+function boatModelScene(name: BoatSpriteName): TemplateResult {
+  const S = 15;
+  return scene(
+    S,
+    nothing,
+    svg`${water(S)}
+      ${boatSprite(boatRows(name, "diagonal"), 7, 7, solid(PLAYER_COLOR), MODEL_OUTLINE)}`,
   );
 }
 
@@ -605,6 +631,14 @@ export class EffectScene extends LitElement {
   render(): TemplateResult {
     const effect = this.effect;
     if (effect === null) return html``;
+    if (isBoatModelEffect(effect)) {
+      return html`<div
+        data-effect-scene=${effect.effectType}
+        class="w-full h-full rounded-md overflow-hidden"
+      >
+        ${boatModelScene(effect.attributes.type)}
+      </div>`;
+    }
     const colors = validColors(effect.attributes.colors);
     let body: TemplateResult;
     switch (effect.effectType) {

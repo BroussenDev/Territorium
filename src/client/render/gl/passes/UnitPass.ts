@@ -14,7 +14,7 @@
  *   Ground/sea (boats, trains) → rendered below structures
  *   Missiles (nukes, shells, SAM, MIRV warheads) → rendered above structures
  *
- * Atlas layout (12 columns × 13px cells, pre-built by generate-sprite-atlases.mjs):
+ * Atlas layout (13px cells, column order in UnitAtlas.ts):
  *   Col 0: Transport, bow up (5×8 in a 13×13 cell)
  *   Col 1: Trade Ship (5×5)
  *   Col 2: Warship, bow up (13×13)
@@ -29,6 +29,8 @@
  *   Col 11: Train Carriage Loaded (5×5)
  *   Col 12: Warship, bow up-right (13×13)
  *   Col 13: Transport, bow up-right
+ *   Cols 14–23: the shop's boat models (carrier, galleon, drakkar,
+ *     hovercraft, junk), each bow up then bow up-right
  *
  * Data flow:
  *   FrameSnapshot.units → filter by typeToAtlasIdx → instance VBO → GPU
@@ -64,6 +66,17 @@ import {
   WARSHIP_EFFECT_BLOCK,
 } from "../utils/ColorUtils";
 import { createProgram, shaderSrc } from "../utils/GlUtils";
+import {
+  ATLAS_COLS,
+  BOAT_MODEL_COLS,
+  type BoatCols,
+  type BoatModel,
+  DEFAULT_BOAT_COLS,
+  isWarshipModel,
+  UNIT_ORDER,
+  WARSHIP_MODEL_FIRST_COL,
+  WARSHIP_MODEL_LAST_COL,
+} from "./UnitAtlas";
 import { WarshipCourses, warshipSprite } from "./WarshipHeading";
 
 const unitAtlasUrl = assetUrl("atlases/unit-atlas.png");
@@ -72,43 +85,19 @@ const unitAtlasUrl = assetUrl("atlases/unit-atlas.png");
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Unit types in atlas column order. Index = atlas column.
- *  TrainEngine/TrainCarriage/TrainCarriageLoaded are synthetic names —
- *  they don't match header.unitTypes directly. Train resolution is
- *  handled specially in updateUnits() via trainType + loaded fields.
- */
-const UNIT_ORDER = [
-  UT_TRANSPORT,
-  UT_TRADE_SHIP,
-  UT_WARSHIP,
-  UT_ATOM_BOMB,
-  UT_HYDROGEN_BOMB,
-  UT_MIRV,
-  UT_SAM_MISSILE,
-  UT_SHELL,
-  UT_MIRV_WARHEAD,
-  "TrainEngine",
-  "TrainCarriage",
-  "TrainCarriageLoaded",
-  "WarshipDiagonal",
-  "TransportDiagonal",
-] as const;
-
-const ATLAS_COLS = UNIT_ORDER.length;
-
 /** Atlas column of the hydrogen bomb — drives the GPU glow halo. */
 const HYDROGEN_BOMB_COL = UNIT_ORDER.indexOf(UT_HYDROGEN_BOMB);
 
-/** Atlas column of the warship — gates the warship cosmetic effect. */
-const WARSHIP_COL = UNIT_ORDER.indexOf(UT_WARSHIP);
-/** Atlas column of the warship drawn bow up-right. */
-const WARSHIP_DIAGONAL_COL = UNIT_ORDER.indexOf("WarshipDiagonal");
+/** Atlas columns of the default warship — gate the warship cosmetic effect
+ *  (with the warship models' columns). */
+const WARSHIP_COL = DEFAULT_BOAT_COLS.warship.straight;
+const WARSHIP_DIAGONAL_COL = DEFAULT_BOAT_COLS.warship.diagonal;
 
-/** Boats drawn pointing where they sail: their bow-up-right sprite column. */
-const ORIENTED_DIAGONAL_COL: ReadonlyMap<string, number> = new Map([
-  [UT_WARSHIP, WARSHIP_DIAGONAL_COL],
-  [UT_TRANSPORT, UNIT_ORDER.indexOf("TransportDiagonal")],
-]);
+/** A player's equipped boat models, as atlas columns. */
+interface OwnerBoats {
+  warship?: BoatCols;
+  transport?: BoatCols;
+}
 
 /** First atlas column of the train sprites (engine, carriage, loaded
  *  carriage are contiguous) — gates the train cosmetic effect. */
@@ -121,7 +110,7 @@ const TRAIN_FIRST_COL = UNIT_ORDER.indexOf("TrainEngine");
 /**
  * Per-instance data (16 bytes):
  *   float x, y, ownerID   — 12 bytes (3 floats)
- *   uint8 atlasIdx         —  1 byte  (atlas column 0–11)
+ *   uint8 atlasIdx         —  1 byte  (atlas column, see UnitAtlas.ts)
  *   uint8 flags            —  1 byte  (0 = normal, 1 = flicker, 2 = angry, 3 = trade-friendly, 4 = retreating, 5 = flicker-untargetable)
  *   uint8 flickerHash      —  1 byte  (per-instance flicker phase offset)
  *   uint8 quarterTurns     —  1 byte  (warships: clockwise sprite turns, 0–3)
@@ -290,6 +279,8 @@ export class UnitPass {
   private structures: Map<number, UnitState> = new Map();
   /** Each oriented boat's recent track, which way it points. */
   private readonly warshipCourses = new WarshipCourses();
+  /** Boat models by owner; owners without one sail the default boats. */
+  private readonly ownerBoats = new Map<number, OwnerBoats>();
 
   constructor(
     gl: WebGL2RenderingContext,
@@ -327,6 +318,8 @@ export class UnitPass {
         ATLAS_COLS,
         WARSHIP_COL,
         WARSHIP_DIAGONAL_COL,
+        WARSHIP_MODEL_FIRST_COL,
+        WARSHIP_MODEL_LAST_COL,
         WARSHIP_EFFECT_ROW_BASE: WARSHIP_EFFECT_BLOCK * MAX_TRAIL_COLORS,
         TRAIN_FIRST_COL,
         TRAIN_EFFECT_ROW_BASE: TRAIN_EFFECT_BLOCK * MAX_TRAIL_COLORS,
@@ -435,6 +428,23 @@ export class UnitPass {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
   }
 
+  /** The sprite columns of an oriented boat (warship or transport ship):
+   *  its owner's model, else the default boat. Undefined for other units. */
+  private boatCols(unit: UnitState): BoatCols | undefined {
+    if (unit.unitType === UT_WARSHIP) {
+      return (
+        this.ownerBoats.get(unit.ownerID)?.warship ?? DEFAULT_BOAT_COLS.warship
+      );
+    }
+    if (unit.unitType === UT_TRANSPORT) {
+      return (
+        this.ownerBoats.get(unit.ownerID)?.transport ??
+        DEFAULT_BOAT_COLS.transport
+      );
+    }
+    return undefined;
+  }
+
   /** A boat or train; warships and transport ships point where they sail. */
   private emitGroundUnit(
     id: number,
@@ -444,8 +454,8 @@ export class UnitPass {
     atlasIdx: number,
     flags: number,
   ): void {
-    const diagonalCol = ORIENTED_DIAGONAL_COL.get(unit.unitType);
-    if (diagonalCol === undefined) {
+    const cols = this.boatCols(unit);
+    if (cols === undefined) {
       this.emitGround(x, y, unit.ownerID, atlasIdx, flags);
       return;
     }
@@ -456,7 +466,7 @@ export class UnitPass {
       x,
       y,
       unit.ownerID,
-      sprite.diagonal ? diagonalCol : atlasIdx,
+      sprite.diagonal ? cols.diagonal : cols.straight,
       flags,
       sprite.quarterTurns,
     );
@@ -655,6 +665,18 @@ export class UnitPass {
   }
   setStructures(structs: Map<number, UnitState>): void {
     this.structures = structs;
+  }
+  /** The boat models `ownerID` sails (cosmetic; empty = the default boats).
+   *  At most one warship and one transport model count; a later one of the
+   *  same kind wins. */
+  setBoatModels(ownerID: number, models: readonly BoatModel[]): void {
+    const boats: OwnerBoats = {};
+    for (const model of models) {
+      if (isWarshipModel(model)) boats.warship = BOAT_MODEL_COLS[model];
+      else boats.transport = BOAT_MODEL_COLS[model];
+    }
+    if (boats.warship || boats.transport) this.ownerBoats.set(ownerID, boats);
+    else this.ownerBoats.delete(ownerID);
   }
 
   /** Bind shared program state + uniforms (call before drawGround/drawMissiles). */

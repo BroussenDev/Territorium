@@ -33,6 +33,7 @@ import type {
 import type { CapitalShieldState } from "./passes/CapitalShieldPass";
 import type { ObjectiveZone } from "./passes/ObjectivePass";
 import type { SpawnCenter, SpawnZone } from "./passes/SpawnOverlayPass";
+import type { BoatModel } from "./passes/UnitAtlas";
 import type { AttackTroopLabel } from "./passes/WorldTextPass";
 import { GPURenderer } from "./Renderer";
 import type { RenderSettings } from "./RenderSettings";
@@ -420,6 +421,10 @@ export class MapRenderer {
 
   setLocalPlayerID(id: number): void {
     this.renderer?.setLocalPlayerID(id);
+  }
+  /** The boat models a player sails (cosmetic; empty = the default boats). */
+  setBoatModels(smallID: number, models: readonly BoatModel[]): void {
+    this.renderer?.setBoatModels(smallID, models);
   }
   /** Rail color for the local player (0–1 RGB). */
   setLocalRailColor(r: number, g: number, b: number): void {

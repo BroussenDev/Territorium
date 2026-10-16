@@ -69,6 +69,7 @@ import { StructurePass } from "./passes/StructurePass";
 import { TerrainPass } from "./passes/TerrainPass";
 import { TerritoryPass } from "./passes/TerritoryPass";
 import { TrailPass } from "./passes/TrailPass";
+import type { BoatModel } from "./passes/UnitAtlas";
 import { UnitPass } from "./passes/UnitPass";
 import { WorldTextPass } from "./passes/WorldTextPass";
 import type { RenderSettings } from "./RenderSettings";
@@ -1219,6 +1220,11 @@ export class GPURenderer {
     this.affiliationPalette.setLocalPlayer(id);
     this.unitPass.setLocalPlayer(id);
     this.railroadPass.setLocalPlayer(id);
+  }
+
+  /** The boat models a player sails (cosmetic; empty = the default boats). */
+  setBoatModels(smallID: number, models: readonly BoatModel[]): void {
+    this.unitPass.setBoatModels(smallID, models);
   }
 
   setLocalRailColor(r: number, g: number, b: number): void {

@@ -12,6 +12,7 @@ import { SpiralRibbonPass } from "../gl/passes/SpiralRibbonPass";
 import { StructurePass } from "../gl/passes/StructurePass";
 import { TerrainPass } from "../gl/passes/TerrainPass";
 import { TrailPass } from "../gl/passes/TrailPass";
+import type { BoatModel } from "../gl/passes/UnitAtlas";
 import { UnitPass } from "../gl/passes/UnitPass";
 import { applyGraphicsOverrides } from "../gl/RenderOverrides";
 import { createRenderSettings, RenderSettings } from "../gl/RenderSettings";
@@ -84,6 +85,8 @@ export interface CosmeticPreviewConfig {
   effectAttributes?: PaletteEffectAttributes;
   explosionParams?: NukeExplosionRenderParams;
   salvoMode?: boolean;
+  /** A boat model the previewed boats are drawn as. */
+  boatModel?: BoatModel;
 }
 
 /** Simulated tick length — units advance and flicker once per tick, as in a match. */
@@ -277,6 +280,10 @@ export class CosmeticPreviewRenderer {
     this.fxPass.clear();
     this.lastUnitTick = -1;
     this.updateEffectTexture(config);
+    this.unitPass.setBoatModels(
+      PREVIEW_OWNER_ID,
+      config.boatModel ? [config.boatModel] : [],
+    );
 
     if (resetCamera) this.applyCameraPreset(config.mode);
 

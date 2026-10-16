@@ -135,6 +135,8 @@ export const GraphicsOverridesSchema = z
         nukeExplosion: z.boolean(),
         structures: z.boolean(),
         warship: z.boolean(),
+        warshipModel: z.boolean(),
+        transportModel: z.boolean(),
         train: z.boolean(),
         railroad: z.boolean(),
         victory: z.boolean(),

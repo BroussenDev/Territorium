@@ -3,6 +3,7 @@ import { html, LitElement, nothing, PropertyValues } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import {
   Effect,
+  isBoatModelEffect,
   isNukeExplosionEffect,
   NukeExplosionAttributes,
   Pattern,
@@ -315,6 +316,14 @@ export class CosmeticRenderCanvas extends LitElement {
         mode: "WARSHIP_BOAT_TRAIL",
         cosmeticUnitType: UT_WARSHIP,
         effectAttributes: effect.attributes,
+      };
+    }
+    if (isBoatModelEffect(effect)) {
+      return {
+        mode: "WARSHIP_BOAT_TRAIL",
+        cosmeticUnitType:
+          effect.effectType === "warshipModel" ? UT_WARSHIP : UT_TRANSPORT,
+        boatModel: effect.attributes.type,
       };
     }
     if (effect.effectType === "train" || effect.effectType === "railroad") {

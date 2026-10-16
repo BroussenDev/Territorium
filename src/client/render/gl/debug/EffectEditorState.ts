@@ -19,11 +19,21 @@ import { MAX_NUKE_EXPLOSION_COLORS } from "../../types";
 
 /**
  * The effect types the editor tunes on the map. The victory effect plays over
- * the end-of-game screen, not on the map, so it is left out.
+ * the end-of-game screen, not on the map, and boat models swap a sprite
+ * rather than carry colors to tune, so they are left out.
  */
-export type EditableEffectType = Exclude<EffectType, "victory">;
+const UNEDITABLE_EFFECT_TYPES = [
+  "victory",
+  "warshipModel",
+  "transportModel",
+] as const;
+export type EditableEffectType = Exclude<
+  EffectType,
+  (typeof UNEDITABLE_EFFECT_TYPES)[number]
+>;
 export const EDITABLE_EFFECT_TYPES = EFFECT_TYPES.filter(
-  (t): t is EditableEffectType => t !== "victory",
+  (t): t is EditableEffectType =>
+    !(UNEDITABLE_EFFECT_TYPES as readonly string[]).includes(t),
 );
 
 /** Max colors a palette slot can carry — the effect palette holds 8 rows per block. */

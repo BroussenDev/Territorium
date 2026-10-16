@@ -7,6 +7,7 @@ import {
   type EffectType,
   findEffect,
   findEffectForSlot,
+  isBoatModelEffect,
   isNukeExplosionEffect,
   isTrailEffect,
   type NukeExplosionAttributes,
@@ -49,6 +50,7 @@ import {
 } from "./render/types";
 // Value import from the leaf module (not the ./render/gl barrel) so non-Vite
 // consumers don't pull in GPURenderer and its shaders — see note above.
+import type { BoatModel } from "./render/gl/passes/UnitAtlas";
 import {
   EFFECT_PALETTE_BLOCKS,
   MAX_TRAIL_COLORS,
@@ -185,6 +187,26 @@ function catalogEffectAttributes(
     return undefined;
   }
   return effect.attributes;
+}
+
+/**
+ * The boat models a player has equipped (warship and transport ship), from
+ * the catalog. Empty when none is equipped or a selection isn't a model this
+ * client draws.
+ */
+export function catalogBoatModels(
+  catalog: Cosmetics,
+  p: PlayerView,
+): BoatModel[] {
+  const models: BoatModel[] = [];
+  for (const effectType of ["warshipModel", "transportModel"] as const) {
+    const selected = p.cosmetics.effects?.[effectType];
+    if (!selected) continue;
+    const effect = findEffect(catalog, effectType, selected.name);
+    if (effect && isBoatModelEffect(effect))
+      models.push(effect.attributes.type);
+  }
+  return models;
 }
 
 /**
@@ -809,7 +831,10 @@ export class WebGLFrameBuilder {
       if (!catalog && !overrides) continue;
       // An override-only player (catalog still loading) is re-checked each
       // tick so their real cosmetics resolve once the catalog arrives.
-      if (catalog) this.effectResolved.add(smallID);
+      if (catalog) {
+        this.effectResolved.add(smallID);
+        this.view.setBoatModels(smallID, catalogBoatModels(catalog, p));
+      }
 
       // Resolve each trail-styled effectType into its own block of the effect
       // palette. rowBase block*MAX_TRAIL_COLORS must match the consumer
