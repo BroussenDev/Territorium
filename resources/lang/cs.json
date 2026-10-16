@@ -237,9 +237,13 @@
     "unavailable": "Správa uživatelského jména zatím není pro tento účet dostupná."
   },
   "chat": {
+    "all_phrases": "Všechny fráze",
     "attack": {
       "attack": "Zaútoč na [P1]!",
+      "betray": "Zraďte [P1]!",
+      "build_sams": "Stavějte SAM!",
       "build_warships": "Postav válečné lodě!",
+      "crown": "Zaútočte na korunu!",
       "finish": "Doražme hráče [P1]!",
       "focus": "Soustřeď palbu na [P1]!",
       "mirv": "Odpal MIRV na [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Postav bunkry!",
       "defend": "Braň [P1]!",
       "defend_from": "Braň se proti [P1]!",
-      "dont_attack": "Neútoč na [P1]!"
+      "dont_attack": "Neútoč na [P1]!",
+      "make_ally": "Spojte se s [P1]!"
     },
     "from": "Od {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Prosím, dej mi zlato!",
       "help_defend": "Pomoz mi se bránit proti [P1]!",
       "no_attack": "Prosím, neútoč na mě!",
+      "send_gold_to": "Pošlete zlato hráči [P1]!",
+      "send_troops_to": "Pošlete vojáky hráči [P1]!",
       "sorry_attack": "Promiň, útok nebyl úmyslný.",
       "trade_partners": "Pojďme spolu obchodovat!",
       "troops": "Prosím, dej mi jednotky!",
@@ -295,7 +302,6 @@
       "coastline": "Prosím, nech mě získat pobřeží.",
       "fun": "Tato hra je zábavná!",
       "go": "Pojďme!",
-      "pr": "Kdy bude konečně sloučeno mé PR...?",
       "strategy": "Skvělá strategie!",
       "team_up": "Spojme se proti [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Hráč",
     "search": "Hledat hráče...",
     "send": "Odeslat",
+    "short": {
+      "greet": {
+        "ruining_games": "Kazíte nám hry"
+      },
+      "help": {
+        "sorry_attack": "Promiň za útok!",
+        "troops_frontlines": "Vojáky na frontu!"
+      },
+      "misc": {
+        "coastline": "Nechte mi pobřeží"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] může vyslat MIRV!",
+        "pirating": "[P1] plení obchod",
+        "saving_for_mirv": "[P1] šetří na MIRV",
+        "snowballing": "[P1] roste moc rychle",
+        "stalemate": "Mír? Pat.",
+        "stop_trading_all": "Zastavte veškerý obchod!"
+      }
+    },
     "sort_by_territory": "Seřadit podle území",
     "title": "Rychlý chat",
     "to": "Odesláno {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] mě zradil!",
       "cheating": "[P1] podvádí!",
       "danger_base": "[P1] je bez ochrany!",
+      "disconnected": "[P1] se odpojil!",
       "getting_big": "[P1] roste příliš rychle!",
       "has_allies": "[P1] má mnoho spojenců.",
       "mirv_ready": "[P1] má dostatek zlata pro odpálení MIRV!",
       "mirv_soon": "[P1] může brzy odpálit MIRV!",
       "no_allies": "[P1] nemá žádné spojence.",
       "number1_warning": "Hráč #1 brzy vyhraje, pokud se proti němu nespojíme!",
+      "pirating": "[P1] plení celý náš obchod!",
       "saving_for_mirv": "[P1] šetří na odpálení MIRV.",
       "snowballing": "[P1] se rozpíná moc rychle!",
       "stalemate": "Uzavřeme mír. Tohle je patová situace, oba prohrajeme.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Šarlatová pára",
     "voie_emeraude": "Smaragdová linie"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomacie",
+    "directions": "Směry",
+    "faces": "Obličeje",
+    "favorite_remove_hint": "Přetáhněte ven pro odebrání",
+    "favorites": "Oblíbené",
+    "favorites_hint": "Přetáhněte sem emoji a dejte jim klávesovou zkratku",
+    "favorites_hint_touch": "Přetáhněte sem emoji, ať je máte po ruce",
+    "gestures": "Gesta",
+    "ranks": "Hodnosti",
+    "things": "Věci"
+  },
   "error_modal": {
     "connection_error": "Chyba spojení!",
     "connection_lost": "Ztratilo se připojení k hernímu serveru a nelze se znovu připojit. Obnovte stránku a zkuste se znovu připojit.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} se vzdává: nabídnou, že se stanou vaším vazalem na 10 minut, aniž by mezi vámi došlo k boji, a zaplatí vám 25 % svého zlatého příjmu",
     "retreating": "ustupování",
     "sent_emoji": "Odesláno {name}: {emoji}",
+    "sent_emoji_all": "Odesláno všem: {emoji}",
     "sent_gold_to_player": "Odesláno {gold} zlata {name}",
     "sent_troops_to_player": "Odesláno {troops} jednotek {name}",
     "surrender_sent": "Vzdali jste se {name}. Čekání na jejich odpověď.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Snížit / zvýšit rychlost hry (hra pro jednoho hráče)",
     "action_move_camera": "Posunout kameru",
     "action_pause_game": "Pozastavit / Obnovit hru",
+    "action_quick_chat": "Otevřít rychlý chat",
     "action_ratio_change": "Snížit / zvýšit poměr útoku",
     "action_reset_gfx": "Resetovat grafiku",
     "action_warship_multiselect": "Vybrat více bitevních lodí (tažením nakreslete výběrový rámeček)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Počet chyb",
     "easter_writing_speed_desc": "Upravte, jak rychle předstíráte, že kódujete (×1–×100)",
     "easter_writing_speed_label": "Násobitel rychlosti psaní",
+    "emoji_menu": "Nabídka emoji",
+    "emoji_menu_desc": "Otevře nabídku emoji pro hráče, jehož území je pod kurzorem.",
     "emoji_menu_modifier": "Klávesa pro nabídku Emoji",
     "emoji_menu_modifier_desc": "Podržte tuto klávesu při kliknutí, aby se otevřela nabídka Emoji.",
     "emojis_desc": "Určuje, zda jsou emoji zobrazeny ve hře",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Vykresluje méně snímků, když je okno hry za jiným oknem nebo minimalizované. Hra běží normálně dál.",
     "power_saving_label": "Úspora energie na pozadí",
     "press_a_key": "Stiskněte klávesu",
+    "quick_chat": "Rychlý chat",
+    "quick_chat_desc": "Otevře rychlý chat pro hráče, jehož území je pod kurzorem.",
     "render_debug_gui": "GUI pro ladění vykreslování",
     "render_debug_gui_desc": "Zapne/vypne panel ladění vykreslování",
     "request_alliance": "Požádat o spojenectví",

@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.111
+
+💬 **Faster chat and emojis**
+
+- R opens quick chat on the player under your cursor: phrases are one-click chips grouped by category, with a toggle to show them all. Eight new phrases, among them "Betray [P1]!", "Build SAMs!", "Send gold to [P1]!" and "Attack the crown!".
+- F opens a redesigned emoji menu, grouped by kind, with a Favorites row: drag emojis into it and send them with Q W E A S D while the menu is open.
+- The player panel gets chat and emoji buttons next to the alliance, target and boat ones.
+- Select all warships moves to Z (F is the emoji menu now, X builds an EMP bomb). A key you had set yourself is kept.
+
 ## v0.1.110
 
 🧠 **Smarter nations**

@@ -237,9 +237,13 @@
     "unavailable": "Kullanıcı adı yönetimi henüz bu hesapta kullanılamıyor."
   },
   "chat": {
+    "all_phrases": "Tüm ifadeler",
     "attack": {
       "attack": "[P1]'e saldır!",
+      "betray": "[P1]'e ihanet edin!",
+      "build_sams": "SAM inşa edin!",
       "build_warships": "Savaş Gemileri İnşa Et!",
+      "crown": "Taca saldırın!",
       "finish": "[P1]'i bitirelim!",
       "focus": "[P1] kişisine odaklan!",
       "mirv": "[P1]'e MIRV fırlat!"
@@ -259,7 +263,8 @@
       "build_posts": "Savunma Karakolları Kur!",
       "defend": "[P1]'i savunun!",
       "defend_from": "[P1]'e karşı savun!",
-      "dont_attack": "[P1]'e saldırmayın!"
+      "dont_attack": "[P1]'e saldırmayın!",
+      "make_ally": "[P1] ile ittifak kurun!"
     },
     "from": "{user} kişisinden: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Lütfen bana altın ver!",
       "help_defend": "[P1] kişisine karşı savunmamda yardım et!",
       "no_attack": "Lütfen bana saldırma!",
+      "send_gold_to": "[P1]'e altın gönderin!",
+      "send_troops_to": "[P1]'e asker gönderin!",
       "sorry_attack": "Üzgünüm, saldırmak istememiştim.",
       "trade_partners": "Ticaret ortağı olalım!",
       "troops": "Lütfen bana asker ver!",
@@ -295,7 +302,6 @@
       "coastline": "Lütfen sahil şeridi almama izin ver.",
       "fun": "Bu oyun eğlenceli!",
       "go": "Hadi gidelim!",
-      "pr": "PR'ım ne zaman birleşecek acaba...?",
       "strategy": "Güzel strateji!",
       "team_up": "[P1]'e karşı takım olalım!"
     },
@@ -303,6 +309,26 @@
     "player": "Oyuncu",
     "search": "Oyuncu ara...",
     "send": "Gönder",
+    "short": {
+      "greet": {
+        "ruining_games": "Oyunlarımızı mahvediyorsunuz"
+      },
+      "help": {
+        "sorry_attack": "Saldırı için özür dilerim!",
+        "troops_frontlines": "Askerler cepheye!"
+      },
+      "misc": {
+        "coastline": "Bana bir kıyı bırakın"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] artık MIRV atabilir!",
+        "pirating": "[P1] korsanlık yapıyor",
+        "saving_for_mirv": "[P1] MIRV için biriktiriyor",
+        "snowballing": "[P1] çok hızlı büyüyor",
+        "stalemate": "Barış mı? Pat.",
+        "stop_trading_all": "Tüm ticareti durdurun!"
+      }
+    },
     "sort_by_territory": "Bölgeye göre sırala",
     "title": "Hızlı Sohbet",
     "to": "{user}'a gönderildi: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] bana ihanet etti!",
       "cheating": "[P1] hile yapıyor!",
       "danger_base": "[P1] korumasız!",
+      "disconnected": "[P1] bağlantısı koptu!",
       "getting_big": "[P1] çok hızlı büyüyor!",
       "has_allies": "[P1]'in çok müttefiki var.",
       "mirv_ready": "[P1]'in MIRV fırlatacak kadar altını var!",
       "mirv_soon": "[P1] yakında MIRV fırlatabilir!",
       "no_allies": "[P1]'in müttefiki yok.",
       "number1_warning": "Takım olmazsak 1 numaralı oyuncu yakında kazanacak!",
+      "pirating": "[P1] tüm ticaretimizi yağmalıyor!",
       "saving_for_mirv": "[P1] MIRV fırlatmak için para biriktiriyor.",
       "snowballing": "[P1] çok hızlı büyüyor!",
       "stalemate": "Barış yapalım. Bu bir çıkmaz, ikimiz de kaybedeceğiz.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Kızıl Buhar",
     "voie_emeraude": "Zümrüt Hattı"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomasi",
+    "directions": "Yönler",
+    "faces": "Yüzler",
+    "favorite_remove_hint": "Kaldırmak için dışarı sürükleyin",
+    "favorites": "Favoriler",
+    "favorites_hint": "Kısayol tuşu atamak için emojileri buraya sürükleyin",
+    "favorites_hint_touch": "Elinizin altında tutmak için emojileri buraya sürükleyin",
+    "gestures": "Jestler",
+    "ranks": "Rütbeler",
+    "things": "Nesneler"
+  },
   "error_modal": {
     "connection_error": "Bağlantı hatası!",
     "connection_lost": "Oyun sunucusuyla bağlantı kesildi ve yeniden bağlanılamadı. Yeniden katılmayı denemek için sayfayı yenileyin.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} teslim olur: aranızda hiçbir kavga olmadan 10 dakika boyunca sizin tebaanız olmayı ve altın gelirlerinin %25'ini size ödemeyi teklif ederler",
     "retreating": "geri çekiliyor",
     "sent_emoji": "{name}'a Gönderildi: {emoji}",
+    "sent_emoji_all": "Herkese gönderildi: {emoji}",
     "sent_gold_to_player": "{name}'e {gold} altın gönderildi",
     "sent_troops_to_player": "{name}'e {troops} birlik gönderildi",
     "surrender_sent": "{name}'a teslim oldunuz. Cevaplarını bekliyorum.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Oyun hızını azaltma/yükseltme (tek oyunculu)",
     "action_move_camera": "Kamerayı haraket ettir",
     "action_pause_game": "Oyunu duraklat / Devam ettir",
+    "action_quick_chat": "Hızlı sohbeti aç",
     "action_ratio_change": "Saldırı oranını Azalt/Artır",
     "action_reset_gfx": "Grafikleri sıfırla",
     "action_warship_multiselect": "Birden fazla savaş gemisi seçin (seçim kutusunu çizmek için sürükleyin)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Hata Sayısı",
     "easter_writing_speed_desc": "Kod yazıyormuş gibi yapma hızınızı ayarlayın (x1–x100)",
     "easter_writing_speed_label": "Yazma Hızı Çarpanı",
+    "emoji_menu": "Emoji menüsü",
+    "emoji_menu_desc": "İmlecin altındaki bölgenin sahibi olan oyuncu için emoji menüsünü açar.",
     "emoji_menu_modifier": "Emoji Menüsü Değiştiricisi",
     "emoji_menu_modifier_desc": "Emoji menüsünü açmak için tıklarken bu tuşa basılı tut.",
     "emojis_desc": "Emojilerin oyunda gösterilip gösterilmeyeceğini değiştir",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Oyun penceresi başka bir pencerenin arkasındayken veya simge durumundayken daha az kare çizer. Oyun normal şekilde devam eder.",
     "power_saving_label": "Arka planda güç tasarrufu",
     "press_a_key": "Bir tuşa bas",
+    "quick_chat": "Hızlı sohbet",
+    "quick_chat_desc": "İmlecin altındaki bölgenin sahibi olan oyuncu için hızlı sohbeti açar.",
     "render_debug_gui": "İşleme Hata Ayıklama GUI'si",
     "render_debug_gui_desc": "Oluşturucu ayarlama panelini açın/kapatın",
     "request_alliance": "İttifak İste",

@@ -237,9 +237,13 @@
     "unavailable": "La gestió de noms d'usuari encara no està disponible en aquest compte."
   },
   "chat": {
+    "all_phrases": "Totes les frases",
     "attack": {
       "attack": "Ataca a [P1]!",
+      "betray": "Traïu [P1]!",
+      "build_sams": "Construïu SAM!",
       "build_warships": "Construeix Vaixells de Guerra!",
+      "crown": "Ataqueu la corona!",
       "finish": "Eliminem a [P1], que està a les últimes!",
       "focus": "Enfoquem les armes a [P1]!",
       "mirv": "Llança una MIRV a [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Construeix Torres Defensives!",
       "defend": "Defèn a [P1]!",
       "defend_from": "Defèn contra [P1]!",
-      "dont_attack": "No ataquis a [P1]!"
+      "dont_attack": "No ataquis a [P1]!",
+      "make_ally": "Alieu-vos amb [P1]!"
     },
     "from": "De {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Dona'm or, si us plau!",
       "help_defend": "Ajuda'm a defensar contra [P1]!",
       "no_attack": "Per favor, no m'ataquis!",
+      "send_gold_to": "Envieu or a [P1]!",
+      "send_troops_to": "Envieu tropes a [P1]!",
       "sorry_attack": "Perdona'm, no et volia atacar.",
       "trade_partners": "Siguem companys de comerç!",
       "troops": "Envia'm tropes, si us plau!",
@@ -295,7 +302,6 @@
       "coastline": "Si us plau, deixa'm aconseguir costa.",
       "fun": "Aquest joc és divertit!",
       "go": "Som-hi!",
-      "pr": "Quan s'afegirà la meva PR...?",
       "strategy": "Bona estratègia!",
       "team_up": "Unim-nos contra [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Jugador",
     "search": "Busca un jugador...",
     "send": "Envia",
+    "short": {
+      "greet": {
+        "ruining_games": "Arruïneu les nostres partides"
+      },
+      "help": {
+        "sorry_attack": "Perdó per l'atac!",
+        "troops_frontlines": "Tropes al front!"
+      },
+      "misc": {
+        "coastline": "Deixa'm una costa"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] ja pot llançar MIRV!",
+        "pirating": "[P1] està saquejant",
+        "saving_for_mirv": "[P1] estalvia per a MIRV",
+        "snowballing": "[P1] creix massa",
+        "stalemate": "Pau? Taules.",
+        "stop_trading_all": "Atureu tot comerç!"
+      }
+    },
     "sort_by_territory": "Ordena per territori",
     "title": "Xat ràpid",
     "to": "Enviat a {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] m'ha traït!",
       "cheating": "[P1] està fent trampes!",
       "danger_base": "[P1] no està protegit!",
+      "disconnected": "[P1] s'ha desconnectat!",
       "getting_big": "[P1] està creixent massa ràpid!",
       "has_allies": "[P1] té molts aliats.",
       "mirv_ready": "[P1] té prou or per llançar una MIRV!",
       "mirv_soon": "[P1] podrà llençar una MIRV aviat!",
       "no_allies": "[P1] no té aliats.",
       "number1_warning": "El jugador número 1 guanyarà aviat si no ens aliem!",
+      "pirating": "[P1] està saquejant tot el nostre comerç!",
       "saving_for_mirv": "[P1] està estalviant per llançar una MIRV.",
       "snowballing": "[P1] s'està expandint massa ràpidament!",
       "stalemate": "Fem les paus. Estem empatats, perdrem tots dos.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Línia Maragda"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomàcia",
+    "directions": "Direccions",
+    "faces": "Cares",
+    "favorite_remove_hint": "Arrossega fora per treure",
+    "favorites": "Preferits",
+    "favorites_hint": "Arrossega emojis aquí per donar-los una tecla de drecera",
+    "favorites_hint_touch": "Arrossega emojis aquí per tenir-los a mà",
+    "gestures": "Gestos",
+    "ranks": "Rangs",
+    "things": "Objectes"
+  },
   "error_modal": {
     "connection_error": "Error de connexió!",
     "connection_lost": "S'ha perdut la connexió al servidor del joc i no s'ha pogut tornar a connectar. Actualitza la pàgina per provar de tornar a unir-te.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} es rendeix: ofereixen ser el vostre vassall durant 10 minuts, sense baralles entre vosaltres, i pagar-vos el 25% dels seus ingressos d'or",
     "retreating": "retirant",
     "sent_emoji": "Enviat a {name}: {emoji}",
+    "sent_emoji_all": "Enviat a tothom: {emoji}",
     "sent_gold_to_player": "Enviat {gold} or a{name}",
     "sent_troops_to_player": "Enviat {troops} tropes a {name}",
     "surrender_sent": "T'has rendit a {name}. Esperant la seva resposta.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Reducció/augment de la velocitat del joc (un jugador)",
     "action_move_camera": "Moure càmera",
     "action_pause_game": "Pausa / Reprèn el joc",
+    "action_quick_chat": "Obrir el xat ràpid",
     "action_ratio_change": "Reduir/Augmentar la ràtio d'atac",
     "action_reset_gfx": "Restablir gràfics",
     "action_warship_multiselect": "Seleccioneu diversos vaixells de guerra (arrossegar per dibuixar el quadre de selecció)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Compte d'errors",
     "easter_writing_speed_desc": "Ajusta la velocitat amb la qual fas veure que programes (x1–x100)",
     "easter_writing_speed_label": "Multiplicador de velocitat d'escriptura",
+    "emoji_menu": "Menú d'emojis",
+    "emoji_menu_desc": "Obre el menú d'emojis per al jugador el territori del qual és sota el cursor.",
     "emoji_menu_modifier": "Modificador del menú d'emoji",
     "emoji_menu_modifier_desc": "Mantingueu premuda aquesta tecla mentre feu clic per obrir el menú d'emojis.",
     "emojis_desc": "Canvia si els emojis es mostren al joc",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Dibuixa menys fotogrames mentre la finestra del joc és darrere d'una altra o minimitzada. La partida continua amb normalitat.",
     "power_saving_label": "Estalvi d'energia en segon pla",
     "press_a_key": "Premeu una tecla",
+    "quick_chat": "Xat ràpid",
+    "quick_chat_desc": "Obre el xat ràpid per al jugador el territori del qual és sota el cursor.",
     "render_debug_gui": "GUI de renderització de depuració",
     "render_debug_gui_desc": "Canvia el tauler d'ajust del renderitzador",
     "request_alliance": "Sol·licita l'Aliança",

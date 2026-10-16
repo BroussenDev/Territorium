@@ -1,3 +1,4 @@
+import { keysMayBeShared } from "../core/game/UserSettings";
 import type { UserSettings } from "../core/game/UserSettings";
 
 /** A rebound action: `value` is the key code, `key` what the player saw. */
@@ -76,5 +77,7 @@ export function keybindConflicts(
   );
   if (sharedModifier) return false;
 
-  return Object.entries(active).some(([k, v]) => k !== action && v === value);
+  return Object.entries(active).some(
+    ([k, v]) => k !== action && v === value && !keysMayBeShared(action, k),
+  );
 }

@@ -237,9 +237,13 @@
     "unavailable": "Administrado de uzantnomoj ankoraŭ ne disponeblas en ĉi tiu konto."
   },
   "chat": {
+    "all_phrases": "Ĉiuj frazoj",
     "attack": {
       "attack": "Ataku [P1]!",
+      "betray": "Perfidu [P1]!",
+      "build_sams": "Konstruu SAM-ojn!",
       "build_warships": "Konstruu militŝipojn!",
+      "crown": "Ataku la kronon!",
       "finish": "Ni finigu [P1]!",
       "focus": "Fokusu fajron sur [P1]!",
       "mirv": "Lanĉu MIRV-on ĉe [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Konstruu defendajn postenojn!",
       "defend": "Defendu [P1]!",
       "defend_from": "Defendu de [P1]!",
-      "dont_attack": "Ne ataku [P1]!"
+      "dont_attack": "Ne ataku [P1]!",
+      "make_ally": "Aliĝu kun [P1]!"
     },
     "from": "De {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Bonvolu doni al mi oron!",
       "help_defend": "Helpu min defendi kontraŭ [P1]!",
       "no_attack": "Bonvolu ne ataki min!",
+      "send_gold_to": "Sendu oron al [P1]!",
+      "send_troops_to": "Sendu trupojn al [P1]!",
       "sorry_attack": "Pardonu, mi ne intencis ataki.",
       "trade_partners": "Ni estu komercaj partneroj!",
       "troops": "Bonvolu doni al mi trupojn!",
@@ -295,7 +302,6 @@
       "coastline": "Bonvolu lasi min akiri marbordon.",
       "fun": "Ĉi tiu ludo estas amuza!",
       "go": "Eku ni!",
-      "pr": "Kiam mia tirpeto finfine estos kunfandita...?",
       "strategy": "Bona strategio!",
       "team_up": "Ni kuniĝu kontraŭ [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Ludanto",
     "search": "Serĉu ludanton...",
     "send": "Sendi",
+    "short": {
+      "greet": {
+        "ruining_games": "Vi ruinigas niajn ludojn"
+      },
+      "help": {
+        "sorry_attack": "Pardonu la atakon!",
+        "troops_frontlines": "Trupoj al la fronto!"
+      },
+      "misc": {
+        "coastline": "Lasu al mi marbordon"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] nun povas lanĉi MIRV!",
+        "pirating": "[P1] piratas",
+        "saving_for_mirv": "[P1] ŝparas por MIRV",
+        "snowballing": "[P1] kreskas tro rapide",
+        "stalemate": "Paco? Senelirejo.",
+        "stop_trading_all": "Ĉesigu ĉian komercon!"
+      }
+    },
     "sort_by_territory": "Ordigi laŭ teritorio",
     "title": "Rapida Babilejo",
     "to": "Sendita al {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] perfidis min!",
       "cheating": "[P1] fraŭdas!",
       "danger_base": "[P1] estas senprotekta!",
+      "disconnected": "[P1] malkonektiĝis!",
       "getting_big": "[P1] kreskas tro rapide!",
       "has_allies": "[P1] havas multe da aliancanoj.",
       "mirv_ready": "[P1] havas sufiĉe da oro por lanĉi MIRV-on!",
       "mirv_soon": "[P1] povas lanĉi MIRV-on baldaŭ!",
       "no_allies": "[P1] ne havas aliancanojn.",
       "number1_warning": "La #1 ludanto baldaŭ venkos krom se ni kunigos teamon!",
+      "pirating": "[P1] piratas nian tutan komercon!",
       "saving_for_mirv": "[P1] ŝparas por lanĉi MIRV-on.",
       "snowballing": "[P1] kreskas tro rapide!",
       "stalemate": "Ni faru pacon. Ĉi tio estas malpluirado, ni ambaŭ malvenkos.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Skarlata Vaporo",
     "voie_emeraude": "Smeralda Linio"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomatio",
+    "directions": "Direktoj",
+    "faces": "Vizaĝoj",
+    "favorite_remove_hint": "Trenu eksteren por forigi",
+    "favorites": "Preferataj",
+    "favorites_hint": "Trenu emoĝiojn ĉi tien por doni al ili ŝparklavon",
+    "favorites_hint_touch": "Trenu emoĝiojn ĉi tien por teni ilin ĉemane",
+    "gestures": "Gestoj",
+    "ranks": "Rangoj",
+    "things": "Aĵoj"
+  },
   "error_modal": {
     "connection_error": "Eraro de konekto!",
     "connection_lost": "Perdis konekton al la ludservilo kaj ne povis rekonekti. Refreŝigu la paĝon por provi aliĝi.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} kapitulacas: ili proponas esti via vasalo dum 10 minutoj, sen batalo inter vi, kaj pagi al vi 25% de sia orenspezo.",
     "retreating": "retiriĝas",
     "sent_emoji": "Sendita al {name}: {emoji}",
+    "sent_emoji_all": "Sendita al ĉiuj: {emoji}",
     "sent_gold_to_player": "Sendis {gold} da oro al {name}",
     "sent_troops_to_player": "Sendis {troops} trupojn al {name}",
     "surrender_sent": "Vi kapitulacis al {name}. Atendante ilian respondon.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "(Mal)rapidigi la ludon (ludante sole)",
     "action_move_camera": "Moviĝi kameraon",
     "action_pause_game": "Paŭzigi / Daŭrigi la ludon",
+    "action_quick_chat": "Malfermi rapidan babilon",
     "action_ratio_change": "Malgrandigi/Pligrandigi la atakan kvocienton",
     "action_reset_gfx": "Restarigi la grafismoj",
     "action_warship_multiselect": "Elektu plurajn militŝipojn (alklak-tenu kaj ŝovu por krei elekt-regionon)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Nombro da cimoj",
     "easter_writing_speed_desc": "Alĝustigu kiom rapide vi ŝajnigas kodi (x1–x100)",
     "easter_writing_speed_label": "Rapidskriba multiganto",
+    "emoji_menu": "Emoĝia menuo",
+    "emoji_menu_desc": "Malfermas la emoĝian menuon por la ludanto kies teritorio estas sub via kursoro.",
     "emoji_menu_modifier": "Modifaĵo de Emoĝia Menuo",
     "emoji_menu_modifier_desc": "Premu ĉi tiun klavon alklakante por malfermi la emoĝian menuon.",
     "emojis_desc": "Montri/Maski la emoĝiojn en la ludo",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Desegnas malpli da kadroj dum la luda fenestro estas malantaŭ alia aŭ minimumigita. La ludo daŭras normale.",
     "power_saving_label": "Energiŝparo en la fono",
     "press_a_key": "Premu klavon",
+    "quick_chat": "Rapida babilo",
+    "quick_chat_desc": "Malfermas la rapidan babilon por la ludanto kies teritorio estas sub via kursoro.",
     "render_debug_gui": "Agorda Fenestreto pri Bildigado",
     "render_debug_gui_desc": "Montri/Maski la fenestreton kiu regas bildigadon",
     "request_alliance": "Peti Aliancon",

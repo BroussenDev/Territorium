@@ -40,6 +40,8 @@ import {
   getPlayerIcons,
   IMAGE_ICON_KIND,
 } from "../PlayerIcons";
+import { ShowPlayerChatEvent } from "./ChatModal";
+import { ShowPlayerEmojiMenuEvent } from "./EmojiTable";
 import { ImmunityBarVisibleEvent } from "./ImmunityTimer";
 import { CloseRadialMenuEvent } from "./RadialMenu";
 import "./RelationSmiley";
@@ -48,6 +50,8 @@ const soldierIconAquarius = assetUrl("images/SoldierIconAquarius.svg");
 const allianceIcon = assetUrl("images/AllianceIcon.svg");
 const traitorIcon = assetUrl("images/TraitorIcon.svg");
 const warshipIcon = assetUrl("images/BattleshipIconWhite.svg");
+const emojiIcon = assetUrl("images/EmojiIconWhite.svg");
+const chatIcon = assetUrl("images/ChatIconWhite.svg");
 const cityIcon = assetUrl("images/CityLevel1IconWhite.svg");
 const factoryIcon = assetUrl("images/FactoryLevel1IconWhite.svg");
 const goldCoinIcon = assetUrl("images/GoldCoinIcon.svg");
@@ -125,13 +129,14 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
 
   private _isActive = false;
 
+  private userSettings = new UserSettings();
+
   private get barOffset(): number {
     return (this.spawnBarVisible ? 7 : 0) + (this.immunityBarVisible ? 7 : 0);
   }
 
   private lastMouseUpdate = 0;
 
-  private userSettings = new UserSettings();
 
   // The action buttons (and the panel width they need) only show on wide
   // screens with a mouse: narrower, the wider panel covers the leaderboard
@@ -458,7 +463,8 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
       capacity = 41.0;
     } else {
       // >= 1024px: sm:w-[500px], font-size text-lg (18px, 10.8px/char).
-      // space = 336px / 10.8px = 31.1 chars.
+      // space = 336px / 10.8px = 31.1 chars. The emoji button, when shown,
+      // brings its own 48px of panel width, so it doesn't change this.
       capacity = 31.1;
     }
 
@@ -577,8 +583,28 @@ export class PlayerInfoOverlay extends LitElement implements Controller {
       ></span>`;
     }
 
+    const keybinds = this.userSettings.keybinds(Platform.isMac);
+
     return html`
       <div class="flex items-start gap-1 lg:gap-2 p-1 lg:p-1.5">
+        ${myPlayer && this.showShortcutButtons()
+          ? html`<div class="flex flex-col gap-1 self-center shrink-0">
+              ${player !== myPlayer
+                ? this.renderShortcutButton(
+                    chatIcon,
+                    translateText("player_panel.chat"),
+                    keybinds.quickChat,
+                    () => this.eventBus.emit(new ShowPlayerChatEvent(player)),
+                  )
+                : ""}
+              ${this.renderShortcutButton(
+                emojiIcon,
+                translateText("player_panel.emotes"),
+                keybinds.emojiMenu,
+                () => this.eventBus.emit(new ShowPlayerEmojiMenuEvent(player)),
+              )}
+            </div>`
+          : ""}
         <!-- Left: Gold & Troop bar -->
         <div class="flex flex-col gap-1 shrink-0 w-28 md:w-36">
           <div class="flex items-center gap-1">

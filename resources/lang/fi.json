@@ -237,9 +237,13 @@
     "unavailable": "Käyttäjänimien hallinta ei ole vielä käytettävissä tällä tilillä."
   },
   "chat": {
+    "all_phrases": "Kaikki lauseet",
     "attack": {
       "attack": "Hyökkää pelaajaan [P1]!",
+      "betray": "Pettäkää [P1]!",
+      "build_sams": "Rakentakaa SAM-asemia!",
       "build_warships": "Rakenna sotalaivoja!",
+      "crown": "Hyökätkää kruunua vastaan!",
       "finish": "Tapetaan [P1]!",
       "focus": "Keskitä tuli pelaajaan [P1]!",
       "mirv": "Laukaise MIRV pelaajaan [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Rakenna puolustustorneja!",
       "defend": "Puolusta pelaajaa [P1]!",
       "defend_from": "Puolustaudu pelaajalta [P1]!",
-      "dont_attack": "Älä hyökkää pelaajaan [P1]!"
+      "dont_attack": "Älä hyökkää pelaajaan [P1]!",
+      "make_ally": "Liittoutukaa [P1] kanssa!"
     },
     "from": "Viesti pelaajalta {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Lahjoita minulle kultaa!",
       "help_defend": "Auta minua puolustautumaan pelaajaa [P1] vastaan!",
       "no_attack": "Älä hyökkää minuun!",
+      "send_gold_to": "Lähettäkää kultaa pelaajalle [P1]!",
+      "send_troops_to": "Lähettäkää joukkoja pelaajalle [P1]!",
       "sorry_attack": "Anteeksi, en tarkoittanut hyökätä.",
       "trade_partners": "Olkaamme kauppakumppaneita!",
       "troops": "Lahjoita minulle joukkoja!",
@@ -295,7 +302,6 @@
       "coastline": "Sallikaa minun saada rantaviivaa.",
       "fun": "Tämä peli on hauska!",
       "go": "Mennään!",
-      "pr": "Milloin vetopyyntöni vihdoin yhdistetään...?",
       "strategy": "Hieno strategia!",
       "team_up": "Lyöttäydytään pelaaja [P1] vastaan!"
     },
@@ -303,6 +309,26 @@
     "player": "Pelaaja",
     "search": "Hae pelaajaa...",
     "send": "Lähetä",
+    "short": {
+      "greet": {
+        "ruining_games": "Pilaatte pelimme"
+      },
+      "help": {
+        "sorry_attack": "Anteeksi hyökkäys!",
+        "troops_frontlines": "Joukot rintamalle!"
+      },
+      "misc": {
+        "coastline": "Antakaa minulle rannikko"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] voi laukaista MIRV:n!",
+        "pirating": "[P1] ryöstää kauppaa",
+        "saving_for_mirv": "[P1] säästää MIRV:iin",
+        "snowballing": "[P1] kasvaa liian nopeasti",
+        "stalemate": "Rauha? Umpikuja.",
+        "stop_trading_all": "Lopettakaa kaikki kauppa!"
+      }
+    },
     "sort_by_territory": "Lajittele alueen mukaan",
     "title": "Pikaviestit",
     "to": "Lähetit pelaajalle {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] petti minut!",
       "cheating": "[P1] huijaa!",
       "danger_base": "[P1] on suojaamatta!",
+      "disconnected": "[P1] katkaisi yhteyden!",
       "getting_big": "[P1] kasvaa liian nopeasti!",
       "has_allies": "Pelaajalla [P1] on monia liittolaisia.",
       "mirv_ready": "Pelaajalla [P1] on tarpeeksi kultaa MIRVin laukaisemiseen!",
       "mirv_soon": "[P1] voi laukaista MIRVin pian!",
       "no_allies": "Pelaajalla [P1] ei ole iittolaisia.",
       "number1_warning": "#1 pelaaja voittaa pian, ellemme liittoudu!",
+      "pirating": "[P1] ryöstää kaiken kauppamme!",
       "saving_for_mirv": "[P1] säästää MIRVin laukaisemiseen kultaa.",
       "snowballing": "[P1] kasvaa liian nopeasti!",
       "stalemate": "Tehdään rauha. Tämä on pattitilanne, me tulemme molemmat häviämään.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomatia",
+    "directions": "Suunnat",
+    "faces": "Kasvot",
+    "favorite_remove_hint": "Vedä ulos poistaaksesi",
+    "favorites": "Suosikit",
+    "favorites_hint": "Vedä emojit tähän antaaksesi niille pikanäppäimen",
+    "favorites_hint_touch": "Vedä emojit tähän pitääksesi ne käden ulottuvilla",
+    "gestures": "Eleet",
+    "ranks": "Arvot",
+    "things": "Esineet"
+  },
   "error_modal": {
     "connection_error": "Yhteysongelma!",
     "connection_lost": "Yhteys pelipalvelimeen katkesi, eikä yhteyttä voitu muodostaa uudelleen. Päivitä sivu yrittääksesi liittyä uudelleen.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} antautumista: he tarjoutuvat vasalliksi 10 minuutiksi ilman taistelua välilläsi ja maksavat sinulle 25 % kultatuloistaan",
     "retreating": "peräännytään",
     "sent_emoji": "Lähetit pelaajalle {name}: {emoji}",
+    "sent_emoji_all": "Lähetetty kaikille: {emoji}",
     "sent_gold_to_player": "Lähetetty {gold} kultaa vastaanottajalle {name}",
     "sent_troops_to_player": "Lähetti {troops} joukkoja osoitteeseen {name}",
     "surrender_sent": "Antauduit {name}:lle. Heidän vastaustaan ​​odottaen.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Pelin nopeus alas / ylös (yksin pelaaja)",
     "action_move_camera": "Liikuta kameraa",
     "action_pause_game": "Keskeytä / Jatka peliä",
+    "action_quick_chat": "Avaa pikachat",
     "action_ratio_change": "Vähennä/Lisää hyökkäyksen osuutta",
     "action_reset_gfx": "Palauta grafiikat",
     "action_warship_multiselect": "Valitse useita sotalaivoja (piirrä valintaruutu vetämällä)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Vikojen määrä",
     "easter_writing_speed_desc": "Säädä kuinka nopeasti teeskentelet koodaavasi (x1–x100)",
     "easter_writing_speed_label": "Kirjoittamisen nopeuskerroin",
+    "emoji_menu": "Emojivalikko",
+    "emoji_menu_desc": "Avaa emojivalikon pelaajalle, jonka alue on osoittimen alla.",
     "emoji_menu_modifier": "Emoji-valikon muokkaus",
     "emoji_menu_modifier_desc": "Pidä tätä näppäintä painettuna samalla kun napsautat avataksesi emoji-valikon.",
     "emojis_desc": "Valitse, ovatko hymiöt näkyvissä pelissä",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Piirtää vähemmän kuvia, kun peli-ikkuna on toisen ikkunan takana tai pienennettynä. Peli jatkuu normaalisti.",
     "power_saving_label": "Virransäästö taustalla",
     "press_a_key": "Paina näppäintä",
+    "quick_chat": "Pikachat",
+    "quick_chat_desc": "Avaa pikachatin pelaajalle, jonka alue on osoittimen alla.",
     "render_debug_gui": "Renderöi virheenkorjauskäyttöliittymä",
     "render_debug_gui_desc": "Vaihda renderöijän virityspaneelia",
     "request_alliance": "Pyydä Allianssia",

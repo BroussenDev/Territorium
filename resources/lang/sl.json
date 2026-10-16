@@ -237,9 +237,13 @@
     "unavailable": "Upravljanje uporabniškega imena še ni na voljo za ta račun."
   },
   "chat": {
+    "all_phrases": "Vse fraze",
     "attack": {
       "attack": "Napadi [P1]!",
+      "betray": "Izdajte [P1]!",
+      "build_sams": "Gradite SAM-e!",
       "build_warships": "Zgradi bojne ladje!",
+      "crown": "Napadite krono!",
       "finish": "Končajva [P1]!",
       "focus": "Fokusiraj napad na [P1]!",
       "mirv": "Pošlji MIRV na [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Zgradi bunkerje!",
       "defend": "Obrani [P1]!",
       "defend_from": "Obvaruj pred [P1]!",
-      "dont_attack": "Ne napadaj [P1]!"
+      "dont_attack": "Ne napadaj [P1]!",
+      "make_ally": "Povežite se z [P1]!"
     },
     "from": "Pošiljatelj {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Prosim pošlji mi zlato!",
       "help_defend": "Pomagaj mi obraniti napad [P1]!",
       "no_attack": "Prosim ne napadi mi!",
+      "send_gold_to": "Pošljite zlato igralcu [P1]!",
+      "send_troops_to": "Pošljite vojake igralcu [P1]!",
       "sorry_attack": "Oprosti, nisem mislil napasti.",
       "trade_partners": "Bodiva trgovska partnerja!",
       "troops": "Prosim pošlji mi enote!",
@@ -295,7 +302,6 @@
       "coastline": "Prosim pusti mi dostop do obale.",
       "fun": "Ta igra je zabavna!",
       "go": "Gremo!",
-      "pr": "Kdaj se bo moj PR končno združil...?",
       "strategy": "Dobra strategija!",
       "team_up": "Združimo se skupaj proti [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Igralec",
     "search": "Išči igralce...",
     "send": "Pošlji",
+    "short": {
+      "greet": {
+        "ruining_games": "Kvarite nam igre"
+      },
+      "help": {
+        "sorry_attack": "Oprosti za napad!",
+        "troops_frontlines": "Vojake na fronto!"
+      },
+      "misc": {
+        "coastline": "Pustite mi obalo"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] lahko izstreli MIRV!",
+        "pirating": "[P1] pleni trgovino",
+        "saving_for_mirv": "[P1] varčuje za MIRV",
+        "snowballing": "[P1] raste prehitro",
+        "stalemate": "Mir? Pat.",
+        "stop_trading_all": "Ustavite vso trgovino!"
+      }
+    },
     "sort_by_territory": "Razvrsti po ozemlju",
     "title": "Hitri klepet",
     "to": "Poslano {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] me je izdal!",
       "cheating": "[P1] goljufa!",
       "danger_base": "[P1] ni zaščiten!",
+      "disconnected": "[P1] je prekinil povezavo!",
       "getting_big": "[P1] raste prehitro!",
       "has_allies": "[P1] ima veliko zaveznikov.",
       "mirv_ready": "[P1] ima dovolj zlata za izstrelitev MIRV-a!",
       "mirv_soon": "[P1] lahko kmalu uporabi MIRV!",
       "no_allies": "[P1] nima zaveznikov.",
       "number1_warning": "Igralec št. 1 bo kmalu zmagal, če se ne združimo!",
+      "pirating": "[P1] pleni vso našo trgovino!",
       "saving_for_mirv": "[P1] varčuje za izstrelitev MIRV-a.",
       "snowballing": "[P1] napreduje prehitro!",
       "stalemate": "Sklenimo mir. To je pat pozicija, oba bova izgubila.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Škrlatna para",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomacija",
+    "directions": "Smeri",
+    "faces": "Obrazi",
+    "favorite_remove_hint": "Povlecite ven za odstranitev",
+    "favorites": "Priljubljeni",
+    "favorites_hint": "Povlecite čustvenčke sem in jim dodelite bližnjico",
+    "favorites_hint_touch": "Povlecite čustvenčke sem, da jih imate pri roki",
+    "gestures": "Kretnje",
+    "ranks": "Čini",
+    "things": "Stvari"
+  },
   "error_modal": {
     "connection_error": "Napaka v povezavi!",
     "connection_lost": "Povezava z igralnim strežnikom je bila izgubljena in se ni bilo mogoče znova povezati. Osvežite stran, da se poskusite znova pridružiti.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} predaja: ponudijo vam, da bodo vaš vazal za 10 minut, brez spopadov med vami, in da vam plačajo 25 % svojega dohodka v zlatu",
     "retreating": "umikanje",
     "sent_emoji": "Poslano {name}: {emoji}",
+    "sent_emoji_all": "Poslano vsem: {emoji}",
     "sent_gold_to_player": "Poslano {gold} zlata na {name}",
     "sent_troops_to_player": "Poslal {troops} vojakov v {name}",
     "surrender_sent": "Predal si se {name}. Čakam na njihov odgovor.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Hitrost igre navzdol / navzgor (en igralec)",
     "action_move_camera": "Premakni kamero",
     "action_pause_game": "Premor / Nadaljuj igro",
+    "action_quick_chat": "Odpri hitri klepet",
     "action_ratio_change": "Pomanjšaj/Povečaj napadalno razmerje",
     "action_reset_gfx": "Ponastavi grafične nastavitve",
     "action_warship_multiselect": "Izberite več vojnih ladij (povlecite, da narišete izbirno polje)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Število hroščev",
     "easter_writing_speed_desc": "Prilagodite hitrost pretvarjanja, da programirate (x1–x100)",
     "easter_writing_speed_label": "Množitelj hitrosti pisanja",
+    "emoji_menu": "Meni čustvenčkov",
+    "emoji_menu_desc": "Odpre meni čustvenčkov za igralca, čigar ozemlje je pod kazalcem.",
     "emoji_menu_modifier": "Modifikator menija Emoji",
     "emoji_menu_modifier_desc": "Držite to tipko med klikanjem, da odprete meni čustvenih simbolov.",
     "emojis_desc": "Preklopi med načinom prikaza emojijev",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Izriše manj sličic, ko je okno igre za drugim oknom ali pomanjšano. Igra se nadaljuje normalno.",
     "power_saving_label": "Varčevanje z energijo v ozadju",
     "press_a_key": "Pritisnite tipko",
+    "quick_chat": "Hitri klepet",
+    "quick_chat_desc": "Odpre hitri klepet za igralca, čigar ozemlje je pod kazalcem.",
     "render_debug_gui": "Render Debug GUI",
     "render_debug_gui_desc": "Preklopite ploščo za nastavitev upodabljalnika",
     "request_alliance": "Zahtevaj zavezništvo",

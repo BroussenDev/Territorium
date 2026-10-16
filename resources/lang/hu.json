@@ -237,9 +237,13 @@
     "unavailable": "A felhasználónév-kezelés még nem érhető el ezen a fiókon."
   },
   "chat": {
+    "all_phrases": "Minden kifejezés",
     "attack": {
       "attack": "Támadd meg [P1]-t!",
+      "betray": "Árulják el [P1]-t!",
+      "build_sams": "Építsetek SAM-okat!",
       "build_warships": "Építs hadihajókat!",
+      "crown": "Támadjátok a koronát!",
       "finish": "Végezzük ki [P1]-t!",
       "focus": "Koncentrált támadás [P1] ellen!",
       "mirv": "Indíts MIRV-et [P1] ellen!"
@@ -259,7 +263,8 @@
       "build_posts": "Építs védelmi állomásokat!",
       "defend": "Védd meg [P1]-t!",
       "defend_from": "Véddekezz [P1] ellen!",
-      "dont_attack": "Ne támadd meg [P1]-t!"
+      "dont_attack": "Ne támadd meg [P1]-t!",
+      "make_ally": "Szövetkezzetek [P1]-vel!"
     },
     "from": "Beérkezett {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Kérlek, küldj aranyat!",
       "help_defend": "Segíts védekezni [P1] ellen!",
       "no_attack": "Kérlek, ne támadj meg!",
+      "send_gold_to": "Küldjetek aranyat [P1]-nek!",
+      "send_troops_to": "Küldjetek csapatokat [P1]-nek!",
       "sorry_attack": "Bocsánat, nem akartalak megtámadni.",
       "trade_partners": "Legyünk kereskedelmi partnerek!",
       "troops": "Kérlek, küldj katonákat!",
@@ -295,7 +302,6 @@
       "coastline": "Kérlek, engedd, hogy legyen tengerpartom.",
       "fun": "Ez a játék szórakoztató!",
       "go": "Gyerünk!",
-      "pr": "Mikor lesz végre összevonva a PR-om...?",
       "strategy": "Kiváló stratégia!",
       "team_up": "Fogjunk össze [P1] ellen!"
     },
@@ -303,6 +309,26 @@
     "player": "Játékos",
     "search": "Játékos keresése...",
     "send": "Küldés",
+    "short": {
+      "greet": {
+        "ruining_games": "Tönkreteszitek a meccseinket"
+      },
+      "help": {
+        "sorry_attack": "Bocs a támadásért!",
+        "troops_frontlines": "Csapatokat a frontra!"
+      },
+      "misc": {
+        "coastline": "Hagyjatok egy partot"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] most MIRV-elhet!",
+        "pirating": "[P1] kalózkodik",
+        "saving_for_mirv": "[P1] MIRV-re gyűjt",
+        "snowballing": "[P1] túl gyorsan nő",
+        "stalemate": "Béke? Patt.",
+        "stop_trading_all": "Állítsátok le a kereskedelmet!"
+      }
+    },
     "sort_by_territory": "Rendezés terület szerint",
     "title": "Gyors csevegés",
     "to": "Elküldve {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] elárult engem!",
       "cheating": "[P1] csal!",
       "danger_base": "[P1] védtelen!",
+      "disconnected": "[P1] lecsatlakozott!",
       "getting_big": "[P1] túl gyorsan fejlődik!",
       "has_allies": "[P1] sok szövetségessel rendelkezik.",
       "mirv_ready": "[P1] elég arannyal rendelkezik egy MIRV indításához!",
       "mirv_soon": "[P1] hamarosan indíthat MIRV-et!",
       "no_allies": "[P1] nem rendelkezik szövetségessekkel.",
       "number1_warning": "A #1 játékos hamarosan nyerni fog, hacsak nem állunk össze!",
+      "pirating": "[P1] kifosztja az egész kereskedelmünket!",
       "saving_for_mirv": "[P1] MIRV indítására gyűjt.",
       "snowballing": "[P1] túl gyorsan fejlődik!",
       "stalemate": "Kössünk békét. Ez patthelyzet, mindketten veszíteni fogunk.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomácia",
+    "directions": "Irányok",
+    "faces": "Arcok",
+    "favorite_remove_hint": "Húzd ki az eltávolításhoz",
+    "favorites": "Kedvencek",
+    "favorites_hint": "Húzz ide emojikat, hogy gyorsbillentyűt kapjanak",
+    "favorites_hint_touch": "Húzz ide emojikat, hogy kéznél legyenek",
+    "gestures": "Gesztusok",
+    "ranks": "Rangok",
+    "things": "Tárgyak"
+  },
   "error_modal": {
     "connection_error": "Kapcsolódási hiba!",
     "connection_lost": "Megszakadt a kapcsolat a játékszerverrel, és nem sikerült újracsatlakozni. Frissítsd az oldalt az újbóli csatlakozáshoz.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} megadja magát: felajánlják, hogy 10 percre a vazallusod lesznek anélkül, hogy harcolnának köztetek, és kifizetik az aranybevételük 25%-át",
     "retreating": "visszavonulás",
     "sent_emoji": "Elküldve {name}: {emoji}",
+    "sent_emoji_all": "Mindenkinek elküldve: {emoji}",
     "sent_gold_to_player": "{gold} arany küldése {name} részére",
     "sent_troops_to_player": "{troops} katona küldése {name} részére",
     "surrender_sent": "Ön megadta magát a {name}-nek. Válaszukat várva.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Játéksebesség lassítása/gyorsítása (Egyjátékos mód)",
     "action_move_camera": "Kamera mozgatása",
     "action_pause_game": "Megállítás/Folytatás",
+    "action_quick_chat": "Gyorscsevegés megnyitása",
     "action_ratio_change": "Támadási arány csökkentése/növelése",
     "action_reset_gfx": "Grafika visszaállítása",
     "action_warship_multiselect": "Több hadihajó kiválasztása (húzással rajzolható a kijelölőmező)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Hiba számláló",
     "easter_writing_speed_desc": "Állítsd be, milyen gyorsan szimulálod a kódolást (x1–x100)",
     "easter_writing_speed_label": "Írási sebesség szorzó",
+    "emoji_menu": "Emoji menü",
+    "emoji_menu_desc": "Megnyitja az emoji menüt annak a játékosnak, akinek a területe a kurzor alatt van.",
     "emoji_menu_modifier": "Emoji menümódosító",
     "emoji_menu_modifier_desc": "Kattintás közben tartsa lenyomva ezt a billentyűt az emoji menü megnyitásához.",
     "emojis_desc": "Kapcsoló az emojik játékban való megjelenítéséhez",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Kevesebb képkockát rajzol, amíg a játék ablaka egy másik mögött van vagy le van kicsinyítve. A meccs normálisan folytatódik.",
     "power_saving_label": "Energiatakarékosság a háttérben",
     "press_a_key": "Nyomj meg egy billentyűt",
+    "quick_chat": "Gyorscsevegés",
+    "quick_chat_desc": "Megnyitja a gyorscsevegést annak a játékosnak, akinek a területe a kurzor alatt van.",
     "render_debug_gui": "Renderelési hibakereső GUI",
     "render_debug_gui_desc": "A renderelő hangolási paneljének be- és kikapcsolása",
     "request_alliance": "Szövetség kérése",

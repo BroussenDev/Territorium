@@ -75,4 +75,29 @@ describe("EventsDisplay chat focus (#5101)", () => {
     const events = (ed as unknown as { events: { focusID?: number }[] }).events;
     expect(events[0].focusID).toBe(2);
   });
+
+  type FeedEvent = { highlight?: boolean; minor?: boolean };
+  // The sounds played: every feed entry also goes to the event history.
+  const sounds = () =>
+    (
+      ed as unknown as { eventBus: { emit: ReturnType<typeof vi.fn> } }
+    ).eventBus.emit.mock.calls.filter(
+      ([e]) => (e as object)?.constructor?.name === "PlaySoundEffectEvent",
+    );
+
+  it("shows a sent message as a quiet confirmation, like a sent emoji", () => {
+    ed.onDisplayChatEvent(chatUpdate(false) as never);
+    const events = (ed as unknown as { events: FeedEvent[] }).events;
+    expect(events[0].minor).toBe(true);
+    expect(events[0].highlight).toBe(false);
+    expect(sounds()).toHaveLength(0);
+  });
+
+  it("keeps a received message prominent, with its sound", () => {
+    ed.onDisplayChatEvent(chatUpdate(true) as never);
+    const events = (ed as unknown as { events: FeedEvent[] }).events;
+    expect(events[0].minor).toBe(false);
+    expect(events[0].highlight).toBe(true);
+    expect(sounds()).toHaveLength(1);
+  });
 });

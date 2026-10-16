@@ -237,9 +237,13 @@
     "unavailable": "此帐户尚不支持用户名管理。"
   },
   "chat": {
+    "all_phrases": "所有短语",
     "attack": {
       "attack": "攻击 [P1]！",
+      "betray": "背叛 [P1]！",
+      "build_sams": "建造防空导弹！",
       "build_warships": "建造军舰！",
+      "crown": "攻击王冠！",
       "finish": "让我们终结 [P1] 吧！",
       "focus": "集火攻击 [P1]！",
       "mirv": "向 [P1] 发射一个MIRV ！"
@@ -259,7 +263,8 @@
       "build_posts": "建造要塞！",
       "defend": "防御 [P1]！",
       "defend_from": "防御 [P1]！",
-      "dont_attack": "不要攻击 [P1]！"
+      "dont_attack": "不要攻击 [P1]！",
+      "make_ally": "与 [P1] 结盟！"
     },
     "from": "{user} 说: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "请给我金钱！",
       "help_defend": "帮我防御 [P1]！",
       "no_attack": "请不要攻击我！",
+      "send_gold_to": "给 [P1] 送金币！",
+      "send_troops_to": "给 [P1] 送部队！",
       "sorry_attack": "抱歉，我没打算攻击的。",
       "trade_partners": "让我们成为贸易伙伴！",
       "troops": "请给我军队！",
@@ -295,7 +302,6 @@
       "coastline": "请给我留点海岸线。",
       "fun": "这场游戏真有趣！",
       "go": "走吧！",
-      "pr": "我的 PR 什么时候才能被合并…？",
       "strategy": "厉害，这波操作！",
       "team_up": "让我们联合对抗 [P1]！"
     },
@@ -303,6 +309,26 @@
     "player": "玩家",
     "search": "搜索玩家...",
     "send": "发送",
+    "short": {
+      "greet": {
+        "ruining_games": "你们在毁掉我们的游戏"
+      },
+      "help": {
+        "sorry_attack": "抱歉攻击了你！",
+        "troops_frontlines": "部队上前线！"
+      },
+      "misc": {
+        "coastline": "给我一段海岸"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] 现在能发射 MIRV！",
+        "pirating": "[P1] 在劫掠贸易",
+        "saving_for_mirv": "[P1] 在为 MIRV 攒钱",
+        "snowballing": "[P1] 扩张太快",
+        "stalemate": "和平？僵局。",
+        "stop_trading_all": "停止所有贸易！"
+      }
+    },
     "sort_by_territory": "按地域排序",
     "title": "快捷聊天",
     "to": "发送给 {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] 背叛了我！",
       "cheating": "[P1] 正在作弊！",
       "danger_base": "[P1] 没有防守！",
+      "disconnected": "[P1] 已断开连接！",
       "getting_big": "[P1] 扩张太快了！",
       "has_allies": "[P1] 有很多盟友。",
       "mirv_ready": "[P1] 有足够的金钱来发射 MIRV！",
       "mirv_soon": "[P1] 马上就能发射 MIRV 了！",
       "no_allies": "[P1] 没有盟友。",
       "number1_warning": "如果我们不结盟，榜一玩家就要赢了！",
+      "pirating": "[P1] 正在劫掠我们所有的贸易！",
       "saving_for_mirv": "[P1] 正在存钱以发射 MIRV。",
       "snowballing": "[P1] 滚雪球滚得太快了！",
       "stalemate": "我们停战吧。这种僵局对我们双方都不利。",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "猩红蒸汽",
     "voie_emeraude": "翡翠线"
   },
+  "emoji_table": {
+    "diplomacy": "外交",
+    "directions": "方向",
+    "faces": "表情",
+    "favorite_remove_hint": "拖出以移除",
+    "favorites": "收藏",
+    "favorites_hint": "把表情拖到这里，为它们分配快捷键",
+    "favorites_hint_touch": "把表情拖到这里，方便随时使用",
+    "gestures": "手势",
+    "ranks": "军衔",
+    "things": "物品"
+  },
   "error_modal": {
     "connection_error": "连接出错！",
     "connection_lost": "与游戏服务器的连接丢失且无法重新连接。刷新页面以尝试重新加入。",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name}投降：他们愿意成为你的附庸10分钟，你们之间不发生战斗，并支付你25%的黄金收入",
     "retreating": "正在撤退",
     "sent_emoji": "发送给 {name}: {emoji}",
+    "sent_emoji_all": "已发送给所有人：{emoji}",
     "sent_gold_to_player": "已向 {name} 发送 {gold} 黄金",
     "sent_troops_to_player": "已向 {name} 发送 {troops} 军队",
     "surrender_sent": "你向{name}投降了。等待他们的答复。",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "游戏速度调整（单人模式）",
     "action_move_camera": "移动镜头",
     "action_pause_game": "暂停/恢复游戏",
+    "action_quick_chat": "打开快捷聊天",
     "action_ratio_change": "减少/增加进攻部队的比率",
     "action_reset_gfx": "重置图形",
     "action_warship_multiselect": "多选战舰（拖拽绘制选择框）",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Bug 计数",
     "easter_writing_speed_desc": "调节你“假装写代码”的速度 (x1–x100)",
     "easter_writing_speed_label": "写入速度乘数",
+    "emoji_menu": "表情菜单",
+    "emoji_menu_desc": "为光标下领土的玩家打开表情菜单。",
     "emoji_menu_modifier": "Emoji 表情菜单编辑器",
     "emoji_menu_modifier_desc": "按住此键并点击以打开 Emoji 表情菜单。",
     "emojis_desc": "切换是否在游戏中显示表情符号",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "当游戏窗口位于其他窗口之后或被最小化时绘制更少的帧。对局照常进行。",
     "power_saving_label": "后台省电",
     "press_a_key": "按下一个按键",
+    "quick_chat": "快捷聊天",
+    "quick_chat_desc": "为光标下领土的玩家打开快捷聊天。",
     "render_debug_gui": "渲染调试 GUI",
     "render_debug_gui_desc": "切换渲染器调整面板",
     "request_alliance": "申请结盟",

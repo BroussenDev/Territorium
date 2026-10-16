@@ -237,9 +237,13 @@
     "unavailable": "Administrarea numelor de utilizator nu este încă disponibilă pe acest cont."
   },
   "chat": {
+    "all_phrases": "Toate frazele",
     "attack": {
       "attack": "Atacă-l pe [P1]!",
+      "betray": "Trădați-l pe [P1]!",
+      "build_sams": "Construiți SAM-uri!",
       "build_warships": "Construiește nave de război!",
+      "crown": "Atacați coroana!",
       "finish": "Hai să-l terminăm pe [P1]!",
       "focus": "Focalizează focul pe [P1]!",
       "mirv": "Lansează un MIRV la [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Construiește baze fortificate!",
       "defend": "Apără-l pe [P1]!",
       "defend_from": "Apără-te de [P1]!",
-      "dont_attack": "Nu-l ataca pe [P1]!"
+      "dont_attack": "Nu-l ataca pe [P1]!",
+      "make_ally": "Aliați-vă cu [P1]!"
     },
     "from": "De la {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Am nevoie de aur!",
       "help_defend": "Ajută-mă să mă apăr împotriva lui [P1]!",
       "no_attack": "Te rog nu mă ataca!",
+      "send_gold_to": "Trimiteți aur lui [P1]!",
+      "send_troops_to": "Trimiteți trupe lui [P1]!",
       "sorry_attack": "Scuze, nu am vrut să atac.",
       "trade_partners": "Haide să devenim parteneri de comerț!",
       "troops": "Am nevoie de trupe!",
@@ -295,7 +302,6 @@
       "coastline": "Te rog lasă-mi ieșire la mare.",
       "fun": "Jocul ăsta este amuzant!",
       "go": "Haide!",
-      "pr": "Când o să-mi fie acceptat PR-ul în sfârșit...?",
       "strategy": "Bună strategie!",
       "team_up": "Hai să ne aliem împotriva lui [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Jucător",
     "search": "Caută jucător...",
     "send": "Trimite",
+    "short": {
+      "greet": {
+        "ruining_games": "Ne stricați partidele"
+      },
+      "help": {
+        "sorry_attack": "Scuze pentru atac!",
+        "troops_frontlines": "Trupe pe front!"
+      },
+      "misc": {
+        "coastline": "Lăsați-mi o coastă"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] poate lansa MIRV acum!",
+        "pirating": "[P1] jefuiește comerțul",
+        "saving_for_mirv": "[P1] strânge pentru MIRV",
+        "snowballing": "[P1] crește prea repede",
+        "stalemate": "Pace? Remiză.",
+        "stop_trading_all": "Opriți tot comerțul!"
+      }
+    },
     "sort_by_territory": "Sortare după teritoriu",
     "title": "Chat Rapid",
     "to": "Trimis {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] M-a trădat!",
       "cheating": "[P1] Trișează!",
       "danger_base": "[P1] este neprotejat!",
+      "disconnected": "[P1] s-a deconectat!",
       "getting_big": "[P1] se dezvoltă prea repede!",
       "has_allies": "[P1] Are mulți aliați.",
       "mirv_ready": "[P1] Are suficient aur să lanseze un MIRV!",
       "mirv_soon": "[P1] Poate lansa un MIRV în curând!",
       "no_allies": "[P1] Nu are aliați.",
       "number1_warning": "Jucătorul #1 va câștiga curând dacă nu ne aliem!",
+      "pirating": "[P1] ne jefuiește tot comerțul!",
       "saving_for_mirv": "[P1] strânge aur pentru a lansa un MIRV.",
       "snowballing": "[P1] scapă de sub control!",
       "stalemate": "Hai să facem pace. E un impas, o să pierdem amândoi.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Linia de smarald"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomație",
+    "directions": "Direcții",
+    "faces": "Fețe",
+    "favorite_remove_hint": "Trage afară pentru a elimina",
+    "favorites": "Favorite",
+    "favorites_hint": "Trage emoji aici ca să le dai o tastă rapidă",
+    "favorites_hint_touch": "Trage emoji aici ca să le ai la îndemână",
+    "gestures": "Gesturi",
+    "ranks": "Grade",
+    "things": "Obiecte"
+  },
   "error_modal": {
     "connection_error": "Eroare de conexiune!",
     "connection_lost": "S-a pierdut conexiunea la serverul jocului și nu s-a putut reconecta. Actualizați pagina pentru a încerca să vă reconectați.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} se predă: se oferă să fie vasalul tău timp de 10 minute, fără lupte între voi și să vă plătească 25% din venitul lor din aur",
     "retreating": "în retragere",
     "sent_emoji": "Trimis {name}: {emoji}",
+    "sent_emoji_all": "Trimis tuturor: {emoji}",
     "sent_gold_to_player": "Ai trimis {gold} aur lui {name}",
     "sent_troops_to_player": "Ai trimis {troops} unități lui {name}",
     "surrender_sent": "Te-ai predat lui {name}. Așteptând răspunsul lor.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Viteza jocului jos / sus (un singur jucător)",
     "action_move_camera": "Mută camera",
     "action_pause_game": "Pune pauză / Continuă jocul",
+    "action_quick_chat": "Deschide chatul rapid",
     "action_ratio_change": "Scade/Crește Proporția de atac",
     "action_reset_gfx": "Resetează setările de grafică",
     "action_warship_multiselect": "Selectează mai multe nave de război (trage pentru a desena selecția)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Numărul de erori",
     "easter_writing_speed_desc": "Reglează viteza în care te prefaci să programezi (x1–x100)",
     "easter_writing_speed_label": "Multiplicator al vitezei de scris",
+    "emoji_menu": "Meniu emoji",
+    "emoji_menu_desc": "Deschide meniul emoji pentru jucătorul al cărui teritoriu e sub cursor.",
     "emoji_menu_modifier": "Modificator Meniu Emoticoane",
     "emoji_menu_modifier_desc": "Ține apăsat această tastă în timp ce faceți clic pentru a deschide meniul de emoticoane.",
     "emojis_desc": "Comută afișarea emoticoanelor în timpul jocului",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Desenează mai puține cadre cât timp fereastra jocului e în spatele alteia sau minimizată. Partida continuă normal.",
     "power_saving_label": "Economie de energie în fundal",
     "press_a_key": "Apasă o tastă",
+    "quick_chat": "Chat rapid",
+    "quick_chat_desc": "Deschide chatul rapid pentru jucătorul al cărui teritoriu e sub cursor.",
     "render_debug_gui": "Randare GUI de depanare",
     "render_debug_gui_desc": "Comută panoul de redare",
     "request_alliance": "Solicită o alianță",

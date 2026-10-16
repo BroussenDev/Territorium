@@ -237,9 +237,13 @@
     "unavailable": "La gestion du nom d'utilisateur n'est pas encore disponible sur ce compte."
   },
   "chat": {
+    "all_phrases": "Toutes les phrases",
     "attack": {
       "attack": "Attaque [P1] !",
+      "betray": "Trahissez [P1] !",
+      "build_sams": "Construisez des SAM !",
       "build_warships": "Construis des navires de guerre !",
+      "crown": "Attaquez la couronne !",
       "finish": "Finissons [P1] !",
       "focus": "Concentre l'attaque sur [P1] !",
       "mirv": "Lance une MIRV sur [P1] !"
@@ -259,7 +263,8 @@
       "build_posts": "Construis des Postes de Défense !",
       "defend": "Défend [P1] !",
       "defend_from": "Défend contre [P1] !",
-      "dont_attack": "N'attaque pas [P1] !"
+      "dont_attack": "N'attaque pas [P1] !",
+      "make_ally": "Alliez-vous avec [P1] !"
     },
     "from": "De {user} : {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "S'il te plaît, donne-moi de l'or !",
       "help_defend": "Aide-moi à me défendre contre [P1] !",
       "no_attack": "S'il te plaît, ne m'attaque pas !",
+      "send_gold_to": "Envoyez de l'or à [P1] !",
+      "send_troops_to": "Envoyez des troupes à [P1] !",
       "sorry_attack": "Désolé, je ne voulais pas attaquer.",
       "trade_partners": "Soyons partenaires commerciaux !",
       "troops": "S'il te plaît, donne-moi des troupes !",
@@ -295,7 +302,6 @@
       "coastline": "Laisse-moi avoir accès à un littoral.",
       "fun": "Cette partie est amusante !",
       "go": "C'est parti !",
-      "pr": "Quand est-ce que mon PR sera intégré...?",
       "strategy": "Bonne stratégie !",
       "team_up": "Faisons équipe contre [P1] !"
     },
@@ -303,6 +309,26 @@
     "player": "Joueur",
     "search": "Rechercher un joueur...",
     "send": "Envoyer",
+    "short": {
+      "greet": {
+        "ruining_games": "Vous gâchez nos parties"
+      },
+      "help": {
+        "sorry_attack": "Désolé pour l'attaque !",
+        "troops_frontlines": "Des troupes au front !"
+      },
+      "misc": {
+        "coastline": "Laissez-moi une côte"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] peut lancer un MIRV !",
+        "pirating": "[P1] pille le commerce",
+        "saving_for_mirv": "[P1] épargne pour un MIRV",
+        "snowballing": "[P1] grossit trop vite",
+        "stalemate": "La paix ? C'est bloqué.",
+        "stop_trading_all": "Arrêtez tout commerce !"
+      }
+    },
     "sort_by_territory": "Trier par territoire",
     "title": "Discussion",
     "to": "Envoyé à {user} : {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] m'a trahi !",
       "cheating": "[P1] triche !",
       "danger_base": "[P1] n'est pas protégé !",
+      "disconnected": "[P1] s'est déconnecté !",
       "getting_big": "[P1] croît trop vite !",
       "has_allies": "[P1] a beaucoup d'alliés.",
       "mirv_ready": "[P1] a assez d'or pour lancer une MIRV !",
       "mirv_soon": "[P1] peut bientôt lancer une MIRV !",
       "no_allies": "[P1] n'a pas d'alliés.",
       "number1_warning": "Le joueur #1 gagnera bientôt si nous ne faisons pas équipe !",
+      "pirating": "[P1] pille tout notre commerce !",
       "saving_for_mirv": "[P1] économise pour lancer une MIRV.",
       "snowballing": "[P1] grandit beaucoup trop vite !",
       "stalemate": "Faisons la paix. C'est une impasse, nous perdrons tous les deux.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Vapeur écarlate",
     "voie_emeraude": "Voie d'émeraude"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomatie",
+    "directions": "Directions",
+    "faces": "Visages",
+    "favorite_remove_hint": "Glissez hors du cadre pour retirer",
+    "favorites": "Favoris",
+    "favorites_hint": "Glissez des emojis ici pour leur donner une touche de raccourci",
+    "favorites_hint_touch": "Glissez des emojis ici pour les garder sous la main",
+    "gestures": "Gestes",
+    "ranks": "Grades",
+    "things": "Objets"
+  },
   "error_modal": {
     "connection_error": "Erreur de connexion !",
     "connection_lost": "La connexion au serveur est perdue et il est impossible de se reconnecter. Rafraîchissez la page pour essayer de revenir dans le serveur.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} se rend : il propose de devenir votre vassal pendant 10 minutes, sans combat entre vous, et de vous verser 25 % de ses revenus en or",
     "retreating": "en retraite",
     "sent_emoji": "Envoyé à {name} : {emoji}",
+    "sent_emoji_all": "Envoyé à tous : {emoji}",
     "sent_gold_to_player": "Vous avez envoyé {gold} ors à {name}",
     "sent_troops_to_player": "Vous avez envoyé {troops} troupes à {name}",
     "surrender_sent": "Vous vous êtes rendu à {name}. En attente de sa réponse.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Accélérer / Ralentir le déroulement du jeu (solo uniquement)",
     "action_move_camera": "Déplacer la caméra",
     "action_pause_game": "Mettre en pause / Relancer le jeu",
+    "action_quick_chat": "Ouvrir le chat rapide",
     "action_ratio_change": "Diminuer/Augmenter le ratio d'attaque",
     "action_reset_gfx": "Réinitialiser les graphismes",
     "action_warship_multiselect": "Sélectionner plusieurs navires de guerre (cliquer et glisser pour dessiner le carré de sélection)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Nombre de bugs",
     "easter_writing_speed_desc": "Ajuster la vitesse à laquelle vous prétendez coder (x1–x100)",
     "easter_writing_speed_label": "Multiplicateur de vitesse d'écriture",
+    "emoji_menu": "Menu des emojis",
+    "emoji_menu_desc": "Ouvre le menu des emojis pour le joueur dont le territoire est sous votre curseur.",
     "emoji_menu_modifier": "Menu de modifications des émojis",
     "emoji_menu_modifier_desc": "Maintenez cette touche enfoncée en cliquant pour ouvrir le menu des émojis.",
     "emojis_desc": "Afficher/Masquer les émoticônes dans le jeu",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Affiche moins d'images quand la fenêtre du jeu est derrière une autre ou réduite. La partie continue normalement.",
     "power_saving_label": "Économie d'énergie en arrière-plan",
     "press_a_key": "Appuyez sur une touche",
+    "quick_chat": "Chat rapide",
+    "quick_chat_desc": "Ouvre le chat rapide pour le joueur dont le territoire est sous votre curseur.",
     "render_debug_gui": "Réglage du moteur de rendu",
     "render_debug_gui_desc": "Activer/désactiver l'encart de réglage du rendu",
     "request_alliance": "Demander une alliance",

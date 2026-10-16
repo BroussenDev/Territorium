@@ -38,23 +38,12 @@ vi.mock("../../../../src/client/hud/PlayerIcons", () => ({
   getPlayerIcons: vi.fn(() => []),
 }));
 
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  MockInstance,
-  vi,
-} from "vitest";
+import { afterEach, beforeEach, describe, expect, it, MockInstance, vi } from "vitest";
+import { PlayerType } from "../../../../src/core/game/Game";
 import { PlayerInfoOverlay } from "../../../../src/client/hud/layers/PlayerInfoOverlay";
-import {
-  DoBoatAttackEvent,
-  DoRequestAllianceEvent,
-  DoTargetPlayerEvent,
-} from "../../../../src/client/InputHandler";
+import { DoBoatAttackEvent, DoRequestAllianceEvent, DoTargetPlayerEvent } from "../../../../src/client/InputHandler";
 import { EventBus } from "../../../../src/core/EventBus";
-import { PlayerType, UnitType } from "../../../../src/core/game/Game";
+import { UnitType } from "../../../../src/core/game/Game";
 
 // Flattens the mocked-html template tree into one string for assertions.
 function flatten(node: unknown): string {

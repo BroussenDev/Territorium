@@ -237,9 +237,13 @@
     "unavailable": "O gerenciamento de nomes de usuários ainda não está disponível nesta conta."
   },
   "chat": {
+    "all_phrases": "Todas as frases",
     "attack": {
       "attack": "Ataque [P1]",
+      "betray": "Traiam [P1]!",
+      "build_sams": "Construam SAMs!",
       "build_warships": "Construir Navio de batalha!",
+      "crown": "Ataquem a coroa!",
       "finish": "Vamos finalizar [P1]!",
       "focus": "Foque em [P1]!",
       "mirv": "Lance um MIRV no [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Construa Postos de Defesa!",
       "defend": "Defenda [P1]!",
       "defend_from": "Se defenda de [P1]!",
-      "dont_attack": "Não ataque [P1]!"
+      "dont_attack": "Não ataque [P1]!",
+      "make_ally": "Aliem-se a [P1]!"
     },
     "from": "De {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Por favor, dê-me ouro!",
       "help_defend": "Me ajude a se defender do [P1]",
       "no_attack": "Por favor, nao me ataque!",
+      "send_gold_to": "Enviem ouro para [P1]!",
+      "send_troops_to": "Enviem tropas para [P1]!",
       "sorry_attack": "Desculpa, Nao queria te atacar.",
       "trade_partners": "Vamos ser parceiros comerciais!",
       "troops": "Por favor, me dê tropas!",
@@ -295,7 +302,6 @@
       "coastline": "Por Favor, deixe-me pegar uma costa.",
       "fun": "Esse jogo está divertido!",
       "go": "Vamos lá!",
-      "pr": "Quando o meu PR finalmente irá se reunir...?",
       "strategy": "Ótima estratégia!",
       "team_up": "Vamos nos Juntar contra [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Jogador",
     "search": "Procurar Jogadores...",
     "send": "Mandar Mensagem",
+    "short": {
+      "greet": {
+        "ruining_games": "Vocês estão estragando as partidas"
+      },
+      "help": {
+        "sorry_attack": "Desculpe pelo ataque!",
+        "troops_frontlines": "Tropas para a frente!"
+      },
+      "misc": {
+        "coastline": "Me deixe ter uma costa"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] já pode lançar MIRV!",
+        "pirating": "[P1] está pirateando",
+        "saving_for_mirv": "[P1] juntando para MIRV",
+        "snowballing": "[P1] cresce rápido demais",
+        "stalemate": "Paz? Empate.",
+        "stop_trading_all": "Parem todo comércio!"
+      }
+    },
     "sort_by_territory": "Classificar por território",
     "title": "Chat Rápido",
     "to": "Enviado ao {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] me traiu!",
       "cheating": "[P1] está trapaceando!",
       "danger_base": "[P1] está desprotegido!",
+      "disconnected": "[P1] se desconectou!",
       "getting_big": "[P1] Está crescendo muito rápido!",
       "has_allies": "[P1] Tem muitos aliados.",
       "mirv_ready": "[P1] Têm ouro o suficiente para lançar um MIRV!",
       "mirv_soon": "[P1] Pode lançar um MIRV em breve!",
       "no_allies": "[P1] Não tem aliados.",
       "number1_warning": "O Jogador #1 Pode Vencer Em breve A menos se fizermos equipes!",
+      "pirating": "[P1] está pirateando todo o nosso comércio!",
       "saving_for_mirv": "[P1] Está economizando para lançar um MIRV.",
       "snowballing": "[P1] está crescendo exponencialmente!",
       "stalemate": "Vamos fazer as pazes. Isso é um impasse, nós dois vamos perder.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Vapor Escarlate",
     "voie_emeraude": "Linha Esmeralda"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomacia",
+    "directions": "Direções",
+    "faces": "Rostos",
+    "favorite_remove_hint": "Arraste para fora para remover",
+    "favorites": "Favoritos",
+    "favorites_hint": "Arraste emojis para cá para dar a eles uma tecla de atalho",
+    "favorites_hint_touch": "Arraste emojis para cá para mantê-los à mão",
+    "gestures": "Gestos",
+    "ranks": "Patentes",
+    "things": "Objetos"
+  },
   "error_modal": {
     "connection_error": "Erro de conexão!",
     "connection_lost": "Perdeu a conexão com o servidor do jogo e não foi possível reconectar. Atualize a página para tentar entrar novamente.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} rendição: eles se oferecem para ser seu vassalo por 10 minutos, sem brigas entre vocês, e pagar a você 25% de sua renda em ouro",
     "retreating": "recuando",
     "sent_emoji": "{name} enviou: {emoji}",
+    "sent_emoji_all": "Enviado a todos: {emoji}",
     "sent_gold_to_player": "Enviou {gold} de Ouro para {name}",
     "sent_troops_to_player": "Enviado {troops} tropas para {name}",
     "surrender_sent": "Você se rendeu a {name}. Esperando pela resposta deles.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Aumento ou diminuição da aceleração do jogo (Único Jogador)",
     "action_move_camera": "Mover câmera",
     "action_pause_game": "Pausar / Continuar com o Jogo",
+    "action_quick_chat": "Abrir o chat rápido",
     "action_ratio_change": "Diminuir/Aumentar taxa de ataque",
     "action_reset_gfx": "Redefinir gráficos",
     "action_warship_multiselect": "Selecionar vários navios de guerra (arraste para desenhar a caixa de seleção)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Contagem de Falhas",
     "easter_writing_speed_desc": "Ajuste o quão rápido você pretende programar (x1–x100)",
     "easter_writing_speed_label": "Multiplicador de Velocidade de Escrita",
+    "emoji_menu": "Menu de emojis",
+    "emoji_menu_desc": "Abre o menu de emojis para o jogador cujo território está sob o cursor.",
     "emoji_menu_modifier": "Modificador do Menu de Emoji",
     "emoji_menu_modifier_desc": "Segure esta tecla enquanto clica para abrir o menu de emojis.",
     "emojis_desc": "Alternar se os emojis serão exibidos no jogo",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Desenha menos quadros enquanto a janela do jogo está atrás de outra ou minimizada. A partida continua normalmente.",
     "power_saving_label": "Economia de energia em segundo plano",
     "press_a_key": "Pressione uma tecla",
+    "quick_chat": "Chat rápido",
+    "quick_chat_desc": "Abre o chat rápido para o jogador cujo território está sob o cursor.",
     "render_debug_gui": "Renderizar GUI de Debug",
     "render_debug_gui_desc": "Alternar o painel de ajuste do renderizador",
     "request_alliance": "Solicitar Aliança",

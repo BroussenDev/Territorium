@@ -237,9 +237,13 @@
     "unavailable": "Pengelolaan nama pengguna belum tersedia di akun ini."
   },
   "chat": {
+    "all_phrases": "Semua frasa",
     "attack": {
       "attack": "Serang [P1]!",
+      "betray": "Khianati [P1]!",
+      "build_sams": "Bangun SAM!",
       "build_warships": "Bangun Kapal-Kapal Perang!",
+      "crown": "Serang mahkota!",
       "finish": "Mari selesaikan [P1]!",
       "focus": "Fokus serangan pada [P1]!",
       "mirv": "Luncurkan MIRV ke [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Bangun Pos Pertahanan!",
       "defend": "Pertahankan [P1]!",
       "defend_from": "Bertahan dari [P1]!",
-      "dont_attack": "Jangan serang [P1]!"
+      "dont_attack": "Jangan serang [P1]!",
+      "make_ally": "Bersekutu dengan [P1]!"
     },
     "from": "Dari {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Tolong berikan saya emas!",
       "help_defend": "Bantu saya bertahan dari [P1]!",
       "no_attack": "Tolong jangan serang saya!",
+      "send_gold_to": "Kirim emas ke [P1]!",
+      "send_troops_to": "Kirim pasukan ke [P1]!",
       "sorry_attack": "Maaf, Saya tidak bermaksud untuk menyerang Anda.",
       "trade_partners": "Mari menjadi mitra dagang!",
       "troops": "Tolong berikan saya tentara!",
@@ -295,7 +302,6 @@
       "coastline": "Tolong izinkan saya mendapatkan garis pantai.",
       "fun": "Permainan ini seru!",
       "go": "Ayo!",
-      "pr": "Kapan PR-ku akhirnya akan digabungkan...?",
       "strategy": "Strategi yang mantap!",
       "team_up": "Mari menyerang [P1] bersama-sama!"
     },
@@ -303,6 +309,26 @@
     "player": "Pemain",
     "search": "Cari pemain...",
     "send": "Kirim",
+    "short": {
+      "greet": {
+        "ruining_games": "Kalian merusak permainan kami"
+      },
+      "help": {
+        "sorry_attack": "Maaf sudah menyerang!",
+        "troops_frontlines": "Pasukan ke garis depan!"
+      },
+      "misc": {
+        "coastline": "Biarkan aku punya pantai"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] sudah bisa MIRV!",
+        "pirating": "[P1] membajak dagang",
+        "saving_for_mirv": "[P1] menabung untuk MIRV",
+        "snowballing": "[P1] tumbuh terlalu cepat",
+        "stalemate": "Damai? Buntu.",
+        "stop_trading_all": "Hentikan semua perdagangan!"
+      }
+    },
     "sort_by_territory": "Urutkan berdasarkan wilayah",
     "title": "Obrolan Cepat",
     "to": "Dari {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] menkhianati saya!",
       "cheating": "[P1] curang!",
       "danger_base": "[P1] tidak terproteksi!",
+      "disconnected": "[P1] terputus!",
       "getting_big": "[P1] berkembang sangat cepat!",
       "has_allies": "[P1] punya banyak sekutu.",
       "mirv_ready": "[P1] punya cukup emas untuk meluncurkan MIRV!",
       "mirv_soon": "[P1] akan meluncurkan MIRV segera!",
       "no_allies": "[P1] tidak punya sekutu.",
       "number1_warning": "Pemain nomor 1 akan segera menang kecuali kita bekerja sama!",
+      "pirating": "[P1] membajak semua perdagangan kita!",
       "saving_for_mirv": "[P1] sedang menabung untuk meluncurkan MIRV.",
       "snowballing": "[P1] berkembang terlalu cepat!",
       "stalemate": "Mari berdamai. Ini jalan buntu, kita berdua akan kalah.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Uap Merah",
     "voie_emeraude": "Garis Zamrud"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomasi",
+    "directions": "Arah",
+    "faces": "Wajah",
+    "favorite_remove_hint": "Seret keluar untuk menghapus",
+    "favorites": "Favorit",
+    "favorites_hint": "Seret emoji ke sini untuk memberinya tombol pintasan",
+    "favorites_hint_touch": "Seret emoji ke sini agar selalu siap",
+    "gestures": "Gestur",
+    "ranks": "Pangkat",
+    "things": "Benda"
+  },
   "error_modal": {
     "connection_error": "Kesalahan koneksi!",
     "connection_lost": "Kehilangan koneksi ke server game dan tidak dapat menyambung kembali. Segarkan halaman untuk mencoba bergabung kembali.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} menyerah: mereka menawarkan untuk menjadi pengikut Anda selama 10 menit, tanpa pertengkaran di antara Anda, dan membayar Anda 25% dari pendapatan emas mereka",
     "retreating": "mundur",
     "sent_emoji": "Dari {name}: {emoji}",
+    "sent_emoji_all": "Dikirim ke semua: {emoji}",
     "sent_gold_to_player": "Mengirim {gold} emas ke {name}",
     "sent_troops_to_player": "Mengirim {troops} pasukan ke {name}",
     "surrender_sent": "Anda menyerah pada {name}. Menunggu jawaban mereka.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Kecepatan permainan turun / naik (pemain tunggal)",
     "action_move_camera": "Pindahkan kamera",
     "action_pause_game": "Jeda / Lanjutkan permainan",
+    "action_quick_chat": "Buka obrolan cepat",
     "action_ratio_change": "Kurangi / Tingkatkan rasio serangan",
     "action_reset_gfx": "Atur ulang grafis",
     "action_warship_multiselect": "Pilih beberapa kapal perang (seret untuk menggambar kotak pilihan)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Jumlah Bug",
     "easter_writing_speed_desc": "Atur seberapa cepat kamu berpura-pura coding (x1–x100)",
     "easter_writing_speed_label": "Multiplier Kecepatan Menulis",
+    "emoji_menu": "Menu emoji",
+    "emoji_menu_desc": "Membuka menu emoji untuk pemain yang wilayahnya ada di bawah kursor.",
     "emoji_menu_modifier": "Pengubah Menu Emoji",
     "emoji_menu_modifier_desc": "Tahan tombol ini sambil mengklik untuk membuka menu emoji.",
     "emojis_desc": "Alihkan tampilan emoji di dalam game",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Menggambar lebih sedikit frame saat jendela game berada di belakang jendela lain atau diminimalkan. Permainan tetap berjalan normal.",
     "power_saving_label": "Hemat daya di latar belakang",
     "press_a_key": "Tekan tombol",
+    "quick_chat": "Obrolan cepat",
+    "quick_chat_desc": "Membuka obrolan cepat untuk pemain yang wilayahnya ada di bawah kursor.",
     "render_debug_gui": "Render GUI Debug",
     "render_debug_gui_desc": "Alihkan panel penyetelan penyaji",
     "request_alliance": "Permintaan Aliansi",

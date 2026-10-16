@@ -237,9 +237,13 @@
     "unavailable": "このアカウントではまだ名前を変更できません。"
   },
   "chat": {
+    "all_phrases": "すべてのフレーズ",
     "attack": {
       "attack": "[P1]に攻撃だ！",
+      "betray": "[P1]を裏切れ！",
+      "build_sams": "SAMを建てろ！",
       "build_warships": "戦艦を建造せよ！",
+      "crown": "王冠を攻撃せよ！",
       "finish": "[P1]にとどめだ！",
       "focus": "[P1]に集中砲火だ！",
       "mirv": "MIRVを[P1]に発射！"
@@ -259,7 +263,8 @@
       "build_posts": "防御ポストを建設しよう！",
       "defend": "[P1]を守る！",
       "defend_from": "[P1] から守れ！",
-      "dont_attack": "[P1]を攻撃しないで！"
+      "dont_attack": "[P1]を攻撃しないで！",
+      "make_ally": "[P1]と同盟を組め！"
     },
     "from": "{user}から着信:{msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "お金を頂戴！",
       "help_defend": "[P1]から守るのを手伝って！",
       "no_attack": "攻撃しないで！",
+      "send_gold_to": "[P1]に金を送れ！",
+      "send_troops_to": "[P1]に兵を送れ！",
       "sorry_attack": "ごめん、攻撃するつもりはなかった。",
       "trade_partners": "貿易相手になろう！",
       "troops": "部隊を頂戴！",
@@ -295,7 +302,6 @@
       "coastline": "海岸線をください。",
       "fun": "このゲーム楽しい！",
       "go": "行こう！",
-      "pr": "私のPRは最終的にいつ統合されるのだろうか...？",
       "strategy": "良い戦略だ！",
       "team_up": "チームを組んで [P1]に立ち向かおう！"
     },
@@ -303,6 +309,26 @@
     "player": "プレイヤー",
     "search": "プレイヤーを検索…",
     "send": "送る",
+    "short": {
+      "greet": {
+        "ruining_games": "ゲームを台無しにしている"
+      },
+      "help": {
+        "sorry_attack": "攻撃してごめん！",
+        "troops_frontlines": "前線に部隊を！"
+      },
+      "misc": {
+        "coastline": "海岸をください"
+      },
+      "warnings": {
+        "mirv_ready": "[P1]がMIRVを撃てる！",
+        "pirating": "[P1]が略奪中",
+        "saving_for_mirv": "[P1]がMIRV用に貯金中",
+        "snowballing": "[P1]が急成長中",
+        "stalemate": "和平？膠着だ。",
+        "stop_trading_all": "全交易を停止せよ！"
+      }
+    },
     "sort_by_territory": "領土で並べ替え",
     "title": "電報",
     "to": "{user}に送信:{msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1]が私を裏切った！",
       "cheating": "[P1] はチートを使っている！",
       "danger_base": "[P1]は無防備だ！",
+      "disconnected": "[P1]が切断した！",
       "getting_big": "[P1]の成長が速すぎる！",
       "has_allies": "[P1]はいっぱい味方がいる。",
       "mirv_ready": "[P1]はMIRVを発射できるだけのお金を持っている！",
       "mirv_soon": "[P1]はもうすぐMIRVを発射できる！",
       "no_allies": "[P1]は味方はいない。",
       "number1_warning": "私たちが手を組まないと１位のプレイヤーがすぐに勝ってしまう！",
+      "pirating": "[P1]が我々の交易を全部略奪している！",
       "saving_for_mirv": "[P1]はMIRVを発射するために貯金している。",
       "snowballing": "[P1]の成長が早すぎる！",
       "stalemate": "和解しよう。この膠着状態を脱しないと私たちは負けてしまう。",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "緋色の蒸気",
     "voie_emeraude": "エメラルドライン"
   },
+  "emoji_table": {
+    "diplomacy": "外交",
+    "directions": "方向",
+    "faces": "顔",
+    "favorite_remove_hint": "外へドラッグして削除",
+    "favorites": "お気に入り",
+    "favorites_hint": "ここに絵文字をドラッグしてショートカットキーを割り当て",
+    "favorites_hint_touch": "ここに絵文字をドラッグしてすぐ使えるように",
+    "gestures": "ジェスチャー",
+    "ranks": "階級",
+    "things": "もの"
+  },
   "error_modal": {
     "connection_error": "接続エラー！",
     "connection_lost": "ゲームサーバーへの接続が失われ、再接続できませんでした。ページを更新して再接続を試してください。",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} 降伏: 彼らは、あなたとの間で戦闘を行わずに 10 分間あなたの家臣となり、ゴールド収入の 25% をあなたに支払うと申し出ます。",
     "retreating": "撤退中",
     "sent_emoji": "{name}に送信 :{emoji}",
+    "sent_emoji_all": "全員に送信：{emoji}",
     "sent_gold_to_player": "{gold}の資金を{name}に贈りました",
     "sent_troops_to_player": "{troops}の兵力を{name}に送信しました",
     "surrender_sent": "あなたは{name}に降伏しました。彼らの答えを待っています。",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "ゲームの速度を減速 / 加速する (シングルプレイヤーのみ)",
     "action_move_camera": "カメラ移動",
     "action_pause_game": "ゲームの一時停止 / 再開を切り替える",
+    "action_quick_chat": "クイックチャットを開く",
     "action_ratio_change": "出撃兵力を減少/増加させる",
     "action_reset_gfx": "グラフィックをリセットする",
     "action_warship_multiselect": "複数の軍艦を選択する (ドラッグして範囲選択を描画できます)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "バグの個数",
     "easter_writing_speed_desc": "コードを書く速さを調節する。 (1 ~ 100)",
     "easter_writing_speed_label": "書き込み速度の倍率",
+    "emoji_menu": "絵文字メニュー",
+    "emoji_menu_desc": "カーソル下の領土のプレイヤーに絵文字メニューを開きます。",
     "emoji_menu_modifier": "絵文字メニューを表示",
     "emoji_menu_modifier_desc": "絵文字メニューを開きます。",
     "emojis_desc": "ゲーム中に絵文字を表示します。",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "ゲームのウィンドウが他のウィンドウの後ろにあるときや最小化中は、描画するフレームを減らします。ゲーム自体は通常どおり進みます。",
     "power_saving_label": "バックグラウンドで省電力",
     "press_a_key": "キーを入力",
+    "quick_chat": "クイックチャット",
+    "quick_chat_desc": "カーソル下の領土のプレイヤーにクイックチャットを開きます。",
     "render_debug_gui": "描画デバッグGUI",
     "render_debug_gui_desc": "レンダラー調整パネルの表示を切り替えます",
     "request_alliance": "同盟を要請",

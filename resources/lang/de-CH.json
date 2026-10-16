@@ -237,9 +237,13 @@
     "unavailable": "Die Benutzernamenverwaltung ist für dieses Konto noch nicht verfügbar."
   },
   "chat": {
+    "all_phrases": "Alle Sätze",
     "attack": {
       "attack": "Griff [P1] a!",
+      "betray": "Verratet [P1]!",
+      "build_sams": "Baut SAMs!",
       "build_warships": "Bou Kriegsschiff!",
+      "crown": "Greift die Krone an!",
       "finish": "Lass üs mit [P1] fertig wärde!",
       "focus": "Fokussier s Für uf [P1]!",
       "mirv": "Start e MIRV uf [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Bou Verteidigungspostene!",
       "defend": "Verteidig [P1]!",
       "defend_from": "Verteidig gäge [P1]!",
-      "dont_attack": "Griff [P1] nid a!"
+      "dont_attack": "Griff [P1] nid a!",
+      "make_ally": "Verbündet euch mit [P1]!"
     },
     "from": "Vo {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Bitte gib mir Gold!",
       "help_defend": "Hüuf mir mi gäge [P1] z verteidige!",
       "no_attack": "Bitte griff mi nid a!",
+      "send_gold_to": "Schickt Gold an [P1]!",
+      "send_troops_to": "Schickt Truppen an [P1]!",
       "sorry_attack": "Entschuldigung, i ha nid wöue agriffe.",
       "trade_partners": "Lass Handelspartner wärde!",
       "troops": "Bitte gib mir Truppene!",
@@ -295,7 +302,6 @@
       "coastline": "Bitte lass mi e Küste übercho.",
       "fun": "Das Spiel macht Spass!",
       "go": "Los geits!",
-      "pr": "Wenn wird mi PR endlech übernoh...?",
       "strategy": "Gueti strategie!",
       "team_up": "Lass zäme gäge [P1] teame!"
     },
@@ -303,6 +309,26 @@
     "player": "Spieler",
     "search": "Spieler sueche...",
     "send": "Sände",
+    "short": {
+      "greet": {
+        "ruining_games": "Ihr ruiniert unsere Spiele"
+      },
+      "help": {
+        "sorry_attack": "Sorry für den Angriff!",
+        "troops_frontlines": "Truppen an die Front!"
+      },
+      "misc": {
+        "coastline": "Lass mir eine Küste"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] kann jetzt MIRVen!",
+        "pirating": "[P1] kapert Handel",
+        "saving_for_mirv": "[P1] spart für MIRV",
+        "snowballing": "[P1] wächst zu schnell",
+        "stalemate": "Frieden? Patt.",
+        "stop_trading_all": "Stoppt allen Handel!"
+      }
+    },
     "sort_by_territory": "Nach Gebiet sortieren",
     "title": "Schnäuchat",
     "to": "Gsendet a {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] het mi verrote!",
       "cheating": "[P1] betrüegt!",
       "danger_base": "[P1] isch ungschützt!",
+      "disconnected": "[P1] hat die Verbindung verloren!",
       "getting_big": "[P1] wachset z schnäu!",
       "has_allies": "[P1] het viu Verbündeti.",
       "mirv_ready": "[P1] het gnue Gold, um e MIRV-Rakete z starte!",
       "mirv_soon": "[P1] cha gli e MIRV starte!",
       "no_allies": "[P1] het keini Verbündeti.",
       "number1_warning": "Der #1 Spieler wird gli gwünne, usser mir werde es Team!",
+      "pirating": "[P1] kapert unseren ganzen Handel!",
       "saving_for_mirv": "[P1] spart, um e MIRV-Rakete z starte.",
       "snowballing": "[P1] wachst z schnäu!",
       "stalemate": "Lass friede schliesse. Das isch e Sackgass, mir werde beidi verliere.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scharlachroter Dampf",
     "voie_emeraude": "Smaragdlinie"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomatie",
+    "directions": "Richtungen",
+    "faces": "Gesichter",
+    "favorite_remove_hint": "Zum Entfernen herausziehen",
+    "favorites": "Favoriten",
+    "favorites_hint": "Ziehe Emojis hierher, um ihnen eine Taste zu geben",
+    "favorites_hint_touch": "Ziehe Emojis hierher, um sie griffbereit zu haben",
+    "gestures": "Gesten",
+    "ranks": "Ränge",
+    "things": "Dinge"
+  },
   "error_modal": {
     "connection_error": "Verbindigsfähler!",
     "connection_lost": "Die Verbindung zum Spieleserver wurde unterbrochen und die Verbindung konnte nicht wiederhergestellt werden. Aktualisieren Sie die Seite, um erneut beizutreten.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} ergibt sich: Sie bieten an, 10 Minuten lang ohne Streit zwischen Ihnen Ihr Vasall zu sein und Ihnen 25 % ihres Goldeinkommens zu zahlen",
     "retreating": "Zieht sech zrügg",
     "sent_emoji": "Gsendet a {name}: {emoji}",
+    "sent_emoji_all": "An alle gesendet: {emoji}",
     "sent_gold_to_player": "{gold} Gold a {name} gsendet",
     "sent_troops_to_player": "{troops} Truppe a {name} gsendet",
     "surrender_sent": "Du hast dich {name} ergeben. Warten auf ihre Antwort.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Spielgeschwindigkeit verringern/erhöhen (Einzelspieler)",
     "action_move_camera": "Kamera bewege",
     "action_pause_game": "Spiel pausieren/fortsetzen",
+    "action_quick_chat": "Schnellchat öffnen",
     "action_ratio_change": "Agriffsrate verringere/erhöhe",
     "action_reset_gfx": "Grafike zrüggsetze",
     "action_warship_multiselect": "Wählen Sie mehrere Kriegsschiffe aus (ziehen Sie, um das Auswahlfeld zu zeichnen).",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Fehlerazau",
     "easter_writing_speed_desc": "Apasse, wie schnäu du vorgisch z programmiere (x1-x100)",
     "easter_writing_speed_label": "Schribgschwindikeits Multiplikator",
+    "emoji_menu": "Emoji-Menü",
+    "emoji_menu_desc": "Öffnet das Emoji-Menü für den Spieler, dessen Gebiet unter deinem Mauszeiger liegt.",
     "emoji_menu_modifier": "Emoji-Menü Modifikator",
     "emoji_menu_modifier_desc": "Haut die Taste drückt und klick glichzitig, um s Emojimenu z öffne.",
     "emojis_desc": "Emojis im Spiel ein-/ausblenden",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Zeichnet weniger Bilder, solange das Spielfenster hinter einem anderen liegt oder minimiert ist. Die Partie läuft normal weiter.",
     "power_saving_label": "Energiesparen im Hintergrund",
     "press_a_key": "Drück e Taste",
+    "quick_chat": "Schnellchat",
+    "quick_chat_desc": "Öffnet den Schnellchat für den Spieler, dessen Gebiet unter deinem Mauszeiger liegt.",
     "render_debug_gui": "Debug-GUI rendern",
     "render_debug_gui_desc": "Schalten Sie das Renderer-Tuning-Panel um",
     "request_alliance": "Allianz anfordern",

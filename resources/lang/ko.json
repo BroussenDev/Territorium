@@ -237,9 +237,13 @@
     "unavailable": "이 계정에서는 아직 사용자명 관리 기능을 사용할 수 없습니다."
   },
   "chat": {
+    "all_phrases": "모든 문구",
     "attack": {
       "attack": "[P1]을(를) 공격해!",
+      "betray": "[P1]을(를) 배신하세요!",
+      "build_sams": "SAM을 건설하세요!",
       "build_warships": "군함을 건조해!",
+      "crown": "왕관을 공격하세요!",
       "finish": "[P1]을(를) 끝장내버리자!",
       "focus": "[P1]에게 집중 공격하자!",
       "mirv": "[P1]에게 다탄두 미사일을 발사 해야해!"
@@ -259,7 +263,8 @@
       "build_posts": "방어 초소를 건설해!",
       "defend": "[P1]을(를) 막아!",
       "defend_from": "[P1]을(를) 막아!",
-      "dont_attack": "[P1]을(를) 치지 마!"
+      "dont_attack": "[P1]을(를) 치지 마!",
+      "make_ally": "[P1]와(과) 동맹하세요!"
     },
     "from": "{user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "금 좀 줘!",
       "help_defend": "[P1](으)로부터 방어하는 걸 도와줘!",
       "no_attack": "나 치지 마!",
+      "send_gold_to": "[P1]에게 금을 보내세요!",
+      "send_troops_to": "[P1]에게 병력을 보내세요!",
       "sorry_attack": "미안, 치려던게 아니였어;",
       "trade_partners": "무역 파트너가 되자!",
       "troops": "병력 좀 줘!",
@@ -295,7 +302,6 @@
       "coastline": "해안선을 좀 차지하게 해줘.",
       "fun": "이 판 재밌네 ㅋㅋㅋ",
       "go": "가자!",
-      "pr": "내 PR은 도대체 언제 머지되는 걸까...?",
       "strategy": "좋은 전략이야!",
       "team_up": "힘을 합쳐 [P1]을(를) 공격하자!"
     },
@@ -303,6 +309,26 @@
     "player": "플레이어",
     "search": "플레이어 찾기...",
     "send": "보내기",
+    "short": {
+      "greet": {
+        "ruining_games": "게임을 망치고 있어요"
+      },
+      "help": {
+        "sorry_attack": "공격해서 미안해요!",
+        "troops_frontlines": "병력을 전선으로!"
+      },
+      "misc": {
+        "coastline": "해안을 내게 줘요"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] 지금 MIRV 가능!",
+        "pirating": "[P1] 약탈 중",
+        "saving_for_mirv": "[P1] MIRV 모으는 중",
+        "snowballing": "[P1] 너무 빨리 커요",
+        "stalemate": "평화? 교착 상태.",
+        "stop_trading_all": "모든 무역 중단!"
+      }
+    },
     "sort_by_territory": "영토순 정렬",
     "title": "빠른 채팅",
     "to": "{user}에게: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1]이(가) 날 배신했어!",
       "cheating": "[P1] 핵쓰는거 아니냐?",
       "danger_base": "[P1]이(가) 무방비 상태야!",
+      "disconnected": "[P1]의 연결이 끊겼습니다!",
       "getting_big": "[P1]이(가) 너무 빨리 크고 있어!",
       "has_allies": "[P1]은(는) 동맹이 많아.",
       "mirv_ready": "[P1]은(는) 다탄두 미사일 발사를 위한 금이 충분히 있어!",
       "mirv_soon": "[P1]은(는) 곧 다탄두 미사일을 쏠 수 있어!",
       "no_allies": "[P1]은(는) 동맹이 없어.",
       "number1_warning": "우리가 힘을 합치지 않으면 1등 플레이어가 곧 이길 거야!",
+      "pirating": "[P1]이(가) 우리 무역을 모두 약탈하고 있어요!",
       "saving_for_mirv": "[P1]이(가) 다탄두 미사일 발사용 금을 모으고 있어.",
       "snowballing": "[P1]이(가) 너무 빨리 커지고 있어!",
       "stalemate": "평화를 맺자. 이건 교착 상태야, 우리 둘 다 질 거야.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "스칼렛 스팀",
     "voie_emeraude": "에메랄드 라인"
   },
+  "emoji_table": {
+    "diplomacy": "외교",
+    "directions": "방향",
+    "faces": "얼굴",
+    "favorite_remove_hint": "밖으로 끌어 제거",
+    "favorites": "즐겨찾기",
+    "favorites_hint": "여기로 이모지를 끌어 단축키를 지정하세요",
+    "favorites_hint_touch": "여기로 이모지를 끌어 가까이 두세요",
+    "gestures": "제스처",
+    "ranks": "계급",
+    "things": "사물"
+  },
   "error_modal": {
     "connection_error": "연결 오류!",
     "connection_lost": "게임 서버와의 연결이 끊어졌으며 다시 연결할 수 없습니다. 페이지를 새로고침하여 재접속해 보세요.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} 항복: 그들은 당신과 싸우지 않고 10분 동안 당신의 가신이 되고 금 수입의 25%를 당신에게 주겠다고 제안합니다.",
     "retreating": "후퇴 중",
     "sent_emoji": "{name} 에게: {emoji}",
+    "sent_emoji_all": "모두에게 보냄: {emoji}",
     "sent_gold_to_player": "{gold} 금을 {name}님께 보냈습니다",
     "sent_troops_to_player": "{troops}명의 병력을 {name}에게 보냈습니다",
     "surrender_sent": "{name}에 항복하셨습니다. 그들의 답변을 기다리고 있습니다.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "게임 속도 줄이기 / 높이기 (싱글 플레이어)",
     "action_move_camera": "카메라 움직이기",
     "action_pause_game": "정지/재생",
+    "action_quick_chat": "빠른 채팅 열기",
     "action_ratio_change": "공격 비율 낮추기 / 높이기",
     "action_reset_gfx": "그래픽 초기화",
     "action_warship_multiselect": "여러 군함 선택 (드래그하여 선택 상자 지정)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "버그 수",
     "easter_writing_speed_desc": "코딩하는 척하는 속도 조정 (x1~x100)",
     "easter_writing_speed_label": "글쓰기 속도 배율",
+    "emoji_menu": "이모지 메뉴",
+    "emoji_menu_desc": "커서 아래 영토의 플레이어에게 이모지 메뉴를 엽니다.",
     "emoji_menu_modifier": "이모티콘 메뉴 수정자",
     "emoji_menu_modifier_desc": "이 키를 누른 상태에서 클릭하면 이모지 메뉴가 열립니다.",
     "emojis_desc": "게임 내에서 감정 표현을 표시할지 여부를 선택합니다.",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "게임 창이 다른 창 뒤에 있거나 최소화되어 있는 동안 프레임을 적게 그립니다. 게임은 정상적으로 계속됩니다.",
     "power_saving_label": "백그라운드 절전",
     "press_a_key": "키 누르기",
+    "quick_chat": "빠른 채팅",
+    "quick_chat_desc": "커서 아래 영토의 플레이어에게 빠른 채팅을 엽니다.",
     "render_debug_gui": "렌더 디버그 GUI",
     "render_debug_gui_desc": "렌더러 조정 패널 전환",
     "request_alliance": "동맹 요청",

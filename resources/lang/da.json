@@ -237,9 +237,13 @@
     "unavailable": "Brugernavnsadministration er endnu ikke tilgængelig på denne konto."
   },
   "chat": {
+    "all_phrases": "Alle sætninger",
     "attack": {
       "attack": "Angrib [P1]!",
+      "betray": "Forråd [P1]!",
+      "build_sams": "Byg SAM'er!",
       "build_warships": "Byg Krigsskibe!",
+      "crown": "Angrib kronen!",
       "finish": "Lad os gøre det af med [P1]!",
       "focus": "Fokuser ilden på [P1]!",
       "mirv": "Affyr en MIRV på [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Byg Forsvarsposter!",
       "defend": "Forsvar [P1]!",
       "defend_from": "Forsvar mod [P1]!",
-      "dont_attack": "Angrib ikke [P1]!"
+      "dont_attack": "Angrib ikke [P1]!",
+      "make_ally": "Alliér jer med [P1]!"
     },
     "from": "Fra {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Vær venlig at give mig guld!",
       "help_defend": "Hjælp mig med at forsvare mig mod [P1]!",
       "no_attack": "Lad være med at angribe mig!",
+      "send_gold_to": "Send guld til [P1]!",
+      "send_troops_to": "Send tropper til [P1]!",
       "sorry_attack": "Beklager, jeg mente ikke at angribe.",
       "trade_partners": "Lad os være handelspartnere!",
       "troops": "Vær venlig at give mig tropper!",
@@ -295,7 +302,6 @@
       "coastline": "Lad mig få en kystlinje.",
       "fun": "Det her spil er sjovt!",
       "go": "Lad os komme i gang!",
-      "pr": "Hvornår bliver mine PR endelig slået sammen...?",
       "strategy": "Flot strategi!",
       "team_up": "Lad os holde sammen mod [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Spiller",
     "search": "Søg efter spiller...",
     "send": "Send",
+    "short": {
+      "greet": {
+        "ruining_games": "I ødelægger vores spil"
+      },
+      "help": {
+        "sorry_attack": "Undskyld angrebet!",
+        "troops_frontlines": "Tropper til fronten!"
+      },
+      "misc": {
+        "coastline": "Lad mig få en kyst"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] kan sende MIRV nu!",
+        "pirating": "[P1] plyndrer handel",
+        "saving_for_mirv": "[P1] sparer op til MIRV",
+        "snowballing": "[P1] vokser for hurtigt",
+        "stalemate": "Fred? Dødvande.",
+        "stop_trading_all": "Stop al handel!"
+      }
+    },
     "sort_by_territory": "Sorter efter område",
     "title": "Hurtig Chat",
     "to": "Sendt {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] forrådte mig!",
       "cheating": "[P1] snyder!",
       "danger_base": "[P1] er ubeskyttet!",
+      "disconnected": "[P1] har mistet forbindelsen!",
       "getting_big": "[P1] vokser for hurtigt!",
       "has_allies": "[P1] har mange allierede.",
       "mirv_ready": "[P1] har nok guld til at affyre en MIRV!",
       "mirv_soon": "[P1] kan snart affyre en MIRV!",
       "no_allies": "[P1] har ingen allierede.",
       "number1_warning": "Spiller #1 vinder snart, medmindre vi slår os sammen!",
+      "pirating": "[P1] plyndrer al vores handel!",
       "saving_for_mirv": "[P1] sparer op til at affyre en MIRV.",
       "snowballing": "[P1] får en for hurtig stigning i antal!",
       "stalemate": "Lad os slutte fred. Dette er en dødvande, og vi vil begge tabe.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomati",
+    "directions": "Retninger",
+    "faces": "Ansigter",
+    "favorite_remove_hint": "Træk ud for at fjerne",
+    "favorites": "Favoritter",
+    "favorites_hint": "Træk emojis hertil for at give dem en genvejstast",
+    "favorites_hint_touch": "Træk emojis hertil for at have dem lige ved hånden",
+    "gestures": "Fagter",
+    "ranks": "Rang",
+    "things": "Ting"
+  },
   "error_modal": {
     "connection_error": "Forbindelsesfejl!",
     "connection_lost": "Mistede forbindelsen til spilserveren og kunne ikke oprette forbindelse igen. Opdater siden for at prøve at deltage igen.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} overgiver sig: de tilbyder at være din vasal i 10 minutter, uden kampe mellem jer, og at betale dig 25 % af deres guldindkomst",
     "retreating": "trækker sig tilbage",
     "sent_emoji": "Sendt {name}: {emoji}",
+    "sent_emoji_all": "Sendt til alle: {emoji}",
     "sent_gold_to_player": "Sendte {gold} guld til {name}",
     "sent_troops_to_player": "Sendte {troops} tropper til {name}",
     "surrender_sent": "Du overgav dig til {name}. Venter på deres svar.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Spilhastighed ned / op (singeplayer)",
     "action_move_camera": "Flyt kamera",
     "action_pause_game": "Pause / Fortsæt spil",
+    "action_quick_chat": "Åbn hurtigchat",
     "action_ratio_change": "Reducer/Øg angrebsforhold",
     "action_reset_gfx": "Nulstil grafik",
     "action_warship_multiselect": "Vælg flere krigsskibe (træk for at tegne valgboks)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Fejlantal",
     "easter_writing_speed_desc": "Juster, hvor hurtigt du simulerer at kode (x1–x100)",
     "easter_writing_speed_label": "Skrivehastigheds-multiplikator",
+    "emoji_menu": "Emoji-menu",
+    "emoji_menu_desc": "Åbner emoji-menuen for spilleren, hvis område er under din markør.",
     "emoji_menu_modifier": "Emoji-menu-modifier",
     "emoji_menu_modifier_desc": "Hold denne tast nede mens du klikker for at åbne emojimenuen.",
     "emojis_desc": "Skift mellem om emojis vises i spillet",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Tegner færre billeder, mens spilvinduet er bag et andet eller minimeret. Spillet fortsætter som normalt.",
     "power_saving_label": "Strømbesparelse i baggrunden",
     "press_a_key": "Tryk på en tast",
+    "quick_chat": "Hurtigchat",
+    "quick_chat_desc": "Åbner hurtigchatten for spilleren, hvis område er under din markør.",
     "render_debug_gui": "Render debug-GUI",
     "render_debug_gui_desc": "Skift renderindstillingspanelet til/fra",
     "request_alliance": "Anmod om Alliance",

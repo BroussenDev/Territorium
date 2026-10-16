@@ -237,9 +237,13 @@
     "unavailable": "Zarządzanie nazwą użytkownika nie jest jeszcze dostępne na tym koncie."
   },
   "chat": {
+    "all_phrases": "Wszystkie frazy",
     "attack": {
       "attack": "Zaatakuj [P1]!",
+      "betray": "Zdradźcie [P1]!",
+      "build_sams": "Budujcie SAM-y!",
       "build_warships": "Buduj okręty wojenne!",
+      "crown": "Atakujcie koronę!",
       "finish": "Wykończmy [P1]!",
       "focus": "Skup atak na [P1]!",
       "mirv": "Wystrzel MIRV w [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Buduj posterunki obronne!",
       "defend": "Broń [P1]!",
       "defend_from": "Broń się przed [P1]!",
-      "dont_attack": "Nie atakuj [P1]!"
+      "dont_attack": "Nie atakuj [P1]!",
+      "make_ally": "Sprzymierzcie się z [P1]!"
     },
     "from": "Od {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Proszę, daj mi złoto!",
       "help_defend": "Pomóż mi bronić się przed [P1]!",
       "no_attack": "Proszę, nie atakuj mnie!",
+      "send_gold_to": "Wyślijcie złoto do [P1]!",
+      "send_troops_to": "Wyślijcie wojsko do [P1]!",
       "sorry_attack": "Przepraszam, nie chciałem zaatakować.",
       "trade_partners": "Zostańmy partnerami handlowymi!",
       "troops": "Proszę, daj mi żołnierzy!",
@@ -295,7 +302,6 @@
       "coastline": "Proszę, pozwól mi dotrzeć do wybrzeża.",
       "fun": "Ta gra jest świetna!",
       "go": "Chodźmy!",
-      "pr": "Kiedy w końcu mój PR zostanie połączony...?",
       "strategy": "Dobra strategia!",
       "team_up": "Połączmy siły przeciwko [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Gracz",
     "search": "Wyszukaj gracza...",
     "send": "Wyślij",
+    "short": {
+      "greet": {
+        "ruining_games": "Psujecie nasze gry"
+      },
+      "help": {
+        "sorry_attack": "Przepraszam za atak!",
+        "troops_frontlines": "Wojsko na front!"
+      },
+      "misc": {
+        "coastline": "Dajcie mi wybrzeże"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] może już wysłać MIRV!",
+        "pirating": "[P1] łupi handel",
+        "saving_for_mirv": "[P1] zbiera na MIRV",
+        "snowballing": "[P1] rośnie za szybko",
+        "stalemate": "Pokój? Pat.",
+        "stop_trading_all": "Przestańcie handlować!"
+      }
+    },
     "sort_by_territory": "Sortuj według terytorium",
     "title": "Szybka rozmowa",
     "to": "Wysłano {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] mnie zdradził!",
       "cheating": "[P1] oszukuje!",
       "danger_base": "[P1] jest niezabezpieczony",
+      "disconnected": "[P1] się rozłączył!",
       "getting_big": "[P1] zbyt szybko rośnie!",
       "has_allies": "[P1] ma wielu sojuszników.",
       "mirv_ready": "[P1] ma wystarczającą ilość złota, aby uruchomić MIRV!",
       "mirv_soon": "[P1] może wkrótce uruchomić MIRV!",
       "no_allies": "[P1] nie ma żadnych sojuszników.",
       "number1_warning": "Gracz nr 1 wkrótce wygra, chyba że się połączymy!",
+      "pirating": "[P1] łupi cały nasz handel!",
       "saving_for_mirv": "[P1] oszczędza, aby uruchomić MIRV.",
       "snowballing": "[P1] zbyt szybko rośnie!",
       "stalemate": "Zróbmy sojusz. To impas, oboje przegramy.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Szkarłatna Para",
     "voie_emeraude": "Linia szmaragdowa"
   },
+  "emoji_table": {
+    "diplomacy": "Dyplomacja",
+    "directions": "Kierunki",
+    "faces": "Twarze",
+    "favorite_remove_hint": "Przeciągnij poza, aby usunąć",
+    "favorites": "Ulubione",
+    "favorites_hint": "Przeciągnij tu emoji, aby nadać im klawisz skrótu",
+    "favorites_hint_touch": "Przeciągnij tu emoji, aby mieć je pod ręką",
+    "gestures": "Gesty",
+    "ranks": "Stopnie",
+    "things": "Rzeczy"
+  },
   "error_modal": {
     "connection_error": "Błąd połączenia!",
     "connection_lost": "Utracono połączenie z serwerem gry i nie można połączyć się ponownie. Odśwież stronę, aby spróbować ponownie dołączyć.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} poddaje się: oferują bycie twoim wasalem przez 10 minut, bez walk między wami, i zapłacą ci 25% swojego dochodu w złocie",
     "retreating": "wycofuje się",
     "sent_emoji": "Wysłano {name}: {emoji}",
+    "sent_emoji_all": "Wysłano do wszystkich: {emoji}",
     "sent_gold_to_player": "Wysłano {gold} złota do {name}",
     "sent_troops_to_player": "Wysłano {troops} żołnierzy do {name}",
     "surrender_sent": "Poddałeś się {name}. Czekam na ich odpowiedź.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Zmniejszenie/zwiększenie szybkości gry (single player)",
     "action_move_camera": "Przesuń kamerę",
     "action_pause_game": "Wstrzymaj/Wznów grę",
+    "action_quick_chat": "Otwórz szybki czat",
     "action_ratio_change": "Zmniejsz/Zwiększ proporcje ataku",
     "action_reset_gfx": "Zresetuj grafikę",
     "action_warship_multiselect": "Wybierz wiele okrętów wojennych (przeciągnij, aby narysować pole wyboru)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Liczba błędów",
     "easter_writing_speed_desc": "Dostosuj, jak szybko udajesz, że programujesz (x1–x100)",
     "easter_writing_speed_label": "Mnożnik prędkości pisania",
+    "emoji_menu": "Menu emoji",
+    "emoji_menu_desc": "Otwiera menu emoji dla gracza, którego teren jest pod kursorem.",
     "emoji_menu_modifier": "Modyfikator menu emoji",
     "emoji_menu_modifier_desc": "Przytrzymaj ten klawisz podczas klikania, aby otworzyć menu emoji.",
     "emojis_desc": "Przełącz, czy emotki mają być wyświetlane w grze",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Rysuje mniej klatek, gdy okno gry jest za innym oknem lub zminimalizowane. Gra toczy się normalnie.",
     "power_saving_label": "Oszczędzanie energii w tle",
     "press_a_key": "Naciśnij klawisz",
+    "quick_chat": "Szybki czat",
+    "quick_chat_desc": "Otwiera szybki czat dla gracza, którego teren jest pod kursorem.",
     "render_debug_gui": "Renderuj debugowanie GUI",
     "render_debug_gui_desc": "Przełącz panel dostrajania modułu renderującego",
     "request_alliance": "Poproś o sojusz",

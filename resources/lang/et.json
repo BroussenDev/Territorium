@@ -237,9 +237,13 @@
     "unavailable": "Kasutajanimede haldamine pole sellel kontol veel saadaval."
   },
   "chat": {
+    "all_phrases": "Kõik fraasid",
     "attack": {
       "attack": "Ründa [P1]!",
+      "betray": "Reetke [P1]!",
+      "build_sams": "Ehitage SAM-e!",
       "build_warships": "Ehita sõjalaevu!",
+      "crown": "Rünnake krooni!",
       "finish": "Tapame lõplikult [P1]!",
       "focus": "Fokuseeri tuld [P1] peale!",
       "mirv": "Saada MIRV [P1]'le!"
@@ -259,7 +263,8 @@
       "build_posts": "Ehita kaitsepunkreid!",
       "defend": "Kaitse [P1]!",
       "defend_from": "Kaitse [P1] eest!",
-      "dont_attack": "Ära ründa [P1]!"
+      "dont_attack": "Ära ründa [P1]!",
+      "make_ally": "Liituge [P1]-ga!"
     },
     "from": "Sõnum {user}'lt: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Palun anna mulle kulda!",
       "help_defend": "Aita mul kaitsta [P1] vastu!",
       "no_attack": "Palun ära ründa mind!",
+      "send_gold_to": "Saatke [P1]-le kulda!",
+      "send_troops_to": "Saatke [P1]-le vägesid!",
       "sorry_attack": "Vabandan, ma ei tahtnud sind rünnata.",
       "trade_partners": "Saame kaubanduspartneriteks!",
       "troops": "Palun anna mulle vägesid!",
@@ -295,7 +302,6 @@
       "coastline": "Palun lase mul saada merepiir.",
       "fun": "See mäng on lõbus!",
       "go": "Lähme!",
-      "pr": "Kunas küll mu PR saab ühendatud...?",
       "strategy": "Hea strateegia sul!",
       "team_up": "Teeme koostööd [P1] vastu!"
     },
@@ -303,6 +309,26 @@
     "player": "Mängija",
     "search": "Otsi Mängijat...",
     "send": "Saada",
+    "short": {
+      "greet": {
+        "ruining_games": "Te rikute meie mänge"
+      },
+      "help": {
+        "sorry_attack": "Vabandust rünnaku pärast!",
+        "troops_frontlines": "Väed rindele!"
+      },
+      "misc": {
+        "coastline": "Lase mul saada rannik"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] saab nüüd MIRV-i saata!",
+        "pirating": "[P1] röövib kaubandust",
+        "saving_for_mirv": "[P1] kogub MIRV-i jaoks",
+        "snowballing": "[P1] kasvab liiga kiiresti",
+        "stalemate": "Rahu? Patiseis.",
+        "stop_trading_all": "Lõpetage kogu kaubandus!"
+      }
+    },
     "sort_by_territory": "Sorteeri territooriumi järgi",
     "title": "Kiirvestlus",
     "to": "Saadetud {user}'le: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] reetis mind!",
       "cheating": "[P1] Petab!",
       "danger_base": "[P1] on kaitseta!",
+      "disconnected": "[P1] ühendus katkes!",
       "getting_big": "[P1] kasvab liiga kiiresti!",
       "has_allies": "[P1]'l on palju liitlasi.",
       "mirv_ready": "[P1]'l on piisavalt kulda, et lasta MIRV!",
       "mirv_soon": "[P1] saab lasta MIRV'i varsti!",
       "no_allies": "[P1]'l pole liitlasi.",
       "number1_warning": "Esimene koht edetabelis saab võidu varsti, kui just me ei tee koostööd!",
+      "pirating": "[P1] röövib kogu meie kaubandust!",
       "saving_for_mirv": "[P1] kogub MIRV'i jaoks raha, et seda lasta.",
       "snowballing": "[P1] snowballib liiga kiiresti!",
       "stalemate": "Teeme rahu. See on viik, me mõlemad muidu kaotame.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomaatia",
+    "directions": "Suunad",
+    "faces": "Näod",
+    "favorite_remove_hint": "Lohista välja eemaldamiseks",
+    "favorites": "Lemmikud",
+    "favorites_hint": "Lohista emojid siia, et anda neile kiirklahv",
+    "favorites_hint_touch": "Lohista emojid siia, et need käepärast hoida",
+    "gestures": "Žestid",
+    "ranks": "Auastmed",
+    "things": "Asjad"
+  },
   "error_modal": {
     "connection_error": "Ühenduse viga!",
     "connection_lost": "Ühendus mänguserveriga katkes ja ei saanud uuesti ühendust. Uuesti liitumise proovimiseks värskendage lehte.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} alistumised: nad pakuvad 10 minutiks teie vasalliks olemist, ilma teie vahel tülitsemata, ja maksavad teile 25% oma kullatulust",
     "retreating": "Taganemine",
     "sent_emoji": "Saadetud {name}'le: {emoji}",
+    "sent_emoji_all": "Saadetud kõigile: {emoji}",
     "sent_gold_to_player": "Saatsid {gold} kulda {name}'le",
     "sent_troops_to_player": "Saatsid {troops} sõdurit {name}'le",
     "surrender_sent": "Andsite end alla {name}-le. Ootan nende vastust.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Mängu kiirus alla / üles (ühe mängijaga)",
     "action_move_camera": "Liiguta kaamerat",
     "action_pause_game": "Mängu peatamine / jätkamine",
+    "action_quick_chat": "Ava kiirvestlus",
     "action_ratio_change": "Rünnaku suhte vähendamine/suurendamine",
     "action_reset_gfx": "Graafikate lähtestamine",
     "action_warship_multiselect": "Valige mitu sõjalaeva (lohistage joonistamiseks valikukasti)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Bug'ide arv",
     "easter_writing_speed_desc": "Muuda, kui kiiresti sa teeskled koodimist (x1–x100)",
     "easter_writing_speed_label": "Kirjututamise kiiruse kordaja",
+    "emoji_menu": "Emoji-menüü",
+    "emoji_menu_desc": "Avab emoji-menüü mängijale, kelle ala on kursori all.",
     "emoji_menu_modifier": "Emoij Menüü Modifikaator",
     "emoji_menu_modifier_desc": "Hoia seda klahvi all samal ajal, kui avad emoij menüü.",
     "emojis_desc": "Lülita, kas emotikone mängus kuvatakse või mitte",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Joonistab vähem kaadreid, kui mänguaken on teise taga või minimeeritud. Mäng jätkub tavapäraselt.",
     "power_saving_label": "Energiasääst taustal",
     "press_a_key": "Vajuta klahvi",
+    "quick_chat": "Kiirvestlus",
+    "quick_chat_desc": "Avab kiirvestluse mängijale, kelle ala on kursori all.",
     "render_debug_gui": "Renderda silumise GUI",
     "render_debug_gui_desc": "Lülitage renderdaja häälestamise paneel",
     "request_alliance": "Taotlege liitu",

@@ -237,9 +237,13 @@
     "unavailable": "ניהול שם משתמש אינו זמין בחשבון זה עדיין."
   },
   "chat": {
+    "all_phrases": "כל המשפטים",
     "attack": {
       "attack": "תקוף את [P1]!",
+      "betray": "בגדו ב-[P1]!",
+      "build_sams": "בנו SAM!",
       "build_warships": "בנה ספינות מלחמה!",
+      "crown": "תקפו את הכתר!",
       "finish": "בוא נגמור את [P1]!",
       "focus": "מקד התקפה נגד [P1]!",
       "mirv": "שגר MIRV נגד [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "בנה עמדות הגנה!",
       "defend": "הגן על [P1]!",
       "defend_from": "הגן מפני [P1]!",
-      "dont_attack": "אל תתקוף את [P1]!"
+      "dont_attack": "אל תתקוף את [P1]!",
+      "make_ally": "התחברו לברית עם [P1]!"
     },
     "from": "מ-{user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "בבקשה שלח לי זהב!",
       "help_defend": "עזור לי להגן נגד [P1]!",
       "no_attack": "בבקשה אל תתקוף אותי!",
+      "send_gold_to": "שלחו זהב ל-[P1]!",
+      "send_troops_to": "שלחו כוחות ל-[P1]!",
       "sorry_attack": "סליחה, לא התכוונתי לתקוף.",
       "trade_partners": "בואו נהיה שותפים לסחר!",
       "troops": "בבקשה שלח לי חיילים!",
@@ -295,7 +302,6 @@
       "coastline": "בבקשה תן לי לקבל קו חוף.",
       "fun": "המשחק הזה כיף!",
       "go": "קדימה!",
-      "pr": "מתי ה PR שלי סוף סוף ייכנס...?",
       "strategy": "אסטרטגיה יפה!",
       "team_up": "בואו נתאחד נגד [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "שחקן",
     "search": "חפש שחקן...",
     "send": "שלח",
+    "short": {
+      "greet": {
+        "ruining_games": "אתם הורסים לנו את המשחקים"
+      },
+      "help": {
+        "sorry_attack": "סליחה על ההתקפה!",
+        "troops_frontlines": "כוחות לחזית!"
+      },
+      "misc": {
+        "coastline": "תנו לי חוף"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] יכול לשגר MIRV עכשיו!",
+        "pirating": "[P1] בוזז את המסחר",
+        "saving_for_mirv": "[P1] חוסך ל-MIRV",
+        "snowballing": "[P1] גדל מהר מדי",
+        "stalemate": "שלום? תיקו.",
+        "stop_trading_all": "עצרו את כל המסחר!"
+      }
+    },
     "sort_by_territory": "מיין לפי טריטוריה",
     "title": "צ'אט מהיר",
     "to": "נשלח ל-{user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] בגד בי!",
       "cheating": "[P1] הוא בוגד!",
       "danger_base": "[P1] לא מוגן!",
+      "disconnected": "[P1] התנתק!",
       "getting_big": "[P1] גודל מהר מדי!",
       "has_allies": "ל-[P1] יש המון בעלי ברית.",
       "mirv_ready": "ל-[P1] יש מספיק זהב כדי לשגר MIRV!",
       "mirv_soon": "[P1] יכול לירות MIRV בקרוב.",
       "no_allies": "ל-[P1] אין בעלי ברית.",
       "number1_warning": "השחקן #1 ינצח בקרוב אם לא נעבוד כצוות!",
+      "pirating": "[P1] שודד את כל המסחר שלנו!",
       "saving_for_mirv": "[P1] חוסך כדי לשגר MIRV.",
       "snowballing": "[P1] יורד כדור שלג מהר מדי!",
       "stalemate": "בוא נעשה שלום. זה מבוי סתום, שנינו נפסיד.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "קו אמרלד"
   },
+  "emoji_table": {
+    "diplomacy": "דיפלומטיה",
+    "directions": "כיוונים",
+    "faces": "פרצופים",
+    "favorite_remove_hint": "גררו החוצה להסרה",
+    "favorites": "מועדפים",
+    "favorites_hint": "גררו לכאן אימוג'י כדי לתת להם מקש קיצור",
+    "favorites_hint_touch": "גררו לכאן אימוג'י כדי שיהיו בהישג יד",
+    "gestures": "מחוות",
+    "ranks": "דרגות",
+    "things": "חפצים"
+  },
   "error_modal": {
     "connection_error": "שגיאת חיבור!",
     "connection_lost": "איבד את החיבור לשרת המשחק ולא הצליח להתחבר מחדש. רענן את הדף כדי לנסות להצטרף מחדש.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} נכנעים: הם מציעים להיות הוואסל שלך למשך 10 דקות, ללא ריב ביניכם, ולשלם לך 25% מהכנסת הזהב שלהם",
     "retreating": "נסיגה",
     "sent_emoji": "נשלח {name}: {emoji}",
+    "sent_emoji_all": "נשלח לכולם: {emoji}",
     "sent_gold_to_player": "נשלח {gold} זהב ל{name}",
     "sent_troops_to_player": "שלחו {troops} חיילים ל{name}",
     "surrender_sent": "נכנעת ל-{name}. מחכה לתשובתם.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "מהירות משחק למטה / למעלה (שחקן יחיד)",
     "action_move_camera": "הזז מצלמה",
     "action_pause_game": "השהה / המשך משחק",
+    "action_quick_chat": "פתיחת צ'אט מהיר",
     "action_ratio_change": "הקטן\\הגדל יחס תקיפה",
     "action_reset_gfx": "אפס גרפיקה",
     "action_warship_multiselect": "בחר מספר ספינות מלחמה (גרור לצייר תיבת בחירה)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "מספר באגים",
     "easter_writing_speed_desc": "תאם כמה מהר אתה מעמיד פנים שאתה כותב קוד (x1-x100)",
     "easter_writing_speed_label": "מכפיל כמות הקלדה",
+    "emoji_menu": "תפריט אימוג'י",
+    "emoji_menu_desc": "פותח את תפריט האימוג'י לשחקן שהשטח שלו מתחת לסמן.",
     "emoji_menu_modifier": "שינוי תפריט אמוג'י",
     "emoji_menu_modifier_desc": "החזק מקש זה תוך כדי לחיצה כדי לפתוח את תפריט האימוג'י.",
     "emojis_desc": "מאפשר הצגה של אימוג'ים במשחק",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "מצייר פחות פריימים כשחלון המשחק מאחורי חלון אחר או ממוזער. המשחק ממשיך כרגיל.",
     "power_saving_label": "חיסכון בחשמל ברקע",
     "press_a_key": "הקש על מקש",
+    "quick_chat": "צ'אט מהיר",
+    "quick_chat_desc": "פותח צ'אט מהיר לשחקן שהשטח שלו מתחת לסמן.",
     "render_debug_gui": "render Debug GUI",
     "render_debug_gui_desc": "החלף את חלונית כוונון המעבד",
     "request_alliance": "בקש ברית",

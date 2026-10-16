@@ -237,9 +237,13 @@
     "unavailable": "Användarnamnshantering är inte tillgänglig på det här kontot ännu."
   },
   "chat": {
+    "all_phrases": "Alla fraser",
     "attack": {
       "attack": "Anfall [P1]!",
+      "betray": "Förråd [P1]!",
+      "build_sams": "Bygg SAM!",
       "build_warships": "Bygg krigsskepp!",
+      "crown": "Anfall kronan!",
       "finish": "Låt oss avsluta [P1]!",
       "focus": "Fokusera [P1]!",
       "mirv": "Avfyra en MIRV mot [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Bygg försvarsinlägg!",
       "defend": "Försvara [P1]!",
       "defend_from": "Försvara från [P1]!",
-      "dont_attack": "Anfall inte [P1]!"
+      "dont_attack": "Anfall inte [P1]!",
+      "make_ally": "Alliera er med [P1]!"
     },
     "from": "Från {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Vänligen ge mig guld!",
       "help_defend": "Hjälp mig försvara mot [P1]!",
       "no_attack": "Vänligen anfall mig ej!",
+      "send_gold_to": "Skicka guld till [P1]!",
+      "send_troops_to": "Skicka trupper till [P1]!",
       "sorry_attack": "Ursäkta, jag hade inte som avsikt att anfalla.",
       "trade_partners": "Låt oss vara handelspartner!",
       "troops": "Vänligen ge mig trupper!",
@@ -295,7 +302,6 @@
       "coastline": "Snälla låt mig få en kustlinje.",
       "fun": "Detta spelet är kul!",
       "go": "Vi kör!",
-      "pr": "När kommer min PR äntligen bli mergad...?",
       "strategy": "Bra strategi!",
       "team_up": "Låt oss slå oss ihop mot [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Spelare",
     "search": "Söker spelare...",
     "send": "Skicka",
+    "short": {
+      "greet": {
+        "ruining_games": "Ni förstör våra matcher"
+      },
+      "help": {
+        "sorry_attack": "Förlåt för anfallet!",
+        "troops_frontlines": "Trupper till fronten!"
+      },
+      "misc": {
+        "coastline": "Låt mig få en kust"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] kan skicka MIRV nu!",
+        "pirating": "[P1] plundrar handel",
+        "saving_for_mirv": "[P1] sparar till MIRV",
+        "snowballing": "[P1] växer för fort",
+        "stalemate": "Fred? Dödläge.",
+        "stop_trading_all": "Stoppa all handel!"
+      }
+    },
     "sort_by_territory": "Sortera efter territorium",
     "title": "Snabbchat",
     "to": "Skickat {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] förrådde mig!",
       "cheating": "[P1] är otrogen!",
       "danger_base": "[P1] är oskyddad!",
+      "disconnected": "[P1] har kopplats från!",
       "getting_big": "[P1] växer för snabbt!",
       "has_allies": "[P1] har många allierade.",
       "mirv_ready": "[P1] har tillräckligt med guld för att avfyra en MIRV!",
       "mirv_soon": "[P1] kan avfyra en MIRV snart!",
       "no_allies": "[P1] har inga allierade.",
       "number1_warning": "Spelaren nummer #1 kommer snart vinna om vi inte går samman!",
+      "pirating": "[P1] plundrar all vår handel!",
       "saving_for_mirv": "[P1] sparar upp till en MIRV.",
       "snowballing": "[P1] snöar för fort!",
       "stalemate": "Låt oss skapa fred. Detta är ett dödläge, vi kommer båda förlora.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Emerald Line"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomati",
+    "directions": "Riktningar",
+    "faces": "Ansikten",
+    "favorite_remove_hint": "Dra ut för att ta bort",
+    "favorites": "Favoriter",
+    "favorites_hint": "Dra hit emojis för att ge dem en kortkommando-tangent",
+    "favorites_hint_touch": "Dra hit emojis för att ha dem nära till hands",
+    "gestures": "Gester",
+    "ranks": "Grader",
+    "things": "Saker"
+  },
   "error_modal": {
     "connection_error": "Anslutningsfel!",
     "connection_lost": "Förlorade anslutningen till spelservern och kunde inte återansluta. Uppdatera sidan för att försöka gå med igen.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} kapitulerar: de erbjuder sig att vara din vasall i 10 minuter, utan bråk mellan er, och att betala dig 25 % av sin guldinkomst",
     "retreating": "retirerar",
     "sent_emoji": "Skickat {name}: {emoji}",
+    "sent_emoji_all": "Skickat till alla: {emoji}",
     "sent_gold_to_player": "Skickade {gold} guld till {name}",
     "sent_troops_to_player": "Skickade {troops} trupper till {name}",
     "surrender_sent": "Du gav upp till {name}. Väntar på deras svar.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Spelhastighet ner/upp (en spelare)",
     "action_move_camera": "Flytta kameran",
     "action_pause_game": "Pausa/Fortsätt spelet",
+    "action_quick_chat": "Öppna snabbchatten",
     "action_ratio_change": "Ändra anfallsförhållande",
     "action_reset_gfx": "Återställ grafik",
     "action_warship_multiselect": "Välj flera krigsfartyg (dra för att rita urvalsrutan)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Mängd buggar",
     "easter_writing_speed_desc": "Ändra hur snabbt du låtsas att koda (x1–x100)",
     "easter_writing_speed_label": "Multiplikator för skrivhastighet",
+    "emoji_menu": "Emoji-meny",
+    "emoji_menu_desc": "Öppnar emoji-menyn för spelaren vars område är under muspekaren.",
     "emoji_menu_modifier": "Emoji-menymodifierare",
     "emoji_menu_modifier_desc": "Håll ned denna tangent medan du klickar för att öppna emoji-menyn.",
     "emojis_desc": "Välj om emojis ska visas i spelet",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Ritar färre bilder medan spelfönstret ligger bakom ett annat eller är minimerat. Matchen fortsätter som vanligt.",
     "power_saving_label": "Energisparläge i bakgrunden",
     "press_a_key": "Tryck på en tangent",
+    "quick_chat": "Snabbchatt",
+    "quick_chat_desc": "Öppnar snabbchatten för spelaren vars område är under muspekaren.",
     "render_debug_gui": "Rendera felsökningsgränssnittet",
     "render_debug_gui_desc": "Växla renderarens inställningspanel",
     "request_alliance": "Begär Alliance",

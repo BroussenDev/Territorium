@@ -237,9 +237,13 @@
     "unavailable": "Gebruikersnaam beheer is nog niet beschikbaar op dit account."
   },
   "chat": {
+    "all_phrases": "Alle zinnen",
     "attack": {
       "attack": "Val [P1] aan!",
+      "betray": "Verraad [P1]!",
+      "build_sams": "Bouw SAM's!",
       "build_warships": "Bouw Oorlogsschepen!",
+      "crown": "Val de kroon aan!",
       "finish": "Laten we [P1] uitschakelen!",
       "focus": "Vuur op [P1]!",
       "mirv": "Vuur een MIRV af op [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Bouw Verdedigingsposten!",
       "defend": "Verdedig [P1]!",
       "defend_from": "Verdedig jezelf tegen [P1]!",
-      "dont_attack": "Val [P1] niet aan!"
+      "dont_attack": "Val [P1] niet aan!",
+      "make_ally": "Sluit een bondgenootschap met [P1]!"
     },
     "from": "< Van {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Geef me goud alsjeblieft!",
       "help_defend": "Help me tegen [P1] te verdedigen!",
       "no_attack": "Val me niet aan alsjeblieft!",
+      "send_gold_to": "Stuur goud naar [P1]!",
+      "send_troops_to": "Stuur troepen naar [P1]!",
       "sorry_attack": "Sorry, ik wilde je niet aanvallen.",
       "trade_partners": "Laten we handelspartners worden!",
       "troops": "Geef me troepen alsjeblieft!",
@@ -295,7 +302,6 @@
       "coastline": "Laat mij een kustlijn krijgen alsjeblieft.",
       "fun": "Dit spel is leuk!",
       "go": "Yes!",
-      "pr": "Wanneer wordt mijn pull request eindelijk gemerged?",
       "strategy": "Goeie strategie!",
       "team_up": "Laten we samenwerken tegen [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Speler",
     "search": "Zoek speler...",
     "send": "Verzenden",
+    "short": {
+      "greet": {
+        "ruining_games": "Jullie verpesten onze potjes"
+      },
+      "help": {
+        "sorry_attack": "Sorry voor de aanval!",
+        "troops_frontlines": "Troepen naar het front!"
+      },
+      "misc": {
+        "coastline": "Laat mij een kust hebben"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] kan nu een MIRV sturen!",
+        "pirating": "[P1] kaapt handel",
+        "saving_for_mirv": "[P1] spaart voor MIRV",
+        "snowballing": "[P1] groeit te snel",
+        "stalemate": "Vrede? Patstelling.",
+        "stop_trading_all": "Stop alle handel!"
+      }
+    },
     "sort_by_territory": "Sorteren op gebied",
     "title": "Snelchat",
     "to": "> Aan {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] heeft me verraden!",
       "cheating": "[P1] speelt vals!",
       "danger_base": "[P1] is onbeschermd!",
+      "disconnected": "[P1] is weggevallen!",
       "getting_big": "[P1] wordt te snel groter!",
       "has_allies": "[P1] heeft veel bondgenoten.",
       "mirv_ready": "[P1] heeft genoeg goud om een MIRV te lanceren!",
       "mirv_soon": "[P1] kan bijna een MIRV lanceren!",
       "no_allies": "[P1] heeft geen bondgenoten.",
       "number1_warning": "De #1 speler wint bijna als we niet samenwerken!",
+      "pirating": "[P1] kaapt al onze handel!",
       "saving_for_mirv": "[P1] spaart voor een MIRV.",
       "snowballing": "[P1] groeit te snel!",
       "stalemate": "Vrede? Dit is een patstelling en anders verliezen we beide.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scharlaken stoom",
     "voie_emeraude": "Smaragdgroene lijn"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomatie",
+    "directions": "Richtingen",
+    "faces": "Gezichten",
+    "favorite_remove_hint": "Sleep eruit om te verwijderen",
+    "favorites": "Favorieten",
+    "favorites_hint": "Sleep emoji's hierheen om ze een sneltoets te geven",
+    "favorites_hint_touch": "Sleep emoji's hierheen om ze bij de hand te houden",
+    "gestures": "Gebaren",
+    "ranks": "Rangen",
+    "things": "Dingen"
+  },
   "error_modal": {
     "connection_error": "Verbindingsfout!",
     "connection_lost": "De verbinding met de spelserver is verbroken en de verbinding kan niet opnieuw worden gemaakt. Vernieuw de pagina om opnieuw te verbinden.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} overgave: ze bieden aan om gedurende 10 minuten jouw vazal te zijn, zonder ruzie tussen jullie, en om je 25% van hun goudinkomen te betalen",
     "retreating": "trekken zich terug",
     "sent_emoji": "> Aan {name}: {emoji}",
+    "sent_emoji_all": "Naar iedereen gestuurd: {emoji}",
     "sent_gold_to_player": "{gold} Goud verstuurd aan {name}",
     "sent_troops_to_player": "{troops} Troepen naar {name} gestuurd",
     "surrender_sent": "Je gaf je over aan {name}. Wachten op hun antwoord.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Spelsnelheid lager/hoger (solo of herhaling)",
     "action_move_camera": "Camera bewegen",
     "action_pause_game": "Pauzeer/Hervat spel",
+    "action_quick_chat": "Snelchat openen",
     "action_ratio_change": "Aanvalsverhouding verlagen/verhogen",
     "action_reset_gfx": "Grafische instellingen herstellen",
     "action_warship_multiselect": "Selecteer meerdere oorlogsschepen (sleep om selectievak te tekenen)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Aantal bugs",
     "easter_writing_speed_desc": "Pas aan hoe snel je pretendeert te programmeren (x1-x100)",
     "easter_writing_speed_label": "Schrijfsnelheidsvermenigvuldiger",
+    "emoji_menu": "Emoji-menu",
+    "emoji_menu_desc": "Opent het emoji-menu voor de speler wiens gebied onder je cursor ligt.",
     "emoji_menu_modifier": "Emoji-menu",
     "emoji_menu_modifier_desc": "Houdt deze toets ingedrukt terwijl je klikt, om het emoji-menu te openen.",
     "emojis_desc": "Schakel het tonen van emoji's in de game uit/aan",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Tekent minder beelden zolang het spelvenster achter een ander venster staat of geminimaliseerd is. Het potje gaat gewoon door.",
     "power_saving_label": "Energiebesparing op de achtergrond",
     "press_a_key": "Druk op een toets",
+    "quick_chat": "Snelchat",
+    "quick_chat_desc": "Opent de snelchat voor de speler wiens gebied onder je cursor ligt.",
     "render_debug_gui": "Render Debug GUI",
     "render_debug_gui_desc": "Het renderer afstemmingspaneel van de speler in-/uitschakelen",
     "request_alliance": "Verzoek alliantie",

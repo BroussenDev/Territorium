@@ -237,9 +237,13 @@
     "unavailable": "A xestión de nomes de usuario aínda non está dispoñible nesta conta."
   },
   "chat": {
+    "all_phrases": "Todas as frases",
     "attack": {
       "attack": "Ataca a [P1]!",
+      "betray": "Traizoade a [P1]!",
+      "build_sams": "Construíde SAM!",
       "build_warships": "Constrúe buques de guerra!",
+      "crown": "Atacade a coroa!",
       "finish": "Acabemos con [P1]!",
       "focus": "A por [P1]!",
       "mirv": "Lanza un MIRV contra [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Construír postos de defensa!",
       "defend": "Defende a [P1]!",
       "defend_from": "Defende de [P1]!",
-      "dont_attack": "Non ataques a [P1]!"
+      "dont_attack": "Non ataques a [P1]!",
+      "make_ally": "Aliádevos con [P1]!"
     },
     "from": "De {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Por favor, envíame ouro!",
       "help_defend": "Axúdame a defender contra [P1]!",
       "no_attack": "Por favor, non me ataques!",
+      "send_gold_to": "Enviade ouro a [P1]!",
+      "send_troops_to": "Enviade tropas a [P1]!",
       "sorry_attack": "Perdoa, non quíxente atacar.",
       "trade_partners": "Sexamos socios comerciais!",
       "troops": "Por favor, envíame tropas!",
@@ -295,7 +302,6 @@
       "coastline": "Por favor, déixame conseguir unha costa.",
       "fun": "Esta partida está a ser moi divertida!",
       "go": "Imos aló!",
-      "pr": "Cando mesturarán finalmente o meu PR...?",
       "strategy": "Boa estratexia!",
       "team_up": "¡Formamos equipo contra [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Xogador",
     "search": "Buscar xogador...",
     "send": "Enviar",
+    "short": {
+      "greet": {
+        "ruining_games": "Arruinades as nosas partidas"
+      },
+      "help": {
+        "sorry_attack": "Perdón polo ataque!",
+        "troops_frontlines": "Tropas á fronte!"
+      },
+      "misc": {
+        "coastline": "Déixame unha costa"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] xa pode lanzar MIRV!",
+        "pirating": "[P1] está a saquear",
+        "saving_for_mirv": "[P1] aforra para MIRV",
+        "snowballing": "[P1] medra de máis",
+        "stalemate": "Paz? Táboas.",
+        "stop_trading_all": "Parade todo comercio!"
+      }
+    },
     "sort_by_territory": "Ordenar por territorio",
     "title": "Chat rápido",
     "to": "A {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] traizooume!",
       "cheating": "[P1] é trampas!",
       "danger_base": "[P1] está desprotexido!",
+      "disconnected": "[P1] desconectouse!",
       "getting_big": "[P1] está a medrar demasiado rápido!",
       "has_allies": "[P1] ten moitos aliados.",
       "mirv_ready": "\"[P1] xa ten ouro dabondo para lanzar un MIRV!\"",
       "mirv_soon": "[P1] poderá lanzar un MIRV en breve!",
       "no_allies": "[P1] non ten aliados.",
       "number1_warning": "O xogador #1 vai gañar pronto se non facemos equipo!",
+      "pirating": "[P1] está a saquear todo o noso comercio!",
       "saving_for_mirv": "[P1] está aforrando para lanzar un MIRV.",
       "snowballing": "[P1] está a bola de neve demasiado rápido!",
       "stalemate": "Fagamos as paces xa. Isto é un punto morto, perderemos os dous.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Scarlet Steam",
     "voie_emeraude": "Liña Esmeralda"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomacia",
+    "directions": "Direccións",
+    "faces": "Caras",
+    "favorite_remove_hint": "Arrastra fóra para quitar",
+    "favorites": "Favoritos",
+    "favorites_hint": "Arrastra emojis aquí para darlles unha tecla de atallo",
+    "favorites_hint_touch": "Arrastra emojis aquí para telos a man",
+    "gestures": "Xestos",
+    "ranks": "Rangos",
+    "things": "Obxectos"
+  },
   "error_modal": {
     "connection_error": "Erro de conexión!",
     "connection_lost": "Perdeuse a conexión co servidor de xogos e non se puido volver conectar. Actualiza a páxina para tentar unirte de novo.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} rende: ofrécense ser o voso vasalo durante 10 minutos, sen pelexar entre vós, e pagarche o 25% dos seus ingresos en ouro",
     "retreating": "retirando",
     "sent_emoji": "A {name}: {emoji}",
+    "sent_emoji_all": "Enviado a todos: {emoji}",
     "sent_gold_to_player": "Enviouse {gold} ouro a {name}",
     "sent_troops_to_player": "Enviou {troops} tropas a {name}",
     "surrender_sent": "Entregaste a {name}. Agardando a súa resposta.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Baixar / aumentar a velocidade do xogo (un xogador)",
     "action_move_camera": "Mover cámara",
     "action_pause_game": "Pausa / Retomar o xogo",
+    "action_quick_chat": "Abrir o chat rápido",
     "action_ratio_change": "Diminuír ou aumentar razón de ataque",
     "action_reset_gfx": "Reiniciar gráficos",
     "action_warship_multiselect": "Selecciona varios buques de guerra (arrastrar para debuxar a caixa de selección)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Contador de erros",
     "easter_writing_speed_desc": "Axustar a velocidade coa que pretendes programar (x1–x100)",
     "easter_writing_speed_label": "Multiplicador da velocidade de escritura",
+    "emoji_menu": "Menú de emojis",
+    "emoji_menu_desc": "Abre o menú de emojis para o xogador cuxo territorio está baixo o cursor.",
     "emoji_menu_modifier": "Modificador de menú de emojis",
     "emoji_menu_modifier_desc": "Mantén premida esta tecla mentres fai clic para abrir o menú de emojis.",
     "emojis_desc": "Alternar a mostra emojis no xogo",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Debuxa menos fotogramas mentres a xanela do xogo está detrás doutra ou minimizada. A partida segue con normalidade.",
     "power_saving_label": "Aforro de enerxía en segundo plano",
     "press_a_key": "Preme unha tecla",
+    "quick_chat": "Chat rápido",
+    "quick_chat_desc": "Abre o chat rápido para o xogador cuxo territorio está baixo o cursor.",
     "render_debug_gui": "Render Debug GUI",
     "render_debug_gui_desc": "Alterna o panel de axuste do renderizador",
     "request_alliance": "Solicita Alianza",

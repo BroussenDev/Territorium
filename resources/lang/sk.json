@@ -237,9 +237,13 @@
     "unavailable": "Správa používateľských mien zatiaľ nie je v tomto účte k dispozícii."
   },
   "chat": {
+    "all_phrases": "Všetky frázy",
     "attack": {
       "attack": "Zaútoč na [P1]!",
+      "betray": "Zraďte [P1]!",
+      "build_sams": "Stavajte SAM!",
       "build_warships": "Stavajte vojnové lode!",
+      "crown": "Zaútočte na korunu!",
       "finish": "Dokončime [P1]!",
       "focus": "Sústreď streľbu na [P1]!",
       "mirv": "Vystrel MIRV na [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Vytvorte obranné stanovištia!",
       "defend": "Obraňuj [P1]!",
       "defend_from": "Bráňte sa pred [P1]!",
-      "dont_attack": "Neútoč na [P1]!"
+      "dont_attack": "Neútoč na [P1]!",
+      "make_ally": "Spojte sa s [P1]!"
     },
     "from": "Od {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Prosím, pošli mi zlato!",
       "help_defend": "Pomôž mi brániť sa pred [P1]!",
       "no_attack": "Prosím, neútoč na mňa!",
+      "send_gold_to": "Pošlite zlato hráčovi [P1]!",
+      "send_troops_to": "Pošlite vojakov hráčovi [P1]!",
       "sorry_attack": "Prepáč, nechcel som zaútočiť.",
       "trade_partners": "Buďme obchodnými partnermi!",
       "troops": "Prosím, pošli mi vojská!",
@@ -295,7 +302,6 @@
       "coastline": "Prosím, dovoľte mi získať pobrežie.",
       "fun": "Táto hra bola zábavná!",
       "go": "Poďme na to!",
-      "pr": "Kedy sa moje PR konečne zlúči…?",
       "strategy": "Dobrá stratégia!",
       "team_up": "Spojme sa proti [P1]!"
     },
@@ -303,6 +309,26 @@
     "player": "Hráč",
     "search": "Hľadať hráča…",
     "send": "Poslať",
+    "short": {
+      "greet": {
+        "ruining_games": "Kazíte nám hry"
+      },
+      "help": {
+        "sorry_attack": "Prepáč za útok!",
+        "troops_frontlines": "Vojakov na front!"
+      },
+      "misc": {
+        "coastline": "Nechajte mi pobrežie"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] môže vyslať MIRV!",
+        "pirating": "[P1] plieni obchod",
+        "saving_for_mirv": "[P1] šetrí na MIRV",
+        "snowballing": "[P1] rastie príliš rýchlo",
+        "stalemate": "Mier? Pat.",
+        "stop_trading_all": "Zastavte všetok obchod!"
+      }
+    },
     "sort_by_territory": "Zoradiť podľa územia",
     "title": "Rýchly čet",
     "to": "Poslané {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] ma zradil!",
       "cheating": "[P1] podvádza!",
       "danger_base": "[P1] je nechránený/á!",
+      "disconnected": "[P1] sa odpojil!",
       "getting_big": "[P1] rastie prirýchlo!",
       "has_allies": "[P1] má veľa spojencov.",
       "mirv_ready": "[P1] má dosť zlata na vystrelenie MIRV!",
       "mirv_soon": "[P1] môže čoskoro vystreliť MIRV!",
       "no_allies": "[P1] nemá spojencov.",
       "number1_warning": "Hráč č. 1 môže čoskoro vyhrať, ak sa nespojíme!",
+      "pirating": "[P1] plieni celý náš obchod!",
       "saving_for_mirv": "[P1] šetrí na vystrelenie MIRV.",
       "snowballing": "[P1] sa valí príliš rýchlo!",
       "stalemate": "Uzatvorme mier. Toto je pat, obaja prehráme.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "Šarlátová para",
     "voie_emeraude": "Smaragdová línia"
   },
+  "emoji_table": {
+    "diplomacy": "Diplomacia",
+    "directions": "Smery",
+    "faces": "Tváre",
+    "favorite_remove_hint": "Potiahnite von na odstránenie",
+    "favorites": "Obľúbené",
+    "favorites_hint": "Potiahnite sem emoji a dajte im klávesovú skratku",
+    "favorites_hint_touch": "Potiahnite sem emoji, aby ste ich mali poruke",
+    "gestures": "Gestá",
+    "ranks": "Hodnosti",
+    "things": "Veci"
+  },
   "error_modal": {
     "connection_error": "Chyba pripojenia!",
     "connection_lost": "Spojenie s herným serverom sa stratilo a nepodarilo sa znova pripojiť. Obnovte stránku a skúste sa znova pripojiť.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} sa vzdáva: ponúknu vám, že sa stanú vaším vazalom na 10 minút bez toho, aby medzi vami boli žiadne boje, a vyplatia vám 25 % svojho príjmu zo zlata",
     "retreating": "ustupuje",
     "sent_emoji": "Poslané {name}: {emoji}",
+    "sent_emoji_all": "Odoslané všetkým: {emoji}",
     "sent_gold_to_player": "Poslané {gold} zlata na {name}",
     "sent_troops_to_player": "Poslal {troops} vojakov do {name}",
     "surrender_sent": "Vzdali ste sa {name}. Čakanie na ich odpoveď.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Rýchlosť hry nadol/nahor (pre jedného hráča)",
     "action_move_camera": "Pohnúť pohľadom",
     "action_pause_game": "Pozastaviť / obnoviť hru",
+    "action_quick_chat": "Otvoriť rýchly chat",
     "action_ratio_change": "Znížiť/Zvýšiť pomer útoku",
     "action_reset_gfx": "Obnoviť grafické nastavenia",
     "action_warship_multiselect": "Vyberte viacero vojnových lodí (potiahnutím nakreslite výberové pole)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Počet chýb",
     "easter_writing_speed_desc": "Upraví, ako rýchlo predstieraš, že kóduješ (x1 až x100)",
     "easter_writing_speed_label": "Znásobovač rýchlosti písania",
+    "emoji_menu": "Ponuka emoji",
+    "emoji_menu_desc": "Otvorí ponuku emoji pre hráča, ktorého územie je pod kurzorom.",
     "emoji_menu_modifier": "Modifikátor ponuky Emoji",
     "emoji_menu_modifier_desc": "Podržaním tohto klávesu pri kliknutí otvoríte ponuku emodži.",
     "emojis_desc": "Prepne, či sú v hre ukázané emoji",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Vykresľuje menej snímok, keď je okno hry za iným oknom alebo minimalizované. Hra beží normálne ďalej.",
     "power_saving_label": "Úspora energie na pozadí",
     "press_a_key": "Stlačte kláves",
+    "quick_chat": "Rýchly chat",
+    "quick_chat_desc": "Otvorí rýchly chat pre hráča, ktorého územie je pod kurzorom.",
     "render_debug_gui": "Render Debug GUI",
     "render_debug_gui_desc": "Prepnite panel ladenia renderera",
     "request_alliance": "Žiadosť o Alianciu",

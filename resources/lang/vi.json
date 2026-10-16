@@ -237,9 +237,13 @@
     "unavailable": "Tính năng quản lý tên chưa có cho tài khoản này."
   },
   "chat": {
+    "all_phrases": "Tất cả câu",
     "attack": {
       "attack": "Tấn công [P1]!",
+      "betray": "Phản bội [P1]!",
+      "build_sams": "Xây SAM!",
       "build_warships": "Đóng tàu chiến!",
+      "crown": "Tấn công vương miện!",
       "finish": "Hãy kết liễu [P1]!",
       "focus": "Tập trung hỏa lực vào [P1]!",
       "mirv": "Bắn một MIRV vào [P1]!"
@@ -259,7 +263,8 @@
       "build_posts": "Xây chốt phòng thủ!",
       "defend": "Phòng thủ [P1]!",
       "defend_from": "Phòng thủ trước [P1]!",
-      "dont_attack": "Đừng tấn công [P1]!"
+      "dont_attack": "Đừng tấn công [P1]!",
+      "make_ally": "Liên minh với [P1]!"
     },
     "from": "Từ {user}: {msg}",
     "greet": {
@@ -285,6 +290,8 @@
       "gold": "Làm ơn gửi cho tôi vàng!",
       "help_defend": "Giúp tôi chống lại [P1]!",
       "no_attack": "Xin đừng tấn công tôi!",
+      "send_gold_to": "Gửi vàng cho [P1]!",
+      "send_troops_to": "Gửi quân cho [P1]!",
       "sorry_attack": "Xin lỗi, tôi không cố ý tấn công.",
       "trade_partners": "Hãy trở thành đối tác thương mại!",
       "troops": "Làm ơn gửi cho tôi quân!",
@@ -295,7 +302,6 @@
       "coastline": "Làm ơn để tôi có đường bờ biển.",
       "fun": "Trận này vui thật sự!",
       "go": "Chiến thôi!",
-      "pr": "Bao giờ PR của tôi mới được hợp nhất đây...?",
       "strategy": "Chiến lực hay!",
       "team_up": "Cùng chống lại [P1] nhé!"
     },
@@ -303,6 +309,26 @@
     "player": "Người chơi",
     "search": "Đang tìm kiếm người chơi...",
     "send": "Gửi",
+    "short": {
+      "greet": {
+        "ruining_games": "Các bạn đang phá game của chúng tôi"
+      },
+      "help": {
+        "sorry_attack": "Xin lỗi vì đã tấn công!",
+        "troops_frontlines": "Quân ra tiền tuyến!"
+      },
+      "misc": {
+        "coastline": "Cho tôi một bờ biển"
+      },
+      "warnings": {
+        "mirv_ready": "[P1] đã có thể phóng MIRV!",
+        "pirating": "[P1] đang cướp thương mại",
+        "saving_for_mirv": "[P1] dành dụm cho MIRV",
+        "snowballing": "[P1] lớn quá nhanh",
+        "stalemate": "Hòa bình? Bế tắc.",
+        "stop_trading_all": "Dừng mọi giao thương!"
+      }
+    },
     "sort_by_territory": "Sắp xếp theo lãnh thổ",
     "title": "Chat",
     "to": "Gửi {user}: {msg}",
@@ -311,12 +337,14 @@
       "betrayed_me": "[P1] phản bội tôi!",
       "cheating": "[P1] đang gian lận!",
       "danger_base": "[P1] đang không được bảo vệ!",
+      "disconnected": "[P1] đã mất kết nối!",
       "getting_big": "[P1] đang phát triển quá nhanh!",
       "has_allies": "[P1] có rất nhiều đồng minh.",
       "mirv_ready": "[P1] có đủ vàng để bắn một MIRV!",
       "mirv_soon": "[P1] sắp đủ để phóng một MIRV!",
       "no_allies": "[P1] không có đồng minh nào.",
       "number1_warning": "Người chơi #1 sẽ thắng nếu ta không liên minh đó!",
+      "pirating": "[P1] đang cướp hết thương mại của chúng ta!",
       "saving_for_mirv": "[P1] đang tích vàng để bắn MIRV.",
       "snowballing": "[P1] đang mạnh lên quá nhanh!",
       "stalemate": "Hãy làm hòa. Đây là thế bế tắc, cả hai bên đều sẽ thua.",
@@ -1073,6 +1101,18 @@
     "vapeur_ecarlate": "hơi đỏ tươi",
     "voie_emeraude": "Dòng ngọc lục bảo"
   },
+  "emoji_table": {
+    "diplomacy": "Ngoại giao",
+    "directions": "Hướng",
+    "faces": "Khuôn mặt",
+    "favorite_remove_hint": "Kéo ra ngoài để xóa",
+    "favorites": "Yêu thích",
+    "favorites_hint": "Kéo biểu tượng vào đây để gán phím tắt",
+    "favorites_hint_touch": "Kéo biểu tượng vào đây để luôn sẵn sàng",
+    "gestures": "Cử chỉ",
+    "ranks": "Cấp bậc",
+    "things": "Đồ vật"
+  },
   "error_modal": {
     "connection_error": "Lỗi kết nối!",
     "connection_lost": "Mất kết nối với máy chủ trò chơi và không thể kết nối lại. Hãy làm mới trang để thử tham gia lại.",
@@ -1164,6 +1204,7 @@
     "request_surrender": "{name} đầu hàng: họ đề nghị làm chư hầu của bạn trong 10 phút, không đánh nhau giữa các bạn và trả cho bạn 25% thu nhập vàng của họ",
     "retreating": "rút lui",
     "sent_emoji": "Đã gửi đến {name}: {emoji}",
+    "sent_emoji_all": "Đã gửi cho mọi người: {emoji}",
     "sent_gold_to_player": "Đã gửi {gold} vàng đến {name}",
     "sent_troops_to_player": "Đã gửi {troops} quân đến {name}",
     "surrender_sent": "Bạn đã đầu hàng {name}. Đang chờ câu trả lời của họ.",
@@ -1605,6 +1646,7 @@
     "action_game_speed": "Giảm / tăng tốc độ trận đấu (chơi đơn)",
     "action_move_camera": "Di chuyển Camera",
     "action_pause_game": "Tạm dừng / tiếp tục trận đấu",
+    "action_quick_chat": "Mở trò chuyện nhanh",
     "action_ratio_change": "Tăng / Giảm tỷ lệ tấn công",
     "action_reset_gfx": "Thiết lập lại đồ họa",
     "action_warship_multiselect": "Chọn nhiều tàu chiến (kéo để tạo khung chọn)",
@@ -3208,6 +3250,8 @@
     "easter_bug_count_label": "Số lỗi",
     "easter_writing_speed_desc": "Điều chỉnh tốc độ giả vờ lập trình của bạn (x1–x100)",
     "easter_writing_speed_label": "Hệ số tốc độ gõ",
+    "emoji_menu": "Menu biểu tượng cảm xúc",
+    "emoji_menu_desc": "Mở menu biểu tượng cảm xúc cho người chơi có lãnh thổ dưới con trỏ.",
     "emoji_menu_modifier": "Phím bổ trợ cho menu biểu tượng cảm xúc",
     "emoji_menu_modifier_desc": "Giữ phím này trong khi nhấp chuột để mở menu biểu tượng cảm xúc.",
     "emojis_desc": "Chạm để hiển thị biểu tượng cảm xúc trong trò chơi",
@@ -3274,6 +3318,8 @@
     "power_saving_desc": "Vẽ ít khung hình hơn khi cửa sổ trò chơi nằm sau cửa sổ khác hoặc bị thu nhỏ. Trận đấu vẫn tiếp tục bình thường.",
     "power_saving_label": "Tiết kiệm điện khi chạy nền",
     "press_a_key": "Nhấn một phím",
+    "quick_chat": "Trò chuyện nhanh",
+    "quick_chat_desc": "Mở trò chuyện nhanh cho người chơi có lãnh thổ dưới con trỏ.",
     "render_debug_gui": "Hiển thị giao diện gỡ lỗi",
     "render_debug_gui_desc": "Bật hoặc tắt bảng điều khiển tinh chỉnh kết xuất",
     "request_alliance": "Đề nghị liên minh",

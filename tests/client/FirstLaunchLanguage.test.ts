@@ -219,10 +219,10 @@ describe("first launch sound, graphics, keys and ready steps", () => {
             detail: { action, value, key: value },
           }),
         );
-    change("zoomIn", "KeyZ");
+    change("zoomIn", "KeyJ");
     await picker.updateComplete;
     expect(new UserSettings().parsedUserKeybinds()).toMatchObject({
-      zoomIn: { value: "KeyZ" },
+      zoomIn: { value: "KeyJ" },
     });
     // KeyQ is zoomOut's default.
     change("centerCamera", "KeyQ");

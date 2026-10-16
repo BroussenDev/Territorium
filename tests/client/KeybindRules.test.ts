@@ -10,7 +10,7 @@ describe("keybindConflicts", () => {
   });
 
   it("accepts a free key, and the action's own key", () => {
-    expect(keybindConflicts(defaults, {}, "zoomIn", "KeyZ")).toBe(false);
+    expect(keybindConflicts(defaults, {}, "zoomIn", "KeyJ")).toBe(false);
     expect(keybindConflicts(defaults, {}, "zoomIn", "KeyE")).toBe(false);
   });
 
@@ -18,7 +18,7 @@ describe("keybindConflicts", () => {
     expect(
       keybindConflicts(
         defaults,
-        { zoomOut: { value: "KeyZ", key: "z" } },
+        { zoomOut: { value: "KeyJ", key: "j" } },
         "zoomIn",
         "KeyQ",
       ),
