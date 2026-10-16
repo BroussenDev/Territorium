@@ -85,7 +85,9 @@ export class NationExecution implements Execution {
       case Difficulty.Hard:
         return this.random.nextInt(45, 60);
       case Difficulty.Impossible:
-        return this.random.nextInt(30, 50); // Faster reactions
+        // Fastest reactions: measured on simulated games, acting every ~2s
+        // instead of every 3-5 makes Impossible nations take more land.
+        return this.random.nextInt(18, 24);
       default:
         assertNever(difficulty);
     }

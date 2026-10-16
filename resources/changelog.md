@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.118
+
+🤖 **Sharper Impossible nations**
+
+- Nations on Impossible now react about twice as fast. Hard still plays by exactly the same rules as you; Impossible keeps its troop bonus, shown in the difficulty details.
+
 ## v0.1.117
 
 🛡️ **Survival, reworked**
