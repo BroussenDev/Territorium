@@ -15,7 +15,7 @@
  *   Missiles (nukes, shells, SAM, MIRV warheads) → rendered above structures
  *
  * Atlas layout (12 columns × 13px cells, pre-built by generate-sprite-atlases.mjs):
- *   Col 0: Transport, bow up (9×5 in a 13×13 cell)
+ *   Col 0: Transport, bow up (5×8 in a 13×13 cell)
  *   Col 1: Trade Ship (5×5)
  *   Col 2: Warship, bow up (13×13)
  *   Col 3: Atom Bomb (7×7)

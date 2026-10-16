@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.115
+
+🛶 **Sleeker transport ships**
+
+- Transport ships are smaller and slimmer, with a pointed bow, so they stand out better from warships.
+
 ## v0.1.114
 
 🚢 **Smoother boats, new transport ships**
