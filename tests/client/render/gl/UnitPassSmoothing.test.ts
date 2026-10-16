@@ -1,7 +1,7 @@
 /**
- * Render-side nuke smoothing (UnitPass).
+ * Render-side smoothing of nukes and boats (UnitPass).
  *
- * `applyMissileSmoothing` lerps each recorded segment's lastPos→pos by
+ * `applySmoothing` lerps each recorded segment's lastPos→pos by
  * wall-clock progress through the current tick and rewrites the missile
  * instance buffer's x/y, leaving the packed per-instance bytes untouched.
  * `flickerHashByte` reproduces (CPU-side) the per-instance flicker phase the
@@ -28,7 +28,7 @@ interface SmoothingHarness {
 
 /**
  * Build a UnitPass instance without its GL-heavy constructor, wiring up only
- * the fields applyMissileSmoothing touches.
+ * the fields applySmoothing touches.
  */
 function makeSmoothingHarness(
   segs: number[],
@@ -60,16 +60,20 @@ function makeSmoothingHarness(
 }
 
 function runSmoothing(h: SmoothingHarness): void {
-  (
-    h.pass as unknown as { applyMissileSmoothing(): void }
-  ).applyMissileSmoothing();
+  const pass = h.pass as unknown as {
+    applySmoothing(segs: number[], buf: unknown, count: number): void;
+    smoothSegs: number[];
+    missileBuf: unknown;
+    missileCount: number;
+  };
+  pass.applySmoothing(pass.smoothSegs, pass.missileBuf, pass.missileCount);
 }
 
 afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("UnitPass.applyMissileSmoothing", () => {
+describe("UnitPass.applySmoothing", () => {
   it("lerps lastPos→pos by wall-clock progress through the tick", () => {
     // instance 2; lastPos (10,20) → pos (30,40); 50ms into a 100ms tick.
     const h = makeSmoothingHarness([2, 10, 20, 30, 40], 5, 1050, 1000);
@@ -183,5 +187,28 @@ describe("flickerHashByte", () => {
       // byte/255 should reproduce the original fract phase to within one step.
       expect(flickerHashByte(x, y) / 255).toBeCloseTo(fract(x, y), 2);
     }
+  });
+});
+
+// Boats glide from tile to tile; a ship that appears far from where it was
+// (just built at its port, or a new id on a reused slot) jumps instead.
+describe("UnitPass boat gliding", () => {
+  const glide = (from: [number, number], to: [number, number]) => {
+    const pass = Object.create(UnitPass.prototype) as UnitPass;
+    Object.assign(pass, { mapW: 100 });
+    return (
+      pass as unknown as { isGlide(a: number, b: number): boolean }
+    ).isGlide(from[1] * 100 + from[0], to[1] * 100 + to[0]);
+  };
+
+  it("glides over a step", () => {
+    expect(glide([10, 10], [11, 10])).toBe(true);
+    expect(glide([10, 10], [10, 9])).toBe(true);
+    expect(glide([10, 10], [11, 11])).toBe(true);
+  });
+
+  it("jumps over a long way", () => {
+    expect(glide([10, 10], [14, 10])).toBe(false);
+    expect(glide([10, 10], [10, 40])).toBe(false);
   });
 });

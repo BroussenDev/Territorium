@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.114
+
+🚢 **Smoother boats, new transport ships**
+
+- Warships, transport ships and trade ships now glide from tile to tile instead of stepping.
+- Transport ships are redrawn as landing craft: a flat ramp at the bow, rows of soldiers and the helm at the stern. Like warships, they point where they sail.
+
 ## v0.1.113
 
 ⚓ **New warships**

@@ -2,9 +2,9 @@
  * UnitPass — GPU-rendered mobile unit sprites.
  *
  * Renders all mobile (non-structure) units: boats, nukes, shells, SAM
- * missiles, and MIRV warheads. Warships point where they sail (eight
- * headings, see WarshipHeading.ts); every other unit is rotationally
- * symmetric. Sprites are tiny grayscale PNGs colorized on the
+ * missiles, and MIRV warheads. Warships and transport ships point where
+ * they sail (eight headings, see WarshipHeading.ts); every other unit is
+ * rotationally symmetric. Sprites are tiny grayscale PNGs colorized on the
  * GPU using the standard 3-band gray replacement (180/130/70). MIRV
  * Warhead uses a programmatic 3×3 white square (colorized to border
  * color); Shell is a single white pixel.
@@ -15,7 +15,7 @@
  *   Missiles (nukes, shells, SAM, MIRV warheads) → rendered above structures
  *
  * Atlas layout (12 columns × 13px cells, pre-built by generate-sprite-atlases.mjs):
- *   Col 0: Transport (5×5)
+ *   Col 0: Transport, bow up (9×5 in a 13×13 cell)
  *   Col 1: Trade Ship (5×5)
  *   Col 2: Warship, bow up (13×13)
  *   Col 3: Atom Bomb (7×7)
@@ -28,6 +28,7 @@
  *   Col 10: Train Carriage (5×5)
  *   Col 11: Train Carriage Loaded (5×5)
  *   Col 12: Warship, bow up-right (13×13)
+ *   Col 13: Transport, bow up-right
  *
  * Data flow:
  *   FrameSnapshot.units → filter by typeToAtlasIdx → instance VBO → GPU
@@ -90,6 +91,7 @@ const UNIT_ORDER = [
   "TrainCarriage",
   "TrainCarriageLoaded",
   "WarshipDiagonal",
+  "TransportDiagonal",
 ] as const;
 
 const ATLAS_COLS = UNIT_ORDER.length;
@@ -101,6 +103,12 @@ const HYDROGEN_BOMB_COL = UNIT_ORDER.indexOf(UT_HYDROGEN_BOMB);
 const WARSHIP_COL = UNIT_ORDER.indexOf(UT_WARSHIP);
 /** Atlas column of the warship drawn bow up-right. */
 const WARSHIP_DIAGONAL_COL = UNIT_ORDER.indexOf("WarshipDiagonal");
+
+/** Boats drawn pointing where they sail: their bow-up-right sprite column. */
+const ORIENTED_DIAGONAL_COL: ReadonlyMap<string, number> = new Map([
+  [UT_WARSHIP, WARSHIP_DIAGONAL_COL],
+  [UT_TRANSPORT, UNIT_ORDER.indexOf("TransportDiagonal")],
+]);
 
 /** First atlas column of the train sprites (engine, carriage, loaded
  *  carriage are contiguous) — gates the train cosmetic effect. */
@@ -162,6 +170,13 @@ const MISSILE_TYPES: ReadonlySet<string> = new Set([
  *  (instanceIdx, lastX, lastY, x, y). The push site and the read loop must
  *  agree on this width — it's the record size, not a tunable. */
 const SMOOTH_SEG_STRIDE = 5;
+
+/** Boats drawn gliding from tile to tile rather than stepping. */
+const SMOOTHED_BOAT_TYPES: ReadonlySet<string> = new Set([
+  UT_WARSHIP,
+  UT_TRANSPORT,
+  UT_TRADE_SHIP,
+]);
 
 /** Per-instance flicker phase offset, hashed from the tick position. Computed
  *  CPU-side (not from the shader's instance position) so per-frame position
@@ -245,6 +260,9 @@ export class UnitPass {
   // (instanceIdx, lastX, lastY, x, y) recorded each tick, lerped into the
   // missile buffer in drawMissiles.
   private smoothSegs: number[] = [];
+  // Same for boats in the ground buffer: they step one tile a tick, which
+  // reads as jerky; drawn gliding between the two tiles instead.
+  private groundSmoothSegs: number[] = [];
   private lastUnitsUpdateMs = 0;
   /** Simulation tick duration in ms (Config.msPerTick). */
   private tickIntervalMs: number;
@@ -270,7 +288,7 @@ export class UnitPass {
   private localPlayerID = 0;
   private friendlyOwners = new Set<number>();
   private structures: Map<number, UnitState> = new Map();
-  /** Each warship's recent track, which way it points. */
+  /** Each oriented boat's recent track, which way it points. */
   private readonly warshipCourses = new WarshipCourses();
 
   constructor(
@@ -417,6 +435,33 @@ export class UnitPass {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
   }
 
+  /** A boat or train; warships and transport ships point where they sail. */
+  private emitGroundUnit(
+    id: number,
+    unit: UnitState,
+    x: number,
+    y: number,
+    atlasIdx: number,
+    flags: number,
+  ): void {
+    const diagonalCol = ORIENTED_DIAGONAL_COL.get(unit.unitType);
+    if (diagonalCol === undefined) {
+      this.emitGround(x, y, unit.ownerID, atlasIdx, flags);
+      return;
+    }
+    const sprite = warshipSprite(
+      this.warshipCourses.heading(id, unit.pos, this.mapW),
+    );
+    this.emitGround(
+      x,
+      y,
+      unit.ownerID,
+      sprite.diagonal ? diagonalCol : atlasIdx,
+      flags,
+      sprite.quarterTurns,
+    );
+  }
+
   private emitGround(
     x: number,
     y: number,
@@ -470,6 +515,7 @@ export class UnitPass {
     this.groundCount = 0;
     this.missileCount = 0;
     this.smoothSegs.length = 0;
+    this.groundSmoothSegs.length = 0;
 
     for (const [id, unit] of units) {
       if (!unit.isActive || unit.waitTicks > 0) continue;
@@ -557,20 +603,17 @@ export class UnitPass {
           const ly = (unit.lastPos - lx) / this.mapW;
           this.emitMissile(lx, ly, unit.ownerID, atlasIdx, flags);
         }
-      } else if (unit.unitType === UT_WARSHIP) {
-        const sprite = warshipSprite(
-          this.warshipCourses.heading(id, unit.pos, this.mapW),
-        );
-        this.emitGround(
-          x,
-          y,
-          unit.ownerID,
-          sprite.diagonal ? WARSHIP_DIAGONAL_COL : atlasIdx,
-          flags,
-          sprite.quarterTurns,
-        );
       } else {
-        this.emitGround(x, y, unit.ownerID, atlasIdx, flags);
+        if (
+          SMOOTHED_BOAT_TYPES.has(unit.unitType) &&
+          unit.lastPos !== unit.pos &&
+          this.isGlide(unit.lastPos, unit.pos)
+        ) {
+          const lx = unit.lastPos % this.mapW;
+          const ly = (unit.lastPos - lx) / this.mapW;
+          this.groundSmoothSegs.push(this.groundCount, lx, ly, x, y);
+        }
+        this.emitGroundUnit(id, unit, x, y, atlasIdx, flags);
       }
     }
     this.warshipCourses.sweep();
@@ -659,6 +702,11 @@ export class UnitPass {
   /** Draw ground/sea units (boats, trains). Render below structures. */
   drawGround(cameraMatrix: Float32Array): void {
     if (this.groundCount === 0) return;
+    this.applySmoothing(
+      this.groundSmoothSegs,
+      this.groundBuf,
+      this.groundCount,
+    );
     this.bindProgram(cameraMatrix);
     const gl = this.gl;
     gl.bindVertexArray(this.groundVao);
@@ -668,37 +716,44 @@ export class UnitPass {
   /** Draw missiles/projectiles (nukes, shells, SAM, MIRV warheads). Render above structures. */
   drawMissiles(cameraMatrix: Float32Array): void {
     if (this.missileCount === 0) return;
-    this.applyMissileSmoothing();
+    this.applySmoothing(this.smoothSegs, this.missileBuf, this.missileCount);
     this.bindProgram(cameraMatrix);
     const gl = this.gl;
     gl.bindVertexArray(this.missileVao);
     gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, this.missileCount);
   }
 
-  /** Lerp smoothed nukes lastPos→pos by wall-clock progress through the
-   *  current tick and re-upload the (small) missile instance buffer. */
-  private applyMissileSmoothing(): void {
-    const segs = this.smoothSegs;
+  /** A move short enough to glide: one step (a new ship leaving its port
+   *  jumps there instead of sliding across the map). */
+  private isGlide(from: number, to: number): boolean {
+    const dx = Math.abs((to % this.mapW) - (from % this.mapW));
+    const dy = Math.abs(
+      Math.floor(to / this.mapW) - Math.floor(from / this.mapW),
+    );
+    return dx + dy <= 2;
+  }
+
+  /** Lerp smoothed units lastPos→pos by wall-clock progress through the
+   *  current tick and re-upload the instance buffer they live in. */
+  private applySmoothing(
+    segs: number[],
+    buf: DynamicInstanceBuffer,
+    count: number,
+  ): void {
     if (segs.length === 0) return;
     const alpha = Math.min(
       1,
       (performance.now() - this.lastUnitsUpdateMs) / this.tickIntervalMs,
     );
-    const f32 = this.missileBuf.float32;
+    const f32 = buf.float32;
     for (let i = 0; i < segs.length; i += SMOOTH_SEG_STRIDE) {
       const off = segs[i] * FLOATS_PER_INSTANCE;
       f32[off + 0] = segs[i + 1] + (segs[i + 3] - segs[i + 1]) * alpha;
       f32[off + 1] = segs[i + 2] + (segs[i + 4] - segs[i + 2]) * alpha;
     }
     const gl = this.gl;
-    gl.bindBuffer(gl.ARRAY_BUFFER, this.missileBuf.buffer);
-    gl.bufferSubData(
-      gl.ARRAY_BUFFER,
-      0,
-      f32,
-      0,
-      this.missileCount * FLOATS_PER_INSTANCE,
-    );
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf.buffer);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, f32, 0, count * FLOATS_PER_INSTANCE);
   }
 
   dispose(): void {
