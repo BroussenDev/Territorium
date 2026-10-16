@@ -80,12 +80,12 @@ describe("the map editor's map", () => {
     // map, so importing an image loses nothing.
     const file = path.join(
       __dirname,
-      "../../map-generator/assets/maps/onion/image.png",
+      "../../map-generator/assets/maps/beringstrait/image.png",
     );
     const editor = EditorMap.fromImage(decodePng(file));
     const out = generateMap(editor.toImage());
     const expected = fs.readFileSync(
-      path.join(__dirname, "../../resources/maps/onion/map.bin"),
+      path.join(__dirname, "../../resources/maps/beringstrait/map.bin"),
     );
     expect(out.map.data.findIndex((b, i) => b !== expected[i])).toBe(-1);
   });

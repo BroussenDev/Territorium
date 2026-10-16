@@ -4483,5 +4483,470 @@
     "code": "zw",
     "continent": "Africa",
     "name": "Zimbabwe"
+  },
+  {
+    "code": "Aden State",
+    "continent": "Asia",
+    "name": "Aden State"
+  },
+  {
+    "code": "Alawi Sheikhdom",
+    "continent": "Asia",
+    "name": "Alawi Sheikhdom"
+  },
+  {
+    "code": "Aqrabi Sheikhdom",
+    "continent": "Asia",
+    "name": "Aqrabi Sheikhdom"
+  },
+  {
+    "code": "Baidah Sultanate",
+    "continent": "Asia",
+    "name": "Baidah Sultanate"
+  },
+  {
+    "code": "Dathina Sheikhdom",
+    "continent": "Asia",
+    "name": "Dathina Sheikhdom"
+  },
+  {
+    "code": "Emirate of Beihan",
+    "continent": "Asia",
+    "name": "Emirate of Beihan"
+  },
+  {
+    "code": "Emirate of Dhala",
+    "continent": "Asia",
+    "name": "Emirate of Dhala"
+  },
+  {
+    "code": "Eritrea (Ethiopian)",
+    "continent": "Africa",
+    "name": "Eritrea (Ethiopian)"
+  },
+  {
+    "code": "Haushabi",
+    "continent": "Asia",
+    "name": "Haushabi Sultanate"
+  },
+  {
+    "code": "Kathiri State",
+    "continent": "Asia",
+    "name": "Kathiri State"
+  },
+  {
+    "code": "Lower Aulaqi Sultanate",
+    "continent": "Asia",
+    "name": "Lower Aulaqi Sultanate"
+  },
+  {
+    "code": "Mahra Sultanate",
+    "continent": "Asia",
+    "name": "Mahra Sultanate"
+  },
+  {
+    "code": "Qu'aiti Sultanate",
+    "continent": "Asia",
+    "name": "Qu'aiti Sultanate"
+  },
+  {
+    "code": "Sheikdom of Upper Asir",
+    "continent": "Asia",
+    "name": "Sheikdom of Upper Asir"
+  },
+  {
+    "code": "South Arabia Federation",
+    "continent": "Asia",
+    "name": "South Arabia Federation"
+  },
+  {
+    "code": "Sultanate of Fadhli",
+    "continent": "Asia",
+    "name": "Sultanate of Fadhli"
+  },
+  {
+    "code": "Sultanate of Lahej",
+    "continent": "Asia",
+    "name": "Sultanate of Lahej"
+  },
+  {
+    "code": "Sultanate of Lower Yafa",
+    "continent": "Asia",
+    "name": "Sultanate of Lower Yafa"
+  },
+  {
+    "code": "Upper Yafa",
+    "continent": "Asia",
+    "name": "Upper Yafa"
+  },
+  {
+    "code": "Wahidi Sultanate of Balhaf",
+    "continent": "Asia",
+    "name": "Wahidi Sultanate of Balhaf"
+  },
+  {
+    "code": "Adal Sultanate",
+    "continent": "Africa",
+    "name": "Adal Sultanate"
+  },
+  {
+    "code": "et-aa",
+    "continent": "Africa",
+    "name": "Addis Ababa"
+  },
+  {
+    "code": "et-af",
+    "continent": "Africa",
+    "name": "Afar"
+  },
+  {
+    "code": "et-am",
+    "continent": "Africa",
+    "name": "Amhara"
+  },
+  {
+    "code": "Beja",
+    "continent": "Africa",
+    "name": "Beja"
+  },
+  {
+    "code": "et-be",
+    "continent": "Africa",
+    "name": "Benishangul-Gumuz"
+  },
+  {
+    "code": "et-ce",
+    "continent": "Africa",
+    "name": "Central Ethiopia"
+  },
+  {
+    "code": "Darfur",
+    "continent": "Africa",
+    "name": "Darfur"
+  },
+  {
+    "code": "Dervish State",
+    "continent": "Africa",
+    "name": "Dervish State"
+  },
+  {
+    "code": "et-dd",
+    "continent": "Africa",
+    "name": "Dire Dawa"
+  },
+  {
+    "code": "East African Community",
+    "continent": "Africa",
+    "name": "East African Community"
+  },
+  {
+    "code": "Galmudug",
+    "continent": "Africa",
+    "name": "Galmudug"
+  },
+  {
+    "code": "et-ga",
+    "continent": "Africa",
+    "name": "Gambela"
+  },
+  {
+    "code": "et-ha",
+    "continent": "Africa",
+    "name": "Harari"
+  },
+  {
+    "code": "Hirshabelle",
+    "continent": "Africa",
+    "name": "Hirshabelle"
+  },
+  {
+    "code": "Jubaland",
+    "continent": "Africa",
+    "name": "Jubaland"
+  },
+  {
+    "code": "Khatumo",
+    "continent": "Africa",
+    "name": "Khatumo"
+  },
+  {
+    "code": "Ogaden",
+    "continent": "Africa",
+    "name": "Ogaden"
+  },
+  {
+    "code": "et-or",
+    "continent": "Africa",
+    "name": "Oromia"
+  },
+  {
+    "code": "Puntland",
+    "continent": "Africa",
+    "name": "Puntland"
+  },
+  {
+    "code": "et-si",
+    "continent": "Africa",
+    "name": "Sidama"
+  },
+  {
+    "code": "et-so",
+    "continent": "Africa",
+    "name": "Somali Region"
+  },
+  {
+    "code": "Somaliland",
+    "continent": "Africa",
+    "name": "Somaliland"
+  },
+  {
+    "code": "et-se",
+    "continent": "Africa",
+    "name": "South Ethiopia"
+  },
+  {
+    "code": "South Kordofan",
+    "continent": "Africa",
+    "name": "South Kordofan"
+  },
+  {
+    "code": "et-sw",
+    "continent": "Africa",
+    "name": "South West Ethiopia"
+  },
+  {
+    "code": "South West Somalia",
+    "continent": "Africa",
+    "name": "South West Somalia"
+  },
+  {
+    "code": "Mahdist Sudan",
+    "continent": "Africa",
+    "name": "Sudanese Mahdiyya"
+  },
+  {
+    "code": "Sultanate of Mogadishu",
+    "continent": "Africa",
+    "name": "Sultanate of Mogadishu"
+  },
+  {
+    "code": "et-ti",
+    "continent": "Africa",
+    "name": "Tigray"
+  },
+  {
+    "code": "Zanzibar",
+    "continent": "Africa",
+    "name": "Zanzibar"
+  },
+  {
+    "code": "Antankarana",
+    "continent": "Africa",
+    "name": "Antankarana"
+  },
+  {
+    "code": "km-a",
+    "continent": "Africa",
+    "name": "Anjouan"
+  },
+  {
+    "code": "Chagossians",
+    "continent": "Africa",
+    "name": "Chagossians"
+  },
+  {
+    "code": "Comoros Islamic Republic",
+    "continent": "Africa",
+    "name": "Comoros Islamic Republic"
+  },
+  {
+    "code": "km-g",
+    "continent": "Africa",
+    "name": "Grande Comore"
+  },
+  {
+    "code": "Malagasy Protectorate",
+    "continent": "Africa",
+    "name": "Malagasy Protectorate"
+  },
+  {
+    "code": "Merina Kingdom",
+    "continent": "Africa",
+    "name": "Merina Kingdom"
+  },
+  {
+    "code": "Merina",
+    "continent": "Africa",
+    "name": "Merina"
+  },
+  {
+    "code": "km-m",
+    "continent": "Africa",
+    "name": "Moheli"
+  },
+  {
+    "code": "Mozambique PR",
+    "continent": "Africa",
+    "name": "Mozambique People's Republic"
+  },
+  {
+    "code": "mu-ro",
+    "continent": "Africa",
+    "name": "Rodrigues"
+  },
+  {
+    "code": "Bophuthatswana",
+    "continent": "Africa",
+    "name": "Bophuthatswana"
+  },
+  {
+    "code": "Cape Republic",
+    "continent": "Africa",
+    "name": "Cape Republic"
+  },
+  {
+    "code": "Cape Town",
+    "continent": "Africa",
+    "name": "Cape Town"
+  },
+  {
+    "code": "Ciskei",
+    "continent": "Africa",
+    "name": "Ciskei"
+  },
+  {
+    "code": "Gazankulu",
+    "continent": "Africa",
+    "name": "Gazankulu"
+  },
+  {
+    "code": "Good Hope",
+    "continent": "Africa",
+    "name": "Good Hope"
+  },
+  {
+    "code": "Goshen",
+    "continent": "Africa",
+    "name": "Goshen"
+  },
+  {
+    "code": "Khoisan",
+    "continent": "Africa",
+    "name": "Khoisan"
+  },
+  {
+    "code": "KwaNdebele",
+    "continent": "Africa",
+    "name": "KwaNdebele"
+  },
+  {
+    "code": "KwaZulu",
+    "continent": "Africa",
+    "name": "KwaZulu"
+  },
+  {
+    "code": "Lebowa",
+    "continent": "Africa",
+    "name": "Lebowa"
+  },
+  {
+    "code": "za-mp",
+    "continent": "Africa",
+    "name": "Mpumalanga"
+  },
+  {
+    "code": "Natalia Republic",
+    "continent": "Africa",
+    "name": "Natalia Republic"
+  },
+  {
+    "code": "Nieuwe Republiek",
+    "continent": "Africa",
+    "name": "Nieuwe Republiek"
+  },
+  {
+    "code": "Orange Free State",
+    "continent": "Africa",
+    "name": "Orange Free State"
+  },
+  {
+    "code": "QwaQwa",
+    "continent": "Africa",
+    "name": "QwaQwa"
+  },
+  {
+    "code": "Stellaland",
+    "continent": "Africa",
+    "name": "Stellaland"
+  },
+  {
+    "code": "Transkei",
+    "continent": "Africa",
+    "name": "Transkei"
+  },
+  {
+    "code": "Transvaal",
+    "continent": "Africa",
+    "name": "Transvaal"
+  },
+  {
+    "code": "Venda",
+    "continent": "Africa",
+    "name": "Venda"
+  },
+  {
+    "code": "Voortrekker",
+    "continent": "Africa",
+    "name": "Voortrekker"
+  },
+  {
+    "code": "Zulu",
+    "continent": "Africa",
+    "name": "Zulu"
+  },
+  {
+    "code": "Cascadia",
+    "continent": "North America",
+    "name": "Cascadia"
+  },
+  {
+    "code": "Franco-Columbians",
+    "continent": "North America",
+    "name": "Franco-Columbians"
+  },
+  {
+    "code": "Musqueam",
+    "continent": "North America",
+    "name": "Musqueam"
+  },
+  {
+    "code": "Nisga'a",
+    "continent": "North America",
+    "name": "Nisga'a"
+  },
+  {
+    "code": "Nunatsiavut",
+    "continent": "North America",
+    "name": "Nunatsiavut"
+  },
+  {
+    "code": "Upper Skagit",
+    "continent": "North America",
+    "name": "Upper Skagit"
+  },
+  {
+    "code": "Vancouver",
+    "continent": "North America",
+    "name": "Vancouver"
+  },
+  {
+    "code": "Western Canada",
+    "continent": "North America",
+    "name": "Western Canada"
+  },
+  {
+    "code": "Yuułuʔiłʔatḥ",
+    "continent": "North America",
+    "name": "Yuułuʔiłʔatḥ"
   }
 ]

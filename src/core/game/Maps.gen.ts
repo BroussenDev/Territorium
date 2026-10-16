@@ -13,6 +13,7 @@ export enum GameMapType {
   Arctic = "Arctic", // map-generator/assets/maps/arctic/info.json
   Asia = "Asia", // map-generator/assets/maps/asia/info.json
   Australia = "Australia", // map-generator/assets/maps/australia/info.json
+  BabelMandebStrait = "Bab el-Mandeb Strait", // map-generator/assets/maps/babelmandebstrait/info.json
   Baikal = "Baikal", // map-generator/assets/maps/baikal/info.json
   BaikalNukeWars = "Baikal Nuke Wars", // map-generator/assets/maps/baikalnukewars/info.json
   BajaCalifornia = "Baja California", // map-generator/assets/maps/bajacalifornia/info.json
@@ -24,11 +25,11 @@ export enum GameMapType {
   BetweenTwoSeas = "Between Two Seas", // map-generator/assets/maps/betweentwoseas/info.json
   BlackSea = "Black Sea", // map-generator/assets/maps/blacksea/info.json
   BosphorusStraits = "Bosphorus Straits", // map-generator/assets/maps/bosphorusstraits/info.json
-  BranchingPaths = "Branching Paths", // map-generator/assets/maps/branchingpaths/info.json
   Britannia = "Britannia", // map-generator/assets/maps/britannia/info.json
   BritanniaClassic = "Britannia Classic", // map-generator/assets/maps/britanniaclassic/info.json
   CanaryIslands = "Canary Islands", // map-generator/assets/maps/canaryislands/info.json
   CapeCod = "Cape Cod", // map-generator/assets/maps/capecod/info.json
+  CapeOfGoodHope = "Cape Of Good Hope", // map-generator/assets/maps/capeofgoodhope/info.json
   Caribbean = "Caribbean", // map-generator/assets/maps/caribbean/info.json
   CaspianSea = "Caspian Sea", // map-generator/assets/maps/caspiansea/info.json
   Caucasus = "Caucasus", // map-generator/assets/maps/caucasus/info.json
@@ -41,8 +42,6 @@ export enum GameMapType {
   Crimea = "Crimea", // map-generator/assets/maps/crimea/info.json
   DanishStraits = "Danish Straits", // map-generator/assets/maps/danishstraits/info.json
   DeglaciatedAntarctica = "Deglaciated Antarctica", // map-generator/assets/maps/deglaciatedantarctica/info.json
-  Didier = "Didier", // map-generator/assets/maps/didier/info.json
-  DidierFrance = "Didier France", // map-generator/assets/maps/didierfrance/info.json
   Dyslexdria = "Dyslexdria", // map-generator/assets/maps/dyslexdria/info.json
   EastAsia = "East Asia", // map-generator/assets/maps/eastasia/info.json
   Europe = "Europe", // map-generator/assets/maps/europe/info.json
@@ -63,6 +62,7 @@ export enum GameMapType {
   Hawaii = "Hawaii", // map-generator/assets/maps/hawaii/info.json
   Hecatestrait = "Hecate Strait", // map-generator/assets/maps/hecatestrait/info.json
   HongKong = "Hong Kong", // map-generator/assets/maps/hongkong/info.json
+  HornOfAfrica = "Horn Of Africa", // map-generator/assets/maps/hornofafrica/info.json
   Iceland = "Iceland", // map-generator/assets/maps/iceland/info.json
   IndianSubcontinent = "Indian Subcontinent", // map-generator/assets/maps/indiansubcontinent/info.json
   IrishSea = "Irish Sea", // map-generator/assets/maps/irishsea/info.json
@@ -77,6 +77,7 @@ export enum GameMapType {
   Lisbon = "Lisbon", // map-generator/assets/maps/lisbon/info.json
   LosAngeles = "Los Angeles", // map-generator/assets/maps/losangeles/info.json
   Luna = "Luna", // map-generator/assets/maps/luna/info.json
+  Madagascar = "Madagascar", // map-generator/assets/maps/madagascar/info.json
   Manicouagan = "Manicouagan", // map-generator/assets/maps/manicouagan/info.json
   MareNostrum = "Mare Nostrum", // map-generator/assets/maps/marenostrum/info.json
   Mars = "Mars", // map-generator/assets/maps/mars/info.json
@@ -92,7 +93,6 @@ export enum GameMapType {
   NorthAmerica = "North America", // map-generator/assets/maps/northamerica/info.json
   NorthwestPassage = "Northwest Passage", // map-generator/assets/maps/northwestpassage/info.json
   Oceania = "Oceania", // map-generator/assets/maps/oceania/info.json
-  Onion = "Onion", // map-generator/assets/maps/onion/info.json
   Pangaea = "Pangaea", // map-generator/assets/maps/pangaea/info.json
   Passage = "Passage", // map-generator/assets/maps/passage/info.json
   Pluto = "Pluto", // map-generator/assets/maps/pluto/info.json
@@ -122,9 +122,9 @@ export enum GameMapType {
   TradersDream = "Traders Dream", // map-generator/assets/maps/tradersdream/info.json
   TwoLakes = "Two Lakes", // map-generator/assets/maps/twolakes/info.json
   UnitedStates = "United States", // map-generator/assets/maps/unitedstates/info.json
+  VancouverIsland = "Vancouver Island", // map-generator/assets/maps/vancouverisland/info.json
   Venice = "Venice", // map-generator/assets/maps/venice/info.json
   Vietnam = "Vietnam", // map-generator/assets/maps/vietnam/info.json
-  WarshipWarship = "Warship Warship", // map-generator/assets/maps/warshipwarship/info.json
   World = "World", // map-generator/assets/maps/world/info.json
   WorldInverted = "World Inverted", // map-generator/assets/maps/worldinverted/info.json
   YangtzeRiver = "Yangtze River", // map-generator/assets/maps/yangtzeriver/info.json
@@ -365,6 +365,19 @@ export const maps: readonly MapInfo[] = [
     themes: ["oceania"],
   },
   {
+    id: "BabelMandebStrait",
+    type: GameMapType.BabelMandebStrait,
+    translationKey: "map.babelmandebstrait",
+    categories: ["new", "africa", "asia"],
+    multiplayerFrequency: 5,
+    ffaFrequency: -1,
+    teamFrequency: 10,
+    specialFrequency: -1,
+    defaultNationCount: 26,
+    specialTeamCount: 2,
+    themes: ["africa", "asia"],
+  },
+  {
     id: "Baikal",
     type: GameMapType.Baikal,
     translationKey: "map.baikal",
@@ -503,18 +516,6 @@ export const maps: readonly MapInfo[] = [
     themes: ["europe", "asia"],
   },
   {
-    id: "BranchingPaths",
-    type: GameMapType.BranchingPaths,
-    translationKey: "map.branchingpaths",
-    categories: ["arcade"],
-    multiplayerFrequency: 7,
-    ffaFrequency: -1,
-    teamFrequency: -1,
-    specialFrequency: -1,
-    defaultNationCount: 19,
-    specialTeamCount: 3,
-  },
-  {
     id: "Britannia",
     type: GameMapType.Britannia,
     translationKey: "map.britannia",
@@ -561,6 +562,18 @@ export const maps: readonly MapInfo[] = [
     specialFrequency: -1,
     defaultNationCount: 31,
     themes: ["north_america"],
+  },
+  {
+    id: "CapeOfGoodHope",
+    type: GameMapType.CapeOfGoodHope,
+    translationKey: "map.capeofgoodhope",
+    categories: ["new", "africa"],
+    multiplayerFrequency: 4,
+    ffaFrequency: -1,
+    teamFrequency: -1,
+    specialFrequency: -1,
+    defaultNationCount: 26,
+    themes: ["africa"],
   },
   {
     id: "Caribbean",
@@ -810,28 +823,6 @@ export const maps: readonly MapInfo[] = [
     teamFrequency: -1,
     specialFrequency: -1,
     defaultNationCount: 9,
-  },
-  {
-    id: "Didier",
-    type: GameMapType.Didier,
-    translationKey: "map.didier",
-    categories: ["arcade"],
-    multiplayerFrequency: 1,
-    ffaFrequency: -1,
-    teamFrequency: -1,
-    specialFrequency: -1,
-    defaultNationCount: 12,
-  },
-  {
-    id: "DidierFrance",
-    type: GameMapType.DidierFrance,
-    translationKey: "map.didierfrance",
-    categories: ["arcade"],
-    multiplayerFrequency: 1,
-    ffaFrequency: -1,
-    teamFrequency: -1,
-    specialFrequency: -1,
-    defaultNationCount: 42,
   },
   {
     id: "Dyslexdria",
@@ -1486,6 +1477,18 @@ export const maps: readonly MapInfo[] = [
     themes: ["asia"],
   },
   {
+    id: "HornOfAfrica",
+    type: GameMapType.HornOfAfrica,
+    translationKey: "map.hornofafrica",
+    categories: ["africa", "new"],
+    multiplayerFrequency: 5,
+    ffaFrequency: -1,
+    teamFrequency: -1,
+    specialFrequency: -1,
+    defaultNationCount: 29,
+    themes: ["africa"],
+  },
+  {
     id: "Iceland",
     type: GameMapType.Iceland,
     translationKey: "map.iceland",
@@ -1797,6 +1800,20 @@ export const maps: readonly MapInfo[] = [
     forcedModifiers: ["isWaterNukes:50"],
   },
   {
+    id: "Madagascar",
+    type: GameMapType.Madagascar,
+    translationKey: "map.madagascar",
+    categories: ["new", "africa"],
+    multiplayerFrequency: 5,
+    ffaFrequency: -1,
+    teamFrequency: 10,
+    specialFrequency: -1,
+    defaultNationCount: 34,
+    specialTeamCount: 2,
+    forcedModifiers: ["isWaterNukes:50"],
+    themes: ["africa"],
+  },
+  {
     id: "Manicouagan",
     type: GameMapType.Manicouagan,
     translationKey: "map.manicouagan",
@@ -1974,17 +1991,6 @@ export const maps: readonly MapInfo[] = [
     specialFrequency: -1,
     defaultNationCount: 22,
     themes: ["oceania"],
-  },
-  {
-    id: "Onion",
-    type: GameMapType.Onion,
-    translationKey: "map.onion",
-    categories: ["arcade"],
-    multiplayerFrequency: 2,
-    ffaFrequency: -1,
-    teamFrequency: -1,
-    specialFrequency: -1,
-    defaultNationCount: 3,
   },
   {
     id: "Pangaea",
@@ -2382,6 +2388,18 @@ export const maps: readonly MapInfo[] = [
     themes: ["north_america"],
   },
   {
+    id: "VancouverIsland",
+    type: GameMapType.VancouverIsland,
+    translationKey: "map.vancouverisland",
+    categories: ["north_america", "new"],
+    multiplayerFrequency: 4,
+    ffaFrequency: -1,
+    teamFrequency: -1,
+    specialFrequency: -1,
+    defaultNationCount: 32,
+    themes: ["north_america"],
+  },
+  {
     id: "Venice",
     type: GameMapType.Venice,
     translationKey: "map.venice",
@@ -2405,17 +2423,6 @@ export const maps: readonly MapInfo[] = [
     defaultNationCount: 15,
     specialTeamCount: 2,
     themes: ["asia"],
-  },
-  {
-    id: "WarshipWarship",
-    type: GameMapType.WarshipWarship,
-    translationKey: "map.warshipwarship",
-    categories: ["arcade"],
-    multiplayerFrequency: 3,
-    ffaFrequency: -1,
-    teamFrequency: 6,
-    specialFrequency: -1,
-    defaultNationCount: 10,
   },
   {
     id: "World",

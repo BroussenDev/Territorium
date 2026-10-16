@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.112
+
+🗺️ **New maps**
+
+- Five new maps: Madagascar (two equal landmasses across the Mozambique Channel, a Nuke Wars map), the Horn of Africa, the Cape of Good Hope, the Bab el-Mandeb Strait and Vancouver Island.
+- Didier, Didier (France), Onion, Warship Warship and Branching Paths are retired.
+
 ## v0.1.111
 
 💬 **Faster chat and emojis**
