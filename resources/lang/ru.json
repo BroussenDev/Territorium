@@ -181,7 +181,10 @@
       "sam_launcher": "Защищает от ядерных ракет",
       "warship": "Захватывает торговые суда, уничтожает корабли и суда"
     },
+    "mirv_limit": "Один MIRV раз в {minutes} минуты",
     "not_enough_money": "Недостаточно средств",
+    "nuke_cooldown": "Перезарядка: {time}",
+    "nuke_salvo_limit": "Не больше {count} бомб в минуту",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Флот: {count}/{max} боевых кораблей",
     "warship_shift_hint": "Удерживайте Shift и перетаскивайте, чтобы выбрать несколько военных кораблей сразу"

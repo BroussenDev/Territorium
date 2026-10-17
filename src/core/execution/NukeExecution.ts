@@ -299,6 +299,7 @@ export class NukeExecution implements Execution {
       // after sending a nuke set the missilesilo on cooldown
       if (silo) {
         silo.launch();
+        this.player.recordNukeLaunch(this.nukeType);
       }
       return;
     }

@@ -18,6 +18,7 @@ import {
 } from "./Game";
 import { TileRef } from "./GameMap";
 import { ConquestState, ObjectiveState } from "./Objectives";
+import type { NukeLaunches } from "./NukeSalvo";
 import type { SurvivalStatus, SurvivalZone } from "./Survival";
 
 export interface GameUpdateViewData {
@@ -307,6 +308,8 @@ export interface PlayerUpdate {
   capitalLostTick?: Tick;
   /** Survival invaders: the land their troop cap counts at least. */
   troopCapTiles?: number;
+  /** Recent bomb launches, which limit the next ones (NukeSalvo.ts). */
+  nukeLaunches?: NukeLaunches;
 }
 
 export interface AllianceView {

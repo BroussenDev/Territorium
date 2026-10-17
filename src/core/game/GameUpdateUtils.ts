@@ -63,6 +63,7 @@ export function diffPlayerUpdate(
     prev.isLobbyCreator === next.isLobbyCreator &&
     prev.capitalLostTick === next.capitalLostTick &&
     prev.troopCapTiles === next.troopCapTiles &&
+    prev.nukeLaunches === next.nukeLaunches &&
     numberArrayEqual(prev.allies, next.allies) &&
     numberArrayEqual(prev.targets, next.targets) &&
     stringArrayEqual(
@@ -135,6 +136,8 @@ export function diffPlayerUpdate(
     prev.capitalLostTick === next.capitalLostTick,
   );
   setIfDifferent("troopCapTiles", prev.troopCapTiles === next.troopCapTiles);
+  // A new object on every launch (withNukeLaunch), so identity tells.
+  setIfDifferent("nukeLaunches", prev.nukeLaunches === next.nukeLaunches);
   setIfDifferent("allies", numberArrayEqual(prev.allies, next.allies));
   setIfDifferent("targets", numberArrayEqual(prev.targets, next.targets));
   setIfDifferent(
@@ -210,6 +213,7 @@ export function applyStateUpdate(target: PlayerState, pu: PlayerUpdate): void {
     target.capitalLostTick = pu.capitalLostTick;
   }
   if (pu.troopCapTiles !== undefined) target.troopCapTiles = pu.troopCapTiles;
+  if (pu.nukeLaunches !== undefined) target.nukeLaunches = pu.nukeLaunches;
   // Slice() to detach from the wire object — accumulated state mustn't share
   // mutable arrays with per-tick update payloads.
   if (pu.allies !== undefined) target.allies = pu.allies.slice();

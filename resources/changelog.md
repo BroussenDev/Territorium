@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.119
+
+☢️ **No more rain of bombs**
+
+- Atom bombs, hydrogen bombs and EMPs now go in salvos: at most 3 a minute per player, however many silos you own. The build bar shows how long until the next one.
+- A MIRV now reloads for 4 minutes before you can launch another.
+- Ranked games have no MIRV.
+
 ## v0.1.118
 
 🤖 **Sharper Impossible nations**

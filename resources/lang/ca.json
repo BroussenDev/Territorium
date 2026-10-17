@@ -181,7 +181,10 @@
       "sam_launcher": "Defensa't contra bombes nuclears",
       "warship": "Captura Vaixells de Comerç, destrueix Vaixells de Guerra i de Comerç"
     },
+    "mirv_limit": "Un MIRV cada {minutes} minuts",
     "not_enough_money": "No tens prou diners",
+    "nuke_cooldown": "Recarregant: {time}",
+    "nuke_salvo_limit": "Com a màxim {count} bombes per minut",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flota: {count}/{max} vaixells de guerra",
     "warship_shift_hint": "Manteniu premuda la tecla Maj i arrossegueu per seleccionar diversos vaixells de guerra alhora"

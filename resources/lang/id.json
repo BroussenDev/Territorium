@@ -181,7 +181,10 @@
       "sam_launcher": "Penangkalan nuklir yang mendekat",
       "warship": "Menangkap kapal dagang, menghancurkan kapal dan perahu."
     },
+    "mirv_limit": "Satu MIRV setiap {minutes} menit",
     "not_enough_money": "Uang tidak cukup",
+    "nuke_cooldown": "Mengisi ulang: {time}",
+    "nuke_salvo_limit": "Paling banyak {count} bom per menit",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Armada: {count}/{max} kapal perang",
     "warship_shift_hint": "Tahan Shift dan seret untuk memilih beberapa kapal perang sekaligus"

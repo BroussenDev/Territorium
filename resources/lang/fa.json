@@ -181,7 +181,10 @@
       "sam_launcher": "در برابر سلاح‌های هسته‌ای ورودی دفاع می‌کند",
       "warship": "کشتی‌های تجاری را تسخیر می‌کند و کشتی‌ها و قایق‌ها را نابود می‌کند"
     },
+    "mirv_limit": "یک MIRV هر {minutes} دقیقه",
     "not_enough_money": "پول کافی نیست",
+    "nuke_cooldown": "بارگذاری دوباره: {time}",
+    "nuke_salvo_limit": "حداکثر {count} بمب در دقیقه",
     "upgrade_amount": "×{amount}",
     "warship_limit": "ناوگان: {count}/{max} کشتی های جنگی",
     "warship_shift_hint": "برای انتخاب همزمان چندین کشتی جنگی، Shift را نگه دارید و بکشید"

@@ -181,7 +181,10 @@
       "sam_launcher": "يدافع ضد الأسلحة النووية القادمة",
       "warship": "يلتقط السفن التجارية ويدمر السفن والقوارب"
     },
+    "mirv_limit": "صاروخ MIRV واحد كل {minutes} دقائق",
     "not_enough_money": "لا يوجد ما يكفي من المال",
+    "nuke_cooldown": "إعادة التلقيم: {time}",
+    "nuke_salvo_limit": "{count} قنابل في الدقيقة كحد أقصى",
     "upgrade_amount": "س{amount}",
     "warship_limit": "الأسطول: {count}/{max} سفن حربية",
     "warship_shift_hint": "اضغط مع الاستمرار على Shift واسحب لتحديد سفن حربية متعددة في وقت واحد"

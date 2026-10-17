@@ -181,7 +181,10 @@
       "sam_launcher": "Apără împotriva bombelor nucleare",
       "warship": "Capturează nave de comerț, distruge nave de război și bărci"
     },
+    "mirv_limit": "Un MIRV la fiecare {minutes} minute",
     "not_enough_money": "Nu ai suficienți bani",
+    "nuke_cooldown": "Reîncărcare: {time}",
+    "nuke_salvo_limit": "Cel mult {count} bombe pe minut",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotă: {count}/{max} nave de război",
     "warship_shift_hint": "Țineți apăsat Shift și trageți pentru a selecta mai multe nave de război odată"

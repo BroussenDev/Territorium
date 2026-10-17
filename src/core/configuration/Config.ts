@@ -434,6 +434,8 @@ export class Config {
   }
 
   isUnitDisabled(unitType: UnitType): boolean {
+    // Ranked games have no MIRV: one launch shouldn't decide a ranked game.
+    if (unitType === UnitType.MIRV && this.isRanked()) return true;
     return this._gameConfig.disabledUnits?.includes(unitType) ?? false;
   }
 

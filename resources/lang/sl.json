@@ -181,7 +181,10 @@
       "sam_launcher": "Brani se pred prihajajočimi bombam",
       "warship": "Zajame trgovske ladje, uničuje ladje in čolne"
     },
+    "mirv_limit": "En MIRV vsakih {minutes} minut",
     "not_enough_money": "Ni dovolj denarja",
+    "nuke_cooldown": "Polnjenje: {time}",
+    "nuke_salvo_limit": "Največ {count} bombe na minuto",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flota: {count}/{max} vojaške ladje",
     "warship_shift_hint": "Držite tipko Shift in povlecite, da izberete več vojnih ladij hkrati"

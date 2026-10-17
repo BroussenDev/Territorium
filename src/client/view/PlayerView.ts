@@ -27,6 +27,7 @@ import {
   AttackUpdate,
   PlayerUpdate,
 } from "../../core/game/GameUpdates";
+import { nukeCooldownLeft } from "../../core/game/NukeSalvo";
 import { objectiveBonusCap } from "../../core/game/Objectives";
 import { UserSettings } from "../../core/game/UserSettings";
 import { PlayerState, PlayerStatic, PlayerTypeEnum } from "../render/types";
@@ -99,6 +100,7 @@ function stateFromUpdate(pu: PlayerUpdate): PlayerState {
     lastDeleteUnitTick: pu.lastDeleteUnitTick!,
     capitalLostTick: pu.capitalLostTick ?? -1,
     troopCapTiles: pu.troopCapTiles ?? 0,
+    nukeLaunches: pu.nukeLaunches,
     allies: pu.allies!.slice(),
     embargoes: [],
     targets: pu.targets!.slice(),
@@ -728,6 +730,14 @@ export class PlayerView {
   }
   troopCapTiles(): number {
     return this.state.troopCapTiles ?? 0;
+  }
+  /** Ticks before this player may launch a `type` again; 0 when it may. */
+  nukeCooldownLeft(type: UnitType): Tick {
+    return nukeCooldownLeft(
+      this.state.nukeLaunches ?? { salvo: [], lastMirv: -1 },
+      type,
+      this.game.ticks(),
+    );
   }
 
   deleteUnitCooldown(): number {

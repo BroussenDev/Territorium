@@ -181,7 +181,10 @@
       "sam_launcher": "Skyddar mot inkommande kärnvapen",
       "warship": "Fångar in handelsfartyg, förstör skepp och båtar"
     },
+    "mirv_limit": "En MIRV var {minutes}:e minut",
     "not_enough_money": "Ej tillräckligt med guld",
+    "nuke_cooldown": "Laddar om: {time}",
+    "nuke_salvo_limit": "Högst {count} bomber per minut",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotta: {count}/{max} krigsfartyg",
     "warship_shift_hint": "Håll ned Shift och dra för att välja flera krigsfartyg samtidigt"

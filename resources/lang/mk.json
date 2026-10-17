@@ -181,7 +181,10 @@
       "sam_launcher": "Се брани од дојдовни нуклеарки",
       "warship": "Заробува трговски бродови, уништува бродови и чамци"
     },
+    "mirv_limit": "Еден MIRV на секои {minutes} минути",
     "not_enough_money": "Нема доволно пари",
+    "nuke_cooldown": "Полнење: {time}",
+    "nuke_salvo_limit": "Најмногу {count} бомби во минута",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Флота: {count}/{max} воени бродови",
     "warship_shift_hint": "Држете Shift и повлечете за да изберете повеќе воени бродови одеднаш"

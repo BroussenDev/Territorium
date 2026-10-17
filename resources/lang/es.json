@@ -181,7 +181,10 @@
       "sam_launcher": "Defiende contra bombas",
       "warship": "Captura barcos comerciales y destruye barcos de guerra"
     },
+    "mirv_limit": "Un MIRV cada {minutes} minutos",
     "not_enough_money": "Dinero insuficiente",
+    "nuke_cooldown": "Recargando: {time}",
+    "nuke_salvo_limit": "Hasta {count} bombas por minuto",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flota: {count}/{max} buques de guerra",
     "warship_shift_hint": "Mantenga presionada la tecla Mayús y arrastre para seleccionar varios buques de guerra a la vez."

@@ -181,7 +181,10 @@
       "sam_launcher": "आने वाले परमाणु हथियारों से बचाव करता है",
       "warship": "व्यापारिक जहाजों को पकड़ लेता है, जहाजों और नावों को नष्ट कर देता है"
     },
+    "mirv_limit": "हर {minutes} मिनट में एक MIRV",
     "not_enough_money": "पर्याप्त पैसा नहीं हैं",
+    "nuke_cooldown": "रीलोड: {time}",
+    "nuke_salvo_limit": "एक मिनट में अधिकतम {count} बम",
     "upgrade_amount": "x{amount}",
     "warship_limit": "बेड़ा: {count}/{max} युद्धपोत",
     "warship_shift_hint": "एक साथ कई युद्धपोतों का चयन करने के लिए Shift दबाए रखें और खींचें"

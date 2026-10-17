@@ -14,6 +14,7 @@ import { MotionPlanRecord } from "./MotionPlans";
 import { ObjectiveState } from "./Objectives";
 import { RailNetwork } from "./RailNetwork";
 import { Stats } from "./Stats";
+import type { NukeLaunches } from "./NukeSalvo";
 import type { SurvivalStatus, SurvivalZone } from "./Survival";
 import { ReadonlyTileSet } from "./TileSet";
 import { UnitPredicate } from "./UnitGrid";
@@ -817,6 +818,11 @@ export interface Player {
   // Nations mode: tick the player's capital fell, -1 while it stands (or
   // once a new one is proclaimed).
   capitalLostTick(): Tick;
+  // Recent bomb launches, which limit the next ones (NukeSalvo.ts).
+  nukeLaunches(): NukeLaunches;
+  recordNukeLaunch(type: UnitType): void;
+  /** Ticks before this player may launch a `type` again; 0 when it may. */
+  nukeCooldownLeft(type: UnitType): Tick;
   // Survival invaders: the land their troop cap counts at least (see
   // survivalLandingStrength), 0 for everyone else.
   troopCapTiles(): number;

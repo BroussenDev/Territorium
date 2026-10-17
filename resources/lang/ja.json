@@ -181,7 +181,10 @@
       "sam_launcher": "飛来する核ミサイルを迎撃する",
       "warship": "貿易船を鹵獲し、戦艦や輸送船を破壊する"
     },
+    "mirv_limit": "MIRVは{minutes}分に1回",
     "not_enough_money": "資金不足",
+    "nuke_cooldown": "再装填：{time}",
+    "nuke_salvo_limit": "1分間に最大{count}発",
     "upgrade_amount": "x {amount}",
     "warship_limit": "艦隊: {count}/{max} 隻",
     "warship_shift_hint": "Shiftを押しながらドラッグすると戦艦を複数選択できます"

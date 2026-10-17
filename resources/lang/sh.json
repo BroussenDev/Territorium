@@ -181,7 +181,10 @@
       "sam_launcher": "Štiti od dolazećih nuklearnih raketa",
       "warship": "Hvata trgovinske brodove, uništava brodove i čamce"
     },
+    "mirv_limit": "Jedan MIRV svakih {minutes} minuta",
     "not_enough_money": "Nemaš dovoljno novca",
+    "nuke_cooldown": "Punjenje: {time}",
+    "nuke_salvo_limit": "Najviše {count} bombe u minuti",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flota: {count}/{max} ratni brodovi",
     "warship_shift_hint": "Drži Shift i vuci miš da bi odabrao više ratnih brodova odjednom"

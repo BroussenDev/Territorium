@@ -181,7 +181,10 @@
       "sam_launcher": "Υπερασπίζεται απέναντι στα εισερχόμενα πυρηνικά",
       "warship": "Συλλαμβάνει εμπορικά πλοία, καταστρέφει πλοία και σκάφη"
     },
+    "mirv_limit": "Ένα MIRV κάθε {minutes} λεπτά",
     "not_enough_money": "Όχι αρκετά χρήματα",
+    "nuke_cooldown": "Επαναφόρτωση: {time}",
+    "nuke_salvo_limit": "Έως {count} βόμβες το λεπτό",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Στόλος: {count}/{max} πολεμικά πλοία",
     "warship_shift_hint": "Κρατήστε πατημένο το Shift και σύρετε για να επιλέξετε πολλά πολεμικά πλοία ταυτόχρονα"

@@ -181,7 +181,10 @@
       "sam_launcher": "Gelen nükleerlere karşı savunur",
       "warship": "Ticaret gemilerini ele geçirir, gemi ve tekneleri yok eder"
     },
+    "mirv_limit": "Her {minutes} dakikada bir MIRV",
     "not_enough_money": "Yeterli para yok",
+    "nuke_cooldown": "Yeniden dolum: {time}",
+    "nuke_salvo_limit": "Dakikada en fazla {count} bomba",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Filo: {count}/{max} savaş gemisi",
     "warship_shift_hint": "Aynı anda birden fazla savaş gemisi seçmek için Shift tuşunu basılı tutun ve sürükleyin"

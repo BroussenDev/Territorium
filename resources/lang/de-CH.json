@@ -181,7 +181,10 @@
       "sam_launcher": "Verteidigt gäge igehendi Atomraggetene",
       "warship": "Erobert Handuschiff, zerstört Schiff und Boot"
     },
+    "mirv_limit": "Eine MIRV alle {minutes} Minuten",
     "not_enough_money": "Nid gnue Gäud",
+    "nuke_cooldown": "Lädt nach: {time}",
+    "nuke_salvo_limit": "Höchstens {count} Bomben pro Minute",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotte: {count}/{max} Kriegsschiffe",
     "warship_shift_hint": "Halten Sie die Umschalttaste gedrückt und ziehen Sie, um mehrere Kriegsschiffe gleichzeitig auszuwählen"

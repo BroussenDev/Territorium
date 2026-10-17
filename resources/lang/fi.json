@@ -181,7 +181,10 @@
       "sam_launcher": "Puolustaa saapuvia ohjuksia vastaan",
       "warship": "Kaappaa kauppa-aluksia, tuhoaa laivoja ja veneitä"
     },
+    "mirv_limit": "Yksi MIRV {minutes} minuutin välein",
     "not_enough_money": "Ei tarpeeksi rahaa",
+    "nuke_cooldown": "Lataus: {time}",
+    "nuke_salvo_limit": "Enintään {count} pommia minuutissa",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Laivasto: {count}/{max} sotalaivoja",
     "warship_shift_hint": "Pidä Shift-näppäintä painettuna ja vedä valitaksesi useita sotalaivoja kerralla"

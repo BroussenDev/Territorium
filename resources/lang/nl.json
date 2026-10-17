@@ -181,7 +181,10 @@
       "sam_launcher": "Verdedigd tegen inkomende kernwapens",
       "warship": "Verovert handelsschepen, vernietigt oorlog- en transportschepen"
     },
+    "mirv_limit": "Eén MIRV per {minutes} minuten",
     "not_enough_money": "Niet genoeg goud",
+    "nuke_cooldown": "Herladen: {time}",
+    "nuke_salvo_limit": "Hoogstens {count} bommen per minuut",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Vloot: {count}/{max} oorlogsschepen",
     "warship_shift_hint": "Houd Shift ingedrukt en sleep om meerdere oorlogsschepen tegelijk te selecteren"

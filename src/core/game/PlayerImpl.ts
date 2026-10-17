@@ -59,6 +59,7 @@ import {
   PlayerUpdate,
 } from "./GameUpdates";
 import { isCapitalShielded, VASSAL_MAX_LAND_PERCENT } from "./NationsMode";
+import { nukeCooldownLeft, NukeLaunches, withNukeLaunch } from "./NukeSalvo";
 import { objectiveBonusCap } from "./Objectives";
 import { ReadonlyTileSet, TileSet } from "./TileSet";
 import {
@@ -175,6 +176,7 @@ export class PlayerImpl implements Player {
   private lastDeleteUnitTick: Tick = -1;
   private _capitalLostTick: Tick = -1;
   private _troopCapTiles = 0;
+  private _nukeLaunches: NukeLaunches = { salvo: [], lastMirv: -1 };
   private _homeTiles = 0;
   private lastEmbargoAllTick: Tick = -1;
 
@@ -406,6 +408,7 @@ export class PlayerImpl implements Player {
       isLobbyCreator: this.isLobbyCreator(),
       capitalLostTick: this._capitalLostTick,
       troopCapTiles: this._troopCapTiles,
+      nukeLaunches: this._nukeLaunches,
     };
   }
 
@@ -1291,6 +1294,22 @@ export class PlayerImpl implements Player {
     return this._troopCapTiles;
   }
 
+  nukeLaunches(): NukeLaunches {
+    return this._nukeLaunches;
+  }
+
+  recordNukeLaunch(type: UnitType): void {
+    this._nukeLaunches = withNukeLaunch(
+      this._nukeLaunches,
+      type,
+      this.mg.ticks(),
+    );
+  }
+
+  nukeCooldownLeft(type: UnitType): Tick {
+    return nukeCooldownLeft(this._nukeLaunches, type, this.mg.ticks());
+  }
+
   setTroopCapTiles(tiles: number): void {
     this._troopCapTiles = Math.max(0, Math.floor(tiles));
   }
@@ -1771,6 +1790,10 @@ export class PlayerImpl implements Player {
   nukeSpawn(tile: TileRef, nukeType: UnitType): TileRef | false {
     const mg = this.mg;
     if (mg.isSpawnImmunityActive()) {
+      return false;
+    }
+    // A full salvo, or a MIRV still reloading (NukeSalvo.ts).
+    if (this.nukeCooldownLeft(nukeType) > 0) {
       return false;
     }
     // Impassable terrain cannot be nuked.

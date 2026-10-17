@@ -7,6 +7,7 @@ import {
   PlayerType,
   UnitType,
 } from "../../src/core/game/Game";
+import { MIRV_COOLDOWN_TICKS } from "../../src/core/game/NukeSalvo";
 import { setup } from "../util/Setup";
 import { TestConfig } from "../util/TestConfig";
 
@@ -412,7 +413,8 @@ describe("Hydrogen Bomb and MIRV flows", () => {
       .filter((e: any) => e instanceof MirvExecution)[0] as any;
     const edgeFlightTicks = edgeExec.fullPath.length;
 
-    // -- NORMAL SHOT --
+    // -- NORMAL SHOT --, once the MIRV has reloaded (NukeSalvo.ts).
+    for (let i = 0; i < MIRV_COOLDOWN_TICKS; i++) edgeGame.executeNextTick();
     edgeGame.addExecution(
       new ConstructionExecution(
         edgePlayer,
@@ -435,7 +437,8 @@ describe("Hydrogen Bomb and MIRV flows", () => {
 
     const normalExec = (edgeGame as any)
       .executions()
-      .filter((e: any) => e instanceof MirvExecution)[1] as any;
+      .filter((e: any) => e instanceof MirvExecution)
+      .at(-1) as any;
     const normalFlightTicks = normalExec.fullPath.length;
 
     // The total flight duration (ticks) should be nearly identical (within 1-2 ticks due to math rounding limits).

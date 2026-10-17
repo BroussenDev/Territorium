@@ -181,7 +181,10 @@
       "sam_launcher": "抵禦核彈攻擊",
       "warship": "擄獲商船、摧毀船隻和軍艦"
     },
+    "mirv_limit": "每 {minutes} 分鐘一枚 MIRV",
     "not_enough_money": "資金不足",
+    "nuke_cooldown": "裝填中：{time}",
+    "nuke_salvo_limit": "每分鐘最多 {count} 枚炸彈",
     "upgrade_amount": "x{amount}",
     "warship_limit": "艦隊：{count}/{max} 艘戰艦",
     "warship_shift_hint": "按住 Shift 並拖曳以一次性選取多艘軍艦"

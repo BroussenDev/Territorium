@@ -1,4 +1,5 @@
 import type { TileRef } from "../../../core/game/GameMap";
+import type { NukeLaunches } from "../../../core/game/NukeSalvo";
 
 /** TrainType enum — numeric values matching UnitState.trainType. */
 export enum TrainType {
@@ -89,6 +90,8 @@ export interface PlayerState {
   capitalLostTick: number;
   /** Survival invaders: the land their troop cap counts at least. */
   troopCapTiles?: number;
+  /** Recent bomb launches, which limit the next ones (NukeSalvo.ts). */
+  nukeLaunches?: NukeLaunches;
   allies: number[];
   embargoes: number[];
   targets: number[];

@@ -181,7 +181,10 @@
       "sam_launcher": "Chroni przed przychodzącymi bombami nuklearnymi",
       "warship": "Przechwytuje statki handlowe, niszczy okręty wojenne i łodzie"
     },
+    "mirv_limit": "Jeden MIRV co {minutes} minuty",
     "not_enough_money": "Za mało złota",
+    "nuke_cooldown": "Przeładowanie: {time}",
+    "nuke_salvo_limit": "Najwyżej {count} bomby na minutę",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flota: {count}/{max} okrętów wojennych",
     "warship_shift_hint": "Przytrzymaj Shift i przeciągnij, aby zaznaczyć wiele okrętów wojennych jednocześnie"

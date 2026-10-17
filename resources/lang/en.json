@@ -181,7 +181,10 @@
       "sam_launcher": "Defends against incoming nukes",
       "warship": "Captures trade ships, destroys ships and boats"
     },
+    "mirv_limit": "One MIRV every {minutes} minutes",
     "not_enough_money": "Not enough money",
+    "nuke_cooldown": "Reloading: {time}",
+    "nuke_salvo_limit": "Up to {count} bombs a minute",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Fleet: {count}/{max} warships",
     "warship_shift_hint": "Hold Shift and drag to select multiple warships at once"

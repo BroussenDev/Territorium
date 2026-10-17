@@ -181,7 +181,10 @@
       "sam_launcher": "מגן מפצצות שמגיעות",
       "warship": "לוכד ספינות סחר, הורס ספינות סחר וכיבוש."
     },
+    "mirv_limit": "MIRV אחד כל {minutes} דקות",
     "not_enough_money": "אין מספיק זהב",
+    "nuke_cooldown": "טעינה מחדש: {time}",
+    "nuke_salvo_limit": "עד {count} פצצות בדקה",
     "upgrade_amount": "x{amount}",
     "warship_limit": "צי: {count}/{max} ספינות מלחמה",
     "warship_shift_hint": "החזק את Shift וגרור כדי לבחור מספר ספינות מלחמה בו-זמנית"

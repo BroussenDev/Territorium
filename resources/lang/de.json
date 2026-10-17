@@ -181,7 +181,10 @@
       "sam_launcher": "Verteidigt gegen eingehende Atomraketen",
       "warship": "Erobert Handelsschiffe, zerstört Schiffe und Boote"
     },
+    "mirv_limit": "Eine MIRV alle {minutes} Minuten",
     "not_enough_money": "Nicht genug Geld",
+    "nuke_cooldown": "Lädt nach: {time}",
+    "nuke_salvo_limit": "Höchstens {count} Bomben pro Minute",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotte: {count}/{max} Kriegsschiffe",
     "warship_shift_hint": "Halte Shift gedrückt, um alle Kriegsschiffe auf einmal auszuwählen"

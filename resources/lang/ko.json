@@ -181,7 +181,10 @@
       "sam_launcher": "들어오는 핵미사일을 방어합니다",
       "warship": "무역선을 나포하고, 수송선과 함선을 파괴합니다"
     },
+    "mirv_limit": "MIRV는 {minutes}분마다 1발",
     "not_enough_money": "돈이 부족합니다",
+    "nuke_cooldown": "재장전: {time}",
+    "nuke_salvo_limit": "1분에 최대 {count}발",
     "upgrade_amount": "x{amount}",
     "warship_limit": "함대: {count}/{max} 군함",
     "warship_shift_hint": "Shift 키를 누른 상태에서 드래그하여 여러 전함을 한 번에 선택하세요"

@@ -181,7 +181,10 @@
       "sam_launcher": "Forsvarer mod indkommende atommissiler",
       "warship": "Indfanger handelsskibe, ødelægger skibe og både"
     },
+    "mirv_limit": "Én MIRV hvert {minutes}. minut",
     "not_enough_money": "Ikke nok penge",
+    "nuke_cooldown": "Genlader: {time}",
+    "nuke_salvo_limit": "Højst {count} bomber i minuttet",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flåde: {count}/{max} krigsskibe",
     "warship_shift_hint": "Hold Shift og træk for at vælge flere krigsskibe på én gang"

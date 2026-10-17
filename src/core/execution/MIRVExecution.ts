@@ -139,6 +139,7 @@ export class MirvExecution implements Execution {
         .find((silo) => silo.tile() === spawn);
       if (silo) {
         silo.launch();
+        this.player.recordNukeLaunch(UnitType.MIRV);
       }
     }
 

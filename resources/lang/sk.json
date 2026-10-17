@@ -181,7 +181,10 @@
       "sam_launcher": "Bráni proti vystreleným raketám",
       "warship": "Ovláda obchodné lode, ničí lode a člny"
     },
+    "mirv_limit": "Jeden MIRV každé {minutes} minúty",
     "not_enough_money": "Nedostatok zlata",
+    "nuke_cooldown": "Nabíjanie: {time}",
+    "nuke_salvo_limit": "Najviac {count} bomby za minútu",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotila: {count}/{max} vojnových lodí",
     "warship_shift_hint": "Podržte Shift a ťahaním vyberte viacero vojnových lodí naraz"

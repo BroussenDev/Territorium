@@ -421,30 +421,28 @@ describe("NukeExecution", () => {
         UnitType.AtomBomb,
         game.ref(150, 150),
         undefined,
-        4,
+        3,
       ),
     );
 
-    // Construction completes and each silo claims two of the four nukes.
+    // Construction completes and the silos share a full salvo of three:
+    // two in one, one in the other.
     executeTicks(game, 3);
     const atSilo = () =>
       player
         .units(UnitType.AtomBomb)
         .map((n) => n.tile())
         .filter((t) => t === siloA.tile() || t === siloB.tile());
-    expect(player.units(UnitType.AtomBomb)).toHaveLength(4);
+    expect(player.units(UnitType.AtomBomb)).toHaveLength(3);
     expect(atSilo()).toEqual(
       expect.arrayContaining([siloA.tile(), siloB.tile()]),
     );
-    expect(atSilo()).toHaveLength(4);
+    expect(atSilo()).toHaveLength(3);
 
     // One tick later the lead bomb of EACH silo has departed — silos fire
     // simultaneously rather than the second silo waiting on the first.
     executeTicks(game, 1);
-    const waiting = atSilo();
-    expect(waiting).toHaveLength(2);
-    expect(waiting).toContain(siloA.tile());
-    expect(waiting).toContain(siloB.tile());
+    expect(atSilo()).toHaveLength(1);
 
     // Next tick the followers depart too.
     executeTicks(game, 1);
@@ -493,18 +491,18 @@ describe("NukeExecution", () => {
       silo.reloadMissile();
     }
 
-    // Click 1: launch 3 nukes at current tick
+    // Click 1: launch 2 nukes at current tick
     game.addExecution(
       new ConstructionExecution(
         player,
         UnitType.AtomBomb,
         game.ref(150, 150),
         undefined,
-        3,
+        2,
       ),
     );
 
-    // Advance 1 tick, then Click 2: launch 3 more nukes at next tick
+    // Advance 1 tick, then Click 2: the third of the salvo at next tick
     executeTicks(game, 1);
     game.addExecution(
       new ConstructionExecution(
@@ -512,18 +510,18 @@ describe("NukeExecution", () => {
         UnitType.AtomBomb,
         game.ref(150, 150),
         undefined,
-        3,
+        1,
       ),
     );
 
-    // Give all 6 nukes time to depart the silo
+    // Give all 3 nukes time to depart the silo
     executeTicks(game, 7);
 
     // Every launched nuke should occupy a distinct tile (no 2 nukes overlapping on same tile)
     const nukes = player.units(UnitType.AtomBomb);
-    expect(nukes).toHaveLength(6);
+    expect(nukes).toHaveLength(3);
     const tiles = nukes.map((n) => n.tile());
-    expect(new Set(tiles).size).toBe(6);
+    expect(new Set(tiles).size).toBe(3);
   });
 });
 

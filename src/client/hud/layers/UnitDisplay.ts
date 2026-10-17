@@ -8,6 +8,11 @@ import {
   PlayerBuildableUnitType,
   UnitType,
 } from "../../../core/game/Game";
+import {
+  MIRV_COOLDOWN_TICKS,
+  NUKE_SALVO_SIZE,
+  SALVO_NUKE_TYPES,
+} from "../../../core/game/NukeSalvo";
 import { UserSettings } from "../../../core/game/UserSettings";
 import { Controller } from "../../Controller";
 import { ToggleStructureEvent } from "../../InputHandler";
@@ -104,7 +109,8 @@ export class UnitDisplay extends LitElement implements Controller {
       case UnitType.EMPBomb:
         return (
           this.cost(item) <= (player?.gold() ?? 0n) &&
-          (player?.units(UnitType.MissileSilo).length ?? 0) > 0
+          (player?.units(UnitType.MissileSilo).length ?? 0) > 0 &&
+          this.nukeCooldownSeconds(item) === 0
         );
       case UnitType.Warship:
         return (
@@ -114,6 +120,13 @@ export class UnitDisplay extends LitElement implements Controller {
       default:
         return this.cost(item) <= (player?.gold() ?? 0n);
     }
+  }
+
+  // Seconds before the local player may launch a `type` bomb again
+  // (NukeSalvo.ts); 0 when they may.
+  private nukeCooldownSeconds(type: UnitType): number {
+    const ticks = this.game?.myPlayer()?.nukeCooldownLeft(type) ?? 0;
+    return Math.ceil(ticks / 10);
   }
 
   tick() {
@@ -318,6 +331,7 @@ export class UnitDisplay extends LitElement implements Controller {
                         })}
                       </div>`
                   : null}
+                ${this.renderNukeLimit(unitType)}
                 <div class="flex items-center justify-center gap-1">
                   <img src=${goldCoinIcon} width="13" height="13" />
                   <span class="text-yellow-300"
@@ -376,8 +390,42 @@ export class UnitDisplay extends LitElement implements Controller {
     `;
   }
 
-  // Under the icon: how many you own, or a missile's price.
+  // A bomb's launch limit in its tooltip (NukeSalvo.ts): the wait if one is
+  // running, else the rule.
+  private renderNukeLimit(unitType: UnitType) {
+    const isMirv = unitType === UnitType.MIRV;
+    if (!isMirv && !SALVO_NUKE_TYPES.includes(unitType)) return null;
+    const wait = this.nukeCooldownSeconds(unitType);
+    const text =
+      wait > 0
+        ? translateText("build_menu.nuke_cooldown", { time: clock(wait) })
+        : isMirv
+          ? translateText("build_menu.mirv_limit", {
+              minutes: MIRV_COOLDOWN_TICKS / 600,
+            })
+          : translateText("build_menu.nuke_salvo_limit", {
+              count: NUKE_SALVO_SIZE,
+            });
+    return html`<div
+      class="px-2 pb-1 text-[11px] ${wait > 0
+        ? "text-red-300"
+        : "text-white/75"}"
+    >
+      ${text}
+    </div>`;
+  }
+
+  // Under the icon: how many you own, a missile's price, or how long a
+  // bomb still reloads.
   private renderTileFooter(unitType: UnitType, number: number | null) {
+    const wait = this.nukeCooldownSeconds(unitType);
+    if (wait > 0) {
+      return html`<span
+        data-nuke-cooldown
+        class="mt-0.5 text-[9px] font-bold leading-none tabular-nums text-red-300"
+        >${clock(wait)}</span
+      >`;
+    }
     if (number !== null) {
       return html`<span
         class="mt-0.5 text-[10px] font-bold leading-none tabular-nums ${number >
@@ -395,4 +443,8 @@ export class UnitDisplay extends LitElement implements Controller {
         >`
       : null;
   }
+}
+
+function clock(seconds: number): string {
+  return `${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, "0")}`;
 }

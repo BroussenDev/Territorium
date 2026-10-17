@@ -181,7 +181,10 @@
       "sam_launcher": "Kaitseb tulevate tuumapommide eest",
       "warship": "Püüab kinni kaubalaevu, hävitab teisi sõjalaevu ja transportlaevu"
     },
+    "mirv_limit": "Üks MIRV iga {minutes} minuti järel",
     "not_enough_money": "Pole piisavalt raha",
+    "nuke_cooldown": "Laadimine: {time}",
+    "nuke_salvo_limit": "Kõige rohkem {count} pommi minutis",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Laevastik: {count}/{max} sõjalaevad",
     "warship_shift_hint": "Mitme sõjalaeva korraga valimiseks hoidke all tõstuklahvi ja lohistage"

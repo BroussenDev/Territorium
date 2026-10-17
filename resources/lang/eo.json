@@ -181,7 +181,10 @@
       "sam_launcher": "Defendas kontraŭ alvenantaj atombomboj",
       "warship": "Kaptas komercŝipojn, detruas ŝipojn kaj boatojn"
     },
+    "mirv_limit": "Unu MIRV po {minutes} minutoj",
     "not_enough_money": "Ne sufiĉe da mono",
+    "nuke_cooldown": "Reŝargado: {time}",
+    "nuke_salvo_limit": "Maksimume {count} bomboj po minuto",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Floto: {count}/{max} batalŝipoj",
     "warship_shift_hint": "Premu la Majuskligan klavon, alklak-tenu kaj ŝovu por elekti plurajn militŝipojn samtempe"

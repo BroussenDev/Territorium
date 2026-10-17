@@ -181,7 +181,10 @@
       "sam_launcher": "Brání proti přilétajícím atomovkám",
       "warship": "Zajímá obchodní lodě, ničí lodě a čluny"
     },
+    "mirv_limit": "Jeden MIRV každé {minutes} minuty",
     "not_enough_money": "Nedostatek peněz",
+    "nuke_cooldown": "Nabíjení: {time}",
+    "nuke_salvo_limit": "Nejvýše {count} bomby za minutu",
     "upgrade_amount": "×{amount}",
     "warship_limit": "Flotila: {count}/{max} válečných lodí",
     "warship_shift_hint": "Podrž Shift a tažením vyber více bitevních lodí najednou"

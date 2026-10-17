@@ -181,7 +181,10 @@
       "sam_launcher": "Véd a közelgő nukleáris rakéták ellen",
       "warship": "Elfogja a kereskedőhajókat, elpusztítja a hajókat és csónakokat"
     },
+    "mirv_limit": "Egy MIRV {minutes} percenként",
     "not_enough_money": "Nincs elég pénz",
+    "nuke_cooldown": "Újratöltés: {time}",
+    "nuke_salvo_limit": "Legfeljebb {count} bomba percenként",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotta: {count}/{max} hadihajó",
     "warship_shift_hint": "Tartsd lenyomva a Shift billentyűt, és húzással jelölj ki egyszerre több hadihajót"

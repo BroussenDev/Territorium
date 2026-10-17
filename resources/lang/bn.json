@@ -181,7 +181,10 @@
       "sam_launcher": "আগত পরমাণু অস্ত্রের বিরুদ্ধে রক্ষা করে",
       "warship": "বাণিজ্য জাহাজ দখল করে, জাহাজ এবং নৌকা ধ্বংস করে"
     },
+    "mirv_limit": "প্রতি {minutes} মিনিটে একটি MIRV",
     "not_enough_money": "পর্যাপ্ত টাকা নেই",
+    "nuke_cooldown": "রিলোড: {time}",
+    "nuke_salvo_limit": "মিনিটে সর্বোচ্চ {count}টি বোমা",
     "upgrade_amount": "x{amount}",
     "warship_limit": "নৌবহর: {count}/{max} যুদ্ধজাহাজ",
     "warship_shift_hint": "একবারে একাধিক যুদ্ধজাহাজ নির্বাচন করতে Shift ধরে রাখুন এবং টেনে আনুন"

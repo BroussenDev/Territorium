@@ -181,7 +181,10 @@
       "sam_launcher": "Protège contre les bombes nucléaires",
       "warship": "Capture les bateaux de commerce, détruit les navires de guerre et les bateaux de transport"
     },
+    "mirv_limit": "Un MIRV toutes les {minutes} minutes",
     "not_enough_money": "Pas assez d'argent",
+    "nuke_cooldown": "Recharge : {time}",
+    "nuke_salvo_limit": "{count} bombes par minute au plus",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Flotte : {count}/{max} navires de guerre",
     "warship_shift_hint": "Maintenir la touche Maj et glisser le curseur pour sélectionner plusieurs navires de guerre à la fois"

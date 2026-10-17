@@ -181,7 +181,10 @@
       "sam_launcher": "Phòng thủ trước những quả tên lửa sắp tới",
       "warship": "Cướp tàu giao thương, phá huỷ tàu thuyền"
     },
+    "mirv_limit": "Một MIRV mỗi {minutes} phút",
     "not_enough_money": "Không đủ tiền",
+    "nuke_cooldown": "Nạp lại: {time}",
+    "nuke_salvo_limit": "Tối đa {count} quả bom mỗi phút",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Hạm đội: {count}/{max} tàu chiến",
     "warship_shift_hint": "Giữ phím Shift và kéo chuột để chọn nhiều tàu chiến cùng lúc"

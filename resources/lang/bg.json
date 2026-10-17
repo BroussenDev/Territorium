@@ -181,7 +181,10 @@
       "sam_launcher": "Отбранява срещу входящи ракети",
       "warship": "Превзема търговски кораби, унищожава кораби и лодки"
     },
+    "mirv_limit": "Един MIRV на всеки {minutes} минути",
     "not_enough_money": "Няма достатъчно пари",
+    "nuke_cooldown": "Презареждане: {time}",
+    "nuke_salvo_limit": "Най-много {count} бомби в минута",
     "upgrade_amount": "x{amount}",
     "warship_limit": "Флот: {count}/{max} военни кораби",
     "warship_shift_hint": "Задръж Shift и плъзгай, за да избереш няколко военни кораба наведнъж"
