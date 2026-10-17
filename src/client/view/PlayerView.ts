@@ -30,6 +30,7 @@ import {
 import { nukeCooldownLeft } from "../../core/game/NukeSalvo";
 import { objectiveBonusCap } from "../../core/game/Objectives";
 import { UserSettings } from "../../core/game/UserSettings";
+import { drawableOnMap } from "../CountryNames";
 import { PlayerState, PlayerStatic, PlayerTypeEnum } from "../render/types";
 import { themeProvider } from "../theme/ThemeProvider";
 import { type CosmeticOwner, visibleCosmetics } from "./CosmeticVisibility";
@@ -484,6 +485,17 @@ export class PlayerView {
     return this.anonymousName !== null && userSettings.anonymousNames()
       ? this.anonymousName
       : this.static.displayName;
+  }
+  /**
+   * The name drawn over the map: displayName(), unless its country was
+   * localized into a script the map font can't draw (Russian, Chinese,
+   * Japanese...), where it keeps the name the map spells in Latin letters.
+   */
+  mapDisplayName(): string {
+    const shown = this.displayName();
+    if (drawableOnMap(shown)) return shown;
+    const original = this.game.unlocalizedName(this.id());
+    return original !== undefined && drawableOnMap(original) ? original : shown;
   }
   clanTag(): string | null {
     return this.anonymousName !== null && userSettings.anonymousNames()

@@ -319,7 +319,7 @@ export class WebGLFrameBuilder {
   refreshNames(gameView: GameView): void {
     const displayNames = new Map<string, string>();
     for (const p of gameView.players()) {
-      displayNames.set(p.id(), p.displayName());
+      displayNames.set(p.id(), p.mapDisplayName());
     }
     this.view.refreshNames(displayNames);
   }
@@ -796,8 +796,9 @@ export class WebGLFrameBuilder {
     return {
       ...p.static,
       // displayName() honors the anonymous-names setting; static.displayName
-      // is always the real name.
-      displayName: p.displayName(),
+      // is always the real name. The map draws Latin letters only
+      // (mapDisplayName).
+      displayName: p.mapDisplayName(),
       flag: flagUrl,
       crown: crownUrl,
       // No verified badge over the map: it would single out streamers on

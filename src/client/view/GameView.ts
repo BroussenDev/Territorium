@@ -418,6 +418,9 @@ export class GameView implements GameMap {
       // Real countries read in the player's language ("Senegal" → "Sénégal"),
       // for nations and for the country a human plays in Nations games.
       if (pu.displayName !== undefined && pu.nationFlag) {
+        // The name as the manifest spells it, for the map when the
+        // localized one can't be drawn there (PlayerView.mapDisplayName).
+        this.unlocalizedNames.set(pu.id, pu.displayName);
         pu.displayName = localizeCountryInDisplayName(
           pu.displayName,
           pu.nationFlag,
@@ -1258,6 +1261,13 @@ export class GameView implements GameMap {
   private _conquest: ConquestState | null = null;
   private _survivalZones: SurvivalZone[] = [];
   private _survivalStatus: SurvivalStatus = emptySurvivalStatus();
+  // Display names before their country was localized, by player id.
+  private readonly unlocalizedNames = new Map<PlayerID, string>();
+
+  /** A player's display name before its country was localized, if it was. */
+  unlocalizedName(id: PlayerID): string | undefined {
+    return this.unlocalizedNames.get(id);
+  }
 
   /** Survival's landing zones (core/game/Survival.ts); empty otherwise. */
   survivalZones(): readonly SurvivalZone[] {

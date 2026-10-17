@@ -13,11 +13,12 @@ import {
   NUKE_SALVO_WINDOW_TICKS,
   nukeCooldownLeft,
   withNukeLaunch,
+  type NukeLaunches,
 } from "../src/core/game/NukeSalvo";
 import { setup } from "./util/Setup";
 import { executeTicks } from "./util/utils";
 
-const none = { salvo: [], lastMirv: -1 };
+const none: NukeLaunches = { salvo: [], lastMirv: -1 };
 
 describe("nuke salvo rules", () => {
   it("allows a salvo of bombs, then waits for its oldest to leave the window", () => {

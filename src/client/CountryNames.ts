@@ -82,6 +82,19 @@ export function localizedCountryName(
 }
 
 /**
+ * Whether the map's name font can draw `name`: it carries Latin letters with
+ * their accents (Latin-1), not Cyrillic, Chinese or Japanese. A country name
+ * localized into those reads well in the HTML panels but would come out as
+ * garbage over the map.
+ */
+export function drawableOnMap(name: string): boolean {
+  for (const char of name) {
+    if ((char.codePointAt(0) ?? 0) > 0xff) return false;
+  }
+  return true;
+}
+
+/**
  * A display name with its country localized: a nation's whole name, or the
  * "Country | Player" prefix a human carries in Nations games.
  */

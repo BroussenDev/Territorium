@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.121
+
+🗺️ **Readable country names in every language**
+
+- In Russian, Chinese, Japanese and other languages the map's font can't draw, country names over the map were garbled. The map now shows them in Latin letters; the leaderboard and panels keep them in your language.
+
 ## v0.1.120
 
 🌐 **Top menu fix**

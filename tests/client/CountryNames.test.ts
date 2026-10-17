@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   countryCode,
+  drawableOnMap,
   localizeCountryInDisplayName,
   localizedCountryName,
 } from "../../src/client/CountryNames";
+import { PlayerView } from "../../src/client/view/PlayerView";
 
 describe("country names in the player's language", () => {
   it("translates a whole country", () => {
@@ -47,5 +49,31 @@ describe("country names in the player's language", () => {
     expect(localizeCountryInDisplayName("Senegal", "sn", true, "fr")).toBe(
       "Sénégal",
     );
+  });
+});
+
+describe("country names on the map", () => {
+  it("draws Latin-script names, accents included, but not other scripts", () => {
+    expect(drawableOnMap("Sénégal")).toBe(true);
+    expect(drawableOnMap("Türkiye")).toBe(true);
+    expect(drawableOnMap("Россия")).toBe(false);
+    expect(drawableOnMap("ロシア")).toBe(false);
+    expect(drawableOnMap("俄罗斯")).toBe(false);
+  });
+
+  it("keeps the map's own spelling where the localized one can't be drawn", () => {
+    const names = new Map([["p1", "Russia"]]);
+    const player = (shown: string) =>
+      Object.assign(Object.create(PlayerView.prototype), {
+        anonymousName: null,
+        static: { id: "p1", displayName: shown },
+        id: () => "p1",
+        game: { unlocalizedName: (id: string) => names.get(id) },
+      }) as PlayerView;
+    expect(player("Россия").mapDisplayName()).toBe("Russia");
+    expect(player("Russie").mapDisplayName()).toBe("Russie");
+    // Nothing to fall back on: the name stays as it is.
+    names.clear();
+    expect(player("Россия").mapDisplayName()).toBe("Россия");
   });
 });
