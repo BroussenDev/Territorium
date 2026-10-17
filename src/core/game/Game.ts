@@ -11,10 +11,10 @@ import {
   UnitUpdate,
 } from "./GameUpdates";
 import { MotionPlanRecord } from "./MotionPlans";
+import type { NukeLaunches } from "./NukeSalvo";
 import { ObjectiveState } from "./Objectives";
 import { RailNetwork } from "./RailNetwork";
 import { Stats } from "./Stats";
-import type { NukeLaunches } from "./NukeSalvo";
 import type { SurvivalStatus, SurvivalZone } from "./Survival";
 import { ReadonlyTileSet } from "./TileSet";
 import { UnitPredicate } from "./UnitGrid";

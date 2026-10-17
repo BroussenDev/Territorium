@@ -17,8 +17,8 @@ import {
   WarshipState,
 } from "./Game";
 import { TileRef } from "./GameMap";
-import { ConquestState, ObjectiveState } from "./Objectives";
 import type { NukeLaunches } from "./NukeSalvo";
+import { ConquestState, ObjectiveState } from "./Objectives";
 import type { SurvivalStatus, SurvivalZone } from "./Survival";
 
 export interface GameUpdateViewData {
