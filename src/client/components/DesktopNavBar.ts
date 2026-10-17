@@ -52,7 +52,7 @@ const PAGES: NavPage[] = [
 // Flat tabs: the active one is marked by the claim strip (styles.css) along
 // the bar's bottom edge, like a border of freshly taken tiles.
 const ITEM =
-  "nav-tab nav-menu-item relative flex h-16 items-center gap-2 px-3 xl:px-4 " +
+  "nav-tab nav-menu-item relative flex h-16 items-center gap-2 px-2 xl:px-4 whitespace-nowrap " +
   "font-display text-[15px] font-semibold text-white/55 " +
   "cursor-pointer transition-colors hover:text-white " +
   "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-capital " +

@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.120
+
+🌐 **Top menu fix**
+
+- The top menu labels no longer break onto two lines in Japanese, Russian and other long languages.
+
 ## v0.1.119
 
 ☢️ **No more rain of bombs**
