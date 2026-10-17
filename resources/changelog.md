@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.122
+
+🛒 **Editions tab translated**
+
+- The store's Editions tab (Standard and Deluxe) could show raw text keys when opened right away in some languages; it now shows in your language.
+
 ## v0.1.121
 
 🗺️ **Readable country names in every language**

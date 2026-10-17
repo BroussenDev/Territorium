@@ -286,6 +286,7 @@ export class LangSelector extends LitElement {
       "o-button",
       "inventory-modal",
       "store-modal",
+      "store-editions",
       "cosmetic-card",
       "cosmetic-info",
       "cosmetic-preview",
