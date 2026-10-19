@@ -940,6 +940,25 @@
     "title": "Pack Conquérant desbloqueado!",
     "where": "Tudo está no seu Inventário: escolha seu título com o botão de emblema ao lado do seu nome."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Adicione Territorium à sua lista de desejos da Steam para saber quando sair.",
+    "end_title": "Curtindo a demo?",
+    "full_clans": "Clãs, guerras de clãs e seu perfil",
+    "full_maps": "Mais de {count} mapas e o editor de mapas",
+    "full_modes": "Modos Nações, Conquista e Versus",
+    "full_multiplayer": "Multijogador online, até 80 jogadores por partida",
+    "full_ranked": "Partidas ranqueadas, temporadas e rankings",
+    "full_title": "No jogo completo",
+    "maps_title": "Mapas da demo",
+    "more_maps": "Mais {count} mapas no jogo completo",
+    "solo_desc": "Conquiste o mapa contra nações IA. Escolha mapa, dificuldade e adversários.",
+    "subtitle": "Todas as mecânicas do jogo, em uma seleção de mapas",
+    "survival_desc": "Dez ondas de invasores e seus senhores da guerra. Quanto tempo você aguenta?",
+    "tutorial_desc": "Aprenda o básico em uma partida guiada.",
+    "wishlist": "Adicionar à lista de desejos",
+    "wishlist_note": "A Steam vai avisar quando o jogo for lançado."
+  },
   "desktop_offline": {
     "go_online": "Voltar a ficar online",
     "offline": "Sem conexão com o Territorium: o modo solo continua disponível.",

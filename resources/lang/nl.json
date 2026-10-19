@@ -940,6 +940,25 @@
     "title": "Pack Conquérant ontgrendeld!",
     "where": "Alles staat in je Inventaris: kies je titel met de badgeknop naast je naam."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Zet Territorium op je Steam-verlanglijst om te horen wanneer het uitkomt.",
+    "end_title": "Bevalt de demo?",
+    "full_clans": "Clans, clanoorlogen en je profiel",
+    "full_maps": "Meer dan {count} kaarten en de kaarteditor",
+    "full_modes": "Modi Naties, Verovering en Versus",
+    "full_multiplayer": "Online multiplayer, tot 80 spelers per spel",
+    "full_ranked": "Ranked spellen, seizoenen en ranglijsten",
+    "full_title": "In het volledige spel",
+    "maps_title": "Kaarten van de demo",
+    "more_maps": "Nog {count} kaarten in het volledige spel",
+    "solo_desc": "Verover de kaart tegen AI-naties. Kies je kaart, moeilijkheid en tegenstanders.",
+    "subtitle": "Alle spelmechanieken, op een selectie kaarten",
+    "survival_desc": "Tien golven indringers en hun krijgsheren. Hoe lang hou jij stand?",
+    "tutorial_desc": "Leer de basis in een begeleid spel.",
+    "wishlist": "Toevoegen aan verlanglijst",
+    "wishlist_note": "Steam laat je weten wanneer het spel uitkomt."
+  },
   "desktop_offline": {
     "go_online": "Online gaan",
     "offline": "Geen verbinding met Territorium: solo blijft beschikbaar.",

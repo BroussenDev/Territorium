@@ -940,6 +940,25 @@
     "title": "Paket Conquérant terbuka!",
     "where": "Semuanya ada di Inventaris Anda: pilih gelar dengan tombol lencana di samping nama Anda."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Tambahkan Territorium ke daftar keinginan Steam untuk tahu kapan dirilis.",
+    "end_title": "Suka demonya?",
+    "full_clans": "Klan, perang klan, dan profilmu",
+    "full_maps": "Lebih dari {count} peta dan editor peta",
+    "full_modes": "Mode Bangsa, Penaklukan, dan Versus",
+    "full_multiplayer": "Multipemain online, hingga 80 pemain per permainan",
+    "full_ranked": "Permainan peringkat, musim, dan papan peringkat",
+    "full_title": "Di game lengkap",
+    "maps_title": "Peta demo",
+    "more_maps": "{count} peta lagi di game lengkap",
+    "solo_desc": "Taklukkan peta melawan bangsa AI. Pilih peta, tingkat kesulitan, dan lawanmu.",
+    "subtitle": "Semua mekanik permainan, di pilihan peta",
+    "survival_desc": "Sepuluh gelombang penyerbu dan panglima mereka. Berapa lama kamu bertahan?",
+    "tutorial_desc": "Pelajari dasar-dasarnya dalam permainan terpandu.",
+    "wishlist": "Tambahkan ke daftar keinginan",
+    "wishlist_note": "Steam akan memberitahumu saat game dirilis."
+  },
   "desktop_offline": {
     "go_online": "Kembali online",
     "offline": "Tidak ada koneksi ke Territorium: mode solo tetap tersedia.",

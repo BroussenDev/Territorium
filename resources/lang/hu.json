@@ -940,6 +940,25 @@
     "title": "Conquérant csomag feloldva!",
     "where": "Minden a leltáradban van: a címet a neved melletti jelvény gombbal választhatod."
   },
+  "demo": {
+    "badge": "DEMÓ",
+    "end_body": "Tedd a Territoriumot a Steam-kívánságlistádra, hogy értesülj a megjelenéséről.",
+    "end_title": "Tetszik a demó?",
+    "full_clans": "Klánok, klánháborúk és a profilod",
+    "full_maps": "Több mint {count} térkép és a térképszerkesztő",
+    "full_modes": "Nemzetek, Hódítás és Versus módok",
+    "full_multiplayer": "Online többjátékos mód, játékonként akár 80 játékos",
+    "full_ranked": "Rangsorolt játékok, szezonok és ranglisták",
+    "full_title": "A teljes játékban",
+    "maps_title": "A demó térképei",
+    "more_maps": "További {count} térkép a teljes játékban",
+    "solo_desc": "Hódítsd meg a térképet MI-nemzetek ellen. Válassz térképet, nehézséget és ellenfeleket.",
+    "subtitle": "A játék összes mechanikája, válogatott térképeken",
+    "survival_desc": "Tíz betolakodóhullám és hadurak. Meddig bírod?",
+    "tutorial_desc": "Tanuld meg az alapokat egy vezetett játékban.",
+    "wishlist": "Hozzáadás a kívánságlistához",
+    "wishlist_note": "A Steam értesít, amikor megjelenik a játék."
+  },
   "desktop_offline": {
     "go_online": "Online mód",
     "offline": "Nincs kapcsolat a Territoriummal: az egyjátékos mód továbbra is elérhető.",

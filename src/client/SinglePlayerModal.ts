@@ -28,6 +28,7 @@ import "./components/ToggleInputCard";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { getPlayerCosmetics, prewarmCosmetics } from "./Cosmetics";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { DEMO_SURVIVAL_MAPS, isDemo, randomDemoMap } from "./Demo";
 import { GameStartingModal } from "./GameStartingModal";
 import { showInGameAlert } from "./InGameModal";
 import { JoinLobbyEvent } from "./Main";
@@ -302,7 +303,8 @@ export class SinglePlayerModal extends BaseModal {
   };
 
   private renderNotLoggedInBanner(): TemplateResult {
-    if (crazyGamesSDK.isOnCrazyGames()) {
+    // CrazyGames has no accounts, and the demo plays offline.
+    if (crazyGamesSDK.isOnCrazyGames() || isDemo()) {
       return html``;
     }
     return html`<button
@@ -704,8 +706,8 @@ export class SinglePlayerModal extends BaseModal {
   public async startSurvival(): Promise<void> {
     void prewarmCosmetics();
     this.resetOptions();
-    this.selectedMap =
-      SURVIVAL_MAPS[Math.floor(Math.random() * SURVIVAL_MAPS.length)];
+    const pool = isDemo() ? DEMO_SURVIVAL_MAPS : SURVIVAL_MAPS;
+    this.selectedMap = pool[Math.floor(Math.random() * pool.length)];
     this.gameVariant = "survival";
     await this.startGame();
   }
@@ -772,7 +774,7 @@ export class SinglePlayerModal extends BaseModal {
 
   private handleSelectRandomMap() {
     this.useRandomMap = true;
-    this.selectedMap = getRandomMapType();
+    this.selectedMap = isDemo() ? randomDemoMap() : getRandomMapType();
     void this.loadNationCount();
   }
 

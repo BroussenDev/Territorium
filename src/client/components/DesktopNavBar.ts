@@ -1,6 +1,7 @@
 import { LitElement, SVGTemplateResult, html, svg } from "lit";
 import { customElement } from "lit/decorators.js";
 import { assetUrl } from "../../core/AssetUrls";
+import { isDemo } from "../Demo";
 import "./NavAccountMenu";
 import { NavNotificationsController } from "./NavNotificationsController";
 import "./NavUtilityIcons";
@@ -170,7 +171,10 @@ export class DesktopNavBar extends LitElement {
           </button>
           <div class="flex flex-1 justify-center">
             <div class="flex items-center">
-              ${PAGES.map((item) => this._renderItem(item, currentPage))}
+              ${(isDemo()
+                ? PAGES.filter((p) => p.page === "page-play")
+                : PAGES
+              ).map((item) => this._renderItem(item, currentPage))}
             </div>
           </div>
           <!-- Utility cluster: bell, help, settings and the profile control are
@@ -178,7 +182,12 @@ export class DesktopNavBar extends LitElement {
                so they sit together on the right, apart from the page tabs. -->
           <div class="flex items-center gap-1 shrink-0">
             <nav-utility-icons size="desktop"></nav-utility-icons>
-            <nav-account-menu variant="desktop"></nav-account-menu>
+            ${isDemo()
+              ? html`<span
+                  class="rounded-md bg-capital px-2.5 py-1 font-display text-xs font-bold tracking-[0.12em] text-ink"
+                  data-i18n="demo.badge"
+                ></span>`
+              : html`<nav-account-menu variant="desktop"></nav-account-menu>`}
           </div>
         </div>
         <div

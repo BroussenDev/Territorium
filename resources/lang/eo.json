@@ -940,6 +940,25 @@
     "title": "Pako Conquérant malŝlosita!",
     "where": "Ĉio estas en via Inventaro: elektu titolon per la insigna butono apud via nomo."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Aldonu Territorium al via Steam-dezirlisto por scii kiam ĝi aperos.",
+    "end_title": "Ĉu la demo plaĉas al vi?",
+    "full_clans": "Klanoj, klanmilitoj kaj via profilo",
+    "full_maps": "Pli ol {count} mapoj kaj la mapredaktilo",
+    "full_modes": "Reĝimoj Nacioj, Konkero kaj Versus",
+    "full_multiplayer": "Reta plurludanta reĝimo, ĝis 80 ludantoj por ludo",
+    "full_ranked": "Rangigitaj ludoj, sezonoj kaj rangolistoj",
+    "full_title": "En la plena ludo",
+    "maps_title": "Mapoj de la demo",
+    "more_maps": "{count} pliaj mapoj en la plena ludo",
+    "solo_desc": "Konkeru la mapon kontraŭ AI-nacioj. Elektu mapon, malfacilecon kaj kontraŭulojn.",
+    "subtitle": "Ĉiuj ludmekanikoj, sur elekto de mapoj",
+    "survival_desc": "Dek ondoj de invadantoj kaj iliaj militestroj. Kiom longe vi rezistos?",
+    "tutorial_desc": "Lernu la bazojn en gvidata ludo.",
+    "wishlist": "Aldoni al dezirlisto",
+    "wishlist_note": "Steam sciigos vin kiam la ludo aperos."
+  },
   "desktop_offline": {
     "go_online": "Konektiĝi",
     "offline": "Neniu konekto al Territorium: sola ludo daŭre disponeblas.",

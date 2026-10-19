@@ -940,6 +940,25 @@
     "title": "Balíček Conquérant odemčen!",
     "where": "Vše je ve vašem inventáři: titul si vyberte tlačítkem odznaku u jména."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Přidej si Territorium do seznamu přání na Steamu a dozvíš se, až vyjde.",
+    "end_title": "Líbí se ti demo?",
+    "full_clans": "Klany, klanové války a tvůj profil",
+    "full_maps": "Přes {count} map a editor map",
+    "full_modes": "Režimy Národy, Dobývání a Versus",
+    "full_multiplayer": "Online multiplayer, až 80 hráčů na hru",
+    "full_ranked": "Hodnocené hry, sezóny a žebříčky",
+    "full_title": "V plné hře",
+    "maps_title": "Mapy dema",
+    "more_maps": "Dalších {count} map v plné hře",
+    "solo_desc": "Dobývej mapu proti AI národům. Vyber mapu, obtížnost a soupeře.",
+    "subtitle": "Všechny herní mechaniky na výběru map",
+    "survival_desc": "Deset vln vetřelců a jejich vojevůdci. Jak dlouho vydržíš?",
+    "tutorial_desc": "Nauč se základy v řízené hře.",
+    "wishlist": "Přidat do seznamu přání",
+    "wishlist_note": "Steam ti dá vědět, až hra vyjde."
+  },
   "desktop_offline": {
     "go_online": "Přejít online",
     "offline": "Žádné připojení k Territorium: sólo hra je stále k dispozici.",

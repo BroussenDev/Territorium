@@ -940,6 +940,25 @@
     "title": "Đã mở khóa gói Conquérant!",
     "where": "Mọi thứ đều trong Kho đồ: chọn danh hiệu bằng nút huy hiệu cạnh tên bạn."
   },
+  "demo": {
+    "badge": "BẢN DÙNG THỬ",
+    "end_body": "Thêm Territorium vào danh sách mong muốn trên Steam để biết khi nào phát hành.",
+    "end_title": "Thích bản dùng thử chứ?",
+    "full_clans": "Bang hội, chiến tranh bang hội và hồ sơ của bạn",
+    "full_maps": "Hơn {count} bản đồ và trình chỉnh sửa bản đồ",
+    "full_modes": "Chế độ Quốc gia, Chinh phục và Đối đầu",
+    "full_multiplayer": "Chơi mạng nhiều người, tối đa 80 người mỗi trận",
+    "full_ranked": "Trận xếp hạng, mùa giải và bảng xếp hạng",
+    "full_title": "Trong bản đầy đủ",
+    "maps_title": "Bản đồ của bản dùng thử",
+    "more_maps": "Thêm {count} bản đồ trong bản đầy đủ",
+    "solo_desc": "Chinh phục bản đồ trước các quốc gia AI. Chọn bản đồ, độ khó và đối thủ.",
+    "subtitle": "Mọi cơ chế của trò chơi, trên các bản đồ chọn lọc",
+    "survival_desc": "Mười đợt kẻ xâm lược và lãnh chúa của chúng. Bạn trụ được bao lâu?",
+    "tutorial_desc": "Học những điều cơ bản trong một trận có hướng dẫn.",
+    "wishlist": "Thêm vào danh sách mong muốn",
+    "wishlist_note": "Steam sẽ báo cho bạn khi trò chơi phát hành."
+  },
   "desktop_offline": {
     "go_online": "Kết nối trực tuyến",
     "offline": "Không kết nối được Territorium: vẫn có thể chơi đơn.",

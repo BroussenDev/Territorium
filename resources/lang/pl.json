@@ -940,6 +940,25 @@
     "title": "Pack Conquérant odblokowany!",
     "where": "Wszystko jest w Twoim Ekwipunku: wybierz tytuł przyciskiem odznaki obok swojej nazwy."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Dodaj Territorium do listy życzeń na Steamie, by dowiedzieć się o premierze.",
+    "end_title": "Podoba ci się demo?",
+    "full_clans": "Klany, wojny klanów i twój profil",
+    "full_maps": "Ponad {count} map i edytor map",
+    "full_modes": "Tryby Narody, Podbój i Versus",
+    "full_multiplayer": "Rozgrywka sieciowa, do 80 graczy w grze",
+    "full_ranked": "Gry rankingowe, sezony i rankingi",
+    "full_title": "W pełnej wersji",
+    "maps_title": "Mapy w demie",
+    "more_maps": "Jeszcze {count} map w pełnej wersji",
+    "solo_desc": "Podbijaj mapę w walce z narodami SI. Wybierz mapę, poziom trudności i rywali.",
+    "subtitle": "Wszystkie mechaniki gry na wybranych mapach",
+    "survival_desc": "Dziesięć fal najeźdźców i ich wodzowie. Jak długo wytrzymasz?",
+    "tutorial_desc": "Poznaj podstawy w grze z przewodnikiem.",
+    "wishlist": "Dodaj do listy życzeń",
+    "wishlist_note": "Steam powiadomi cię o premierze gry."
+  },
   "desktop_offline": {
     "go_online": "Przejdź online",
     "offline": "Brak połączenia z Territorium: gra solo jest nadal dostępna.",

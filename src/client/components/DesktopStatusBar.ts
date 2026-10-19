@@ -2,6 +2,7 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { createRef, ref, type Ref } from "lit/directives/ref.js";
 import { getDesktopSessionState } from "../Auth";
+import { isDemo } from "../Demo";
 import { desktopOffline } from "../DesktopOffline";
 import {
   isDesktopShell,
@@ -184,6 +185,8 @@ export class DesktopStatusBar extends LitElement {
   }
 
   render() {
+    // The demo is offline by design: nothing to report.
+    if (isDemo()) return nothing;
     if (this.offline !== null) return this.renderOffline(this.offline.staying);
     const source = barSource(this.sessionState, this.backendOutage);
     if (source === "none") return nothing;

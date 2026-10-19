@@ -940,6 +940,25 @@
     "title": "Pack Conquérant freigeschaltet!",
     "where": "Alles ist in deinem Inventar: Wähle deinen Titel mit der Abzeichen-Schaltfläche neben deinem Namen."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Setz Territorium auf deine Steam-Wunschliste, um beim Erscheinen benachrichtigt zu werden.",
+    "end_title": "Gefällt dir die Demo?",
+    "full_clans": "Clans, Clankriege und dein Profil",
+    "full_maps": "Über {count} Karten und der Karteneditor",
+    "full_modes": "Modi Nationen, Eroberung und Versus",
+    "full_multiplayer": "Online-Mehrspieler, bis zu 80 Spieler pro Partie",
+    "full_ranked": "Ranglistenspiele, Saisons und Bestenlisten",
+    "full_title": "Im vollständigen Spiel",
+    "maps_title": "Karten der Demo",
+    "more_maps": "{count} weitere Karten im vollständigen Spiel",
+    "solo_desc": "Erobere die Karte gegen KI-Nationen. Wähle Karte, Schwierigkeit und Gegner.",
+    "subtitle": "Alle Spielmechaniken, auf einer Auswahl an Karten",
+    "survival_desc": "Zehn Wellen von Eindringlingen und ihre Kriegsherren. Wie lange hältst du durch?",
+    "tutorial_desc": "Lerne die Grundlagen in einem geführten Spiel.",
+    "wishlist": "Zur Wunschliste hinzufügen",
+    "wishlist_note": "Steam benachrichtigt dich, wenn das Spiel erscheint."
+  },
   "desktop_offline": {
     "go_online": "Online gehen",
     "offline": "Keine Verbindung zu Territorium: Solo ist weiterhin verfügbar.",

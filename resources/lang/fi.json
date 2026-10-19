@@ -940,6 +940,25 @@
     "title": "Conquérant-paketti avattu!",
     "where": "Kaikki on varastossasi: valitse arvonimi nimesi vieressä olevalla merkkipainikkeella."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Lisää Territorium Steam-toivelistallesi, niin kuulet julkaisusta.",
+    "end_title": "Pidätkö demosta?",
+    "full_clans": "Klaanit, klaanisodat ja profiilisi",
+    "full_maps": "Yli {count} karttaa ja karttaeditori",
+    "full_modes": "Kansakunnat-, Valloitus- ja Versus-tilat",
+    "full_multiplayer": "Verkkomoninpeli, jopa 80 pelaajaa per peli",
+    "full_ranked": "Rankatut pelit, kaudet ja tulostaulukot",
+    "full_title": "Täydessä pelissä",
+    "maps_title": "Demon kartat",
+    "more_maps": "{count} karttaa lisää täydessä pelissä",
+    "solo_desc": "Valloita kartta tekoälykansoja vastaan. Valitse kartta, vaikeustaso ja vastustajat.",
+    "subtitle": "Kaikki pelin mekaniikat valikoiduilla kartoilla",
+    "survival_desc": "Kymmenen tunkeilija-aaltoa ja niiden sotapäälliköt. Kauanko kestät?",
+    "tutorial_desc": "Opettele perusteet ohjatussa pelissä.",
+    "wishlist": "Lisää toivelistaan",
+    "wishlist_note": "Steam ilmoittaa, kun peli julkaistaan."
+  },
   "desktop_offline": {
     "go_online": "Siirry verkkoon",
     "offline": "Ei yhteyttä Territoriumiin: yksinpeli on yhä käytettävissä.",

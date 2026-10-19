@@ -940,6 +940,25 @@
     "title": "Conquérant Paketi açıldı!",
     "where": "Her şey Envanterinizde: unvanınızı adınızın yanındaki rozet düğmesiyle seçin."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Çıkışından haberdar olmak için Territorium'u Steam istek listene ekle.",
+    "end_title": "Demoyu beğendin mi?",
+    "full_clans": "Klanlar, klan savaşları ve profilin",
+    "full_maps": "{count} üzeri harita ve harita düzenleyici",
+    "full_modes": "Uluslar, Fetih ve Versus modları",
+    "full_multiplayer": "Çevrimiçi çok oyunculu, oyun başına 80 oyuncuya kadar",
+    "full_ranked": "Dereceli oyunlar, sezonlar ve sıralamalar",
+    "full_title": "Tam oyunda",
+    "maps_title": "Demo haritaları",
+    "more_maps": "Tam oyunda {count} harita daha",
+    "solo_desc": "Yapay zekâ uluslarına karşı haritayı fethet. Haritanı, zorluğunu ve rakiplerini seç.",
+    "subtitle": "Oyunun tüm mekanikleri, seçili haritalarda",
+    "survival_desc": "On işgalci dalgası ve savaş beyleri. Ne kadar dayanabilirsin?",
+    "tutorial_desc": "Rehberli bir oyunda temelleri öğren.",
+    "wishlist": "İstek listeme ekle",
+    "wishlist_note": "Oyun çıktığında Steam sana haber verecek."
+  },
   "desktop_offline": {
     "go_online": "Çevrimiçi ol",
     "offline": "Territorium'a bağlantı yok: tek oyunculu mod hâlâ kullanılabilir.",

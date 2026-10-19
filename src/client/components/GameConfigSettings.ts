@@ -22,6 +22,7 @@ import {
   UnitType,
 } from "../../core/game/Game";
 import { TeamCountConfig } from "../../core/Schemas";
+import { isDemo } from "../Demo";
 import { translateText } from "../Utils";
 import "./Difficulties";
 import "./DifficultyInfo";
@@ -508,7 +509,7 @@ export class GameConfigSettings extends LitElement {
               ></map-picker>`,
           undefined,
           html`<div class="flex flex-wrap items-center gap-2">
-            ${settings.map.community
+            ${settings.map.community && !isDemo()
               ? html`<button
                   class="rounded-md border border-emerald-800/70 bg-emerald-500/10 px-3 py-1.5 text-sm font-semibold text-emerald-300 hover:bg-emerald-500/20"
                   @click=${() => window.showPage?.("page-community-maps")}
@@ -516,7 +517,9 @@ export class GameConfigSettings extends LitElement {
                   ${translateText("community_maps.title")}
                 </button>`
               : null}
-            ${settings.map.custom ? null : this.renderMapSearchInput()}
+            ${settings.map.custom || isDemo()
+              ? null
+              : this.renderMapSearchInput()}
           </div>`,
         )}
         ${renderSection(

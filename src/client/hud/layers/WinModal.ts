@@ -35,6 +35,7 @@ import {
   resolveCosmetics,
 } from "../../Cosmetics";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
+import { isDemo, openWishlist } from "../../Demo";
 import { isDesktopShell } from "../../DesktopShell";
 import { navigateTo } from "../../PageTransition";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
@@ -109,9 +110,9 @@ export class WinModal extends LitElement implements Controller {
           ${this._title || ""}
         </h2>
         <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
-          ${this.renderGameResult()} ${this.renderReplayShare()}
-          ${this.renderSurvivalReport()} ${this.renderRecap()}
-          ${this.innerHtml()}
+          ${this.renderDemoWishlist()} ${this.renderGameResult()}
+          ${this.renderReplayShare()} ${this.renderSurvivalReport()}
+          ${this.renderRecap()} ${isDemo() ? null : this.innerHtml()}
           <steam-promo
             variant="compact"
             campaign="winmodal"
@@ -211,6 +212,27 @@ export class WinModal extends LitElement implements Controller {
     // shareOrigin(), not window.location.origin: the desktop shell's own
     // origin resolves nowhere outside the app.
     this.replayLink = `${ClientEnv.shareOrigin()}${ClientEnv.gamePath(gameID)}`;
+  }
+
+  // The demo's invitation to wishlist the full game.
+  private renderDemoWishlist() {
+    if (!isDemo()) return null;
+    return html`<div
+      data-demo-wishlist
+      class="mb-4 flex flex-col items-center gap-3 rounded-lg border border-[#1a9fff]/40 bg-[#1a9fff]/10 px-4 py-4 text-center"
+    >
+      <div class="font-display text-lg font-bold text-white">
+        ${translateText("demo.end_title")}
+      </div>
+      <div class="text-sm text-white/75">${translateText("demo.end_body")}</div>
+      <button
+        type="button"
+        @click=${() => openWishlist("demo_end")}
+        class="rounded-lg bg-[#1a9fff] px-5 py-2.5 font-display font-bold text-white transition-[filter] hover:brightness-110"
+      >
+        ${translateText("demo.wishlist")}
+      </button>
+    </div>`;
   }
 
   // Survival's end-of-game report: how far the defense held, who led it,

@@ -940,6 +940,25 @@
     "title": "Pakett Conquérant avatud!",
     "where": "Kõik on sinu inventaris: vali tiitel nime kõrval oleva märgi nupuga."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Lisa Territorium oma Steami soovinimekirja, et teada saada, millal see ilmub.",
+    "end_title": "Kas demo meeldib?",
+    "full_clans": "Klannid, klannisõjad ja sinu profiil",
+    "full_maps": "Üle {count} kaardi ja kaardiredaktor",
+    "full_modes": "Režiimid Rahvad, Vallutus ja Versus",
+    "full_multiplayer": "Võrgu mitmikmäng, kuni 80 mängijat mängus",
+    "full_ranked": "Reitingumängud, hooajad ja edetabelid",
+    "full_title": "Täismängus",
+    "maps_title": "Demo kaardid",
+    "more_maps": "Veel {count} kaarti täismängus",
+    "solo_desc": "Vallutage kaart tehisintellekti rahvaste vastu. Valige kaart, raskusaste ja vastased.",
+    "subtitle": "Kõik mängu mehaanikad valitud kaartidel",
+    "survival_desc": "Kümme sissetungijate lainet ja nende sõjapealikud. Kui kaua vastu pead?",
+    "tutorial_desc": "Õpi põhitõdesid juhendatud mängus.",
+    "wishlist": "Lisa soovinimekirja",
+    "wishlist_note": "Steam annab teada, kui mäng ilmub."
+  },
   "desktop_offline": {
     "go_online": "Mine võrku",
     "offline": "Ühendust Territoriumiga pole: üksikmäng on endiselt saadaval.",

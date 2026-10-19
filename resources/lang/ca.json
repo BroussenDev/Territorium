@@ -940,6 +940,25 @@
     "title": "Pack Conquérant desbloquejat!",
     "where": "Tot és al teu Inventari: tria el títol amb el botó d'insígnia al costat del teu nom."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Afegeix Territorium a la teva llista de desitjos de Steam per saber quan surt.",
+    "end_title": "T'agrada la demo?",
+    "full_clans": "Clans, guerres de clans i el teu perfil",
+    "full_maps": "Més de {count} mapes i l'editor de mapes",
+    "full_modes": "Modes Nacions, Conquesta i Versus",
+    "full_multiplayer": "Multijugador en línia, fins a 80 jugadors per partida",
+    "full_ranked": "Partides classificatòries, temporades i classificacions",
+    "full_title": "Al joc complet",
+    "maps_title": "Mapes de la demo",
+    "more_maps": "{count} mapes més al joc complet",
+    "solo_desc": "Conquereix el mapa contra nacions IA. Tria mapa, dificultat i rivals.",
+    "subtitle": "Totes les mecàniques del joc, en una selecció de mapes",
+    "survival_desc": "Deu onades d'invasors i els seus cabdills. Quant aguantaràs?",
+    "tutorial_desc": "Aprèn el bàsic en una partida guiada.",
+    "wishlist": "Afegir a la llista de desitjos",
+    "wishlist_note": "Steam t'avisarà quan surti el joc."
+  },
   "desktop_offline": {
     "go_online": "Torna a connectar-te",
     "offline": "Sense connexió amb Territorium: el mode solitari continua disponible.",

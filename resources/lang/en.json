@@ -940,6 +940,25 @@
     "title": "Pack Conquérant unlocked!",
     "where": "Everything is in your Inventory: choose your title with the badge button next to your name."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Wishlist Territorium on Steam to be told when it comes out.",
+    "end_title": "Enjoying the demo?",
+    "full_clans": "Clans, clan wars and your profile",
+    "full_maps": "{count}+ maps and the map editor",
+    "full_modes": "Nations, Conquest and Versus modes",
+    "full_multiplayer": "Online multiplayer, up to 80 players per game",
+    "full_ranked": "Ranked games, seasons and leaderboards",
+    "full_title": "In the full game",
+    "maps_title": "Demo maps",
+    "more_maps": "{count} more maps in the full game",
+    "solo_desc": "Conquer the map against AI nations. Choose your map, difficulty and opponents.",
+    "subtitle": "Every mechanic of the game, on a selection of maps",
+    "survival_desc": "Ten waves of invaders and their warlords. How long will you hold?",
+    "tutorial_desc": "Learn the basics in a guided game.",
+    "wishlist": "Add to my wishlist",
+    "wishlist_note": "You'll be notified on Steam when the game comes out."
+  },
   "desktop_offline": {
     "go_online": "Go online",
     "offline": "No connection to Territorium: solo is still available.",

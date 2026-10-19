@@ -8,6 +8,7 @@ import {
   GameMode,
   GameType,
   HumansVsNations,
+  maps,
   Quads,
   Trios,
 } from "../core/game/Game";
@@ -37,6 +38,7 @@ import "./components/SteamPromo";
 import { betaTag } from "./components/ui/BetaTag";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { isDemo, openWishlist } from "./Demo";
 import {
   isDesktopShell,
   multiplayerAllowedForSession,
@@ -443,7 +445,8 @@ export class GameModeSelector extends LitElement {
     }
     // After the session seed above: a shell that already knows it has no
     // session must not open a feed it will close on the next tick.
-    this.start();
+    // The demo plays offline: no lobby feed to open.
+    if (!isDemo()) this.start();
     document.addEventListener(
       "desktop-session-state",
       this.onDesktopSessionState,
@@ -671,6 +674,7 @@ export class GameModeSelector extends LitElement {
   }
 
   render() {
+    if (isDemo()) return this.renderDemo();
     const ffa = this.lobbies?.games?.["ffa"]?.[0];
     const teams = this.lobbies?.games?.["team"]?.[0];
     const special = this.lobbies?.games?.["special"]?.[0];
@@ -1028,6 +1032,118 @@ export class GameModeSelector extends LitElement {
       </section>
     `;
   }
+
+  // The demo's play page: what it plays (solo, Survival, the training) and
+  // what the full game adds, with its wishlist button.
+  private renderDemo() {
+    const tile = (
+      title: string,
+      desc: string,
+      action: () => void,
+      accent: string,
+      primary = false,
+    ) =>
+      html`<button
+        type="button"
+        @click=${action}
+        class="group relative flex min-h-36 flex-col justify-end gap-2 overflow-hidden rounded-2xl border p-6 text-left transition-[transform,filter] duration-150 hover:brightness-110 active:scale-[0.99] ${primary
+          ? "border-transparent bg-[linear-gradient(160deg,#10b981,#059669_55%,#047857)] text-white"
+          : `border-white/10 bg-surface/90 border-l-4 ${accent} text-white`}"
+      >
+        <span class="font-display text-3xl font-bold tracking-[0.02em]"
+          >${title}</span
+        >
+        <span
+          class="max-w-md text-sm leading-relaxed ${primary
+            ? "text-white/90"
+            : "text-white/65"}"
+          >${desc}</span
+        >
+      </button>`;
+    const full = [
+      "demo.full_multiplayer",
+      "demo.full_modes",
+      "demo.full_ranked",
+      "demo.full_clans",
+      "demo.full_maps",
+    ];
+    return html`<div
+      data-demo-page
+      class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-6 sm:px-0 lg:grid lg:grid-cols-[3fr_2fr]"
+    >
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <span
+            class="rounded-md bg-capital px-2.5 py-1 font-display text-xs font-bold tracking-[0.12em] text-ink"
+            >${translateText("demo.badge")}</span
+          >
+          <span class="text-sm text-white/60"
+            >${translateText("demo.subtitle")}</span
+          >
+        </div>
+        ${tile(
+          translateText("main.solo"),
+          translateText("demo.solo_desc"),
+          this.openSinglePlayerModal,
+          "",
+          true,
+        )}
+        <div class="grid gap-4 sm:grid-cols-2">
+          ${tile(
+            translateText("game_modes.survival_title"),
+            translateText("demo.survival_desc"),
+            this.startDemoSurvival,
+            "border-l-red-400",
+          )}
+          ${tile(
+            translateText("main.tutorial"),
+            translateText("demo.tutorial_desc"),
+            this.startTutorial,
+            "border-l-capital",
+          )}
+        </div>
+      </div>
+      <aside
+        class="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[linear-gradient(170deg,#0f2a22,#08140f)] p-6"
+      >
+        <h2 class="font-display text-2xl font-bold text-white">
+          ${translateText("demo.full_title")}
+        </h2>
+        <ul class="flex flex-col gap-3">
+          ${full.map(
+            (key) =>
+              html`<li class="flex items-start gap-3 text-white/85">
+                <span
+                  class="mt-1.5 size-2 shrink-0 rounded-[2px] bg-brand-bright"
+                  aria-hidden="true"
+                ></span>
+                ${translateText(key, {
+                  count: Math.floor(maps.length / 10) * 10,
+                })}
+              </li>`,
+          )}
+        </ul>
+        <button
+          type="button"
+          data-demo-wishlist
+          @click=${() => openWishlist("demo_menu")}
+          class="mt-auto flex items-center justify-center gap-3 rounded-xl bg-[#1a9fff] px-5 py-4 font-display text-lg font-bold text-white transition-[filter] hover:brightness-110"
+        >
+          ${translateText("demo.wishlist")}
+        </button>
+        <p class="text-center text-xs text-white/45">
+          ${translateText("demo.wishlist_note")}
+        </p>
+      </aside>
+    </div>`;
+  }
+
+  private startDemoSurvival = () => {
+    if (!this.validateUsername()) return;
+    void (
+      document.querySelector("single-player-modal") as SinglePlayerModal
+    )?.startSurvival();
+  };
 
   private openVersus = () => {
     if (STEAM_LAUNCH_LOCKED) {

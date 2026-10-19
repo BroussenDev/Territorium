@@ -940,6 +940,25 @@
     "title": "Pakken Conquérant er låst op!",
     "where": "Alt er i dit Inventar: vælg din titel med mærkeknappen ved dit navn."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Føj Territorium til din Steam-ønskeliste for at få besked, når det udkommer.",
+    "end_title": "Kan du lide demoen?",
+    "full_clans": "Klaner, klankrige og din profil",
+    "full_maps": "Over {count} kort og korteditoren",
+    "full_modes": "Tilstandene Nationer, Erobring og Versus",
+    "full_multiplayer": "Online multiplayer, op til 80 spillere pr. spil",
+    "full_ranked": "Rangerede spil, sæsoner og ranglister",
+    "full_title": "I det fulde spil",
+    "maps_title": "Demoens kort",
+    "more_maps": "{count} kort mere i det fulde spil",
+    "solo_desc": "Erobr kortet mod AI-nationer. Vælg kort, sværhedsgrad og modstandere.",
+    "subtitle": "Alle spillets mekanikker på et udvalg af kort",
+    "survival_desc": "Ti bølger af angribere og deres krigsherrer. Hvor længe holder du?",
+    "tutorial_desc": "Lær det grundlæggende i et guidet spil.",
+    "wishlist": "Føj til ønskeliste",
+    "wishlist_note": "Steam giver dig besked, når spillet udkommer."
+  },
   "desktop_offline": {
     "go_online": "Gå online",
     "offline": "Ingen forbindelse til Territorium: solo kan stadig spilles.",

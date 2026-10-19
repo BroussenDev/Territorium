@@ -940,6 +940,25 @@
     "title": "Paket Conquérant otključan!",
     "where": "Sve je u vašem inventaru: odaberite titulu dugmetom značke pored imena."
   },
+  "demo": {
+    "badge": "DEMO",
+    "end_body": "Dodaj Territorium na Steam listu želja da saznaš kad izlazi.",
+    "end_title": "Sviđa ti se demo?",
+    "full_clans": "Klanovi, klanski ratovi i tvoj profil",
+    "full_maps": "Više od {count} mapa i uređivač mapa",
+    "full_modes": "Modovi Nacije, Osvajanje i Versus",
+    "full_multiplayer": "Online multiplayer, do 80 igrača po igri",
+    "full_ranked": "Rangirane igre, sezone i rang-liste",
+    "full_title": "U punoj igri",
+    "maps_title": "Mape u demu",
+    "more_maps": "Još {count} mapa u punoj igri",
+    "solo_desc": "Osvoji mapu protiv AI nacija. Izaberi mapu, težinu i protivnike.",
+    "subtitle": "Sve mehanike igre, na izboru mapa",
+    "survival_desc": "Deset talasa osvajača i njihovi vojskovođe. Koliko ćeš izdržati?",
+    "tutorial_desc": "Nauči osnove u vođenoj igri.",
+    "wishlist": "Dodaj na listu želja",
+    "wishlist_note": "Steam će te obavijestiti kad igra izađe."
+  },
   "desktop_offline": {
     "go_online": "Pređi na mrežu",
     "offline": "Nema veze sa Territorium-om: solo je i dalje dostupan.",

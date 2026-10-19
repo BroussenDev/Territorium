@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.123
+
+🎮 **Territorium Demo**
+
+- The game can now run as Territorium Demo on Steam: solo against the nations, Survival and the guided training on five maps, with every mechanic and no time limit.
+- The demo shows what the full game adds and lets you wishlist it from the menu, the map list and the end of each game.
+
 ## v0.1.122
 
 🛒 **Editions tab translated**

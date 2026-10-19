@@ -10,7 +10,9 @@ import {
   MapInfo,
   maps,
 } from "../../../core/game/Game";
+import { DEMO_MAPS, isDemo, openWishlist } from "../../Demo";
 import { translateText } from "../../Utils";
+import { lockIcon } from "../SteamLaunchDialog";
 import "./MapDisplay";
 import { getFavoriteMaps, starIcon, toggleFavoriteMap } from "./MapFavorites";
 const randomMap = assetUrl("images/RandomMap.webp");
@@ -309,7 +311,27 @@ export class MapPicker extends LitElement {
     </button>`;
   }
 
+  // The demo's few maps, and how many more the full game has.
+  private renderDemo() {
+    const demoMaps = maps.filter((m) => DEMO_MAPS.includes(m.type));
+    return html`<div class="space-y-6" data-demo-maps>
+      ${this.renderSectionHeading(translateText("demo.maps_title"))}
+      ${this.renderMapGrid(demoMaps)}
+      <button
+        type="button"
+        @click=${() => openWishlist("demo_maps")}
+        class="flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 bg-black/20 px-4 py-5 text-sm text-white/60 transition-colors hover:border-white/30 hover:text-white"
+      >
+        ${lockIcon("size-4")}
+        ${translateText("demo.more_maps", {
+          count: maps.length - demoMaps.length,
+        })}
+      </button>
+    </div>`;
+  }
+
   render() {
+    if (isDemo()) return this.renderDemo();
     const isSearching = this.searchQuery.trim().length > 0;
     return html`
       <div class="space-y-8">
