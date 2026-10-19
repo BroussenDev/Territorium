@@ -1060,13 +1060,16 @@ export class GameModeSelector extends LitElement {
           >${desc}</span
         >
       </button>`;
-    const full = [
-      "demo.full_multiplayer",
-      "demo.full_modes",
-      "demo.full_ranked",
-      "demo.full_clans",
-      "demo.full_maps",
+    // The full game's modes, shown locked: each opens the store page.
+    const locked: [title: string, desc: string][] = [
+      ["game_modes.nations_title", "demo.lock_nations"],
+      ["demo.versus_title", "demo.lock_versus"],
+      ["mode_selector.ranked_title", "demo.lock_ranked"],
+      ["game_modes.conquest_title", "demo.lock_conquest"],
+      ["mode_selector.teams_title", "demo.lock_teams"],
+      ["main.clans", "demo.lock_clans"],
     ];
+    const full = ["demo.full_multiplayer", "demo.full_maps"];
     return html`<div
       data-demo-page
       class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-6 sm:px-0 lg:grid lg:grid-cols-[3fr_2fr]"
@@ -1109,6 +1112,27 @@ export class GameModeSelector extends LitElement {
         <h2 class="font-display text-2xl font-bold text-white">
           ${translateText("demo.full_title")}
         </h2>
+        <div class="grid grid-cols-2 gap-2">
+          ${locked.map(
+            ([title, desc]) =>
+              html`<button
+                type="button"
+                data-demo-locked
+                @click=${() => openWishlist("demo_locked")}
+                class="flex flex-col gap-1 rounded-xl border border-white/10 bg-black/25 p-3 text-left transition-colors hover:border-white/25 hover:bg-black/40"
+              >
+                <span
+                  class="flex items-center gap-2 font-display text-base font-bold text-white/90"
+                >
+                  <span class="text-capital">${lockIcon("size-4")}</span>
+                  ${translateText(title)}
+                </span>
+                <span class="text-xs leading-snug text-white/55"
+                  >${translateText(desc)}</span
+                >
+              </button>`,
+          )}
+        </div>
         <ul class="flex flex-col gap-3">
           ${full.map(
             (key) =>

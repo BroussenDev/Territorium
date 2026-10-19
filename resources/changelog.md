@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.124
+
+🔒 **What the full game adds, in the demo**
+
+- The demo's menu shows the full game's modes (Nations, Versus, Ranked, Conquest, Teams, Clans) locked, each opening the store page.
+- Your settings and your name from the demo carry over to the full game on the same PC.
+
 ## v0.1.123
 
 🎮 **Territorium Demo**
