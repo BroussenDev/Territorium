@@ -1,6 +1,8 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { isDemo } from "../Demo";
 import { desktopQuit, requestDesktopQuit } from "../DesktopShell";
+import { DemoFarewell } from "./DemoFarewell";
 import { NavNotificationsController } from "./NavNotificationsController";
 
 /**
@@ -51,7 +53,9 @@ export class NavUtilityIcons extends LitElement {
   }
 
   private handleQuit = () => {
-    requestDesktopQuit();
+    // The demo ends on its farewell, which quits from there.
+    if (isDemo()) DemoFarewell.open();
+    else requestDesktopQuit();
   };
 
   /**

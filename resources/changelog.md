@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.125
+
+🏆 **Records and an ending for the demo**
+
+- The demo keeps your records: games played, wins and your best Survival wave, shown on its menu. The Survival tile challenges you to beat your best wave.
+- Quitting the demo now shows a farewell screen with your records, what the full game adds and its wishlist button.
+
 ## v0.1.124
 
 🔒 **What the full game adds, in the demo**

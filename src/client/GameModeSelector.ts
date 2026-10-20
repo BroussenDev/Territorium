@@ -12,6 +12,7 @@ import {
   Quads,
   Trios,
 } from "../core/game/Game";
+import { SURVIVAL_WAVES } from "../core/game/Survival";
 import {
   isVersusGameType,
   versusGameType,
@@ -21,6 +22,7 @@ import { PublicGameInfo, PublicGames } from "../core/Schemas";
 import { closableOfLobby } from "../core/ServerStatus";
 import { fetchRankedSeason } from "./Api";
 import { getDesktopSessionState } from "./Auth";
+import { demoRecord } from "./components/DemoFarewell";
 import "./components/GameModeCards";
 import { lobbyTime, type ModeJoinDetail } from "./components/GameModeCards";
 import "./components/IOSAddToHomeScreenBanner";
@@ -38,7 +40,7 @@ import "./components/SteamPromo";
 import { betaTag } from "./components/ui/BetaTag";
 import type { VersusPlayDetail } from "./components/VersusModal";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
-import { isDemo, openWishlist } from "./Demo";
+import { demoStats, isDemo, openWishlist } from "./Demo";
 import {
   isDesktopShell,
   multiplayerAllowedForSession,
@@ -1070,6 +1072,7 @@ export class GameModeSelector extends LitElement {
       ["main.clans", "demo.lock_clans"],
     ];
     const full = ["demo.full_multiplayer", "demo.full_maps"];
+    const stats = demoStats();
     return html`<div
       data-demo-page
       class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-6 sm:px-0 lg:grid lg:grid-cols-[3fr_2fr]"
@@ -1094,7 +1097,12 @@ export class GameModeSelector extends LitElement {
         <div class="grid gap-4 sm:grid-cols-2">
           ${tile(
             translateText("game_modes.survival_title"),
-            translateText("demo.survival_desc"),
+            stats.bestWave > 0
+              ? translateText("demo.survival_record", {
+                  wave: stats.bestWave,
+                  total: SURVIVAL_WAVES,
+                })
+              : translateText("demo.survival_desc"),
             this.startDemoSurvival,
             "border-l-red-400",
           )}
@@ -1105,6 +1113,7 @@ export class GameModeSelector extends LitElement {
             "border-l-capital",
           )}
         </div>
+        ${stats.games > 0 ? demoRecord(stats) : nothing}
       </div>
       <aside
         class="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[linear-gradient(170deg,#0f2a22,#08140f)] p-6"

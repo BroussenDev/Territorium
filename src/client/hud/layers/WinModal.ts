@@ -35,7 +35,7 @@ import {
   resolveCosmetics,
 } from "../../Cosmetics";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
-import { isDemo, openWishlist } from "../../Demo";
+import { isDemo, openWishlist, recordDemoGame } from "../../Demo";
 import { isDesktopShell } from "../../DesktopShell";
 import { navigateTo } from "../../PageTransition";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
@@ -503,6 +503,14 @@ export class WinModal extends LitElement implements Controller {
     // The game is over: nothing to go back to from the main menu.
     forgetActiveGame();
     crazyGamesSDK.gameplayStop();
+    if (isDemo()) {
+      recordDemoGame(this.game.gameID(), {
+        won: this.isWin,
+        wave: this.game.config().isSurvivalMode()
+          ? survivalReport(this.game).wave
+          : undefined,
+      });
+    }
     this.isRankedGame =
       this.game.config().gameConfig().rankedType !== undefined;
     this.isVisible = true;
