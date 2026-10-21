@@ -58,6 +58,9 @@ export class WorkerLobbyService {
   // ranked check-in loop so a draining server stops offering matches too
   // (RankedCheckin.ts, OPE-469).
   private deploymentActive = true;
+  // What the lobby feed tells players (the master's clientActive): a fenced
+  // server stops its own games without asking anyone to reload.
+  private clientActive = true;
   // What the operators closed, from the master's broadcast (ServerControl.ts).
   private status: ServerStatus = OPEN_SERVER_STATUS;
   // Solo games in progress, counted from heartbeats (SingleplayerPresence).
@@ -142,8 +145,9 @@ export class WorkerLobbyService {
         // Flag flips force a full broadcast (by busting the fingerprint):
         // already-connected clients must hear about a drain promptly, not at
         // the next structural lobby change.
-        if ((msg.active ?? true) !== this.deploymentActive) {
-          this.deploymentActive = msg.active ?? true;
+        this.deploymentActive = msg.active ?? true;
+        if ((msg.clientActive ?? this.deploymentActive) !== this.clientActive) {
+          this.clientActive = msg.clientActive ?? this.deploymentActive;
           this.lastFullGameIds = null;
         }
         if (msg.serverStatus !== undefined) this.status = msg.serverStatus;
@@ -341,7 +345,7 @@ export class WorkerLobbyService {
               serverTime: this.lastPublicGames.serverTime,
               games: this.sanitizeGames(this.lastPublicGames.games),
               gitCommit: ServerEnv.gitCommit(),
-              active: this.deploymentActive,
+              active: this.clientActive,
             } satisfies PublicLobbyMessage),
           );
         }
@@ -395,7 +399,7 @@ export class WorkerLobbyService {
         serverTime: publicGames.serverTime,
         games: sanitizedGames,
         gitCommit: ServerEnv.gitCommit(),
-        active: this.deploymentActive,
+        active: this.clientActive,
       };
       this.lastFullGameIds = fingerprint;
     } else {

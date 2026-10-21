@@ -75,6 +75,9 @@ export class MasterLobbyService {
   // waiting for its first API answer is neither, so until setActive is
   // called the broadcast says active while scheduling stays off.
   private stateKnown: boolean;
+  // Fenced by an operator (admin panel): no new games here, but nothing to
+  // tell players, who keep the lobby feed of the whole site.
+  private fenced = false;
 
   // Two modes (infra docs/lobby-coordinator.md, "The master: two modes"):
   //
@@ -319,8 +322,9 @@ export class MasterLobbyService {
     return next;
   }
 
-  setActive(active: boolean) {
+  setActive(active: boolean, state?: string) {
     this.stateKnown = true;
+    this.fenced = state === "fenced";
     if (active === this.active) return;
     this.active = active;
     this.log.info(
@@ -483,6 +487,7 @@ export class MasterLobbyService {
       },
       delistGameIDs: delist.length > 0 ? delist : undefined,
       active: this.active || !this.stateKnown,
+      clientActive: this.active || !this.stateKnown || this.fenced,
       serverStatus: this.serverStatus,
     } satisfies MasterLobbiesBroadcast;
     if (this.announcer !== null) {

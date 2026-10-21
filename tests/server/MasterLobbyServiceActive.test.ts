@@ -108,6 +108,31 @@ describe("MasterLobbyService active/inactive deployment", () => {
     );
     expect(broadcasts[broadcasts.length - 1]?.[0].active).toBe(false);
   });
+
+  // An operator fencing the server (admin panel) stops its new games and
+  // its ranked offers, but its players have nowhere to reload to: the feed
+  // keeps telling them active, so no tab shows the update prompt.
+  it("stops a fenced server's games without telling its players to reload", async () => {
+    service.setActive(false, "fenced");
+    await schedulerTask()();
+    expect(createGameMessages(worker)).toHaveLength(0);
+    await broadcastTask()();
+    const lastOf = () => {
+      const all = worker.send.mock.calls.filter(
+        ([msg]) => msg.type === "lobbiesBroadcast",
+      );
+      return all[all.length - 1]?.[0];
+    };
+    const last = lastOf();
+    expect(last.active).toBe(false);
+    expect(last.clientActive).toBe(true);
+
+    // An older version draining still asks its players to reload.
+    service.setActive(false, "draining");
+    await broadcastTask()();
+    const draining = lastOf();
+    expect(draining.clientActive).toBe(false);
+  });
 });
 
 describe("MasterLobbyService inactive deployment still starts queued lobbies", () => {

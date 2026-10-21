@@ -106,6 +106,11 @@ const MasterLobbiesBroadcastSchema = z.object({
   // deployment learn to reload (see PublicLobbyFullSchema.active). Optional
   // only for old fixtures; the master always sends it, absent means active.
   active: z.boolean().optional(),
+  // What players on the lobby feed are told, when it differs from `active`:
+  // a server an operator fenced takes nothing new, but its players have
+  // nowhere else to reload to (the page stays on its server), so they are
+  // never asked to. Absent means the same as `active`.
+  clientActive: z.boolean().optional(),
   // What the operators closed (src/core/ServerStatus.ts): workers refuse
   // new private games, joins and ranked matches accordingly.
   serverStatus: ServerStatusSchema.optional(),

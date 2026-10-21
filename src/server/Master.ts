@@ -295,7 +295,9 @@ export async function startMaster() {
       } else if (result !== null) {
         lastRefusal = null;
       }
-      applyCheckinState(result, (active) => lobbyService.setActive(active));
+      applyCheckinState(result, (active, state) =>
+        lobbyService.setActive(active, state),
+      );
     }, CHECKIN_INTERVAL_MS);
   }
 

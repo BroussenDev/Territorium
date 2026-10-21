@@ -32,7 +32,11 @@ describe("WorkerLobbyService deployment drain flag", () => {
     (service as any).sendToMaster = vi.fn();
   });
 
-  function emitBroadcast(active: boolean | undefined, serverTime = 1000) {
+  function emitBroadcast(
+    active: boolean | undefined,
+    serverTime = 1000,
+    clientActive?: boolean,
+  ) {
     (service as any).handleMasterMessage({
       type: "lobbiesBroadcast",
       publicGames: {
@@ -40,6 +44,7 @@ describe("WorkerLobbyService deployment drain flag", () => {
         games: { ffa: [], team: [], special: [], hosted: [] },
       },
       active,
+      clientActive,
     });
   }
 
@@ -105,5 +110,15 @@ describe("WorkerLobbyService deployment drain flag", () => {
 
     emitBroadcast(true, 1001);
     expect(service.isDeploymentActive()).toBe(true);
+  });
+
+  // A fenced server: no ranked offers, but its players are never asked to
+  // reload (they would only land back on the same page).
+  it("keeps telling players active on a fenced server", () => {
+    const ws = connectClient();
+    emitBroadcast(true);
+    emitBroadcast(false, 1001, true);
+    expect(service.isDeploymentActive()).toBe(false);
+    expect(fullsSent(ws).every((m) => m.active === true)).toBe(true);
   });
 });

@@ -244,15 +244,17 @@ describe("applyCheckinState", () => {
   test("only open is active", () => {
     const setActive = vi.fn();
     applyCheckinState("draining", setActive);
-    expect(setActive).toHaveBeenLastCalledWith(false);
+    expect(setActive).toHaveBeenLastCalledWith(false, "draining");
     applyCheckinState("open", setActive);
-    expect(setActive).toHaveBeenLastCalledWith(true);
+    expect(setActive).toHaveBeenLastCalledWith(true, "open");
+    applyCheckinState("fenced", setActive);
+    expect(setActive).toHaveBeenLastCalledWith(false, "fenced");
   });
 
   test("a refused server takes no new games", () => {
     const setActive = vi.fn();
     applyCheckinState({ refused: "letter_bound_to_other_host" }, setActive);
-    expect(setActive).toHaveBeenLastCalledWith(false);
+    expect(setActive).toHaveBeenLastCalledWith(false, "refused");
   });
 
   // A fence is an operator holding this server out of rotation. It has to
@@ -260,7 +262,7 @@ describe("applyCheckinState", () => {
   test("a fenced server takes no new games", () => {
     const setActive = vi.fn();
     applyCheckinState("fenced", setActive);
-    expect(setActive).toHaveBeenLastCalledWith(false);
+    expect(setActive).toHaveBeenLastCalledWith(false, "fenced");
   });
 
   test("a failed check-in never drains: null means no change", () => {

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.129
+
+🖥️ **Two game servers**
+
+- Territorium now runs on two game servers at once, sharing the public lobbies, for twice the room.
+- Taking a server out of service no longer asks players on the homepage to reload: they keep playing and joining games as usual.
+
 ## v0.1.128
 
 🖥️ **Ready for more game servers**

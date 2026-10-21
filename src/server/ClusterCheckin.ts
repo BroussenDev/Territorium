@@ -149,8 +149,8 @@ export async function sendCheckin(
  */
 export function applyCheckinState(
   result: CheckinResult,
-  setActive: (active: boolean) => void,
+  setActive: (active: boolean, state: ServerState | "refused") => void,
 ): void {
   if (result === null) return;
-  setActive(result === "open");
+  setActive(result === "open", isRefusal(result) ? "refused" : result);
 }
