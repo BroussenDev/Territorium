@@ -11,6 +11,7 @@ import { adminGuard, AdminSessions } from "../../src/server/NewsAdmin";
 import {
   registerServerControlRoutes,
   ServerControlStore,
+  serverHealth,
 } from "../../src/server/ServerControl";
 
 const silentLog = {
@@ -155,5 +156,20 @@ describe("server control routes", { timeout: 20_000 }, () => {
     });
     expect(res.status).toBe(400);
     expect(changes).toEqual([]);
+  });
+});
+
+describe("serverHealth", () => {
+  test("sums the running games and describes the machine", () => {
+    const h = serverHealth(
+      [{ players: 3 } as never, { players: 5 } as never],
+      2,
+    );
+    expect(h.games).toBe(2);
+    expect(h.players).toBe(8);
+    expect(h.soloGames).toBe(2);
+    expect(h.cores).toBeGreaterThan(0);
+    expect(h.memTotal).toBeGreaterThan(h.memFree);
+    expect(h.version === null || /^v\d+\.\d+\.\d+$/.test(h.version)).toBe(true);
   });
 });

@@ -1,5 +1,6 @@
 import type { Express, RequestHandler } from "express";
 import fs from "fs";
+import os from "os";
 import path from "path";
 import type { Logger } from "winston";
 import {
@@ -68,6 +69,13 @@ export function registerServerControlRoutes(opts: {
 }) {
   const { app, store, requireAdmin, running, onChange, log } = opts;
 
+  // For the admin panel's server list: what this server runs and how loaded
+  // the machine is. Read through the API, which signs in as the admin.
+  app.get("/api/admin/health", requireAdmin, (_req, res) => {
+    const { games, soloGames } = running();
+    res.json(serverHealth(games, soloGames));
+  });
+
   // Read by every client: the homepage banner and the closed buttons.
   app.get("/api/server-status", (_req, res) => {
     res.json({ ...store.get(), serverTime: Date.now() });
@@ -105,4 +113,53 @@ export function registerServerControlRoutes(opts: {
       res.status(500).json({ error: "Could not save" });
     }
   });
+}
+
+let versionTag: string | null | undefined;
+
+/** The release tag deploys write to resources/version.txt, when there is one. */
+function releaseTag(): string | null {
+  if (versionTag !== undefined) return versionTag;
+  try {
+    const text = fs.readFileSync("resources/version.txt", "utf8").trim();
+    versionTag = /^v\d+\.\d+\.\d+$/.test(text) ? text : null;
+  } catch {
+    versionTag = null;
+  }
+  return versionTag;
+}
+
+export interface ServerHealth {
+  letter: string;
+  commit: string;
+  version: string | null;
+  uptimeSec: number;
+  load: number;
+  cores: number;
+  memTotal: number;
+  memFree: number;
+  games: number;
+  players: number;
+  soloGames: number;
+  serverTime: number;
+}
+
+export function serverHealth(
+  games: RunningGame[],
+  soloGames: number,
+): ServerHealth {
+  return {
+    letter: process.env.INSTANCE_LETTER ?? "a",
+    commit: process.env.GIT_COMMIT ?? "unknown",
+    version: releaseTag(),
+    uptimeSec: Math.round(process.uptime()),
+    load: os.loadavg()[0],
+    cores: os.cpus().length,
+    memTotal: os.totalmem(),
+    memFree: os.freemem(),
+    games: games.length,
+    players: games.reduce((n, g) => n + g.players, 0),
+    soloGames,
+    serverTime: Date.now(),
+  };
 }

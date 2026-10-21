@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.128
+
+🖥️ **Ready for more game servers**
+
+- Each game server now reports its version and load, so the team can watch several servers at once and see which one needs an update.
+
 ## v0.1.127
 
 📊 **Anonymous demo statistics**
