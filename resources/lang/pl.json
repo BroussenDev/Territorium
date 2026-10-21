@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Ustawienia konta"
   },
+  "achievements": {
+    "unlocked": "Osiągnięcie odblokowane"
+  },
   "attack_preview": {
     "all_tiles": "Wszystkie",
     "costs": "kosztuje {troops} wojsk",

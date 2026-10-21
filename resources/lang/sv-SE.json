@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Kontoinställningar"
   },
+  "achievements": {
+    "unlocked": "Prestation upplåst"
+  },
   "attack_preview": {
     "all_tiles": "Alla",
     "costs": "kostar {troops} trupper",

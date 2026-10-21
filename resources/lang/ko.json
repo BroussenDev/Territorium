@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "계정 설정"
   },
+  "achievements": {
+    "unlocked": "도전 과제 달성"
+  },
   "attack_preview": {
     "all_tiles": "전부",
     "costs": "병력 {troops} 소모",

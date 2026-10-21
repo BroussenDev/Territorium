@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Ρυθμίσεις λογαριασμού"
   },
+  "achievements": {
+    "unlocked": "Το επίτευγμα ξεκλειδώθηκε"
+  },
   "attack_preview": {
     "all_tiles": "Όλα",
     "costs": "κοστίζει {troops} στρατιώτες",

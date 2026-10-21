@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.130
+
+🏆 **Achievement notifications**
+
+- Unlocking a Steam achievement now shows a notification in the corner of the game, with its name, description and icon in your Steam language.
+
 ## v0.1.129
 
 🖥️ **Two game servers**

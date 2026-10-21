@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Настройки аккаунта"
   },
+  "achievements": {
+    "unlocked": "Достижение получено"
+  },
   "attack_preview": {
     "all_tiles": "Все",
     "costs": "стоит {troops} войск",

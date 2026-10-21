@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Cài đặt tài khoản"
   },
+  "achievements": {
+    "unlocked": "Đã mở khóa thành tựu"
+  },
   "attack_preview": {
     "all_tiles": "Tất cả",
     "costs": "tốn {troops} quân",

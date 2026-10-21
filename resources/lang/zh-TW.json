@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "帳號設定"
   },
+  "achievements": {
+    "unlocked": "成就已解鎖"
+  },
   "attack_preview": {
     "all_tiles": "全部",
     "costs": "消耗 {troops} 兵力",

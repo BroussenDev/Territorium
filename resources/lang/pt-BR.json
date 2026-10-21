@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Configurações de Conta"
   },
+  "achievements": {
+    "unlocked": "Conquista desbloqueada"
+  },
   "attack_preview": {
     "all_tiles": "Todas",
     "costs": "custa {troops} tropas",

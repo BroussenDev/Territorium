@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "הגדרות חשבון"
   },
+  "achievements": {
+    "unlocked": "הישג נפתח"
+  },
   "attack_preview": {
     "all_tiles": "הכול",
     "costs": "עולה {troops} חיילים",

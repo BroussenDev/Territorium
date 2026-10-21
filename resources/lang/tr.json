@@ -134,6 +134,9 @@
   "account_settings_modal": {
     "title": "Hesap Ayarları"
   },
+  "achievements": {
+    "unlocked": "Başarım açıldı"
+  },
   "attack_preview": {
     "all_tiles": "Hepsi",
     "costs": "{troops} birliğe mal olur",

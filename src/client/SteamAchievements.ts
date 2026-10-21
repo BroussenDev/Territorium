@@ -156,7 +156,19 @@ export function achievementsForAccount(
   return out;
 }
 
-type UnlockBridge = (name: string) => Promise<boolean>;
+/** What the Steam app answers (main.rs steam_achievement). */
+export interface AchievementUnlock {
+  ok: boolean;
+  /** Newly earned by this unlock. */
+  unlocked: boolean;
+  name?: string | null;
+  description?: string | null;
+  /** 64x64 RGBA pixels, base64. */
+  icon?: string | null;
+}
+
+// Older apps answered a bare boolean.
+type UnlockBridge = (name: string) => Promise<AchievementUnlock | boolean>;
 
 function unlockBridge(): UnlockBridge | null {
   if (typeof window === "undefined" || isDemo()) return null;
@@ -181,7 +193,17 @@ export function unlock(ids: readonly AchievementId[]): void {
   for (const id of ids) {
     if (sent.has(id)) continue;
     sent.add(id);
-    void bridge(id).catch(() => sent.delete(id));
+    void bridge(id)
+      .then((result) => {
+        // Steam's overlay can't draw over the game's webview: the game shows
+        // the notification itself (AchievementToast.ts).
+        if (typeof result === "object" && result?.unlocked) {
+          void import("./components/AchievementToast").then((m) =>
+            m.showAchievementToast(result),
+          );
+        }
+      })
+      .catch(() => sent.delete(id));
   }
 }
 
