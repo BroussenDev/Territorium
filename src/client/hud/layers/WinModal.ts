@@ -36,6 +36,7 @@ import {
 } from "../../Cosmetics";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
 import { isDemo, openWishlist, recordDemoGame } from "../../Demo";
+import { countDemo } from "../../DemoStats";
 import { isDesktopShell } from "../../DesktopShell";
 import { navigateTo } from "../../PageTransition";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
@@ -511,6 +512,7 @@ export class WinModal extends LitElement implements Controller {
         wave: this.game.config().isSurvivalMode()
           ? survivalReport(this.game).wave
           : undefined,
+        tutorial: this.game.config().gameConfig().gameVariant === "training",
       });
     }
     this.isRankedGame =
@@ -549,7 +551,13 @@ export class WinModal extends LitElement implements Controller {
     );
   }
 
-  init() {}
+  init() {
+    // The demo's admin counts: a game of this mode started.
+    const variant = this.game.config().gameConfig().gameVariant;
+    countDemo(
+      `started_${variant === "survival" ? "survival" : variant === "training" ? "tutorial" : "solo"}`,
+    );
+  }
 
   tick() {
     const myPlayer = this.game.myPlayer();

@@ -8,8 +8,9 @@ import { GameEnv } from "../core/configuration/Config";
 import { GameMapType } from "../core/game/Game";
 import { SURVIVAL_MAPS } from "../core/game/Survival";
 import { ClientEnv } from "./ClientEnv";
-import { openInSteamOverlay } from "./Workshop";
 import { steamStoreUrl } from "./components/SteamWishlist";
+import { countDemo, type DemoMode } from "./DemoStats";
+import { openInSteamOverlay } from "./Workshop";
 
 /** The maps the demo plays on. */
 export const DEMO_MAPS: readonly GameMapType[] = [
@@ -57,6 +58,7 @@ export function randomDemoMap(): GameMapType {
 
 /** Opens the full game's store page, to wishlist it. */
 export function openWishlist(campaign: string): void {
+  countDemo(`wishlist_${campaign}`);
   const url = steamStoreUrl(campaign);
   if (!openInSteamOverlay(url)) window.open(url, "_blank", "noopener");
 }
@@ -111,12 +113,24 @@ export function demoStats(): DemoStats {
  */
 export function recordDemoGame(
   gameID: string,
-  result: { won: boolean; wave?: number },
+  result: { won: boolean; wave?: number; tutorial?: boolean },
 ): DemoStats {
   const stats = demoStats();
   const again = stats.lastGame === gameID;
   if (!again) stats.games++;
   if (result.won && !(again && stats.lastWon)) stats.wins++;
+  // The admin panel's counts, once per game like the records.
+  const mode: DemoMode =
+    result.wave !== undefined
+      ? "survival"
+      : result.tutorial
+        ? "tutorial"
+        : "solo";
+  if (!again) {
+    countDemo(`finished_${mode}`);
+    if (mode === "survival") countDemo(`survival_wave_${count(result.wave)}`);
+  }
+  if (result.won && !(again && stats.lastWon)) countDemo(`won_${mode}`);
   stats.lastWon = result.won || (again && stats.lastWon);
   stats.bestWave = Math.max(stats.bestWave, count(result.wave));
   stats.lastGame = gameID;

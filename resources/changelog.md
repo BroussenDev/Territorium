@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.127
+
+📊 **Anonymous demo statistics**
+
+- The Steam demo now counts, anonymously, its launches, play time, games by mode and wishlist clicks, so we can see how it is played. No account, Steam id or device id is sent; the privacy policy says so.
+
 ## v0.1.126
 
 🏆 **Steam achievements**

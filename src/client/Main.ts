@@ -53,6 +53,7 @@ import {
   consumeCreatorCodePath,
   resumePendingCreatorCode,
 } from "./CreatorCode";
+import { startDemoStats } from "./DemoStats";
 import { desktopPresence, type PresencePayload } from "./DesktopPresence";
 import { subscribeDesktopSessionRecovery } from "./DesktopSessionRecovery";
 import { isDesktopShell } from "./DesktopShell";
@@ -340,6 +341,9 @@ class Client {
     capturePagePin();
 
     flushReloadToast();
+
+    // The Steam demo's anonymous counts for the admin panel (DemoStats.ts).
+    startDemoStats();
 
     // Stale key still in existing players' storage; nothing reads it.
     localStorage.removeItem("achievements.pushed");
