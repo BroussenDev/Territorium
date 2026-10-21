@@ -106,6 +106,10 @@ import {
 import "./SinglePlayerModal";
 import { SinglePlayerModal } from "./SinglePlayerModal";
 import {
+  achievementsForAccount,
+  unlock as unlockAchievements,
+} from "./SteamAchievements";
+import {
   parseSteamGrantStore,
   recordSteamGrant,
   STEAM_GRANT_NOTICE_KEY,
@@ -673,6 +677,8 @@ class Client {
     this.steamHandoffModal = document.querySelector("steam-handoff-modal");
 
     const onUserMe = async (userMeResponse: UserMeResponse | false) => {
+      // A clan, the Pioneer badge: Steam achievements of the account.
+      unlockAchievements(achievementsForAccount(userMeResponse));
       if (crazyGamesSDK.isOnCrazyGames()) {
         void updateCrazyGamesNavButton();
       } else {

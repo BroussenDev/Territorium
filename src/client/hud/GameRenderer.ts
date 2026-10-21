@@ -44,6 +44,7 @@ import { PlayerPanel } from "./layers/PlayerPanel";
 import { ReplayPanel } from "./layers/ReplayPanel";
 import { SettingsModal } from "./layers/SettingsModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
+import { SteamAchievementsController } from "./layers/SteamAchievementsController";
 import { StructureCard } from "./layers/StructureCard";
 import { TutorialPanel } from "./layers/TutorialPanel";
 import { UnitDisplay } from "./layers/UnitDisplay";
@@ -395,6 +396,7 @@ export function createRenderer(
     controlPanel,
     playerInfo,
     winModal,
+    new SteamAchievementsController(game),
     victoryCelebration,
     newLobbyPrompt,
     replayPanel,

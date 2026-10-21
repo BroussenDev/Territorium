@@ -42,6 +42,7 @@ import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
 import { GameRecap, mainAttacker } from "../GameRecap";
+import { reportGameEnd } from "./SteamAchievementsController";
 
 @customElement("win-modal")
 export class WinModal extends LitElement implements Controller {
@@ -503,6 +504,7 @@ export class WinModal extends LitElement implements Controller {
     // The game is over: nothing to go back to from the main menu.
     forgetActiveGame();
     crazyGamesSDK.gameplayStop();
+    reportGameEnd(this.isWin);
     if (isDemo()) {
       recordDemoGame(this.game.gameID(), {
         won: this.isWin,

@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.126
+
+🏆 **Steam achievements**
+
+- 18 Steam achievements in the Steam app: your first games and wins, every game mode, ranked, peace treaties, eliminations, level-5 buildings, clans and the Pioneer badge.
+- Progress toward the win and elimination achievements follows you between PCs through Steam Cloud.
+
 ## v0.1.125
 
 🏆 **Records and an ending for the demo**
