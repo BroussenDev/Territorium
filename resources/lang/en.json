@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Account Settings"
   },
-  "achievements": {
-    "unlocked": "Achievement unlocked"
-  },
   "attack_preview": {
     "all_tiles": "All",
     "costs": "costs {troops} troops",

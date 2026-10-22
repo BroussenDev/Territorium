@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "إعدادات الحساب"
   },
-  "achievements": {
-    "unlocked": "تم فتح إنجاز"
-  },
   "attack_preview": {
     "all_tiles": "الكل",
     "costs": "تكلّف {troops} جنديًا",

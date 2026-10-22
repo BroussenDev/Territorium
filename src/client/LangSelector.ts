@@ -357,6 +357,9 @@ export class LangSelector extends LitElement {
         }
       });
     });
+    // For what translates text outside the page (the Steam app's Discord
+    // presence): sent again in the language now loaded.
+    document.dispatchEvent(new CustomEvent("translations-applied"));
   }
 
   public translateText(

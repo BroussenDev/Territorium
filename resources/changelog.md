@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.133
+
+🏆 **Steam's own achievement popup**
+
+- Achievements now show Steam's own popup: they unlock once the launch screens are over, when Steam can draw it.
+- Discord no longer shows "presence.menu": your status appears in your language.
+
 ## v0.1.132
 
 🏆 **Territorium's own achievement popup**

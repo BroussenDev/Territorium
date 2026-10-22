@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "অ্যাকাউন্ট সেটিংস"
   },
-  "achievements": {
-    "unlocked": "অর্জন আনলক হয়েছে"
-  },
   "attack_preview": {
     "all_tiles": "সব",
     "costs": "{troops} সৈন্য লাগবে",

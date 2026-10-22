@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Fiók beállításai"
   },
-  "achievements": {
-    "unlocked": "Teljesítmény feloldva"
-  },
   "attack_preview": {
     "all_tiles": "Mind",
     "costs": "{troops} katonába kerül",

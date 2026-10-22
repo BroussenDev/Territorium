@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Nastavení účtu"
   },
-  "achievements": {
-    "unlocked": "Úspěch odemčen"
-  },
   "attack_preview": {
     "all_tiles": "Všechna",
     "costs": "stojí {troops} vojáků",

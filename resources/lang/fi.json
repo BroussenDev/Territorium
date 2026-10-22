@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Tilin asetukset"
   },
-  "achievements": {
-    "unlocked": "Saavutus avattu"
-  },
   "attack_preview": {
     "all_tiles": "Kaikki",
     "costs": "maksaa {troops} joukkoa",

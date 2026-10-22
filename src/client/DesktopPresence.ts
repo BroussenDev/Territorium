@@ -51,6 +51,11 @@ function bridge(): PresenceBridge | undefined {
   return window.openfrontDesktop as PresenceBridge | undefined;
 }
 
+/** The text, or undefined while the language is still loading (the raw key). */
+function loaded(text: string): string | undefined {
+  return text.startsWith("presence.") ? undefined : text;
+}
+
 class DesktopPresence {
   // shell.api >= 2 is the capability signal for these namespaces, and every
   // method below gates on it rather than relying on optional chaining alone.
@@ -65,8 +70,20 @@ class DesktopPresence {
     return typeof api === "number" && api >= 2;
   }
 
+  private last: PresencePayload | null = null;
+  private listening = false;
+
   set(payload: PresencePayload | null): void {
     if (!this.isAvailable()) return;
+    this.last = payload;
+    // Presence set before the translations load would carry raw keys
+    // ("presence.menu"): it is sent again once they are in.
+    if (!this.listening && typeof document !== "undefined") {
+      this.listening = true;
+      document.addEventListener("translations-applied", () =>
+        this.set(this.last),
+      );
+    }
     try {
       void bridge()
         ?.presence?.set(
@@ -74,8 +91,8 @@ class DesktopPresence {
             ? null
             : {
                 ...payload,
-                stateName: translateText(`presence.${payload.state}`),
-                joinLabel: translateText("presence.join"),
+                stateName: loaded(translateText(`presence.${payload.state}`)),
+                joinLabel: loaded(translateText("presence.join")),
               },
         )
         ?.catch(() => undefined);

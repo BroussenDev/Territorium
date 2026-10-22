@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Kontoindstillinger"
   },
-  "achievements": {
-    "unlocked": "Præstation låst op"
-  },
   "attack_preview": {
     "all_tiles": "Alle",
     "costs": "koster {troops} tropper",

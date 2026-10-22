@@ -134,9 +134,6 @@
   "account_settings_modal": {
     "title": "Поставки за сметка"
   },
-  "achievements": {
-    "unlocked": "Достигнувањето е отклучено"
-  },
   "attack_preview": {
     "all_tiles": "Сите",
     "costs": "чини {troops} војници",

@@ -198,8 +198,9 @@ function launchScreensShowing(): boolean {
 export function unlock(ids: readonly AchievementId[]): void {
   const bridge = unlockBridge();
   if (bridge === null) return;
-  // Never during the Steam app's launch screens: Steam would play its
-  // sound over them. Held until they are gone, then unlocked.
+  // Never during the Steam app's launch screens: Steam's overlay is not
+  // drawing yet, so its notification would be lost (only the sound plays).
+  // Held until they are gone, then unlocked, and Steam shows its popup.
   if (launchScreensShowing()) {
     setTimeout(() => unlock(ids), 500);
     return;
@@ -207,17 +208,7 @@ export function unlock(ids: readonly AchievementId[]): void {
   for (const id of ids) {
     if (sent.has(id)) continue;
     sent.add(id);
-    void bridge(id)
-      .then((result) => {
-        // Steam's overlay can't draw over the game's webview: the game shows
-        // the notification itself (AchievementToast.ts).
-        if (typeof result === "object" && result?.unlocked) {
-          void import("./components/AchievementToast").then((m) =>
-            m.showAchievementToast(result),
-          );
-        }
-      })
-      .catch(() => sent.delete(id));
+    void bridge(id).catch(() => sent.delete(id));
   }
 }
 
