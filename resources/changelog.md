@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.137
+
+🛡️ **Security update**
+
+- Server libraries updated to close known security issues (IP spoofing, denial of service).
+- Account and shop security strengthened.
+
 ## v0.1.136
 
 🎯 **Ranked matches by level**
