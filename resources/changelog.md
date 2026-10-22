@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.131
+
+🏆 **Achievements, Steam style**
+
+- The achievement notification now looks like Steam's own popup.
+- Achievements earned while the game starts unlock once the launch screens are over.
+
 ## v0.1.130
 
 🏆 **Achievement notifications**

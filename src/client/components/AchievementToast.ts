@@ -42,7 +42,7 @@ const trophy = html`<svg
   class="size-9"
   aria-hidden="true"
   fill="none"
-  stroke="#f2d27a"
+  stroke="#c7d5e0"
   stroke-width="1.8"
   stroke-linecap="round"
   stroke-linejoin="round"
@@ -91,28 +91,32 @@ export class AchievementToast extends LitElement {
   render() {
     const t = this.current;
     if (t === null) return nothing;
+    // Drawn like Steam's own notification: the overlay can't show it here.
     return html`<div
       role="status"
       aria-live="polite"
-      class="pointer-events-none fixed bottom-24 right-5 z-[100000] flex w-[340px] max-w-[calc(100vw-2.5rem)] items-center gap-3 rounded-xl border border-[#e8b84a]/50 bg-[linear-gradient(160deg,#16251f,#0b1511)] p-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-[opacity,transform] duration-300 ${this
+      style="font-family:'Motiva Sans','Segoe UI',Arial,sans-serif"
+      class="pointer-events-none fixed bottom-24 right-4 z-[100000] flex w-[324px] max-w-[calc(100vw-2rem)] items-center gap-3 rounded-[4px] border border-white/[0.06] bg-[linear-gradient(180deg,#2a2e36,#1c1f25)] p-2.5 shadow-[0_6px_24px_rgba(0,0,0,0.7)] transition-[opacity,transform] duration-300 ease-out ${this
         .leaving
-        ? "translate-y-2 opacity-0"
+        ? "translate-y-3 opacity-0"
         : "translate-y-0 opacity-100"}"
     >
-      <div
-        class="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-black/40 ring-1 ring-[#e8b84a]/40"
-      >
-        ${t.icon ? html`<img src=${t.icon} alt="" class="size-14" />` : trophy}
+      <div class="size-16 shrink-0 overflow-hidden rounded-[3px] bg-[#16181d]">
+        ${t.icon
+          ? html`<img src=${t.icon} alt="" class="size-16" />`
+          : html`<div class="flex size-16 items-center justify-center">
+              ${trophy}
+            </div>`}
       </div>
-      <div class="min-w-0">
-        <div class="text-[11px] font-semibold text-[#f2d27a]">
+      <div class="min-w-0 leading-tight">
+        <div class="text-[12px] text-[#9da5b0]">
           ${translateText("achievements.unlocked")}
         </div>
-        <div class="truncate font-display text-base font-bold text-white">
+        <div class="mt-0.5 truncate text-[15px] font-semibold text-white">
           ${t.name}
         </div>
         ${t.description
-          ? html`<div class="line-clamp-2 text-xs text-white/70">
+          ? html`<div class="mt-0.5 line-clamp-2 text-[12px] text-[#8f98a0]">
               ${t.description}
             </div>`
           : nothing}

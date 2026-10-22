@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   ACHIEVEMENTS as A,
   type AchievementProgress,
@@ -6,6 +6,7 @@ import {
   achievementsForEliminations,
   achievementsForGameEnd,
   type GameEnd,
+  unlock,
 } from "../../src/client/SteamAchievements";
 
 const fresh = (): AchievementProgress => ({
@@ -106,5 +107,31 @@ describe("Steam achievements", () => {
     expect(
       achievementsForAccount(me([{ tag: "ABC" }], { since: "x", seen: true })),
     ).toEqual([A.bloodBrothers, A.pioneer]);
+  });
+});
+
+describe("unlocking through the Steam app", () => {
+  it("waits for the launch screens to end", async () => {
+    vi.useFakeTimers();
+    const calls: string[] = [];
+    (window as { openfrontDesktop?: unknown }).openfrontDesktop = {
+      steam: {
+        unlockAchievement: async (name: string) => {
+          calls.push(name);
+          return { ok: true, unlocked: false };
+        },
+      },
+    };
+    const splash = document.createElement("div");
+    splash.id = "territorium-splash";
+    document.body.appendChild(splash);
+    unlock([A.pioneer]);
+    vi.advanceTimersByTime(2000);
+    expect(calls).toEqual([]);
+    splash.remove();
+    vi.advanceTimersByTime(600);
+    expect(calls).toEqual([A.pioneer]);
+    delete (window as { openfrontDesktop?: unknown }).openfrontDesktop;
+    vi.useRealTimers();
   });
 });

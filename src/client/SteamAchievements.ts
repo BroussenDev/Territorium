@@ -186,10 +186,24 @@ export function achievementsAvailable(): boolean {
 
 const sent = new Set<string>();
 
+/** The Steam app's launch screens (bridge.js) are still up. */
+function launchScreensShowing(): boolean {
+  return (
+    typeof document !== "undefined" &&
+    document.getElementById("territorium-splash") !== null
+  );
+}
+
 /** Unlocks each achievement once per session; Steam ignores repeats too. */
 export function unlock(ids: readonly AchievementId[]): void {
   const bridge = unlockBridge();
   if (bridge === null) return;
+  // Never during the Steam app's launch screens: Steam would play its
+  // sound over them. Held until they are gone, then unlocked.
+  if (launchScreensShowing()) {
+    setTimeout(() => unlock(ids), 500);
+    return;
+  }
   for (const id of ids) {
     if (sent.has(id)) continue;
     sent.add(id);
