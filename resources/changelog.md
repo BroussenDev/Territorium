@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.132
+
+🏆 **Territorium's own achievement popup**
+
+- Achievements now pop up in Territorium's colours: a gold-framed emblem that slides in, a shine across the card and a bar for the time it stays.
+
 ## v0.1.131
 
 🏆 **Achievements, Steam style**

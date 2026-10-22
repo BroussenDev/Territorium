@@ -42,7 +42,7 @@ const trophy = html`<svg
   class="size-9"
   aria-hidden="true"
   fill="none"
-  stroke="#c7d5e0"
+  stroke="#f2d27a"
   stroke-width="1.8"
   stroke-linecap="round"
   stroke-linejoin="round"
@@ -91,37 +91,120 @@ export class AchievementToast extends LitElement {
   render() {
     const t = this.current;
     if (t === null) return nothing;
-    // Drawn like Steam's own notification: the overlay can't show it here.
-    return html`<div
-      role="status"
-      aria-live="polite"
-      style="font-family:'Motiva Sans','Segoe UI',Arial,sans-serif"
-      class="pointer-events-none fixed bottom-24 right-4 z-[100000] flex w-[324px] max-w-[calc(100vw-2rem)] items-center gap-3 rounded-[4px] border border-white/[0.06] bg-[linear-gradient(180deg,#2a2e36,#1c1f25)] p-2.5 shadow-[0_6px_24px_rgba(0,0,0,0.7)] transition-[opacity,transform] duration-300 ease-out ${this
-        .leaving
-        ? "translate-y-3 opacity-0"
-        : "translate-y-0 opacity-100"}"
-    >
-      <div class="size-16 shrink-0 overflow-hidden rounded-[3px] bg-[#16181d]">
-        ${t.icon
-          ? html`<img src=${t.icon} alt="" class="size-16" />`
-          : html`<div class="flex size-16 items-center justify-center">
-              ${trophy}
-            </div>`}
-      </div>
-      <div class="min-w-0 leading-tight">
-        <div class="text-[12px] text-[#9da5b0]">
-          ${translateText("achievements.unlocked")}
+    // Territorium's own notification (Steam's overlay can't draw over the
+    // webview): a gold-framed emblem that slides in, a light sweep across
+    // the card, and a bar running down the time it stays.
+    return html`<style>
+        @keyframes ach-in {
+          from {
+            transform: translateX(120%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        @keyframes ach-sweep {
+          from {
+            transform: translateX(-120%) skewX(-20deg);
+          }
+          to {
+            transform: translateX(320%) skewX(-20deg);
+          }
+        }
+        @keyframes ach-emblem {
+          0% {
+            transform: scale(0.4) rotate(-12deg);
+            opacity: 0;
+          }
+          60% {
+            transform: scale(1.12) rotate(3deg);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1) rotate(0);
+          }
+        }
+        @keyframes ach-time {
+          from {
+            transform: scaleX(1);
+          }
+          to {
+            transform: scaleX(0);
+          }
+        }
+        .ach-card {
+          animation: ach-in 420ms cubic-bezier(0.2, 0.9, 0.25, 1.15) both;
+        }
+        .ach-sweep {
+          animation: ach-sweep 1.1s 350ms ease-out both;
+        }
+        .ach-emblem {
+          animation: ach-emblem 600ms 200ms cubic-bezier(0.2, 0.9, 0.25, 1.2)
+            both;
+        }
+        .ach-time {
+          animation: ach-time ${SHOW_MS}ms linear both;
+          transform-origin: left;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ach-card,
+          .ach-sweep,
+          .ach-emblem {
+            animation: none;
+          }
+        }
+      </style>
+      <div
+        role="status"
+        aria-live="polite"
+        class="pointer-events-none fixed bottom-24 right-5 z-[100000] w-[360px] max-w-[calc(100vw-2.5rem)] transition-opacity duration-300 ${this
+          .leaving
+          ? "opacity-0"
+          : "opacity-100"}"
+      >
+        <div
+          class="ach-card relative overflow-hidden rounded-xl border border-[#e8b84a]/60 bg-[linear-gradient(150deg,#123a2c_0%,#0b1f18_55%,#08130f_100%)] shadow-[0_12px_32px_rgba(0,0,0,0.65),0_0_24px_rgba(232,184,74,0.18)]"
+        >
+          <div
+            class="ach-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-[linear-gradient(90deg,transparent,rgba(255,236,170,0.22),transparent)]"
+          ></div>
+          <div class="relative flex items-center gap-3.5 p-3.5">
+            <div
+              class="ach-emblem relative flex size-[60px] shrink-0 items-center justify-center rounded-lg bg-[radial-gradient(circle_at_50%_35%,#2c5a45,#0d2219)] shadow-[inset_0_0_0_2px_#e8b84a,0_0_18px_rgba(232,184,74,0.45)]"
+            >
+              ${t.icon
+                ? html`<img
+                    src=${t.icon}
+                    alt=""
+                    class="size-[52px] rounded-md"
+                  />`
+                : trophy}
+            </div>
+            <div class="min-w-0">
+              <div class="text-[12px] font-semibold text-[#f2d27a]">
+                ${translateText("achievements.unlocked")}
+              </div>
+              <div
+                class="mt-0.5 truncate font-display text-[17px] font-bold text-white"
+              >
+                ${t.name}
+              </div>
+              ${t.description
+                ? html`<div class="mt-0.5 line-clamp-2 text-xs text-white/70">
+                    ${t.description}
+                  </div>`
+                : nothing}
+            </div>
+          </div>
+          <div class="h-[3px] w-full bg-black/40">
+            <div
+              class="ach-time h-full bg-[linear-gradient(90deg,#34d399,#e8b84a)]"
+            ></div>
+          </div>
         </div>
-        <div class="mt-0.5 truncate text-[15px] font-semibold text-white">
-          ${t.name}
-        </div>
-        ${t.description
-          ? html`<div class="mt-0.5 line-clamp-2 text-[12px] text-[#8f98a0]">
-              ${t.description}
-            </div>`
-          : nothing}
-      </div>
-    </div>`;
+      </div>`;
   }
 }
 
