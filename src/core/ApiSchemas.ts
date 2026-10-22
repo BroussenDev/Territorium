@@ -887,6 +887,9 @@ export const RankedQueueStateSchema = z.union([
     lowMin: z.number(),
     startsIn: z.number().nullable(),
     lowIn: z.number(),
+    // The ratings searched now (wider the longer the wait), or null once
+    // every level is. Absent from an API that predates level matching.
+    searching: z.object({ from: z.number(), to: z.number() }).nullish(),
   }),
 ]);
 export type RankedQueueState = z.infer<typeof RankedQueueStateSchema>;

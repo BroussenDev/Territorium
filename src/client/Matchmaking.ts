@@ -30,6 +30,7 @@ interface QueueView {
   lowMin: number;
   startsIn: number | null;
   lowIn: number;
+  searching?: { from: number; to: number } | null;
   receivedAt: number;
 }
 
@@ -142,8 +143,18 @@ export class MatchmakingModal extends BaseModal {
           ${q.count}<span class="text-white/40 text-2xl"> / ${q.max}</span>
         </p>
         <p class="text-sm text-white/60">
-          ${translateText("ranked.players_in_queue")}
+          ${translateText("ranked.players_your_level")}
         </p>
+        ${q.searching === undefined
+          ? ""
+          : html`<p class="text-xs text-white/50 tabular-nums">
+              ${q.searching === null
+                ? translateText("ranked.searching_any_level")
+                : translateText("ranked.searching_range", {
+                    from: q.searching.from,
+                    to: q.searching.to,
+                  })}
+            </p>`}
         <div class="w-56 h-1.5 rounded-full bg-white/10 overflow-hidden">
           <div
             class="h-full bg-emerald-500 transition-all"

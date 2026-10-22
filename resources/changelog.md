@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.136
+
+🎯 **Ranked matches by level**
+
+- The ranked queue now matches you with players close to your rating, and widens the search the longer you wait.
+- After three minutes every level is accepted, so a match always starts even when few players are online.
+- The search screen shows the ratings being searched.
+
 ## v0.1.135
 
 ⚓ **Sinking warships look like ours**
