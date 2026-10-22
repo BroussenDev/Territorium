@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.134
+
+🔄 **Updates without cutting games**
+
+- Game servers now report how many matches people are playing on them, so an update can wait for each server's last match to end before restarting it.
+
 ## v0.1.133
 
 🏆 **Steam's own achievement popup**

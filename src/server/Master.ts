@@ -173,7 +173,7 @@ export async function startMaster() {
 
   // A server that registers schedules nothing until the API calls it open: a
   // mistyped letter must not mint lobbies under a letter routed elsewhere.
-  const registers = checkinBody(0) !== null;
+  const registers = checkinBody(0, 0) !== null;
   lobbyService = new MasterLobbyService(playlist, log, registers);
   lobbyService.setServerStatus(serverControl.get());
 
@@ -191,7 +191,7 @@ export async function startMaster() {
   // workers fork so the first roster normally lands before scheduling
   // begins; until it does, and whenever it stops, the master schedules its
   // own lobbies exactly as it does without a coordinator.
-  const hello = checkinBody(0);
+  const hello = checkinBody(0, 0);
   const coordinator = coordinatorUrl(registeredSite());
   if (coordinator !== null && hello !== null) {
     log.info(`Joining lobby coordinator at ${coordinator}`);
@@ -282,7 +282,10 @@ export async function startMaster() {
     );
     let lastRefusal: string | null = null;
     startPolling(async () => {
-      const body = checkinBody(lobbyService.liveGames());
+      const body = checkinBody(
+        lobbyService.liveGames(),
+        lobbyService.busyGames(),
+      );
       if (body === null) return;
       const result = await sendCheckin(body);
       if (isRefusal(result)) {

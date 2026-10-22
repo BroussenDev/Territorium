@@ -61,4 +61,45 @@ describe("MasterLobbyService.liveGames", () => {
     service.removeWorker(0);
     expect(service.liveGames()).toBe(0);
   });
+
+  // A rolling update (the API's deploy) waits for a fenced server to reach
+  // zero busy games: games someone is connected to, lobbies included. The
+  // queued empty public lobbies a server always keeps are not counted, so
+  // an idle server is at zero.
+  it("counts the games someone is connected to as busy", () => {
+    const w0 = createMockWorker();
+    const w1 = createMockWorker();
+    service.registerWorker(0, w0 as any);
+    service.registerWorker(1, w1 as any);
+    const game = (gameID: string, phase: "lobby" | "active") => ({
+      gameID,
+      kind: "ffa",
+      phase,
+      players: 3,
+      map: "World",
+      mode: "Free For All",
+      createdAt: 1,
+      startedAt: phase === "active" ? 2 : null,
+    });
+    w0.emit("message", {
+      type: "lobbyList",
+      lobbies: [],
+      liveGames: 6,
+      games: [game("a1", "active"), game("a2", "lobby")],
+    });
+    w1.emit("message", {
+      type: "lobbyList",
+      lobbies: [],
+      liveGames: 4,
+      games: [],
+    });
+    expect(service.busyGames()).toBe(2);
+    w0.emit("message", {
+      type: "lobbyList",
+      lobbies: [],
+      liveGames: 5,
+      games: [],
+    });
+    expect(service.busyGames()).toBe(0);
+  });
 });

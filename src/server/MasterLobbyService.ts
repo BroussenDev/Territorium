@@ -217,6 +217,13 @@ export class MasterLobbyService {
     return total;
   }
 
+  // Games someone is connected to, lobbies included: what a restart would
+  // cut. Queued empty lobbies are not counted, so a fenced server reaches
+  // zero once its last match is over (the rolling update waits for that).
+  busyGames(): number {
+    return this.runningGames().games.length;
+  }
+
   isHealthy(): boolean {
     // We consider the lobby service healthy if at least half of the workers are ready.
     // This allows for some leeway if a worker crashes.

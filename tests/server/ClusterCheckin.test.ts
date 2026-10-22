@@ -32,13 +32,14 @@ describe("checkinBody", () => {
 
   test("registers under the apex when the deployment sits behind one", () => {
     vi.stubEnv("SITE_HOST", "openfront.io");
-    expect(checkinBody(7)).toEqual({
+    expect(checkinBody(7, 2)).toEqual({
       site: "openfront.io",
       letter: "a",
       host: "blue.openfront.io",
       version: "bfd5563a11111111111111111111111111111111",
       numWorkers: 4,
       liveGames: 7,
+      busyGames: 2,
     });
   });
 
@@ -54,13 +55,14 @@ describe("checkinBody", () => {
     vi.stubEnv("SUBDOMAIN", "main");
     vi.stubEnv("SITE_HOST", "main.openfront.dev");
     vi.stubEnv("NUM_WORKERS", "2");
-    expect(checkinBody(3)).toEqual({
+    expect(checkinBody(3, 2)).toEqual({
       site: "main.openfront.dev",
       letter: "a",
       host: "main.server.openfront.dev",
       version: "bfd5563a11111111111111111111111111111111",
       numWorkers: 2,
       liveGames: 3,
+      busyGames: 2,
     });
   });
 
@@ -89,7 +91,7 @@ describe("checkinBody", () => {
       vi.stubEnv("DOMAIN", domain);
       vi.stubEnv("SUBDOMAIN", subdomain);
       vi.stubEnv("NUM_WORKERS", String(numWorkers));
-      expect(checkinBody(0)).toMatchObject({
+      expect(checkinBody(0, 2)).toMatchObject({
         site: host,
         host,
         letter: "a",
@@ -105,7 +107,7 @@ describe("checkinBody", () => {
   test("reports the machine it runs on when deploy.sh supplied one", () => {
     vi.stubEnv("SITE_HOST", "openfront.io");
     vi.stubEnv("MACHINE", "falk2");
-    expect(checkinBody(7)).toMatchObject({ machine: "falk2" });
+    expect(checkinBody(7, 2)).toMatchObject({ machine: "falk2" });
   });
 
   // Omitted, not null and not empty: the registry's CheckInSchema on infra
@@ -120,7 +122,7 @@ describe("checkinBody", () => {
     vi.stubEnv("SITE_HOST", "openfront.io");
     vi.stubEnv("MACHINE", value);
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
-    const body = checkinBody(7);
+    const body = checkinBody(7, 2);
     expect(body).not.toBeNull();
     expect(body && "machine" in body).toBe(false);
     warn.mockRestore();
@@ -132,17 +134,18 @@ describe("checkinBody", () => {
     vi.stubEnv("SITE_HOST", "openfront.io");
     vi.stubEnv("MACHINE", "falk 2");
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
-    expect(checkinBody(7)).toEqual({
+    expect(checkinBody(7, 2)).toEqual({
       site: "openfront.io",
       letter: "a",
       host: "blue.openfront.io",
       version: "bfd5563a11111111111111111111111111111111",
       numWorkers: 4,
       liveGames: 7,
+      busyGames: 2,
     });
     // Once, not once per beat: check-in runs every 10s forever, so a value
     // nobody is going to fix would otherwise fill the logs.
-    checkinBody(7);
+    checkinBody(7, 2);
     expect(warn).toHaveBeenCalledTimes(1);
     warn.mockRestore();
   });
@@ -152,7 +155,7 @@ describe("checkinBody", () => {
     vi.stubEnv("SUBDOMAIN", "");
     vi.stubEnv("DOMAIN", "localhost");
     vi.stubEnv("GAME_ENV", "dev");
-    expect(checkinBody(0)).toBeNull();
+    expect(checkinBody(0, 2)).toBeNull();
   });
 });
 
@@ -164,6 +167,7 @@ describe("sendCheckin", () => {
     version: "bfd5563a11111111111111111111111111111111",
     numWorkers: 4,
     liveGames: 7,
+    busyGames: 2,
   };
 
   beforeEach(() => {
