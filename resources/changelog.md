@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.135
+
+⚓ **Sinking warships look like ours**
+
+- A destroyed warship now sinks as Territorium's own warship, not the old one.
+
 ## v0.1.134
 
 🔄 **Updates without cutting games**
