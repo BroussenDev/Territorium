@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.142
+
+🔐 **Safer accounts**
+
+- When your account signs in on a new device, you get an email with the device and an approximate place, and a button to sign out everywhere.
+- Turn on two-step sign-in in your account settings: on a new device, signing in also asks for a code sent by email.
+
 ## v0.1.141
 
 ✉️ **Emails in your language**

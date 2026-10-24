@@ -99,6 +99,10 @@
     "tab_games": "Oyunlar",
     "tab_stats": "İstatistikler",
     "title": "Hesap",
+    "two_factor_desc": "Hiç kullanmadığın bir cihazda giriş, e-postayla gönderilen bir kod da ister.",
+    "two_factor_failed": "İki adımlı giriş değiştirilemedi. Tekrar dene.",
+    "two_factor_no_email": "Açmak için hesabına bir e-posta ekle veya Google'ı bağla.",
+    "two_factor_title": "İki adımlı giriş",
     "unclaimed_rewards": "Talep Edilmeyen Ödüller",
     "username_bare_taken_body": "\"{requested}\" başka bir aboneye ait. \"{requested}.1234\" gibi bir numara eklenmiş olarak kullanabilirsiniz, ancak doğrulanmış çeki göstermez. Bu, ad değişikliğinizi kullanır. Bir numarayla mı kullanacaksınız?",
     "username_bare_taken_confirm": "Bir numarayla kullanın",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Ödüller"
+  },
+  "security_modal": {
+    "code_confirm": "Onayla",
+    "code_desc": "Hesabının e-posta adresine 6 haneli bir kod gönderdik. Bu cihazda girişi tamamlamak için kodu gir.",
+    "code_expired": "Bu kodun süresi doldu. Girişe baştan başla.",
+    "code_label": "Kod",
+    "code_locked": "Çok fazla yanlış kod. Girişe baştan başla.",
+    "code_network": "Sunucuya ulaşılamıyor. Tekrar dene.",
+    "code_title": "Sen olduğunu doğrula",
+    "code_wrong": "Yanlış kod. {n} deneme hakkın kaldı.",
+    "revoke_confirm": "Her yerden çıkış yap",
+    "revoke_desc": "Bu, hesabının tüm cihazlardaki tüm oturumlarını kapatır, bu cihaz da dahil. Ardından yeniden giriş yap ve giriş yaptığın hizmetteki şifreni değiştir.",
+    "revoke_done": "Hesabının tüm oturumları kapatıldı.",
+    "revoke_invalid": "Bu bağlantı artık geçerli değil. Giriş yap, ardından hesabından tüm cihazlarda çıkış yap.",
+    "revoke_title": "Her yerden çıkış yapılsın mı?"
   },
   "select_lang": {
     "title": "Dil seç"

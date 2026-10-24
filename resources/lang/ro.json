@@ -99,6 +99,10 @@
     "tab_games": "Jocuri",
     "tab_stats": "Statistici",
     "title": "Cont",
+    "two_factor_desc": "Pe un dispozitiv pe care nu l-ai folosit niciodată, conectarea cere și un cod trimis pe e-mail.",
+    "two_factor_failed": "Conectarea în doi pași nu a putut fi modificată. Încearcă din nou.",
+    "two_factor_no_email": "Adaugă un e-mail în cont sau conectează Google ca să o activezi.",
+    "two_factor_title": "Conectare în doi pași",
     "unclaimed_rewards": "Recompense Necolectate",
     "username_bare_taken_body": "„{requested}„ este deținut de un alt abonat. Îl puteți folosi cu un număr adăugat, cum ar fi „{requested}. 234„, dar nu va afișa verificarea verificată. Aceasta folosește schimbarea numelui. Folosește-l cu un număr?",
     "username_bare_taken_confirm": "Folosiți-l cu un număr",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompense"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmă",
+    "code_desc": "Am trimis un cod de 6 cifre la e-mailul contului tău. Introdu-l ca să termini conectarea pe acest dispozitiv.",
+    "code_expired": "Codul a expirat. Reia conectarea.",
+    "code_label": "Cod",
+    "code_locked": "Prea multe coduri greșite. Reia conectarea.",
+    "code_network": "Serverul nu poate fi contactat. Încearcă din nou.",
+    "code_title": "Confirmă că ești tu",
+    "code_wrong": "Cod greșit. Mai ai {n} încercări.",
+    "revoke_confirm": "Deconectează-te peste tot",
+    "revoke_desc": "Asta închide toate sesiunile contului tău, pe toate dispozitivele, inclusiv acesta. Apoi conectează-te din nou și schimbă parola serviciului cu care te conectezi.",
+    "revoke_done": "Toate sesiunile contului tău sunt închise.",
+    "revoke_invalid": "Acest link nu mai este valabil. Conectează-te, apoi deconectează toate dispozitivele din contul tău.",
+    "revoke_title": "Te deconectezi peste tot?"
   },
   "select_lang": {
     "title": "Selectarea limbii"

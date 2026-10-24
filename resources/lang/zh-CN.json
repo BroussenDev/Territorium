@@ -99,6 +99,10 @@
     "tab_games": "游戏",
     "tab_stats": "统计数据",
     "title": "账号",
+    "two_factor_desc": "在从未使用过的设备上登录时，还需要输入通过邮件发送的验证码。",
+    "two_factor_failed": "无法更改两步登录设置。请重试。",
+    "two_factor_no_email": "请为账号添加邮箱或关联 Google 后再开启。",
+    "two_factor_title": "两步登录",
     "unclaimed_rewards": "无人认领的奖励",
     "username_bare_taken_body": "“{requested}”由另一个订阅者持有。您可以在添加数字后使用它，例如“{requested}.1234”，但它不会显示经过验证的支票。这会使用您的姓名更改。与号码一起使用吗？",
     "username_bare_taken_confirm": "与号码一起使用",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "奖励"
+  },
+  "security_modal": {
+    "code_confirm": "确认",
+    "code_desc": "我们已向你账号的邮箱发送了 6 位验证码。输入验证码即可完成在此设备上的登录。",
+    "code_expired": "验证码已过期。请重新开始登录。",
+    "code_label": "验证码",
+    "code_locked": "错误次数过多。请重新开始登录。",
+    "code_network": "无法连接服务器。请重试。",
+    "code_title": "确认是你本人",
+    "code_wrong": "验证码错误。还剩 {n} 次机会。",
+    "revoke_confirm": "退出所有设备",
+    "revoke_desc": "这会结束你账号在所有设备上的全部会话，包括此设备。之后请重新登录，并修改你用于登录的服务的密码。",
+    "revoke_done": "你账号的所有会话均已结束。",
+    "revoke_invalid": "此链接已失效。请先登录，然后在账号中退出所有设备。",
+    "revoke_title": "要退出所有设备吗？"
   },
   "select_lang": {
     "title": "选择语言"

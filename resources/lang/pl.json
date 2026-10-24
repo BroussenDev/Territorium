@@ -99,6 +99,10 @@
     "tab_games": "Zawody sportowe",
     "tab_stats": "Statystyki",
     "title": "Konto",
+    "two_factor_desc": "Na urządzeniu, którego nigdy nie używałeś, logowanie wymaga też kodu wysłanego e-mailem.",
+    "two_factor_failed": "Nie udało się zmienić logowania dwuetapowego. Spróbuj ponownie.",
+    "two_factor_no_email": "Dodaj e-mail do konta lub połącz Google, aby je włączyć.",
+    "two_factor_title": "Logowanie dwuetapowe",
     "unclaimed_rewards": "Nieodebrane nagrody",
     "username_bare_taken_body": "„{requested}” jest w posiadaniu innego abonenta. Możesz go użyć z dodanym numerem, np. „{requested}.1234”, ale nie wyświetli on zweryfikowanego czeku. Wykorzystuje to zmianę Twojego imienia. Używać go z liczbą?",
     "username_bare_taken_confirm": "Użyj go z liczbą",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Nagrody"
+  },
+  "security_modal": {
+    "code_confirm": "Potwierdź",
+    "code_desc": "Wysłaliśmy 6-cyfrowy kod na e-mail Twojego konta. Wpisz go, aby dokończyć logowanie na tym urządzeniu.",
+    "code_expired": "Ten kod wygasł. Zacznij logowanie od nowa.",
+    "code_label": "Kod",
+    "code_locked": "Zbyt wiele błędnych kodów. Zacznij logowanie od nowa.",
+    "code_network": "Brak połączenia z serwerem. Spróbuj ponownie.",
+    "code_title": "Potwierdź, że to Ty",
+    "code_wrong": "Błędny kod. Pozostało prób: {n}.",
+    "revoke_confirm": "Wyloguj wszędzie",
+    "revoke_desc": "To zamyka wszystkie sesje Twojego konta na wszystkich urządzeniach, także na tym. Potem zaloguj się ponownie i zmień hasło w serwisie, przez który się logujesz.",
+    "revoke_done": "Wszystkie sesje Twojego konta zostały zamknięte.",
+    "revoke_invalid": "Ten link nie jest już ważny. Zaloguj się, a potem wyloguj wszystkie urządzenia ze swojego konta.",
+    "revoke_title": "Wylogować wszędzie?"
   },
   "select_lang": {
     "title": "Wybierz język"

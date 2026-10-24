@@ -99,6 +99,10 @@
     "tab_games": "Mängud",
     "tab_stats": "Statistika",
     "title": "Konto",
+    "two_factor_desc": "Seadmes, mida sa pole kunagi kasutanud, küsib sisselogimine ka e-postiga saadetud koodi.",
+    "two_factor_failed": "Kaheastmelist sisselogimist ei õnnestunud muuta. Proovi uuesti.",
+    "two_factor_no_email": "Selle sisselülitamiseks lisa kontole e-posti aadress või ühenda Google.",
+    "two_factor_title": "Kaheastmeline sisselogimine",
     "unclaimed_rewards": "Väljanõudmata preemiad",
     "username_bare_taken_body": "\"{requested}\" on mõne teise tellija käes. Saate seda kasutada koos lisatud numbriga, näiteks \"{requested}.1234\", kuid see ei näita kinnitatud tšekki. See kasutab teie nimemuutust. Kas kasutada seda numbriga?",
     "username_bare_taken_confirm": "Kasutage seda numbriga",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Preemiad"
+  },
+  "security_modal": {
+    "code_confirm": "Kinnita",
+    "code_desc": "Saatsime sinu konto e-posti aadressile 6-kohalise koodi. Sisesta see, et lõpetada sisselogimine selles seadmes.",
+    "code_expired": "Kood on aegunud. Alusta sisselogimist uuesti.",
+    "code_label": "Kood",
+    "code_locked": "Liiga palju valesid koode. Alusta sisselogimist uuesti.",
+    "code_network": "Serveriga ei saa ühendust. Proovi uuesti.",
+    "code_title": "Kinnita, et see oled sina",
+    "code_wrong": "Vale kood. Katseid jäänud: {n}.",
+    "revoke_confirm": "Logi kõikjalt välja",
+    "revoke_desc": "See sulgeb sinu konto kõik seansid kõigis seadmetes, ka selles. Seejärel logi uuesti sisse ja muuda parooli teenuses, millega sisse logid.",
+    "revoke_done": "Sinu konto kõik seansid on suletud.",
+    "revoke_invalid": "See link ei kehti enam. Logi sisse ja logi siis oma kontol kõik seadmed välja.",
+    "revoke_title": "Kas logida kõikjalt välja?"
   },
   "select_lang": {
     "title": "Vali keel"

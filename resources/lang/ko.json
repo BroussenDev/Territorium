@@ -99,6 +99,10 @@
     "tab_games": "게임",
     "tab_stats": "통계",
     "title": "계정",
+    "two_factor_desc": "한 번도 사용하지 않은 기기에서는 로그인할 때 이메일로 받은 코드도 필요합니다.",
+    "two_factor_failed": "2단계 로그인을 변경하지 못했습니다. 다시 시도하세요.",
+    "two_factor_no_email": "켜려면 계정에 이메일을 추가하거나 Google을 연결하세요.",
+    "two_factor_title": "2단계 로그인",
     "unclaimed_rewards": "미수령 보상",
     "username_bare_taken_body": "“{requested}”는 다른 가입자가 사용 중입니다. “{requested}.1234”처럼 숫자를 추가하여 사용할 수는 있지만, 인증 표시가 나타나지 않습니다. 이 경우 이름이 변경됩니다. 숫자를 추가하여 사용하시겠습니까?",
     "username_bare_taken_confirm": "숫자를 추가하여 사용",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "보상"
+  },
+  "security_modal": {
+    "code_confirm": "확인",
+    "code_desc": "계정 이메일로 6자리 코드를 보냈습니다. 이 기기에서 로그인을 마치려면 코드를 입력하세요.",
+    "code_expired": "코드가 만료되었습니다. 처음부터 다시 로그인하세요.",
+    "code_label": "코드",
+    "code_locked": "틀린 코드가 너무 많습니다. 처음부터 다시 로그인하세요.",
+    "code_network": "서버에 연결할 수 없습니다. 다시 시도하세요.",
+    "code_title": "본인 확인",
+    "code_wrong": "코드가 틀렸습니다. {n}번 남았습니다.",
+    "revoke_confirm": "모든 기기에서 로그아웃",
+    "revoke_desc": "이 기기를 포함한 모든 기기에서 계정의 모든 세션이 종료됩니다. 그런 다음 다시 로그인하고 로그인에 사용하는 서비스의 비밀번호를 변경하세요.",
+    "revoke_done": "계정의 모든 세션이 종료되었습니다.",
+    "revoke_invalid": "이 링크는 더 이상 유효하지 않습니다. 로그인한 뒤 계정에서 모든 기기를 로그아웃하세요.",
+    "revoke_title": "모든 기기에서 로그아웃할까요?"
   },
   "select_lang": {
     "title": "언어 선택"

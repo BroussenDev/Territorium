@@ -306,6 +306,7 @@ export class LangSelector extends LitElement {
       "leaderboard-modal",
       "effects-grid",
       "token-login",
+      "security-modal",
       "tribes-panel",
       "steam-wishlist-button",
       "steam-promo",

@@ -439,6 +439,26 @@ export async function deleteAccount(): Promise<DeleteAccountResult> {
 // (client-driven consent). Called by the consent toast and account settings.
 // Invalidates the cached /users/@me so the new decision is reflected on the
 // next read. Returns true on success.
+// Turns two-step sign-in (an email code on new devices) on or off.
+export async function setTwoFactor(enabled: boolean): Promise<boolean> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/two-factor`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+      },
+      body: JSON.stringify({ enabled }),
+    });
+    if (!response.ok) return false;
+    invalidateUserMe();
+    return true;
+  } catch (e) {
+    console.error("setTwoFactor failed", e);
+    return false;
+  }
+}
+
 export async function setMarketingConsent(
   consented: boolean,
 ): Promise<boolean> {

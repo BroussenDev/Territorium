@@ -332,6 +332,13 @@ export const UserMeResponseSchema = z.object({
     // player's current decision; `hasEmail` is whether a verified contact email
     // exists to subscribe. Optional so an older API without the field is treated
     // as "no consent UI".
+    // Two-step sign-in by email code on new devices: whether it is on, and
+    // whether the account has an email to send codes to. Absent on an older
+    // API.
+    twoFactor: z
+      .object({ enabled: z.boolean(), available: z.boolean() })
+      .nullable()
+      .optional(),
     marketingConsent: z
       .object({
         consented: z.enum(["approved", "denied", "no_response"]),

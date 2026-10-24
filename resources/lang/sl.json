@@ -99,6 +99,10 @@
     "tab_games": "igre",
     "tab_stats": "Statistika",
     "title": "Račun",
+    "two_factor_desc": "Na napravi, ki je še nisi uporabil, prijava zahteva tudi kodo, poslano po e-pošti.",
+    "two_factor_failed": "Prijave v dveh korakih ni bilo mogoče spremeniti. Poskusi znova.",
+    "two_factor_no_email": "Dodaj e-pošto v svoj račun ali poveži Google, da jo vklopiš.",
+    "two_factor_title": "Prijava v dveh korakih",
     "unclaimed_rewards": "Neprevzete nagrade",
     "username_bare_taken_body": "»{requested}« ima drug naročnik. Uporabite ga lahko z dodano številko, na primer »{requested}.1234«, vendar ne bo prikazal preverjenega čeka. To uporablja vašo spremembo imena. Uporabite s številko?",
     "username_bare_taken_confirm": "Uporabite ga s številko",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Nagrade"
+  },
+  "security_modal": {
+    "code_confirm": "Potrdi",
+    "code_desc": "Na e-pošto tvojega računa smo poslali 6-mestno kodo. Vnesi jo, da dokončaš prijavo na tej napravi.",
+    "code_expired": "Koda je potekla. Začni prijavo znova.",
+    "code_label": "Koda",
+    "code_locked": "Preveč napačnih kod. Začni prijavo znova.",
+    "code_network": "Strežnik ni dosegljiv. Poskusi znova.",
+    "code_title": "Potrdi, da si to ti",
+    "code_wrong": "Napačna koda. Preostali poskusi: {n}.",
+    "revoke_confirm": "Odjava povsod",
+    "revoke_desc": "S tem se zaprejo vse seje tvojega računa na vseh napravah, tudi na tej. Nato se znova prijavi in zamenjaj geslo pri storitvi, s katero se prijavljaš.",
+    "revoke_done": "Vse seje tvojega računa so zaprte.",
+    "revoke_invalid": "Ta povezava ni več veljavna. Prijavi se in nato v svojem računu odjavi vse naprave.",
+    "revoke_title": "Odjava povsod?"
   },
   "select_lang": {
     "title": "Izberite jezik"

@@ -99,6 +99,10 @@
     "tab_games": "Juegos",
     "tab_stats": "Estadísticas",
     "title": "cuenta",
+    "two_factor_desc": "En un dispositivo que nunca has usado, iniciar sesión también pide un código enviado por correo.",
+    "two_factor_failed": "No se pudo cambiar el inicio de sesión en dos pasos. Inténtalo de nuevo.",
+    "two_factor_no_email": "Añade un correo a tu cuenta, o vincula Google, para activarlo.",
+    "two_factor_title": "Inicio de sesión en dos pasos",
     "unclaimed_rewards": "Recompensas no reclamadas",
     "username_bare_taken_body": "\"{requested}\" está en manos de otro suscriptor. Puede usarlo con un número agregado, como \"{requested}.1234\", pero no mostrará el cheque verificado. Esto utiliza su cambio de nombre. ¿Usarlo con un número?",
     "username_bare_taken_confirm": "Úselo con un número",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompensas"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmar",
+    "code_desc": "Hemos enviado un código de 6 cifras al correo de tu cuenta. Escríbelo para terminar de iniciar sesión en este dispositivo.",
+    "code_expired": "Este código ha caducado. Vuelve a iniciar sesión.",
+    "code_label": "Código",
+    "code_locked": "Demasiados códigos incorrectos. Vuelve a iniciar sesión.",
+    "code_network": "No se puede conectar con el servidor. Inténtalo de nuevo.",
+    "code_title": "Confirma que eres tú",
+    "code_wrong": "Código incorrecto. Te quedan {n} intentos.",
+    "revoke_confirm": "Cerrar sesión en todas partes",
+    "revoke_desc": "Esto cierra todas las sesiones de tu cuenta en todos los dispositivos, incluido este. Después vuelve a iniciar sesión y cambia la contraseña del servicio con el que entras.",
+    "revoke_done": "Todas las sesiones de tu cuenta están cerradas.",
+    "revoke_invalid": "Este enlace ya no es válido. Inicia sesión y cierra la sesión en todos los dispositivos desde tu cuenta.",
+    "revoke_title": "¿Cerrar sesión en todas partes?"
   },
   "select_lang": {
     "title": "Selecciona idioma"

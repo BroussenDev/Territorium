@@ -99,6 +99,10 @@
     "tab_games": "Giochi",
     "tab_stats": "Statistiche",
     "title": "Account",
+    "two_factor_desc": "Su un dispositivo mai usato, l'accesso chiede anche un codice inviato via email.",
+    "two_factor_failed": "Impossibile modificare l'accesso in due passaggi. Riprova.",
+    "two_factor_no_email": "Aggiungi un'email al tuo account, o collega Google, per attivarlo.",
+    "two_factor_title": "Accesso in due passaggi",
     "unclaimed_rewards": "Premi non reclamati",
     "username_bare_taken_body": "\"{requested}\" è detenuto da un altro abbonato. Puoi usarlo con un numero aggiunto, come \"{requested}.1234\", ma non mostrerà il controllo verificato. Questo utilizza il cambio del tuo nome. Usarlo con un numero?",
     "username_bare_taken_confirm": "Usalo con un numero",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Premi"
+  },
+  "security_modal": {
+    "code_confirm": "Conferma",
+    "code_desc": "Abbiamo inviato un codice di 6 cifre all'email del tuo account. Inseriscilo per completare l'accesso su questo dispositivo.",
+    "code_expired": "Questo codice è scaduto. Ricomincia l'accesso.",
+    "code_label": "Codice",
+    "code_locked": "Troppi codici errati. Ricomincia l'accesso.",
+    "code_network": "Impossibile raggiungere il server. Riprova.",
+    "code_title": "Conferma che sei tu",
+    "code_wrong": "Codice errato. Restano {n} tentativi.",
+    "revoke_confirm": "Disconnetti ovunque",
+    "revoke_desc": "Chiude tutte le sessioni del tuo account su tutti i dispositivi, compreso questo. Poi accedi di nuovo e cambia la password del servizio con cui accedi.",
+    "revoke_done": "Tutte le sessioni del tuo account sono chiuse.",
+    "revoke_invalid": "Questo link non è più valido. Accedi, poi disconnetti tutti i dispositivi dal tuo account.",
+    "revoke_title": "Disconnettersi ovunque?"
   },
   "select_lang": {
     "title": "Seleziona Lingua"

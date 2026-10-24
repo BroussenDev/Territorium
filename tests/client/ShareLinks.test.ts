@@ -9,6 +9,7 @@ vi.mock("../../src/client/Utils", () => ({
   showToast: vi.fn(),
   translateText: vi.fn((key: string) => key),
   generateCryptoRandomUUID: vi.fn(() => "uuid"),
+  currentLanguage: vi.fn(() => "en"),
 }));
 
 vi.mock("../../src/client/InGameModal", () => ({

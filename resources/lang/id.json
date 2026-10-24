@@ -99,6 +99,10 @@
     "tab_games": "Pertandingan",
     "tab_stats": "Statistik",
     "title": "Akun",
+    "two_factor_desc": "Di perangkat yang belum pernah kamu pakai, login juga meminta kode yang dikirim lewat email.",
+    "two_factor_failed": "Login dua langkah tidak dapat diubah. Coba lagi.",
+    "two_factor_no_email": "Tambahkan email ke akunmu, atau tautkan Google, untuk mengaktifkannya.",
+    "two_factor_title": "Login dua langkah",
     "unclaimed_rewards": "Hadiah yang Tidak Diklaim",
     "username_bare_taken_body": "\"{requested}\" dipegang oleh pelanggan lain. Anda dapat menggunakannya dengan menambahkan nomor, seperti \"{requested}.1234\", tetapi cek terverifikasi tidak akan ditampilkan. Ini menggunakan perubahan nama Anda. Gunakan dengan nomor?",
     "username_bare_taken_confirm": "Gunakan dengan nomor",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Hadiah"
+  },
+  "security_modal": {
+    "code_confirm": "Konfirmasi",
+    "code_desc": "Kami mengirim kode 6 digit ke email akunmu. Masukkan kode itu untuk menyelesaikan login di perangkat ini.",
+    "code_expired": "Kode ini sudah kedaluwarsa. Mulai login lagi.",
+    "code_label": "Kode",
+    "code_locked": "Terlalu banyak kode salah. Mulai login lagi.",
+    "code_network": "Tidak dapat menghubungi server. Coba lagi.",
+    "code_title": "Konfirmasi bahwa ini kamu",
+    "code_wrong": "Kode salah. Sisa {n} percobaan.",
+    "revoke_confirm": "Keluar dari semua perangkat",
+    "revoke_desc": "Ini menutup semua sesi akunmu di semua perangkat, termasuk perangkat ini. Lalu masuk lagi dan ganti kata sandi di layanan yang kamu pakai untuk masuk.",
+    "revoke_done": "Semua sesi akunmu sudah ditutup.",
+    "revoke_invalid": "Tautan ini sudah tidak berlaku. Masuk, lalu keluar dari semua perangkat melalui akunmu.",
+    "revoke_title": "Keluar dari semua perangkat?"
   },
   "select_lang": {
     "title": "Pilih Bahasa"

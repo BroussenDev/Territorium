@@ -99,6 +99,10 @@
     "tab_games": "Jogos",
     "tab_stats": "Estatísticas",
     "title": "Conta",
+    "two_factor_desc": "Num dispositivo nunca usado, o início de sessão também pede um código enviado por e-mail.",
+    "two_factor_failed": "Não foi possível alterar o início de sessão em dois passos. Tenta novamente.",
+    "two_factor_no_email": "Adiciona um e-mail à tua conta, ou associa o Google, para o ativar.",
+    "two_factor_title": "Início de sessão em dois passos",
     "unclaimed_rewards": "Recompensas não reclamadas",
     "username_bare_taken_body": "\"{requested}\" é propriedade de outro assinante. Pode utilizá-lo com um número adicionado, como \"{requested}. 1234\", mas não mostrará o cheque verificado. Este usa a sua mudança de nome. Usá-lo com um número?",
     "username_bare_taken_confirm": "Utilize-o com um número",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompensas"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmar",
+    "code_desc": "Enviámos um código de 6 dígitos para o e-mail da tua conta. Introduz-o para concluir o início de sessão neste dispositivo.",
+    "code_expired": "Este código expirou. Recomeça o início de sessão.",
+    "code_label": "Código",
+    "code_locked": "Demasiados códigos errados. Recomeça o início de sessão.",
+    "code_network": "Não foi possível contactar o servidor. Tenta novamente.",
+    "code_title": "Confirma que és tu",
+    "code_wrong": "Código errado. Restam {n} tentativas.",
+    "revoke_confirm": "Terminar sessão em todo o lado",
+    "revoke_desc": "Isto termina todas as sessões da tua conta em todos os dispositivos, incluindo este. Depois inicia sessão de novo e muda a palavra-passe do serviço com que entras.",
+    "revoke_done": "Todas as sessões da tua conta foram terminadas.",
+    "revoke_invalid": "Esta ligação já não é válida. Inicia sessão e depois termina a sessão em todos os dispositivos a partir da tua conta.",
+    "revoke_title": "Terminar sessão em todo o lado?"
   },
   "select_lang": {
     "title": "Selecione a Língua"

@@ -2,7 +2,7 @@ import { html, LitElement, nothing, TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { UserMeResponse } from "../../core/ApiSchemas";
 import { isSteamPrimaryUser } from "../AccountIdentity";
-import { deleteAccount, setMarketingConsent } from "../Api";
+import { deleteAccount, setMarketingConsent, setTwoFactor } from "../Api";
 import { clearLocalSession, linkGoogle, sendMagicLink } from "../Auth";
 import { crazyGamesSDK } from "../CrazyGamesSDK";
 import { isDesktopShell } from "../DesktopShell";
@@ -34,6 +34,7 @@ export class AccountSettingsPanel extends LitElement {
   @state() private consentBusy: boolean = false;
   @state() private deleteDialogOpen: boolean = false;
   @state() private deleteBusy: boolean = false;
+  @state() private twoFactorBusy: boolean = false;
 
   createRenderRoot() {
     return this;
@@ -62,7 +63,8 @@ export class AccountSettingsPanel extends LitElement {
   render(): TemplateResult {
     return html`
       <div class="flex flex-col gap-6">
-        ${this.renderMarketingCard()} ${this.renderDeleteAccountCard()}
+        ${this.renderMarketingCard()} ${this.renderTwoFactorCard()}
+        ${this.renderDeleteAccountCard()}
       </div>
     `;
   }
@@ -178,6 +180,60 @@ export class AccountSettingsPanel extends LitElement {
   // button opens a hard confirm (typed confirmation). Hidden on CrazyGames and
   // Steam: the endpoint's credential is the refresh cookie, which isn't usable
   // there (cross-site — see Auth.ts), so the request could never succeed.
+  // Two-step sign-in: on a device the account never used, signing in also
+  // asks for a code sent by email. Needs an email on the account.
+  private renderTwoFactorCard(): TemplateResult | typeof nothing {
+    const twoFactor = this.player?.twoFactor;
+    if (!twoFactor) return nothing;
+    const on = twoFactor.enabled;
+    return html`
+      <div class="bg-white/5 rounded-xl border border-white/10 p-6">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex-1">
+            <div class="text-white font-medium">
+              ${translateText("account_modal.two_factor_title")}
+            </div>
+            <div class="text-white/50 text-sm mt-1">
+              ${twoFactor.available
+                ? translateText("account_modal.two_factor_desc")
+                : translateText("account_modal.two_factor_no_email")}
+            </div>
+          </div>
+          <button
+            role="switch"
+            aria-checked=${on ? "true" : "false"}
+            aria-label=${translateText("account_modal.two_factor_title")}
+            ?disabled=${this.twoFactorBusy || !twoFactor.available}
+            @click=${() => this.toggleTwoFactor(!on)}
+            class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand/50 disabled:opacity-60 ${on
+              ? "bg-brand shadow-[var(--shadow-brand-pill)]"
+              : "bg-white/15"}"
+          >
+            <span
+              class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${on
+                ? "translate-x-6"
+                : "translate-x-1"}"
+            ></span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  private async toggleTwoFactor(enabled: boolean): Promise<void> {
+    const twoFactor = this.player?.twoFactor;
+    if (!twoFactor || this.twoFactorBusy) return;
+    this.twoFactorBusy = true;
+    twoFactor.enabled = enabled;
+    this.requestUpdate();
+    if (!(await setTwoFactor(enabled))) {
+      twoFactor.enabled = !enabled;
+      void showInGameAlert(translateText("account_modal.two_factor_failed"));
+    }
+    this.twoFactorBusy = false;
+    this.requestUpdate();
+  }
+
   private renderDeleteAccountCard(): TemplateResult | typeof nothing {
     if (crazyGamesSDK.isOnCrazyGames() || steamSDK.isOnSteam()) return nothing;
     return html`

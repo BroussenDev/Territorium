@@ -99,6 +99,10 @@
     "tab_games": "Pelit",
     "tab_stats": "Tilastot",
     "title": "Tili",
+    "two_factor_desc": "Laitteella, jota et ole ennen käyttänyt, kirjautuminen pyytää myös sähköpostiin lähetetyn koodin.",
+    "two_factor_failed": "Kaksivaiheista kirjautumista ei voitu muuttaa. Yritä uudelleen.",
+    "two_factor_no_email": "Lisää tiliisi sähköpostiosoite tai yhdistä Google ottaaksesi sen käyttöön.",
+    "two_factor_title": "Kaksivaiheinen kirjautuminen",
     "unclaimed_rewards": "Lunastamattomat palkinnot",
     "username_bare_taken_body": "\"{requested}\" on toisen tilaajan hallussa. Voit käyttää sitä lisätyn numeron kanssa, kuten \"{requested}.1234\", mutta se ei näytä vahvistettua sekkiä. Tämä käyttää nimenmuutostasi. Käytä sitä numeron kanssa?",
     "username_bare_taken_confirm": "Käytä sitä numeron kanssa",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Palkinnot"
+  },
+  "security_modal": {
+    "code_confirm": "Vahvista",
+    "code_desc": "Lähetimme 6-numeroisen koodin tilisi sähköpostiin. Syötä se viimeistelläksesi kirjautumisen tällä laitteella.",
+    "code_expired": "Koodi on vanhentunut. Aloita kirjautuminen alusta.",
+    "code_label": "Koodi",
+    "code_locked": "Liian monta väärää koodia. Aloita kirjautuminen alusta.",
+    "code_network": "Palvelimeen ei saada yhteyttä. Yritä uudelleen.",
+    "code_title": "Vahvista, että se olet sinä",
+    "code_wrong": "Väärä koodi. {n} yritystä jäljellä.",
+    "revoke_confirm": "Kirjaudu ulos kaikkialta",
+    "revoke_desc": "Tämä sulkee tilisi kaikki istunnot kaikilla laitteilla, myös tällä. Kirjaudu sitten uudelleen ja vaihda salasana palvelussa, jolla kirjaudut.",
+    "revoke_done": "Tilisi kaikki istunnot on suljettu.",
+    "revoke_invalid": "Linkki ei ole enää voimassa. Kirjaudu sisään ja kirjaa sitten kaikki laitteet ulos tililtäsi.",
+    "revoke_title": "Kirjaudutaanko ulos kaikkialta?"
   },
   "select_lang": {
     "title": "Valitse kieli"

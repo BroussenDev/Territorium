@@ -99,6 +99,10 @@
     "tab_games": "Games",
     "tab_stats": "Stats",
     "title": "Account",
+    "two_factor_desc": "On a device you never used, signing in also asks for a code sent by email.",
+    "two_factor_failed": "Couldn't change two-step sign-in. Try again.",
+    "two_factor_no_email": "Add an email to your account, or link Google, to turn it on.",
+    "two_factor_title": "Two-step sign-in",
     "unclaimed_rewards": "Unclaimed Rewards",
     "username_bare_taken_body": "\"{requested}\" is held by another subscriber. You can use it with a number added, like \"{requested}.1234\", but it won't show the verified check. This uses your name change. Use it with a number?",
     "username_bare_taken_confirm": "Use it with a number",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Rewards"
+  },
+  "security_modal": {
+    "code_confirm": "Confirm",
+    "code_desc": "We sent a 6-digit code to your account's email. Type it to finish signing in on this device.",
+    "code_expired": "This code has expired. Start signing in again.",
+    "code_label": "Code",
+    "code_locked": "Too many wrong codes. Start signing in again.",
+    "code_network": "Can't reach the server. Try again.",
+    "code_title": "Confirm it's you",
+    "code_wrong": "Wrong code. {n} attempts left.",
+    "revoke_confirm": "Sign out everywhere",
+    "revoke_desc": "This closes every session of your account, on every device, this one included. Then sign in again and change your password on the service you sign in with.",
+    "revoke_done": "Every session of your account is closed.",
+    "revoke_invalid": "This link is no longer valid. Sign in, then log out of all devices from your account.",
+    "revoke_title": "Sign out everywhere?"
   },
   "select_lang": {
     "title": "Select Language"

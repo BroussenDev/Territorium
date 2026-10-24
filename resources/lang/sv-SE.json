@@ -99,6 +99,10 @@
     "tab_games": "Spel",
     "tab_stats": "Statistik",
     "title": "Konto",
+    "two_factor_desc": "På en enhet du aldrig har använt frågar inloggningen också efter en kod via e-post.",
+    "two_factor_failed": "Det gick inte att ändra tvåstegsinloggningen. Försök igen.",
+    "two_factor_no_email": "Lägg till en e-postadress på ditt konto, eller koppla Google, för att aktivera den.",
+    "two_factor_title": "Tvåstegsinloggning",
     "unclaimed_rewards": "Outlösta belöningar",
     "username_bare_taken_body": "\"{requested}\" innehas av en annan prenumerant. Du kan använda den med ett tillagt nummer, som \"{requested}.1234\", men det kommer inte att visa den verifierade kontrollen. Detta använder ditt namnbyte. Använd den med ett nummer?",
     "username_bare_taken_confirm": "Använd den med ett nummer",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Belöningar"
+  },
+  "security_modal": {
+    "code_confirm": "Bekräfta",
+    "code_desc": "Vi har skickat en sexsiffrig kod till ditt kontos e-post. Ange den för att slutföra inloggningen på den här enheten.",
+    "code_expired": "Koden har gått ut. Börja om inloggningen.",
+    "code_label": "Kod",
+    "code_locked": "För många felaktiga koder. Börja om inloggningen.",
+    "code_network": "Kan inte nå servern. Försök igen.",
+    "code_title": "Bekräfta att det är du",
+    "code_wrong": "Fel kod. {n} försök kvar.",
+    "revoke_confirm": "Logga ut överallt",
+    "revoke_desc": "Det stänger alla sessioner för ditt konto på alla enheter, även den här. Logga sedan in igen och byt lösenord hos tjänsten du loggar in med.",
+    "revoke_done": "Alla sessioner för ditt konto är stängda.",
+    "revoke_invalid": "Länken är inte längre giltig. Logga in och logga sedan ut alla enheter från ditt konto.",
+    "revoke_title": "Logga ut överallt?"
   },
   "select_lang": {
     "title": "Välj Språk"

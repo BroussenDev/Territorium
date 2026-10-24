@@ -99,6 +99,10 @@
     "tab_games": "Trận đấu",
     "tab_stats": "Thống kê",
     "title": "Tài khoản",
+    "two_factor_desc": "Trên thiết bị bạn chưa từng dùng, đăng nhập sẽ yêu cầu thêm mã gửi qua email.",
+    "two_factor_failed": "Không thể thay đổi đăng nhập hai bước. Hãy thử lại.",
+    "two_factor_no_email": "Hãy thêm email vào tài khoản, hoặc liên kết Google, để bật tính năng này.",
+    "two_factor_title": "Đăng nhập hai bước",
     "unclaimed_rewards": "Phần thưởng chưa nhận",
     "username_bare_taken_body": "\"Tên '{requested}' đang được một người đăng ký khác giữ. Bạn có thể dùng nó kèm thêm số, ví dụ '{requested}.1234', nhưng sẽ không hiển thị dấu tích xác minh. Thao tác này sẽ tính vào lượt đổi tên của bạn. Dùng kèm số nhé?\"",
     "username_bare_taken_confirm": "Dùng kèm số",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Phần thưởng"
+  },
+  "security_modal": {
+    "code_confirm": "Xác nhận",
+    "code_desc": "Chúng tôi đã gửi mã 6 chữ số đến email tài khoản của bạn. Nhập mã để hoàn tất đăng nhập trên thiết bị này.",
+    "code_expired": "Mã này đã hết hạn. Hãy đăng nhập lại từ đầu.",
+    "code_label": "Mã",
+    "code_locked": "Nhập sai quá nhiều lần. Hãy đăng nhập lại từ đầu.",
+    "code_network": "Không kết nối được máy chủ. Hãy thử lại.",
+    "code_title": "Xác nhận đó là bạn",
+    "code_wrong": "Sai mã. Còn {n} lần thử.",
+    "revoke_confirm": "Đăng xuất khỏi mọi nơi",
+    "revoke_desc": "Thao tác này đóng mọi phiên của tài khoản trên tất cả thiết bị, kể cả thiết bị này. Sau đó hãy đăng nhập lại và đổi mật khẩu của dịch vụ bạn dùng để đăng nhập.",
+    "revoke_done": "Mọi phiên của tài khoản đã được đóng.",
+    "revoke_invalid": "Liên kết này không còn hiệu lực. Hãy đăng nhập rồi đăng xuất mọi thiết bị trong tài khoản.",
+    "revoke_title": "Đăng xuất khỏi mọi nơi?"
   },
   "select_lang": {
     "title": "Chọn ngôn ngữ"

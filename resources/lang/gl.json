@@ -99,6 +99,10 @@
     "tab_games": "Xogos",
     "tab_stats": "Estadísticas",
     "title": "Conta",
+    "two_factor_desc": "Nun dispositivo que nunca usaches, o acceso tamén pide un código enviado por correo.",
+    "two_factor_failed": "Non se puido cambiar o acceso en dous pasos. Téntao de novo.",
+    "two_factor_no_email": "Engade un correo á túa conta, ou vincula Google, para activalo.",
+    "two_factor_title": "Acceso en dous pasos",
     "unclaimed_rewards": "Recompensas non reclamadas",
     "username_bare_taken_body": "\"{requested}\" está en mans doutro subscritor. Podes usalo cun número engadido, como \"{requested}.1234\", pero non mostrará a verificación verificada. Isto usa o teu cambio de nome. Usalo cun número?",
     "username_bare_taken_confirm": "Úsao cun número",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompensas"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmar",
+    "code_desc": "Enviamos un código de 6 cifras ao correo da túa conta. Escríbeo para rematar o acceso neste dispositivo.",
+    "code_expired": "Este código caducou. Volve acceder desde o principio.",
+    "code_label": "Código",
+    "code_locked": "Demasiados códigos incorrectos. Volve acceder desde o principio.",
+    "code_network": "Non se pode conectar co servidor. Téntao de novo.",
+    "code_title": "Confirma que es ti",
+    "code_wrong": "Código incorrecto. Quédanche {n} intentos.",
+    "revoke_confirm": "Pechar a sesión en todas partes",
+    "revoke_desc": "Isto pecha todas as sesións da túa conta en todos os dispositivos, incluído este. Despois volve acceder e cambia o contrasinal do servizo co que entras.",
+    "revoke_done": "Todas as sesións da túa conta están pechadas.",
+    "revoke_invalid": "Esta ligazón xa non é válida. Accede e despois pecha a sesión en todos os dispositivos desde a túa conta.",
+    "revoke_title": "Pechar a sesión en todas partes?"
   },
   "select_lang": {
     "title": "Escoller lingua"

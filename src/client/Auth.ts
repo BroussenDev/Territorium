@@ -181,7 +181,10 @@ export type TokenLoginResult =
   // Retrying it is pointless.
   | { status: "failed"; code: "consumed" | "expired" | "invalid" }
   // A network hiccup or non-400 error — worth retrying.
-  | { status: "retry" };
+  | { status: "retry" }
+  // The account asks for an email code on new devices: the sign-in waits
+  // for the code typed in the security modal.
+  | { status: "two-factor"; challenge: string };
 
 // The player's UI language, sent with the sign-in calls: the account API
 // writes the player's emails in it.
@@ -229,12 +232,74 @@ export async function tempTokenLogin(token: string): Promise<TokenLoginResult> {
     return { status: "retry" };
   }
   const body = await response.json().catch(() => null);
+  const challenge = (body as { twoFactor?: unknown } | null)?.twoFactor;
+  if (typeof challenge === "string") {
+    return { status: "two-factor", challenge };
+  }
   const email = (body as { email?: unknown } | null)?.email;
   if (typeof email !== "string") {
     console.error("Token login succeeded but response had no email", body);
     return { status: "retry" };
   }
   return { status: "success", email };
+}
+
+export type TwoFactorResult =
+  | { status: "ok"; back: string | null }
+  | {
+      status: "failed";
+      code: "wrong" | "locked" | "expired" | "invalid" | "network";
+      attemptsLeft?: number;
+    };
+
+// Sends the email code of a two-step sign-in (on the device that started
+// it): the account API opens the session cookie when it is right.
+export async function verifyTwoFactor(
+  challenge: string,
+  code: string,
+): Promise<TwoFactorResult> {
+  try {
+    const response = await fetch(`${getApiBase()}/auth/2fa/verify`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json", ...languageHeader() },
+      body: JSON.stringify({ challenge, code }),
+    });
+    const body = await response.json().catch(() => null);
+    if (response.ok) {
+      return {
+        status: "ok",
+        back: typeof body?.back === "string" ? body.back : null,
+      };
+    }
+    const known = ["wrong", "locked", "expired", "invalid"];
+    return {
+      status: "failed",
+      code: known.includes(body?.code) ? body.code : "invalid",
+      attemptsLeft:
+        typeof body?.attemptsLeft === "number" ? body.attemptsLeft : undefined,
+    };
+  } catch (e) {
+    console.error("Two-step sign-in request failed", e);
+    return { status: "failed", code: "network" };
+  }
+}
+
+// The "it wasn't me" link of the new-device email: closes every session of
+// the account. False when the link is no longer valid.
+export async function revokeSessionsByLink(token: string): Promise<boolean> {
+  try {
+    const response = await fetch(`${getApiBase()}/auth/revoke-link`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    });
+    return response.ok;
+  } catch (e) {
+    console.error("Revoke link request failed", e);
+    return false;
+  }
 }
 
 export async function getAuthHeader(): Promise<string> {
@@ -586,6 +651,9 @@ async function doSteamLogin(ticket: string): Promise<void> {
     // 10s is generous headroom over a healthy web-api round trip (~1.3s).
     const response = await fetch(getApiBase() + "/auth/steam", {
       method: "POST",
+      // Keeps the device cookie: the account API tells the player by email
+      // when their account signs in on a device it doesn't know.
+      credentials: "include",
       headers: { "Content-Type": "application/json", ...languageHeader() },
       body: JSON.stringify({ ticket }),
       signal: AbortSignal.timeout(10_000),

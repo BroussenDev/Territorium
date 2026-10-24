@@ -99,6 +99,7 @@ import {
 } from "./PresenceGroup";
 import { presenceLabels } from "./PresenceLabels";
 import { RewardsModal } from "./RewardsModal";
+import { openSecurityModal } from "./SecurityModal";
 import {
   ensureServerList,
   redirectToGameVersion,
@@ -1082,6 +1083,23 @@ class Client {
         refreshStore: () => this.storeModal.refresh(),
         reload: () => window.location.reload(),
       });
+      return;
+    }
+
+    // A two-step sign-in back from Discord, Google or Steam: ask the code
+    // sent by email.
+    if (decodedHash.startsWith("#two-factor")) {
+      const challenge = params.get("two-factor");
+      strip();
+      if (challenge) openSecurityModal({ challenge });
+      return;
+    }
+
+    // The "it wasn't me" link of a new-device email.
+    if (decodedHash.startsWith("#revoke-sessions")) {
+      const token = params.get("revoke-sessions");
+      strip();
+      if (token) openSecurityModal({ revokeToken: token });
       return;
     }
 

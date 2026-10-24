@@ -99,6 +99,10 @@
     "tab_games": "Jocs",
     "tab_stats": "Estadístiques",
     "title": "Compte",
+    "two_factor_desc": "En un dispositiu que no has fet servir mai, iniciar sessió també demana un codi enviat per correu.",
+    "two_factor_failed": "No s'ha pogut canviar l'inici de sessió en dos passos. Torna-ho a provar.",
+    "two_factor_no_email": "Afegeix un correu al teu compte, o vincula Google, per activar-lo.",
+    "two_factor_title": "Inici de sessió en dos passos",
     "unclaimed_rewards": "Recompenses no reclamades",
     "username_bare_taken_body": "\"{requested}\" el té un altre subscriptor. Podeu utilitzar-lo amb un número afegit, com ara \"{requested}.1234\", però no mostrarà el xec verificat. Això utilitza el vostre canvi de nom. Utilitzeu-lo amb un número?",
     "username_bare_taken_confirm": "Utilitzeu-lo amb un número",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompenses"
+  },
+  "security_modal": {
+    "code_confirm": "Confirma",
+    "code_desc": "Hem enviat un codi de 6 xifres al correu del teu compte. Escriu-lo per acabar d'iniciar sessió en aquest dispositiu.",
+    "code_expired": "Aquest codi ha caducat. Torna a iniciar sessió.",
+    "code_label": "Codi",
+    "code_locked": "Massa codis incorrectes. Torna a iniciar sessió.",
+    "code_network": "No es pot connectar amb el servidor. Torna-ho a provar.",
+    "code_title": "Confirma que ets tu",
+    "code_wrong": "Codi incorrecte. Et queden {n} intents.",
+    "revoke_confirm": "Tanca la sessió a tot arreu",
+    "revoke_desc": "Això tanca totes les sessions del teu compte a tots els dispositius, inclòs aquest. Després torna a iniciar sessió i canvia la contrasenya del servei amb què entres.",
+    "revoke_done": "Totes les sessions del teu compte estan tancades.",
+    "revoke_invalid": "Aquest enllaç ja no és vàlid. Inicia sessió i després tanca la sessió a tots els dispositius des del teu compte.",
+    "revoke_title": "Vols tancar la sessió a tot arreu?"
   },
   "select_lang": {
     "title": "Seleccionar l'Idioma"

@@ -99,6 +99,10 @@
     "tab_games": "Spiele",
     "tab_stats": "Statistik",
     "title": "Konto",
+    "two_factor_desc": "Auf einem nie genutzten Gerät fragt die Anmeldung zusätzlich nach einem Code per E-Mail.",
+    "two_factor_failed": "Die Anmeldung in zwei Schritten konnte nicht geändert werden. Versuch es noch einmal.",
+    "two_factor_no_email": "Füge deinem Konto eine E-Mail hinzu oder verknüpfe Google, um sie zu aktivieren.",
+    "two_factor_title": "Anmeldung in zwei Schritten",
     "unclaimed_rewards": "Nicht abgeholte Belohnungen",
     "username_bare_taken_body": "\"{requested}\" wird von einem anderen Abonnenten gehalten. Du kannst es mit einer Zahl dahinter verwenden, zum Beispiel \"{requested}.1234\", aber dann wird das verifizierte Häkchen nicht angezeigt. Das zählt als Namensänderung. Möchtest du es mit einer Zahl verwenden?",
     "username_bare_taken_confirm": "Mit einer Zahl verwenden",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Belohnungen"
+  },
+  "security_modal": {
+    "code_confirm": "Bestätigen",
+    "code_desc": "Wir haben einen 6-stelligen Code an die E-Mail deines Kontos geschickt. Gib ihn ein, um die Anmeldung auf diesem Gerät abzuschließen.",
+    "code_expired": "Dieser Code ist abgelaufen. Starte die Anmeldung neu.",
+    "code_label": "Code",
+    "code_locked": "Zu viele falsche Codes. Starte die Anmeldung neu.",
+    "code_network": "Server nicht erreichbar. Versuch es noch einmal.",
+    "code_title": "Bestätige, dass du es bist",
+    "code_wrong": "Falscher Code. Noch {n} Versuche.",
+    "revoke_confirm": "Überall abmelden",
+    "revoke_desc": "Damit werden alle Sitzungen deines Kontos auf allen Geräten beendet, auch auf diesem. Melde dich danach neu an und ändere dein Passwort bei dem Dienst, mit dem du dich anmeldest.",
+    "revoke_done": "Alle Sitzungen deines Kontos sind beendet.",
+    "revoke_invalid": "Dieser Link ist nicht mehr gültig. Melde dich an und melde dann in deinem Konto alle Geräte ab.",
+    "revoke_title": "Überall abmelden?"
   },
   "select_lang": {
     "title": "Sprache auswählen"

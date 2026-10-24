@@ -99,6 +99,10 @@
     "tab_games": "Hry",
     "tab_stats": "Štatistiky",
     "title": "účtu",
+    "two_factor_desc": "Na zariadení, ktoré si nikdy nepoužil, prihlásenie vyžaduje aj kód poslaný e-mailom.",
+    "two_factor_failed": "Dvojstupňové prihlásenie sa nepodarilo zmeniť. Skús to znova.",
+    "two_factor_no_email": "Pridaj k svojmu účtu e-mail alebo prepoj Google, aby si ho mohol zapnúť.",
+    "two_factor_title": "Dvojstupňové prihlásenie",
     "unclaimed_rewards": "Nevyzdvihnuté odmeny",
     "username_bare_taken_body": "„{requested}“ má iný predplatiteľ. Môžete ho použiť s pridaným číslom, napríklad „{requested}.1234“, ale nezobrazí overený šek. Toto používa zmenu vášho mena. Použiť ho s číslom?",
     "username_bare_taken_confirm": "Použite ho s číslom",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Odmeny"
+  },
+  "security_modal": {
+    "code_confirm": "Potvrdiť",
+    "code_desc": "Poslali sme 6-miestny kód na e-mail tvojho účtu. Zadaj ho a dokonči prihlásenie na tomto zariadení.",
+    "code_expired": "Platnosť kódu vypršala. Začni prihlásenie odznova.",
+    "code_label": "Kód",
+    "code_locked": "Príliš veľa nesprávnych kódov. Začni prihlásenie odznova.",
+    "code_network": "Server je nedostupný. Skús to znova.",
+    "code_title": "Potvrď, že si to ty",
+    "code_wrong": "Nesprávny kód. Zostáva pokusov: {n}.",
+    "revoke_confirm": "Odhlásiť všade",
+    "revoke_desc": "Tým sa ukončia všetky relácie tvojho účtu na všetkých zariadeniach, vrátane tohto. Potom sa znova prihlás a zmeň heslo v službe, cez ktorú sa prihlasuješ.",
+    "revoke_done": "Všetky relácie tvojho účtu sú ukončené.",
+    "revoke_invalid": "Tento odkaz už neplatí. Prihlás sa a potom vo svojom účte odhlás všetky zariadenia.",
+    "revoke_title": "Odhlásiť všade?"
   },
   "select_lang": {
     "title": "Vybrať jazyk"

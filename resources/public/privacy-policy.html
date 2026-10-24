@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p class="updated">Dernière mise à jour : 24 octobre 2026</p>
+    <p class="updated">Dernière mise à jour : 25 octobre 2026</p>
     <h1>Politique de confidentialité</h1>
     <p>
       Cette page explique quelles données personnelles Territorium utilise,
@@ -146,6 +146,32 @@
       </tr>
       <tr>
         <td>
+          Sécurité du compte : appareils depuis lesquels vous vous êtes
+          connecté (identifiant aléatoire de l'appareil, enregistré sous forme
+          chiffrée par hachage, type de navigateur et de système, lieu
+          approximatif — ville et pays — déduit de l'adresse IP au moment de
+          la connexion, dates de première et dernière utilisation), codes de
+          connexion en deux étapes si vous l'avez activée, liens « Ce n'était
+          pas moi »
+        </td>
+        <td>
+          Vous prévenir par e-mail d'une connexion depuis un nouvel appareil,
+          vous demander un code sur un nouvel appareil si vous l'avez choisi,
+          et vous permettre de fermer toutes vos sessions
+        </td>
+        <td>
+          Intérêt légitime (protéger votre compte) ; exécution du contrat pour
+          la connexion en deux étapes que vous activez
+        </td>
+        <td>
+          Appareils : 400 jours après leur dernière utilisation, ou jusqu'à
+          « Ce n'était pas moi » ou la suppression du compte. Codes : 10
+          minutes. Liens : 14 jours. L'adresse IP elle-même n'est pas gardée
+          pour cela
+        </td>
+      </tr>
+      <tr>
+        <td>
           Signalements et anti-triche : signalements envoyés par les joueurs
           (partie, joueurs concernés, motif), incidents détectés par
           l'anti-triche Territorium Game Shield (partie, pseudo, identifiant
@@ -154,7 +180,9 @@
         <td>
           Garder des parties loyales : examiner les signalements et les
           incidents, sanctionner la triche et les abus (jamais de sanction
-          automatique : chaque cas est examiné par l'équipe)
+          automatique : chaque cas est examiné par l'équipe), et vous prévenir
+          par e-mail d'un avertissement, d'une exclusion du mode classé, d'un
+          bannissement ou de sa levée, avec son motif
         </td>
         <td>Intérêt légitime (sécuriser le Service)</td>
         <td>
@@ -258,6 +286,12 @@
         >.
       </li>
       <li>
+        <strong>DeepL SE</strong> (Allemagne), qui traduit dans la langue de
+        chaque joueur les textes que l'équipe écrit en français : le résumé
+        des changements des documents légaux et le motif d'une sanction. Il ne
+        reçoit que ce texte, jamais votre adresse e-mail ni votre identifiant.
+      </li>
+      <li>
         <strong>Cloudflare, Inc.</strong> (Turnstile), pour vérifier que vous
         n'êtes pas un robot quand vous rejoignez une partie : il reçoit votre
         adresse IP et des informations techniques sur votre navigateur.
@@ -311,6 +345,13 @@
         jours ;
       </li>
       <li>
+        un cookie de sécurité qui reconnaît votre appareil (un identifiant
+        aléatoire, gardé jusqu'à 400 jours), pour vous prévenir d'une
+        connexion depuis un appareil inconnu et, si vous l'avez activée, ne
+        demander le code de connexion en deux étapes que sur un nouvel
+        appareil ;
+      </li>
+      <li>
         le stockage local de votre navigateur, pour vos réglages (langue,
         graphismes, raccourcis clavier…) et votre identifiant de joueur ;
       </li>
@@ -328,7 +369,16 @@
     <h2>6. Sécurité</h2>
     <p>
       Les échanges sont chiffrés (HTTPS). La connexion se fait sans mot de
-      passe, par lien à usage unique ou via Google, Discord ou Steam. L'accès
+      passe, par lien à usage unique ou via Google, Discord ou Steam. Quand
+      votre compte se connecte depuis un appareil inconnu, vous recevez un
+      e-mail indiquant l'appareil, la date et un lieu approximatif, avec un
+      bouton pour fermer toutes vos sessions. Vous pouvez aussi activer, dans
+      les réglages de votre compte, la connexion en deux étapes : un code à
+      usage unique, valable 10 minutes, est alors envoyé par e-mail à chaque
+      connexion depuis un nouvel appareil. Le lieu approximatif est calculé
+      sur notre serveur avec une base de géolocalisation locale (« IP to City
+      Lite » de <a href="https://db-ip.com">DB-IP</a>, licence CC BY 4.0) :
+      votre adresse IP n'est envoyée à aucun service tiers. L'accès
       au serveur et à l'administration est restreint à l'éditeur et à son
       équipe de modération, chacun avec ses propres droits.
     </p>
@@ -384,6 +434,12 @@
       incidents (180 days after review), short-lived technical logs (14 days)
       and nightly backups (30 days at most). Unused accounts are deleted
       automatically, and you are told by email when these terms change.
+      For your account's safety, a strictly necessary cookie recognizes your
+      device: a sign-in from an unknown device sends you an email with the
+      device and an approximate place (worked out on our server from a local
+      DB-IP database, CC BY 4.0, your IP never sent anywhere), and the optional
+      two-step sign-in asks for an email code on new devices. Warnings and
+      bans are told to you by email with their reason, translated by DeepL.
       No ads, no analytics, no third-party trackers, no data sales. Payments go
       through Mollie (Steam in the Steam app), bot checks through Cloudflare
       Turnstile; the YouTube help video only loads when you click play. You can

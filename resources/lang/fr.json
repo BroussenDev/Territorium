@@ -99,6 +99,10 @@
     "tab_games": "Parties",
     "tab_stats": "Statistiques",
     "title": "Compte",
+    "two_factor_desc": "Sur un appareil jamais utilisé, la connexion demande aussi un code envoyé par e-mail.",
+    "two_factor_failed": "Impossible de modifier la connexion en deux étapes. Réessayez.",
+    "two_factor_no_email": "Ajoutez un e-mail à votre compte, ou liez Google, pour l'activer.",
+    "two_factor_title": "Connexion en deux étapes",
     "unclaimed_rewards": "Récompenses non récupérées",
     "username_bare_taken_body": "«{requested}» est déjà détenu par un autre abonné. Vous pouvez l'utiliser en ajoutant un nombre, comme «{requested}».1234\", mais ça n'affichera pas le badge vérifié. Cette action utilise votre changement de nom. Voulez-vous utiliser un nombre ?",
     "username_bare_taken_confirm": "Utiliser un nombre",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Récompenses"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmer",
+    "code_desc": "Nous avons envoyé un code à 6 chiffres à l'e-mail de votre compte. Saisissez-le pour terminer la connexion sur cet appareil.",
+    "code_expired": "Ce code a expiré. Recommencez la connexion.",
+    "code_label": "Code",
+    "code_locked": "Trop de codes incorrects. Recommencez la connexion.",
+    "code_network": "Impossible de joindre le serveur. Réessayez.",
+    "code_title": "Confirmez que c'est vous",
+    "code_wrong": "Code incorrect. Encore {n} essais.",
+    "revoke_confirm": "Se déconnecter partout",
+    "revoke_desc": "Cela ferme toutes les sessions de votre compte, sur tous les appareils, y compris celui-ci. Reconnectez-vous ensuite et changez votre mot de passe sur le service avec lequel vous vous connectez.",
+    "revoke_done": "Toutes les sessions de votre compte sont fermées.",
+    "revoke_invalid": "Ce lien n'est plus valide. Connectez-vous, puis déconnectez tous les appareils depuis votre compte.",
+    "revoke_title": "Se déconnecter partout ?"
   },
   "select_lang": {
     "title": "Sélectionner une langue"

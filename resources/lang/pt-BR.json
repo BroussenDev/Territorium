@@ -99,6 +99,10 @@
     "tab_games": "Jogos",
     "tab_stats": "Estatísticas",
     "title": "Conta",
+    "two_factor_desc": "Em um dispositivo nunca usado, o login também pede um código enviado por e-mail.",
+    "two_factor_failed": "Não foi possível alterar o login em duas etapas. Tente de novo.",
+    "two_factor_no_email": "Adicione um e-mail à sua conta, ou vincule o Google, para ativar.",
+    "two_factor_title": "Login em duas etapas",
     "unclaimed_rewards": "Recompensas não recolhidas",
     "username_bare_taken_body": "\"{requested}\" é propriedade de outro assinante. Você pode usá-lo com um número adicionado, como \"{requested}.1234\", mas não mostrará o cheque verificado. Isso usa sua mudança de nome. Usá-lo com um número?",
     "username_bare_taken_confirm": "Use-o com um número",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Recompensas"
+  },
+  "security_modal": {
+    "code_confirm": "Confirmar",
+    "code_desc": "Enviamos um código de 6 dígitos para o e-mail da sua conta. Digite-o para concluir o login neste dispositivo.",
+    "code_expired": "Este código expirou. Comece o login de novo.",
+    "code_label": "Código",
+    "code_locked": "Muitos códigos errados. Comece o login de novo.",
+    "code_network": "Não foi possível acessar o servidor. Tente de novo.",
+    "code_title": "Confirme que é você",
+    "code_wrong": "Código errado. Restam {n} tentativas.",
+    "revoke_confirm": "Sair de todos os lugares",
+    "revoke_desc": "Isso encerra todas as sessões da sua conta em todos os dispositivos, inclusive neste. Depois entre de novo e troque a senha do serviço que você usa para entrar.",
+    "revoke_done": "Todas as sessões da sua conta foram encerradas.",
+    "revoke_invalid": "Este link não é mais válido. Entre e depois saia de todos os dispositivos pela sua conta.",
+    "revoke_title": "Sair de todos os lugares?"
   },
   "select_lang": {
     "title": "Selecionar idioma"

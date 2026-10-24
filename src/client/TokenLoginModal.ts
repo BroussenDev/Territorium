@@ -5,6 +5,7 @@ import { BaseModal } from "./components/BaseModal";
 import "./components/Difficulties";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { showInGameAlert } from "./InGameModal";
+import { openSecurityModal } from "./SecurityModal";
 import { translateText } from "./Utils";
 
 @customElement("token-login")
@@ -137,6 +138,12 @@ export class TokenLoginModal extends BaseModal {
               : "error_modal.login_failed",
           ),
         );
+        return;
+      }
+      if (result.status === "two-factor") {
+        clearInterval(this.retryInterval);
+        this.close();
+        openSecurityModal({ challenge: result.challenge });
         return;
       }
       this.email = result.email;

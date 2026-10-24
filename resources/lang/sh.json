@@ -99,6 +99,10 @@
     "tab_games": "Partije",
     "tab_stats": "Statistike",
     "title": "Nalog",
+    "two_factor_desc": "Na uređaju koji nikad nisi koristio, prijava traži i kod poslat mejlom.",
+    "two_factor_failed": "Prijava u dva koraka nije mogla da se promeni. Pokušaj ponovo.",
+    "two_factor_no_email": "Dodaj mejl svom nalogu ili poveži Google da bi je uključio.",
+    "two_factor_title": "Prijava u dva koraka",
     "unclaimed_rewards": "Nepokupljene Nagrade",
     "username_bare_taken_body": "Nadimak „{requested}” već koristi drugi pretplatnik. Možete ga koristiti uz dodati broj, kao što je „{requested}.1234”, ali neće prikazivati oznaku verifikacije (kvačicu). Time se troši vaša izmena imena. Želite li da ga koristite sa brojem?",
     "username_bare_taken_confirm": "Koristi sa brojem",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Nagrade"
+  },
+  "security_modal": {
+    "code_confirm": "Potvrdi",
+    "code_desc": "Poslali smo šestocifreni kod na mejl tvog naloga. Unesi ga da završiš prijavu na ovom uređaju.",
+    "code_expired": "Kod je istekao. Počni prijavu iznova.",
+    "code_label": "Kod",
+    "code_locked": "Previše pogrešnih kodova. Počni prijavu iznova.",
+    "code_network": "Server nije dostupan. Pokušaj ponovo.",
+    "code_title": "Potvrdi da si to ti",
+    "code_wrong": "Pogrešan kod. Preostalo pokušaja: {n}.",
+    "revoke_confirm": "Odjavi se svuda",
+    "revoke_desc": "Ovo zatvara sve sesije tvog naloga na svim uređajima, uključujući i ovaj. Zatim se ponovo prijavi i promeni lozinku na servisu preko kog se prijavljuješ.",
+    "revoke_done": "Sve sesije tvog naloga su zatvorene.",
+    "revoke_invalid": "Ovaj link više ne važi. Prijavi se, pa odjavi sve uređaje iz svog naloga.",
+    "revoke_title": "Odjaviti se svuda?"
   },
   "select_lang": {
     "title": "Odaberi jezik"

@@ -99,6 +99,10 @@
     "tab_games": "Ludoj",
     "tab_stats": "Statistikoj",
     "title": "Konto",
+    "two_factor_desc": "Sur aparato, kiun vi neniam uzis, la ensaluto ankaŭ petas kodon senditan retpoŝte.",
+    "two_factor_failed": "Ne eblis ŝanĝi la dupaŝan ensaluton. Provu denove.",
+    "two_factor_no_email": "Aldonu retpoŝton al via konto, aŭ ligu Google, por ŝalti ĝin.",
+    "two_factor_title": "Dupaŝa ensaluto",
     "unclaimed_rewards": "Nepostulitaj Rekompencoj",
     "username_bare_taken_body": "\"{requested}\" estas tenita de alia abonanto. Vi povas uzi ĝin kun nombro aldonita, kiel \"{requested}.1234\", sed ĝi ne montros la kontrolitan ĉekon. Ĉi tio uzas vian nomŝanĝon. Ĉu uzi ĝin kun nombro?",
     "username_bare_taken_confirm": "Uzu ĝin kun nombro",
@@ -2750,6 +2754,21 @@
   },
   "rewards_modal": {
     "title": "Rekompencoj"
+  },
+  "security_modal": {
+    "code_confirm": "Konfirmi",
+    "code_desc": "Ni sendis 6-ciferan kodon al la retpoŝto de via konto. Entajpu ĝin por fini la ensaluton sur ĉi tiu aparato.",
+    "code_expired": "Ĉi tiu kodo eksvalidiĝis. Rekomencu la ensaluton.",
+    "code_label": "Kodo",
+    "code_locked": "Tro da malĝustaj kodoj. Rekomencu la ensaluton.",
+    "code_network": "Ne eblas atingi la servilon. Provu denove.",
+    "code_title": "Konfirmu, ke temas pri vi",
+    "code_wrong": "Malĝusta kodo. Restas {n} provoj.",
+    "revoke_confirm": "Elsaluti ĉie",
+    "revoke_desc": "Tio fermas ĉiujn seancojn de via konto sur ĉiuj aparatoj, ankaŭ ĉi tiu. Poste ensalutu denove kaj ŝanĝu vian pasvorton ĉe la servo, per kiu vi ensalutas.",
+    "revoke_done": "Ĉiuj seancoj de via konto estas fermitaj.",
+    "revoke_invalid": "Ĉi tiu ligilo ne plu validas. Ensalutu, poste elsalutigu ĉiujn aparatojn el via konto.",
+    "revoke_title": "Ĉu elsaluti ĉie?"
   },
   "select_lang": {
     "title": "Elekti lingvon"
