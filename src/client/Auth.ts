@@ -11,7 +11,7 @@ import type { DesktopSessionState, SessionFailureKind } from "./DesktopShell";
 import { isDesktopShell } from "./DesktopShell";
 import type { SteamTicketResult } from "./SteamSDK";
 import { steamSDK } from "./SteamSDK";
-import { generateCryptoRandomUUID } from "./Utils";
+import { currentLanguage, generateCryptoRandomUUID } from "./Utils";
 
 export type UserAuth = { jwt: string; claims: TokenPayload } | false;
 
@@ -183,6 +183,12 @@ export type TokenLoginResult =
   // A network hiccup or non-400 error — worth retrying.
   | { status: "retry" };
 
+// The player's UI language, sent with the sign-in calls: the account API
+// writes the player's emails in it.
+const languageHeader = (): Record<string, string> => ({
+  "X-Lang": currentLanguage(),
+});
+
 export async function tempTokenLogin(token: string): Promise<TokenLoginResult> {
   let response: Response;
   try {
@@ -190,6 +196,7 @@ export async function tempTokenLogin(token: string): Promise<TokenLoginResult> {
       `${getApiBase()}/auth/login/token?login-token=${token}`,
       {
         credentials: "include",
+        headers: languageHeader(),
       },
     );
   } catch (e) {
@@ -486,6 +493,7 @@ async function doRefreshJwt(): Promise<void> {
     const response = await fetch(getApiBase() + "/auth/refresh", {
       method: "POST",
       credentials: "include",
+      headers: languageHeader(),
       signal: AbortSignal.timeout(10_000),
     });
     if (response.status === 401) {
@@ -578,7 +586,7 @@ async function doSteamLogin(ticket: string): Promise<void> {
     // 10s is generous headroom over a healthy web-api round trip (~1.3s).
     const response = await fetch(getApiBase() + "/auth/steam", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...languageHeader() },
       body: JSON.stringify({ ticket }),
       signal: AbortSignal.timeout(10_000),
     });
@@ -684,6 +692,7 @@ export async function sendMagicLink(email: string): Promise<boolean> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...languageHeader(),
       },
       credentials: "include",
       body: JSON.stringify({

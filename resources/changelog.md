@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.141
+
+✉️ **Emails in your language**
+
+- Sign-in, purchase and account emails now arrive in the language you play the game in.
+
 ## v0.1.140
 
 📜 **Clearer legal pages and invoices**
