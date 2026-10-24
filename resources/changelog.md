@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.138
+
+⚡ **Smoother games on modest computers**
+
+- No more small stutter every 3 seconds: player names are now placed a few at a time instead of all at once.
+- Low quality draws the map at 75% resolution and turns unit trails off, for far fewer pixels on weak graphics chips.
+- Normal quality no longer renders above the screen's own resolution on high-density laptop screens.
+
 ## v0.1.137
 
 🛡️ **Security update**

@@ -14,7 +14,12 @@ import type { GraphicsOverrides } from "./GraphicsOverrides";
 
 const QUALITY_OVERRIDES: Record<GraphicsQuality, GraphicsOverrides> = {
   low: {
-    passEnabled: { fx: false, fallout: false, conquestFlash: false },
+    passEnabled: {
+      fx: false,
+      fallout: false,
+      conquestFlash: false,
+      trail: false,
+    },
     smallPlayerGlow: { strength: 0 },
   },
   normal: {
@@ -26,10 +31,14 @@ const QUALITY_OVERRIDES: Record<GraphicsQuality, GraphicsOverrides> = {
 
 // The highest render resolution, as a multiple of the page's CSS pixels.
 // Capped at the display's own density: no level renders finer than the
-// screen can show.
+// screen can show. Below 1 the image is drawn smaller and stretched to the
+// screen: "low" draws 75 % of the width and height, ~44 % fewer pixels, the
+// cost that makes a weak integrated chip drop frames. "normal" stays at the
+// page's own pixels, since a 150 % Windows scale would otherwise make it draw
+// 2.25 times as many as "low" on the laptops most likely to struggle.
 const QUALITY_DPR_CAP: Record<GraphicsQuality, number> = {
-  low: 1,
-  normal: 1.5,
+  low: 0.75,
+  normal: 1,
   high: 2,
   ultra: 3,
 };

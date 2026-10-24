@@ -45,6 +45,9 @@ import { simpleHash } from "./Util";
 
 // What seeds a game's randomness: the config's seed when set, else the
 // gameID.
+// How often each player's name is re-placed on the map, in ticks.
+const NAME_REPLACE_TICKS = 30;
+
 export function gameSeed(gameStart: GameStartInfo): string {
   return gameStart.config.seed ?? gameStart.gameID;
 }
@@ -163,8 +166,6 @@ export class GameRunner {
   private currTurn = 0;
   private isExecuting = false;
 
-  private playerViewData: Record<PlayerID, NameViewData> = {};
-
   constructor(
     public game: Game,
     private execManager: Executor,
@@ -238,10 +239,9 @@ export class GameRunner {
       return false;
     }
 
-    // Track whether placements were recomputed this tick — the record is
-    // only attached to the update when it could have changed, so the main
-    // thread doesn't structured-clone an identical ~all-players record on
-    // every other tick.
+    // Only the placements recomputed this tick go to the main thread, so it
+    // never structured-clones an unchanged all-players record.
+    const changedViewData: Record<PlayerID, NameViewData> = {};
     let viewDataChanged = false;
     if (this.game.inSpawnPhase()) {
       for (const p of this.game.players()) {
@@ -249,20 +249,21 @@ export class GameRunner {
           continue;
         }
         if (p.spawnTile() === undefined) continue;
-        this.playerViewData[p.id()] = placeSpawnName(this.game, p);
+        changedViewData[p.id()] = placeSpawnName(this.game, p);
         viewDataChanged = true;
       }
     }
 
+    // Every name is re-placed every NAME_REPLACE_TICKS ticks, a slice of the
+    // players each tick: placing all of them on the same tick made that
+    // tick several times slower than the others, a stutter every 3 seconds
+    // on a slow computer.
     const spawnJustEnded = wasInSpawnPhase && !this.game.inSpawnPhase();
-    if (
-      spawnJustEnded ||
-      this.game.ticks() < 3 ||
-      this.game.ticks() % 30 === 0
-    ) {
-      for (const p of this.game.players()) {
-        this.playerViewData[p.id()] = placeName(this.game, p);
-      }
+    const all = spawnJustEnded || this.game.ticks() < 3;
+    const slice = this.game.ticks() % NAME_REPLACE_TICKS;
+    for (const p of this.game.players()) {
+      if (!all && p.smallID() % NAME_REPLACE_TICKS !== slice) continue;
+      changedViewData[p.id()] = placeName(this.game, p);
       viewDataChanged = true;
     }
 
@@ -282,7 +283,7 @@ export class GameRunner {
       ...(packedAttackUpdates ? { packedAttackUpdates } : {}),
       ...(packedNukeImpacts ? { packedNukeImpacts } : {}),
       updates: updates,
-      ...(viewDataChanged ? { playerNameViewData: this.playerViewData } : {}),
+      ...(viewDataChanged ? { playerNameViewData: changedViewData } : {}),
       tickExecutionDuration: tickExecutionDuration,
       pendingTurns: pendingTurns ?? 0,
     });

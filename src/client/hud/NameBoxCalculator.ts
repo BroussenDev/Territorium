@@ -93,77 +93,107 @@ export function placeName(game: Game, player: Player): NameViewData {
   };
 }
 
+// The grid a name is fitted into: width columns (x) by height rows (y),
+// column-major (cell x, y at x * height + y), 1 where the name may sit.
+export interface NameGrid {
+  readonly cells: Uint8Array;
+  readonly width: number;
+  readonly height: number;
+}
+
+// Reused across calls: placing every player's name allocated a fresh grid
+// per player (a quarter of the simulation's allocations).
+let gridBuffer = new Uint8Array(0);
+let heightsBuffer = new Int32Array(0);
+let stackBuffer = new Int32Array(0);
+
 export function createGrid(
   game: Game,
   player: Player,
   boundingBox: { min: Point; max: Point },
   scalingFactor: number,
-): boolean[][] {
-  const scaledBoundingBox: { min: Point; max: Point } = {
-    min: {
-      x: Math.floor(boundingBox.min.x / scalingFactor),
-      y: Math.floor(boundingBox.min.y / scalingFactor),
-    },
-    max: {
-      x: Math.floor(boundingBox.max.x / scalingFactor),
-      y: Math.floor(boundingBox.max.y / scalingFactor),
-    },
-  };
+): NameGrid {
+  const minX = Math.floor(boundingBox.min.x / scalingFactor);
+  const minY = Math.floor(boundingBox.min.y / scalingFactor);
+  const maxX = Math.floor(boundingBox.max.x / scalingFactor);
+  const maxY = Math.floor(boundingBox.max.y / scalingFactor);
+  const width = maxX - minX + 1;
+  const height = maxY - minY + 1;
+  if (gridBuffer.length < width * height) {
+    gridBuffer = new Uint8Array(width * height * 2);
+  }
+  const cells = gridBuffer.subarray(0, width * height);
+  cells.fill(0);
+  const smallID = player.smallID();
 
-  const width = scaledBoundingBox.max.x - scaledBoundingBox.min.x + 1;
-  const height = scaledBoundingBox.max.y - scaledBoundingBox.min.y + 1;
-  const grid: boolean[][] = Array(width)
-    .fill(null)
-    .map(() => Array(height).fill(false));
-
-  for (let x = scaledBoundingBox.min.x; x <= scaledBoundingBox.max.x; x++) {
-    for (let y = scaledBoundingBox.min.y; y <= scaledBoundingBox.max.y; y++) {
-      const cell = new Cell(x * scalingFactor, y * scalingFactor);
-      if (game.isOnMap(cell)) {
-        const tile = game.ref(cell.x, cell.y);
-        grid[x - scaledBoundingBox.min.x][y - scaledBoundingBox.min.y] =
-          game.isShore(tile) ||
-          (game.isOcean(tile) && game.magnitude(tile) < 10) ||
-          game.owner(tile) === player ||
-          game.hasFallout(tile);
+  for (let x = minX; x <= maxX; x++) {
+    const tx = x * scalingFactor;
+    for (let y = minY; y <= maxY; y++) {
+      const ty = y * scalingFactor;
+      if (!game.isValidCoord(tx, ty)) continue;
+      const tile = game.ref(tx, ty);
+      if (
+        game.isShore(tile) ||
+        (game.isOcean(tile) && game.magnitude(tile) < 10) ||
+        game.ownerID(tile) === smallID ||
+        game.hasFallout(tile)
+      ) {
+        cells[(x - minX) * height + (y - minY)] = 1;
       }
     }
   }
 
-  return grid;
+  return { cells, width, height };
 }
 
-export function findLargestInscribedRectangle(grid: boolean[][]): Rectangle {
-  const rows = grid[0].length;
-  const cols = grid.length;
-  const heights: number[] = new Array(cols).fill(0);
-  let largestRect: Rectangle = { x: 0, y: 0, width: 0, height: 0 };
+export function findLargestInscribedRectangle(grid: NameGrid): Rectangle {
+  const { cells, width: cols, height: rows } = grid;
+  if (heightsBuffer.length < cols) heightsBuffer = new Int32Array(cols * 2);
+  if (stackBuffer.length < cols + 1) stackBuffer = new Int32Array(cols * 2 + 1);
+  const heights = heightsBuffer;
+  heights.fill(0, 0, cols);
+  let bestX = 0;
+  let bestY = 0;
+  let bestWidth = 0;
+  let bestHeight = 0;
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      if (grid[col][row]) {
-        heights[col]++;
-      } else {
-        heights[col] = 0;
-      }
+      heights[col] = cells[col * rows + row] ? heights[col] + 1 : 0;
     }
 
-    const rectForRow = largestRectangleInHistogram(heights);
+    // Largest rectangle in the histogram of this row (see
+    // largestRectangleInHistogram, same order and tie-breaking).
+    const stack = stackBuffer;
+    let top = 0;
+    let maxArea = 0;
+    let rx = 0;
+    let rw = 0;
+    let rh = 0;
+    for (let i = 0; i <= cols; i++) {
+      const h = i === cols ? 0 : heights[i];
+      while (top > 0 && h < heights[stack[top - 1]]) {
+        const barHeight = heights[stack[--top]];
+        const barWidth = top === 0 ? i : i - stack[top - 1] - 1;
+        if (barHeight * barWidth > maxArea) {
+          maxArea = barHeight * barWidth;
+          rx = top === 0 ? 0 : stack[top - 1] + 1;
+          rw = barWidth;
+          rh = barHeight;
+        }
+      }
+      stack[top++] = i;
+    }
 
-    if (
-      rectForRow.width * rectForRow.height >
-      largestRect.width * largestRect.height
-    ) {
-      largestRect = {
-        x: rectForRow.x,
-        y: row - rectForRow.height + 1,
-        width: rectForRow.width,
-        height: rectForRow.height,
-      };
+    if (rw * rh > bestWidth * bestHeight) {
+      bestX = rx;
+      bestY = row - rh + 1;
+      bestWidth = rw;
+      bestHeight = rh;
     }
   }
 
-  return largestRect;
+  return { x: bestX, y: bestY, width: bestWidth, height: bestHeight };
 }
 
 export function largestRectangleInHistogram(widths: number[]): Rectangle {

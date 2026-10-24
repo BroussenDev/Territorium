@@ -105,22 +105,26 @@ describe("GameRunner payload cadence", () => {
     };
   });
 
-  test("playerNameViewData is attached only on placement-rebuild ticks", () => {
+  // Names are re-placed every 30 ticks, a slice of the players each tick
+  // (by smallID), so no tick re-places them all at once; only the names
+  // re-placed that tick travel to the main thread.
+  test("playerNameViewData carries each player's name once every 30 ticks", () => {
     tick(); // 1
     tick(); // 2
     game.endSpawnPhase();
-    for (let t = 3; t <= 61; t++) tick();
+    for (let t = 3; t <= 70; t++) tick();
 
-    // ticks < 3 always rebuild; every 30th tick rebuilds; everything else
-    // omits the record. (The in-tick spawn-end rebuild also sets the flag,
-    // but ending the spawn phase between ticks doesn't exercise it here.)
-    expect(byTick.get(1)!.playerNameViewData).toBeDefined();
-    expect(byTick.get(2)!.playerNameViewData).toBeDefined();
-    expect(byTick.get(4)!.playerNameViewData).toBeUndefined();
-    expect(byTick.get(29)!.playerNameViewData).toBeUndefined();
-    expect(byTick.get(30)!.playerNameViewData).toBeDefined();
-    expect(byTick.get(31)!.playerNameViewData).toBeUndefined();
-    expect(byTick.get(60)!.playerNameViewData).toBeDefined();
+    const alice = game.player("alice_id");
+    const sent = [...byTick.entries()]
+      .filter(([t, gu]) => t >= 3 && gu.playerNameViewData !== undefined)
+      .map(([t, gu]) => {
+        expect(Object.keys(gu.playerNameViewData!)).toEqual(["alice_id"]);
+        return t;
+      });
+    // Alice's slice comes round every 30 ticks, on her smallID's ticks.
+    expect(sent.length).toBe(2);
+    for (const t of sent) expect(t % 30).toBe(alice.smallID() % 30);
+    expect(sent[1] - sent[0]).toBe(30);
   });
 
   test("stat churn arrives as packedPlayerUpdates quints on the view data", () => {

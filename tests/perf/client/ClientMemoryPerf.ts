@@ -141,7 +141,9 @@ async function startViteServer(port: number): Promise<ChildProcess> {
     {
       env: { ...process.env, SKIP_BROWSER_OPEN: "true" },
       stdio: ["ignore", "pipe", "pipe"],
-      detached: true, // own process group, so cleanup kills vite's children
+      // npx is a .cmd script on Windows: it only starts through a shell.
+      shell: process.platform === "win32",
+      detached: process.platform !== "win32", // own process group, so cleanup kills vite's children
     },
   );
   let output = "";
@@ -169,7 +171,12 @@ async function startViteServer(port: number): Promise<ChildProcess> {
 function stopViteServer(child: ChildProcess): void {
   if (child.pid !== undefined && child.exitCode === null) {
     try {
-      process.kill(-child.pid, "SIGTERM"); // whole process group
+      if (process.platform === "win32") {
+        // No process groups on Windows: kill the shell's whole tree.
+        spawnProcess("taskkill", ["/pid", String(child.pid), "/T", "/F"]);
+      } else {
+        process.kill(-child.pid, "SIGTERM"); // whole process group
+      }
     } catch {
       // already gone
     }

@@ -40,10 +40,17 @@ describe("graphics quality", () => {
   });
 
   it("renders at each level's resolution on a dense screen", () => {
-    expect(dprAt("low", 3)).toBe(1);
-    expect(dprAt("normal", 3)).toBe(1.5);
+    expect(dprAt("low", 3)).toBe(0.75);
+    expect(dprAt("normal", 3)).toBe(1);
     expect(dprAt("high", 3)).toBe(2);
     expect(dprAt("ultra", 3)).toBe(3);
+  });
+
+  // A weak integrated chip is held back by the pixels it fills: "low" draws
+  // three quarters of the screen's width and height, even on a plain screen.
+  it("draws fewer pixels than the screen at low", () => {
+    expect(dprAt("low", 1)).toBe(0.75);
+    expect(dprAt("normal", 1)).toBe(1);
   });
 
   it("never renders finer than the screen", () => {
@@ -56,6 +63,7 @@ describe("graphics quality", () => {
     expect(settings.passEnabled.fx).toBe(false);
     expect(settings.passEnabled.conquestFlash).toBe(false);
     expect(settings.passEnabled.falloutBloom).toBe(false);
+    expect(settings.passEnabled.trail).toBe(false);
   });
 
   // The quality level is applied first, so the player's own advanced

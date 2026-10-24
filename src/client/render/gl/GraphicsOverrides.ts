@@ -93,6 +93,8 @@ export const GraphicsOverridesSchema = z
         fallout: z.boolean(),
         // Captured tiles light up for a moment.
         conquestFlash: z.boolean(),
+        // The trails boats, missiles and trains leave behind them.
+        trail: z.boolean(),
       })
       .partial(),
     terrain: z

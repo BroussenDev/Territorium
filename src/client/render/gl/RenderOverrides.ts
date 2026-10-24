@@ -143,6 +143,9 @@ export function applyGraphicsOverrides(
   if (overrides.passEnabled?.fx !== undefined) {
     settings.passEnabled.fx = overrides.passEnabled.fx;
   }
+  if (overrides.passEnabled?.trail !== undefined) {
+    settings.passEnabled.trail = overrides.passEnabled.trail;
+  }
   if (overrides.passEnabled?.conquestFlash !== undefined) {
     settings.passEnabled.conquestFlash = overrides.passEnabled.conquestFlash;
   }
