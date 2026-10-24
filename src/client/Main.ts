@@ -25,6 +25,7 @@ import {
   retrySteamSignIn,
   userAuth,
 } from "./Auth";
+import { autoPickGraphicsQuality } from "./AutoGraphicsQuality";
 import {
   bootInterruptsAllowed,
   CLAIM_PROMPT_KEY,
@@ -481,6 +482,10 @@ class Client {
     // never waits on a fetch (docs/MultiServer.md, "Server list v2"). It
     // never throws and keeps itself alive with a heartbeat afterwards.
     startServerListPolling();
+
+    // A first visit in the browser starts on a graphics quality its computer
+    // can hold (the Steam app asks on its first launch).
+    autoPickGraphicsQuality(this.userSettings);
 
     // Prefetch turnstile token so it is available when the user joins a lobby.
     // Desktop (Steam) has no Turnstile script and is server-side exempt, so

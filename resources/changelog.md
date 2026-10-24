@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.139
+
+🎛️ **Graphics quality fitted to your computer**
+
+- On your first visit to the website, a quick graphics test now picks the quality your computer can hold, as the Steam app already does on its first launch.
+- A quality you chose yourself is never changed.
+
 ## v0.1.138
 
 ⚡ **Smoother games on modest computers**

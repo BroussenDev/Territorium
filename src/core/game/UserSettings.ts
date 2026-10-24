@@ -454,6 +454,11 @@ export class UserSettings {
       : "high";
   }
 
+  /** Whether a graphics quality was ever saved (by the player or the auto pick). */
+  hasGraphicsQuality(): boolean {
+    return this.getCached(GRAPHICS_QUALITY_KEY) !== null;
+  }
+
   setGraphicsQuality(value: GraphicsQuality) {
     if (!(GRAPHICS_QUALITIES as readonly string[]).includes(value)) return;
     this.setString(GRAPHICS_QUALITY_KEY, value);
