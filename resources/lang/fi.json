@@ -102,6 +102,7 @@
     "two_factor_desc": "Laitteella, jota et ole ennen käyttänyt, kirjautuminen pyytää myös sähköpostiin lähetetyn koodin.",
     "two_factor_failed": "Kaksivaiheista kirjautumista ei voitu muuttaa. Yritä uudelleen.",
     "two_factor_no_email": "Lisää tiliisi sähköpostiosoite tai yhdistä Google ottaaksesi sen käyttöön.",
+    "two_factor_steam": "Tiliäsi suojaa Steam Guard: tärkeät toiminnot vahvistetaan Steamin kautta.",
     "two_factor_title": "Kaksivaiheinen kirjautuminen",
     "unclaimed_rewards": "Lunastamattomat palkinnot",
     "username_bare_taken_body": "\"{requested}\" on toisen tilaajan hallussa. Voit käyttää sitä lisätyn numeron kanssa, kuten \"{requested}.1234\", mutta se ei näytä vahvistettua sekkiä. Tämä käyttää nimenmuutostasi. Käytä sitä numeron kanssa?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Tämä sulkee tilisi kaikki istunnot kaikilla laitteilla, myös tällä. Kirjaudu sitten uudelleen ja vaihda salasana palvelussa, jolla kirjaudut.",
     "revoke_done": "Tilisi kaikki istunnot on suljettu.",
     "revoke_invalid": "Linkki ei ole enää voimassa. Kirjaudu sisään ja kirjaa sitten kaikki laitteet ulos tililtäsi.",
-    "revoke_title": "Kirjaudutaanko ulos kaikkialta?"
+    "revoke_title": "Kirjaudutaanko ulos kaikkialta?",
+    "stepup_desc": "Tämä toiminto suojaa tiliäsi: lähetimme 6-numeroisen koodin tilisi sähköpostiin. Syötä se vahvistaaksesi.",
+    "stepup_failed": "Henkilöllisyyttäsi ei voitu vahvistaa. Yritä uudelleen.",
+    "stepup_steam_done": "Henkilöllisyys vahvistettu Steamilla. Tee toiminto uudelleen viimeistelläksesi sen.",
+    "stepup_steam_web": "Vahvista toiminto kirjautumalla Steamiin: Steam Guard tarkistaa, että se olet sinä, ja palaat sitten tänne.",
+    "stepup_title": "Vahvista, että se olet sinä"
   },
   "select_lang": {
     "title": "Valitse kieli"

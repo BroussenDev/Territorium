@@ -102,6 +102,7 @@
     "two_factor_desc": "한 번도 사용하지 않은 기기에서는 로그인할 때 이메일로 받은 코드도 필요합니다.",
     "two_factor_failed": "2단계 로그인을 변경하지 못했습니다. 다시 시도하세요.",
     "two_factor_no_email": "켜려면 계정에 이메일을 추가하거나 Google을 연결하세요.",
+    "two_factor_steam": "계정이 Steam Guard로 보호됩니다. 중요한 작업은 Steam을 통해 확인됩니다.",
     "two_factor_title": "2단계 로그인",
     "unclaimed_rewards": "미수령 보상",
     "username_bare_taken_body": "“{requested}”는 다른 가입자가 사용 중입니다. “{requested}.1234”처럼 숫자를 추가하여 사용할 수는 있지만, 인증 표시가 나타나지 않습니다. 이 경우 이름이 변경됩니다. 숫자를 추가하여 사용하시겠습니까?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "이 기기를 포함한 모든 기기에서 계정의 모든 세션이 종료됩니다. 그런 다음 다시 로그인하고 로그인에 사용하는 서비스의 비밀번호를 변경하세요.",
     "revoke_done": "계정의 모든 세션이 종료되었습니다.",
     "revoke_invalid": "이 링크는 더 이상 유효하지 않습니다. 로그인한 뒤 계정에서 모든 기기를 로그아웃하세요.",
-    "revoke_title": "모든 기기에서 로그아웃할까요?"
+    "revoke_title": "모든 기기에서 로그아웃할까요?",
+    "stepup_desc": "이 작업은 계정을 보호합니다. 계정 이메일로 6자리 코드를 보냈습니다. 코드를 입력해 확인하세요.",
+    "stepup_failed": "본인 확인에 실패했습니다. 다시 시도하세요.",
+    "stepup_steam_done": "Steam으로 본인 확인이 완료되었습니다. 작업을 다시 실행해 마무리하세요.",
+    "stepup_steam_web": "이 작업을 확인하려면 Steam에 로그인하세요. Steam Guard가 본인인지 확인한 뒤 여기로 돌아옵니다.",
+    "stepup_title": "본인 확인"
   },
   "select_lang": {
     "title": "언어 선택"

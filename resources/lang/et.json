@@ -102,6 +102,7 @@
     "two_factor_desc": "Seadmes, mida sa pole kunagi kasutanud, küsib sisselogimine ka e-postiga saadetud koodi.",
     "two_factor_failed": "Kaheastmelist sisselogimist ei õnnestunud muuta. Proovi uuesti.",
     "two_factor_no_email": "Selle sisselülitamiseks lisa kontole e-posti aadress või ühenda Google.",
+    "two_factor_steam": "Sinu kontot kaitseb Steam Guard: olulised toimingud kinnitatakse Steami kaudu.",
     "two_factor_title": "Kaheastmeline sisselogimine",
     "unclaimed_rewards": "Väljanõudmata preemiad",
     "username_bare_taken_body": "\"{requested}\" on mõne teise tellija käes. Saate seda kasutada koos lisatud numbriga, näiteks \"{requested}.1234\", kuid see ei näita kinnitatud tšekki. See kasutab teie nimemuutust. Kas kasutada seda numbriga?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "See sulgeb sinu konto kõik seansid kõigis seadmetes, ka selles. Seejärel logi uuesti sisse ja muuda parooli teenuses, millega sisse logid.",
     "revoke_done": "Sinu konto kõik seansid on suletud.",
     "revoke_invalid": "See link ei kehti enam. Logi sisse ja logi siis oma kontol kõik seadmed välja.",
-    "revoke_title": "Kas logida kõikjalt välja?"
+    "revoke_title": "Kas logida kõikjalt välja?",
+    "stepup_desc": "See toiming kaitseb sinu kontot: saatsime konto e-postile 6-kohalise koodi. Sisesta see kinnitamiseks.",
+    "stepup_failed": "Sinu isikut ei õnnestunud kinnitada. Proovi uuesti.",
+    "stepup_steam_done": "Isik kinnitatud Steamiga. Tee toiming uuesti, et see lõpetada.",
+    "stepup_steam_web": "Toimingu kinnitamiseks logi Steami sisse: Steam Guard kontrollib, et see oled sina, ja siis naased siia.",
+    "stepup_title": "Kinnita, et see oled sina"
   },
   "select_lang": {
     "title": "Vali keel"

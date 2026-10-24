@@ -102,6 +102,7 @@
     "two_factor_desc": "Sur un appareil jamais utilisé, la connexion demande aussi un code envoyé par e-mail.",
     "two_factor_failed": "Impossible de modifier la connexion en deux étapes. Réessayez.",
     "two_factor_no_email": "Ajoutez un e-mail à votre compte, ou liez Google, pour l'activer.",
+    "two_factor_steam": "Votre compte est protégé par Steam Guard : les actions importantes sont confirmées via Steam.",
     "two_factor_title": "Connexion en deux étapes",
     "unclaimed_rewards": "Récompenses non récupérées",
     "username_bare_taken_body": "«{requested}» est déjà détenu par un autre abonné. Vous pouvez l'utiliser en ajoutant un nombre, comme «{requested}».1234\", mais ça n'affichera pas le badge vérifié. Cette action utilise votre changement de nom. Voulez-vous utiliser un nombre ?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Cela ferme toutes les sessions de votre compte, sur tous les appareils, y compris celui-ci. Reconnectez-vous ensuite et changez votre mot de passe sur le service avec lequel vous vous connectez.",
     "revoke_done": "Toutes les sessions de votre compte sont fermées.",
     "revoke_invalid": "Ce lien n'est plus valide. Connectez-vous, puis déconnectez tous les appareils depuis votre compte.",
-    "revoke_title": "Se déconnecter partout ?"
+    "revoke_title": "Se déconnecter partout ?",
+    "stepup_desc": "Cette action protège votre compte : nous avons envoyé un code à 6 chiffres à l'e-mail de votre compte. Saisissez-le pour confirmer.",
+    "stepup_failed": "Impossible de confirmer votre identité. Réessayez.",
+    "stepup_steam_done": "Identité confirmée avec Steam. Refaites l'action pour la terminer.",
+    "stepup_steam_web": "Pour confirmer cette action, connectez-vous à Steam : Steam Guard vérifie que c'est vous, puis vous revenez ici.",
+    "stepup_title": "Confirmez que c'est vous"
   },
   "select_lang": {
     "title": "Sélectionner une langue"

@@ -102,6 +102,7 @@
     "two_factor_desc": "在从未使用过的设备上登录时，还需要输入通过邮件发送的验证码。",
     "two_factor_failed": "无法更改两步登录设置。请重试。",
     "two_factor_no_email": "请为账号添加邮箱或关联 Google 后再开启。",
+    "two_factor_steam": "你的账号受 Steam Guard 保护：重要操作通过 Steam 确认。",
     "two_factor_title": "两步登录",
     "unclaimed_rewards": "无人认领的奖励",
     "username_bare_taken_body": "“{requested}”由另一个订阅者持有。您可以在添加数字后使用它，例如“{requested}.1234”，但它不会显示经过验证的支票。这会使用您的姓名更改。与号码一起使用吗？",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "这会结束你账号在所有设备上的全部会话，包括此设备。之后请重新登录，并修改你用于登录的服务的密码。",
     "revoke_done": "你账号的所有会话均已结束。",
     "revoke_invalid": "此链接已失效。请先登录，然后在账号中退出所有设备。",
-    "revoke_title": "要退出所有设备吗？"
+    "revoke_title": "要退出所有设备吗？",
+    "stepup_desc": "此操作用于保护你的账号：我们已向账号邮箱发送了 6 位验证码。输入验证码即可确认。",
+    "stepup_failed": "无法确认你的身份。请重试。",
+    "stepup_steam_done": "已通过 Steam 确认身份。请再次执行该操作以完成。",
+    "stepup_steam_web": "要确认此操作，请登录 Steam：Steam Guard 会确认是你本人，之后你会回到这里。",
+    "stepup_title": "确认是你本人"
   },
   "select_lang": {
     "title": "选择语言"

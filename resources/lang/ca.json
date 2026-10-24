@@ -102,6 +102,7 @@
     "two_factor_desc": "En un dispositiu que no has fet servir mai, iniciar sessió també demana un codi enviat per correu.",
     "two_factor_failed": "No s'ha pogut canviar l'inici de sessió en dos passos. Torna-ho a provar.",
     "two_factor_no_email": "Afegeix un correu al teu compte, o vincula Google, per activar-lo.",
+    "two_factor_steam": "El teu compte està protegit per Steam Guard: les accions importants es confirmen a través de Steam.",
     "two_factor_title": "Inici de sessió en dos passos",
     "unclaimed_rewards": "Recompenses no reclamades",
     "username_bare_taken_body": "\"{requested}\" el té un altre subscriptor. Podeu utilitzar-lo amb un número afegit, com ara \"{requested}.1234\", però no mostrarà el xec verificat. Això utilitza el vostre canvi de nom. Utilitzeu-lo amb un número?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Això tanca totes les sessions del teu compte a tots els dispositius, inclòs aquest. Després torna a iniciar sessió i canvia la contrasenya del servei amb què entres.",
     "revoke_done": "Totes les sessions del teu compte estan tancades.",
     "revoke_invalid": "Aquest enllaç ja no és vàlid. Inicia sessió i després tanca la sessió a tots els dispositius des del teu compte.",
-    "revoke_title": "Vols tancar la sessió a tot arreu?"
+    "revoke_title": "Vols tancar la sessió a tot arreu?",
+    "stepup_desc": "Aquesta acció protegeix el teu compte: hem enviat un codi de 6 xifres al correu del compte. Escriu-lo per confirmar.",
+    "stepup_failed": "No s'ha pogut confirmar la teva identitat. Torna-ho a provar.",
+    "stepup_steam_done": "Identitat confirmada amb Steam. Torna a fer l'acció per acabar-la.",
+    "stepup_steam_web": "Per confirmar aquesta acció, inicia sessió a Steam: Steam Guard comprova que ets tu i després tornes aquí.",
+    "stepup_title": "Confirma que ets tu"
   },
   "select_lang": {
     "title": "Seleccionar l'Idioma"

@@ -102,6 +102,7 @@
     "two_factor_desc": "Na zariadení, ktoré si nikdy nepoužil, prihlásenie vyžaduje aj kód poslaný e-mailom.",
     "two_factor_failed": "Dvojstupňové prihlásenie sa nepodarilo zmeniť. Skús to znova.",
     "two_factor_no_email": "Pridaj k svojmu účtu e-mail alebo prepoj Google, aby si ho mohol zapnúť.",
+    "two_factor_steam": "Tvoj účet chráni Steam Guard: dôležité akcie sa potvrdzujú cez Steam.",
     "two_factor_title": "Dvojstupňové prihlásenie",
     "unclaimed_rewards": "Nevyzdvihnuté odmeny",
     "username_bare_taken_body": "„{requested}“ má iný predplatiteľ. Môžete ho použiť s pridaným číslom, napríklad „{requested}.1234“, ale nezobrazí overený šek. Toto používa zmenu vášho mena. Použiť ho s číslom?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Tým sa ukončia všetky relácie tvojho účtu na všetkých zariadeniach, vrátane tohto. Potom sa znova prihlás a zmeň heslo v službe, cez ktorú sa prihlasuješ.",
     "revoke_done": "Všetky relácie tvojho účtu sú ukončené.",
     "revoke_invalid": "Tento odkaz už neplatí. Prihlás sa a potom vo svojom účte odhlás všetky zariadenia.",
-    "revoke_title": "Odhlásiť všade?"
+    "revoke_title": "Odhlásiť všade?",
+    "stepup_desc": "Táto akcia chráni tvoj účet: poslali sme 6-miestny kód na e-mail účtu. Zadaj ho na potvrdenie.",
+    "stepup_failed": "Tvoju identitu sa nepodarilo potvrdiť. Skús to znova.",
+    "stepup_steam_done": "Identita potvrdená cez Steam. Vykonaj akciu znova a dokonči ju.",
+    "stepup_steam_web": "Na potvrdenie akcie sa prihlás do Steamu: Steam Guard overí, že si to ty, a potom sa vrátiš sem.",
+    "stepup_title": "Potvrď, že si to ty"
   },
   "select_lang": {
     "title": "Vybrať jazyk"

@@ -194,29 +194,42 @@ export class AccountSettingsPanel extends LitElement {
               ${translateText("account_modal.two_factor_title")}
             </div>
             <div class="text-white/50 text-sm mt-1">
-              ${twoFactor.available
-                ? translateText("account_modal.two_factor_desc")
-                : translateText("account_modal.two_factor_no_email")}
+              ${twoFactor.steamGuard
+                ? translateText("account_modal.two_factor_steam")
+                : twoFactor.available
+                  ? translateText("account_modal.two_factor_desc")
+                  : translateText("account_modal.two_factor_no_email")}
             </div>
           </div>
-          <button
-            role="switch"
-            aria-checked=${on ? "true" : "false"}
-            aria-label=${translateText("account_modal.two_factor_title")}
-            ?disabled=${this.twoFactorBusy || !twoFactor.available}
-            @click=${() => this.toggleTwoFactor(!on)}
-            class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand/50 disabled:opacity-60 ${on
-              ? "bg-brand shadow-[var(--shadow-brand-pill)]"
-              : "bg-white/15"}"
-          >
-            <span
-              class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${on
-                ? "translate-x-6"
-                : "translate-x-1"}"
-            ></span>
-          </button>
+          ${twoFactor.steamGuard
+            ? html`<span
+                class="shrink-0 text-xs font-semibold text-brand px-3 py-1 rounded-full border border-brand/40 bg-brand/10"
+                >Steam Guard</span
+              >`
+            : this.renderTwoFactorSwitch(on, twoFactor.available)}
         </div>
       </div>
+    `;
+  }
+
+  private renderTwoFactorSwitch(on: boolean, available: boolean) {
+    return html`
+      <button
+        role="switch"
+        aria-checked=${on ? "true" : "false"}
+        aria-label=${translateText("account_modal.two_factor_title")}
+        ?disabled=${this.twoFactorBusy || !available}
+        @click=${() => this.toggleTwoFactor(!on)}
+        class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand/50 disabled:opacity-60 ${on
+          ? "bg-brand shadow-[var(--shadow-brand-pill)]"
+          : "bg-white/15"}"
+      >
+        <span
+          class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${on
+            ? "translate-x-6"
+            : "translate-x-1"}"
+        ></span>
+      </button>
     `;
   }
 
@@ -224,10 +237,11 @@ export class AccountSettingsPanel extends LitElement {
     const twoFactor = this.player?.twoFactor;
     if (!twoFactor || this.twoFactorBusy) return;
     this.twoFactorBusy = true;
-    twoFactor.enabled = enabled;
-    this.requestUpdate();
-    if (!(await setTwoFactor(enabled))) {
-      twoFactor.enabled = !enabled;
+    // Turning it on or off is confirmed first (an email code, or Steam):
+    // the switch moves once it is done.
+    const result = await setTwoFactor(enabled);
+    if (result === "ok") twoFactor.enabled = enabled;
+    if (result === "failed") {
       void showInGameAlert(translateText("account_modal.two_factor_failed"));
     }
     this.twoFactorBusy = false;
@@ -298,6 +312,8 @@ export class AccountSettingsPanel extends LitElement {
       replaceWith("/");
       return;
     }
+    // The player didn't confirm their identity: nothing to say.
+    if (result.code === "cancelled") return;
     if (result.code === "logged_out") {
       // 401: the session was already gone and the cookie is cleared. Nothing
       // was queued; drop local state so the player can sign in and retry.

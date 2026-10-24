@@ -102,6 +102,7 @@
     "two_factor_desc": "Sur aparato, kiun vi neniam uzis, la ensaluto ankaŭ petas kodon senditan retpoŝte.",
     "two_factor_failed": "Ne eblis ŝanĝi la dupaŝan ensaluton. Provu denove.",
     "two_factor_no_email": "Aldonu retpoŝton al via konto, aŭ ligu Google, por ŝalti ĝin.",
+    "two_factor_steam": "Via konto estas protektata de Steam Guard: gravaj agoj estas konfirmataj per Steam.",
     "two_factor_title": "Dupaŝa ensaluto",
     "unclaimed_rewards": "Nepostulitaj Rekompencoj",
     "username_bare_taken_body": "\"{requested}\" estas tenita de alia abonanto. Vi povas uzi ĝin kun nombro aldonita, kiel \"{requested}.1234\", sed ĝi ne montros la kontrolitan ĉekon. Ĉi tio uzas vian nomŝanĝon. Ĉu uzi ĝin kun nombro?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Tio fermas ĉiujn seancojn de via konto sur ĉiuj aparatoj, ankaŭ ĉi tiu. Poste ensalutu denove kaj ŝanĝu vian pasvorton ĉe la servo, per kiu vi ensalutas.",
     "revoke_done": "Ĉiuj seancoj de via konto estas fermitaj.",
     "revoke_invalid": "Ĉi tiu ligilo ne plu validas. Ensalutu, poste elsalutigu ĉiujn aparatojn el via konto.",
-    "revoke_title": "Ĉu elsaluti ĉie?"
+    "revoke_title": "Ĉu elsaluti ĉie?",
+    "stepup_desc": "Ĉi tiu ago protektas vian konton: ni sendis 6-ciferan kodon al la retpoŝto de la konto. Entajpu ĝin por konfirmi.",
+    "stepup_failed": "Ne eblis konfirmi vian identecon. Provu denove.",
+    "stepup_steam_done": "Identeco konfirmita per Steam. Refaru la agon por fini ĝin.",
+    "stepup_steam_web": "Por konfirmi ĉi tiun agon, ensalutu al Steam: Steam Guard kontrolas, ke temas pri vi, kaj poste vi revenas ĉi tien.",
+    "stepup_title": "Konfirmu, ke temas pri vi"
   },
   "select_lang": {
     "title": "Elekti lingvon"

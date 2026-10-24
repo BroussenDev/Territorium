@@ -102,6 +102,7 @@
     "two_factor_desc": "在從未使用過的裝置上登入時，還需要輸入以電子郵件寄送的驗證碼。",
     "two_factor_failed": "無法變更兩步驟登入設定。請再試一次。",
     "two_factor_no_email": "請為帳號新增電子郵件或連結 Google 後再開啟。",
+    "two_factor_steam": "你的帳號受 Steam Guard 保護：重要操作透過 Steam 確認。",
     "two_factor_title": "兩步驟登入",
     "unclaimed_rewards": "未領取的獎勵",
     "username_bare_taken_body": "\"{requested}\" 目前正被另一個訂閱者使用中。您可以加上一些數字，例如 \"{requested}.1234\"，但這種名稱將不會顯示已驗證。這個操作將會使用您的名稱變更次數，確定要加上數字後並使用？",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "這會結束你帳號在所有裝置上的全部工作階段，包括此裝置。之後請重新登入，並變更你用來登入的服務密碼。",
     "revoke_done": "你帳號的所有工作階段皆已結束。",
     "revoke_invalid": "此連結已失效。請先登入，再從帳號中登出所有裝置。",
-    "revoke_title": "要登出所有裝置嗎？"
+    "revoke_title": "要登出所有裝置嗎？",
+    "stepup_desc": "此操作用於保護你的帳號：我們已向帳號電子郵件寄出 6 位數驗證碼。輸入驗證碼即可確認。",
+    "stepup_failed": "無法確認你的身分。請再試一次。",
+    "stepup_steam_done": "已透過 Steam 確認身分。請再次執行該操作以完成。",
+    "stepup_steam_web": "要確認此操作，請登入 Steam：Steam Guard 會確認是你本人，之後你會回到這裡。",
+    "stepup_title": "確認是你本人"
   },
   "select_lang": {
     "title": "選擇語言"

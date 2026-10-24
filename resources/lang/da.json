@@ -102,6 +102,7 @@
     "two_factor_desc": "På en enhed, du aldrig har brugt, beder login også om en kode sendt på e-mail.",
     "two_factor_failed": "Login i to trin kunne ikke ændres. Prøv igen.",
     "two_factor_no_email": "Tilføj en e-mail til din konto, eller tilknyt Google, for at slå det til.",
+    "two_factor_steam": "Din konto er beskyttet af Steam Guard: vigtige handlinger bekræftes via Steam.",
     "two_factor_title": "Login i to trin",
     "unclaimed_rewards": "Uhævede belønninger",
     "username_bare_taken_body": "\"{requested}\" ejes af en anden abonnent. Du kan bruge det med et nummer tilføjet, såsom \"{requested}.1234\", men det vil ikke vise den bekræftede check. Dette bruger dit navneskifte. Brug det med et nummer?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Det lukker alle sessioner på din konto på alle enheder, også denne. Log derefter ind igen, og skift adgangskode hos den tjeneste, du logger ind med.",
     "revoke_done": "Alle sessioner på din konto er lukket.",
     "revoke_invalid": "Linket er ikke længere gyldigt. Log ind, og log derefter alle enheder ud fra din konto.",
-    "revoke_title": "Log ud overalt?"
+    "revoke_title": "Log ud overalt?",
+    "stepup_desc": "Denne handling beskytter din konto: vi har sendt en 6-cifret kode til kontoens e-mail. Indtast den for at bekræfte.",
+    "stepup_failed": "Din identitet kunne ikke bekræftes. Prøv igen.",
+    "stepup_steam_done": "Identitet bekræftet med Steam. Udfør handlingen igen for at fuldføre den.",
+    "stepup_steam_web": "Log ind på Steam for at bekræfte handlingen: Steam Guard tjekker, at det er dig, og så kommer du tilbage hertil.",
+    "stepup_title": "Bekræft, at det er dig"
   },
   "select_lang": {
     "title": "Vælg Sprog"

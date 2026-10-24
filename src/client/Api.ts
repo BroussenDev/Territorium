@@ -78,6 +78,7 @@ import {
 import { ClientEnv } from "./ClientEnv";
 import { offlineCopy, rememberForOffline } from "./DesktopOffline";
 import { ensureServerList } from "./ServerList";
+import { currentLanguage } from "./Utils";
 
 export async function fetchPlayerById(
   playerId: string,
@@ -378,9 +379,135 @@ export function invalidateUserMe() {
   __userMe = null;
 }
 
+// ------------------------------------------------- identity confirmation
+// Important actions (deleting the account, a new username, two-step sign-in
+// on or off) are confirmed first when the account is guarded: the API
+// answers 403 { code: "step_up" }, the security modal gets the confirmation
+// (email code or Steam), and the call is made again with its token.
+export type StepUpAction =
+  | "delete"
+  | "rename"
+  | "two_factor_on"
+  | "two_factor_off";
+// Resolves to the confirmation token, or null when the player cancelled (or
+// left for Steam to confirm).
+type StepUpHandler = (action: StepUpAction) => Promise<string | null>;
+let stepUpHandler: StepUpHandler | null = null;
+
+export function setStepUpHandler(handler: StepUpHandler): void {
+  stepUpHandler = handler;
+}
+
+// The response, or the response of the call made again once the player
+// confirmed. A 403 { code: "step_up" } left means they didn't.
+async function withStepUp(
+  action: StepUpAction,
+  call: (headers: Record<string, string>) => Promise<Response>,
+): Promise<Response> {
+  const response = await call({});
+  if (!stepUpHandler || !(await isStepUpRefusal(response))) return response;
+  const token = await stepUpHandler(action);
+  if (token === null) return response;
+  return call({ "X-Step-Up": token });
+}
+
+// Whether the API asked for an identity confirmation (403 step_up). Reads a
+// copy of the body, so the caller can still read it.
+async function isStepUpRefusal(response: Response): Promise<boolean> {
+  if (response.status !== 403 || typeof response.clone !== "function") {
+    return false;
+  }
+  const body = await response
+    .clone()
+    .json()
+    .catch(() => null);
+  return body?.code === "step_up";
+}
+
+export type StepUpStart =
+  | { method: null }
+  | { method: "steam" }
+  | { method: "email"; challenge: string };
+
+// Asks the API how to confirm `action`, emailing a code when that is how.
+export async function startStepUp(
+  action: StepUpAction,
+): Promise<StepUpStart | null> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/verify/start`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+        "X-Lang": currentLanguage(),
+      },
+      body: JSON.stringify({ action }),
+    });
+    if (!response.ok) return null;
+    return (await response.json()) as StepUpStart;
+  } catch (e) {
+    console.error("startStepUp failed", e);
+    return null;
+  }
+}
+
+export type StepUpFinish =
+  | { ok: true; token: string }
+  | { ok: false; code: string; attemptsLeft?: number };
+
+// The confirmation: the emailed code, or a Steam ticket from the Steam app.
+export async function finishStepUp(
+  action: StepUpAction,
+  proof: { challenge: string; code: string } | { steamTicket: string },
+): Promise<StepUpFinish> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/verify`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+      },
+      body: JSON.stringify({ action, ...proof }),
+    });
+    const body = await response.json().catch(() => null);
+    if (response.ok && typeof body?.token === "string") {
+      return { ok: true, token: body.token };
+    }
+    return {
+      ok: false,
+      code: typeof body?.code === "string" ? body.code : "invalid",
+      attemptsLeft:
+        typeof body?.attemptsLeft === "number" ? body.attemptsLeft : undefined,
+    };
+  } catch (e) {
+    console.error("finishStepUp failed", e);
+    return { ok: false, code: "network" };
+  }
+}
+
+// On the website, where a Steam account confirms by signing in to Steam.
+export async function steamStepUpUrl(
+  action: StepUpAction,
+): Promise<string | null> {
+  try {
+    const redirect = encodeURIComponent(window.location.origin + "/");
+    const response = await fetch(
+      `${getApiBase()}/auth/stepup/steam?action=${action}&redirect_uri=${redirect}`,
+      { headers: { Authorization: await getAuthHeader() } },
+    );
+    const body = await response.json().catch(() => null);
+    return typeof body?.url === "string" ? body.url : null;
+  } catch (e) {
+    console.error("steamStepUpUrl failed", e);
+    return null;
+  }
+}
+
 export type DeleteAccountResult =
   // 204: deletion queued — the server deletes the account 24 hours later.
   | { ok: true }
+  // The player didn't confirm their identity: nothing happened.
+  | { ok: false; code: "cancelled" }
   // 401: missing/unknown/expired refresh token — already logged out, and the
   // server cleared the cookie.
   | { ok: false; code: "logged_out" }
@@ -402,12 +529,19 @@ export type DeleteAccountResult =
 // again during the 24 hours works but does not cancel the deletion.
 export async function deleteAccount(): Promise<DeleteAccountResult> {
   try {
-    const response = await fetch(`${getApiBase()}/users/@me`, {
-      method: "DELETE",
-      credentials: "include",
-    });
+    const response = await withStepUp("delete", (headers) =>
+      fetch(`${getApiBase()}/users/@me`, {
+        method: "DELETE",
+        credentials: "include",
+        // Only the confirmation: the refresh cookie authenticates deletion.
+        headers: Object.keys(headers).length ? headers : undefined,
+      }),
+    );
     if (response.status === 401) {
       return { ok: false, code: "logged_out" };
+    }
+    if (await isStepUpRefusal(response)) {
+      return { ok: false, code: "cancelled" };
     }
     if (response.status === 403) {
       const body = await response.json().catch(() => null);
@@ -440,22 +574,30 @@ export async function deleteAccount(): Promise<DeleteAccountResult> {
 // Invalidates the cached /users/@me so the new decision is reflected on the
 // next read. Returns true on success.
 // Turns two-step sign-in (an email code on new devices) on or off.
-export async function setTwoFactor(enabled: boolean): Promise<boolean> {
+export async function setTwoFactor(
+  enabled: boolean,
+): Promise<"ok" | "cancelled" | "failed"> {
   try {
-    const response = await fetch(`${getApiBase()}/users/@me/two-factor`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: await getAuthHeader(),
-      },
-      body: JSON.stringify({ enabled }),
-    });
-    if (!response.ok) return false;
+    const response = await withStepUp(
+      enabled ? "two_factor_on" : "two_factor_off",
+      async (headers) =>
+        fetch(`${getApiBase()}/users/@me/two-factor`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: await getAuthHeader(),
+            ...headers,
+          },
+          body: JSON.stringify({ enabled }),
+        }),
+    );
+    if (await isStepUpRefusal(response)) return "cancelled";
+    if (!response.ok) return "failed";
     invalidateUserMe();
-    return true;
+    return "ok";
   } catch (e) {
     console.error("setTwoFactor failed", e);
-    return false;
+    return "failed";
   }
 }
 
@@ -501,6 +643,8 @@ export type UpdateUsernameResult =
   // the numbered form (spec, 10 Sept 2026).
   | { ok: false; code: "bare_taken"; base: string }
   | { ok: false; code: "cooldown"; retryAfterSeconds: number | null }
+  // The player didn't confirm their identity: nothing happened.
+  | { ok: false; code: "cancelled" }
   | { ok: false; code: "failed" };
 
 // PUT /users/@me/username — renames the account username. Every failure is
@@ -520,19 +664,27 @@ export async function updateUsername(
   opts: { acceptSuffixed?: boolean } = {},
 ): Promise<UpdateUsernameResult> {
   try {
-    const response = await fetch(`${getApiBase()}/users/@me/username`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: await getAuthHeader(),
-      },
-      body: JSON.stringify(
-        opts.acceptSuffixed ? { username, acceptSuffixed: true } : { username },
-      ),
-    });
+    const response = await withStepUp("rename", async (headers) =>
+      fetch(`${getApiBase()}/users/@me/username`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: await getAuthHeader(),
+          ...headers,
+        },
+        body: JSON.stringify(
+          opts.acceptSuffixed
+            ? { username, acceptSuffixed: true }
+            : { username },
+        ),
+      }),
+    );
     if (response.status === 401) {
       await logOut();
       return { ok: false, code: "failed" };
+    }
+    if (await isStepUpRefusal(response)) {
+      return { ok: false, code: "cancelled" };
     }
     if (response.status === 400) {
       const body = await response.json().catch(() => null);

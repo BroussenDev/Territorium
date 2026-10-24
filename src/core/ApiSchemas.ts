@@ -336,7 +336,11 @@ export const UserMeResponseSchema = z.object({
     // whether the account has an email to send codes to. Absent on an older
     // API.
     twoFactor: z
-      .object({ enabled: z.boolean(), available: z.boolean() })
+      .object({
+        enabled: z.boolean(),
+        available: z.boolean(),
+        steamGuard: z.boolean().optional(),
+      })
       .nullable()
       .optional(),
     marketingConsent: z

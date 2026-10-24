@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.143
+
+🛡️ **Important actions are confirmed**
+
+- Deleting your account, changing your name, or turning two-step sign-in on or off now asks for a code sent by email, or for Steam Guard on a Steam account.
+- A sign-in from a new device in a country your account never used asks for an email code.
+
 ## v0.1.142
 
 🔐 **Safer accounts**

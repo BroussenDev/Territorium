@@ -102,6 +102,7 @@
     "two_factor_desc": "Auf einem nie genutzten Gerät fragt die Anmeldung zusätzlich nach einem Code per E-Mail.",
     "two_factor_failed": "Die Anmeldung in zwei Schritten konnte nicht geändert werden. Versuch es noch einmal.",
     "two_factor_no_email": "Füge deinem Konto eine E-Mail hinzu oder verknüpfe Google, um sie zu aktivieren.",
+    "two_factor_steam": "Dein Konto ist durch Steam Guard geschützt: Wichtige Aktionen werden über Steam bestätigt.",
     "two_factor_title": "Anmeldung in zwei Schritten",
     "unclaimed_rewards": "Nicht beanspruchte Belohnungen",
     "username_bare_taken_body": "„{requested}“ wird von einem anderen Teilnehmer gehalten. Sie können es mit einer hinzugefügten Nummer wie „{requested}.1234“ verwenden, der verifizierte Scheck wird jedoch nicht angezeigt. Dabei wird Ihre Namensänderung genutzt. Mit einer Zahl verwenden?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Damit werden alle Sitzungen deines Kontos auf allen Geräten beendet, auch auf diesem. Melde dich danach neu an und ändere dein Passwort bei dem Dienst, mit dem du dich anmeldest.",
     "revoke_done": "Alle Sitzungen deines Kontos sind beendet.",
     "revoke_invalid": "Dieser Link ist nicht mehr gültig. Melde dich an und melde dann in deinem Konto alle Geräte ab.",
-    "revoke_title": "Überall abmelden?"
+    "revoke_title": "Überall abmelden?",
+    "stepup_desc": "Diese Aktion schützt dein Konto: Wir haben einen 6-stelligen Code an die E-Mail deines Kontos geschickt. Gib ihn zur Bestätigung ein.",
+    "stepup_failed": "Deine Identität konnte nicht bestätigt werden. Versuch es noch einmal.",
+    "stepup_steam_done": "Identität mit Steam bestätigt. Führe die Aktion noch einmal aus, um sie abzuschliessen.",
+    "stepup_steam_web": "Melde dich zur Bestätigung bei Steam an: Steam Guard prüft, dass du es bist, dann kommst du hierher zurück.",
+    "stepup_title": "Bestätige, dass du es bist"
   },
   "select_lang": {
     "title": "Sprach auswähle"

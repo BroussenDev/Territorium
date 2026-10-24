@@ -102,6 +102,7 @@
     "two_factor_desc": "På en enhet du aldrig har använt frågar inloggningen också efter en kod via e-post.",
     "two_factor_failed": "Det gick inte att ändra tvåstegsinloggningen. Försök igen.",
     "two_factor_no_email": "Lägg till en e-postadress på ditt konto, eller koppla Google, för att aktivera den.",
+    "two_factor_steam": "Ditt konto skyddas av Steam Guard: viktiga åtgärder bekräftas via Steam.",
     "two_factor_title": "Tvåstegsinloggning",
     "unclaimed_rewards": "Outlösta belöningar",
     "username_bare_taken_body": "\"{requested}\" innehas av en annan prenumerant. Du kan använda den med ett tillagt nummer, som \"{requested}.1234\", men det kommer inte att visa den verifierade kontrollen. Detta använder ditt namnbyte. Använd den med ett nummer?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Det stänger alla sessioner för ditt konto på alla enheter, även den här. Logga sedan in igen och byt lösenord hos tjänsten du loggar in med.",
     "revoke_done": "Alla sessioner för ditt konto är stängda.",
     "revoke_invalid": "Länken är inte längre giltig. Logga in och logga sedan ut alla enheter från ditt konto.",
-    "revoke_title": "Logga ut överallt?"
+    "revoke_title": "Logga ut överallt?",
+    "stepup_desc": "Den här åtgärden skyddar ditt konto: vi har skickat en sexsiffrig kod till kontots e-post. Ange den för att bekräfta.",
+    "stepup_failed": "Det gick inte att bekräfta din identitet. Försök igen.",
+    "stepup_steam_done": "Identiteten är bekräftad med Steam. Gör om åtgärden för att slutföra den.",
+    "stepup_steam_web": "Logga in på Steam för att bekräfta åtgärden: Steam Guard kontrollerar att det är du, sedan kommer du tillbaka hit.",
+    "stepup_title": "Bekräfta att det är du"
   },
   "select_lang": {
     "title": "Välj Språk"

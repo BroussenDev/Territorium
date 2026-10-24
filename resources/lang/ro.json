@@ -102,6 +102,7 @@
     "two_factor_desc": "Pe un dispozitiv pe care nu l-ai folosit niciodată, conectarea cere și un cod trimis pe e-mail.",
     "two_factor_failed": "Conectarea în doi pași nu a putut fi modificată. Încearcă din nou.",
     "two_factor_no_email": "Adaugă un e-mail în cont sau conectează Google ca să o activezi.",
+    "two_factor_steam": "Contul tău este protejat de Steam Guard: acțiunile importante sunt confirmate prin Steam.",
     "two_factor_title": "Conectare în doi pași",
     "unclaimed_rewards": "Recompense Necolectate",
     "username_bare_taken_body": "„{requested}„ este deținut de un alt abonat. Îl puteți folosi cu un număr adăugat, cum ar fi „{requested}. 234„, dar nu va afișa verificarea verificată. Aceasta folosește schimbarea numelui. Folosește-l cu un număr?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Asta închide toate sesiunile contului tău, pe toate dispozitivele, inclusiv acesta. Apoi conectează-te din nou și schimbă parola serviciului cu care te conectezi.",
     "revoke_done": "Toate sesiunile contului tău sunt închise.",
     "revoke_invalid": "Acest link nu mai este valabil. Conectează-te, apoi deconectează toate dispozitivele din contul tău.",
-    "revoke_title": "Te deconectezi peste tot?"
+    "revoke_title": "Te deconectezi peste tot?",
+    "stepup_desc": "Această acțiune îți protejează contul: am trimis un cod de 6 cifre la e-mailul contului. Introdu-l ca să confirmi.",
+    "stepup_failed": "Identitatea nu a putut fi confirmată. Încearcă din nou.",
+    "stepup_steam_done": "Identitate confirmată prin Steam. Repetă acțiunea ca s-o finalizezi.",
+    "stepup_steam_web": "Pentru a confirma acțiunea, conectează-te la Steam: Steam Guard verifică că ești tu, apoi revii aici.",
+    "stepup_title": "Confirmă că ești tu"
   },
   "select_lang": {
     "title": "Selectarea limbii"

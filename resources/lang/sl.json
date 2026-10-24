@@ -102,6 +102,7 @@
     "two_factor_desc": "Na napravi, ki je še nisi uporabil, prijava zahteva tudi kodo, poslano po e-pošti.",
     "two_factor_failed": "Prijave v dveh korakih ni bilo mogoče spremeniti. Poskusi znova.",
     "two_factor_no_email": "Dodaj e-pošto v svoj račun ali poveži Google, da jo vklopiš.",
+    "two_factor_steam": "Tvoj račun ščiti Steam Guard: pomembna dejanja se potrjujejo prek Steama.",
     "two_factor_title": "Prijava v dveh korakih",
     "unclaimed_rewards": "Neprevzete nagrade",
     "username_bare_taken_body": "»{requested}« ima drug naročnik. Uporabite ga lahko z dodano številko, na primer »{requested}.1234«, vendar ne bo prikazal preverjenega čeka. To uporablja vašo spremembo imena. Uporabite s številko?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "S tem se zaprejo vse seje tvojega računa na vseh napravah, tudi na tej. Nato se znova prijavi in zamenjaj geslo pri storitvi, s katero se prijavljaš.",
     "revoke_done": "Vse seje tvojega računa so zaprte.",
     "revoke_invalid": "Ta povezava ni več veljavna. Prijavi se in nato v svojem računu odjavi vse naprave.",
-    "revoke_title": "Odjava povsod?"
+    "revoke_title": "Odjava povsod?",
+    "stepup_desc": "To dejanje ščiti tvoj račun: na e-pošto računa smo poslali 6-mestno kodo. Vnesi jo za potrditev.",
+    "stepup_failed": "Tvoje identitete ni bilo mogoče potrditi. Poskusi znova.",
+    "stepup_steam_done": "Identiteta potrjena s Steamom. Ponovi dejanje, da ga dokončaš.",
+    "stepup_steam_web": "Za potrditev dejanja se prijavi v Steam: Steam Guard preveri, da si to ti, nato se vrneš sem.",
+    "stepup_title": "Potrdi, da si to ti"
   },
   "select_lang": {
     "title": "Izberite jezik"

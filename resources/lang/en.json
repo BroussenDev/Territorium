@@ -102,6 +102,7 @@
     "two_factor_desc": "On a device you never used, signing in also asks for a code sent by email.",
     "two_factor_failed": "Couldn't change two-step sign-in. Try again.",
     "two_factor_no_email": "Add an email to your account, or link Google, to turn it on.",
+    "two_factor_steam": "Your account is protected by Steam Guard: important actions are confirmed through Steam.",
     "two_factor_title": "Two-step sign-in",
     "unclaimed_rewards": "Unclaimed Rewards",
     "username_bare_taken_body": "\"{requested}\" is held by another subscriber. You can use it with a number added, like \"{requested}.1234\", but it won't show the verified check. This uses your name change. Use it with a number?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "This closes every session of your account, on every device, this one included. Then sign in again and change your password on the service you sign in with.",
     "revoke_done": "Every session of your account is closed.",
     "revoke_invalid": "This link is no longer valid. Sign in, then log out of all devices from your account.",
-    "revoke_title": "Sign out everywhere?"
+    "revoke_title": "Sign out everywhere?",
+    "stepup_desc": "This action protects your account: we sent a 6-digit code to your account's email. Type it to confirm.",
+    "stepup_failed": "Couldn't confirm your identity. Try again.",
+    "stepup_steam_done": "Identity confirmed with Steam. Do the action again to finish it.",
+    "stepup_steam_web": "To confirm this action, sign in to Steam: Steam Guard checks it's you, then you come back here.",
+    "stepup_title": "Confirm it's you"
   },
   "select_lang": {
     "title": "Select Language"

@@ -102,6 +102,7 @@
     "two_factor_desc": "Egy sosem használt eszközön a bejelentkezés egy e-mailben küldött kódot is kér.",
     "two_factor_failed": "Nem sikerült módosítani a kétlépcsős bejelentkezést. Próbáld újra.",
     "two_factor_no_email": "A bekapcsolásához adj meg egy e-mail-címet a fiókodban, vagy kapcsold össze a Google-lel.",
+    "two_factor_steam": "A fiókodat a Steam Guard védi: a fontos műveleteket a Steamen keresztül kell megerősíteni.",
     "two_factor_title": "Kétlépcsős bejelentkezés",
     "unclaimed_rewards": "Át nem vett jutalmak",
     "username_bare_taken_body": "A(z) \"{requested}\" nevet már egy másik előfizető használja. Használhatod egy szám hozzáfűzésével is, például így: \"{requested}.1234\", de ebben az esetben nem jelenik meg a hitelesítést jelző pipa. Ez felhasználja a névváltoztatási lehetőségedet. Szeretnéd számmal kiegészítve használni?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Ez a fiókod összes munkamenetét lezárja minden eszközön, ezen is. Utána jelentkezz be újra, és változtasd meg a jelszavad abban a szolgáltatásban, amellyel bejelentkezel.",
     "revoke_done": "A fiókod összes munkamenete lezárult.",
     "revoke_invalid": "Ez a link már nem érvényes. Jelentkezz be, majd a fiókodban jelentkeztesd ki az összes eszközt.",
-    "revoke_title": "Kijelentkezel mindenhol?"
+    "revoke_title": "Kijelentkezel mindenhol?",
+    "stepup_desc": "Ez a művelet a fiókodat védi: küldtünk egy 6 jegyű kódot a fiók e-mail-címére. Írd be a megerősítéshez.",
+    "stepup_failed": "Nem sikerült megerősíteni a személyazonosságodat. Próbáld újra.",
+    "stepup_steam_done": "Személyazonosság megerősítve a Steammel. Ismételd meg a műveletet a befejezéshez.",
+    "stepup_steam_web": "A megerősítéshez jelentkezz be a Steambe: a Steam Guard ellenőrzi, hogy te vagy, majd visszatérsz ide.",
+    "stepup_title": "Erősítsd meg, hogy te vagy"
   },
   "select_lang": {
     "title": "Nyelv kiválasztása"

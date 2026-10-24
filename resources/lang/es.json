@@ -102,6 +102,7 @@
     "two_factor_desc": "En un dispositivo que nunca has usado, iniciar sesión también pide un código enviado por correo.",
     "two_factor_failed": "No se pudo cambiar el inicio de sesión en dos pasos. Inténtalo de nuevo.",
     "two_factor_no_email": "Añade un correo a tu cuenta, o vincula Google, para activarlo.",
+    "two_factor_steam": "Tu cuenta está protegida por Steam Guard: las acciones importantes se confirman a través de Steam.",
     "two_factor_title": "Inicio de sesión en dos pasos",
     "unclaimed_rewards": "Recompensas no reclamadas",
     "username_bare_taken_body": "\"{requested}\" está en manos de otro suscriptor. Puede usarlo con un número agregado, como \"{requested}.1234\", pero no mostrará el cheque verificado. Esto utiliza su cambio de nombre. ¿Usarlo con un número?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Esto cierra todas las sesiones de tu cuenta en todos los dispositivos, incluido este. Después vuelve a iniciar sesión y cambia la contraseña del servicio con el que entras.",
     "revoke_done": "Todas las sesiones de tu cuenta están cerradas.",
     "revoke_invalid": "Este enlace ya no es válido. Inicia sesión y cierra la sesión en todos los dispositivos desde tu cuenta.",
-    "revoke_title": "¿Cerrar sesión en todas partes?"
+    "revoke_title": "¿Cerrar sesión en todas partes?",
+    "stepup_desc": "Esta acción protege tu cuenta: hemos enviado un código de 6 cifras al correo de tu cuenta. Escríbelo para confirmar.",
+    "stepup_failed": "No se pudo confirmar tu identidad. Inténtalo de nuevo.",
+    "stepup_steam_done": "Identidad confirmada con Steam. Repite la acción para terminarla.",
+    "stepup_steam_web": "Para confirmar esta acción, inicia sesión en Steam: Steam Guard comprueba que eres tú y luego vuelves aquí.",
+    "stepup_title": "Confirma que eres tú"
   },
   "select_lang": {
     "title": "Selecciona idioma"

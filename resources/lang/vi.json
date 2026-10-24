@@ -102,6 +102,7 @@
     "two_factor_desc": "Trên thiết bị bạn chưa từng dùng, đăng nhập sẽ yêu cầu thêm mã gửi qua email.",
     "two_factor_failed": "Không thể thay đổi đăng nhập hai bước. Hãy thử lại.",
     "two_factor_no_email": "Hãy thêm email vào tài khoản, hoặc liên kết Google, để bật tính năng này.",
+    "two_factor_steam": "Tài khoản của bạn được Steam Guard bảo vệ: các thao tác quan trọng được xác nhận qua Steam.",
     "two_factor_title": "Đăng nhập hai bước",
     "unclaimed_rewards": "Phần thưởng chưa nhận",
     "username_bare_taken_body": "\"Tên '{requested}' đang được một người đăng ký khác giữ. Bạn có thể dùng nó kèm thêm số, ví dụ '{requested}.1234', nhưng sẽ không hiển thị dấu tích xác minh. Thao tác này sẽ tính vào lượt đổi tên của bạn. Dùng kèm số nhé?\"",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Thao tác này đóng mọi phiên của tài khoản trên tất cả thiết bị, kể cả thiết bị này. Sau đó hãy đăng nhập lại và đổi mật khẩu của dịch vụ bạn dùng để đăng nhập.",
     "revoke_done": "Mọi phiên của tài khoản đã được đóng.",
     "revoke_invalid": "Liên kết này không còn hiệu lực. Hãy đăng nhập rồi đăng xuất mọi thiết bị trong tài khoản.",
-    "revoke_title": "Đăng xuất khỏi mọi nơi?"
+    "revoke_title": "Đăng xuất khỏi mọi nơi?",
+    "stepup_desc": "Thao tác này bảo vệ tài khoản của bạn: chúng tôi đã gửi mã 6 chữ số đến email tài khoản. Nhập mã để xác nhận.",
+    "stepup_failed": "Không thể xác nhận danh tính của bạn. Hãy thử lại.",
+    "stepup_steam_done": "Đã xác nhận danh tính qua Steam. Hãy thực hiện lại thao tác để hoàn tất.",
+    "stepup_steam_web": "Để xác nhận thao tác này, hãy đăng nhập Steam: Steam Guard kiểm tra đó là bạn, rồi bạn quay lại đây.",
+    "stepup_title": "Xác nhận đó là bạn"
   },
   "select_lang": {
     "title": "Chọn ngôn ngữ"

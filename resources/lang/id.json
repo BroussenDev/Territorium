@@ -102,6 +102,7 @@
     "two_factor_desc": "Di perangkat yang belum pernah kamu pakai, login juga meminta kode yang dikirim lewat email.",
     "two_factor_failed": "Login dua langkah tidak dapat diubah. Coba lagi.",
     "two_factor_no_email": "Tambahkan email ke akunmu, atau tautkan Google, untuk mengaktifkannya.",
+    "two_factor_steam": "Akunmu dilindungi Steam Guard: tindakan penting dikonfirmasi lewat Steam.",
     "two_factor_title": "Login dua langkah",
     "unclaimed_rewards": "Hadiah yang Tidak Diklaim",
     "username_bare_taken_body": "\"{requested}\" dipegang oleh pelanggan lain. Anda dapat menggunakannya dengan menambahkan nomor, seperti \"{requested}.1234\", tetapi cek terverifikasi tidak akan ditampilkan. Ini menggunakan perubahan nama Anda. Gunakan dengan nomor?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Ini menutup semua sesi akunmu di semua perangkat, termasuk perangkat ini. Lalu masuk lagi dan ganti kata sandi di layanan yang kamu pakai untuk masuk.",
     "revoke_done": "Semua sesi akunmu sudah ditutup.",
     "revoke_invalid": "Tautan ini sudah tidak berlaku. Masuk, lalu keluar dari semua perangkat melalui akunmu.",
-    "revoke_title": "Keluar dari semua perangkat?"
+    "revoke_title": "Keluar dari semua perangkat?",
+    "stepup_desc": "Tindakan ini melindungi akunmu: kami mengirim kode 6 digit ke email akun. Masukkan kode itu untuk mengonfirmasi.",
+    "stepup_failed": "Identitasmu tidak dapat dikonfirmasi. Coba lagi.",
+    "stepup_steam_done": "Identitas dikonfirmasi lewat Steam. Lakukan tindakan itu lagi untuk menyelesaikannya.",
+    "stepup_steam_web": "Untuk mengonfirmasi tindakan ini, masuk ke Steam: Steam Guard memastikan itu kamu, lalu kamu kembali ke sini.",
+    "stepup_title": "Konfirmasi bahwa ini kamu"
   },
   "select_lang": {
     "title": "Pilih Bahasa"

@@ -102,6 +102,7 @@
     "two_factor_desc": "Op een apparaat dat je nog nooit gebruikte, vraagt inloggen ook om een code per e-mail.",
     "two_factor_failed": "Inloggen in twee stappen kon niet worden gewijzigd. Probeer het opnieuw.",
     "two_factor_no_email": "Voeg een e-mailadres toe aan je account, of koppel Google, om het in te schakelen.",
+    "two_factor_steam": "Je account wordt beschermd door Steam Guard: belangrijke acties worden via Steam bevestigd.",
     "two_factor_title": "Inloggen in twee stappen",
     "unclaimed_rewards": "Niet-verzamelde beloningen",
     "username_bare_taken_body": "\"{requested}\" wordt vastgehouden door een andere abonnee. U kunt het gebruiken met een nummer toegevoegd, zoals \"{requested}. 1234\", maar het zal de geverifieerde vinkje niet tonen. Dit maakt gebruik van het wijzigen van je naam. Wil je het gebruiken met een nummer?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Dit sluit alle sessies van je account op alle apparaten, ook deze. Log daarna opnieuw in en wijzig je wachtwoord bij de dienst waarmee je inlogt.",
     "revoke_done": "Alle sessies van je account zijn gesloten.",
     "revoke_invalid": "Deze link is niet meer geldig. Log in en log daarna via je account uit op alle apparaten.",
-    "revoke_title": "Overal uitloggen?"
+    "revoke_title": "Overal uitloggen?",
+    "stepup_desc": "Deze actie beschermt je account: we hebben een code van 6 cijfers naar het e-mailadres van je account gestuurd. Voer hem in om te bevestigen.",
+    "stepup_failed": "Je identiteit kon niet worden bevestigd. Probeer het opnieuw.",
+    "stepup_steam_done": "Identiteit bevestigd met Steam. Voer de actie opnieuw uit om hem af te ronden.",
+    "stepup_steam_web": "Log in bij Steam om deze actie te bevestigen: Steam Guard controleert dat jij het bent, daarna kom je hier terug.",
+    "stepup_title": "Bevestig dat jij het bent"
   },
   "select_lang": {
     "title": "Kies taal"

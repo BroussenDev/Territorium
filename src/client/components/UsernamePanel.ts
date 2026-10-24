@@ -192,6 +192,11 @@ export class UsernamePanel extends LitElement {
       window.location.reload();
       return;
     }
+    // The player didn't confirm their identity: the form stays as it was.
+    if (result.code === "cancelled") {
+      this.busy = false;
+      return;
+    }
     if (result.code === "bare_taken" && !chosenSuffix) {
       // Nothing was written. Offer the numbered form as a choice; "no" leaves
       // them at the box with their rename unspent (spec, 10 Sept 2026). Keep

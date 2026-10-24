@@ -102,6 +102,7 @@
     "two_factor_desc": "Hiç kullanmadığın bir cihazda giriş, e-postayla gönderilen bir kod da ister.",
     "two_factor_failed": "İki adımlı giriş değiştirilemedi. Tekrar dene.",
     "two_factor_no_email": "Açmak için hesabına bir e-posta ekle veya Google'ı bağla.",
+    "two_factor_steam": "Hesabın Steam Guard ile korunuyor: önemli işlemler Steam üzerinden onaylanır.",
     "two_factor_title": "İki adımlı giriş",
     "unclaimed_rewards": "Talep Edilmeyen Ödüller",
     "username_bare_taken_body": "\"{requested}\" başka bir aboneye ait. \"{requested}.1234\" gibi bir numara eklenmiş olarak kullanabilirsiniz, ancak doğrulanmış çeki göstermez. Bu, ad değişikliğinizi kullanır. Bir numarayla mı kullanacaksınız?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Bu, hesabının tüm cihazlardaki tüm oturumlarını kapatır, bu cihaz da dahil. Ardından yeniden giriş yap ve giriş yaptığın hizmetteki şifreni değiştir.",
     "revoke_done": "Hesabının tüm oturumları kapatıldı.",
     "revoke_invalid": "Bu bağlantı artık geçerli değil. Giriş yap, ardından hesabından tüm cihazlarda çıkış yap.",
-    "revoke_title": "Her yerden çıkış yapılsın mı?"
+    "revoke_title": "Her yerden çıkış yapılsın mı?",
+    "stepup_desc": "Bu işlem hesabını korur: hesabının e-postasına 6 haneli bir kod gönderdik. Onaylamak için kodu gir.",
+    "stepup_failed": "Kimliğin doğrulanamadı. Tekrar dene.",
+    "stepup_steam_done": "Kimlik Steam ile doğrulandı. İşlemi tamamlamak için yeniden yap.",
+    "stepup_steam_web": "Bu işlemi onaylamak için Steam'e giriş yap: Steam Guard sen olduğunu doğrular, sonra buraya dönersin.",
+    "stepup_title": "Sen olduğunu doğrula"
   },
   "select_lang": {
     "title": "Dil seç"

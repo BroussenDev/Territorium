@@ -102,6 +102,7 @@
     "two_factor_desc": "Na uređaju koji nikad nisi koristio, prijava traži i kod poslat mejlom.",
     "two_factor_failed": "Prijava u dva koraka nije mogla da se promeni. Pokušaj ponovo.",
     "two_factor_no_email": "Dodaj mejl svom nalogu ili poveži Google da bi je uključio.",
+    "two_factor_steam": "Tvoj nalog štiti Steam Guard: važne radnje se potvrđuju preko Steama.",
     "two_factor_title": "Prijava u dva koraka",
     "unclaimed_rewards": "Nepokupljene Nagrade",
     "username_bare_taken_body": "Nadimak „{requested}” već koristi drugi pretplatnik. Možete ga koristiti uz dodati broj, kao što je „{requested}.1234”, ali neće prikazivati oznaku verifikacije (kvačicu). Time se troši vaša izmena imena. Želite li da ga koristite sa brojem?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "Ovo zatvara sve sesije tvog naloga na svim uređajima, uključujući i ovaj. Zatim se ponovo prijavi i promeni lozinku na servisu preko kog se prijavljuješ.",
     "revoke_done": "Sve sesije tvog naloga su zatvorene.",
     "revoke_invalid": "Ovaj link više ne važi. Prijavi se, pa odjavi sve uređaje iz svog naloga.",
-    "revoke_title": "Odjaviti se svuda?"
+    "revoke_title": "Odjaviti se svuda?",
+    "stepup_desc": "Ova radnja štiti tvoj nalog: poslali smo šestocifreni kod na mejl naloga. Unesi ga da potvrdiš.",
+    "stepup_failed": "Identitet nije mogao da se potvrdi. Pokušaj ponovo.",
+    "stepup_steam_done": "Identitet potvrđen preko Steama. Ponovi radnju da je završiš.",
+    "stepup_steam_web": "Da potvrdiš radnju, prijavi se na Steam: Steam Guard proverava da si to ti, a zatim se vraćaš ovde.",
+    "stepup_title": "Potvrdi da si to ti"
   },
   "select_lang": {
     "title": "Odaberi jezik"

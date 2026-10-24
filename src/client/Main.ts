@@ -99,7 +99,7 @@ import {
 } from "./PresenceGroup";
 import { presenceLabels } from "./PresenceLabels";
 import { RewardsModal } from "./RewardsModal";
-import { openSecurityModal } from "./SecurityModal";
+import { openSecurityModal, saveSteamStepUp } from "./SecurityModal";
 import {
   ensureServerList,
   redirectToGameVersion,
@@ -1092,6 +1092,21 @@ class Client {
       const challenge = params.get("two-factor");
       strip();
       if (challenge) openSecurityModal({ challenge });
+      return;
+    }
+
+    // Back from confirming an important action with Steam: the next try
+    // of that action uses the confirmation.
+    if (decodedHash.startsWith("#step-up")) {
+      const token = params.get("step-up");
+      const action = params.get("step-up-action");
+      strip();
+      if (token && action) {
+        saveSteamStepUp(action, token);
+        void showInGameAlert(translateText("security_modal.stepup_steam_done"));
+      } else {
+        void showInGameAlert(translateText("security_modal.stepup_failed"));
+      }
       return;
     }
 

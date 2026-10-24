@@ -102,6 +102,7 @@
     "two_factor_desc": "Na urządzeniu, którego nigdy nie używałeś, logowanie wymaga też kodu wysłanego e-mailem.",
     "two_factor_failed": "Nie udało się zmienić logowania dwuetapowego. Spróbuj ponownie.",
     "two_factor_no_email": "Dodaj e-mail do konta lub połącz Google, aby je włączyć.",
+    "two_factor_steam": "Twoje konto chroni Steam Guard: ważne czynności są potwierdzane przez Steam.",
     "two_factor_title": "Logowanie dwuetapowe",
     "unclaimed_rewards": "Nieodebrane nagrody",
     "username_bare_taken_body": "„{requested}” jest w posiadaniu innego abonenta. Możesz go użyć z dodanym numerem, np. „{requested}.1234”, ale nie wyświetli on zweryfikowanego czeku. Wykorzystuje to zmianę Twojego imienia. Używać go z liczbą?",
@@ -2768,7 +2769,12 @@
     "revoke_desc": "To zamyka wszystkie sesje Twojego konta na wszystkich urządzeniach, także na tym. Potem zaloguj się ponownie i zmień hasło w serwisie, przez który się logujesz.",
     "revoke_done": "Wszystkie sesje Twojego konta zostały zamknięte.",
     "revoke_invalid": "Ten link nie jest już ważny. Zaloguj się, a potem wyloguj wszystkie urządzenia ze swojego konta.",
-    "revoke_title": "Wylogować wszędzie?"
+    "revoke_title": "Wylogować wszędzie?",
+    "stepup_desc": "Ta czynność chroni Twoje konto: wysłaliśmy 6-cyfrowy kod na e-mail konta. Wpisz go, aby potwierdzić.",
+    "stepup_failed": "Nie udało się potwierdzić tożsamości. Spróbuj ponownie.",
+    "stepup_steam_done": "Tożsamość potwierdzona przez Steam. Wykonaj czynność ponownie, aby ją dokończyć.",
+    "stepup_steam_web": "Aby potwierdzić tę czynność, zaloguj się do Steam: Steam Guard sprawdzi, że to Ty, a potem wrócisz tutaj.",
+    "stepup_title": "Potwierdź, że to Ty"
   },
   "select_lang": {
     "title": "Wybierz język"
