@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.140
+
+📜 **Clearer legal pages and invoices**
+
+- Every emerald purchase paid by card now comes with its invoice, linked in a redesigned confirmation email.
+- The privacy policy now details how long reports, anti-cheat incidents and backups are kept, and when unused accounts are deleted.
+- Players with an account are told by email whenever the terms or the privacy policy change.
+
 ## v0.1.139
 
 🎛️ **Graphics quality fitted to your computer**
