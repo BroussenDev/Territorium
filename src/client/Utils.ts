@@ -510,6 +510,21 @@ function getCachedLangSelector(): LangSelector | null {
   return found;
 }
 
+// Settles once the language selector has loaded the player's translations,
+// so a message shown on page load (a purchase return, a sign-in link...) is
+// translated rather than shown as its key.
+let markReady: () => void = () => {};
+const languageReady = new Promise<void>((resolve) => (markReady = resolve));
+
+export const markLanguageReady = (): void => markReady();
+
+/** Resolves once translations are loaded (or after 5 s, whatever happens). */
+export const whenLanguageReady = (): Promise<void> =>
+  Promise.race([
+    languageReady,
+    new Promise<void>((resolve) => setTimeout(resolve, 5000)),
+  ]);
+
 /** The UI language the player picked (a resources/lang code such as "fr"). */
 export const currentLanguage = (): string =>
   getCachedLangSelector()?.currentLang ?? "en";

@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.145
+
+🛠️ **Fix**
+
+- Messages shown when you come back from a payment or a link are now translated instead of showing raw text keys.
+
 ## v0.1.144
 
 🛠️ **Fixes**

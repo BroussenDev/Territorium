@@ -151,6 +151,7 @@ import {
   loadKeyboardLayout,
   presenceMapKey,
   translateText,
+  whenLanguageReady,
 } from "./Utils";
 import { isReplayShellHost } from "./VersionedReplay";
 import "./components/BannedModal";
@@ -1020,8 +1021,10 @@ class Client {
   }
 
   private async handleUrl() {
-    // Wait for modal custom elements to be defined
+    // Wait for modal custom elements to be defined, and for the translations:
+    // what the URL asks for often opens with a message.
     await Promise.all([
+      whenLanguageReady(),
       customElements.whenDefined("join-lobby-modal"),
       customElements.whenDefined("host-lobby-modal"),
     ]);

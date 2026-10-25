@@ -6,7 +6,7 @@ import type { FirstLaunchLanguage } from "./components/FirstLaunchLanguage";
 import { desktopSteamLocale, isDesktopShell } from "./DesktopShell";
 import "./LanguageModal";
 import { LanguageModal } from "./LanguageModal";
-import { formatDebugTranslation } from "./Utils";
+import { formatDebugTranslation, markLanguageReady } from "./Utils";
 
 import en from "../../resources/lang/en.json";
 import metadata from "../../resources/lang/metadata.json";
@@ -144,6 +144,7 @@ export class LangSelector extends LitElement {
 
     await this.loadLanguageList();
     this.applyTranslation();
+    markLanguageReady();
     if (firstLaunch) this.askFirstLanguage(browserLocale);
   }
 
