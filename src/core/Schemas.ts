@@ -1265,6 +1265,8 @@ export const TgsReportSchema = z.object({
     })
     .array()
     .max(200),
+  // Players who played from the same network (server/Tgs.ts).
+  sameNetwork: ID.array().min(2).max(16).array().max(50).optional(),
 });
 
 // Note: reportedBy is NOT sent - the server stamps it from the connection.

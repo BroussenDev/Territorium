@@ -88,6 +88,7 @@ import {
   type MatchTelemetryEmitter,
 } from "./telemetry/MatchTelemetry";
 import {
+  sameNetworkGroups,
   TGS_DESYNC_CODE,
   TGS_FLOOD_CODE,
   TGS_KICK_REASONS,
@@ -2090,6 +2091,13 @@ export class GameServer {
         this.turns.length,
       );
     }
+    // Possible second accounts: players of the match on the same network.
+    this.tgs.observeSameNetwork(
+      sameNetworkGroups(
+        [...this.clients.all().values()],
+        new Set(this.gameStartInfo.players.map((p) => p.clientID)),
+      ),
+    );
     this.telemetry.noteArchiveAttempted();
     this.deps.archive(
       createPartialGameRecord(

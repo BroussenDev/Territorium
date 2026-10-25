@@ -133,6 +133,38 @@ export interface TgsIncident {
 export interface TgsReport {
   markers: TgsMarker[];
   incidents: TgsIncident[];
+  /**
+   * Players of the match who played from the same network (same IP): the
+   * API weighs them as possible second accounts (TGS-106). Only the client
+   * IDs leave the server, never an address.
+   */
+  sameNetwork?: ClientID[][];
+}
+
+/** Most same-network groups and players per group kept in a record. */
+const MAX_NETWORK_GROUPS = 50;
+const MAX_NETWORK_GROUP = 16;
+
+/**
+ * The groups of at least two players of the match who shared an IP, read
+ * from every client that joined. Addresses stay here: only client IDs go
+ * out.
+ */
+export function sameNetworkGroups(
+  clients: readonly { clientID: ClientID; ip: string }[],
+  players: ReadonlySet<ClientID>,
+): ClientID[][] {
+  const byIP = new Map<string, Set<ClientID>>();
+  for (const c of clients) {
+    if (!players.has(c.clientID) || c.ip === "") continue;
+    let group = byIP.get(c.ip);
+    if (group === undefined) byIP.set(c.ip, (group = new Set()));
+    group.add(c.clientID);
+  }
+  return [...byIP.values()]
+    .filter((g) => g.size >= 2)
+    .map((g) => [...g].sort().slice(0, MAX_NETWORK_GROUP))
+    .slice(0, MAX_NETWORK_GROUPS);
 }
 
 /**
@@ -169,6 +201,7 @@ export class TgsMonitor {
   private readonly desyncStreaks = new Map<ClientID, number>();
   private readonly markers: TgsMarker[] = [];
   private readonly incidents: TgsIncident[] = [];
+  private sameNetwork: ClientID[][] = [];
 
   constructor(
     private readonly switch_: Pick<TgsSwitch, "isEnabled"> = tgsSwitch,
@@ -301,9 +334,23 @@ export class TgsMonitor {
 
   /** What goes into the archived record, or undefined when nothing happened. */
   report(): TgsReport | undefined {
-    if (this.markers.length === 0 && this.incidents.length === 0)
+    if (
+      this.markers.length === 0 &&
+      this.incidents.length === 0 &&
+      this.sameNetwork.length === 0
+    )
       return undefined;
-    return { markers: [...this.markers], incidents: [...this.incidents] };
+    return {
+      markers: [...this.markers],
+      incidents: [...this.incidents],
+      ...(this.sameNetwork.length ? { sameNetwork: this.sameNetwork } : {}),
+    };
+  }
+
+  /** At the end of the match: who played from the same network. */
+  observeSameNetwork(groups: ClientID[][]): void {
+    if (!this.switch_.isEnabled()) return;
+    this.sameNetwork = groups;
   }
 
   private mark(marker: TgsMarker): void {

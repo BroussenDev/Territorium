@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.148
+
+🛡️ **Territorium Game Shield watches every game**
+
+- TGS now looks for cross-teaming, bots, second accounts and arranged ranked wins in every game, not only reported ones, and tells the moderators.
+
 ## v0.1.147
 
 🛡️ **Fairer reports**
