@@ -1,3 +1,4 @@
+import { initialReplaySeek } from "./ReplaySeek";
 // Versioned app shells let archived games from older builds be replayed after
 // their deployment is gone (#4934). Every deploy uploads a fully-rendered
 // index-<short-commit>.html next to the hashed assets in the public bucket
@@ -15,9 +16,12 @@ import { GameID } from "../core/Schemas";
 export function versionedReplayUrl(
   audience: string,
   gameID: GameID,
+  seekTurn: number | null = initialReplaySeek,
 ): string | null {
   if (audience === "" || audience === "localhost") return null;
-  return `https://replay.${audience}/${gameID}`;
+  // A clip's starting moment goes along (ReplaySeek.ts).
+  const at = seekTurn !== null ? `?at=${seekTurn}` : "";
+  return `https://replay.${audience}/${gameID}${at}`;
 }
 
 // True when the current document is served from a replay shell host. Used to

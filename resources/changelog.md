@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.146
+
+🎬 **Replays open at the right moment**
+
+- A replay link can start at a given moment of the game: the replay fast-forwards there, then plays normally.
+
 ## v0.1.145
 
 🛠️ **Fix**

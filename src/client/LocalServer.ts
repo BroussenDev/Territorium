@@ -27,6 +27,7 @@ import {
   GameSpeedUpIntentEvent,
   ReplaySpeedChangeEvent,
 } from "./InputHandler";
+import { initialReplaySeek } from "./ReplaySeek";
 import { startSingleplayerHeartbeat } from "./SingleplayerHeartbeat";
 import {
   defaultReplaySpeedMultiplier,
@@ -65,6 +66,8 @@ export class LocalServer {
   private archiveInFlight = false;
 
   private turnsExecuted = 0;
+  // A replay link's starting moment (?at=<turn>): full speed until then.
+  private seekTo: number | null = null;
   private turnStartTime = 0;
 
   private turnCheckInterval: NodeJS.Timeout;
@@ -88,12 +91,19 @@ export class LocalServer {
 
   start() {
     console.log("local server starting");
+    if (this.isReplay) this.seekTo = initialReplaySeek;
     this.turnCheckInterval = setInterval(() => {
-      const turnIntervalMs =
-        ClientEnv.turnIntervalMs() * this.replaySpeedMultiplier;
+      if (this.seekTo !== null && this.turns.length >= this.seekTo) {
+        this.seekTo = null;
+      }
+      const speed =
+        this.seekTo !== null
+          ? ReplaySpeedMultiplier.fastest
+          : this.replaySpeedMultiplier;
+      const turnIntervalMs = ClientEnv.turnIntervalMs() * speed;
       const backlog = Math.max(0, this.turns.length - this.turnsExecuted);
       const allowReplayBacklog =
-        this.replaySpeedMultiplier === ReplaySpeedMultiplier.fastest &&
+        speed === ReplaySpeedMultiplier.fastest &&
         this.lobbyConfig.gameRecord !== undefined;
       const maxBacklog = allowReplayBacklog ? MAX_REPLAY_BACKLOG_TURNS : 0;
 
