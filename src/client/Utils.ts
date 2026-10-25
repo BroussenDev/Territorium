@@ -514,6 +514,21 @@ function getCachedLangSelector(): LangSelector | null {
 export const currentLanguage = (): string =>
   getCachedLangSelector()?.currentLang ?? "en";
 
+/**
+ * The player's language for the account API's emails, known from the very
+ * first request: the saved choice, else the browser's. currentLanguage() is
+ * still "en" until the language selector has loaded.
+ */
+export const playerLanguage = (): string => {
+  try {
+    const saved = localStorage.getItem("lang");
+    if (saved && saved !== "debug") return saved;
+  } catch {
+    // No storage: the browser's language.
+  }
+  return navigator.language;
+};
+
 /** Language codes whose script reads right-to-left (resources/lang/metadata.json). */
 const RTL_LANGUAGES = new Set(["ar", "fa", "he"]);
 

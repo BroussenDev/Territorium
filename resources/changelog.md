@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.144
+
+🛠️ **Fixes**
+
+- The code screen now shows up when you turn two-step sign-in on or off from your account settings.
+- Emails arrive in your language from your very first visit.
+
 ## v0.1.143
 
 🛡️ **Important actions are confirmed**

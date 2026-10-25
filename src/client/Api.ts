@@ -78,7 +78,7 @@ import {
 import { ClientEnv } from "./ClientEnv";
 import { offlineCopy, rememberForOffline } from "./DesktopOffline";
 import { ensureServerList } from "./ServerList";
-import { currentLanguage } from "./Utils";
+import { playerLanguage } from "./Utils";
 
 export async function fetchPlayerById(
   playerId: string,
@@ -439,7 +439,7 @@ export async function startStepUp(
       headers: {
         "Content-Type": "application/json",
         Authorization: await getAuthHeader(),
-        "X-Lang": currentLanguage(),
+        "X-Lang": playerLanguage(),
       },
       body: JSON.stringify({ action }),
     });

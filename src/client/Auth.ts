@@ -11,7 +11,7 @@ import type { DesktopSessionState, SessionFailureKind } from "./DesktopShell";
 import { isDesktopShell } from "./DesktopShell";
 import type { SteamTicketResult } from "./SteamSDK";
 import { steamSDK } from "./SteamSDK";
-import { currentLanguage, generateCryptoRandomUUID } from "./Utils";
+import { generateCryptoRandomUUID, playerLanguage } from "./Utils";
 
 export type UserAuth = { jwt: string; claims: TokenPayload } | false;
 
@@ -189,7 +189,7 @@ export type TokenLoginResult =
 // The player's UI language, sent with the sign-in calls: the account API
 // writes the player's emails in it.
 const languageHeader = (): Record<string, string> => ({
-  "X-Lang": currentLanguage(),
+  "X-Lang": playerLanguage(),
 });
 
 export async function tempTokenLogin(token: string): Promise<TokenLoginResult> {
