@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Skin uswähle"
   },
+  "tgs_cancel": {
+    "back": "Zurück zum Menü",
+    "cheater_ban": "{n} Tage keine Ranglistenspiele",
+    "cheater_body": "Territorium Game Shield hat in diesem Ranglistenspiel {reason} bei deinem Konto erkannt.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Ein Moderator prüft das Spiel: Die Strafe kann bestätigt oder aufgehoben werden.",
+    "reason_104": "Absprachen mit einem Gegner (wiederholte Spenden)",
+    "reason_105": "ein Bot-artiger Befehlsrhythmus",
+    "reason_106": "mehrere Konten aus demselben Netzwerk",
+    "title": "Spiel abgebrochen",
+    "title_sanctioned": "Spiel abgebrochen: Du wirst bestraft",
+    "victim_body": "Territorium Game Shield hat {reason} bei {names} erkannt. Das Ranglistenspiel endet hier.",
+    "victim_compensation": "+{n} Medaillen als Entschädigung",
+    "victim_elo": "Dein ELO hat sich nicht verändert: Dieses Spiel zählt nicht.",
+    "victim_sanction": "Der betrügende Spieler wird bestraft."
+  },
   "token_login_modal": {
     "success": "Erfolgrich agmäudet aus {email}!",
     "title": "Amäudig louft..."

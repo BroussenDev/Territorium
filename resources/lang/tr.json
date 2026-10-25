@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Kaplama Seç"
   },
+  "tgs_cancel": {
+    "back": "Menüye dön",
+    "cheater_ban": "{n} gün dereceli yok",
+    "cheater_body": "Territorium Game Shield bu dereceli maçta hesabında şunu tespit etti: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Bir moderatör maçı inceleyecek: yaptırım onaylanabilir veya kaldırılabilir.",
+    "reason_104": "bir rakiple anlaşma (tekrarlanan bağışlar)",
+    "reason_105": "bot benzeri komut ritmi",
+    "reason_106": "aynı ağdan birden fazla hesap",
+    "title": "Maç iptal edildi",
+    "title_sanctioned": "Maç iptal edildi: yaptırım aldın",
+    "victim_body": "Territorium Game Shield {names} oyuncusunda şunu tespit etti: {reason}. Dereceli maç burada sona eriyor.",
+    "victim_compensation": "Telafi olarak +{n} madalya",
+    "victim_elo": "ELO'n değişmedi: bu maç sayılmaz.",
+    "victim_sanction": "Hile yapan oyuncu yaptırım aldı."
+  },
   "token_login_modal": {
     "success": "Başarıyla {email} olarak giriş yapıldı!",
     "title": "Giriş yapılıyor..."

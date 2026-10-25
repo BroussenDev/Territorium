@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Hud"
   },
+  "tgs_cancel": {
+    "back": "Tillbaka till menyn",
+    "cheater_ban": "Ingen rankad spel i {n} dagar",
+    "cheater_body": "Territorium Game Shield upptäckte {reason} på ditt konto under den här rankade matchen.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "En moderator granskar matchen: sanktionen kan bekräftas eller hävas.",
+    "reason_104": "samarbete med en motståndare (upprepade gåvor)",
+    "reason_105": "en botliknande kommandorytm",
+    "reason_106": "flera konton från samma nätverk",
+    "title": "Matchen avbruten",
+    "title_sanctioned": "Matchen avbruten: du har fått en sanktion",
+    "victim_body": "Territorium Game Shield upptäckte {reason} hos {names}. Den rankade matchen avslutas här.",
+    "victim_compensation": "+{n} medaljer som kompensation",
+    "victim_elo": "Ditt ELO ändrades inte: matchen räknas inte.",
+    "victim_sanction": "Fuskaren har fått en sanktion."
+  },
   "token_login_modal": {
     "success": "Inloggad som {email}!",
     "title": "Loggar in..."

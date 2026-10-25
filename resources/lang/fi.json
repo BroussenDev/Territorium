@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Iho"
   },
+  "tgs_cancel": {
+    "back": "Takaisin valikkoon",
+    "cheater_ban": "Ei ranked-pelejä {n} päivään",
+    "cheater_body": "Territorium Game Shield havaitsi tililläsi tässä ranked-pelissä: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderaattori tarkistaa pelin: rangaistus voidaan vahvistaa tai perua.",
+    "reason_104": "yhteistyö vastustajan kanssa (toistuvat lahjoitukset)",
+    "reason_105": "bottimainen komentorytmi",
+    "reason_106": "useita tilejä samasta verkosta",
+    "title": "Peli peruttu",
+    "title_sanctioned": "Peli peruttu: sait rangaistuksen",
+    "victim_body": "Territorium Game Shield havaitsi pelaajalla {names}: {reason}. Ranked-peli päättyy tähän.",
+    "victim_compensation": "+{n} mitalia hyvitykseksi",
+    "victim_elo": "ELO-lukusi ei muuttunut: tämä peli ei laske.",
+    "victim_sanction": "Huijannut pelaaja on saanut rangaistuksen."
+  },
   "token_login_modal": {
     "success": "Kirjauduttu onnistuneesti käyttäjällä {email}!",
     "title": "Kirjaudutaan..."

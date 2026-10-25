@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Elektu la Haŭton"
   },
+  "tgs_cancel": {
+    "back": "Reen al menuo",
+    "cheater_ban": "Neniu rangiga ludo dum {n} tagoj",
+    "cheater_body": "Territorium Game Shield detektis {reason} ĉe via konto dum ĉi tiu rangiga ludo.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderiganto kontrolos la ludon: la puno povas esti konfirmita aŭ nuligita.",
+    "reason_104": "interkonsento kun rivalo (ripetitaj donacoj)",
+    "reason_105": "bot-simila ritmo de komandoj",
+    "reason_106": "pluraj kontoj el la sama reto",
+    "title": "Ludo nuligita",
+    "title_sanctioned": "Ludo nuligita: vi estas punita",
+    "victim_body": "Territorium Game Shield detektis {reason} ĉe {names}. La rangiga ludo finiĝas ĉi tie.",
+    "victim_compensation": "+{n} medaloj kiel kompenso",
+    "victim_elo": "Via ELO ne ŝanĝiĝis: ĉi tiu ludo ne kalkuliĝas.",
+    "victim_sanction": "La trompinta ludanto estas punita."
+  },
   "token_login_modal": {
     "success": "Sukcese ensalutinta kiel {email}!",
     "title": "Ensalutante..."

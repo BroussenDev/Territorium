@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Vali Skin"
   },
+  "tgs_cancel": {
+    "back": "Tagasi menüüsse",
+    "cheater_ban": "{n} päeva ilma reitingumängudeta",
+    "cheater_body": "Territorium Game Shield tuvastas selles reitingumängus sinu kontol: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderaator vaatab mängu üle: karistuse võib kinnitada või tühistada.",
+    "reason_104": "kokkulepe vastasega (korduvad annetused)",
+    "reason_105": "botisarnane käskude rütm",
+    "reason_106": "mitu kontot samast võrgust",
+    "title": "Mäng tühistati",
+    "title_sanctioned": "Mäng tühistati: said karistuse",
+    "victim_body": "Territorium Game Shield tuvastas mängijal {names}: {reason}. Reitingumäng lõpeb siin.",
+    "victim_compensation": "+{n} medalit hüvitiseks",
+    "victim_elo": "Sinu ELO ei muutunud: see mäng ei lähe arvesse.",
+    "victim_sanction": "Petnud mängija sai karistuse."
+  },
   "token_login_modal": {
     "success": "Edukalt sisse logitud kui {email}!",
     "title": "Sisse logimine..."

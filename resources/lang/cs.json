@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Vzhled"
   },
+  "tgs_cancel": {
+    "back": "Zpět do menu",
+    "cheater_ban": "{n} dní bez hodnocených her",
+    "cheater_body": "Territorium Game Shield během této hodnocené hry zjistil na tvém účtu: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderátor hru prověří: trest může potvrdit, nebo zrušit.",
+    "reason_104": "domluva se soupeřem (opakované dary)",
+    "reason_105": "rytmus příkazů jako u bota",
+    "reason_106": "několik účtů ze stejné sítě",
+    "title": "Hra zrušena",
+    "title_sanctioned": "Hra zrušena: dostáváš trest",
+    "victim_body": "Territorium Game Shield zjistil u hráče {names}: {reason}. Hodnocená hra tady končí.",
+    "victim_compensation": "+{n} medailí jako odškodnění",
+    "victim_elo": "Tvé ELO se nezměnilo: tato hra se nepočítá.",
+    "victim_sanction": "Podvádějící hráč dostal trest."
+  },
   "token_login_modal": {
     "success": "Úspěšně přihlášen jako {email}!",
     "title": "Přihlašování..."

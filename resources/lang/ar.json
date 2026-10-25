@@ -3119,6 +3119,22 @@
     },
     "select_skin": "الجلد"
   },
+  "tgs_cancel": {
+    "back": "العودة إلى القائمة",
+    "cheater_ban": "لا مباريات مصنّفة لمدة {n} أيام",
+    "cheater_body": "رصد Territorium Game Shield ما يلي على حسابك خلال هذه المباراة المصنّفة: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "سيراجع أحد المشرفين المباراة: يمكن تأكيد العقوبة أو رفعها.",
+    "reason_104": "تواطؤ مع خصم (تبرعات متكررة)",
+    "reason_105": "إيقاع أوامر يشبه الروبوت",
+    "reason_106": "عدة حسابات من الشبكة نفسها",
+    "title": "أُلغيت المباراة",
+    "title_sanctioned": "أُلغيت المباراة: تم فرض عقوبة عليك",
+    "victim_body": "رصد Territorium Game Shield لدى {names}: {reason}. تنتهي المباراة المصنّفة هنا.",
+    "victim_compensation": "+{n} ميدالية كتعويض",
+    "victim_elo": "لم يتغيّر تصنيف ELO الخاص بك: هذه المباراة لا تُحتسب.",
+    "victim_sanction": "تم فرض عقوبة على اللاعب الغشاش."
+  },
   "token_login_modal": {
     "success": "تم تسجيل الدخول بنجاح باسم {email}!",
     "title": "تسجيل الدخول..."

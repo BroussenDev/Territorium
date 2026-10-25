@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Скін"
   },
+  "tgs_cancel": {
+    "back": "До меню",
+    "cheater_ban": "Без рейтингових ігор {n} дн.",
+    "cheater_body": "Territorium Game Shield виявив на вашому акаунті в цій рейтинговій грі: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Модератор перевірить гру: покарання можуть підтвердити або зняти.",
+    "reason_104": "змова із суперником (повторні подарунки)",
+    "reason_105": "ритм команд як у бота",
+    "reason_106": "кілька акаунтів з однієї мережі",
+    "title": "Гру скасовано",
+    "title_sanctioned": "Гру скасовано: вас покарано",
+    "victim_body": "Territorium Game Shield виявив у гравця {names}: {reason}. Рейтингова гра на цьому завершується.",
+    "victim_compensation": "+{n} медалей як компенсація",
+    "victim_elo": "Ваш ELO не змінився: ця гра не зараховується.",
+    "victim_sanction": "Гравця, який шахраював, покарано."
+  },
   "token_login_modal": {
     "success": "Ви успішно увійшли як {email}!",
     "title": "Вхід..."

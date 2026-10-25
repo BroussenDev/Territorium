@@ -139,6 +139,13 @@ export interface TgsReport {
    * IDs leave the server, never an address.
    */
   sameNetwork?: ClientID[][];
+  /** A ranked game TGS cancelled while it was played (TgsRanked.ts). */
+  cancelled?: {
+    code: "TGS-104" | "TGS-105" | "TGS-106";
+    cheaters: ClientID[];
+    turn: number;
+    details: string;
+  };
 }
 
 /** Most same-network groups and players per group kept in a record. */
@@ -202,6 +209,7 @@ export class TgsMonitor {
   private readonly markers: TgsMarker[] = [];
   private readonly incidents: TgsIncident[] = [];
   private sameNetwork: ClientID[][] = [];
+  private cancelled: TgsReport["cancelled"];
 
   constructor(
     private readonly switch_: Pick<TgsSwitch, "isEnabled"> = tgsSwitch,
@@ -337,14 +345,21 @@ export class TgsMonitor {
     if (
       this.markers.length === 0 &&
       this.incidents.length === 0 &&
-      this.sameNetwork.length === 0
+      this.sameNetwork.length === 0 &&
+      this.cancelled === undefined
     )
       return undefined;
     return {
       markers: [...this.markers],
       incidents: [...this.incidents],
       ...(this.sameNetwork.length ? { sameNetwork: this.sameNetwork } : {}),
+      ...(this.cancelled ? { cancelled: this.cancelled } : {}),
     };
+  }
+
+  /** A ranked game cancelled live: it goes with the record. */
+  observeRankedCancel(cancelled: NonNullable<TgsReport["cancelled"]>): void {
+    this.cancelled = cancelled;
   }
 
   /** At the end of the match: who played from the same network. */

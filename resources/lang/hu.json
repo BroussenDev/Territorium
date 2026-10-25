@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Minta kiválasztása"
   },
+  "tgs_cancel": {
+    "back": "Vissza a menübe",
+    "cheater_ban": "{n} napig nincs rangsorolt játék",
+    "cheater_body": "A Territorium Game Shield ebben a rangsorolt meccsben ezt észlelte a fiókodon: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Egy moderátor átnézi a meccset: a büntetést megerősítheti vagy feloldhatja.",
+    "reason_104": "összejátszás egy ellenféllel (ismételt ajándékok)",
+    "reason_105": "botszerű parancsritmus",
+    "reason_106": "több fiók ugyanarról a hálózatról",
+    "title": "A meccs törölve",
+    "title_sanctioned": "A meccs törölve: büntetést kaptál",
+    "victim_body": "A Territorium Game Shield ezt észlelte {names} játékosnál: {reason}. A rangsorolt meccs itt véget ér.",
+    "victim_compensation": "+{n} érem kárpótlásként",
+    "victim_elo": "Az ELO-d nem változott: ez a meccs nem számít.",
+    "victim_sanction": "A csaló játékos büntetést kapott."
+  },
   "token_login_modal": {
     "success": "Sikeresen bejelentkeztél, mint {email}!",
     "title": "Bejelentkezés folyamatban..."

@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Vælg Skin"
   },
+  "tgs_cancel": {
+    "back": "Tilbage til menuen",
+    "cheater_ban": "Ingen rangerede kampe i {n} dage",
+    "cheater_body": "Territorium Game Shield opdagede {reason} på din konto under denne rangerede kamp.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "En moderator gennemgår kampen: sanktionen kan bekræftes eller ophæves.",
+    "reason_104": "samarbejde med en modstander (gentagne gaver)",
+    "reason_105": "en botagtig kommandorytme",
+    "reason_106": "flere konti fra samme netværk",
+    "title": "Kampen er annulleret",
+    "title_sanctioned": "Kampen er annulleret: du får en sanktion",
+    "victim_body": "Territorium Game Shield opdagede {reason} hos {names}. Den rangerede kamp stopper her.",
+    "victim_compensation": "+{n} medaljer i kompensation",
+    "victim_elo": "Din ELO ændrede sig ikke: kampen tæller ikke.",
+    "victim_sanction": "Snyderen har fået en sanktion."
+  },
   "token_login_modal": {
     "success": "Logget ind som {email}!",
     "title": "Logger ind..."

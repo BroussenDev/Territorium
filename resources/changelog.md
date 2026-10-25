@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.149
+
+🛡️ **Ranked games protected live**
+
+- If Territorium Game Shield catches cheating during a ranked game, the game is cancelled at once: the cheater loses ELO and ranked access, and every other player keeps their ELO and gets 100 medals.
+- Players from the same network are never matched together in ranked.
+
 ## v0.1.148
 
 🛡️ **Territorium Game Shield watches every game**

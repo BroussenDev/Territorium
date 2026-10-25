@@ -1,6 +1,7 @@
 import { GameEnv } from "../core/configuration/Config";
 import { ServerEnv } from "./ServerEnv";
 import { TgsIncident, tgsSwitch, TgsSwitch } from "./Tgs";
+import type { RankedVerdict } from "./TgsRanked";
 
 // How often a worker asks the API whether TGS is switched on: the admin
 // panel's switch takes effect everywhere within this.
@@ -30,6 +31,60 @@ export async function reportTgsIncident(
     });
   } catch {
     // The record carries it at the end of the match anyway.
+  }
+}
+
+/** What the players' screens say about a cancelled ranked game. */
+export interface RankedCancelAnswer {
+  compensation: number;
+  penalty: number;
+  banDays: number;
+}
+
+/** Used when the API can't be reached: the API applies its own values. */
+export const RANKED_CANCEL_DEFAULTS: RankedCancelAnswer = {
+  compensation: 100,
+  penalty: 50,
+  banDays: 7,
+};
+
+/**
+ * Asks the API to cancel a ranked game TGS caught (TgsRanked.ts): it takes
+ * the cheaters' rating and keeps them out of ranked, and makes the others
+ * whole. Answers what to tell the players.
+ */
+export async function cancelRankedGame(
+  gameID: string,
+  verdict: RankedVerdict,
+  players: {
+    clientID: string;
+    persistentID: string | null;
+    username: string;
+  }[],
+): Promise<RankedCancelAnswer> {
+  if (ServerEnv.env() === GameEnv.Dev) return RANKED_CANCEL_DEFAULTS;
+  try {
+    const res = await fetch(`${ServerEnv.jwtIssuer()}/tgs/ranked/cancel`, {
+      method: "POST",
+      signal: AbortSignal.timeout(5000),
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ServerEnv.apiKey(),
+      },
+      body: JSON.stringify({ gameID, ...verdict, players }),
+    });
+    if (!res.ok) return RANKED_CANCEL_DEFAULTS;
+    const body = (await res.json()) as Partial<RankedCancelAnswer>;
+    return {
+      compensation: Number(
+        body.compensation ?? RANKED_CANCEL_DEFAULTS.compensation,
+      ),
+      penalty: Number(body.penalty ?? RANKED_CANCEL_DEFAULTS.penalty),
+      banDays: Number(body.banDays ?? RANKED_CANCEL_DEFAULTS.banDays),
+    };
+  } catch {
+    // The record still says the game was cancelled (info.tgs.cancelled).
+    return RANKED_CANCEL_DEFAULTS;
   }
 }
 

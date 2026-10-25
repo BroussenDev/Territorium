@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Selecionar skin"
   },
+  "tgs_cancel": {
+    "back": "Voltar ao menu",
+    "cheater_ban": "Sem ranqueada por {n} dias",
+    "cheater_body": "O Territorium Game Shield detectou {reason} na sua conta durante esta partida ranqueada.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Um moderador vai analisar a partida: a punição pode ser confirmada ou retirada.",
+    "reason_104": "um conluio com um rival (doações repetidas)",
+    "reason_105": "um ritmo de comandos de bot",
+    "reason_106": "várias contas da mesma rede",
+    "title": "Partida cancelada",
+    "title_sanctioned": "Partida cancelada: você foi punido",
+    "victim_body": "O Territorium Game Shield detectou {reason} em {names}. A partida ranqueada termina aqui.",
+    "victim_compensation": "+{n} medalhas de compensação",
+    "victim_elo": "Seu ELO não mudou: esta partida não conta.",
+    "victim_sanction": "O jogador que trapaceou foi punido."
+  },
   "token_login_modal": {
     "success": "Entrou com sucesso como {email}!",
     "title": "Entrando..."

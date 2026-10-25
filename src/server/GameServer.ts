@@ -95,7 +95,8 @@ import {
   TgsKickCode,
   TgsMonitor,
 } from "./Tgs";
-import { reportTgsIncident } from "./TgsApi";
+import { cancelRankedGame, reportTgsIncident } from "./TgsApi";
+import { RankedVerdict, RankedWatch } from "./TgsRanked";
 
 // Outcome of GameServer.joinClient. The worker maps each to a close code.
 // A non-spectator join landing this soon after start() is someone who meant
@@ -140,6 +141,8 @@ const KICK_REASON_LOBBY_CREATOR = "kick_reason.lobby_creator";
 const KICK_REASON_ADMIN = "kick_reason.admin";
 const KICK_REASON_HOST_LEFT = "kick_reason.host_left";
 const KICK_REASON_MATCH_CANCELLED = "kick_reason.match_cancelled";
+// A ranked game TGS cancelled (TgsRanked.ts); the message is its JSON detail.
+export const TGS_RANKED_CANCELLED = "tgs_ranked_cancelled";
 
 export interface GameServerOptions {
   id: string;
@@ -203,6 +206,9 @@ export class GameServer {
   // TGS, the integrity watch: flood and persistent desync disconnections,
   // and the markers the staff's replay review jumps to (Tgs.ts).
   private readonly tgs = new TgsMonitor();
+  // Ranked games only: TGS's live watch, which may cancel the game.
+  private rankedWatch: RankedWatch | null = null;
+  private rankedCancel: RankedVerdict | null = null;
 
   // Socket listeners and the decode / validate / rate-limit / spectator-block
   // pipeline every frame goes through before handleClientMessage.
@@ -1186,6 +1192,17 @@ export class GameServer {
       return;
     }
     this.gameStartInfo = result.data satisfies GameStartInfo;
+    if (this.gameConfig.rankedType !== undefined) {
+      this.rankedWatch = new RankedWatch(
+        this.gameStartInfo.players.map((p) => p.clientID),
+      );
+      // Skipped in dev, where every local player shares one address.
+      const verdict =
+        this.deps.env() === GameEnv.Dev
+          ? null
+          : this.rankedWatch.atStart([...this.clients.all().values()]);
+      if (verdict !== null) void this.cancelRanked(verdict);
+    }
     this.telemetry.emit(
       "match_started",
       {
@@ -1530,6 +1547,10 @@ export class GameServer {
 
   private addIntent(intent: StampedIntent) {
     this.intents.push(intent);
+    if (this.rankedWatch !== null && this.rankedCancel === null) {
+      const verdict = this.rankedWatch.observe(intent, this.turns.length);
+      if (verdict !== null) void this.cancelRanked(verdict);
+    }
   }
 
   private sendStartGameMsg(ws: WebSocket, lastTurn: number) {
@@ -1620,6 +1641,50 @@ export class GameServer {
         c.ws.send(msg);
       }
     });
+  }
+
+  /**
+   * TGS caught cheating in this ranked game (TgsRanked.ts): the API sanctions
+   * the cheaters and makes the others whole, every player is told why the
+   * game stops, and the game ends without a result, so it moves no rating.
+   */
+  private async cancelRanked(verdict: RankedVerdict): Promise<void> {
+    if (this.rankedCancel !== null || this.ended) return;
+    this.rankedCancel = verdict;
+    const name = (id: ClientID) =>
+      this.gameStartInfo.players.find((p) => p.clientID === id)?.username ?? id;
+    this.log.warn("TGS cancels ranked game", { ...verdict });
+    this.tgs.observeRankedCancel(verdict);
+    const answer = await cancelRankedGame(
+      this.id,
+      verdict,
+      this.gameStartInfo.players.map((p) => ({
+        clientID: p.clientID,
+        persistentID: this.clients.get(p.clientID)?.persistentID ?? null,
+        username: p.username,
+      })),
+    );
+    if (this.ended) return;
+    const msg = encodeServerMessage(
+      {
+        type: "error",
+        error: TGS_RANKED_CANCELLED,
+        message: JSON.stringify({
+          code: verdict.code,
+          cheaters: verdict.cheaters.map((id) => ({
+            clientID: id,
+            username: name(id),
+          })),
+          ...answer,
+        }),
+      } satisfies ServerErrorMessage,
+      this.zbinCtx,
+    );
+    for (const c of this.clients.active()) {
+      if (c.ws.readyState === c.ws.OPEN) c.ws.send(msg);
+    }
+    // A moment for the message to reach everyone before the sockets close.
+    setTimeout(() => void this.end(), 1500);
   }
 
   async end() {

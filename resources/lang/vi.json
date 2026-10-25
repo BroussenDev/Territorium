@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Skin"
   },
+  "tgs_cancel": {
+    "back": "Về menu",
+    "cheater_ban": "Không được chơi xếp hạng trong {n} ngày",
+    "cheater_body": "Territorium Game Shield phát hiện {reason} trên tài khoản của bạn trong trận xếp hạng này.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Một điều phối viên sẽ xem lại trận đấu: hình phạt có thể được giữ nguyên hoặc gỡ bỏ.",
+    "reason_104": "thông đồng với đối thủ (tặng quà nhiều lần)",
+    "reason_105": "nhịp ra lệnh giống bot",
+    "reason_106": "nhiều tài khoản từ cùng một mạng",
+    "title": "Trận đấu bị hủy",
+    "title_sanctioned": "Trận đấu bị hủy: bạn bị xử phạt",
+    "victim_body": "Territorium Game Shield phát hiện {reason} ở {names}. Trận xếp hạng dừng tại đây.",
+    "victim_compensation": "+{n} huy chương bồi thường",
+    "victim_elo": "ELO của bạn không thay đổi: trận này không được tính.",
+    "victim_sanction": "Người chơi gian lận đã bị xử phạt."
+  },
   "token_login_modal": {
     "success": "Đăng nhập thành công bằng {email}!",
     "title": "Đang đăng nhập..."

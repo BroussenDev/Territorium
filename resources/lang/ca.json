@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Tria l'Aparença"
   },
+  "tgs_cancel": {
+    "back": "Torna al menú",
+    "cheater_ban": "Sense classificatòria durant {n} dies",
+    "cheater_body": "Territorium Game Shield ha detectat {reason} al teu compte durant aquesta partida classificatòria.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Un moderador revisarà la partida: la sanció es pot confirmar o retirar.",
+    "reason_104": "un acord amb un rival (donacions repetides)",
+    "reason_105": "un ritme d'ordres de bot",
+    "reason_106": "diversos comptes de la mateixa xarxa",
+    "title": "Partida cancel·lada",
+    "title_sanctioned": "Partida cancel·lada: estàs sancionat",
+    "victim_body": "Territorium Game Shield ha detectat {reason} en {names}. La partida classificatòria s'acaba aquí.",
+    "victim_compensation": "+{n} medalles de compensació",
+    "victim_elo": "El teu ELO no ha canviat: aquesta partida no compta.",
+    "victim_sanction": "El jugador que ha fet trampes està sancionat."
+  },
   "token_login_modal": {
     "success": "Has iniciat la sessió com a {email}!",
     "title": "Iniciant la sessió..."

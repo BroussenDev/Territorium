@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Selectează Cosmetică"
   },
+  "tgs_cancel": {
+    "back": "Înapoi la meniu",
+    "cheater_ban": "Fără meciuri clasate timp de {n} zile",
+    "cheater_body": "Territorium Game Shield a detectat {reason} pe contul tău în acest meci clasat.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Un moderator va analiza meciul: sancțiunea poate fi confirmată sau ridicată.",
+    "reason_104": "o înțelegere cu un adversar (donații repetate)",
+    "reason_105": "un ritm de comenzi de bot",
+    "reason_106": "mai multe conturi din aceeași rețea",
+    "title": "Meci anulat",
+    "title_sanctioned": "Meci anulat: ești sancționat",
+    "victim_body": "Territorium Game Shield a detectat {reason} la {names}. Meciul clasat se oprește aici.",
+    "victim_compensation": "+{n} medalii drept despăgubire",
+    "victim_elo": "ELO-ul tău nu s-a schimbat: meciul nu contează.",
+    "victim_sanction": "Jucătorul care a trișat este sancționat."
+  },
   "token_login_modal": {
     "success": "Conectat cu succes ca {email}!",
     "title": "Conectare..."

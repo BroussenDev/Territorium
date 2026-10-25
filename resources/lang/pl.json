@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Skóra"
   },
+  "tgs_cancel": {
+    "back": "Powrót do menu",
+    "cheater_ban": "Brak gier rankingowych przez {n} dni",
+    "cheater_body": "Territorium Game Shield wykrył na Twoim koncie w tej grze rankingowej: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderator przejrzy grę: kara może zostać potwierdzona lub zdjęta.",
+    "reason_104": "zmowa z przeciwnikiem (powtarzane dary)",
+    "reason_105": "rytm poleceń jak u bota",
+    "reason_106": "kilka kont z tej samej sieci",
+    "title": "Gra anulowana",
+    "title_sanctioned": "Gra anulowana: otrzymujesz karę",
+    "victim_body": "Territorium Game Shield wykrył u gracza {names}: {reason}. Gra rankingowa kończy się tutaj.",
+    "victim_compensation": "+{n} medali rekompensaty",
+    "victim_elo": "Twoje ELO się nie zmieniło: ta gra się nie liczy.",
+    "victim_sanction": "Oszukujący gracz został ukarany."
+  },
   "token_login_modal": {
     "success": "Pomyślnie zalogowano jako {email}!",
     "title": "Logowanie..."

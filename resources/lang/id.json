@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Pilih Skin"
   },
+  "tgs_cancel": {
+    "back": "Kembali ke menu",
+    "cheater_ban": "Tidak bisa main peringkat selama {n} hari",
+    "cheater_body": "Territorium Game Shield mendeteksi {reason} di akunmu selama permainan peringkat ini.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderator akan meninjau permainan: sanksi bisa dikonfirmasi atau dicabut.",
+    "reason_104": "kerja sama dengan lawan (donasi berulang)",
+    "reason_105": "ritme perintah seperti bot",
+    "reason_106": "beberapa akun dari jaringan yang sama",
+    "title": "Permainan dibatalkan",
+    "title_sanctioned": "Permainan dibatalkan: kamu dikenai sanksi",
+    "victim_body": "Territorium Game Shield mendeteksi {reason} pada {names}. Permainan peringkat berhenti di sini.",
+    "victim_compensation": "+{n} medali sebagai kompensasi",
+    "victim_elo": "ELO-mu tidak berubah: permainan ini tidak dihitung.",
+    "victim_sanction": "Pemain yang curang telah dikenai sanksi."
+  },
   "token_login_modal": {
     "success": "Berhasil masuk sebagai {email}!",
     "title": "Sedang masuk..."

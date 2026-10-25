@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Skin"
   },
+  "tgs_cancel": {
+    "back": "Terug naar menu",
+    "cheater_ban": "{n} dagen geen ranked",
+    "cheater_body": "Territorium Game Shield heeft tijdens dit ranked potje {reason} op je account gedetecteerd.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Een moderator bekijkt het potje: de sanctie kan worden bevestigd of opgeheven.",
+    "reason_104": "samenspannen met een tegenstander (herhaalde giften)",
+    "reason_105": "een botachtig commandoritme",
+    "reason_106": "meerdere accounts van hetzelfde netwerk",
+    "title": "Potje geannuleerd",
+    "title_sanctioned": "Potje geannuleerd: je krijgt een sanctie",
+    "victim_body": "Territorium Game Shield heeft {reason} bij {names} gedetecteerd. Het ranked potje stopt hier.",
+    "victim_compensation": "+{n} medailles als compensatie",
+    "victim_elo": "Je ELO is niet veranderd: dit potje telt niet.",
+    "victim_sanction": "De valsspeler krijgt een sanctie."
+  },
   "token_login_modal": {
     "success": "Succesvol ingelogd als {email}!",
     "title": "Aan het inloggen..."

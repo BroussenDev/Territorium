@@ -1267,6 +1267,15 @@ export const TgsReportSchema = z.object({
     .max(200),
   // Players who played from the same network (server/Tgs.ts).
   sameNetwork: ID.array().min(2).max(16).array().max(50).optional(),
+  // A ranked game TGS cancelled while it was played (server/TgsRanked.ts).
+  cancelled: z
+    .object({
+      code: z.enum(["TGS-104", "TGS-105", "TGS-106"]),
+      cheaters: ID.array().max(16),
+      turn: z.number().int().nonnegative(),
+      details: z.string().max(200),
+    })
+    .optional(),
 });
 
 // Note: reportedBy is NOT sent - the server stamps it from the connection.

@@ -3119,6 +3119,22 @@
     },
     "select_skin": "koža"
   },
+  "tgs_cancel": {
+    "back": "Nazaj v meni",
+    "cheater_ban": "{n} dni brez rangiranih iger",
+    "cheater_body": "Territorium Game Shield je med to rangirano igro na tvojem računu zaznal: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderator bo pregledal igro: kazen se lahko potrdi ali odpravi.",
+    "reason_104": "dogovor z nasprotnikom (ponavljajoča se darila)",
+    "reason_105": "ritem ukazov kot pri botu",
+    "reason_106": "več računov iz istega omrežja",
+    "title": "Igra preklicana",
+    "title_sanctioned": "Igra preklicana: dobil si kazen",
+    "victim_body": "Territorium Game Shield je pri igralcu {names} zaznal: {reason}. Rangirana igra se tu konča.",
+    "victim_compensation": "+{n} medalj kot odškodnina",
+    "victim_elo": "Tvoj ELO se ni spremenil: ta igra ne šteje.",
+    "victim_sanction": "Igralec, ki je goljufal, je kaznovan."
+  },
   "token_login_modal": {
     "success": "Uspešno prijavljen kot {email}!",
     "title": "Prijava..."

@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Pel"
   },
+  "tgs_cancel": {
+    "back": "Volver ao menú",
+    "cheater_ban": "Sen clasificatorias durante {n} días",
+    "cheater_body": "Territorium Game Shield detectou {reason} na túa conta durante esta partida clasificatoria.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Un moderador revisará a partida: a sanción pode confirmarse ou retirarse.",
+    "reason_104": "un acordo cun rival (doazóns repetidas)",
+    "reason_105": "un ritmo de ordes de bot",
+    "reason_106": "varias contas da mesma rede",
+    "title": "Partida cancelada",
+    "title_sanctioned": "Partida cancelada: estás sancionado",
+    "victim_body": "Territorium Game Shield detectou {reason} en {names}. A partida clasificatoria remata aquí.",
+    "victim_compensation": "+{n} medallas de compensación",
+    "victim_elo": "O teu ELO non cambiou: esta partida non conta.",
+    "victim_sanction": "O xogador que fixo trampas está sancionado."
+  },
   "token_login_modal": {
     "success": "Inicia sesión con éxito como {email}!",
     "title": "Iniciando sesión..."

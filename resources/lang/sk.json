@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Koža"
   },
+  "tgs_cancel": {
+    "back": "Späť do menu",
+    "cheater_ban": "{n} dní bez hodnotených hier",
+    "cheater_body": "Territorium Game Shield počas tejto hodnotenej hry zistil na tvojom účte: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Moderátor hru preverí: trest môže potvrdiť alebo zrušiť.",
+    "reason_104": "dohoda so súperom (opakované dary)",
+    "reason_105": "rytmus príkazov ako u bota",
+    "reason_106": "niekoľko účtov z tej istej siete",
+    "title": "Hra zrušená",
+    "title_sanctioned": "Hra zrušená: dostávaš trest",
+    "victim_body": "Territorium Game Shield zistil u hráča {names}: {reason}. Hodnotená hra tu končí.",
+    "victim_compensation": "+{n} medailí ako odškodnenie",
+    "victim_elo": "Tvoje ELO sa nezmenilo: táto hra sa nepočíta.",
+    "victim_sanction": "Podvádzajúci hráč dostal trest."
+  },
   "token_login_modal": {
     "success": "Úspešne prihlásení ako {email}!",
     "title": "Prihlasovanie..."

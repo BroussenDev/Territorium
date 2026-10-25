@@ -62,6 +62,7 @@ import { versionedPathForMismatchedGame } from "./ServerList";
 import { pickStructure } from "./StructurePick";
 import { reportGameError } from "./Telemetry";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
+import { parseTgsCancel, showTgsCancel } from "./TgsCancelModal";
 import { GoToPlayerEvent } from "./TransformHandler";
 import {
   ChatMessageEvent,
@@ -339,6 +340,14 @@ export function joinLobby(
         });
     }
     if (message.type === "error") {
+      if (message.error === "tgs_ranked_cancelled") {
+        // TGS cancelled the ranked game as it started (server/TgsRanked.ts).
+        const detail = parseTgsCancel(message.message);
+        if (detail !== null) {
+          showTgsCancel(detail, clientID);
+          return;
+        }
+      }
       if (message.error === "full-lobby" || message.error === "game-started") {
         document.dispatchEvent(
           new CustomEvent("leave-lobby", {
@@ -1169,6 +1178,18 @@ export class ClientGameRunner {
           false,
           "error_modal.desync_notice",
         );
+      }
+      if (
+        message.type === "error" &&
+        message.error === "tgs_ranked_cancelled"
+      ) {
+        // TGS cancelled this ranked game (server/TgsRanked.ts).
+        const detail = parseTgsCancel(message.message);
+        if (detail !== null) {
+          this.stop();
+          showTgsCancel(detail, this.clientID);
+          return;
+        }
       }
       if (message.type === "error") {
         showErrorModal(

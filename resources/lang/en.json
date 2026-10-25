@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Skin"
   },
+  "tgs_cancel": {
+    "back": "Back to menu",
+    "cheater_ban": "No ranked play for {n} days",
+    "cheater_body": "Territorium Game Shield detected {reason} on your account during this ranked game.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "A moderator will review the game: the sanction can be confirmed or lifted.",
+    "reason_104": "teaming with a rival (repeated gifts)",
+    "reason_105": "a bot-like command rhythm",
+    "reason_106": "several accounts from the same network",
+    "title": "Game cancelled",
+    "title_sanctioned": "Game cancelled: you are sanctioned",
+    "victim_body": "Territorium Game Shield detected {reason} from {names}. The ranked game stops here.",
+    "victim_compensation": "+{n} medals to make up for it",
+    "victim_elo": "Your ELO did not move: this game doesn't count.",
+    "victim_sanction": "The cheating player is sanctioned."
+  },
   "token_login_modal": {
     "success": "Successfully logged in as {email}!",
     "title": "Logging in..."

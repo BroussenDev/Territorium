@@ -3119,6 +3119,22 @@
     },
     "select_skin": "領土スキンを選択"
   },
+  "tgs_cancel": {
+    "back": "メニューに戻る",
+    "cheater_ban": "{n} 日間ランク戦に参加できません",
+    "cheater_body": "Territorium Game Shield がこのランク戦中にあなたのアカウントで {reason} を検出しました。",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "モデレーターが試合を確認します。ペナルティは確定または解除される場合があります。",
+    "reason_104": "対戦相手との結託（繰り返しの贈与）",
+    "reason_105": "ボットのようなコマンドのリズム",
+    "reason_106": "同じネットワークからの複数アカウント",
+    "title": "試合は中止されました",
+    "title_sanctioned": "試合は中止されました：あなたにペナルティが科されました",
+    "victim_body": "Territorium Game Shield が {names} の {reason} を検出しました。ランク戦はここで終了します。",
+    "victim_compensation": "補償として +{n} メダル",
+    "victim_elo": "あなたの ELO は変わっていません。この試合はカウントされません。",
+    "victim_sanction": "不正を行ったプレイヤーにはペナルティが科されました。"
+  },
   "token_login_modal": {
     "success": "{email} としてログインしました！",
     "title": "ログインしています…"

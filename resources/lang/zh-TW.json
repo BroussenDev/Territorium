@@ -3119,6 +3119,22 @@
     },
     "select_skin": "選擇皮膚"
   },
+  "tgs_cancel": {
+    "back": "返回選單",
+    "cheater_ban": "{n} 天內無法進行排位賽",
+    "cheater_body": "Territorium Game Shield 在這場排位賽中偵測到你的帳號有：{reason}。",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "管理員將複查這場比賽：處罰可能被確認或撤銷。",
+    "reason_104": "與對手勾結（多次贈送）",
+    "reason_105": "類似機器人的指令節奏",
+    "reason_106": "來自同一網路的多個帳號",
+    "title": "比賽已取消",
+    "title_sanctioned": "比賽已取消：你已被處罰",
+    "victim_body": "Territorium Game Shield 偵測到 {names} 有：{reason}。排位賽到此結束。",
+    "victim_compensation": "補償 +{n} 枚獎章",
+    "victim_elo": "你的 ELO 沒有變化：這場比賽不計入。",
+    "victim_sanction": "作弊的玩家已被處罰。"
+  },
   "token_login_modal": {
     "success": "已成功使用 {email} 登入！",
     "title": "正在登入……"

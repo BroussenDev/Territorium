@@ -3119,6 +3119,22 @@
     },
     "select_skin": "Sélectionnez le skin"
   },
+  "tgs_cancel": {
+    "back": "Retour au menu",
+    "cheater_ban": "Pas de classé pendant {n} jours",
+    "cheater_body": "Territorium Game Shield a détecté {reason} sur votre compte pendant cette partie classée.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "Un modérateur va examiner la partie : la sanction peut être confirmée ou levée.",
+    "reason_104": "une entente avec un adversaire (dons répétés)",
+    "reason_105": "un rythme de commandes de bot",
+    "reason_106": "plusieurs comptes du même réseau",
+    "title": "Partie annulée",
+    "title_sanctioned": "Partie annulée : vous êtes sanctionné",
+    "victim_body": "Territorium Game Shield a détecté {reason} chez {names}. La partie classée s'arrête ici.",
+    "victim_compensation": "+{n} médailles en dédommagement",
+    "victim_elo": "Votre ELO n'a pas bougé : cette partie ne compte pas.",
+    "victim_sanction": "Le joueur qui a triché est sanctionné."
+  },
   "token_login_modal": {
     "success": "Connexion réussie en tant que {email}!",
     "title": "Connexion en cours..."

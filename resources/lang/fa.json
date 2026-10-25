@@ -3119,6 +3119,22 @@
     },
     "select_skin": "انتخاب پوسته"
   },
+  "tgs_cancel": {
+    "back": "بازگشت به منو",
+    "cheater_ban": "{n} روز بدون بازی رتبه‌بندی",
+    "cheater_body": "Territorium Game Shield در این بازی رتبه‌بندی روی حساب شما این را تشخیص داد: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "یک ناظر بازی را بررسی می‌کند: جریمه ممکن است تأیید یا برداشته شود.",
+    "reason_104": "تبانی با یک حریف (اهدای مکرر)",
+    "reason_105": "ریتم فرمان شبیه ربات",
+    "reason_106": "چند حساب از یک شبکه",
+    "title": "بازی لغو شد",
+    "title_sanctioned": "بازی لغو شد: شما جریمه شدید",
+    "victim_body": "Territorium Game Shield در {names} این را تشخیص داد: {reason}. بازی رتبه‌بندی همین‌جا تمام می‌شود.",
+    "victim_compensation": "+{n} مدال به‌عنوان جبران",
+    "victim_elo": "ELO شما تغییری نکرد: این بازی حساب نمی‌شود.",
+    "victim_sanction": "بازیکنی که تقلب کرد جریمه شد."
+  },
   "token_login_modal": {
     "success": "با موفقیت وارد شدید به عنوان {email}!",
     "title": "در حال ورود به حساب..."

@@ -3119,6 +3119,22 @@
     },
     "select_skin": "עוֹר"
   },
+  "tgs_cancel": {
+    "back": "חזרה לתפריט",
+    "cheater_ban": "ללא משחקים מדורגים למשך {n} ימים",
+    "cheater_body": "Territorium Game Shield זיהה בחשבון שלך במשחק המדורג הזה: {reason}.",
+    "cheater_elo": "-{n} ELO",
+    "cheater_review": "מנחה יבדוק את המשחק: הסנקציה יכולה להיות מאושרת או מבוטלת.",
+    "reason_104": "קנוניה עם יריב (תרומות חוזרות)",
+    "reason_105": "קצב פקודות של בוט",
+    "reason_106": "כמה חשבונות מאותה רשת",
+    "title": "המשחק בוטל",
+    "title_sanctioned": "המשחק בוטל: הוטלה עליך סנקציה",
+    "victim_body": "Territorium Game Shield זיהה אצל {names}: {reason}. המשחק המדורג נעצר כאן.",
+    "victim_compensation": "‏+{n} מדליות כפיצוי",
+    "victim_elo": "ה-ELO שלך לא השתנה: המשחק הזה לא נספר.",
+    "victim_sanction": "השחקן שרימה קיבל סנקציה."
+  },
   "token_login_modal": {
     "success": "התחבר בהצלחה בתור {email}!",
     "title": "מתחבר..."
