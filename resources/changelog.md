@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.147
+
+🛡️ **Fairer reports**
+
+- When you report a player, Territorium Game Shield now reviews the game first, so moderators get the right moments of the replay to watch.
+
 ## v0.1.146
 
 🎬 **Replays open at the right moment**
