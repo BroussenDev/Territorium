@@ -344,7 +344,7 @@ export function joinLobby(
         // TGS cancelled the ranked game as it started (server/TgsRanked.ts).
         const detail = parseTgsCancel(message.message);
         if (detail !== null) {
-          showTgsCancel(detail, clientID);
+          showTgsCancel(detail, clientID, lobbyConfig.gameID);
           return;
         }
       }
@@ -1187,7 +1187,7 @@ export class ClientGameRunner {
         const detail = parseTgsCancel(message.message);
         if (detail !== null) {
           this.stop();
-          showTgsCancel(detail, this.clientID);
+          showTgsCancel(detail, this.clientID, this.lobby.gameID);
           return;
         }
       }
@@ -1219,7 +1219,7 @@ export class ClientGameRunner {
       }
       if (message.type === "chat_notice") {
         this.eventBus.emit(
-          new ChatNoticeEvent(message.notice, message.seconds),
+          new ChatNoticeEvent(message.notice, message.seconds, message.from),
         );
       }
       if (message.type === "turn") {

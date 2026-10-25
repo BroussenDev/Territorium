@@ -771,6 +771,17 @@
     "workshop_refresh": "Actualizar",
     "workshop_view": "Ver en el Workshop"
   },
+  "contest": {
+    "button": "Recurrir esta sanción",
+    "desc": "Explica por qué crees que es un error. Un moderador lee cada solicitud y puede retirar la sanción.",
+    "failed": "No se pudo enviar tu solicitud. Inténtalo de nuevo.",
+    "min": "Al menos {n} caracteres",
+    "placeholder": "Lo que pasó, desde tu punto de vista…",
+    "rate_limited": "Ya has enviado varias solicitudes. Inténtalo más tarde.",
+    "send": "Enviar",
+    "sent": "Enviado. Un moderador revisará tu solicitud y te responderá por correo.",
+    "title": "Recurrir una sanción"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Puedes atacar a jugadores desconectados incluso si estás aliado con ellos.",
     "army_limit_warning": "¡Estás cerca del límite de tu ejército! Considere enviar tropas a sus compañeros de equipo.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Estás silenciado durante {time} debido a tus mensajes.",
     "notice_no_allies": "No tienes aliados a quienes escribir.",
     "notice_repeated": "Mensaje bloqueado: acabas de enviar lo mismo.",
+    "notice_tgs_muted": "Territorium Game Shield ha borrado tu mensaje y te ha silenciado hasta el final de la partida. Un moderador lo revisará.",
+    "notice_tgs_removed": "Territorium Game Shield ha borrado un mensaje de {name} y lo ha silenciado hasta el final de la partida.",
     "notice_warned": "Los insultos están enmascarados. Sigue así y quedarás silenciado.",
     "open": "abre el chat",
     "placeholder": "Envía un mensaje a todos...",

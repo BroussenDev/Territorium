@@ -771,6 +771,17 @@
     "workshop_refresh": "Odśwież",
     "workshop_view": "Zobacz w Warsztacie"
   },
+  "contest": {
+    "button": "Odwołaj się od tej kary",
+    "desc": "Wyjaśnij, dlaczego uważasz, że to pomyłka. Moderator czyta każde zgłoszenie i może zdjąć karę.",
+    "failed": "Nie udało się wysłać zgłoszenia. Spróbuj ponownie.",
+    "min": "Co najmniej {n} znaków",
+    "placeholder": "Co się stało, z Twojej perspektywy…",
+    "rate_limited": "Wysłałeś już kilka zgłoszeń. Spróbuj później.",
+    "send": "Wyślij",
+    "sent": "Wysłano. Moderator przejrzy zgłoszenie i odpowie e-mailem.",
+    "title": "Odwołanie od kary"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Możesz atakować rozłączonych graczy, nawet jeśli jesteś z nimi w sojuszu.",
     "army_limit_warning": "Zbliżasz się do limitu armii! Rozważ wysłanie żołnierzy do członków drużyny.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Zostałeś wyciszony przez {time} z powodu Twoich wiadomości.",
     "notice_no_allies": "Nie masz sojuszników, do których możesz pisać.",
     "notice_repeated": "Wiadomość zablokowana: właśnie wysłałeś to samo.",
+    "notice_tgs_muted": "Territorium Game Shield usunął Twoją wiadomość i wyciszył Cię do końca gry. Moderator ją przejrzy.",
+    "notice_tgs_removed": "Territorium Game Shield usunął wiadomość gracza {name} i wyciszył go do końca gry.",
     "notice_warned": "Obelgi są maskowane. Tak trzymaj, a zostaniesz wyciszony.",
     "open": "Otwórz czat",
     "placeholder": "Wyślij wiadomość do wszystkich…",

@@ -771,6 +771,17 @@
     "workshop_refresh": "Päivitä",
     "workshop_view": "Näytä Workshopissa"
   },
+  "contest": {
+    "button": "Kiistä rangaistus",
+    "desc": "Kerro, miksi uskot sen olevan virhe. Moderaattori lukee jokaisen pyynnön ja voi perua rangaistuksen.",
+    "failed": "Pyyntöä ei voitu lähettää. Yritä uudelleen.",
+    "min": "Vähintään {n} merkkiä",
+    "placeholder": "Mitä tapahtui, omasta näkökulmastasi…",
+    "rate_limited": "Olet jo lähettänyt useita pyyntöjä. Yritä myöhemmin uudelleen.",
+    "send": "Lähetä",
+    "sent": "Lähetetty. Moderaattori tarkistaa pyyntösi ja vastaa sähköpostitse.",
+    "title": "Kiistä rangaistus"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Voit hyökätä katkaistuja pelaajia vastaan, vaikka olisit heidän kanssaan liittoutunut.",
     "army_limit_warning": "Olet lähellä armeijarajaasi! Harkitse joukkojen lähettämistä joukkuetovereille.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Olet mykistetty ajaksi {time} viestiesi takia.",
     "notice_no_allies": "Sinulla ei ole liittolaisia, joille kirjoittaa.",
     "notice_repeated": "Viesti estetty: lähetit juuri saman asian.",
+    "notice_tgs_muted": "Territorium Game Shield poisti viestisi ja mykisti sinut pelin loppuun asti. Moderaattori tarkistaa sen.",
+    "notice_tgs_removed": "Territorium Game Shield poisti pelaajan {name} viestin ja mykisti hänet pelin loppuun asti.",
     "notice_warned": "Loukkaukset peitetään. Jatka samaan malliin, niin sinut mykistetään.",
     "open": "Avaa chat",
     "placeholder": "Viesti kaikille…",

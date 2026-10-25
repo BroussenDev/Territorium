@@ -771,6 +771,17 @@
     "workshop_refresh": "Aggiorna",
     "workshop_view": "Vedi nel Workshop"
   },
+  "contest": {
+    "button": "Contesta questa sanzione",
+    "desc": "Spiega perché pensi che sia un errore. Un moderatore legge ogni richiesta e può revocare la sanzione.",
+    "failed": "Impossibile inviare la richiesta. Riprova.",
+    "min": "Almeno {n} caratteri",
+    "placeholder": "Cosa è successo, dal tuo punto di vista…",
+    "rate_limited": "Hai già inviato diverse richieste. Riprova più tardi.",
+    "send": "Invia",
+    "sent": "Inviato. Un moderatore esaminerà la tua richiesta e ti risponderà via email.",
+    "title": "Contesta una sanzione"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Puoi attaccare i giocatori disconnessi anche se sei alleato con loro.",
     "army_limit_warning": "Sei vicino al limite del tuo esercito! Considera l'idea di inviare truppe ai compagni di squadra.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "L'audio è disattivato per {time} a causa dei tuoi messaggi.",
     "notice_no_allies": "Non hai alleati a cui scrivere.",
     "notice_repeated": "Messaggio bloccato: hai appena inviato la stessa cosa.",
+    "notice_tgs_muted": "Territorium Game Shield ha eliminato il tuo messaggio e ti ha silenziato fino alla fine della partita. Un moderatore lo esaminerà.",
+    "notice_tgs_removed": "Territorium Game Shield ha eliminato un messaggio di {name} e lo ha silenziato fino alla fine della partita.",
     "notice_warned": "Gli insulti sono mascherati. Continua così e sarai disattivato.",
     "open": "Apri la chat",
     "placeholder": "Invia un messaggio a tutti...",

@@ -771,6 +771,17 @@
     "workshop_refresh": "Reîmprospătează",
     "workshop_view": "Vezi în Atelier"
   },
+  "contest": {
+    "button": "Contestă sancțiunea",
+    "desc": "Explică de ce crezi că este o greșeală. Un moderator citește fiecare cerere și poate ridica sancțiunea.",
+    "failed": "Cererea nu a putut fi trimisă. Încearcă din nou.",
+    "min": "Cel puțin {n} caractere",
+    "placeholder": "Ce s-a întâmplat, din punctul tău de vedere…",
+    "rate_limited": "Ai trimis deja mai multe cereri. Încearcă mai târziu.",
+    "send": "Trimite",
+    "sent": "Trimis. Un moderator îți va analiza cererea și îți va răspunde pe e-mail.",
+    "title": "Contestă o sancțiune"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Poți ataca jucători deconectați chiar dacă ești aliat cu ei.",
     "army_limit_warning": "Ești aproape de limita de armata a ta! Ia în considerare trimiterea de trupe la colegii de echipe.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Sunteți dezactivat pentru {time} din cauza mesajelor dvs.",
     "notice_no_allies": "Nu ai aliați cărora să le scrii.",
     "notice_repeated": "Mesaj blocat: tocmai ați trimis același lucru.",
+    "notice_tgs_muted": "Territorium Game Shield ți-a șters mesajul și te-a amuțit până la finalul meciului. Un moderator îl va analiza.",
+    "notice_tgs_removed": "Territorium Game Shield a șters un mesaj de la {name} și l-a amuțit până la finalul meciului.",
     "notice_warned": "Insultele sunt mascate. Ține-o tot așa și vei fi dezactivat.",
     "open": "Deschide chatul",
     "placeholder": "Trimite mesaje tuturor...",

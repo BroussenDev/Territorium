@@ -1,5 +1,6 @@
 import { html, LitElement, nothing, svg } from "lit";
 import { customElement, state } from "lit/decorators.js";
+import { openContest } from "./ContestModal";
 import { navigateTo } from "./PageTransition";
 import { homeHref, translateText } from "./Utils";
 
@@ -38,6 +39,7 @@ export function parseTgsCancel(message: string | undefined): TgsCancel | null {
 export function showTgsCancel(
   detail: TgsCancel,
   myClientID: string | undefined,
+  gameId?: string,
 ): void {
   const modal = document.querySelector(
     "tgs-cancel-modal",
@@ -46,21 +48,27 @@ export function showTgsCancel(
     navigateTo(homeHref());
     return;
   }
-  modal.show(detail, myClientID);
+  modal.show(detail, myClientID, gameId);
 }
 
 @customElement("tgs-cancel-modal")
 export class TgsCancelModal extends LitElement {
   @state() private detail: TgsCancel | null = null;
   @state() private me: string | undefined;
+  private gameId: string | undefined;
 
   createRenderRoot() {
     return this;
   }
 
-  public show(detail: TgsCancel, me: string | undefined): void {
+  public show(
+    detail: TgsCancel,
+    me: string | undefined,
+    gameId?: string,
+  ): void {
     this.detail = detail;
     this.me = me;
+    this.gameId = gameId;
     void this.updateComplete.then(() =>
       (this.querySelector("#tgs-cancel-back") as HTMLElement | null)?.focus(),
     );
@@ -125,6 +133,12 @@ export class TgsCancelModal extends LitElement {
                   <p class="text-white/60">
                     ${translateText("tgs_cancel.cheater_review")}
                   </p>
+                  <button
+                    class="self-start text-sm text-white/70 underline underline-offset-2 hover:text-white"
+                    @click=${() => openContest("tgs_cancel", this.gameId)}
+                  >
+                    ${translateText("contest.button")}
+                  </button>
                 `
               : html`
                   <p>

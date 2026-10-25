@@ -191,16 +191,25 @@ export class GameChat extends LitElement implements Controller {
 
   private onNotice(e: ChatNoticeEvent) {
     if (!this.available()) return;
-    this.notify(e.notice, e.seconds);
+    const name =
+      e.from !== undefined
+        ? (this.game.playerByClientID(e.from)?.displayName() ?? "?")
+        : "";
+    this.notify(e.notice, e.seconds, name);
   }
 
-  private notify(notice: ChatNotice | "no_allies", seconds?: number) {
+  private notify(
+    notice: ChatNotice | "no_allies",
+    seconds?: number,
+    name = "",
+  ) {
     this.push({
       id: this.nextId++,
       kind: "notice",
       tone: "warn",
       text: translateText(`game_chat.notice_${notice}`, {
         time: formatWait(seconds ?? 0),
+        ...(name !== "" ? { name } : {}),
       }),
     });
   }

@@ -771,6 +771,17 @@
     "workshop_refresh": "Refreŝigi",
     "workshop_view": "Vidi en la metiejo"
   },
+  "contest": {
+    "button": "Kontesti ĉi tiun punon",
+    "desc": "Klarigu, kial vi pensas, ke temas pri eraro. Moderiganto legas ĉiun peton kaj povas nuligi la punon.",
+    "failed": "Ne eblis sendi vian peton. Provu denove.",
+    "min": "Almenaŭ {n} signoj",
+    "placeholder": "Kio okazis laŭ vi…",
+    "rate_limited": "Vi jam sendis plurajn petojn. Provu poste.",
+    "send": "Sendi",
+    "sent": "Sendita. Moderiganto kontrolos vian peton kaj respondos retpoŝte.",
+    "title": "Kontesti punon"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Vi povas ataki malkonektitajn ludantojn eĉ se vi estas aliancita kun ili.",
     "army_limit_warning": "Vi estas proksime de via armeolimo! Konsideru sendi soldatojn al samteamanoj.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Vi estas silentigita por {time} pro viaj mesaĝoj.",
     "notice_no_allies": "Vi ne havas aliancanojn al kiuj skribi.",
     "notice_repeated": "Mesaĝo blokita: vi ĵus sendis la samon.",
+    "notice_tgs_muted": "Territorium Game Shield forigis vian mesaĝon kaj silentigis vin ĝis la fino de la ludo. Moderiganto kontrolos ĝin.",
+    "notice_tgs_removed": "Territorium Game Shield forigis mesaĝon de {name} kaj silentigis lin ĝis la fino de la ludo.",
     "notice_warned": "Insultoj estas maskitaj. Daŭrigu ĝin kaj vi estos silentigita.",
     "open": "Malfermu la babilejon",
     "placeholder": "Mesaĝu al ĉiuj...",

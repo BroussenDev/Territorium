@@ -771,6 +771,17 @@
     "workshop_refresh": "Atualizar",
     "workshop_view": "Ver no Workshop"
   },
+  "contest": {
+    "button": "Contestar esta punição",
+    "desc": "Explique por que você acha que é um erro. Um moderador lê cada pedido e pode retirar a punição.",
+    "failed": "Não foi possível enviar seu pedido. Tente de novo.",
+    "min": "Pelo menos {n} caracteres",
+    "placeholder": "O que aconteceu, do seu ponto de vista…",
+    "rate_limited": "Você já enviou vários pedidos. Tente mais tarde.",
+    "send": "Enviar",
+    "sent": "Enviado. Um moderador vai analisar seu pedido e responder por e-mail.",
+    "title": "Contestar uma punição"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Você pode atacar jogadores desconectados mesmo se estiver aliado com eles.",
     "army_limit_warning": "Você está perto do limite de tropas! Considere enviar tropas para seus aliados.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Você está silenciado por {time} por causa de suas mensagens.",
     "notice_no_allies": "Você não tem aliados para quem escrever.",
     "notice_repeated": "Mensagem bloqueada: você acabou de enviar a mesma coisa.",
+    "notice_tgs_muted": "O Territorium Game Shield apagou sua mensagem e silenciou você até o fim da partida. Um moderador vai analisá-la.",
+    "notice_tgs_removed": "O Territorium Game Shield apagou uma mensagem de {name} e o silenciou até o fim da partida.",
     "notice_warned": "Os insultos são mascarados. Continue assim e você será silenciado.",
     "open": "Abra o bate-papo",
     "placeholder": "Mensagem para todos…",

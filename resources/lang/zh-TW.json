@@ -771,6 +771,17 @@
     "workshop_refresh": "重新整理",
     "workshop_view": "在工作坊查看"
   },
+  "contest": {
+    "button": "對此處罰提出申訴",
+    "desc": "請說明你認為這是誤判的原因。管理員會閱讀每份申訴，並可撤銷處罰。",
+    "failed": "無法送出申訴，請再試一次。",
+    "min": "至少 {n} 個字元",
+    "placeholder": "從你的角度說明發生了什麼…",
+    "rate_limited": "你已送出多份申訴，請稍後再試。",
+    "send": "送出",
+    "sent": "已送出。管理員將審核你的申訴，並以電子郵件回覆。",
+    "title": "申訴處罰"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "你可以攻擊離線玩家，即使他是你的盟友。",
     "army_limit_warning": "你已接近你的軍隊上限！請考慮向隊友轉移部隊。",
@@ -1359,6 +1370,8 @@
     "notice_muted": "由於您的訊息，您被靜音{time}。",
     "notice_no_allies": "你沒有盟友可以寫信。",
     "notice_repeated": "訊息被封鎖：您剛剛發送了相同的內容。",
+    "notice_tgs_muted": "Territorium Game Shield 刪除了你的訊息，並在本局結束前將你禁言。管理員將進行審核。",
+    "notice_tgs_removed": "Territorium Game Shield 刪除了 {name} 的一則訊息，並在本局結束前將其禁言。",
     "notice_warned": "侮辱被掩蓋了。堅持下去，你就會被靜音。",
     "open": "打開聊天",
     "placeholder": "給大家留言…",

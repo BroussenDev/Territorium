@@ -94,6 +94,7 @@ import {
   TGS_KICK_REASONS,
   TgsKickCode,
   TgsMonitor,
+  tgsSwitch,
 } from "./Tgs";
 import { cancelRankedGame, reportTgsIncident } from "./TgsApi";
 import { RankedVerdict, RankedWatch } from "./TgsRanked";
@@ -2264,6 +2265,8 @@ export class GameServer {
         ),
       );
     }
+    if (verdict.severe !== undefined)
+      this.tgsChat(client, text, verdict.severe);
     if (verdict.text === null) return;
 
     const msg = encodeServerMessage(
@@ -2284,6 +2287,41 @@ export class GameServer {
         c.ws.send(msg);
       }
     });
+  }
+
+  /**
+   * TGS removed a line (TGS-110): every other player is told who was muted,
+   * and the staff gets the line at once (an incident and a ticket).
+   */
+  private tgsChat(client: Client, text: string, kind: "hate" | "threat") {
+    if (!tgsSwitch.isEnabled()) return;
+    const notice = encodeServerMessage(
+      {
+        type: "chat_notice",
+        notice: "tgs_removed",
+        from: client.clientID,
+      } satisfies ServerChatNoticeMessage,
+      this.zbinCtx,
+    );
+    for (const c of this.clients.active()) {
+      if (c !== client && c.ws.readyState === WebSocket.OPEN) c.ws.send(notice);
+    }
+    const incident = this.tgs.observeChat(
+      client.clientID,
+      this.turns.length,
+      `${kind === "hate" ? "Propos haineux" : "Menace"} dans le chat : « ${text} »`,
+    );
+    this.log.warn("TGS removed a chat line", {
+      clientID: client.clientID,
+      kind,
+    });
+    void reportTgsIncident(
+      this.id,
+      incident,
+      client.persistentID,
+      this.gameStartInfo.players.find((p) => p.clientID === client.clientID)
+        ?.username,
+    );
   }
 
   private handleSynchronization() {

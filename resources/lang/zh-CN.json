@@ -771,6 +771,17 @@
     "workshop_refresh": "刷新",
     "workshop_view": "在创意工坊查看"
   },
+  "contest": {
+    "button": "对此处罚提出申诉",
+    "desc": "请说明你认为这是误判的原因。管理员会阅读每份申诉，并可撤销处罚。",
+    "failed": "无法发送申诉，请重试。",
+    "min": "至少 {n} 个字符",
+    "placeholder": "从你的角度说明发生了什么…",
+    "rate_limited": "你已发送多份申诉，请稍后再试。",
+    "send": "发送",
+    "sent": "已发送。管理员将审核你的申诉，并通过邮件回复。",
+    "title": "申诉处罚"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "即使您与离线玩家结盟，您也可以攻击他们。",
     "army_limit_warning": "你已经接近你的军队上限了！考虑向队友派遣部队。",
@@ -1359,6 +1370,8 @@
     "notice_muted": "由于您的消息，您被静音{time}。",
     "notice_no_allies": "你没有盟友可以写信。",
     "notice_repeated": "消息被阻止：您刚刚发送了同样的内容。",
+    "notice_tgs_muted": "Territorium Game Shield 删除了你的消息，并在本局结束前将你禁言。管理员将进行审核。",
+    "notice_tgs_removed": "Territorium Game Shield 删除了 {name} 的一条消息，并在本局结束前将其禁言。",
     "notice_warned": "侮辱被掩盖了。坚持下去，你就会被静音。",
     "open": "打开聊天",
     "placeholder": "给大家留言…",

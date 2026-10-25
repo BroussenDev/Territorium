@@ -257,6 +257,8 @@ export class ChatNoticeEvent implements GameEvent {
   constructor(
     public readonly notice: ChatNotice,
     public readonly seconds?: number,
+    // The player a tgs_removed notice is about.
+    public readonly from?: ClientID,
   ) {}
 }
 export class SendHashEvent implements GameEvent {

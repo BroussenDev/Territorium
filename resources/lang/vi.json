@@ -771,6 +771,17 @@
     "workshop_refresh": "Làm mới",
     "workshop_view": "Xem trên Workshop"
   },
+  "contest": {
+    "button": "Khiếu nại hình phạt này",
+    "desc": "Hãy giải thích vì sao bạn nghĩ đây là nhầm lẫn. Điều phối viên đọc mọi yêu cầu và có thể gỡ hình phạt.",
+    "failed": "Không thể gửi yêu cầu. Hãy thử lại.",
+    "min": "Ít nhất {n} ký tự",
+    "placeholder": "Chuyện gì đã xảy ra, theo bạn…",
+    "rate_limited": "Bạn đã gửi nhiều yêu cầu. Hãy thử lại sau.",
+    "send": "Gửi",
+    "sent": "Đã gửi. Điều phối viên sẽ xem xét yêu cầu và trả lời qua email.",
+    "title": "Khiếu nại hình phạt"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Bạn có thể tấn công người chơi bị mất kết nối ngay cả khi đang là đồng minh của họ.",
     "army_limit_warning": "Bạn sắp chạm giới hạn quân! Hãy cân nhắc gửi bớt lính cho đồng đội.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Bạn bị tắt tiếng trong {time} vì tin nhắn của bạn.",
     "notice_no_allies": "Bạn không có đồng minh để viết thư cho.",
     "notice_repeated": "Tin nhắn bị chặn: bạn vừa gửi nội dung tương tự.",
+    "notice_tgs_muted": "Territorium Game Shield đã xóa tin nhắn của bạn và tắt tiếng bạn đến hết trận. Một điều phối viên sẽ xem xét.",
+    "notice_tgs_removed": "Territorium Game Shield đã xóa một tin nhắn của {name} và tắt tiếng người này đến hết trận.",
     "notice_warned": "Những lời xúc phạm được che đậy. Hãy tiếp tục và bạn sẽ bị tắt tiếng.",
     "open": "Mở cuộc trò chuyện",
     "placeholder": "Nhắn tin cho mọi người…",

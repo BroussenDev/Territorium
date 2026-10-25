@@ -771,6 +771,17 @@
     "workshop_refresh": "Vernieuwen",
     "workshop_view": "Bekijken in de Workshop"
   },
+  "contest": {
+    "button": "Deze sanctie aanvechten",
+    "desc": "Leg uit waarom je denkt dat het een vergissing is. Een moderator leest elk verzoek en kan de sanctie opheffen.",
+    "failed": "Je verzoek kon niet worden verstuurd. Probeer het opnieuw.",
+    "min": "Minstens {n} tekens",
+    "placeholder": "Wat er gebeurde, vanuit jouw kant…",
+    "rate_limited": "Je hebt al meerdere verzoeken gestuurd. Probeer het later opnieuw.",
+    "send": "Versturen",
+    "sent": "Verstuurd. Een moderator bekijkt je verzoek en antwoordt per e-mail.",
+    "title": "Een sanctie aanvechten"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Je kan spelers waar je een alliantie mee hebt aanvallen als ze het spel hebben verlaten.",
     "army_limit_warning": "Je bent dicht bij je leger limiet! Overweeg troepen naar teamgenoten te sturen.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Je bent gedempt voor {time} vanwege je berichten.",
     "notice_no_allies": "Je hebt geen bondgenoten om naar te schrijven.",
     "notice_repeated": "Bericht geblokkeerd: je hebt zojuist hetzelfde verzonden.",
+    "notice_tgs_muted": "Territorium Game Shield heeft je bericht verwijderd en je gedempt tot het einde van het potje. Een moderator bekijkt het.",
+    "notice_tgs_removed": "Territorium Game Shield heeft een bericht van {name} verwijderd en {name} gedempt tot het einde van het potje.",
     "notice_warned": "Beledigingen worden gemaskeerd. Ga zo door en je zult gedempt worden.",
     "open": "Open de chat",
     "placeholder": "Stuur iedereen een bericht...",

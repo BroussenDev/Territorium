@@ -771,6 +771,17 @@
     "workshop_refresh": "Frissítés",
     "workshop_view": "Megnézés a Műhelyben"
   },
+  "contest": {
+    "button": "Büntetés megfellebbezése",
+    "desc": "Írd le, miért gondolod, hogy tévedés. Egy moderátor minden kérést elolvas, és feloldhatja a büntetést.",
+    "failed": "Nem sikerült elküldeni a kérést. Próbáld újra.",
+    "min": "Legalább {n} karakter",
+    "placeholder": "Mi történt a te szemszögedből…",
+    "rate_limited": "Már több kérést elküldtél. Próbáld később.",
+    "send": "Küldés",
+    "sent": "Elküldve. Egy moderátor átnézi a kérésedet, és e-mailben válaszol.",
+    "title": "Büntetés megfellebbezése"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "A kapcsolat nélküli játékosokat akkor is megtámadhatod, ha szövetséges vagy velük.",
     "army_limit_warning": "Közel vagy a sereged létszámhatárához! Fontold meg csapatok küldését csapattársaidnak.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Üzenete miatt elnémult a {time} számára.",
     "notice_no_allies": "Nincsenek szövetségesei, akiknek írhatna.",
     "notice_repeated": "Üzenet blokkolva: Ön éppen ugyanazt küldte.",
+    "notice_tgs_muted": "A Territorium Game Shield törölte az üzenetedet, és a meccs végéig elnémított. Egy moderátor átnézi.",
+    "notice_tgs_removed": "A Territorium Game Shield törölte {name} egyik üzenetét, és a meccs végéig elnémította.",
     "notice_warned": "A sértéseket elfedik. Csak így tovább, és el lesz némítva.",
     "open": "Nyissa meg a csevegést",
     "placeholder": "Üzenet mindenkinek…",

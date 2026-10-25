@@ -5,6 +5,7 @@ import {
   collapseRuns,
   hasLink,
   isHateSpeech,
+  severeChat,
 } from "../../src/server/ChatModeration";
 import { cid } from "../util/GameServerHarness";
 
@@ -56,7 +57,7 @@ describe("ChatModerator", () => {
 
   it("blocks hate speech", () => {
     const mod = new ChatModerator();
-    expect(mod.moderate(ALICE, "sale arabe", 0)).toEqual({
+    expect(mod.moderate(ALICE, "nazi", 0)).toEqual({
       text: null,
       notice: "blocked",
     });
@@ -81,7 +82,7 @@ describe("ChatModerator", () => {
     expect(mod.moderate(ALICE, "sorry", 122_000).text).toBe("sorry");
 
     // Hate is two strikes: one more insult earns the second, longer mute.
-    expect(mod.moderate(ALICE, "sale noir", 130_000).notice).toBe("blocked");
+    expect(mod.moderate(ALICE, "nazi", 130_000).notice).toBe("blocked");
     expect(mod.moderate(ALICE, "bitch", 140_000)).toEqual({
       text: "*****",
       notice: "muted",
@@ -128,5 +129,41 @@ describe("ChatModerator", () => {
     expect(collapseRuns("!!!!!!!! gg")).toBe("!!!! gg");
     expect(calmShouting("GG WP")).toBe("GG WP");
     expect(calmShouting("OK je Viens")).toBe("OK je Viens");
+  });
+
+  it("leaves hate aimed at a group and threats to TGS: muted for the game", () => {
+    const mod = new ChatModerator();
+    for (const line of [
+      "NIKE LE NOIRS",
+      "sale arabe",
+      "mort aux juifs",
+      "heil hitler",
+      "1488",
+    ]) {
+      expect(severeChat(line)).toBe("hate");
+    }
+    for (const line of ["kys", "je vais te tuer", "va crever"]) {
+      expect(severeChat(line)).toBe("threat");
+    }
+    for (const line of [
+      "connard",
+      "gg wp",
+      "les noirs ont gagné",
+      "nikel",
+      "je suis noir",
+    ]) {
+      expect(severeChat(line)).toBeNull();
+    }
+    expect(mod.moderate(ALICE, "nique les arabes", 0)).toEqual({
+      text: null,
+      notice: "tgs_muted",
+      severe: "hate",
+    });
+    // Muted for the rest of the game, whatever comes next.
+    expect(mod.moderate(ALICE, "sorry", 3_600_000)).toEqual({
+      text: null,
+      notice: "tgs_muted",
+    });
+    expect(mod.moderate(BOB, "gg", 10).text).toBe("gg");
   });
 });

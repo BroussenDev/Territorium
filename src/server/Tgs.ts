@@ -36,9 +36,14 @@ import type { AllPlayersStats, ClientID } from "../core/Schemas";
 export const TGS_FLOOD_CODE = "TGS-101";
 export const TGS_DESYNC_CODE = "TGS-102";
 export const TGS_CROSS_TEAM_CODE = "TGS-103";
+/** A hateful or threatening chat line, removed live (ChatModeration.ts). */
+export const TGS_CHAT_CODE = "TGS-110";
 /** The codes that disconnect a player. */
 export type TgsKickCode = typeof TGS_FLOOD_CODE | typeof TGS_DESYNC_CODE;
-export type TgsCode = TgsKickCode | typeof TGS_CROSS_TEAM_CODE;
+export type TgsCode =
+  | TgsKickCode
+  | typeof TGS_CROSS_TEAM_CODE
+  | typeof TGS_CHAT_CODE;
 
 /** Translation keys of the message a disconnected player reads. */
 export const TGS_KICK_REASONS: Record<TgsKickCode, string> = {
@@ -355,6 +360,18 @@ export class TgsMonitor {
       ...(this.sameNetwork.length ? { sameNetwork: this.sameNetwork } : {}),
       ...(this.cancelled ? { cancelled: this.cancelled } : {}),
     };
+  }
+
+  /** A chat line TGS removed (TGS-110): an incident, nobody disconnected. */
+  observeChat(clientID: ClientID, turn: number, details: string): TgsIncident {
+    const incident: TgsIncident = {
+      clientID,
+      code: TGS_CHAT_CODE,
+      turn,
+      details: details.slice(0, 200),
+    };
+    if (this.incidents.length < 200) this.incidents.push(incident);
+    return incident;
   }
 
   /** A ranked game cancelled live: it goes with the record. */

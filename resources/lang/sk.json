@@ -771,6 +771,17 @@
     "workshop_refresh": "Obnoviť",
     "workshop_view": "Zobraziť vo Workshope"
   },
+  "contest": {
+    "button": "Napadnúť tento trest",
+    "desc": "Vysvetli, prečo si myslíš, že ide o omyl. Moderátor číta každú žiadosť a môže trest zrušiť.",
+    "failed": "Žiadosť sa nepodarilo odoslať. Skús to znova.",
+    "min": "Aspoň {n} znakov",
+    "placeholder": "Čo sa stalo z tvojho pohľadu…",
+    "rate_limited": "Už si poslal niekoľko žiadostí. Skús to neskôr.",
+    "send": "Odoslať",
+    "sent": "Odoslané. Moderátor žiadosť preverí a odpovie e-mailom.",
+    "title": "Napadnúť trest"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Na odpojených hráčov môžete zaútočiť, aj keď ste s nimi spojenci.",
     "army_limit_warning": "Ste blízko svojho armádneho limitu! Zvážte vyslanie jednotiek k spoluhráčom.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Na {time} máte vypnutý zvuk kvôli vašim správam.",
     "notice_no_allies": "Nemáte žiadnych spojencov, s ktorými by ste si mohli písať.",
     "notice_repeated": "Správa zablokovaná: práve ste odoslali to isté.",
+    "notice_tgs_muted": "Territorium Game Shield vymazal tvoju správu a stlmil ťa do konca hry. Moderátor ju preverí.",
+    "notice_tgs_removed": "Territorium Game Shield vymazal správu hráča {name} a stlmil ho do konca hry.",
     "notice_warned": "Urážky sú maskované. Len tak ďalej a budete stlmení.",
     "open": "Otvorte chat",
     "placeholder": "Pošlite správu všetkým…",

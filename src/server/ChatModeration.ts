@@ -9,6 +9,10 @@ import { censorChat } from "./Censor";
 //  - calms shouting and long runs of one character.
 // Hate and insults are strikes: at STRIKES_TO_MUTE the player is muted, for
 // longer each time. The sender hears why through a notice; nobody else does.
+// The gravest lines are TGS's (TGS-110): hate aimed at a group ("nique les
+// noirs", slurs) and threats ("kys", "je vais te tuer") are removed for
+// everyone, their author is muted for the rest of the game, the other
+// players are told, and the staff gets a ticket with the line.
 
 const STRIKES_TO_MUTE = 3;
 const HATE_STRIKES = 2;
@@ -154,6 +158,40 @@ const SWEARING = [
   "блять",
 ];
 
+// TGS-110: threats and pushing someone to self-harm.
+const THREATS = [
+  "kys",
+  "kill yourself",
+  "kill urself",
+  "go die",
+  "suicide toi",
+  "suicides toi",
+  "va te suicider",
+  "va crever",
+  "je vais te tuer",
+  "je vais te trouver",
+  "je sais ou tu habites",
+  "i will kill you",
+  "ill kill you",
+  "i know where you live",
+  "je vais te violer",
+  "te voy a matar",
+  "matate",
+  "bring dich um",
+];
+
+// TGS-110: violence or contempt next to a group of people, a few words apart.
+const HATE_VERBS =
+  "nique|niquer|nik|nike|niker|mort aux|mort a|crever|crevez|tuer|tuez|bruler|gazer|fuck|kill|death to|hate|dirty|gas|burn|sale|sales";
+const GROUPS =
+  "noirs?|noire|negros?|blacks?|arabes?|beurs?|rebeus?|juifs?|juives?|jews?|musulmans?|muslims?|chinois|asiatiques?|gays?|pedes?|homos?|lesbiennes?|trans|roms?|gitans?|migrants?|blancs?|whites?";
+const groupHate = new RegExp(
+  `(?<![\\p{L}])(?:${HATE_VERBS})(?:\\s+\\p{L}+){0,2}\\s+(?:${GROUPS})(?![\\p{L}])`,
+  "u",
+);
+const NAZI =
+  /(?<![\p{L}])(?:heil hitler|sieg heil|white power|1488)(?![\p{L}])/u;
+
 const LINK =
   /(https?:\/\/|www\.|discord\.(gg|com\/invite)|\b[a-z0-9-]{2,}\.(com|net|org|fr|io|gg|xyz|ru|be|ch|ca|co|me|tv|ly|link|app|dev|info|site|online|shop|store)\b)/i;
 
@@ -192,6 +230,7 @@ function matcher(words: string[]): RegExp {
 const hateMatcher = matcher(HATE);
 const insultMatcher = matcher(INSULTS);
 const swearMatcher = matcher(SWEARING);
+const threatMatcher = matcher(THREATS);
 
 /** Masks what `re` finds in `text`; says whether it found anything. */
 function mask(text: string, re: RegExp): { text: string; hit: boolean } {
@@ -208,6 +247,26 @@ function mask(text: string, re: RegExp): { text: string; hit: boolean } {
 
 export function hasLink(text: string): boolean {
   return LINK.test(text);
+}
+
+/**
+ * A line TGS removes for everyone (TGS-110): "hate" aimed at a group of
+ * people, or a "threat". null for anything else, ordinary insults included.
+ */
+export function severeChat(text: string): "hate" | "threat" | null {
+  const folded = fold(text)
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ");
+  if (
+    groupHate.test(folded) ||
+    NAZI.test(folded) ||
+    NAZI.test(text.toLowerCase()) ||
+    mask(text, hateMatcher).hit
+  ) {
+    return "hate";
+  }
+  if (mask(text, threatMatcher).hit) return "threat";
+  return null;
 }
 
 export function isHateSpeech(text: string): boolean {
@@ -238,6 +297,8 @@ export interface ChatVerdict {
   notice: ChatNotice | null;
   /** How long the sender stays muted, for a "muted" notice. */
   seconds?: number;
+  /** A line TGS removed (TGS-110): tell everyone and the staff. */
+  severe?: "hate" | "threat";
 }
 
 interface SenderState {
@@ -261,6 +322,8 @@ export class ChatModerator {
   }
 
   private mutedVerdict(s: SenderState, now: number): ChatVerdict {
+    // Muted by TGS: for the rest of the game.
+    if (s.mutedUntil === Infinity) return { text: null, notice: "tgs_muted" };
     return {
       text: null,
       notice: "muted",
@@ -293,6 +356,12 @@ export class ChatModerator {
     }
     s.lastLine = key;
     s.lastAt = now;
+
+    const severe = severeChat(text);
+    if (severe !== null) {
+      s.mutedUntil = Infinity;
+      return { text: null, notice: "tgs_muted", severe };
+    }
 
     if (isHateSpeech(text)) {
       return this.strike(s, HATE_STRIKES, now)

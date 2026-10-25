@@ -771,6 +771,17 @@
     "workshop_refresh": "Yenile",
     "workshop_view": "Atölyede gör"
   },
+  "contest": {
+    "button": "Bu yaptırıma itiraz et",
+    "desc": "Neden hata olduğunu düşündüğünü açıkla. Bir moderatör her talebi okur ve yaptırımı kaldırabilir.",
+    "failed": "Talebin gönderilemedi. Tekrar dene.",
+    "min": "En az {n} karakter",
+    "placeholder": "Senin açından ne oldu…",
+    "rate_limited": "Zaten birkaç talep gönderdin. Daha sonra tekrar dene.",
+    "send": "Gönder",
+    "sent": "Gönderildi. Bir moderatör talebini inceleyip e-postayla yanıt verecek.",
+    "title": "Yaptırıma itiraz"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Bağlantısı kesilen oyuncularla müttefik olsanız bile onlara saldırabilirsiniz.",
     "army_limit_warning": "Ordu sınırına yaklaştın! Takım arkadaşlarına birlik göndermeyi düşünün.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Mesajlarınız nedeniyle {time} süreyle sessize alındınız.",
     "notice_no_allies": "Yazacak müttefikiniz yok.",
     "notice_repeated": "Mesaj engellendi: Az önce aynı şeyi gönderdiniz.",
+    "notice_tgs_muted": "Territorium Game Shield mesajını sildi ve seni maç sonuna kadar susturdu. Bir moderatör inceleyecek.",
+    "notice_tgs_removed": "Territorium Game Shield {name} oyuncusunun bir mesajını sildi ve onu maç sonuna kadar susturdu.",
     "notice_warned": "Hakaretler maskeleniyor. Böyle devam ederseniz sessize alınacaksınız.",
     "open": "Sohbeti aç",
     "placeholder": "Herkese mesaj atın…",

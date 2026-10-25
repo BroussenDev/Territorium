@@ -771,6 +771,17 @@
     "workshop_refresh": "Osveži",
     "workshop_view": "Pogledaj u radionici"
   },
+  "contest": {
+    "button": "Ospori ovu kaznu",
+    "desc": "Objasni zašto misliš da je greška. Moderator čita svaki zahtev i može da ukine kaznu.",
+    "failed": "Zahtev nije mogao da se pošalje. Pokušaj ponovo.",
+    "min": "Najmanje {n} znakova",
+    "placeholder": "Šta se desilo, iz tvog ugla…",
+    "rate_limited": "Već si poslao nekoliko zahteva. Pokušaj kasnije.",
+    "send": "Pošalji",
+    "sent": "Poslato. Moderator će pregledati zahtev i odgovoriti mejlom.",
+    "title": "Osporavanje kazne"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Smete da napadate one koji više nisu prisutni čak i ako ste u savezu sa njima.",
     "army_limit_warning": "Bližite se limitu vaše armije! Probajte da pošaljete trupe saigračima.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Isključeni ste za {time} zbog vaših poruka.",
     "notice_no_allies": "Nemate saveznika kojima možete pisati.",
     "notice_repeated": "Poruka blokirana: upravo ste poslali istu stvar.",
+    "notice_tgs_muted": "Territorium Game Shield je obrisao tvoju poruku i utišao te do kraja igre. Moderator će je pregledati.",
+    "notice_tgs_removed": "Territorium Game Shield je obrisao poruku igrača {name} i utišao ga do kraja igre.",
     "notice_warned": "Uvrede su maskirane. Nastavite tako i bićete isključeni.",
     "open": "Otvorite ćaskanje",
     "placeholder": "Pošalji poruku svima…",

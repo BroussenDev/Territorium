@@ -110,7 +110,8 @@ describe("banned-modal", () => {
     };
     fireUserMe(banned);
     await el.updateComplete;
-    el.querySelector<HTMLButtonElement>("button")!.click();
+    // The last button closes it (the first one contests the ban).
+    [...el.querySelectorAll<HTMLButtonElement>("button")].at(-1)!.click();
     expect((await text()).trim()).toBe("");
 
     // A refreshed @me with the same ban doesn't reopen it...

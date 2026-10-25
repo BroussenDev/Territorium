@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.150
+
+🛡️ **Safer chat, fairer sanctions**
+
+- Hateful or threatening messages are removed for everyone as soon as they are sent, and their author is muted for the rest of the game.
+- You can now contest a ban, a warning or a cancelled ranked game right from the game: a moderator reviews every request.
+
 ## v0.1.149
 
 🛡️ **Ranked games protected live**

@@ -771,6 +771,17 @@
     "workshop_refresh": "Uppdatera",
     "workshop_view": "Visa i Workshop"
   },
+  "contest": {
+    "button": "Överklaga sanktionen",
+    "desc": "Förklara varför du tror att det är ett misstag. En moderator läser varje begäran och kan häva sanktionen.",
+    "failed": "Det gick inte att skicka din begäran. Försök igen.",
+    "min": "Minst {n} tecken",
+    "placeholder": "Vad som hände, från din sida…",
+    "rate_limited": "Du har redan skickat flera begäranden. Försök igen senare.",
+    "send": "Skicka",
+    "sent": "Skickat. En moderator granskar din begäran och svarar via e-post.",
+    "title": "Överklaga en sanktion"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Du kan attackera frånkopplade spelare även om du är allierad med dem.",
     "army_limit_warning": "Du är nära din armégräns! Överväg att skicka trupper till lagkamrater.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Du är tystad för {time} på grund av dina meddelanden.",
     "notice_no_allies": "Du har inga allierade att skriva till.",
     "notice_repeated": "Meddelande blockerat: du skickade precis samma sak.",
+    "notice_tgs_muted": "Territorium Game Shield tog bort ditt meddelande och stängde av din chatt resten av matchen. En moderator granskar det.",
+    "notice_tgs_removed": "Territorium Game Shield tog bort ett meddelande från {name} och stängde av hens chatt resten av matchen.",
     "notice_warned": "Förolämpningar är maskerade. Fortsätt så blir du tyst.",
     "open": "Öppna chatten",
     "placeholder": "Skicka meddelande till alla...",

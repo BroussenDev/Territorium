@@ -771,6 +771,17 @@
     "workshop_refresh": "Opdater",
     "workshop_view": "Se i Workshop"
   },
+  "contest": {
+    "button": "Klag over sanktionen",
+    "desc": "Forklar, hvorfor du mener, det er en fejl. En moderator læser hver henvendelse og kan ophæve sanktionen.",
+    "failed": "Din henvendelse kunne ikke sendes. Prøv igen.",
+    "min": "Mindst {n} tegn",
+    "placeholder": "Hvad der skete, set fra din side…",
+    "rate_limited": "Du har allerede sendt flere henvendelser. Prøv igen senere.",
+    "send": "Send",
+    "sent": "Sendt. En moderator gennemgår din henvendelse og svarer på e-mail.",
+    "title": "Klag over en sanktion"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Du kan angribe frakoblede spillere, selvom du er allieret med dem.",
     "army_limit_warning": "Du er i nærheden af din hær grænse! Overvej at sende tropper til holdkammerater.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Du er slået fra i {time} på grund af dine beskeder.",
     "notice_no_allies": "Du har ingen allierede at skrive til.",
     "notice_repeated": "Besked blokeret: du har lige sendt det samme.",
+    "notice_tgs_muted": "Territorium Game Shield fjernede din besked og gjorde dig tavs resten af kampen. En moderator gennemgår den.",
+    "notice_tgs_removed": "Territorium Game Shield fjernede en besked fra {name} og gjorde vedkommende tavs resten af kampen.",
     "notice_warned": "Fornærmelser er maskerede. Bliv ved, og du vil blive slået fra.",
     "open": "Åbn chatten",
     "placeholder": "Send besked til alle...",

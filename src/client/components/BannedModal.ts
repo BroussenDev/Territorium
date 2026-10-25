@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import type { UserMeResponse } from "../../core/ApiSchemas";
+import { openContest } from "../ContestModal";
 import { translateText } from "../Utils";
 
 type Ban = NonNullable<NonNullable<UserMeResponse["ban"]>>;
@@ -139,12 +140,20 @@ export class BannedModal extends LitElement {
           <p class="text-sm leading-relaxed text-white/55">
             ${translateText("ban_notice.appeal")}
           </p>
-          <button
-            class="rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 font-display text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white"
-            @click=${close}
-          >
-            ${translateText("common.close")}
-          </button>
+          <div class="flex gap-2">
+            <button
+              class="flex-1 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 font-display text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white"
+              @click=${() => openContest("ban")}
+            >
+              ${translateText("contest.button")}
+            </button>
+            <button
+              class="flex-1 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 font-display text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white"
+              @click=${close}
+            >
+              ${translateText("common.close")}
+            </button>
+          </div>
         </div>
       </div>
     `;

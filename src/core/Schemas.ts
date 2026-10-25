@@ -1160,6 +1160,10 @@ export const ChatNoticeSchema = z.enum([
   "muted",
   "link",
   "repeated",
+  // TGS removed a hateful or threatening line: to its author, muted for the
+  // rest of the game, and to everyone else, naming the author (from).
+  "tgs_muted",
+  "tgs_removed",
 ]);
 export type ChatNotice = z.infer<typeof ChatNoticeSchema>;
 
@@ -1167,6 +1171,8 @@ export const ServerChatNoticeMessageSchema = z.object({
   type: z.literal("chat_notice"),
   notice: ChatNoticeSchema,
   seconds: zb.uint().optional(),
+  // The player a tgs_removed notice is about.
+  from: ID.optional(),
 });
 
 export const ServerMessageSchema = zb.discriminatedUnion("type", [
@@ -1259,7 +1265,7 @@ export const TgsReportSchema = z.object({
   incidents: z
     .object({
       clientID: ID,
-      code: z.enum(["TGS-101", "TGS-102", "TGS-103"]),
+      code: z.enum(["TGS-101", "TGS-102", "TGS-103", "TGS-110"]),
       turn: z.number().int().nonnegative(),
       details: z.string().max(200),
     })

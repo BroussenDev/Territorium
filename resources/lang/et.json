@@ -771,6 +771,17 @@
     "workshop_refresh": "Värskenda",
     "workshop_view": "Vaata töökojas"
   },
+  "contest": {
+    "button": "Vaidlusta karistus",
+    "desc": "Selgita, miks arvad, et tegu on veaga. Moderaator loeb iga pöördumise ja võib karistuse tühistada.",
+    "failed": "Pöördumist ei õnnestunud saata. Proovi uuesti.",
+    "min": "Vähemalt {n} tähemärki",
+    "placeholder": "Mis juhtus sinu vaatest…",
+    "rate_limited": "Oled juba saatnud mitu pöördumist. Proovi hiljem.",
+    "send": "Saada",
+    "sent": "Saadetud. Moderaator vaatab su pöördumise üle ja vastab e-postiga.",
+    "title": "Karistuse vaidlustamine"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Saate rünnata katkenud mängijaid isegi siis, kui olete nendega seotud.",
     "army_limit_warning": "Olete oma armee piiri lähedal! Kaaluge vägede saatmist meeskonnakaaslaste juurde.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Teie sõnumite tõttu olete {time} jaoks vaigistatud.",
     "notice_no_allies": "Teil pole liitlasi, kellele kirjutada.",
     "notice_repeated": "Sõnum blokeeritud: saatsite just sama asja.",
+    "notice_tgs_muted": "Territorium Game Shield kustutas su sõnumi ja vaigistas sind mängu lõpuni. Moderaator vaatab selle üle.",
+    "notice_tgs_removed": "Territorium Game Shield kustutas mängija {name} sõnumi ja vaigistas ta mängu lõpuni.",
     "notice_warned": "Solvangud on maskeeritud. Jätkake samamoodi ja teid vaigistatakse.",
     "open": "Avage vestlus",
     "placeholder": "Saada kõigile sõnum…",

@@ -771,6 +771,17 @@
     "workshop_refresh": "Actualitza",
     "workshop_view": "Mostra al Workshop"
   },
+  "contest": {
+    "button": "Recórrer aquesta sanció",
+    "desc": "Explica per què creus que és un error. Un moderador llegeix cada sol·licitud i pot retirar la sanció.",
+    "failed": "No s'ha pogut enviar la sol·licitud. Torna-ho a provar.",
+    "min": "Almenys {n} caràcters",
+    "placeholder": "El que va passar, des del teu punt de vista…",
+    "rate_limited": "Ja has enviat diverses sol·licituds. Torna-ho a provar més tard.",
+    "send": "Envia",
+    "sent": "Enviat. Un moderador revisarà la teva sol·licitud i et respondrà per correu.",
+    "title": "Recórrer una sanció"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Pots atacar jugadors desconnectats encara que estiguis aliat amb ells.",
     "army_limit_warning": "Esteu a prop del vostre exèrcit! Penseu en enviar tropes als companys d'equip.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Estàs silenciat per {time} a causa dels teus missatges.",
     "notice_no_allies": "No tens aliats a qui escriure.",
     "notice_repeated": "Missatge bloquejat: acabes d'enviar el mateix.",
+    "notice_tgs_muted": "Territorium Game Shield ha esborrat el teu missatge i t'ha silenciat fins al final de la partida. Un moderador el revisarà.",
+    "notice_tgs_removed": "Territorium Game Shield ha esborrat un missatge de {name} i l'ha silenciat fins al final de la partida.",
     "notice_warned": "Els insults estan emmascarats. Segueix així i quedaràs silenciat.",
     "open": "Obre el xat",
     "placeholder": "Missatge a tothom...",

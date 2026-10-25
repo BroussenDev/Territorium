@@ -771,6 +771,17 @@
     "workshop_refresh": "Refresh",
     "workshop_view": "See on the Workshop"
   },
+  "contest": {
+    "button": "Contest this sanction",
+    "desc": "Explain why you think it's a mistake. A moderator reads every request and can lift the sanction.",
+    "failed": "Couldn't send your request. Try again.",
+    "min": "At least {n} characters",
+    "placeholder": "What happened, from your side…",
+    "rate_limited": "You already sent several requests. Try again later.",
+    "send": "Send",
+    "sent": "Sent. A moderator will review your request and reply by email.",
+    "title": "Contest a sanction"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "You can attack disconnected players even if you are allied with them.",
     "army_limit_warning": "You're near your army limit! Consider sending troops to teammates.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "You are muted for {time} because of your messages.",
     "notice_no_allies": "You have no allies to write to.",
     "notice_repeated": "Message blocked: you just sent the same thing.",
+    "notice_tgs_muted": "Territorium Game Shield removed your message and muted you for the rest of the game. A moderator will review it.",
+    "notice_tgs_removed": "Territorium Game Shield removed a message from {name} and muted them for the rest of the game.",
     "notice_warned": "Insults are masked. Keep it up and you will be muted.",
     "open": "Open the chat",
     "placeholder": "Message everyone…",

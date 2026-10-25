@@ -771,6 +771,17 @@
     "workshop_refresh": "Actualiser",
     "workshop_view": "Voir sur le Workshop"
   },
+  "contest": {
+    "button": "Contester cette sanction",
+    "desc": "Expliquez pourquoi vous pensez que c'est une erreur. Un modérateur lit chaque demande et peut lever la sanction.",
+    "failed": "Impossible d'envoyer votre demande. Réessayez.",
+    "min": "Au moins {n} caractères",
+    "placeholder": "Ce qui s'est passé, de votre point de vue…",
+    "rate_limited": "Vous avez déjà envoyé plusieurs demandes. Réessayez plus tard.",
+    "send": "Envoyer",
+    "sent": "Envoyé. Un modérateur va examiner votre demande et vous répondra par e-mail.",
+    "title": "Contester une sanction"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Vous pouvez attaquer les joueurs déconnectés même lorsque vous êtes en alliance avec eux.",
     "army_limit_warning": "Vous approchez votre limite de troupes ! Pensez à envoyer des troupes aux membres de votre équipe.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Vous êtes réduit au silence pendant {time} à cause de vos messages.",
     "notice_no_allies": "Vous n'avez aucun allié à qui écrire.",
     "notice_repeated": "Message bloqué : vous venez d'envoyer la même chose.",
+    "notice_tgs_muted": "Territorium Game Shield a supprimé votre message et vous a rendu muet jusqu'à la fin de la partie. Un modérateur va l'examiner.",
+    "notice_tgs_removed": "Territorium Game Shield a supprimé un message de {name} et l'a rendu muet jusqu'à la fin de la partie.",
     "notice_warned": "Les insultes sont masquées. Continuez et vous serez réduit au silence.",
     "open": "Ouvrir le chat",
     "placeholder": "Écrire à tout le monde…",

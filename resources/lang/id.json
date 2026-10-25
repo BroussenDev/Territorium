@@ -771,6 +771,17 @@
     "workshop_refresh": "Muat ulang",
     "workshop_view": "Lihat di Workshop"
   },
+  "contest": {
+    "button": "Ajukan banding sanksi ini",
+    "desc": "Jelaskan mengapa menurutmu ini kesalahan. Moderator membaca setiap permintaan dan dapat mencabut sanksi.",
+    "failed": "Permintaan tidak bisa dikirim. Coba lagi.",
+    "min": "Minimal {n} karakter",
+    "placeholder": "Apa yang terjadi menurut versimu…",
+    "rate_limited": "Kamu sudah mengirim beberapa permintaan. Coba lagi nanti.",
+    "send": "Kirim",
+    "sent": "Terkirim. Moderator akan meninjau permintaanmu dan membalas lewat email.",
+    "title": "Ajukan banding sanksi"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Anda dapat menyerang pemain yang tidak terhubung meskipun Anda bersekutu dengan mereka.",
     "army_limit_warning": "Anda mendekati batas pasukan Anda! Pertimbangkan untuk mengirim pasukan ke rekan satu tim.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Anda dibungkam selama {time} karena pesan Anda.",
     "notice_no_allies": "Anda tidak memiliki sekutu untuk menulis surat.",
     "notice_repeated": "Pesan diblokir: Anda baru saja mengirim hal yang sama.",
+    "notice_tgs_muted": "Territorium Game Shield menghapus pesanmu dan membisukanmu sampai permainan selesai. Moderator akan meninjaunya.",
+    "notice_tgs_removed": "Territorium Game Shield menghapus pesan dari {name} dan membisukannya sampai permainan selesai.",
     "notice_warned": "Penghinaan ditutupi. Pertahankan dan Anda akan dibungkam.",
     "open": "Buka obrolan",
     "placeholder": "Kirim pesan ke semua orang…",

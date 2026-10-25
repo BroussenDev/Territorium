@@ -2,6 +2,7 @@ import { html, LitElement } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import type { UserMeResponse } from "../../core/ApiSchemas";
 import { acknowledgeWarning } from "../Api";
+import { openContest } from "../ContestModal";
 import { translateText } from "../Utils";
 
 type Warning = NonNullable<UserMeResponse["warnings"]>[number];
@@ -117,6 +118,12 @@ export class WarningModal extends LitElement {
             @click=${() => this.understood(warning)}
           >
             ${translateText("warning_notice.understood")}
+          </button>
+          <button
+            class="text-sm text-white/60 underline-offset-2 hover:text-white hover:underline"
+            @click=${() => openContest("warning", String(warning.id))}
+          >
+            ${translateText("contest.button")}
           </button>
         </div>
       </div>

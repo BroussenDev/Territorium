@@ -771,6 +771,17 @@
     "workshop_refresh": "Osveži",
     "workshop_view": "Poglej v delavnici"
   },
+  "contest": {
+    "button": "Izpodbijaj to kazen",
+    "desc": "Pojasni, zakaj misliš, da gre za napako. Moderator prebere vsako zahtevo in lahko kazen odpravi.",
+    "failed": "Zahteve ni bilo mogoče poslati. Poskusi znova.",
+    "min": "Vsaj {n} znakov",
+    "placeholder": "Kaj se je zgodilo, s tvoje strani…",
+    "rate_limited": "Poslal si že več zahtev. Poskusi pozneje.",
+    "send": "Pošlji",
+    "sent": "Poslano. Moderator bo pregledal tvojo zahtevo in odgovoril po e-pošti.",
+    "title": "Izpodbijanje kazni"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Igralce, ki niso povezani, lahko napadete, tudi če ste z njimi zavezniki.",
     "army_limit_warning": "Ste blizu omejitve svoje vojske! Razmislite o pošiljanju vojakov soigralcem.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Zaradi vaših sporočil ste izključeni za {time}.",
     "notice_no_allies": "Nimaš zaveznikov, ki bi jim lahko pisal.",
     "notice_repeated": "Sporočilo blokirano: pravkar ste poslali isto stvar.",
+    "notice_tgs_muted": "Territorium Game Shield je izbrisal tvoje sporočilo in te utišal do konca igre. Moderator ga bo pregledal.",
+    "notice_tgs_removed": "Territorium Game Shield je izbrisal sporočilo igralca {name} in ga utišal do konca igre.",
     "notice_warned": "Žalitve so prikrite. Kar tako nadaljujte in utišali vas bodo.",
     "open": "Odpri klepet",
     "placeholder": "Pošlji sporočilo vsem ...",

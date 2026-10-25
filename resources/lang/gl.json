@@ -771,6 +771,17 @@
     "workshop_refresh": "Actualizar",
     "workshop_view": "Ver no Workshop"
   },
+  "contest": {
+    "button": "Recorrer esta sanción",
+    "desc": "Explica por que cres que é un erro. Un moderador le cada solicitude e pode retirar a sanción.",
+    "failed": "Non se puido enviar a solicitude. Téntao de novo.",
+    "min": "Polo menos {n} caracteres",
+    "placeholder": "O que pasou, desde o teu punto de vista…",
+    "rate_limited": "Xa enviaches varias solicitudes. Téntao máis tarde.",
+    "send": "Enviar",
+    "sent": "Enviado. Un moderador revisará a túa solicitude e responderache por correo.",
+    "title": "Recorrer unha sanción"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Podes atacar aos xogadores desconectados aínda que esteas aliado con eles.",
     "army_limit_warning": "Estás preto do límite do teu exército! Considera enviar tropas aos compañeiros.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Estás silenciado por {time} debido ás túas mensaxes.",
     "notice_no_allies": "Non tes aliados aos que escribir.",
     "notice_repeated": "Mensaxe bloqueada: acabas de enviar o mesmo.",
+    "notice_tgs_muted": "Territorium Game Shield borrou a túa mensaxe e silenciouche ata o final da partida. Un moderador revisaraa.",
+    "notice_tgs_removed": "Territorium Game Shield borrou unha mensaxe de {name} e silenciouno ata o final da partida.",
     "notice_warned": "Os insultos están enmascarados. Sigue así e quedarás silenciado.",
     "open": "Abre o chat",
     "placeholder": "Mensaxe a todos...",

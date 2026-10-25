@@ -771,6 +771,17 @@
     "workshop_refresh": "새로고침",
     "workshop_view": "창작마당에서 보기"
   },
+  "contest": {
+    "button": "이 제재에 이의 제기",
+    "desc": "왜 실수라고 생각하는지 설명해 주세요. 모더레이터가 모든 요청을 읽고 제재를 해제할 수 있습니다.",
+    "failed": "요청을 보내지 못했습니다. 다시 시도하세요.",
+    "min": "최소 {n}자",
+    "placeholder": "당신 입장에서 무슨 일이 있었는지…",
+    "rate_limited": "이미 여러 요청을 보냈습니다. 나중에 다시 시도하세요.",
+    "send": "보내기",
+    "sent": "보냈습니다. 모더레이터가 요청을 검토하고 이메일로 답변합니다.",
+    "title": "제재 이의 제기"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "동맹 상태라도 접속이 끊긴 플레이어는 공격할 수 있습니다.",
     "army_limit_warning": "군대 한도에 거의 도달했습니다! 팀원에게 병력을 지원해 보세요.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "메시지 때문에 {time} 동안 음소거되었습니다.",
     "notice_no_allies": "편지를 보낼 동맹이 없습니다.",
     "notice_repeated": "메시지 차단됨: 방금 같은 내용을 보냈습니다.",
+    "notice_tgs_muted": "Territorium Game Shield가 메시지를 삭제하고 경기가 끝날 때까지 채팅을 음소거했습니다. 모더레이터가 검토합니다.",
+    "notice_tgs_removed": "Territorium Game Shield가 {name}의 메시지를 삭제하고 경기가 끝날 때까지 음소거했습니다.",
     "notice_warned": "모욕은 가려져 있습니다. 계속하면 음소거됩니다.",
     "open": "채팅을 열어보세요",
     "placeholder": "모두에게 메시지를 보내세요…",

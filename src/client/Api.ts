@@ -1098,6 +1098,29 @@ export async function setHiddenName(
 // POST /users/@me/warnings/:id/ack: the player read a moderation warning.
 // True when the server recorded it; on failure the notice comes back at the
 // next visit.
+// POST /users/@me/appeals: the player contests a sanction (ContestModal).
+export async function submitAppeal(
+  kind: "ban" | "ranked_ban" | "warning" | "tgs_cancel",
+  text: string,
+  ref?: string,
+): Promise<"ok" | "rate_limited" | "failed"> {
+  try {
+    const response = await fetch(`${getApiBase()}/users/@me/appeals`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: await getAuthHeader(),
+      },
+      body: JSON.stringify({ kind, text, ...(ref ? { ref } : {}) }),
+    });
+    if (response.status === 429) return "rate_limited";
+    return response.ok ? "ok" : "failed";
+  } catch (e) {
+    console.error("submitAppeal: request failed", e);
+    return "failed";
+  }
+}
+
 export async function acknowledgeWarning(id: number): Promise<boolean> {
   try {
     const response = await fetch(

@@ -771,6 +771,17 @@
     "workshop_refresh": "Aktualisieren",
     "workshop_view": "Im Workshop ansehen"
   },
+  "contest": {
+    "button": "Strafe anfechten",
+    "desc": "Erkläre, warum du glaubst, dass es ein Fehler ist. Ein Moderator liest jede Anfrage und kann die Strafe aufheben.",
+    "failed": "Deine Anfrage konnte nicht gesendet werden. Versuch es noch einmal.",
+    "min": "Mindestens {n} Zeichen",
+    "placeholder": "Was passiert ist, aus deiner Sicht…",
+    "rate_limited": "Du hast schon mehrere Anfragen gesendet. Versuch es später noch einmal.",
+    "send": "Senden",
+    "sent": "Gesendet. Ein Moderator prüft deine Anfrage und antwortet per E-Mail.",
+    "title": "Eine Strafe anfechten"
+  },
   "control_panel": {
     "allied_afk_neighbor_info": "Sie können Spieler ohne Verbindung angreifen, selbst wenn Sie mit ihnen verbündet sind.",
     "army_limit_warning": "Du bist nahe deiner Armeegrenze! Erwägen Sie die Entsendung von Truppen zu Teamkollegen.",
@@ -1359,6 +1370,8 @@
     "notice_muted": "Sie sind aufgrund Ihrer Nachrichten für {time} stummgeschaltet.",
     "notice_no_allies": "Sie haben keine Verbündeten, an die Sie schreiben können.",
     "notice_repeated": "Nachricht blockiert: Sie haben gerade dasselbe gesendet.",
+    "notice_tgs_muted": "Territorium Game Shield hat deine Nachricht gelöscht und dich bis zum Ende des Spiels stummgeschaltet. Ein Moderator prüft sie.",
+    "notice_tgs_removed": "Territorium Game Shield hat eine Nachricht von {name} gelöscht und {name} bis zum Ende des Spiels stummgeschaltet.",
     "notice_warned": "Beleidigungen werden maskiert. Machen Sie weiter so und Sie werden stummgeschaltet.",
     "open": "Öffnen Sie den Chat",
     "placeholder": "Nachricht an alle ...",
