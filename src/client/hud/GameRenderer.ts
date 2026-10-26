@@ -44,6 +44,8 @@ import { PlayerPanel } from "./layers/PlayerPanel";
 import { ReplayPanel } from "./layers/ReplayPanel";
 import { SettingsModal } from "./layers/SettingsModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
+// Imported for its side effect too: the <staff-review-panel> element.
+import "./layers/StaffReviewPanel";
 import { StaffReviewPanel } from "./layers/StaffReviewPanel";
 import { SteamAchievementsController } from "./layers/SteamAchievementsController";
 import { StructureCard } from "./layers/StructureCard";

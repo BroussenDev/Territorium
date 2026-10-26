@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.160
+
+🛠️ **Fix**
+
+- The staff menu now shows in games and replays.
+
 ## v0.1.159
 
 🛠️ **Fixes**
