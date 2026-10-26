@@ -51,4 +51,12 @@ describe("stampBadge", () => {
     stampBadge(cosmetics, NO_BADGE, [PIONEER]);
     expect(cosmetics.badge).toBeUndefined();
   });
+
+  it("shows the tournament Champion badge when picked", () => {
+    const flares = ["badge:pionnier", "badge:champion"];
+    expect(shownBadge("champion", flares)).toBe("champion");
+    expect(shownBadge(undefined, flares)).toBe("pionnier");
+    // Lost at the next tournament: the pick falls back to what is held.
+    expect(shownBadge("champion", ["badge:pionnier"])).toBe("pionnier");
+  });
 });

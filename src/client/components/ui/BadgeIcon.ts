@@ -1,6 +1,7 @@
 import { TemplateResult } from "lit";
 import { BadgeId, isBadgeId } from "../../../core/Badges";
 import { translateText } from "../../Utils";
+import { championBadge } from "./ChampionBadge";
 import { highCommanderBadge } from "./HighCommanderBadge";
 import { pioneerBadge } from "./PioneerBadge";
 
@@ -11,11 +12,16 @@ const ICONS: Record<
 > = {
   pionnier: pioneerBadge,
   haut_commandant: highCommanderBadge,
+  champion: championBadge,
 };
 
 const NAMES: Record<BadgeId, { name: string; description: string }> = {
   pionnier: { name: "pioneer.badge", description: "pioneer.badge_desc" },
   haut_commandant: { name: "deluxe.badge", description: "deluxe.badge_desc" },
+  champion: {
+    name: "tournaments.champion_badge",
+    description: "tournaments.champion_badge_desc",
+  },
 };
 
 /** The badge's icon, or null for an id this client does not know. */

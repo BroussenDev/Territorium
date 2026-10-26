@@ -1,5 +1,14 @@
 # Territorium — Changelog
 
+## v0.1.158
+
+🏆 **Tournaments**
+
+- New Tournaments page: 1v1, 2v2, teams, clans and free-for-all pools, run by the team.
+- Enter alone, with your teammates (their player codes) or for your clan, then follow the bracket live.
+- "Your match is ready": a banner takes you to your game. Whoever doesn't join in 10 minutes loses by forfeit.
+- The winners get the prizes, and the champion wears the new Champion badge until the next tournament.
+
 ## v0.1.157
 
 🛡️ **Moderation**

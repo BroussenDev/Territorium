@@ -719,6 +719,81 @@ export type SoloLeaderboardResponse = z.infer<
   typeof SoloLeaderboardResponseSchema
 >;
 
+// GET /tournaments and /tournaments/:id — public: the tournaments the staff
+// set up (open, running, the last finished), and one in full. mine is the
+// signed-in caller's entry, with the match they have to play now.
+export const TournamentFormatSchema = z.enum([
+  "duel",
+  "duo",
+  "teams",
+  "clans",
+  "ffa",
+]);
+export type TournamentFormat = z.infer<typeof TournamentFormatSchema>;
+
+export const TournamentMatchSchema = z.object({
+  id: z.number(),
+  round: z.number(),
+  slot: z.number(),
+  entrants: z.string().array(),
+  status: z.string(),
+  winners: z.string().array(),
+  gameId: z.string().nullable(),
+  map: z.string().nullable(),
+  deadline: z.number().nullable(),
+  joinUrl: z.string().nullable().optional(),
+});
+export type TournamentMatch = z.infer<typeof TournamentMatchSchema>;
+
+export const TournamentSummarySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  format: TournamentFormatSchema,
+  teamSize: z.number(),
+  matchSize: z.number(),
+  advance: z.number(),
+  maxEntrants: z.number(),
+  maps: z.string().array(),
+  medals: z.number().array(),
+  emeralds: z.number().array(),
+  championBadge: z.boolean(),
+  status: z.enum(["draft", "open", "running", "finished", "cancelled"]),
+  opensAt: z.number().nullable(),
+  startsAt: z.number(),
+  round: z.number(),
+  entrants: z.number(),
+  champion: z.string().nullable(),
+});
+export type TournamentSummary = z.infer<typeof TournamentSummarySchema>;
+
+export const TournamentDetailSchema = TournamentSummarySchema.extend({
+  entrants: z
+    .object({
+      id: z.string(),
+      name: z.string(),
+      clanTag: z.string().nullable(),
+      members: z
+        .object({
+          publicId: z.string().nullable(),
+          username: z.string().nullable(),
+        })
+        .array(),
+      place: z.number().nullable(),
+      out: z.number().nullable(),
+    })
+    .array(),
+  matches: TournamentMatchSchema.array(),
+  mine: z
+    .object({
+      entrantId: z.string(),
+      captain: z.boolean(),
+      match: TournamentMatchSchema.nullable(),
+    })
+    .nullable(),
+});
+export type TournamentDetail = z.infer<typeof TournamentDetailSchema>;
+
 // GET /leaderboard/global — public, the overall board: a place on the
 // ranked free-for-all, solo, 1v1 and 2v2 boards is worth points (1st 100,
 // 100th 1), summed; the top 100. ranks: the player's place on each board

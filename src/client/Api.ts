@@ -57,6 +57,12 @@ import {
   SteamFinalizeResponseSchema,
   SteamOrderResolution,
   StreamsFeedSchema,
+  TournamentDetail,
+  TournamentDetailSchema,
+  TournamentMatch,
+  TournamentMatchSchema,
+  TournamentSummary,
+  TournamentSummarySchema,
   TribeStatsResponse,
   TribeStatsResponseSchema,
   UserMeResponse,
@@ -2661,6 +2667,94 @@ export async function fetchPlayerLeaderboard(
   } catch (err) {
     console.error("fetchPlayerLeaderboard: request failed", err);
     return false;
+  }
+}
+
+// The tournaments (TournamentsModal): the list, one in full, entering and
+// leaving. Each answers false when the request fails; entering and leaving
+// answer the API's reason on a refusal.
+export async function fetchTournaments(): Promise<TournamentSummary[] | false> {
+  try {
+    const res = await fetch(`${getApiBase()}/tournaments`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) return false;
+    const parsed = z
+      .object({ tournaments: TournamentSummarySchema.array() })
+      .safeParse(await res.json());
+    return parsed.success ? parsed.data.tournaments : false;
+  } catch {
+    return false;
+  }
+}
+
+export async function fetchTournament(
+  id: string,
+): Promise<TournamentDetail | false> {
+  try {
+    const auth = await getAuthHeader().catch(() => "");
+    const res = await fetch(
+      `${getApiBase()}/tournaments/${encodeURIComponent(id)}`,
+      { headers: auth ? { Authorization: auth } : {} },
+    );
+    if (!res.ok) return false;
+    const parsed = TournamentDetailSchema.safeParse(await res.json());
+    if (!parsed.success) console.warn(parsed.error.toString());
+    return parsed.success ? parsed.data : false;
+  } catch {
+    return false;
+  }
+}
+
+export async function changeTournamentEntry(
+  id: string,
+  method: "POST" | "DELETE",
+  body: Record<string, unknown> = {},
+): Promise<TournamentDetail | { error: string }> {
+  try {
+    const res = await fetch(
+      `${getApiBase()}/tournaments/${encodeURIComponent(id)}/entry`,
+      {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: await getAuthHeader(),
+        },
+        body: method === "POST" ? JSON.stringify(body) : undefined,
+      },
+    );
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { error: String(data.message ?? res.status) };
+    const parsed = TournamentDetailSchema.safeParse(data);
+    return parsed.success ? parsed.data : { error: "invalid" };
+  } catch (e) {
+    return { error: String(e) };
+  }
+}
+
+// The signed-in player's tournament match waiting for them, if any.
+export async function fetchMyTournamentMatch(): Promise<{
+  tournamentId: string;
+  name: string;
+  match: TournamentMatch;
+} | null> {
+  try {
+    const res = await fetch(`${getApiBase()}/tournaments/me`, {
+      headers: { Authorization: await getAuthHeader() },
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { match: unknown };
+    const parsed = z
+      .object({
+        tournamentId: z.string(),
+        name: z.string(),
+        match: TournamentMatchSchema,
+      })
+      .nullable()
+      .safeParse(data.match);
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
   }
 }
 

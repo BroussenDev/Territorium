@@ -174,6 +174,8 @@ import {
 
 import "./ChallengesModal";
 import { STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
+import "./TournamentMatchBanner";
+import "./TournamentsModal";
 import "./components/DesktopNavBar";
 import "./components/DetailedGameViewModal";
 import "./components/Footer";
@@ -453,6 +455,10 @@ class Client {
     modalRouter.register("challenges", {
       tag: "challenges-modal",
       pageId: "page-challenges",
+    });
+    modalRouter.register("tournaments", {
+      tag: "tournaments-modal",
+      pageId: "page-tournaments",
     });
     modalRouter.register("map-editor", {
       tag: "map-editor-modal",

@@ -1,7 +1,7 @@
 // Badges a player can show next to their name. Each is an account item (a
 // flare "badge:<id>") given by the API; the player picks which one to show,
 // or none. Add new badges here, after the existing ones.
-export const BADGES = ["pionnier", "haut_commandant"] as const;
+export const BADGES = ["pionnier", "haut_commandant", "champion"] as const;
 export type BadgeId = (typeof BADGES)[number];
 
 /** The player's choice to show no badge at all. */

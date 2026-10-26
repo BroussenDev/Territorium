@@ -138,6 +138,11 @@ export class MobileNavBar extends LitElement {
         ></button>
         <button
           class="no-crazygames ${MOBILE_ITEM}"
+          data-page="page-tournaments"
+          data-i18n="tournaments.title"
+        ></button>
+        <button
+          class="no-crazygames ${MOBILE_ITEM}"
           data-page="page-clan"
           data-i18n="main.clans"
         ></button>
