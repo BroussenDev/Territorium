@@ -151,6 +151,7 @@ describe("ChatModerator", () => {
       "les noirs ont gagné",
       "nikel",
       "je suis noir",
+      "sale partie des blancs",
     ]) {
       expect(severeChat(line)).toBeNull();
     }

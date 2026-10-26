@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.152
+
+🛡️ **Security update**
+
+- Server libraries updated to close two known security issues.
+- The chat filter no longer mutes ordinary talk such as "sale partie des blancs" (the white team).
+
 ## v0.1.151
 
 🛠️ **Fix**

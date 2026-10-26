@@ -182,11 +182,17 @@ const THREATS = [
 
 // TGS-110: violence or contempt next to a group of people, a few words apart.
 const HATE_VERBS =
-  "nique|niquer|nik|nike|niker|mort aux|mort a|crever|crevez|tuer|tuez|bruler|gazer|fuck|kill|death to|hate|dirty|gas|burn|sale|sales";
+  "nique|niquer|nik|nike|niker|mort aux|mort a|crever|crevez|tuer|tuez|bruler|gazer|fuck|kill|death to|hate|gas|burn";
 const GROUPS =
   "noirs?|noire|negros?|blacks?|arabes?|beurs?|rebeus?|juifs?|juives?|jews?|musulmans?|muslims?|chinois|asiatiques?|gays?|pedes?|homos?|lesbiennes?|trans|roms?|gitans?|migrants?|blancs?|whites?";
 const groupHate = new RegExp(
   `(?<![\\p{L}])(?:${HATE_VERBS})(?:\\s+\\p{L}+){0,2}\\s+(?:${GROUPS})(?![\\p{L}])`,
+  "u",
+);
+// "Dirty" only right before the group ("sale arabe"): a few words apart it
+// is ordinary talk ("sale partie des blancs", the white team).
+const dirtyGroup = new RegExp(
+  `(?<![\\p{L}])(?:sale|sales|dirty)\\s+(?:${GROUPS})(?![\\p{L}])`,
   "u",
 );
 const NAZI =
@@ -259,6 +265,7 @@ export function severeChat(text: string): "hate" | "threat" | null {
     .replace(/\s+/g, " ");
   if (
     groupHate.test(folded) ||
+    dirtyGroup.test(folded) ||
     NAZI.test(folded) ||
     NAZI.test(text.toLowerCase()) ||
     mask(text, hateMatcher).hit
