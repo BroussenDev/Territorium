@@ -525,6 +525,16 @@ export const whenLanguageReady = (): Promise<void> =>
     new Promise<void>((resolve) => setTimeout(resolve, 5000)),
   ]);
 
+/**
+ * A value of the URL hash, whichever way it is written: "#key=value&more=1"
+ * (the account API's returns: two-step code, Steam confirmation, revoke
+ * link) or "#section?key=value" (sign-in links, purchases).
+ */
+export function hashParam(hash: string, key: string): string | null {
+  const pairs = new URLSearchParams(hash.replace(/^#/, "").replace("?", "&"));
+  return pairs.getAll(key).find((v) => v !== "") ?? null;
+}
+
 /** The UI language the player picked (a resources/lang code such as "fr"). */
 export const currentLanguage = (): string =>
   getCachedLangSelector()?.currentLang ?? "en";

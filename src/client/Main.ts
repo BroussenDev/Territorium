@@ -146,6 +146,7 @@ import {
   apexPathFor,
   currentPagePath,
   flushReloadToast,
+  hashParam,
   homeHref,
   incrementGamesPlayed,
   loadKeyboardLayout,
@@ -1092,7 +1093,7 @@ class Client {
     // A two-step sign-in back from Discord, Google or Steam: ask the code
     // sent by email.
     if (decodedHash.startsWith("#two-factor")) {
-      const challenge = params.get("two-factor");
+      const challenge = hashParam(decodedHash, "two-factor");
       strip();
       if (challenge) openSecurityModal({ challenge });
       return;
@@ -1101,8 +1102,8 @@ class Client {
     // Back from confirming an important action with Steam: the next try
     // of that action uses the confirmation.
     if (decodedHash.startsWith("#step-up")) {
-      const token = params.get("step-up");
-      const action = params.get("step-up-action");
+      const token = hashParam(decodedHash, "step-up");
+      const action = hashParam(decodedHash, "step-up-action");
       strip();
       if (token && action) {
         saveSteamStepUp(action, token);
@@ -1115,7 +1116,7 @@ class Client {
 
     // The "it wasn't me" link of a new-device email.
     if (decodedHash.startsWith("#revoke-sessions")) {
-      const token = params.get("revoke-sessions");
+      const token = hashParam(decodedHash, "revoke-sessions");
       strip();
       if (token) openSecurityModal({ revokeToken: token });
       return;

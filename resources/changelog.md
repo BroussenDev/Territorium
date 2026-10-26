@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.151
+
+🛠️ **Fix**
+
+- Two-step sign-in now asks for your code when you sign in with Google, Discord or Steam on the website.
+- The "It wasn't me" button of the new-device email works again.
+
 ## v0.1.150
 
 🛡️ **Safer chat, fairer sanctions**
