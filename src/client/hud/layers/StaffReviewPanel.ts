@@ -1,6 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { isStaffRole } from "../../../core/ApiSchemas";
+import { isAdminRole, isStaffRole } from "../../../core/ApiSchemas";
 import { EventBus } from "../../../core/EventBus";
 import { PlayerType, UnitType } from "../../../core/game/Game";
 import { userAuth } from "../../Auth";
@@ -45,7 +45,7 @@ const UNITS: { type: UnitType; key: string }[] = [
  * In a live game, for a moderator's account (mod, admin) watching as a
  * spectator: the same watch on any player, and removing them from the game
  * (the server checks the role too, SocketIngress and IntentAuthorization).
- * Never for a staff member who plays the game: no advantage from it.
+ * A moderator who plays the game doesn't get it; an admin does.
  */
 @customElement("staff-review-panel")
 export class StaffReviewPanel extends LitElement implements Controller {
@@ -56,6 +56,8 @@ export class StaffReviewPanel extends LitElement implements Controller {
   @state() private watchedID: string | null = null;
   // A moderator watching a live game: the menu shows, a player or not.
   @state() private liveStaff = false;
+  // Admins keep the menu while they play too.
+  @state() private liveAdmin = false;
   @state() private collapsed = false;
   @state() private copied = false;
   // Bumped each controller tick so the figures follow the game.
@@ -68,22 +70,24 @@ export class StaffReviewPanel extends LitElement implements Controller {
   init() {
     this.watchedID = this.game.config().isReplay() ? reviewFocus() : null;
     this.liveStaff = false;
+    this.liveAdmin = false;
     this.collapsed = false;
     this.applyFocus();
     if (!this.game.config().isReplay()) {
       void userAuth().then((auth) => {
         this.liveStaff = auth !== false && isStaffRole(auth.claims.role);
+        this.liveAdmin = auth !== false && isAdminRole(auth.claims.role);
         this.collapsed = true;
       });
     }
   }
 
-  // Live games: only while watching, never while playing.
+  // Live games: moderators only while watching, admins always.
   private liveMenu(): boolean {
     return (
       this.liveStaff &&
       !this.game.config().isReplay() &&
-      this.game.myPlayer() === null
+      (this.liveAdmin || this.game.myPlayer() === null)
     );
   }
 

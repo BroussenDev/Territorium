@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.157
+
+🛡️ **Moderation**
+
+- Admins keep the staff menu while they play.
+
 ## v0.1.156
 
 🎬 **Replays**
