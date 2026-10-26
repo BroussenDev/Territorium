@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.154
+
+🛠️ **Stability**
+
+- When something breaks on your side, the team now learns where it happened, so it can be fixed faster. Still anonymous: nothing says who it happened to.
+
 ## v0.1.153
 
 🛡️ **Anti-cheat**

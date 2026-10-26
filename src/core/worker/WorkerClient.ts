@@ -41,6 +41,19 @@ export class WorkerClient {
     this.messageHandlers = new Map();
   }
 
+  // An uncaught error of the worker, raised on the page for the crash
+  // reports (Telemetry.ts): src/core can't import the client.
+  private handleWorkerError(e: ErrorEvent) {
+    dispatchEvent(
+      new CustomEvent("game-worker-error", {
+        detail: {
+          message: e.message,
+          stack: e.filename ? `at ${e.filename}:${e.lineno}:${e.colno}` : "",
+        },
+      }),
+    );
+  }
+
   private handleWorkerMessage(event: MessageEvent<WorkerMessage>) {
     const message = event.data;
 
@@ -78,6 +91,9 @@ export class WorkerClient {
     const worker = await createGameWorker();
     this.worker = worker;
     worker.addEventListener("message", this.handleWorkerMessage.bind(this));
+    // An error the worker itself did not catch: the crash reports' to see
+    // (Telemetry.ts listens for it on the page).
+    worker.addEventListener("error", this.handleWorkerError.bind(this));
 
     return new Promise((resolve, reject) => {
       const messageId = generateID();

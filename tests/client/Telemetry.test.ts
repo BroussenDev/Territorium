@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ClientEnv } from "../../src/client/ClientEnv";
 import {
+  cleanStack,
   flushTelemetry,
   pendingReport,
   reportGameError,
@@ -87,5 +88,40 @@ describe("Telemetry", () => {
     page("prod");
     for (let i = 0; i < 50; i++) reportGameError(`error ${i}`, "crashed");
     expect(pendingReport()!.errors).toHaveLength(10);
+  });
+  it("keeps only the game's own frames of a stack, without any address", () => {
+    const chrome = [
+      "TypeError: x is undefined",
+      "    at Shop.render (https://territorium.gg/assets/index-B2x9.js:1:2345)",
+      "    at chrome-extension://abc/content.js:3:4",
+      "    at https://territorium.gg/assets/vendor-Q1.js?v=2:10:20",
+    ].join("\n");
+    expect(cleanStack(chrome)).toBe(
+      "Shop.render index-B2x9.js:1:2345\n? vendor-Q1.js:10:20",
+    );
+    expect(
+      cleanStack("render@https://territorium.gg/assets/Worker.worker-z.js:2:9"),
+    ).toBe("render Worker.worker-z.js:2:9");
+    expect(cleanStack("no frames here")).toBeUndefined();
+    expect(cleanStack(undefined)).toBeUndefined();
+  });
+
+  it("sends the cleaned stack with the error, and ignores others' errors", () => {
+    page("prod");
+    reportGameError(
+      "boom",
+      "crash.page",
+      "Error: boom\n    at a (https://territorium.gg/assets/index-A.js:1:5)",
+    );
+    reportGameError("Script error.", "crash.page");
+    reportGameError("ResizeObserver loop completed", "crash.page");
+    expect(pendingReport()!.errors).toEqual([
+      {
+        type: "crash.page",
+        error: "boom",
+        count: 1,
+        stack: "a index-A.js:1:5",
+      },
+    ]);
   });
 });

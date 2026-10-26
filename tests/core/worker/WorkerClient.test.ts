@@ -130,3 +130,31 @@ describe("WorkerClient playerInteraction", () => {
     expect(internalClient.messageHandlers.size).toBe(0);
   });
 });
+
+describe("WorkerClient errors", () => {
+  it("raises the worker's uncaught errors on the page for the crash reports", () => {
+    const { internalClient } = createClient();
+    const seen: unknown[] = [];
+    const listener = (e: Event) => seen.push((e as CustomEvent).detail);
+    addEventListener("game-worker-error", listener);
+    (
+      internalClient as unknown as {
+        handleWorkerError: (e: ErrorEvent) => void;
+      }
+    ).handleWorkerError(
+      new ErrorEvent("error", {
+        message: "boom",
+        filename: "https://territorium.gg/assets/Worker.worker-a.js",
+        lineno: 1,
+        colno: 42,
+      }),
+    );
+    removeEventListener("game-worker-error", listener);
+    expect(seen).toEqual([
+      {
+        message: "boom",
+        stack: "at https://territorium.gg/assets/Worker.worker-a.js:1:42",
+      },
+    ]);
+  });
+});

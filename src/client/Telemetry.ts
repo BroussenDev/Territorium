@@ -7,8 +7,11 @@ import { currentGameVersion } from "./GameVersion";
 
 /**
  * Anonymous, first-party telemetry: the in-game performance summaries
- * (GameMetrics.ts) and the game-ending errors players hit, sent to
- * Territorium's own API (POST /telemetry), never to a third party.
+ * (GameMetrics.ts) and the crashes players hit (game-ending errors, and any
+ * uncaught error of the page or the simulation worker, with where in the
+ * code it happened), sent to Territorium's own API (POST /telemetry), never
+ * to a third party. The API maps the stacks back to source files and groups
+ * them for the admin panel's Crashes page.
  *
  * Nothing in a report identifies a player: no account, session, game or
  * client id, and nothing is kept in the browser for it. A report says "a web
@@ -34,6 +37,41 @@ interface PendingError {
   type: string;
   error: string;
   count: number;
+  /** Bundle file, line and column of each frame (cleanStack), if known. */
+  stack?: string;
+}
+
+// Frames kept per stack, and the longest stack sent.
+const MAX_FRAMES = 15;
+const MAX_STACK = 1500;
+
+// Errors that are not ours to fix: a browser extension's, a cross-origin
+// script's (no detail at all), and a harmless layout notice.
+const IGNORED = [/^Script error\.?$/, /ResizeObserver loop/, /extension:\/\//];
+
+/**
+ * A stack reduced to what locates a bug and nothing else: per frame, the
+ * function name and the bundle file's name, line and column (the API maps
+ * them back to the source). Frames outside the game's own bundles (browser
+ * extensions, injected scripts) are dropped, and so is every address.
+ */
+export function cleanStack(stack: string | undefined): string | undefined {
+  if (!stack) return undefined;
+  const frames: string[] = [];
+  for (const line of stack.split("\n")) {
+    // Chrome: "at name (url:line:col)" or "at url:line:col";
+    // Firefox and Safari: "name@url:line:col".
+    const m =
+      /^\s*at (?:(.+?) \()?(\S+?):(\d+):(\d+)\)?\s*$/.exec(line) ??
+      /^\s*(?:(.*?)@)?(\S+?):(\d+):(\d+)\s*$/.exec(line);
+    if (m === null) continue;
+    const file = m[2].split(/[?#]/)[0].split("/").pop() ?? "";
+    if (!/^[\w.-]+\.js$/.test(file) || /extension:/.test(m[2])) continue;
+    const name = (m[1] ?? "").replace(/^async /, "").slice(0, 60) || "?";
+    frames.push(`${name} ${file}:${m[3]}:${m[4]}`);
+    if (frames.length >= MAX_FRAMES) break;
+  }
+  return frames.length ? frames.join("\n").slice(0, MAX_STACK) : undefined;
 }
 
 interface TelemetryReport {
@@ -62,6 +100,7 @@ function enabled(): boolean {
 export function initTelemetry(): void {
   if (started || !enabled()) return;
   started = true;
+  watchUncaughtErrors();
   setInterval(() => flushTelemetry(false), FLUSH_INTERVAL_MS);
   // The last batch goes out as the page is left (a reload, a game exit).
   addEventListener("pagehide", () => flushTelemetry(true));
@@ -81,11 +120,61 @@ export function reportMeasurement(
  * failure, a desync. `type` is the error-modal heading key, so the same
  * class of crash groups together.
  */
-export function reportGameError(error: string, type: string): void {
+export function reportGameError(
+  error: string,
+  type: string,
+  stack?: string,
+): void {
   if (!enabled()) return;
-  const same = errors.find((e) => e.type === type && e.error === error);
+  if (IGNORED.some((r) => r.test(error))) return;
+  const frames = cleanStack(stack);
+  const same = errors.find(
+    (e) => e.type === type && e.error === error && e.stack === frames,
+  );
   if (same !== undefined) same.count++;
-  else if (errors.length < MAX_ERRORS) errors.push({ type, error, count: 1 });
+  else if (errors.length < MAX_ERRORS) {
+    errors.push({
+      type,
+      error,
+      count: 1,
+      ...(frames ? { stack: frames } : {}),
+    });
+  }
+}
+
+/**
+ * Uncaught errors anywhere in the page (menus, shop, a game's interface)
+ * and rejected promises nobody handled: reported like a game crash, under
+ * their own type, so nothing that breaks for a player goes unseen.
+ */
+function watchUncaughtErrors(): void {
+  addEventListener("error", (e: ErrorEvent) => {
+    const stack =
+      (e.error as Error | undefined)?.stack ??
+      (e.filename ? `at ${e.filename}:${e.lineno}:${e.colno}` : undefined);
+    if (e.filename && !cleanStack(`at ${e.filename}:${e.lineno}:${e.colno}`)) {
+      return; // Not from the game's own code.
+    }
+    reportGameError(String(e.message || "error"), "crash.page", stack);
+  });
+  // The simulation worker's own uncaught errors (WorkerClient.ts): src/core
+  // can't import this file, so it raises an event.
+  addEventListener("game-worker-error", (e: Event) => {
+    const { message, stack } = (
+      e as CustomEvent<{
+        message: string;
+        stack: string;
+      }>
+    ).detail;
+    reportGameError(String(message || "error"), "crash.worker", stack);
+  });
+  addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
+    const reason = e.reason as { message?: unknown; stack?: unknown } | null;
+    const message =
+      typeof reason?.message === "string" ? reason.message : String(e.reason);
+    const stack = typeof reason?.stack === "string" ? reason.stack : undefined;
+    reportGameError(message, "crash.promise", stack);
+  });
 }
 
 /** What would be sent now, or null when there is nothing. Exported for tests. */

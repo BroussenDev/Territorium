@@ -1764,7 +1764,8 @@ function showErrorModal(
     return;
   }
 
-  reportGameError(error, heading);
+  // A simulation crash's message is its stack (cleanStack keeps only frames).
+  reportGameError(error, heading, message);
 
   const translatedError = translateText(error);
   const displayError = translatedError === error ? error : translatedError;

@@ -72,6 +72,8 @@ COPY package*.json ./
 
 # Copy built artifacts from build stage
 COPY --from=build /usr/src/app/static ./static
+# Source maps for the crash reports: copied to the API at deploy, never served.
+COPY --from=build /usr/src/app/sourcemaps ./sourcemaps
 
 COPY resources ./resources
 

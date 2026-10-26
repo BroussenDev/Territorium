@@ -190,6 +190,27 @@ function randomWorkerCreateProxy(numWorkers: number): Plugin {
   };
 }
 
+/**
+ * The build's source maps leave the served folder for sourcemaps/: the
+ * player's browser never gets them, and the deploy hands them to the API,
+ * which turns the crash reports' minified stacks back into source files and
+ * lines. Names stay unique: each map is named after its hashed bundle.
+ */
+function moveSourceMaps(outDir: string, mapsDir: string): void {
+  fs.rmSync(mapsDir, { recursive: true, force: true });
+  fs.mkdirSync(mapsDir, { recursive: true });
+  const walk = (dir: string): void => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith(".js.map")) {
+        fs.renameSync(full, path.join(mapsDir, entry.name));
+      }
+    }
+  };
+  walk(outDir);
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const isProduction = mode === "production";
@@ -296,10 +317,13 @@ export default defineConfig(({ mode }) => {
       // them alongside the hashed source assets. Skip non-assets/ emits like
       // index.html — those are served by the app, not from R2.
       for (const fileName of viteBundleFiles) {
-        if (!fileName.startsWith("assets/")) continue;
+        if (!fileName.startsWith("assets/") || fileName.endsWith(".map")) {
+          continue;
+        }
         assetManifest[fileName] = `/${fileName}`;
       }
       writePublicAssetManifest(outDir, assetManifest);
+      moveSourceMaps(outDir, path.join(__dirname, "sourcemaps"));
     },
   });
 
@@ -424,6 +448,8 @@ export default defineConfig(({ mode }) => {
 
     build: {
       outDir: "static", // Webpack outputs to 'static', assuming we want to keep this.
+      // For the crash reports only (moveSourceMaps): never served.
+      sourcemap: "hidden",
       emptyOutDir: true,
       assetsDir: "assets", // Sub-directory for assets
       rollupOptions: {
