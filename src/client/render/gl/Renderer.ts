@@ -1202,6 +1202,9 @@ export class GPURenderer {
   setMouseWorldPos(x: number, y: number): void {
     this.namePass.setMouseWorldPos(x, y);
   }
+  setWatchOwner(ownerID: number): void {
+    this.borderPass.setWatchOwner(ownerID);
+  }
   setHighlightStructureTypes(unitTypes: string[] | null): void {
     this.structurePass.setHighlightTypes(unitTypes);
     this.samHighlightVisible =

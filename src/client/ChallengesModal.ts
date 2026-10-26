@@ -43,6 +43,13 @@ const TASKS = new Set([
   "sink",
   "conquer",
   "alliances",
+  "upgrade",
+  "landings",
+  "steal",
+  "sink_wshp",
+  "survive",
+  "hbomb",
+  "mirv",
 ]);
 
 // Ten ticks a second: a solo time as m:ss.

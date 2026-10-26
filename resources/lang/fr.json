@@ -232,9 +232,16 @@
     "task_conquer": "Éliminer {n} joueurs",
     "task_destroy": "Détruire {n} bâtiments ou navires de guerre ennemis",
     "task_games": "Jouer {n} parties",
+    "task_hbomb": "Lancer {n} bombes H",
+    "task_landings": "Réussir {n} débarquements",
+    "task_mirv": "Lancer {n} MIRV",
     "task_other": "Atteindre {n}",
     "task_sink": "Couler {n} navires",
+    "task_sink_wshp": "Couler {n} navires de guerre ennemis",
+    "task_steal": "Capturer {n} navires marchands",
+    "task_survive": "Finir {n} parties sans être éliminé",
     "task_trade": "Mener {n} navires marchands à bon port",
+    "task_upgrade": "Améliorer {n} bâtiments",
     "task_wins": "Gagner {n} parties",
     "title": "Défis",
     "weekly": "Cette semaine",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Max",
     "game_speed": "Vitesse de jeu",
-    "replay_speed": "Vitesse de relecture"
+    "replay_speed": "Vitesse de relecture",
+    "seeking": "Saut à {time}…",
+    "timeline": "Chronologie du replay"
   },
   "resume_game": {
     "description": "Vous avez quitté une partie multijoueur qui n'est pas terminée. Reprenez-la là où vous en étiez.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "En jeu",
+    "allies": "Alliés",
+    "copied": "Lien copié",
+    "copy_link": "Copier le lien de ce moment",
+    "eliminated": "Éliminé",
+    "go_to": "Aller à ce joueur",
+    "gold": "Or",
+    "kick": "Retirer de la partie",
+    "kick_confirm": "Retirer {name} de cette partie ? Il ne pourra pas la rejoindre.",
+    "land": "Territoire",
+    "not_spawned": "Ce joueur n'est pas encore apparu.",
+    "pick_player": "Choisissez un joueur à surveiller.",
+    "title": "Revue staff",
+    "troops": "Troupes",
+    "watch_other": "Surveiller un autre joueur"
   },
   "steam_grant": {
     "ended_body": "Le mois de {tier} qui accompagnait votre achat Steam est terminé. Rien n'a été facturé et rien ne le sera. Vous conservez le jeu complet : chaque carte et mode, le jeu en ligne, le classement avec la limite quotidienne gratuite et les salons personnalisés avec vos amis. L'application Steam reste sans publicité. Si vous souhaitez récupérer les avantages {tier}, vous pouvez vous abonner depuis la boutique à tout moment.",

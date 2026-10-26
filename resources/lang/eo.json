@@ -232,9 +232,16 @@
     "task_conquer": "Forigu {n} ludantojn",
     "task_destroy": "Detruu {n} malamikajn konstruaĵojn aŭ batalŝipojn",
     "task_games": "Ludu {n} ludojn",
+    "task_hbomb": "Lanĉi {n} hidrogenajn bombojn",
+    "task_landings": "Sukcesi {n} surterigojn",
+    "task_mirv": "Lanĉi {n} MIRV-ojn",
     "task_other": "Atingu {n}",
     "task_sink": "Enprofundigi {n} ŝipojn",
+    "task_sink_wshp": "Sinkigi {n} malamikajn militŝipojn",
+    "task_steal": "Kapti {n} komercajn ŝipojn",
+    "task_survive": "Fini {n} ludojn sen esti eliminita",
     "task_trade": "Alportu {n} komercajn ŝipojn al haveno",
+    "task_upgrade": "Plibonigi {n} konstruaĵojn",
     "task_wins": "Gajnu {n} ludojn",
     "title": "Defioj",
     "weekly": "Ĉi-semajne",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maksimuma",
     "game_speed": "Luda rapideco",
-    "replay_speed": "Reluda rapideco"
+    "replay_speed": "Reluda rapideco",
+    "seeking": "Saltante al {time}…",
+    "timeline": "Tempolinio de la reludo"
   },
   "resume_game": {
     "description": "Vi forlasis plurludantan ludon, kiu ankoraŭ ne finiĝis. Resaltu kie vi estas.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "En la ludo",
+    "allies": "Aliancanoj",
+    "copied": "Ligilo kopiita",
+    "copy_link": "Kopii la ligilon al ĉi tiu momento",
+    "eliminated": "Eliminita",
+    "go_to": "Iri al ĉi tiu ludanto",
+    "gold": "Oro",
+    "kick": "Forigi el la ludo",
+    "kick_confirm": "Ĉu forigi {name} el ĉi tiu ludo? Li ne povos reveni.",
+    "land": "Teritorio",
+    "not_spawned": "Ĉi tiu ludanto ankoraŭ ne aperis.",
+    "pick_player": "Elektu ludanton por observi.",
+    "title": "Kontrolo de la teamo",
+    "troops": "Trupoj",
+    "watch_other": "Observi alian ludanton"
   },
   "steam_grant": {
     "ended_body": "La monato de {tier} kiu venis kun via aĉeto de Steam finiĝis. Nenio estis ŝargita kaj nenio estos. Vi konservas la plenan ludon: ĉiu mapo kaj reĝimo, interreta ludado, vicigita kun la senpaga ĉiutaga limo, kaj kutimaj vestibloj kun amikoj. La Steam-apo restas sen reklamoj. Se vi volas reen la {tier} avantaĝojn, vi povas aboni de la vendejo iam ajn.",

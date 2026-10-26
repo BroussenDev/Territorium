@@ -1,6 +1,7 @@
 import { Logger } from "winston";
 import { z } from "zod";
 import { ZbContext } from "../../zbin";
+import { isStaffRole } from "../core/ApiSchemas";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { ClientID, ClientMessage, ClientMessageSchema } from "../core/Schemas";
 import { decodeClientMessageUnvalidated } from "../core/ZbinWire";
@@ -188,7 +189,16 @@ export class SocketIngress {
     // A spectator is not in the simulation, so none of what it sends can be
     // game state. Without this, claiming to spectate is a way past the lobby
     // cap and into the intent stream.
-    if (client.spectator && SPECTATOR_BLOCKED_MESSAGES.has(clientMsg.type)) {
+    // A moderator watching a game may still remove a player from it.
+    const staffKick =
+      clientMsg.type === "intent" &&
+      clientMsg.intent.type === "kick_player" &&
+      isStaffRole(client.role);
+    if (
+      client.spectator &&
+      SPECTATOR_BLOCKED_MESSAGES.has(clientMsg.type) &&
+      !staffKick
+    ) {
       // Debug-only: a spectator probing blocked types produces one line per
       // message, which dominates warn volume at scale.
       this.log.debug(`dropping ${clientMsg.type} from spectator`, {

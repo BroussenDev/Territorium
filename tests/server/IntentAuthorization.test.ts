@@ -195,3 +195,27 @@ describe("authorizeIntent", () => {
     });
   });
 });
+
+describe("moderator kick", () => {
+  const moderator = actor({ isModerator: true });
+  it("lets a moderator remove a player from a public or listed game", () => {
+    expect(
+      authorizeIntent(
+        kick,
+        moderator,
+        lobby({ isPublic: true, hasStarted: true }),
+      ),
+    ).toBeNull();
+    expect(
+      authorizeIntent(kick, moderator, lobby({ isListed: true })),
+    ).toBeNull();
+  });
+  it("gives a moderator no other host power", () => {
+    expect(
+      authorizeIntent(config({ bots: 10 }), moderator, lobby())?.status,
+    ).toBe(403);
+    expect(
+      authorizeIntent(kick, player, lobby({ isPublic: true }))?.status,
+    ).toBe(403);
+  });
+});

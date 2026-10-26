@@ -4,7 +4,7 @@ import { Logger } from "winston";
 import WebSocket from "ws";
 import { z } from "zod";
 import { ZbContext } from "../../zbin";
-import { isAdminRole } from "../core/ApiSchemas";
+import { isAdminRole, isStaffRole } from "../core/ApiSchemas";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { GameEnv } from "../core/configuration/Config";
 import {
@@ -809,6 +809,7 @@ export class GameServer {
           isLobbyCreator: client.clientID === this.lobbyCreatorID,
           isAdmin: isAdminRole(client.role),
           isAdminBot: false,
+          isModerator: isStaffRole(client.role),
         });
         if (outcome.status !== 200) {
           this.log.warn(`intent rejected`, {

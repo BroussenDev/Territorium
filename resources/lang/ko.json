@@ -232,9 +232,16 @@
     "task_conquer": "{n} 플레이어 제거",
     "task_destroy": "{n} 적 건물이나 군함 파괴",
     "task_games": "{n}게임 플레이",
+    "task_hbomb": "수소 폭탄 {n}발 발사",
+    "task_landings": "상륙 {n}회 성공",
+    "task_mirv": "MIRV {n}발 발사",
     "task_other": "{n}에 도달",
     "task_sink": "{n} 선박 침몰",
+    "task_sink_wshp": "적 군함 {n}척 격침",
+    "task_steal": "무역선 {n}척 나포",
+    "task_survive": "탈락하지 않고 게임 {n}판 끝내기",
     "task_trade": "{n} 무역선을 항구로 가져오세요",
+    "task_upgrade": "건물 {n}개 업그레이드",
     "task_wins": "{n}게임 승리",
     "title": "도전 과제",
     "weekly": "이번 주",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "최대",
     "game_speed": "게임 속도",
-    "replay_speed": "리플레이 속도"
+    "replay_speed": "리플레이 속도",
+    "seeking": "{time}(으)로 이동 중…",
+    "timeline": "리플레이 타임라인"
   },
   "resume_game": {
     "description": "아직 끝나지 않은 멀티플레이어 게임을 떠났습니다. 당신이 있는 곳으로 다시 점프하세요.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "게임 중",
+    "allies": "동맹",
+    "copied": "링크를 복사했습니다",
+    "copy_link": "이 순간의 링크 복사",
+    "eliminated": "탈락",
+    "go_to": "이 플레이어로 이동",
+    "gold": "골드",
+    "kick": "게임에서 제외",
+    "kick_confirm": "{name}님을 이 게임에서 제외할까요? 다시 참가할 수 없습니다.",
+    "land": "영토",
+    "not_spawned": "이 플레이어는 아직 등장하지 않았습니다.",
+    "pick_player": "감시할 플레이어를 고르세요.",
+    "title": "스태프 검토",
+    "troops": "병력",
+    "watch_other": "다른 플레이어 감시"
   },
   "steam_grant": {
     "ended_body": "Steam 구매 시 제공되는 {tier} 달이 종료되었습니다. 청구된 금액이 없으며 앞으로도 청구되지 않습니다. 모든 지도와 모드, 온라인 플레이, 무료 일일 제한 순위, 친구들과의 맞춤형 로비 등 전체 게임을 그대로 즐길 수 있습니다. Steam 앱은 광고 없이 유지됩니다. {tier} 혜택을 다시 받고 싶다면 언제든지 스토어에서 구독할 수 있습니다.",

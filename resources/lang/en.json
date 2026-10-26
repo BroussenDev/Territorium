@@ -232,9 +232,16 @@
     "task_conquer": "Eliminate {n} players",
     "task_destroy": "Destroy {n} enemy buildings or warships",
     "task_games": "Play {n} games",
+    "task_hbomb": "Launch {n} hydrogen bombs",
+    "task_landings": "Land {n} invasions",
+    "task_mirv": "Launch {n} MIRVs",
     "task_other": "Reach {n}",
     "task_sink": "Sink {n} ships",
+    "task_sink_wshp": "Sink {n} enemy warships",
+    "task_steal": "Capture {n} trade ships",
+    "task_survive": "Finish {n} games without being eliminated",
     "task_trade": "Bring {n} trade ships to port",
+    "task_upgrade": "Upgrade {n} buildings",
     "task_wins": "Win {n} games",
     "title": "Challenges",
     "weekly": "This week",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Max",
     "game_speed": "Game speed",
-    "replay_speed": "Replay speed"
+    "replay_speed": "Replay speed",
+    "seeking": "Jumping to {time}…",
+    "timeline": "Replay timeline"
   },
   "resume_game": {
     "description": "You left a multiplayer game that isn't over yet. Jump back in where you are.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "In the game",
+    "allies": "Allies",
+    "copied": "Link copied",
+    "copy_link": "Copy the link to this moment",
+    "eliminated": "Eliminated",
+    "go_to": "Go to this player",
+    "gold": "Gold",
+    "kick": "Remove from the game",
+    "kick_confirm": "Remove {name} from this game? They won't be able to rejoin it.",
+    "land": "Land",
+    "not_spawned": "This player has not spawned yet.",
+    "pick_player": "Pick a player to watch.",
+    "title": "Staff review",
+    "troops": "Troops",
+    "watch_other": "Watch another player"
   },
   "steam_grant": {
     "ended_body": "The month of {tier} that came with your Steam purchase has ended. Nothing has been charged and nothing will be. You keep the full game: every map and mode, online play, ranked with the free daily limit, and custom lobbies with friends. The Steam app stays ad-free. If you want the {tier} perks back, you can subscribe from the store at any time.",

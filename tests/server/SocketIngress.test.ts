@@ -64,6 +64,7 @@ function setup(rate: Rate = "ok") {
 }
 
 const P1 = cid("p1");
+const P2 = cid("p2");
 const spawn = () =>
   clientFrame({ type: "intent", intent: { type: "spawn", tile: 1 } });
 
@@ -215,6 +216,30 @@ describe("SocketIngress.receive", () => {
 
     ingress.receive(spectator, clientFrame({ type: "ping" }));
     expect(view.onMessage).toHaveBeenCalledWith(spectator, { type: "ping" });
+  });
+});
+
+describe("SocketIngress moderators", () => {
+  const kickFrame = () =>
+    clientFrame({
+      type: "intent",
+      intent: { type: "kick_player", targetClientID: P2 },
+    });
+
+  it("lets a moderator watching a game remove a player, and nothing else", () => {
+    const { ingress, view } = setup();
+    const mod = makeClient({ clientID: P1, spectator: true, role: "mod" });
+    ingress.receive(mod, kickFrame());
+    expect(view.onMessage).toHaveBeenCalledTimes(1);
+    ingress.receive(mod, spawn());
+    expect(view.onMessage).toHaveBeenCalledTimes(1);
+  });
+
+  it("still drops a kick from an ordinary spectator", () => {
+    const { ingress, view } = setup();
+    const watcher = makeClient({ clientID: P1, spectator: true });
+    ingress.receive(watcher, kickFrame());
+    expect(view.onMessage).not.toHaveBeenCalled();
   });
 });
 

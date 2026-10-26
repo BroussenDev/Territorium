@@ -232,9 +232,16 @@
     "task_conquer": "Hilangkan {n} pemain",
     "task_destroy": "Hancurkan {n} bangunan atau kapal perang musuh",
     "task_games": "Mainkan game {n}",
+    "task_hbomb": "Luncurkan {n} bom hidrogen",
+    "task_landings": "Lakukan {n} pendaratan",
+    "task_mirv": "Luncurkan {n} MIRV",
     "task_other": "Jangkau {n}",
     "task_sink": "Tenggelamkan {n} kapal",
+    "task_sink_wshp": "Tenggelamkan {n} kapal perang musuh",
+    "task_steal": "Rebut {n} kapal dagang",
+    "task_survive": "Selesaikan {n} permainan tanpa tersingkir",
     "task_trade": "Bawa {n} kapal dagang ke pelabuhan",
+    "task_upgrade": "Tingkatkan {n} bangunan",
     "task_wins": "Menangkan {n} permainan",
     "title": "Tantangan",
     "weekly": "Minggu ini",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maks",
     "game_speed": "Kecepatan Permainan",
-    "replay_speed": "Kecepatan tanyangan ulang"
+    "replay_speed": "Kecepatan tanyangan ulang",
+    "seeking": "Melompat ke {time}…",
+    "timeline": "Lini waktu tayangan ulang"
   },
   "resume_game": {
     "description": "Anda meninggalkan permainan multipemain yang belum berakhir. Lompat kembali ke tempat Anda berada.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Dalam permainan",
+    "allies": "Sekutu",
+    "copied": "Tautan disalin",
+    "copy_link": "Salin tautan ke momen ini",
+    "eliminated": "Tersingkir",
+    "go_to": "Pergi ke pemain ini",
+    "gold": "Emas",
+    "kick": "Keluarkan dari permainan",
+    "kick_confirm": "Keluarkan {name} dari permainan ini? Ia tidak bisa bergabung lagi.",
+    "land": "Wilayah",
+    "not_spawned": "Pemain ini belum muncul.",
+    "pick_player": "Pilih pemain untuk diawasi.",
+    "title": "Tinjauan staf",
+    "troops": "Pasukan",
+    "watch_other": "Awasi pemain lain"
   },
   "steam_grant": {
     "ended_body": "Bulan {tier} yang disertakan dengan pembelian Steam Anda telah berakhir. Tidak ada yang dikenakan biaya dan tidak akan ada apa pun. Anda tetap memainkan permainan lengkapnya: setiap peta dan mode, permainan online, peringkat dengan batas harian gratis, dan lobi khusus dengan teman. Aplikasi Steam tetap bebas iklan. Jika Anda ingin manfaat {tier} kembali, Anda dapat berlangganan dari toko kapan saja.",

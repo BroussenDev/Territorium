@@ -232,9 +232,16 @@
     "task_conquer": "Eliminer {n} spillere",
     "task_destroy": "Ødelæg {n} fjendtlige bygninger eller krigsskibe",
     "task_games": "Spil {n} spil",
+    "task_hbomb": "Affyr {n} brintbomber",
+    "task_landings": "Gennemfør {n} landgange",
+    "task_mirv": "Affyr {n} MIRV'er",
     "task_other": "Nå {n}",
     "task_sink": "Sænk {n} skibe",
+    "task_sink_wshp": "Sænk {n} fjendtlige krigsskibe",
+    "task_steal": "Kapr {n} handelsskibe",
+    "task_survive": "Afslut {n} spil uden at blive elimineret",
     "task_trade": "Bring {n} handelsskibe til havn",
+    "task_upgrade": "Opgrader {n} bygninger",
     "task_wins": "Vind {n} spil",
     "title": "Udfordringer",
     "weekly": "Denne uge",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maks",
     "game_speed": "Spil hastighed",
-    "replay_speed": "Genafspilnings hastighed"
+    "replay_speed": "Genafspilnings hastighed",
+    "seeking": "Springer til {time}…",
+    "timeline": "Tidslinje for genafspilning"
   },
   "resume_game": {
     "description": "Du forlod et multiplayer-spil, der ikke er slut endnu. Hop tilbage hvor du er.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "I spillet",
+    "allies": "Allierede",
+    "copied": "Link kopieret",
+    "copy_link": "Kopiér linket til dette øjeblik",
+    "eliminated": "Elimineret",
+    "go_to": "Gå til denne spiller",
+    "gold": "Guld",
+    "kick": "Fjern fra spillet",
+    "kick_confirm": "Fjern {name} fra dette spil? Vedkommende kan ikke komme ind igen.",
+    "land": "Område",
+    "not_spawned": "Denne spiller er ikke dukket op endnu.",
+    "pick_player": "Vælg en spiller at holde øje med.",
+    "title": "Staff-gennemgang",
+    "troops": "Tropper",
+    "watch_other": "Hold øje med en anden spiller"
   },
   "steam_grant": {
     "ended_body": "Måneden {tier}, der fulgte med dit Steam-køb, er slut. Intet er blevet opkrævet, og intet bliver det. Du beholder hele spillet: hvert kort og hver tilstand, onlinespil, rangeret med den gratis daglige grænse og tilpassede lobbyer med venner. Steam-appen forbliver reklamefri. Hvis du vil have {tier} frynsegoderne tilbage, kan du til enhver tid abonnere fra butikken.",

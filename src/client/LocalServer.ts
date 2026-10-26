@@ -27,7 +27,12 @@ import {
   GameSpeedUpIntentEvent,
   ReplaySpeedChangeEvent,
 } from "./InputHandler";
-import { initialReplaySeek } from "./ReplaySeek";
+import {
+  initialReplaySeek,
+  ReplayProgressEvent,
+  ReplaySeekEvent,
+  replayUrlAt,
+} from "./ReplaySeek";
 import { startSingleplayerHeartbeat } from "./SingleplayerHeartbeat";
 import {
   defaultReplaySpeedMultiplier,
@@ -122,6 +127,10 @@ export class LocalServer {
     this.eventBus.on(ReplaySpeedChangeEvent, (event) => {
       this.replaySpeedMultiplier = event.replaySpeedMultiplier;
     });
+
+    if (this.isReplay) {
+      this.eventBus.on(ReplaySeekEvent, (event) => this.seek(event.turn));
+    }
 
     if (!this.isReplay) {
       this.eventBus.on(GameSpeedUpIntentEvent, () => {
@@ -262,6 +271,34 @@ export class LocalServer {
     }
   }
 
+  /**
+   * The replay bar's jump: forward runs the game at full speed up to the
+   * turn; backward starts the replay over from that turn's address (the
+   * simulation only runs forward), which fast-forwards the same way.
+   */
+  public seek(turn: number) {
+    const total = this.replayTurns.length;
+    if (total === 0) return;
+    const target = Math.max(0, Math.min(Math.floor(turn), total));
+    if (target >= this.turns.length) {
+      this.seekTo = target;
+      this.emitProgress();
+      return;
+    }
+    window.location.assign(replayUrlAt(window.location.href, target));
+  }
+
+  private emitProgress() {
+    if (!this.isReplay) return;
+    this.eventBus.emit(
+      new ReplayProgressEvent(
+        this.turns.length,
+        this.replayTurns.length,
+        this.seekTo,
+      ),
+    );
+  }
+
   // This is so the client can tell us when it finished processing the turn.
   public turnComplete() {
     this.turnsExecuted++;
@@ -286,6 +323,8 @@ export class LocalServer {
     };
     this.turns.push(pastTurn);
     this.intents = [];
+    // The replay bar follows along, a few times a second at most.
+    if (this.isReplay && this.turns.length % 5 === 0) this.emitProgress();
     this.clientMessage({
       type: "turn",
       turn: pastTurn,

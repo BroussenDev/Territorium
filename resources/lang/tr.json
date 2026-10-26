@@ -232,9 +232,16 @@
     "task_conquer": "{n} oyuncuyu eleyin",
     "task_destroy": "{n} düşman binasını veya savaş gemisini yok edin",
     "task_games": "{n} oyun oyna",
+    "task_hbomb": "{n} hidrojen bombası fırlat",
+    "task_landings": "{n} çıkarma yap",
+    "task_mirv": "{n} MIRV fırlat",
     "task_other": "Ulaşın {n}",
     "task_sink": "{n} gemiyi batırın",
+    "task_sink_wshp": "{n} düşman savaş gemisi batır",
+    "task_steal": "{n} ticaret gemisi ele geçir",
+    "task_survive": "Elenmeden {n} oyun bitir",
     "task_trade": "{n} ticaret gemisini limana getirin",
+    "task_upgrade": "{n} binayı geliştir",
     "task_wins": "{n} oyun kazan",
     "title": "Zorluklar",
     "weekly": "Bu hafta",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maks",
     "game_speed": "Oyun hızı",
-    "replay_speed": "Tekrar oynatma hızı"
+    "replay_speed": "Tekrar oynatma hızı",
+    "seeking": "{time} anına atlanıyor…",
+    "timeline": "Tekrar zaman çizelgesi"
   },
   "resume_game": {
     "description": "Henüz bitmemiş çok oyunculu bir oyun bıraktınız. Bulunduğunuz yere geri dönün.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Oyunda",
+    "allies": "Müttefikler",
+    "copied": "Bağlantı kopyalandı",
+    "copy_link": "Bu anın bağlantısını kopyala",
+    "eliminated": "Elendi",
+    "go_to": "Bu oyuncuya git",
+    "gold": "Altın",
+    "kick": "Oyundan çıkar",
+    "kick_confirm": "{name} bu oyundan çıkarılsın mı? Tekrar katılamaz.",
+    "land": "Toprak",
+    "not_spawned": "Bu oyuncu henüz doğmadı.",
+    "pick_player": "İzlemek için bir oyuncu seç.",
+    "title": "Ekip incelemesi",
+    "troops": "Askerler",
+    "watch_other": "Başka bir oyuncuyu izle"
   },
   "steam_grant": {
     "ended_body": "Steam alışverişinizle birlikte gelen {tier} ayı sona erdi. Hiçbir şey tahsil edilmedi ve hiçbir şey yapılmayacak. Oyunun tamamı sizde kalır: her harita ve mod, çevrimiçi oyun, ücretsiz günlük limitle sıralama ve arkadaşlarınızla özel lobiler. Steam uygulaması reklamsız kalır. {tier} ayrıcalıklarını geri istiyorsanız mağazadan istediğiniz zaman abone olabilirsiniz.",

@@ -7,6 +7,10 @@ uniform usampler2D uRelationTex; // R8UI — relationship matrix (ownerA × owne
 uniform vec2 uMapSize;
 uniform uint uHighlightOwner;
 uniform int uHighlightThicken; // Chebyshev radius for highlight expansion
+// The player a staff member reviews in a replay (0 = none): a red band
+// WATCH_BAND tiles deep inside their border, flagged in G.
+uniform uint uWatchOwner;
+const int WATCH_BAND = 2;
 
 out vec4 fragColor;
 
@@ -77,10 +81,20 @@ void main() {
     }
   }
 
+  // Watched player: their border and the band just inside it.
+  float watched = 0.0;
+  if (uWatchOwner != 0u && owner == uWatchOwner) {
+    for (int dy = -WATCH_BAND; dy <= WATCH_BAND && watched == 0.0; dy++) {
+      for (int dx = -WATCH_BAND; dx <= WATCH_BAND; dx++) {
+        if (getOwner(tc + ivec2(dx, dy)) != owner) { watched = 1.0; break; }
+      }
+    }
+    if (watched > 0.0) borderType = max(borderType, 0.5);
+  }
+
   // A = relationship: 0.0=neutral, 0.5=friendly, 1.0=embargo
   float relation = float(maxRel) * 0.5;
-  // G channel is unused (formerly emberIntensity; ember is now computed in
-  // FalloutBloomPass and FalloutLightPass). B channel is unused (defense post
-  // proximity is now computed per-tile by DefenseCoveragePass).
-  fragColor = vec4(borderType, 0.0, 0.0, relation);
+  // G = the watched player's red band (uWatchOwner). B channel is unused
+  // (defense post proximity is computed per-tile by DefenseCoveragePass).
+  fragColor = vec4(borderType, watched, 0.0, relation);
 }

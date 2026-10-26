@@ -1,5 +1,19 @@
 # Territorium — Changelog
 
+## v0.1.156
+
+🎬 **Replays**
+
+- A timeline in replays: see where you are, drag to any moment, or jump 10 seconds or a minute back and forth.
+
+🎯 **Challenges**
+
+- Seven new challenges: upgrade buildings, land invasions, capture trade ships, sink warships, finish games without being eliminated, hydrogen bombs and MIRVs.
+
+🛡️ **Moderation**
+
+- Moderators watching a game can follow a player and remove them from it. Reports open the replay on the reported player, their border in red.
+
 ## v0.1.155
 
 🏆 **Leaderboards**

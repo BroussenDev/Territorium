@@ -232,9 +232,16 @@
     "task_conquer": "Eliminați {n} jucători",
     "task_destroy": "Distruge {n} clădiri inamice sau nave de război",
     "task_games": "Joacă jocuri {n}",
+    "task_hbomb": "Lansează {n} bombe cu hidrogen",
+    "task_landings": "Reușește {n} debarcări",
+    "task_mirv": "Lansează {n} MIRV",
     "task_other": "Atinge {n}",
     "task_sink": "Scufundați {n} nave",
+    "task_sink_wshp": "Scufundă {n} nave de război inamice",
+    "task_steal": "Capturează {n} nave comerciale",
+    "task_survive": "Termină {n} partide fără să fii eliminat",
     "task_trade": "Aduceți {n} nave comerciale în port",
+    "task_upgrade": "Îmbunătățește {n} clădiri",
     "task_wins": "Câștigă {n} jocuri",
     "title": "Provocări",
     "weekly": "În această săptămână",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maxim",
     "game_speed": "Viteza jocului",
-    "replay_speed": "Viteză de redare"
+    "replay_speed": "Viteză de redare",
+    "seeking": "Salt la {time}…",
+    "timeline": "Cronologia reluării"
   },
   "resume_game": {
     "description": "Ai părăsit un joc multiplayer care nu s-a terminat încă. Sari înapoi unde ești.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "În joc",
+    "allies": "Aliați",
+    "copied": "Link copiat",
+    "copy_link": "Copiază linkul către acest moment",
+    "eliminated": "Eliminat",
+    "go_to": "Mergi la acest jucător",
+    "gold": "Aur",
+    "kick": "Scoate din joc",
+    "kick_confirm": "Scoți pe {name} din acest joc? Nu se va mai putea alătura.",
+    "land": "Teritoriu",
+    "not_spawned": "Acest jucător nu a apărut încă.",
+    "pick_player": "Alege un jucător de urmărit.",
+    "title": "Verificare echipă",
+    "troops": "Trupe",
+    "watch_other": "Urmărește alt jucător"
   },
   "steam_grant": {
     "ended_body": "Luna {tier} care a venit cu achiziția dvs. Steam s-a încheiat. Nimic nu a fost taxat și nimic nu va fi. Păstrați jocul complet: fiecare hartă și mod, joc online, clasat cu limita zilnică gratuită și lobby-uri personalizate cu prietenii. Aplicația Steam rămâne fără reclame. Dacă doriți înapoi avantajele {tier}, vă puteți abona oricând din magazin.",

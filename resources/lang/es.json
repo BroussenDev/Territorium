@@ -232,9 +232,16 @@
     "task_conquer": "Elimina {n} jugadores",
     "task_destroy": "Destruye {n} edificios o buques de guerra enemigos",
     "task_games": "Juega {n} partidas",
+    "task_hbomb": "Lanzar {n} bombas H",
+    "task_landings": "Lograr {n} desembarcos",
+    "task_mirv": "Lanzar {n} MIRV",
     "task_other": "Alcanzar {n}",
     "task_sink": "Hundir {n} barcos",
+    "task_sink_wshp": "Hundir {n} buques de guerra enemigos",
+    "task_steal": "Capturar {n} barcos mercantes",
+    "task_survive": "Terminar {n} partidas sin ser eliminado",
     "task_trade": "Llevar {n} barcos mercantes al puerto",
+    "task_upgrade": "Mejorar {n} edificios",
     "task_wins": "Gana {n} partidas",
     "title": "Desafíos",
     "weekly": "Esta semana",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "máx.",
     "game_speed": "Velocidad del juego",
-    "replay_speed": "Velocidad de reproducción"
+    "replay_speed": "Velocidad de reproducción",
+    "seeking": "Saltando a {time}…",
+    "timeline": "Línea de tiempo de la repetición"
   },
   "resume_game": {
     "description": "Dejaste un juego multijugador que aún no ha terminado. Vuelve a donde estás.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "En la partida",
+    "allies": "Aliados",
+    "copied": "Enlace copiado",
+    "copy_link": "Copiar el enlace a este momento",
+    "eliminated": "Eliminado",
+    "go_to": "Ir a este jugador",
+    "gold": "Oro",
+    "kick": "Quitar de la partida",
+    "kick_confirm": "¿Quitar a {name} de esta partida? No podrá volver a unirse.",
+    "land": "Territorio",
+    "not_spawned": "Este jugador aún no ha aparecido.",
+    "pick_player": "Elige un jugador para vigilar.",
+    "title": "Revisión del staff",
+    "troops": "Tropas",
+    "watch_other": "Vigilar a otro jugador"
   },
   "steam_grant": {
     "ended_body": "El mes de {tier} que vino con tu compra de Steam ha finalizado. No se ha cobrado nada y no se cargará nada. Conservas el juego completo: todos los mapas y modos, juego en línea, clasificación con el límite diario gratuito y salas de espera personalizadas con amigos. La aplicación Steam permanece sin publicidad. Si desea recuperar los beneficios {tier}, puede suscribirse desde la tienda en cualquier momento.",

@@ -7,6 +7,9 @@ export interface IntentActor {
   isLobbyCreator: boolean;
   isAdmin: boolean; // role-based admin/root (also true for the admin bot)
   isAdminBot: boolean; // the trusted admin-bot HTTP API
+  // A moderator's account (mod, admin or root): may remove a player from any
+  // game, as the in-game staff menu does (StaffReviewPanel).
+  isModerator?: boolean;
 }
 
 // Outcome of dispatching an intent. `status` is an HTTP-style code: 200 on
@@ -44,7 +47,7 @@ export function authorizeIntent(
       return { status: 400, error: "mark_disconnected is server-internal" };
 
     case "kick_player":
-      if (!actor.isLobbyCreator && !actor.isAdmin) {
+      if (!actor.isLobbyCreator && !actor.isAdmin && !actor.isModerator) {
         return {
           status: 403,
           error: "only the lobby creator or an admin can kick players",
@@ -54,7 +57,7 @@ export function authorizeIntent(
       // the host kick them is a griefing vector. Admins keep the power for
       // moderation. The listed flag survives game start on purpose, so a
       // publicly recruited game stays kick-free like a real public game.
-      if (game.isListed && !actor.isAdmin) {
+      if (game.isListed && !actor.isAdmin && !actor.isModerator) {
         return {
           status: 403,
           error: "the host cannot kick players in a publicly listed lobby",

@@ -232,9 +232,16 @@
     "task_conquer": "Eliminujte {n} hráčov",
     "task_destroy": "Zničte {n} nepriateľských budov alebo vojnových lodí",
     "task_games": "Hrajte {n} hier",
+    "task_hbomb": "Odpáliť {n} vodíkových bômb",
+    "task_landings": "Uskutočniť {n} vylodení",
+    "task_mirv": "Odpáliť {n} MIRV",
     "task_other": "Dosiahnite {n}",
     "task_sink": "Potopte {n} lodí",
+    "task_sink_wshp": "Potopiť {n} nepriateľských vojnových lodí",
+    "task_steal": "Ukoristiť {n} obchodných lodí",
+    "task_survive": "Dohrať {n} hier bez vyradenia",
     "task_trade": "Priveďte {n} obchodných lodí do prístavu",
+    "task_upgrade": "Vylepšiť {n} budov",
     "task_wins": "Vyhrajte {n} hier",
     "title": "Výzvy",
     "weekly": "Tento týždeň",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "max",
     "game_speed": "Rýchlosť hry",
-    "replay_speed": "Rýchlosť prehratia"
+    "replay_speed": "Rýchlosť prehratia",
+    "seeking": "Skok na {time}…",
+    "timeline": "Časová os záznamu"
   },
   "resume_game": {
     "description": "Opustili ste hru pre viacerých hráčov, ktorá ešte neskončila. Skočte späť tam, kde ste.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "V hre",
+    "allies": "Spojenci",
+    "copied": "Odkaz skopírovaný",
+    "copy_link": "Kopírovať odkaz na tento okamih",
+    "eliminated": "Vyradený",
+    "go_to": "Prejsť na tohto hráča",
+    "gold": "Zlato",
+    "kick": "Odobrať z hry",
+    "kick_confirm": "Odobrať {name} z tejto hry? Nebude sa môcť znova pripojiť.",
+    "land": "Územie",
+    "not_spawned": "Tento hráč sa ešte neobjavil.",
+    "pick_player": "Vyberte hráča na sledovanie.",
+    "title": "Kontrola tímu",
+    "troops": "Jednotky",
+    "watch_other": "Sledovať iného hráča"
   },
   "steam_grant": {
     "ended_body": "Mesiac {tier}, ktorý ste dostali s nákupom v službe Steam, sa skončil. Nič nebolo účtované a nič nebude. Ponecháte si plnú hru: každú mapu a režim, online hranie, hodnotené s bezplatným denným limitom a vlastné lobby s priateľmi. Aplikácia Steam zostáva bez reklám. Ak chcete výhody {tier} späť, môžete sa kedykoľvek prihlásiť na odber v obchode.",

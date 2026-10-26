@@ -20,6 +20,7 @@ vi.mock("src/client/ClientEnv", () => ({
 
 import { ReplaySpeedChangeEvent } from "../../src/client/InputHandler";
 import { LocalServer } from "../../src/client/LocalServer";
+import { ReplayProgressEvent } from "../../src/client/ReplaySeek";
 import { ReplaySpeedMultiplier } from "../../src/client/utilities/ReplaySpeedMultiplier";
 
 const CLIENT_ID = "abCD1234";
@@ -99,5 +100,53 @@ describe("LocalServer replay speed", () => {
     // The 2x interval multiplier must roughly halve the cadence.
     expect(turns).toBeGreaterThan(0);
     expect(turns).toBeLessThan(atNormalSpeed);
+  });
+});
+
+describe("LocalServer replay timeline", () => {
+  const replayServer = (bus: EventBus) => {
+    const server = new LocalServer(
+      { gameStartInfo: makeGameStartInfo() } as any,
+      true,
+      bus,
+    );
+    (server as any).replayTurns = Array.from({ length: 100 }, (_, i) => ({
+      turnNumber: i,
+      intents: [],
+    }));
+    return server;
+  };
+
+  it("jumps forward at full speed and says so", () => {
+    const bus = new EventBus();
+    const seen: ReplayProgressEvent[] = [];
+    bus.on(ReplayProgressEvent, (e) => seen.push(e));
+    const server = replayServer(bus);
+    (server as any).turns = new Array(20);
+    server.seek(80);
+    expect((server as any).seekTo).toBe(80);
+    expect(seen[seen.length - 1]).toMatchObject({
+      turn: 20,
+      total: 100,
+      seekingTo: 80,
+    });
+    server.seek(500);
+    expect((server as any).seekTo).toBe(100);
+  });
+
+  it("goes back by replaying from the turn's address", () => {
+    const assign = vi.fn();
+    vi.stubGlobal("location", {
+      ...window.location,
+      href: "https://territorium.gg/game/gameID12?focus=abCD1234",
+      assign,
+    });
+    const server = replayServer(new EventBus());
+    (server as any).turns = new Array(60);
+    server.seek(10);
+    expect(assign).toHaveBeenCalledWith(
+      "https://territorium.gg/game/gameID12?focus=abCD1234&at=10",
+    );
+    vi.unstubAllGlobals();
   });
 });

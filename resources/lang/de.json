@@ -232,9 +232,16 @@
     "task_conquer": "Eliminiere {n} Spieler",
     "task_destroy": "Zerstöre {n} feindliche Gebäude oder Kriegsschiffe",
     "task_games": "Spiele {n} Partien",
+    "task_hbomb": "{n} Wasserstoffbomben abfeuern",
+    "task_landings": "{n} Landungen schaffen",
+    "task_mirv": "{n} MIRVs abfeuern",
     "task_other": "Erreiche {n}",
     "task_sink": "{n} Schiffe versenken",
+    "task_sink_wshp": "{n} feindliche Kriegsschiffe versenken",
+    "task_steal": "{n} Handelsschiffe kapern",
+    "task_survive": "{n} Spiele beenden, ohne ausgeschaltet zu werden",
     "task_trade": "Bringen Sie {n} Handelsschiffe in den Hafen",
+    "task_upgrade": "{n} Gebäude verbessern",
     "task_wins": "Gewinne {n} Partien",
     "title": "Herausforderungen",
     "weekly": "Diese Woche",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Max",
     "game_speed": "Spielgeschwindigkeit",
-    "replay_speed": "Wiedergabegeschwindigkeit"
+    "replay_speed": "Wiedergabegeschwindigkeit",
+    "seeking": "Sprung zu {time}…",
+    "timeline": "Zeitleiste der Wiederholung"
   },
   "resume_game": {
     "description": "Sie haben ein Multiplayer-Spiel verlassen, das noch nicht zu Ende ist. Springen Sie dorthin zurück, wo Sie sind.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Im Spiel",
+    "allies": "Verbündete",
+    "copied": "Link kopiert",
+    "copy_link": "Link zu diesem Moment kopieren",
+    "eliminated": "Ausgeschieden",
+    "go_to": "Zu diesem Spieler",
+    "gold": "Gold",
+    "kick": "Aus dem Spiel entfernen",
+    "kick_confirm": "{name} aus diesem Spiel entfernen? Er kann ihm nicht wieder beitreten.",
+    "land": "Gebiet",
+    "not_spawned": "Dieser Spieler ist noch nicht erschienen.",
+    "pick_player": "Wähle einen Spieler zum Beobachten.",
+    "title": "Staff-Prüfung",
+    "troops": "Truppen",
+    "watch_other": "Anderen Spieler beobachten"
   },
   "steam_grant": {
     "ended_body": "Der Monat {tier}, der Ihrem Steam-Kauf beilag, ist abgelaufen. Es wurde nichts berechnet und wird auch nichts berechnet. Sie behalten das komplette Spiel: jede Karte und jeden Modus, Online-Spiel, Rangliste mit dem kostenlosen Tageslimit und benutzerdefinierte Lobbys mit Freunden. Die Steam-App bleibt werbefrei. Wenn Sie die {tier}-Vergünstigungen wieder haben möchten, können Sie jederzeit ein Abonnement im Store abschließen.",

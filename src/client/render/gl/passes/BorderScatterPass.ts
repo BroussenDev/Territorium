@@ -42,6 +42,7 @@ export class BorderScatterPass {
   private uMapSize: WebGLUniformLocation;
   private uHighlightOwner: WebGLUniformLocation;
   private uHighlightThicken: WebGLUniformLocation;
+  private uWatchOwner: WebGLUniformLocation;
 
   private fbo: WebGLFramebuffer;
   private vao: WebGLVertexArrayObject;
@@ -49,6 +50,7 @@ export class BorderScatterPass {
 
   // Mirrored from BorderComputePass — set via setters when those change.
   private highlightOwner = 0;
+  private watchOwner = 0;
 
   /** CPU-side patch buffer: [x, y, x, y, …]. */
   private patchData: Float32Array;
@@ -87,6 +89,7 @@ export class BorderScatterPass {
       this.program,
       "uHighlightThicken",
     )!;
+    this.uWatchOwner = gl.getUniformLocation(this.program, "uWatchOwner")!;
 
     gl.useProgram(this.program);
     gl.uniform1i(gl.getUniformLocation(this.program, "uTileTex"), 0);
@@ -143,9 +146,10 @@ export class BorderScatterPass {
     prevOwner: number,
     newOwner: number,
   ): void {
+    const touches = (owner: number) =>
+      owner !== 0 && (prevOwner === owner || newOwner === owner);
     const touchesHighlight =
-      this.highlightOwner !== 0 &&
-      (prevOwner === this.highlightOwner || newOwner === this.highlightOwner);
+      touches(this.highlightOwner) || touches(this.watchOwner);
 
     if (!touchesHighlight) {
       this.push(x, y);
@@ -156,8 +160,9 @@ export class BorderScatterPass {
       return;
     }
 
+    // The watched player's red band is WATCH_BAND (2) tiles deep.
     const r = Math.max(
-      1,
+      touches(this.watchOwner) ? 2 : 1,
       Math.floor(this.settings.mapOverlay.highlightThicken),
     );
     const x0 = Math.max(0, x - r);
@@ -181,6 +186,10 @@ export class BorderScatterPass {
 
   setHighlightOwner(owner: number): void {
     this.highlightOwner = owner;
+  }
+
+  setWatchOwner(owner: number): void {
+    this.watchOwner = owner;
   }
 
   flush(): void {
@@ -209,6 +218,7 @@ export class BorderScatterPass {
     gl.uniform2f(this.uMapSize, this.mapW, this.mapH);
     gl.uniform1ui(this.uHighlightOwner, this.highlightOwner);
     gl.uniform1i(this.uHighlightThicken, Math.floor(mo.highlightThicken));
+    gl.uniform1ui(this.uWatchOwner, this.watchOwner);
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.tileTex);

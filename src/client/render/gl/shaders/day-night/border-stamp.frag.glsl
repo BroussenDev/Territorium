@@ -59,6 +59,8 @@ void main() {
         if (checker) bc *= uDefenseCheckerDarken;
       }
     }
+    // A staff review's watched player: a plain red the eye finds at once.
+    if (borderData.g > 0.5) bc = vec3(1.0, 0.16, 0.16);
     fragColor = vec4(bc, 1.0);
     return;
   }

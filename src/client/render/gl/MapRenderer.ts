@@ -450,6 +450,10 @@ export class MapRenderer {
   setMouseWorldPos(x: number, y: number): void {
     this.renderer?.setMouseWorldPos(x, y);
   }
+  /** A staff review's watched player, border drawn red (0 = none). */
+  setWatchOwner(ownerID: number): void {
+    this.renderer?.setWatchOwner(ownerID);
+  }
   setHighlightStructureTypes(unitTypes: string[] | null): void {
     this.renderer?.setHighlightStructureTypes(unitTypes);
   }

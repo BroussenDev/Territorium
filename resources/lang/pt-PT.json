@@ -232,9 +232,16 @@
     "task_conquer": "Elimine {n} jogadores",
     "task_destroy": "Destruir {n} edifícios ou navios de guerra inimigos",
     "task_games": "Jogue {n} jogos",
+    "task_hbomb": "Lançar {n} bombas H",
+    "task_landings": "Concretizar {n} desembarques",
+    "task_mirv": "Lançar {n} MIRV",
     "task_other": "Alcance {n}",
     "task_sink": "Afundar navios {n}",
+    "task_sink_wshp": "Afundar {n} navios de guerra inimigos",
+    "task_steal": "Capturar {n} navios mercantes",
+    "task_survive": "Terminar {n} partidas sem ser eliminado",
     "task_trade": "Traga {n} navios mercantes para o porto",
+    "task_upgrade": "Melhorar {n} edifícios",
     "task_wins": "Ganhe {n} jogos",
     "title": "Desafios",
     "weekly": "Esta semana",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "máximo",
     "game_speed": "Velocidade de Jogo",
-    "replay_speed": "Velocidade de repetição"
+    "replay_speed": "Velocidade de repetição",
+    "seeking": "A saltar para {time}…",
+    "timeline": "Linha temporal do replay"
   },
   "resume_game": {
     "description": "Saiu de um jogo multijogador que ainda não acabou. Volte para onde está.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Na partida",
+    "allies": "Aliados",
+    "copied": "Ligação copiada",
+    "copy_link": "Copiar a ligação deste momento",
+    "eliminated": "Eliminado",
+    "go_to": "Ir para este jogador",
+    "gold": "Ouro",
+    "kick": "Retirar da partida",
+    "kick_confirm": "Retirar {name} desta partida? Não poderá voltar a entrar.",
+    "land": "Território",
+    "not_spawned": "Este jogador ainda não apareceu.",
+    "pick_player": "Escolha um jogador para observar.",
+    "title": "Revisão da equipa",
+    "troops": "Tropas",
+    "watch_other": "Observar outro jogador"
   },
   "steam_grant": {
     "ended_body": "O mês de {tier} que acompanha a sua compra no Steam terminou. Nada foi cobrado e nada será. Mantém o jogo completo: todos os mapas e modos, jogo online, classificação com limite diário gratuito e lobbies personalizados com amigos. A aplicação Steam permanece livre de anúncios. Se quiser as vantagens {tier} de volta, pode inscrever-se na loja a qualquer momento.",

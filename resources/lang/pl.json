@@ -232,9 +232,16 @@
     "task_conquer": "Wyeliminuj {n} graczy",
     "task_destroy": "Zniszcz {n} budynków lub okrętów wojennych wroga",
     "task_games": "Zagraj w {n} gier",
+    "task_hbomb": "Wystrzel {n} bomb wodorowych",
+    "task_landings": "Przeprowadź {n} desantów",
+    "task_mirv": "Wystrzel {n} MIRV",
     "task_other": "Osiągnij {n}",
     "task_sink": "Zatop {n} statków",
+    "task_sink_wshp": "Zatop {n} wrogich okrętów wojennych",
+    "task_steal": "Przejmij {n} statków handlowych",
+    "task_survive": "Ukończ {n} gier bez eliminacji",
     "task_trade": "Doprowadź {n} statków handlowych do portu",
+    "task_upgrade": "Ulepsz {n} budynków",
     "task_wins": "Wygraj {n} gier",
     "title": "Wyzwania",
     "weekly": "W tym tygodniu",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maksymalna",
     "game_speed": "Prędkość gry",
-    "replay_speed": "Prędkość powtórki"
+    "replay_speed": "Prędkość powtórki",
+    "seeking": "Przeskok do {time}…",
+    "timeline": "Oś czasu powtórki"
   },
   "resume_game": {
     "description": "Opuściłeś grę wieloosobową, która jeszcze się nie skończyła. Wskocz z powrotem tam, gdzie jesteś.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "W grze",
+    "allies": "Sojusznicy",
+    "copied": "Link skopiowany",
+    "copy_link": "Kopiuj link do tego momentu",
+    "eliminated": "Wyeliminowany",
+    "go_to": "Przejdź do tego gracza",
+    "gold": "Złoto",
+    "kick": "Usuń z gry",
+    "kick_confirm": "Usunąć {name} z tej gry? Nie będzie mógł do niej wrócić.",
+    "land": "Terytorium",
+    "not_spawned": "Ten gracz jeszcze się nie pojawił.",
+    "pick_player": "Wybierz gracza do obserwacji.",
+    "title": "Przegląd zespołu",
+    "troops": "Wojska",
+    "watch_other": "Obserwuj innego gracza"
   },
   "steam_grant": {
     "ended_body": "Miesiąc {tier}, który nastąpił wraz z Twoim zakupem na Steam, dobiegł końca. Nic nie zostało pobrane i nic nie będzie. Zachowujesz pełną wersję gry: każdą mapę i tryb, grę online, ranking z bezpłatnym dziennym limitem i niestandardowe lobby ze znajomymi. Aplikacja Steam pozostaje wolna od reklam. Jeśli chcesz odzyskać bonusy {tier}, możesz w dowolnym momencie dokonać subskrypcji w sklepie.",

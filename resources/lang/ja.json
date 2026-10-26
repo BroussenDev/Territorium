@@ -232,9 +232,16 @@
     "task_conquer": "{n} 人のプレイヤーを排除する",
     "task_destroy": "{n} 敵の建物または軍艦を破壊する",
     "task_games": "{n}回ゲームをプレイ",
+    "task_hbomb": "水素爆弾を{n}発発射する",
+    "task_landings": "上陸を{n}回成功させる",
+    "task_mirv": "MIRVを{n}発発射する",
     "task_other": "{n}に到達",
     "task_sink": "{n} 船を沈めます",
+    "task_sink_wshp": "敵の軍艦を{n}隻撃沈する",
+    "task_steal": "商船を{n}隻拿捕する",
+    "task_survive": "脱落せずに{n}試合を終える",
     "task_trade": "{n}貿易船を港に連れてくる",
+    "task_upgrade": "建物を{n}回強化する",
     "task_wins": "{n}回勝利する",
     "title": "チャレンジ",
     "weekly": "今週",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "最大",
     "game_speed": "ゲーム速度",
-    "replay_speed": "再生速度"
+    "replay_speed": "再生速度",
+    "seeking": "{time} に移動中…",
+    "timeline": "リプレイのタイムライン"
   },
   "resume_game": {
     "description": "まだ終わっていないマルチプレイヤー ゲームを終了しました。ジャンプして元の場所に戻りましょう。",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}：{percent}"
+  },
+  "staff_review": {
+    "alive": "プレイ中",
+    "allies": "同盟",
+    "copied": "リンクをコピーしました",
+    "copy_link": "この瞬間へのリンクをコピー",
+    "eliminated": "脱落",
+    "go_to": "このプレイヤーへ移動",
+    "gold": "ゴールド",
+    "kick": "試合から外す",
+    "kick_confirm": "{name} をこの試合から外しますか？再参加はできなくなります。",
+    "land": "領土",
+    "not_spawned": "このプレイヤーはまだ出現していません。",
+    "pick_player": "監視するプレイヤーを選んでください。",
+    "title": "スタッフ確認",
+    "troops": "兵力",
+    "watch_other": "別のプレイヤーを監視"
   },
   "steam_grant": {
     "ended_body": "Steam の購入に付属していた {tier} の月が終了しました。何も請求されていませんし、今後も何も請求されません。すべてのマップとモード、オンライン プレイ、1 日の無料制限によるランク付け、友達とのカスタム ロビーなど、ゲーム全体を維持できます。 Steam アプリには広告が表示されません。 {tier} 特典を取り戻したい場合は、いつでもストアから購読できます。",

@@ -232,9 +232,16 @@
     "task_conquer": "Elimina {n} giocatori",
     "task_destroy": "Distruggi {n} edifici o navi da guerra nemiche",
     "task_games": "Gioca {n} partite",
+    "task_hbomb": "Lanciare {n} bombe H",
+    "task_landings": "Riuscire {n} sbarchi",
+    "task_mirv": "Lanciare {n} MIRV",
     "task_other": "Raggiungi {n}",
     "task_sink": "Affondare le navi {n}",
+    "task_sink_wshp": "Affondare {n} navi da guerra nemiche",
+    "task_steal": "Catturare {n} navi mercantili",
+    "task_survive": "Finire {n} partite senza essere eliminato",
     "task_trade": "Porta {n} navi commerciali al porto",
+    "task_upgrade": "Migliorare {n} edifici",
     "task_wins": "Vinci {n} partite",
     "title": "Sfide",
     "weekly": "Questa settimana",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Massimo",
     "game_speed": "Velocità di gioco",
-    "replay_speed": "Velocità di riproduzione"
+    "replay_speed": "Velocità di riproduzione",
+    "seeking": "Salto a {time}…",
+    "timeline": "Cronologia del replay"
   },
   "resume_game": {
     "description": "Hai lasciato una partita multiplayer che non è ancora finita. Torna indietro dove sei.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "In partita",
+    "allies": "Alleati",
+    "copied": "Link copiato",
+    "copy_link": "Copia il link a questo momento",
+    "eliminated": "Eliminato",
+    "go_to": "Vai a questo giocatore",
+    "gold": "Oro",
+    "kick": "Rimuovi dalla partita",
+    "kick_confirm": "Rimuovere {name} da questa partita? Non potrà rientrare.",
+    "land": "Territorio",
+    "not_spawned": "Questo giocatore non è ancora apparso.",
+    "pick_player": "Scegli un giocatore da osservare.",
+    "title": "Revisione dello staff",
+    "troops": "Truppe",
+    "watch_other": "Osserva un altro giocatore"
   },
   "steam_grant": {
     "ended_body": "Il mese di {tier} fornito con il tuo acquisto su Steam è terminato. Niente è stato addebitato e nulla lo sarà. Mantieni il gioco completo: ogni mappa e modalità, gioco online, classificate con il limite giornaliero gratuito e lobby personalizzate con gli amici. L'app Steam rimane senza pubblicità. Se vuoi indietro i vantaggi {tier}, puoi abbonarti dallo store in qualsiasi momento.",

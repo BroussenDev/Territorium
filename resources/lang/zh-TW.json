@@ -232,9 +232,16 @@
     "task_conquer": "消滅{n}名玩家",
     "task_destroy": "摧毀{n}敵方建築物或戰艦",
     "task_games": "玩{n}局遊戲",
+    "task_hbomb": "發射 {n} 枚氫彈",
+    "task_landings": "成功登陸 {n} 次",
+    "task_mirv": "發射 {n} 枚分導式飛彈",
     "task_other": "達到{n}",
     "task_sink": "擊沉 {n} 艘船",
+    "task_sink_wshp": "擊沉 {n} 艘敵方軍艦",
+    "task_steal": "俘獲 {n} 艘商船",
+    "task_survive": "不被淘汰完成 {n} 局遊戲",
     "task_trade": "將{n}貿易船帶到港口",
+    "task_upgrade": "升級 {n} 座建築",
     "task_wins": "贏得{n}局遊戲",
     "title": "挑戰",
     "weekly": "本星期",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "最大",
     "game_speed": "遊戲速度",
-    "replay_speed": "回放速度"
+    "replay_speed": "回放速度",
+    "seeking": "正在跳轉到 {time}…",
+    "timeline": "重播時間軸"
   },
   "resume_game": {
     "description": "您離開了尚未結束的多人遊戲。跳回到原來的地方。",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}：{percent}"
+  },
+  "staff_review": {
+    "alive": "遊戲中",
+    "allies": "盟友",
+    "copied": "連結已複製",
+    "copy_link": "複製此刻的連結",
+    "eliminated": "已淘汰",
+    "go_to": "前往該玩家",
+    "gold": "金幣",
+    "kick": "移出本局",
+    "kick_confirm": "將 {name} 移出本局？他將無法再加入。",
+    "land": "領土",
+    "not_spawned": "該玩家尚未出生。",
+    "pick_player": "選擇一名要監視的玩家。",
+    "title": "管理員審查",
+    "troops": "兵力",
+    "watch_other": "監視其他玩家"
   },
   "steam_grant": {
     "ended_body": "您在 Steam 上購買的 {tier} 月份已經結束。沒有收取任何費用，也不會收取任何費用。您可以保留完整的遊戲：每張地圖和模式、線上遊戲、每日免費限制排名以及與朋友一起自訂的大廳。 Steam 應用程式保持無廣告。如果您想要恢復{tier}福利，您可以隨時從商店訂閱。",

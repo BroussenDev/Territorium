@@ -96,6 +96,8 @@ export class GameRightSidebar extends LitElement implements Controller {
     this.isPrivateLobby =
       this.game?.config()?.gameConfig()?.gameType === GameType.Private;
     this._isVisible = true;
+    // A replay opens with its timeline shown (ReplayPanel).
+    this._isReplayVisible = this.game.config().isReplay();
     this.hasShownOneMinuteWarning = false;
 
     this.eventBus.on(SpawnBarVisibleEvent, (e) => {

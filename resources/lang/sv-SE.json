@@ -232,9 +232,16 @@
     "task_conquer": "Eliminera {n} spelare",
     "task_destroy": "Förstör {n} fiendebyggnader eller krigsskepp",
     "task_games": "Spela {n} spel",
+    "task_hbomb": "Avfyra {n} vätebomber",
+    "task_landings": "Genomför {n} landstigningar",
+    "task_mirv": "Avfyra {n} MIRV",
     "task_other": "Nå {n}",
     "task_sink": "Sjunka {n} fartyg",
+    "task_sink_wshp": "Sänk {n} fientliga krigsfartyg",
+    "task_steal": "Kapa {n} handelsfartyg",
+    "task_survive": "Avsluta {n} matcher utan att bli utslagen",
     "task_trade": "Ta {n} handelsfartyg till hamn",
+    "task_upgrade": "Uppgradera {n} byggnader",
     "task_wins": "Vinn {n} spel",
     "title": "Utmaningar",
     "weekly": "Denna vecka",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "max",
     "game_speed": "Spelhastighet",
-    "replay_speed": "Återspelningshastighet"
+    "replay_speed": "Återspelningshastighet",
+    "seeking": "Hoppar till {time}…",
+    "timeline": "Tidslinje för repris"
   },
   "resume_game": {
     "description": "Du lämnade ett flerspelarspel som inte är över än. Hoppa tillbaka där du är.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "I spelet",
+    "allies": "Allierade",
+    "copied": "Länk kopierad",
+    "copy_link": "Kopiera länken till det här ögonblicket",
+    "eliminated": "Utslagen",
+    "go_to": "Gå till den här spelaren",
+    "gold": "Guld",
+    "kick": "Ta bort från spelet",
+    "kick_confirm": "Ta bort {name} från det här spelet? Personen kan inte gå med igen.",
+    "land": "Territorium",
+    "not_spawned": "Den här spelaren har inte dykt upp än.",
+    "pick_player": "Välj en spelare att bevaka.",
+    "title": "Personalgranskning",
+    "troops": "Trupper",
+    "watch_other": "Bevaka en annan spelare"
   },
   "steam_grant": {
     "ended_body": "Månaden {tier} som följde med ditt Steam-köp har slutat. Ingenting har debiterats och ingenting kommer att bli. Du behåller hela spelet: varje karta och läge, onlinespel, rankad med den kostnadsfria dagliga gränsen och anpassade lobbyer med vänner. Steam-appen förblir annonsfri. Om du vill ha tillbaka {tier}-förmånerna kan du prenumerera från butiken när som helst.",

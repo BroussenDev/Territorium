@@ -232,9 +232,16 @@
     "task_conquer": "Elimina {n} jugadors",
     "task_destroy": "Destrueix {n} edificis o vaixells de guerra enemics",
     "task_games": "Juga a jocs {n}",
+    "task_hbomb": "Llançar {n} bombes H",
+    "task_landings": "Aconseguir {n} desembarcaments",
+    "task_mirv": "Llançar {n} MIRV",
     "task_other": "Arriba a {n}",
     "task_sink": "Enfonsar {n} vaixells",
+    "task_sink_wshp": "Enfonsar {n} vaixells de guerra enemics",
+    "task_steal": "Capturar {n} vaixells mercants",
+    "task_survive": "Acabar {n} partides sense ser eliminat",
     "task_trade": "Porta {n} vaixells comercials al port",
+    "task_upgrade": "Millorar {n} edificis",
     "task_wins": "Guanya {n} jocs",
     "title": "Reptes",
     "weekly": "Aquesta setmana",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Màx",
     "game_speed": "Velocitat de joc",
-    "replay_speed": "Velocitat de reproducció"
+    "replay_speed": "Velocitat de reproducció",
+    "seeking": "Saltant a {time}…",
+    "timeline": "Línia de temps de la repetició"
   },
   "resume_game": {
     "description": "Has deixat una partida multijugador que encara no ha acabat. Torna cap a on ets.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "A la partida",
+    "allies": "Aliats",
+    "copied": "Enllaç copiat",
+    "copy_link": "Copia l'enllaç a aquest moment",
+    "eliminated": "Eliminat",
+    "go_to": "Anar a aquest jugador",
+    "gold": "Or",
+    "kick": "Treure de la partida",
+    "kick_confirm": "Vols treure {name} d'aquesta partida? No hi podrà tornar.",
+    "land": "Territori",
+    "not_spawned": "Aquest jugador encara no ha aparegut.",
+    "pick_player": "Tria un jugador per vigilar.",
+    "title": "Revisió de l'equip",
+    "troops": "Tropes",
+    "watch_other": "Vigila un altre jugador"
   },
   "steam_grant": {
     "ended_body": "El mes de {tier} que va venir amb la teva compra a Steam ha acabat. No s'ha cobrat res i no hi haurà res. Conserveu el joc complet: tots els mapes i modes, jocs en línia, classificats amb el límit diari gratuït i vestíbuls personalitzats amb els amics. L'aplicació Steam es manté sense anuncis. Si voleu tornar els avantatges {tier}, podeu subscriure-us a la botiga en qualsevol moment.",

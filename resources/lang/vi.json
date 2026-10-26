@@ -232,9 +232,16 @@
     "task_conquer": "Loại bỏ {n} người chơi",
     "task_destroy": "Phá hủy {n} công trình hoặc tàu chiến của kẻ thù",
     "task_games": "Chơi {n} trò chơi",
+    "task_hbomb": "Phóng {n} bom khinh khí",
+    "task_landings": "Đổ bộ thành công {n} lần",
+    "task_mirv": "Phóng {n} MIRV",
     "task_other": "Đạt {n}",
     "task_sink": "Tàu chìm {n}",
+    "task_sink_wshp": "Đánh chìm {n} tàu chiến địch",
+    "task_steal": "Chiếm {n} tàu buôn",
+    "task_survive": "Hoàn thành {n} trận mà không bị loại",
     "task_trade": "Đưa {n} tàu buôn về cảng",
+    "task_upgrade": "Nâng cấp {n} công trình",
     "task_wins": "Thắng {n} trò chơi",
     "title": "Thử thách",
     "weekly": "Tuần này",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Tối đa",
     "game_speed": "Tốc độ trò chơi",
-    "replay_speed": "Tốc độ phát lại"
+    "replay_speed": "Tốc độ phát lại",
+    "seeking": "Đang chuyển tới {time}…",
+    "timeline": "Dòng thời gian phát lại"
   },
   "resume_game": {
     "description": "Bạn đã rời khỏi trò chơi nhiều người chơi vẫn chưa kết thúc. Hãy quay trở lại vị trí hiện tại của bạn.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Trong trận",
+    "allies": "Đồng minh",
+    "copied": "Đã sao chép liên kết",
+    "copy_link": "Sao chép liên kết tới thời điểm này",
+    "eliminated": "Đã bị loại",
+    "go_to": "Đi tới người chơi này",
+    "gold": "Vàng",
+    "kick": "Loại khỏi trận",
+    "kick_confirm": "Loại {name} khỏi trận này? Họ sẽ không thể tham gia lại.",
+    "land": "Lãnh thổ",
+    "not_spawned": "Người chơi này chưa xuất hiện.",
+    "pick_player": "Chọn một người chơi để theo dõi.",
+    "title": "Kiểm tra của đội ngũ",
+    "troops": "Quân lính",
+    "watch_other": "Theo dõi người chơi khác"
   },
   "steam_grant": {
     "ended_body": "Tháng {tier} đi kèm với giao dịch mua Steam của bạn đã kết thúc. Không có gì đã bị tính phí và sẽ không có gì. Bạn giữ toàn bộ trò chơi: mọi bản đồ và chế độ, chơi trực tuyến, xếp hạng với giới hạn miễn phí hàng ngày và hành lang tùy chỉnh với bạn bè. Ứng dụng Steam không có quảng cáo. Nếu muốn nhận lại các đặc quyền {tier}, bạn có thể đăng ký từ cửa hàng bất cứ lúc nào.",

@@ -232,9 +232,16 @@
     "task_conquer": "Távolítsd el a {n} játékosokat",
     "task_destroy": "Pusztíts el {n} ellenséges épületeket vagy hadihajókat",
     "task_games": "Játssz {n} játékokat",
+    "task_hbomb": "Lőj ki {n} hidrogénbombát",
+    "task_landings": "Hajts végre {n} partraszállást",
+    "task_mirv": "Lőj ki {n} MIRV-et",
     "task_other": "{n} elérése",
     "task_sink": "Elsüllyeszteni {n} hajókat",
+    "task_sink_wshp": "Süllyessz el {n} ellenséges hadihajót",
+    "task_steal": "Foglalj el {n} kereskedőhajót",
+    "task_survive": "Fejezz be {n} játékot kiesés nélkül",
     "task_trade": "Hozz {n} kereskedelmi hajót a kikötőbe",
+    "task_upgrade": "Fejlessz {n} épületet",
     "task_wins": "Nyerj {n} játékokat",
     "title": "Kihívások",
     "weekly": "Ezen a héten",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Max",
     "game_speed": "Játék sebessége",
-    "replay_speed": "Visszajátszás sebessége"
+    "replay_speed": "Visszajátszás sebessége",
+    "seeking": "Ugrás ide: {time}…",
+    "timeline": "Visszajátszás idővonala"
   },
   "resume_game": {
     "description": "Kiléptél egy többszereplős játékból, aminek még nincs vége. Ugorj vissza oda, ahol vagy.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Játékban",
+    "allies": "Szövetségesek",
+    "copied": "Link másolva",
+    "copy_link": "Link másolása erre a pillanatra",
+    "eliminated": "Kiesett",
+    "go_to": "Ugrás ehhez a játékoshoz",
+    "gold": "Arany",
+    "kick": "Eltávolítás a játékból",
+    "kick_confirm": "Eltávolítod {name} játékost ebből a játékból? Nem tud majd visszalépni.",
+    "land": "Terület",
+    "not_spawned": "Ez a játékos még nem jelent meg.",
+    "pick_player": "Válassz egy figyelendő játékost.",
+    "title": "Stáb ellenőrzés",
+    "troops": "Csapatok",
+    "watch_other": "Másik játékos figyelése"
   },
   "steam_grant": {
     "ended_body": "A Steam-vásárláshoz tartozó {tier} hónap lejárt. Semmit sem terheltek és nem is fognak. Megtartja a teljes játékot: minden térképet és módot, online játékot, ingyenes napi limittel rangsorolva, és egyéni előcsarnokokat a barátokkal. A Steam alkalmazás hirdetésmentes marad. Ha vissza szeretné kapni az {tier} jutalmakat, bármikor előfizethet az áruházból.",

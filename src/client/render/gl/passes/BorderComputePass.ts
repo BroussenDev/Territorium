@@ -47,8 +47,10 @@ export class BorderComputePass {
   private uMapSize: WebGLUniformLocation;
   private uHighlightOwner: WebGLUniformLocation;
   private uHighlightThicken: WebGLUniformLocation;
+  private uWatchOwner: WebGLUniformLocation;
 
   private highlightOwner = 0;
+  private watchOwner = 0;
   /**
    * True when something that affects ALL borders (highlight owner, relation
    * matrix) has changed since the last draw. Forces a full recompute next
@@ -86,6 +88,7 @@ export class BorderComputePass {
       this.program,
       "uHighlightThicken",
     )!;
+    this.uWatchOwner = gl.getUniformLocation(this.program, "uWatchOwner")!;
 
     // Texture unit binding
     gl.useProgram(this.program);
@@ -151,6 +154,14 @@ export class BorderComputePass {
     if (ownerID === this.highlightOwner) return;
     this.highlightOwner = ownerID;
     this.scatter.setHighlightOwner(ownerID);
+    this.globalDirty = true;
+  }
+
+  /** The player whose border is drawn red for a staff review (0 = none). */
+  setWatchOwner(ownerID: number): void {
+    if (ownerID === this.watchOwner) return;
+    this.watchOwner = ownerID;
+    this.scatter.setWatchOwner(ownerID);
     this.globalDirty = true;
   }
 
@@ -237,6 +248,7 @@ export class BorderComputePass {
       gl.uniform2f(this.uMapSize, this.mapW, this.mapH);
       gl.uniform1ui(this.uHighlightOwner, this.highlightOwner);
       gl.uniform1i(this.uHighlightThicken, Math.floor(mo.highlightThicken));
+      gl.uniform1ui(this.uWatchOwner, this.watchOwner);
 
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, this._tileTex);

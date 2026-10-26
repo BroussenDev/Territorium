@@ -232,9 +232,16 @@
     "task_conquer": "Likvideerige {n} mängijat",
     "task_destroy": "Hävitage {n} vaenlase hooneid või sõjalaevu",
     "task_games": "Mängige {n} mänge",
+    "task_hbomb": "Lase välja {n} vesinikupommi",
+    "task_landings": "Soorita {n} dessanti",
+    "task_mirv": "Lase välja {n} MIRV-i",
     "task_other": "Jõudke {n}",
     "task_sink": "Uputage {n} laevu",
+    "task_sink_wshp": "Uputa {n} vaenlase sõjalaeva",
+    "task_steal": "Hõivata {n} kaubalaeva",
+    "task_survive": "Lõpeta {n} mängu ilma välja langemata",
     "task_trade": "Tooge sadamasse {n} kaubalaevu",
+    "task_upgrade": "Täiusta {n} hoonet",
     "task_wins": "Võida {n} mänge",
     "title": "Väljakutsed",
     "weekly": "Sel nädalal",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maks.",
     "game_speed": "Mängu kiirus",
-    "replay_speed": "Taasesituse kiirus"
+    "replay_speed": "Taasesituse kiirus",
+    "seeking": "Hüpe kohta {time}…",
+    "timeline": "Korduse ajajoon"
   },
   "resume_game": {
     "description": "Lahkusite mitme mängijaga mängust, mis pole veel lõppenud. Hüppa tagasi sinna, kus sa oled.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Mängus",
+    "allies": "Liitlased",
+    "copied": "Link kopeeritud",
+    "copy_link": "Kopeeri link sellele hetkele",
+    "eliminated": "Välja langenud",
+    "go_to": "Mine selle mängija juurde",
+    "gold": "Kuld",
+    "kick": "Eemalda mängust",
+    "kick_confirm": "Kas eemaldada {name} sellest mängust? Ta ei saa uuesti liituda.",
+    "land": "Territoorium",
+    "not_spawned": "See mängija pole veel ilmunud.",
+    "pick_player": "Vali mängija, keda jälgida.",
+    "title": "Meeskonna ülevaatus",
+    "troops": "Väed",
+    "watch_other": "Jälgi teist mängijat"
   },
   "steam_grant": {
     "ended_body": "Steami ostuga kaasas olnud kuu {tier} on lõppenud. Midagi ei ole tasutud ega ka esitata. Teil on kogu mäng: iga kaart ja režiim, võrgumäng, tasuta päevalimiit järjestatud ja kohandatud fuajeed koos sõpradega. Steami rakendus jääb reklaamideta. Kui soovite {tier} hüvesid tagasi, saate poest igal ajal tellida.",

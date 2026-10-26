@@ -232,9 +232,16 @@
     "task_conquer": "Eliminišite {n} igrača",
     "task_destroy": "Uništite {n} neprijateljske zgrade ili ratne brodove",
     "task_games": "Igrajte igre {n}",
+    "task_hbomb": "Lansiraj {n} hidrogenskih bombi",
+    "task_landings": "Izvedi {n} desanta",
+    "task_mirv": "Lansiraj {n} MIRV-ova",
     "task_other": "Doseg {n}",
     "task_sink": "Potopite {n} brodova",
+    "task_sink_wshp": "Potopi {n} neprijateljskih ratnih brodova",
+    "task_steal": "Zarobi {n} trgovačkih brodova",
+    "task_survive": "Završi {n} partija bez eliminacije",
     "task_trade": "Dovedite {n} trgovačkih brodova u luku",
+    "task_upgrade": "Unapredi {n} zgrada",
     "task_wins": "Osvojite {n} igre",
     "title": "Izazovi",
     "weekly": "Ove nedelje",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Maks",
     "game_speed": "Brzina igre",
-    "replay_speed": "Brzina snimka"
+    "replay_speed": "Brzina snimka",
+    "seeking": "Skok na {time}…",
+    "timeline": "Vremenska linija snimka"
   },
   "resume_game": {
     "description": "Napustili ste igru za više igrača koja još nije gotova. Skoči nazad tamo gde si.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "U igri",
+    "allies": "Saveznici",
+    "copied": "Link kopiran",
+    "copy_link": "Kopiraj link do ovog trenutka",
+    "eliminated": "Eliminisan",
+    "go_to": "Idi do ovog igrača",
+    "gold": "Zlato",
+    "kick": "Ukloni iz partije",
+    "kick_confirm": "Ukloniti {name} iz ove partije? Neće moći ponovo da uđe.",
+    "land": "Teritorija",
+    "not_spawned": "Ovaj igrač se još nije pojavio.",
+    "pick_player": "Izaberi igrača za praćenje.",
+    "title": "Pregled tima",
+    "troops": "Trupe",
+    "watch_other": "Prati drugog igrača"
   },
   "steam_grant": {
     "ended_body": "Mesec {tier} koji ste dobili uz vašu Steam kupovinu je završen. Ništa nije naplaćeno i neće biti. Zadržavate celu igru: svaku mapu i režim, onlajn igru, rangiranu sa besplatnim dnevnim ograničenjem i prilagođene lobije sa prijateljima. Aplikacija Steam ostaje bez oglasa. Ako želite nazad pogodnosti {tier}, možete se pretplatiti u prodavnici u bilo kom trenutku.",

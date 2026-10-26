@@ -232,9 +232,16 @@
     "task_conquer": "Eliminoi {n} pelaajaa",
     "task_destroy": "Tuhoa {n} vihollisen rakennuksia tai sotalaivoja",
     "task_games": "Pelaa {n} pelejä",
+    "task_hbomb": "Laukaise {n} vetypommia",
+    "task_landings": "Tee {n} maihinnousua",
+    "task_mirv": "Laukaise {n} MIRV-ohjusta",
     "task_other": "Tavoita {n}",
     "task_sink": "Upota {n} laivat",
+    "task_sink_wshp": "Upota {n} vihollisen sotalaivaa",
+    "task_steal": "Kaappaa {n} kauppalaivaa",
+    "task_survive": "Pelaa {n} peliä loppuun putoamatta",
     "task_trade": "Tuo {n} kauppalaivoja satamaan",
+    "task_upgrade": "Paranna {n} rakennusta",
     "task_wins": "Voita {n} pelejä",
     "title": "Haasteet",
     "weekly": "Tällä viikolla",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "max",
     "game_speed": "Pelin nopeus",
-    "replay_speed": "Uusinnan nopeus"
+    "replay_speed": "Uusinnan nopeus",
+    "seeking": "Siirrytään kohtaan {time}…",
+    "timeline": "Uusinnan aikajana"
   },
   "resume_game": {
     "description": "Poistuit moninpelistä, joka ei ole vielä ohi. Hyppää takaisin sinne, missä olet.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "Pelissä",
+    "allies": "Liittolaiset",
+    "copied": "Linkki kopioitu",
+    "copy_link": "Kopioi linkki tähän hetkeen",
+    "eliminated": "Pudonnut",
+    "go_to": "Siirry tähän pelaajaan",
+    "gold": "Kulta",
+    "kick": "Poista pelistä",
+    "kick_confirm": "Poistetaanko {name} tästä pelistä? Hän ei voi liittyä takaisin.",
+    "land": "Alue",
+    "not_spawned": "Tämä pelaaja ei ole vielä ilmestynyt.",
+    "pick_player": "Valitse seurattava pelaaja.",
+    "title": "Henkilökunnan tarkastus",
+    "troops": "Joukot",
+    "watch_other": "Seuraa toista pelaajaa"
   },
   "steam_grant": {
     "ended_body": "Steam-ostoksesi mukana tullut kuukausi {tier} on päättynyt. Mitään ei ole veloitettu, eikä tulekaan. Pidät koko pelin: kaikki kartat ja tilat, online-pelit, ilmaisen päivittäisen rajan ja mukautetut aulat ystävien kanssa. Steam-sovellus pysyy ilman mainoksia. Jos haluat {tier}-edut takaisin, voit tilata kaupasta milloin tahansa.",

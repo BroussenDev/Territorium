@@ -232,9 +232,16 @@
     "task_conquer": "Odstrani {n} igralcev",
     "task_destroy": "Uniči {n} sovražnikovih zgradb ali vojnih ladij",
     "task_games": "Igrajte igre {n}",
+    "task_hbomb": "Izstreli {n} vodikovih bomb",
+    "task_landings": "Izvedi {n} izkrcanj",
+    "task_mirv": "Izstreli {n} MIRV",
     "task_other": "Doseči {n}",
     "task_sink": "Potopite {n} ladje",
+    "task_sink_wshp": "Potopi {n} sovražnih vojnih ladij",
+    "task_steal": "Zajemi {n} trgovskih ladij",
+    "task_survive": "Dokončaj {n} iger brez izločitve",
     "task_trade": "Pripelji {n} trgovskih ladij v pristanišče",
+    "task_upgrade": "Nadgradi {n} stavb",
     "task_wins": "Osvojite {n} iger",
     "title": "Izzivi",
     "weekly": "Ta teden",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "max",
     "game_speed": "Hitrost igre",
-    "replay_speed": "Hitrost ponovnega predvajanja"
+    "replay_speed": "Hitrost ponovnega predvajanja",
+    "seeking": "Skok na {time}…",
+    "timeline": "Časovnica posnetka"
   },
   "resume_game": {
     "description": "Zapustili ste igro za več igralcev, ki še ni končana. Skoči nazaj, kjer si.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "V igri",
+    "allies": "Zavezniki",
+    "copied": "Povezava kopirana",
+    "copy_link": "Kopiraj povezavo do tega trenutka",
+    "eliminated": "Izločen",
+    "go_to": "Pojdi do tega igralca",
+    "gold": "Zlato",
+    "kick": "Odstrani iz igre",
+    "kick_confirm": "Odstraniti {name} iz te igre? Ne bo se mogel vrniti.",
+    "land": "Ozemlje",
+    "not_spawned": "Ta igralec se še ni pojavil.",
+    "pick_player": "Izberite igralca za spremljanje.",
+    "title": "Pregled ekipe",
+    "troops": "Enote",
+    "watch_other": "Spremljaj drugega igralca"
   },
   "steam_grant": {
     "ended_body": "Končal se je mesec {tier}, ki ste ga dobili z nakupom v Steamu. Nič ni bilo zaračunano in nič ne bo. Obdržite celotno igro: vsak zemljevid in način, spletno igranje, rangiranje z brezplačno dnevno omejitvijo in lobiji po meri s prijatelji. Aplikacija Steam ostaja brez oglasov. Če želite ugodnosti {tier} nazaj, se lahko kadar koli naročite v trgovini.",

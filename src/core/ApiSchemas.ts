@@ -53,6 +53,11 @@ export function isAdminRole(role: string | null | undefined): boolean {
   return role === "admin" || role === "root";
 }
 
+/** The team's moderators and admins: they may remove a player from a game. */
+export function isStaffRole(role: string | null | undefined): boolean {
+  return isAdminRole(role) || role === "mod";
+}
+
 export const DiscordUserSchema = z.object({
   id: z.string(),
   avatar: z.string().nullable(),

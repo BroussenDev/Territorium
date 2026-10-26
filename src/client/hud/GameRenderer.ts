@@ -44,6 +44,7 @@ import { PlayerPanel } from "./layers/PlayerPanel";
 import { ReplayPanel } from "./layers/ReplayPanel";
 import { SettingsModal } from "./layers/SettingsModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
+import { StaffReviewPanel } from "./layers/StaffReviewPanel";
 import { SteamAchievementsController } from "./layers/SteamAchievementsController";
 import { StructureCard } from "./layers/StructureCard";
 import { TutorialPanel } from "./layers/TutorialPanel";
@@ -195,6 +196,16 @@ export function createRenderer(
   }
   replayPanel.eventBus = eventBus;
   replayPanel.game = game;
+
+  // A replay opened from a report ticket (?focus=): the staff's review.
+  const staffReview = document.querySelector(
+    "staff-review-panel",
+  ) as StaffReviewPanel | null;
+  if (staffReview !== null) {
+    staffReview.game = game;
+    staffReview.eventBus = eventBus;
+    staffReview.view = view;
+  }
 
   const gameRightSidebar = document.querySelector(
     "game-right-sidebar",
@@ -357,6 +368,7 @@ export function createRenderer(
       userSettings,
     ),
     new HoverHighlightController(game, eventBus, transformHandler, view),
+    ...(staffReview !== null ? [staffReview] : []),
     new AttackPreviewController(
       game,
       eventBus,

@@ -232,9 +232,16 @@
     "task_conquer": "Elimineer {n} spelers",
     "task_destroy": "Vernietig {n} vijandelijke gebouwen of oorlogsschepen",
     "task_games": "Speel {n}-spellen",
+    "task_hbomb": "{n} waterstofbommen lanceren",
+    "task_landings": "{n} landingen uitvoeren",
+    "task_mirv": "{n} MIRV's lanceren",
     "task_other": "Bereik {n}",
     "task_sink": "Laat {n} schepen zinken",
+    "task_sink_wshp": "{n} vijandelijke oorlogsschepen tot zinken brengen",
+    "task_steal": "{n} handelsschepen kapen",
+    "task_survive": "{n} spellen uitspelen zonder uitgeschakeld te worden",
     "task_trade": "Breng {n} handelsschepen naar de haven",
+    "task_upgrade": "{n} gebouwen verbeteren",
     "task_wins": "Win {n}-spellen",
     "title": "Uitdagingen",
     "weekly": "Deze week",
@@ -2764,7 +2771,9 @@
   "replay_panel": {
     "fastest_game_speed": "Max",
     "game_speed": "Spel snelheid",
-    "replay_speed": "Afspeelsnelheid"
+    "replay_speed": "Afspeelsnelheid",
+    "seeking": "Springen naar {time}…",
+    "timeline": "Tijdlijn van de herhaling"
   },
   "resume_game": {
     "description": "Je hebt een multiplayer-game verlaten die nog niet afgelopen is. Spring terug naar waar je bent.",
@@ -2834,6 +2843,23 @@
   },
   "spawn_timer": {
     "team_percent_tooltip": "{team}: {percent}"
+  },
+  "staff_review": {
+    "alive": "In het spel",
+    "allies": "Bondgenoten",
+    "copied": "Link gekopieerd",
+    "copy_link": "Link naar dit moment kopiëren",
+    "eliminated": "Uitgeschakeld",
+    "go_to": "Naar deze speler",
+    "gold": "Goud",
+    "kick": "Uit het spel verwijderen",
+    "kick_confirm": "{name} uit dit spel verwijderen? Hij kan er niet meer in.",
+    "land": "Gebied",
+    "not_spawned": "Deze speler is nog niet verschenen.",
+    "pick_player": "Kies een speler om te volgen.",
+    "title": "Staffbeoordeling",
+    "troops": "Troepen",
+    "watch_other": "Een andere speler volgen"
   },
   "steam_grant": {
     "ended_body": "De maand {tier} die bij je Steam-aankoop hoorde, is geëindigd. Er is niets in rekening gebracht en er zal ook niets in rekening worden gebracht. Je behoudt de volledige game: elke kaart en modus, online spelen, gerangschikt met de gratis dagelijkse limiet en aangepaste lobby's met vrienden. De Steam-app blijft advertentievrij. Als u de voordelen van {tier} terug wilt, kunt u zich op elk gewenst moment in de winkel abonneren.",
