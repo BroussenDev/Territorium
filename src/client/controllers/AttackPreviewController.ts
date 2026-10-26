@@ -13,7 +13,7 @@
 import type { AttackLogicInput } from "../../core/configuration/Config";
 import { EventBus } from "../../core/EventBus";
 import { estimateAttack } from "../../core/game/AttackEstimate";
-import { UnitType } from "../../core/game/Game";
+import { TerrainType, UnitType } from "../../core/game/Game";
 import { CAPITAL_FALLEN_DEBUFF_TICKS } from "../../core/game/NationsMode";
 import { UserSettings } from "../../core/game/UserSettings";
 import { Controller } from "../Controller";
@@ -132,6 +132,12 @@ export class AttackPreviewController implements Controller {
       return;
     }
 
+    // Impassable land can't be attacked: nothing to estimate (the attack
+    // model throws on it).
+    if (game.terrainType(tile) === TerrainType.Impassable) {
+      this.hide();
+      return;
+    }
     const sent = Math.floor(me.troops() * this.uiState.attackRatio);
     if (sent < 1) {
       this.hide();

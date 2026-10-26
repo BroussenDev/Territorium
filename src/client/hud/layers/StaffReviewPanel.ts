@@ -166,7 +166,7 @@ export class StaffReviewPanel extends LitElement implements Controller {
       .filter((x) => x.type() === PlayerType.Human && x.clientID() !== null);
     return html`
       <div
-        class="pointer-events-auto fixed left-2 top-20 z-[60] w-72 max-w-[calc(100vw-1rem)] rounded-xl border border-red-500/40 bg-plate-800/95 text-sm text-white shadow-2xl backdrop-blur-sm"
+        class="pointer-events-auto fixed left-2 top-1/2 -translate-y-1/2 z-[950] w-72 max-w-[calc(100vw-1rem)] rounded-xl border border-red-500/40 bg-plate-800/95 text-sm text-white shadow-2xl backdrop-blur-sm"
         @contextmenu=${(e: Event) => e.preventDefault()}
       >
         <button

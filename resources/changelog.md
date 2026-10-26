@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.159
+
+🛠️ **Fixes**
+
+- No more error when the attack preview passes over impassable land.
+- The staff menu no longer hides behind the leaderboard.
+
 ## v0.1.158
 
 🏆 **Tournaments**
