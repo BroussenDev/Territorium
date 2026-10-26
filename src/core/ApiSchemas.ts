@@ -714,6 +714,36 @@ export type SoloLeaderboardResponse = z.infer<
   typeof SoloLeaderboardResponseSchema
 >;
 
+// GET /leaderboard/global — public, the overall board: a place on the
+// ranked free-for-all, solo, 1v1 and 2v2 boards is worth points (1st 100,
+// 100th 1), summed; the top 100. ranks: the player's place on each board
+// they are on.
+export const GlobalLeaderboardEntrySchema = z.object({
+  rank: z.number(),
+  publicId: z.string(),
+  username: z.string().nullable(),
+  points: z.number(),
+  ranks: z.object({
+    rankedFfa: z.number().optional(),
+    solo: z.number().optional(),
+    duel: z.number().optional(),
+    team: z.number().optional(),
+  }),
+  goldFrame: z.boolean().optional(),
+  badge: z.string().max(32).optional(),
+  conquerant: z.boolean().optional(),
+});
+export type GlobalLeaderboardEntry = z.infer<
+  typeof GlobalLeaderboardEntrySchema
+>;
+
+export const GlobalLeaderboardResponseSchema = z.object({
+  players: GlobalLeaderboardEntrySchema.array(),
+});
+export type GlobalLeaderboardResponse = z.infer<
+  typeof GlobalLeaderboardResponseSchema
+>;
+
 // GET /leaderboard/nations — public: every finished Nations game counted by
 // country. A country is keyed by its countries.json index, or by its name when
 // the nation AI playing it won. picks: games a human played it; wins: games

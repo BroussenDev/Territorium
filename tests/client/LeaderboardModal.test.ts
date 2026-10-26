@@ -620,9 +620,9 @@ describe("LeaderboardModal", () => {
   describe("Modal Functionality", () => {
     it("should initialize with default state", () => {
       expect(modal).toBeTruthy();
-      // The ranked season board comes first.
+      // The overall board, every player board in one, comes first.
       expect((modal as unknown as { activeTab: string }).activeTab).toBe(
-        "ranked",
+        "global",
       );
     });
 

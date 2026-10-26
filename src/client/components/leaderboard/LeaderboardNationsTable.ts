@@ -5,6 +5,7 @@ import { translateText } from "../../Utils";
 import { countryFlag, loadNationsCountries } from "../NationsCountries";
 import { rankStyle } from "./LeaderboardFormat";
 import { NationsBoardRow, nationsBoardRows } from "./NationsBoard";
+import { podium } from "./Podium";
 
 // The Nations board: which countries players pick, and which countries win,
 // whether a player or the nation AI plays them.
@@ -152,6 +153,23 @@ export class LeaderboardNationsTable extends LitElement {
         <div
           class="flex-1 min-h-0 overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/20"
         >
+          ${podium(
+            "nations",
+            [...rows]
+              .filter((r) => r.wins > 0)
+              .sort((a, b) => b.wins - a.wins)
+              .slice(0, 3)
+              .map((r) => ({
+                key: r.country.name,
+                name: html`<span class="inline-flex items-center gap-1.5"
+                  >${countryFlag(r.country, "h-4")}<span class="truncate"
+                    >${r.country.name}</span
+                  ></span
+                >`,
+                value: r.wins.toLocaleString(),
+                unit: translateText("leaderboard_modal.wins"),
+              })),
+          )}
           <table class="w-full text-sm border-collapse table-fixed">
             <colgroup>
               <col style="width: 3.5rem" />

@@ -10,6 +10,8 @@ import { translateText } from "../../Utils";
 import "../PlayerName";
 import { badgeIcon } from "../ui/BadgeIcon";
 import { goldFramed } from "./GoldFrame";
+import { rankStyle } from "./LeaderboardFormat";
+import { podium } from "./Podium";
 
 /** One ranked ladder's loaded rows. */
 interface LadderState {
@@ -350,19 +352,7 @@ export class LeaderboardPlayerList extends LitElement {
     const isCurrentUser = this.currentUserEntry?.playerId === player.playerId;
     const displayRank = player.rank;
 
-    const rankColor =
-      {
-        1: "text-yellow-400 bg-yellow-400/10 ring-1 ring-yellow-400/20",
-        2: "text-slate-300 bg-slate-400/10 ring-1 ring-slate-400/20",
-        3: "text-amber-600 bg-amber-600/10 ring-1 ring-amber-600/20",
-      }?.[displayRank] ?? "text-white/40 bg-white/5";
-
-    const rankIcon =
-      {
-        1: "👑",
-        2: "🥈",
-        3: "🥉",
-      }?.[displayRank] ?? String(displayRank);
+    const { color: rankColor, icon: rankIcon } = rankStyle(displayRank);
 
     return html`
       <tr
@@ -554,6 +544,22 @@ export class LeaderboardPlayerList extends LitElement {
             class="scroll-container h-full overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/20"
             @scroll=${() => this.handleScroll()}
           >
+            ${podium(
+              `ladder-${this.rankedType}`,
+              this.playerData
+                .filter((p) => p.rank <= 3)
+                .map((p) => ({
+                  key: p.playerId,
+                  name: html`<player-name
+                    .username=${p.accountUsername}
+                    .publicId=${p.playerId}
+                    .nameClass=${"font-bold text-white truncate"}
+                    .onNameClick=${() => this.openProfile(p.playerId)}
+                  ></player-name>`,
+                  value: p.elo.toLocaleString(),
+                  unit: translateText("leaderboard_modal.elo"),
+                })),
+            )}
             <table class="w-full text-sm border-collapse table-fixed">
               <colgroup>
                 <col style="width: 4rem" />

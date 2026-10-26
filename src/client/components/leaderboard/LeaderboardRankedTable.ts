@@ -8,6 +8,7 @@ import { tierEmblem, tierLabel } from "../ranked/RankedTier";
 import { badgeIcon } from "../ui/BadgeIcon";
 import { goldFramed } from "./GoldFrame";
 import { rankStyle } from "./LeaderboardFormat";
+import { podium } from "./Podium";
 
 // The ranked free-for-all board: this season's top 100 placed players.
 @customElement("leaderboard-ranked-table")
@@ -114,6 +115,20 @@ export class LeaderboardRankedTable extends LitElement {
         <div
           class="flex-1 min-h-0 overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/20"
         >
+          ${podium(
+            "ranked",
+            players.slice(0, 3).map((p) => ({
+              key: p.publicId,
+              name: html`<player-name
+                .username=${p.username}
+                .publicId=${p.publicId}
+                .nameClass=${"font-bold text-white truncate"}
+                .onNameClick=${() => this.openProfile(p.publicId)}
+              ></player-name>`,
+              value: p.elo.toLocaleString(),
+              unit: translateText("leaderboard_modal.elo"),
+            })),
+          )}
           <table class="w-full text-sm border-collapse table-fixed">
             <colgroup>
               <col style="width: 3.5rem" />

@@ -7,6 +7,8 @@ import {
 import { fetchClanLeaderboard } from "../../ClanApi";
 import { translateText } from "../../Utils";
 import "../clan/ClanCrestBadge";
+import { rankStyle } from "./LeaderboardFormat";
+import { podium } from "./Podium";
 
 // What the modal header shows above the board: the season when the API
 // sends one, the date window otherwise.
@@ -293,6 +295,24 @@ export class LeaderboardClanTable extends LitElement {
           <div
             class="h-full overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-white/20"
           >
+            ${podium(
+              "clans",
+              clans.slice(0, 3).map((c) => ({
+                key: c.clanTag,
+                name: html`<span class="inline-flex items-center gap-1.5"
+                  ><clan-crest
+                    .crest=${c.crest}
+                    .tag=${c.clanTag}
+                    .size=${20}
+                  ></clan-crest
+                  ><span class="truncate">${c.name ?? c.clanTag}</span></span
+                >`,
+                value: c.weightedWins.toLocaleString(undefined, {
+                  maximumFractionDigits: 1,
+                }),
+                unit: translateText("leaderboard_modal.win_score"),
+              })),
+            )}
             <table class="w-full text-sm border-collapse table-fixed">
               <colgroup>
                 <col style="width: 4rem" />
@@ -428,23 +448,9 @@ export class LeaderboardClanTable extends LitElement {
               </thead>
               <tbody>
                 ${sorted.map((clan, index) => {
-                  const displayRank = index + 1;
-                  const rankColor =
-                    displayRank === 1
-                      ? "text-yellow-400 bg-yellow-400/10 ring-1 ring-yellow-400/20"
-                      : displayRank === 2
-                        ? "text-slate-300 bg-slate-400/10 ring-1 ring-slate-400/20"
-                        : displayRank === 3
-                          ? "text-amber-600 bg-amber-600/10 ring-1 ring-amber-600/20"
-                          : "text-white/40 bg-white/5";
-                  const rankIcon =
-                    displayRank === 1
-                      ? "👑"
-                      : displayRank === 2
-                        ? "🥈"
-                        : displayRank === 3
-                          ? "🥉"
-                          : String(displayRank);
+                  const { color: rankColor, icon: rankIcon } = rankStyle(
+                    index + 1,
+                  );
 
                   return html`
                     <tr

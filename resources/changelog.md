@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.155
+
+🏆 **Leaderboards**
+
+- A podium for the top three on every leaderboard: Ranked, Solo, Nations, 1v1, 2v2 and Clans.
+- New Overall leaderboard: your places on the Ranked, Solo, 1v1 and 2v2 boards add up. The best all-round players lead.
+
 ## v0.1.154
 
 🛠️ **Stability**

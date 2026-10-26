@@ -14,6 +14,8 @@ import {
   CreatorPayoutMethod,
   GetMyTribeNamesResponse,
   GetMyTribeNamesResponseSchema,
+  GlobalLeaderboardResponse,
+  GlobalLeaderboardResponseSchema,
   HiddenNameResponseSchema,
   NationsLeaderboardResponse,
   NationsLeaderboardResponseSchema,
@@ -2658,6 +2660,32 @@ export async function fetchPlayerLeaderboard(
     return parsed.data;
   } catch (err) {
     console.error("fetchPlayerLeaderboard: request failed", err);
+    return false;
+  }
+}
+
+export async function fetchGlobalLeaderboard(): Promise<
+  GlobalLeaderboardResponse | false
+> {
+  try {
+    const res = await fetch(`${getApiBase()}/leaderboard/global`, {
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      console.warn("fetchGlobalLeaderboard: unexpected status", res.status);
+      return false;
+    }
+    const parsed = GlobalLeaderboardResponseSchema.safeParse(await res.json());
+    if (!parsed.success) {
+      console.warn(
+        "fetchGlobalLeaderboard: Zod validation failed",
+        parsed.error.toString(),
+      );
+      return false;
+    }
+    return parsed.data;
+  } catch (err) {
+    console.error("fetchGlobalLeaderboard: request failed", err);
     return false;
   }
 }

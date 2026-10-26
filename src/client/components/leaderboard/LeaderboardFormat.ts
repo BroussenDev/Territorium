@@ -20,24 +20,24 @@ export function formatWindowDate(value: string): string | null {
   return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
-// The rank badge's colours: crown and medals for the podium.
+// The rank badge's colours: gold, silver and bronze for the podium places.
 export function rankStyle(rank: number): { color: string; icon: string } {
   if (rank === 1) {
     return {
-      color: "text-yellow-400 bg-yellow-400/10 ring-1 ring-yellow-400/20",
-      icon: "👑",
+      color: "text-amber-200 bg-amber-400/15 ring-1 ring-amber-300/50",
+      icon: "1",
     };
   }
   if (rank === 2) {
     return {
-      color: "text-slate-300 bg-slate-400/10 ring-1 ring-slate-400/20",
-      icon: "🥈",
+      color: "text-slate-200 bg-slate-300/10 ring-1 ring-slate-300/40",
+      icon: "2",
     };
   }
   if (rank === 3) {
     return {
-      color: "text-amber-600 bg-amber-600/10 ring-1 ring-amber-600/20",
-      icon: "🥉",
+      color: "text-orange-200 bg-orange-400/10 ring-1 ring-orange-300/40",
+      icon: "3",
     };
   }
   return { color: "text-white/40 bg-white/5", icon: String(rank) };

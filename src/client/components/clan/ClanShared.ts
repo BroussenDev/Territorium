@@ -35,7 +35,20 @@ export function translateClanRole(role: string): string {
 
 export function renderRoleIcon(role: string): TemplateResult {
   if (role === "leader") {
-    return html`<span class="text-sm">👑</span>`;
+    return html`<svg
+      width="16"
+      height="12"
+      viewBox="0 0 30 18"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 16h24l2-11-7 5-7-8-7 8-7-5z"
+        fill="#f6d36b"
+        stroke="#a8741a"
+        stroke-width="1.6"
+        stroke-linejoin="round"
+      />
+    </svg>`;
   }
   if (role === "officer") {
     return html`<svg

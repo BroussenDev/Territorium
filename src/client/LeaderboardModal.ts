@@ -7,6 +7,8 @@ import type {
   ClanBoardRange,
   LeaderboardClanTable,
 } from "./components/leaderboard/LeaderboardClanTable";
+import "./components/leaderboard/LeaderboardGlobalTable";
+import type { LeaderboardGlobalTable } from "./components/leaderboard/LeaderboardGlobalTable";
 import "./components/leaderboard/LeaderboardNationsTable";
 import type { LeaderboardNationsTable } from "./components/leaderboard/LeaderboardNationsTable";
 import "./components/leaderboard/LeaderboardPlayerList";
@@ -19,6 +21,7 @@ import { modalHeader } from "./components/ui/ModalHeader";
 import { translateText } from "./Utils";
 
 const TAB_KEYS = [
+  "global",
   "ranked",
   "solo",
   "nations",
@@ -42,6 +45,8 @@ export class LeaderboardModal extends BaseModal {
   @state()
   private clanDateRange: ClanBoardRange | null = null;
 
+  @query("leaderboard-global-table")
+  private globalTable?: LeaderboardGlobalTable;
   @query("leaderboard-ranked-table")
   private rankedTable?: LeaderboardRankedTable;
   @query("leaderboard-solo-table")
@@ -59,6 +64,7 @@ export class LeaderboardModal extends BaseModal {
   protected modalConfig() {
     return {
       tabs: [
+        { key: "global", label: translateText("leaderboard_modal.global_tab") },
         { key: "ranked", label: translateText("leaderboard_modal.ranked_tab") },
         { key: "solo", label: translateText("leaderboard_modal.solo_tab") },
         {
@@ -84,6 +90,7 @@ export class LeaderboardModal extends BaseModal {
 
   private tabComponent(tab: string) {
     if (this.rankedTypeFor(tab) !== null) return this.playerList;
+    if (tab === "global") return this.globalTable;
     if (tab === "ranked") return this.rankedTable;
     if (tab === "solo") return this.soloTable;
     if (tab === "nations") return this.nationsTable;
@@ -181,6 +188,9 @@ export class LeaderboardModal extends BaseModal {
   protected renderBody() {
     return html`
       <div class="flex-1 min-h-0 h-full">
+        <leaderboard-global-table
+          class=${this.activeTab === "global" ? "h-full" : "hidden"}
+        ></leaderboard-global-table>
         <leaderboard-ranked-table
           class=${this.activeTab === "ranked" ? "h-full" : "hidden"}
         ></leaderboard-ranked-table>
