@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.153
+
+🛡️ **Anti-cheat**
+
+- TGS's detection thresholds are now set by the team from the admin panel and no longer written in the game's code.
+
 ## v0.1.152
 
 🛡️ **Security update**

@@ -1,5 +1,5 @@
 import type { ClientID, StampedIntent } from "../core/Schemas";
-import { tgsSwitch, TgsSwitch } from "./Tgs";
+import { TgsControls, tgsSwitch } from "./Tgs";
 
 /**
  * TGS's live watch over a ranked game. Ranked results move ratings, so what
@@ -14,7 +14,8 @@ import { tgsSwitch, TgsSwitch } from "./Tgs";
  *   TGS-105  a command rhythm no human keeps: the same gap between
  *            commands, over minutes
  *
- * Anything less certain is left to the end-of-game review.
+ * Anything less certain is left to the end-of-game review. The thresholds
+ * come from the admin panel (TgsSettings in Tgs.ts).
  */
 
 export type RankedCancelCode = "TGS-104" | "TGS-105" | "TGS-106";
@@ -26,14 +27,7 @@ export interface RankedVerdict {
   turn: number;
 }
 
-/** Gifts from one player to the same rival that cancel the game. */
-export const LIVE_GIFTS = 3;
-/** Commands looked at for the rhythm, and over how long they may spread. */
-export const RHYTHM_WINDOW = 120;
-const RHYTHM_MIN_TURNS = 1200; // 2 minutes
-const RHYTHM_MAX_TURNS = 3600; // 6 minutes
-/** Coefficient of variation of the gaps under which no human plays. */
-export const RHYTHM_MAX_VARIATION = 0.08;
+const TURNS_PER_MINUTE = 600;
 
 export class RankedWatch {
   private readonly players: ReadonlySet<ClientID>;
@@ -43,7 +37,7 @@ export class RankedWatch {
 
   constructor(
     players: readonly ClientID[],
-    private readonly switch_: Pick<TgsSwitch, "isEnabled"> = tgsSwitch,
+    private readonly switch_: TgsControls = tgsSwitch,
   ) {
     this.players = new Set(players);
   }
@@ -71,6 +65,7 @@ export class RankedWatch {
   /** Every intent of the game, as it is queued. */
   observe(intent: StampedIntent, turn: number): RankedVerdict | null {
     if (!this.switch_.isEnabled() || this.decided) return null;
+    const settings = this.switch_.settings();
     const from = intent.clientID;
     if (!this.players.has(from)) return null;
 
@@ -80,7 +75,7 @@ export class RankedWatch {
         const key = `${from}>${to}`;
         const count = (this.gifts.get(key) ?? 0) + 1;
         this.gifts.set(key, count);
-        if (count >= LIVE_GIFTS) {
+        if (count >= settings.rankedGifts) {
           // The receiver is in on it when they gave back too.
           const mutual = (this.gifts.get(`${to}>${from}`) ?? 0) > 0;
           return this.decide({
@@ -95,17 +90,20 @@ export class RankedWatch {
 
     const turns = this.recent.get(from) ?? [];
     turns.push(turn);
-    if (turns.length > RHYTHM_WINDOW) turns.shift();
+    while (turns.length > settings.rhythmWindow) turns.shift();
     this.recent.set(from, turns);
-    if (turns.length === RHYTHM_WINDOW) {
+    if (turns.length === settings.rhythmWindow) {
       const span = turns[turns.length - 1] - turns[0];
-      if (span >= RHYTHM_MIN_TURNS && span <= RHYTHM_MAX_TURNS) {
+      if (
+        span >= settings.rhythmMinMinutes * TURNS_PER_MINUTE &&
+        span <= settings.rhythmMaxMinutes * TURNS_PER_MINUTE
+      ) {
         const variation = gapVariation(turns);
-        if (variation <= RHYTHM_MAX_VARIATION) {
+        if (variation <= settings.rhythmMaxVariation) {
           return this.decide({
             code: "TGS-105",
             cheaters: [from],
-            details: `${RHYTHM_WINDOW} commandes à intervalles identiques (variation ${variation.toFixed(3)})`,
+            details: `${turns.length} commandes à intervalles identiques (variation ${variation.toFixed(3)})`,
             turn,
           });
         }

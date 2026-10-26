@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { StampedIntent } from "../../src/core/Schemas";
-import { TgsSwitch } from "../../src/server/Tgs";
-import {
-  LIVE_GIFTS,
-  RankedWatch,
-  RHYTHM_WINDOW,
-} from "../../src/server/TgsRanked";
+import { DEFAULT_TGS_SETTINGS, TgsSwitch } from "../../src/server/Tgs";
+import { RankedWatch } from "../../src/server/TgsRanked";
+
+const LIVE_GIFTS = DEFAULT_TGS_SETTINGS.rankedGifts;
+const RHYTHM_WINDOW = DEFAULT_TGS_SETTINGS.rhythmWindow;
 
 const A = "AAAAAAAA";
 const B = "BBBBBBBB";

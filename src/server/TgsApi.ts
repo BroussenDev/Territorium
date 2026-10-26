@@ -3,8 +3,8 @@ import { ServerEnv } from "./ServerEnv";
 import { TgsIncident, tgsSwitch, TgsSwitch } from "./Tgs";
 import type { RankedVerdict } from "./TgsRanked";
 
-// How often a worker asks the API whether TGS is switched on: the admin
-// panel's switch takes effect everywhere within this.
+// How often a worker asks the API whether TGS is switched on, and its
+// thresholds: the admin panel's changes take effect everywhere within this.
 const STATUS_POLL_MS = 15_000;
 
 /**
@@ -88,7 +88,7 @@ export async function cancelRankedGame(
   }
 }
 
-/** Keeps `target` in step with the admin panel's TGS switch. */
+/** Keeps `target` in step with the admin panel's TGS switch and thresholds. */
 export function startTgsStatusPoller(
   target: TgsSwitch = tgsSwitch,
   fetchImpl: typeof fetch = fetch,
@@ -101,9 +101,13 @@ export function startTgsStatusPoller(
         headers: { "x-api-key": ServerEnv.apiKey() },
       });
       if (!res.ok) return;
-      const body = (await res.json()) as { enabled?: unknown };
+      const body = (await res.json()) as {
+        enabled?: unknown;
+        settings?: unknown;
+      };
       // Unreachable or malformed: keep the last known state.
       if (typeof body.enabled === "boolean") target.set(body.enabled);
+      if (body.settings !== undefined) target.setSettings(body.settings);
     } catch {
       // Same: the last known state stands.
     }

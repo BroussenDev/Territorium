@@ -11,26 +11,30 @@ import type { AllPlayersStats, ClientID } from "../core/Schemas";
  * intent the same way, and the per-second limit of ClientMsgRateLimiter
  * already silently drops intents past 10 a second.
  *
- *   TGS-101: more than FLOOD_PER_SECOND intents a second, for more than
- *            FLOOD_SECONDS seconds in a row. The player is removed from the
+ *   TGS-101: more than floodPerSecond intents a second, for more than
+ *            floodSeconds seconds in a row. The player is removed from the
  *            match (kickClient).
  *   TGS-102: the player's simulation disagrees with the other players' for
- *            DESYNC_CHECKS checks in a row while the majority agrees. The
+ *            desyncChecks checks in a row while the majority agrees. The
  *            socket is closed but the player may rejoin, which replays the
  *            game from the start and puts them back in step.
  *
  *   TGS-103: suspected cross-teaming. At the end of a free-for-all match,
  *            two players who shared a border for a long time without ever
- *            attacking each other (CROSS_TEAM_MINUTES, shorter for players
+ *            attacking each other (crossTeam*Minutes, shorter for players
  *            of the same clan). Nobody is disconnected and nothing is
  *            forbidden: playing alongside one's clan is allowed. It is only
  *            put in front of the staff, with the time spent as allies, for
  *            a look at the replay.
  *
  * Along the way TGS leaves markers on the match's timeline (a burst above
- * SPIKE_PER_SECOND, each desync) for the replay review. The whole watch can
+ * spikePerSecond, each desync) for the replay review. The whole watch can
  * be switched off from the admin panel (TgsSwitch); off, nothing is
  * observed, marked or disconnected.
+ *
+ * The thresholds (TgsSettings) are set in the admin panel and sent by the
+ * API with the switch, so the ones in force are never in this public code:
+ * DEFAULT_TGS_SETTINGS only stands in until the API first answers.
  */
 
 export const TGS_FLOOD_CODE = "TGS-101";
@@ -51,15 +55,86 @@ export const TGS_KICK_REASONS: Record<TgsKickCode, string> = {
   [TGS_DESYNC_CODE]: "kick_reason.tgs_102",
 };
 
-export const SPIKE_PER_SECOND = 15;
-export const FLOOD_PER_SECOND = 35;
-export const FLOOD_SECONDS = 2;
-export const DESYNC_CHECKS = 3;
+/** TGS's thresholds, set in the admin panel. */
+export interface TgsSettings {
+  /** TGS-101: a burst worth a marker, and a flood that disconnects. */
+  spikePerSecond: number;
+  floodPerSecond: number;
+  floodSeconds: number;
+  /** TGS-102: desync checks in a row before a disconnection. */
+  desyncChecks: number;
+  /**
+   * TGS-103: minutes two players must share a border without a single
+   * attack between them, for players of the same clan and for any two.
+   */
+  crossTeamSameClanMinutes: number;
+  crossTeamAnyoneMinutes: number;
+  /** TGS-104: gifts to the same rival that cancel a ranked game. */
+  rankedGifts: number;
+  /**
+   * TGS-105: commands looked at for the rhythm, the minutes they may spread
+   * over, and the variation of their gaps under which no human plays.
+   */
+  rhythmWindow: number;
+  rhythmMinMinutes: number;
+  rhythmMaxMinutes: number;
+  rhythmMaxVariation: number;
+}
+
+/** Used until the API sends the admin panel's values. */
+export const DEFAULT_TGS_SETTINGS: Readonly<TgsSettings> = {
+  spikePerSecond: 15,
+  floodPerSecond: 35,
+  floodSeconds: 2,
+  desyncChecks: 3,
+  crossTeamSameClanMinutes: 8,
+  crossTeamAnyoneMinutes: 15,
+  rankedGifts: 3,
+  rhythmWindow: 120,
+  rhythmMinMinutes: 2,
+  rhythmMaxMinutes: 6,
+  rhythmMaxVariation: 0.08,
+};
+
+/** The range each threshold must stay in; a value outside it is ignored. */
+export const TGS_SETTING_LIMITS: Record<keyof TgsSettings, [number, number]> = {
+  spikePerSecond: [5, 100],
+  floodPerSecond: [10, 200],
+  floodSeconds: [1, 30],
+  desyncChecks: [1, 20],
+  crossTeamSameClanMinutes: [1, 120],
+  crossTeamAnyoneMinutes: [1, 120],
+  rankedGifts: [1, 50],
+  rhythmWindow: [20, 1000],
+  rhythmMinMinutes: [1, 60],
+  rhythmMaxMinutes: [1, 120],
+  rhythmMaxVariation: [0.001, 0.5],
+};
+
 /**
- * TGS-103: minutes two players must share a border without a single attack
- * between them, for players of the same clan and for any two players.
+ * The admin panel's thresholds as the API sent them, each one checked
+ * against its range; anything missing or out of range keeps `base`.
  */
-export const CROSS_TEAM_MINUTES = { sameClan: 8, anyone: 15 };
+export function parseTgsSettings(
+  raw: unknown,
+  base: Readonly<TgsSettings> = DEFAULT_TGS_SETTINGS,
+): TgsSettings {
+  const out = { ...base };
+  if (typeof raw !== "object" || raw === null) return out;
+  const given = raw as Record<string, unknown>;
+  for (const key of Object.keys(TGS_SETTING_LIMITS) as (keyof TgsSettings)[]) {
+    const value = given[key];
+    const [min, max] = TGS_SETTING_LIMITS[key];
+    if (typeof value === "number" && value >= min && value <= max) {
+      out[key] = value;
+    }
+  }
+  if (out.rhythmMaxMinutes < out.rhythmMinMinutes) {
+    out.rhythmMaxMinutes = out.rhythmMinMinutes;
+  }
+  return out;
+}
+
 const TICKS_PER_MINUTE = 600;
 
 /** A player of the match, as TGS-103 needs them. */
@@ -80,13 +155,14 @@ export interface CrossTeamSuspicion {
 
 /**
  * The pairs of a free-for-all match that look like cross-teaming, longest
- * first: neighbours for at least CROSS_TEAM_MINUTES with no attack between
+ * first: neighbours for at least crossTeam*Minutes with no attack between
  * them. Read from the end-of-match stats, which the players' simulations
  * agreed on by majority (the winner vote), never from a single client.
  */
 export function crossTeamSuspicions(
   players: readonly TgsPlayer[],
   stats: AllPlayersStats,
+  settings: Readonly<TgsSettings> = DEFAULT_TGS_SETTINGS,
 ): CrossTeamSuspicion[] {
   const byID = new Map(players.map((p) => [p.clientID, p]));
   const found: CrossTeamSuspicion[] = [];
@@ -101,8 +177,8 @@ export function crossTeamSuspicions(
         player.clanTag.toUpperCase() === other.clanTag?.toUpperCase();
       const minutes = Math.floor(n.ticks / TICKS_PER_MINUTE);
       const needed = sameClan
-        ? CROSS_TEAM_MINUTES.sameClan
-        : CROSS_TEAM_MINUTES.anyone;
+        ? settings.crossTeamSameClanMinutes
+        : settings.crossTeamAnyoneMinutes;
       if (minutes < needed) continue;
       found.push({
         a: player.clientID,
@@ -180,11 +256,12 @@ export function sameNetworkGroups(
 }
 
 /**
- * The admin panel's 1-click switch, as this worker last heard it from the
- * API (TgsStatusPoller). On until told otherwise.
+ * The admin panel's 1-click switch and thresholds, as this worker last
+ * heard them from the API (TgsStatusPoller). On until told otherwise.
  */
 export class TgsSwitch {
   private enabled = true;
+  private current: TgsSettings = { ...DEFAULT_TGS_SETTINGS };
 
   isEnabled(): boolean {
     return this.enabled;
@@ -193,7 +270,19 @@ export class TgsSwitch {
   set(enabled: boolean): void {
     this.enabled = enabled;
   }
+
+  settings(): Readonly<TgsSettings> {
+    return this.current;
+  }
+
+  /** The API's thresholds; invalid ones keep their current value. */
+  setSettings(raw: unknown): void {
+    this.current = parseTgsSettings(raw, this.current);
+  }
 }
+
+/** What a watch reads of the switch. */
+export type TgsControls = Pick<TgsSwitch, "isEnabled" | "settings">;
 
 export const tgsSwitch = new TgsSwitch();
 
@@ -203,7 +292,7 @@ const MAX_MARKERS = 500;
 interface RateWindow {
   second: number;
   count: number;
-  // Consecutive past seconds above FLOOD_PER_SECOND.
+  // Consecutive past seconds above floodPerSecond.
   floodSeconds: number;
 }
 
@@ -217,7 +306,7 @@ export class TgsMonitor {
   private cancelled: TgsReport["cancelled"];
 
   constructor(
-    private readonly switch_: Pick<TgsSwitch, "isEnabled"> = tgsSwitch,
+    private readonly switch_: TgsControls = tgsSwitch,
     private readonly now: () => number = Date.now,
   ) {}
 
@@ -227,6 +316,8 @@ export class TgsMonitor {
    */
   observeIntent(clientID: ClientID, turn: number): TgsKickCode | null {
     if (!this.switch_.isEnabled()) return null;
+    const { spikePerSecond, floodPerSecond, floodSeconds } =
+      this.switch_.settings();
     const second = Math.floor(this.now() / 1000);
     let w = this.rates.get(clientID);
     if (w === undefined) {
@@ -236,7 +327,7 @@ export class TgsMonitor {
     if (second !== w.second) {
       // The second that just ended: marked when it was a burst, and counted
       // toward a flood only if it was one and this second follows it.
-      if (w.count > SPIKE_PER_SECOND) {
+      if (w.count > spikePerSecond) {
         this.mark({
           turn,
           clientID,
@@ -244,21 +335,21 @@ export class TgsMonitor {
           value: w.count,
         });
       }
-      const flooded = w.count > FLOOD_PER_SECOND && second === w.second + 1;
+      const flooded = w.count > floodPerSecond && second === w.second + 1;
       w.floodSeconds = flooded ? w.floodSeconds + 1 : 0;
       w.second = second;
       w.count = 0;
     }
     w.count++;
-    // More than FLOOD_SECONDS whole seconds of flood, and the current one
+    // More than floodSeconds whole seconds of flood, and the current one
     // flooding too.
-    if (w.floodSeconds >= FLOOD_SECONDS && w.count > FLOOD_PER_SECOND) {
+    if (w.floodSeconds >= floodSeconds && w.count > floodPerSecond) {
       this.mark({ turn, clientID, anomaly: "TGS_MACRO_SPIKE", value: w.count });
       return this.incident(
         clientID,
         TGS_FLOOD_CODE,
         turn,
-        `${w.count} intents/s after ${w.floodSeconds} s above ${FLOOD_PER_SECOND}/s`,
+        `${w.count} intents/s after ${w.floodSeconds} s above ${floodPerSecond}/s`,
       );
     }
     return null;
@@ -266,7 +357,7 @@ export class TgsMonitor {
 
   /**
    * Called with each desync check's verdict. Returns the clients to
-   * disconnect: those out of step DESYNC_CHECKS checks in a row while most
+   * disconnect: those out of step desyncChecks checks in a row while most
    * players agree (when most disagree, the fault is nobody's in particular
    * and nobody is disconnected).
    */
@@ -276,6 +367,7 @@ export class TgsMonitor {
     outOfSync: readonly ClientID[],
   ): ClientID[] {
     if (!this.switch_.isEnabled()) return [];
+    const { desyncChecks } = this.switch_.settings();
     const minority = outOfSync.length * 2 < activeClients.length;
     const out = new Set(outOfSync);
     const toDisconnect: ClientID[] = [];
@@ -287,7 +379,7 @@ export class TgsMonitor {
       const streak = (this.desyncStreaks.get(id) ?? 0) + 1;
       this.desyncStreaks.set(id, streak);
       this.mark({ turn, clientID: id, anomaly: "TGS_DESYNC", value: streak });
-      if (streak >= DESYNC_CHECKS) {
+      if (streak >= desyncChecks) {
         this.desyncStreaks.delete(id);
         this.incident(
           id,
@@ -313,7 +405,11 @@ export class TgsMonitor {
     if (!this.switch_.isEnabled()) return;
     const names = new Map(players.map((p) => [p.clientID, p]));
     const partners = new Map<ClientID, string[]>();
-    for (const s of crossTeamSuspicions(players, stats)) {
+    for (const s of crossTeamSuspicions(
+      players,
+      stats,
+      this.switch_.settings(),
+    )) {
       for (const [self, other] of [
         [s.a, s.b],
         [s.b, s.a],

@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
-  DESYNC_CHECKS,
+  DEFAULT_TGS_SETTINGS,
   TGS_DESYNC_CODE,
   TGS_FLOOD_CODE,
   TgsMonitor,
   TgsSwitch,
 } from "../../src/server/Tgs";
+
+const DESYNC_CHECKS = DEFAULT_TGS_SETTINGS.desyncChecks;
 
 /** A monitor on a clock the test moves. */
 function setup(enabled = true) {

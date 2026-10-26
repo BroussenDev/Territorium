@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { AllPlayersStats } from "../../src/core/Schemas";
 import {
-  CROSS_TEAM_MINUTES,
   crossTeamSuspicions,
+  DEFAULT_TGS_SETTINGS,
   TGS_CROSS_TEAM_CODE,
   TgsMonitor,
   TgsSwitch,
@@ -10,6 +10,10 @@ import {
 } from "../../src/server/Tgs";
 
 const MIN = 600; // ticks a minute
+const CROSS_TEAM_MINUTES = {
+  sameClan: DEFAULT_TGS_SETTINGS.crossTeamSameClanMinutes,
+  anyone: DEFAULT_TGS_SETTINGS.crossTeamAnyoneMinutes,
+};
 
 const players: TgsPlayer[] = [
   { clientID: "AAAAAAAA", username: "Alice", clanTag: "WOLF" },
