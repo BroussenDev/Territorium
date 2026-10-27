@@ -52,6 +52,7 @@ import { showInGameAlert } from "./InGameModal";
 import { JoinLobbyModal } from "./JoinLobbyModal";
 import { PublicLobbySocket } from "./LobbySocket";
 import { JoinLobbyEvent } from "./Main";
+import { consumePlayAgain, PlayAgainTarget } from "./PlayAgain";
 import {
   backendUnreachableConfirmed,
   isPinnedToAVersion,
@@ -287,6 +288,9 @@ export function reportMultiplayerRefusal(backendOutage: boolean): void {
  * Exported for tests and kept free of component state, like
  * shouldBlockMultiplayerAction above.
  */
+// How long "play again" waits for a lobby of its type to show up.
+const PLAY_AGAIN_WAIT_MS = 30_000;
+
 export function joinIsGateable(lobby: JoinLobbyEvent): boolean {
   return (
     lobby.gameStartInfo?.config.gameType !== GameType.Singleplayer &&
@@ -364,6 +368,10 @@ export class GameModeSelector extends LitElement {
   private retryCooldownTimer: number | undefined;
   // An update/drain signal arrived during a lobby wait; prompt on leave-lobby.
   private updateDeferred = false;
+  // "Play again" from the end-of-game screen: the lobby type to join as soon
+  // as the feed shows one, given up after PLAY_AGAIN_WAIT_MS.
+  private playAgain: PlayAgainTarget | null = null;
+  private playAgainUntil = 0;
 
   private lobbySocket = new PublicLobbySocket(
     (lobbies) => this.handleLobbiesUpdate(lobbies),
@@ -467,6 +475,13 @@ export class GameModeSelector extends LitElement {
     document.addEventListener("join-lobby", this.onJoinLobby);
     document.addEventListener("leave-lobby", this.onLeaveLobby);
     document.addEventListener("versus-play", this.onVersusPlay);
+    this.playAgain = consumePlayAgain();
+    this.playAgainUntil = Date.now() + PLAY_AGAIN_WAIT_MS;
+    if (this.playAgain === "solo") {
+      this.playAgain = null;
+      // After the first render, once the username has been validated.
+      setTimeout(() => this.openSinglePlayerModal(), 0);
+    }
     void fetchRankedSeason().then((season) => {
       if (season) this.rankedSeason = season;
     });
@@ -668,6 +683,7 @@ export class GameModeSelector extends LitElement {
       }),
     );
     this.requestUpdate();
+    this.joinPendingPlayAgain(lobbies);
 
     const allGames = Object.values(lobbies.games ?? {}).flat();
     for (const game of allGames) {
@@ -675,6 +691,19 @@ export class GameModeSelector extends LitElement {
         this.requestUpdate(),
       );
     }
+  }
+
+  private joinPendingPlayAgain(lobbies: PublicGames) {
+    const type = this.playAgain;
+    if (type === null || type === "solo") return;
+    if (Date.now() > this.playAgainUntil || this.inLobby) {
+      this.playAgain = null;
+      return;
+    }
+    const lobby = lobbies.games?.[type]?.[0];
+    if (lobby === undefined) return;
+    this.playAgain = null;
+    this.validateAndJoin(lobby);
   }
 
   render() {

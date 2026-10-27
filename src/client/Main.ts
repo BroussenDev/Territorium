@@ -173,6 +173,7 @@ import {
 } from "./utilities/DisableSafariPinchZoom";
 
 import "./ChallengesModal";
+import { rememberPublicJoin } from "./PlayAgain";
 import { isSteamLocked, unlockSteamForAdmin } from "./SteamLaunch";
 import "./TournamentMatchBanner";
 import "./TournamentsModal";
@@ -612,6 +613,10 @@ class Client {
     });
 
     document.addEventListener("join-lobby", (event) => {
+      const publicType = event.detail.publicLobbyInfo?.publicGameType;
+      if (event.detail.source === "public" && publicType !== undefined) {
+        rememberPublicJoin(event.detail.gameID, publicType);
+      }
       // A rejected handshake (Turnstile alerts then rejects) never assigns
       // lobbyHandle, so nothing downstream clears the "lobby" presence
       // emitted at the top of the join -- friends would keep being offered a

@@ -5,6 +5,10 @@ import {
   survivalReport,
   type WinModal,
 } from "../../../../src/client/hud/layers/WinModal";
+import {
+  consumePlayAgain,
+  rememberPublicJoin,
+} from "../../../../src/client/PlayAgain";
 import { SendWinnerEvent } from "../../../../src/client/Transport";
 import type { GameView } from "../../../../src/client/view";
 import { EventBus } from "../../../../src/core/EventBus";
@@ -75,6 +79,8 @@ function makeGame(opts: {
       hasSpawned: () => true,
       team: () => opts.myTeam ?? null,
       clientID: () => opts.myClientID ?? null,
+      smallID: () => 1,
+      id: () => "me",
     }),
     inSpawnPhase: () => false,
     // Off the one-second recap boundary: these tests are about the win.
@@ -86,6 +92,7 @@ function makeGame(opts: {
       gameConfig: () => ({ rankedType: undefined, gameType: opts.gameType }),
       numSpawnPhaseTurns: () => 100,
       isSurvivalMode: () => opts.survival ?? false,
+      isReplay: () => false,
     }),
     // A Survival defense: Ann (smallID 1) took 3 invaders and Bo (2) one,
     // holding 250 of 1000 land tiles; one of the two warlords fell.
@@ -285,16 +292,16 @@ describe("WinModal tick win handling", () => {
       const exit = () =>
         modal!.querySelector("o-button[data-win-exit]") as HTMLElement;
       expect(exit().hasAttribute("disable")).toBe(true);
-      expect(exit().title).toBe("win_modal.exit (5)");
+      expect(exit().title).toBe("win_modal.leave_game (5)");
 
       await vi.advanceTimersByTimeAsync(4000);
       await modal!.updateComplete;
-      expect(exit().title).toBe("win_modal.exit (1)");
+      expect(exit().title).toBe("win_modal.leave_game (1)");
 
       await vi.advanceTimersByTimeAsync(1000);
       await modal!.updateComplete;
       expect(exit().hasAttribute("disable")).toBe(false);
-      expect(exit().title).toBe("win_modal.exit");
+      expect(exit().title).toBe("win_modal.leave_game");
     } finally {
       vi.useRealTimers();
     }
@@ -316,6 +323,85 @@ describe("WinModal tick win handling", () => {
     );
     const link = (modal as unknown as { replayLink: string }).replayLink;
     expect(link).toBe("https://territorium.test/w0/game/amDoEPS2Dz");
+  });
+
+  it("sends a public game's players straight to the next lobby of its list", async () => {
+    rememberPublicJoin("amDoEPS2Dz", "team");
+    setup(
+      makeGame({
+        winner: ["team", "Blue"],
+        myTeam: "Blue",
+        gameType: "Public",
+      }),
+    );
+    document.body.appendChild(modal!);
+    modal!.tick();
+    await vi.waitFor(() =>
+      expect(modal!.querySelector("[data-win-play-again]")).not.toBeNull(),
+    );
+    (modal!.querySelector("[data-win-play-again]") as HTMLElement).click();
+    expect(consumePlayAgain()).toBe("team");
+  });
+
+  it("offers no play again for a private lobby", async () => {
+    sessionStorage.clear();
+    setup(
+      makeGame({
+        winner: ["team", "Blue"],
+        myTeam: "Blue",
+        gameType: "Private",
+      }),
+    );
+    document.body.appendChild(modal!);
+    modal!.tick();
+    await vi.waitFor(() => expect(modal!.isVisible).toBe(true));
+    await modal!.updateComplete;
+    expect(modal!.querySelector("[data-win-play-again]")).toBeNull();
+  });
+
+  it("shows the finishing place of a free-for-all", async () => {
+    const game = makeGame({ winner: ["player", "w"], myClientID: "me" });
+    const base = game.config();
+    const players = [
+      { tiles: 0, alive: false, death: 3, me: true },
+      { tiles: 500, alive: true, death: null, client: "w" },
+      { tiles: 0, alive: false, death: 2 },
+    ].map((p) => ({
+      type: () => "HUMAN",
+      clientID: () => p.client ?? null,
+      isAlive: () => p.alive,
+      hasSpawned: () => true,
+      numTilesOwned: () => p.tiles,
+      deathPosition: () => p.death,
+    }));
+    Object.assign(game, {
+      myPlayer: () => players[0],
+      players: () => players,
+      playerByClientID: () => ({
+        isPlayer: () => true,
+        clientID: () => "w",
+        displayName: () => "W",
+      }),
+      config: () => ({
+        ...base,
+        gameConfig: () => ({ gameMode: "Free For All" }),
+      }),
+    });
+    Object.assign(players[0], {
+      team: () => null,
+      smallID: () => 1,
+      id: () => "me",
+    });
+    setup(game);
+    document.body.appendChild(modal!);
+    modal!.tick();
+    await vi.waitFor(() =>
+      expect(modal!.querySelector("[data-win-place]")).not.toBeNull(),
+    );
+    expect(translateText).toHaveBeenCalledWith("win_modal.place_aria", {
+      place: 3,
+      total: 3,
+    });
   });
 
   it("offers no replay link for a guest's singleplayer game", async () => {

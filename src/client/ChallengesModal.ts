@@ -52,6 +52,11 @@ const TASKS = new Set([
   "mirv",
 ]);
 
+/** The translation suffix of a challenge's task ("challenges.task_<key>"). */
+export function challengeTaskKey(template: string): string {
+  return TASKS.has(template) ? template : "other";
+}
+
 // Ten ticks a second: a solo time as m:ss.
 export function formatTicks(ticks: number): string {
   const seconds = Math.floor(ticks / 10);
@@ -343,7 +348,7 @@ export class ChallengesModal extends BaseModal {
   }
 
   private renderTask(c: MultiChallenge) {
-    const task = TASKS.has(c.template) ? c.template : "other";
+    const task = challengeTaskKey(c.template);
     const done = c.completed;
     const shown = done ? c.target : Math.min(c.progress, c.target);
     const conditions = [

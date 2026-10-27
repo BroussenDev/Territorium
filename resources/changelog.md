@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.164
+
+- New end-of-game screen: your finishing place counts down to "#24 of 50", new personal records are celebrated, and three surprise highlights from your game change every time (MIRVs launched, biggest attack, rivals wiped out, richest moment and more)
+- The challenge closest to done is shown as your next goal
+- Three store items you don't own yet, of different kinds
+- "Play again" puts you straight into the next lobby of the same mode (or a new solo game, or back in the ranked queue); "Watch the end" and "Leave game" sit below
+
 ## v0.1.163
 
 🛡️ **Admins**

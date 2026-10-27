@@ -5,6 +5,7 @@ import {
   getGamesPlayed,
   getTranslatedPlayerTeamLabel,
   homeHref,
+  renderNumber,
   renderTroops,
   showToast,
   translateText,
@@ -12,16 +13,27 @@ import {
 import { assetUrl } from "../../../core/AssetUrls";
 import { Pattern } from "../../../core/CosmeticSchemas";
 import { EventBus } from "../../../core/EventBus";
-import { ColoredTeams, GameType, PlayerType } from "../../../core/game/Game";
-import { GameUpdateType } from "../../../core/game/GameUpdates";
+import {
+  ColoredTeams,
+  GameMode,
+  GameType,
+  PlayerType,
+} from "../../../core/game/Game";
+import {
+  ConquestUpdate,
+  GameUpdateType,
+  UnitUpdate,
+} from "../../../core/game/GameUpdates";
 import { SURVIVAL_WAVES } from "../../../core/game/Survival";
 import { responseHasLinkedIdentity } from "../../AccountIdentity";
 import {
+  fetchChallenges,
   fetchMyGameResult,
   getUserMe,
   invalidateUserMe,
   MyGameResult,
 } from "../../Api";
+import { challengeTaskKey } from "../../ChallengesModal";
 import { ClientEnv } from "../../ClientEnv";
 import "../../components/CosmeticCard";
 import { cosmeticSelectionLabel } from "../../components/CosmeticPresentation";
@@ -39,9 +51,26 @@ import { isDemo, openWishlist, recordDemoGame } from "../../Demo";
 import { countDemo } from "../../DemoStats";
 import { isDesktopShell } from "../../DesktopShell";
 import { navigateTo } from "../../PageTransition";
+import {
+  joinedPublicType,
+  PlayAgainTarget,
+  requestPlayAgain,
+} from "../../PlayAgain";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
+import {
+  compareRecords,
+  finishPlace,
+  GameHighlights,
+  HighlightKey,
+  loadRecords,
+  MIN_PLAYERS_FOR_PLACE_RECORD,
+  nextGoal,
+  pickHighlights,
+  RecordKey,
+  saveRecords,
+} from "../EndScreen";
 import { GameRecap, mainAttacker } from "../GameRecap";
 import { reportGameEnd } from "./SteamAchievementsController";
 
@@ -92,6 +121,34 @@ export class WinModal extends LitElement implements Controller {
 
   private rand = Math.random();
 
+  private readonly highlights = new GameHighlights();
+  private winnerClientID: string | null = null;
+  private recordsSaved = false;
+  private goalRequested = false;
+
+  // The finishing place, counted down from the last place to the real one.
+  @state()
+  private place: { place: number; total: number } | null = null;
+
+  @state()
+  private shownPlace = 0;
+
+  @state()
+  private pickedHighlights: { key: HighlightKey; value: number }[] = [];
+
+  @state()
+  private beatenRecords: RecordKey[] = [];
+
+  @state()
+  private goal: {
+    task: string;
+    target: number;
+    progress: number;
+    period: string;
+  } | null = null;
+
+  private placeTimer: ReturnType<typeof setInterval> | null = null;
+
   // Override to prevent shadow DOM creation
   createRenderRoot() {
     return this;
@@ -105,61 +162,178 @@ export class WinModal extends LitElement implements Controller {
     return html`
       <div
         class="${this.isVisible
-          ? "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-plate-800/70 p-4 md:p-6 shrink-0 rounded-lg z-[10010] shadow-2xl backdrop-blur-xs text-white w-[min(90vw,700px)] max-w-[90%] max-h-[90dvh] overflow-hidden flex flex-col"
+          ? "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-plate-800/85 p-4 md:p-6 shrink-0 rounded-2xl border border-white/10 z-[10010] shadow-2xl backdrop-blur-xs text-white w-[min(92vw,720px)] max-h-[92dvh] overflow-hidden flex flex-col"
           : "hidden"}"
+        data-end-screen
       >
-        <h2 class="m-0 mb-4 text-[26px] text-center text-white shrink-0">
+        <h2 class="m-0 text-[26px] text-center text-white shrink-0">
           ${this._title || ""}
         </h2>
-        <div class="min-h-0 flex-1 overflow-y-auto pr-0.5">
-          ${this.renderDemoWishlist()} ${this.renderGameResult()}
-          ${this.renderReplayShare()} ${this.renderSurvivalReport()}
-          ${this.renderRecap()} ${isDemo() ? null : this.innerHtml()}
+        ${this.renderPlace()}
+        <div class="mt-3 min-h-0 flex-1 overflow-y-auto pr-0.5">
+          ${this.renderRecords()} ${this.renderDemoWishlist()}
+          ${this.renderGameResult()} ${this.renderGoal()}
+          ${this.renderSurvivalReport()} ${this.renderRecap()}
+          ${this.renderHighlights()} ${this.renderReplayShare()}
+          ${isDemo() ? null : this.innerHtml()}
           <steam-promo
             variant="compact"
             campaign="winmodal"
             class="mt-3 block [&:empty]:hidden"
           ></steam-promo>
         </div>
-        <div class="mt-4 flex justify-between gap-2.5 shrink-0">
-          <o-button
-            variant="primary"
-            width="block"
-            class="flex-1"
-            data-win-exit
-            .title=${this.withCountdown(translateText("win_modal.exit"))}
-            ?disable=${this.closeCountdown > 0}
-            @click=${this._handleExit}
-          ></o-button>
-          ${this.isRankedGame
-            ? html`
-                <o-button
-                  variant="primary"
-                  width="block"
-                  class="flex-1"
-                  .title=${this.withCountdown(
-                    translateText("win_modal.requeue"),
-                  )}
-                  ?disable=${this.closeCountdown > 0}
-                  @click=${this._handleRequeue}
-                ></o-button>
-              `
-            : null}
-          <o-button
-            variant="primary"
-            width="block"
-            class="flex-1"
-            .title=${this.withCountdown(
-              this.game?.myPlayer()?.isAlive()
-                ? translateText("win_modal.keep")
-                : translateText("win_modal.spectate"),
-            )}
-            ?disable=${this.closeCountdown > 0}
-            @click=${this.hide}
-          ></o-button>
-        </div>
+        ${this.renderActions()}
       </div>
     `;
+  }
+
+  private renderActions() {
+    const target = this.playAgainTarget();
+    const me = this.game?.myPlayer();
+    const watchLabel =
+      me?.hasSpawned() && !me.isAlive() && !this.game.gameOver()
+        ? translateText("win_modal.watch_end")
+        : me?.isAlive()
+          ? translateText("win_modal.keep")
+          : translateText("win_modal.spectate");
+    return html`<div class="mt-4 flex flex-col gap-2 shrink-0">
+      ${target !== null
+        ? html`<button
+            type="button"
+            data-win-play-again
+            class="w-full rounded-xl bg-emerald-600 px-4 py-3 font-display text-lg font-bold text-white shadow-lg transition-colors hover:bg-emerald-500 active:bg-emerald-700"
+            @click=${() => this._handlePlayAgain(target)}
+          >
+            ${translateText("win_modal.play_again")}
+          </button>`
+        : null}
+      <div class="flex gap-2">
+        <o-button
+          variant="secondary"
+          width="block"
+          class="flex-1"
+          data-win-watch
+          .title=${this.withCountdown(watchLabel)}
+          ?disable=${this.closeCountdown > 0}
+          @click=${this.hide}
+        ></o-button>
+        <o-button
+          variant="secondary"
+          width="block"
+          class="flex-1"
+          data-win-exit
+          .title=${this.withCountdown(translateText("win_modal.leave_game"))}
+          ?disable=${this.closeCountdown > 0}
+          @click=${this._handleExit}
+        ></o-button>
+      </div>
+    </div>`;
+  }
+
+  // "#24 of 50": the place counts down to the real one as the screen opens.
+  private renderPlace() {
+    if (this.place === null) return null;
+    const { place, total } = this.place;
+    const color =
+      this.shownPlace === 1
+        ? "text-amber-300"
+        : this.shownPlace <= 3
+          ? "text-emerald-300"
+          : "text-white";
+    return html`<div
+      data-win-place
+      class="mt-2 flex items-baseline justify-center gap-3 shrink-0"
+      role="img"
+      aria-label=${translateText("win_modal.place_aria", { place, total })}
+    >
+      <span
+        class="font-display text-6xl font-black tabular-nums leading-none ${color}"
+        >#${this.shownPlace}</span
+      >
+      <span class="text-lg text-white/70"
+        >${translateText("win_modal.place_of", { total })}</span
+      >
+    </div>`;
+  }
+
+  private renderRecords() {
+    if (this.beatenRecords.length === 0) return null;
+    return html`<div data-win-records class="mb-3 flex flex-wrap gap-2">
+      ${this.beatenRecords.map(
+        (key) =>
+          html`<div
+            class="flex flex-1 min-w-[12rem] items-center gap-2 rounded-xl border border-amber-300/50 bg-amber-400/15 px-3 py-2"
+          >
+            <img
+              src=${assetUrl("images/MedalIcon.svg")}
+              alt=""
+              aria-hidden="true"
+              class="size-6"
+            />
+            <div>
+              <div class="text-xs font-bold text-amber-200">
+                ${translateText("win_modal.record_new")}
+              </div>
+              <div class="text-sm text-white">
+                ${translateText(`win_modal.record_${key}`)}
+              </div>
+            </div>
+          </div>`,
+      )}
+    </div>`;
+  }
+
+  private renderHighlights() {
+    if (this.pickedHighlights.length === 0) return null;
+    return html`<div data-win-highlights class="mb-4">
+      <h3 class="mb-2 text-center text-lg font-semibold text-white">
+        ${translateText("win_modal.highlights_title")}
+      </h3>
+      <div class="grid gap-2 sm:grid-cols-3">
+        ${this.pickedHighlights.map(
+          (h) =>
+            html`<div
+              class="rounded-xl border border-emerald-400/25 bg-emerald-500/10 px-3 py-3 text-center"
+            >
+              <div class="text-2xl font-bold text-emerald-200">
+                ${highlightValue(h.key, h.value)}
+              </div>
+              <div class="mt-1 text-sm text-white/80">
+                ${translateText(`win_modal.highlight_${h.key}`)}
+              </div>
+            </div>`,
+        )}
+      </div>
+    </div>`;
+  }
+
+  private renderGoal() {
+    const g = this.goal;
+    if (g === null) return null;
+    const done = Math.min(g.progress, g.target);
+    const pct = Math.round((100 * done) / g.target);
+    return html`<div
+      data-win-goal
+      class="mb-4 rounded-xl border border-white/10 bg-black/30 px-3 py-2"
+    >
+      <div class="flex items-baseline justify-between gap-2 text-sm">
+        <span class="font-bold text-white"
+          >${translateText("win_modal.next_goal", {
+            period: translateText(`challenges.${g.period}`),
+          })}</span
+        >
+        <span class="tabular-nums text-white/70">${done}/${g.target}</span>
+      </div>
+      <div class="mt-0.5 text-sm text-white/80">
+        ${translateText(`challenges.task_${g.task}`, { n: g.target })}
+      </div>
+      <div class="mt-2 h-2 overflow-hidden rounded-full bg-white/10">
+        <div
+          class="h-full rounded-full bg-emerald-400"
+          style="width:${pct}%"
+        ></div>
+      </div>
+    </div>`;
   }
 
   private renderReplayShare() {
@@ -438,7 +612,7 @@ export class WinModal extends LitElement implements Controller {
     return html`
       <div class="text-center mb-6 bg-black/30 p-2.5 rounded-sm">
         <h3 class="text-xl font-semibold text-white mb-3">
-          ${translateText("win_modal.support_openfront")}
+          ${translateText("win_modal.shop_title")}
         </h3>
         ${isDesktopShell()
           ? null
@@ -463,7 +637,7 @@ export class WinModal extends LitElement implements Controller {
     const cosmetics = await fetchCosmetics();
 
     const purchasable = resolveCosmetics(cosmetics, me, null).filter(
-      (r) => r.type === "pattern" && r.relationship === "purchasable",
+      (r) => SHOP_TYPES.has(r.type) && r.relationship === "purchasable",
     );
 
     if (purchasable.length === 0) {
@@ -471,14 +645,22 @@ export class WinModal extends LitElement implements Controller {
       return;
     }
 
-    // Shuffle the array and take patterns. Will always be 3 wide to allow scrolling
-    const shuffled = [...purchasable].sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, Math.min(3, shuffled.length));
+    // Three items the player doesn't own yet, of different kinds when the
+    // store has them, so each game shows something new.
+    const shuffled = pickHighlights(purchasable, purchasable.length);
+    const selected = [
+      ...shuffled.filter(
+        (r, i) => shuffled.findIndex((o) => o.type === r.type) === i,
+      ),
+      ...shuffled,
+    ]
+      .filter((r, i, all) => all.indexOf(r) === i)
+      .slice(0, 3);
 
     this.patternContent = html`
       <div class="flex gap-4 flex-nowrap justify-start items-start">
         ${selected.map((resolved) => {
-          // Only patterns were selected above.
+          // Every kind kept above carries a price and a rarity.
           const pattern = resolved.cosmetic as Pattern | null;
           return html`
             <div data-win-cosmetic-promo class="flex w-40 flex-col gap-2">
@@ -517,6 +699,7 @@ export class WinModal extends LitElement implements Controller {
     }
     this.isRankedGame =
       this.game.config().gameConfig().rankedType !== undefined;
+    this.prepareEndScreen();
     this.isVisible = true;
     this.startCloseCountdown();
     this.requestUpdate();
@@ -527,6 +710,127 @@ export class WinModal extends LitElement implements Controller {
       return;
     }
     this.requestUpdate();
+  }
+
+  // Works out what the screen tells: the place, the highlights, the records
+  // beaten. Runs at each show (elimination, then the game's end).
+  private prepareEndScreen() {
+    const config = this.game.config();
+    const myPlayer = this.game.myPlayer();
+    const placed =
+      config.gameConfig().gameMode === GameMode.FFA && !config.isSurvivalMode()
+        ? finishPlace(
+            this.game
+              .players()
+              .filter((p) => p.type() !== PlayerType.Bot)
+              .map((p) => ({
+                isMe: p === myPlayer,
+                isWinner:
+                  this.winnerClientID !== null &&
+                  p.clientID() === this.winnerClientID,
+                alive: p.isAlive(),
+                spawned: p.hasSpawned(),
+                tiles: p.numTilesOwned(),
+                deathPosition: p.deathPosition(),
+              })),
+          )
+        : null;
+    if (placed !== null && placed.place !== this.place?.place) {
+      this.place = placed;
+      this.animatePlace(placed);
+    }
+    if (this.pickedHighlights.length === 0) {
+      this.pickedHighlights = pickHighlights(this.highlights.candidates(), 3);
+    }
+    if (!this.recordsSaved && this.recap !== null && myPlayer?.hasSpawned()) {
+      this.recordsSaved = true;
+      const s = this.recap.summary(myPlayer.isAlive());
+      const { beaten, next } = compareRecords(loadRecords(), {
+        place:
+          placed !== null && placed.total >= MIN_PLAYERS_FOR_PLACE_RECORD
+            ? placed.place
+            : null,
+        peakShare: s.peakShare,
+        survivalSeconds: s.secondsPlayed,
+        eliminations: this.highlights.value("eliminations"),
+        biggestAttack: this.highlights.value("biggest_attack"),
+      });
+      saveRecords(next);
+      this.beatenRecords = beaten;
+    }
+    void this.loadGoal();
+  }
+
+  private animatePlace(placed: { place: number; total: number }) {
+    if (this.placeTimer !== null) clearInterval(this.placeTimer);
+    this.placeTimer = null;
+    const reduced =
+      typeof matchMedia === "function" &&
+      matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || placed.total === placed.place) {
+      this.shownPlace = placed.place;
+      return;
+    }
+    // About a second and a half, whatever the lobby size, slowing down at
+    // the end.
+    const steps = 30;
+    let step = 0;
+    this.shownPlace = placed.total;
+    this.placeTimer = setInterval(() => {
+      step++;
+      const t = 1 - (1 - step / steps) ** 3;
+      this.shownPlace = Math.round(
+        placed.total - (placed.total - placed.place) * t,
+      );
+      if (step >= steps && this.placeTimer !== null) {
+        clearInterval(this.placeTimer);
+        this.placeTimer = null;
+        this.shownPlace = placed.place;
+      }
+    }, 50);
+  }
+
+  // The unfinished challenge closest to done, for signed-in players.
+  private async loadGoal() {
+    if (this.goalRequested) return;
+    this.goalRequested = true;
+    const me = await getUserMe().catch(() => false as const);
+    if (!responseHasLinkedIdentity(me)) return;
+    const data = await fetchChallenges().catch(() => false as const);
+    if (!data) return;
+    const goal = nextGoal(
+      data.challenges.flatMap((c) => (c.kind === "multi" ? [c] : [])),
+    );
+    if (goal === null) return;
+    this.goal = {
+      task: challengeTaskKey(goal.template),
+      target: goal.target,
+      progress: goal.progress,
+      period: goal.period,
+    };
+  }
+
+  // Ranked games go back into the queue, solo games to a new solo game,
+  // public games to the next lobby of the same list. Private lobbies have
+  // their own "next lobby" prompt.
+  private playAgainTarget(): PlayAgainTarget | "ranked" | null {
+    if (this.game === undefined || this.game.config().isReplay()) return null;
+    const config = this.game.config().gameConfig();
+    if (config.rankedType !== undefined) return "ranked";
+    if (config.gameType === GameType.Singleplayer) {
+      return config.gameVariant === "training" ? null : "solo";
+    }
+    return joinedPublicType(this.game.gameID());
+  }
+
+  private _handlePlayAgain(target: PlayAgainTarget | "ranked") {
+    if (target === "ranked") {
+      this._handleRequeue();
+      return;
+    }
+    this.hide();
+    requestPlayAgain(target);
+    navigateTo(homeHref());
   }
 
   hide() {
@@ -575,6 +879,10 @@ export class WinModal extends LitElement implements Controller {
       this.show();
     }
     const updates = this.game.updatesSinceLastTick();
+    this.feedHighlights(
+      updates?.[GameUpdateType.Unit] as UnitUpdate[] | undefined,
+      updates?.[GameUpdateType.ConquestEvent] as ConquestUpdate[] | undefined,
+    );
     const winUpdates = updates?.[GameUpdateType.Win] ?? [];
     winUpdates.forEach((wu) => {
       if (wu.winner !== undefined) {
@@ -622,6 +930,7 @@ export class WinModal extends LitElement implements Controller {
       } else {
         const winner = this.game.playerByClientID(wu.winner[1]);
         if (!winner?.isPlayer()) return;
+        this.winnerClientID = winner.clientID();
         const winnerClient = winner.clientID();
         if (winnerClient !== null) {
           this.eventBus.emit(
@@ -648,6 +957,21 @@ export class WinModal extends LitElement implements Controller {
     });
   }
 
+  private feedHighlights(
+    units: UnitUpdate[] | undefined,
+    conquests: ConquestUpdate[] | undefined,
+  ): void {
+    const me = this.game.myPlayer();
+    if (!me) return;
+    const mine = me.smallID();
+    for (const u of units ?? []) {
+      this.highlights.unit(u.id, u.unitType, u.ownerID, mine);
+    }
+    for (const c of conquests ?? []) {
+      this.highlights.conquest(c.conquerorId === me.id());
+    }
+  }
+
   // One sample per game second of the local player, while they play.
   private sampleRecap(): void {
     const me = this.game.myPlayer();
@@ -658,6 +982,11 @@ export class WinModal extends LitElement implements Controller {
       this.game.ticks() - this.game.config().numSpawnPhaseTurns();
     if (sinceStart % 10 !== 0) return;
     this.recap ??= new GameRecap(this.game.numLandTiles());
+    this.highlights.sample(
+      me.outgoingAttacks().map((a) => a.troops),
+      me.incomingAttacks().map((a) => a.id),
+      Number(me.gold()),
+    );
     this.recap.add({
       second: sinceStart / 10,
       tiles: me.numTilesOwned(),
@@ -709,6 +1038,15 @@ export function survivalReport(game: GameView): {
     warlords: status.bosses.length,
     warlordsDown,
   };
+}
+
+// The store items the end screen may offer: single cosmetics, not bundles.
+const SHOP_TYPES = new Set(["pattern", "skin", "flag", "crown", "effect"]);
+
+function highlightValue(key: HighlightKey, value: number): string {
+  if (key === "biggest_attack") return renderTroops(value);
+  if (key === "peak_gold") return renderNumber(value);
+  return value.toLocaleString();
 }
 
 function clock(seconds: number): string {

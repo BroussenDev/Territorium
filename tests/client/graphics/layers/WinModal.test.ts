@@ -205,7 +205,7 @@ describe("WinModal pattern promotion", () => {
     window.openfrontDesktop = {};
     try {
       const text = await render();
-      expect(text).toContain("win_modal.support_openfront");
+      expect(text).toContain("win_modal.shop_title");
       expect(text).not.toContain("win_modal.territory_pattern");
     } finally {
       delete window.openfrontDesktop;
