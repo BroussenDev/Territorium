@@ -454,6 +454,10 @@ export class MapRenderer {
   setWatchOwner(ownerID: number): void {
     this.renderer?.setWatchOwner(ownerID);
   }
+  /** An admin's prank: this player's name upside down (0 = none). */
+  setFlipOwner(ownerID: number): void {
+    this.renderer?.setFlipOwner(ownerID);
+  }
   setHighlightStructureTypes(unitTypes: string[] | null): void {
     this.renderer?.setHighlightStructureTypes(unitTypes);
   }

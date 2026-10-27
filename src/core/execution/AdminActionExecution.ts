@@ -6,6 +6,20 @@ export const ADMIN_MAX_TROOPS = 1_000_000;
 export const ADMIN_MAX_GOLD = 10_000_000;
 // How long a fake alert stays a scare before the joke is told (10 a second).
 export const FAKE_ALERT_TICKS = 80;
+const ANNOUNCE_MAX = 140;
+
+/** An announcement's text: one line, no control characters, trimmed. */
+export function cleanAnnouncement(text: string | undefined): string {
+  return (
+    (text ?? "")
+      // Control and direction-override characters: removing them is the point.
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u001f\u007f\u200b-\u200f\u202a-\u202e]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, ANNOUNCE_MAX)
+  );
+}
 
 /**
  * An admin's tool from the in-game staff menu (StaffReviewPanel). The game
@@ -21,6 +35,9 @@ export const FAKE_ALERT_TICKS = 80;
  *                            or hydrogen bomb, a huge naval invasion, every
  *                            ally betraying them, the tax collector), then,
  *                            a few seconds later, "false alarm"
+ *   announce                 the admin's message, in large, for everyone
+ *   confetti / flip_name     a burst of confetti over the target's name, or
+ *                            their name upside down for a while, seen by all
  */
 export class AdminActionExecution implements Execution {
   private active = true;
@@ -39,6 +56,20 @@ export class AdminActionExecution implements Execution {
 
   init(mg: Game, ticks: number): void {
     this.mg = mg;
+    if (this.intent.action === "announce") {
+      const text = cleanAnnouncement(this.intent.text);
+      if (text !== "") {
+        mg.displayMessage(
+          "events_display.admin_announce",
+          MessageType.ADMIN_ANNOUNCE,
+          null,
+          undefined,
+          { text },
+        );
+      }
+      this.active = false;
+      return;
+    }
     const target = this.target();
     if (target === null) {
       this.active = false;
@@ -100,6 +131,17 @@ export class AdminActionExecution implements Execution {
       case "fake_tax":
         this.scare("events_display.admin_fake_tax", MessageType.CHAT);
         break;
+      case "confetti":
+      case "flip_name":
+        mg.displayMessage(
+          `admin_effect.${this.intent.action}`,
+          MessageType.ADMIN_EFFECT,
+          null,
+          undefined,
+          { target: target.smallID() },
+        );
+        this.active = false;
+        return;
       case "fake_mirv":
         mg.displayMessage(
           "events_display.mirv_inbound",

@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Fiók beállításai"
   },
+  "admin_effects": {
+    "announce_title": "Üzenet a csapattól"
+  },
   "attack_preview": {
     "all_tiles": "Mind",
     "costs": "{troops} katonába kerül",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "A szövetséged hamarosan lejár a következő játékossal: {name}!",
     "accept_alliance": "Elfogad",
     "accept_peace": "Aláírás",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Minden szövetségesed elárult!",
     "admin_fake_tax": "Az adószedő lefoglalta az összes aranyadat!",
     "admin_false_alarm": "Vaklárma! Semmi sem jött. Egy admin szórakozik.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admin eszközök",
     "alive": "Játékban",
     "allies": "Szövetségesek",
+    "announce": "Közlemény minden játékosnak",
+    "announce_placeholder": "Sok sikert a döntőben!",
+    "announce_send": "Küldés",
+    "confetti": "Konfetti",
     "copied": "Link másolva",
     "copy_link": "Link másolása erre a pillanatra",
     "eliminated": "Kiesett",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Ál-MIRV",
     "fake_nuke": "Ál-atombomba",
     "fake_tax": "Ál-adószedő",
+    "flip_name": "Fejjel lefelé álló név",
     "give_gold": "{n} arany adása",
     "give_troops": "{n} katona adása",
     "go_to": "Ugrás ehhez a játékoshoz",

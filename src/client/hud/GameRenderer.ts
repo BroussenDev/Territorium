@@ -45,6 +45,8 @@ import { ReplayPanel } from "./layers/ReplayPanel";
 import { SettingsModal } from "./layers/SettingsModal";
 import { SpawnTimer } from "./layers/SpawnTimer";
 // Imported for its side effect too: the <staff-review-panel> element.
+import "./layers/AdminEffects";
+import { AdminEffects } from "./layers/AdminEffects";
 import "./layers/StaffReviewPanel";
 import { StaffReviewPanel } from "./layers/StaffReviewPanel";
 import { SteamAchievementsController } from "./layers/SteamAchievementsController";
@@ -198,6 +200,16 @@ export function createRenderer(
   }
   replayPanel.eventBus = eventBus;
   replayPanel.game = game;
+
+  // What an admin's tools show everyone: announcements, pranks.
+  const adminEffects = document.querySelector(
+    "admin-effects",
+  ) as AdminEffects | null;
+  if (adminEffects !== null) {
+    adminEffects.game = game;
+    adminEffects.view = view;
+    adminEffects.transformHandler = transformHandler;
+  }
 
   // A replay opened from a report ticket (?focus=): the staff's review.
   const staffReview = document.querySelector(
@@ -371,6 +383,7 @@ export function createRenderer(
     ),
     new HoverHighlightController(game, eventBus, transformHandler, view),
     ...(staffReview !== null ? [staffReview] : []),
+    ...(adminEffects !== null ? [adminEffects] : []),
     new AttackPreviewController(
       game,
       eventBus,

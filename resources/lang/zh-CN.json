@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "账户设置"
   },
+  "admin_effects": {
+    "announce_title": "团队消息"
+  },
   "attack_preview": {
     "all_tiles": "全部",
     "costs": "消耗 {troops} 兵力",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "你与 {name} 的结盟即将到期！",
     "accept_alliance": "接受",
     "accept_peace": "签署",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "你的所有盟友都背叛了你！",
     "admin_fake_tax": "税吏没收了你所有的金币！",
     "admin_false_alarm": "虚惊一场！什么都没来。是管理员在开玩笑。",
@@ -2852,6 +2856,10 @@
     "admin_tools": "管理员工具",
     "alive": "游戏中",
     "allies": "盟友",
+    "announce": "向所有玩家公告",
+    "announce_placeholder": "决赛加油！",
+    "announce_send": "发送",
+    "confetti": "彩纸",
     "copied": "链接已复制",
     "copy_link": "复制此刻的链接",
     "eliminated": "已淘汰",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "假 MIRV",
     "fake_nuke": "假原子弹",
     "fake_tax": "假税吏",
+    "flip_name": "名字倒置",
     "give_gold": "给予 {n} 金币",
     "give_troops": "给予 {n} 兵力",
     "go_to": "前往该玩家",

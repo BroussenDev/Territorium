@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Impostazioni dell'account"
   },
+  "admin_effects": {
+    "announce_title": "Messaggio dal team"
+  },
   "attack_preview": {
     "all_tiles": "Tutte",
     "costs": "costa {troops} truppe",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "La tua alleanza con {name} sta per scadere!",
     "accept_alliance": "Accettare",
     "accept_peace": "Firma",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Tutti i tuoi alleati ti hanno tradito!",
     "admin_fake_tax": "L'esattore ha sequestrato tutto il tuo oro!",
     "admin_false_alarm": "Falso allarme! Non arrivava niente. Un admin si diverte.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Strumenti admin",
     "alive": "In partita",
     "allies": "Alleati",
+    "announce": "Annuncio a tutti i giocatori",
+    "announce_placeholder": "Buona fortuna per la finale!",
+    "announce_send": "Invia",
+    "confetti": "Coriandoli",
     "copied": "Link copiato",
     "copy_link": "Copia il link a questo momento",
     "eliminated": "Eliminato",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Finto MIRV",
     "fake_nuke": "Finta bomba atomica",
     "fake_tax": "Finto esattore",
+    "flip_name": "Nome capovolto",
     "give_gold": "Dai {n} d'oro",
     "give_troops": "Dai {n} truppe",
     "go_to": "Vai a questo giocatore",

@@ -191,6 +191,8 @@ export class StaffReviewPanel extends LitElement implements Controller {
           send("fake_betrayal"),
         )}
         ${btn(translateText("staff_review.fake_tax"), () => send("fake_tax"))}
+        ${btn(translateText("staff_review.confetti"), () => send("confetti"))}
+        ${btn(translateText("staff_review.flip_name"), () => send("flip_name"))}
       </div>
       <div class="text-xs font-bold text-red-200">
         ${translateText("staff_review.take_away")}
@@ -210,6 +212,46 @@ export class StaffReviewPanel extends LitElement implements Controller {
         ${translateText("staff_review.admin_note")}
       </div>
     </div>`;
+  }
+
+  // An admin's message, shown in large to every player of the game.
+  private renderAnnounce() {
+    const submit = (e: Event) => {
+      e.preventDefault();
+      const input = (e.target as HTMLFormElement).querySelector("input")!;
+      const text = input.value.trim();
+      if (text === "") return;
+      // An announcement has no target; any player of the game stands in.
+      const anyone = this.game.players().find((x) => x.isPlayer());
+      if (!anyone) return;
+      this.eventBus.emit(
+        new SendAdminActionIntentEvent(
+          "announce",
+          anyone.id(),
+          undefined,
+          text,
+        ),
+      );
+      input.value = "";
+    };
+    return html`<form class="flex flex-col gap-1" @submit=${submit}>
+      <label class="text-xs font-bold text-amber-200" for="admin-announce"
+        >${translateText("staff_review.announce")}</label
+      >
+      <div class="flex gap-1.5">
+        <input
+          id="admin-announce"
+          class="min-w-0 flex-1 rounded-md border border-white/15 bg-black/40 px-2 py-1 text-sm text-white"
+          maxlength="140"
+          placeholder=${translateText("staff_review.announce_placeholder")}
+        />
+        <button
+          class="rounded-md bg-amber-500/80 px-2 py-1 text-xs font-bold text-black hover:bg-amber-400"
+        >
+          ${translateText("staff_review.announce_send")}
+        </button>
+      </div>
+    </form>`;
   }
 
   private kick(p: PlayerView) {
@@ -342,6 +384,7 @@ export class StaffReviewPanel extends LitElement implements Controller {
                         </button>`
                       : nothing}
                   `}
+              ${live && this.liveAdmin ? this.renderAnnounce() : nothing}
               ${live
                 ? nothing
                 : html`<button

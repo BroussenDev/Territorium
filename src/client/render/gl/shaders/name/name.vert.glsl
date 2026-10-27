@@ -28,6 +28,7 @@ uniform float uNameScaleFactor;
 uniform float uNameScaleCap;
 uniform float uTroopSizeMultiplier;
 uniform float uHighlightOwnerID;
+uniform float uFlipOwnerID;    // smallID of the player whose name an admin turned upside down (0 = none)
 uniform float uFadeOwnerID;    // smallID of player whose name plate the cursor is over (0 = none)
 uniform float uHoverFadeAlpha; // alpha multiplier applied to that player's name plate
 
@@ -170,7 +171,11 @@ void main() {
 
   vec2 glyphSize = vec2(glyphW, glyphH) * worldScale;
 
-  vec2 worldPos = vec2(wx, wy + lineOffsetY) + glyphOrigin + aPos * glyphSize;
+  vec2 offset = vec2(0.0, lineOffsetY) + glyphOrigin + aPos * glyphSize;
+  // An admin's prank: the name and troop count turned half a turn around
+  // their centre (each glyph quad too, so the letters read upside down).
+  if (uFlipOwnerID > 0.0 && smallID == uFlipOwnerID) offset = -offset;
+  vec2 worldPos = vec2(wx, wy) + offset;
 
   // 9. Camera transform
   vec3 clip = uCamera * vec3(worldPos, 1.0);

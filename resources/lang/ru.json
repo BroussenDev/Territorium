@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Настройки аккаунта"
   },
+  "admin_effects": {
+    "announce_title": "Сообщение от команды"
+  },
   "attack_preview": {
     "all_tiles": "Все",
     "costs": "стоит {troops} войск",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Ваш союз с {name} скоро закончится!",
     "accept_alliance": "Принять",
     "accept_peace": "Подписать",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Все ваши союзники вас предали!",
     "admin_fake_tax": "Сборщик налогов забрал всё ваше золото!",
     "admin_false_alarm": "Ложная тревога! Ничего не летело. Админ развлекается.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Инструменты админа",
     "alive": "В игре",
     "allies": "Союзники",
+    "announce": "Объявление для всех игроков",
+    "announce_placeholder": "Удачи в финале!",
+    "announce_send": "Отправить",
+    "confetti": "Конфетти",
     "copied": "Ссылка скопирована",
     "copy_link": "Скопировать ссылку на этот момент",
     "eliminated": "Выбыл",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Ложная РГЧ",
     "fake_nuke": "Ложная атомная бомба",
     "fake_tax": "Ложный сборщик налогов",
+    "flip_name": "Имя вверх ногами",
     "give_gold": "Дать {n} золота",
     "give_troops": "Дать {n} войск",
     "go_to": "Перейти к этому игроку",

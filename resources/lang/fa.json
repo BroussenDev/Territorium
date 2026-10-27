@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "تنظیمات اکانت"
   },
+  "admin_effects": {
+    "announce_title": "پیام تیم"
+  },
   "attack_preview": {
     "all_tiles": "همه",
     "costs": "{troops} سرباز هزینه دارد",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "اتحاد شما با {name} در حال انقضا است!",
     "accept_alliance": "پذیرفتن",
     "accept_peace": "امضا",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "همهٔ متحدانتان به شما خیانت کردند!",
     "admin_fake_tax": "مأمور مالیات همهٔ طلای شما را ضبط کرد!",
     "admin_false_alarm": "هشدار اشتباه! چیزی در راه نبود. یک مدیر شوخی می‌کند.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "ابزارهای مدیر",
     "alive": "در بازی",
     "allies": "متحدان",
+    "announce": "اعلان به همهٔ بازیکنان",
+    "announce_placeholder": "در فینال موفق باشید!",
+    "announce_send": "ارسال",
+    "confetti": "کاغذ رنگی",
     "copied": "پیوند کپی شد",
     "copy_link": "کپی پیوند این لحظه",
     "eliminated": "حذف‌شده",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV جعلی",
     "fake_nuke": "بمب اتمی جعلی",
     "fake_tax": "مأمور مالیات جعلی",
+    "flip_name": "نام وارونه",
     "give_gold": "{n} طلا بده",
     "give_troops": "{n} نیرو بده",
     "go_to": "رفتن به این بازیکن",

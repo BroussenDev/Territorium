@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Nastavenia účtu"
   },
+  "admin_effects": {
+    "announce_title": "Správa od tímu"
+  },
   "attack_preview": {
     "all_tiles": "Všetky",
     "costs": "stojí {troops} vojakov",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Tvoje spojenectvo s {name} čoskoro vyprší!",
     "accept_alliance": "Prijať",
     "accept_peace": "Podpísať",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Všetci spojenci ťa zradili!",
     "admin_fake_tax": "Výberca daní ti zhabal všetko zlato!",
     "admin_false_alarm": "Planý poplach! Nič neletelo. Admin sa zabáva.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Nástroje admina",
     "alive": "V hre",
     "allies": "Spojenci",
+    "announce": "Oznámenie všetkým hráčom",
+    "announce_placeholder": "Veľa šťastia vo finále!",
+    "announce_send": "Odoslať",
+    "confetti": "Konfety",
     "copied": "Odkaz skopírovaný",
     "copy_link": "Kopírovať odkaz na tento okamih",
     "eliminated": "Vyradený",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falošný MIRV",
     "fake_nuke": "Falošná atómová bomba",
     "fake_tax": "Falošný výberca daní",
+    "flip_name": "Meno hore nohami",
     "give_gold": "Dať {n} zlata",
     "give_troops": "Dať {n} jednotiek",
     "go_to": "Prejsť na tohto hráča",

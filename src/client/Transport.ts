@@ -292,6 +292,7 @@ export class SendAdminActionIntentEvent implements GameEvent {
     public readonly action: AdminActionIntent["action"],
     public readonly target: string,
     public readonly amount?: number,
+    public readonly text?: string,
   ) {}
 }
 
@@ -442,6 +443,7 @@ export class Transport {
         action: e.action,
         target: e.target,
         ...(e.amount !== undefined ? { amount: e.amount } : {}),
+        ...(e.text !== undefined ? { text: e.text } : {}),
       }),
     );
     this.subscribe(SendKickPlayerIntentEvent, (e) =>

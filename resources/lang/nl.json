@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Accountinstellingen"
   },
+  "admin_effects": {
+    "announce_title": "Bericht van het team"
+  },
   "attack_preview": {
     "all_tiles": "Alle",
     "costs": "kost {troops} troepen",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Je alliantie met {name} verloopt bijna!",
     "accept_alliance": "Aanvaarden",
     "accept_peace": "Ondertekenen",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Al je bondgenoten hebben je verraden!",
     "admin_fake_tax": "De belastinginner heeft al je goud in beslag genomen!",
     "admin_false_alarm": "Vals alarm! Er kwam niets. Een admin heeft plezier.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admintools",
     "alive": "In het spel",
     "allies": "Bondgenoten",
+    "announce": "Aankondiging voor alle spelers",
+    "announce_placeholder": "Succes in de finale!",
+    "announce_send": "Versturen",
+    "confetti": "Confetti",
     "copied": "Link gekopieerd",
     "copy_link": "Link naar dit moment kopiëren",
     "eliminated": "Uitgeschakeld",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Nep-MIRV",
     "fake_nuke": "Nep-atoombom",
     "fake_tax": "Nep-belastinginner",
+    "flip_name": "Naam ondersteboven",
     "give_gold": "Geef {n} goud",
     "give_troops": "Geef {n} troepen",
     "go_to": "Naar deze speler",

@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Hesap Ayarları"
   },
+  "admin_effects": {
+    "announce_title": "Ekipten mesaj"
+  },
   "attack_preview": {
     "all_tiles": "Hepsi",
     "costs": "{troops} birliğe mal olur",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "{name} ile ittifakının süresi dolmak üzere!",
     "accept_alliance": "Kabul et",
     "accept_peace": "İmzala",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Tüm müttefiklerin sana ihanet etti!",
     "admin_fake_tax": "Vergi memuru tüm altınına el koydu!",
     "admin_false_alarm": "Yanlış alarm! Hiçbir şey gelmiyordu. Bir yönetici eğleniyor.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Yönetici araçları",
     "alive": "Oyunda",
     "allies": "Müttefikler",
+    "announce": "Tüm oyunculara duyuru",
+    "announce_placeholder": "Finalde bol şans!",
+    "announce_send": "Gönder",
+    "confetti": "Konfeti",
     "copied": "Bağlantı kopyalandı",
     "copy_link": "Bu anın bağlantısını kopyala",
     "eliminated": "Elendi",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Sahte MIRV",
     "fake_nuke": "Sahte atom bombası",
     "fake_tax": "Sahte vergi memuru",
+    "flip_name": "Ters isim",
     "give_gold": "{n} altın ver",
     "give_troops": "{n} asker ver",
     "go_to": "Bu oyuncuya git",

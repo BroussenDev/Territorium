@@ -34,6 +34,36 @@ export async function reportTgsIncident(
   }
 }
 
+/**
+ * Records what the staff did in a game (an admin's tool, a removal) in the
+ * API's permanent staff log, kept even if a player later complains: the
+ * API never deletes these rows. Best effort, like the TGS notices.
+ */
+export async function reportStaffAction(entry: {
+  gameID: string;
+  staffPersistentID: string;
+  staffUsername: string;
+  action: string;
+  target: string;
+  amount?: number;
+  text?: string;
+}): Promise<void> {
+  if (ServerEnv.env() === GameEnv.Dev) return;
+  try {
+    await fetch(`${ServerEnv.jwtIssuer()}/staff-actions`, {
+      method: "POST",
+      signal: AbortSignal.timeout(5000),
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ServerEnv.apiKey(),
+      },
+      body: JSON.stringify(entry),
+    });
+  } catch {
+    // The server log below still has it.
+  }
+}
+
 /** What the players' screens say about a cancelled ranked game. */
 export interface RankedCancelAnswer {
   compensation: number;

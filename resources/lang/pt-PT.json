@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Configurações de Conta"
   },
+  "admin_effects": {
+    "announce_title": "Mensagem da equipa"
+  },
   "attack_preview": {
     "all_tiles": "Todas",
     "costs": "custa {troops} tropas",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "A aliança com {name} está prestes a expirar!",
     "accept_alliance": "Aceitar",
     "accept_peace": "Assinar",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Todos os seus aliados o traíram!",
     "admin_fake_tax": "O cobrador de impostos levou todo o seu ouro!",
     "admin_false_alarm": "Alarme falso! Não vinha nada. Um admin está a divertir-se.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Ferramentas de admin",
     "alive": "Na partida",
     "allies": "Aliados",
+    "announce": "Anúncio a todos os jogadores",
+    "announce_placeholder": "Boa sorte na final!",
+    "announce_send": "Enviar",
+    "confetti": "Confetes",
     "copied": "Ligação copiada",
     "copy_link": "Copiar a ligação deste momento",
     "eliminated": "Eliminado",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV falso",
     "fake_nuke": "Bomba atómica falsa",
     "fake_tax": "Cobrador de impostos falso",
+    "flip_name": "Nome de pernas para o ar",
     "give_gold": "Dar {n} de ouro",
     "give_troops": "Dar {n} tropas",
     "go_to": "Ir para este jogador",

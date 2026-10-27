@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Поставки за сметка"
   },
+  "admin_effects": {
+    "announce_title": "Порака од тимот"
+  },
   "attack_preview": {
     "all_tiles": "Сите",
     "costs": "чини {troops} војници",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Твојот сојуз со {name} наскоро истекува!",
     "accept_alliance": "Прифати",
     "accept_peace": "Потпиши",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Сите сојузници те предадоа!",
     "admin_fake_tax": "Даночникот ти го зеде целото злато!",
     "admin_false_alarm": "Лажна тревога! Ништо не доаѓаше. Админ се забавува.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Алатки на админ",
     "alive": "Во игра",
     "allies": "Сојузници",
+    "announce": "Објава до сите играчи",
+    "announce_placeholder": "Среќно во финалето!",
+    "announce_send": "Испрати",
+    "confetti": "Конфети",
     "copied": "Врската е копирана",
     "copy_link": "Копирај ја врската до овој момент",
     "eliminated": "Елиминиран",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Лажен MIRV",
     "fake_nuke": "Лажна атомска бомба",
     "fake_tax": "Лажен даночник",
+    "flip_name": "Име наопаку",
     "give_gold": "Дај {n} злато",
     "give_troops": "Дај {n} војска",
     "go_to": "Оди до овој играч",

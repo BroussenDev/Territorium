@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "הגדרות חשבון"
   },
+  "admin_effects": {
+    "announce_title": "הודעה מהצוות"
+  },
   "attack_preview": {
     "all_tiles": "הכול",
     "costs": "עולה {troops} חיילים",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "הברית שלך עם {name} הולכת להסתיים!",
     "accept_alliance": "לְקַבֵּל",
     "accept_peace": "חתום",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "כל בעלי הברית שלך בגדו בך!",
     "admin_fake_tax": "גובה המסים החרים את כל הזהב שלך!",
     "admin_false_alarm": "אזעקת שווא! שום דבר לא הגיע. מנהל משתעשע.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "כלי מנהל",
     "alive": "במשחק",
     "allies": "בעלי ברית",
+    "announce": "הודעה לכל השחקנים",
+    "announce_placeholder": "בהצלחה בגמר!",
+    "announce_send": "שלח",
+    "confetti": "קונפטי",
     "copied": "הקישור הועתק",
     "copy_link": "העתק קישור לרגע הזה",
     "eliminated": "הודח",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV מזויף",
     "fake_nuke": "פצצת אטום מזויפת",
     "fake_tax": "גובה מסים מזויף",
+    "flip_name": "שם הפוך",
     "give_gold": "תן {n} זהב",
     "give_troops": "תן {n} חיילים",
     "go_to": "עבור לשחקן הזה",

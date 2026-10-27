@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Setări cont"
   },
+  "admin_effects": {
+    "announce_title": "Mesaj de la echipă"
+  },
   "attack_preview": {
     "all_tiles": "Toate",
     "costs": "costă {troops} trupe",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Alianța ta cu {name} este pe cale să expire!",
     "accept_alliance": "Acceptă",
     "accept_peace": "Semnează",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Toți aliații te-au trădat!",
     "admin_fake_tax": "Perceptorul ți-a confiscat tot aurul!",
     "admin_false_alarm": "Alarmă falsă! Nu venea nimic. Un admin se distrează.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Unelte de admin",
     "alive": "În joc",
     "allies": "Aliați",
+    "announce": "Anunț pentru toți jucătorii",
+    "announce_placeholder": "Baftă în finală!",
+    "announce_send": "Trimite",
+    "confetti": "Confetti",
     "copied": "Link copiat",
     "copy_link": "Copiază linkul către acest moment",
     "eliminated": "Eliminat",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV fals",
     "fake_nuke": "Bombă atomică falsă",
     "fake_tax": "Perceptor fals",
+    "flip_name": "Nume cu susul în jos",
     "give_gold": "Dă {n} aur",
     "give_troops": "Dă {n} trupe",
     "go_to": "Mergi la acest jucător",

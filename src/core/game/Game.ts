@@ -1196,6 +1196,11 @@ export enum MessageType {
   RADAR_CONTACT,
   OBJECTIVES_REVEALED,
   CAPITAL_FALLEN,
+  // An admin's message to every player, shown in large (AdminEffects.ts).
+  ADMIN_ANNOUNCE,
+  // An admin's visual prank (confetti, an upside-down name): drawn by
+  // AdminEffects.ts, never listed among the events.
+  ADMIN_EFFECT,
 }
 
 // Message categories used for filtering events in the EventsDisplay
@@ -1233,6 +1238,8 @@ export const MESSAGE_TYPE_CATEGORIES: Record<MessageType, MessageCategory> = {
   [MessageType.CHAT]: MessageCategory.CHAT,
   [MessageType.EMP_INBOUND]: MessageCategory.NUKE,
   [MessageType.RADAR_CONTACT]: MessageCategory.ATTACK,
+  [MessageType.ADMIN_ANNOUNCE]: MessageCategory.CHAT,
+  [MessageType.ADMIN_EFFECT]: MessageCategory.CHAT,
   [MessageType.OBJECTIVES_REVEALED]: MessageCategory.ATTACK,
   [MessageType.CAPITAL_FALLEN]: MessageCategory.ATTACK,
 } as const;

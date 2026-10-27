@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Kontoinställningar"
   },
+  "admin_effects": {
+    "announce_title": "Meddelande från teamet"
+  },
   "attack_preview": {
     "all_tiles": "Alla",
     "costs": "kostar {troops} trupper",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Din allians med {name} håller på att gå ut!",
     "accept_alliance": "Acceptera",
     "accept_peace": "Underteckna",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Alla dina allierade har svikit dig!",
     "admin_fake_tax": "Skatteindrivaren har beslagtagit allt ditt guld!",
     "admin_false_alarm": "Falskt larm! Inget var på väg. En admin har roligt.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Adminverktyg",
     "alive": "I spelet",
     "allies": "Allierade",
+    "announce": "Meddelande till alla spelare",
+    "announce_placeholder": "Lycka till i finalen!",
+    "announce_send": "Skicka",
+    "confetti": "Konfetti",
     "copied": "Länk kopierad",
     "copy_link": "Kopiera länken till det här ögonblicket",
     "eliminated": "Utslagen",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falsk MIRV",
     "fake_nuke": "Falsk atombomb",
     "fake_tax": "Falsk skatteindrivare",
+    "flip_name": "Namn upp och ner",
     "give_gold": "Ge {n} guld",
     "give_troops": "Ge {n} trupper",
     "go_to": "Gå till den här spelaren",

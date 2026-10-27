@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "অ্যাকাউন্ট সেটিংস"
   },
+  "admin_effects": {
+    "announce_title": "দলের বার্তা"
+  },
   "attack_preview": {
     "all_tiles": "সব",
     "costs": "{troops} সৈন্য লাগবে",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "{name} এর সাথে আপনার জোটের মেয়াদ শেষ হতে চলেছে!",
     "accept_alliance": "গ্রহণ করুন",
     "accept_peace": "স্বাক্ষর করুন",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "আপনার সব মিত্র আপনার সঙ্গে বিশ্বাসঘাতকতা করেছে!",
     "admin_fake_tax": "কর আদায়কারী আপনার সব সোনা বাজেয়াপ্ত করেছে!",
     "admin_false_alarm": "ভুয়া সতর্কতা! কিছুই আসছিল না। একজন অ্যাডমিন মজা করছেন।",
@@ -2852,6 +2856,10 @@
     "admin_tools": "অ্যাডমিন টুল",
     "alive": "খেলায়",
     "allies": "মিত্র",
+    "announce": "সব খেলোয়াড়ের জন্য ঘোষণা",
+    "announce_placeholder": "ফাইনালে শুভকামনা!",
+    "announce_send": "পাঠান",
+    "confetti": "কনফেটি",
     "copied": "লিংক কপি হয়েছে",
     "copy_link": "এই মুহূর্তের লিংক কপি করুন",
     "eliminated": "বাদ পড়েছে",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "নকল MIRV",
     "fake_nuke": "নকল পারমাণবিক বোমা",
     "fake_tax": "নকল কর আদায়কারী",
+    "flip_name": "উল্টো নাম",
     "give_gold": "{n} সোনা দিন",
     "give_troops": "{n} সৈন্য দিন",
     "go_to": "এই খেলোয়াড়ের কাছে যান",

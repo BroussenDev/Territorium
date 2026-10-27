@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Nastavení účtu"
   },
+  "admin_effects": {
+    "announce_title": "Zpráva od týmu"
+  },
   "attack_preview": {
     "all_tiles": "Všechna",
     "costs": "stojí {troops} vojáků",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Vaše spojenectví s {name} brzy vyprší!",
     "accept_alliance": "Přijmout",
     "accept_peace": "Podepsat",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Všichni spojenci tě zradili!",
     "admin_fake_tax": "Výběrčí daní ti zabavil všechno zlato!",
     "admin_false_alarm": "Planý poplach! Nic neletělo. Admin se baví.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Nástroje admina",
     "alive": "Ve hře",
     "allies": "Spojenci",
+    "announce": "Oznámení všem hráčům",
+    "announce_placeholder": "Hodně štěstí ve finále!",
+    "announce_send": "Odeslat",
+    "confetti": "Konfety",
     "copied": "Odkaz zkopírován",
     "copy_link": "Kopírovat odkaz na tento okamžik",
     "eliminated": "Vyřazen",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falešný MIRV",
     "fake_nuke": "Falešná atomová bomba",
     "fake_tax": "Falešný výběrčí daní",
+    "flip_name": "Jméno vzhůru nohama",
     "give_gold": "Dát {n} zlata",
     "give_troops": "Dát {n} jednotek",
     "go_to": "Přejít na tohoto hráče",

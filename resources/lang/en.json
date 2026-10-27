@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Account Settings"
   },
+  "admin_effects": {
+    "announce_title": "Message from the team"
+  },
   "attack_preview": {
     "all_tiles": "All",
     "costs": "costs {troops} troops",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Your alliance with {name} is about to expire!",
     "accept_alliance": "Accept",
     "accept_peace": "Sign",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "All your allies have betrayed you!",
     "admin_fake_tax": "The tax collector has seized all your gold!",
     "admin_false_alarm": "False alarm! Nothing was coming. An admin is having fun.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admin tools",
     "alive": "In the game",
     "allies": "Allies",
+    "announce": "Announcement to all players",
+    "announce_placeholder": "Good luck in the final!",
+    "announce_send": "Send",
+    "confetti": "Confetti",
     "copied": "Link copied",
     "copy_link": "Copy the link to this moment",
     "eliminated": "Eliminated",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Fake MIRV",
     "fake_nuke": "Fake atom bomb",
     "fake_tax": "Fake tax collector",
+    "flip_name": "Name upside down",
     "give_gold": "Give {n} gold",
     "give_troops": "Give {n} troops",
     "go_to": "Go to this player",

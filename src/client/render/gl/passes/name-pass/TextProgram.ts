@@ -42,6 +42,7 @@ export class TextProgram {
   private uNameScaleCap: WebGLUniformLocation;
   private uTroopSizeMultiplier: WebGLUniformLocation;
   private uHighlightOwnerID: WebGLUniformLocation;
+  private uFlipOwnerID: WebGLUniformLocation;
   private uFadeOwnerID: WebGLUniformLocation;
   private uHoverFadeAlpha: WebGLUniformLocation;
   private uOutlineWidth: WebGLUniformLocation;
@@ -115,6 +116,7 @@ export class TextProgram {
       this.program,
       "uHighlightOwnerID",
     )!;
+    this.uFlipOwnerID = gl.getUniformLocation(this.program, "uFlipOwnerID")!;
     this.uFadeOwnerID = gl.getUniformLocation(this.program, "uFadeOwnerID")!;
     this.uHoverFadeAlpha = gl.getUniformLocation(
       this.program,
@@ -166,6 +168,9 @@ export class TextProgram {
     img.src = atlasUrl;
   }
 
+  /** The player whose name is drawn upside down (0 = none). */
+  flipOwnerID = 0;
+
   draw(
     cameraMatrix: Float32Array,
     settings: RenderSettings,
@@ -190,6 +195,7 @@ export class TextProgram {
     gl.uniform1f(this.uNameScaleCap, ns.nameScaleCap);
     gl.uniform1f(this.uTroopSizeMultiplier, ns.troopSizeMultiplier);
     gl.uniform1f(this.uHighlightOwnerID, highlightOwnerID);
+    gl.uniform1f(this.uFlipOwnerID, this.flipOwnerID);
     gl.uniform1f(this.uFadeOwnerID, fadeOwnerID);
     gl.uniform1f(this.uHoverFadeAlpha, ns.hoverFadeAlpha);
     gl.uniform1f(this.uOutlineWidth, ns.outlineWidth);

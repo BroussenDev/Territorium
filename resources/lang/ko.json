@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "계정 설정"
   },
+  "admin_effects": {
+    "announce_title": "운영진 메시지"
+  },
   "attack_preview": {
     "all_tiles": "전부",
     "costs": "병력 {troops} 소모",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "{name}와(과)의 동맹이 곧 만료됩니다!",
     "accept_alliance": "수락",
     "accept_peace": "서명",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "모든 동맹이 당신을 배신했습니다!",
     "admin_fake_tax": "세금 징수원이 골드를 모두 압류했습니다!",
     "admin_false_alarm": "오경보! 아무것도 오지 않았습니다. 관리자의 장난입니다.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "관리자 도구",
     "alive": "게임 중",
     "allies": "동맹",
+    "announce": "모든 플레이어에게 공지",
+    "announce_placeholder": "결승전 행운을 빌어요!",
+    "announce_send": "보내기",
+    "confetti": "색종이",
     "copied": "링크를 복사했습니다",
     "copy_link": "이 순간의 링크 복사",
     "eliminated": "탈락",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "가짜 MIRV",
     "fake_nuke": "가짜 원자폭탄",
     "fake_tax": "가짜 세금 징수원",
+    "flip_name": "이름 뒤집기",
     "give_gold": "골드 {n} 주기",
     "give_troops": "병력 {n} 주기",
     "go_to": "이 플레이어로 이동",

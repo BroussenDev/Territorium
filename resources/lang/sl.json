@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Nastavitve računa"
   },
+  "admin_effects": {
+    "announce_title": "Sporočilo ekipe"
+  },
   "attack_preview": {
     "all_tiles": "Vsa",
     "costs": "stane {troops} enot",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Tvoje zavezništvo s {name} kmalu poteče!",
     "accept_alliance": "Sprejmi",
     "accept_peace": "Podpiši",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Vsi zavezniki so te izdali!",
     "admin_fake_tax": "Davkar ti je zasegel vse zlato!",
     "admin_false_alarm": "Lažni alarm! Nič ni priletelo. Skrbnik se zabava.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Skrbniška orodja",
     "alive": "V igri",
     "allies": "Zavezniki",
+    "announce": "Obvestilo vsem igralcem",
+    "announce_placeholder": "Veliko sreče v finalu!",
+    "announce_send": "Pošlji",
+    "confetti": "Konfeti",
     "copied": "Povezava kopirana",
     "copy_link": "Kopiraj povezavo do tega trenutka",
     "eliminated": "Izločen",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Lažni MIRV",
     "fake_nuke": "Lažna atomska bomba",
     "fake_tax": "Lažni davkar",
+    "flip_name": "Ime na glavo",
     "give_gold": "Daj {n} zlata",
     "give_troops": "Daj {n} enot",
     "go_to": "Pojdi do tega igralca",

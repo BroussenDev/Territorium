@@ -2,10 +2,16 @@ import { describe, expect, it } from "vitest";
 import {
   ADMIN_MAX_TROOPS,
   AdminActionExecution,
+  cleanAnnouncement,
   FAKE_ALERT_TICKS,
 } from "../../../src/core/execution/AdminActionExecution";
 import { SpawnExecution } from "../../../src/core/execution/SpawnExecution";
-import { Game, PlayerInfo, PlayerType } from "../../../src/core/game/Game";
+import {
+  Game,
+  MessageType,
+  PlayerInfo,
+  PlayerType,
+} from "../../../src/core/game/Game";
 import { GameUpdateType } from "../../../src/core/game/GameUpdates";
 import { AdminActionIntent } from "../../../src/core/Schemas";
 import { setup } from "../../util/Setup";
@@ -125,5 +131,42 @@ describe("AdminActionExecution", () => {
         "events_display.admin_false_alarm",
       );
     }
+  });
+
+  it("announces to everyone, and shows its pranks to everyone", async () => {
+    const { g, target } = await game();
+    g.addExecution(
+      new AdminActionExecution(
+        intent({ action: "announce", text: "  Bonne\nchance !  " }),
+      ),
+      new AdminActionExecution(intent({ action: "confetti" })),
+      new AdminActionExecution(intent({ action: "flip_name" })),
+      new AdminActionExecution(intent({ action: "announce", text: "   " })),
+    );
+    const events = g.executeNextTick()[GameUpdateType.DisplayEvent] ?? [];
+    const announce = events.filter(
+      (e) => e.messageType === MessageType.ADMIN_ANNOUNCE,
+    );
+    expect(announce).toHaveLength(1);
+    expect(announce[0].playerID).toBeNull();
+    expect(announce[0].params?.text).toBe("Bonne chance !");
+    const effects = events.filter(
+      (e) => e.messageType === MessageType.ADMIN_EFFECT,
+    );
+    expect(effects.map((e) => e.message).sort()).toEqual([
+      "admin_effect.confetti",
+      "admin_effect.flip_name",
+    ]);
+    expect(
+      effects.every(
+        (e) => e.playerID === null && e.params?.target === target.smallID(),
+      ),
+    ).toBe(true);
+  });
+
+  it("cleans an announcement", () => {
+    expect(cleanAnnouncement("a\u0000b\u202ec   d")).toBe("a b c d");
+    expect(cleanAnnouncement("x".repeat(300))).toHaveLength(140);
+    expect(cleanAnnouncement(undefined)).toBe("");
   });
 });

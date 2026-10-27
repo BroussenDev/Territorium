@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Kontoindstillinger"
   },
+  "admin_effects": {
+    "announce_title": "Besked fra teamet"
+  },
   "attack_preview": {
     "all_tiles": "Alle",
     "costs": "koster {troops} tropper",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Din alliance med {name} er ved at udløbe!",
     "accept_alliance": "Acceptér",
     "accept_peace": "Underskriv",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Alle dine allierede har forrådt dig!",
     "admin_fake_tax": "Skatteopkræveren har beslaglagt alt dit guld!",
     "admin_false_alarm": "Falsk alarm! Intet var på vej. En admin morer sig.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admin-værktøjer",
     "alive": "I spillet",
     "allies": "Allierede",
+    "announce": "Meddelelse til alle spillere",
+    "announce_placeholder": "Held og lykke i finalen!",
+    "announce_send": "Send",
+    "confetti": "Konfetti",
     "copied": "Link kopieret",
     "copy_link": "Kopiér linket til dette øjeblik",
     "eliminated": "Elimineret",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falsk MIRV",
     "fake_nuke": "Falsk atombombe",
     "fake_tax": "Falsk skatteopkræver",
+    "flip_name": "Navn på hovedet",
     "give_gold": "Giv {n} guld",
     "give_troops": "Giv {n} tropper",
     "go_to": "Gå til denne spiller",

@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "アカウント設定"
   },
+  "admin_effects": {
+    "announce_title": "運営からのメッセージ"
+  },
   "attack_preview": {
     "all_tiles": "すべて",
     "costs": "兵力 {troops} を消費",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "{name}との同盟は間もなく失効します！",
     "accept_alliance": "承諾",
     "accept_peace": "署名する",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "同盟国が全員あなたを裏切りました！",
     "admin_fake_tax": "徴税人があなたのゴールドをすべて差し押さえました！",
     "admin_false_alarm": "誤報です！何も来ていません。管理者のいたずらです。",
@@ -2852,6 +2856,10 @@
     "admin_tools": "管理者ツール",
     "alive": "プレイ中",
     "allies": "同盟",
+    "announce": "全プレイヤーへのお知らせ",
+    "announce_placeholder": "決勝がんばって！",
+    "announce_send": "送信",
+    "confetti": "紙吹雪",
     "copied": "リンクをコピーしました",
     "copy_link": "この瞬間へのリンクをコピー",
     "eliminated": "脱落",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "偽のMIRV",
     "fake_nuke": "偽の原子爆弾",
     "fake_tax": "偽の徴税人",
+    "flip_name": "名前を逆さまに",
     "give_gold": "ゴールド{n}を与える",
     "give_troops": "兵力{n}を与える",
     "go_to": "このプレイヤーへ移動",

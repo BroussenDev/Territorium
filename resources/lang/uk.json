@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Налаштування акаунту"
   },
+  "admin_effects": {
+    "announce_title": "Повідомлення від команди"
+  },
   "attack_preview": {
     "all_tiles": "Усі",
     "costs": "коштує {troops} військ",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Союз із {name} скоро закінчиться!",
     "accept_alliance": "Прийняти",
     "accept_peace": "Підписати",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Усі ваші союзники вас зрадили!",
     "admin_fake_tax": "Збирач податків забрав усе ваше золото!",
     "admin_false_alarm": "Хибна тривога! Нічого не летіло. Адмін розважається.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Інструменти адміна",
     "alive": "У грі",
     "allies": "Союзники",
+    "announce": "Оголошення для всіх гравців",
+    "announce_placeholder": "Удачі у фіналі!",
+    "announce_send": "Надіслати",
+    "confetti": "Конфеті",
     "copied": "Посилання скопійовано",
     "copy_link": "Скопіювати посилання на цей момент",
     "eliminated": "Вибув",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Хибна РГЧ",
     "fake_nuke": "Хибна атомна бомба",
     "fake_tax": "Хибний збирач податків",
+    "flip_name": "Ім'я догори дриґом",
     "give_gold": "Дати {n} золота",
     "give_troops": "Дати {n} військ",
     "go_to": "Перейти до цього гравця",

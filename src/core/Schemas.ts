@@ -869,9 +869,14 @@ export const AdminActionIntentSchema = z.object({
     "fake_invasion",
     "fake_betrayal",
     "fake_tax",
+    "announce",
+    "confetti",
+    "flip_name",
   ]),
   target: MappedID,
   amount: zb.uint({ max: 10_000_000 }).optional(),
+  // announce: the message shown to every player.
+  text: z.string().max(140).optional(),
 });
 
 export const IntentSchema = z.discriminatedUnion("type", [

@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Pengaturan Akun"
   },
+  "admin_effects": {
+    "announce_title": "Pesan dari tim"
+  },
   "attack_preview": {
     "all_tiles": "Semua",
     "costs": "memakan {troops} pasukan",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Aliansi Anda dengan {name} hampir berakhir!",
     "accept_alliance": "Setuju",
     "accept_peace": "Tanda tangani",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Semua sekutumu telah mengkhianatimu!",
     "admin_fake_tax": "Pemungut pajak menyita semua emasmu!",
     "admin_false_alarm": "Alarm palsu! Tidak ada yang datang. Seorang admin sedang iseng.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Alat admin",
     "alive": "Dalam permainan",
     "allies": "Sekutu",
+    "announce": "Pengumuman untuk semua pemain",
+    "announce_placeholder": "Semoga sukses di final!",
+    "announce_send": "Kirim",
+    "confetti": "Konfeti",
     "copied": "Tautan disalin",
     "copy_link": "Salin tautan ke momen ini",
     "eliminated": "Tersingkir",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV palsu",
     "fake_nuke": "Bom atom palsu",
     "fake_tax": "Pemungut pajak palsu",
+    "flip_name": "Nama terbalik",
     "give_gold": "Beri {n} emas",
     "give_troops": "Beri {n} pasukan",
     "go_to": "Pergi ke pemain ini",

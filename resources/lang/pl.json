@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Ustawienia konta"
   },
+  "admin_effects": {
+    "announce_title": "Wiadomość od zespołu"
+  },
   "attack_preview": {
     "all_tiles": "Wszystkie",
     "costs": "kosztuje {troops} wojsk",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Twój sojusz z {name} wkrótce wygaśnie!",
     "accept_alliance": "Akceptuj",
     "accept_peace": "Podpisz",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Wszyscy sojusznicy cię zdradzili!",
     "admin_fake_tax": "Poborca zajął całe twoje złoto!",
     "admin_false_alarm": "Fałszywy alarm! Nic nie leciało. Admin się bawi.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Narzędzia admina",
     "alive": "W grze",
     "allies": "Sojusznicy",
+    "announce": "Ogłoszenie dla wszystkich graczy",
+    "announce_placeholder": "Powodzenia w finale!",
+    "announce_send": "Wyślij",
+    "confetti": "Konfetti",
     "copied": "Link skopiowany",
     "copy_link": "Kopiuj link do tego momentu",
     "eliminated": "Wyeliminowany",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Fałszywy MIRV",
     "fake_nuke": "Fałszywa bomba atomowa",
     "fake_tax": "Fałszywy poborca",
+    "flip_name": "Nazwa do góry nogami",
     "give_gold": "Daj {n} złota",
     "give_troops": "Daj {n} wojsk",
     "go_to": "Przejdź do tego gracza",

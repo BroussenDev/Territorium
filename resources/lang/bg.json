@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Настройки на акаунта"
   },
+  "admin_effects": {
+    "announce_title": "Съобщение от екипа"
+  },
   "attack_preview": {
     "all_tiles": "Всички",
     "costs": "струва {troops} войници",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Съюзът ти с {name} е на път да изтече!",
     "accept_alliance": "Приемане",
     "accept_peace": "Подпиши",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Всички съюзници те предадоха!",
     "admin_fake_tax": "Бирникът запорира цялото ти злато!",
     "admin_false_alarm": "Фалшива тревога! Нищо не идваше. Админ се забавлява.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Инструменти на админа",
     "alive": "В играта",
     "allies": "Съюзници",
+    "announce": "Съобщение до всички играчи",
+    "announce_placeholder": "Успех на финала!",
+    "announce_send": "Изпрати",
+    "confetti": "Конфети",
     "copied": "Връзката е копирана",
     "copy_link": "Копирай връзката към този момент",
     "eliminated": "Елиминиран",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Фалшив MIRV",
     "fake_nuke": "Фалшива атомна бомба",
     "fake_tax": "Фалшив бирник",
+    "flip_name": "Име наопаки",
     "give_gold": "Дай {n} злато",
     "give_troops": "Дай {n} войски",
     "go_to": "Отиди при този играч",

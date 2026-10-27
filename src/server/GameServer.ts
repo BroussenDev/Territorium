@@ -96,7 +96,11 @@ import {
   TgsMonitor,
   tgsSwitch,
 } from "./Tgs";
-import { cancelRankedGame, reportTgsIncident } from "./TgsApi";
+import {
+  cancelRankedGame,
+  reportStaffAction,
+  reportTgsIncident,
+} from "./TgsApi";
 import { RankedVerdict, RankedWatch } from "./TgsRanked";
 
 // Outcome of GameServer.joinClient. The worker maps each to a close code.
@@ -443,6 +447,8 @@ export class GameServer {
       return finish(denied);
     }
 
+    this.logStaffAction(stamped, actor);
+
     switch (stamped.type) {
       case "kick_player": {
         // Resolve the target to a clientID: an explicit clientID, or an account
@@ -534,6 +540,47 @@ export class GameServer {
         return outcome;
       }
     }
+  }
+
+  // An admin's tool, or a moderator removing a player (not a host managing
+  // their own lobby): written to the API's permanent staff log.
+  private logStaffAction(intent: StampedIntent, actor: IntentActor): void {
+    if (actor.isAdminBot) return;
+    const staffKick =
+      intent.type === "kick_player" &&
+      !actor.isLobbyCreator &&
+      (actor.isAdmin || actor.isModerator === true);
+    if (intent.type !== "admin_action" && !staffKick) return;
+    const staff = this.clients.get(actor.clientID);
+    if (staff === undefined) return;
+    const targetID =
+      intent.type === "admin_action"
+        ? intent.target
+        : (intent.targetClientID ?? intent.targetPublicID ?? "");
+    const target =
+      intent.type === "admin_action" && intent.action === "announce"
+        ? "*"
+        : (this.clients.get(targetID)?.username ?? targetID);
+    const action = intent.type === "admin_action" ? intent.action : "kick";
+    this.log.info("staff action", {
+      gameID: this.id,
+      staff: staff.username,
+      action,
+      target,
+    });
+    void reportStaffAction({
+      gameID: this.id,
+      staffPersistentID: staff.persistentID,
+      staffUsername: staff.username,
+      action,
+      target,
+      ...(intent.type === "admin_action" && intent.amount !== undefined
+        ? { amount: intent.amount }
+        : {}),
+      ...(intent.type === "admin_action" && intent.text
+        ? { text: intent.text.slice(0, 140) }
+        : {}),
+    });
   }
 
   private isKicked(clientID: ClientID): boolean {

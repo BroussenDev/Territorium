@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Cài đặt tài khoản"
   },
+  "admin_effects": {
+    "announce_title": "Tin nhắn từ đội ngũ"
+  },
   "attack_preview": {
     "all_tiles": "Tất cả",
     "costs": "tốn {troops} quân",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Liên minh giữa bạn và {name} sắp hết hiệu lực!",
     "accept_alliance": "Chấp nhận",
     "accept_peace": "Ký",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Tất cả đồng minh đã phản bội bạn!",
     "admin_fake_tax": "Người thu thuế đã tịch thu hết vàng của bạn!",
     "admin_false_alarm": "Báo động giả! Chẳng có gì bay tới. Một admin đang đùa.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Công cụ admin",
     "alive": "Trong trận",
     "allies": "Đồng minh",
+    "announce": "Thông báo đến mọi người chơi",
+    "announce_placeholder": "Chúc may mắn ở trận chung kết!",
+    "announce_send": "Gửi",
+    "confetti": "Pháo giấy",
     "copied": "Đã sao chép liên kết",
     "copy_link": "Sao chép liên kết tới thời điểm này",
     "eliminated": "Đã bị loại",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV giả",
     "fake_nuke": "Bom nguyên tử giả",
     "fake_tax": "Thu thuế giả",
+    "flip_name": "Tên lộn ngược",
     "give_gold": "Tặng {n} vàng",
     "give_troops": "Tặng {n} quân",
     "go_to": "Đi tới người chơi này",

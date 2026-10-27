@@ -1205,6 +1205,9 @@ export class GPURenderer {
   setWatchOwner(ownerID: number): void {
     this.borderPass.setWatchOwner(ownerID);
   }
+  setFlipOwner(ownerID: number): void {
+    this.namePass.setFlipOwner(ownerID);
+  }
   setHighlightStructureTypes(unitTypes: string[] | null): void {
     this.structurePass.setHighlightTypes(unitTypes);
     this.samHighlightVisible =

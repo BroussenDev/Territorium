@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Podešavanja naloga"
   },
+  "admin_effects": {
+    "announce_title": "Poruka tima"
+  },
   "attack_preview": {
     "all_tiles": "Sva",
     "costs": "košta {troops} vojnika",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Vaš savez sa igračem {name} će uskoro isteći!",
     "accept_alliance": "Prihvati",
     "accept_peace": "Potpiši",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Svi saveznici su te izdali!",
     "admin_fake_tax": "Poreznik ti je zaplenio sve zlato!",
     "admin_false_alarm": "Lažna uzbuna! Ništa nije dolazilo. Admin se zabavlja.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admin alati",
     "alive": "U igri",
     "allies": "Saveznici",
+    "announce": "Objava za sve igrače",
+    "announce_placeholder": "Srećno u finalu!",
+    "announce_send": "Pošalji",
+    "confetti": "Konfete",
     "copied": "Link kopiran",
     "copy_link": "Kopiraj link do ovog trenutka",
     "eliminated": "Eliminisan",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Lažni MIRV",
     "fake_nuke": "Lažna atomska bomba",
     "fake_tax": "Lažni poreznik",
+    "flip_name": "Ime naopačke",
     "give_gold": "Daj {n} zlata",
     "give_troops": "Daj {n} trupa",
     "go_to": "Idi do ovog igrača",

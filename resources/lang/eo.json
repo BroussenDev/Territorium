@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Kontaj agordoj"
   },
+  "admin_effects": {
+    "announce_title": "Mesaĝo de la teamo"
+  },
   "attack_preview": {
     "all_tiles": "Ĉiuj",
     "costs": "kostas {troops} trupojn",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Via alianco kun {name} baldaŭ eksvalidiĝos!",
     "accept_alliance": "Akcepti",
     "accept_peace": "Subskribi",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Ĉiuj viaj aliancanoj perfidis vin!",
     "admin_fake_tax": "La impostisto konfiskis vian tutan oron!",
     "admin_false_alarm": "Falsa alarmo! Nenio venis. Administranto amuziĝas.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Administraj iloj",
     "alive": "En la ludo",
     "allies": "Aliancanoj",
+    "announce": "Anonco al ĉiuj ludantoj",
+    "announce_placeholder": "Bonŝancon en la finalo!",
+    "announce_send": "Sendi",
+    "confetti": "Konfetoj",
     "copied": "Ligilo kopiita",
     "copy_link": "Kopii la ligilon al ĉi tiu momento",
     "eliminated": "Eliminita",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falsa MIRV",
     "fake_nuke": "Falsa atombombo",
     "fake_tax": "Falsa impostisto",
+    "flip_name": "Nomo renversita",
     "give_gold": "Doni {n} oron",
     "give_troops": "Doni {n} trupojn",
     "go_to": "Iri al ĉi tiu ludanto",

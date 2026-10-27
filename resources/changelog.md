@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.163
+
+🛡️ **Admins**
+
+- Admins can send an announcement shown in large to every player of the game.
+- New visual pranks: a burst of confetti over a player, or their name upside down for 30 seconds.
+- Everything the staff does in a game is kept in a permanent log.
+
 ## v0.1.162
 
 🛡️ **Admins**

@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Tilin asetukset"
   },
+  "admin_effects": {
+    "announce_title": "Viesti tiimiltä"
+  },
   "attack_preview": {
     "all_tiles": "Kaikki",
     "costs": "maksaa {troops} joukkoa",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Liittosi pelaajan {name} kanssa on vanhentumassa!",
     "accept_alliance": "Hyväksy",
     "accept_peace": "Allekirjoita",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Kaikki liittolaisesi ovat pettäneet sinut!",
     "admin_fake_tax": "Veronkantaja takavarikoi kaiken kultasi!",
     "admin_false_alarm": "Väärä hälytys! Mitään ei ollut tulossa. Ylläpitäjä pitää hauskaa.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Ylläpitäjän työkalut",
     "alive": "Pelissä",
     "allies": "Liittolaiset",
+    "announce": "Ilmoitus kaikille pelaajille",
+    "announce_placeholder": "Onnea finaaliin!",
+    "announce_send": "Lähetä",
+    "confetti": "Konfetti",
     "copied": "Linkki kopioitu",
     "copy_link": "Kopioi linkki tähän hetkeen",
     "eliminated": "Pudonnut",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Valhe-MIRV",
     "fake_nuke": "Valheatomipommi",
     "fake_tax": "Valheveronkantaja",
+    "flip_name": "Nimi ylösalaisin",
     "give_gold": "Anna {n} kultaa",
     "give_troops": "Anna {n} joukkoja",
     "go_to": "Siirry tähän pelaajaan",

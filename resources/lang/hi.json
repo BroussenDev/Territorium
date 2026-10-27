@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "अकाउंट सेटिंग"
   },
+  "admin_effects": {
+    "announce_title": "टीम का संदेश"
+  },
   "attack_preview": {
     "all_tiles": "सभी",
     "costs": "{troops} सैनिक लगेंगे",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "{name} के साथ आपका गठबंधन समाप्त होने वाला है!",
     "accept_alliance": "स्वीकार करना",
     "accept_peace": "हस्ताक्षर करें",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "आपके सभी सहयोगियों ने आपको धोखा दिया!",
     "admin_fake_tax": "टैक्स वसूलने वाले ने आपका सारा सोना ज़ब्त कर लिया!",
     "admin_false_alarm": "झूठा अलार्म! कुछ नहीं आ रहा था। एक एडमिन मज़े ले रहा है।",
@@ -2852,6 +2856,10 @@
     "admin_tools": "एडमिन टूल",
     "alive": "खेल में",
     "allies": "सहयोगी",
+    "announce": "सभी खिलाड़ियों के लिए घोषणा",
+    "announce_placeholder": "फ़ाइनल के लिए शुभकामनाएँ!",
+    "announce_send": "भेजें",
+    "confetti": "कॉन्फ़ेटी",
     "copied": "लिंक कॉपी हो गया",
     "copy_link": "इस पल का लिंक कॉपी करें",
     "eliminated": "बाहर",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "नकली MIRV",
     "fake_nuke": "नकली परमाणु बम",
     "fake_tax": "नकली टैक्स वसूली",
+    "flip_name": "उल्टा नाम",
     "give_gold": "{n} सोना दें",
     "give_troops": "{n} सैनिक दें",
     "go_to": "इस खिलाड़ी पर जाएँ",

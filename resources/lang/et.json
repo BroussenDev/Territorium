@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Konto seaded"
   },
+  "admin_effects": {
+    "announce_title": "Sõnum meeskonnalt"
+  },
   "attack_preview": {
     "all_tiles": "Kõik",
     "costs": "maksab {troops} sõdurit",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Su liiduleping {name}'ga on aegumas!",
     "accept_alliance": "Nõustu",
     "accept_peace": "Allkirjasta",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Kõik su liitlased reetsid sind!",
     "admin_fake_tax": "Maksukoguja konfiskeeris kogu su kulla!",
     "admin_false_alarm": "Valehäire! Midagi ei tulnud. Admin lõbutseb.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admini tööriistad",
     "alive": "Mängus",
     "allies": "Liitlased",
+    "announce": "Teade kõigile mängijatele",
+    "announce_placeholder": "Edu finaalis!",
+    "announce_send": "Saada",
+    "confetti": "Konfetid",
     "copied": "Link kopeeritud",
     "copy_link": "Kopeeri link sellele hetkele",
     "eliminated": "Välja langenud",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Võlts-MIRV",
     "fake_nuke": "Võlts aatomipomm",
     "fake_tax": "Võlts maksukoguja",
+    "flip_name": "Nimi tagurpidi",
     "give_gold": "Anna {n} kulda",
     "give_troops": "Anna {n} vägesid",
     "go_to": "Mine selle mängija juurde",

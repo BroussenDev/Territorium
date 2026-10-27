@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Paramètres de compte"
   },
+  "admin_effects": {
+    "announce_title": "Message de l'équipe"
+  },
   "attack_preview": {
     "all_tiles": "Tout",
     "costs": "coûte {troops} troupes",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Votre alliance avec {name} est sur le point d'expirer!",
     "accept_alliance": "Accepter",
     "accept_peace": "Signer",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Tous vos alliés vous ont trahi !",
     "admin_fake_tax": "Le percepteur a saisi tout votre or !",
     "admin_false_alarm": "Fausse alerte ! Rien n'arrivait. Un admin s'amuse.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Outils admin",
     "alive": "En jeu",
     "allies": "Alliés",
+    "announce": "Annonce à tous les joueurs",
+    "announce_placeholder": "Bonne chance pour la finale !",
+    "announce_send": "Envoyer",
+    "confetti": "Confettis",
     "copied": "Lien copié",
     "copy_link": "Copier le lien de ce moment",
     "eliminated": "Éliminé",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Faux MIRV",
     "fake_nuke": "Fausse bombe atomique",
     "fake_tax": "Faux percepteur",
+    "flip_name": "Nom à l'envers",
     "give_gold": "Donner {n} or",
     "give_troops": "Donner {n} troupes",
     "go_to": "Aller à ce joueur",

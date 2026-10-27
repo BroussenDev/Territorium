@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "Kontoeinstellungen"
   },
+  "admin_effects": {
+    "announce_title": "Nachricht vom Team"
+  },
   "attack_preview": {
     "all_tiles": "Alle",
     "costs": "kostet {troops} Truppen",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "Dini Allianz mit {name} louft gli ab!",
     "accept_alliance": "Akzeptiere",
     "accept_peace": "Unterschriibe",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "Alle deine Verbündeten haben dich verraten!",
     "admin_fake_tax": "Der Steuereintreiber hat dein ganzes Gold gepfändet!",
     "admin_false_alarm": "Fehlalarm! Da kam nichts. Ein Admin hat Spass.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "Admin-Werkzeuge",
     "alive": "Im Spiel",
     "allies": "Verbündete",
+    "announce": "Ansage an alle Spieler",
+    "announce_placeholder": "Viel Glück im Finale!",
+    "announce_send": "Senden",
+    "confetti": "Konfetti",
     "copied": "Link kopiert",
     "copy_link": "Link zu diesem Moment kopieren",
     "eliminated": "Ausgeschieden",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "Falsche MIRV",
     "fake_nuke": "Falsche Atombombe",
     "fake_tax": "Falscher Steuereintreiber",
+    "flip_name": "Name auf dem Kopf",
     "give_gold": "{n} Gold geben",
     "give_troops": "{n} Truppen geben",
     "go_to": "Zu diesem Spieler",

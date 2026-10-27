@@ -139,6 +139,9 @@
   "account_settings_modal": {
     "title": "إعدادات الحساب"
   },
+  "admin_effects": {
+    "announce_title": "رسالة من الفريق"
+  },
   "attack_preview": {
     "all_tiles": "الكل",
     "costs": "تكلّف {troops} جنديًا",
@@ -1213,6 +1216,7 @@
     "about_to_expire": "تحالفك مع {name} على وشك الانتهاء!",
     "accept_alliance": "قبول",
     "accept_peace": "توقيع",
+    "admin_announce": "{text}",
     "admin_fake_betrayal": "كل حلفائك خانوك!",
     "admin_fake_tax": "صادر جابي الضرائب كل ذهبك!",
     "admin_false_alarm": "إنذار كاذب! لم يكن هناك شيء قادم. أحد المشرفين يمزح.",
@@ -2852,6 +2856,10 @@
     "admin_tools": "أدوات المشرف",
     "alive": "في اللعبة",
     "allies": "الحلفاء",
+    "announce": "إعلان لجميع اللاعبين",
+    "announce_placeholder": "بالتوفيق في النهائي!",
+    "announce_send": "إرسال",
+    "confetti": "قصاصات ملونة",
     "copied": "تم نسخ الرابط",
     "copy_link": "انسخ رابط هذه اللحظة",
     "eliminated": "أُقصي",
@@ -2861,6 +2869,7 @@
     "fake_mirv": "MIRV مزيف",
     "fake_nuke": "قنبلة ذرية مزيفة",
     "fake_tax": "جابي ضرائب مزيف",
+    "flip_name": "الاسم مقلوب",
     "give_gold": "امنح {n} من الذهب",
     "give_troops": "امنح {n} من القوات",
     "go_to": "اذهب إلى هذا اللاعب",

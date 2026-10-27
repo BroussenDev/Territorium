@@ -296,6 +296,14 @@ export class EventsDisplay extends LitElement implements Controller {
   }
 
   onDisplayMessageEvent(event: DisplayMessageUpdate) {
+    // An admin's announcement and pranks have their own display
+    // (AdminEffects.ts).
+    if (
+      event.messageType === MessageType.ADMIN_ANNOUNCE ||
+      event.messageType === MessageType.ADMIN_EFFECT
+    ) {
+      return;
+    }
     const myPlayer = this.game.myPlayer();
     if (
       event.playerID !== null &&

@@ -739,6 +739,11 @@ export class NamePass {
     this.highlightOwnerID = ownerID;
   }
 
+  /** An admin's prank: this player's name upside down (0 = none). */
+  setFlipOwner(ownerID: number): void {
+    this.textProgram.flipOwnerID = ownerID;
+  }
+
   setMouseWorldPos(x: number, y: number): void {
     this.mouseWorldX = x;
     this.mouseWorldY = y;
