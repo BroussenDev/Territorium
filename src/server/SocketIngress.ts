@@ -1,7 +1,7 @@
 import { Logger } from "winston";
 import { z } from "zod";
 import { ZbContext } from "../../zbin";
-import { isStaffRole } from "../core/ApiSchemas";
+import { isAdminRole, isStaffRole } from "../core/ApiSchemas";
 import { CloseCode, CloseReason } from "../core/CloseCodes";
 import { ClientID, ClientMessage, ClientMessageSchema } from "../core/Schemas";
 import { decodeClientMessageUnvalidated } from "../core/ZbinWire";
@@ -192,8 +192,8 @@ export class SocketIngress {
     // A moderator watching a game may still remove a player from it.
     const staffKick =
       clientMsg.type === "intent" &&
-      clientMsg.intent.type === "kick_player" &&
-      isStaffRole(client.role);
+      ((clientMsg.intent.type === "kick_player" && isStaffRole(client.role)) ||
+        (clientMsg.intent.type === "admin_action" && isAdminRole(client.role)));
     if (
       client.spectator &&
       SPECTATOR_BLOCKED_MESSAGES.has(clientMsg.type) &&

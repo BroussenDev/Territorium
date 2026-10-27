@@ -219,3 +219,33 @@ describe("moderator kick", () => {
     ).toBe(403);
   });
 });
+
+describe("admin tools", () => {
+  const tool: Intent = {
+    type: "admin_action",
+    action: "fake_mirv",
+    target: cid("p2"),
+  };
+  const started = lobby({ isPublic: true, hasStarted: true });
+  it("are for admin accounts in games already started", () => {
+    expect(authorizeIntent(tool, admin, started)).toBeNull();
+    expect(authorizeIntent(tool, player, started)?.status).toBe(403);
+    expect(authorizeIntent(tool, host, started)?.status).toBe(403);
+    expect(
+      authorizeIntent(tool, actor({ isModerator: true }), started)?.status,
+    ).toBe(403);
+    expect(authorizeIntent(tool, admin, lobby())?.status).toBe(409);
+  });
+  it("never in ranked or tournament games, nor from the admin bot", () => {
+    expect(
+      authorizeIntent(
+        tool,
+        admin,
+        lobby({ hasStarted: true, isCompetitive: true }),
+      )?.status,
+    ).toBe(403);
+    expect(
+      authorizeIntent(tool, bot, lobby({ hasStarted: true }))?.status,
+    ).toBe(403);
+  });
+});

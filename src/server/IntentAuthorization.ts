@@ -25,6 +25,8 @@ export interface IntentGameState {
   isPublic: boolean;
   isListed: boolean;
   hasStarted: boolean;
+  // Ranked and tournament games: no admin tools there (admin_action).
+  isCompetitive?: boolean;
 }
 
 // The actor and game-state guards of GameServer.handleIntent, in the order
@@ -45,6 +47,23 @@ export function authorizeIntent(
   switch (intent.type) {
     case "mark_disconnected":
       return { status: 400, error: "mark_disconnected is server-internal" };
+
+    case "admin_action":
+      // A person's admin account, never the admin bot, and only for fun:
+      // ranked and tournament results must stay earned.
+      if (!actor.isAdmin || actor.isAdminBot) {
+        return { status: 403, error: "admin tools are for admins" };
+      }
+      if (game.isCompetitive) {
+        return {
+          status: 403,
+          error: "no admin tools in ranked or tournament games",
+        };
+      }
+      if (!game.hasStarted) {
+        return { status: 409, error: "game not started" };
+      }
+      return null;
 
     case "kick_player":
       if (!actor.isLobbyCreator && !actor.isAdmin && !actor.isModerator) {

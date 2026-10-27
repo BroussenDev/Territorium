@@ -8,7 +8,10 @@ import { Controller } from "../../Controller";
 import { MapRenderer } from "../../render/gl";
 import { replayUrlAt } from "../../ReplaySeek";
 import { GoToPlayerEvent } from "../../TransformHandler";
-import { SendKickPlayerIntentEvent } from "../../Transport";
+import {
+  SendAdminActionIntentEvent,
+  SendKickPlayerIntentEvent,
+} from "../../Transport";
 import { renderTroops, translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
 
@@ -122,6 +125,49 @@ export class StaffReviewPanel extends LitElement implements Controller {
     this.applyFocus();
     const p = this.watched();
     if (p) this.eventBus.emit(new GoToPlayerEvent(p));
+  }
+
+  // The admins' extras (AdminActionExecution): gifts and fake alerts. The
+  // server refuses them in ranked and tournament games.
+  private renderAdminTools(p: PlayerView) {
+    const id = p.id();
+    const send = (
+      action: SendAdminActionIntentEvent["action"],
+      amount?: number,
+    ) => this.eventBus.emit(new SendAdminActionIntentEvent(action, id, amount));
+    const btn = (label: string, onClick: () => void) =>
+      html`<button
+        class="rounded-md border border-amber-400/40 px-2 py-1 text-xs text-amber-100 hover:bg-amber-400/15"
+        @click=${onClick}
+      >
+        ${label}
+      </button>`;
+    return html`<div
+      class="flex flex-col gap-1.5 rounded-lg bg-amber-400/5 p-2"
+    >
+      <div class="text-xs font-bold text-amber-200">
+        ${translateText("staff_review.admin_tools")}
+      </div>
+      <div class="grid grid-cols-2 gap-1.5">
+        ${btn(translateText("staff_review.give_troops", { n: "10K" }), () =>
+          send("give_troops", 10_000),
+        )}
+        ${btn(translateText("staff_review.give_troops", { n: "100K" }), () =>
+          send("give_troops", 100_000),
+        )}
+        ${btn(translateText("staff_review.give_gold", { n: "100K" }), () =>
+          send("give_gold", 100_000),
+        )}
+        ${btn(translateText("staff_review.give_gold", { n: "1M" }), () =>
+          send("give_gold", 1_000_000),
+        )}
+        ${btn(translateText("staff_review.fake_mirv"), () => send("fake_mirv"))}
+        ${btn(translateText("staff_review.fake_nuke"), () => send("fake_nuke"))}
+      </div>
+      <div class="text-[11px] text-white/45">
+        ${translateText("staff_review.admin_note")}
+      </div>
+    </div>`;
   }
 
   private kick(p: PlayerView) {
@@ -242,6 +288,9 @@ export class StaffReviewPanel extends LitElement implements Controller {
                     >
                       ${translateText("staff_review.go_to")}
                     </button>
+                    ${live && this.liveAdmin
+                      ? this.renderAdminTools(p)
+                      : nothing}
                     ${live && p.isAlive()
                       ? html`<button
                           class="rounded-md border border-red-500/60 px-2 py-1 font-bold text-red-200 hover:bg-red-500/20"

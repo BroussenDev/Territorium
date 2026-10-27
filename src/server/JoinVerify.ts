@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { TokenPayload } from "../core/ApiSchemas";
+import { isAdminRole } from "../core/ApiSchemas";
 import { ServerEnv } from "./ServerEnv";
 
 const JoinVerifyVerdictSchema = z.discriminatedUnion("status", [
@@ -52,6 +53,15 @@ export type JoinVerifyPlan =
 // client-supplied instanceId — that is forgeable.
 export function isSteamAuthenticated(claims: TokenPayload | null): boolean {
   return claims?.provider === "steam";
+}
+
+/**
+ * Whether the Steam app's modes (Versus, public lobbies) are open to this
+ * sign-in: the Steam app's own, or an admin's account in the browser. Not a
+ * stand-in for the bot check: that stays isSteamAuthenticated's.
+ */
+export function mayUseSteamModes(claims: TokenPayload | null): boolean {
+  return isSteamAuthenticated(claims) || isAdminRole(claims?.role);
 }
 
 /**

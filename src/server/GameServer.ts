@@ -435,6 +435,9 @@ export class GameServer {
       isPublic: this.isPublic(),
       isListed: this.isListed(),
       hasStarted: this.hasStarted(),
+      isCompetitive:
+        this.gameConfig.rankedType !== undefined ||
+        (this.gameConfig.allowedPublicIds?.length ?? 0) > 0,
     });
     if (denied !== null) {
       return finish(denied);

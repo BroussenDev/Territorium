@@ -53,7 +53,7 @@ import "./components/VersusLobby";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
 import { JoinLobbyEvent } from "./Main";
 import { navigateTo } from "./PageTransition";
-import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
+import { isSteamLocked, showSteamLaunchDialog } from "./SteamLaunch";
 import { terrainMapFileLoader } from "./TerrainMapFileLoader";
 import { SendPickTeamEvent } from "./Transport";
 import {
@@ -330,7 +330,7 @@ export class HostLobbyModal extends BaseModal {
         @click=${() => this.handleVisibilitySelect(isPublic)}
       >
         <span class="flex items-center gap-1"
-          >${isPublic && STEAM_LAUNCH_LOCKED && !this.publiclyListed
+          >${isPublic && isSteamLocked() && !this.publiclyListed
             ? lockIcon("size-3")
             : nothing}${translateText(labelKey)}</span
         >
@@ -379,7 +379,7 @@ export class HostLobbyModal extends BaseModal {
     ) {
       return;
     }
-    if (isPublic && STEAM_LAUNCH_LOCKED) {
+    if (isPublic && isSteamLocked()) {
       showSteamLaunchDialog("public_lobby");
       return;
     }

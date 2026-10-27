@@ -39,6 +39,7 @@ import type { GameServer } from "./GameServer";
 import {
   isSteamAuthenticated,
   joinNeedsSteamApp,
+  mayUseSteamModes,
   planJoinVerify,
   verifyJoin,
 } from "./JoinVerify";
@@ -339,7 +340,7 @@ export async function startWorker() {
     if (
       listed &&
       ServerEnv.env() !== GameEnv.Dev &&
-      !isSteamAuthenticated(auth.claims)
+      !mayUseSteamModes(auth.claims)
     ) {
       return res.status(403).json({ error: "steam_app_required" });
     }
@@ -586,7 +587,7 @@ export async function startWorker() {
             target !== null &&
             joinNeedsSteamApp({
               isVersus: target.isVersus(),
-              steamAuthed: isSteamAuthenticated(claims),
+              steamAuthed: mayUseSteamModes(claims),
               isReadmit: target.wasAdmitted(persistentId),
             })
           ) {

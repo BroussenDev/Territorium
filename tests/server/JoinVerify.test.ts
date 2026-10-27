@@ -3,6 +3,7 @@ import type { TokenPayload } from "../../src/core/ApiSchemas";
 import {
   isSteamAuthenticated,
   joinNeedsSteamApp,
+  mayUseSteamModes,
   planJoinVerify,
   verifyJoin,
 } from "../../src/server/JoinVerify";
@@ -318,5 +319,29 @@ describe("joinNeedsSteamApp", () => {
     expect(isSteamAuthenticated(claims("steam"))).toBe(true);
     expect(isSteamAuthenticated(claims("steam_web"))).toBe(false);
     expect(isSteamAuthenticated(null)).toBe(false);
+  });
+});
+
+describe("mayUseSteamModes", () => {
+  const claims = (provider?: string): TokenPayload =>
+    ({
+      jti: "j",
+      sub: "s",
+      iat: 0,
+      iss: "i",
+      aud: "openfront.io",
+      exp: 0,
+      ...(provider ? { provider } : {}),
+    }) as TokenPayload;
+  it("opens the Steam app's modes to the app and to admins only", () => {
+    expect(mayUseSteamModes(claims("steam"))).toBe(true);
+    expect(mayUseSteamModes({ ...claims("google"), role: "admin" })).toBe(true);
+    expect(mayUseSteamModes({ ...claims("google"), role: "mod" })).toBe(false);
+    expect(mayUseSteamModes(claims("google"))).toBe(false);
+    expect(mayUseSteamModes(null)).toBe(false);
+    // Admins still pass the bot check like anyone.
+    expect(isSteamAuthenticated({ ...claims("google"), role: "admin" })).toBe(
+      false,
+    );
   });
 });

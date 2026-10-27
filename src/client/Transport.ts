@@ -17,6 +17,7 @@ import {
 } from "../core/game/Game";
 import { TileRef } from "../core/game/GameMap";
 import {
+  AdminActionIntent,
   AllPlayersStats,
   ChatNotice,
   ClientChatMessage,
@@ -285,6 +286,15 @@ export class SendKickPlayerIntentEvent implements GameEvent {
   constructor(public readonly target: string) {}
 }
 
+/** An admin's tool from the staff menu (AdminActionExecution). */
+export class SendAdminActionIntentEvent implements GameEvent {
+  constructor(
+    public readonly action: AdminActionIntent["action"],
+    public readonly target: string,
+    public readonly amount?: number,
+  ) {}
+}
+
 export class SendUpdateGameConfigIntentEvent implements GameEvent {
   constructor(public readonly config: Partial<GameConfig>) {}
 }
@@ -426,6 +436,14 @@ export class Transport {
       this.onSendDeleteUnitIntent(e),
     );
 
+    this.subscribe(SendAdminActionIntentEvent, (e) =>
+      this.sendIntent({
+        type: "admin_action",
+        action: e.action,
+        target: e.target,
+        ...(e.amount !== undefined ? { amount: e.amount } : {}),
+      }),
+    );
     this.subscribe(SendKickPlayerIntentEvent, (e) =>
       this.onSendKickPlayerIntent(e),
     );

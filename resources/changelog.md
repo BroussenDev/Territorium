@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.161
+
+🛡️ **Admins**
+
+- Admin tools in the staff menu: give troops or gold, and harmless fake MIRV and atom bomb alerts. Never in ranked or tournament games.
+- Admin accounts can open the Steam app modes in the browser.
+
 ## v0.1.160
 
 🛠️ **Fix**

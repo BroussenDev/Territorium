@@ -63,7 +63,7 @@ import {
 } from "./ServerList";
 import { gameOpenOrExplain, watchServerStatus } from "./ServerStatusClient";
 import { SinglePlayerModal } from "./SinglePlayerModal";
-import { showSteamLaunchDialog, STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
+import { isSteamLocked, showSteamLaunchDialog } from "./SteamLaunch";
 import { UsernameInput } from "./UsernameInput";
 import {
   calculateServerTimeOffset,
@@ -429,6 +429,8 @@ export class GameModeSelector extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     watchServerStatus();
+    // An admin's account unlocks the Steam app's modes once known.
+    window.addEventListener("steam-lock-changed", () => this.requestUpdate());
     this.defaultLobbyTime = ClientEnv.gameCreationRate() / 1000;
     window.addEventListener(
       "username-validity-change",
@@ -777,8 +779,8 @@ export class GameModeSelector extends LitElement {
               undefined,
               true,
               ICON_TROPHY,
-              !STEAM_LAUNCH_LOCKED && isNewSeason(this.rankedSeason),
-              STEAM_LAUNCH_LOCKED,
+              !isSteamLocked() && isNewSeason(this.rankedSeason),
+              isSteamLocked(),
             )}
           </div>
         </div>
@@ -875,7 +877,7 @@ export class GameModeSelector extends LitElement {
   }
 
   private openRankedMenu = () => {
-    if (STEAM_LAUNCH_LOCKED) {
+    if (isSteamLocked()) {
       showSteamLaunchDialog("ranked");
       return;
     }
@@ -962,7 +964,7 @@ export class GameModeSelector extends LitElement {
   private renderFavoriteModes() {
     const favorites = favoriteModes(
       this.lobbies,
-      STEAM_LAUNCH_LOCKED ? ["versus"] : [],
+      isSteamLocked() ? ["versus"] : [],
     );
     const blocked = shouldBlockSocketSourcedAction(this.desktopSessionState);
     return html`
@@ -1179,7 +1181,7 @@ export class GameModeSelector extends LitElement {
   };
 
   private openVersus = () => {
-    if (STEAM_LAUNCH_LOCKED) {
+    if (isSteamLocked()) {
       showSteamLaunchDialog("versus");
       return;
     }

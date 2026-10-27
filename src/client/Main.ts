@@ -1,6 +1,6 @@
 import { ClientEnv } from "src/client/ClientEnv";
 import { renderNavVersion } from "src/client/GameVersion";
-import { UserMeResponse } from "../core/ApiSchemas";
+import { isAdminRole, UserMeResponse } from "../core/ApiSchemas";
 import { assetUrl } from "../core/AssetUrls";
 import { EventBus } from "../core/EventBus";
 import {
@@ -173,7 +173,7 @@ import {
 } from "./utilities/DisableSafariPinchZoom";
 
 import "./ChallengesModal";
-import { STEAM_LAUNCH_LOCKED } from "./SteamLaunch";
+import { isSteamLocked, unlockSteamForAdmin } from "./SteamLaunch";
 import "./TournamentMatchBanner";
 import "./TournamentsModal";
 import "./components/DesktopNavBar";
@@ -442,7 +442,8 @@ class Client {
       pageId: "page-single-player",
     });
     // Locked until the Steam release: their links fall back to the home page.
-    if (!STEAM_LAUNCH_LOCKED) {
+    // An admin's account unlocks them in the browser once it is known.
+    const registerSteamModes = () => {
       modalRouter.register("ranked", {
         tag: "ranked-modal",
         pageId: "page-ranked",
@@ -450,6 +451,17 @@ class Client {
       modalRouter.register("versus", {
         tag: "versus-modal",
         pageId: "page-versus",
+      });
+    };
+    if (!isSteamLocked()) registerSteamModes();
+    else {
+      window.addEventListener("steam-lock-changed", registerSteamModes, {
+        once: true,
+      });
+      void userAuth().then((auth) => {
+        if (auth !== false && isAdminRole(auth.claims.role)) {
+          unlockSteamForAdmin();
+        }
       });
     }
     modalRouter.register("challenges", {

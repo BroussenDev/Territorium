@@ -59,7 +59,8 @@ export type Intent =
   | PeaceRequestIntent
   | PeaceRejectIntent
   | BreakPeaceIntent
-  | SetCapitalIntent;
+  | SetCapitalIntent
+  | AdminActionIntent;
 
 export type AttackIntent = z.infer<typeof AttackIntentSchema>;
 export type CancelAttackIntent = z.infer<typeof CancelAttackIntentSchema>;
@@ -74,6 +75,7 @@ export type PeaceRequestIntent = z.infer<typeof PeaceRequestIntentSchema>;
 export type PeaceRejectIntent = z.infer<typeof PeaceRejectIntentSchema>;
 export type BreakPeaceIntent = z.infer<typeof BreakPeaceIntentSchema>;
 export type SetCapitalIntent = z.infer<typeof SetCapitalIntentSchema>;
+export type AdminActionIntent = z.infer<typeof AdminActionIntentSchema>;
 export type TargetPlayerIntent = z.infer<typeof TargetPlayerIntentSchema>;
 export type EmojiIntent = z.infer<typeof EmojiIntentSchema>;
 export type DonateGoldIntent = z.infer<typeof DonateGoldIntentSchema>;
@@ -849,6 +851,16 @@ export const SetCapitalIntentSchema = z.object({
   unitId: zb.uint(),
 });
 
+// An admin's tool from the in-game staff menu (AdminActionExecution.ts).
+// The game server accepts it from an admin account only, and never in a
+// ranked or tournament game (IntentAuthorization.ts).
+export const AdminActionIntentSchema = z.object({
+  type: z.literal("admin_action"),
+  action: z.enum(["give_troops", "give_gold", "fake_mirv", "fake_nuke"]),
+  target: MappedID,
+  amount: zb.uint({ max: 10_000_000 }).optional(),
+});
+
 export const IntentSchema = z.discriminatedUnion("type", [
   AttackIntentSchema,
   CancelAttackIntentSchema,
@@ -879,6 +891,8 @@ export const IntentSchema = z.discriminatedUnion("type", [
   PeaceRejectIntentSchema,
   BreakPeaceIntentSchema,
   SetCapitalIntentSchema,
+  // Appended last: the wire encodes the union by position.
+  AdminActionIntentSchema,
 ]);
 
 // StampedIntent = Intent with server-stamped clientID (used in turns and execution)
