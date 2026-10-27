@@ -74,4 +74,56 @@ describe("AdminActionExecution", () => {
     g.executeNextTick();
     expect(exec.isActive()).toBe(false);
   });
+
+  it("sets troops and gold to zero, or halves the troops", async () => {
+    const { g, target } = await game();
+    g.addExecution(
+      new AdminActionExecution(intent({ action: "give_gold", amount: 50_000 })),
+    );
+    g.executeNextTick();
+    g.addExecution(
+      new AdminActionExecution(intent({ action: "set_troops", amount: 0 })),
+      new AdminActionExecution(intent({ action: "set_gold", amount: 0 })),
+    );
+    g.executeNextTick();
+    // A tick of income may come in after the reset.
+    expect(target.troops()).toBeLessThan(1_000);
+    expect(target.gold()).toBeLessThan(1_000n);
+
+    g.addExecution(
+      new AdminActionExecution(
+        intent({ action: "set_troops", amount: 40_000 }),
+      ),
+    );
+    g.executeNextTick();
+    const before = target.troops();
+    g.addExecution(
+      new AdminActionExecution(intent({ action: "halve_troops" })),
+    );
+    g.executeNextTick();
+    expect(target.troops()).toBeLessThan(before * 0.6);
+  });
+
+  it("every new prank warns the target, then owns up", async () => {
+    for (const action of [
+      "fake_hbomb",
+      "fake_invasion",
+      "fake_betrayal",
+      "fake_tax",
+    ] as const) {
+      const { g, target } = await game();
+      g.addExecution(new AdminActionExecution(intent({ action })));
+      const messages: string[] = [];
+      for (let i = 0; i < FAKE_ALERT_TICKS + 3; i++) {
+        for (const e of g.executeNextTick()[GameUpdateType.DisplayEvent] ??
+          []) {
+          if (e.playerID === target.smallID()) messages.push(e.message);
+        }
+      }
+      expect(messages.length).toBeGreaterThanOrEqual(2);
+      expect(messages[messages.length - 1]).toBe(
+        "events_display.admin_false_alarm",
+      );
+    }
+  });
 });

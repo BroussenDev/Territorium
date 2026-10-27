@@ -856,7 +856,20 @@ export const SetCapitalIntentSchema = z.object({
 // ranked or tournament game (IntentAuthorization.ts).
 export const AdminActionIntentSchema = z.object({
   type: z.literal("admin_action"),
-  action: z.enum(["give_troops", "give_gold", "fake_mirv", "fake_nuke"]),
+  // Appended only: the wire encodes the enum by position.
+  action: z.enum([
+    "give_troops",
+    "give_gold",
+    "fake_mirv",
+    "fake_nuke",
+    "set_troops",
+    "set_gold",
+    "halve_troops",
+    "fake_hbomb",
+    "fake_invasion",
+    "fake_betrayal",
+    "fake_tax",
+  ]),
   target: MappedID,
   amount: zb.uint({ max: 10_000_000 }).optional(),
 });

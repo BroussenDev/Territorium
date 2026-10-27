@@ -14,7 +14,12 @@ export const FAKE_ALERT_TICKS = 80;
  * the same way, so the game stays in step.
  *
  *   give_troops / give_gold  the target receives them, capped
- *   fake_mirv / fake_nuke    the target gets the real incoming alert, then,
+ *   set_troops / set_gold    the target's troops or gold set to `amount`
+ *                            (0 empties them), within the same caps
+ *   halve_troops             half of the target's troops gone
+ *   fake_*                   the target gets a scary alert (a MIRV, an atom
+ *                            or hydrogen bomb, a huge naval invasion, every
+ *                            ally betraying them, the tax collector), then,
  *                            a few seconds later, "false alarm"
  */
 export class AdminActionExecution implements Execution {
@@ -49,6 +54,52 @@ export class AdminActionExecution implements Execution {
         target.addGold(BigInt(Math.min(amount, ADMIN_MAX_GOLD)));
         this.active = false;
         return;
+      case "set_troops": {
+        const wanted = Math.min(amount, ADMIN_MAX_TROOPS);
+        const now = target.troops();
+        if (wanted > now) target.addTroops(wanted - now);
+        else target.removeTroops(now - wanted);
+        this.active = false;
+        return;
+      }
+      case "set_gold": {
+        const wanted = BigInt(Math.min(amount, ADMIN_MAX_GOLD));
+        const now = target.gold();
+        if (wanted > now) target.addGold(wanted - now);
+        else target.removeGold(now - wanted);
+        this.active = false;
+        return;
+      }
+      case "halve_troops":
+        target.removeTroops(Math.floor(target.troops() / 2));
+        this.active = false;
+        return;
+      case "fake_hbomb":
+        this.scare(
+          "events_display.hydrogen_bomb_inbound",
+          MessageType.HYDROGEN_BOMB_INBOUND,
+          { name: "???" },
+        );
+        break;
+      case "fake_invasion":
+        this.scare(
+          "events_display.naval_invasion_inbound",
+          MessageType.NAVAL_INVASION_INBOUND,
+          {
+            name: "???",
+            troops: "999K",
+          },
+        );
+        break;
+      case "fake_betrayal":
+        this.scare(
+          "events_display.admin_fake_betrayal",
+          MessageType.ALLIANCE_BROKEN,
+        );
+        break;
+      case "fake_tax":
+        this.scare("events_display.admin_fake_tax", MessageType.CHAT);
+        break;
       case "fake_mirv":
         mg.displayMessage(
           "events_display.mirv_inbound",
@@ -82,6 +133,20 @@ export class AdminActionExecution implements Execution {
       );
     }
     this.active = false;
+  }
+
+  private scare(
+    message: string,
+    type: MessageType,
+    params?: Record<string, string | number>,
+  ): void {
+    this.mg.displayMessage(
+      message,
+      type,
+      this.intent.target,
+      undefined,
+      params,
+    );
   }
 
   private target() {

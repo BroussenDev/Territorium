@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.162
+
+🛡️ **Admins**
+
+- More pranks in the admin tools: fake H-bomb, fake naval invasion, fake betrayal, fake tax collector.
+- Admins can also take troops or gold away.
+
 ## v0.1.161
 
 🛡️ **Admins**

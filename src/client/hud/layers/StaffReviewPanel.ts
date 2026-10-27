@@ -142,6 +142,24 @@ export class StaffReviewPanel extends LitElement implements Controller {
       >
         ${label}
       </button>`;
+    // Taking away asks first: it can decide a game.
+    const danger = (label: string, onClick: () => void) =>
+      html`<button
+        class="rounded-md border border-red-500/50 px-2 py-1 text-xs text-red-100 hover:bg-red-500/20"
+        @click=${() => {
+          if (
+            confirm(
+              translateText("staff_review.take_confirm", {
+                name: p.displayName(),
+              }),
+            )
+          ) {
+            onClick();
+          }
+        }}
+      >
+        ${label}
+      </button>`;
     return html`<div
       class="flex flex-col gap-1.5 rounded-lg bg-amber-400/5 p-2"
     >
@@ -163,6 +181,30 @@ export class StaffReviewPanel extends LitElement implements Controller {
         )}
         ${btn(translateText("staff_review.fake_mirv"), () => send("fake_mirv"))}
         ${btn(translateText("staff_review.fake_nuke"), () => send("fake_nuke"))}
+        ${btn(translateText("staff_review.fake_hbomb"), () =>
+          send("fake_hbomb"),
+        )}
+        ${btn(translateText("staff_review.fake_invasion"), () =>
+          send("fake_invasion"),
+        )}
+        ${btn(translateText("staff_review.fake_betrayal"), () =>
+          send("fake_betrayal"),
+        )}
+        ${btn(translateText("staff_review.fake_tax"), () => send("fake_tax"))}
+      </div>
+      <div class="text-xs font-bold text-red-200">
+        ${translateText("staff_review.take_away")}
+      </div>
+      <div class="grid grid-cols-3 gap-1.5">
+        ${danger(translateText("staff_review.troops_zero"), () =>
+          send("set_troops", 0),
+        )}
+        ${danger(translateText("staff_review.troops_half"), () =>
+          send("halve_troops"),
+        )}
+        ${danger(translateText("staff_review.gold_zero"), () =>
+          send("set_gold", 0),
+        )}
       </div>
       <div class="text-[11px] text-white/45">
         ${translateText("staff_review.admin_note")}
