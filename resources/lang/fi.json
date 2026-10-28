@@ -1269,6 +1269,8 @@
     "betrayal_description": "Rikkoit liiton pelaajan {name} kanssa, tehden sinusta PETTURIN ({malusPercent}% puolustuksen huononnus {durationText})",
     "betrayed_you": "{name} rikkoi liittonsa kanssasi",
     "capital_fallen": "{capital} on pudonnut! {name} menettivät pääkaupunkinsa",
+    "coalition_ended": "{name} ei enää hallitse: kansakuntien liittouma hajoaa.",
+    "coalition_formed": "Kansakunnat liittoutuvat vastaan: {name}!",
     "conquered_no_gold": "Valloitettu {name} (ei pelannut, kultaa ei myönnetty)",
     "conquest_broken": "{name} menetti enemmistön kohteista: lähtölaskenta pysähtyy.",
     "conquest_taken": "{name} hallitsee useimpia kohteita: voitto {minutes} minuutin kuluttua, ellei kukaan valtaa yhtä takaisin!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "Pelaajan {name} EMP lamautti {count} rakennustasi {seconds} s ajaksi",
     "emp_hit_attacker": "EMP:si lamautti {count} vihollisen rakennusta",
     "emp_inbound": "{name} ampui sinua EMP:llä",
+    "final_phase": "Loppuvaihe: {minutes} minuuttia jäljellä. Joukot ja kulta kasvavat kaikilla nopeammin!",
     "focus": "Keskitä",
     "hydrogen_bomb_detonated": "{name} - vetypommi räjäytettiin",
     "hydrogen_bomb_inbound": "{name} laukaisi sinua kohti vetypommin",
@@ -2470,6 +2473,7 @@
     "zone_label": "Tavoite {letter}"
   },
   "overtime": {
+    "final_phase": "Loppuvaihe · päättyy {time} päästä",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Ylitöitä! Voittoon tarvittava alue on nyt laskussa.",
     "title": "Ylitöitä",
@@ -3704,6 +3708,20 @@
     "title_limited": "Selaimesi rajoittaa grafiikkaa",
     "title_software": "Laitteistokiihdytys on pois päältä",
     "title_unsupported": "Selaimesi ei pysty ajamaan peliä"
+  },
+  "whats_new": {
+    "ok": "Pelataan",
+    "title": "Uutta",
+    "v0_1_167": {
+      "bugs": "Pelivalikossa ja ohjesivulla. Jokainen ilmoitus saa tikettinumeron, ja tiimin vastaus näkyy tässä, kun avaat pelin.",
+      "bugs_title": "Ilmoita viasta",
+      "coalition": "Kun osapuoli hallitsee 30 % maasta, kansakunnat liittoutuvat sitä vastaan. Kukaan ei saa bonusta: tee rauha joidenkin kanssa hajottaaksesi liittouman.",
+      "coalition_title": "Kansakuntatila: liittouma",
+      "final_phase": "1 h 30 min jälkeen julkinen peli siirtyy loppuvaiheeseen: joukot ja kulta kasvavat kaikilla 50 % nopeammin, ja 2 tunnin kohdalla eniten maata hallitseva osapuoli voittaa.",
+      "final_phase_title": "Todellinen loppuvaihe",
+      "threshold": "Voittoon tarvittava maaosuus alkaa laskea vasta 45 minuutin jälkeen, hitaammin eikä koskaan alle puolen kartasta.",
+      "threshold_title": "Peleillä on aikaa"
+    }
   },
   "win_modal": {
     "died": "Sinä kuolit",

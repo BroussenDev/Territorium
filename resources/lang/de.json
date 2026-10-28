@@ -1269,6 +1269,8 @@
     "betrayal_description": "Du hast deine Allianz mit {name} gebrochen und bist zum VERRÄTER geworden ({malusPercent}% Verteidigungs-Malus für {durationText})",
     "betrayed_you": "{name} hat die Allianz mit dir gebrochen",
     "capital_fallen": "{capital} ist gefallen! {name} haben ihre Hauptstadt verloren",
+    "coalition_ended": "{name} dominiert nicht mehr: Die Koalition der Nationen löst sich auf.",
+    "coalition_formed": "Die Nationen verbünden sich gegen {name}!",
     "conquered_no_gold": "Du hast {name} erobert. (Kein Gold, spielte nicht)",
     "conquest_broken": "{name} hat die Mehrheit der Ziele verloren: Der Countdown stoppt.",
     "conquest_taken": "{name} hält die Mehrheit der Ziele: Sieg in {minutes} Minuten, wenn niemand eines zurückerobert!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "Der EMP von {name} hat {count} deiner Gebäude für {seconds} s lahmgelegt",
     "emp_hit_attacker": "Dein EMP hat {count} feindliche Gebäude lahmgelegt",
     "emp_inbound": "{name} hat einen EMP auf dich abgefeuert",
+    "final_phase": "Endphase: noch {minutes} Minuten. Truppen und Gold wachsen für alle schneller!",
     "focus": "Fokus",
     "hydrogen_bomb_detonated": "{name} - Wasserstoffbombe explodiert",
     "hydrogen_bomb_inbound": "{name} hat eine Wasserstoffbombe auf dich abgefeuert",
@@ -2470,6 +2473,7 @@
     "zone_label": "Ziel {letter}"
   },
   "overtime": {
+    "final_phase": "Endphase · endet in {time}",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Verlängerung! Das für den Sieg benötigte Gebiet fällt nun ab.",
     "title": "Verlängerung",
@@ -3704,6 +3708,20 @@
     "title_limited": "Dein Browser schränkt die Grafik ein",
     "title_software": "Hardwarebeschleunigung ist aus",
     "title_unsupported": "Dein Browser kann das Spiel nicht ausführen"
+  },
+  "whats_new": {
+    "ok": "Los geht's",
+    "title": "Was ist neu",
+    "v0_1_167": {
+      "bugs": "Im Spielmenü und auf der Hilfeseite. Jede Meldung bekommt eine Ticketnummer, und die Antwort des Teams erscheint hier beim Öffnen des Spiels.",
+      "bugs_title": "Fehler melden",
+      "coalition": "Hält eine Seite 30 % des Landes, verbünden sich die Nationen gegen sie. Kein Bonus für niemanden: Schließe Frieden mit einigen, um die Koalition zu sprengen.",
+      "coalition_title": "Nationen-Modus: die Koalition",
+      "final_phase": "Nach 1:30 Std. geht eine öffentliche Partie in die Endphase: Truppen und Gold wachsen für alle 50 % schneller, und nach 2 Std. gewinnt die Seite mit dem meisten Land.",
+      "final_phase_title": "Eine echte Endphase",
+      "threshold": "Der zum Sieg nötige Landanteil sinkt erst nach 45 Minuten, langsamer und nie unter die Hälfte der Karte.",
+      "threshold_title": "Partien haben Zeit, gespielt zu werden"
+    }
   },
   "win_modal": {
     "died": "Du bist gestorben",

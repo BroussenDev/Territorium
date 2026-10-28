@@ -17,7 +17,11 @@ import {
   EMOJI_SCARED_OF_THREAT,
   NationEmojiBehavior,
 } from "./NationEmojiBehavior";
-import { findJuiciestTarget, findRunawayLeader } from "./NationUtils";
+import {
+  findCoalitionTarget,
+  findJuiciestTarget,
+  findRunawayLeader,
+} from "./NationUtils";
 
 export class NationAllianceBehavior {
   constructor(
@@ -115,9 +119,24 @@ export class NationAllianceBehavior {
         this.game.config().gameConfig().difficulty === Difficulty.Easy) ||
       p.type() !== PlayerType.Bot;
 
-    for (const enemy of borderingEnemies) {
+    // In a coalition, the nations reach out to every other side, bordering
+    // or not, so the leader faces them all.
+    const coalition = findCoalitionTarget(this.game);
+    const candidates =
+      coalition !== null && this.player !== coalition
+        ? this.game
+            .players()
+            .filter(
+              (p) =>
+                p !== this.player &&
+                p !== coalition &&
+                p.type() !== PlayerType.Bot &&
+                !this.player.isAlliedWith(p),
+            )
+        : borderingEnemies;
+    for (const enemy of candidates) {
       if (
-        this.random.chance(30) &&
+        this.random.chance(coalition !== null ? 10 : 30) &&
         isAcceptablePlayerType(enemy) &&
         this.player.canSendAllianceRequest(enemy) &&
         this.getAllianceDecision(enemy, false)
@@ -143,6 +162,12 @@ export class NationAllianceBehavior {
         this.emojiBehavior.sendEmoji(otherPlayer, EMOJI_CONFUSED);
       }
       return false;
+    }
+    // Nations mode's coalition: everyone but the leader stands together, and
+    // the leader gets no new friend.
+    const coalition = findCoalitionTarget(this.game);
+    if (coalition !== null && this.player !== coalition) {
+      return otherPlayer !== coalition;
     }
     // Reject if otherPlayer has allied with a lot of players (Hard and Impossible only)
     // To make sure there are enough non-friendly players in the game to stop the crown with nukes

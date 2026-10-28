@@ -1269,6 +1269,8 @@
     "betrayal_description": "{name} ile ittifakını bozdun ve HAİN oldun ({durationText}liğine %{malusPercent} savunma zayıflatması)",
     "betrayed_you": "{name} seninle müttefikliğini bozdu",
     "capital_fallen": "{capital} düştü! {name} başkentlerini kaybettiler",
+    "coalition_ended": "{name} artık üstün değil: ulusların koalisyonu dağılıyor.",
+    "coalition_formed": "Uluslar {name} karşısında birleşiyor!",
     "conquered_no_gold": "Fethedildi {name} (oynamadı, altın verilmedi)",
     "conquest_broken": "{name} hedeflerin çoğunluğunu kaybetti: geri sayım durdu.",
     "conquest_taken": "Hedeflerin çoğunluğu {name} oyuncusunda: kimse birini geri almazsa {minutes} dakika sonra zafer!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name} adlı oyuncunun EMP'si {count} yapını {seconds} sn devre dışı bıraktı",
     "emp_hit_attacker": "EMP'n {count} düşman yapısını devre dışı bıraktı",
     "emp_inbound": "{name} sana EMP ateşledi",
+    "final_phase": "Son aşama: {minutes} dakika kaldı. Herkes için asker ve altın daha hızlı artıyor!",
     "focus": "Odaklan",
     "hydrogen_bomb_detonated": "{name} - hidrojen bombası patlatıldı",
     "hydrogen_bomb_inbound": "{name} size hidrojen bombası fırlattı",
@@ -2470,6 +2473,7 @@
     "zone_label": "Hedef {letter}"
   },
   "overtime": {
+    "final_phase": "Son aşama · {time} sonra bitiyor",
     "first_place": "1.: {name} (%{pct})",
     "started": "Mesai! Kazanmak için gereken bölge artık düşüyor.",
     "title": "Mesai",
@@ -3704,6 +3708,20 @@
     "title_limited": "Tarayıcın grafikleri sınırlıyor",
     "title_software": "Donanım hızlandırma kapalı",
     "title_unsupported": "Tarayıcın oyunu çalıştıramıyor"
+  },
+  "whats_new": {
+    "ok": "Hadi oynayalım",
+    "title": "Yenilikler",
+    "v0_1_167": {
+      "bugs": "Oyun menüsünde ve yardım sayfasında. Her bildirim bir kayıt numarası alır, ekibin yanıtı oyunu açtığında burada görünür.",
+      "bugs_title": "Hata bildir",
+      "coalition": "Bir taraf toprağın %30'una sahip olunca uluslar ona karşı ittifak kurar. Kimseye bonus yok: koalisyonu bozmak için bazılarıyla barış yap.",
+      "coalition_title": "Uluslar modu: koalisyon",
+      "final_phase": "1 saat 30 dakikadan sonra herkese açık oyun son aşamaya girer: asker ve altın herkes için %50 daha hızlı artar, 2 saatte en çok toprağa sahip taraf kazanır.",
+      "final_phase_title": "Gerçek bir son aşama",
+      "threshold": "Kazanmak için gereken toprak payı ancak 45 dakikadan sonra, daha yavaş düşer ve asla haritanın yarısının altına inmez.",
+      "threshold_title": "Oyunların oynanmaya vakti var"
+    }
   },
   "win_modal": {
     "died": "Öldün",

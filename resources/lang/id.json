@@ -1269,6 +1269,8 @@
     "betrayal_description": "Kamu memutus aliansi dengan {name}, menjadikanmu PENGKHIANAT ({malusPercent}% pengurangan pertahanan selama {durationText})",
     "betrayed_you": "{name} memutus aliansi dengan Anda",
     "capital_fallen": "{capital} telah jatuh! {name} kehilangan ibu kotanya",
+    "coalition_ended": "{name} tidak lagi mendominasi: koalisi bangsa bubar.",
+    "coalition_formed": "Bangsa-bangsa bersatu melawan {name}!",
     "conquered_no_gold": "Menaklukan {name} (tidak main, tidak ada emas yang diberikan)",
     "conquest_broken": "{name} kehilangan mayoritas target: hitung mundur berhenti.",
     "conquest_taken": "{name} menguasai mayoritas target: menang dalam {minutes} menit jika tak ada yang merebut satu kembali!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP milik {name} melumpuhkan {count} bangunanmu selama {seconds} dtk",
     "emp_hit_attacker": "EMP-mu melumpuhkan {count} bangunan musuh",
     "emp_inbound": "{name} menembakkan EMP ke arahmu",
+    "final_phase": "Fase akhir: tinggal {minutes} menit. Pasukan dan emas tumbuh lebih cepat untuk semua!",
     "focus": "Fokus",
     "hydrogen_bomb_detonated": "{name} - bom hidrogen diledakkan",
     "hydrogen_bomb_inbound": "{name} meluncurkan bom hidrogen ke arahmu",
@@ -2470,6 +2473,7 @@
     "zone_label": "Tujuan {letter}"
   },
   "overtime": {
+    "final_phase": "Fase akhir · berakhir dalam {time}",
     "first_place": "Pertama: {name} ({pct}%)",
     "started": "Lembur! Wilayah yang dibutuhkan untuk menang kini semakin berkurang.",
     "title": "Lembur",
@@ -3704,6 +3708,20 @@
     "title_limited": "Browsermu membatasi grafis",
     "title_software": "Akselerasi perangkat keras nonaktif",
     "title_unsupported": "Browsermu tidak bisa menjalankan game ini"
+  },
+  "whats_new": {
+    "ok": "Ayo main",
+    "title": "Yang baru",
+    "v0_1_167": {
+      "bugs": "Di menu permainan dan halaman bantuan. Setiap laporan mendapat nomor tiket, dan jawaban tim muncul di sini saat kamu membuka game.",
+      "bugs_title": "Laporkan bug",
+      "coalition": "Saat satu pihak menguasai 30% wilayah, bangsa-bangsa bersekutu melawannya. Tak ada bonus untuk siapa pun: berdamailah dengan sebagian untuk memecah koalisi.",
+      "coalition_title": "Mode Bangsa: koalisi",
+      "final_phase": "Setelah 1 jam 30 menit, permainan publik masuk fase akhir: pasukan dan emas tumbuh 50% lebih cepat untuk semua, dan pada 2 jam pihak dengan wilayah terbanyak menang.",
+      "final_phase_title": "Fase akhir sungguhan",
+      "threshold": "Bagian wilayah untuk menang baru mulai turun setelah 45 menit, lebih lambat, dan tak pernah di bawah setengah peta.",
+      "threshold_title": "Permainan punya waktu dimainkan"
+    }
   },
   "win_modal": {
     "died": "Anda meninggal",

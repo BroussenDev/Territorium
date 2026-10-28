@@ -1269,6 +1269,8 @@
     "betrayal_description": "あなたは{name}との同盟を破棄し、裏切り者になりました（防御力が{durationText}の間{malusPercent}%低下します）",
     "betrayed_you": "{name}はあなたとの同盟を破棄しました",
     "capital_fallen": "{capital} が落ちました! {name}は首都を失いました",
+    "coalition_ended": "{name}はもう圧倒的ではありません：諸国の連合が解散します。",
+    "coalition_formed": "諸国が{name}に対抗して団結！",
     "conquered_no_gold": "{name}を征服しました (相手がプレイしていなかったのでゴールドは獲得できません)",
     "conquest_broken": "{name}が目標の過半数を失いました：カウントダウン停止。",
     "conquest_taken": "{name}が目標の過半数を保持：誰も奪い返さなければ{minutes}分後に勝利！",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name}のEMPであなたの建造物{count}個が{seconds}秒間停止しました",
     "emp_hit_attacker": "あなたのEMPが敵の建造物{count}個を停止させました",
     "emp_inbound": "{name}があなたにEMPを発射しました",
+    "final_phase": "最終局面：残り{minutes}分。全員の兵力と金の増加が速くなります！",
     "focus": "位置を表示",
     "hydrogen_bomb_detonated": "{name} - 水素爆弾が爆発しました",
     "hydrogen_bomb_inbound": "{name} があなたに水素爆弾を発射しました",
@@ -2470,6 +2473,7 @@
     "zone_label": "目標{letter}"
   },
   "overtime": {
+    "final_phase": "最終局面・残り{time}",
     "first_place": "1位: {name} ({pct}%)",
     "started": "延長戦！勝利に必要な領土の割合が減少しています。",
     "title": "延長戦",
@@ -3704,6 +3708,20 @@
     "title_limited": "お使いのブラウザがグラフィックを制限しています",
     "title_software": "ハードウェアアクセラレーションがオフです",
     "title_unsupported": "お使いのブラウザではゲームを実行できません"
+  },
+  "whats_new": {
+    "ok": "プレイしよう",
+    "title": "新着情報",
+    "v0_1_167": {
+      "bugs": "ゲームメニューとヘルプページから。報告ごとにチケット番号が付き、チームからの返信はゲームを開いたときにここに表示されます。",
+      "bugs_title": "不具合を報告",
+      "coalition": "ある陣営が土地の30%を持つと、諸国がそれに対抗して同盟します。誰にもボーナスはありません。一部と和平を結べば連合を崩せます。",
+      "coalition_title": "ネーションズモード：連合",
+      "final_phase": "1時間30分を過ぎると公開ゲームは最終局面に入り、全員の兵力と金が50%速く増え、2時間の時点で最も多くの土地を持つ陣営が勝利します。",
+      "final_phase_title": "本格的な最終局面",
+      "threshold": "勝利に必要な土地の割合は45分を過ぎてから、よりゆっくり下がり、マップの半分を下回ることはありません。",
+      "threshold_title": "じっくり遊べる試合に"
+    }
   },
   "win_modal": {
     "died": "あなたは死んでしまった",

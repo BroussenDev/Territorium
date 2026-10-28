@@ -1269,6 +1269,8 @@
     "betrayal_description": "Vous avez rompu votre alliance avec {name}, ce qui fait de vous un TRAÎTRE (affaiblissement de défense de {malusPercent}% pendant {durationText})",
     "betrayed_you": "{name} a rompu son alliance avec vous",
     "capital_fallen": "{capital} est tombée ! {name} a perdu sa capitale",
+    "coalition_ended": "{name} ne domine plus : la coalition des nations se dissout.",
+    "coalition_formed": "Les nations s'allient contre {name} !",
     "conquered_no_gold": "Élimination de {name} (n'a pas joué, pas d'or reçu)",
     "conquest_broken": "{name} a perdu la majorité des objectifs : le compte à rebours s'arrête.",
     "conquest_taken": "{name} tient la majorité des objectifs : victoire dans {minutes} minutes si personne n'en reprend un !",
@@ -1277,6 +1279,7 @@
     "emp_hit": "L'IEM de {name} a désactivé {count} de vos structures pendant {seconds} s",
     "emp_hit_attacker": "Votre IEM a désactivé {count} structures ennemies",
     "emp_inbound": "{name} a tiré une IEM sur vous",
+    "final_phase": "Phase finale : plus que {minutes} minutes. Les troupes et l'or poussent plus vite pour tout le monde !",
     "focus": "Focaliser",
     "hydrogen_bomb_detonated": "{name} - Bombe hydrogène explosée",
     "hydrogen_bomb_inbound": "{name} a lancé une bombe H sur vous",
@@ -2470,6 +2473,7 @@
     "zone_label": "Objectif {letter}"
   },
   "overtime": {
+    "final_phase": "Phase finale · fin dans {time}",
     "first_place": "1er : {name} ({pct} %)",
     "started": "Blitz ! Le territoire nécessaire pour gagner diminue de 1% toutes les 2 minutes désormais.",
     "title": "Blitz",
@@ -3704,6 +3708,20 @@
     "title_limited": "Votre navigateur limite les graphismes",
     "title_software": "L'accélération matérielle est désactivée",
     "title_unsupported": "Votre navigateur ne peut pas lancer le jeu"
+  },
+  "whats_new": {
+    "ok": "C'est parti",
+    "title": "Quoi de neuf",
+    "v0_1_167": {
+      "bugs": "Dans le menu en partie et la page d'aide. Chaque signalement reçoit un numéro de ticket, et la réponse de l'équipe s'affiche ici à l'ouverture du jeu.",
+      "bugs_title": "Signaler un bug",
+      "coalition": "Quand un camp tient 30 % des terres, les nations s'allient contre lui. Aucun bonus pour personne : signez la paix avec certaines pour casser la coalition.",
+      "coalition_title": "Mode Nations : la coalition",
+      "final_phase": "Après 1 h 30, une partie publique entre en phase finale : les troupes et l'or poussent 50 % plus vite pour tout le monde, et à 2 h le camp qui tient le plus de terres gagne.",
+      "final_phase_title": "Une vraie phase finale",
+      "threshold": "La part de terres pour gagner ne commence à baisser qu'après 45 minutes, plus lentement, et jamais sous la moitié de la carte.",
+      "threshold_title": "Les parties ont le temps de se jouer"
+    }
   },
   "win_modal": {
     "died": "Vous êtes mort·e.",

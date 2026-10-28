@@ -1269,6 +1269,8 @@
     "betrayal_description": "Rompiste tu alianza con {name}, convirtiéndote en un TRAIDOR ({malusPercent}% de desventaja de defensa para {durationText})",
     "betrayed_you": "{name} rompió su alianza contigo",
     "capital_fallen": "{capital} ha caído! {name} perdió su ciudad capital",
+    "coalition_ended": "{name} ya no domina: la coalición de naciones se disuelve.",
+    "coalition_formed": "¡Las naciones se alían contra {name}!",
     "conquered_no_gold": "Conquistado {name} (no jugó, no se otorgó oro)",
     "conquest_broken": "{name} ha perdido la mayoría de los objetivos: la cuenta atrás se detiene.",
     "conquest_taken": "¡{name} tiene la mayoría de los objetivos: victoria en {minutes} minutos si nadie recupera uno!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "El PEM de {name} ha desactivado {count} de tus estructuras durante {seconds} s",
     "emp_hit_attacker": "Tu PEM ha desactivado {count} estructuras enemigas",
     "emp_inbound": "{name} te ha lanzado un PEM",
+    "final_phase": "Fase final: quedan {minutes} minutos. ¡Las tropas y el oro crecen más rápido para todos!",
     "focus": "Enfoque",
     "hydrogen_bomb_detonated": "{name} - bomba de hidrógeno detonada",
     "hydrogen_bomb_inbound": "{name} te ha lanzado una bomba de hidrógeno",
@@ -2470,6 +2473,7 @@
     "zone_label": "Objetivo {letter}"
   },
   "overtime": {
+    "final_phase": "Fase final · termina en {time}",
     "first_place": "1º: {name} ({pct}%)",
     "started": "¡Horas extras! El territorio necesario para ganar ahora está disminuyendo.",
     "title": "horas extras",
@@ -3704,6 +3708,20 @@
     "title_limited": "Tu navegador está limitando los gráficos",
     "title_software": "La aceleración por hardware está desactivada",
     "title_unsupported": "Tu navegador no puede ejecutar el juego"
+  },
+  "whats_new": {
+    "ok": "A jugar",
+    "title": "Novedades",
+    "v0_1_167": {
+      "bugs": "En el menú de la partida y en la ayuda. Cada informe recibe un número de ticket, y la respuesta del equipo aparece aquí al abrir el juego.",
+      "bugs_title": "Informar de un error",
+      "coalition": "Cuando un bando tiene el 30 % de las tierras, las naciones se alían contra él. Sin bonificación para nadie: firma la paz con algunas para romper la coalición.",
+      "coalition_title": "Modo Naciones: la coalición",
+      "final_phase": "Tras 1 h 30, una partida pública entra en su fase final: las tropas y el oro crecen un 50 % más rápido para todos, y a las 2 h gana el bando con más tierras.",
+      "final_phase_title": "Una verdadera fase final",
+      "threshold": "El porcentaje de tierras para ganar solo empieza a bajar tras 45 minutos, más despacio y nunca por debajo de la mitad del mapa.",
+      "threshold_title": "Las partidas tienen tiempo para jugarse"
+    }
   },
   "win_modal": {
     "died": "Has muerto",

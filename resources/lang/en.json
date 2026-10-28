@@ -1269,6 +1269,8 @@
     "betrayal_description": "You broke your alliance with {name}, making you a TRAITOR ({malusPercent}% defense debuff for {durationText})",
     "betrayed_you": "{name} broke their alliance with you",
     "capital_fallen": "{capital} has fallen! {name} lost their capital city",
+    "coalition_ended": "{name} no longer leads by far: the nations' coalition breaks up.",
+    "coalition_formed": "The nations unite against {name}!",
     "conquered_no_gold": "Conquered {name} (didn't play, no gold awarded)",
     "conquest_broken": "{name} lost the majority of the objectives: the countdown stops.",
     "conquest_taken": "{name} holds the majority of the objectives: victory in {minutes} minutes unless someone takes one back!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name}'s EMP disabled {count} of your structures for {seconds} s",
     "emp_hit_attacker": "Your EMP disabled {count} enemy structures",
     "emp_inbound": "{name} fired an EMP at you",
+    "final_phase": "Final phase: {minutes} minutes left. Troops and gold grow faster for everyone!",
     "focus": "Focus",
     "hydrogen_bomb_detonated": "{name} - hydrogen bomb detonated",
     "hydrogen_bomb_inbound": "{name} launched a hydrogen bomb at you",
@@ -2470,6 +2473,7 @@
     "zone_label": "Objective {letter}"
   },
   "overtime": {
+    "final_phase": "Final phase · ends in {time}",
     "first_place": "1st: {name} ({pct}%)",
     "started": "Overtime! The territory needed to win is now dropping.",
     "title": "Overtime",
@@ -3704,6 +3708,20 @@
     "title_limited": "Your browser is limiting the graphics",
     "title_software": "Hardware acceleration is off",
     "title_unsupported": "Your browser can't run the game"
+  },
+  "whats_new": {
+    "ok": "Let's play",
+    "title": "What's new",
+    "v0_1_167": {
+      "bugs": "In the game menu and the help page. Each report gets a ticket number, and the team's answer appears here when you open the game.",
+      "bugs_title": "Report a bug",
+      "coalition": "When a side holds 30% of the land, the nations ally against it. No bonus for anyone: make peace with some of them to break the coalition.",
+      "coalition_title": "Nations mode: the coalition",
+      "final_phase": "After 1h30, a public game enters its final phase: troops and gold grow 50% faster for everyone, and at 2h the side holding the most land wins.",
+      "final_phase_title": "A real final phase",
+      "threshold": "The share of land needed to win only starts to drop after 45 minutes, more slowly, and never below half the map.",
+      "threshold_title": "Games get time to be played"
+    }
   },
   "win_modal": {
     "died": "You died",

@@ -1269,6 +1269,8 @@
     "betrayal_description": "你已撕毀和 {name} 的盟約，因而被標記為“叛徒”（你將獲得 {durationText} 的 {malusPercent}% 防禦降低懲罰）",
     "betrayed_you": "{name} 撕毀了和你的盟約",
     "capital_fallen": "{capital}墮落了！ {name}失去首都",
+    "coalition_ended": "{name} 不再占據絕對優勢：各國聯盟解散。",
+    "coalition_formed": "各國聯合起來對抗 {name}！",
     "conquered_no_gold": "征服了 {name} （對方沒在玩了，因此未掠奪到黃金）",
     "conquest_broken": "{name} 失去了多數目標：倒數停止。",
     "conquest_taken": "{name} 掌握著多數目標：若無人奪回，{minutes} 分鐘後獲勝！",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name} 的電磁脈衝使你的 {count} 座建築癱瘓 {seconds} 秒",
     "emp_hit_attacker": "你的電磁脈衝使 {count} 座敵方建築癱瘓",
     "emp_inbound": "{name} 向你發射了電磁脈衝",
+    "final_phase": "最終階段：還剩 {minutes} 分鐘。所有人的兵力和金幣成長加快！",
     "focus": "聚焦",
     "hydrogen_bomb_detonated": "{name} - 核彈已引爆",
     "hydrogen_bomb_inbound": "{name} 向你發射了氫彈",
@@ -2470,6 +2473,7 @@
     "zone_label": "目標{letter}"
   },
   "overtime": {
+    "final_phase": "最終階段 · {time} 後結束",
     "first_place": "第 1 名：{name}（{pct}%）",
     "started": "延長賽！勝利所需的領土比例已減少。",
     "title": "延長賽",
@@ -3704,6 +3708,20 @@
     "title_limited": "你的瀏覽器正在限制圖形",
     "title_software": "硬體加速已關閉",
     "title_unsupported": "你的瀏覽器無法執行遊戲"
+  },
+  "whats_new": {
+    "ok": "開玩",
+    "title": "新內容",
+    "v0_1_167": {
+      "bugs": "在對局選單和說明頁面中。每份回報都會獲得工單號碼，團隊的回覆會在你開啟遊戲時顯示在這裡。",
+      "bugs_title": "回報問題",
+      "coalition": "當某一方占有 30% 的領土時，各國會聯合起來對抗它。任何人都沒有加成：與其中一些國家議和即可瓦解聯盟。",
+      "coalition_title": "國家模式：聯盟",
+      "final_phase": "1 小時 30 分鐘後，公開對局進入最終階段：所有人的兵力和金幣成長加快 50%，到 2 小時時領土最多的一方獲勝。",
+      "final_phase_title": "真正的最終階段",
+      "threshold": "獲勝所需的領土比例要到 45 分鐘後才開始下降，降得更慢，且絕不低於地圖的一半。",
+      "threshold_title": "對局有充足時間"
+    }
   },
   "win_modal": {
     "died": "你已經死了",

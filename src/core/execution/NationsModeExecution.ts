@@ -15,6 +15,7 @@ import {
   startCompensation,
 } from "../game/NationsMode";
 import { CityExecution } from "./CityExecution";
+import { findCoalitionTarget } from "./nation/NationUtils";
 import { PlayerExecution } from "./PlayerExecution";
 
 /**
@@ -102,11 +103,40 @@ export class NationsModeExecution implements Execution {
     return null;
   }
 
+  // Everyone hears when the nations unite against a leader, and when the
+  // leader falls back under the line. Checked once a second.
+  private coalitionTarget: Player | null = null;
+  private announceCoalition(ticks: number): void {
+    if (ticks % 10 !== 0) return;
+    const target = findCoalitionTarget(this.mg);
+    if (target === this.coalitionTarget) return;
+    const previous = this.coalitionTarget;
+    this.coalitionTarget = target;
+    if (target !== null) {
+      this.mg.displayMessage(
+        "events_display.coalition_formed",
+        MessageType.COALITION,
+        null,
+        undefined,
+        { name: target.displayName() },
+      );
+    } else if (previous !== null) {
+      this.mg.displayMessage(
+        "events_display.coalition_ended",
+        MessageType.COALITION,
+        null,
+        undefined,
+        { name: previous.displayName() },
+      );
+    }
+  }
+
   tick(ticks: number): void {
     if (this.setup.length > 0) {
       this.mg.addExecution(...this.setup);
       this.setup = [];
     }
+    this.announceCoalition(ticks);
     // Falls first, so a conqueror never inherits the capital flag.
     for (const [player, capital] of this.capitals) {
       if (capital.isActive() && capital.owner() === player) continue;

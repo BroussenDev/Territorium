@@ -1269,6 +1269,8 @@
     "betrayal_description": "Szövetség megszegve a következő játékossal: {name}, így ÁRULÓ lettél ({malusPercent}% védelmi büntetés {durationText}-re)”",
     "betrayed_you": "{name} felbontotta a szövetségét veled",
     "capital_fallen": "{capital} esett! {name} elvesztették fővárosukat",
+    "coalition_ended": "{name} már nem uralkodik: a nemzetek koalíciója felbomlik.",
+    "coalition_formed": "A nemzetek összefognak {name} ellen!",
     "conquered_no_gold": "Meghódítottad {name}-t (nem játszott, nem kaptál aranyat)",
     "conquest_broken": "{name} elvesztette a célpontok többségét: a visszaszámlálás leáll.",
     "conquest_taken": "{name} tartja a célpontok többségét: győzelem {minutes} perc múlva, ha senki nem foglal vissza egyet!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name} EMP-je {count} épületedet iktatta ki {seconds} mp-re",
     "emp_hit_attacker": "Az EMP-d {count} ellenséges épületet iktatott ki",
     "emp_inbound": "{name} EMP-t lőtt rád",
+    "final_phase": "Végső szakasz: még {minutes} perc. A csapatok és az arany mindenkinél gyorsabban nőnek!",
     "focus": "Fókusz",
     "hydrogen_bomb_detonated": "{name} - hidrogénbomba robbantva",
     "hydrogen_bomb_inbound": "{name} hidrogénbombát lőtt ki rád",
@@ -2470,6 +2473,7 @@
     "zone_label": "Cél {letter}"
   },
   "overtime": {
+    "final_phase": "Végső szakasz · vége {time} múlva",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Hosszabbítás! A győzelemhez szükséges terület most csökken.",
     "title": "Hosszabbítás",
@@ -3704,6 +3708,20 @@
     "title_limited": "A böngésződ korlátozza a grafikát",
     "title_software": "A hardveres gyorsítás ki van kapcsolva",
     "title_unsupported": "A böngésződ nem tudja futtatni a játékot"
+  },
+  "whats_new": {
+    "ok": "Játsszunk",
+    "title": "Újdonságok",
+    "v0_1_167": {
+      "bugs": "A játékmenüben és a súgóoldalon. Minden jelentés jegyszámot kap, a csapat válasza pedig itt jelenik meg a játék megnyitásakor.",
+      "bugs_title": "Hiba jelentése",
+      "coalition": "Ha egy fél a föld 30%-át birtokolja, a nemzetek szövetkeznek ellene. Senki sem kap bónuszt: köss békét néhányukkal, hogy szétverd a koalíciót.",
+      "coalition_title": "Nemzetek mód: a koalíció",
+      "final_phase": "1 óra 30 perc után a nyilvános játék végső szakaszba lép: a csapatok és az arany mindenkinél 50%-kal gyorsabban nőnek, 2 óránál pedig a legtöbb földet birtokló fél nyer.",
+      "final_phase_title": "Igazi végső szakasz",
+      "threshold": "A győzelemhez szükséges földarány csak 45 perc után kezd csökkenni, lassabban, és soha nem a térkép fele alá.",
+      "threshold_title": "A játékoknak van idejük"
+    }
   },
   "win_modal": {
     "died": "Meghaltál",

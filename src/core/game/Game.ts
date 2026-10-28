@@ -1201,6 +1201,11 @@ export enum MessageType {
   // An admin's visual prank (confetti, an upside-down name): drawn by
   // AdminEffects.ts, never listed among the events.
   ADMIN_EFFECT,
+  // Overtime's final phase begins: the countdown to the end of the game.
+  FINAL_PHASE,
+  // Nations mode: the nations unite against the leader, or the leader fell
+  // back under the line.
+  COALITION,
 }
 
 // Message categories used for filtering events in the EventsDisplay
@@ -1242,6 +1247,8 @@ export const MESSAGE_TYPE_CATEGORIES: Record<MessageType, MessageCategory> = {
   [MessageType.ADMIN_EFFECT]: MessageCategory.CHAT,
   [MessageType.OBJECTIVES_REVEALED]: MessageCategory.ATTACK,
   [MessageType.CAPITAL_FALLEN]: MessageCategory.ATTACK,
+  [MessageType.FINAL_PHASE]: MessageCategory.ATTACK,
+  [MessageType.COALITION]: MessageCategory.ALLIANCE,
 } as const;
 
 /**

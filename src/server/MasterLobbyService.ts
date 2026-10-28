@@ -224,6 +224,12 @@ export class MasterLobbyService {
     return this.runningGames().games.length;
   }
 
+  // Everyone in a lobby or a game on this server, solo games included.
+  connectedPlayers(): number {
+    const { games, soloGames } = this.runningGames();
+    return games.reduce((n, g) => n + g.players, 0) + soloGames;
+  }
+
   isHealthy(): boolean {
     // We consider the lobby service healthy if at least half of the workers are ready.
     // This allows for some leeway if a worker crashes.

@@ -1269,6 +1269,8 @@
     "betrayal_description": "你已撕毁和 {name} 的盟约，因而被标记为“叛徒”（你将获得 {durationText} 的 {malusPercent}% 防御降低惩罚）",
     "betrayed_you": "{name} 撕毁了和你的盟约",
     "capital_fallen": "{capital}堕落了！ {name}失去首都",
+    "coalition_ended": "{name} 不再占据绝对优势：各国联盟解散。",
+    "coalition_formed": "各国联合起来对抗 {name}！",
     "conquered_no_gold": "征服了 {name} （对方没在玩了，因此未掠夺到黄金）",
     "conquest_broken": "{name} 失去了多数目标：倒计时停止。",
     "conquest_taken": "{name} 掌握着多数目标：若无人夺回，{minutes} 分钟后获胜！",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name} 的电磁脉冲使你的 {count} 座建筑瘫痪 {seconds} 秒",
     "emp_hit_attacker": "你的电磁脉冲使 {count} 座敌方建筑瘫痪",
     "emp_inbound": "{name} 向你发射了电磁脉冲",
+    "final_phase": "最终阶段：还剩 {minutes} 分钟。所有人的兵力和金币增长加快！",
     "focus": "聚焦",
     "hydrogen_bomb_detonated": "{name}——氢弹引爆",
     "hydrogen_bomb_inbound": "{name} 向你发射了氢弹",
@@ -2470,6 +2473,7 @@
     "zone_label": "目标{letter}"
   },
   "overtime": {
+    "final_phase": "最终阶段 · {time} 后结束",
     "first_place": "第一：{name}（{pct}%）",
     "started": "随着时间的推移！获胜所需的领土现在正在下降。",
     "title": "随着时间的推移",
@@ -3704,6 +3708,20 @@
     "title_limited": "你的浏览器正在限制图形",
     "title_software": "硬件加速已关闭",
     "title_unsupported": "你的浏览器无法运行游戏"
+  },
+  "whats_new": {
+    "ok": "开玩",
+    "title": "新内容",
+    "v0_1_167": {
+      "bugs": "在对局菜单和帮助页面中。每份报告都会获得工单号，团队的回复会在你打开游戏时显示在这里。",
+      "bugs_title": "报告问题",
+      "coalition": "当某一方占有 30% 的领土时，各国会联合起来对抗它。任何人都没有加成：与其中一些国家议和即可瓦解联盟。",
+      "coalition_title": "国家模式：联盟",
+      "final_phase": "1 小时 30 分钟后，公开对局进入最终阶段：所有人的兵力和金币增长加快 50%，到 2 小时时领土最多的一方获胜。",
+      "final_phase_title": "真正的最终阶段",
+      "threshold": "获胜所需的领土比例要到 45 分钟后才开始下降，降得更慢，且绝不低于地图的一半。",
+      "threshold_title": "对局有充足时间"
+    }
   },
   "win_modal": {
     "died": "你已经死了",

@@ -137,6 +137,17 @@ export class OvertimePanel extends LitElement {
             style="left:${Math.min(100, requiredPct)}%"
           ></div>
         </div>
+        ${this.game.config().inFinalPhase(elapsed)
+          ? html`<div
+              data-final-phase
+              class="text-xs font-bold text-amber-300"
+              role="timer"
+            >
+              ${translateText("overtime.final_phase", {
+                time: clock(Math.max(0, sd.endMinutes * 60 - elapsed)),
+              })}
+            </div>`
+          : ""}
         ${leader !== null
           ? html`<div class="text-xs text-gray-300">
               ${translateText("overtime.first_place", {
@@ -148,4 +159,9 @@ export class OvertimePanel extends LitElement {
       </div>
     `;
   }
+}
+
+function clock(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  return `${m}:${String(seconds % 60).padStart(2, "0")}`;
 }

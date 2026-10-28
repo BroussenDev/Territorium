@@ -1269,6 +1269,8 @@
     "betrayal_description": "{name}와의 동맹을 파기했습니다. 당신은 이제 배신자입니다. (방어력 {malusPercent}% 감소, 지속 시간: {durationText})",
     "betrayed_you": "{name}이(가) 당신과의 동맹을 파기했습니다",
     "capital_fallen": "{capital}가 떨어졌어요! {name} 수도를 잃었습니다",
+    "coalition_ended": "{name}의 우세가 끝났어요: 국가 연합이 해체됩니다.",
+    "coalition_formed": "국가들이 {name}에 맞서 뭉칩니다!",
     "conquered_no_gold": "{name} 정복 (플레이하지 않음, 금 미지급)",
     "conquest_broken": "{name}이(가) 목표의 과반을 잃었습니다: 카운트다운이 멈춥니다.",
     "conquest_taken": "{name}이(가) 목표의 과반을 차지했습니다: 아무도 되찾지 못하면 {minutes}분 후 승리!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name}의 EMP로 당신의 건물 {count}개가 {seconds}초간 무력화되었습니다",
     "emp_hit_attacker": "당신의 EMP가 적 건물 {count}개를 무력화했습니다",
     "emp_inbound": "{name}이(가) 당신에게 EMP를 발사했습니다",
+    "final_phase": "최종 단계: {minutes}분 남았어요. 모두의 병력과 골드가 더 빨리 늘어나요!",
     "focus": "초점",
     "hydrogen_bomb_detonated": "{name} - 수소폭탄 폭발",
     "hydrogen_bomb_inbound": "{name}이(가) 당신에게 수소폭탄을 발사했습니다",
@@ -2470,6 +2473,7 @@
     "zone_label": "목표 {letter}"
   },
   "overtime": {
+    "final_phase": "최종 단계 · {time} 후 종료",
     "first_place": "1위: {name} ({pct}%)",
     "started": "연장전 돌입! 승리에 필요한 영토 비율이 감소하기 시작합니다.",
     "title": "연장",
@@ -3704,6 +3708,20 @@
     "title_limited": "브라우저가 그래픽을 제한하고 있습니다",
     "title_software": "하드웨어 가속이 꺼져 있습니다",
     "title_unsupported": "브라우저에서 게임을 실행할 수 없습니다"
+  },
+  "whats_new": {
+    "ok": "플레이하기",
+    "title": "새로운 소식",
+    "v0_1_167": {
+      "bugs": "게임 메뉴와 도움말 페이지에서. 신고마다 티켓 번호가 붙고, 팀의 답변은 게임을 열 때 여기에 표시돼요.",
+      "bugs_title": "버그 신고",
+      "coalition": "한 진영이 땅의 30%를 차지하면 국가들이 그 진영에 맞서 동맹을 맺어요. 누구에게도 보너스는 없어요. 일부와 평화를 맺어 연합을 깨세요.",
+      "coalition_title": "국가 모드: 연합",
+      "final_phase": "1시간 30분이 지나면 공개 게임이 최종 단계에 들어가요. 모두의 병력과 골드가 50% 더 빨리 늘고, 2시간이 되면 땅을 가장 많이 가진 쪽이 승리해요.",
+      "final_phase_title": "진짜 최종 단계",
+      "threshold": "승리에 필요한 땅 비율은 45분이 지나서야 더 천천히 내려가며, 지도의 절반 아래로는 내려가지 않아요.",
+      "threshold_title": "게임을 즐길 시간"
+    }
   },
   "win_modal": {
     "died": "죽었습니다",

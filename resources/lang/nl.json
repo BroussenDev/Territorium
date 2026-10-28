@@ -1269,6 +1269,8 @@
     "betrayal_description": "Je hebt jouw alliantie met {name} verbroken, je bent nu een VERRADER ({durationText} een {malusPercent}% zwakkere verdediging)",
     "betrayed_you": "{name} heeft de alliantie met jou verbroken",
     "capital_fallen": "{capital} is gevallen! {name} verloren hun hoofdstad",
+    "coalition_ended": "{name} domineert niet meer: de coalitie van naties valt uiteen.",
+    "coalition_formed": "De naties verenigen zich tegen {name}!",
     "conquered_no_gold": "Veroverde {name} (heeft niet gespeeld, geen goud gekregen)",
     "conquest_broken": "{name} is de meerderheid van de doelen kwijt: het aftellen stopt.",
     "conquest_taken": "{name} heeft de meerderheid van de doelen: overwinning over {minutes} minuten als niemand er een terugpakt!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "De EMP van {name} heeft {count} van je gebouwen {seconds} s uitgeschakeld",
     "emp_hit_attacker": "Je EMP heeft {count} vijandelijke gebouwen uitgeschakeld",
     "emp_inbound": "{name} heeft een EMP op je afgevuurd",
+    "final_phase": "Eindfase: nog {minutes} minuten. Troepen en goud groeien voor iedereen sneller!",
     "focus": "Centreer",
     "hydrogen_bomb_detonated": "{name} - waterstofbom ontploft",
     "hydrogen_bomb_inbound": "{name} heeft een waterstofbom op je afgevuurd",
@@ -2470,6 +2473,7 @@
     "zone_label": "Doel {letter}"
   },
   "overtime": {
+    "final_phase": "Eindfase · eindigt over {time}",
     "first_place": "1e: {name} ({pct}%)",
     "started": "Overtijd! Het gebied dat nodig is om te winnen is nu omlaag aan het gaan.",
     "title": "Overtijd",
@@ -3704,6 +3708,20 @@
     "title_limited": "Je browser beperkt de graphics",
     "title_software": "Hardwareversnelling staat uit",
     "title_unsupported": "Je browser kan het spel niet draaien"
+  },
+  "whats_new": {
+    "ok": "Spelen maar",
+    "title": "Wat is er nieuw",
+    "v0_1_167": {
+      "bugs": "In het spelmenu en op de hulppagina. Elke melding krijgt een ticketnummer, en het antwoord van het team verschijnt hier als je het spel opent.",
+      "bugs_title": "Bug melden",
+      "coalition": "Houdt een kant 30% van het land, dan verenigen de naties zich ertegen. Geen bonus voor wie dan ook: sluit vrede met sommigen om de coalitie te breken.",
+      "coalition_title": "Natiemodus: de coalitie",
+      "final_phase": "Na 1u30 gaat een openbaar potje de eindfase in: troepen en goud groeien voor iedereen 50% sneller, en na 2u wint de kant met het meeste land.",
+      "final_phase_title": "Een echte eindfase",
+      "threshold": "Het landaandeel om te winnen daalt pas na 45 minuten, langzamer en nooit onder de helft van de kaart.",
+      "threshold_title": "Potjes krijgen de tijd"
+    }
   },
   "win_modal": {
     "died": "Je bent dood",

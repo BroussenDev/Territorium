@@ -1269,6 +1269,8 @@
     "betrayal_description": "Ți-ai rupt alianța cu {name}, făcându-te un TRĂDĂTOR ({malusPercent}%, penalizare asupra apărării pentru {durationText})",
     "betrayed_you": "{name} A rupt alianța cu tine",
     "capital_fallen": "{capital} a căzut! {name} și-au pierdut capitala",
+    "coalition_ended": "{name} nu mai domină: coaliția națiunilor se destramă.",
+    "coalition_formed": "Națiunile se aliază împotriva lui {name}!",
     "conquered_no_gold": "Ai cucerit {name} (nu ai jucat, nici aur acordat)",
     "conquest_broken": "{name} a pierdut majoritatea obiectivelor: numărătoarea se oprește.",
     "conquest_taken": "{name} deține majoritatea obiectivelor: victorie în {minutes} minute dacă nimeni nu recucerește unul!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP-ul lui {name} a dezactivat {count} dintre structurile tale pentru {seconds} s",
     "emp_hit_attacker": "EMP-ul tău a dezactivat {count} structuri inamice",
     "emp_inbound": "{name} a lansat un EMP asupra ta",
+    "final_phase": "Faza finală: mai sunt {minutes} minute. Trupele și aurul cresc mai repede pentru toți!",
     "focus": "Focalizează",
     "hydrogen_bomb_detonated": "{name} - bombă cu hidrogen detonată",
     "hydrogen_bomb_inbound": "{name} a lansat o bombă cu hidrogen asupra ta",
@@ -2470,6 +2473,7 @@
     "zone_label": "Obiectiv {letter}"
   },
   "overtime": {
+    "final_phase": "Faza finală · se termină în {time}",
     "first_place": "1st: {name} ({pct}%)",
     "started": "Timp trecut! Teritoriul necesar pentru a câștiga este acum abandonat.",
     "title": "Timp Suplimentar",
@@ -3704,6 +3708,20 @@
     "title_limited": "Browserul tău limitează grafica",
     "title_software": "Accelerarea hardware este dezactivată",
     "title_unsupported": "Browserul tău nu poate rula jocul"
+  },
+  "whats_new": {
+    "ok": "Hai să jucăm",
+    "title": "Ce e nou",
+    "v0_1_167": {
+      "bugs": "În meniul jocului și pe pagina de ajutor. Fiecare raport primește un număr de tichet, iar răspunsul echipei apare aici la deschiderea jocului.",
+      "bugs_title": "Raportează o eroare",
+      "coalition": "Când o tabără deține 30% din teritoriu, națiunile se aliază împotriva ei. Niciun bonus pentru nimeni: fă pace cu unele ca să spargi coaliția.",
+      "coalition_title": "Modul Națiuni: coaliția",
+      "final_phase": "După 1h30, un joc public intră în faza finală: trupele și aurul cresc cu 50% mai repede pentru toți, iar la 2h câștigă tabăra cu cele mai multe teritorii.",
+      "final_phase_title": "O adevărată fază finală",
+      "threshold": "Procentul de teritoriu pentru victorie începe să scadă abia după 45 de minute, mai încet și niciodată sub jumătate din hartă.",
+      "threshold_title": "Jocurile au timp să se joace"
+    }
   },
   "win_modal": {
     "died": "Ai murit",

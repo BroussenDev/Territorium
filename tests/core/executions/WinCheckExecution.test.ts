@@ -39,6 +39,8 @@ describe("WinCheckExecution", () => {
         gameMode: GameMode.Team,
       })),
       percentageTilesOwnedToWin: vi.fn(() => 50),
+      inFinalPhase: vi.fn(() => false),
+      overtimeConfig: vi.fn(() => ({ enabled: false, endMinutes: 120 })),
       isVersusMode: vi.fn(() => false),
       isSurvivalMode: vi.fn(() => false),
     }));
@@ -632,13 +634,14 @@ describe("WinCheckExecution - Overtime", () => {
     expect(config.percentageTilesOwnedToWin(0)).toBe(80);
     // Unchanged up to and including the start minute.
     expect(config.percentageTilesOwnedToWin(60)).toBe(80);
-    // Whole percentage points only: 2%/min -> one 1% step every 30 seconds.
-    expect(config.percentageTilesOwnedToWin(89)).toBe(80);
-    expect(config.percentageTilesOwnedToWin(90)).toBe(79);
-    expect(config.percentageTilesOwnedToWin(119)).toBe(79);
-    expect(config.percentageTilesOwnedToWin(60 + 5 * 60)).toBe(70);
-    // No floor: clamps at 0 so the leader always qualifies eventually.
-    expect(config.percentageTilesOwnedToWin(60 + 41 * 60)).toBe(0);
+    // Whole percentage points only: 1%/min -> one step a minute.
+    expect(config.percentageTilesOwnedToWin(119)).toBe(80);
+    expect(config.percentageTilesOwnedToWin(120)).toBe(79);
+    expect(config.percentageTilesOwnedToWin(60 + 5 * 60)).toBe(75);
+    // Never below half the land, however long the game.
+    expect(config.percentageTilesOwnedToWin(60 + 29 * 60)).toBe(51);
+    expect(config.percentageTilesOwnedToWin(60 + 41 * 60)).toBe(50);
+    expect(config.percentageTilesOwnedToWin(100_000)).toBe(50);
   });
 
   test("threshold never decays when the mode is off", async () => {
@@ -653,7 +656,7 @@ describe("WinCheckExecution - Overtime", () => {
       overtime: { enabled: true, startMinutes: 1 },
     });
     expect(game.config().percentageTilesOwnedToWin(0)).toBe(80);
-    expect(game.config().percentageTilesOwnedToWin(60 + 5 * 60)).toBe(70);
+    expect(game.config().percentageTilesOwnedToWin(60 + 5 * 60)).toBe(75);
   });
 
   test("a null maxTimerValue is no timer, not a zero-minute one", async () => {
@@ -719,13 +722,71 @@ describe("WinCheckExecution - Overtime", () => {
     expect(setWinnerSpy).not.toHaveBeenCalled();
     expect(winCheck.isActive()).toBe(true);
 
-    // Two game-minutes in, the bar is 78% — below the nation's 79%.
-    while (game.elapsedGameSeconds() < 120) {
+    // Three game-minutes in, the bar is 78% — below the nation's 79%.
+    while (game.elapsedGameSeconds() < 180) {
       game.executeNextTick();
     }
     winCheck.checkWinnerFFA();
     expect(setWinnerSpy).toHaveBeenCalledWith(nation, expect.anything());
     expect(winCheck.isActive()).toBe(false);
+  });
+});
+
+describe("WinCheckExecution - Final phase", () => {
+  test("starts at 1h30 with overtime on, never without", async () => {
+    const on = await setup("big_plains", {
+      gameMode: GameMode.FFA,
+      overtime: { enabled: true },
+    });
+    expect(on.config().overtimeConfig().startMinutes).toBe(45);
+    expect(on.config().inFinalPhase(90 * 60 - 1)).toBe(false);
+    expect(on.config().inFinalPhase(90 * 60)).toBe(true);
+    const off = await setup("big_plains", { gameMode: GameMode.FFA });
+    expect(off.config().inFinalPhase(10_000)).toBe(false);
+  });
+
+  test("the side holding the most land wins at 2h", async () => {
+    const game = await setup("big_plains", {
+      gameMode: GameMode.FFA,
+      overtime: { enabled: true },
+    });
+    const info = new PlayerInfo("Leader", PlayerType.Nation, null, "lead");
+    game.addPlayer(info);
+    const leader = game.player("lead");
+    let assigned = 0;
+    game.map().forEachTile((tile) => {
+      if (assigned >= 20 || !game.map().isLand(tile)) return;
+      leader.conquer(tile);
+      assigned++;
+    });
+    const setWinnerSpy = vi.fn();
+    game.setWinner = setWinnerSpy;
+    const winCheck = new WinCheckExecution();
+    winCheck.init(game, 0);
+    vi.spyOn(game, "elapsedGameSeconds").mockReturnValue(119 * 60);
+    winCheck.checkWinnerFFA();
+    expect(setWinnerSpy).not.toHaveBeenCalled();
+    vi.spyOn(game, "elapsedGameSeconds").mockReturnValue(120 * 60);
+    winCheck.checkWinnerFFA();
+    expect(setWinnerSpy).toHaveBeenCalledWith(leader, expect.anything());
+  });
+
+  test("everyone is told once when the final phase begins", async () => {
+    const game = await setup("big_plains", {
+      gameMode: GameMode.FFA,
+      overtime: { enabled: true },
+    });
+    const spy = vi.spyOn(game, "displayMessage");
+    const winCheck = new WinCheckExecution();
+    winCheck.init(game, 0);
+    vi.spyOn(game, "elapsedGameSeconds").mockReturnValue(90 * 60);
+    winCheck.tick(10);
+    winCheck.tick(20);
+    const calls = spy.mock.calls.filter(
+      (c) => c[0] === "events_display.final_phase",
+    );
+    expect(calls).toHaveLength(1);
+    expect(calls[0][4]).toEqual({ minutes: 30 });
   });
 });
 

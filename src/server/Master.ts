@@ -285,6 +285,7 @@ export async function startMaster() {
       const body = checkinBody(
         lobbyService.liveGames(),
         lobbyService.busyGames(),
+        lobbyService.connectedPlayers(),
       );
       if (body === null) return;
       const result = await sendCheckin(body);

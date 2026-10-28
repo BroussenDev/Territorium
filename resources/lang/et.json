@@ -1269,6 +1269,8 @@
     "betrayal_description": "Sa lõpetasid liidu {name}'ga, mis teeb su REETURIKS (sul on nüüd {malusPercent}% kaitsenõrgesus {durationText})",
     "betrayed_you": "{name} lõpetas liidu sinuga",
     "capital_fallen": "{capital} on langenud! {name} kaotasid oma pealinna",
+    "coalition_ended": "{name} ei domineeri enam: rahvaste koalitsioon laguneb.",
+    "coalition_formed": "Rahvad ühinevad {name} vastu!",
     "conquered_no_gold": "Vallutasid {name} (ei mänginud, kulla auhinda pole)",
     "conquest_broken": "{name} kaotas sihtmärkide enamuse: loendus peatub.",
     "conquest_taken": "{name} hoiab enamikku sihtmärke: võit {minutes} minuti pärast, kui keegi ühtki tagasi ei võta!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "Mängija {name} EMP lülitas {count} sinu ehitist {seconds} s välja",
     "emp_hit_attacker": "Sinu EMP lülitas välja {count} vaenlase ehitist",
     "emp_inbound": "{name} tulistas sind EMP-ga",
+    "final_phase": "Lõppfaas: jäänud {minutes} minutit. Väed ja kuld kasvavad kõigil kiiremini!",
     "focus": "Fokuseeri",
     "hydrogen_bomb_detonated": "{name} – plahvatas vesinikupomm",
     "hydrogen_bomb_inbound": "{name} tulistas sinu pihta vesinikupommi",
@@ -2470,6 +2473,7 @@
     "zone_label": "Eesmärk {letter}"
   },
   "overtime": {
+    "final_phase": "Lõppfaas · lõpeb {time} pärast",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Ületunnid! Võitmiseks vajalik territoorium väheneb nüüd.",
     "title": "Ületunnitöö",
@@ -3704,6 +3708,20 @@
     "title_limited": "Sinu brauser piirab graafikat",
     "title_software": "Riistvaraline kiirendus on välja lülitatud",
     "title_unsupported": "Sinu brauser ei suuda mängu käivitada"
+  },
+  "whats_new": {
+    "ok": "Mängime",
+    "title": "Mis on uut",
+    "v0_1_167": {
+      "bugs": "Mängumenüüs ja abilehel. Iga teade saab piletinumbri ning meeskonna vastus ilmub siia mängu avamisel.",
+      "bugs_title": "Teata veast",
+      "coalition": "Kui pool hoiab 30% maast, liituvad rahvad tema vastu. Kellelegi ei ole boonust: sõlmi mõnega rahu, et koalitsioon lõhkuda.",
+      "coalition_title": "Rahvaste režiim: koalitsioon",
+      "final_phase": "Pärast 1 h 30 min läheb avalik mäng lõppfaasi: väed ja kuld kasvavad kõigil 50% kiiremini ning 2 h juures võidab enim maad hoidev pool.",
+      "final_phase_title": "Päris lõppfaas",
+      "threshold": "Võiduks vajalik maaosa hakkab langema alles 45 minuti järel, aeglasemalt ega lange kunagi alla poole kaardist.",
+      "threshold_title": "Mängudel on aega"
+    }
   },
   "win_modal": {
     "died": "Sa said surma",

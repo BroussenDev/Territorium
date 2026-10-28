@@ -1269,6 +1269,8 @@
     "betrayal_description": "Du har brudt din alliance med {name}, og er nu en FORRÆDER (forsvarsstraffe på {malusPercent}% i {durationText})",
     "betrayed_you": "{name} har brudt sin alliance med dig",
     "capital_fallen": "{capital} er faldet! {name} mistede deres hovedstad",
+    "coalition_ended": "{name} dominerer ikke længere: nationernes koalition opløses.",
+    "coalition_formed": "Nationerne går sammen mod {name}!",
     "conquered_no_gold": "Erobrede {name} (spillede ikke, intet guld tildelt)",
     "conquest_broken": "{name} har mistet flertallet af målene: nedtællingen stopper.",
     "conquest_taken": "{name} har flertallet af målene: sejr om {minutes} minutter, medmindre nogen tager et tilbage!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name}s EMP har slået {count} af dine bygninger ud i {seconds} s",
     "emp_hit_attacker": "Din EMP har slået {count} fjendtlige bygninger ud",
     "emp_inbound": "{name} har affyret en EMP mod dig",
+    "final_phase": "Slutfase: {minutes} minutter tilbage. Tropper og guld vokser hurtigere for alle!",
     "focus": "Fokus",
     "hydrogen_bomb_detonated": "{name} – brintbombe detoneret",
     "hydrogen_bomb_inbound": "{name} har affyret en brintbombe mod dig",
@@ -2470,6 +2473,7 @@
     "zone_label": "Mål {letter}"
   },
   "overtime": {
+    "final_phase": "Slutfase · slutter om {time}",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Overarbejde! Det territorium, der skal til for at vinde, falder nu.",
     "title": "Overarbejde",
@@ -3704,6 +3708,20 @@
     "title_limited": "Din browser begrænser grafikken",
     "title_software": "Hardwareacceleration er slået fra",
     "title_unsupported": "Din browser kan ikke køre spillet"
+  },
+  "whats_new": {
+    "ok": "Lad os spille",
+    "title": "Nyheder",
+    "v0_1_167": {
+      "bugs": "I spilmenuen og på hjælpesiden. Hver rapport får et sagsnummer, og holdets svar vises her, når du åbner spillet.",
+      "bugs_title": "Rapportér en fejl",
+      "coalition": "Når en side har 30 % af landet, allierer nationerne sig mod den. Ingen bonus til nogen: slut fred med nogle for at bryde koalitionen.",
+      "coalition_title": "Nationstilstand: koalitionen",
+      "final_phase": "Efter 1 t 30 min går et offentligt spil i slutfasen: tropper og guld vokser 50 % hurtigere for alle, og efter 2 t vinder den side, der har mest land.",
+      "final_phase_title": "En rigtig slutfase",
+      "threshold": "Landandelen for at vinde begynder først at falde efter 45 minutter, langsommere og aldrig under halvdelen af kortet.",
+      "threshold_title": "Spil får tid til at blive spillet"
+    }
   },
   "win_modal": {
     "died": "Du døde",

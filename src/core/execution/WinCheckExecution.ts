@@ -4,6 +4,7 @@ import {
   Execution,
   Game,
   GameMode,
+  MessageType,
   Player,
   PlayerType,
   RankedType,
@@ -51,11 +52,30 @@ export class WinCheckExecution implements Execution {
       return;
     }
 
+    this.announceFinalPhase();
+
     if (this.mg.config().gameConfig().gameMode === GameMode.FFA) {
       this.checkWinnerFFA();
     } else {
       this.checkWinnerTeam();
     }
+  }
+
+  // Once, as the final phase begins: everyone is told the game ends soon.
+  private finalPhaseAnnounced = false;
+  private announceFinalPhase(): void {
+    if (this.mg === null || this.finalPhaseAnnounced) return;
+    const config = this.mg.config();
+    if (!config.inFinalPhase(this.mg.elapsedGameSeconds())) return;
+    this.finalPhaseAnnounced = true;
+    const sd = config.overtimeConfig();
+    this.mg.displayMessage(
+      "events_display.final_phase",
+      MessageType.FINAL_PHASE,
+      null,
+      undefined,
+      { minutes: sd.endMinutes - sd.finalPhaseMinutes },
+    );
   }
 
   // A ranked 2v2 match is void unless all four matched players actually
@@ -137,6 +157,12 @@ export class WinCheckExecution implements Execution {
       return true;
     }
     if (timeElapsed >= WinCheckExecution.HARD_TIME_LIMIT_SECONDS) {
+      return true;
+    }
+    // Overtime ends the game at its end minute: the side holding the most
+    // land (the one checked here) wins.
+    const sd = this.mg.config().overtimeConfig();
+    if (sd.enabled && timeElapsed >= sd.endMinutes * 60) {
       return true;
     }
     const numTilesWithoutFallout =

@@ -53,6 +53,9 @@ export interface NationsSeat {
 
 export const NATIONS_MAX_PLAYERS = 80;
 export const NATIONS_PERCENT_TILES_OWNED_TO_WIN = 50;
+// The nations unite against a side holding this share of the land: well
+// before the win, late enough that a good game isn't punished early.
+export const COALITION_PERCENT_TILES = 30;
 export const CAPITAL_GOLD_BONUS_PERCENT = 10;
 export const CAPITAL_TROOP_GROWTH_BONUS_PERCENT = 10;
 /**

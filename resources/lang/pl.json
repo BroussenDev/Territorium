@@ -1269,6 +1269,8 @@
     "betrayal_description": "Zerwałeś sojusz z {name}, co czyni cię ZDRADCĄ ({malusPercent}% osłabienia obrony na {durationText})",
     "betrayed_you": "{name} zerwał z tobą sojusz",
     "capital_fallen": "{capital} spadło! {name} straciło stolicę",
+    "coalition_ended": "{name} już nie dominuje: koalicja narodów się rozpada.",
+    "coalition_formed": "Narody jednoczą się przeciw {name}!",
     "conquered_no_gold": "Zdobyty {name} (nie zagrał, nie zdobył złota)",
     "conquest_broken": "{name} stracił większość celów: odliczanie zostaje zatrzymane.",
     "conquest_taken": "{name} ma większość celów: zwycięstwo za {minutes} minuty, jeśli nikt żadnego nie odbije!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP gracza {name} wyłączył {count} twoich budowli na {seconds} s",
     "emp_hit_attacker": "Twój EMP wyłączył {count} wrogich budowli",
     "emp_inbound": "{name} wystrzelił w ciebie EMP",
+    "final_phase": "Faza końcowa: zostało {minutes} minut. Wojska i złoto rosną szybciej dla wszystkich!",
     "focus": "Przejdź do miejsca",
     "hydrogen_bomb_detonated": "{name} - zdetonowano bombę wodorową",
     "hydrogen_bomb_inbound": "{name} wystrzelił w ciebie bombę wodorową",
@@ -2470,6 +2473,7 @@
     "zone_label": "Cel {letter}"
   },
   "overtime": {
+    "final_phase": "Faza końcowa · koniec za {time}",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Nadgodziny! Terytorium potrzebne do zwycięstwa zmniejsza się.",
     "title": "Nadgodziny",
@@ -3704,6 +3708,20 @@
     "title_limited": "Twoja przeglądarka ogranicza grafikę",
     "title_software": "Akceleracja sprzętowa jest wyłączona",
     "title_unsupported": "Twoja przeglądarka nie może uruchomić gry"
+  },
+  "whats_new": {
+    "ok": "Gramy",
+    "title": "Co nowego",
+    "v0_1_167": {
+      "bugs": "W menu gry i na stronie pomocy. Każde zgłoszenie dostaje numer, a odpowiedź zespołu pojawi się tutaj po otwarciu gry.",
+      "bugs_title": "Zgłoś błąd",
+      "coalition": "Gdy strona ma 30% ziemi, narody sprzymierzają się przeciw niej. Nikt nie dostaje premii: zawrzyj pokój z niektórymi, by rozbić koalicję.",
+      "coalition_title": "Tryb Narodów: koalicja",
+      "final_phase": "Po 1 h 30 min publiczna gra wchodzi w fazę końcową: wojska i złoto rosną o 50% szybciej dla wszystkich, a po 2 h wygrywa strona z największą ilością ziemi.",
+      "final_phase_title": "Prawdziwa faza końcowa",
+      "threshold": "Udział ziemi potrzebny do zwycięstwa zaczyna spadać dopiero po 45 minutach, wolniej i nigdy poniżej połowy mapy.",
+      "threshold_title": "Gry mają czas się rozegrać"
+    }
   },
   "win_modal": {
     "died": "Nie żyjesz",

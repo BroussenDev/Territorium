@@ -1269,6 +1269,8 @@
     "betrayal_description": "Bạn đã phá vỡ liên minh với {name}, khiến bạn trở thành KẺ PHẢN BỘI (giảm {malusPercent}% phòng thủ trong {durationText})",
     "betrayed_you": "{name} đã phá vỡ liên minh với bạn",
     "capital_fallen": "{capital} đã rơi! {name} mất thủ đô của họ",
+    "coalition_ended": "{name} không còn áp đảo: liên minh các quốc gia tan rã.",
+    "coalition_formed": "Các quốc gia liên minh chống lại {name}!",
     "conquered_no_gold": "Đã chinh phục {name} (không chơi, không nhận được vàng)",
     "conquest_broken": "{name} đã mất phần lớn mục tiêu: đồng hồ đếm ngược dừng lại.",
     "conquest_taken": "{name} đang giữ phần lớn mục tiêu: chiến thắng sau {minutes} phút nếu không ai giành lại một mục tiêu!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP của {name} đã vô hiệu hóa {count} công trình của bạn trong {seconds} giây",
     "emp_hit_attacker": "EMP của bạn đã vô hiệu hóa {count} công trình địch",
     "emp_inbound": "{name} đã bắn EMP vào bạn",
+    "final_phase": "Giai đoạn cuối: còn {minutes} phút. Quân và vàng tăng nhanh hơn cho mọi người!",
     "focus": "Xem",
     "hydrogen_bomb_detonated": "{name} - tên lửa bom nhiệt hạch (bom hydro) đã phát nổ",
     "hydrogen_bomb_inbound": "{name} đã phóng bom khinh khí vào bạn",
@@ -2470,6 +2473,7 @@
     "zone_label": "Mục tiêu {letter}"
   },
   "overtime": {
+    "final_phase": "Giai đoạn cuối · kết thúc sau {time}",
     "first_place": "Top 1: {name} ({pct}%)",
     "started": "Đã vào thời gian sau giờ! Diện tích lãnh thổ cần thiết để chiến thắng đang giảm xuống.",
     "title": "Thời gian sau giờ",
@@ -3704,6 +3708,20 @@
     "title_limited": "Trình duyệt của bạn đang giới hạn đồ họa",
     "title_software": "Tăng tốc phần cứng đang tắt",
     "title_unsupported": "Trình duyệt của bạn không chạy được trò chơi"
+  },
+  "whats_new": {
+    "ok": "Chơi thôi",
+    "title": "Có gì mới",
+    "v0_1_167": {
+      "bugs": "Trong menu trận đấu và trang trợ giúp. Mỗi báo cáo có một số phiếu, và câu trả lời của đội ngũ hiện ra ở đây khi bạn mở trò chơi.",
+      "bugs_title": "Báo lỗi",
+      "coalition": "Khi một phe giữ 30% đất, các quốc gia liên minh chống lại phe đó. Không ai được thưởng: hãy hòa với một số nước để phá liên minh.",
+      "coalition_title": "Chế độ Quốc gia: liên minh",
+      "final_phase": "Sau 1 giờ 30 phút, trận công khai bước vào giai đoạn cuối: quân và vàng tăng nhanh hơn 50% cho mọi người, và đến 2 giờ phe giữ nhiều đất nhất thắng.",
+      "final_phase_title": "Một giai đoạn cuối thực sự",
+      "threshold": "Tỷ lệ đất cần để thắng chỉ bắt đầu giảm sau 45 phút, chậm hơn và không bao giờ dưới một nửa bản đồ.",
+      "threshold_title": "Các trận có thời gian để chơi"
+    }
   },
   "win_modal": {
     "died": "Bạn đã chết",

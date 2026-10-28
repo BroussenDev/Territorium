@@ -39,6 +39,8 @@ interface PendingError {
   count: number;
   /** Bundle file, line and column of each frame (cleanStack), if known. */
   stack?: string;
+  /** The game on screen ("/w0/game/<id>"), so a bug ticket finds it. */
+  gameID?: string;
 }
 
 // Frames kept per stack, and the longest stack sent.
@@ -133,11 +135,13 @@ export function reportGameError(
   );
   if (same !== undefined) same.count++;
   else if (errors.length < MAX_ERRORS) {
+    const gameID = /\/game\/([A-Za-z0-9]{1,32})/.exec(location.pathname)?.[1];
     errors.push({
       type,
       error,
       count: 1,
       ...(frames ? { stack: frames } : {}),
+      ...(gameID ? { gameID } : {}),
     });
   }
 }

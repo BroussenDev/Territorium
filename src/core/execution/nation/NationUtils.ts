@@ -10,6 +10,7 @@ import {
   UnitType,
 } from "../../game/Game";
 import { TileRef } from "../../game/GameMap";
+import { COALITION_PERCENT_TILES } from "../../game/NationsMode";
 import { PseudoRandom } from "../../PseudoRandom";
 import { assertNever, calculateBoundingBox } from "../../Util";
 
@@ -187,7 +188,33 @@ function runawayLeadFactor(difficulty: Difficulty): number | null {
 
 // The FFA player (not a bot) owning the most land, if it is far enough ahead
 // of the runner-up that nations should stop helping it and start pressuring it
+/**
+ * Nations mode's coalition: the side (a human or a nation, never a bot)
+ * holding COALITION_PERCENT_TILES of the land, which every other nation now
+ * fights together. No bonus to anyone: the nations only ally with each other
+ * and turn on the leader, who can still split them by making peace.
+ * Integer math, the same on every client.
+ */
+export function findCoalitionTarget(game: Game): Player | null {
+  if (!game.config().isNationsMode()) return null;
+  const land = game.numLandTiles() - game.numTilesWithFallout();
+  if (land <= 0) return null;
+  let leader: Player | null = null;
+  for (const p of game.players()) {
+    if (p.type() === PlayerType.Bot) continue;
+    if (leader === null || p.numTilesOwned() > leader.numTilesOwned()) {
+      leader = p;
+    }
+  }
+  return leader !== null &&
+    leader.numTilesOwned() * 100 >= land * COALITION_PERCENT_TILES
+    ? leader
+    : null;
+}
+
 export function findRunawayLeader(game: Game): Player | null {
+  const coalition = findCoalitionTarget(game);
+  if (coalition !== null) return coalition;
   const { difficulty, gameMode } = game.config().gameConfig();
   if (gameMode !== GameMode.FFA) return null;
   const factor = runawayLeadFactor(difficulty);

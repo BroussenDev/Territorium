@@ -181,6 +181,7 @@ import { isSteamLocked, unlockSteamForAdmin } from "./SteamLaunch";
 import "./TournamentMatchBanner";
 import "./TournamentsModal";
 import { refreshTournamentsTab } from "./TournamentsTab";
+import { showWhatsNewIfNeeded } from "./WhatsNew";
 import "./components/DesktopNavBar";
 import "./components/DetailedGameViewModal";
 import "./components/Footer";
@@ -1257,6 +1258,7 @@ class Client {
       showDevNoticeIfNeeded();
       // The team's answers to the player's bug reports, web and Steam app.
       void showBugRepliesIfAny();
+      showWhatsNewIfNeeded();
     }
     void refreshTournamentsTab();
     const requeueMode = this.consumeRequeueUrl();

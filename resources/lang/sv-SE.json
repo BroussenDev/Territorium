@@ -1269,6 +1269,8 @@
     "betrayal_description": "Du bröt din allians med {name}, vilket gör dig till en FÖRRÄDARE ({malusPercent}% försvagat försvar under {durationText})",
     "betrayed_you": "{name} bröt sin allians med dig",
     "capital_fallen": "{capital} har fallit! {name} förlorade sin huvudstad",
+    "coalition_ended": "{name} dominerar inte längre: nationernas koalition upplöses.",
+    "coalition_formed": "Nationerna enar sig mot {name}!",
     "conquered_no_gold": "Erövrade {name} (spelade inte, inget guld tilldelas)",
     "conquest_broken": "{name} har förlorat majoriteten av målen: nedräkningen stoppas.",
     "conquest_taken": "{name} har majoriteten av målen: seger om {minutes} minuter om ingen tar tillbaka ett!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "{name}s EMP slog ut {count} av dina byggnader i {seconds} s",
     "emp_hit_attacker": "Din EMP slog ut {count} fientliga byggnader",
     "emp_inbound": "{name} har avfyrat en EMP mot dig",
+    "final_phase": "Slutfas: {minutes} minuter kvar. Trupper och guld växer snabbare för alla!",
     "focus": "Centrera",
     "hydrogen_bomb_detonated": "{name} - vätebomb detonerade",
     "hydrogen_bomb_inbound": "{name} har avfyrat en vätebomb mot dig",
@@ -2470,6 +2473,7 @@
     "zone_label": "Mål {letter}"
   },
   "overtime": {
+    "final_phase": "Slutfas · slutar om {time}",
     "first_place": "1:a: {name} ({pct}%)",
     "started": "Övertid! The territory needed to win is now dropping.",
     "title": "Övertid",
@@ -3704,6 +3708,20 @@
     "title_limited": "Din webbläsare begränsar grafiken",
     "title_software": "Hårdvaruacceleration är avstängd",
     "title_unsupported": "Din webbläsare kan inte köra spelet"
+  },
+  "whats_new": {
+    "ok": "Nu kör vi",
+    "title": "Nyheter",
+    "v0_1_167": {
+      "bugs": "I spelmenyn och på hjälpsidan. Varje rapport får ett ärendenummer, och teamets svar visas här när du öppnar spelet.",
+      "bugs_title": "Rapportera en bugg",
+      "coalition": "När en sida har 30 % av landet allierar sig nationerna mot den. Ingen bonus till någon: sluta fred med några för att spräcka koalitionen.",
+      "coalition_title": "Nationsläge: koalitionen",
+      "final_phase": "Efter 1 h 30 min går en offentlig match in i slutfasen: trupper och guld växer 50 % snabbare för alla, och efter 2 h vinner den sida som har mest land.",
+      "final_phase_title": "En riktig slutfas",
+      "threshold": "Landandelen för att vinna börjar sjunka först efter 45 minuter, långsammare och aldrig under halva kartan.",
+      "threshold_title": "Matcherna får tid att spelas"
+    }
   },
   "win_modal": {
     "died": "Du dog",

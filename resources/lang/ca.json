@@ -1269,6 +1269,8 @@
     "betrayal_description": "Has trencat l'aliança amb {name}, el qual et fa un TRAIDOR (defensa {malusPercent} pitjor per {durationText})",
     "betrayed_you": "{name} ha trencat la vostra aliança",
     "capital_fallen": "{capital} ha caigut! {name} van perdre la seva capital",
+    "coalition_ended": "{name} ja no domina: la coalició de nacions es dissol.",
+    "coalition_formed": "Les nacions s'alien contra {name}!",
     "conquered_no_gold": "Has conquerit a {name} (no ha jugat, or no donat)",
     "conquest_broken": "{name} ha perdut la majoria dels objectius: el compte enrere s'atura.",
     "conquest_taken": "{name} té la majoria dels objectius: victòria en {minutes} minuts si ningú no en recupera cap!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "El PEM de {name} ha desactivat {count} de les teves estructures durant {seconds} s",
     "emp_hit_attacker": "El teu PEM ha desactivat {count} estructures enemigues",
     "emp_inbound": "{name} t'ha llançat un PEM",
+    "final_phase": "Fase final: queden {minutes} minuts. Les tropes i l'or creixen més de pressa per a tothom!",
     "focus": "Focalitza",
     "hydrogen_bomb_detonated": "{name} - bomba d'hidrogen detonada",
     "hydrogen_bomb_inbound": "{name} t'ha llançat una bomba d'hidrogen",
@@ -2470,6 +2473,7 @@
     "zone_label": "Objectiu {letter}"
   },
   "overtime": {
+    "final_phase": "Fase final · acaba d'aquí a {time}",
     "first_place": "1r: {name} ({pct}%)",
     "started": "Pròrroga! El territori necessari per guanyar ara cau.",
     "title": "Hora extraordinària",
@@ -3704,6 +3708,20 @@
     "title_limited": "El teu navegador està limitant els gràfics",
     "title_software": "L'acceleració per maquinari està desactivada",
     "title_unsupported": "El teu navegador no pot executar el joc"
+  },
+  "whats_new": {
+    "ok": "A jugar",
+    "title": "Novetats",
+    "v0_1_167": {
+      "bugs": "Al menú de la partida i a la pàgina d'ajuda. Cada informe rep un número de tiquet, i la resposta de l'equip apareix aquí en obrir el joc.",
+      "bugs_title": "Informa d'un error",
+      "coalition": "Quan un bàndol té el 30 % de les terres, les nacions s'alien contra ell. Cap bonificació per a ningú: fes la pau amb algunes per trencar la coalició.",
+      "coalition_title": "Mode Nacions: la coalició",
+      "final_phase": "Després d'1 h 30, una partida pública entra en la fase final: les tropes i l'or creixen un 50 % més de pressa per a tothom, i a les 2 h guanya el bàndol amb més terres.",
+      "final_phase_title": "Una fase final de veritat",
+      "threshold": "La part de terres per guanyar només comença a baixar després de 45 minuts, més a poc a poc, i mai per sota de la meitat del mapa.",
+      "threshold_title": "Les partides tenen temps de jugar-se"
+    }
   },
   "win_modal": {
     "died": "Has mort",

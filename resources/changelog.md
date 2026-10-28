@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.167
+
+- Final phase: after 1h30, public games enter a final phase with a countdown; troops and gold grow 50% faster for everyone, and at 2h the side holding the most land wins
+- The share of land needed to win now starts dropping after 45 minutes (was 30), by one point a minute, and never below half the map
+- Nations mode: when a side holds 30% of the land, the nations ally against it (no bonus for anyone)
+- A "What's new" window after each update with notes
+- Crash reports carry the game they happened in
+
 ## v0.1.166
 
 - Bug reports get a ticket number, and the team's answer pops up the next time you open the game (web or Steam app)

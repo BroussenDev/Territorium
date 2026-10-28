@@ -1269,6 +1269,8 @@
     "betrayal_description": "Vi rompis vian aliancon kun {name}, igante vin PERFIDULO ({malusPercent}%an defendan malfortigon dum {durationText})",
     "betrayed_you": "{name} rompis sian aliancon kun vi",
     "capital_fallen": "{capital} falis! {name} perdis sian ĉefurbon",
+    "coalition_ended": "{name} ne plu superregas: la koalicio de nacioj dissolviĝas.",
+    "coalition_formed": "La nacioj unuiĝas kontraŭ {name}!",
     "conquered_no_gold": "Konkeris {name} (kiu ne ludis, neniu oro ricevita)",
     "conquest_broken": "{name} perdis la plimulton de la celoj: la retronombrado haltas.",
     "conquest_taken": "{name} tenas la plimulton de la celoj: venko post {minutes} minutoj, se neniu reprenas unu!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "La EMP de {name} malŝaltis {count} el viaj konstruaĵoj dum {seconds} s",
     "emp_hit_attacker": "Via EMP malŝaltis {count} malamikajn konstruaĵojn",
     "emp_inbound": "{name} pafis EMP-on al vi",
+    "final_phase": "Fina fazo: restas {minutes} minutoj. Trupoj kaj oro kreskas pli rapide por ĉiuj!",
     "focus": "Fokusi",
     "hydrogen_bomb_detonated": "{name} - hidrogenbombo eksplodis",
     "hydrogen_bomb_inbound": "{name} lanĉis hidrogenbombon kontraŭ vi",
@@ -2470,6 +2473,7 @@
     "zone_label": "Celo {letter}"
   },
   "overtime": {
+    "final_phase": "Fina fazo · finiĝas post {time}",
     "first_place": "unua: {name} ({pct}%)",
     "started": "Kromlaboro! La teritorio bezonata por venki nun falas.",
     "title": "Kromlaboro",
@@ -3704,6 +3708,20 @@
     "title_limited": "Via retumilo limigas la grafikon",
     "title_software": "Aparatara akcelo estas malŝaltita",
     "title_unsupported": "Via retumilo ne povas ruli la ludon"
+  },
+  "whats_new": {
+    "ok": "Ni ludu",
+    "title": "Kio novas",
+    "v0_1_167": {
+      "bugs": "En la luda menuo kaj la helpa paĝo. Ĉiu raporto ricevas biletnumeron, kaj la respondo de la teamo aperas ĉi tie kiam vi malfermas la ludon.",
+      "bugs_title": "Raporti cimon",
+      "coalition": "Kiam flanko tenas 30 % de la tero, la nacioj aliancas kontraŭ ĝi. Neniu ricevas bonuson: faru pacon kun kelkaj por rompi la koalicion.",
+      "coalition_title": "Reĝimo Nacioj: la koalicio",
+      "final_phase": "Post 1 h 30, publika ludo eniras la finan fazon: trupoj kaj oro kreskas 50 % pli rapide por ĉiuj, kaj je 2 h venkas la flanko kun la plej multe da tero.",
+      "final_phase_title": "Vera fina fazo",
+      "threshold": "La parto de tero por venki ekmalkreskas nur post 45 minutoj, pli malrapide, kaj neniam sub duono de la mapo.",
+      "threshold_title": "Ludoj havas tempon"
+    }
   },
   "win_modal": {
     "died": "Vi mortis",

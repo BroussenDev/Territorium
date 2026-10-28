@@ -300,9 +300,19 @@ const PERCENT_TILES_OWNED_TO_WIN = 80;
 // `startMinutes` are wire-configurable.
 const OVERTIME_DEFAULTS = {
   enabled: false,
-  startMinutes: 30,
-  dropPercentPerMinute: 2,
+  // A game gets time to be played: the bar only starts to sink after 45
+  // minutes, by one point a minute, and never below half the land.
+  startMinutes: 45,
+  dropPercentPerMinute: 1,
+  floorPercent: 50,
+  // The final phase: announced at 1h30, every side's troops and gold grow
+  // faster (the same boost for all), and at 2h the side holding the most
+  // land wins.
+  finalPhaseMinutes: 90,
+  endMinutes: 120,
 };
+// Final phase growth, in percent of the normal troop and gold income.
+export const FINAL_PHASE_GROWTH_PERCENT = 150;
 
 export class Config {
   private unitInfoCache = new Map<UnitType, UnitInfo>();
@@ -369,7 +379,18 @@ export class Config {
       startMinutes: c?.startMinutes ?? d.startMinutes,
       // The drop rate is internal (not wire-configurable): always the default.
       dropPercentPerMinute: d.dropPercentPerMinute,
+      floorPercent: d.floorPercent,
+      finalPhaseMinutes: d.finalPhaseMinutes,
+      endMinutes: d.endMinutes,
     };
+  }
+
+  /** Whether the overtime's final phase (boost, countdown) has begun. */
+  inFinalPhase(elapsedGameSeconds: number): boolean {
+    const sd = this.overtimeConfig();
+    return (
+      sd.enabled && Math.floor(elapsedGameSeconds) >= sd.finalPhaseMinutes * 60
+    );
   }
   spawnImmunityDuration(): Tick {
     return (
@@ -971,7 +992,7 @@ export class Config {
       return base;
     }
     return Math.max(
-      0,
+      Math.min(base, sd.floorPercent),
       base - Math.floor((secondsPastStart * sd.dropPercentPerMinute) / 60),
     );
   }

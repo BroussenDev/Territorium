@@ -58,6 +58,8 @@ export interface CheckinBody {
   // Games someone is connected to (MasterLobbyService.busyGames): what a
   // restart would cut. A rolling update waits for it to reach zero.
   busyGames: number;
+  // Players connected to those games, for the staff dashboard.
+  players?: number;
   // The machine this container runs on (ServerEnv.machine(), ultimately
   // deploy.sh's machine argument): `falk2`, `nbg2`, `staging`. The registry
   // uses it to keep a site to at most one OPEN server per machine (OPE-455),
@@ -93,6 +95,7 @@ export function registeredSite(): string | undefined {
 export function checkinBody(
   liveGames: number,
   busyGames: number,
+  players?: number,
 ): CheckinBody | null {
   const host = ServerEnv.publicHost();
   if (host === undefined) return null;
@@ -105,6 +108,7 @@ export function checkinBody(
     numWorkers: ServerEnv.numWorkers(),
     liveGames,
     busyGames,
+    ...(players !== undefined ? { players } : {}),
     // Spread, not `machine: undefined`: JSON.stringify would drop the key
     // either way, but an explicit undefined would make every equality
     // assertion here and every future reader wonder which it is.

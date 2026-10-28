@@ -1269,6 +1269,8 @@
     "betrayal_description": "Prerušil/a si spojenectvo s {name}, kvôli čomu si ZRADCA ({malusPercent} % obranné oslabenie po dobu {durationText})",
     "betrayed_you": "{name} prerušil/a s tebou spojenectvo",
     "capital_fallen": "{capital} padlo! {name} stratilo svoje hlavné mesto",
+    "coalition_ended": "{name} už nedominuje: koalícia národov sa rozpadá.",
+    "coalition_formed": "Národy sa spájajú proti {name}!",
     "conquered_no_gold": "Dobyto {name} (nehral, nebolo udelené žiadne zlato)",
     "conquest_broken": "{name} prišiel o väčšinu cieľov: odpočet sa zastavuje.",
     "conquest_taken": "{name} drží väčšinu cieľov: víťazstvo o {minutes} minúty, ak nikto žiadny nezíska späť!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP hráča {name} vyradil {count} tvojich budov na {seconds} s",
     "emp_hit_attacker": "Tvoj EMP vyradil {count} nepriateľských budov",
     "emp_inbound": "{name} na teba vystrelil EMP",
+    "final_phase": "Záverečná fáza: zostáva {minutes} minút. Vojsko a zlato rastú všetkým rýchlejšie!",
     "focus": "Zaostriť",
     "hydrogen_bomb_detonated": "{name} - vybuchla vodíková bomba",
     "hydrogen_bomb_inbound": "{name} na vás vypálil vodíkovú bombu",
@@ -2470,6 +2473,7 @@
     "zone_label": "Cieľ {letter}"
   },
   "overtime": {
+    "final_phase": "Záverečná fáza · koniec o {time}",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Nadčas! Územie potrebné na víťazstvo teraz klesá.",
     "title": "Nadčasy",
@@ -3704,6 +3708,20 @@
     "title_limited": "Váš prehliadač obmedzuje grafiku",
     "title_software": "Hardvérová akcelerácia je vypnutá",
     "title_unsupported": "Váš prehliadač nedokáže hru spustiť"
+  },
+  "whats_new": {
+    "ok": "Ideme hrať",
+    "title": "Čo je nové",
+    "v0_1_167": {
+      "bugs": "V hernom menu a na stránke pomocníka. Každé hlásenie dostane číslo a odpoveď tímu sa zobrazí tu pri spustení hry.",
+      "bugs_title": "Nahlásiť chybu",
+      "coalition": "Keď strana drží 30 % územia, národy sa proti nej spoja. Nikto nedostane bonus: uzavri mier s niektorými a koalíciu rozbiješ.",
+      "coalition_title": "Režim Národy: koalícia",
+      "final_phase": "Po 1 h 30 min vstúpi verejná hra do záverečnej fázy: vojsko a zlato rastú všetkým o 50 % rýchlejšie a o 2 h vyhráva strana s najväčším územím.",
+      "final_phase_title": "Skutočná záverečná fáza",
+      "threshold": "Podiel územia potrebný na víťazstvo začne klesať až po 45 minútach, pomalšie a nikdy pod polovicu mapy.",
+      "threshold_title": "Hry majú čas sa odohrať"
+    }
   },
   "win_modal": {
     "died": "Zomrel/a si",

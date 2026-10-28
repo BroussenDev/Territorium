@@ -1269,6 +1269,8 @@
     "betrayal_description": "Rompiches a túa alianza con {name}, converténdote nun TRAIDOR (desvantaxe de defensa de {malusPercent}% por {durationText})",
     "betrayed_you": "{name} rompeu a súa alianza contigo",
     "capital_fallen": "{capital} caeu! {name} perderon a súa capital",
+    "coalition_ended": "{name} xa non domina: a coalición das nacións disólvese.",
+    "coalition_formed": "As nacións alíanse contra {name}!",
     "conquered_no_gold": "Conquistado {name} (non xogou, sen ouro)",
     "conquest_broken": "{name} perdeu a maioría dos obxectivos: a conta atrás detense.",
     "conquest_taken": "{name} ten a maioría dos obxectivos: vitoria en {minutes} minutos se ninguén recupera un!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "O PEM de {name} desactivou {count} das túas estruturas durante {seconds} s",
     "emp_hit_attacker": "O teu PEM desactivou {count} estruturas inimigas",
     "emp_inbound": "{name} lanzouche un PEM",
+    "final_phase": "Fase final: quedan {minutes} minutos. As tropas e o ouro medran máis rápido para todos!",
     "focus": "Enfocar",
     "hydrogen_bomb_detonated": "{name} - Detonou unha bomba de hidróxeno",
     "hydrogen_bomb_inbound": "{name} lanzouche unha bomba de hidróxeno",
@@ -2470,6 +2473,7 @@
     "zone_label": "Obxectivo {letter}"
   },
   "overtime": {
+    "final_phase": "Fase final · remata en {time}",
     "first_place": "1º: {name} ({pct}%)",
     "started": "Hora extra! Agora cae o territorio necesario para gañar.",
     "title": "Horas extras",
@@ -3704,6 +3708,20 @@
     "title_limited": "O teu navegador está a limitar os gráficos",
     "title_software": "A aceleración por hardware está desactivada",
     "title_unsupported": "O teu navegador non pode executar o xogo"
+  },
+  "whats_new": {
+    "ok": "A xogar",
+    "title": "Novidades",
+    "v0_1_167": {
+      "bugs": "No menú da partida e na páxina de axuda. Cada informe recibe un número de tícket, e a resposta do equipo aparece aquí ao abrir o xogo.",
+      "bugs_title": "Informar dun erro",
+      "coalition": "Cando un bando ten o 30 % das terras, as nacións alíanse contra el. Sen bonificación para ninguén: fai as paces con algunhas para romper a coalición.",
+      "coalition_title": "Modo Nacións: a coalición",
+      "final_phase": "Despois de 1 h 30, unha partida pública entra na fase final: as tropas e o ouro medran un 50 % máis rápido para todos, e ás 2 h gaña o bando con máis terras.",
+      "final_phase_title": "Unha fase final de verdade",
+      "threshold": "A parte de terras para gañar só empeza a baixar despois de 45 minutos, máis amodo, e nunca por debaixo da metade do mapa.",
+      "threshold_title": "As partidas teñen tempo de xogarse"
+    }
   },
   "win_modal": {
     "died": "Morriches",

@@ -1269,6 +1269,8 @@
     "betrayal_description": "Quebrou a aliança com {name}, fazendo com que seja um TRAIDOR ({malusPercent}% da sua defesa é reduzida por {durationText})",
     "betrayed_you": "{name} quebrou a aliança",
     "capital_fallen": "{capital} caiu! {name} perderam a sua capital",
+    "coalition_ended": "{name} já não domina: a coligação das nações desfaz-se.",
+    "coalition_formed": "As nações aliam-se contra {name}!",
     "conquered_no_gold": "Conquistado {name} (não jogou, não foi atribuído ouro)",
     "conquest_broken": "{name} perdeu a maioria dos objetivos: a contagem decrescente para.",
     "conquest_taken": "{name} tem a maioria dos objetivos: vitória em {minutes} minutos se ninguém recuperar um!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "O PEM de {name} desativou {count} das tuas estruturas durante {seconds} s",
     "emp_hit_attacker": "O teu PEM desativou {count} estruturas inimigas",
     "emp_inbound": "{name} lançou um PEM contra ti",
+    "final_phase": "Fase final: faltam {minutes} minutos. As tropas e o ouro crescem mais depressa para todos!",
     "focus": "Focar",
     "hydrogen_bomb_detonated": "{name} - bomba de hidrogénio detonada",
     "hydrogen_bomb_inbound": "{name} lançou uma bomba de hidrogénio contra si",
@@ -2470,6 +2473,7 @@
     "zone_label": "Objetivo {letter}"
   },
   "overtime": {
+    "final_phase": "Fase final · termina em {time}",
     "first_place": "1º: {name} ({pct}%)",
     "started": "Ao longo do tempo! O território necessário para vencer está a diminuir.",
     "title": "Ao longo do tempo",
@@ -3704,6 +3708,20 @@
     "title_limited": "O teu navegador está a limitar os gráficos",
     "title_software": "A aceleração de hardware está desativada",
     "title_unsupported": "O teu navegador não consegue executar o jogo"
+  },
+  "whats_new": {
+    "ok": "Vamos jogar",
+    "title": "Novidades",
+    "v0_1_167": {
+      "bugs": "No menu do jogo e na página de ajuda. Cada relatório recebe um número de ticket, e a resposta da equipa aparece aqui ao abrir o jogo.",
+      "bugs_title": "Reportar um erro",
+      "coalition": "Quando um lado tem 30% das terras, as nações aliam-se contra ele. Sem bónus para ninguém: faz as pazes com algumas para quebrar a coligação.",
+      "coalition_title": "Modo Nações: a coligação",
+      "final_phase": "Depois de 1h30, um jogo público entra na fase final: as tropas e o ouro crescem 50% mais depressa para todos, e às 2h ganha o lado com mais terras.",
+      "final_phase_title": "Uma verdadeira fase final",
+      "threshold": "A parte de terras para ganhar só começa a descer depois de 45 minutos, mais devagar, e nunca abaixo de metade do mapa.",
+      "threshold_title": "Os jogos têm tempo para se jogar"
+    }
   },
   "win_modal": {
     "died": "Morreste",

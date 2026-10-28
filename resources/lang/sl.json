@@ -1269,6 +1269,8 @@
     "betrayal_description": "Prekinil si zavezništvo z {name}, s čimer si postal IZDAJALEC ({malusPercent}% obrambni debuff za {durationText})",
     "betrayed_you": "{name} je prekinil zavezništvo s tabo",
     "capital_fallen": "{capital} je padel! {name} izgubili glavno mesto",
+    "coalition_ended": "{name} ne prevladuje več: koalicija narodov razpade.",
+    "coalition_formed": "Narodi se združujejo proti {name}!",
     "conquered_no_gold": "Osvojen {name} (ni igral, brez zlata)",
     "conquest_broken": "{name} je izgubil večino ciljev: odštevanje se ustavi.",
     "conquest_taken": "{name} drži večino ciljev: zmaga čez {minutes} minute, če nihče ne vzame nazaj nobenega!",
@@ -1277,6 +1279,7 @@
     "emp_hit": "EMP igralca {name} je za {seconds} s onesposobil {count} tvojih zgradb",
     "emp_hit_attacker": "Tvoj EMP je onesposobil {count} sovražnih zgradb",
     "emp_inbound": "{name} je nate izstrelil EMP",
+    "final_phase": "Zaključna faza: še {minutes} minut. Vojska in zlato rasteta vsem hitreje!",
     "focus": "Fokus",
     "hydrogen_bomb_detonated": "{name} - vodikova bomba je detonirana",
     "hydrogen_bomb_inbound": "{name} je nate izstrelil vodikovo bombo",
@@ -2470,6 +2473,7 @@
     "zone_label": "Cilj {letter}"
   },
   "overtime": {
+    "final_phase": "Zaključna faza · konec čez {time}",
     "first_place": "1.: {name} ({pct}%)",
     "started": "Nadurno delo! Ozemlje, potrebno za zmago, zdaj pada.",
     "title": "Nadurno delo",
@@ -3704,6 +3708,20 @@
     "title_limited": "Vaš brskalnik omejuje grafiko",
     "title_software": "Strojno pospeševanje je izklopljeno",
     "title_unsupported": "Vaš brskalnik ne more zagnati igre"
+  },
+  "whats_new": {
+    "ok": "Igrajmo",
+    "title": "Kaj je novega",
+    "v0_1_167": {
+      "bugs": "V meniju igre in na strani s pomočjo. Vsaka prijava dobi številko, odgovor ekipe pa se prikaže tukaj ob odprtju igre.",
+      "bugs_title": "Prijavi napako",
+      "coalition": "Ko ima stran 30 % ozemlja, se narodi povežejo proti njej. Nihče ne dobi bonusa: skleni mir z nekaterimi in razbij koalicijo.",
+      "coalition_title": "Način Narodi: koalicija",
+      "final_phase": "Po 1 h 30 min javna igra preide v zaključno fazo: vojska in zlato rasteta vsem 50 % hitreje, ob 2 h pa zmaga stran z največ ozemlja.",
+      "final_phase_title": "Prava zaključna faza",
+      "threshold": "Delež ozemlja za zmago začne padati šele po 45 minutah, počasneje in nikoli pod polovico zemljevida.",
+      "threshold_title": "Igre imajo čas"
+    }
   },
   "win_modal": {
     "died": "Umrl si",

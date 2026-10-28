@@ -1,4 +1,4 @@
-import { Config } from "../configuration/Config";
+import { Config, FINAL_PHASE_GROWTH_PERCENT } from "../configuration/Config";
 import {
   Cell,
   Execution,
@@ -117,9 +117,20 @@ export class PlayerExecution implements Execution {
       return;
     }
 
+    // Overtime's final phase: the same faster growth for every side, so the
+    // last half hour is fought rather than waited out.
+    const finalPhase = this.config.inFinalPhase(this.mg.elapsedGameSeconds());
     const troopInc = this.config.troopIncreaseRate(this.player);
-    this.player.addTroops(troopInc);
-    const goldFromWorkers = this.config.goldAdditionRate(this.player);
+    // Growth only: troops above the cap still melt at the normal pace.
+    this.player.addTroops(
+      finalPhase && troopInc > 0
+        ? (troopInc * FINAL_PHASE_GROWTH_PERCENT) / 100
+        : troopInc,
+    );
+    const baseGold = this.config.goldAdditionRate(this.player);
+    const goldFromWorkers = finalPhase
+      ? (baseGold * BigInt(FINAL_PHASE_GROWTH_PERCENT)) / 100n
+      : baseGold;
     // A vassal hands part of its income to its overlord.
     const overlord = this.player.overlord();
     const tribute =

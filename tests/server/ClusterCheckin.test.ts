@@ -275,3 +275,14 @@ describe("applyCheckinState", () => {
     expect(setActive).not.toHaveBeenCalled();
   });
 });
+
+describe("checkinBody players", () => {
+  test("carries the connected players when given", () => {
+    vi.stubEnv("SUBDOMAIN", "a");
+    vi.stubEnv("DOMAIN", "example.com");
+    const body = checkinBody(3, 2, 41);
+    if (body !== null) expect(body.players).toBe(41);
+    expect(checkinBody(3, 2)?.players).toBeUndefined();
+    vi.unstubAllEnvs();
+  });
+});
