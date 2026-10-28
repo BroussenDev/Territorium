@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.168
+
+- Privacy policy: bug reports, the name history and the game ID now attached to crash reports are described
+- Terms: a clause on the team's in-game animations (outside ranked and tournament games)
+
 ## v0.1.167
 
 - Final phase: after 1h30, public games enter a final phase with a countdown; troops and gold grow 50% faster for everyone, and at 2h the side holding the most land wins
