@@ -174,6 +174,25 @@
     "title": "您的帐户已被禁止",
     "until": "禁止直至{date}。"
   },
+  "bug_report": {
+    "category": "什么类型的问题？",
+    "category_account": "账号或购买",
+    "category_display": "显示",
+    "category_gameplay": "玩法",
+    "category_other": "其他",
+    "category_performance": "卡顿",
+    "context_note": "游戏版本、你的平台和当前对局会随报告一起发送。",
+    "failed": "报告发送失败。请检查网络后重试。",
+    "intro": "请尽可能详细地描述发生了什么。感谢你帮助我们改进游戏！",
+    "menu_desc": "告诉团队哪里出了问题",
+    "open": "报告",
+    "placeholder": "你当时在做什么、期望什么、实际发生了什么……",
+    "send": "发送报告",
+    "sending": "发送中……",
+    "thanks": "谢谢！你的报告已送达团队。",
+    "title": "报告问题",
+    "what_happened": "发生了什么？"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "小型爆炸",
@@ -1066,6 +1085,12 @@
     "team_count": "队伍数量",
     "team_size": "团队规模",
     "title": "详细视图"
+  },
+  "dev_notice": {
+    "body": "你正在玩一款仍在制作中的游戏：部分内容可能会改变、出错或缺失，进度偶尔也可能被重置。",
+    "feedback": "遇到问题请报告：每一份报告都能帮助我们更快修复游戏。",
+    "ok": "明白了，开玩",
+    "title": "Territorium 仍在开发中"
   },
   "difficulty": {
     "difficulty": "国家难度",

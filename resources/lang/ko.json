@@ -174,6 +174,25 @@
     "title": "계정이 차단되었습니다",
     "until": "{date}까지 차단되었습니다."
   },
+  "bug_report": {
+    "category": "어떤 문제인가요?",
+    "category_account": "계정 또는 구매",
+    "category_display": "화면 표시",
+    "category_gameplay": "게임플레이",
+    "category_other": "기타",
+    "category_performance": "느림",
+    "context_note": "게임 버전, 플랫폼, 현재 게임 정보가 신고와 함께 전송됩니다.",
+    "failed": "신고를 보내지 못했어요. 연결을 확인하고 다시 시도해 주세요.",
+    "intro": "무슨 일이 있었는지 최대한 자세히 적어주세요. 게임 개선을 도와주셔서 감사합니다!",
+    "menu_desc": "무엇이 잘못됐는지 팀에 알려주세요",
+    "open": "신고",
+    "placeholder": "무엇을 하고 있었는지, 무엇을 기대했는지, 대신 무슨 일이 일어났는지…",
+    "send": "신고 보내기",
+    "sending": "보내는 중…",
+    "thanks": "감사합니다! 신고가 팀에 전달되었어요.",
+    "title": "버그 신고",
+    "what_happened": "무슨 일이 있었나요?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "소형 폭발을 일으킵니다",
@@ -1066,6 +1085,12 @@
     "team_count": "팀 수",
     "team_size": "팀 인원수",
     "title": "상세 보기"
+  },
+  "dev_notice": {
+    "body": "아직 만들어지고 있는 게임입니다. 일부가 바뀌거나 고장 나거나 빠져 있을 수 있고, 진행 상황이 가끔 초기화될 수 있어요.",
+    "feedback": "문제가 생기면 신고해 주세요. 모든 신고가 더 빠른 수정에 도움이 됩니다.",
+    "ok": "알겠어요, 플레이하기",
+    "title": "Territorium은 아직 개발 중입니다"
   },
   "difficulty": {
     "difficulty": "국가 난이도",

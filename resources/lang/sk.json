@@ -174,6 +174,25 @@
     "title": "Váš účet je zakázaný",
     "until": "Zakázané do {date}."
   },
+  "bug_report": {
+    "category": "Aký problém?",
+    "category_account": "Účet alebo nákup",
+    "category_display": "Zobrazenie",
+    "category_gameplay": "Hrateľnosť",
+    "category_other": "Niečo iné",
+    "category_performance": "Pomalosť",
+    "context_note": "Verzia hry, tvoja platforma a aktuálna hra sa odošlú s hlásením.",
+    "failed": "Hlásenie sa nepodarilo odoslať. Skontroluj pripojenie a skús to znova.",
+    "intro": "Opíš čo najpresnejšie, čo sa stalo. Vďaka, že nám pomáhaš hru zlepšiť!",
+    "menu_desc": "Povedz tímu, čo nefunguje",
+    "open": "Nahlásiť",
+    "placeholder": "Čo si robil, čo si čakal, čo sa stalo namiesto toho…",
+    "send": "Odoslať hlásenie",
+    "sending": "Odosielanie…",
+    "thanks": "Vďaka! Tvoje hlásenie dorazilo k tímu.",
+    "title": "Nahlásiť chybu",
+    "what_happened": "Čo sa stalo?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Malý výbuch",
@@ -1066,6 +1085,12 @@
     "team_count": "Počet tímov",
     "team_size": "Veľkosť tímu",
     "title": "Detailný pohľad"
+  },
+  "dev_notice": {
+    "body": "Hráš hru, ktorá ešte len vzniká: niektoré veci sa môžu zmeniť, pokaziť alebo chýbať a postup sa môže občas vynulovať.",
+    "feedback": "Ak niečo nefunguje, nahlás to: každé hlásenie nám pomôže hru rýchlejšie opraviť.",
+    "ok": "Rozumiem, hráme",
+    "title": "Territorium je stále vo vývoji"
   },
   "difficulty": {
     "difficulty": "Náročnosť",

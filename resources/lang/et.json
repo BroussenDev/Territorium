@@ -174,6 +174,25 @@
     "title": "Teie konto on keelatud",
     "until": "Keelatud kuni {date}."
   },
+  "bug_report": {
+    "category": "Mis laadi probleem?",
+    "category_account": "Konto või ost",
+    "category_display": "Kuvamine",
+    "category_gameplay": "Mängimine",
+    "category_other": "Midagi muud",
+    "category_performance": "Aeglus",
+    "context_note": "Mängu versioon, sinu platvorm ja käimasolev mäng saadetakse teatega kaasa.",
+    "failed": "Teadet ei õnnestunud saata. Kontrolli ühendust ja proovi uuesti.",
+    "intro": "Kirjelda võimalikult täpselt, mis juhtus. Aitäh, et aitad mängu paremaks teha!",
+    "menu_desc": "Ütle meeskonnale, mis valesti on",
+    "open": "Teata",
+    "placeholder": "Mida sa tegid, mida ootasid, mis selle asemel juhtus…",
+    "send": "Saada teade",
+    "sending": "Saatmine…",
+    "thanks": "Aitäh! Sinu teade jõudis meeskonnani.",
+    "title": "Teata veast",
+    "what_happened": "Mis juhtus?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Väike plahvatus",
@@ -1066,6 +1085,12 @@
     "team_count": "Meeskondade arv",
     "team_size": "Meeskonna suurus",
     "title": "Üksikasjalik vaade"
+  },
+  "dev_notice": {
+    "body": "Sa mängid mängu, mida alles ehitatakse: mõned asjad võivad muutuda, katki minna või puududa ning edenemine võidakse aeg-ajalt lähtestada.",
+    "feedback": "Kui midagi läheb valesti, teata sellest: iga teade aitab meil mängu kiiremini parandada.",
+    "ok": "Selge, mängime",
+    "title": "Territorium on veel arendamisel"
   },
   "difficulty": {
     "difficulty": "Robot-riigi raskustase",

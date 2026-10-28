@@ -172,7 +172,9 @@ import {
   installSafariPinchZoomBlocker,
 } from "./utilities/DisableSafariPinchZoom";
 
+import { gameIDFromPath } from "./BugReport";
 import "./ChallengesModal";
+import { showDevNoticeIfNeeded } from "./DevNotice";
 import { rememberPublicJoin } from "./PlayAgain";
 import { isSteamLocked, unlockSteamForAdmin } from "./SteamLaunch";
 import "./TournamentMatchBanner";
@@ -1247,6 +1249,11 @@ class Client {
       window.location.href = homeHref();
     }
 
+    // The website's visitors hear the game is still being made; not when
+    // the link leads straight into a game.
+    if (gameIDFromPath(window.location.pathname) === null) {
+      showDevNoticeIfNeeded();
+    }
     const requeueMode = this.consumeRequeueUrl();
     if (requeueMode !== null) {
       document.dispatchEvent(

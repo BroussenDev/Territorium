@@ -1,4 +1,4 @@
-import { Execution, Game, MessageType, PlayerID } from "../game/Game";
+import { Execution, Game, MessageType, Player, PlayerID } from "../game/Game";
 import { AdminActionIntent } from "../Schemas";
 
 // Gifts are capped so a slip of the finger can't wreck a game.
@@ -27,7 +27,8 @@ export function cleanAnnouncement(text: string | undefined): string {
  * games (IntentAuthorization.ts). Like every intent it runs on every client
  * the same way, so the game stays in step.
  *
- *   give_troops / give_gold  the target receives them, capped
+ *   give_troops / give_gold  the target receives them, capped; the troop
+ *                            cap rises to hold the gift
  *   set_troops / set_gold    the target's troops or gold set to `amount`
  *                            (0 empties them), within the same caps
  *   halve_troops             half of the target's troops gone
@@ -79,6 +80,7 @@ export class AdminActionExecution implements Execution {
     switch (this.intent.action) {
       case "give_troops":
         target.addTroops(Math.min(amount, ADMIN_MAX_TROOPS));
+        this.holdTroops(target);
         this.active = false;
         return;
       case "give_gold":
@@ -90,6 +92,7 @@ export class AdminActionExecution implements Execution {
         const now = target.troops();
         if (wanted > now) target.addTroops(wanted - now);
         else target.removeTroops(now - wanted);
+        this.holdTroops(target);
         this.active = false;
         return;
       }
@@ -189,6 +192,30 @@ export class AdminActionExecution implements Execution {
       undefined,
       params,
     );
+  }
+
+  // Troops above the cap melt back down to it within two seconds, so a gift
+  // past the cap would vanish. The cap is raised to hold them instead: the
+  // target counts as owning as many tiles as that cap needs (the same floor
+  // Survival's invaders use), found by an integer search.
+  private holdTroops(target: Player) {
+    const config = this.mg.config();
+    if (config.maxTroops(target) >= target.troops()) return;
+    let low = target.troopCapTiles();
+    let high = Math.max(1, low);
+    while (high < 1 << 30) {
+      target.setTroopCapTiles(high);
+      if (config.maxTroops(target) >= target.troops()) break;
+      low = high;
+      high *= 2;
+    }
+    while (high - low > 1) {
+      const mid = Math.floor((low + high) / 2);
+      target.setTroopCapTiles(mid);
+      if (config.maxTroops(target) >= target.troops()) high = mid;
+      else low = mid;
+    }
+    target.setTroopCapTiles(high);
   }
 
   private target() {

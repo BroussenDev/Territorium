@@ -174,6 +174,25 @@
     "title": "Tài khoản của bạn bị cấm",
     "until": "Bị cấm cho đến {date}."
   },
+  "bug_report": {
+    "category": "Loại vấn đề gì?",
+    "category_account": "Tài khoản hoặc mua hàng",
+    "category_display": "Hiển thị",
+    "category_gameplay": "Lối chơi",
+    "category_other": "Khác",
+    "category_performance": "Chậm",
+    "context_note": "Phiên bản trò chơi, nền tảng của bạn và trận hiện tại được gửi kèm báo cáo.",
+    "failed": "Không gửi được báo cáo. Kiểm tra kết nối và thử lại.",
+    "intro": "Mô tả chính xác nhất có thể điều đã xảy ra. Cảm ơn bạn đã giúp chúng tôi cải thiện trò chơi!",
+    "menu_desc": "Cho đội ngũ biết điều gì không ổn",
+    "open": "Báo lỗi",
+    "placeholder": "Bạn đang làm gì, bạn mong đợi gì, điều gì đã xảy ra thay vào đó…",
+    "send": "Gửi báo cáo",
+    "sending": "Đang gửi…",
+    "thanks": "Cảm ơn! Báo cáo của bạn đã đến đội ngũ.",
+    "title": "Báo lỗi",
+    "what_happened": "Chuyện gì đã xảy ra?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Vụ nổ nhỏ",
@@ -1066,6 +1085,12 @@
     "team_count": "Số lượng đội",
     "team_size": "Quy mô đội",
     "title": "Xem chi tiết"
+  },
+  "dev_notice": {
+    "body": "Bạn đang chơi một trò chơi vẫn đang được xây dựng: một số thứ có thể thay đổi, hỏng hoặc thiếu, và tiến trình đôi khi có thể bị đặt lại.",
+    "feedback": "Nếu có gì không ổn, hãy báo: mỗi báo cáo giúp chúng tôi sửa trò chơi nhanh hơn.",
+    "ok": "Đã hiểu, chơi thôi",
+    "title": "Territorium vẫn đang được phát triển"
   },
   "difficulty": {
     "difficulty": "Độ khó Quốc gia",

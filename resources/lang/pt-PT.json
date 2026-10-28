@@ -174,6 +174,25 @@
     "title": "A sua conta foi banida",
     "until": "Banido até {date}."
   },
+  "bug_report": {
+    "category": "Que tipo de problema?",
+    "category_account": "Conta ou compra",
+    "category_display": "Apresentação",
+    "category_gameplay": "Jogabilidade",
+    "category_other": "Outra coisa",
+    "category_performance": "Lentidão",
+    "context_note": "A versão do jogo, a tua plataforma e o jogo em curso são enviados com o relatório.",
+    "failed": "Não foi possível enviar o relatório. Verifica a tua ligação e tenta outra vez.",
+    "intro": "Descreve o que aconteceu com a maior precisão possível. Obrigado por nos ajudares a melhorar o jogo!",
+    "menu_desc": "Diz à equipa o que correu mal",
+    "open": "Reportar",
+    "placeholder": "O que estavas a fazer, o que esperavas, o que aconteceu em vez disso…",
+    "send": "Enviar o relatório",
+    "sending": "A enviar…",
+    "thanks": "Obrigado! O teu relatório chegou à equipa.",
+    "title": "Reportar um erro",
+    "what_happened": "O que aconteceu?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Pequena explosão",
@@ -1066,6 +1085,12 @@
     "team_count": "Número de equipas",
     "team_size": "Tamanho da equipa",
     "title": "Visualização detalhada"
+  },
+  "dev_notice": {
+    "body": "Estás a jogar um jogo ainda em construção: algumas coisas podem mudar, falhar ou faltar, e o progresso pode por vezes ser reposto.",
+    "feedback": "Se algo correr mal, reporta: cada relatório ajuda-nos a corrigir o jogo mais depressa.",
+    "ok": "Percebido, vamos jogar",
+    "title": "Territorium ainda está em desenvolvimento"
   },
   "difficulty": {
     "difficulty": "Dificuldade",

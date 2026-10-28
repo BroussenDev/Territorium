@@ -3,6 +3,7 @@ import { customElement, state } from "lit/decorators.js";
 import { textDirection, translateText } from "../client/Utils";
 import { assetUrl } from "../core/AssetUrls";
 import { UserSettings } from "../core/game/UserSettings";
+import { openBugReport } from "./BugReport";
 import { BaseModal } from "./components/BaseModal";
 import "./components/Difficulties";
 import { modalHeader } from "./components/ui/ModalHeader";
@@ -530,6 +531,36 @@ export class HelpModal extends BaseModal {
           [&_p]:[unicode-bidi:plaintext] [&_li]:[unicode-bidi:plaintext]
           [&_td:nth-child(3)]:[unicode-bidi:plaintext]"
       >
+        <!-- Report a bug: a few words to the team, with the version attached -->
+        <section
+          class="mb-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/5 rounded-xl border border-white/10 px-5 py-4"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src=${assetUrl("images/BugIconWhite.svg")}
+              alt=""
+              aria-hidden="true"
+              class="size-6 shrink-0"
+            />
+            <div>
+              <div class="font-bold text-white">
+                ${translateText("bug_report.title")}
+              </div>
+              <div class="text-sm text-gray-300">
+                ${translateText("bug_report.menu_desc")}
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            data-help-report-bug
+            class="shrink-0 rounded-lg border border-white/20 px-4 py-2 font-bold text-white hover:bg-white/10"
+            @click=${() => openBugReport(null)}
+          >
+            ${translateText("bug_report.open")}
+          </button>
+        </section>
+
         <!-- In-game tutorial: starts a default solo game with the guide on -->
         <section
           class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/5 rounded-xl border border-emerald-500/30 px-5 py-4"

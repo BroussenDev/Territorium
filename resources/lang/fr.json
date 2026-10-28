@@ -174,6 +174,25 @@
     "title": "Votre compte est banni",
     "until": "Votre compte est banni jusqu'au {date}."
   },
+  "bug_report": {
+    "category": "Quel genre de problème ?",
+    "category_account": "Compte ou achat",
+    "category_display": "Affichage",
+    "category_gameplay": "Jeu",
+    "category_other": "Autre chose",
+    "category_performance": "Lenteur",
+    "context_note": "La version du jeu, votre plateforme et la partie en cours sont envoyées avec votre signalement.",
+    "failed": "Le signalement n'a pas pu être envoyé. Vérifiez votre connexion et réessayez.",
+    "intro": "Décrivez ce qui s'est passé, le plus précisément possible. Merci de nous aider à améliorer le jeu !",
+    "menu_desc": "Dites à l'équipe ce qui ne va pas",
+    "open": "Signaler",
+    "placeholder": "Ce que vous faisiez, ce que vous attendiez, ce qui s'est passé à la place…",
+    "send": "Envoyer le signalement",
+    "sending": "Envoi…",
+    "thanks": "Merci ! Votre signalement est bien arrivé à l'équipe.",
+    "title": "Signaler un bug",
+    "what_happened": "Que s'est-il passé ?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Petite explosion",
@@ -1066,6 +1085,12 @@
     "team_count": "Nombre d'équipes",
     "team_size": "Taille de l'équipe",
     "title": "Vue détaillée"
+  },
+  "dev_notice": {
+    "body": "Vous jouez à un jeu en cours de création : certaines choses peuvent changer, casser ou manquer, et la progression peut parfois être remise à zéro.",
+    "feedback": "Si quelque chose ne va pas, signalez-le : chaque signalement nous aide à corriger le jeu plus vite.",
+    "ok": "Compris, on joue",
+    "title": "Territorium est encore en développement"
   },
   "difficulty": {
     "difficulty": "Difficulté des nations",

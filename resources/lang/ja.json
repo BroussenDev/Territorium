@@ -174,6 +174,25 @@
     "title": "あなたのアカウントはBANされています",
     "until": "{date}までBANされています。"
   },
+  "bug_report": {
+    "category": "どんな問題ですか？",
+    "category_account": "アカウント・購入",
+    "category_display": "表示",
+    "category_gameplay": "ゲームプレイ",
+    "category_other": "その他",
+    "category_performance": "動作の遅さ",
+    "context_note": "ゲームのバージョン、プラットフォーム、現在の試合が報告と一緒に送信されます。",
+    "failed": "報告を送信できませんでした。接続を確認してもう一度お試しください。",
+    "intro": "何が起きたかをできるだけ詳しく書いてください。ゲームの改善にご協力いただきありがとうございます！",
+    "menu_desc": "おかしな点をチームに伝える",
+    "open": "報告",
+    "placeholder": "何をしていたか、何を期待していたか、代わりに何が起きたか…",
+    "send": "報告を送信",
+    "sending": "送信中…",
+    "thanks": "ありがとうございます！報告がチームに届きました。",
+    "title": "不具合を報告",
+    "what_happened": "何が起きましたか？"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "小規模な爆発",
@@ -1066,6 +1085,12 @@
     "team_count": "チーム数",
     "team_size": "チーム人数",
     "title": "詳細を表示"
+  },
+  "dev_notice": {
+    "body": "まだ制作途中のゲームです。変更されたり、壊れたり、足りない部分があったりするほか、進行状況がリセットされることもあります。",
+    "feedback": "問題があれば報告してください。一つひとつの報告が、より早い修正につながります。",
+    "ok": "わかった、遊ぼう",
+    "title": "Territoriumはまだ開発中です"
   },
   "difficulty": {
     "difficulty": "国家の難易度",

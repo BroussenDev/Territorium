@@ -4,6 +4,7 @@ import { crazyGamesSDK } from "src/client/CrazyGamesSDK";
 import { PauseGameIntentEvent } from "src/client/Transport";
 import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
+import { openBugReport } from "../../BugReport";
 import { Controller } from "../../Controller";
 import {
   AlternateViewEvent,
@@ -233,6 +234,30 @@ export class SettingsModal extends LitElement implements Controller {
                 ${this.alternateView
                   ? translateText("user_setting.on")
                   : translateText("user_setting.off")}
+              </div>
+            </button>
+
+            <button
+              class="flex gap-3 items-center w-full text-left p-3 hover:bg-plate-700 rounded-sm text-white transition-colors"
+              data-report-bug
+              @click=${() => {
+                this.closeModal();
+                openBugReport();
+              }}
+            >
+              <img
+                src=${assetUrl("images/BugIconWhite.svg")}
+                alt=""
+                width="20"
+                height="20"
+              />
+              <div class="flex-1">
+                <div class="font-medium">
+                  ${translateText("bug_report.title")}
+                </div>
+                <div class="text-sm text-white/60">
+                  ${translateText("bug_report.menu_desc")}
+                </div>
               </div>
             </button>
 

@@ -174,6 +174,25 @@
     "title": "Contul tău este blocat",
     "until": "Interzis până la {date}."
   },
+  "bug_report": {
+    "category": "Ce fel de problemă?",
+    "category_account": "Cont sau cumpărătură",
+    "category_display": "Afișare",
+    "category_gameplay": "Joc",
+    "category_other": "Altceva",
+    "category_performance": "Lentoare",
+    "context_note": "Versiunea jocului, platforma ta și jocul în curs sunt trimise cu raportul.",
+    "failed": "Raportul nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
+    "intro": "Descrie cât mai precis ce s-a întâmplat. Mulțumim că ne ajuți să îmbunătățim jocul!",
+    "menu_desc": "Spune-i echipei ce nu merge",
+    "open": "Raportează",
+    "placeholder": "Ce făceai, ce te așteptai, ce s-a întâmplat în schimb…",
+    "send": "Trimite raportul",
+    "sending": "Se trimite…",
+    "thanks": "Mulțumim! Raportul tău a ajuns la echipă.",
+    "title": "Raportează o eroare",
+    "what_happened": "Ce s-a întâmplat?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Explozie mica",
@@ -1066,6 +1085,12 @@
     "team_count": "Numărul de echipe",
     "team_size": "Dimensiunea echipei",
     "title": "Vizualizare Detaliată"
+  },
+  "dev_notice": {
+    "body": "Joci un joc aflat încă în construcție: unele lucruri se pot schimba, strica sau lipsi, iar progresul poate fi uneori resetat.",
+    "feedback": "Dacă ceva nu merge, raportează: fiecare raport ne ajută să reparăm jocul mai repede.",
+    "ok": "Am înțeles, hai să jucăm",
+    "title": "Territorium este încă în dezvoltare"
   },
   "difficulty": {
     "difficulty": "Dificultatea națiunii",

@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.165
+
+- Report a bug from the game: in the in-game menu and on the help page, with the game version and platform attached
+- The website now tells new visitors that the game is still in development (once per visit, not in the Steam app)
+- Admin troop gifts now stay: they used to melt back down to the troop cap within two seconds
+
 ## v0.1.164
 
 - New end-of-game screen: your finishing place counts down to "#24 of 50", new personal records are celebrated, and three surprise highlights from your game change every time (MIRVs launched, biggest attack, rivals wiped out, richest moment and more)

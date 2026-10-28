@@ -174,6 +174,25 @@
     "title": "Je account is verbannen",
     "until": "Verbannen tot {date}."
   },
+  "bug_report": {
+    "category": "Wat voor probleem?",
+    "category_account": "Account of aankoop",
+    "category_display": "Weergave",
+    "category_gameplay": "Gameplay",
+    "category_other": "Iets anders",
+    "category_performance": "Traagheid",
+    "context_note": "De spelversie, je platform en het lopende potje worden met je melding meegestuurd.",
+    "failed": "De melding kon niet worden verstuurd. Controleer je verbinding en probeer het opnieuw.",
+    "intro": "Beschrijf zo nauwkeurig mogelijk wat er gebeurde. Bedankt dat je ons helpt het spel te verbeteren!",
+    "menu_desc": "Vertel het team wat er misgaat",
+    "open": "Melden",
+    "placeholder": "Wat je deed, wat je verwachtte, wat er in plaats daarvan gebeurde…",
+    "send": "Melding versturen",
+    "sending": "Versturen…",
+    "thanks": "Bedankt! Je melding is bij het team aangekomen.",
+    "title": "Bug melden",
+    "what_happened": "Wat gebeurde er?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Kleine explosie",
@@ -1066,6 +1085,12 @@
     "team_count": "Aantal teams",
     "team_size": "Teamgrootte",
     "title": "Gedetailleerde weergave"
+  },
+  "dev_notice": {
+    "body": "Je speelt een spel dat nog gebouwd wordt: sommige dingen kunnen veranderen, kapotgaan of ontbreken, en je voortgang kan af en toe worden gereset.",
+    "feedback": "Gaat er iets mis, meld het dan: elke melding helpt ons het spel sneller te repareren.",
+    "ok": "Begrepen, spelen maar",
+    "title": "Territorium is nog in ontwikkeling"
   },
   "difficulty": {
     "difficulty": "Natie moeilijkheidsgraad",

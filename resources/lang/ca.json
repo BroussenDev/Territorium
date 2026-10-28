@@ -174,6 +174,25 @@
     "title": "El teu compte està prohibit",
     "until": "Prohibit fins a les {date}."
   },
+  "bug_report": {
+    "category": "Quin tipus de problema?",
+    "category_account": "Compte o compra",
+    "category_display": "Visualització",
+    "category_gameplay": "Joc",
+    "category_other": "Una altra cosa",
+    "category_performance": "Lentitud",
+    "context_note": "La versió del joc, la teva plataforma i la partida en curs s'envien amb l'informe.",
+    "failed": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
+    "intro": "Descriu el que ha passat tan precisament com puguis. Gràcies per ajudar-nos a millorar el joc!",
+    "menu_desc": "Explica a l'equip què falla",
+    "open": "Informa",
+    "placeholder": "Què feies, què esperaves, què ha passat en canvi…",
+    "send": "Envia l'informe",
+    "sending": "S'està enviant…",
+    "thanks": "Gràcies! El teu informe ha arribat a l'equip.",
+    "title": "Informa d'un error",
+    "what_happened": "Què ha passat?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Explosió petita",
@@ -1066,6 +1085,12 @@
     "team_count": "Nombre d'equips",
     "team_size": "Mida de l'equip",
     "title": "Vista detallada"
+  },
+  "dev_notice": {
+    "body": "Estàs jugant a un joc que encara s'està fent: algunes coses poden canviar, fallar o faltar, i el progrés es pot reiniciar de tant en tant.",
+    "feedback": "Si alguna cosa no va bé, informa'n: cada informe ens ajuda a arreglar el joc més ràpid.",
+    "ok": "Entesos, a jugar",
+    "title": "Territorium encara és en desenvolupament"
   },
   "difficulty": {
     "difficulty": "Dificultat de les Nacions",

@@ -174,6 +174,25 @@
     "title": "Hesabınız yasaklandı",
     "until": "{date} tarihine kadar yasaklandı."
   },
+  "bug_report": {
+    "category": "Ne tür bir sorun?",
+    "category_account": "Hesap veya satın alma",
+    "category_display": "Görüntü",
+    "category_gameplay": "Oynanış",
+    "category_other": "Başka bir şey",
+    "category_performance": "Yavaşlık",
+    "context_note": "Oyun sürümü, platformun ve mevcut oyun bildirimle birlikte gönderilir.",
+    "failed": "Bildirim gönderilemedi. Bağlantını kontrol edip tekrar dene.",
+    "intro": "Ne olduğunu olabildiğince ayrıntılı anlat. Oyunu geliştirmemize yardım ettiğin için teşekkürler!",
+    "menu_desc": "Ekibe neyin ters gittiğini anlat",
+    "open": "Bildir",
+    "placeholder": "Ne yapıyordun, ne bekliyordun, onun yerine ne oldu…",
+    "send": "Bildirimi gönder",
+    "sending": "Gönderiliyor…",
+    "thanks": "Teşekkürler! Bildirimin ekibe ulaştı.",
+    "title": "Hata bildir",
+    "what_happened": "Ne oldu?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Küçük patlama",
@@ -1066,6 +1085,12 @@
     "team_count": "Takım sayısı",
     "team_size": "Takım büyüklüğü",
     "title": "Detaylı Görünüm"
+  },
+  "dev_notice": {
+    "body": "Hâlâ yapım aşamasındaki bir oyunu oynuyorsun: bazı şeyler değişebilir, bozulabilir veya eksik olabilir, ilerleme de zaman zaman sıfırlanabilir.",
+    "feedback": "Bir şeyler ters giderse bildir: her bildirim oyunu daha hızlı düzeltmemize yardım eder.",
+    "ok": "Anladım, oynayalım",
+    "title": "Territorium hâlâ geliştirme aşamasında"
   },
   "difficulty": {
     "difficulty": "Ülke Zorluğu",

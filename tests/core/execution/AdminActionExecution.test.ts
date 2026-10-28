@@ -57,6 +57,19 @@ describe("AdminActionExecution", () => {
     );
   });
 
+  it("keeps troops given past the cap", async () => {
+    const { g, target } = await game();
+    for (let i = 0; i < 600; i++) g.executeNextTick();
+    const full = target.troops();
+    expect(full).toBeGreaterThan(0.9 * g.config().maxTroops(target));
+    g.addExecution(new AdminActionExecution(intent({ amount: 100_000 })));
+    for (let i = 0; i < 100; i++) g.executeNextTick();
+    expect(target.troops()).toBeGreaterThanOrEqual(full + 100_000);
+    expect(g.config().maxTroops(target)).toBeGreaterThanOrEqual(
+      target.troops(),
+    );
+  });
+
   it("a fake MIRV warns the target, then owns up", async () => {
     const { g, target } = await game();
     g.addExecution(new AdminActionExecution(intent({ action: "fake_mirv" })));

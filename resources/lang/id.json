@@ -174,6 +174,25 @@
     "title": "Akun Anda diblokir",
     "until": "Dilarang hingga {date}."
   },
+  "bug_report": {
+    "category": "Masalah jenis apa?",
+    "category_account": "Akun atau pembelian",
+    "category_display": "Tampilan",
+    "category_gameplay": "Permainan",
+    "category_other": "Lainnya",
+    "category_performance": "Lambat",
+    "context_note": "Versi game, platformmu, dan permainan saat ini dikirim bersama laporan.",
+    "failed": "Laporan gagal dikirim. Periksa koneksimu lalu coba lagi.",
+    "intro": "Jelaskan apa yang terjadi seakurat mungkin. Terima kasih telah membantu kami memperbaiki game!",
+    "menu_desc": "Beri tahu tim apa yang salah",
+    "open": "Laporkan",
+    "placeholder": "Apa yang sedang kamu lakukan, apa yang kamu harapkan, apa yang terjadi sebagai gantinya…",
+    "send": "Kirim laporan",
+    "sending": "Mengirim…",
+    "thanks": "Terima kasih! Laporanmu sudah sampai ke tim.",
+    "title": "Laporkan bug",
+    "what_happened": "Apa yang terjadi?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Ledakan kecil",
@@ -1066,6 +1085,12 @@
     "team_count": "Jumlah tim",
     "team_size": "Ukuran tim",
     "title": "Tampilan Detil"
+  },
+  "dev_notice": {
+    "body": "Kamu memainkan game yang masih dibuat: beberapa hal bisa berubah, rusak, atau belum ada, dan progres kadang bisa direset.",
+    "feedback": "Jika ada yang salah, laporkan: setiap laporan membantu kami memperbaiki game lebih cepat.",
+    "ok": "Mengerti, ayo main",
+    "title": "Territorium masih dalam pengembangan"
   },
   "difficulty": {
     "difficulty": "Kesulitan Negara",

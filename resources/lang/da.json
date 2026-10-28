@@ -174,6 +174,25 @@
     "title": "Din konto er forbudt",
     "until": "Udelukket indtil {date}."
   },
+  "bug_report": {
+    "category": "Hvilken slags problem?",
+    "category_account": "Konto eller køb",
+    "category_display": "Visning",
+    "category_gameplay": "Gameplay",
+    "category_other": "Noget andet",
+    "category_performance": "Langsomhed",
+    "context_note": "Spilversionen, din platform og det igangværende spil sendes med din rapport.",
+    "failed": "Rapporten kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
+    "intro": "Beskriv så præcist som muligt, hvad der skete. Tak fordi du hjælper os med at gøre spillet bedre!",
+    "menu_desc": "Fortæl holdet, hvad der er galt",
+    "open": "Rapportér",
+    "placeholder": "Hvad du lavede, hvad du forventede, hvad der skete i stedet…",
+    "send": "Send rapporten",
+    "sending": "Sender…",
+    "thanks": "Tak! Din rapport er nået frem til holdet.",
+    "title": "Rapportér en fejl",
+    "what_happened": "Hvad skete der?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Lille eksplosion",
@@ -1066,6 +1085,12 @@
     "team_count": "Antal hold",
     "team_size": "Holdstørrelse",
     "title": "Detaljeret visning"
+  },
+  "dev_notice": {
+    "body": "Du spiller et spil, der stadig bliver bygget: noget kan ændre sig, gå i stykker eller mangle, og fremskridt kan engang imellem blive nulstillet.",
+    "feedback": "Hvis noget går galt, så rapportér det: hver rapport hjælper os med at rette spillet hurtigere.",
+    "ok": "Forstået, lad os spille",
+    "title": "Territorium er stadig under udvikling"
   },
   "difficulty": {
     "difficulty": "Sværhedsgrad for nationer",

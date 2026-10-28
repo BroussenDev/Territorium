@@ -174,6 +174,25 @@
     "title": "Via konto estas malpermesita",
     "until": "Malpermesita ĝis {date}."
   },
+  "bug_report": {
+    "category": "Kia problemo?",
+    "category_account": "Konto aŭ aĉeto",
+    "category_display": "Montrado",
+    "category_gameplay": "Ludado",
+    "category_other": "Io alia",
+    "category_performance": "Malrapideco",
+    "context_note": "La ludversio, via platformo kaj la nuna ludo estas senditaj kun la raporto.",
+    "failed": "La raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
+    "intro": "Priskribu kiel eble plej precize, kio okazis. Dankon pro helpi nin plibonigi la ludon!",
+    "menu_desc": "Diru al la teamo, kio misfunkcias",
+    "open": "Raporti",
+    "placeholder": "Kion vi faris, kion vi atendis, kio okazis anstataŭe…",
+    "send": "Sendi la raporton",
+    "sending": "Sendante…",
+    "thanks": "Dankon! Via raporto atingis la teamon.",
+    "title": "Raporti cimon",
+    "what_happened": "Kio okazis?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Eksplodeto",
@@ -1066,6 +1085,12 @@
     "team_count": "Nombro de teamoj",
     "team_size": "Teama grandeco",
     "title": "Detala Vido"
+  },
+  "dev_notice": {
+    "body": "Vi ludas ludon ankoraŭ konstruatan: iuj aferoj povas ŝanĝiĝi, rompiĝi aŭ manki, kaj la progreso eble foje estos nuligita.",
+    "feedback": "Se io misfunkcias, raportu ĝin: ĉiu raporto helpas nin pli rapide ripari la ludon.",
+    "ok": "Komprenite, ni ludu",
+    "title": "Territorium ankoraŭ estas evoluigata"
   },
   "difficulty": {
     "difficulty": "Facileco de nacioj",

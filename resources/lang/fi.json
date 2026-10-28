@@ -174,6 +174,25 @@
     "title": "Tilisi on estetty",
     "until": "Kielletty {date} asti."
   },
+  "bug_report": {
+    "category": "Millainen ongelma?",
+    "category_account": "Tili tai osto",
+    "category_display": "Näyttö",
+    "category_gameplay": "Pelattavuus",
+    "category_other": "Jotain muuta",
+    "category_performance": "Hitaus",
+    "context_note": "Pelin versio, alustasi ja käynnissä oleva peli lähetetään ilmoituksen mukana.",
+    "failed": "Ilmoitusta ei voitu lähettää. Tarkista yhteys ja yritä uudelleen.",
+    "intro": "Kuvaile mahdollisimman tarkasti, mitä tapahtui. Kiitos, että autat parantamaan peliä!",
+    "menu_desc": "Kerro tiimille, mikä on vialla",
+    "open": "Ilmoita",
+    "placeholder": "Mitä olit tekemässä, mitä odotit, mitä tapahtui sen sijaan…",
+    "send": "Lähetä ilmoitus",
+    "sending": "Lähetetään…",
+    "thanks": "Kiitos! Ilmoituksesi tavoitti tiimin.",
+    "title": "Ilmoita viasta",
+    "what_happened": "Mitä tapahtui?"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "Pieni räjähdys",
@@ -1066,6 +1085,12 @@
     "team_count": "Joukkueiden lukumäärä",
     "team_size": "Joukkueen koko",
     "title": "Yksityiskohtainen näkymä"
+  },
+  "dev_notice": {
+    "body": "Pelaat peliä, jota vielä rakennetaan: jotkin asiat voivat muuttua, hajota tai puuttua, ja edistyminen voidaan joskus nollata.",
+    "feedback": "Jos jokin menee vikaan, ilmoita siitä: jokainen ilmoitus auttaa korjaamaan pelin nopeammin.",
+    "ok": "Selvä, pelataan",
+    "title": "Territorium on vielä kehitteillä"
   },
   "difficulty": {
     "difficulty": "Vaikeustaso",

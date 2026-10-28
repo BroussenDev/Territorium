@@ -174,6 +174,25 @@
     "title": "您的帳戶已被封禁",
     "until": "將於 {date} 解除封禁。"
   },
+  "bug_report": {
+    "category": "什麼類型的問題？",
+    "category_account": "帳號或購買",
+    "category_display": "顯示",
+    "category_gameplay": "玩法",
+    "category_other": "其他",
+    "category_performance": "卡頓",
+    "context_note": "遊戲版本、你的平台和目前對局會隨回報一起送出。",
+    "failed": "回報傳送失敗。請檢查網路後再試一次。",
+    "intro": "請盡可能詳細地描述發生了什麼。感謝你幫助我們改進遊戲！",
+    "menu_desc": "告訴團隊哪裡出了問題",
+    "open": "回報",
+    "placeholder": "你當時在做什麼、期望什麼、實際發生了什麼……",
+    "send": "送出回報",
+    "sending": "傳送中……",
+    "thanks": "謝謝！你的回報已送達團隊。",
+    "title": "回報問題",
+    "what_happened": "發生了什麼？"
+  },
   "build_menu": {
     "desc": {
       "atom_bomb": "小型爆炸",
@@ -1066,6 +1085,12 @@
     "team_count": "隊伍數量",
     "team_size": "隊伍人數",
     "title": "詳細內容"
+  },
+  "dev_notice": {
+    "body": "你正在玩一款仍在製作中的遊戲：部分內容可能會改變、出錯或缺少，進度偶爾也可能被重置。",
+    "feedback": "遇到問題請回報：每一份回報都能幫助我們更快修好遊戲。",
+    "ok": "了解，開玩",
+    "title": "Territorium 仍在開發中"
   },
   "difficulty": {
     "difficulty": "國家難度",
