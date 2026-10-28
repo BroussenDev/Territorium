@@ -3,6 +3,7 @@ import {
   BUG_TEXT_MAX,
   bugReportBody,
   gameIDFromPath,
+  reporterKey,
 } from "../../src/client/BugReport";
 import { shouldShowDevNotice } from "../../src/client/DevNotice";
 
@@ -18,6 +19,18 @@ describe("BugReport", () => {
     expect(body.category).toBe("display");
     expect(body.context.gameID).toBe("abc");
     expect(body.context.platform).toBe("web");
+  });
+});
+
+describe("reporterKey", () => {
+  it("is made once and kept, so the team's answer finds this browser", () => {
+    localStorage.clear();
+    const key = reporterKey();
+    expect(key).toMatch(/^[0-9a-f]{36}$/);
+    expect(reporterKey()).toBe(key);
+    expect(bugReportBody("Un souci de carte", "other", null).reporterKey).toBe(
+      key,
+    );
   });
 });
 

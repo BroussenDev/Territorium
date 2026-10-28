@@ -2,6 +2,11 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant hover (&:hover);
+
+/* No tournament open or running: no Tournaments tab (TournamentsTab.ts). */
+.no-tournaments [data-page="page-tournaments"] {
+  display: none !important;
+}
 /* The Steam shell has no ad slots, so it can use the width they reserve. */
 @custom-variant desktop (&:where(.desktop-shell, .desktop-shell *));
 

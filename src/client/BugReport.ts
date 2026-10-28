@@ -20,6 +20,7 @@ export const BUG_TEXT_MAX = 2000;
 
 export interface BugReportBody {
   text: string;
+  reporterKey?: string;
   category: BugCategory;
   username?: string;
   context: {
@@ -47,6 +48,7 @@ export function bugReportBody(
   }
   return {
     text: text.trim().slice(0, BUG_TEXT_MAX),
+    reporterKey: reporterKey() ?? undefined,
     category,
     username,
     context: {
@@ -66,8 +68,30 @@ export function gameIDFromPath(path: string): string | null {
   return /\/game\/([A-Za-z0-9]{1,32})/.exec(path)?.[1] ?? null;
 }
 
-/** Sends the report: signed in when the player is, anonymous otherwise. */
-export async function sendBugReport(body: BugReportBody): Promise<boolean> {
+const REPORTER_KEY = "territorium.bugReporterKey";
+
+/**
+ * This browser's (or app's) own key, sent with every report: the team's
+ * answer comes back to it even when the player isn't signed in.
+ */
+export function reporterKey(): string | null {
+  try {
+    let key = localStorage.getItem(REPORTER_KEY);
+    if (key === null || !/^[A-Za-z0-9_-]{16,64}$/.test(key)) {
+      const bytes = crypto.getRandomValues(new Uint8Array(18));
+      key = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+      localStorage.setItem(REPORTER_KEY, key);
+    }
+    return key;
+  } catch {
+    return null;
+  }
+}
+
+/** Sends the report; its ticket number, or null when it didn't go through. */
+export async function sendBugReport(
+  body: BugReportBody,
+): Promise<number | null> {
   const auth = await userAuth().catch(() => false as const);
   const res = await fetch(`${getApiBase()}/bug-reports`, {
     method: "POST",
@@ -77,7 +101,9 @@ export async function sendBugReport(body: BugReportBody): Promise<boolean> {
     },
     body: JSON.stringify(body),
   });
-  return res.ok;
+  if (!res.ok) return null;
+  const data = (await res.json().catch(() => ({}))) as { id?: unknown };
+  return typeof data.id === "number" ? data.id : null;
 }
 
 /** Opens the "report a bug" window over whatever is on screen. */
@@ -98,6 +124,7 @@ export class BugReportModal extends LitElement {
   @state() private category: BugCategory = "gameplay";
   @state() private text = "";
   @state() private status: "idle" | "sending" | "sent" | "failed" = "idle";
+  @state() private ticket: number | null = null;
   private gameID: string | null = null;
 
   createRenderRoot() {
@@ -123,10 +150,10 @@ export class BugReportModal extends LitElement {
     }
     this.status = "sending";
     try {
-      const ok = await sendBugReport(
+      this.ticket = await sendBugReport(
         bugReportBody(this.text, this.category, this.gameID),
       );
-      this.status = ok ? "sent" : "failed";
+      this.status = this.ticket !== null ? "sent" : "failed";
     } catch {
       this.status = "failed";
     }
@@ -175,6 +202,12 @@ export class BugReportModal extends LitElement {
         ${this.status === "sent"
           ? html`<p class="text-emerald-200" role="status">
                 ${translateText("bug_report.thanks")}
+              </p>
+              <p class="m-0 text-lg font-bold" data-bug-ticket>
+                ${translateText("bug_report.ticket", { id: this.ticket ?? "" })}
+              </p>
+              <p class="m-0 text-sm text-white/70">
+                ${translateText("bug_report.reply_later")}
               </p>
               <button
                 type="button"

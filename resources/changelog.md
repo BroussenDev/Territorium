@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.166
+
+- Bug reports get a ticket number, and the team's answer pops up the next time you open the game (web or Steam app)
+- Player profiles open again ("Player profile not found")
+- The Tournaments tab only shows while a tournament is open or running
+
 ## v0.1.165
 
 - Report a bug from the game: in the in-game menu and on the help page, with the game version and platform attached

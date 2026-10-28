@@ -172,6 +172,7 @@ import {
   installSafariPinchZoomBlocker,
 } from "./utilities/DisableSafariPinchZoom";
 
+import { showBugRepliesIfAny } from "./BugReplies";
 import { gameIDFromPath } from "./BugReport";
 import "./ChallengesModal";
 import { showDevNoticeIfNeeded } from "./DevNotice";
@@ -179,6 +180,7 @@ import { rememberPublicJoin } from "./PlayAgain";
 import { isSteamLocked, unlockSteamForAdmin } from "./SteamLaunch";
 import "./TournamentMatchBanner";
 import "./TournamentsModal";
+import { refreshTournamentsTab } from "./TournamentsTab";
 import "./components/DesktopNavBar";
 import "./components/DetailedGameViewModal";
 import "./components/Footer";
@@ -1253,7 +1255,10 @@ class Client {
     // the link leads straight into a game.
     if (gameIDFromPath(window.location.pathname) === null) {
       showDevNoticeIfNeeded();
+      // The team's answers to the player's bug reports, web and Steam app.
+      void showBugRepliesIfAny();
     }
+    void refreshTournamentsTab();
     const requeueMode = this.consumeRequeueUrl();
     if (requeueMode !== null) {
       document.dispatchEvent(
