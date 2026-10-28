@@ -1,5 +1,9 @@
 # Territorium — Changelog
 
+## v0.1.169
+
+- Privacy policy: the log of the team's in-game actions is kept 3 years, then deleted automatically
+
 ## v0.1.168
 
 - Privacy policy: bug reports, the name history and the game ID now attached to crash reports are described
