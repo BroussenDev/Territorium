@@ -72,6 +72,21 @@ The game server only serves `index.html` and the WebSocket. All other assets (JS
 
 All user-visible text must go through `translateText()` and have a corresponding entry added to `resources/lang/en.json`. Translations are managed via Crowdin. DO NOT modify any other translation files.
 
+## "What's new" window
+
+Every big version (a release with new features players will notice, not a
+bug-fix release) updates the "What's new" popup in `src/client/WhatsNew.ts`:
+
+- bump `WHATS_NEW_ID` to the version (`v0_1_170` style), so every returning
+  player sees it once;
+- list 3–5 items in `WHATS_NEW_ITEMS`, each with `whats_new.<id>.<key>_title`
+  and `whats_new.<id>.<key>` translations in every language;
+- add a screenshot of the feature when it can be shown (`image`, a file under
+  `resources/images/whats-new/<id>/`, WebP, about 960px wide), taken from the
+  real game.
+
+Small bug-fix releases leave it unchanged.
+
 ## Testing Patterns
 
 Tests use a `setup()` helper from `tests/util/Setup.ts` that creates a full game instance with map data from `tests/testdata/maps/`. Write tests that exercise the core simulation directly — not mocks.
