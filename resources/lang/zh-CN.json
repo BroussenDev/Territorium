@@ -17,7 +17,7 @@
     "delete_account_confirm_button": "永久删除",
     "delete_account_confirm_word": "删除",
     "delete_account_desc": "永久删除您的帐户及其所有数据。",
-    "delete_account_failed": "删除失败，请通过 contact@broussen.fr 联系支持人员",
+    "delete_account_failed": "删除失败，请通过 support@territorium.gg 联系支持人员",
     "delete_account_rate_limited": "暂时无法删除帐户，请稍后重试。",
     "delete_account_scheduled": "您的帐户将在 24 小时内被删除。如果您改变主意，请联系支持人员取消。",
     "delete_account_title": "删除帐户",

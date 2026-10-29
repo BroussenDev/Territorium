@@ -1,5 +1,9 @@
 # Territorium — Changelog
 
+## v0.1.171
+
+- The terms and privacy policy now list dedicated Territorium addresses: contact@, support@, billing@, privacy@, abuse@ and moderation@territorium.gg.
+
 ## v0.1.170
 
 - Buying an emerald pack now asks you to tick a box confirming that you want the emeralds right away and waive the 14-day withdrawal right; the Pay button stays greyed out until the box is ticked.

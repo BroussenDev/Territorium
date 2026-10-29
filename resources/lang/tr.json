@@ -17,7 +17,7 @@
     "delete_account_confirm_button": "Kalıcı Olarak Sil",
     "delete_account_confirm_word": "SİLMEK",
     "delete_account_desc": "Hesabınızı ve tüm verilerini kalıcı olarak silin.",
-    "delete_account_failed": "Silme işlemi başarısız oldu, lütfen contact@broussen.fr adresinden destek ekibiyle iletişime geçin.",
+    "delete_account_failed": "Silme işlemi başarısız oldu, lütfen support@territorium.gg adresinden destek ekibiyle iletişime geçin.",
     "delete_account_rate_limited": "Hesap silme işlemi geçici olarak yapılamıyor, lütfen daha sonra tekrar deneyin.",
     "delete_account_scheduled": "Hesabınız 24 saat içinde silinecektir. Fikrinizi değiştirirseniz iptal etmek için lütfen destek ekibiyle iletişime geçin.",
     "delete_account_title": "Hesabı sil",
