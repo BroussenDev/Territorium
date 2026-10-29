@@ -157,8 +157,11 @@ describe("purchaseCosmetic dollar path", () => {
     it("asks for the waiver, then checks out with it and a currency", async () => {
       await purchaseCosmetic(moneyPack(), "dollar");
       expect(confirmMock).toHaveBeenCalledWith(
-        "store.withdrawal_waiver",
-        expect.objectContaining({ heading: "Coffre royal" }),
+        "store.withdrawal_notice",
+        expect.objectContaining({
+          heading: "Coffre royal",
+          checkboxLabel: "store.withdrawal_waiver",
+        }),
       );
       expect(startPurchaseMock).toHaveBeenCalledWith({
         kind: "currency_pack",

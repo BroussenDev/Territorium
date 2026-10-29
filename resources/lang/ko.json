@@ -3132,6 +3132,7 @@
     "tribes_login_required": "부족 이름을 구매하고 관리하려면 로그인하세요.",
     "tribes_purchase_description": "실제 멀티플레이어 게임의 봇 부족에 지정한 이름이 부여됩니다. 즉시 적용됩니다.",
     "tribes_purchase_heading": "부족 이름 구매",
+    "withdrawal_notice": "에메랄드는 결제 즉시 계정으로 지급되는 디지털 콘텐츠입니다. 지급된 후에는 구매를 철회할 수 없습니다. 계속하려면 아래 상자에 체크하세요.",
     "withdrawal_waiver": "나는 즉시 에메랄드를 원하며 14일의 철회 권리를 포기합니다.",
     "withdrawal_waiver_needed": "가격 아래의 상자를 먼저 선택하세요. 결제 즉시 에메랄드가 배송되므로 나중에 구매를 취소할 수 없습니다.",
     "your_tribes_heading": "내 부족 이름"

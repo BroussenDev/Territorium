@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.170
+
+- Buying an emerald pack now asks you to tick a box confirming that you want the emeralds right away and waive the 14-day withdrawal right; the Pay button stays greyed out until the box is ticked.
+- Invoices are now numbered TERR-001-2026, and the VAT exemption is shown more clearly.
+
 ## v0.1.169
 
 - Privacy policy: the log of the team's in-game actions is kept 3 years, then deleted automatically

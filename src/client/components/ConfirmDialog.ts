@@ -37,10 +37,14 @@ export class ConfirmDialog extends LitElement {
   @property({ type: Boolean }) disabled = false;
   @property({ type: Boolean }) showClose = false;
   @property({ type: Boolean }) wide = false;
+  // When set, a checkbox with this label must be ticked before confirming
+  // (e.g. an express waiver the law wants actively given).
+  @property() checkboxLabel = "";
   @property() buttons: "confirmCancel" | "confirmOnly" | "none" =
     "confirmCancel";
 
   @state() private text = "";
+  @state() private checked = false;
 
   private portal: HTMLDivElement | null = null;
 
@@ -153,6 +157,21 @@ export class ConfirmDialog extends LitElement {
                 class="mt-4 w-full resize-none rounded-md border border-white/12 bg-black/30 px-3 py-2 text-sm text-white placeholder-white/35 focus:outline-none focus:ring-2 focus:ring-capital/50"
               ></textarea>`
             : ""}
+          ${this.checkboxLabel
+            ? html`<label
+                data-confirm-checkbox
+                class="mt-4 flex cursor-pointer items-start gap-2.5 rounded-md border border-white/12 bg-black/25 p-3 text-sm leading-snug text-white/85"
+              >
+                <input
+                  type="checkbox"
+                  class="mt-0.5 size-4 shrink-0 accent-green-500"
+                  .checked=${this.checked}
+                  @change=${(e: Event) =>
+                    (this.checked = (e.target as HTMLInputElement).checked)}
+                />
+                <span>${this.checkboxLabel}</span>
+              </label>`
+            : ""}
           ${this.buttons === "none"
             ? ""
             : html`<div class="mt-5 flex gap-2.5">
@@ -166,8 +185,10 @@ export class ConfirmDialog extends LitElement {
                     </button>`
                   : ""}
                 <button
+                  data-confirm-button
                   @click=${() => this.handleConfirm()}
-                  ?disabled=${this.disabled}
+                  ?disabled=${this.disabled ||
+                  (this.checkboxLabel !== "" && !this.checked)}
                   class="flex-1 rounded-md border-0 px-4 py-2.5 font-display text-sm font-bold ${btnClass} transition-colors disabled:pointer-events-none disabled:opacity-50"
                 >
                   ${this.confirmText || translateText("common.confirm")}
@@ -179,6 +200,7 @@ export class ConfirmDialog extends LitElement {
   }
 
   private handleConfirm() {
+    if (this.checkboxLabel && !this.checked) return;
     this.dispatchEvent(
       new CustomEvent("confirm", { detail: { text: this.text } }),
     );

@@ -518,8 +518,9 @@ export async function purchaseCosmetic(
       const moneyPrice = isPack ? packMoneyPrice(c as Pack) : null;
       if (
         moneyPrice !== null &&
-        !(await showInGameConfirm(translateText("store.withdrawal_waiver"), {
+        !(await showInGameConfirm(translateText("store.withdrawal_notice"), {
           variant: "warning",
+          checkboxLabel: translateText("store.withdrawal_waiver"),
           heading: packDisplayName(c as Pack),
           confirmText: `${translateText("store.pay")} ${moneyPrice}`,
         }))
