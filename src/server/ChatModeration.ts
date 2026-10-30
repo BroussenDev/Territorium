@@ -1,5 +1,6 @@
 import { ChatNotice, ClientID } from "../core/Schemas";
 import { censorChat } from "./Censor";
+import { CJK_LEXICON, CJK_SAFE, LEXICONS, lexiconWords } from "./ChatLexicon";
 
 // The chat's automatic moderation, one per game. On top of the burst limit
 // (ClientMsgRateLimiter) it:
@@ -10,7 +11,8 @@ import { censorChat } from "./Censor";
 // Hate and insults are strikes: at STRIKES_TO_MUTE the player is muted, for
 // longer each time. The sender hears why through a notice; nobody else does.
 // The gravest lines are TGS's (TGS-110): hate aimed at a group ("nique les
-// noirs", slurs) and threats ("kys", "je vais te tuer") are removed for
+// noirs", slurs, Nazi references), threats ("kys", "je vais te tuer") and
+// sexual violence or harassment ("je te viole", "suce") are removed for
 // everyone, their author is muted for the rest of the game, the other
 // players are told, and the staff gets a ticket with the line.
 
@@ -46,6 +48,43 @@ const HATE = [
   "schwuchtel",
   "пидор",
   "пидорас",
+  "nigger",
+  "niggers",
+  "nigga",
+  "niggas",
+  "negresse",
+  "faggot",
+  "faggots",
+  "fag",
+  "fags",
+  "tranny",
+  "trannies",
+  "chink",
+  "chinks",
+  "spic",
+  "spics",
+  "kike",
+  "kikes",
+  "paki",
+  "gook",
+  "wetback",
+  "beaner",
+  "coon",
+  "tapette",
+  "tapettes",
+  "gouine",
+  "gouines",
+  "fiotte",
+  "fiottes",
+  "tarlouze",
+  "tantouze",
+  "nazi",
+  "nazis",
+  "hitler",
+  "auschwitz",
+  "zyklon",
+  "third reich",
+  "kkk",
 ];
 
 const INSULTS = [
@@ -178,13 +217,127 @@ const THREATS = [
   "te voy a matar",
   "matate",
   "bring dich um",
+  "je te tue",
+  "je te tuerai",
+  "je vais vous tuer",
+  "je vais te buter",
+  "je te bute",
+  "je vais te crever",
+  "tue toi",
+  "pends toi",
+  "pendez vous",
+  "va te pendre",
+  "va te tuer",
+  "hang yourself",
+  "off yourself",
+  "i hope you die",
+  "hope you die",
+  "hope u die",
+  "kill u",
+  "gonna kill you",
+  "ima kill you",
+  "going to kill you",
+  "i will murder you",
+  "ill murder you",
+  "ojala te mueras",
+  "suicidate",
+  "ich bring dich um",
+  "ich werde dich toten",
+  "ti ammazzo",
+  "ammazzati",
+  "ti uccido",
+  "vou te matar",
+  "vai se matar",
 ];
+
+// Sexual violence and sexual harassment aimed at someone. "viol" alone is a
+// whole word, so "violet", "violon" and "violent" are left alone; "viole" only
+// counts with a person next to it ("te viole"), "baiser" only as "te baiser".
+const SEXUAL = [
+  "viol",
+  "violer",
+  "violee",
+  "violez",
+  "violeur",
+  "violeurs",
+  "violerai",
+  "violerais",
+  "te viole",
+  "te violes",
+  "t viole",
+  "vous viole",
+  "je viole",
+  "on viole",
+  "te baiser",
+  "te baise",
+  "t baise",
+  "t baiser",
+  "baise ta",
+  "baise ton",
+  "baise tes",
+  "suce",
+  "suces",
+  "suce moi",
+  "te sucer",
+  "me sucer",
+  "te sodomiser",
+  "sodomise",
+  "sodomiser",
+  "rape",
+  "raped",
+  "raping",
+  "rapist",
+  "rapists",
+  "suck my",
+  "suck dick",
+  "suck cock",
+  "suck me",
+  "blow me",
+  "eat my ass",
+  "i will fuck you",
+  "ill fuck you",
+  "gonna fuck you",
+  "ima fuck you",
+  "violar",
+  "violarte",
+  "te violo",
+  "violador",
+  "violacion",
+  "chupamela",
+  "chupame",
+  "chupa mela",
+  "vergewaltigen",
+  "vergewaltige",
+  "vergewaltigt",
+  "vergewaltiger",
+  "ich ficke dich",
+  "lutsch meinen",
+  "lutsch mir",
+  "stupro",
+  "stuprare",
+  "ti stupro",
+  "succhiamelo",
+  "ti scopo",
+  "estuprar",
+  "estupro",
+  "estuprador",
+  "chupa meu",
+];
+
+// "crève" (die!) with its accent, as opposed to "crevé" (tired).
+const DIE_ACCENT = /(?<![\p{L}])crève(?![\p{L}])/u;
+// "meurs"/"crève" aimed at someone through an insult. The bare words are
+// ordinary ("je meurs de faim").
+const DIE_INSULT =
+  /(?<![\p{L}])(?:meurs|creve|crevez)\s+(?:sale|connard|connasse|salope|enfoire|batard|fdp|pute|putain|bouffon|noob)(?![\p{L}])/u;
+// "pd" as a whole word; not "PD:" (the Spanish P.S.).
+const PD = /(?<![\p{L}\p{N}])p+d+(?![\p{L}\p{N}:])/u;
 
 // TGS-110: violence or contempt next to a group of people, a few words apart.
 const HATE_VERBS =
   "nique|niquer|nik|nike|niker|mort aux|mort a|crever|crevez|tuer|tuez|bruler|gazer|fuck|kill|death to|hate|gas|burn";
 const GROUPS =
-  "noirs?|noire|negros?|blacks?|arabes?|beurs?|rebeus?|juifs?|juives?|jews?|musulmans?|muslims?|chinois|asiatiques?|gays?|pedes?|homos?|lesbiennes?|trans|roms?|gitans?|migrants?|blancs?|whites?";
+  "noirs?|noire|negros?|blacks?|arabes?|arabs?|beurs?|rebeus?|juifs?|juives?|jews?|musulmans?|muslims?|chinois|asiatiques?|gays?|pedes?|homos?|lesbiennes?|trans|roms?|gitans?|migrants?|blancs?|whites?";
 const groupHate = new RegExp(
   `(?<![\\p{L}])(?:${HATE_VERBS})(?:\\s+\\p{L}+){0,2}\\s+(?:${GROUPS})(?![\\p{L}])`,
   "u",
@@ -212,40 +365,123 @@ const LEET: Record<string, string> = {
   $: "s",
 };
 
-/** The line folded one UTF-16 unit for one, so matches map back onto it. */
+// Letters that do not decompose into a base letter and a mark.
+const EXTRA: Record<string, string> = {
+  ł: "l",
+  ı: "i",
+  đ: "d",
+  ø: "o",
+  ى: "ي",
+  ة: "ه",
+  ٱ: "ا",
+  ک: "ك",
+  ی: "ي",
+};
+
+// Latin letters passed off as Cyrillic ones ("cyка").
+const LOOKALIKE: Record<string, string> = {
+  a: "а",
+  c: "с",
+  e: "е",
+  o: "о",
+  p: "р",
+  x: "х",
+  y: "у",
+  k: "к",
+  m: "м",
+  h: "н",
+  t: "т",
+  b: "в",
+};
+
+const CYRILLIC_WORD = /[\p{L}\p{N}]*\p{Script=Cyrillic}[\p{L}\p{N}]*/gu;
+const SAFE_WORDS = new RegExp(CJK_SAFE.join("|"), "gu");
+
+/**
+ * The line folded one UTF-16 unit for one, so matches map back onto it:
+ * lowercase, without accents (Latin, Cyrillic, Arabic marks), leetspeak read
+ * as letters, Latin lookalikes inside a Cyrillic word read as Cyrillic, and
+ * harmless words that contain a CJK term blanked out.
+ */
 function fold(text: string): string {
   let out = "";
   for (const unit of text.split("")) {
-    const base = unit.normalize("NFD").toLowerCase()[0] ?? unit;
+    const code = unit.charCodeAt(0);
+    let base: string;
+    if ((code >= 0x64b && code <= 0x65f) || code === 0x640 || code === 0x670) {
+      base = "_"; // Arabic vowel marks and tatweel: a gap inside a word
+    } else if (code < 0x530 || (code >= 0x600 && code <= 0x6ff)) {
+      base = unit.normalize("NFD").toLowerCase()[0] ?? unit;
+    } else {
+      base = unit.toLowerCase()[0] ?? unit;
+    }
+    base = EXTRA[base] ?? base;
     out += LEET[base] ?? base;
   }
-  return out;
+  return out
+    .replace(CYRILLIC_WORD, (w) =>
+      [...w].map((ch) => LOOKALIKE[ch] ?? ch).join(""),
+    )
+    .replace(SAFE_WORDS, (w) => " ".repeat(w.length));
 }
 
-function matcher(words: string[]): RegExp {
+function matcher(words: string[], wild = false): RegExp {
   const body = words
     .map((w) =>
-      [...w]
-        .map((ch) => (ch === " " ? "[\\s._*\\-]+" : `${ch}+`))
+      [...fold(w)]
+        .map((ch) =>
+          ch === " "
+            ? "[\\s._*\\-]+"
+            : // "n*gre": a star may stand in for a vowel.
+              wild && "aeiou".includes(ch)
+              ? `[${ch}*]+`
+              : `${escapeRe(ch)}+`,
+        )
         .join("[._*\\-]*"),
     )
     .join("|");
   return new RegExp(`(?<![\\p{L}\\p{N}])(?:${body})(?![\\p{L}\\p{N}])`, "gu");
 }
 
-const hateMatcher = matcher(HATE);
-const insultMatcher = matcher(INSULTS);
-const swearMatcher = matcher(SWEARING);
-const threatMatcher = matcher(THREATS);
+function escapeRe(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
-/** Masks what `re` finds in `text`; says whether it found anything. */
-function mask(text: string, re: RegExp): { text: string; hit: boolean } {
+/** Chinese, Japanese and Korean words: found anywhere in a line. */
+function cjkMatcher(words: string[]): RegExp {
+  return new RegExp(words.map(escapeRe).join("|"), "gu");
+}
+
+type Kind = "insults" | "swearing" | "hate" | "threats" | "sexual";
+
+/** A list's matchers: its spaced words, and the CJK terms of the lexicon. */
+function matchers(words: string[], kind: Kind, wild = false): RegExp[] {
+  return [
+    matcher([...words, ...lexiconWords(kind, LEXICONS)], wild),
+    cjkMatcher(lexiconWords(kind, CJK_LEXICON)),
+  ];
+}
+
+const hateMatcher = matchers(HATE, "hate", true);
+const sexualMatcher = matchers(SEXUAL, "sexual", true);
+const insultMatcher = matchers(INSULTS, "insults");
+const swearMatcher = matchers(SWEARING, "swearing");
+const threatMatcher = matchers(THREATS, "threats");
+
+/** Masks what `res` find in `text`; says whether they found anything. */
+function mask(
+  text: string,
+  res: readonly RegExp[],
+): { text: string; hit: boolean } {
   let hit = false;
   const chars = text.split("");
-  for (const m of fold(text).matchAll(re)) {
-    hit = true;
-    for (let i = m.index; i < m.index + m[0].length; i++) {
-      if (!/\s/.test(chars[i])) chars[i] = "*";
+  const folded = fold(text);
+  for (const re of res) {
+    for (const m of folded.matchAll(re)) {
+      hit = true;
+      for (let i = m.index; i < m.index + m[0].length; i++) {
+        if (!/\s/.test(chars[i])) chars[i] = "*";
+      }
     }
   }
   return { text: chars.join(""), hit };
@@ -255,11 +491,17 @@ export function hasLink(text: string): boolean {
   return LINK.test(text);
 }
 
-/**
- * A line TGS removes for everyone (TGS-110): "hate" aimed at a group of
- * people, or a "threat". null for anything else, ordinary insults included.
- */
-export function severeChat(text: string): "hate" | "threat" | null {
+const SPLIT_LETTERS =
+  /(?<![\p{L}\p{N}])(?:[\p{L}\p{N}@$][ ._*-]+){2,}[\p{L}\p{N}@$](?![\p{L}\p{N}])/gu;
+
+/** "v i o l e" or "k.y.s" joined back into one word. */
+function despace(text: string): string {
+  return text.replace(SPLIT_LETTERS, (m) => m.replace(/[ ._*-]+/g, ""));
+}
+
+export type SevereKind = "hate" | "threat" | "sexual";
+
+function severeOne(text: string): SevereKind | null {
   const folded = fold(text)
     .replace(/[^\p{L}\p{N}\s]/gu, " ")
     .replace(/\s+/g, " ");
@@ -268,12 +510,34 @@ export function severeChat(text: string): "hate" | "threat" | null {
     dirtyGroup.test(folded) ||
     NAZI.test(folded) ||
     NAZI.test(text.toLowerCase()) ||
+    PD.test(fold(text)) ||
     mask(text, hateMatcher).hit
   ) {
     return "hate";
   }
-  if (mask(text, threatMatcher).hit) return "threat";
+  if (mask(text, sexualMatcher).hit) return "sexual";
+  if (
+    mask(text, threatMatcher).hit ||
+    DIE_ACCENT.test(text.toLowerCase()) ||
+    DIE_INSULT.test(folded)
+  ) {
+    return "threat";
+  }
   return null;
+}
+
+/**
+ * A line TGS removes for everyone (TGS-110): "hate" aimed at a group of
+ * people (slurs, Nazi references), a "threat" (death, suicide) or "sexual"
+ * violence or harassment. null for anything else, ordinary insults included.
+ * Read on the line as typed and with its apostrophes and spaced-out letters
+ * ("t'viole", "v i o l") put back together.
+ */
+export function severeChat(text: string): SevereKind | null {
+  const plain = text.replace(/['’`´]/g, " ");
+  return (
+    severeOne(plain) ?? severeOne(despace(plain)) ?? severeOne(despace(text))
+  );
 }
 
 export function isHateSpeech(text: string): boolean {
@@ -305,7 +569,7 @@ export interface ChatVerdict {
   /** How long the sender stays muted, for a "muted" notice. */
   seconds?: number;
   /** A line TGS removed (TGS-110): tell everyone and the staff. */
-  severe?: "hate" | "threat";
+  severe?: SevereKind;
 }
 
 interface SenderState {

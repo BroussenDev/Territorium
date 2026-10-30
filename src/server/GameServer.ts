@@ -60,7 +60,7 @@ import {
 import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
-import { ChatModerator } from "./ChatModeration";
+import { ChatModerator, SevereKind } from "./ChatModeration";
 import { Client } from "./Client";
 import { ensureApprovedCommunityMap } from "./CommunityMapIds";
 import { applyGameConfigPatch, hostCheatsEnabled } from "./ConfigPatch";
@@ -111,6 +111,12 @@ const LATE_JOIN_GRACE_MS = 5_000;
 // How many of a player's last chat lines a report against them carries (the
 // cap of PlayerReportSchema.messages).
 const CHAT_LOG_LENGTH = 10;
+// What the staff reads in a TGS-110 incident, by kind of line.
+const CHAT_KIND_LABELS: Record<SevereKind, string> = {
+  hate: "Propos haineux",
+  threat: "Menace",
+  sexual: "Propos sexuels graves",
+};
 
 // A public lobby holds back its last seats (a tenth, at least one) for
 // players with queue priority, then opens them to everyone this long before
@@ -2344,7 +2350,7 @@ export class GameServer {
    * TGS removed a line (TGS-110): every other player is told who was muted,
    * and the staff gets the line at once (an incident and a ticket).
    */
-  private tgsChat(client: Client, text: string, kind: "hate" | "threat") {
+  private tgsChat(client: Client, text: string, kind: SevereKind) {
     if (!tgsSwitch.isEnabled()) return;
     const notice = encodeServerMessage(
       {
@@ -2360,7 +2366,7 @@ export class GameServer {
     const incident = this.tgs.observeChat(
       client.clientID,
       this.turns.length,
-      `${kind === "hate" ? "Propos haineux" : "Menace"} dans le chat : « ${text} »`,
+      `${CHAT_KIND_LABELS[kind]} dans le chat : « ${text} »`,
     );
     this.log.warn("TGS removed a chat line", {
       clientID: client.clientID,

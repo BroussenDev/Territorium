@@ -97,7 +97,7 @@ describe("in-game chat", () => {
     const { game, alice, bob } = makeTwoPlayerGame();
     startGame(game);
 
-    await mockWsOf(alice).emit({ type: "chat", text: "you nazi" });
+    await mockWsOf(alice).emit({ type: "chat", text: "you heil" });
 
     expect(chatSeenBy(game, bob)).toEqual([]);
     expect(chatSeenBy(game, alice)).toEqual([]);

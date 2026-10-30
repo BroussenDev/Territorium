@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.176
+
+- Chat: serious messages (sexual violence, threats, hate, Nazi references) are now caught in many more languages and despite spelling tricks; their author is muted at once and the moderators are alerted.
+- Privacy policy: chat messages are only kept when blocked or reported (1 year), to moderate and train Territorium's own filter on our servers.
+
 ## v0.1.175
 
 - New Discord tab in the settings: link your Discord account and choose whether your private games are announced on the Territorium Discord.
