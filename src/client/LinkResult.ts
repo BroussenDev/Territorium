@@ -21,6 +21,12 @@ const LINK_RESULT_KEYS: Record<string, string> = {
   steam_linked_elsewhere: "steam_link_modal.reason_steam_linked_elsewhere",
   steam_has_progress: "steam_link_modal.reason_steam_has_progress",
 
+  // Discord
+  discord: "account_modal.link_discord_success",
+  discord_taken: "account_modal.link_discord_taken",
+  account_already_has_discord: "account_modal.link_discord_already_has",
+  discord_error: "account_modal.link_discord_error",
+
   // The generic "could not complete this" for each provider. Two values rather
   // than one because this handler cannot tell which provider a returning
   // redirect came from, and a Steam failure must not be reported as "couldn't

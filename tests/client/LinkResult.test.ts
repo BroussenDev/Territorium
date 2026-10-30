@@ -40,6 +40,10 @@ describe("consumeLinkResult", () => {
     ["steam_has_progress", "steam_link_modal.reason_steam_has_progress"],
     ["error", "account_modal.link_google_error"],
     ["steam_error", "account_modal.link_steam_error"],
+    ["discord", "account_modal.link_discord_success"],
+    ["discord_taken", "account_modal.link_discord_taken"],
+    ["account_already_has_discord", "account_modal.link_discord_already_has"],
+    ["discord_error", "account_modal.link_discord_error"],
   ])("surfaces %s", (link, expectedKey) => {
     setHash(`#modal=account&link=${link}`);
 

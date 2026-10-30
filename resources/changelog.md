@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.172
+
+- You can now link your Discord account to your Territorium account from the account panel, even if you signed up by email, Google or Steam.
+- The Territorium Discord bot recognises linked players: /compte shows your profile and gives the verified role.
+
 ## v0.1.171
 
 - The terms and privacy policy now list dedicated Territorium addresses: contact@, support@, billing@, privacy@, abuse@ and moderation@territorium.gg.

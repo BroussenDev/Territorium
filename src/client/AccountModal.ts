@@ -12,6 +12,7 @@ import { fetchPlayerById, getUserMe, invalidateUserMe } from "./Api";
 import {
   discordLogin,
   googleLogin,
+  linkDiscord,
   linkGoogle,
   linkSteam,
   logOut,
@@ -488,7 +489,8 @@ export class AccountModal extends BaseModal {
               account_name: me.google.email,
             })}
           </div>
-          ${this.renderCurrency()} ${this.renderSteamLink()}
+          ${this.renderCurrency()} ${this.renderDiscordLink()}
+          ${this.renderSteamLink()}
         </div>
       `;
     } else if (me?.email) {
@@ -500,16 +502,15 @@ export class AccountModal extends BaseModal {
             })}
           </div>
           ${this.renderCurrency()} ${this.renderGoogleLink()}
-          ${this.renderSteamLink()}
+          ${this.renderDiscordLink()} ${this.renderSteamLink()}
         </div>
       `;
     } else if (me?.steam) {
-      // Steam is the primary login and v1 does not support linking a second
-      // identity or unlinking Steam itself, so no Discord/Google CTA here —
-      // just the currency balance and (session) logout.
+      // Steam is the primary login: Discord can be linked on top of it (on
+      // the website), Google cannot, and Steam itself is never unlinked.
       return html`
         <div class="flex flex-col items-center gap-3 w-full">
-          ${this.renderCurrency()}
+          ${this.renderCurrency()} ${this.renderDiscordLink()}
         </div>
       `;
     }
@@ -553,6 +554,42 @@ export class AccountModal extends BaseModal {
         : "account_modal.link_google",
     );
   }
+
+  // Discord link state, for accounts that signed up another way. Shown only
+  // while no Discord account is linked: once one is, the account counts as a
+  // Discord account and its header names it. Like Steam, the link is
+  // permanent, so the warning sits under the button, before the click.
+  // Not shown inside the desktop shell, which signs in through Steam.
+  private renderDiscordLink(): TemplateResult {
+    if (isDesktopShell() || this.userMeResponse?.user?.discord) return html``;
+    return html`
+      <div class="w-full flex flex-col gap-1">
+        <button
+          @click=${this.handleLinkDiscord}
+          class="w-full px-6 py-3 text-white bg-[#5865F2] hover:bg-[#4752C4] border border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5865F2] transition-colors duration-200 flex items-center justify-center gap-3 shadow-lg"
+        >
+          <img
+            src=${assetUrl("images/DiscordLogo.svg")}
+            alt="Discord"
+            class="w-5 h-5 shrink-0"
+          />
+          <span class="font-bold tracking-wide"
+            >${translateText("account_modal.link_discord")}</span
+          >
+        </button>
+        <span class="text-white/40 text-xs text-center">
+          ${translateText("account_modal.link_discord_permanent")}
+        </span>
+      </div>
+    `;
+  }
+
+  private handleLinkDiscord = async (): Promise<void> => {
+    const started = await linkDiscord();
+    if (!started) {
+      await showInGameAlert(translateText("account_modal.link_discord_failed"));
+    }
+  };
 
   // Steam link state (OPE-115): the linked account when there is one,
   // otherwise the button to link one.

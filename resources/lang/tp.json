@@ -373,5 +373,14 @@
     "side_west": "poka pi suno anpa",
     "waiting_players": "mi awen e jan ({count}/{max})",
     "you": "sina"
+  },
+  "account_modal": {
+    "link_discord": "o linja e sijelo Discord",
+    "link_discord_already_has": "sijelo ni li jo e linja tawa sijelo Discord ante.",
+    "link_discord_error": "mi ken ala linja e sijelo Discord sina. o pali sin.",
+    "link_discord_failed": "mi ken ala open e linja tawa Discord. o pali sin.",
+    "link_discord_permanent": "sina linja e Discord la, ona li awen lon sijelo ni. jan pona taso li ken weka e ona.",
+    "link_discord_success": "sijelo Discord sina li linja.",
+    "link_discord_taken": "sijelo Discord ni li jo e linja tawa sijelo Territorium ante."
   }
 }

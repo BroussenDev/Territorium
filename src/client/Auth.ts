@@ -175,6 +175,36 @@ export async function linkSteam(): Promise<boolean> {
   }
 }
 
+// Link a Discord account to the currently logged-in player. Same shape as
+// linkSteam: an authenticated fetch for the authorize URL, then navigate to
+// it. The outcome comes back as a `link=...` router arg (LinkResult.ts).
+// Like Steam, a linked Discord account cannot be unlinked by the player.
+export async function linkDiscord(): Promise<boolean> {
+  const authHeader = await getAuthHeader();
+  if (authHeader === "") return false;
+  const redirectUri = encodeURIComponent(window.location.href);
+  try {
+    const response = await fetch(
+      `${getApiBase()}/auth/link/discord?redirect_uri=${redirectUri}`,
+      {
+        headers: { Authorization: authHeader },
+        credentials: "include",
+      },
+    );
+    if (!response.ok) {
+      console.error("Failed to start Discord link", response);
+      return false;
+    }
+    const { url } = await response.json();
+    if (typeof url !== "string") return false;
+    window.location.href = url;
+    return true;
+  } catch (e) {
+    console.error("Failed to start Discord link", e);
+    return false;
+  }
+}
+
 export type TokenLoginResult =
   | { status: "success"; email: string }
   // A 400 is final: the token was invalid, expired, or already consumed.
