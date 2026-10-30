@@ -3728,6 +3728,14 @@
       "final_phase_title": "Prava završna faza",
       "threshold": "Udio zemlje za pobjedu počinje padati tek nakon 45 minuta, sporije i nikad ispod pola mape.",
       "threshold_title": "Partije imaju vremena"
+    },
+    "v0_1_173": {
+      "discord": "Pridruži se Territorium Discordu da nađeš igre, učestvuješ u večerima igara, pratiš nedeljni top 10 i razgovaraš s timom.",
+      "discord_bugs": "Prijavi grešku na forumu za greške na Discordu ili u igri. Svaka prijava postaje tiket, a tim ti odgovara tamo gde si prijavio.",
+      "discord_bugs_title": "Prijavi greške na Discordu",
+      "discord_link": "Iz panela naloga poveži Discord sa svojim Territorium nalogom, čak i ako si se prijavio putem e-pošte, Googlea ili Steama. Zatim koristi /compte na Discordu da dobiješ ulogu verifikovanog i svoj profil. Bot odgovara na tvom jeziku.",
+      "discord_link_title": "Poveži svoj Discord nalog",
+      "discord_title": "Zvanični Discord je otvoren"
     }
   },
   "win_modal": {

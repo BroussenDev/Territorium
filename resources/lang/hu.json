@@ -3728,6 +3728,14 @@
       "final_phase_title": "Igazi végső szakasz",
       "threshold": "A győzelemhez szükséges földarány csak 45 perc után kezd csökkenni, lassabban, és soha nem a térkép fele alá.",
       "threshold_title": "A játékoknak van idejük"
+    },
+    "v0_1_173": {
+      "discord": "Csatlakozz a Territorium Discordjához, hogy játékokat találj, részt vegyél a játékesteken, kövesd a heti top 10-et és beszélgess a csapattal.",
+      "discord_bugs": "Jelents hibát a Discord hibafórumán vagy a játékban. Minden jelentésből jegy lesz, és a csapat ott válaszol, ahol jelentetted.",
+      "discord_bugs_title": "Jelents hibákat a Discordon",
+      "discord_link": "A fiókpanelen kapcsold össze a Discordod a Territorium-fiókoddal, akkor is, ha e-maillel, Google-lel vagy Steammel regisztráltál. Utána használd a /compte parancsot a Discordon, hogy megkapd az ellenőrzött szerepet és a profilod. A bot a te nyelveden válaszol.",
+      "discord_link_title": "Kapcsold össze a Discord-fiókod",
+      "discord_title": "Megnyílt a hivatalos Discord"
     }
   },
   "win_modal": {

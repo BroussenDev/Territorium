@@ -3728,6 +3728,14 @@
       "final_phase_title": "Una vera fase finale",
       "threshold": "La quota di terre per vincere inizia a calare solo dopo 45 minuti, più lentamente, e mai sotto metà mappa.",
       "threshold_title": "Le partite hanno il tempo di essere giocate"
+    },
+    "v0_1_173": {
+      "discord": "Unisciti al Discord di Territorium per trovare partite, partecipare alle serate di gioco, seguire la top 10 settimanale e parlare con il team.",
+      "discord_bugs": "Segnala un bug nel forum bug del Discord o in gioco. Ogni segnalazione diventa un ticket, e il team ti risponde dove l'hai segnalato.",
+      "discord_bugs_title": "Segnala i bug su Discord",
+      "discord_link": "Dal pannello account, collega il tuo Discord al tuo account Territorium, anche se ti sei registrato via email, Google o Steam. Poi usa /compte sul Discord per ottenere il ruolo verificato e il tuo profilo. Il bot risponde nella tua lingua.",
+      "discord_link_title": "Collega il tuo account Discord",
+      "discord_title": "Il Discord ufficiale è aperto"
     }
   },
   "win_modal": {

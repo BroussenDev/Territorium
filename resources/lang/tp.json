@@ -382,5 +382,15 @@
     "link_discord_permanent": "sina linja e Discord la, ona li awen lon sijelo ni. jan pona taso li ken weka e ona.",
     "link_discord_success": "sijelo Discord sina li linja.",
     "link_discord_taken": "sijelo Discord ni li jo e linja tawa sijelo Territorium ante."
+  },
+  "whats_new": {
+    "v0_1_173": {
+      "discord": "o kama lon kulupu Discord pi ma Territorium: o alasa e musi, o musi lon tenpo pimeja musi, o lukin e jan nanpa 10 pi tenpo esun, o toki tawa kulupu pali.",
+      "discord_bugs": "o toki e pakala lon ma pakala pi kulupu Discord anu lon musi. toki ale li kama lipu nanpa. kulupu pali li toki tawa sina lon ma ni.",
+      "discord_bugs_title": "o toki e pakala lon Discord",
+      "discord_link": "lon lipu sijelo, o linja e Discord sina tawa sijelo Territorium sina. sina ken ni kin la sina kama kepeken lipu toki, kepeken Google anu kepeken Steam. ni la o kepeken /compte lon Discord: sina kama jo e nimi lon e lipu sina. ilo li toki kepeken toki sina.",
+      "discord_link_title": "o linja e sijelo Discord sina",
+      "discord_title": "kulupu Discord lawa li open"
+    }
   }
 }

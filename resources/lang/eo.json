@@ -3728,6 +3728,14 @@
       "final_phase_title": "Vera fina fazo",
       "threshold": "La parto de tero por venki ekmalkreskas nur post 45 minutoj, pli malrapide, kaj neniam sub duono de la mapo.",
       "threshold_title": "Ludoj havas tempon"
+    },
+    "v0_1_173": {
+      "discord": "Aliĝu al la Discord de Territorium por trovi ludojn, partopreni ludvesperojn, sekvi la semajnan supran 10 kaj babili kun la teamo.",
+      "discord_bugs": "Raportu cimon en la cimforumo de la Discord aŭ en la ludo. Ĉiu raporto iĝas bileto, kaj la teamo respondas al vi tie, kie vi raportis.",
+      "discord_bugs_title": "Raportu cimojn en Discord",
+      "discord_link": "El la konta panelo, ligu vian Discord al via Territorium-konto, eĉ se vi registriĝis per retpoŝto, Google aŭ Steam. Poste uzu /compte en la Discord por ricevi la kontrolitan rolon kaj vian profilon. La roboto respondas en via lingvo.",
+      "discord_link_title": "Ligu vian Discord-konton",
+      "discord_title": "La oficiala Discord estas malfermita"
     }
   },
   "win_modal": {

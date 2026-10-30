@@ -3728,6 +3728,14 @@
       "final_phase_title": "Skutečná závěrečná fáze",
       "threshold": "Podíl území potřebný k vítězství začne klesat až po 45 minutách, pomaleji a nikdy pod polovinu mapy.",
       "threshold_title": "Hry mají čas se odehrát"
+    },
+    "v0_1_173": {
+      "discord": "Připoj se na Discord Territoria, abys našel hry, zúčastnil se herních večerů, sledoval týdenní top 10 a mluvil s týmem.",
+      "discord_bugs": "Nahlas chybu ve fóru chyb na Discordu nebo ve hře. Každé hlášení se stane tiketem a tým ti odpoví tam, kde jsi ho nahlásil.",
+      "discord_bugs_title": "Hlas chyby na Discordu",
+      "discord_link": "V panelu účtu propoj svůj Discord s účtem Territorium, i když ses registroval přes e-mail, Google nebo Steam. Pak na Discordu použij /compte a získej roli ověřeného hráče a svůj profil. Bot odpovídá v tvém jazyce.",
+      "discord_link_title": "Propoj svůj účet Discord",
+      "discord_title": "Oficiální Discord je otevřený"
     }
   },
   "win_modal": {

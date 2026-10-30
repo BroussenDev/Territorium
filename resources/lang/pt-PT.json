@@ -3728,6 +3728,14 @@
       "final_phase_title": "Uma verdadeira fase final",
       "threshold": "A parte de terras para ganhar só começa a descer depois de 45 minutos, mais devagar, e nunca abaixo de metade do mapa.",
       "threshold_title": "Os jogos têm tempo para se jogar"
+    },
+    "v0_1_173": {
+      "discord": "Junta-te ao Discord do Territorium para encontrar jogos, participar nas noites de jogo, acompanhar o top 10 semanal e falar com a equipa.",
+      "discord_bugs": "Reporta um bug no fórum de bugs do Discord ou no jogo. Cada relato torna-se um ticket, e a equipa responde-te onde o reportaste.",
+      "discord_bugs_title": "Reporta bugs no Discord",
+      "discord_link": "No painel da conta, associa o teu Discord à tua conta Territorium, mesmo que te tenhas registado por e-mail, Google ou Steam. Depois usa /compte no Discord para obter o cargo verificado e o teu perfil. O bot responde na tua língua.",
+      "discord_link_title": "Associa a tua conta Discord",
+      "discord_title": "O Discord oficial está aberto"
     }
   },
   "win_modal": {

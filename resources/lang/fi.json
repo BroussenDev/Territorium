@@ -3728,6 +3728,14 @@
       "final_phase_title": "Todellinen loppuvaihe",
       "threshold": "Voittoon tarvittava maaosuus alkaa laskea vasta 45 minuutin jälkeen, hitaammin eikä koskaan alle puolen kartasta.",
       "threshold_title": "Peleillä on aikaa"
+    },
+    "v0_1_173": {
+      "discord": "Liity Territoriumin Discordiin löytääksesi pelejä, osallistuaksesi peli-iltoihin, seurataksesi viikon top 10:tä ja jutellaksesi tiimin kanssa.",
+      "discord_bugs": "Ilmoita bugista Discordin bugifoorumilla tai pelissä. Jokaisesta ilmoituksesta tulee tiketti, ja tiimi vastaa sinulle siellä, missä ilmoitit.",
+      "discord_bugs_title": "Ilmoita bugeista Discordissa",
+      "discord_link": "Yhdistä tilipaneelista Discordisi Territorium-tiliisi, vaikka olisit rekisteröitynyt sähköpostilla, Googlella tai Steamilla. Käytä sitten Discordissa komentoa /compte saadaksesi vahvistetun roolin ja profiilisi. Botti vastaa omalla kielelläsi.",
+      "discord_link_title": "Yhdistä Discord-tilisi",
+      "discord_title": "Virallinen Discord on auki"
     }
   },
   "win_modal": {

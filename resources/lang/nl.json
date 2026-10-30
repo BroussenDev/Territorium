@@ -3728,6 +3728,14 @@
       "final_phase_title": "Een echte eindfase",
       "threshold": "Het landaandeel om te winnen daalt pas na 45 minuten, langzamer en nooit onder de helft van de kaart.",
       "threshold_title": "Potjes krijgen de tijd"
+    },
+    "v0_1_173": {
+      "discord": "Word lid van de Territorium-Discord om spellen te vinden, mee te doen aan spelavonden, de wekelijkse top 10 te volgen en met het team te praten.",
+      "discord_bugs": "Meld een bug op het bugforum van de Discord of in het spel. Elke melding wordt een ticket, en het team antwoordt je waar je het meldde.",
+      "discord_bugs_title": "Meld bugs op Discord",
+      "discord_link": "Koppel via het accountpaneel je Discord aan je Territorium-account, ook als je je via e-mail, Google of Steam hebt aangemeld. Gebruik daarna /compte op de Discord voor de geverifieerde rol en je profiel. De bot antwoordt in jouw taal.",
+      "discord_link_title": "Koppel je Discord-account",
+      "discord_title": "De officiële Discord is open"
     }
   },
   "win_modal": {

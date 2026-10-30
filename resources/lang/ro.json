@@ -3728,6 +3728,14 @@
       "final_phase_title": "O adevărată fază finală",
       "threshold": "Procentul de teritoriu pentru victorie începe să scadă abia după 45 de minute, mai încet și niciodată sub jumătate din hartă.",
       "threshold_title": "Jocurile au timp să se joace"
+    },
+    "v0_1_173": {
+      "discord": "Intră pe Discordul Territorium ca să găsești jocuri, să participi la serile de joc, să urmărești top 10 săptămânal și să vorbești cu echipa.",
+      "discord_bugs": "Raportează un bug pe forumul de buguri al Discordului sau în joc. Fiecare raport devine un tichet, iar echipa îți răspunde acolo unde l-ai raportat.",
+      "discord_bugs_title": "Raportează buguri pe Discord",
+      "discord_link": "Din panoul contului, leagă-ți Discordul de contul Territorium, chiar dacă te-ai înscris cu e-mail, Google sau Steam. Apoi folosește /compte pe Discord ca să primești rolul verificat și profilul tău. Botul răspunde în limba ta.",
+      "discord_link_title": "Leagă-ți contul Discord",
+      "discord_title": "Discordul oficial este deschis"
     }
   },
   "win_modal": {

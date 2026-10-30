@@ -3728,6 +3728,14 @@
       "final_phase_title": "진짜 최종 단계",
       "threshold": "승리에 필요한 땅 비율은 45분이 지나서야 더 천천히 내려가며, 지도의 절반 아래로는 내려가지 않아요.",
       "threshold_title": "게임을 즐길 시간"
+    },
+    "v0_1_173": {
+      "discord": "Territorium Discord에 참여해 게임을 찾고, 게임의 밤에 참여하고, 주간 Top 10을 확인하고, 팀과 이야기하세요.",
+      "discord_bugs": "Discord 버그 포럼이나 게임 안에서 버그를 제보하세요. 모든 제보는 티켓이 되며, 팀이 제보한 곳에서 답변합니다.",
+      "discord_bugs_title": "Discord에서 버그 제보",
+      "discord_link": "계정 패널에서 Discord를 Territorium 계정에 연동하세요. 이메일, Google, Steam으로 가입했어도 됩니다. 그런 다음 Discord에서 /compte를 사용해 인증 역할과 프로필을 받으세요. 봇은 당신의 언어로 답합니다.",
+      "discord_link_title": "Discord 계정 연동",
+      "discord_title": "공식 Discord 오픈"
     }
   },
   "win_modal": {

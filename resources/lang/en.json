@@ -3728,6 +3728,14 @@
       "final_phase_title": "A real final phase",
       "threshold": "The share of land needed to win only starts to drop after 45 minutes, more slowly, and never below half the map.",
       "threshold_title": "Games get time to be played"
+    },
+    "v0_1_173": {
+      "discord": "Join the Territorium Discord to find games, take part in game nights, follow the weekly top 10 and talk with the team.",
+      "discord_bugs": "Report a bug on the Discord's bugs forum or in the game. Every report becomes a ticket, and the team answers you where you reported it.",
+      "discord_bugs_title": "Report bugs on Discord",
+      "discord_link": "From the account panel, link your Discord to your Territorium account, even if you signed up by email, Google or Steam. Then use /compte on the Discord to get the verified role and your profile. The bot answers in your language.",
+      "discord_link_title": "Link your Discord account",
+      "discord_title": "The official Discord is open"
     }
   },
   "win_modal": {

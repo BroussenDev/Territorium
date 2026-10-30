@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.173
+
+- The official Territorium Discord: game boards, game nights, weekly top 10, and your roles kept in sync with your linked account.
+- Bugs reported on the Discord's bugs forum become tickets, answered right in the thread.
+- New What's new window introducing the Discord.
+
 ## v0.1.172
 
 - You can now link your Discord account to your Territorium account from the account panel, even if you signed up by email, Google or Steam.

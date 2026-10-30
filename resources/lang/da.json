@@ -3728,6 +3728,14 @@
       "final_phase_title": "En rigtig slutfase",
       "threshold": "Landandelen for at vinde begynder først at falde efter 45 minutter, langsommere og aldrig under halvdelen af kortet.",
       "threshold_title": "Spil får tid til at blive spillet"
+    },
+    "v0_1_173": {
+      "discord": "Bliv medlem af Territoriums Discord for at finde spil, være med til spilaftener, følge ugens top 10 og snakke med holdet.",
+      "discord_bugs": "Rapportér en fejl i Discords fejlforum eller i spillet. Hver rapport bliver en sag, og holdet svarer dig der, hvor du rapporterede den.",
+      "discord_bugs_title": "Rapportér fejl på Discord",
+      "discord_link": "Forbind din Discord med din Territorium-konto fra kontopanelet, også hvis du tilmeldte dig med e-mail, Google eller Steam. Brug derefter /compte på Discord for at få den verificerede rolle og din profil. Botten svarer på dit sprog.",
+      "discord_link_title": "Forbind din Discord-konto",
+      "discord_title": "Den officielle Discord er åben"
     }
   },
   "win_modal": {

@@ -3728,6 +3728,14 @@
       "final_phase_title": "Một giai đoạn cuối thực sự",
       "threshold": "Tỷ lệ đất cần để thắng chỉ bắt đầu giảm sau 45 phút, chậm hơn và không bao giờ dưới một nửa bản đồ.",
       "threshold_title": "Các trận có thời gian để chơi"
+    },
+    "v0_1_173": {
+      "discord": "Tham gia Discord của Territorium để tìm trận, tham gia các buổi tối chơi game, theo dõi top 10 hằng tuần và trò chuyện với đội ngũ.",
+      "discord_bugs": "Báo lỗi trên diễn đàn lỗi của Discord hoặc trong game. Mỗi báo cáo trở thành một phiếu, và đội ngũ sẽ trả lời bạn ngay tại nơi bạn báo.",
+      "discord_bugs_title": "Báo lỗi trên Discord",
+      "discord_link": "Từ bảng tài khoản, liên kết Discord với tài khoản Territorium của bạn, kể cả khi bạn đăng ký bằng email, Google hay Steam. Sau đó dùng /compte trên Discord để nhận vai trò đã xác minh và hồ sơ của bạn. Bot trả lời bằng ngôn ngữ của bạn.",
+      "discord_link_title": "Liên kết tài khoản Discord",
+      "discord_title": "Discord chính thức đã mở"
     }
   },
   "win_modal": {

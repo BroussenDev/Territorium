@@ -3728,6 +3728,14 @@
       "final_phase_title": "Prawdziwa faza końcowa",
       "threshold": "Udział ziemi potrzebny do zwycięstwa zaczyna spadać dopiero po 45 minutach, wolniej i nigdy poniżej połowy mapy.",
       "threshold_title": "Gry mają czas się rozegrać"
+    },
+    "v0_1_173": {
+      "discord": "Dołącz do Discorda Territorium, by znajdować gry, brać udział w wieczorach gier, śledzić tygodniowe top 10 i rozmawiać z zespołem.",
+      "discord_bugs": "Zgłoś błąd na forum błędów Discorda lub w grze. Każde zgłoszenie dostaje numer zgłoszenia, a zespół odpowiada tam, gdzie je zgłosiłeś.",
+      "discord_bugs_title": "Zgłaszaj błędy na Discordzie",
+      "discord_link": "W panelu konta połącz Discorda z kontem Territorium, nawet jeśli rejestrowałeś się przez e-mail, Google lub Steam. Potem użyj /compte na Discordzie, by dostać rolę zweryfikowanego i swój profil. Bot odpowiada w twoim języku.",
+      "discord_link_title": "Połącz konto Discord",
+      "discord_title": "Oficjalny Discord jest otwarty"
     }
   },
   "win_modal": {

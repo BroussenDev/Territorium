@@ -3728,6 +3728,14 @@
       "final_phase_title": "Uma fase final de verdade",
       "threshold": "A fatia de terras para vencer só começa a cair depois de 45 minutos, mais devagar, e nunca abaixo da metade do mapa.",
       "threshold_title": "As partidas têm tempo para acontecer"
+    },
+    "v0_1_173": {
+      "discord": "Entre no Discord do Territorium para encontrar partidas, participar das noites de jogo, acompanhar o top 10 semanal e conversar com a equipe.",
+      "discord_bugs": "Reporte um bug no fórum de bugs do Discord ou no jogo. Cada relato vira um ticket, e a equipe responde onde você reportou.",
+      "discord_bugs_title": "Reporte bugs no Discord",
+      "discord_link": "No painel da conta, vincule seu Discord à sua conta do Territorium, mesmo se você se cadastrou por e-mail, Google ou Steam. Depois use /compte no Discord para receber o cargo verificado e seu perfil. O bot responde no seu idioma.",
+      "discord_link_title": "Vincule sua conta do Discord",
+      "discord_title": "O Discord oficial está aberto"
     }
   },
   "win_modal": {

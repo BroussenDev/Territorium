@@ -3728,6 +3728,14 @@
       "final_phase_title": "Päris lõppfaas",
       "threshold": "Võiduks vajalik maaosa hakkab langema alles 45 minuti järel, aeglasemalt ega lange kunagi alla poole kaardist.",
       "threshold_title": "Mängudel on aega"
+    },
+    "v0_1_173": {
+      "discord": "Liitu Territoriumi Discordiga, et leida mänge, osaleda mänguõhtutel, jälgida nädala top 10 ja rääkida tiimiga.",
+      "discord_bugs": "Teata veast Discordi vigade foorumis või mängus. Iga teade muutub piletiks ja tiim vastab sulle seal, kus sa teatasid.",
+      "discord_bugs_title": "Teata vigadest Discordis",
+      "discord_link": "Seo kontopaneelist oma Discord Territoriumi kontoga, isegi kui registreerusid e-posti, Google'i või Steamiga. Seejärel kasuta Discordis käsku /compte, et saada kinnitatud roll ja oma profiil. Bot vastab sinu keeles.",
+      "discord_link_title": "Seo oma Discordi konto",
+      "discord_title": "Ametlik Discord on avatud"
     }
   },
   "win_modal": {

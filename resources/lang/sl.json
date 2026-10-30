@@ -3728,6 +3728,14 @@
       "final_phase_title": "Prava zaključna faza",
       "threshold": "Delež ozemlja za zmago začne padati šele po 45 minutah, počasneje in nikoli pod polovico zemljevida.",
       "threshold_title": "Igre imajo čas"
+    },
+    "v0_1_173": {
+      "discord": "Pridruži se Discordu Territorium, da najdeš igre, sodeluješ na večerih iger, spremljaš tedenski top 10 in se pogovarjaš z ekipo.",
+      "discord_bugs": "Prijavi napako na forumu za napake na Discordu ali v igri. Vsaka prijava postane zahtevek, ekipa pa ti odgovori tam, kjer si jo prijavil.",
+      "discord_bugs_title": "Prijavi napake na Discordu",
+      "discord_link": "V plošči računa poveži Discord s svojim računom Territorium, tudi če si se prijavil z e-pošto, Googlom ali Steamom. Nato na Discordu uporabi /compte, da dobiš vlogo preverjenega in svoj profil. Bot odgovarja v tvojem jeziku.",
+      "discord_link_title": "Poveži svoj račun Discord",
+      "discord_title": "Uradni Discord je odprt"
     }
   },
   "win_modal": {

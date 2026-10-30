@@ -3728,6 +3728,14 @@
       "final_phase_title": "Eine echte Endphase",
       "threshold": "Der zum Sieg nötige Landanteil sinkt erst nach 45 Minuten, langsamer und nie unter die Hälfte der Karte.",
       "threshold_title": "Partien haben Zeit, gespielt zu werden"
+    },
+    "v0_1_173": {
+      "discord": "Tritt dem Territorium-Discord bei, um Spiele zu finden, bei Spieleabenden mitzumachen, die wöchentlichen Top 10 zu verfolgen und mit dem Team zu reden.",
+      "discord_bugs": "Melde einen Fehler im Bug-Forum des Discords oder im Spiel. Jede Meldung wird zu einem Ticket, und das Team antwortet dir dort, wo du sie gemeldet hast.",
+      "discord_bugs_title": "Fehler auf Discord melden",
+      "discord_link": "Verknüpfe im Kontobereich dein Discord mit deinem Territorium-Konto, auch wenn du dich per E-Mail, Google oder Steam angemeldet hast. Nutze dann /compte auf dem Discord, um die verifizierte Rolle und dein Profil zu erhalten. Der Bot antwortet in deiner Sprache.",
+      "discord_link_title": "Verknüpfe dein Discord-Konto",
+      "discord_title": "Der offizielle Discord ist offen"
     }
   },
   "win_modal": {

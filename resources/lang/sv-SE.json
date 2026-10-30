@@ -3728,6 +3728,14 @@
       "final_phase_title": "En riktig slutfas",
       "threshold": "Landandelen för att vinna börjar sjunka först efter 45 minuter, långsammare och aldrig under halva kartan.",
       "threshold_title": "Matcherna får tid att spelas"
+    },
+    "v0_1_173": {
+      "discord": "Gå med i Territoriums Discord för att hitta matcher, vara med på spelkvällar, följa veckans topp 10 och prata med teamet.",
+      "discord_bugs": "Rapportera en bugg i Discordens buggforum eller i spelet. Varje rapport blir ett ärende, och teamet svarar dig där du rapporterade.",
+      "discord_bugs_title": "Rapportera buggar på Discord",
+      "discord_link": "Koppla din Discord till ditt Territorium-konto från kontopanelen, även om du registrerade dig med e-post, Google eller Steam. Använd sedan /compte på Discord för att få den verifierade rollen och din profil. Boten svarar på ditt språk.",
+      "discord_link_title": "Koppla ditt Discord-konto",
+      "discord_title": "Den officiella Discorden är öppen"
     }
   },
   "win_modal": {

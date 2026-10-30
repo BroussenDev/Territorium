@@ -3728,6 +3728,14 @@
       "final_phase_title": "Una fase final de veritat",
       "threshold": "La part de terres per guanyar només comença a baixar després de 45 minuts, més a poc a poc, i mai per sota de la meitat del mapa.",
       "threshold_title": "Les partides tenen temps de jugar-se"
+    },
+    "v0_1_173": {
+      "discord": "Uneix-te al Discord de Territorium per trobar partides, participar en nits de joc, seguir el top 10 setmanal i parlar amb l'equip.",
+      "discord_bugs": "Informa d'un error al fòrum d'errors del Discord o al joc. Cada informe es converteix en un tiquet, i l'equip et respon on l'has informat.",
+      "discord_bugs_title": "Informa d'errors a Discord",
+      "discord_link": "Des del panell del compte, vincula el teu Discord al teu compte de Territorium, encara que t'hagis registrat per correu, Google o Steam. Després fes servir /compte al Discord per obtenir el rol verificat i el teu perfil. El bot respon en el teu idioma.",
+      "discord_link_title": "Vincula el teu compte de Discord",
+      "discord_title": "El Discord oficial és obert"
     }
   },
   "win_modal": {

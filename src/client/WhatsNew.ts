@@ -11,14 +11,13 @@ import { translateText } from "./Utils";
  * Each release with notes bumps WHATS_NEW_ID and lists its items as
  * translation keys (whats_new.<id>.<n>), so every language reads them.
  */
-export const WHATS_NEW_ID = "v0_1_167";
+export const WHATS_NEW_ID = "v0_1_173";
 // An item may show a screenshot of the new feature: `image` is a path
 // under resources/ (e.g. "images/whats-new/v0_1_170/end-screen.webp").
 export const WHATS_NEW_ITEMS: { key: string; image?: string }[] = [
-  { key: "final_phase" },
-  { key: "threshold" },
-  { key: "coalition" },
-  { key: "bugs" },
+  { key: "discord" },
+  { key: "discord_link" },
+  { key: "discord_bugs" },
 ];
 const SEEN_KEY = "territorium.whatsNewSeen";
 

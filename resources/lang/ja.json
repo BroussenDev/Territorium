@@ -3728,6 +3728,14 @@
       "final_phase_title": "本格的な最終局面",
       "threshold": "勝利に必要な土地の割合は45分を過ぎてから、よりゆっくり下がり、マップの半分を下回ることはありません。",
       "threshold_title": "じっくり遊べる試合に"
+    },
+    "v0_1_173": {
+      "discord": "TerritoriumのDiscordに参加して、ゲームを探したり、ゲームナイトに参加したり、週間トップ10をチェックしたり、チームと話したりしよう。",
+      "discord_bugs": "Discordのバグフォーラムまたはゲーム内でバグを報告しよう。すべての報告はチケットになり、報告した場所でチームが返信します。",
+      "discord_bugs_title": "Discordでバグを報告",
+      "discord_link": "アカウントパネルから、DiscordをTerritoriumアカウントに連携できます（メール、Google、Steamで登録した場合も）。その後Discordで /compte を使うと、認証済みロールとプロフィールを取得できます。ボットはあなたの言語で返信します。",
+      "discord_link_title": "Discordアカウントを連携",
+      "discord_title": "公式Discordがオープン"
     }
   },
   "win_modal": {

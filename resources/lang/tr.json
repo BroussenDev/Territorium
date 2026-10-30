@@ -3728,6 +3728,14 @@
       "final_phase_title": "Gerçek bir son aşama",
       "threshold": "Kazanmak için gereken toprak payı ancak 45 dakikadan sonra, daha yavaş düşer ve asla haritanın yarısının altına inmez.",
       "threshold_title": "Oyunların oynanmaya vakti var"
+    },
+    "v0_1_173": {
+      "discord": "Oyun bulmak, oyun gecelerine katılmak, haftalık ilk 10'u takip etmek ve ekiple konuşmak için Territorium Discord'una katıl.",
+      "discord_bugs": "Hataları Discord'un hata forumunda veya oyun içinde bildir. Her bildirim bir bilete dönüşür ve ekip sana bildirdiğin yerde yanıt verir.",
+      "discord_bugs_title": "Hataları Discord'da bildir",
+      "discord_link": "Hesap panelinden Discord'unu Territorium hesabına bağla; e-posta, Google veya Steam ile kaydolmuş olsan bile. Ardından doğrulanmış rolü ve profilini almak için Discord'da /compte kullan. Bot senin dilinde yanıt verir.",
+      "discord_link_title": "Discord hesabını bağla",
+      "discord_title": "Resmi Discord açıldı"
     }
   },
   "win_modal": {

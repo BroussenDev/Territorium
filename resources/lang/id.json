@@ -3728,6 +3728,14 @@
       "final_phase_title": "Fase akhir sungguhan",
       "threshold": "Bagian wilayah untuk menang baru mulai turun setelah 45 menit, lebih lambat, dan tak pernah di bawah setengah peta.",
       "threshold_title": "Permainan punya waktu dimainkan"
+    },
+    "v0_1_173": {
+      "discord": "Gabung ke Discord Territorium untuk mencari permainan, ikut malam bermain, mengikuti top 10 mingguan, dan ngobrol dengan tim.",
+      "discord_bugs": "Laporkan bug di forum bug Discord atau di dalam game. Setiap laporan menjadi tiket, dan tim menjawabmu di tempat kamu melapor.",
+      "discord_bugs_title": "Laporkan bug di Discord",
+      "discord_link": "Dari panel akun, tautkan Discord ke akun Territorium-mu, meskipun kamu mendaftar lewat email, Google, atau Steam. Lalu gunakan /compte di Discord untuk mendapatkan peran terverifikasi dan profilmu. Bot menjawab dalam bahasamu.",
+      "discord_link_title": "Tautkan akun Discord-mu",
+      "discord_title": "Discord resmi sudah dibuka"
     }
   },
   "win_modal": {

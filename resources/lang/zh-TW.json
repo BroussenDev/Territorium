@@ -3728,6 +3728,14 @@
       "final_phase_title": "真正的最終階段",
       "threshold": "獲勝所需的領土比例要到 45 分鐘後才開始下降，降得更慢，且絕不低於地圖的一半。",
       "threshold_title": "對局有充足時間"
+    },
+    "v0_1_173": {
+      "discord": "加入 Territorium 的 Discord，尋找對局、參加遊戲之夜、關注每週前 10 名，並與團隊交流。",
+      "discord_bugs": "在 Discord 的錯誤論壇或遊戲內回報錯誤。每份回報都會成為工單，團隊會在你回報的地方回覆你。",
+      "discord_bugs_title": "在 Discord 回報錯誤",
+      "discord_link": "在帳號面板中將 Discord 綁定到你的 Territorium 帳號，即使你是透過電子郵件、Google 或 Steam 註冊的。接著在 Discord 上使用 /compte 取得已驗證身分組和你的個人檔案。機器人會用你的語言回覆。",
+      "discord_link_title": "綁定你的 Discord 帳號",
+      "discord_title": "官方 Discord 已開放"
     }
   },
   "win_modal": {
