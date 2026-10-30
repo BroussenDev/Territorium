@@ -12,6 +12,18 @@ import {
 import { EventBus } from "../../../../src/core/EventBus";
 import { GameType, PlayerType } from "../../../../src/core/game/Game";
 
+const report = vi.hoisted(() => ({
+  canReportChat: vi.fn(async () => true),
+  chatReportBody: vi.fn((gameID: string, text: string, sender?: string) => ({
+    gameID,
+    text,
+    senderClientID: sender,
+    lang: "fr",
+  })),
+  sendChatReport: vi.fn(async (_body: unknown) => "ok" as string),
+}));
+vi.mock("../../../../src/client/ChatReport", () => report);
+
 vi.mock("../../../../src/client/Utils", () => ({
   translateText: vi.fn(
     (key: string, params: Record<string, string | number> = {}) =>
@@ -66,6 +78,9 @@ describe("GameChat", () => {
   };
 
   beforeEach(() => {
+    report.canReportChat.mockResolvedValue(true);
+    report.sendChatReport.mockClear();
+    report.sendChatReport.mockResolvedValue("ok");
     opts = {
       gameType: GameType.Public,
       replay: false,
@@ -97,6 +112,7 @@ describe("GameChat", () => {
       players: () => Object.values(players),
       playerByClientID: (id: string) => players[id] ?? null,
       gameOver: () => false,
+      gameID: () => "game0001",
     } as any;
     chat.init();
     document.body.appendChild(chat);
@@ -337,5 +353,111 @@ describe("GameChat", () => {
     await chat.updateComplete;
     await receive(BOB, "hello");
     expect(q("[data-chat-toggle]")).toBeNull();
+  });
+  describe("reporting a single line", () => {
+    const settle = async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+      await chat.updateComplete;
+    };
+    const toasts: any[] = [];
+    const onToast = (e: Event) => toasts.push((e as CustomEvent).detail);
+    beforeEach(() => {
+      toasts.length = 0;
+      window.addEventListener("show-message", onToast);
+    });
+    afterEach(() => window.removeEventListener("show-message", onToast));
+
+    it("puts a flag button, with a custom svg icon, on other players' lines only", async () => {
+      await open();
+      await receive(BOB, "hello");
+      await receive(ALICE, "mine");
+      await settle();
+      const buttons = chat.querySelectorAll("[data-chat-report-line]");
+      expect(buttons).toHaveLength(1);
+      expect(buttons[0].querySelector("svg")).not.toBeNull();
+      expect(buttons[0].textContent?.trim()).toBe("");
+      expect(buttons[0].getAttribute("aria-label")).toBe(
+        "game_chat.report_line",
+      );
+      // Hidden until hover or focus, but always there on touch screens.
+      expect(buttons[0].className).toContain("opacity-0");
+      expect(buttons[0].className).toContain("group-hover:opacity-100");
+      expect(buttons[0].className).toContain("focus-visible:opacity-100");
+      expect(buttons[0].className).toContain("pointer-coarse:opacity-100");
+    });
+
+    it("is hidden for players who are not signed in", async () => {
+      report.canReportChat.mockResolvedValue(false);
+      const other = document.createElement("game-chat") as GameChat;
+      other.eventBus = bus;
+      other.userSettings = chat.userSettings;
+      other.game = chat.game;
+      other.init();
+      document.body.appendChild(other);
+      await other.updateComplete;
+      other.querySelector<HTMLElement>("[data-chat-toggle]")!.click();
+      bus.emit(new ChatMessageEvent(BOB, "hello", false));
+      await Promise.resolve();
+      await Promise.resolve();
+      await other.updateComplete;
+      expect(other.querySelector("[data-chat-line]")).not.toBeNull();
+      expect(other.querySelector("[data-chat-report-line]")).toBeNull();
+      other.remove();
+    });
+
+    it("asks to confirm, then posts the line with its sender and language", async () => {
+      await open();
+      await receive(BOB, "you are bad");
+      await settle();
+      await click("[data-chat-report-line]");
+      expect(q("[data-chat-report-confirm]")).not.toBeNull();
+      expect(report.sendChatReport).not.toHaveBeenCalled();
+
+      await click("[data-chat-report-yes]");
+      await settle();
+      expect(report.sendChatReport).toHaveBeenCalledWith({
+        gameID: "game0001",
+        text: "you are bad",
+        senderClientID: BOB,
+        lang: "fr",
+      });
+      expect(toasts[toasts.length - 1]).toMatchObject({
+        message: "game_chat.report_line_sent",
+        color: "green",
+      });
+      // One report per line.
+      expect(q("[data-chat-report-line]")).toBeNull();
+      expect(q("[data-chat-report-confirm]")).toBeNull();
+    });
+
+    it("sends nothing when the confirmation is cancelled", async () => {
+      await open();
+      await receive(BOB, "hello");
+      await settle();
+      await click("[data-chat-report-line]");
+      await click("[data-chat-report-no]");
+      expect(report.sendChatReport).not.toHaveBeenCalled();
+      expect(q("[data-chat-report-confirm]")).toBeNull();
+      expect(q("[data-chat-report-line]")).not.toBeNull();
+    });
+
+    it.each([
+      ["rate_limited", "game_chat.report_line_rate_limited"],
+      ["error", "game_chat.report_line_failed"],
+    ])("toasts a %s answer and lets the player retry", async (result, key) => {
+      report.sendChatReport.mockResolvedValue(result);
+      await open();
+      await receive(BOB, "hello");
+      await settle();
+      await click("[data-chat-report-line]");
+      await click("[data-chat-report-yes]");
+      await settle();
+      expect(toasts[toasts.length - 1]).toMatchObject({
+        message: key,
+        color: "red",
+      });
+      expect(q("[data-chat-report-line]")).not.toBeNull();
+    });
   });
 });

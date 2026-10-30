@@ -1,5 +1,9 @@
 # Territorium — Changelog
 
+## v0.1.177
+
+- Report a chat message in one click with the new flag button; reports help the moderators and train Territorium's own chat filter.
+
 ## v0.1.176
 
 - Chat: serious messages (sexual violence, threats, hate, Nazi references) are now caught in many more languages and despite spelling tricks; their author is muted at once and the moderators are alerted.

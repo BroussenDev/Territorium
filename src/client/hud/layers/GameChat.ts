@@ -9,6 +9,11 @@ import {
   ChatNotice,
   ClientID,
 } from "../../../core/Schemas";
+import {
+  canReportChat,
+  chatReportBody,
+  sendChatReport,
+} from "../../ChatReport";
 import { Controller } from "../../Controller";
 import {
   ChatMessageEvent,
@@ -46,6 +51,9 @@ const PANEL =
   "rounded-lg bg-plate-800/92 text-white shadow-lg backdrop-blur-sm";
 const TOOL_BUTTON =
   "rounded-md border border-plate-500 bg-plate-700/50 transition-colors hover:bg-plate-600";
+
+// A flag, drawn for the per-line report button.
+const flagIcon = svg`<svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg>`;
 
 const chatIcon = svg`<svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>`;
 
@@ -85,6 +93,11 @@ export class GameChat extends LitElement implements Controller {
   @state() private selected: number | null = null;
   @state() private emojis = false;
   @state() private channel: Channel = "all";
+  // Signed-in players can report single lines; the line being confirmed, and
+  // the lines already reported (one report per line).
+  @state() private signedIn = false;
+  @state() private confirming: number | null = null;
+  @state() private reportedLines = new Set<number>();
 
   private reported = new Set<ClientID>();
   // Players seen disconnected at the last tick, null before the first one.
@@ -101,6 +114,7 @@ export class GameChat extends LitElement implements Controller {
     // render saw no game; draw it again now that there is one.
     this.requestUpdate();
     this.enabled = this.userSettings.gameChat();
+    void canReportChat().then((ok) => (this.signedIn = ok));
     this.eventBus.on(ChatMessageEvent, (e) => this.onMessage(e));
     this.eventBus.on(ChatNoticeEvent, (e) => this.onNotice(e));
     this.eventBus.on(PlayerReportedEvent, (e) => {
@@ -303,6 +317,36 @@ export class GameChat extends LitElement implements Controller {
 
   private unmuteAll() {
     this.muted = new Set();
+  }
+
+  private async reportLine(line: Extract<ChatLine, { kind: "chat" }>) {
+    this.confirming = null;
+    if (this.reportedLines.has(line.id)) return;
+    this.reportedLines = new Set([...this.reportedLines, line.id]);
+    const result = await sendChatReport(
+      chatReportBody(this.game.gameID(), line.text, line.from),
+    );
+    const key =
+      result === "ok"
+        ? "report_line_sent"
+        : result === "rate_limited"
+          ? "report_line_rate_limited"
+          : "report_line_failed";
+    if (result !== "ok") {
+      // Not sent: let the player try again.
+      const again = new Set(this.reportedLines);
+      again.delete(line.id);
+      this.reportedLines = again;
+    }
+    window.dispatchEvent(
+      new CustomEvent("show-message", {
+        detail: {
+          message: translateText(`game_chat.${key}`),
+          color: result === "ok" ? "green" : "red",
+          duration: 3000,
+        },
+      }),
+    );
   }
 
   private canReport(sender: PlayerView | null): sender is PlayerView {
@@ -534,16 +578,21 @@ export class GameChat extends LitElement implements Controller {
         : nothing}
       <span class="font-bold" style="color: ${nameColor}">${name}:</span>
       <span class="text-white/95">${line.text}</span>`;
+    const canFlag =
+      !mine &&
+      this.signedIn &&
+      !this.reportedLines.has(line.id) &&
+      !this.game.gameOver();
     return html`
-      <li data-chat-line>
+      <li data-chat-line class="group relative">
         ${mine
           ? html`<p class="px-1.5 py-0.5 break-words" dir="auto">${text}</p>`
           : html`<button
               type="button"
               data-chat-line-button
-              class="w-full rounded px-1.5 py-0.5 text-left break-words transition-colors hover:bg-white/5 ${selected
-                ? "bg-white/10"
-                : ""}"
+              class="w-full rounded px-1.5 py-0.5 text-left break-words transition-colors hover:bg-white/5 ${canFlag
+                ? "pr-7"
+                : ""} ${selected ? "bg-white/10" : ""}"
               dir="auto"
               title=${translateText("game_chat.line_hint")}
               aria-expanded=${selected}
@@ -551,6 +600,48 @@ export class GameChat extends LitElement implements Controller {
             >
               ${text}
             </button>`}
+        ${canFlag
+          ? html`<button
+              type="button"
+              data-chat-report-line
+              class="absolute top-0.5 right-1 rounded p-0.5 text-white/60 opacity-0 transition-opacity group-hover:opacity-100 hover:text-red-300 focus-visible:opacity-100 pointer-coarse:opacity-100"
+              aria-label=${translateText("game_chat.report_line")}
+              title=${translateText("game_chat.report_line")}
+              @click=${() =>
+                (this.confirming =
+                  this.confirming === line.id ? null : line.id)}
+            >
+              ${flagIcon}
+            </button>`
+          : nothing}
+        ${canFlag && this.confirming === line.id
+          ? html`<div
+              data-chat-report-confirm
+              role="alertdialog"
+              aria-label=${translateText("game_chat.report_line_confirm")}
+              class="mx-1.5 mb-1 flex flex-wrap items-center gap-1.5 rounded-md border border-red-400/60 bg-plate-800 px-2 py-1 text-xs"
+            >
+              <span class="font-semibold"
+                >${translateText("game_chat.report_line_confirm")}</span
+              >
+              <button
+                type="button"
+                data-chat-report-yes
+                class="rounded-md border border-red-400/60 bg-red-500/25 px-2 py-0.5 text-red-100 hover:bg-red-500/40"
+                @click=${() => void this.reportLine(line)}
+              >
+                ${translateText("game_chat.report_line_yes")}
+              </button>
+              <button
+                type="button"
+                data-chat-report-no
+                class="${TOOL_BUTTON} px-2 py-0.5"
+                @click=${() => (this.confirming = null)}
+              >
+                ${translateText("game_chat.report_line_no")}
+              </button>
+            </div>`
+          : nothing}
         ${selected ? this.renderLineActions(line.from, sender) : nothing}
       </li>
     `;

@@ -61,6 +61,7 @@ import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
 import { ChatModerator, SevereKind } from "./ChatModeration";
+import { ChatToxicity, chatToxicity } from "./ChatToxicity";
 import { Client } from "./Client";
 import { ensureApprovedCommunityMap } from "./CommunityMapIds";
 import { applyGameConfigPatch, hostCheatsEnabled } from "./ConfigPatch";
@@ -187,6 +188,8 @@ export interface GameServerDeps {
   // so a test can pin a value it can assert on; production always takes the
   // random default.
   mintGroupToken: () => string;
+  // The learned chat filter; empty (so a no-op) until the API's model loads.
+  chatToxicity: ChatToxicity;
 }
 
 // 16 URL-safe characters of CSPRNG output — 12 bytes is exactly 16 base64url
@@ -207,6 +210,7 @@ export function defaultGameServerDeps(): GameServerDeps {
     telemetry: noopMatchTelemetryEmitter,
     telemetryBuildHash: "DEV",
     mintGroupToken,
+    chatToxicity,
   };
 }
 
@@ -2305,11 +2309,16 @@ export class GameServer {
     log.push(text);
     this.chatLog.set(client.clientID, log.slice(-CHAT_LOG_LENGTH));
 
-    const verdict = this.chatModerator.moderate(
+    let verdict = this.chatModerator.moderate(
       client.clientID,
       text,
       Date.now(),
     );
+    // A line the word lists let through unchanged goes to the learned filter.
+    // It never throws and never waits (the model is in memory).
+    if (verdict.text !== null && verdict.notice === null) {
+      verdict = this.learnedFilter(client, text, verdict);
+    }
     if (verdict.notice !== null && client.ws.readyState === WebSocket.OPEN) {
       client.ws.send(
         encodeServerMessage(
@@ -2344,6 +2353,31 @@ export class GameServer {
         c.ws.send(msg);
       }
     });
+  }
+
+  // The learned filter's verdict on a line the word lists passed: blocked
+  // (an ordinary strike, the sender is told, nobody else sees it), sent on as
+  // uncertain for the staff's review, or untouched.
+  private learnedFilter(
+    client: Client,
+    text: string,
+    verdict: ReturnType<ChatModerator["moderate"]>,
+  ): ReturnType<ChatModerator["moderate"]> {
+    try {
+      const decision = this.deps.chatToxicity.decide(text);
+      if (decision === "pass") return verdict;
+      this.deps.chatToxicity.report({
+        gameID: this.id,
+        text,
+        senderPersistentID: client.persistentID,
+        kind: decision === "block" ? "blocked" : "uncertain",
+      });
+      return decision === "block"
+        ? this.chatModerator.strikeLearned(client.clientID, Date.now())
+        : verdict;
+    } catch {
+      return verdict;
+    }
   }
 
   /**

@@ -27,6 +27,7 @@ import { CreateGameInputSchema } from "../core/WorkerSchemas";
 import { decodeClientMessage, encodeServerMessage } from "../core/ZbinWire";
 import { registerAdminBotRoutes } from "./AdminBotRoutes";
 import { censorPlayer } from "./Censor";
+import { startChatToxicityModel } from "./ChatToxicity";
 import { Client } from "./Client";
 import {
   ensureApprovedCommunityMap,
@@ -124,6 +125,8 @@ export async function startWorker() {
 
   // TGS follows the admin panel's switch (TgsApi.ts).
   startTgsStatusPoller();
+  // The chat's learned filter follows the API's model (ChatToxicity.ts).
+  startChatToxicityModel();
 
   const privilegeRefresher = new PrivilegeRefresher(
     ServerEnv.jwtIssuer() + "/cosmetics.json",

@@ -613,6 +613,17 @@ export class ChatModerator {
     return true;
   }
 
+  /**
+   * The learned filter (ChatToxicity.ts) held a line back: an ordinary
+   * strike, like an insult, and the verdict to give instead of the line.
+   */
+  strikeLearned(from: ClientID, now: number): ChatVerdict {
+    const s = this.state(from);
+    return this.strike(s, INSULT_STRIKES, now)
+      ? this.mutedVerdict(s, now)
+      : { text: null, notice: "blocked" };
+  }
+
   /** Judges a cleaned, non-empty line from `from` sent at `now` (ms). */
   moderate(from: ClientID, line: string, now: number): ChatVerdict {
     const s = this.state(from);
