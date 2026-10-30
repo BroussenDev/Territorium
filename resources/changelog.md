@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.179
+
+- Moderators can now mute a player's chat on their account, across games, for a set time; the player sees until when.
+- A temporary suspension now sends its own email with the end date.
+
 ## v0.1.178
 
 - Moderators now see the surrounding conversation when a chat message is blocked or reported, to judge it in context.

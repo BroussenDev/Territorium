@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignorer {name}",
     "line_hint": "Klik for at ignorere eller rapportere denne afspiller",
     "mute": "Slå lyden fra for denne spiller resten af ​​spillet",
+    "notice_account_muted": "Du er gjort tavs indtil {date} (sanktion fra moderationsholdet).",
+    "notice_account_muted_forever": "Du er gjort tavs indtil videre (sanktion fra moderationsholdet).",
     "notice_blocked": "Meddelelse blokeret: hadefuldt sprog er ikke tilladt.",
     "notice_link": "Meddelelse blokeret: links er ikke tilladt i chatten.",
     "notice_muted": "Du er slået fra i {time} på grund af dine beskeder.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignorer {name}",
     "line_hint": "Cliquez pour ignorer ou signaler ce joueur",
     "mute": "Masquer ce joueur jusqu'à la fin de la partie",
+    "notice_account_muted": "Vous êtes réduit au silence jusqu'au {date} (sanction de l'équipe de modération).",
+    "notice_account_muted_forever": "Vous êtes réduit au silence jusqu'à nouvel ordre (sanction de l'équipe de modération).",
     "notice_blocked": "Message bloqué : les propos haineux sont interdits.",
     "notice_link": "Message bloqué : les liens sont interdits dans le chat.",
     "notice_muted": "Vous êtes réduit au silence pendant {time} à cause de vos messages.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignora {name}",
     "line_hint": "Fai clic per ignorare o segnalare questo giocatore",
     "mute": "Disattiva l'audio di questo giocatore per il resto della partita",
+    "notice_account_muted": "Sei stato silenziato fino al {date} (sanzione del team di moderazione).",
+    "notice_account_muted_forever": "Sei stato silenziato fino a nuovo avviso (sanzione del team di moderazione).",
     "notice_blocked": "Messaggio bloccato: il linguaggio incitante all'odio non è consentito.",
     "notice_link": "Messaggio bloccato: i link non sono consentiti nella chat.",
     "notice_muted": "L'audio è disattivato per {time} a causa dei tuoi messaggi.",

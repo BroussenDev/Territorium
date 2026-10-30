@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignorera {name}",
     "line_hint": "Klicka för att ignorera eller rapportera den här spelaren",
     "mute": "Stäng av den här spelaren under resten av spelet",
+    "notice_account_muted": "Du är avstängd från chatten till {date} (sanktion från moderationsteamet).",
+    "notice_account_muted_forever": "Du är avstängd från chatten tills vidare (sanktion från moderationsteamet).",
     "notice_blocked": "Meddelande blockerat: hatiskt språk är inte tillåtet.",
     "notice_link": "Meddelande blockerat: länkar är inte tillåtna i chatten.",
     "notice_muted": "Du är tystad för {time} på grund av dina meddelanden.",

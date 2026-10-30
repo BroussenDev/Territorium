@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignoreeri {name}",
     "line_hint": "Klõpsake mängija ignoreerimiseks või sellest teatamiseks",
     "mute": "Vaigistage see mängija ülejäänud mänguks",
+    "notice_account_muted": "Oled vaigistatud kuni {date} (modereerimismeeskonna karistus).",
+    "notice_account_muted_forever": "Oled vaigistatud kuni teise teatereni (modereerimismeeskonna karistus).",
     "notice_blocked": "Sõnum blokeeritud: vaenu õhutav keel pole lubatud.",
     "notice_link": "Sõnum blokeeritud: lingid pole vestluses lubatud.",
     "notice_muted": "Teie sõnumite tõttu olete {time} jaoks vaigistatud.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "Bỏ qua {name}",
     "line_hint": "Nhấp để bỏ qua hoặc báo cáo người chơi này",
     "mute": "Tắt tiếng người chơi này trong phần còn lại của trò chơi",
+    "notice_account_muted": "Bạn bị cấm chat đến {date} (xử phạt của đội kiểm duyệt).",
+    "notice_account_muted_forever": "Bạn bị cấm chat cho đến khi có thông báo mới (xử phạt của đội kiểm duyệt).",
     "notice_blocked": "Tin nhắn bị chặn: ngôn ngữ căm thù không được phép.",
     "notice_link": "Tin nhắn bị chặn: liên kết không được phép trong cuộc trò chuyện.",
     "notice_muted": "Bạn bị tắt tiếng trong {time} vì tin nhắn của bạn.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "Abaikan {name}",
     "line_hint": "Klik untuk mengabaikan atau melaporkan pemain ini",
     "mute": "Bisukan pemain ini selama sisa permainan",
+    "notice_account_muted": "Kamu dibisukan hingga {date} (sanksi dari tim moderasi).",
+    "notice_account_muted_forever": "Kamu dibisukan hingga pemberitahuan lebih lanjut (sanksi dari tim moderasi).",
     "notice_blocked": "Pesan diblokir: bahasa kebencian tidak diperbolehkan.",
     "notice_link": "Pesan diblokir: tautan tidak diperbolehkan dalam obrolan.",
     "notice_muted": "Anda dibungkam selama {time} karena pesan Anda.",

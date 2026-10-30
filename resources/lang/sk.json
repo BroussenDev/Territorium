@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignorovať {name}",
     "line_hint": "Kliknite, ak chcete tohto hráča ignorovať alebo nahlásiť",
     "mute": "Stlmiť tohto hráča po zvyšok hry",
+    "notice_account_muted": "Si stlmený do {date} (sankcia tímu moderátorov).",
+    "notice_account_muted_forever": "Si stlmený až do odvolania (sankcia tímu moderátorov).",
     "notice_blocked": "Správa je zablokovaná: nenávistný jazyk nie je povolený.",
     "notice_link": "Správa zablokovaná: odkazy nie sú povolené v čete.",
     "notice_muted": "Na {time} máte vypnutý zvuk kvôli vašim správam.",

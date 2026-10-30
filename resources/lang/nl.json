@@ -1424,6 +1424,8 @@
     "ignore_player": "Negeer {name}",
     "line_hint": "Klik om deze speler te negeren of te rapporteren",
     "mute": "Demp deze speler voor de rest van het spel",
+    "notice_account_muted": "Je bent gedempt tot {date} (sanctie van het moderatieteam).",
+    "notice_account_muted_forever": "Je bent gedempt tot nader order (sanctie van het moderatieteam).",
     "notice_blocked": "Bericht geblokkeerd: haatdragende taal is niet toegestaan.",
     "notice_link": "Bericht geblokkeerd: links zijn niet toegestaan ​​in de chat.",
     "notice_muted": "Je bent gedempt voor {time} vanwege je berichten.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignora {name}",
     "line_hint": "Faceți clic pentru a ignora sau raporta acest jucător",
     "mute": "Dezactivați sunetul acestui jucător pentru restul jocului",
+    "notice_account_muted": "Ești redus la tăcere până la {date} (sancțiune a echipei de moderare).",
+    "notice_account_muted_forever": "Ești redus la tăcere până la noi ordine (sancțiune a echipei de moderare).",
     "notice_blocked": "Mesaj blocat: limbajul instigator la ură nu este permis.",
     "notice_link": "Mesaj blocat: linkurile nu sunt permise în chat.",
     "notice_muted": "Sunteți dezactivat pentru {time} din cauza mesajelor dvs.",

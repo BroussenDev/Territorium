@@ -96,6 +96,9 @@ export class GameChat extends LitElement implements Controller {
   @state() private unread = 0;
   @state() private draft = "";
   @state() private slowDown = false;
+  // The staff muted this account in the chat: until when (ms), Infinity for
+  // good, null when not. The server drops every line meanwhile.
+  @state() private accountMutedUntil: number | null = null;
   @state() private muted = new Set<ClientID>();
   @state() private reportTarget: PlayerView | null = null;
   @state() private enabled = true;
@@ -215,11 +218,43 @@ export class GameChat extends LitElement implements Controller {
 
   private onNotice(e: ChatNoticeEvent) {
     if (!this.available()) return;
+    if (e.notice === "account_muted") {
+      this.accountMutedUntil =
+        e.seconds === undefined ? Infinity : Date.now() + e.seconds * 1000;
+      this.push({
+        id: this.nextId++,
+        kind: "notice",
+        tone: "warn",
+        text: this.accountMuteText(),
+      });
+      return;
+    }
     const name =
       e.from !== undefined
         ? (this.game.playerByClientID(e.from)?.displayName() ?? "?")
         : "";
     this.notify(e.notice, e.seconds, name);
+  }
+
+  // The player's own words for the staff mute, with its end date.
+  private accountMuteText(): string {
+    const until = this.accountMutedUntil;
+    if (until === null || until === Infinity) {
+      return translateText("game_chat.notice_account_muted_forever");
+    }
+    return translateText("game_chat.notice_account_muted", {
+      date: new Date(until).toLocaleString(undefined, {
+        dateStyle: "medium",
+        timeStyle: "short",
+      }),
+    });
+  }
+
+  // Whether the staff mute is still running (it lifts itself at its date).
+  private accountMuted(): boolean {
+    return (
+      this.accountMutedUntil !== null && Date.now() < this.accountMutedUntil
+    );
   }
 
   private notify(
@@ -269,7 +304,7 @@ export class GameChat extends LitElement implements Controller {
 
   private send() {
     const text = this.draft.trim();
-    if (text === "") return;
+    if (text === "" || this.accountMuted()) return;
     let to: ClientID[] | undefined;
     if (this.channel === "allies") {
       to = this.allyRecipients();
@@ -550,9 +585,15 @@ export class GameChat extends LitElement implements Controller {
           class="h-8 min-w-0 flex-1 rounded-md border bg-plate-900/60 px-2 text-sm text-white placeholder-white/60 outline-hidden ${allies
             ? "border-teal-500/70 focus:border-teal-400"
             : "border-plate-600 focus:border-brand"}"
-          placeholder=${translateText(
-            allies ? "game_chat.placeholder_allies" : "game_chat.placeholder",
-          )}
+          ?disabled=${this.accountMuted()}
+          title=${this.accountMuted() ? this.accountMuteText() : ""}
+          placeholder=${this.accountMuted()
+            ? this.accountMuteText()
+            : translateText(
+                allies
+                  ? "game_chat.placeholder_allies"
+                  : "game_chat.placeholder",
+              )}
           .value=${this.draft}
           @input=${(e: InputEvent) =>
             (this.draft = (e.target as HTMLInputElement).value)}
@@ -561,7 +602,7 @@ export class GameChat extends LitElement implements Controller {
         <button
           type="button"
           class="h-8 shrink-0 rounded-md bg-brand px-3 text-sm font-bold text-white transition-colors hover:bg-brand-light disabled:opacity-40"
-          ?disabled=${this.draft.trim() === ""}
+          ?disabled=${this.draft.trim() === "" || this.accountMuted()}
           @click=${this.send}
         >
           ${translateText("game_chat.send")}

@@ -1424,6 +1424,8 @@
     "ignore_player": "{name} figyelmen kívül hagyása",
     "line_hint": "Kattintson a játékos figyelmen kívül hagyásához vagy jelentéséhez",
     "mute": "Némítsa el ezt a játékost a játék hátralévő részében",
+    "notice_account_muted": "Le vagy némítva eddig: {date} (a moderátorcsapat szankciója).",
+    "notice_account_muted_forever": "Le vagy némítva további értesítésig (a moderátorcsapat szankciója).",
     "notice_blocked": "Üzenet blokkolva: a gyűlöletkeltő nyelv nem megengedett.",
     "notice_link": "Üzenet blokkolva: linkek nem engedélyezettek a chatben.",
     "notice_muted": "Üzenete miatt elnémult a {time} számára.",

@@ -59,6 +59,7 @@ import {
 } from "../core/Schemas";
 import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
+import { AccountChatMutes, accountChatMutes } from "./AccountChatMute";
 import { archive, finalizeGameRecord } from "./Archive";
 import { ChatContextBuffer, ChatContextEntry } from "./ChatContext";
 import { ChatModerator, SevereKind } from "./ChatModeration";
@@ -194,6 +195,8 @@ export interface GameServerDeps {
   mintGroupToken: () => string;
   // The learned chat filter; empty (so a no-op) until the API's model loads.
   chatToxicity: ChatToxicity;
+  // Staff chat mutes of accounts, across games (AccountChatMute.ts).
+  accountMutes: AccountChatMutes;
 }
 
 // 16 URL-safe characters of CSPRNG output — 12 bytes is exactly 16 base64url
@@ -215,6 +218,7 @@ export function defaultGameServerDeps(): GameServerDeps {
     telemetryBuildHash: "DEV",
     mintGroupToken,
     chatToxicity,
+    accountMutes: accountChatMutes,
   };
 }
 
@@ -298,6 +302,9 @@ export class GameServer {
   // against them so staff see what was said (see handleChat).
   private readonly chatLog = new Map<ClientID, string[]>();
   private readonly chatModerator = new ChatModerator();
+  // Players already told, on their current connection, that their account is
+  // muted (the notice comes again whenever they try to write).
+  private readonly toldAccountMute = new Set<ClientID>();
   // The game's recent chat, every channel, for the conversation context a
   // flagged line carries to the staff (see ChatContext.ts).
   private readonly chatContext = new ChatContextBuffer();
@@ -799,6 +806,10 @@ export class GameServer {
       this.sendStartGameMsg(client.ws, 0);
     }
 
+    // Is the account muted by the staff? Asked now, so the answer is there
+    // before their first line; they are told at their next ping.
+    void this.deps.accountMutes.refresh(client.persistentID);
+
     return "joined";
   }
 
@@ -893,6 +904,9 @@ export class GameServer {
         // "someone is still out there" clock the empty-game reap waits on.
         this.lastPingUpdate = Date.now();
         client.lastPing = Date.now();
+        if (!this.toldAccountMute.has(client.clientID)) {
+          this.tellAccountMute(client);
+        }
         break;
       }
       case "hash": {
@@ -1629,6 +1643,8 @@ export class GameServer {
       this.log.warn("Could not find client for websocket in sendStartGameMsg");
       return;
     }
+    // A new start message means a new game screen: the mute notice is due again.
+    this.toldAccountMute.delete(client.clientID);
 
     this.log.info(`Sending start message to client`, {
       clientID: client.clientID,
@@ -2312,6 +2328,10 @@ export class GameServer {
       .trim()
       .slice(0, CHAT_MESSAGE_MAX_LENGTH);
     if (text === "") return;
+    // A muted account writes nothing, in any channel: the line is dropped
+    // here, never relayed, never logged as a report's evidence, and the
+    // player is told why.
+    if (this.tellAccountMute(client, true)) return;
     // The allies chat belongs to Nations games.
     const to = clientMsg.to;
     if (to !== undefined && this.gameConfig.gameVariant !== "nations") return;
@@ -2383,6 +2403,34 @@ export class GameServer {
         c.ws.send(msg);
       }
     });
+  }
+
+  /**
+   * Tells a staff-muted account so, with the seconds left (none: until
+   * further notice). Returns whether the account is muted. Once per
+   * connection unless `again` (the player tried to write).
+   */
+  private tellAccountMute(client: Client, again = false): boolean {
+    const mutes = this.deps.accountMutes;
+    const until = mutes.mutedUntil(client.persistentID);
+    if (until === null) return false;
+    if (!again && this.toldAccountMute.has(client.clientID)) return true;
+    this.toldAccountMute.add(client.clientID);
+    if (client.ws.readyState === WebSocket.OPEN) {
+      client.ws.send(
+        encodeServerMessage(
+          {
+            type: "chat_notice",
+            notice: "account_muted",
+            ...(mutes.isPermanent(until)
+              ? {}
+              : { seconds: Math.ceil((until - Date.now()) / 1000) }),
+          } satisfies ServerChatNoticeMessage,
+          this.zbinCtx,
+        ),
+      );
+    }
+    return true;
   }
 
   // The learned filter's verdict on a line the word lists passed: blocked

@@ -1424,6 +1424,8 @@
     "ignore_player": "忽略{name}",
     "line_hint": "點擊忽略或檢舉該玩家",
     "mute": "在遊戲的剩餘時間內將該玩家靜音",
+    "notice_account_muted": "你已被禁言，直到 {date}（管理團隊的處分）。",
+    "notice_account_muted_forever": "你已被禁言，直到另行通知（管理團隊的處分）。",
     "notice_blocked": "訊息已被封鎖：不允許使用仇恨性語言。",
     "notice_link": "訊息被阻止：聊天中不允許有連結。",
     "notice_muted": "由於您的訊息，您被靜音{time}。",

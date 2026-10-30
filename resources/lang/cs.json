@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignorovat {name}",
     "line_hint": "Klikněte pro ignorování nebo nahlášení tohoto hráče",
     "mute": "Ztlumit tohoto hráče po zbytek hry",
+    "notice_account_muted": "Jsi ztlumen do {date} (sankce týmu moderátorů).",
+    "notice_account_muted_forever": "Jsi ztlumen až do odvolání (sankce týmu moderátorů).",
     "notice_blocked": "Zpráva zablokována: nenávistné výrazy nejsou povoleny.",
     "notice_link": "Zpráva blokována: odkazy nejsou v chatu povoleny.",
     "notice_muted": "Na {time} jste ztlumeni kvůli svým zprávám.",

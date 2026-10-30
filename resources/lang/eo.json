@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignoru {name}",
     "line_hint": "Klaku por ignori aŭ raporti ĉi tiun ludanton",
     "mute": "Mutigu ĉi tiun ludanton por la resto de la ludo",
+    "notice_account_muted": "Vi estas silentigita ĝis {date} (puno de la modera teamo).",
+    "notice_account_muted_forever": "Vi estas silentigita ĝis nova ordono (puno de la modera teamo).",
     "notice_blocked": "Mesaĝo blokita: malama lingvo ne estas permesita.",
     "notice_link": "Mesaĝo blokita: ligiloj ne estas permesitaj en la babilejo.",
     "notice_muted": "Vi estas silentigita por {time} pro viaj mesaĝoj.",

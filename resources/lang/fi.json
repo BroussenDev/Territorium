@@ -1424,6 +1424,8 @@
     "ignore_player": "Ohita {name}",
     "line_hint": "Napsauta ohittaaksesi tämän pelaajan tai tehdäksesi siitä ilmoituksen",
     "mute": "Mykistä tämä soitin pelin loppua varten",
+    "notice_account_muted": "Sinut on mykistetty {date} asti (moderointitiimin rangaistus).",
+    "notice_account_muted_forever": "Sinut on mykistetty toistaiseksi (moderointitiimin rangaistus).",
     "notice_blocked": "Viesti estetty: vihamielinen kielenkäyttö ei ole sallittua.",
     "notice_link": "Viesti estetty: linkit eivät ole sallittuja chatissa.",
     "notice_muted": "Olet mykistetty ajaksi {time} viestiesi takia.",

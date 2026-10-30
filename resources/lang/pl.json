@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignoruj ​​{name}",
     "line_hint": "Kliknij, aby zignorować lub zgłosić tego gracza",
     "mute": "Wycisz tego gracza na resztę gry",
+    "notice_account_muted": "Jesteś wyciszony do {date} (sankcja zespołu moderacji).",
+    "notice_account_muted_forever": "Jesteś wyciszony do odwołania (sankcja zespołu moderacji).",
     "notice_blocked": "Wiadomość zablokowana: niedozwolony jest język nienawiści.",
     "notice_link": "Wiadomość zablokowana: linki nie są dozwolone na czacie.",
     "notice_muted": "Zostałeś wyciszony przez {time} z powodu Twoich wiadomości.",

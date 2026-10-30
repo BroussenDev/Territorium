@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignoriraj {name}",
     "line_hint": "Kliknite, če želite ignorirati ali prijaviti tega igralca",
     "mute": "Izklopite zvok tega igralca do konca igre",
+    "notice_account_muted": "Utišan si do {date} (sankcija moderatorske ekipe).",
+    "notice_account_muted_forever": "Utišan si do preklica (sankcija moderatorske ekipe).",
     "notice_blocked": "Sporočilo je blokirano: sovražni jezik ni dovoljen.",
     "notice_link": "Sporočilo je blokirano: povezave niso dovoljene v klepetu.",
     "notice_muted": "Zaradi vaših sporočil ste izključeni za {time}.",

@@ -1424,6 +1424,8 @@
     "ignore_player": "무시 {name}",
     "line_hint": "이 플레이어를 무시하거나 신고하려면 클릭하세요.",
     "mute": "게임이 끝날 때까지 이 플레이어를 음소거합니다.",
+    "notice_account_muted": "{date}까지 채팅이 제한되었습니다(운영팀의 제재).",
+    "notice_account_muted_forever": "별도 안내가 있을 때까지 채팅이 제한되었습니다(운영팀의 제재).",
     "notice_blocked": "메시지 차단됨: 혐오스러운 언어는 허용되지 않습니다.",
     "notice_link": "메시지 차단됨: 채팅에서 링크가 허용되지 않습니다.",
     "notice_muted": "메시지 때문에 {time} 동안 음소거되었습니다.",

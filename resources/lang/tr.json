@@ -1424,6 +1424,8 @@
     "ignore_player": "Yoksay {name}",
     "line_hint": "Bu oyuncuyu yok saymak veya raporlamak için tıklayın",
     "mute": "Oyunun geri kalanında bu oyuncuyu sessize alın",
+    "notice_account_muted": "{date} tarihine kadar susturuldun (moderasyon ekibinin yaptırımı).",
+    "notice_account_muted_forever": "Yeni bir duyuruya kadar susturuldun (moderasyon ekibinin yaptırımı).",
     "notice_blocked": "Mesaj engellendi: Nefret dolu dile izin verilmiyor.",
     "notice_link": "Mesaj engellendi: Sohbette bağlantılara izin verilmiyor.",
     "notice_muted": "Mesajlarınız nedeniyle {time} süreyle sessize alındınız.",

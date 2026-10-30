@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignora {name}",
     "line_hint": "Fes clic per ignorar o denunciar aquest jugador",
     "mute": "Silencia aquest jugador durant la resta del joc",
+    "notice_account_muted": "Estàs silenciat fins al {date} (sanció de l'equip de moderació).",
+    "notice_account_muted_forever": "Estàs silenciat fins a nou avís (sanció de l'equip de moderació).",
     "notice_blocked": "Missatge bloquejat: no es permet el llenguatge odiós.",
     "notice_link": "Missatge bloquejat: no es permeten enllaços al xat.",
     "notice_muted": "Estàs silenciat per {time} a causa dels teus missatges.",

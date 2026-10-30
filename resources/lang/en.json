@@ -1424,6 +1424,8 @@
     "ignore_player": "Ignore {name}",
     "line_hint": "Click to ignore or report this player",
     "mute": "Mute this player for the rest of the game",
+    "notice_account_muted": "You are muted until {date} (moderation team sanction).",
+    "notice_account_muted_forever": "You are muted until further notice (moderation team sanction).",
     "notice_blocked": "Message blocked: hateful language is not allowed.",
     "notice_link": "Message blocked: links are not allowed in the chat.",
     "notice_muted": "You are muted for {time} because of your messages.",

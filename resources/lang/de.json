@@ -1424,6 +1424,8 @@
     "ignore_player": "{name} ignorieren",
     "line_hint": "Klicken Sie hier, um diesen Spieler zu ignorieren oder zu melden",
     "mute": "Schalten Sie diesen Spieler für den Rest des Spiels stumm",
+    "notice_account_muted": "Du bist bis {date} stummgeschaltet (Sanktion des Moderationsteams).",
+    "notice_account_muted_forever": "Du bist bis auf Weiteres stummgeschaltet (Sanktion des Moderationsteams).",
     "notice_blocked": "Nachricht blockiert: Hassreden sind nicht erlaubt.",
     "notice_link": "Nachricht blockiert: Links sind im Chat nicht erlaubt.",
     "notice_muted": "Sie sind aufgrund Ihrer Nachrichten für {time} stummgeschaltet.",

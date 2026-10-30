@@ -1196,6 +1196,9 @@ export const ChatNoticeSchema = z.enum([
   // rest of the game, and to everyone else, naming the author (from).
   "tgs_muted",
   "tgs_removed",
+  // The account is muted by the staff across games: `seconds` is the time
+  // left, absent when it has no end.
+  "account_muted",
 ]);
 export type ChatNotice = z.infer<typeof ChatNoticeSchema>;
 

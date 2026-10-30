@@ -1424,6 +1424,8 @@
     "ignore_player": "Zanemari {name}",
     "line_hint": "Kliknite da biste ignorisali ili prijavili ovog igrača",
     "mute": "Isključite zvuk ovog igrača do kraja igre",
+    "notice_account_muted": "Utišan si do {date} (sankcija tima za moderaciju).",
+    "notice_account_muted_forever": "Utišan si do daljnjeg (sankcija tima za moderaciju).",
     "notice_blocked": "Poruka blokirana: jezik mržnje nije dozvoljen.",
     "notice_link": "Poruka blokirana: veze nisu dozvoljene u ćaskanju.",
     "notice_muted": "Isključeni ste za {time} zbog vaših poruka.",
