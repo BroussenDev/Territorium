@@ -14,11 +14,24 @@ import { GameType, PlayerType } from "../../../../src/core/game/Game";
 
 const report = vi.hoisted(() => ({
   canReportChat: vi.fn(async () => true),
-  chatReportBody: vi.fn((gameID: string, text: string, sender?: string) => ({
-    gameID,
-    text,
-    senderClientID: sender,
-    lang: "fr",
+  chatReportBody: vi.fn(
+    (
+      gameID: string,
+      text: string,
+      sender?: string,
+      _publicId?: string,
+      context?: unknown,
+    ) => ({
+      gameID,
+      text,
+      senderClientID: sender,
+      lang: "fr",
+      ...(context ? { context } : {}),
+    }),
+  ),
+  chatReportContext: vi.fn((seen: unknown[], index: number) => ({
+    lines: seen.length,
+    index,
   })),
   sendChatReport: vi.fn(async (_body: unknown) => "ok" as string),
 }));
@@ -408,7 +421,9 @@ describe("GameChat", () => {
 
     it("asks to confirm, then posts the line with its sender and language", async () => {
       await open();
+      await receive(ALICE, "before");
       await receive(BOB, "you are bad");
+      await receive(ALICE, "after");
       await settle();
       await click("[data-chat-report-line]");
       expect(q("[data-chat-report-confirm]")).not.toBeNull();
@@ -421,6 +436,8 @@ describe("GameChat", () => {
         text: "you are bad",
         senderClientID: BOB,
         lang: "fr",
+        // The three lines the reporter saw, the reported one second.
+        context: { lines: 3, index: 1 },
       });
       expect(toasts[toasts.length - 1]).toMatchObject({
         message: "game_chat.report_line_sent",

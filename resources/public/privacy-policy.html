@@ -215,8 +215,11 @@
           Messages du chat bloqués par TGS, signalés par un joueur ou jugés
           douteux : texte du message, langue, partie, auteur et, le cas échéant,
           joueur qui l'a signalé, avec la décision de l'équipe de modération
-          (« toxique » ou « fausse alerte »). Le reste du chat n'est jamais
-          enregistré
+          (« toxique » ou « fausse alerte »). Les messages qui entourent ce
+          message dans la conversation (quelques minutes, y compris ceux des
+          autres joueurs, avec le salon où ils ont été écrits) sont conservés
+          avec lui, pour que l'équipe de modération en comprenne le sens. Le
+          reste du chat n'est jamais enregistré
         </td>
         <td>
           Modérer le chat et entraîner le filtre anti-toxicité de TGS. Ce
@@ -535,7 +538,9 @@
       through Mollie (Steam in the Steam app), bot checks through Cloudflare
       Turnstile; the YouTube help video only loads when you click play. Chat
       messages are only kept when TGS blocks them or a player reports them (1
-      year), to moderate and train TGS's own filter on our servers. You can
+      year), together with the few minutes of conversation around them (other
+      players' messages included), to moderate and train TGS's own filter on
+      our servers; the rest of the chat is never kept. You can
       delete your account in its settings, and exercise your GDPR rights at
       <a href="mailto:privacy@territorium.gg">privacy@territorium.gg</a>.
     </p>

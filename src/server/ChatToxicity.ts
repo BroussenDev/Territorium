@@ -1,4 +1,5 @@
 import { GameEnv } from "../core/configuration/Config";
+import type { ChatContext } from "./ChatContext";
 import { tokenize } from "./ChatTokenizer";
 import { ServerEnv } from "./ServerEnv";
 
@@ -124,6 +125,8 @@ export interface ChatSample {
   senderPersistentID: string;
   lang?: string | null;
   kind: SampleKind;
+  /** The conversation around the line, for the staff reading the sample. */
+  context?: ChatContext;
 }
 
 export class ChatToxicity {
@@ -233,6 +236,7 @@ export class ChatToxicity {
           senderPersistentID: sample.senderPersistentID,
           lang: sample.lang ?? undefined,
           kind: sample.kind,
+          ...(sample.context !== undefined ? { context: sample.context } : {}),
         }),
       });
     } catch {

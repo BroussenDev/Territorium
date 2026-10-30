@@ -60,6 +60,7 @@ import {
 import { createPartialGameRecord } from "../core/Util";
 import { createGameWireContext, encodeServerMessage } from "../core/ZbinWire";
 import { archive, finalizeGameRecord } from "./Archive";
+import { ChatContextBuffer, ChatContextEntry } from "./ChatContext";
 import { ChatModerator, SevereKind } from "./ChatModeration";
 import { ChatToxicity, chatToxicity } from "./ChatToxicity";
 import { Client } from "./Client";
@@ -112,6 +113,9 @@ const LATE_JOIN_GRACE_MS = 5_000;
 // How many of a player's last chat lines a report against them carries (the
 // cap of PlayerReportSchema.messages).
 const CHAT_LOG_LENGTH = 10;
+// A severe chat incident is reported at once, then again with the lines that
+// followed it once this long has passed.
+const CHAT_FOLLOW_UP_MS = 30_000;
 // What the staff reads in a TGS-110 incident, by kind of line.
 const CHAT_KIND_LABELS: Record<SevereKind, string> = {
   hate: "Propos haineux",
@@ -294,6 +298,9 @@ export class GameServer {
   // against them so staff see what was said (see handleChat).
   private readonly chatLog = new Map<ClientID, string[]>();
   private readonly chatModerator = new ChatModerator();
+  // The game's recent chat, every channel, for the conversation context a
+  // flagged line carries to the staff (see ChatContext.ts).
+  private readonly chatContext = new ChatContextBuffer();
 
   // This private lobby's presence in the public lobby browser (see
   // ListingState.ts).
@@ -2269,11 +2276,15 @@ export class GameServer {
     const key = `${client.clientID}:${reported}`;
     if (this.reports.has(key)) return;
     const messages = this.chatLog.get(reported);
+    const last = this.chatContext.lastBy(reported);
     this.reports.set(key, {
       reportedBy: client.clientID,
       reported,
       reason,
       ...(messages ? { messages: [...messages] } : {}),
+      ...(reason === "offensive_chat" && last !== undefined
+        ? { context: this.chatContext.around(last) }
+        : {}),
     });
     this.log.info("player reported", {
       clientID: client.clientID,
@@ -2308,6 +2319,21 @@ export class GameServer {
     const log = this.chatLog.get(client.clientID) ?? [];
     log.push(text);
     this.chatLog.set(client.clientID, log.slice(-CHAT_LOG_LENGTH));
+    const recipients = to === undefined ? null : new Set(to);
+    const entry = this.chatContext.record({
+      id: client.clientID,
+      name: client.username,
+      ch: recipients === null ? "all" : "team",
+      text,
+      ...(recipients !== null
+        ? {
+            to: this.clients
+              .active()
+              .filter((c) => c !== client && recipients.has(c.clientID))
+              .map((c) => c.username),
+          }
+        : {}),
+    });
 
     let verdict = this.chatModerator.moderate(
       client.clientID,
@@ -2317,7 +2343,12 @@ export class GameServer {
     // A line the word lists let through unchanged goes to the learned filter.
     // It never throws and never waits (the model is in memory).
     if (verdict.text !== null && verdict.notice === null) {
-      verdict = this.learnedFilter(client, text, verdict);
+      verdict = this.learnedFilter(client, text, verdict, entry);
+    }
+    if (entry.act === undefined) {
+      if (verdict.severe !== undefined) entry.act = "removed";
+      else if (verdict.text === null) entry.act = "blocked";
+      else if (verdict.text !== text) entry.act = "masked";
     }
     if (verdict.notice !== null && client.ws.readyState === WebSocket.OPEN) {
       client.ws.send(
@@ -2332,7 +2363,7 @@ export class GameServer {
       );
     }
     if (verdict.severe !== undefined)
-      this.tgsChat(client, text, verdict.severe);
+      this.tgsChat(client, text, verdict.severe, entry);
     if (verdict.text === null) return;
 
     const msg = encodeServerMessage(
@@ -2344,7 +2375,6 @@ export class GameServer {
       } satisfies ServerChatMessage,
       this.zbinCtx,
     );
-    const recipients = to === undefined ? null : new Set(to);
     this.clients.active().forEach((c) => {
       if (
         c.ws.readyState === WebSocket.OPEN &&
@@ -2362,15 +2392,18 @@ export class GameServer {
     client: Client,
     text: string,
     verdict: ReturnType<ChatModerator["moderate"]>,
+    entry: ChatContextEntry,
   ): ReturnType<ChatModerator["moderate"]> {
     try {
       const decision = this.deps.chatToxicity.decide(text);
       if (decision === "pass") return verdict;
+      entry.act = decision === "block" ? "blocked" : "flagged";
       this.deps.chatToxicity.report({
         gameID: this.id,
         text,
         senderPersistentID: client.persistentID,
         kind: decision === "block" ? "blocked" : "uncertain",
+        context: this.chatContext.around(entry),
       });
       return decision === "block"
         ? this.chatModerator.strikeLearned(client.clientID, Date.now())
@@ -2384,7 +2417,12 @@ export class GameServer {
    * TGS removed a line (TGS-110): every other player is told who was muted,
    * and the staff gets the line at once (an incident and a ticket).
    */
-  private tgsChat(client: Client, text: string, kind: SevereKind) {
+  private tgsChat(
+    client: Client,
+    text: string,
+    kind: SevereKind,
+    entry: ChatContextEntry,
+  ) {
     if (!tgsSwitch.isEnabled()) return;
     const notice = encodeServerMessage(
       {
@@ -2406,13 +2444,31 @@ export class GameServer {
       clientID: client.clientID,
       kind,
     });
+    const username = this.gameStartInfo.players.find(
+      (p) => p.clientID === client.clientID,
+    )?.username;
+    // The mute is already applied: the staff is told at once with the lines
+    // before, then again with what was said in the next seconds (the API
+    // keeps the one incident and completes its context).
     void reportTgsIncident(
       this.id,
       incident,
       client.persistentID,
-      this.gameStartInfo.players.find((p) => p.clientID === client.clientID)
-        ?.username,
+      username,
+      this.chatContext.around(entry),
     );
+    const followUp = setTimeout(() => {
+      // A busy chat may have pushed the line out: the first report stands.
+      if (!this.chatContext.has(entry)) return;
+      void reportTgsIncident(
+        this.id,
+        incident,
+        client.persistentID,
+        username,
+        this.chatContext.around(entry),
+      );
+    }, CHAT_FOLLOW_UP_MS);
+    followUp.unref?.();
   }
 
   private handleSynchronization() {

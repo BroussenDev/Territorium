@@ -12,6 +12,8 @@ import {
 import {
   canReportChat,
   chatReportBody,
+  chatReportContext,
+  SeenChatLine,
   sendChatReport,
 } from "../../ChatReport";
 import { Controller } from "../../Controller";
@@ -42,7 +44,14 @@ export const CHAT_EMOJIS = [
 ] as const;
 
 type ChatLine =
-  | { id: number; kind: "chat"; from: ClientID; text: string; allies: boolean }
+  | {
+      id: number;
+      kind: "chat";
+      from: ClientID;
+      text: string;
+      allies: boolean;
+      at: number;
+    }
   | { id: number; kind: "notice"; text: string; tone: "warn" | "info" };
 
 type Channel = "all" | "allies";
@@ -199,6 +208,7 @@ export class GameChat extends LitElement implements Controller {
       from: e.from,
       text: e.text,
       allies: e.allies,
+      at: Date.now(),
     });
     if (!this.open && !mine) this.unread++;
   }
@@ -319,12 +329,36 @@ export class GameChat extends LitElement implements Controller {
     this.muted = new Set();
   }
 
+  // The conversation around a reported line, as this player saw it.
+  private reportContext(line: Extract<ChatLine, { kind: "chat" }>) {
+    const seen: SeenChatLine[] = [];
+    let index = -1;
+    for (const l of this.lines) {
+      if (l.kind !== "chat") continue;
+      if (l.id === line.id) index = seen.length;
+      seen.push({
+        at: l.at,
+        from: l.from,
+        name: this.game.playerByClientID(l.from)?.displayName() ?? "?",
+        text: l.text,
+        allies: l.allies,
+      });
+    }
+    return chatReportContext(seen, index);
+  }
+
   private async reportLine(line: Extract<ChatLine, { kind: "chat" }>) {
     this.confirming = null;
     if (this.reportedLines.has(line.id)) return;
     this.reportedLines = new Set([...this.reportedLines, line.id]);
     const result = await sendChatReport(
-      chatReportBody(this.game.gameID(), line.text, line.from),
+      chatReportBody(
+        this.game.gameID(),
+        line.text,
+        line.from,
+        undefined,
+        this.reportContext(line),
+      ),
     );
     const key =
       result === "ok"

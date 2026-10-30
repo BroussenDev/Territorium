@@ -15,6 +15,7 @@ vi.mock("../../src/client/Utils", () => ({
 import {
   canReportChat,
   chatReportBody,
+  chatReportContext,
   sendChatReport,
 } from "../../src/client/ChatReport";
 
@@ -40,6 +41,26 @@ describe("chat report request", () => {
     });
     expect(chatReportBody("g", "x".repeat(400)).text).toHaveLength(300);
     expect(chatReportBody("g", "t")).not.toHaveProperty("senderClientID");
+  });
+
+  it("builds the conversation around the reported line", () => {
+    const seen = Array.from({ length: 30 }, (_, i) => ({
+      at: 1000 + i,
+      from: i % 2 ? "bob" : "amy",
+      name: i % 2 ? "Bob" : "Amy",
+      text: `line ${i}`,
+      allies: i === 20,
+    }));
+    const ctx = chatReportContext(seen, 20)!;
+    expect(ctx.lines[0].text).toBe("line 5");
+    expect(ctx.lines[ctx.lines.length - 1].text).toBe("line 29");
+    expect(ctx.lines.filter((l) => l.hit).map((l) => l.text)).toEqual([
+      "line 20",
+    ]);
+    expect(ctx.lines.find((l) => l.text === "line 20")?.ch).toBe("team");
+    expect(chatReportContext(seen, -1)).toBeUndefined();
+    const body = chatReportBody("g", "t", undefined, undefined, ctx);
+    expect(body.context).toBe(ctx);
   });
 
   it("posts it with the player's authorization", async () => {

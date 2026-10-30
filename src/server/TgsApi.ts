@@ -1,4 +1,5 @@
 import { GameEnv } from "../core/configuration/Config";
+import type { ChatContext } from "./ChatContext";
 import { ServerEnv } from "./ServerEnv";
 import { TgsIncident, tgsSwitch, TgsSwitch } from "./Tgs";
 import type { RankedVerdict } from "./TgsRanked";
@@ -17,6 +18,7 @@ export async function reportTgsIncident(
   incident: TgsIncident,
   persistentID: string | undefined,
   username: string | undefined,
+  context?: ChatContext,
 ): Promise<void> {
   if (ServerEnv.env() === GameEnv.Dev) return;
   try {
@@ -27,7 +29,13 @@ export async function reportTgsIncident(
         "Content-Type": "application/json",
         "x-api-key": ServerEnv.apiKey(),
       },
-      body: JSON.stringify({ gameID, persistentID, username, ...incident }),
+      body: JSON.stringify({
+        gameID,
+        persistentID,
+        username,
+        ...incident,
+        ...(context !== undefined ? { context } : {}),
+      }),
     });
   } catch {
     // The record carries it at the end of the match anyway.

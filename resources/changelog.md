@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.178
+
+- Moderators now see the surrounding conversation when a chat message is blocked or reported, to judge it in context.
+- Privacy policy: the surrounding messages are kept with a blocked or reported message (1 year), never the rest of the chat.
+
 ## v0.1.177
 
 - Report a chat message in one click with the new flag button; reports help the moderators and train Territorium's own chat filter.

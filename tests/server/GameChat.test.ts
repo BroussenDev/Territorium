@@ -230,9 +230,15 @@ describe("in-game chat", () => {
         reported: BOB,
         reason: "offensive_chat",
         messages: Array.from({ length: 10 }, (_, i) => `nazi ${i + 3}`),
+        // The conversation around the last line, the lines as typed.
+        context: expect.objectContaining({ lines: expect.any(Array) }),
       },
       { reportedBy: BOB, reported: ALICE, reason: "griefing" },
     ]);
+    const context = record.info.reports![0].context!;
+    expect(context.lines).toHaveLength(12);
+    expect(context.lines[11]).toMatchObject({ text: "nazi 12", hit: true });
+    expect(context.lines[0]).toMatchObject({ text: "nazi 1", ch: "all" });
     expect(JSON.stringify(record.turns)).not.toContain("nazi");
   });
 });

@@ -1271,6 +1271,25 @@ export const ReportReasonSchema = z.enum([
   "offensive_chat",
 ]);
 
+// The conversation around a reported chat line (server/ChatContext.ts): the
+// lines before and after it, who could read each, and what the filter did.
+export const ChatContextSchema = z.object({
+  lines: z
+    .object({
+      t: z.number(),
+      id: z.string().max(16),
+      name: z.string().max(32),
+      ch: z.enum(["all", "team", "private"]),
+      text: z.string().max(300),
+      act: z.enum(["masked", "blocked", "removed", "flagged"]).optional(),
+      to: z.string().max(32).array().max(8).optional(),
+      hit: z.boolean().optional(),
+    })
+    .array()
+    .max(40),
+  situation: z.string().max(200).optional(),
+});
+
 // A player reporting another player of the same game. The server keeps them
 // out of the turn log (who reported whom is staff-only) and emits them once,
 // as info.reports of the archived record.
@@ -1281,6 +1300,8 @@ export const PlayerReportSchema = z.object({
   // The reported player's last chat lines, as the server relayed them, for
   // the staff reviewing the report.
   messages: ChatTextSchema.array().max(10).optional(),
+  // The conversation around the reported player's last line.
+  context: ChatContextSchema.optional(),
 });
 
 // What TGS (server/Tgs.ts) noticed during a game.
