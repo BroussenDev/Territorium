@@ -51,6 +51,7 @@ import { inviteFriendsButton } from "./components/ui/InviteFriendsButton";
 import { modalHeader } from "./components/ui/ModalHeader";
 import "./components/VersusLobby";
 import { crazyGamesSDK } from "./CrazyGamesSDK";
+import { privateGameChanged, privateGameEnded } from "./DiscordShare";
 import { JoinLobbyEvent } from "./Main";
 import { navigateTo } from "./PageTransition";
 import { isSteamLocked, showSteamLaunchDialog } from "./SteamLaunch";
@@ -967,6 +968,7 @@ export class HostLobbyModal extends BaseModal {
         if (!isValidGameID(this.lobbyId)) {
           throw new Error(`Invalid lobby ID format: ${this.lobbyId}`);
         }
+        this.reportPrivateGame();
         crazyGamesSDK.showInviteButton(this.lobbyId);
 
         // Now that we have the id, build and copy the share link. If lobby
@@ -1062,6 +1064,8 @@ export class HostLobbyModal extends BaseModal {
 
   protected onClose(): void {
     console.log("Closing host lobby modal");
+    // Started or left: either way its Discord announcement goes.
+    if (this.lobbyId) privateGameEnded(this.lobbyId);
     this.stopLobbyUpdates();
     if (this.leaveLobbyOnClose) {
       this.leaveLobby();
@@ -1660,12 +1664,23 @@ export class HostLobbyModal extends BaseModal {
     return ids.length > 0 ? ids : undefined;
   }
 
+  // Tells the API about this private lobby (DiscordShare.ts), which
+  // announces it on Discord if the host opted in.
+  private reportPrivateGame() {
+    if (!this.lobbyId || this.publiclyListed) return;
+    privateGameChanged(this.lobbyId, {
+      map: this.customMap?.ref.name ?? this.selectedMap,
+      mode: this.gameMode,
+    });
+  }
+
   private async putGameConfig() {
     const spawnImmunityTicks = this.spawnImmunityDurationMinutes
       ? this.spawnImmunityDurationMinutes * 60 * 10
       : 0;
     const url = await this.constructUrl();
     this.updateLobbyHistory(url);
+    this.reportPrivateGame();
     this.dispatchEvent(
       new CustomEvent("update-game-config", {
         detail: {

@@ -1,5 +1,10 @@
 # Territorium — Changelog
 
+## v0.1.174
+
+- New option: announce your private games on the Territorium Discord, with a Join button.
+- Discord: invite friends to your game with /inviter, clan roles and private clan channels kept in sync with the game, suggestions forum followed up by the team, and big ranked wins announced.
+
 ## v0.1.173
 
 - The official Territorium Discord: game boards, game nights, weekly top 10, and your roles kept in sync with your linked account.

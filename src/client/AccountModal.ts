@@ -34,6 +34,7 @@ import type { CreatorChangedDetail } from "./components/CreatorCodePanel";
 import "./components/CreatorDashboardPanel";
 import "./components/CurrencyDisplay";
 import "./components/Difficulties";
+import "./components/DiscordShareToggle";
 import "./components/FriendsList";
 import "./components/NationsProfileStats";
 import "./components/RewardsPanel";
@@ -478,7 +479,7 @@ export class AccountModal extends BaseModal {
       return html`
         <div class="flex flex-col items-center gap-3 w-full">
           ${this.renderCurrency()} ${this.renderGoogleLink()}
-          ${this.renderSteamLink()}
+          ${this.renderSteamLink()} ${this.renderDiscordShare()}
         </div>
       `;
     } else if (me?.google) {
@@ -560,6 +561,12 @@ export class AccountModal extends BaseModal {
   // Discord account and its header names it. Like Steam, the link is
   // permanent, so the warning sits under the button, before the click.
   // Not shown inside the desktop shell, which signs in through Steam.
+  // "Announce my private games on Discord", for a Discord-linked account.
+  private renderDiscordShare(): TemplateResult {
+    if (!this.userMeResponse?.user?.discord) return html``;
+    return html`<discord-share-toggle></discord-share-toggle>`;
+  }
+
   private renderDiscordLink(): TemplateResult {
     if (isDesktopShell() || this.userMeResponse?.user?.discord) return html``;
     return html`

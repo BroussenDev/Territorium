@@ -375,6 +375,9 @@
     "you": "sina"
   },
   "account_modal": {
+    "discord_share": "o toki e musi len mi lon Discord",
+    "discord_share_desc": "musi len sina li kama lon Discord pi Territorium, li jo e nena 'o kama'. kepeken /inviter la sina ken kama e jan pona.",
+    "discord_share_failed": "ilo li ken ala awen e ni. o lukin sin.",
     "link_discord": "o linja e sijelo Discord",
     "link_discord_already_has": "sijelo ni li jo e linja tawa sijelo Discord ante.",
     "link_discord_error": "mi ken ala linja e sijelo Discord sina. o pali sin.",
