@@ -1,5 +1,9 @@
 # Territorium — Changelog
 
+## v0.1.175
+
+- New Discord tab in the settings: link your Discord account and choose whether your private games are announced on the Territorium Discord.
+
 ## v0.1.174
 
 - New option: announce your private games on the Territorium Discord, with a Join button.

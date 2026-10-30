@@ -1,8 +1,19 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const { getAuthHeader } = vi.hoisted(() => ({ getAuthHeader: vi.fn() }));
+const { getAuthHeader, getUserMe, linkDiscord } = vi.hoisted(() => ({
+  getAuthHeader: vi.fn(),
+  getUserMe: vi.fn(),
+  linkDiscord: vi.fn(),
+}));
 vi.mock("../../src/client/Auth", () => ({
   getAuthHeader: () => getAuthHeader(),
+  linkDiscord: () => linkDiscord(),
+}));
+vi.mock("../../src/client/Api", () => ({
+  getUserMe: () => getUserMe(),
+}));
+vi.mock("../../src/client/InGameModal", () => ({
+  showInGameAlert: vi.fn(),
 }));
 vi.mock("../../src/client/ApiBase", () => ({
   getApiBase: () => "https://api.test",
@@ -25,6 +36,19 @@ beforeEach(() => {
   fetchMock.mockReset();
   getAuthHeader.mockReset();
   getAuthHeader.mockResolvedValue("Bearer jwt");
+  getUserMe.mockReset();
+  getUserMe.mockResolvedValue({
+    user: {
+      discord: {
+        id: "1",
+        avatar: null,
+        username: "chef",
+        global_name: "Chef",
+        discriminator: "0",
+      },
+    },
+  });
+  linkDiscord.mockReset();
   vi.stubGlobal("fetch", fetchMock);
 });
 afterEach(() => {
@@ -75,13 +99,27 @@ describe("discord-share-toggle", () => {
     expect(el.textContent).toContain("account_modal.discord_share_failed");
   });
 
-  it("renders nothing when signed out", async () => {
-    getAuthHeader.mockResolvedValue("");
+  it("asks to sign in when signed out", async () => {
+    getUserMe.mockResolvedValue(false);
     const el = document.createElement("discord-share-toggle");
     document.body.appendChild(el);
     await flush();
+    await (el as unknown as { updateComplete: Promise<void> }).updateComplete;
     expect(el.querySelector("input")).toBeNull();
+    expect(el.textContent).toContain("user_setting.discord_signed_out");
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("offers to link Discord when the account has none", async () => {
+    getUserMe.mockResolvedValue({ user: {} });
+    linkDiscord.mockResolvedValue(true);
+    const el = document.createElement("discord-share-toggle");
+    document.body.appendChild(el);
+    await flush();
+    await (el as unknown as { updateComplete: Promise<void> }).updateComplete;
+    expect(el.querySelector("input")).toBeNull();
+    el.querySelector<HTMLButtonElement>("#discord-link-button")!.click();
+    expect(linkDiscord).toHaveBeenCalled();
   });
 });
 

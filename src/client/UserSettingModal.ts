@@ -21,6 +21,7 @@ import { SettingSelect } from "./components/baseComponents/setting/SettingSelect
 import "./components/baseComponents/setting/SettingSlider";
 import "./components/baseComponents/setting/SettingToggle";
 import { BaseModal } from "./components/BaseModal";
+import "./components/DiscordShareToggle";
 import "./components/GraphicsAdvancedSettings";
 import type { GraphicsAdvancedSettings } from "./components/GraphicsAdvancedSettings";
 import "./components/GraphicsCheck";
@@ -664,6 +665,15 @@ export class UserSettingModal extends BaseModal {
             ]
           : []),
         { key: "audio", label: translateText("user_setting.tab_audio") },
+        // The desktop app signs in through Steam and offers no Discord link.
+        ...(isDesktopShell()
+          ? []
+          : [
+              {
+                key: "discord",
+                label: translateText("user_setting.tab_discord"),
+              },
+            ]),
         // Keybinds is about having keys. A touch device has none, so the tab
         // is a list of rebind controls the player can neither use nor trigger.
         //
@@ -719,6 +729,9 @@ export class UserSettingModal extends BaseModal {
         break;
       case "about":
         body = this.renderAbout();
+        break;
+      case "discord":
+        body = html`<discord-share-toggle></discord-share-toggle>`;
         break;
       default:
         body = this.renderGameplaySettings();
