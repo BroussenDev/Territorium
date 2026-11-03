@@ -639,12 +639,10 @@ export class PlayerView {
   transitiveTargets(): PlayerView[] {
     const result: PlayerView[] = [];
 
-    // Add own targets
     for (const id of this.state.targets) {
       result.push(this.game.playerBySmallID(id) as PlayerView);
     }
 
-    // Add allies' targets
     for (const allyID of this.state.allies) {
       const ally = this.game.playerBySmallID(allyID) as PlayerView;
       for (const targetId of ally.state.targets) {
@@ -652,7 +650,6 @@ export class PlayerView {
       }
     }
 
-    // Add teammates' targets
     const myTeam = this.static.team;
     if (myTeam !== null) {
       for (const p of this.game.playerViews()) {

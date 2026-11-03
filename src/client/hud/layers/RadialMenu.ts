@@ -1285,19 +1285,16 @@ export class RadialMenu implements Controller {
           if (item.renderType === "allyExtend" && this.params) {
             this.refreshAllyExtendIcon(item, disabled, icon);
           } else {
-            // Update text opacity
             const textElement = icon.select("text");
             if (!textElement.empty()) {
               textElement.style("opacity", disabled ? 0.5 : 1);
             }
 
-            // Update image opacity
             const imageElement = icon.select("image");
             if (!imageElement.empty()) {
               imageElement.attr("opacity", disabled ? 0.5 : 1);
             }
 
-            // Update cooldown text if applicable
             const cooldownElement = icon.select(".cooldown-text");
             if (this.params && !cooldownElement.empty() && item.cooldown) {
               const cooldown = Math.ceil(item.cooldown(this.params));
@@ -1309,7 +1306,6 @@ export class RadialMenu implements Controller {
             }
           }
 
-          // Update timer gradient
           this.maybeUpdateTimerGradient(item, color, opacity);
         }
       }

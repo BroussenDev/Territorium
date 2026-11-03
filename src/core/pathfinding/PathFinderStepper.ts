@@ -90,12 +90,10 @@ export class PathFinderStepper<T> implements SteppingPathFinder<T> {
       return this.next(from, to, dist);
     }
 
-    // Check if we've reached the end
     if (this.pathIndex >= this.path.length) {
       return { status: PathStatus.COMPLETE, node: to };
     }
 
-    // Return next step
     const nextNode = this.path[this.pathIndex] as T;
     this.pathIndex++;
 

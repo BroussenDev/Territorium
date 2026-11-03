@@ -1900,7 +1900,6 @@ export class AiAttackBehavior {
       return false;
     }
 
-    // Check if donating troops is allowed
     if (this.game.config().donateTroops() === false) {
       return false;
     }

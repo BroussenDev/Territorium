@@ -513,7 +513,6 @@ export class AbstractGraphBuilder {
         clusterMaxY,
       );
 
-      // Create edges for all reachable nodes
       for (const [targetId, cost] of reachable.entries()) {
         this.addOrUpdateEdge(fromNode.id, targetId, cost, cx, cy);
       }
@@ -546,7 +545,6 @@ export class AbstractGraphBuilder {
     const existingEdge = nodeMap.get(hi);
 
     if (existingEdge) {
-      // Update if new cost is cheaper
       if (cost < existingEdge.cost) {
         existingEdge.cost = cost;
         existingEdge.clusterX = clusterX;
@@ -555,7 +553,6 @@ export class AbstractGraphBuilder {
       return;
     }
 
-    // Create new edge
     const edge: AbstractEdge = {
       id: this.nextEdgeId++,
       nodeA: lo,

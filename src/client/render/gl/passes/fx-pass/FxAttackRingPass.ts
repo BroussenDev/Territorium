@@ -114,7 +114,6 @@ export class FxAttackRingPass {
       }
     }
 
-    // Add or refresh rings
     for (const r of rings) {
       const existing = this.active.find((a) => a.unitId === r.unitId);
       if (existing) {

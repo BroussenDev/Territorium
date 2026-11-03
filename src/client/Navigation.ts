@@ -68,7 +68,6 @@ export function initNavigation() {
       }
     }
 
-    // Update active state on menu items
     document.querySelectorAll(".nav-menu-item").forEach((item) => {
       if ((item as HTMLElement).dataset.page === pageId) {
         item.classList.add("active");

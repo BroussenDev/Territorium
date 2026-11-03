@@ -1194,7 +1194,6 @@ export class NationStructureBehavior {
 
   private *arraySampler<T>(a: T[], sampleSize: number): Generator<T> {
     if (a.length <= sampleSize) {
-      // Return all elements
       yield* a;
     } else {
       // Sample `sampleSize` elements

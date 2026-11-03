@@ -1,7 +1,6 @@
 import { assetUrl } from "../../../core/AssetUrls";
 import { Config } from "../../../core/configuration/Config";
 import {
-  AllPlayers,
   BuildableAttacks,
   bulkCost,
   maxBulkAmount,
@@ -13,7 +12,7 @@ import {
   UnitType,
 } from "../../../core/game/Game";
 import { TileRef } from "../../../core/game/GameMap";
-import { Emoji, findClosestBy, flattenedEmojiTable } from "../../../core/Util";
+import { findClosestBy } from "../../../core/Util";
 import { UIState } from "../../UIState";
 import { renderNumber, translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
@@ -32,13 +31,9 @@ import {
 const allianceIcon = assetUrl("images/AllianceIconWhite.svg");
 const boatIcon = assetUrl("images/BoatIconWhite.svg");
 const buildIcon = assetUrl("images/BuildIconWhite.svg");
-const chatIcon = assetUrl("images/ChatIconWhite.svg");
 const donateGoldIcon = assetUrl("images/DonateGoldIconWhite.svg");
-const donateTroopIcon = assetUrl("images/DonateTroopIconWhite.svg");
-const emojiIcon = assetUrl("images/EmojiIconWhite.svg");
 const infoIcon = assetUrl("images/InfoIcon.svg");
 const swordIcon = assetUrl("images/SwordIconWhite.svg");
-const targetIcon = assetUrl("images/TargetIconWhite.svg");
 const traitorIcon = assetUrl("images/TraitorIconWhite.svg");
 const whiteFlagIcon = assetUrl("images/WhiteFlagIconWhite.svg");
 const xIcon = assetUrl("images/XIcon.svg");
@@ -153,72 +148,6 @@ function isDisconnectedTarget(params: MenuElementParams): boolean {
   return isDisconnected.call(selectedPlayer);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const infoChatElement: MenuElement = {
-  id: "info_chat",
-  name: "chat",
-  disabled: () => false,
-  color: COLORS.chat.default,
-  icon: chatIcon,
-  subMenu: (params: MenuElementParams) =>
-    params.chatIntegration
-      .createQuickChatMenu(params.selected!)
-      .map((item) => ({
-        ...item,
-        action: item.action
-          ? (_params: MenuElementParams) => item.action!(params)
-          : undefined,
-      })),
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const allyTargetElement: MenuElement = {
-  id: "ally_target",
-  name: "target",
-  disabled: (params: MenuElementParams): boolean => {
-    if (params.selected === null) return true;
-    return !params.playerActions.interaction?.canTarget;
-  },
-  color: COLORS.target,
-  icon: targetIcon,
-  action: (params: MenuElementParams) => {
-    params.playerActionHandler.handleTargetPlayer(params.selected!.id());
-    params.closeMenu();
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const allyTradeElement: MenuElement = {
-  id: "ally_trade",
-  name: "trade",
-  disabled: (params: MenuElementParams) =>
-    !!params.playerActions?.interaction?.canEmbargo,
-  displayed: (params: MenuElementParams) =>
-    !params.playerActions?.interaction?.canEmbargo,
-  color: COLORS.trade,
-  text: translateText("player_panel.start_trade"),
-  action: (params: MenuElementParams) => {
-    params.playerActionHandler.handleEmbargo(params.selected!, "stop");
-    params.closeMenu();
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const allyEmbargoElement: MenuElement = {
-  id: "ally_embargo",
-  name: "embargo",
-  disabled: (params: MenuElementParams) =>
-    !params.playerActions?.interaction?.canEmbargo,
-  displayed: (params: MenuElementParams) =>
-    !!params.playerActions?.interaction?.canEmbargo,
-  color: COLORS.embargo,
-  text: translateText("player_panel.stop_trade"),
-  action: (params: MenuElementParams) => {
-    params.playerActionHandler.handleEmbargo(params.selected!, "start");
-    params.closeMenu();
-  },
-};
-
 const allyRequestElement: MenuElement = {
   id: "ally_request",
   name: "request",
@@ -318,100 +247,6 @@ const peaceBreakElement: MenuElement = {
     if (expiresAt === undefined) return 1;
     const remaining = Math.max(0, expiresAt - params.game.ticks());
     return Math.min(1, remaining / params.game.config().peaceDuration());
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const allyDonateGoldElement: MenuElement = {
-  id: "ally_donate_gold",
-  name: "donate gold",
-  disabled: (params: MenuElementParams) =>
-    !params.playerActions?.interaction?.canDonateGold,
-  color: COLORS.ally,
-  icon: donateGoldIcon,
-  action: (params: MenuElementParams) => {
-    params.playerActionHandler.handleDonateGold(params.selected!);
-    params.closeMenu();
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const allyDonateTroopsElement: MenuElement = {
-  id: "ally_donate_troops",
-  name: "donate troops",
-  disabled: (params: MenuElementParams) =>
-    !params.playerActions?.interaction?.canDonateTroops,
-  color: COLORS.ally,
-  icon: donateTroopIcon,
-  action: (params: MenuElementParams) => {
-    params.playerActionHandler.handleDonateTroops(params.selected!);
-    params.closeMenu();
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const infoPlayerElement: MenuElement = {
-  id: "info_player",
-  name: "player",
-  disabled: () => false,
-  color: COLORS.info,
-  icon: infoIcon,
-  action: (params: MenuElementParams) => {
-    params.playerPanel.show(params.playerActions, params.tile);
-  },
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const infoEmojiElement: MenuElement = {
-  id: "info_emoji",
-  name: "emoji",
-  disabled: () => false,
-  color: COLORS.infoEmoji,
-  icon: emojiIcon,
-  subMenu: (params: MenuElementParams) => {
-    const emojiElements: MenuElement[] = [
-      {
-        id: "emoji_more",
-        name: "more",
-        disabled: () => false,
-        color: COLORS.infoEmoji,
-        icon: emojiIcon,
-        action: (params: MenuElementParams) => {
-          params.emojiTable.showTable((emoji) => {
-            const targetPlayer =
-              params.selected === params.game.myPlayer()
-                ? AllPlayers
-                : params.selected;
-            params.playerActionHandler.handleEmoji(
-              targetPlayer!,
-              flattenedEmojiTable.indexOf(emoji as Emoji),
-            );
-            params.emojiTable.hideTable();
-          });
-        },
-      },
-    ];
-
-    const emojiCount = 8;
-    for (let i = 0; i < emojiCount; i++) {
-      emojiElements.push({
-        id: `emoji_${i}`,
-        name: flattenedEmojiTable[i],
-        text: flattenedEmojiTable[i],
-        disabled: () => false,
-        fontSize: "25px",
-        action: (params: MenuElementParams) => {
-          const targetPlayer =
-            params.selected === params.game.myPlayer()
-              ? AllPlayers
-              : params.selected;
-          params.playerActionHandler.handleEmoji(targetPlayer!, i);
-          params.closeMenu();
-        },
-      });
-    }
-
-    return emojiElements;
   },
 };
 

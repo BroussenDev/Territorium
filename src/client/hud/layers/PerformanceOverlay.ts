@@ -810,7 +810,6 @@ export class PerformanceOverlay extends LitElement implements Controller {
     // Track FPS for 60-second average
     this.framesThisSecond++;
 
-    // Update every second
     if (now - this.lastSecondTime >= 1000) {
       this.fpsHistory.push(this.framesThisSecond);
       this.fpsHistorySum += this.framesThisSecond;
@@ -962,7 +961,6 @@ export class PerformanceOverlay extends LitElement implements Controller {
       this.tickHead60s = 0;
     }
 
-    // Update tick execution duration stats
     if (tickExecutionDuration !== undefined) {
       this.tickExecutionTimes.push(tickExecutionDuration);
       this.tickExecutionTimesSum += tickExecutionDuration;
@@ -980,7 +978,6 @@ export class PerformanceOverlay extends LitElement implements Controller {
       }
     }
 
-    // Update tick delay stats
     if (tickDelay !== undefined) {
       this.tickDelayTimes.push(tickDelay);
       this.tickDelayTimesSum += tickDelay;

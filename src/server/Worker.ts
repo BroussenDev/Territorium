@@ -835,7 +835,6 @@ export async function startWorker() {
           );
         }
 
-        // Create client and add to game
         const client = new Client(
           generateID(),
           persistentId,

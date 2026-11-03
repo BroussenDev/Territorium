@@ -151,7 +151,6 @@ export class TradeShipExecution implements Execution {
           });
           this.motionPlanDst = dst;
         }
-        // Update safeFromPirates status
         if (this.mg.isWater(result.node) && this.mg.isShoreline(result.node)) {
           this.tradeShip.setSafeFromPirates();
         }

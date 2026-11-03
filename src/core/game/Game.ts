@@ -63,7 +63,6 @@ export type SamLauncherState = {
 
 export const AllPlayers = "AllPlayers" as const;
 
-// export type GameUpdates = Record<GameUpdateType, GameUpdate[]>;
 // Create a type that maps GameUpdateType to its corresponding update type
 type UpdateTypeMap<T extends GameUpdateType> = Extract<GameUpdate, { type: T }>;
 

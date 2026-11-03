@@ -439,7 +439,6 @@ export class GameImpl implements Game {
       );
     }
 
-    // Create and register the new alliance
     const alliance = new AllianceImpl(
       this,
       requestor as PlayerImpl,

@@ -154,7 +154,6 @@ export class WorkerLobbyService {
         this.lastPublicGames = msg.publicGames;
         // Forward message to all clients
         this.broadcastLobbiesToClients(msg.publicGames);
-        // Update master with my lobby info
         this.sendMyLobbiesToMaster();
         break;
       case "createGame": {

@@ -694,7 +694,6 @@ export class WarshipExecution implements Execution {
           this.warship.move(result.node);
           break;
         case PathStatus.NOT_FOUND:
-          console.log(`path not found to target`);
           break;
       }
     }
@@ -736,7 +735,6 @@ export class WarshipExecution implements Execution {
         this.warship.move(result.node);
         break;
       case PathStatus.NOT_FOUND: {
-        console.log(`path not found to target`);
         this.warship.setTargetTile(undefined);
         break;
       }

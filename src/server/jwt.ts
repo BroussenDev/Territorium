@@ -70,7 +70,6 @@ export async function getUserMe(
   token: string,
 ): Promise<{ type: "success"; response: UserMeResponse } | UserMeError> {
   try {
-    // Get the user object
     const response = await fetch(ServerEnv.jwtIssuer() + "/users/@me", {
       headers: {
         authorization: `Bearer ${token}`,

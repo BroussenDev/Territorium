@@ -133,7 +133,6 @@ export class BorderComputePass {
     // Fullscreen quad VAO [0,1]
     this.vao = createFullscreenQuad(gl);
 
-    // Store tileTex reference for binding
     this._tileTex = tileTex;
 
     this.scatter = new BorderScatterPass(

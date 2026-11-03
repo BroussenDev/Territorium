@@ -73,7 +73,6 @@ export class AbstractGraphAStar implements PathFinder<number> {
     const startNode = graph.getNode(startId);
     if (!startNode) return null;
 
-    // Initialize
     queue.clear();
     gScore[startId] = 0;
     gScoreStamp[startId] = stamp;
@@ -162,7 +161,6 @@ export class AbstractGraphAStar implements PathFinder<number> {
     const goalX = goalNode.x;
     const goalY = goalNode.y;
 
-    // Initialize all start nodes
     queue.clear();
     for (const startId of startIds) {
       const node = graph.getNode(startId);

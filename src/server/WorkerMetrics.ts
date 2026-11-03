@@ -26,7 +26,6 @@ export function initWorkerMetrics(
     headers["Authorization"] = "Basic " + ServerEnv.otelAuthHeader();
   }
 
-  // Create metrics exporter
   const metricExporter = new OTLPMetricExporter({
     url: `${ServerEnv.otelEndpoint()}/v1/metrics`,
     headers,
@@ -38,7 +37,6 @@ export function initWorkerMetrics(
     exportIntervalMillis: 15000, // Export metrics every 15 seconds
   });
 
-  // Create a meter provider
   const meterProvider = new MeterProvider({
     resource,
     readers: [metricReader],

@@ -455,7 +455,6 @@ class SourceResolver {
     const cluster = this.graph.getCluster(clusterX, clusterY);
     if (!cluster || cluster.nodeIds.length === 0) return null;
 
-    // Return closest node to tile
     let bestNode: AbstractNode | null = null;
     let bestDist = Infinity;
 

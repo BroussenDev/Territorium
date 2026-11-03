@@ -464,15 +464,8 @@ export async function userAuth(
       return userAuth(false);
     }
 
-    // Verify the JWT (requires browser support)
-    // const jwks = createRemoteJWKSet(
-    //   new URL(getApiBase() + "/.well-known/jwks.json"),
-    // );
-    // const { payload, protectedHeader } = await jwtVerify(token, jwks, {
-    //   issuer: getApiBase(),
-    //   audience: getAudience(),
-    // });
-
+    // Only decoded here, not verified: the account API checks the signature
+    // on every request that uses it.
     const payload = decodeJwt(jwt);
     const { iss, aud } = payload;
 

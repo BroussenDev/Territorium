@@ -1287,7 +1287,6 @@ export class HostLobbyModal extends BaseModal {
     // Update the display value immediately
     this.bots = value;
 
-    // Clear any existing timer
     if (this.botsUpdateTimer !== null) {
       clearTimeout(this.botsUpdateTimer);
     }

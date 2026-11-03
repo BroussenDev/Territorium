@@ -26,7 +26,6 @@ export class UnitGrid {
     return [Math.floor(x / this.cellSize), Math.floor(y / this.cellSize)];
   }
 
-  // Add a unit to the grid
   addUnit(unit: Unit | UnitView) {
     const tile = unit.tile();
     const [gridX, gridY] = this.getGridCoords(this.gm.x(tile), this.gm.y(tile));
@@ -44,7 +43,6 @@ export class UnitGrid {
     }
   }
 
-  // Remove a unit from the grid
   removeUnit(unit: Unit | UnitView) {
     const tile = unit.tile();
     this.removeUnitByTile(unit, tile);

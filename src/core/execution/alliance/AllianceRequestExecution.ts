@@ -43,7 +43,6 @@ export class AllianceRequestExecution implements Execution {
         this.active = false;
         incoming.accept();
 
-        // Update player relations
         this.requestor.updateRelation(recipient, 100);
         recipient.updateRelation(this.requestor, 100);
 

@@ -18,7 +18,6 @@ if (ServerEnv.otelEnabled()) {
   // Configure OpenTelemetry endpoint with basic auth (if provided)
   const headers: Record<string, string> = {};
   headers["Authorization"] = "Basic " + ServerEnv.otelAuthHeader();
-  // Add OTLP exporter for logs
   const logExporter = new OTLPLogExporter({
     url: `${ServerEnv.otelEndpoint()}/v1/logs`,
     headers,
@@ -30,7 +29,6 @@ if (ServerEnv.otelEnabled()) {
     processors: [new SimpleLogRecordProcessor(logExporter)],
   });
 
-  // Set as the global logger provider
   logsAPI.logs.setGlobalLoggerProvider(loggerProvider);
 } else {
   console.log(
@@ -46,7 +44,6 @@ const addSeverityFormat = winston.format((info) => {
   };
 });
 
-// Define your base/parent logger
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(

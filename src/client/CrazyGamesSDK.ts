@@ -81,7 +81,6 @@ export class CrazyGamesSDK {
 
   isOnCrazyGames(): boolean {
     try {
-      // Check if we're in an iframe
       if (window.self !== window.top) {
         // Try to access parent URL
         return window?.top?.location?.hostname.includes("crazygames") ?? false;

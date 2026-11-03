@@ -33,7 +33,6 @@ export function manhattanDistWrapped(
   // Calculate y distance (no wrapping for y-axis)
   const dy = Math.abs(c1.y - c2.y);
 
-  // Return the sum of x and y distances
   return dx + dy;
 }
 

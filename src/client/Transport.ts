@@ -1116,7 +1116,6 @@ export class Transport {
       return;
     }
     while (this.buffer.length > 0) {
-      console.log("sending dropped message");
       const msg = this.buffer.shift();
       if (msg === undefined) {
         console.warn("msg is undefined");
