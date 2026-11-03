@@ -227,12 +227,21 @@ export async function startMaster() {
     log.warn("DISCORD_WEBHOOK_URL is not a Discord webhook: no announcements");
   }
 
-  // Fork workers
-  for (let i = 0; i < ServerEnv.numWorkers(); i++) {
+  // Cluster worker id -> our WORKER_ID, captured at fork time. The exit
+  // event's worker has no reliable env to read it back from.
+  const workerIds = new Map<number, number>();
+  const forkWorker = (workerId: number) => {
     const worker = cluster.fork({
-      WORKER_ID: i,
+      WORKER_ID: workerId,
       INSTANCE_ID,
     });
+    workerIds.set(worker.id, workerId);
+    return worker;
+  };
+
+  // Fork workers
+  for (let i = 0; i < ServerEnv.numWorkers(); i++) {
+    const worker = forkWorker(i);
 
     lobbyService.registerWorker(i, worker);
     log.info(`Started worker ${i} (PID: ${worker.process.pid})`);
@@ -240,13 +249,14 @@ export async function startMaster() {
 
   // Handle worker crashes
   cluster.on("exit", (worker, code, signal) => {
-    const workerId = (worker as any).process?.env?.WORKER_ID;
-    if (workerId === undefined) {
+    const workerIdNum = workerIds.get(worker.id);
+    workerIds.delete(worker.id);
+    if (workerIdNum === undefined) {
       log.error(`worker crashed could not find id`);
       return;
     }
+    const workerId = String(workerIdNum);
 
-    const workerIdNum = parseInt(workerId);
     lobbyService.removeWorker(workerIdNum);
 
     log.warn(
@@ -255,10 +265,7 @@ export async function startMaster() {
     log.info(`Restarting worker ${workerId}...`);
 
     // Restart the worker with the same ID
-    const newWorker = cluster.fork({
-      WORKER_ID: workerId,
-      INSTANCE_ID,
-    });
+    const newWorker = forkWorker(workerIdNum);
 
     lobbyService.registerWorker(workerIdNum, newWorker);
     log.info(

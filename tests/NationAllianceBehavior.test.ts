@@ -496,3 +496,57 @@ describe("AllianceBehavior.maybeBetray - juicy ally strategy", () => {
     },
   );
 });
+
+describe("AllianceBehavior.handleAllianceRequests - renewed alliance", () => {
+  it("does not count an alliance being renewed as another alliance", async () => {
+    // Hard: the limit is half the non-bot players, so with two of them a single
+    // other alliance is already too many.
+    const testGame = await setup(
+      "big_plains",
+      { infiniteGold: true, instantBuild: true, difficulty: Difficulty.Hard },
+      [
+        new PlayerInfo("nation", PlayerType.Nation, null, "nation_id"),
+        new PlayerInfo("requestor", PlayerType.Human, null, "requestor_id"),
+      ],
+    );
+    const nation = testGame.player("nation_id");
+    const asker = testGame.player("requestor_id");
+
+    let assigned = 0;
+    testGame.map().forEachTile((tile) => {
+      if (assigned >= 20 || !testGame.map().isLand(tile)) return;
+      (assigned % 2 === 0 ? nation : asker).conquer(tile);
+      assigned++;
+    });
+    nation.updateRelation(asker, 2);
+    asker.updateRelation(nation, 2);
+
+    // The requestor's only alliance is the one being renewed with this nation.
+    vi.spyOn(asker, "alliances").mockReturnValue(new Array(1));
+    vi.spyOn(asker, "isAlliedWith").mockImplementation(
+      (other) => other === nation,
+    );
+
+    const random = new PseudoRandom(46);
+    const behavior = new NationAllianceBehavior(
+      random,
+      testGame,
+      nation,
+      new NationEmojiBehavior(random, testGame, nation),
+    );
+    const request = {
+      requestor: () => asker,
+      recipient: () => nation,
+      createdAt: () =>
+        (testGame.config().numSpawnPhaseTurns() + 2) as unknown as Tick,
+      accept: vi.fn(),
+      reject: vi.fn(),
+    } as unknown as AllianceRequest;
+    vi.spyOn(nation, "incomingAllianceRequests").mockReturnValue([request]);
+
+    behavior.handleAllianceRequests();
+
+    expect(request.accept).toHaveBeenCalled();
+    expect(request.reject).not.toHaveBeenCalled();
+  });
+});

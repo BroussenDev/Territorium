@@ -199,4 +199,91 @@ describe("TrainExecution", () => {
     // Rejects because final segment D->C uses unrecorded tile 9
     expect(exec.isActive()).toBe(false);
   });
+
+  // Splits a rail the way RailNetworkImpl does: the first piece stops before
+  // the station tile, the second piece starts on it.
+  function splitSetup(stationTile: number, splitAfterTicks: number) {
+    return async () => {
+      const game = await setup("plains", { instantBuild: true }, [
+        new PlayerInfo("p1", PlayerType.Human, null, "p1"),
+      ]);
+      const player = game.player("p1")!;
+      [0, 1, 2, 3, 4, 5, 6, 7, 8].forEach((t) => player.conquer(t));
+      const stationA = new TrainStation(
+        game,
+        player.buildUnit(UnitType.City, 0, {}),
+      );
+      const stationB = new TrainStation(
+        game,
+        player.buildUnit(UnitType.City, 8, {}),
+      );
+      const stationS = new TrainStation(
+        game,
+        player.buildUnit(UnitType.City, stationTile, {}),
+      );
+      const net = game.railNetwork();
+      const stationManager = net.stationManager();
+      stationManager.addStation(stationA);
+      stationManager.addStation(stationB);
+
+      const railAB = new Railroad(
+        stationA,
+        stationB,
+        [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        1,
+      );
+      stationA.addRailroad(railAB);
+      stationB.addRailroad(railAB);
+
+      const exec = new TrainExecution(net, player, stationA, stationB, 1);
+      exec.init(game, 0);
+      for (let t = 1; t <= splitAfterTicks; t++) {
+        exec.tick(t);
+      }
+
+      // Put the station on the rail the train is travelling on.
+      stationA.removeRailroad(railAB);
+      stationB.removeRailroad(railAB);
+      stationManager.addStation(stationS);
+      const railAS = new Railroad(
+        stationA,
+        stationS,
+        [0, 1, 2, 3, 4, 5, 6, 7, 8].slice(0, stationTile),
+        2,
+      );
+      const railSB = new Railroad(
+        stationS,
+        stationB,
+        [0, 1, 2, 3, 4, 5, 6, 7, 8].slice(stationTile),
+        3,
+      );
+      stationA.addRailroad(railAS);
+      stationS.addRailroad(railAS);
+      stationS.addRailroad(railSB);
+      stationB.addRailroad(railSB);
+
+      let t = splitAfterTicks + 1;
+      for (; t < 100 && exec.isActive(); t++) {
+        exec.tick(t);
+      }
+      return { exec, stationB, stationS, game };
+    };
+  }
+
+  it("stops at a station placed ahead on the rail the train is already on", async () => {
+    // Engine speed is 2 tiles per tick: after one tick it is at tile 2, and the
+    // new station at tile 6 is still ahead of it.
+    const { exec } = await splitSetup(6, 1)();
+
+    expect(exec.tradeStopsVisited()).toBe(2);
+    expect(exec.isActive()).toBe(false);
+  });
+
+  it("does not revisit a station the train has already passed", async () => {
+    // The engine is at tile 2 and the new station at tile 1 is already behind it.
+    const { exec } = await splitSetup(1, 1)();
+
+    expect(exec.tradeStopsVisited()).toBe(1);
+    expect(exec.isActive()).toBe(false);
+  });
 });

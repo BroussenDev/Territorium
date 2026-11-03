@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.182
+
+- Fixed a troop duplication exploit when retreating from an attack that had already ended.
+- Fixed crashes with nukes on water and MIRVs hitting unowned land; a MIRV now hits the owner of the target at launch.
+- Fixed trains going out of sync when a new station splits their track, and nations counting an alliance being renewed twice.
+- Server: crashed game workers restart correctly, usernames over 20 characters are refused, private game allow-lists stay private, spectators no longer count as players in lobbies.
+
 ## v0.1.181
 
 - A redesigned What's new window: one new feature at a time, with short clips from the game.

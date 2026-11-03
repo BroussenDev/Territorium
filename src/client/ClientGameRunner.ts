@@ -949,6 +949,7 @@ async function createClientGame(
       rendererDisposed = true;
       stopFrameLoop();
       qualitySuggestion.dispose();
+      gameRenderer.dispose();
       view.dispose();
       glCanvas.remove();
       inputOverlay.remove();

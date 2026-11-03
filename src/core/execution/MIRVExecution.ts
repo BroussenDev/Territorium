@@ -79,6 +79,9 @@ export class MirvExecution implements Execution {
         return;
       }
       this.spawnTile = spawn;
+      // The target may have been conquered (or left unowned) since init(), so
+      // resolve its owner at launch, as NukeExecution does.
+      this.targetPlayer = this.mg.owner(this.dst);
       this.nuke = this.player.buildUnit(UnitType.MIRV, spawn, {
         targetTile: this.dst,
         targetPlayer: this.targetPlayer,
@@ -125,13 +128,15 @@ export class MirvExecution implements Execution {
         );
       }
 
-      this.mg.displayIncomingUnit(
-        this.nuke.id(),
-        "events_display.mirv_inbound",
-        MessageType.MIRV_INBOUND,
-        this.targetPlayer.id(),
-        { name: this.player.displayName() },
-      );
+      if (this.targetPlayer.isPlayer()) {
+        this.mg.displayIncomingUnit(
+          this.nuke.id(),
+          "events_display.mirv_inbound",
+          MessageType.MIRV_INBOUND,
+          this.targetPlayer.id(),
+          { name: this.player.displayName() },
+        );
+      }
 
       // after sending a nuke set the missilesilo on cooldown
       const silo = this.player

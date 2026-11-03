@@ -37,6 +37,14 @@ function publicLobbyGameConfig(gc: GameConfig): GameConfig {
   return sanitized;
 }
 
+// Lobby headcounts show players only: a spectator watching the lobby is not a
+// player slot and must not make a lobby look fuller than it is.
+export function countLobbyPlayers(
+  clients: readonly { spectator?: boolean }[] | undefined,
+) {
+  return clients?.filter((c) => !c.spectator).length ?? 0;
+}
+
 export class WorkerLobbyService {
   private readonly lobbiesWss: WebSocketServer;
   // Keyed by socket, valued by the platform the client named in the
@@ -207,7 +215,7 @@ export class WorkerLobbyService {
       .map(({ game, info }) => {
         return {
           gameID: info.gameID,
-          numClients: info.clients?.length ?? 0,
+          numClients: countLobbyPlayers(info.clients),
           startsAt: info.startsAt,
           gameConfig: info.gameConfig,
           publicGameType: info.publicGameType!,
@@ -222,7 +230,7 @@ export class WorkerLobbyService {
       const gi = g.gameInfo();
       return {
         gameID: gi.gameID,
-        numClients: gi.clients?.length ?? 0,
+        numClients: countLobbyPlayers(gi.clients),
         startsAt: gi.startsAt,
         gameConfig: gi.gameConfig && publicLobbyGameConfig(gi.gameConfig),
         publicGameType: "hosted",

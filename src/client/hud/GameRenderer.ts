@@ -462,12 +462,22 @@ export function createRenderer(
 export class GameRenderer {
   private layerTickState = new Map<Controller, { lastTickAtMs: number }>();
 
+  // Kept as a reference so dispose() can remove it; an anonymous listener
+  // would outlive the game and keep this renderer alive.
+  private readonly onResize = (): void => {
+    this.transformHandler.updateCanvasBoundingRect();
+  };
+
   constructor(
     public transformHandler: TransformHandler,
     public uiState: UIState,
     private layers: Controller[],
     private performanceOverlay: PerformanceOverlay,
   ) {}
+
+  dispose() {
+    window.removeEventListener("resize", this.onResize);
+  }
 
   initialize() {
     loadAllSprites().catch((err) =>
@@ -476,9 +486,7 @@ export class GameRenderer {
 
     this.layers.forEach((l) => l.init?.());
 
-    window.addEventListener("resize", () =>
-      this.transformHandler.updateCanvasBoundingRect(),
-    );
+    window.addEventListener("resize", this.onResize);
 
     //show whole map on startup
     this.transformHandler.centerAll(0.9);

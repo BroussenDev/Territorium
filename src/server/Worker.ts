@@ -37,6 +37,7 @@ import { gameApiCors } from "./GameApiCors";
 import { GameManager } from "./GameManager";
 import { registerGamePreviewRoute } from "./GamePreviewRoute";
 import type { GameServer } from "./GameServer";
+import { isJoinUsernameTooLong } from "./JoinUsername";
 import {
   isSteamAuthenticated,
   joinNeedsSteamApp,
@@ -515,6 +516,17 @@ export async function startWorker() {
             `Worker mismatch: Game ${clientMsg.gameID} should be on worker ${expectedWorkerId}, but this is worker ${workerId}`,
           );
           ws.close(CloseCode.WrongWorker, CloseReason.WrongWorker);
+          return;
+        }
+
+        // The form caps names at 20; the wire schema is wider so archived
+        // records still parse. Enforce the form's limit here, since a client
+        // is not bound to send what its own form accepts.
+        if (
+          clientMsg.type === "join" &&
+          isJoinUsernameTooLong(clientMsg.username)
+        ) {
+          ws.close(CloseCode.BadRequest, CloseReason.InvalidMessage);
           return;
         }
 

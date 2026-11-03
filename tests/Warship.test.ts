@@ -673,6 +673,56 @@ describe("Warship", () => {
     expect(warship.warshipState().state).toBe("patrolling");
   });
 
+  test("Warship on a tile without a water component does not throw while retreating", async () => {
+    game.config().warshipRetreatHealthPercent = () => 90;
+
+    player1.buildUnit(UnitType.Port, game.ref(coastX, 10), {});
+    const warship = player1.buildUnit(
+      UnitType.Warship,
+      game.ref(coastX + 1, 11),
+      {
+        patrolTile: game.ref(coastX + 1, 11),
+      },
+    );
+    game.addExecution(new WarshipExecution(warship));
+
+    const warshipTile = warship.tile();
+    vi.spyOn(game, "getWaterComponent").mockImplementation((tile) =>
+      tile === warshipTile ? null : 1,
+    );
+
+    game.executeNextTick();
+    warship.modifyHealth(-300);
+    expect(() => executeTicks(game, 5)).not.toThrow();
+
+    expect(warship.isActive()).toBe(true);
+  });
+
+  test("Warship ignores a port without a water component when looking for a retreat port", async () => {
+    game.config().warshipRetreatHealthPercent = () => 90;
+
+    const port = player1.buildUnit(UnitType.Port, game.ref(coastX, 10), {});
+    const warship = player1.buildUnit(
+      UnitType.Warship,
+      game.ref(coastX + 1, 11),
+      {
+        patrolTile: game.ref(coastX + 1, 11),
+      },
+    );
+    game.addExecution(new WarshipExecution(warship));
+
+    const portTile = port.tile();
+    vi.spyOn(game, "getWaterComponent").mockImplementation((tile) =>
+      tile === portTile ? null : 1,
+    );
+
+    game.executeNextTick();
+    warship.modifyHealth(-300);
+    expect(() => executeTicks(game, 5)).not.toThrow();
+
+    expect(warship.warshipState().state).toBe("patrolling");
+  });
+
   test("Low-health warship retreats AND fires at nearby enemy warship", async () => {
     game.config().warshipPortHealingBonusPerLevel = () => 0;
     game.config().warshipRetreatHealthPercent = () => 60;

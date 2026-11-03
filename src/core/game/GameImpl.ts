@@ -1531,6 +1531,10 @@ export class GameImpl implements Game {
     playerID: PlayerID,
     params?: Record<string, string | number>,
   ): void {
+    // Unowned targets (terra nullius) have no player to notify.
+    if (playerID === null) {
+      return;
+    }
     const id = this.player(playerID).smallID();
 
     this.addUpdate({

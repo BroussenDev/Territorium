@@ -140,4 +140,20 @@ describe("GameServer - allowlist (allowedPublicIds)", () => {
     // The server still enforces the allowlist from its own config.
     expect(game.gameConfig.allowedPublicIds).toEqual(["pub-ok"]);
   });
+
+  it("keeps publicId lists out of the public game info (lobby, /api/game/:id)", () => {
+    const game = harnessGame({
+      config: {
+        gameType: GameType.Private,
+        allowedPublicIds: ["pub-ok"],
+        nameRevealPublicIds: ["pub-reveal"],
+      },
+    });
+    const info = game.gameInfo();
+    expect(info.gameConfig?.allowedPublicIds).toBeUndefined();
+    expect(info.gameConfig?.nameRevealPublicIds).toBeUndefined();
+    expect(game.gameInfo(C1).gameConfig?.allowedPublicIds).toBeUndefined();
+    // The server still enforces the allowlist from its own config.
+    expect(game.gameConfig.allowedPublicIds).toEqual(["pub-ok"]);
+  });
 });

@@ -830,3 +830,64 @@ describe("Attack with nothing to conquer", () => {
     );
   });
 });
+
+describe("Attack retreat after the attack ended", () => {
+  let rGame: Game;
+  let rAttacker: Player;
+
+  beforeEach(async () => {
+    rGame = await setup("plains", { infiniteGold: true, instantBuild: true });
+    const attackerInfo = new PlayerInfo(
+      "attacker dude",
+      PlayerType.Human,
+      null,
+      "attacker_id",
+    );
+    rGame.addPlayer(attackerInfo);
+    rGame.addExecution(
+      new SpawnExecution(gameID, attackerInfo, rGame.ref(10, 10)),
+    );
+    rGame.executeNextTick();
+    rGame.executeNextTick();
+    rAttacker = rGame.player(attackerInfo.id);
+  });
+
+  it("refunds nothing when the attack was absorbed on the tick its retreat completes", () => {
+    rGame.addExecution(
+      new AttackExecution(100, rAttacker, rGame.terraNullius().id()),
+    );
+    rGame.executeNextTick();
+    const attack = rAttacker.outgoingAttacks()[0];
+    expect(attack).toBeDefined();
+
+    // The retreat completes, then the attack is absorbed by another attack
+    // (which already took its troops) before its execution ticks again.
+    attack.executeRetreat();
+    attack.delete();
+    const returnable = attack.troops();
+    const addTroops = vi.spyOn(rAttacker, "addTroops");
+
+    rGame.executeNextTick();
+
+    // Regeneration also calls addTroops, so only the refund amount matters.
+    expect(returnable).toBeGreaterThan(0);
+    expect(addTroops.mock.calls.map((c) => c[0])).not.toContain(returnable);
+  });
+
+  it("still refunds the troops of a live retreat", () => {
+    rGame.addExecution(
+      new AttackExecution(100, rAttacker, rGame.terraNullius().id()),
+    );
+    rGame.executeNextTick();
+    const attack = rAttacker.outgoingAttacks()[0];
+    expect(attack).toBeDefined();
+
+    attack.executeRetreat();
+    const returnable = attack.troops();
+    const addTroops = vi.spyOn(rAttacker, "addTroops");
+
+    rGame.executeNextTick();
+
+    expect(addTroops.mock.calls.map((c) => c[0])).toContain(returnable);
+  });
+});

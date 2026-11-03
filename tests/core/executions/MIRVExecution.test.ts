@@ -7,6 +7,7 @@ import {
   PlayerType,
   UnitType,
 } from "../../../src/core/game/Game";
+import { GameUpdateType } from "../../../src/core/game/GameUpdates";
 import { setup } from "../../util/Setup";
 import { executeTicks } from "../../util/utils";
 
@@ -281,5 +282,50 @@ describe("MIRVExecution", () => {
     // Expect MIRV to launch successfully without marking player as traitor
     expect(player.units(UnitType.MIRV)).toHaveLength(1);
     expect(player.isTraitor()).toBe(false);
+  });
+
+  test("MIRV targets the owner at launch when the tile was conquered after init", async () => {
+    let unownedTile: any = null;
+    for (let x = 20; x < 25 && unownedTile === null; x++) {
+      for (let y = 20; y < 25; y++) {
+        const tile = game.ref(x, y);
+        if (game.map().isLand(tile) && !game.map().hasOwner(tile)) {
+          unownedTile = tile;
+          break;
+        }
+      }
+    }
+    expect(unownedTile).not.toBeNull();
+
+    const mirvExec = new MirvExecution(player, unownedTile!);
+    game.addExecution(mirvExec);
+    // Tick 1 runs init() while the tile is still unowned.
+    executeTicks(game, 1);
+
+    // The tile is conquered before the launch tick.
+    otherPlayer.conquer(unownedTile!);
+
+    const updates = game.executeNextTick();
+
+    // The MIRV launches and the incoming alert goes to the new owner, not to
+    // terra nullius (which used to crash with "Player with id null not found").
+    expect(player.units(UnitType.MIRV)).toHaveLength(1);
+    const incoming = updates[GameUpdateType.UnitIncoming];
+    expect(incoming).toHaveLength(1);
+    expect(incoming[0].playerID).toBe(otherPlayer.smallID());
+    expect(incoming[0].messageType).toBe(MessageType.MIRV_INBOUND);
+  });
+
+  test("displayIncomingUnit ignores a null player id", () => {
+    expect(() =>
+      game.displayIncomingUnit(
+        1,
+        "events_display.mirv_inbound",
+        MessageType.MIRV_INBOUND,
+        null,
+      ),
+    ).not.toThrow();
+    const updates = game.executeNextTick();
+    expect(updates[GameUpdateType.UnitIncoming]).toHaveLength(0);
   });
 });

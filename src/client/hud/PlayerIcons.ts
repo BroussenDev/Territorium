@@ -153,10 +153,15 @@ export function getPlayerIcons(
         hasActiveNukes = true;
 
         const detonationDst = nuke.targetTile();
+        // An unowned tile's owner (TerraNullius, or a replay stand-in) has no
+        // player id to compare, so only a real player can be the target.
+        const detonationOwner = detonationDst
+          ? game.owner(detonationDst)
+          : null;
         if (
           myPlayer &&
-          detonationDst &&
-          game.owner(detonationDst).id() === myPlayer.id()
+          detonationOwner?.isPlayer() &&
+          detonationOwner.id() === myPlayer.id()
         ) {
           isMyPlayerTarget = true;
           break;

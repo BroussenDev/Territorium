@@ -1948,11 +1948,17 @@ export class GameServer {
   // Omitting viewer (e.g. the HTTP /api/game/:id and link-preview routes)
   // anonymizes all names when the option is on.
   public gameInfo(viewer?: ClientID): GameInfo {
+    // The account-id lists are enforced server-side against this.gameConfig.
+    // Every consumer of gameInfo (lobby broadcast, /api/game/:id, link
+    // previews) is public, so they never leave the server.
+    const gameConfig = { ...this.gameConfig };
+    delete gameConfig.allowedPublicIds;
+    delete gameConfig.nameRevealPublicIds;
     return {
       gameID: this.id,
       clients: this.names.lobbyClients(viewer, this.clients.active()),
       lobbyCreatorClientID: this.lobbyCreatorID,
-      gameConfig: this.gameConfig,
+      gameConfig,
       startsAt: this.startsAt,
       serverTime: Date.now(),
       publicGameType: this.publicGameType,

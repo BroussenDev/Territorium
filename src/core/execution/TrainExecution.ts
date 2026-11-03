@@ -110,7 +110,16 @@ export class TrainExecution implements Execution {
       throw new Error("Not initialized");
     }
 
-    if (!this.train.isActive() || !this.activeSourceOrDestination()) {
+    if (!this.train.isActive()) {
+      this.deleteTrain();
+      return;
+    }
+
+    // Pick up a station placed on the rail the train is currently on before
+    // validating the stations, or the train keeps the stale rail it planned.
+    this.reconcileCurrentRailroadSplit();
+
+    if (!this.activeSourceOrDestination()) {
       this.deleteTrain();
       return;
     }
@@ -241,6 +250,58 @@ export class TrainExecution implements Execution {
       }
     }
     return false;
+  }
+
+  /**
+   * The rail the train is on was split by a new station while it travels.
+   * Adopt the split path when it follows the motion plan tile for tile, so the
+   * engine stops at a station still ahead of it. A station already behind the
+   * engine is dropped, not revisited.
+   */
+  private reconcileCurrentRailroadSplit(): void {
+    if (this.currentRailroad === null || this.stations.length < 2) {
+      return;
+    }
+    const [station0, station1] = this.stations;
+    if (getOrientedRailroad(station0, station1) !== null) {
+      return;
+    }
+    const path = this.railNetwork.findStationsPath(station0, station1);
+    if (!path || path.length <= 2) {
+      return;
+    }
+
+    const segments: OrientedRailroad[] = [];
+    let cursor = this.pathIndex;
+    for (let i = 0; i < path.length - 1; i++) {
+      const segment = getOrientedRailroad(path[i], path[i + 1]);
+      if (!segment) {
+        return;
+      }
+      for (const tile of segment.getTiles()) {
+        if (this.pathTiles[cursor++] !== tile) {
+          return;
+        }
+      }
+      segments.push(segment);
+    }
+
+    // Find the segment the engine is on; each earlier one is already behind it.
+    let index = 0;
+    let offset = 0;
+    while (
+      index < segments.length - 1 &&
+      this.currentTile >= offset + segments[index].getTiles().length
+    ) {
+      offset += segments[index].getTiles().length;
+      index++;
+    }
+
+    this.stations.splice(0, 2, ...path);
+    this.stations.splice(0, index);
+    this.pathIndex += offset;
+    this.currentTile -= offset;
+    this.currentRailroad = segments[index];
   }
 
   private resolveSplitRailroad(): OrientedRailroad | null {
