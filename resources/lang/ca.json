@@ -3778,7 +3778,9 @@
     "title_unsupported": "El teu navegador no pot executar el joc"
   },
   "whats_new": {
+    "next": "Següent",
     "ok": "A jugar",
+    "previous": "Anterior",
     "title": "Novetats",
     "v0_1_167": {
       "bugs": "Al menú de la partida i a la pàgina d'ajuda. Cada informe rep un número de tiquet, i la resposta de l'equip apareix aquí en obrir el joc.",

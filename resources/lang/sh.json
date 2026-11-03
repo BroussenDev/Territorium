@@ -3778,7 +3778,9 @@
     "title_unsupported": "Vaš preglednik ne može pokrenuti igru"
   },
   "whats_new": {
+    "next": "Sljedeće",
     "ok": "Igrajmo",
+    "previous": "Prethodno",
     "title": "Šta je novo",
     "v0_1_167": {
       "bugs": "U meniju igre i na stranici pomoći. Svaka prijava dobija broj, a odgovor tima pojavljuje se ovdje pri otvaranju igre.",

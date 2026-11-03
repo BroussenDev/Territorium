@@ -3778,7 +3778,9 @@
     "title_unsupported": "Sinu brauser ei suuda mängu käivitada"
   },
   "whats_new": {
+    "next": "Järgmine",
     "ok": "Mängime",
+    "previous": "Eelmine",
     "title": "Mis on uut",
     "v0_1_167": {
       "bugs": "Mängumenüüs ja abilehel. Iga teade saab piletinumbri ning meeskonna vastus ilmub siia mängu avamisel.",

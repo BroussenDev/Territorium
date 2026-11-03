@@ -438,6 +438,8 @@
     "tagline": "musi ale tenpo 30 sekan"
   },
   "whats_new": {
+    "next": "tawa sinpin",
+    "previous": "tawa monsi",
     "v0_1_173": {
       "discord": "o kama lon kulupu Discord pi ma Territorium: o alasa e musi, o musi lon tenpo pimeja musi, o lukin e jan nanpa 10 pi tenpo esun, o toki tawa kulupu pali.",
       "discord_bugs": "o toki e pakala lon ma pakala pi kulupu Discord anu lon musi. toki ale li kama lipu nanpa. kulupu pali li toki tawa sina lon ma ni.",

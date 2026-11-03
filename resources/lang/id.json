@@ -3778,7 +3778,9 @@
     "title_unsupported": "Browsermu tidak bisa menjalankan game ini"
   },
   "whats_new": {
+    "next": "Berikutnya",
     "ok": "Ayo main",
+    "previous": "Sebelumnya",
     "title": "Yang baru",
     "v0_1_167": {
       "bugs": "Di menu permainan dan halaman bantuan. Setiap laporan mendapat nomor tiket, dan jawaban tim muncul di sini saat kamu membuka game.",

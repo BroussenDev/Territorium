@@ -3778,7 +3778,9 @@
     "title_unsupported": "Din webbläsare kan inte köra spelet"
   },
   "whats_new": {
+    "next": "Nästa",
     "ok": "Nu kör vi",
+    "previous": "Föregående",
     "title": "Nyheter",
     "v0_1_167": {
       "bugs": "I spelmenyn och på hjälpsidan. Varje rapport får ett ärendenummer, och teamets svar visas här när du öppnar spelet.",

@@ -3778,7 +3778,9 @@
     "title_unsupported": "Je browser kan het spel niet draaien"
   },
   "whats_new": {
+    "next": "Volgende",
     "ok": "Spelen maar",
+    "previous": "Vorige",
     "title": "Wat is er nieuw",
     "v0_1_167": {
       "bugs": "In het spelmenu en op de hulppagina. Elke melding krijgt een ticketnummer, en het antwoord van het team verschijnt hier als je het spel opent.",

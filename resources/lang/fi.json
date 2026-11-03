@@ -3778,7 +3778,9 @@
     "title_unsupported": "Selaimesi ei pysty ajamaan peliä"
   },
   "whats_new": {
+    "next": "Seuraava",
     "ok": "Pelataan",
+    "previous": "Edellinen",
     "title": "Uutta",
     "v0_1_167": {
       "bugs": "Pelivalikossa ja ohjesivulla. Jokainen ilmoitus saa tikettinumeron, ja tiimin vastaus näkyy tässä, kun avaat pelin.",

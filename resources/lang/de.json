@@ -3778,7 +3778,9 @@
     "title_unsupported": "Dein Browser kann das Spiel nicht ausführen"
   },
   "whats_new": {
+    "next": "Weiter",
     "ok": "Los geht's",
+    "previous": "Zurück",
     "title": "Was ist neu",
     "v0_1_167": {
       "bugs": "Im Spielmenü und auf der Hilfeseite. Jede Meldung bekommt eine Ticketnummer, und die Antwort des Teams erscheint hier beim Öffnen des Spiels.",

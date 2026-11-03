@@ -3778,7 +3778,9 @@
     "title_unsupported": "Il tuo browser non può avviare il gioco"
   },
   "whats_new": {
+    "next": "Avanti",
     "ok": "Si gioca",
+    "previous": "Indietro",
     "title": "Novità",
     "v0_1_167": {
       "bugs": "Nel menu di gioco e nella pagina di aiuto. Ogni segnalazione riceve un numero di ticket e la risposta del team compare qui all'apertura del gioco.",

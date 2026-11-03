@@ -3778,7 +3778,9 @@
     "title_unsupported": "Tarayıcın oyunu çalıştıramıyor"
   },
   "whats_new": {
+    "next": "İleri",
     "ok": "Hadi oynayalım",
+    "previous": "Geri",
     "title": "Yenilikler",
     "v0_1_167": {
       "bugs": "Oyun menüsünde ve yardım sayfasında. Her bildirim bir kayıt numarası alır, ekibin yanıtı oyunu açtığında burada görünür.",

@@ -3778,7 +3778,9 @@
     "title_unsupported": "Trình duyệt của bạn không chạy được trò chơi"
   },
   "whats_new": {
+    "next": "Tiếp",
     "ok": "Chơi thôi",
+    "previous": "Trước",
     "title": "Có gì mới",
     "v0_1_167": {
       "bugs": "Trong menu trận đấu và trang trợ giúp. Mỗi báo cáo có một số phiếu, và câu trả lời của đội ngũ hiện ra ở đây khi bạn mở trò chơi.",

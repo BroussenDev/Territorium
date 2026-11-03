@@ -3778,7 +3778,9 @@
     "title_unsupported": "O teu navegador non pode executar o xogo"
   },
   "whats_new": {
+    "next": "Seguinte",
     "ok": "A xogar",
+    "previous": "Anterior",
     "title": "Novidades",
     "v0_1_167": {
       "bugs": "No menú da partida e na páxina de axuda. Cada informe recibe un número de tícket, e a resposta do equipo aparece aquí ao abrir o xogo.",

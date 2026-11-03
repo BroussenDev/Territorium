@@ -3778,7 +3778,9 @@
     "title_unsupported": "O teu navegador não consegue executar o jogo"
   },
   "whats_new": {
+    "next": "Seguinte",
     "ok": "Vamos jogar",
+    "previous": "Anterior",
     "title": "Novidades",
     "v0_1_167": {
       "bugs": "No menu do jogo e na página de ajuda. Cada relatório recebe um número de ticket, e a resposta da equipa aparece aqui ao abrir o jogo.",

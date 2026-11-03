@@ -3778,7 +3778,9 @@
     "title_unsupported": "Vaš brskalnik ne more zagnati igre"
   },
   "whats_new": {
+    "next": "Naprej",
     "ok": "Igrajmo",
+    "previous": "Nazaj",
     "title": "Kaj je novega",
     "v0_1_167": {
       "bugs": "V meniju igre in na strani s pomočjo. Vsaka prijava dobi številko, odgovor ekipe pa se prikaže tukaj ob odprtju igre.",

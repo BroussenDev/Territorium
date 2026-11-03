@@ -3778,7 +3778,9 @@
     "title_unsupported": "A böngésződ nem tudja futtatni a játékot"
   },
   "whats_new": {
+    "next": "Tovább",
     "ok": "Játsszunk",
+    "previous": "Vissza",
     "title": "Újdonságok",
     "v0_1_167": {
       "bugs": "A játékmenüben és a súgóoldalon. Minden jelentés jegyszámot kap, a csapat válasza pedig itt jelenik meg a játék megnyitásakor.",

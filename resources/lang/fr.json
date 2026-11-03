@@ -3778,7 +3778,9 @@
     "title_unsupported": "Votre navigateur ne peut pas lancer le jeu"
   },
   "whats_new": {
+    "next": "Suivant",
     "ok": "C'est parti",
+    "previous": "Précédent",
     "title": "Quoi de neuf",
     "v0_1_167": {
       "bugs": "Dans le menu en partie et la page d'aide. Chaque signalement reçoit un numéro de ticket, et la réponse de l'équipe s'affiche ici à l'ouverture du jeu.",

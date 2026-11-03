@@ -1,5 +1,9 @@
 # Territorium — Changelog
 
+## v0.1.181
+
+- A redesigned What's new window: one new feature at a time, with short clips from the game.
+
 ## v0.1.180
 
 - Create a 30-second video of your whole game, sped up, from the end screen (square or vertical) and download it to share.

@@ -3778,7 +3778,9 @@
     "title_unsupported": "Via retumilo ne povas ruli la ludon"
   },
   "whats_new": {
+    "next": "Sekva",
     "ok": "Ni ludu",
+    "previous": "Antaŭa",
     "title": "Kio novas",
     "v0_1_167": {
       "bugs": "En la luda menuo kaj la helpa paĝo. Ĉiu raporto ricevas biletnumeron, kaj la respondo de la teamo aperas ĉi tie kiam vi malfermas la ludon.",

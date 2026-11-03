@@ -3778,7 +3778,9 @@
     "title_unsupported": "Browserul tău nu poate rula jocul"
   },
   "whats_new": {
+    "next": "Următorul",
     "ok": "Hai să jucăm",
+    "previous": "Anterior",
     "title": "Ce e nou",
     "v0_1_167": {
       "bugs": "În meniul jocului și pe pagina de ajutor. Fiecare raport primește un număr de tichet, iar răspunsul echipei apare aici la deschiderea jocului.",

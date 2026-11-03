@@ -3778,7 +3778,9 @@
     "title_unsupported": "Din browser kan ikke køre spillet"
   },
   "whats_new": {
+    "next": "Næste",
     "ok": "Lad os spille",
+    "previous": "Forrige",
     "title": "Nyheder",
     "v0_1_167": {
       "bugs": "I spilmenuen og på hjælpesiden. Hver rapport får et sagsnummer, og holdets svar vises her, når du åbner spillet.",

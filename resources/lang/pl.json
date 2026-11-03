@@ -3778,7 +3778,9 @@
     "title_unsupported": "Twoja przeglądarka nie może uruchomić gry"
   },
   "whats_new": {
+    "next": "Dalej",
     "ok": "Gramy",
+    "previous": "Wstecz",
     "title": "Co nowego",
     "v0_1_167": {
       "bugs": "W menu gry i na stronie pomocy. Każde zgłoszenie dostaje numer, a odpowiedź zespołu pojawi się tutaj po otwarciu gry.",

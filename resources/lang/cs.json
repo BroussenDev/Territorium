@@ -3778,7 +3778,9 @@
     "title_unsupported": "Váš prohlížeč nedokáže hru spustit"
   },
   "whats_new": {
+    "next": "Další",
     "ok": "Jdeme hrát",
+    "previous": "Předchozí",
     "title": "Co je nového",
     "v0_1_167": {
       "bugs": "V herní nabídce a na stránce nápovědy. Každé hlášení dostane číslo a odpověď týmu se zobrazí tady při spuštění hry.",

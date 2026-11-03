@@ -3778,7 +3778,9 @@
     "title_unsupported": "Your browser can't run the game"
   },
   "whats_new": {
+    "next": "Next",
     "ok": "Let's play",
+    "previous": "Previous",
     "title": "What's new",
     "v0_1_167": {
       "bugs": "In the game menu and the help page. Each report gets a ticket number, and the team's answer appears here when you open the game.",

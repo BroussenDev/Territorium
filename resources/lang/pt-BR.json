@@ -3778,7 +3778,9 @@
     "title_unsupported": "Seu navegador não consegue rodar o jogo"
   },
   "whats_new": {
+    "next": "Próximo",
     "ok": "Bora jogar",
+    "previous": "Anterior",
     "title": "Novidades",
     "v0_1_167": {
       "bugs": "No menu da partida e na página de ajuda. Cada relato recebe um número de ticket, e a resposta da equipe aparece aqui quando você abre o jogo.",

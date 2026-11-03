@@ -81,9 +81,10 @@ bug-fix release) updates the "What's new" popup in `src/client/WhatsNew.ts`:
   player sees it once;
 - list 3–5 items in `WHATS_NEW_ITEMS`, each with `whats_new.<id>.<key>_title`
   and `whats_new.<id>.<key>` translations in every language;
-- add a screenshot of the feature when it can be shown (`image`, a file under
-  `resources/images/whats-new/<id>/`, WebP, about 960px wide), taken from the
-  real game.
+- add a screenshot or a clip of the feature when it can be shown (`media`, a
+  file under `resources/images/whats-new/<id>/`: a still WebP, an animated WebP,
+  or a muted WebM, about 960px wide and at most 2 MB), recorded in the real
+  game. The clip recipe is in the top comment of `src/client/WhatsNew.ts`.
 
 Small bug-fix releases leave it unchanged.
 
