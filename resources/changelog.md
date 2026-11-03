@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.180
+
+- Create a 30-second video of your whole game, sped up, from the end screen (square or vertical) and download it to share.
+- Short in-game tips for new players, which can be turned off in the settings.
+- Ranked unlocks after one finished normal multiplayer game.
+- Achievements: training wins and cancelled ranked games no longer count.
+- Fixes: ranked rating refunds, map editor sync, a missing trade tooltip text.
+
 ## v0.1.179
 
 - Moderators can now mute a player's chat on their account, across games, for a set time; the player sees until when.

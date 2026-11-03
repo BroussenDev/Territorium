@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Queda un minuto!"
   },
+  "game_tips": {
+    "alliance_request_pending": "A túa petición de alianza agarda resposta. Caduca se o outro xogador non responde a tempo.",
+    "alliances": "Os aliados non se poden atacar. Propón unha alianza a un veciño para manter tranquila a fronteira.",
+    "attack_ratio_high": "Unha proporción de ataque moi alta envía case todas as tropas e deixa as fronteiras desprotexidas.",
+    "close": "Pechar",
+    "coastal_no_port": "Estás na costa sen porto: os portos envían barcos comerciais e gañan ouro.",
+    "disable": "Non amosar máis consellos",
+    "frontier_long": "Unha fronteira longa é difícil de defender: concentra os ataques nun lado de cada vez.",
+    "gold_unused": "Tes moito ouro: constrúe unha cidade para aumentar as túas tropas máximas.",
+    "nation_neighbour": "Unha nación de IA comparte a túa fronteira: ataca e defendese como un xogador. Vixía as súas tropas.",
+    "no_city": "Aínda non tes cidade: as cidades aumentan as túas tropas máximas. Constrúe unha xa.",
+    "radial_menu": "Fai clic dereito no mapa (mantén premido nun teléfono) para abrir o menú radial: construír, atacar ou enviar tropas.",
+    "spawn": "Fai clic nunha zona libre do mapa para escoller onde comeza o teu país.",
+    "title": "Consello",
+    "troops_max": "As túas tropas están no máximo: ataca ou constrúe para non desperdicialas.",
+    "under_attack": "Estás a ser atacado. Mantén tropas na fronteira atacada."
+  },
   "graphics_check": {
     "fps_about": "Uns {fps} FPS",
     "fps_more": "Máis de {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Rendición",
     "surrender_title": "Convértete no seu vasalo durante 10 minutos: non hai pelexas entre vós e págaselles o 25% dos teus ingresos en ouro",
     "target": "Obxectivo",
+    "trade_cooldown": "dispoñible de novo nuns segundos",
     "trading": "Negociación",
     "traitor": "Traidor",
     "troops": "Tropas",
@@ -2783,6 +2801,7 @@
     "log_in": "Iniciar sesión",
     "login_required": "A clasificación é só para xogadores rexistrados. Inicia sesión na túa conta para xogar.",
     "need_players": "O partido comeza unha vez que {min} xogadores están. Se a cola queda curta, {lowMin} xogadores serán suficientes en {seconds}s.",
+    "needs_normal_game": "Xoga primeiro unha partida multixogador normal para desbloquear as clasificatorias.",
     "new_season": "Nova tempada",
     "peak": "Máximo: {elo}",
     "placement_hint": "O teu nivel revélase despois dos teus xogos de colocación.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Vai á velocidade do xogo anterior. Só un xogador.",
     "game_speed_up": "Xogo Acelerar",
     "game_speed_up_desc": "Pase á seguinte velocidade de xogo (0,5, 1, 2, máximo). Só un xogador.",
+    "game_tips_desc": "Consellos breves sobre a túa situación durante unha partida. Activados por defecto para xogadores con poucas partidas.",
+    "game_tips_label": "Consellos durante o xogo",
     "go_to_player_desc": "Activa e desactiva o zoom do xogador ao comezo dunha partida.",
     "go_to_player_label": "Ir ao xogador ao comezar",
     "graphics_preset_desc": "Escolla o aspecto predefinido para o mapa. Perfecciona ou fai o teu propio na configuración de gráficos do xogo.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Agardando xogadores ({count}/{max})",
     "you": "Ti"
   },
+  "video": {
+    "cancel": "Cancelar",
+    "clock_label": "Tempo de xogo",
+    "close": "Pechar",
+    "create": "Crear o meu vídeo",
+    "download": "Descargar",
+    "duration": "Duración: {duration}",
+    "error": "Non se puido crear o vídeo neste dispositivo.",
+    "format_label": "Formato do vídeo",
+    "format_square": "Cadrado (1:1)",
+    "format_vertical": "Vertical (9:16)",
+    "generating": "Creando o vídeo…",
+    "hint": "Un vídeo de 30 segundos de toda a partida, creado no teu dispositivo.",
+    "keep_tab_open": "Mantén esta lapela aberta e en primeiro plano ata que remate.",
+    "outcome_loss": "Derrota",
+    "outcome_neutral": "Partida rematada",
+    "outcome_win": "Vitoria",
+    "preview_aria": "Vista previa do vídeo",
+    "progress_aria": "Progreso do vídeo",
+    "rank": "#{place} de {total}",
+    "ready_title": "O teu vídeo está listo",
+    "tagline": "Toda a partida en 30 segundos"
+  },
   "warning_notice": {
     "body": "A túa conta recibiu unha advertencia oficial do equipo de moderación.",
     "consequence": "Calquera novo incidente suporá a exclusión do modo clasificatorio.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Desde o panel da conta, vincula o teu Discord á túa conta de Territorium, aínda que te rexistrases por correo, Google ou Steam. Despois usa /compte no Discord para obter o rol verificado e o teu perfil. O bot responde no teu idioma.",
       "discord_link_title": "Vincula a túa conta de Discord",
       "discord_title": "O Discord oficial está aberto"
+    },
+    "v0_1_180": {
+      "ranked": "Xoga unha partida multixogador normal para desbloquear as partidas clasificatorias.",
+      "ranked_title": "As partidas clasificatorias desbloquéanse tras unha partida normal",
+      "tips": "Novo en Territorium? Durante as túas primeiras partidas aparecerán consellos breves. Podes desactivalos nos axustes.",
+      "tips_title": "Consellos durante o xogo",
+      "video": "Ao final dunha partida, crea un vídeo de toda a partida acelerada e descárgao para compartilo (formato cadrado ou vertical).",
+      "video_title": "A túa partida en 30 segundos"
     }
   },
   "win_modal": {

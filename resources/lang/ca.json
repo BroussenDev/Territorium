@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Queda un minut!"
   },
+  "game_tips": {
+    "alliance_request_pending": "La teva petició d'aliança espera resposta. Caducarà si l'altre jugador no contesta a temps.",
+    "alliances": "Els aliats no es poden atacar. Proposa una aliança a un veí per mantenir la frontera tranquil·la.",
+    "attack_ratio_high": "Una raó d'atac molt alta envia gairebé totes les teves tropes i deixa les fronteres sense defensa.",
+    "close": "Tanca",
+    "coastal_no_port": "Ets a la costa però no tens port: els ports envien vaixells comercials i guanyen or.",
+    "disable": "No mostris més consells",
+    "frontier_long": "Una frontera llarga és difícil de defensar: concentra els atacs en un costat alhora.",
+    "gold_unused": "Tens molt or: construeix una ciutat per augmentar el màxim de tropes.",
+    "nation_neighbour": "Una nació IA comparteix la teva frontera: ataca i es defensa com un jugador. Vigila les seves tropes.",
+    "no_city": "Encara no tens cap ciutat: les ciutats augmenten el màxim de tropes. Construeix-ne una.",
+    "radial_menu": "Fes clic dret al mapa (premi-ho llarg en un mòbil) per obrir el menú radial: construir, atacar o enviar tropes.",
+    "spawn": "Fes clic en una zona lliure del mapa per triar on comença el teu país.",
+    "title": "Consell",
+    "troops_max": "Les teves tropes són al màxim: ataca o construeix per no malgastar-les.",
+    "under_attack": "Estàs sota atac. Mantín tropes a la frontera atacada."
+  },
   "graphics_check": {
     "fps_about": "Uns {fps} FPS",
     "fps_more": "Més de {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Rendir-se",
     "surrender_title": "Converteix-te en el seu vassall durant 10 minuts: sense baralles entre vosaltres, i els pagueu el 25% dels vostres ingressos d'or",
     "target": "Demana que l'ataquin",
+    "trade_cooldown": "disponible de nou d'aquí a uns segons",
     "trading": "Fent comerç",
     "traitor": "Traïdor",
     "troops": "Tropes",
@@ -2783,6 +2801,7 @@
     "log_in": "Inicieu sessió",
     "login_required": "La classificació és només per a jugadors registrats. Inicieu sessió al vostre compte per jugar.",
     "need_players": "El partit comença un cop hi hagi {min} jugadors. Si la cua es queda curta, {lowMin} jugadors seran suficients en {seconds}s.",
+    "needs_normal_game": "Juga primer una partida multijugador normal per desbloquejar les classificatòries.",
     "new_season": "Nova temporada",
     "peak": "Màxim: {elo}",
     "placement_hint": "El vostre nivell es revela després dels vostres jocs d'ubicació.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Anar a la velocitat del joc anterior. Només un jugador.",
     "game_speed_up": "Accelera el joc",
     "game_speed_up_desc": "Passeu a la següent velocitat de joc (0,5, 1, 2, màxim). Només un jugador.",
+    "game_tips_desc": "Consells breus sobre la teva situació durant una partida. Activats per defecte per als jugadors amb poques partides.",
+    "game_tips_label": "Consells dins del joc",
     "go_to_player_desc": "Commuta l'ampliació del jugador al principi d'un joc.",
     "go_to_player_label": "Aneu al jugador a l'inici",
     "graphics_preset_desc": "Trieu l'aspecte predefinit per al mapa. Afina o crea el teu propi a la configuració gràfica del joc.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Esperant jugadors ({count}/{max})",
     "you": "Tu"
   },
+  "video": {
+    "cancel": "Cancel·la",
+    "clock_label": "Temps de joc",
+    "close": "Tanca",
+    "create": "Crea el meu vídeo",
+    "download": "Baixa",
+    "duration": "Durada: {duration}",
+    "error": "No s'ha pogut crear el vídeo en aquest dispositiu.",
+    "format_label": "Format del vídeo",
+    "format_square": "Quadrat (1:1)",
+    "format_vertical": "Vertical (9:16)",
+    "generating": "S'està creant el vídeo…",
+    "hint": "Un vídeo de 30 segons de tota la partida, creat al teu dispositiu.",
+    "keep_tab_open": "Mantén aquesta pestanya oberta i al davant fins que acabi.",
+    "outcome_loss": "Derrota",
+    "outcome_neutral": "Partida acabada",
+    "outcome_win": "Victòria",
+    "preview_aria": "Previsualització del vídeo",
+    "progress_aria": "Progrés del vídeo",
+    "rank": "#{place} de {total}",
+    "ready_title": "El vídeo és a punt",
+    "tagline": "Tota la partida en 30 segons"
+  },
   "warning_notice": {
     "body": "El teu compte ha rebut una advertència oficial de l'equip de moderació.",
     "consequence": "Qualsevol nou incident comportarà l'exclusió del mode classificatori.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Des del panell del compte, vincula el teu Discord al teu compte de Territorium, encara que t'hagis registrat per correu, Google o Steam. Després fes servir /compte al Discord per obtenir el rol verificat i el teu perfil. El bot respon en el teu idioma.",
       "discord_link_title": "Vincula el teu compte de Discord",
       "discord_title": "El Discord oficial és obert"
+    },
+    "v0_1_180": {
+      "ranked": "Acaba una partida multijugador normal per desbloquejar les partides classificatòries.",
+      "ranked_title": "Les classificatòries es desbloquegen després d'una partida normal",
+      "tips": "Nou a Territorium? Apareixen consells curts durant les teves primeres partides. Els pots desactivar a la configuració.",
+      "tips_title": "Consells dins del joc",
+      "video": "Al final d'una partida, crea un vídeo de tota la partida accelerada i descarrega'l per compartir-lo (format quadrat o vertical).",
+      "video_title": "La teva partida en 30 segons"
     }
   },
   "win_modal": {

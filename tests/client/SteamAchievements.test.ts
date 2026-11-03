@@ -25,6 +25,7 @@ const end = (over: Partial<GameEnd> = {}): GameEnd => ({
   versusTeamSize: 1,
   teamGame: false,
   hadAlly: true,
+  cancelled: false,
   ...over,
 });
 
@@ -39,6 +40,46 @@ describe("Steam achievements", () => {
     achievementsForGameEnd(end({ ranked: true, won: true }), p);
     achievementsForGameEnd(end({ ranked: true, won: true }), p);
     expect(p).toMatchObject({ wins: 1, rankedGames: 1 });
+  });
+
+  it("counts a training win as no win", () => {
+    const p = fresh();
+    const out = achievementsForGameEnd(
+      end({ won: true, variant: "training", hadAlly: false }),
+      p,
+    );
+    expect(out).toEqual([A.firstStep]);
+    expect(p).toMatchObject({ wins: 0, lastWon: false });
+  });
+
+  it("counts a training game as played, with no win achievement", () => {
+    const p = fresh();
+    const out = achievementsForGameEnd(
+      end({ won: false, variant: "training" }),
+      p,
+    );
+    expect(out).toEqual([A.firstStep]);
+    expect(p.wins).toBe(0);
+  });
+
+  it("counts nothing for a game cancelled by staff", () => {
+    const p = { ...fresh(), rankedGames: 9, wins: 3 };
+    const out = achievementsForGameEnd(
+      end({ ranked: true, cancelled: true, won: true, hadAlly: false }),
+      p,
+    );
+    expect(out).toEqual([]);
+    expect(p).toEqual({ ...fresh(), rankedGames: 9, wins: 3 });
+  });
+
+  it("leaves the game open to count once after a cancelled end", () => {
+    const p = fresh();
+    achievementsForGameEnd(end({ ranked: true, cancelled: true }), p);
+    expect(p).toMatchObject({ rankedGames: 0, lastGame: null });
+    expect(achievementsForGameEnd(end({ ranked: true }), p)).toContain(
+      A.firstStep,
+    );
+    expect(p).toMatchObject({ rankedGames: 1, lastGame: "g1" });
   });
 
   it("unlocks the win counts at 10, 50 and 200", () => {

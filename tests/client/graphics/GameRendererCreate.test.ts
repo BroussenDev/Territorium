@@ -46,6 +46,7 @@ const HUD_TAGS = [
   "immunity-timer",
   "in-game-promo",
   "tutorial-panel",
+  "game-tips",
 ] as const;
 
 describe("createRenderer", () => {

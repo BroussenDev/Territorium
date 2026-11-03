@@ -21,7 +21,7 @@ const UPGRADABLE = [
   UnitType.SAMLauncher,
 ];
 
-let onGameEnd: ((won: boolean) => void) | null = null;
+let onGameEnd: ((won: boolean, cancelled: boolean) => void) | null = null;
 
 /**
  * Follows the game for the Steam achievements: eliminations, peace treaties,
@@ -36,7 +36,7 @@ export class SteamAchievementsController implements Controller {
   constructor(private game: GameView) {}
 
   init() {
-    onGameEnd = (won) => this.gameEnded(won);
+    onGameEnd = (won, cancelled) => this.gameEnded(won, cancelled);
     const config = this.game.config();
     const gc = config.gameConfig();
     // Replays and games with cheats earn nothing.
@@ -75,7 +75,7 @@ export class SteamAchievementsController implements Controller {
     }
   }
 
-  gameEnded(won: boolean) {
+  gameEnded(won: boolean, cancelled: boolean) {
     if (!this.active) return;
     const me = this.game.myPlayer();
     if (me === null || !me.hasSpawned()) return;
@@ -85,6 +85,7 @@ export class SteamAchievementsController implements Controller {
     const end: GameEnd = {
       gameID: this.game.gameID(),
       won,
+      cancelled,
       ranked: gc.rankedType !== undefined,
       variant: gc.gameVariant ?? null,
       versusTeamSize:
@@ -102,6 +103,6 @@ export class SteamAchievementsController implements Controller {
 }
 
 /** Reported by the win modal when the game's end shows (won or not). */
-export function reportGameEnd(won: boolean): void {
-  onGameEnd?.(won);
+export function reportGameEnd(won: boolean, cancelled = false): void {
+  onGameEnd?.(won, cancelled);
 }

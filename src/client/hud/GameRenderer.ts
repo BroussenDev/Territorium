@@ -15,6 +15,7 @@ import { WarshipSelectionController } from "../controllers/WarshipSelectionContr
 import { GameStartingModal } from "../GameStartingModal";
 import { migrateLegacyGraphicsSettings } from "../GraphicsPresets";
 import { MapRenderer } from "../render/gl";
+import { TerritorySnapshotRecorder } from "../replayVideo/TerritorySnapshots";
 import { TransformHandler } from "../TransformHandler";
 import { UIState } from "../UIState";
 import type { UserSettingModal } from "../UserSettingModal";
@@ -47,6 +48,7 @@ import { SpawnTimer } from "./layers/SpawnTimer";
 // Imported for its side effect too: the <staff-review-panel> element.
 import "./layers/AdminEffects";
 import { AdminEffects } from "./layers/AdminEffects";
+import { GameTips } from "./layers/GameTips";
 import "./layers/StaffReviewPanel";
 import { StaffReviewPanel } from "./layers/StaffReviewPanel";
 import { SteamAchievementsController } from "./layers/SteamAchievementsController";
@@ -176,6 +178,9 @@ export function createRenderer(
   }
   winModal.eventBus = eventBus;
   winModal.game = game;
+  // Samples the map through the game for the end-screen video.
+  const territorySnapshots = new TerritorySnapshotRecorder(game);
+  winModal.territorySnapshots = territorySnapshots;
 
   const victoryCelebration = document.querySelector(
     "victory-celebration",
@@ -371,6 +376,14 @@ export function createRenderer(
   tutorialPanel.userSettings = userSettings;
   tutorialPanel.uiState = uiState;
 
+  const gameTips = document.querySelector("game-tips") as GameTips;
+  if (!(gameTips instanceof GameTips)) {
+    console.error("game tips not found");
+  }
+  gameTips.game = game;
+  gameTips.uiState = uiState;
+  gameTips.userSettings = userSettings;
+
   const layers: Controller[] = [
     new WarshipSelectionController(game, eventBus, transformHandler, view),
     new BuildPreviewController(
@@ -429,9 +442,11 @@ export function createRenderer(
     replayPanel,
     settingsModal,
     playerPanel,
+    territorySnapshots,
     headsUpMessage,
     multiTabModal,
     tutorialPanel,
+    gameTips,
     alertFrame,
     performanceOverlay,
   ];

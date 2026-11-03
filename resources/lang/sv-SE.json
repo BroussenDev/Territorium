@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "En minut kvar!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Din allianságfråga väntar på svar. Den går ut om den andra spelaren inte svarar i tid.",
+    "alliances": "Allierade kan inte attackera varandra. Föreslå en allians till en granne för att hålla gränsen lugn.",
+    "attack_ratio_high": "Ett mycket högt anfallsförhållande skickar nästan alla trupper och lämnar gränserna oskyddade.",
+    "close": "Stäng",
+    "coastal_no_port": "Du har kust men ingen hamn: hamnar skickar handelsfartyg och ger guld.",
+    "disable": "Visa inte fler tips",
+    "frontier_long": "En lång gräns är svår att försvara: koncentrera attackerna till en sida i taget.",
+    "gold_unused": "Du har mycket guld: bygg en stad för att höja ditt maximala antal trupper.",
+    "nation_neighbour": "En AI-nation delar din gräns: den attackerar och försvarar sig som en spelare. Håll koll på dess trupper.",
+    "no_city": "Ingen stad än: städer höjer ditt maximala antal trupper. Bygg en nu.",
+    "radial_menu": "Högerklicka på kartan (långt tryck på mobil) för att öppna den radiala menyn: bygga, attackera eller skicka trupper.",
+    "spawn": "Klicka på ett fritt område på kartan för att välja var ditt land startar.",
+    "title": "Tips",
+    "troops_max": "Dina trupper är på maximum: anfall eller bygg så att du inte slösar bort dem.",
+    "under_attack": "Du blir attackerad. Håll trupper vid gränsen som träffas."
+  },
   "graphics_check": {
     "fps_about": "Cirka {fps} FPS",
     "fps_more": "Över {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Överlämna",
     "surrender_title": "Bli deras vasall i 10 minuter: inga bråk mellan er, och du betalar dem 25 % av din guldinkomst",
     "target": "Mål",
+    "trade_cooldown": "möjligt igen om några sekunder",
     "trading": "Handel",
     "traitor": "Förrädare",
     "troops": "Trupper",
@@ -2783,6 +2801,7 @@
     "log_in": "Logga in",
     "login_required": "Ranking är endast för registrerade spelare. Logga in på ditt konto för att spela.",
     "need_players": "Matchen börjar när {min}-spelare är inne. Om kön förblir kort räcker det med {lowMin}-spelare om {seconds}s.",
+    "needs_normal_game": "Spela först en vanlig flerspelarmatch för att låsa upp rankat.",
     "new_season": "Ny säsong",
     "peak": "Högsta: {elo}",
     "placement_hint": "Din nivå avslöjas efter dina placeringsspel.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Gå till föregående spelhastighet. Endast en spelare.",
     "game_speed_up": "Spelet Speed Up",
     "game_speed_up_desc": "Växla till nästa spelhastighet (0,5, 1, 2, max). Endast en spelare.",
+    "game_tips_desc": "Korta tips om din situation under en match. På som standard för spelare med få matcher.",
+    "game_tips_label": "Tips under spelet",
     "go_to_player_desc": "Växla mellan att zooma in på spelaren i början av ett spel.",
     "go_to_player_label": "Gå till spelare vid start",
     "graphics_preset_desc": "Välj det förinställda utseendet för kartan. Finjustera eller skapa din egen i spelets grafikinställningar.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Väntar på spelare ({count}/{max})",
     "you": "Du"
   },
+  "video": {
+    "cancel": "Avbryt",
+    "clock_label": "Speltid",
+    "close": "Stäng",
+    "create": "Skapa min video",
+    "download": "Ladda ner",
+    "duration": "Längd: {duration}",
+    "error": "Videon kunde inte skapas på den här enheten.",
+    "format_label": "Videoformat",
+    "format_square": "Kvadrat (1:1)",
+    "format_vertical": "Vertikal (9:16)",
+    "generating": "Skapar videon…",
+    "hint": "En 30 sekunder lång video av hela spelet, skapad på din enhet.",
+    "keep_tab_open": "Håll den här fliken öppen och i förgrunden tills den är klar.",
+    "outcome_loss": "Förlust",
+    "outcome_neutral": "Spelet är slut",
+    "outcome_win": "Seger",
+    "preview_aria": "Förhandsvisning av video",
+    "progress_aria": "Videons framsteg",
+    "rank": "#{place} av {total}",
+    "ready_title": "Din video är klar",
+    "tagline": "Hela spelet på 30 sekunder"
+  },
   "warning_notice": {
     "body": "Ditt konto har fått en officiell varning från moderatorteamet.",
     "consequence": "Varje ny incident leder till uteslutning från rankat läge.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Koppla din Discord till ditt Territorium-konto från kontopanelen, även om du registrerade dig med e-post, Google eller Steam. Använd sedan /compte på Discord för att få den verifierade rollen och din profil. Boten svarar på ditt språk.",
       "discord_link_title": "Koppla ditt Discord-konto",
       "discord_title": "Den officiella Discorden är öppen"
+    },
+    "v0_1_180": {
+      "ranked": "Spela en vanlig flerspelarmatch för att låsa upp rankat.",
+      "ranked_title": "Rankat låses upp efter en vanlig match",
+      "tips": "Ny i Territorium? Korta tips visas under dina första matcher. Du kan stänga av dem i inställningarna.",
+      "tips_title": "Tips under spelet",
+      "video": "När en match är slut kan du skapa en snabbspelad video av hela spelet och ladda ner den för att dela den (kvadratiskt eller vertikalt format).",
+      "video_title": "Ditt spel på 30 sekunder"
     }
   },
   "win_modal": {

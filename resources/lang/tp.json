@@ -1,4 +1,16 @@
 {
+  "account_modal": {
+    "discord_share": "o toki e musi len mi lon Discord",
+    "discord_share_desc": "musi len sina li kama lon Discord pi Territorium, li jo e nena 'o kama'. kepeken /inviter la sina ken kama e jan pona.",
+    "discord_share_failed": "ilo li ken ala awen e ni. o lukin sin.",
+    "link_discord": "o linja e sijelo Discord",
+    "link_discord_already_has": "sijelo ni li jo e linja tawa sijelo Discord ante.",
+    "link_discord_error": "mi ken ala linja e sijelo Discord sina. o pali sin.",
+    "link_discord_failed": "mi ken ala open e linja tawa Discord. o pali sin.",
+    "link_discord_permanent": "sina linja e Discord la, ona li awen lon sijelo ni. jan pona taso li ken weka e ona.",
+    "link_discord_success": "sijelo Discord sina li linja.",
+    "link_discord_taken": "sijelo Discord ni li jo e linja tawa sijelo Territorium ante."
+  },
   "chat": {
     "attack": {
       "attack": "o utala e [P1] a!",
@@ -91,6 +103,23 @@
   "game_starting_modal": {
     "desc": "tomo li kama open. o awen.",
     "title": "musi li open..."
+  },
+  "game_tips": {
+    "alliance_request_pending": "sina wile e pona. tenpo li weka tan ala tawa ona.",
+    "alliances": "jan pi kulupu ala li ken utala. o pana e kulupu tawa jan pi ma poka sina.",
+    "attack_ratio_high": "nasin utala li suli mute. kulupu ale li tawa, ma li lon ala.",
+    "close": "pini",
+    "coastal_no_port": "sina lon poka telo, ma pi telo ala. ma pi telo li pana e tomo tawa telo.",
+    "disable": "o pana ala e sona pona",
+    "frontier_long": "ma suli li ike tawa lawa. o kepeken e kulupu tawa ma wan taso.",
+    "gold_unused": "sina jo e mani mute. o pali e tomo, o suli e kulupu.",
+    "nation_neighbour": "ma pi ilo sona li lon poka sina. ona li utala li awen kepeken jan. o lukin e kulupu ona.",
+    "no_city": "tomo ala li lon. tomo li suli e kulupu. o pali e tomo tenpo ni.",
+    "radial_menu": "o luka e ma kepeken ilo pi lukin wan. ilo ni li pali, li utala, li pana e kulupu.",
+    "spawn": "o luka e ma ala. ma sina li open lon ma ni.",
+    "title": "sona pona",
+    "troops_max": "kulupu sina li suli ale. o utala anu o pali.",
+    "under_attack": "ma sina li utala. o awen e kulupu tawa ma ni."
   },
   "heads_up_message": {
     "versus_spawn": "o pana e lon open lon ma pi kulupu sina"
@@ -234,6 +263,9 @@
     "fantasy": "ma ante",
     "regional": "ma lili"
   },
+  "player_panel": {
+    "trade_cooldown": "tenpo lili la sina ken pali e ni"
+  },
   "private_lobby": {
     "checking": "ilo li alasa e tomo...",
     "enter_id": "o pana e nanpa tomo",
@@ -253,6 +285,7 @@
   "ranked": {
     "elo": "Elo",
     "is_legend": "sina lon kulupu 5 pi jan musi wawa pi tenpo ni",
+    "needs_normal_game": "o musi e musi kulupu lili wan. ni la sina ken musi e musi nanpa.",
     "new_season": "tenpo sin",
     "peak": "nanpa sewi: {elo}",
     "rank": "nanpa #{rank}",
@@ -311,6 +344,8 @@
     "easter_writing_speed_label": "nanpa pi wawa sitelen",
     "emojis_desc": "o ante e lon pi sitelen Emosi",
     "emojis_label": "😊 sitelen Emosi",
+    "game_tips_desc": "sona lili pi lon tenpo ni. ona li lon tawa jan pi musi lili.",
+    "game_tips_label": "sona pona lon musi",
     "left_click_desc": "ni li lon la ilo luka soto li open e lipu ken la ilo luka utala li utala. ni li pini la ilo luka soto li utala taso.",
     "left_click_label": "ilo luka soto li open e lipu ken",
     "move_down": "o lukin anpa",
@@ -379,17 +414,28 @@
     "waiting_players": "mi awen e jan ({count}/{max})",
     "you": "sina"
   },
-  "account_modal": {
-    "discord_share": "o toki e musi len mi lon Discord",
-    "discord_share_desc": "musi len sina li kama lon Discord pi Territorium, li jo e nena 'o kama'. kepeken /inviter la sina ken kama e jan pona.",
-    "discord_share_failed": "ilo li ken ala awen e ni. o lukin sin.",
-    "link_discord": "o linja e sijelo Discord",
-    "link_discord_already_has": "sijelo ni li jo e linja tawa sijelo Discord ante.",
-    "link_discord_error": "mi ken ala linja e sijelo Discord sina. o pali sin.",
-    "link_discord_failed": "mi ken ala open e linja tawa Discord. o pali sin.",
-    "link_discord_permanent": "sina linja e Discord la, ona li awen lon sijelo ni. jan pona taso li ken weka e ona.",
-    "link_discord_success": "sijelo Discord sina li linja.",
-    "link_discord_taken": "sijelo Discord ni li jo e linja tawa sijelo Territorium ante."
+  "video": {
+    "cancel": "weka",
+    "clock_label": "tenpo musi",
+    "close": "pini",
+    "create": "pali e vidio mi",
+    "download": "jo e ona",
+    "duration": "tenpo suli: {duration}",
+    "error": "ilo ni li ken ala pali e vidio.",
+    "format_label": "nasin vidio",
+    "format_square": "poki (1:1)",
+    "format_vertical": "sewi (9:16)",
+    "generating": "ona li pali e vidio…",
+    "hint": "vidio tenpo 30 sekan pi musi ale, ilo sina li pali e ona.",
+    "keep_tab_open": "o awen e lupa ni lon sewi kin tenpo ale.",
+    "outcome_loss": "ike mi",
+    "outcome_neutral": "musi li pini",
+    "outcome_win": "pona mi",
+    "preview_aria": "lukin lili pi vidio",
+    "progress_aria": "kama pi vidio",
+    "rank": "#{place} lon {total}",
+    "ready_title": "vidio sina li pini",
+    "tagline": "musi ale tenpo 30 sekan"
   },
   "whats_new": {
     "v0_1_173": {
@@ -399,6 +445,14 @@
       "discord_link": "lon lipu sijelo, o linja e Discord sina tawa sijelo Territorium sina. sina ken ni kin la sina kama kepeken lipu toki, kepeken Google anu kepeken Steam. ni la o kepeken /compte lon Discord: sina kama jo e nimi lon e lipu sina. ilo li toki kepeken toki sina.",
       "discord_link_title": "o linja e sijelo Discord sina",
       "discord_title": "kulupu Discord lawa li open"
+    },
+    "v0_1_180": {
+      "ranked": "o pini e musi kulupu wan la, sina ken musi e musi nanpa.",
+      "ranked_title": "musi nanpa li open taso lon musi kulupu wan",
+      "tips": "sina sin lon Territorium? sona lili li kama lon musi open sina. sina ken weka e ona lon lipu lawa.",
+      "tips_title": "sona pona lon musi",
+      "video": "tenpo musi li pini la, o pali e vidio pi musi ale tenpo lili. o jo e ona, o pana e ona tawa jan ante. nasin: poki anu sewi.",
+      "video_title": "musi sina lon tenpo 30 sekan"
     }
   }
 }

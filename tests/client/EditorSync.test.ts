@@ -16,9 +16,12 @@ vi.mock("../../src/client/editor/EditorLibrary", () => ({
   putMap: async (m: LibraryMap) => void device.maps.set(m.id, { ...m }),
   forgetMap: async (id: string) => void device.maps.delete(id),
 }));
-const auth = vi.hoisted(() => ({ header: "Bearer t" }));
+const auth = vi.hoisted(() => ({ header: "Bearer t", fail: false }));
 vi.mock("../../src/client/Auth", () => ({
-  getAuthHeader: async () => auth.header,
+  getAuthHeader: async () => {
+    if (auth.fail) throw new Error("token store unavailable");
+    return auth.header;
+  },
 }));
 vi.mock("../../src/client/ApiBase", () => ({
   getApiBase: () => "https://api.test",
@@ -116,6 +119,7 @@ beforeEach(() => {
   server = new Map();
   tooLarge = new Set();
   auth.header = "Bearer t";
+  auth.fail = false;
   vi.stubGlobal("fetch", vi.fn(fakeFetch));
 });
 
@@ -189,6 +193,15 @@ describe("map editor sync", () => {
     const copy = device.maps.get("copy-0001")!;
     expect(copy.name).toBe("Mine");
     expect(server.has("copy-0001")).toBe(true);
+  });
+
+  it("reports an error, not a rejection, when the sign-in cannot be read", async () => {
+    device.maps.set("map-0001", record("map-0001", "Mine", 10, null));
+    auth.fail = true;
+    const report = await syncLibrary();
+    expect(report.state).toBe("error");
+    expect(report.changed).toEqual([]);
+    expect(device.maps.get("map-0001")?.syncedAt).toBeNull();
   });
 
   it("keeps a map too large to sync on this device", async () => {

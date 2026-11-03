@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Satu menit tersisa!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Permintaan aliansimu menunggu jawaban. Akan kedaluwarsa jika pemain lain tidak membalas tepat waktu.",
+    "alliances": "Sekutu tidak bisa saling menyerang. Ajukan aliansi ke tetangga agar perbatasanmu tetap tenang.",
+    "attack_ratio_high": "Rasio serangan yang sangat tinggi mengirim hampir semua pasukan, dan perbatasanmu jadi tak terjaga.",
+    "close": "Tutup",
+    "coastal_no_port": "Kamu di pesisir tanpa pelabuhan: pelabuhan mengirim kapal dagang dan menghasilkan emas.",
+    "disable": "Jangan tampilkan tips lagi",
+    "frontier_long": "Perbatasan panjang sulit dipertahankan: fokuskan serangan ke satu sisi dalam satu waktu.",
+    "gold_unused": "Emasmu banyak: bangun kota untuk menaikkan jumlah pasukan maksimum.",
+    "nation_neighbour": "Sebuah negara AI berbagi perbatasan denganmu: ia menyerang dan bertahan seperti pemain. Pantau pasukannya.",
+    "no_city": "Belum ada kota: kota menaikkan jumlah pasukan maksimum. Bangun satu sekarang.",
+    "radial_menu": "Klik kanan peta (tekan lama di ponsel) untuk membuka menu radial: membangun, menyerang, atau mengirim pasukan.",
+    "spawn": "Klik area kosong di peta untuk memilih tempat negaramu dimulai.",
+    "title": "Tips",
+    "troops_max": "Pasukanmu sudah maksimum: serang atau bangun agar tidak terbuang.",
+    "under_attack": "Kamu sedang diserang. Pertahankan pasukan di perbatasan yang diserang."
+  },
   "graphics_check": {
     "fps_about": "Sekitar {fps} FPS",
     "fps_more": "Lebih dari {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Menyerah",
     "surrender_title": "Menjadi pengikut mereka selama 10 menit: tidak ada pertengkaran di antara Anda, dan Anda membayar mereka 25% dari pendapatan emas Anda",
     "target": "Sasaran",
+    "trade_cooldown": "tersedia lagi dalam beberapa detik",
     "trading": "Perdagangan",
     "traitor": "Pengkhianat",
     "troops": "Pasukan",
@@ -2783,6 +2801,7 @@
     "log_in": "Masuk",
     "login_required": "Pemeringkatan hanya untuk pemain terdaftar. Masuk ke akun Anda untuk bermain.",
     "need_players": "Pertandingan dimulai setelah {min} pemain masuk. Jika antrean tetap pendek, {lowMin} pemain akan cukup dalam {seconds} detik.",
+    "needs_normal_game": "Mainkan dulu satu permainan multipemain biasa untuk membuka mode peringkat.",
     "new_season": "Musim baru",
     "peak": "Tertinggi: {elo}",
     "placement_hint": "Tingkat Anda terungkap setelah permainan penempatan Anda.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Beralih ke kecepatan game sebelumnya. Hanya pemain tunggal.",
     "game_speed_up": "Mempercepat Permainan",
     "game_speed_up_desc": "Beralih ke kecepatan permainan berikutnya (0,5, 1, 2, maks). Hanya pemain tunggal.",
+    "game_tips_desc": "Tips singkat tentang situasimu selama permainan. Aktif secara default untuk pemain dengan sedikit permainan.",
+    "game_tips_label": "Tips dalam permainan",
     "go_to_player_desc": "Alihkan memperbesar pemain di awal permainan.",
     "go_to_player_label": "Pergi ke pemain di awal",
     "graphics_preset_desc": "Pilih tampilan preset untuk peta. Sempurnakan atau buat sendiri dalam pengaturan grafis dalam game.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Menunggu pemain ({count}/{max})",
     "you": "Kamu"
   },
+  "video": {
+    "cancel": "Batal",
+    "clock_label": "Waktu permainan",
+    "close": "Tutup",
+    "create": "Buat video saya",
+    "download": "Unduh",
+    "duration": "Durasi: {duration}",
+    "error": "Video tidak dapat dibuat di perangkat ini.",
+    "format_label": "Format video",
+    "format_square": "Persegi (1:1)",
+    "format_vertical": "Vertikal (9:16)",
+    "generating": "Membuat video…",
+    "hint": "Video 30 detik dari seluruh permainan, dibuat di perangkat Anda.",
+    "keep_tab_open": "Biarkan tab ini terbuka dan di depan sampai selesai.",
+    "outcome_loss": "Kekalahan",
+    "outcome_neutral": "Permainan selesai",
+    "outcome_win": "Kemenangan",
+    "preview_aria": "Pratinjau video",
+    "progress_aria": "Progres video",
+    "rank": "#{place} dari {total}",
+    "ready_title": "Video Anda sudah siap",
+    "tagline": "Seluruh permainan dalam 30 detik"
+  },
   "warning_notice": {
     "body": "Akun Anda menerima peringatan resmi dari tim moderasi.",
     "consequence": "Setiap insiden baru akan berujung pada pengecualian dari mode peringkat.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Dari panel akun, tautkan Discord ke akun Territorium-mu, meskipun kamu mendaftar lewat email, Google, atau Steam. Lalu gunakan /compte di Discord untuk mendapatkan peran terverifikasi dan profilmu. Bot menjawab dalam bahasamu.",
       "discord_link_title": "Tautkan akun Discord-mu",
       "discord_title": "Discord resmi sudah dibuka"
+    },
+    "v0_1_180": {
+      "ranked": "Mainkan satu permainan multipemain biasa untuk membuka permainan berperingkat.",
+      "ranked_title": "Mode peringkat terbuka setelah satu permainan biasa",
+      "tips": "Baru di Territorium? Tips singkat akan muncul di permainan pertamamu. Kamu bisa mematikannya di pengaturan.",
+      "tips_title": "Tips dalam permainan",
+      "video": "Di akhir permainan, buat video seluruh permainan dengan kecepatan dipercepat dan unduh untuk dibagikan (format persegi atau vertikal).",
+      "video_title": "Permainanmu dalam 30 detik"
     }
   },
   "win_modal": {

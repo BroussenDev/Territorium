@@ -2923,16 +2923,26 @@ export async function fetchChallenges(): Promise<ChallengesResponse | false> {
 
 // POST /matchmaking/ffa — joins the ranked queue or keeps a place in it; a
 // player who stops polling for ~10 s drops out. "login_required": guests and
-// banned accounts can't play ranked.
+// banned accounts can't play ranked. "needs_normal_game": the player has not
+// finished one normal multiplayer game yet (403 ranked_needs_normal_game).
 export async function pollRankedQueue(): Promise<
-  RankedQueueState | "login_required" | false
+  RankedQueueState | "login_required" | "needs_normal_game" | false
 > {
   try {
     const res = await fetch(`${getApiBase()}/matchmaking/ffa`, {
       method: "POST",
       headers: { Authorization: await getAuthHeader() },
     });
-    if (res.status === 401 || res.status === 403) return "login_required";
+    if (res.status === 401) return "login_required";
+    if (res.status === 403) {
+      const body: unknown = await res.json().catch(() => null);
+      return typeof body === "object" &&
+        body !== null &&
+        "error" in body &&
+        body.error === "ranked_needs_normal_game"
+        ? "needs_normal_game"
+        : "login_required";
+    }
     if (!res.ok) return false;
     const parsed = RankedQueueStateSchema.safeParse(await res.json());
     return parsed.success ? parsed.data : false;

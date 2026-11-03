@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Már csak egy perc maradt hátra!"
   },
+  "game_tips": {
+    "alliance_request_pending": "A szövetségi kérelme válaszra vár. Lejár, ha a másik játékos nem válaszol időben.",
+    "alliances": "A szövetségesek nem támadhatják egymást. Ajánljon szövetséget egy szomszédnak, hogy a határ nyugodt maradjon.",
+    "attack_ratio_high": "A nagyon magas támadási arány szinte az összes csapatát elküldi, és a határai védtelenek maradnak.",
+    "close": "Bezárás",
+    "coastal_no_port": "Partvidéken van, de nincs kikötője: a kikötők kereskedelmi hajókat küldenek, és aranyat hoznak.",
+    "disable": "Többé ne jelenjenek meg a tippek",
+    "frontier_long": "A hosszú határt nehéz megvédeni: egyszerre csak egy oldalra összpontosítson a támadásokkal.",
+    "gold_unused": "Sok aranya van: építsen várost a maximális csapatszám növeléséhez.",
+    "nation_neighbour": "Egy MI-nemzet osztozik a határán: úgy támad és véd, mint egy játékos. Figyelje a csapatait.",
+    "no_city": "Még nincs városa: a városok növelik a maximális csapatszámot. Építsen egyet most.",
+    "radial_menu": "Kattintson jobb gombbal a térképre (telefonon hosszan nyomja meg), hogy megnyissa a körmenüt: építés, támadás vagy csapatküldés.",
+    "spawn": "Kattintson a térkép egy szabad területére, és válassza ki, hol kezdődjön az országa.",
+    "title": "Tipp",
+    "troops_max": "A csapatai elérték a maximumot: támadjon vagy építkezzen, hogy ne vesszenek kárba.",
+    "under_attack": "Támadás alatt áll. Tartson csapatokat a megtámadott határon."
+  },
   "graphics_check": {
     "fps_about": "Kb. {fps} FPS",
     "fps_more": "{fps} FPS felett",
@@ -2570,6 +2587,7 @@
     "surrender": "Megadás",
     "surrender_title": "Legyen a vazallusuk 10 percre: nincs veszekedés köztetek, és te fizeted nekik aranybevételed 25%-át",
     "target": "Célpont",
+    "trade_cooldown": "néhány másodperc múlva újra elérhető",
     "trading": "Kereskedés",
     "traitor": "Áruló",
     "troops": "Katonák",
@@ -2783,6 +2801,7 @@
     "log_in": "Jelentkezzen be",
     "login_required": "A Ranked csak regisztrált játékosoknak szól. Jelentkezzen be fiókjába a játékhoz.",
     "need_players": "A mérkőzés akkor kezdődik, amikor {min} játékos belépett. Ha a sor rövid marad, {lowMin} játékos elég lesz {seconds}s alatt.",
+    "needs_normal_game": "Előbb játssz le egy normál többjátékos meccset a rangsorolt mód feloldásához.",
     "new_season": "Új szezon",
     "peak": "Csúcs: {elo}",
     "placement_hint": "A szint a helyezési meccsek után derül ki.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Visszatérés az előző játéksebességhez. Csak egyjátékos módban.",
     "game_speed_up": "Játék gyorsítása",
     "game_speed_up_desc": "Váltás a következő játéksebességre (0,5, 1, 2, max). Csak egyjátékos módban.",
+    "game_tips_desc": "Rövid tippek a helyzetéről játék közben. Alapértelmezetten be van kapcsolva a kevés játékot játszó játékosoknak.",
+    "game_tips_label": "Tippek játék közben",
     "go_to_player_desc": "A játékosra való ráközelítés be-/kikapcsolása a játék elején.",
     "go_to_player_label": "Menj a játékoshoz induláskor",
     "graphics_preset_desc": "Válaszd ki a térkép előre beállított megjelenését, vagy finomhangold azt, esetleg hozz létre sajátot a játék grafikai beállításaiban.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Játékosokra várunk ({count}/{max})",
     "you": "Te"
   },
+  "video": {
+    "cancel": "Mégse",
+    "clock_label": "Játékidő",
+    "close": "Bezárás",
+    "create": "Videó készítése",
+    "download": "Letöltés",
+    "duration": "Hossz: {duration}",
+    "error": "A videót nem sikerült létrehozni ezen az eszközön.",
+    "format_label": "Videó formátum",
+    "format_square": "Négyzet (1:1)",
+    "format_vertical": "Álló (9:16)",
+    "generating": "Videó készítése…",
+    "hint": "A teljes játék 30 másodperces videója, az eszközödön készül.",
+    "keep_tab_open": "Maradjon nyitva és előtérben ez a lap, amíg kész nem lesz.",
+    "outcome_loss": "Vereség",
+    "outcome_neutral": "Játék vége",
+    "outcome_win": "Győzelem",
+    "preview_aria": "Videó előnézete",
+    "progress_aria": "Videó folyamata",
+    "rank": "#{place} / {total}",
+    "ready_title": "A videó elkészült",
+    "tagline": "Az egész játék 30 másodperben"
+  },
   "warning_notice": {
     "body": "A fiókod hivatalos figyelmeztetést kapott a moderátori csapattól.",
     "consequence": "Minden újabb incidens a rangsorolt módból való kizárást vonja maga után.",
@@ -3753,6 +3797,14 @@
       "discord_link": "A fiókpanelen kapcsold össze a Discordod a Territorium-fiókoddal, akkor is, ha e-maillel, Google-lel vagy Steammel regisztráltál. Utána használd a /compte parancsot a Discordon, hogy megkapd az ellenőrzött szerepet és a profilod. A bot a te nyelveden válaszol.",
       "discord_link_title": "Kapcsold össze a Discord-fiókod",
       "discord_title": "Megnyílt a hivatalos Discord"
+    },
+    "v0_1_180": {
+      "ranked": "Játssz le egy normál többjátékos meccset a rangsorolt játékok feloldásához.",
+      "ranked_title": "A rangsorolt játék egy normál játék után nyílik meg",
+      "tips": "Új vagy a Territoriumban? Rövid tippek jelennek meg az első játékaid alatt. A beállításokban ki is kapcsolhatod őket.",
+      "tips_title": "Tippek játék közben",
+      "video": "Játék végén készíts gyorsított videót a teljes játékról, és töltsd le megosztásra (négyzetes vagy álló formátum).",
+      "video_title": "A játékod 30 másodperben"
     }
   },
   "win_modal": {

@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "One minute remaining!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Your alliance request is waiting for an answer. It expires if the other player does not reply in time.",
+    "alliances": "Allies can't attack each other. Propose an alliance to a neighbour to keep your border quiet.",
+    "attack_ratio_high": "A very high attack ratio sends almost all your troops, leaving your borders bare.",
+    "close": "Close",
+    "coastal_no_port": "You are on the coast without a port: ports send trade ships and earn gold.",
+    "disable": "Stop showing tips",
+    "frontier_long": "A long border is hard to defend: focus your attacks on one side at a time.",
+    "gold_unused": "You have a lot of gold: build a city to raise your maximum troops.",
+    "nation_neighbour": "An AI nation shares your border: it attacks and defends like a player. Watch its troops.",
+    "no_city": "No city yet: cities raise your maximum troops. Build one now.",
+    "radial_menu": "Right-click the map (long-press on a phone) to open the radial menu: build, attack or send troops.",
+    "spawn": "Click a free area of the map to choose where your country starts.",
+    "title": "Tip",
+    "troops_max": "Your troops are at the maximum: attack or build so you don't waste them.",
+    "under_attack": "You are under attack. Keep troops on the border being hit."
+  },
   "graphics_check": {
     "fps_about": "About {fps} FPS",
     "fps_more": "Over {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Surrender",
     "surrender_title": "Become their vassal for 10 minutes: no fighting between you, and you pay them 25% of your gold income",
     "target": "Target",
+    "trade_cooldown": "available again in a few seconds",
     "trading": "Trading",
     "traitor": "Traitor",
     "troops": "Troops",
@@ -2783,6 +2801,7 @@
     "log_in": "Log in",
     "login_required": "Ranked is for registered players only. Log in to your account to play.",
     "need_players": "The match starts once {min} players are in. If the queue stays short, {lowMin} players will be enough in {seconds}s.",
+    "needs_normal_game": "Play one normal multiplayer game first to unlock ranked.",
     "new_season": "New season",
     "peak": "Peak: {elo}",
     "placement_hint": "Your tier is revealed after your placement games.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Cycle to previous game speed. Single player only.",
     "game_speed_up": "Game Speed Up",
     "game_speed_up_desc": "Cycle to next game speed (0.5, 1, 2, max). Single player only.",
+    "game_tips_desc": "Short tips about your situation during a game. On by default for players with few games.",
+    "game_tips_label": "In-Game Tips",
     "go_to_player_desc": "Toggle zooming in on the player in the beginning of a game.",
     "go_to_player_label": "Go to player on start",
     "graphics_preset_desc": "Choose the preset look for the map. Fine-tune or make your own in the in-game graphics settings.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Waiting for players ({count}/{max})",
     "you": "You"
   },
+  "video": {
+    "cancel": "Cancel",
+    "clock_label": "Game time",
+    "close": "Close",
+    "create": "Create my video",
+    "download": "Download",
+    "duration": "Duration: {duration}",
+    "error": "The video could not be created on this device.",
+    "format_label": "Video format",
+    "format_square": "Square (1:1)",
+    "format_vertical": "Vertical (9:16)",
+    "generating": "Creating your video…",
+    "hint": "A 30-second video of the whole game, made on your device.",
+    "keep_tab_open": "Keep this tab open and in front until it is done.",
+    "outcome_loss": "Defeat",
+    "outcome_neutral": "Game over",
+    "outcome_win": "Victory",
+    "preview_aria": "Video preview",
+    "progress_aria": "Video progress",
+    "rank": "#{place} of {total}",
+    "ready_title": "Your video is ready",
+    "tagline": "The whole game in 30 seconds"
+  },
   "warning_notice": {
     "body": "Your account has received an official warning from the moderation team.",
     "consequence": "Any new incident will lead to an exclusion from ranked mode.",
@@ -3753,6 +3797,14 @@
       "discord_link": "From the account panel, link your Discord to your Territorium account, even if you signed up by email, Google or Steam. Then use /compte on the Discord to get the verified role and your profile. The bot answers in your language.",
       "discord_link_title": "Link your Discord account",
       "discord_title": "The official Discord is open"
+    },
+    "v0_1_180": {
+      "ranked": "Finish one normal multiplayer game to unlock ranked games.",
+      "ranked_title": "Ranked unlocks after a normal game",
+      "tips": "New to Territorium? Short tips now show up during your first games. You can turn them off in the settings.",
+      "tips_title": "In-game tips",
+      "video": "At the end of a game, create a video of the whole game sped up and download it to share it (square or vertical format).",
+      "video_title": "Your game in 30 seconds"
     }
   },
   "win_modal": {

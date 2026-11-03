@@ -66,6 +66,18 @@ export const FRAME_RATE_CAPS: readonly number[] = [
 /** Graphics quality levels, lowest first. */
 export const GRAPHICS_QUALITIES = ["low", "normal", "high", "ultra"] as const;
 export type GraphicsQuality = (typeof GRAPHICS_QUALITIES)[number];
+/** In-game tips are on by default for players with fewer games than this. */
+export const GAME_TIPS_MAX_GAMES = 10;
+
+/** Same localStorage key as Utils.getGamesPlayed (kept here: core must not import the client UI). */
+function storedGamesPlayed(): number {
+  try {
+    return parseInt(localStorage.getItem("gamesPlayed") ?? "0", 10) || 0;
+  } catch {
+    return 0;
+  }
+}
+
 export const GRAPHICS_QUALITY_KEY = "settings.graphicsQuality";
 export const POWER_SAVING_KEY = "settings.powerSaving";
 // Actions that may share a key. Reset graphics only fires with its modifier
@@ -581,6 +593,26 @@ export class UserSettings {
 
   toggleHelpMessages() {
     this.setBool("settings.helpMessages", !this.helpMessages());
+  }
+
+  /**
+   * In-game tips for new players (GameTips). Until the player chooses, they
+   * are on while the player has fewer than GAME_TIPS_MAX_GAMES games; the
+   * choice then sticks.
+   */
+  gameTips(): boolean {
+    const stored = this.getCached("settings.gameTips");
+    if (stored === "true") return true;
+    if (stored === "false") return false;
+    return storedGamesPlayed() < GAME_TIPS_MAX_GAMES;
+  }
+
+  setGameTips(value: boolean) {
+    this.setBool("settings.gameTips", value);
+  }
+
+  toggleGameTips() {
+    this.setGameTips(!this.gameTips());
   }
 
   tutorialDismissed() {

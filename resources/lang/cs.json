@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Zbývá jedna minuta!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Vaše žádost o spojenectví čeká na odpověď. Vyprší, pokud ji druhý hráč včas nepřijme.",
+    "alliances": "Spojenci na sebe nemohou útočit. Navrhněte sousedovi spojenectví, aby byla hranice klidná.",
+    "attack_ratio_high": "Příliš vysoký poměr útoku pošle téměř všechny jednotky a hranice zůstanou bez obrany.",
+    "close": "Zavřít",
+    "coastal_no_port": "Jste u pobřeží, ale nemáte přístav: přístavy posílají obchodní lodě a vydělávají zlato.",
+    "disable": "Už nezobrazovat tipy",
+    "frontier_long": "Dlouhou hranici je těžké bránit: soustřeďte útoky vždy na jednu stranu.",
+    "gold_unused": "Máte hodně zlata: postavte město, které zvýší maximum vašich jednotek.",
+    "nation_neighbour": "Vaši hranici sdílí národ řízený AI: útočí a brání se jako hráč. Sledujte jeho jednotky.",
+    "no_city": "Zatím nemáte žádné město: města zvyšují maximum jednotek. Postavte nějaké.",
+    "radial_menu": "Kliknutím pravým tlačítkem na mapu (na telefonu dlouhým stiskem) otevřete kruhovou nabídku: stavět, útočit nebo posílat jednotky.",
+    "spawn": "Kliknutím na volné území na mapě vyberte, kde vaše země začne.",
+    "title": "Tip",
+    "troops_max": "Vaše jednotky jsou na maximu: útočte nebo stavte, ať se neplýtvá.",
+    "under_attack": "Jste napadeni. Udržujte jednotky na hranici, na kterou se útočí."
+  },
   "graphics_check": {
     "fps_about": "Asi {fps} FPS",
     "fps_more": "Přes {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Kapitulace",
     "surrender_title": "Staňte se jejich vazalem na 10 minut: žádné boje mezi vámi a zaplatíte jim 25 % ze svého zlatého příjmu",
     "target": "Cíl",
+    "trade_cooldown": "znovu dostupné za pár sekund",
     "trading": "Obchodování",
     "traitor": "Zrádce",
     "troops": "Jednotky",
@@ -2783,6 +2801,7 @@
     "log_in": "Přihlaste se",
     "login_required": "Ranked je pouze pro registrované hráče. Chcete-li hrát, přihlaste se ke svému účtu.",
     "need_players": "Zápas začíná, jakmile se dostaví {min} hráčů. Pokud fronta zůstane krátká, {lowMin} hráčů bude stačit za {seconds}s.",
+    "needs_normal_game": "Nejprve odehraj jednu běžnou hru pro více hráčů, abys odemkl hodnocené hry.",
     "new_season": "Nová sezóna",
     "peak": "Maximum: {elo}",
     "placement_hint": "Vaše úroveň je odhalena po vašich hrách o umístění.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Přepne na předchozí rychlost hry. Pouze ve hře pro jednoho hráče.",
     "game_speed_up": "Zrychlit hru",
     "game_speed_up_desc": "Přepne na další rychlost hry (0,5, 1, 2, max.). Pouze ve hře pro jednoho hráče.",
+    "game_tips_desc": "Krátké tipy k vaší situaci během hry. Ve výchozím nastavení zapnuto pro hráče s malým počtem her.",
+    "game_tips_label": "Tipy ve hře",
     "go_to_player_desc": "Zapne / vypne přiblížení na hráče na začátku hry.",
     "go_to_player_label": "Přejít na hráče při spuštění hry",
     "graphics_preset_desc": "Vyberte předvolbu vzhledu mapy. Podrobně ji upravte nebo si vytvořte vlastní v nastavení grafiky ve hře.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Čekání na hráče ({count}/{max})",
     "you": "Ty"
   },
+  "video": {
+    "cancel": "Zrušit",
+    "clock_label": "Herní čas",
+    "close": "Zavřít",
+    "create": "Vytvořit mé video",
+    "download": "Stáhnout",
+    "duration": "Délka: {duration}",
+    "error": "Video se na tomto zařízení nepodařilo vytvořit.",
+    "format_label": "Formát videa",
+    "format_square": "Čtverec (1:1)",
+    "format_vertical": "Na výšku (9:16)",
+    "generating": "Vytváření videa…",
+    "hint": "30sekundové video celé hry, vytvořené ve vašem zařízení.",
+    "keep_tab_open": "Nechte tuto kartu otevřenou a v popředí, dokud se nedokončí.",
+    "outcome_loss": "Porážka",
+    "outcome_neutral": "Konec hry",
+    "outcome_win": "Vítězství",
+    "preview_aria": "Náhled videa",
+    "progress_aria": "Průběh videa",
+    "rank": "#{place} z {total}",
+    "ready_title": "Vaše video je připraveno",
+    "tagline": "Celá hra za 30 sekund"
+  },
   "warning_notice": {
     "body": "Váš účet obdržel oficiální varování od moderátorského týmu.",
     "consequence": "Jakýkoli další incident povede k vyloučení z hodnoceného režimu.",
@@ -3753,6 +3797,14 @@
       "discord_link": "V panelu účtu propoj svůj Discord s účtem Territorium, i když ses registroval přes e-mail, Google nebo Steam. Pak na Discordu použij /compte a získej roli ověřeného hráče a svůj profil. Bot odpovídá v tvém jazyce.",
       "discord_link_title": "Propoj svůj účet Discord",
       "discord_title": "Oficiální Discord je otevřený"
+    },
+    "v0_1_180": {
+      "ranked": "Odehrajte jednu běžnou hru pro více hráčů a odemkněte hodnocené hry.",
+      "ranked_title": "Hodnocené hry se odemknou po běžné hře",
+      "tips": "Nově v Territorium? Během prvních her se budou zobrazovat krátké tipy. Můžete je vypnout v nastavení.",
+      "tips_title": "Tipy ve hře",
+      "video": "Na konci hry vytvořte zrychlené video celé hry a stáhněte si ho ke sdílení (čtvercový nebo na výšku formát).",
+      "video_title": "Vaše hra za 30 sekund"
     }
   },
   "win_modal": {

@@ -3,8 +3,10 @@ import { customElement, state } from "lit/decorators.js";
 import {
   copyToClipboard,
   getGamesPlayed,
+  getMapName,
   getTranslatedPlayerTeamLabel,
   homeHref,
+  normaliseMapKey,
   renderNumber,
   renderTroops,
   showToast,
@@ -56,6 +58,15 @@ import {
   PlayAgainTarget,
   requestPlayAgain,
 } from "../../PlayAgain";
+import {
+  formatGameClock,
+  VIDEO_TICKS_PER_SECOND,
+  videoDateStamp,
+  VideoMeta,
+  VideoOutcome,
+} from "../../replayVideo/RenderVideo";
+import "../../replayVideo/ReplayVideoPanel";
+import type { TerritorySnapshotRecorder } from "../../replayVideo/TerritorySnapshots";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
@@ -89,6 +100,9 @@ export class WinModal extends LitElement implements Controller {
 
   @state()
   private isWin = false;
+
+  // The match was cancelled (no winner): it counts for no achievement.
+  private isCancelled = false;
 
   @state()
   private isRankedGame = false;
@@ -149,6 +163,9 @@ export class WinModal extends LitElement implements Controller {
 
   private placeTimer: ReturnType<typeof setInterval> | null = null;
 
+  // Set by the game renderer: the map snapshots behind the end-screen video.
+  public territorySnapshots: TerritorySnapshotRecorder | null = null;
+
   // Override to prevent shadow DOM creation
   createRenderRoot() {
     return this;
@@ -175,7 +192,7 @@ export class WinModal extends LitElement implements Controller {
           ${this.renderGameResult()} ${this.renderGoal()}
           ${this.renderSurvivalReport()} ${this.renderRecap()}
           ${this.renderHighlights()} ${this.renderReplayShare()}
-          ${isDemo() ? null : this.innerHtml()}
+          ${this.renderVideo()} ${isDemo() ? null : this.innerHtml()}
           <steam-promo
             variant="compact"
             campaign="winmodal"
@@ -334,6 +351,52 @@ export class WinModal extends LitElement implements Controller {
         ></div>
       </div>
     </div>`;
+  }
+
+  private renderVideo() {
+    return html`<replay-video-panel
+      .recorder=${this.territorySnapshots}
+      .enabled=${this.game?.gameOver() === true}
+      .getMeta=${() => this.videoMeta()}
+    ></replay-video-panel>`;
+  }
+
+  // The labels and facts the end-screen video shows, in the player's language.
+  private videoMeta(): VideoMeta {
+    const gameConfig = this.game.config().gameConfig();
+    const me = this.game.myPlayer();
+    let outcome: VideoOutcome = "neutral";
+    if (this.isWin) {
+      outcome = "win";
+    } else if (!this.isCancelled && this.game.gameOver() && me?.hasSpawned()) {
+      outcome = "loss";
+    }
+    const title =
+      outcome === "win"
+        ? translateText("video.outcome_win")
+        : outcome === "loss"
+          ? translateText("video.outcome_loss")
+          : this._title || translateText("video.outcome_neutral");
+    const seconds = this.game.ticks() / VIDEO_TICKS_PER_SECOND;
+    return {
+      mapName: getMapName(gameConfig.gameMap),
+      title,
+      outcome,
+      rankText:
+        this.place === null
+          ? null
+          : translateText("video.rank", {
+              place: this.place.place,
+              total: this.place.total,
+            }),
+      clockLabel: translateText("video.clock_label"),
+      tagline: translateText("video.tagline"),
+      durationText: translateText("video.duration", {
+        duration: formatGameClock(seconds),
+      }),
+      fileSlug: normaliseMapKey(gameConfig.gameMap),
+      dateStamp: videoDateStamp(new Date()),
+    };
   }
 
   private renderReplayShare() {
@@ -687,7 +750,7 @@ export class WinModal extends LitElement implements Controller {
     // The game is over: nothing to go back to from the main menu.
     forgetActiveGame();
     crazyGamesSDK.gameplayStop();
-    reportGameEnd(this.isWin);
+    reportGameEnd(this.isWin, this.isCancelled);
     if (isDemo()) {
       recordDemoGame(this.game.gameID(), {
         won: this.isWin,
@@ -885,6 +948,8 @@ export class WinModal extends LitElement implements Controller {
     );
     const winUpdates = updates?.[GameUpdateType.Win] ?? [];
     winUpdates.forEach((wu) => {
+      // The game is decided: one more map snapshot for the end-screen video.
+      this.territorySnapshots?.requestFinal();
       if (wu.winner !== undefined) {
         void this.loadGameResult();
         void this.offerReplayLink();
@@ -896,6 +961,7 @@ export class WinModal extends LitElement implements Controller {
         this.eventBus.emit(new SendWinnerEvent(undefined, wu.allPlayersStats));
         this._title = translateText("win_modal.match_cancelled");
         this.isWin = false;
+        this.isCancelled = true;
         history.replaceState(null, "", `${window.location.pathname}?replay`);
         this.show();
       } else if (wu.winner[0] === "team") {

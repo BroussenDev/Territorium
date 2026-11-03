@@ -1036,7 +1036,7 @@ export class PlayerPanel extends LitElement implements Controller {
                 icon: stopTradingIcon,
                 iconAlt: "Stop Trading With All",
                 title: !this.actions?.canEmbargoAll
-                  ? `${translateText("player_panel.stop_trade_all")} - ${translateText("cooldown")}`
+                  ? `${translateText("player_panel.stop_trade_all")} - ${translateText("player_panel.trade_cooldown")}`
                   : translateText("player_panel.stop_trade_all"),
                 label: !this.actions?.canEmbargoAll
                   ? `${translateText("player_panel.stop_trade_all")} ⏳`
@@ -1049,7 +1049,7 @@ export class PlayerPanel extends LitElement implements Controller {
                 icon: startTradingIcon,
                 iconAlt: "Start Trading With All",
                 title: !this.actions?.canEmbargoAll
-                  ? `${translateText("player_panel.start_trade_all")} - ${translateText("cooldown")}`
+                  ? `${translateText("player_panel.start_trade_all")} - ${translateText("player_panel.trade_cooldown")}`
                   : translateText("player_panel.start_trade_all"),
                 label: !this.actions?.canEmbargoAll
                   ? `${translateText("player_panel.start_trade_all")} ⏳`

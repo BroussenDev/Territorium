@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Pozostała minuta!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Twoja prośba o sojusz czeka na odpowiedź. Wygaśnie, jeśli drugi gracz nie odpowie na czas.",
+    "alliances": "Sojusznicy nie mogą atakować siebie nawzajem. Zaproponuj sojusz sąsiadowi, aby granica pozostała spokojna.",
+    "attack_ratio_high": "Bardzo wysoki stosunek ataku wysyła prawie wszystkie wojska i zostawia granice bez obrony.",
+    "close": "Zamknij",
+    "coastal_no_port": "Masz wybrzeże, ale nie masz portu: porty wysyłają statki handlowe i zarabiają złoto.",
+    "disable": "Nie pokazuj więcej wskazówek",
+    "frontier_long": "Długą granicę trudno bronić: skupiaj ataki na jednej stronie naraz.",
+    "gold_unused": "Masz dużo złota: zbuduj miasto, aby zwiększyć maksymalną liczbę wojsk.",
+    "nation_neighbour": "Państwo sterowane przez AI graniczy z tobą: atakuje i broni się jak gracz. Obserwuj jego wojska.",
+    "no_city": "Nie masz jeszcze miasta: miasta zwiększają maksymalną liczbę wojsk. Zbuduj je teraz.",
+    "radial_menu": "Kliknij prawym przyciskiem mapę (na telefonie przytrzymaj), aby otworzyć menu kołowe: buduj, atakuj lub wysyłaj wojska.",
+    "spawn": "Kliknij wolne miejsce na mapie, aby wybrać, gdzie zacznie się twoje państwo.",
+    "title": "Wskazówka",
+    "troops_max": "Twoje wojska są na maksimum: atakuj lub buduj, żeby ich nie marnować.",
+    "under_attack": "Jesteś atakowany. Utrzymaj wojska na granicy, która jest atakowana."
+  },
   "graphics_check": {
     "fps_about": "Około {fps} FPS",
     "fps_more": "Ponad {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Poddać się",
     "surrender_title": "Zostań ich wasalem na 10 minut: nie będzie między wami walk, a zapłacicie im 25% swojego dochodu w złocie",
     "target": "Cel",
+    "trade_cooldown": "ponownie dostępne za kilka sekund",
     "trading": "Handel",
     "traitor": "Zdrajca",
     "troops": "Wojsko",
@@ -2783,6 +2801,7 @@
     "log_in": "Zaloguj się",
     "login_required": "Gra rankingowa jest przeznaczona wyłącznie dla zarejestrowanych graczy. Zaloguj się na swoje konto, aby zagrać.",
     "need_players": "Mecz rozpoczyna się, gdy w grze znajdzie się {min} graczy. Jeśli kolejka będzie krótka, w ciągu {seconds} s wystarczy {lowMin} graczy.",
+    "needs_normal_game": "Najpierw zagraj jedną zwykłą grę wieloosobową, aby odblokować tryb rankingowy.",
     "new_season": "Nowy sezon",
     "peak": "Szczyt: {elo}",
     "placement_hint": "Twój poziom zostanie ujawniony po rozegraniu gier rozstawiających.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Przejdź do poprzedniej prędkości gry. Tylko dla jednego gracza.",
     "game_speed_up": "Przyspieszenie gry",
     "game_speed_up_desc": "Przejdź do następnej prędkości gry (0,5, 1, 2, maks.). Tylko dla jednego gracza.",
+    "game_tips_desc": "Krótkie wskazówki dotyczące twojej sytuacji w trakcie gry. Domyślnie włączone dla graczy z małą liczbą gier.",
+    "game_tips_label": "Wskazówki w trakcie gry",
     "go_to_player_desc": "Przełącz powiększenie gracza na początku gry.",
     "go_to_player_label": "Przejdź do odtwarzacza na początku",
     "graphics_preset_desc": "Wybierz wstępnie ustawiony wygląd mapy. Dostosuj lub stwórz własne w ustawieniach grafiki w grze.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Oczekiwanie na graczy ({count}/{max})",
     "you": "Ty"
   },
+  "video": {
+    "cancel": "Anuluj",
+    "clock_label": "Czas gry",
+    "close": "Zamknij",
+    "create": "Utwórz mój film",
+    "download": "Pobierz",
+    "duration": "Czas trwania: {duration}",
+    "error": "Nie udało się utworzyć filmu na tym urządzeniu.",
+    "format_label": "Format filmu",
+    "format_square": "Kwadrat (1:1)",
+    "format_vertical": "Pionowy (9:16)",
+    "generating": "Tworzenie filmu…",
+    "hint": "30-sekundowy film z całej gry, tworzony na Twoim urządzeniu.",
+    "keep_tab_open": "Zostaw tę kartę otwartą i na wierzchu, aż do zakończenia.",
+    "outcome_loss": "Porażka",
+    "outcome_neutral": "Koniec gry",
+    "outcome_win": "Zwycięstwo",
+    "preview_aria": "Podgląd filmu",
+    "progress_aria": "Postęp filmu",
+    "rank": "#{place} z {total}",
+    "ready_title": "Twój film jest gotowy",
+    "tagline": "Cała gra w 30 sekund"
+  },
   "warning_notice": {
     "body": "Twoje konto otrzymało oficjalne ostrzeżenie od zespołu moderacji.",
     "consequence": "Każdy kolejny incydent spowoduje wykluczenie z trybu rankingowego.",
@@ -3753,6 +3797,14 @@
       "discord_link": "W panelu konta połącz Discorda z kontem Territorium, nawet jeśli rejestrowałeś się przez e-mail, Google lub Steam. Potem użyj /compte na Discordzie, by dostać rolę zweryfikowanego i swój profil. Bot odpowiada w twoim języku.",
       "discord_link_title": "Połącz konto Discord",
       "discord_title": "Oficjalny Discord jest otwarty"
+    },
+    "v0_1_180": {
+      "ranked": "Zagraj jedną zwykłą grę wieloosobową, aby odblokować gry rankingowe.",
+      "ranked_title": "Tryb rankingowy odblokuje się po zwykłej grze",
+      "tips": "Nowy w Territorium? Krótkie wskazówki pojawią się podczas Twoich pierwszych gier. Możesz je wyłączyć w ustawieniach.",
+      "tips_title": "Wskazówki w trakcie gry",
+      "video": "Po zakończeniu gry stwórz przyspieszone wideo z całej gry i pobierz je, aby się nim podzielić (format kwadratowy lub pionowy).",
+      "video_title": "Twoja gra w 30 sekund"
     }
   },
   "win_modal": {

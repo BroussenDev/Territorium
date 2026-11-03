@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "1분 남았습니다!"
   },
+  "game_tips": {
+    "alliance_request_pending": "동맹 요청이 응답을 기다리고 있습니다. 상대가 제때 답하지 않으면 만료됩니다.",
+    "alliances": "동맹국끼리는 서로 공격할 수 없습니다. 이웃에게 동맹을 제안해 국경을 평화롭게 유지하세요.",
+    "attack_ratio_high": "공격 비율이 너무 높으면 거의 모든 병력이 나가 국경이 비어 버립니다.",
+    "close": "닫기",
+    "coastal_no_port": "해안에 있지만 항구가 없습니다. 항구는 무역선을 보내 금을 법니다.",
+    "disable": "더 이상 팁 표시 안 함",
+    "frontier_long": "국경이 길면 방어하기 어렵습니다. 한 번에 한쪽으로만 공격을 집중하세요.",
+    "gold_unused": "금이 많이 쌓였습니다. 도시를 지어 최대 병력을 늘리세요.",
+    "nation_neighbour": "AI 국가가 국경을 맞대고 있습니다. 플레이어처럼 공격하고 방어합니다. 병력을 주시하세요.",
+    "no_city": "아직 도시가 없습니다. 도시는 최대 병력을 늘립니다. 지금 하나 지으세요.",
+    "radial_menu": "지도를 우클릭(휴대폰에서는 길게 누르기)하면 원형 메뉴가 열립니다. 건설, 공격, 병력 보내기를 할 수 있습니다.",
+    "spawn": "지도의 빈 지역을 클릭해 국가의 시작 위치를 고르세요.",
+    "title": "팁",
+    "troops_max": "병력이 최대치입니다. 낭비하지 않도록 공격하거나 건설하세요.",
+    "under_attack": "공격을 받고 있습니다. 공격당하는 국경에 병력을 유지하세요."
+  },
   "graphics_check": {
     "fps_about": "약 {fps} FPS",
     "fps_more": "{fps} FPS 이상",
@@ -2570,6 +2587,7 @@
     "surrender": "항복",
     "surrender_title": "10분 동안 그들의 가신이 되어 보세요. 서로 싸우지 않고 금 수입의 25%를 그들에게 지불합니다.",
     "target": "목표",
+    "trade_cooldown": "몇 초 후 다시 가능",
     "trading": "무역",
     "traitor": "배신자",
     "troops": "병력",
@@ -2783,6 +2801,7 @@
     "log_in": "로그인",
     "login_required": "랭크 게임은 가입한 플레이어만 할 수 있습니다. 계정에 로그인하세요.",
     "need_players": "{min} 플레이어가 들어오면 경기가 시작됩니다. 대기열이 부족하면 {seconds}초 안에 {lowMin} 플레이어도 충분합니다.",
+    "needs_normal_game": "랭크 게임을 열려면 먼저 일반 멀티플레이 게임을 한 판 하세요.",
     "new_season": "새 시즌",
     "peak": "최고: {elo}",
     "placement_hint": "귀하의 등급은 배치 게임 후에 공개됩니다.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "이전 게임 속도로 전환합니다. 싱글 플레이어 전용입니다.",
     "game_speed_up": "게임 속도 증가",
     "game_speed_up_desc": "다음 게임 속도(0.5, 1, 2, 최대)로 전환합니다. 싱글 플레이어 전용입니다.",
+    "game_tips_desc": "게임 중 상황에 대한 짧은 팁입니다. 플레이 횟수가 적은 플레이어에게는 기본으로 켜집니다.",
+    "game_tips_label": "게임 중 팁",
     "go_to_player_desc": "게임 시작 시 플레이어를 확대하여 보여줄지 여부를 전환합니다.",
     "go_to_player_label": "시작 시 플레이어로 이동",
     "graphics_preset_desc": "지도의 프리셋 외형을 선택합니다. 인게임 그래픽 설정에서 미세 조정하거나 직접 만들 수 있습니다.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "플레이어 대기 중 ({count}/{max})",
     "you": "나"
   },
+  "video": {
+    "cancel": "취소",
+    "clock_label": "게임 시간",
+    "close": "닫기",
+    "create": "내 영상 만들기",
+    "download": "다운로드",
+    "duration": "길이: {duration}",
+    "error": "이 기기에서 영상을 만들 수 없습니다.",
+    "format_label": "영상 형식",
+    "format_square": "정사각형 (1:1)",
+    "format_vertical": "세로 (9:16)",
+    "generating": "영상을 만드는 중…",
+    "hint": "전체 게임을 담은 30초 영상을 기기에서 만듭니다.",
+    "keep_tab_open": "완료될 때까지 이 탭을 열어 두고 앞에 두세요.",
+    "outcome_loss": "패배",
+    "outcome_neutral": "게임 종료",
+    "outcome_win": "승리",
+    "preview_aria": "영상 미리보기",
+    "progress_aria": "영상 진행률",
+    "rank": "{total}명 중 {place}위",
+    "ready_title": "영상이 준비되었습니다",
+    "tagline": "전체 게임을 30초로"
+  },
   "warning_notice": {
     "body": "회원님의 계정이 운영팀으로부터 공식 경고를 받았습니다.",
     "consequence": "새로운 문제가 발생하면 랭크 모드에서 제외됩니다.",
@@ -3753,6 +3797,14 @@
       "discord_link": "계정 패널에서 Discord를 Territorium 계정에 연동하세요. 이메일, Google, Steam으로 가입했어도 됩니다. 그런 다음 Discord에서 /compte를 사용해 인증 역할과 프로필을 받으세요. 봇은 당신의 언어로 답합니다.",
       "discord_link_title": "Discord 계정 연동",
       "discord_title": "공식 Discord 오픈"
+    },
+    "v0_1_180": {
+      "ranked": "일반 멀티플레이 게임을 한 판 끝내면 랭크 게임이 열립니다.",
+      "ranked_title": "일반 게임을 하면 랭크전이 열립니다",
+      "tips": "Territorium이 처음이신가요? 첫 게임 동안 짧은 팁이 표시됩니다. 설정에서 끌 수 있습니다.",
+      "tips_title": "게임 중 팁",
+      "video": "게임이 끝나면 전체 게임을 빠르게 재생한 영상을 만들어 다운로드하고 공유할 수 있습니다 (정사각형 또는 세로 형식).",
+      "video_title": "30초로 보는 나의 게임"
     }
   },
   "win_modal": {

@@ -93,6 +93,8 @@ export interface GameEnd {
   teamGame: boolean;
   /** Whether the player had an ally at any point of the game. */
   hadAlly: boolean;
+  /** Cancelled by staff (a ranked game): nothing counts. */
+  cancelled: boolean;
 }
 
 /**
@@ -103,16 +105,20 @@ export function achievementsForGameEnd(
   end: GameEnd,
   progress: AchievementProgress,
 ): AchievementId[] {
+  // A cancelled game is not a game: it counts nowhere.
+  if (end.cancelled) return [];
+  // A training game is played, but its win is not a win.
+  const won = end.won && end.variant !== "training";
   const again = progress.lastGame === end.gameID;
   if (!again && end.ranked) progress.rankedGames++;
-  const newWin = end.won && !(again && progress.lastWon);
+  const newWin = won && !(again && progress.lastWon);
   if (newWin) progress.wins++;
-  progress.lastWon = end.won || (again && progress.lastWon);
+  progress.lastWon = won || (again && progress.lastWon);
   progress.lastGame = end.gameID;
 
   const out: AchievementId[] = [ACHIEVEMENTS.firstStep];
   if (progress.rankedGames >= 10) out.push(ACHIEVEMENTS.firstRanking);
-  if (!end.won) return out;
+  if (!won) return out;
   out.push(ACHIEVEMENTS.firstWin);
   if (progress.wins >= 10) out.push(ACHIEVEMENTS.veteran);
   if (progress.wins >= 50) out.push(ACHIEVEMENTS.conqueror);

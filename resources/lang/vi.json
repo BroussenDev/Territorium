@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Còn một phút!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Yêu cầu liên minh của bạn đang chờ phản hồi. Nó sẽ hết hạn nếu người chơi kia không trả lời kịp.",
+    "alliances": "Đồng minh không thể tấn công nhau. Hãy đề nghị liên minh với một láng giềng để biên giới yên ổn.",
+    "attack_ratio_high": "Tỷ lệ tấn công quá cao sẽ đưa gần hết quân đi, để biên giới trống trải.",
+    "close": "Đóng",
+    "coastal_no_port": "Bạn ở ven biển nhưng chưa có cảng: cảng gửi tàu buôn và kiếm vàng.",
+    "disable": "Không hiện mẹo nữa",
+    "frontier_long": "Đường biên dài rất khó phòng thủ: hãy tập trung tấn công vào một phía mỗi lần.",
+    "gold_unused": "Bạn có nhiều vàng: hãy xây một thành phố để tăng số quân tối đa.",
+    "nation_neighbour": "Một quốc gia AI chung biên giới với bạn: nó tấn công và phòng thủ như người chơi. Hãy theo dõi quân của nó.",
+    "no_city": "Chưa có thành phố nào: thành phố tăng số quân tối đa. Hãy xây một thành ngay.",
+    "radial_menu": "Nhấp chuột phải vào bản đồ (nhấn giữ trên điện thoại) để mở menu tròn: xây dựng, tấn công hoặc gửi quân.",
+    "spawn": "Nhấp vào một vùng trống trên bản đồ để chọn nơi quốc gia của bạn bắt đầu.",
+    "title": "Mẹo",
+    "troops_max": "Quân của bạn đã đạt tối đa: hãy tấn công hoặc xây dựng để không lãng phí.",
+    "under_attack": "Bạn đang bị tấn công. Giữ quân ở biên giới đang bị đánh."
+  },
   "graphics_check": {
     "fps_about": "Khoảng {fps} FPS",
     "fps_more": "Trên {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Đầu hàng",
     "surrender_title": "Trở thành chư hầu của họ trong 10 phút: không đánh nhau giữa bạn và bạn trả cho họ 25% thu nhập vàng của bạn",
     "target": "Mục tiêu",
+    "trade_cooldown": "có thể làm lại sau vài giây",
     "trading": "Giao thương",
     "traitor": "Kẻ phản bội",
     "troops": "Quân",
@@ -2783,6 +2801,7 @@
     "log_in": "Đăng nhập",
     "login_required": "Xếp hạng chỉ dành cho người chơi đã đăng ký. Đăng nhập vào tài khoản của bạn để chơi.",
     "need_players": "Trận đấu bắt đầu khi có {min} người chơi tham gia. Nếu hàng đợi ngắn, {lowMin} người chơi sẽ có đủ trong {seconds}s.",
+    "needs_normal_game": "Hãy chơi một trận nhiều người chơi thường trước để mở khóa chế độ xếp hạng.",
     "new_season": "Mùa mới",
     "peak": "Cao nhất: {elo}",
     "placement_hint": "Cấp độ của bạn sẽ được tiết lộ sau các trò chơi xếp hạng của bạn.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Chuyển sang mức tốc độ trò chơi trước đó. Chỉ áp dụng cho chế độ chơi đơn.",
     "game_speed_up": "Tăng tốc độ trò chơi",
     "game_speed_up_desc": "Chuyển sang mức tốc độ trò chơi tiếp theo (0,5; 1; 2; tối đa). Chỉ áp dụng cho chế độ chơi đơn.",
+    "game_tips_desc": "Gợi ý ngắn về tình huống của bạn trong trận. Bật mặc định cho người chơi ít trận.",
+    "game_tips_label": "Mẹo trong trận",
     "go_to_player_desc": "Bật hoặc tắt tính năng tự động phóng to vào người chơi khi bắt đầu trận đấu.",
     "go_to_player_label": "Đưa camera đến người chơi khi bắt đầu",
     "graphics_preset_desc": "Chọn giao diện có sẵn cho bản đồ. Tinh chỉnh hoặc tạo giao diện riêng trong cài đặt đồ họa trong trò chơi.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Đang chờ người chơi ({count}/{max})",
     "you": "Bạn"
   },
+  "video": {
+    "cancel": "Hủy",
+    "clock_label": "Thời gian chơi",
+    "close": "Đóng",
+    "create": "Tạo video của tôi",
+    "download": "Tải xuống",
+    "duration": "Thời lượng: {duration}",
+    "error": "Không thể tạo video trên thiết bị này.",
+    "format_label": "Định dạng video",
+    "format_square": "Vuông (1:1)",
+    "format_vertical": "Dọc (9:16)",
+    "generating": "Đang tạo video…",
+    "hint": "Video 30 giây của toàn bộ ván chơi, được tạo trên thiết bị của bạn.",
+    "keep_tab_open": "Giữ tab này mở và ở phía trước cho đến khi xong.",
+    "outcome_loss": "Thất bại",
+    "outcome_neutral": "Ván đấu kết thúc",
+    "outcome_win": "Chiến thắng",
+    "preview_aria": "Xem trước video",
+    "progress_aria": "Tiến trình video",
+    "rank": "Hạng {place} / {total}",
+    "ready_title": "Video của bạn đã sẵn sàng",
+    "tagline": "Cả ván chơi trong 30 giây"
+  },
   "warning_notice": {
     "body": "Tài khoản của bạn đã nhận một cảnh cáo chính thức từ đội ngũ kiểm duyệt.",
     "consequence": "Bất kỳ sự cố mới nào cũng sẽ dẫn đến việc bị loại khỏi chế độ xếp hạng.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Từ bảng tài khoản, liên kết Discord với tài khoản Territorium của bạn, kể cả khi bạn đăng ký bằng email, Google hay Steam. Sau đó dùng /compte trên Discord để nhận vai trò đã xác minh và hồ sơ của bạn. Bot trả lời bằng ngôn ngữ của bạn.",
       "discord_link_title": "Liên kết tài khoản Discord",
       "discord_title": "Discord chính thức đã mở"
+    },
+    "v0_1_180": {
+      "ranked": "Chơi một trận nhiều người chơi thường để mở khóa các trận xếp hạng.",
+      "ranked_title": "Chế độ xếp hạng mở sau một trận thường",
+      "tips": "Mới chơi Territorium? Các mẹo ngắn sẽ hiện trong những ván đầu tiên của bạn. Bạn có thể tắt trong phần cài đặt.",
+      "tips_title": "Mẹo trong trận",
+      "video": "Khi kết thúc ván chơi, hãy tạo video tua nhanh toàn bộ ván chơi rồi tải về để chia sẻ (định dạng vuông hoặc dọc).",
+      "video_title": "Ván chơi của bạn trong 30 giây"
     }
   },
   "win_modal": {

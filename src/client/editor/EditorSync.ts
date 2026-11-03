@@ -62,17 +62,18 @@ async function run(): Promise<SyncReport> {
     tooLarge: [],
     full: false,
   };
-  const auth = await getAuthHeader();
-  if (auth === "") return { ...report, state: "signed-out" };
-  const base = `${getApiBase()}/editor-maps`;
-  const call = (path: string, init: RequestInit = {}) =>
-    fetch(`${base}${path}`, {
-      ...init,
-      headers: { Authorization: auth, ...(init.headers ?? {}) },
-      signal: AbortSignal.timeout(30_000),
-    });
-
   try {
+    // Inside the try: a failing auth read is a sync error, not a rejection.
+    const auth = await getAuthHeader();
+    if (auth === "") return { ...report, state: "signed-out" };
+    const base = `${getApiBase()}/editor-maps`;
+    const call = (path: string, init: RequestInit = {}) =>
+      fetch(`${base}${path}`, {
+        ...init,
+        headers: { Authorization: auth, ...(init.headers ?? {}) },
+        signal: AbortSignal.timeout(30_000),
+      });
+
     const res = await call("");
     if (res.status === 401) return { ...report, state: "signed-out" };
     if (!res.ok) return { ...report, state: "error" };

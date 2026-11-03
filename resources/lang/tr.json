@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Bir dakika kaldı!"
   },
+  "game_tips": {
+    "alliance_request_pending": "İttifak isteğiniz yanıt bekliyor. Diğer oyuncu zamanında yanıt vermezse süresi dolar.",
+    "alliances": "Müttefikler birbirine saldıramaz. Sınırınızı sakin tutmak için bir komşuya ittifak önerin.",
+    "attack_ratio_high": "Çok yüksek saldırı oranı neredeyse tüm birlikleri gönderir ve sınırları savunmasız bırakır.",
+    "close": "Kapat",
+    "coastal_no_port": "Kıyıdasınız ama limanınız yok: limanlar ticaret gemileri gönderir ve altın kazandırır.",
+    "disable": "Artık ipuçlarını gösterme",
+    "frontier_long": "Uzun bir sınırı savunmak zordur: saldırılarınızı aynı anda tek bir tarafa yoğunlaştırın.",
+    "gold_unused": "Çok altınınız var: maksimum birliklerinizi artırmak için bir şehir inşa edin.",
+    "nation_neighbour": "Bir YZ ulusu sınırınızı paylaşıyor: bir oyuncu gibi saldırır ve savunur. Birliklerini izleyin.",
+    "no_city": "Henüz şehriniz yok: şehirler maksimum birlik sayınızı artırır. Hemen bir tane inşa edin.",
+    "radial_menu": "Radyal menüyü açmak için haritaya sağ tıklayın (telefonda uzun basın): inşa etme, saldırı veya birlik gönderme.",
+    "spawn": "Ülkenizin nerede başlayacağını seçmek için haritada boş bir alana tıklayın.",
+    "title": "İpucu",
+    "troops_max": "Birlikleriniz maksimumda: boşa harcamamak için saldırın veya inşa edin.",
+    "under_attack": "Saldırı altındasınız. Vurulan sınırda birlikler bulundurun."
+  },
   "graphics_check": {
     "fps_about": "Yaklaşık {fps} FPS",
     "fps_more": "{fps} FPS üzeri",
@@ -2570,6 +2587,7 @@
     "surrender": "Teslim olmak",
     "surrender_title": "10 dakika boyunca onların vassalı olun: aranızda kavga olmaz ve altın gelirinizin %25'ini onlara ödersiniz",
     "target": "Hedef",
+    "trade_cooldown": "birkaç saniye içinde yeniden mümkün",
     "trading": "Ticaret",
     "traitor": "Hain",
     "troops": "Birlik",
@@ -2783,6 +2801,7 @@
     "log_in": "Giriş yapmak",
     "login_required": "Sıralama yalnızca kayıtlı oyuncular içindir. Oynamak için hesabınıza giriş yapın.",
     "need_players": "Maç {min} oyuncunun girmesiyle başlar. Sıra kısa kalırsa, {seconds} saniyede {lowMin} oyuncu yeterli olacaktır.",
+    "needs_normal_game": "Dereceli modun kilidini açmak için önce bir normal çok oyunculu oyun oyna.",
     "new_season": "Yeni sezon",
     "peak": "Zirve: {elo}",
     "placement_hint": "Sıralama oyunlarınızdan sonra seviyeniz ortaya çıkar.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Önceki oyun hızına geçin. Yalnızca tek oyunculu.",
     "game_speed_up": "Oyun Hızlandırma",
     "game_speed_up_desc": "Bir sonraki oyun hızına geçin (0,5, 1, 2, maksimum). Yalnızca tek oyunculu.",
+    "game_tips_desc": "Oyun sırasında durumunuzla ilgili kısa ipuçları. Az oyunu olan oyuncular için varsayılan olarak açık.",
+    "game_tips_label": "Oyun İçi İpuçları",
     "go_to_player_desc": "Oyunun başlangıcında oynatıcıyı yakınlaştırmayı açın/kapatın.",
     "go_to_player_label": "Başlangıçta oynatıcıya git",
     "graphics_preset_desc": "Harita için önceden ayarlanmış görünümü seçin. Oyun içi grafik ayarlarında ince ayar yapın veya kendinizinkini yapın.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Oyuncular bekleniyor ({count}/{max})",
     "you": "Sen"
   },
+  "video": {
+    "cancel": "İptal",
+    "clock_label": "Oyun süresi",
+    "close": "Kapat",
+    "create": "Videomu oluştur",
+    "download": "İndir",
+    "duration": "Süre: {duration}",
+    "error": "Video bu cihazda oluşturulamadı.",
+    "format_label": "Video biçimi",
+    "format_square": "Kare (1:1)",
+    "format_vertical": "Dikey (9:16)",
+    "generating": "Videonuz oluşturuluyor…",
+    "hint": "Tüm oyunun 30 saniyelik bir videosu, cihazınızda oluşturulur.",
+    "keep_tab_open": "Bitene kadar bu sekmeyi açık ve ön planda tutun.",
+    "outcome_loss": "Yenilgi",
+    "outcome_neutral": "Oyun bitti",
+    "outcome_win": "Zafer",
+    "preview_aria": "Video önizlemesi",
+    "progress_aria": "Video ilerlemesi",
+    "rank": "{total} kişi arasında #{place}",
+    "ready_title": "Videonuz hazır",
+    "tagline": "Tüm oyun 30 saniyede"
+  },
   "warning_notice": {
     "body": "Hesabınız moderasyon ekibinden resmî bir uyarı aldı.",
     "consequence": "Yeni herhangi bir olay, dereceli moddan çıkarılmanıza yol açacaktır.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Hesap panelinden Discord'unu Territorium hesabına bağla; e-posta, Google veya Steam ile kaydolmuş olsan bile. Ardından doğrulanmış rolü ve profilini almak için Discord'da /compte kullan. Bot senin dilinde yanıt verir.",
       "discord_link_title": "Discord hesabını bağla",
       "discord_title": "Resmi Discord açıldı"
+    },
+    "v0_1_180": {
+      "ranked": "Dereceli oyunların kilidini açmak için bir normal çok oyunculu oyun oyna.",
+      "ranked_title": "Dereceli oyunlar normal bir oyundan sonra açılır",
+      "tips": "Territorium'da yeni misin? İlk oyunlarında kısa ipuçları görünecek. Bunları ayarlardan kapatabilirsin.",
+      "tips_title": "Oyun içi ipuçları",
+      "video": "Bir oyunun sonunda, tüm oyunun hızlandırılmış bir videosunu oluşturup paylaşmak için indirebilirsin (kare veya dikey format).",
+      "video_title": "Oyununuz 30 saniyede"
     }
   },
   "win_modal": {

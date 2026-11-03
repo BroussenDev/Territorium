@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Eine Minute verbleibend!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Ihre Bündnisanfrage wartet auf eine Antwort. Sie läuft ab, wenn der andere Spieler nicht rechtzeitig antwortet.",
+    "alliances": "Verbündete können einander nicht angreifen. Schlagen Sie einem Nachbarn ein Bündnis vor, damit die Grenze ruhig bleibt.",
+    "attack_ratio_high": "Ein sehr hohes Angriffsverhältnis schickt fast alle Truppen los und lässt die Grenzen ungeschützt.",
+    "close": "Schließen",
+    "coastal_no_port": "Sie haben Küste, aber keinen Hafen: Häfen schicken Handelsschiffe los und bringen Gold.",
+    "disable": "Keine Tipps mehr anzeigen",
+    "frontier_long": "Eine lange Grenze ist schwer zu verteidigen: Konzentrieren Sie Ihre Angriffe jeweils auf eine Seite.",
+    "gold_unused": "Sie haben viel Gold: Bauen Sie eine Stadt, um Ihre maximalen Truppen zu erhöhen.",
+    "nation_neighbour": "Eine KI-Nation grenzt an Sie: Sie greift an und verteidigt sich wie ein Spieler. Beobachten Sie ihre Truppen.",
+    "no_city": "Noch keine Stadt: Städte erhöhen Ihre maximalen Truppen. Bauen Sie jetzt eine.",
+    "radial_menu": "Rechtsklicken Sie auf die Karte (auf dem Handy lange drücken), um das Radialmenü zu öffnen: bauen, angreifen oder Truppen senden.",
+    "spawn": "Klicken Sie auf ein freies Gebiet der Karte, um den Startpunkt Ihres Landes zu wählen.",
+    "title": "Tipp",
+    "troops_max": "Ihre Truppen sind am Maximum: Greifen Sie an oder bauen Sie, damit nichts verschwendet wird.",
+    "under_attack": "Sie werden angegriffen. Halten Sie Truppen an der getroffenen Grenze."
+  },
   "graphics_check": {
     "fps_about": "Etwa {fps} FPS",
     "fps_more": "Über {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Aufgeben",
     "surrender_title": "Werden Sie für 10 Minuten ihr Vasall: Es gibt keine Kämpfe zwischen Ihnen und Sie zahlen ihnen 25 % Ihres Goldeinkommens",
     "target": "Ziel",
+    "trade_cooldown": "in wenigen Sekunden wieder möglich",
     "trading": "Handel",
     "traitor": "Verräter",
     "troops": "Truppen",
@@ -2783,6 +2801,7 @@
     "log_in": "Einloggen",
     "login_required": "Die Rangliste ist nur für registrierte Spieler. Melden Sie sich zum Spielen bei Ihrem Konto an.",
     "need_players": "Das Spiel beginnt, sobald {min} Spieler dabei sind. Wenn die Warteschlange kurz bleibt, reichen {lowMin} Spieler in {seconds}s aus.",
+    "needs_normal_game": "Spiele zuerst eine normale Mehrspielerpartie, um Ranglistenspiele freizuschalten.",
     "new_season": "Neue Saison",
     "peak": "Höchstwert: {elo}",
     "placement_hint": "Ihre Stufe wird nach Ihren Platzierungsspielen bekannt gegeben.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Zur vorherigen Spielgeschwindigkeit wechseln. Nur Einzelspieler.",
     "game_speed_up": "Spielgeschwindigkeit hoch",
     "game_speed_up_desc": "Fahre zur nächsten Spielgeschwindigkeit (0.5, 1, 2, max). Nur in Einzelspieler",
+    "game_tips_desc": "Kurze Tipps zu Ihrer Lage während einer Partie. Standardmäßig aktiv für Spieler mit wenigen Partien.",
+    "game_tips_label": "Tipps im Spiel",
     "go_to_player_desc": "Zoomen auf den Spieler am Anfang eines Spiels einschalten.",
     "go_to_player_label": "Beim Start zum Spieler gehen",
     "graphics_preset_desc": "Wähle das voreingestellte Aussehen der Karte. Passe es an oder erstelle dein eigenes in den Grafik‑Einstellungen im Spiel.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Warte auf Spieler ({count}/{max})",
     "you": "Du"
   },
+  "video": {
+    "cancel": "Abbrechen",
+    "clock_label": "Spielzeit",
+    "close": "Schließen",
+    "create": "Video erstellen",
+    "download": "Herunterladen",
+    "duration": "Dauer: {duration}",
+    "error": "Das Video konnte auf diesem Gerät nicht erstellt werden.",
+    "format_label": "Videoformat",
+    "format_square": "Quadratisch (1:1)",
+    "format_vertical": "Hochformat (9:16)",
+    "generating": "Ihr Video wird erstellt…",
+    "hint": "Ein 30-sekündiges Video der ganzen Partie, auf Ihrem Gerät erstellt.",
+    "keep_tab_open": "Lassen Sie diesen Tab geöffnet und im Vordergrund, bis das Video fertig ist.",
+    "outcome_loss": "Niederlage",
+    "outcome_neutral": "Partie beendet",
+    "outcome_win": "Sieg",
+    "preview_aria": "Videovorschau",
+    "progress_aria": "Fortschritt des Videos",
+    "rank": "Platz {place} von {total}",
+    "ready_title": "Ihr Video ist fertig",
+    "tagline": "Die ganze Partie in 30 Sekunden"
+  },
   "warning_notice": {
     "body": "Dein Konto hat eine offizielle Verwarnung vom Moderationsteam erhalten.",
     "consequence": "Jeder weitere Vorfall führt zum Ausschluss vom Ranglistenmodus.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Verknüpfe im Kontobereich dein Discord mit deinem Territorium-Konto, auch wenn du dich per E-Mail, Google oder Steam angemeldet hast. Nutze dann /compte auf dem Discord, um die verifizierte Rolle und dein Profil zu erhalten. Der Bot antwortet in deiner Sprache.",
       "discord_link_title": "Verknüpfe dein Discord-Konto",
       "discord_title": "Der offizielle Discord ist offen"
+    },
+    "v0_1_180": {
+      "ranked": "Spiele eine normale Mehrspielerpartie, um Ranglistenspiele freizuschalten.",
+      "ranked_title": "Ranglistenspiele werden nach einer normalen Partie freigeschaltet",
+      "tips": "Neu bei Territorium? Während deiner ersten Partien erscheinen kurze Tipps. In den Einstellungen kannst du sie ausschalten.",
+      "tips_title": "Tipps im Spiel",
+      "video": "Erstelle am Ende einer Partie ein beschleunigtes Video der ganzen Partie und lade es herunter, um es zu teilen (quadratisches oder hochformatiges Format).",
+      "video_title": "Deine Partie in 30 Sekunden"
     }
   },
   "win_modal": {

@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Üks minut on jäänud!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Teie liitumistaotlus ootab vastust. See aegub, kui teine mängija ei vasta õigeaegselt.",
+    "alliances": "Liitlased ei saa üksteist rünnata. Pakkuge naabrile liitu, et piir jääks rahulikuks.",
+    "attack_ratio_high": "Väga kõrge rünnakusuhe saadab peaaegu kõik väed teele ja jätab piirid kaitseta.",
+    "close": "Sulge",
+    "coastal_no_port": "Teil on rannik, aga sadam puudub: sadamad saadavad kaubalaevu ja teenivad kulda.",
+    "disable": "Ära enam nõuandeid näita",
+    "frontier_long": "Pikka piiri on raske kaitsta: keskendage rünnakud korraga ühele küljele.",
+    "gold_unused": "Teil on palju kulda: ehitage linn, et suurendada oma maksimaalset vägede arvu.",
+    "nation_neighbour": "Teie piiri jagab tehisintellekti riik: see ründab ja kaitseb end nagu mängija. Jälgige selle vägesid.",
+    "no_city": "Linnu veel pole: linnad suurendavad teie maksimaalset vägede arvu. Ehitage üks kohe.",
+    "radial_menu": "Paremklõpsake kaardil (telefonis pikk vajutus), et avada radiaalmenüü: ehitada, rünnata või saata vägesid.",
+    "spawn": "Valige kaardilt vaba ala, kust teie riik alustab.",
+    "title": "Nõuanne",
+    "troops_max": "Teie väed on maksimumis: rünnake või ehitage, et neid raisata ei läheks.",
+    "under_attack": "Teid rünnatakse. Hoidke vägesid piiril, mida rünnatakse."
+  },
   "graphics_check": {
     "fps_about": "Umbes {fps} FPS",
     "fps_more": "Üle {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Alistumine",
     "surrender_title": "Hakka nende vasalliks 10 minutiks: teie vahel pole tüli ja maksate neile 25% oma kullatulust",
     "target": "Sihtmärk",
+    "trade_cooldown": "mõne sekundi pärast jälle võimalik",
     "trading": "Kaubandus",
     "traitor": "Reetur",
     "troops": "Väed",
@@ -2783,6 +2801,7 @@
     "log_in": "Logi sisse",
     "login_required": "Ranked on ainult registreeritud mängijatele. Mängimiseks logige oma kontole sisse.",
     "need_players": "Mäng algab siis, kui mängus on {min} mängijat. Kui järjekord jääb lühikeseks, piisab {seconds}s pärast {lowMin} mängijat.",
+    "needs_normal_game": "Mängi enne üks tavaline mitmikmäng, et avada edetabelimängud.",
     "new_season": "Uus hooaeg",
     "peak": "Tipp: {elo}",
     "placement_hint": "Teie tase selgub pärast teie paigutuse mänge.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Liikuge eelmisele mängukiirusele. Ainult üksikmängija.",
     "game_speed_up": "Mängu kiirendamine",
     "game_speed_up_desc": "Liikuge järgmisele mängukiirusele (0,5, 1, 2, max). Ainult üksikmängija.",
+    "game_tips_desc": "Lühikesed nõuanded teie olukorra kohta mängu ajal. Vaikimisi sisse lülitatud mängijatele, kellel on vähe mänge.",
+    "game_tips_label": "Mängusisesed nõuanded",
     "go_to_player_desc": "Mängija sisse- suumimise sisse- ja väljalülitamine mängu alguses.",
     "go_to_player_label": "Minge alguses mängija juurde",
     "graphics_preset_desc": "Valige kaardi eelseadistatud välimus. Viimistlege või tehke oma mängusiseseid graafikaseadeid.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Mängijate ootamine ({count}/{max})",
     "you": "Sina"
   },
+  "video": {
+    "cancel": "Tühista",
+    "clock_label": "Mänguaeg",
+    "close": "Sulge",
+    "create": "Loo minu video",
+    "download": "Laadi alla",
+    "duration": "Kestus: {duration}",
+    "error": "Videot ei õnnestunud selles seadmes luua.",
+    "format_label": "Video vorming",
+    "format_square": "Ruut (1:1)",
+    "format_vertical": "Vertikaalne (9:16)",
+    "generating": "Video luuakse…",
+    "hint": "30-sekundiline video kogu mängust, mis luuakse sinu seadmes.",
+    "keep_tab_open": "Hoia see kaart avatuna ja esiplaanil, kuni valmis.",
+    "outcome_loss": "Kaotus",
+    "outcome_neutral": "Mäng läbi",
+    "outcome_win": "Võit",
+    "preview_aria": "Video eelvaade",
+    "progress_aria": "Video edenemine",
+    "rank": "#{place} / {total}",
+    "ready_title": "Su video on valmis",
+    "tagline": "Kogu mäng 30 sekundis"
+  },
   "warning_notice": {
     "body": "Teie konto sai modereerimismeeskonnalt ametliku hoiatuse.",
     "consequence": "Iga uus juhtum toob kaasa reitingurežiimist kõrvaldamise.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Seo kontopaneelist oma Discord Territoriumi kontoga, isegi kui registreerusid e-posti, Google'i või Steamiga. Seejärel kasuta Discordis käsku /compte, et saada kinnitatud roll ja oma profiil. Bot vastab sinu keeles.",
       "discord_link_title": "Seo oma Discordi konto",
       "discord_title": "Ametlik Discord on avatud"
+    },
+    "v0_1_180": {
+      "ranked": "Mängi üks tavaline mitmikmäng, et avada edetabelimängud.",
+      "ranked_title": "Edetabelimängud avanevad pärast tavalist mängu",
+      "tips": "Uus Territoriumis? Lühikesed näpunäited ilmuvad sinu esimeste mängude ajal. Saad need seadetes välja lülitada.",
+      "tips_title": "Näpunäited mängu ajal",
+      "video": "Mängu lõpus loo kogu mängust kiirendatud video ja laadi see alla, et seda jagada (ruudukujuline või vertikaalne formaat).",
+      "video_title": "Sinu mäng 30 sekundis"
     }
   },
   "win_modal": {

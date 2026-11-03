@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Manca un minuto!"
   },
+  "game_tips": {
+    "alliance_request_pending": "La tua richiesta di alleanza attende risposta. Scade se l'altro giocatore non risponde in tempo.",
+    "alliances": "Gli alleati non possono attaccarsi a vicenda. Proponi un'alleanza a un vicino per tenere il confine tranquillo.",
+    "attack_ratio_high": "Un rapporto d'attacco molto alto manda quasi tutte le truppe e lascia i confini scoperti.",
+    "close": "Chiudi",
+    "coastal_no_port": "Sei sulla costa senza porto: i porti mandano navi mercantili e fanno guadagnare oro.",
+    "disable": "Non mostrare più suggerimenti",
+    "frontier_long": "Un confine lungo è difficile da difendere: concentra gli attacchi su un lato alla volta.",
+    "gold_unused": "Hai molto oro: costruisci una città per aumentare le truppe massime.",
+    "nation_neighbour": "Una nazione IA condivide il tuo confine: attacca e si difende come un giocatore. Tieni d'occhio le sue truppe.",
+    "no_city": "Ancora nessuna città: le città aumentano le truppe massime. Costruiscine una ora.",
+    "radial_menu": "Clicca con il tasto destro sulla mappa (tieni premuto su telefono) per aprire il menu radiale: costruire, attaccare o inviare truppe.",
+    "spawn": "Clicca su una zona libera della mappa per scegliere dove inizia il tuo paese.",
+    "title": "Suggerimento",
+    "troops_max": "Le tue truppe sono al massimo: attacca o costruisci per non sprecarle.",
+    "under_attack": "Sei sotto attacco. Mantieni truppe sul confine colpito."
+  },
   "graphics_check": {
     "fps_about": "Circa {fps} FPS",
     "fps_more": "Oltre {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Resa",
     "surrender_title": "Diventa loro vassallo per 10 minuti: niente litigi tra di voi e pagherete loro il 25% delle vostre entrate in oro",
     "target": "Bersaglio",
+    "trade_cooldown": "di nuovo disponibile tra pochi secondi",
     "trading": "Commercio",
     "traitor": "Traditore",
     "troops": "Truppe",
@@ -2783,6 +2801,7 @@
     "log_in": "Login",
     "login_required": "La classifica è riservata solo ai giocatori registrati. Accedi al tuo account per giocare.",
     "need_players": "La partita inizia quando entrano {min} giocatori. Se la coda rimane corta, {lowMin} giocatori saranno sufficienti in {seconds}s.",
+    "needs_normal_game": "Gioca prima una partita multigiocatore normale per sbloccare le classificate.",
     "new_season": "Nuova stagione",
     "peak": "Massimo: {elo}",
     "placement_hint": "Il tuo livello viene rivelato dopo i giochi di posizionamento.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Passa alla velocità di gioco precedente. Solo giocatore singolo.",
     "game_speed_up": "Accelerazione del gioco",
     "game_speed_up_desc": "Passa alla velocità di gioco successiva (0,5, 1, 2, max). Solo giocatore singolo.",
+    "game_tips_desc": "Brevi suggerimenti sulla tua situazione durante una partita. Attivi di default per chi ha giocato poche partite.",
+    "game_tips_label": "Suggerimenti in partita",
     "go_to_player_desc": "Attiva/disattiva lo zoom sul giocatore all'inizio di una partita.",
     "go_to_player_label": "Vai al giocatore all'avvio",
     "graphics_preset_desc": "Scegli l'aspetto preimpostato per la mappa. Perfeziona o crea le tue impostazioni grafiche di gioco.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "In attesa di giocatori ({count}/{max})",
     "you": "Tu"
   },
+  "video": {
+    "cancel": "Annulla",
+    "clock_label": "Tempo di gioco",
+    "close": "Chiudi",
+    "create": "Crea il mio video",
+    "download": "Scarica",
+    "duration": "Durata: {duration}",
+    "error": "Impossibile creare il video su questo dispositivo.",
+    "format_label": "Formato del video",
+    "format_square": "Quadrato (1:1)",
+    "format_vertical": "Verticale (9:16)",
+    "generating": "Creazione del video…",
+    "hint": "Un video di 30 secondi di tutta la partita, creato sul tuo dispositivo.",
+    "keep_tab_open": "Tieni questa scheda aperta e in primo piano fino al termine.",
+    "outcome_loss": "Sconfitta",
+    "outcome_neutral": "Partita terminata",
+    "outcome_win": "Vittoria",
+    "preview_aria": "Anteprima del video",
+    "progress_aria": "Avanzamento del video",
+    "rank": "#{place} su {total}",
+    "ready_title": "Il tuo video è pronto",
+    "tagline": "Tutta la partita in 30 secondi"
+  },
   "warning_notice": {
     "body": "Il tuo account ha ricevuto un avvertimento ufficiale dal team di moderazione.",
     "consequence": "Qualsiasi nuovo incidente comporterà l'esclusione dalla modalità classificata.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Dal pannello account, collega il tuo Discord al tuo account Territorium, anche se ti sei registrato via email, Google o Steam. Poi usa /compte sul Discord per ottenere il ruolo verificato e il tuo profilo. Il bot risponde nella tua lingua.",
       "discord_link_title": "Collega il tuo account Discord",
       "discord_title": "Il Discord ufficiale è aperto"
+    },
+    "v0_1_180": {
+      "ranked": "Gioca una partita multigiocatore normale per sbloccare le classificate.",
+      "ranked_title": "Le classificate si sbloccano dopo una partita normale",
+      "tips": "Nuovo su Territorium? Durante le prime partite compariranno brevi suggerimenti. Puoi disattivarli nelle impostazioni.",
+      "tips_title": "Suggerimenti in partita",
+      "video": "Alla fine di una partita, crea un video di tutta la partita velocizzato e scaricalo per condividerlo (formato quadrato o verticale).",
+      "video_title": "La tua partita in 30 secondi"
     }
   },
   "win_modal": {

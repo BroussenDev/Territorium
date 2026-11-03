@@ -136,7 +136,10 @@ export class MapEditorModal extends BaseModal {
       // Nothing here yet: the account may have maps from another device.
       if (saved === undefined) {
         this.sync = "syncing";
-        this.sync = (await syncLibrary()).state;
+        this.sync = await syncLibrary().then(
+          (report) => report.state,
+          () => "error" as const,
+        );
         saved = (await listMaps())[0];
       }
       if (saved !== undefined && saved !== null) this.show(saved);
@@ -574,7 +577,15 @@ export class MapEditorModal extends BaseModal {
     if (this.syncTimer !== null) clearTimeout(this.syncTimer);
     this.syncTimer = null;
     if (this.sync !== "signed-out") this.sync = "syncing";
-    const report = await syncLibrary();
+    // A rejected sync must not leave the badge on "syncing".
+    const report = await syncLibrary().catch((err: unknown) => {
+      console.warn("map editor: sync failed", err);
+      return null;
+    });
+    if (report === null) {
+      this.sync = "error";
+      return;
+    }
     this.sync = report.state;
     for (const name of report.conflicts) {
       showToast(

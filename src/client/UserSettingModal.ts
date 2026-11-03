@@ -1946,6 +1946,15 @@ export class UserSettingModal extends BaseModal {
         @change=${this.toggleHelpMessages}
       ></setting-toggle>
 
+      <!-- In-game tips for new players (GameTips) -->
+      <setting-toggle
+        label="${translateText("user_setting.game_tips_label")}"
+        description="${translateText("user_setting.game_tips_desc")}"
+        id="game-tips-toggle"
+        .checked=${this.userSettings.gameTips()}
+        @change=${() => this.userSettings.toggleGameTips()}
+      ></setting-toggle>
+
       <!-- Attacking troops overlay (moved here from the in-game menu) -->
       <setting-toggle
         label="${translateText("user_setting.attacking_troops_overlay_label")}"

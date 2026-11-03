@@ -158,6 +158,19 @@ describe("MatchmakingModal identity gate", () => {
 });
 
 describe("MatchmakingModal queue polling", () => {
+  it("tells a player to play a normal game first, and stops polling", async () => {
+    apiMocks.pollRankedQueue.mockResolvedValue("needs_normal_game");
+    const modal = await openQueued();
+
+    expect(modal.isOpen()).toBe(false);
+    expect(showMessage).toHaveBeenCalledOnce();
+    const detail = (showMessage.mock.calls[0][0] as CustomEvent).detail;
+    expect(detail).toMatchObject({ message: "ranked.needs_normal_game" });
+    expect(showPage).not.toHaveBeenCalled();
+    await vi.advanceTimersByTimeAsync(10_000);
+    expect(apiMocks.pollRankedQueue).toHaveBeenCalledOnce();
+  });
+
   it("never queues a player who backs out during the join delay", async () => {
     const modal = new MatchmakingModal();
     modal.open();

@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Nog één minuut!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Je alliantieverzoek wacht op antwoord. Het verloopt als de andere speler niet op tijd reageert.",
+    "alliances": "Bondgenoten kunnen elkaar niet aanvallen. Stel een alliantie voor aan een buur om je grens rustig te houden.",
+    "attack_ratio_high": "Een zeer hoge aanvalsverhouding stuurt bijna al je troepen weg en laat je grenzen onbeschermd.",
+    "close": "Sluiten",
+    "coastal_no_port": "Je zit aan de kust zonder haven: havens sturen handelsschepen en verdienen goud.",
+    "disable": "Geen tips meer tonen",
+    "frontier_long": "Een lange grens is moeilijk te verdedigen: richt je aanvallen op één kant tegelijk.",
+    "gold_unused": "Je hebt veel goud: bouw een stad om je maximale troepen te verhogen.",
+    "nation_neighbour": "Een AI-natie deelt je grens: ze valt aan en verdedigt zich als een speler. Houd haar troepen in de gaten.",
+    "no_city": "Nog geen stad: steden verhogen je maximale troepen. Bouw er nu een.",
+    "radial_menu": "Klik met de rechtermuisknop op de kaart (lang indrukken op een telefoon) om het radiaal menu te openen: bouwen, aanvallen of troepen sturen.",
+    "spawn": "Klik op een vrij gebied van de kaart om te kiezen waar je land begint.",
+    "title": "Tip",
+    "troops_max": "Je troepen zitten op het maximum: val aan of bouw, zodat je ze niet verspilt.",
+    "under_attack": "Je wordt aangevallen. Houd troepen aan de grens die wordt geraakt."
+  },
   "graphics_check": {
     "fps_about": "Ongeveer {fps} FPS",
     "fps_more": "Meer dan {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Overgave",
     "surrender_title": "Word hun vazal voor 10 minuten: geen ruzie tussen jullie, en je betaalt ze 25% van je goudinkomen",
     "target": "Doelmarkering",
+    "trade_cooldown": "over een paar seconden weer beschikbaar",
     "trading": "Handel",
     "traitor": "Verrader",
     "troops": "Troepen",
@@ -2783,6 +2801,7 @@
     "log_in": "Inloggen",
     "login_required": "Het klassement is alleen voor geregistreerde spelers. Log in op je account om te spelen.",
     "need_players": "De wedstrijd begint zodra er {min} spelers aanwezig zijn. Als de wachtrij kort blijft, zijn {lowMin} spelers voldoende in {seconds}s.",
+    "needs_normal_game": "Speel eerst één normaal multiplayerpotje om ranked te ontgrendelen.",
     "new_season": "Nieuw seizoen",
     "peak": "Hoogste: {elo}",
     "placement_hint": "Je niveau wordt onthuld na je plaatsingsspellen.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Wissel naar de vorige spelsnelheid. Alleen in één speler modus.",
     "game_speed_up": "Versnel Spel",
     "game_speed_up_desc": "Wissel naar de volgende spelsnelheid (0.5, 1, 2, max.). Alleen in één speler modus.",
+    "game_tips_desc": "Korte tips over je situatie tijdens een spel. Standaard aan voor spelers met weinig spellen.",
+    "game_tips_label": "Tips tijdens het spel",
     "go_to_player_desc": "Inzoomen op de speler aan het begin van een spel in-/uitschakelen.",
     "go_to_player_label": "Ga naar speler bij starten",
     "graphics_preset_desc": "Kies de voorkeursinstelling voor de kaart. Fine-tunen of maak je eigen in de grafische instellingen voor het spel.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Wachten op spelers ({count}/{max})",
     "you": "Jij"
   },
+  "video": {
+    "cancel": "Annuleren",
+    "clock_label": "Speeltijd",
+    "close": "Sluiten",
+    "create": "Mijn video maken",
+    "download": "Downloaden",
+    "duration": "Duur: {duration}",
+    "error": "De video kon niet op dit apparaat worden gemaakt.",
+    "format_label": "Videoformaat",
+    "format_square": "Vierkant (1:1)",
+    "format_vertical": "Verticaal (9:16)",
+    "generating": "Je video wordt gemaakt…",
+    "hint": "Een video van 30 seconden van de hele game, gemaakt op je apparaat.",
+    "keep_tab_open": "Houd dit tabblad open en op de voorgrond tot het klaar is.",
+    "outcome_loss": "Nederlaag",
+    "outcome_neutral": "Game afgelopen",
+    "outcome_win": "Overwinning",
+    "preview_aria": "Voorbeeld van de video",
+    "progress_aria": "Voortgang van de video",
+    "rank": "#{place} van {total}",
+    "ready_title": "Je video is klaar",
+    "tagline": "De hele game in 30 seconden"
+  },
   "warning_notice": {
     "body": "Je account heeft een officiële waarschuwing van het moderatieteam ontvangen.",
     "consequence": "Elk nieuw incident leidt tot uitsluiting van de ranglijstmodus.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Koppel via het accountpaneel je Discord aan je Territorium-account, ook als je je via e-mail, Google of Steam hebt aangemeld. Gebruik daarna /compte op de Discord voor de geverifieerde rol en je profiel. De bot antwoordt in jouw taal.",
       "discord_link_title": "Koppel je Discord-account",
       "discord_title": "De officiële Discord is open"
+    },
+    "v0_1_180": {
+      "ranked": "Speel eerst één normale multiplayergame om ranked te ontgrendelen.",
+      "ranked_title": "Ranked wordt vrijgespeeld na een normale game",
+      "tips": "Nieuw bij Territorium? Korte tips verschijnen tijdens je eerste games. Je kunt ze uitzetten in de instellingen.",
+      "tips_title": "Tips tijdens het spel",
+      "video": "Maak aan het eind van een game een video van de hele game, versneld, en download die om te delen (vierkant of verticaal formaat).",
+      "video_title": "Je game in 30 seconden"
     }
   },
   "win_modal": {

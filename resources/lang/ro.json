@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Un minut rămas!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Cererea dumneavoastră de alianță așteaptă un răspuns. Expiră dacă celălalt jucător nu răspunde la timp.",
+    "alliances": "Aliații nu se pot ataca între ei. Propuneți o alianță unui vecin pentru a menține granița liniștită.",
+    "attack_ratio_high": "Un raport de atac foarte mare trimite aproape toate trupele și lasă granițele neapărate.",
+    "close": "Închide",
+    "coastal_no_port": "Sunteți pe litoral fără port: porturile trimit nave comerciale și aduc aur.",
+    "disable": "Nu mai afișa sfaturile",
+    "frontier_long": "O graniță lungă este greu de apărat: concentrați atacurile pe o singură parte pe rând.",
+    "gold_unused": "Aveți mult aur: construiți un oraș pentru a crește numărul maxim de trupe.",
+    "nation_neighbour": "O națiune controlată de IA vă împarte granița: atacă și se apără ca un jucător. Urmăriți trupele ei.",
+    "no_city": "Încă nu aveți niciun oraș: orașele cresc numărul maxim de trupe. Construiți unul acum.",
+    "radial_menu": "Faceți clic dreapta pe hartă (apăsați lung pe telefon) pentru a deschide meniul radial: construiți, atacați sau trimiteți trupe.",
+    "spawn": "Faceți clic pe o zonă liberă de pe hartă pentru a alege unde începe țara dumneavoastră.",
+    "title": "Sfat",
+    "troops_max": "Trupele dumneavoastră sunt la maxim: atacați sau construiți ca să nu le risipiți.",
+    "under_attack": "Sunteți atacat. Păstrați trupe la granița atacată."
+  },
   "graphics_check": {
     "fps_about": "Circa {fps} FPS",
     "fps_more": "Peste {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Predare",
     "surrender_title": "Deveniți vasalul lor timp de 10 minute: fără lupte între voi și le plătiți 25% din venitul din aur",
     "target": "Țintă",
+    "trade_cooldown": "din nou disponibil în câteva secunde",
     "trading": "Comerț",
     "traitor": "Trădător",
     "troops": "Trupe",
@@ -2783,6 +2801,7 @@
     "log_in": "Log in",
     "login_required": "Clasamentul este doar pentru jucătorii înregistrați. Conectați-vă la contul dvs. pentru a juca.",
     "need_players": "Meciul începe o dată cu {min} jucători. Dacă coada rămâne scurtă, {lowMin} jucători vor fi suficienți în {seconds}s.",
+    "needs_normal_game": "Joacă mai întâi o partidă multiplayer normală pentru a debloca modul clasat.",
     "new_season": "Sezon nou",
     "peak": "Maxim: {elo}",
     "placement_hint": "Nivelul tău este dezvăluit după jocurile de plasare.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Ciclu la viteza anterioară a jocului. Doar un singur jucător.",
     "game_speed_up": "Mărește viteza jocului",
     "game_speed_up_desc": "Ciclați la viteza jocului următor (0,5, 1, 2, max). Doar un singur jucător.",
+    "game_tips_desc": "Sfaturi scurte despre situația dumneavoastră în timpul partidei. Activate implicit pentru jucătorii cu puține partide.",
+    "game_tips_label": "Sfaturi în timpul jocului",
     "go_to_player_desc": "Comută mărirea numărului de jucători la începutul unui joc.",
     "go_to_player_label": "Du-te la jucător la început",
     "graphics_preset_desc": "Alege presetarea să caute harta. Fine tune sau creează-ți propria hartă în setările grafice din joc.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Se așteaptă jucători ({count}/{max})",
     "you": "Tu"
   },
+  "video": {
+    "cancel": "Anulează",
+    "clock_label": "Timp de joc",
+    "close": "Închide",
+    "create": "Creează-mi videoclipul",
+    "download": "Descarcă",
+    "duration": "Durată: {duration}",
+    "error": "Videoclipul nu a putut fi creat pe acest dispozitiv.",
+    "format_label": "Format video",
+    "format_square": "Pătrat (1:1)",
+    "format_vertical": "Vertical (9:16)",
+    "generating": "Se creează videoclipul…",
+    "hint": "Un videoclip de 30 de secunde cu toată partida, creat pe dispozitivul tău.",
+    "keep_tab_open": "Păstrează această filă deschisă și în față până la final.",
+    "outcome_loss": "Înfrângere",
+    "outcome_neutral": "Joc încheiat",
+    "outcome_win": "Victorie",
+    "preview_aria": "Previzualizare videoclip",
+    "progress_aria": "Progresul videoclipului",
+    "rank": "#{place} din {total}",
+    "ready_title": "Videoclipul este gata",
+    "tagline": "Toată partida în 30 de secunde"
+  },
   "warning_notice": {
     "body": "Contul tău a primit un avertisment oficial din partea echipei de moderare.",
     "consequence": "Orice nou incident va duce la excluderea din modul clasat.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Din panoul contului, leagă-ți Discordul de contul Territorium, chiar dacă te-ai înscris cu e-mail, Google sau Steam. Apoi folosește /compte pe Discord ca să primești rolul verificat și profilul tău. Botul răspunde în limba ta.",
       "discord_link_title": "Leagă-ți contul Discord",
       "discord_title": "Discordul oficial este deschis"
+    },
+    "v0_1_180": {
+      "ranked": "Joacă o partidă multiplayer normală ca să deblochezi partidele clasate.",
+      "ranked_title": "Modul clasat se deblochează după o partidă normală",
+      "tips": "Ești nou în Territorium? Sfaturi scurte apar în primele tale partide. Le poți dezactiva din setări.",
+      "tips_title": "Sfaturi în timpul jocului",
+      "video": "La sfârșitul unei partide, creează un videoclip cu toată partida accelerată și descarcă-l ca să-l poți distribui (format pătrat sau vertical).",
+      "video_title": "Partida ta în 30 de secunde"
     }
   },
   "win_modal": {

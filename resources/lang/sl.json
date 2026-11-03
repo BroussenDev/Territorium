@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Še ena minuta!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Vaša prošnja za zavezništvo čaka na odgovor. Potekla bo, če drugi igralec pravočasno ne odgovori.",
+    "alliances": "Zavezniki se ne morejo napadati. Predlagajte zavezništvo sosedu, da bo meja mirna.",
+    "attack_ratio_high": "Zelo visoko razmerje napada pošlje skoraj vse vojake in pusti meje brez obrambe.",
+    "close": "Zapri",
+    "coastal_no_port": "Ste ob obali brez pristanišča: pristanišča pošiljajo trgovske ladje in prinašajo zlato.",
+    "disable": "Ne prikazuj več nasvetov",
+    "frontier_long": "Dolgo mejo je težko braniti: osredotočite napade na eno stran naenkrat.",
+    "gold_unused": "Imate veliko zlata: zgradite mesto, da povečate največje število vojakov.",
+    "nation_neighbour": "Vašo mejo deli narod, ki ga vodi UI: napada in se brani kot igralec. Spremljajte njegove vojske.",
+    "no_city": "Še nimate mesta: mesta povečajo največje število vojakov. Zgradite eno zdaj.",
+    "radial_menu": "Desni klik na zemljevid (na telefonu dolg pritisk) odpre krožni meni: gradnja, napad ali pošiljanje vojske.",
+    "spawn": "Kliknite prosto območje na zemljevidu in izberite, kje se bo začela vaša država.",
+    "title": "Nasvet",
+    "troops_max": "Vaše vojske so na največji meri: napadite ali gradite, da jih ne zapravite.",
+    "under_attack": "Napadeni ste. Ohranite vojsko na meji, ki je napadena."
+  },
   "graphics_check": {
     "fps_about": "Približno {fps} FPS",
     "fps_more": "Več kot {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Predajte se",
     "surrender_title": "Postanite njihov vazal za 10 minut: brez prepirov med vami in plačate jim 25 % svojega dohodka v zlatu",
     "target": "Tarča",
+    "trade_cooldown": "spet na voljo čez nekaj sekund",
     "trading": "Trgovanje",
     "traitor": "Izdajalec",
     "troops": "Enote",
@@ -2783,6 +2801,7 @@
     "log_in": "Prijavite se",
     "login_required": "Uvrstitev je samo za registrirane igralce. Za igranje se prijavite v svoj račun.",
     "need_players": "Tekma se začne, ko je v igri {min} igralcev. Če je čakalna vrsta kratka, bo {lowMin} igralcev dovolj v {seconds}s.",
+    "needs_normal_game": "Najprej odigraj eno običajno igro za več igralcev, da odkleneš rangirani način.",
     "new_season": "Nova sezona",
     "peak": "Vrh: {elo}",
     "placement_hint": "Vaša stopnja se razkrije po igrah za uvrstitev.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Preklopite na hitrost prejšnje igre. Samo en igralec.",
     "game_speed_up": "Igra pospeši",
     "game_speed_up_desc": "Preklopite na hitrost naslednje igre (0,5, 1, 2, največ). Samo en igralec.",
+    "game_tips_desc": "Kratki nasveti o vašem položaju med igro. Privzeto vklopljeno za igralce z malo igrami.",
+    "game_tips_label": "Nasveti med igro",
     "go_to_player_desc": "Preklopi povečavo igralca na začetku igre.",
     "go_to_player_label": "Pojdi do igralca na začetku",
     "graphics_preset_desc": "Izberite prednastavljen videz zemljevida. Natančno nastavite ali naredite svoje v grafičnih nastavitvah v igri.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Čakanje na igralce ({count}/{max})",
     "you": "Ti"
   },
+  "video": {
+    "cancel": "Prekliči",
+    "clock_label": "Čas igre",
+    "close": "Zapri",
+    "create": "Ustvari moj video",
+    "download": "Prenesi",
+    "duration": "Trajanje: {duration}",
+    "error": "Videa na tej napravi ni bilo mogoče ustvariti.",
+    "format_label": "Format videa",
+    "format_square": "Kvadrat (1:1)",
+    "format_vertical": "Navpično (9:16)",
+    "generating": "Ustvarjanje videa…",
+    "hint": "30-sekundni video celotne igre, ustvarjen v vaši napravi.",
+    "keep_tab_open": "Ta zavihek naj ostane odprt in v ospredju, dokler ni končano.",
+    "outcome_loss": "Poraz",
+    "outcome_neutral": "Igra končana",
+    "outcome_win": "Zmaga",
+    "preview_aria": "Predogled videa",
+    "progress_aria": "Napredek videa",
+    "rank": "#{place} od {total}",
+    "ready_title": "Vaš video je pripravljen",
+    "tagline": "Cela igra v 30 sekundah"
+  },
   "warning_notice": {
     "body": "Vaš račun je prejel uradno opozorilo moderatorske ekipe.",
     "consequence": "Vsak nov incident bo privedel do izključitve iz rangiranega načina.",
@@ -3753,6 +3797,14 @@
       "discord_link": "V plošči računa poveži Discord s svojim računom Territorium, tudi če si se prijavil z e-pošto, Googlom ali Steamom. Nato na Discordu uporabi /compte, da dobiš vlogo preverjenega in svoj profil. Bot odgovarja v tvojem jeziku.",
       "discord_link_title": "Poveži svoj račun Discord",
       "discord_title": "Uradni Discord je odprt"
+    },
+    "v0_1_180": {
+      "ranked": "Odigraj eno običajno igro za več igralcev, da odkleneš uvrščene igre.",
+      "ranked_title": "Uvrščene igre se odklenejo po običajni igri",
+      "tips": "Nov v Territoriumu? Kratki nasveti se bodo prikazovali med tvojimi prvimi igrami. Izklopiš jih lahko v nastavitvah.",
+      "tips_title": "Nasveti med igro",
+      "video": "Ob koncu igre ustvari pospešen video celotne igre in ga prenesi, da ga deliš (kvadratna ali navpična oblika).",
+      "video_title": "Tvoja igra v 30 sekundah"
     }
   },
   "win_modal": {

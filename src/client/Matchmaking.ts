@@ -211,6 +211,13 @@ export class MatchmakingModal extends BaseModal {
       this.mustLogIn();
       return;
     }
+    if (result === "needs_normal_game") {
+      // Not a failed poll: the API will keep refusing until a normal game is
+      // finished, so stop here rather than polling on.
+      this.close();
+      this.toast(translateText("ranked.needs_normal_game"), 6000);
+      return;
+    }
     if (result !== false && "gameId" in result) {
       console.log(`matchmaking: got game ID: ${result.gameId}`);
       this.stopTimers();
@@ -223,16 +230,16 @@ export class MatchmakingModal extends BaseModal {
     this.pollTimeout = setTimeout(() => this.poll(session), POLL_MS);
   }
 
-  private mustLogIn() {
+  private toast(message: string, duration: number) {
     window.dispatchEvent(
       new CustomEvent("show-message", {
-        detail: {
-          message: translateText("ranked.login_required"),
-          color: "red",
-          duration: 4000,
-        },
+        detail: { message, color: "red", duration },
       }),
     );
+  }
+
+  private mustLogIn() {
+    this.toast(translateText("ranked.login_required"), 4000);
     window.showPage?.("page-account");
   }
 

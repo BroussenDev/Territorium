@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Et minut tilbage!"
   },
+  "game_tips": {
+    "alliance_request_pending": "Din alliancean-anmodning venter på svar. Den udløber, hvis den anden spiller ikke svarer i tide.",
+    "alliances": "Allierede kan ikke angribe hinanden. Foreslå en alliance til en nabo for at holde grænsen rolig.",
+    "attack_ratio_high": "Et meget højt angrebsforhold sender næsten alle dine tropper af sted og efterlader grænserne ubeskyttede.",
+    "close": "Luk",
+    "coastal_no_port": "Du har kyst men ingen havn: havne sender handelsskibe af sted og tjener guld.",
+    "disable": "Vis ikke flere tips",
+    "frontier_long": "En lang grænse er svær at forsvare: koncentrer angrebene på én side ad gangen.",
+    "gold_unused": "Du har meget guld: byg en by for at øge dit maksimale antal tropper.",
+    "nation_neighbour": "En AI-nation deler din grænse: den angriber og forsvarer sig som en spiller. Hold øje med dens tropper.",
+    "no_city": "Ingen by endnu: byer øger dit maksimale antal tropper. Byg en nu.",
+    "radial_menu": "Højreklik på kortet (langt tryk på en telefon) for at åbne den radiale menu: byg, angrib eller send tropper.",
+    "spawn": "Klik på et frit område på kortet for at vælge, hvor dit land starter.",
+    "title": "Tip",
+    "troops_max": "Dine tropper er på maksimum: angrib eller byg, så du ikke spilder dem.",
+    "under_attack": "Du bliver angrebet. Hold tropper ved grænsen, der bliver ramt."
+  },
   "graphics_check": {
     "fps_about": "Omkring {fps} FPS",
     "fps_more": "Over {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Overgivelse",
     "surrender_title": "Bliv deres vasal i 10 minutter: ingen kampe mellem jer, og du betaler dem 25% af din guldindkomst",
     "target": "Mål",
+    "trade_cooldown": "muligt igen om få sekunder",
     "trading": "Handel",
     "traitor": "Forræder",
     "troops": "Tropper",
@@ -2783,6 +2801,7 @@
     "log_in": "Log ind",
     "login_required": "Rangeringen er kun for registrerede spillere. Log ind på din konto for at spille.",
     "need_players": "Kampen starter, når {min} spillere er med. Hvis køen forbliver kort, vil {lowMin} spillere være nok om {seconds}s.",
+    "needs_normal_game": "Spil først ét normalt multiplayerspil for at låse op for rangerede spil.",
     "new_season": "Ny sæson",
     "peak": "Højeste: {elo}",
     "placement_hint": "Dit niveau afsløres efter dine placeringsspil.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Skift til forrige spilhastighed. Kun singleplayer.",
     "game_speed_up": "Spilhastighed op",
     "game_speed_up_desc": "Skift til næste spilhastighed (0,5, 1, 2, maks). Kun singeplayer.",
+    "game_tips_desc": "Korte tips om din situation under et spil. Slået til som standard for spillere med få spil.",
+    "game_tips_label": "Tips i spillet",
     "go_to_player_desc": "Skift zooming ind på spilleren i begyndelsen af et spil til/fra.",
     "go_to_player_label": "Gå til spiller ved start",
     "graphics_preset_desc": "Vælg det forudindstillede udseende til kortet. Finjuster eller lav din egen i spillets grafikindstillinger.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "Venter på spillere ({count}/{max})",
     "you": "Dig"
   },
+  "video": {
+    "cancel": "Annuller",
+    "clock_label": "Spiltid",
+    "close": "Luk",
+    "create": "Opret min video",
+    "download": "Download",
+    "duration": "Varighed: {duration}",
+    "error": "Videoen kunne ikke oprettes på denne enhed.",
+    "format_label": "Videoformat",
+    "format_square": "Kvadratisk (1:1)",
+    "format_vertical": "Lodret (9:16)",
+    "generating": "Opretter din video…",
+    "hint": "En 30 sekunder lang video af hele spillet, lavet på din enhed.",
+    "keep_tab_open": "Hold denne fane åben og i forgrunden, indtil den er færdig.",
+    "outcome_loss": "Nederlag",
+    "outcome_neutral": "Spillet er slut",
+    "outcome_win": "Sejr",
+    "preview_aria": "Forhåndsvisning af video",
+    "progress_aria": "Videoens fremskridt",
+    "rank": "#{place} ud af {total}",
+    "ready_title": "Din video er klar",
+    "tagline": "Hele spillet på 30 sekunder"
+  },
   "warning_notice": {
     "body": "Din konto har modtaget en officiel advarsel fra moderatorteamet.",
     "consequence": "Enhver ny hændelse vil føre til udelukkelse fra rangeret tilstand.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Forbind din Discord med din Territorium-konto fra kontopanelet, også hvis du tilmeldte dig med e-mail, Google eller Steam. Brug derefter /compte på Discord for at få den verificerede rolle og din profil. Botten svarer på dit sprog.",
       "discord_link_title": "Forbind din Discord-konto",
       "discord_title": "Den officielle Discord er åben"
+    },
+    "v0_1_180": {
+      "ranked": "Spil ét normalt multiplayerspil for at låse rangerede spil op.",
+      "ranked_title": "Rangerede spil låses op efter et normalt spil",
+      "tips": "Ny i Territorium? Korte tips vises i dine første spil. Du kan slå dem fra i indstillingerne.",
+      "tips_title": "Tips i spillet",
+      "video": "Når et spil er slut, kan du lave en video af hele spillet i hurtigt tempo og hente den for at dele den (kvadratisk eller lodret format).",
+      "video_title": "Dit spil på 30 sekunder"
     }
   },
   "win_modal": {

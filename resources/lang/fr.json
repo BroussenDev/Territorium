@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "Une minute restante !"
   },
+  "game_tips": {
+    "alliance_request_pending": "Votre demande d'alliance est en attente : elle expire si l'autre joueur ne répond pas à temps.",
+    "alliances": "Les alliés ne peuvent pas s'attaquer. Proposez une alliance à un voisin pour garder votre frontière calme.",
+    "attack_ratio_high": "Un ratio d'attaque très élevé envoie presque toutes vos troupes : vos frontières restent sans défense.",
+    "close": "Fermer",
+    "coastal_no_port": "Vous êtes sur la côte sans port : les ports envoient des navires marchands et rapportent de l'or.",
+    "disable": "Ne plus afficher les conseils",
+    "frontier_long": "Une frontière trop longue est difficile à défendre : concentrez vos attaques.",
+    "gold_unused": "Vous avez beaucoup d'or : construisez une ville pour augmenter vos troupes maximum.",
+    "nation_neighbour": "Une nation IA partage votre frontière : elle attaque et se défend comme un joueur. Surveillez ses troupes.",
+    "no_city": "Pas encore de ville : les villes augmentent vos troupes maximum. Construisez-en une.",
+    "radial_menu": "Clic droit sur la carte (appui long sur téléphone) : le menu radial permet de construire, attaquer ou envoyer des troupes.",
+    "spawn": "Cliquez sur une zone libre de la carte pour choisir où commence votre pays.",
+    "title": "Conseil",
+    "troops_max": "Vos troupes sont au maximum : attaquez ou construisez pour ne pas gaspiller.",
+    "under_attack": "Vous êtes attaqué : gardez des troupes sur la frontière touchée."
+  },
   "graphics_check": {
     "fps_about": "Environ {fps} IPS",
     "fps_more": "Plus de {fps} IPS",
@@ -2570,6 +2587,7 @@
     "surrender": "Se rendre",
     "surrender_title": "Devenir son vassal pendant 10 minutes : aucun combat entre vous, et vous lui versez 25 % de vos revenus en or",
     "target": "Cibler",
+    "trade_cooldown": "à nouveau possible dans quelques secondes",
     "trading": "Commerce",
     "traitor": "Traître",
     "troops": "Troupes",
@@ -2783,6 +2801,7 @@
     "log_in": "Se connecter",
     "login_required": "Le mode classé est réservé aux joueurs inscrits. Connectez-vous à votre compte pour jouer.",
     "need_players": "La partie démarre dès que {min} joueurs sont là. Si la file reste courte, {lowMin} joueurs suffiront dans {seconds} s.",
+    "needs_normal_game": "Jouez d'abord une partie multijoueur normale pour débloquer le classé.",
     "new_season": "Nouvelle saison",
     "peak": "Record : {elo}",
     "placement_hint": "Votre rang est révélé après vos parties de placement.",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "Reculer la vitesse du jeu d'un cran. Solo uniquement.",
     "game_speed_up": "Accélération du jeu",
     "game_speed_up_desc": "Avancer la vitesse du jeu d'un cran. Solo uniquement.",
+    "game_tips_desc": "Brefs conseils sur votre situation pendant une partie. Activés par défaut pour les joueurs qui ont peu de parties.",
+    "game_tips_label": "Conseils en jeu",
     "go_to_player_desc": "Activer/désactiver le zoom sur le joueur au début d'une partie.",
     "go_to_player_label": "Aller au joueur au lancement de la partie",
     "graphics_preset_desc": "Choisissez une apparence prédéfinie pour la carte. Ajustez-la ou créez la vôtre dans les paramètres graphiques du jeu.",
@@ -3710,6 +3731,29 @@
     "waiting_players": "En attente de joueurs ({count}/{max})",
     "you": "Vous"
   },
+  "video": {
+    "cancel": "Annuler",
+    "clock_label": "Temps de jeu",
+    "close": "Fermer",
+    "create": "Créer ma vidéo",
+    "download": "Télécharger",
+    "duration": "Durée : {duration}",
+    "error": "La vidéo n'a pas pu être créée sur cet appareil.",
+    "format_label": "Format de la vidéo",
+    "format_square": "Carré (1:1)",
+    "format_vertical": "Vertical (9:16)",
+    "generating": "Création de votre vidéo…",
+    "hint": "Une vidéo de 30 secondes de toute la partie, créée sur votre appareil.",
+    "keep_tab_open": "Gardez cet onglet ouvert et au premier plan jusqu'à la fin.",
+    "outcome_loss": "Défaite",
+    "outcome_neutral": "Partie terminée",
+    "outcome_win": "Victoire",
+    "preview_aria": "Aperçu de la vidéo",
+    "progress_aria": "Progression de la vidéo",
+    "rank": "#{place} sur {total}",
+    "ready_title": "Votre vidéo est prête",
+    "tagline": "Toute la partie en 30 secondes"
+  },
   "warning_notice": {
     "body": "Votre compte a reçu un avertissement officiel de l'équipe de modération.",
     "consequence": "Tout nouvel incident entraînera une exclusion du mode classé.",
@@ -3753,6 +3797,14 @@
       "discord_link": "Depuis le panneau du compte, liez votre Discord à votre compte Territorium, même si vous vous êtes inscrit·e par e-mail, Google ou Steam. Utilisez ensuite /compte sur le Discord pour obtenir le rôle vérifié et votre profil. Le bot répond dans votre langue.",
       "discord_link_title": "Liez votre compte Discord",
       "discord_title": "Le Discord officiel est ouvert"
+    },
+    "v0_1_180": {
+      "ranked": "Terminez une partie multijoueur normale pour débloquer les parties classées.",
+      "ranked_title": "Le classé se débloque après une partie normale",
+      "tips": "Nouveau sur Territorium ? De petits conseils s'affichent pendant vos premières parties. Vous pouvez les désactiver dans les paramètres.",
+      "tips_title": "Conseils en jeu",
+      "video": "À la fin d'une partie, créez une vidéo de toute la partie en accéléré et téléchargez-la pour la partager (format carré ou vertical).",
+      "video_title": "Votre partie en 30 secondes"
     }
   },
   "win_modal": {

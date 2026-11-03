@@ -1584,6 +1584,23 @@
   "game_timer": {
     "one_minute_remaining": "还剩一分钟！"
   },
+  "game_tips": {
+    "alliance_request_pending": "你的结盟请求正在等待回复。如果对方没有及时回应，请求将过期。",
+    "alliances": "盟友之间不能互相攻击。向邻国提议结盟，让边境保持平静。",
+    "attack_ratio_high": "攻击比例过高会派出几乎全部兵力，使你的边境毫无防守。",
+    "close": "关闭",
+    "coastal_no_port": "你靠海却没有港口：港口会派出商船并带来金币。",
+    "disable": "不再显示提示",
+    "frontier_long": "边境过长很难防守：每次把进攻集中在一侧。",
+    "gold_unused": "你有大量金币：建造城市以提高最大兵力。",
+    "nation_neighbour": "一个AI国家与你接壤：它会像玩家一样进攻和防守。留意它的兵力。",
+    "no_city": "还没有城市：城市能提高最大兵力。现在就建一座吧。",
+    "radial_menu": "在地图上右键点击（手机上长按）打开径向菜单：建造、进攻或派遣兵力。",
+    "spawn": "点击地图上的空白区域，选择你的国家的出生位置。",
+    "title": "提示",
+    "troops_max": "你的兵力已达上限：进攻或建设，避免浪费。",
+    "under_attack": "你正遭到进攻。在被攻击的边境保留部队。"
+  },
   "graphics_check": {
     "fps_about": "约 {fps} FPS",
     "fps_more": "超过 {fps} FPS",
@@ -2570,6 +2587,7 @@
     "surrender": "投降",
     "surrender_title": "成为他们的附庸10分钟：你们之间没有战斗，你向他们支付你黄金收入的25%",
     "target": "目标",
+    "trade_cooldown": "几秒后可再次操作",
     "trading": "交易",
     "traitor": "叛变者",
     "troops": "军队",
@@ -2783,6 +2801,7 @@
     "log_in": "登录",
     "login_required": "排位赛仅限注册玩家。请登录账户后游玩。",
     "need_players": "{min} 名玩家入场后，比赛开始。如果队列很短，{lowMin} 名玩家在 {seconds} 秒内就足够了。",
+    "needs_normal_game": "先完成一局普通多人对战即可解锁排位赛。",
     "new_season": "新赛季",
     "peak": "最高：{elo}",
     "placement_hint": "您的等级将在定级游戏结束后揭晓。",
@@ -3547,6 +3566,8 @@
     "game_speed_down_desc": "轮换到上一个游戏速度。仅限单人玩家。",
     "game_speed_up": "游戏加速",
     "game_speed_up_desc": "轮换到下一个游戏速度（0.5，1，2，最大）。仅限单人玩家。",
+    "game_tips_desc": "游戏过程中关于你处境的简短提示。对游戏局数较少的玩家默认开启。",
+    "game_tips_label": "游戏内提示",
     "go_to_player_desc": "在游戏开始时切换放大玩家。",
     "go_to_player_label": "开始时转到播放器",
     "graphics_preset_desc": "选择地图的预设外观。在游戏内的图形设置中进行微调或制作您自己的图形设置。",
@@ -3710,6 +3731,29 @@
     "waiting_players": "等待玩家 ({count}/{max})",
     "you": "你"
   },
+  "video": {
+    "cancel": "取消",
+    "clock_label": "游戏时间",
+    "close": "关闭",
+    "create": "制作我的视频",
+    "download": "下载",
+    "duration": "时长：{duration}",
+    "error": "无法在此设备上制作视频。",
+    "format_label": "视频格式",
+    "format_square": "方形 (1:1)",
+    "format_vertical": "竖屏 (9:16)",
+    "generating": "正在制作视频…",
+    "hint": "将整局游戏压缩成30秒视频，在您的设备上生成。",
+    "keep_tab_open": "请保持此标签页打开并处于前台，直到完成。",
+    "outcome_loss": "失败",
+    "outcome_neutral": "游戏结束",
+    "outcome_win": "胜利",
+    "preview_aria": "视频预览",
+    "progress_aria": "视频进度",
+    "rank": "第 {place} / {total} 名",
+    "ready_title": "视频已完成",
+    "tagline": "30 秒看完整局游戏"
+  },
   "warning_notice": {
     "body": "您的账号已收到管理团队的正式警告。",
     "consequence": "再有任何违规行为，您将被禁止参加排位模式。",
@@ -3753,6 +3797,14 @@
       "discord_link": "在账号面板中将 Discord 绑定到你的 Territorium 账号，即使你是通过邮箱、Google 或 Steam 注册的。然后在 Discord 上使用 /compte 获取已验证身份组和你的个人资料。机器人会用你的语言回复。",
       "discord_link_title": "绑定你的 Discord 账号",
       "discord_title": "官方 Discord 已开放"
+    },
+    "v0_1_180": {
+      "ranked": "先完成一局普通多人对战，即可解锁排位赛。",
+      "ranked_title": "完成一局普通游戏后解锁排位赛",
+      "tips": "刚接触 Territorium？前几局游戏中会显示一些简短提示。你可以在设置中关闭。",
+      "tips_title": "游戏内提示",
+      "video": "对局结束后，可以生成整局游戏的加速视频，下载后分享给朋友（方形或竖屏格式）。",
+      "video_title": "30 秒看完你的这局游戏"
     }
   },
   "win_modal": {
