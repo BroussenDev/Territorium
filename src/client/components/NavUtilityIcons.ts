@@ -2,6 +2,7 @@ import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { isDemo } from "../Demo";
 import { desktopQuit, requestDesktopQuit } from "../DesktopShell";
+import { openWhatsNew } from "../WhatsNew";
 import { DemoFarewell } from "./DemoFarewell";
 import { NavNotificationsController } from "./NavNotificationsController";
 
@@ -146,6 +147,30 @@ export class NavUtilityIcons extends LitElement {
             ? this.renderDot("bg-red-500")
             : ""}
         </div>
+        <button
+          class="${this.buttonClass()}"
+          data-whats-new-button
+          data-i18n-aria-label="whats_new.open_button"
+          data-i18n-title="whats_new.open_button"
+          @click=${() => openWhatsNew()}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="w-6 h-6 pointer-events-none"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4 10v4l3 .5L15 19V5L7 9.5z" />
+            <path d="M18 9.5a4 4 0 0 1 0 5" />
+            <path d="M7 14.5 8.5 20h2.5l-1-4.7" />
+            <path d="M20.5 4v3M19 5.5h3" class="text-capital" />
+          </svg>
+        </button>
         <div class="relative">
           <button
             class="${this.buttonClass()} ${currentPage === "page-help"

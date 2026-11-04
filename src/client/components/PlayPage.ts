@@ -1,7 +1,6 @@
 import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { assetUrl } from "../../core/AssetUrls";
-import { openWhatsNew } from "../WhatsNew";
 import "./CosmeticBackground";
 import "./NavAccountMenu";
 import "./NavUtilityIcons";
@@ -126,30 +125,6 @@ export class PlayPage extends LitElement {
             </section>
 
             <news-box></news-box>
-            <button
-              type="button"
-              data-whats-new-button
-              class="inline-flex w-fit items-center gap-2 self-start rounded-md border border-white/10 bg-surface/80 px-3 py-1.5 text-xs font-semibold text-white/70 transition-colors hover:border-capital/50 hover:text-capital focus-visible:outline-2 focus-visible:outline-capital"
-              @click=${() => openWhatsNew()}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="size-4"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M4 10v4l3 .5L15 19V5L7 9.5z" />
-                <path d="M18 9.5a4 4 0 0 1 0 5" />
-                <path d="M7 14.5 8.5 20h2.5l-1-4.7" />
-                <path d="M20.5 4v3M19 5.5h3" class="text-capital" />
-              </svg>
-              <span data-i18n="whats_new.open_button"></span>
-            </button>
           </div>
 
           <!-- Right column: Streaming Now (desktop only), stretched to the left column's
