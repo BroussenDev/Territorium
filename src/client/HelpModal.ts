@@ -262,9 +262,23 @@ export class HelpModal extends BaseModal {
                   ${this.renderKey("Escape")}
                 </td>
                 <td class="py-3 border-b border-white/5 text-white/70">
-                  ${translateText("help_modal.action_esc")}
+                  ${translateText(
+                    keybinds.gameMenu === "Escape"
+                      ? "help_modal.action_esc_menu"
+                      : "help_modal.action_esc",
+                  )}
                 </td>
               </tr>
+              ${keybinds.gameMenu && keybinds.gameMenu !== "Escape"
+                ? html`<tr class="hover:bg-white/5 transition-colors">
+                    <td class="py-3 ps-4 border-b border-white/5">
+                      ${this.renderKey(keybinds.gameMenu)}
+                    </td>
+                    <td class="py-3 border-b border-white/5 text-white/70">
+                      ${translateText("help_modal.action_game_menu")}
+                    </td>
+                  </tr>`
+                : null}
               <tr class="hover:bg-white/5 transition-colors">
                 <td class="py-3 ps-4 border-b border-white/5">
                   ${this.renderKey("Enter")}

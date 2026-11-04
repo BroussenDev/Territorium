@@ -16,6 +16,7 @@ import { findClosestBy, replacer } from "../core/Util";
 import type { CustomMapRef } from "../core/game/CustomMaps";
 import {
   BuildableUnit,
+  GameType,
   PlayerType,
   Structures,
   UnitType,
@@ -38,6 +39,7 @@ import {
 import { isVersusSpawnCell } from "../core/game/Versus";
 import { WorkerClient } from "../core/worker/WorkerClient";
 import { getApiBase } from "./ApiBase";
+import { BugGameState, FpsSampler, setBugGameSource } from "./BugContext";
 import { isDesktopShell } from "./DesktopShell";
 import { GameMetrics } from "./GameMetrics";
 import { showInGameAlert } from "./InGameModal";
@@ -587,7 +589,11 @@ function mountWebGLFrameLoop(
   gameView: GameView,
   eventBus: EventBus,
   onFrame: (nowMs: number) => void,
-): { builder: WebGLFrameBuilder; stopFrameLoop: () => void } {
+): {
+  builder: WebGLFrameBuilder;
+  stopFrameLoop: () => void;
+  captureFrame: () => Promise<HTMLCanvasElement | null>;
+} {
   const gameMap = terrainMap.gameMap;
   const mapWidth = gameMap.width();
   const mapHeight = gameMap.height();
@@ -647,9 +653,37 @@ function mountWebGLFrameLoop(
   // renderer's captured frame callback (which draws). One RAF = one
   // synchronized camera-update + WebGL render.
   let rafId: number | null = null;
+  // Bug report pictures: the canvas does not keep its image once the frame is
+  // shown, so a copy is taken right after the draw, in the same task.
+  const captures: Array<(canvas: HTMLCanvasElement | null) => void> = [];
+  const flushCaptures = (): void => {
+    if (captures.length === 0) return;
+    let copy: HTMLCanvasElement | null = null;
+    try {
+      copy = document.createElement("canvas");
+      copy.width = glCanvas.width;
+      copy.height = glCanvas.height;
+      copy.getContext("2d")?.drawImage(glCanvas, 0, 0);
+    } catch {
+      copy = null;
+    }
+    for (const done of captures.splice(0)) done(copy);
+  };
+  const captureFrame = (): Promise<HTMLCanvasElement | null> =>
+    new Promise((resolve) => {
+      captures.push(resolve);
+      setTimeout(() => {
+        const at = captures.indexOf(resolve);
+        if (at !== -1) {
+          captures.splice(at, 1);
+          resolve(null);
+        }
+      }, 1500);
+    });
   const driveFrame = (nowMs: number): void => {
     onFrame(nowMs);
     syncCamera();
+    flushCaptures();
     rafId = requestAnimationFrame(driveFrame);
   };
   rafId = requestAnimationFrame(driveFrame);
@@ -696,7 +730,7 @@ function mountWebGLFrameLoop(
     builder.update(gameView);
   };
 
-  return { builder, stopFrameLoop };
+  return { builder, stopFrameLoop, captureFrame };
 }
 
 async function createClientGame(
@@ -925,7 +959,12 @@ async function createClientGame(
 
     const metrics = new GameMetrics();
     const qualitySuggestion = new QualitySuggestionController(userSettings);
-    const { builder: webglBuilder, stopFrameLoop } = mountWebGLFrameLoop(
+    const fpsSampler = new FpsSampler();
+    const {
+      builder: webglBuilder,
+      stopFrameLoop,
+      captureFrame,
+    } = mountWebGLFrameLoop(
       gameMap,
       view,
       glCanvas,
@@ -936,8 +975,18 @@ async function createClientGame(
       (nowMs) => {
         metrics.recordFrame(nowMs);
         qualitySuggestion.recordFrame(nowMs);
+        fpsSampler.record(nowMs);
       },
     );
+
+    // What a bug report sends about this match (BugContext.ts).
+    setBugGameSource({
+      captureFrame,
+      snapshot: () =>
+        bugGameState(gameView, lobbyConfig, glCanvas, fpsSampler.fps(), () =>
+          userSettings.graphicsQuality(),
+        ),
+    });
 
     // Releases all WebGL/DOM resources this game created. Without it, stopping
     // a game (e.g. joining another without a page reload) leaks the WebGL
@@ -947,6 +996,7 @@ async function createClientGame(
     const disposeRenderer = (): void => {
       if (rendererDisposed) return;
       rendererDisposed = true;
+      setBugGameSource(null);
       stopFrameLoop();
       qualitySuggestion.dispose();
       gameRenderer.dispose();
@@ -979,6 +1029,44 @@ async function createClientGame(
     soundManager.dispose();
     throw err;
   }
+}
+
+/** The match as a bug report describes it. */
+function bugGameState(
+  gameView: GameView,
+  lobbyConfig: LobbyConfig,
+  glCanvas: HTMLCanvasElement,
+  fps: number,
+  quality: () => string,
+): BugGameState {
+  const gameConfig = gameView.config().gameConfig();
+  const me = gameView.myPlayer();
+  let gpu: string | null = null;
+  try {
+    const gl = glCanvas.getContext("webgl2") as WebGL2RenderingContext | null;
+    const info = gl?.getExtension("WEBGL_debug_renderer_info");
+    if (gl && info) {
+      gpu = String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)).slice(0, 120);
+    }
+  } catch {
+    gpu = null;
+  }
+  return {
+    gameID: lobbyConfig.gameID ?? null,
+    map: gameConfig.customMap?.name ?? gameConfig.gameMap,
+    mode: gameConfig.gameMode,
+    gameType: gameConfig.gameType,
+    multiplayer: gameConfig.gameType !== GameType.Singleplayer,
+    replay: gameView.config().isReplay(),
+    tick: gameView.ticks(),
+    elapsedSeconds: Math.floor(gameView.elapsedGameSeconds()),
+    spectator: gameView.isSpectator(),
+    alive: me?.isAlive() ?? false,
+    tiles: me?.numTilesOwned() ?? 0,
+    fps,
+    gpu,
+    quality: quality(),
+  };
 }
 
 export class ClientGameRunner {

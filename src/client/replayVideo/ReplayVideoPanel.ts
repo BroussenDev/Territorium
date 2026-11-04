@@ -254,7 +254,10 @@ export class ReplayVideoProgress extends LitElement {
   }
 
   private onKeydown(event: KeyboardEvent) {
-    if (event.key === "Escape") this.close();
+    if (event.key === "Escape") {
+      event.preventDefault();
+      this.close();
+    }
   }
 
   render() {

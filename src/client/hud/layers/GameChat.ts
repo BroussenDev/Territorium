@@ -328,6 +328,7 @@ export class GameChat extends LitElement implements Controller {
 
   private onKeydown(e: KeyboardEvent) {
     if (e.key === "Escape") {
+      e.preventDefault();
       this.emojis = false;
       (e.target as HTMLInputElement).blur();
       return;

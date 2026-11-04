@@ -59,6 +59,8 @@ export function getDefaultKeybinds(isMac: boolean): Record<string, string> {
     // F opens the emoji menu and X builds an EMP bomb
     selectAllWarships: "KeyZ",
     pauseGame: "KeyP",
+    // Escape also closes whatever is open first; this key only opens the menu.
+    gameMenu: "Escape",
     gameSpeedUp: "Period",
     gameSpeedDown: "Comma",
     altKey: "AltLeft",

@@ -169,7 +169,10 @@ export class BuildMenu extends LitElement implements Controller {
       const tile = this.game.ref(clickedCell.x, clickedCell.y);
       this.showMenu(tile);
     });
-    this.eventBus.on(CloseViewEvent, () => this.hideMenu());
+    this.eventBus.on(CloseViewEvent, (e) => {
+      if (!this._hidden) e.handled = true;
+      this.hideMenu();
+    });
     this.eventBus.on(ShowEmojiMenuEvent, () => this.hideMenu());
     this.eventBus.on(MouseDownEvent, () => this.hideMenu());
   }

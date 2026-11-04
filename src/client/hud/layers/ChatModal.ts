@@ -4,8 +4,8 @@ import { customElement, state } from "lit/decorators.js";
 import { PlayerType } from "../../../core/game/Game";
 import { GameView, PlayerView } from "../../view";
 
-import { EventBus, GameEvent } from "../../../core/EventBus";
 import quickChatData from "resources/QuickChat.json";
+import { EventBus, GameEvent } from "../../../core/EventBus";
 import { CloseViewEvent, ShowChatMenuEvent } from "../../InputHandler";
 import { TransformHandler } from "../../TransformHandler";
 import { SendQuickChatEvent } from "../../Transport";
@@ -322,8 +322,9 @@ export class ChatModal extends LitElement {
 
   initEventBus(eventBus: EventBus) {
     this.eventBus = eventBus;
-    eventBus.on(CloseViewEvent, () => {
+    eventBus.on(CloseViewEvent, (e) => {
       if (this.isOpen) {
+        e.handled = true;
         this.close();
       }
     });

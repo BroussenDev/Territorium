@@ -326,7 +326,10 @@ export class EventHistory extends LitElement implements Controller {
   };
 
   private onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape") this.close();
+    if (e.key === "Escape") {
+      e.preventDefault();
+      this.close();
+    }
   };
 
   private category(type: MessageType): MessageCategory {

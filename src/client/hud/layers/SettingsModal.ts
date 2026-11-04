@@ -1,8 +1,8 @@
-import { html, LitElement } from "lit";
+import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { crazyGamesSDK } from "src/client/CrazyGamesSDK";
 import { PauseGameIntentEvent } from "src/client/Transport";
-import { assetUrl } from "../../../core/AssetUrls";
 import { EventBus } from "../../../core/EventBus";
 import { openBugReport } from "../../BugReport";
 import { Controller } from "../../Controller";
@@ -14,9 +14,20 @@ import { navigateTo } from "../../PageTransition";
 import type { UserSettingModal } from "../../UserSettingModal";
 import { homeHref, translateText } from "../../Utils";
 import { forgetActiveGame } from "../../components/ResumeGameButton";
-const exitIcon = assetUrl("images/ExitIconWhite.svg");
-const settingsIcon = assetUrl("images/SettingIconWhite.svg");
-const treeIcon = assetUrl("images/TreeIconWhite.svg");
+import {
+  menuBugIcon,
+  menuChevronIcon,
+  menuCloseIcon,
+  menuCodeIcon,
+  menuExitIcon,
+  menuHexIcon,
+  menuSlidersIcon,
+  menuTerrainIcon,
+} from "./MenuIcons";
+
+/** How long the menu stays on screen to play its closing animation. */
+const CLOSE_ANIMATION_MS = 170;
+const FOCUSABLE = "button:not([disabled])";
 
 export class ShowSettingsModalEvent {
   constructor(
@@ -46,6 +57,13 @@ export class SettingsModal extends LitElement implements Controller {
   @state()
   private alternateView: boolean = false;
 
+  /** True while the menu plays its closing animation. */
+  @state()
+  private closing: boolean = false;
+
+  private closeTimer: ReturnType<typeof setTimeout> | null = null;
+  private returnFocusTo: HTMLElement | null = null;
+
   @query(".modal-overlay")
   private modalOverlay!: HTMLElement;
 
@@ -57,6 +75,7 @@ export class SettingsModal extends LitElement implements Controller {
 
   init() {
     this.eventBus.on(ShowSettingsModalEvent, (event) => {
+      this.cancelCloseAnimation();
       this.isVisible = event.isVisible;
       this.shouldPause = event.shouldPause;
       this.wasPausedWhenOpened = event.isPaused;
@@ -91,20 +110,100 @@ export class SettingsModal extends LitElement implements Controller {
   };
 
   private handleKeyDown = (event: KeyboardEvent) => {
-    if (this.isVisible && event.key === "Escape") {
+    if (!this.isVisible) return;
+    if (event.key === "Escape") {
+      // Claim the key so the game does not also treat it as "open the menu".
+      event.preventDefault();
       this.closeModal();
+    } else if (event.key === "Tab") {
+      this.trapFocus(event);
+    } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      this.moveFocus(event, event.key === "ArrowDown" ? 1 : -1);
     }
   };
 
+  /** Whether the menu is on screen (and not already on its way out). */
+  public get isOpen(): boolean {
+    return this.isVisible;
+  }
+
   public openModal() {
+    this.cancelCloseAnimation();
+    if (!this.isVisible) {
+      const active = document.activeElement;
+      this.returnFocusTo = active instanceof HTMLElement ? active : null;
+    }
     this.isVisible = true;
     this.requestUpdate();
   }
 
   public closeModal({ keepPause = false }: { keepPause?: boolean } = {}) {
+    const wasVisible = this.isVisible;
     this.isVisible = false;
+    // Handing over to the settings modal swaps instantly; a plain close fades.
+    if (wasVisible && !keepPause) {
+      this.closing = true;
+      this.closeTimer = setTimeout(() => {
+        this.closing = false;
+        this.closeTimer = null;
+      }, CLOSE_ANIMATION_MS);
+    }
     this.requestUpdate();
-    if (!keepPause) this.pauseGame(false);
+    if (!keepPause) {
+      this.pauseGame(false);
+      const target = this.returnFocusTo;
+      this.returnFocusTo = null;
+      if (wasVisible && target?.isConnected) {
+        target.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  private cancelCloseAnimation() {
+    if (this.closeTimer !== null) clearTimeout(this.closeTimer);
+    this.closeTimer = null;
+    this.closing = false;
+  }
+
+  private focusables(): HTMLElement[] {
+    return [...this.querySelectorAll<HTMLElement>(FOCUSABLE)];
+  }
+
+  /** Keeps Tab inside the menu, which is modal. */
+  private trapFocus(event: KeyboardEvent) {
+    const items = this.focusables();
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!first || !last) return;
+    const active = document.activeElement;
+    if (event.shiftKey && (active === first || !this.contains(active))) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (active === last || !this.contains(active))) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  /** Up and Down walk the rows, wrapping around. */
+  private moveFocus(event: KeyboardEvent, step: 1 | -1) {
+    const items = this.focusables();
+    if (items.length === 0) return;
+    event.preventDefault();
+    const at = items.indexOf(document.activeElement as HTMLElement);
+    const next = at === -1 ? 0 : (at + step + items.length) % items.length;
+    items[next].focus();
+  }
+
+  updated(changed: Map<string, unknown>) {
+    if (changed.has("isVisible") && this.isVisible) {
+      // The first row, not the close button: Enter lands on something useful.
+      queueMicrotask(() =>
+        this.querySelector<HTMLElement>("[data-menu-row]")?.focus({
+          preventScroll: true,
+        }),
+      );
+    }
   }
 
   private pauseGame(pause: boolean) {
@@ -164,140 +263,216 @@ export class SettingsModal extends LitElement implements Controller {
     navigateTo(homeHref());
   }
 
+  private static readonly ROW =
+    "group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-start text-white transition-colors " +
+    "hover:bg-white/6 focus-visible:bg-white/6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright/80 " +
+    "active:bg-white/10";
+
+  private renderRow(opts: {
+    icon: TemplateResult;
+    title: string;
+    desc: string;
+    onClick: () => void;
+    attr?: "settings" | "bug";
+    trailing?: TemplateResult | null;
+    switchState?: boolean;
+  }) {
+    const isSwitch = opts.switchState !== undefined;
+    return html`<button
+      type="button"
+      data-menu-row
+      data-open-settings=${ifDefined(opts.attr === "settings" ? "" : undefined)}
+      data-report-bug=${ifDefined(opts.attr === "bug" ? "" : undefined)}
+      role=${ifDefined(isSwitch ? "switch" : undefined)}
+      aria-checked=${ifDefined(isSwitch ? String(opts.switchState) : undefined)}
+      class=${SettingsModal.ROW}
+      @click=${opts.onClick}
+    >
+      <span
+        class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-white/8 bg-white/4 text-white/70 transition-colors group-hover:border-brand-bright/40 group-hover:text-brand-bright group-focus-visible:border-brand-bright/40 group-focus-visible:text-brand-bright"
+      >
+        ${opts.icon}
+      </span>
+      <span class="min-w-0 flex-1">
+        <span class="block text-sm font-semibold leading-tight">
+          ${opts.title}
+        </span>
+        <span class="mt-0.5 block text-xs leading-snug text-white/50">
+          ${opts.desc}
+        </span>
+      </span>
+      ${opts.trailing ?? null}
+    </button>`;
+  }
+
+  private renderSwitch(on: boolean) {
+    return html`<span
+      class="flex shrink-0 items-center gap-2 text-xs font-semibold ${on
+        ? "text-brand-bright"
+        : "text-white/45"}"
+    >
+      ${on
+        ? translateText("user_setting.on")
+        : translateText("user_setting.off")}
+      <span
+        class="relative h-5 w-9 rounded-full border transition-colors ${on
+          ? "border-brand-bright/60 bg-brand"
+          : "border-white/15 bg-plate-700"}"
+      >
+        <span
+          class="absolute top-0.5 size-3.5 rounded-full bg-white shadow transition-all ${on
+            ? "start-4.5"
+            : "start-0.5"}"
+        ></span>
+      </span>
+    </span>`;
+  }
+
+  private renderChevron() {
+    return html`<span
+      class="shrink-0 text-white/30 transition-colors group-hover:text-brand-bright rtl:rotate-180"
+    >
+      ${menuChevronIcon()}
+    </span>`;
+  }
+
+  private renderGroup(label: string, rows: TemplateResult[], dev = false) {
+    return html`<section
+      class="flex flex-col gap-0.5 ${dev ? "opacity-80" : ""}"
+      aria-label=${label}
+    >
+      <h3
+        class="px-3 pb-1 pt-2 text-[0.6875rem] font-bold uppercase tracking-[0.14em] ${dev
+          ? "text-capital/70"
+          : "text-white/40"}"
+      >
+        ${label}
+      </h3>
+      ${rows}
+    </section>`;
+  }
+
   render() {
-    if (!this.isVisible) {
+    if (!this.isVisible && !this.closing) {
       return null;
     }
 
     return html`
       <div
-        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-xs z-2000 flex items-center justify-center p-4"
+        class="modal-overlay game-menu-overlay fixed inset-0 z-2000 flex items-end justify-center bg-black/60 backdrop-blur-sm sm:items-center sm:p-4"
+        ?data-closing=${!this.isVisible}
+        ?inert=${!this.isVisible}
         @contextmenu=${(e: Event) => e.preventDefault()}
       >
         <div
-          class="bg-plate-800 border border-plate-600 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto"
+          class="game-menu-panel flex max-h-[min(88dvh,640px)] w-full max-w-md flex-col overflow-hidden rounded-t-2xl border border-white/10 bg-plate-900 shadow-2xl shadow-black/60 sm:rounded-2xl"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="game-menu-title"
         >
           <div
-            class="flex items-center justify-between p-4 border-b border-plate-600"
+            class="h-0.5 shrink-0 bg-linear-to-r from-brand via-brand-bright to-capital"
+            aria-hidden="true"
+          ></div>
+          <header
+            class="flex shrink-0 items-center gap-3 border-b border-white/8 px-4 py-3.5"
           >
-            <div class="flex items-center gap-2">
-              <img
-                src=${settingsIcon}
-                alt=""
-                width="24"
-                height="24"
-                class="align-middle"
-              />
-              <h2 class="text-xl font-semibold text-white">
-                ${translateText("user_setting.game_menu_title")}
-              </h2>
-            </div>
-            <button
-              class="text-white/60 hover:text-white text-2xl font-bold leading-none"
-              @click=${this.closeModal}
+            <span
+              class="flex size-10 items-center justify-center rounded-xl border border-brand-bright/30 bg-brand/15 text-brand-bright"
             >
-              ×
-            </button>
-          </div>
-
-          <div class="p-4 flex flex-col gap-3">
-            <button
-              class="flex gap-3 items-center w-full text-left p-3 hover:bg-plate-700 rounded-sm text-white transition-colors"
-              data-open-settings
-              @click="${this.onOpenSettingsButtonClick}"
+              ${menuHexIcon(22)}
+            </span>
+            <h2
+              id="game-menu-title"
+              class="m-0 flex-1 font-display text-xl font-bold tracking-wide text-white"
             >
-              <img src=${settingsIcon} alt="" width="20" height="20" />
-              <div class="flex-1">
-                <div class="font-medium">
-                  ${translateText("user_setting.open_settings_label")}
-                </div>
-                <div class="text-sm text-white/60">
-                  ${translateText("user_setting.open_settings_desc")}
-                </div>
-              </div>
-            </button>
-
-            <button
-              class="flex gap-3 items-center w-full text-left p-3 hover:bg-plate-700 rounded-sm text-white transition-colors"
-              @click="${this.onTerrainButtonClick}"
+              ${translateText("user_setting.game_menu_title")}
+            </h2>
+            <kbd
+              class="hidden rounded-md border border-white/15 bg-white/5 px-1.5 py-0.5 text-[0.6875rem] font-semibold text-white/50 sm:inline-block"
+              aria-hidden="true"
+              >Esc</kbd
             >
-              <img src=${treeIcon} alt="" width="20" height="20" />
-              <div class="flex-1">
-                <div class="font-medium">
-                  ${translateText("user_setting.toggle_terrain")}
-                </div>
-                <div class="text-sm text-white/60">
-                  ${translateText("user_setting.toggle_view_desc")}
-                </div>
-              </div>
-              <div class="text-sm text-white/60">
-                ${this.alternateView
-                  ? translateText("user_setting.on")
-                  : translateText("user_setting.off")}
-              </div>
-            </button>
-
             <button
-              class="flex gap-3 items-center w-full text-left p-3 hover:bg-plate-700 rounded-sm text-white transition-colors"
-              data-report-bug
-              @click=${() => {
-                this.closeModal();
-                openBugReport();
-              }}
+              type="button"
+              class="flex size-9 items-center justify-center rounded-lg text-white/60 transition-colors hover:bg-white/8 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-bright/80"
+              aria-label=${translateText("common.close")}
+              @click=${() => this.closeModal()}
             >
-              <img
-                src=${assetUrl("images/BugIconWhite.svg")}
-                alt=""
-                width="20"
-                height="20"
-              />
-              <div class="flex-1">
-                <div class="font-medium">
-                  ${translateText("bug_report.title")}
-                </div>
-                <div class="text-sm text-white/60">
-                  ${translateText("bug_report.menu_desc")}
-                </div>
-              </div>
+              ${menuCloseIcon()}
             </button>
+          </header>
 
-            <div class="border-t border-plate-600 pt-3 mt-4">
-              <div
-                class="px-3 py-1 text-xs font-semibold text-white/60 uppercase tracking-wider"
-              >
-                ${translateText("user_setting.development_only")}
-              </div>
+          <div
+            class="flex flex-1 flex-col gap-2 overflow-y-auto overscroll-contain p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+          >
+            ${this.renderGroup(translateText("user_setting.menu_group_game"), [
+              this.renderRow({
+                icon: menuSlidersIcon(),
+                title: translateText("user_setting.open_settings_label"),
+                desc: translateText("user_setting.open_settings_desc"),
+                attr: "settings",
+                onClick: () => this.onOpenSettingsButtonClick(),
+                trailing: this.renderChevron(),
+              }),
+              this.renderRow({
+                icon: menuTerrainIcon(),
+                title: translateText("user_setting.toggle_terrain"),
+                desc: translateText("user_setting.toggle_view_desc"),
+                switchState: this.alternateView,
+                onClick: () => this.onTerrainButtonClick(),
+                trailing: this.renderSwitch(this.alternateView),
+              }),
+            ])}
+            ${this.renderGroup(translateText("user_setting.menu_group_help"), [
+              this.renderRow({
+                icon: menuBugIcon(),
+                title: translateText("bug_report.title"),
+                desc: translateText("bug_report.menu_desc"),
+                attr: "bug",
+                onClick: () => {
+                  this.closeModal();
+                  openBugReport();
+                },
+                trailing: this.renderChevron(),
+              }),
+            ])}
+            ${this.renderGroup(
+              translateText("user_setting.development_only"),
+              [
+                this.renderRow({
+                  icon: menuCodeIcon(),
+                  title: translateText("user_setting.render_debug_gui"),
+                  desc: translateText("user_setting.render_debug_gui_desc"),
+                  onClick: () => this.onRenderDebugGuiButtonClick(),
+                }),
+              ],
+              true,
+            )}
 
+            <div class="mt-1 border-t border-white/8 pt-2">
               <button
-                class="flex gap-3 items-center w-full text-left p-3 hover:bg-plate-700 rounded-sm text-white transition-colors"
-                @click="${this.onRenderDebugGuiButtonClick}"
+                type="button"
+                data-menu-row
+                data-exit-game
+                class="group flex w-full items-center gap-3 rounded-xl border border-red-500/25 bg-red-500/8 px-3 py-2.5 text-start text-red-300 transition-colors hover:border-red-400/50 hover:bg-red-500/18 hover:text-red-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/80 active:bg-red-500/25"
+                @click=${() => this.onExitButtonClick()}
               >
-                <img src=${settingsIcon} alt="" width="20" height="20" />
-                <div class="flex-1">
-                  <div class="font-medium">
-                    ${translateText("user_setting.render_debug_gui")}
-                  </div>
-                  <div class="text-sm text-white/60">
-                    ${translateText("user_setting.render_debug_gui_desc")}
-                  </div>
-                </div>
-              </button>
-            </div>
-
-            <div class="border-t border-plate-600 pt-3 mt-4">
-              <button
-                class="flex gap-3 items-center w-full text-left p-3 hover:bg-red-600/20 rounded-sm text-red-400 transition-colors"
-                @click="${this.onExitButtonClick}"
-              >
-                <img src=${exitIcon} alt="" width="20" height="20" />
-                <div class="flex-1">
-                  <div class="font-medium">
+                <span
+                  class="flex size-9 shrink-0 items-center justify-center rounded-lg border border-red-400/25 bg-red-500/10"
+                >
+                  ${menuExitIcon()}
+                </span>
+                <span class="min-w-0 flex-1">
+                  <span class="block text-sm font-semibold leading-tight">
                     ${translateText("user_setting.exit_game_label")}
-                  </div>
-                  <div class="text-sm text-white/60">
+                  </span>
+                  <span
+                    class="mt-0.5 block text-xs leading-snug text-red-200/60"
+                  >
                     ${translateText("user_setting.exit_game_info")}
-                  </div>
-                </div>
+                  </span>
+                </span>
               </button>
             </div>
           </div>

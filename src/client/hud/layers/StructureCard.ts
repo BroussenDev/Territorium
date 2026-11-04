@@ -118,7 +118,10 @@ export class StructureCard extends LitElement implements Controller {
     // A tap opens the radial menu, which has its own upgrade button.
     this.eventBus.on(TouchEvent, () => this.close());
     this.eventBus.on(ContextMenuEvent, () => this.close());
-    this.eventBus.on(CloseViewEvent, () => this.close());
+    this.eventBus.on(CloseViewEvent, (e) => {
+      if (this.unit !== null) e.handled = true;
+      this.close();
+    });
   }
 
   tick() {

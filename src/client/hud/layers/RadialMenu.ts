@@ -131,6 +131,7 @@ export class RadialMenu implements Controller {
     this.createMenuElement();
     this.createTooltipElement();
     this.eventBus.on(CloseViewEvent, (e) => {
+      if (this.isVisible) e.handled = true;
       this.hideRadialMenu();
     });
   }

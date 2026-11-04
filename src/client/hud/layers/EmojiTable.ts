@@ -1,9 +1,10 @@
-import { AllPlayers } from "../../../core/game/Game";
-import { Emoji, flattenedEmojiTable } from "../../../core/Util";
-import { TerraNulliusImpl } from "../../../core/game/TerraNulliusImpl";
-import { EventBus, GameEvent } from "../../../core/EventBus";
 import { LitElement, html } from "lit";
 import { customElement, state } from "lit/decorators.js";
+import { EventBus, GameEvent } from "../../../core/EventBus";
+import { AllPlayers } from "../../../core/game/Game";
+import { TerraNulliusImpl } from "../../../core/game/TerraNulliusImpl";
+import { UserSettings } from "../../../core/game/UserSettings";
+import { Emoji, flattenedEmojiTable } from "../../../core/Util";
 import {
   EmojiSection,
   FAVORITE_SLOTS,
@@ -20,7 +21,6 @@ import {
 import { Platform } from "../../Platform";
 import { TransformHandler } from "../../TransformHandler";
 import { SendEmojiIntentEvent } from "../../Transport";
-import { UserSettings } from "../../../core/game/UserSettings";
 import { translateText } from "../../Utils";
 import { GameView, PlayerView } from "../../view";
 
@@ -72,7 +72,8 @@ export class EmojiTable extends LitElement {
         this.onEmojiClicked(emoji);
       }
     });
-    eventBus.on(CloseViewEvent, () => {
+    eventBus.on(CloseViewEvent, (e) => {
+      if (this.isVisible) e.handled = true;
       if (!this.hidden) {
         this.hideTable();
       }

@@ -12,14 +12,17 @@ import { Controller } from "../../Controller";
 import { crazyGamesSDK } from "../../CrazyGamesSDK";
 import { isDesktopShell } from "../../DesktopShell";
 import { showInGameAlert, showInGameConfirm } from "../../InGameModal";
-import { TogglePauseIntentEvent } from "../../InputHandler";
+import {
+  ToggleGameMenuEvent,
+  TogglePauseIntentEvent,
+} from "../../InputHandler";
 import { navigateTo } from "../../PageTransition";
 import { PauseGameIntentEvent, SendWinnerEvent } from "../../Transport";
 import { homeHref, showToast, translateText } from "../../Utils";
 import { GameView } from "../../view";
 import { ImmunityBarVisibleEvent } from "./ImmunityTimer";
 import { ShowReplayPanelEvent } from "./ReplayPanel";
-import { ShowSettingsModalEvent } from "./SettingsModal";
+import { SettingsModal, ShowSettingsModalEvent } from "./SettingsModal";
 import { SpawnBarVisibleEvent } from "./SpawnTimer";
 const exitIcon = assetUrl("images/ExitIconWhite.svg");
 const FastForwardIconSolid = assetUrl("images/FastForwardIconSolidWhite.svg");
@@ -112,6 +115,13 @@ export class GameRightSidebar extends LitElement implements Controller {
     this.eventBus.on(SendWinnerEvent, () => {
       this.hasWinner = true;
       this.requestUpdate();
+    });
+
+    // Escape (or the key bound to the menu) with nothing else to close.
+    this.eventBus.on(ToggleGameMenuEvent, () => {
+      const menu = document.querySelector("settings-modal");
+      if (menu instanceof SettingsModal && menu.isOpen) menu.closeModal();
+      else this.onSettingsButtonClick();
     });
 
     this.eventBus.on(TogglePauseIntentEvent, () => {

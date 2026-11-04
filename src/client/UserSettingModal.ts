@@ -1485,6 +1485,16 @@ export class UserSettingModal extends BaseModal {
       ></setting-keybind>
 
       <setting-keybind
+        action="gameMenu"
+        label=${translateText("user_setting.game_menu_key")}
+        description=${translateText("user_setting.game_menu_key_desc")}
+        .defaultKey=${this.defaultKeybinds.gameMenu}
+        .value=${this.getKeyValue("gameMenu")}
+        .display=${this.getKeyChar("gameMenu")}
+        @change=${this.handleKeybindChange}
+      ></setting-keybind>
+
+      <setting-keybind
         action="gameSpeedUp"
         label=${translateText("user_setting.game_speed_up")}
         description=${translateText("user_setting.game_speed_up_desc")}

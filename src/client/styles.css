@@ -1020,3 +1020,56 @@ unit-display .tutorial-highlight::after {
 .remove-player-btn:hover {
   background: #ef4444;
 }
+
+/* The in-game menu (SettingsModal.ts): the backdrop fades and the panel lifts
+   in, and both reverse while data-closing is set. */
+@keyframes gameMenuFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes gameMenuFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes gameMenuPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gameMenuPanelOut {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .game-menu-overlay {
+    animation: gameMenuFadeIn 0.18s ease-out both;
+  }
+  .game-menu-overlay[data-closing] {
+    animation: gameMenuFadeOut 0.17s ease-in both;
+  }
+  .game-menu-panel {
+    animation: gameMenuPanelIn 0.26s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .game-menu-overlay[data-closing] .game-menu-panel {
+    animation: gameMenuPanelOut 0.17s ease-in both;
+  }
+}

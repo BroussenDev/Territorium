@@ -1,10 +1,15 @@
 import { EventBus, GameEvent } from "../core/EventBus";
 import { PlayerBuildableUnitType, PlayerID, UnitType } from "../core/game/Game";
 import { TileRef } from "../core/game/GameMap";
+import {
+  KEYBINDS_KEY,
+  USER_SETTINGS_CHANGED_EVENT,
+  UserSettings,
+} from "../core/game/UserSettings";
 import { favoriteSlotForKey } from "./EmojiKeys";
+import { escapeOpensMenu } from "./GameMenuKey";
 import { Platform } from "./Platform";
 import { UIState } from "./UIState";
-import { KEYBINDS_KEY, USER_SETTINGS_CHANGED_EVENT, UserSettings } from "../core/game/UserSettings";
 import { ReplaySpeedMultiplier } from "./utilities/ReplaySpeedMultiplier";
 import { GameView, UnitView } from "./view";
 
@@ -85,7 +90,16 @@ export class AlternateViewEvent implements GameEvent {
   constructor(public readonly alternateView: boolean) {}
 }
 
-export class CloseViewEvent implements GameEvent {}
+export class CloseViewEvent implements GameEvent {
+  /**
+   * Set by a listener that actually closed something (a menu, a card, a
+   * selection). Escape only opens the game menu when nothing claimed it.
+   */
+  handled = false;
+}
+
+/** Escape (or its rebound key) pressed with nothing left to close. */
+export class ToggleGameMenuEvent implements GameEvent {}
 
 export class RefreshGraphicsEvent implements GameEvent {}
 
@@ -428,6 +442,13 @@ export class InputHandler {
     this.addKeybindAndEvent(this.keybinds.retaliateAttack, () => {
       this.eventBus.emit(new DoRetaliateAttackEvent());
     });
+    // A rebound menu key just toggles the menu; Escape is handled with its
+    // other jobs (keydown), since it closes things first.
+    if (this.keybinds.gameMenu && this.keybinds.gameMenu !== "Escape") {
+      this.addKeybindAndEvent(this.keybinds.gameMenu, () => {
+        this.eventBus.emit(new ToggleGameMenuEvent());
+      });
+    }
     this.addKeybindAndEvent(this.keybinds.centerCamera, () => {
       this.eventBus.emit(new CenterCameraEvent());
     });
@@ -772,7 +793,6 @@ export class InputHandler {
         }
 
         if (e.code === "Escape") {
-          e.preventDefault();
           let closedUI = false;
 
           if (this.uiState.ghostStructure !== null) {
@@ -786,13 +806,35 @@ export class InputHandler {
             closedUI = true;
           }
 
-          this.eventBus.emit(new CloseViewEvent());
+          const closeView = new CloseViewEvent();
+          this.eventBus.emit(closeView);
 
           if (
             !closedUI &&
             (this.unitSelectionActive || this.multiSelectionActive)
           ) {
             this.eventBus.emit(new UnitSelectionEvent(null, false));
+            closedUI = true;
+          }
+
+          if (
+            escapeOpensMenu({
+              menuKey: this.keybinds.gameMenu,
+              fromTextInput: isTextInput,
+              closedSomething: closedUI,
+              viewHandled: closeView.handled,
+            })
+          ) {
+            // Windows with their own Escape handler (settings, report, ...)
+            // run on this same event, in any order: wait until they all had
+            // their turn, and open the menu only if none of them took it.
+            setTimeout(() => {
+              if (e.defaultPrevented) return;
+              e.preventDefault();
+              this.eventBus.emit(new ToggleGameMenuEvent());
+            }, 0);
+          } else {
+            e.preventDefault();
           }
         }
 
@@ -815,9 +857,12 @@ export class InputHandler {
             e.code === "NumpadAdd" ||
             e.code === "NumpadSubtract");
 
+        // Escape decides for itself (above): marking it handled here would
+        // look, to the deferred menu check, like a window had taken the key.
         const isConfiguredKeybind =
-          Object.values(this.keybinds).includes(e.code) ||
-          this.keybindAndEvent.some(([k]) => this.keybindMatchesEvent(e, k));
+          e.code !== "Escape" &&
+          (Object.values(this.keybinds).includes(e.code) ||
+            this.keybindAndEvent.some(([k]) => this.keybindMatchesEvent(e, k)));
 
         if (isConfiguredKeybind && !isBrowserZoomCombo) {
           e.preventDefault();

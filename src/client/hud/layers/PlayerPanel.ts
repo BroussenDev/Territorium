@@ -109,6 +109,7 @@ export class PlayerPanel extends LitElement implements Controller {
     this.eventBus = eventBus;
     eventBus.on(CloseViewEvent, (e) => {
       if (this.isVisible) {
+        e.handled = true;
         this.hide();
       }
     });
