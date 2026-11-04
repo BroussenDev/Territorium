@@ -8,6 +8,7 @@ import {
 } from "../DesktopShell";
 import { currentGameVersion } from "../GameVersion";
 import { OPENFRONT_NOTICE } from "../LegalNotice";
+import { openLinks } from "../Links";
 
 @customElement("page-footer")
 export class Footer extends LitElement {
@@ -51,6 +52,13 @@ export class Footer extends LitElement {
           <span class="text-[10px] text-white/30" data-openfront-notice
             >· ${OPENFRONT_NOTICE}</span
           >
+          <button
+            type="button"
+            data-links-button
+            data-i18n="links.button"
+            class="ml-2 text-[10px] text-white/30 underline-offset-2 transition-colors hover:text-white/70 hover:underline"
+            @click=${() => openLinks()}
+          ></button>
           <lang-selector class="hidden"></lang-selector>
         </footer>
       `;
@@ -107,6 +115,13 @@ export class Footer extends LitElement {
               target="_blank"
               class="hover:text-white transition-colors"
             ></a>
+            <button
+              type="button"
+              data-links-button
+              data-i18n="links.button"
+              class="hover:text-white transition-colors cursor-pointer"
+              @click=${() => openLinks()}
+            ></button>
           </div>
           <!-- Kept visible (AGPL section 7(b) notice), but low-key. -->
           <span class="text-[10px] text-white/30 text-center">

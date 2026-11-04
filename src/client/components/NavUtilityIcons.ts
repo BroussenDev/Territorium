@@ -2,6 +2,7 @@ import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { isDemo } from "../Demo";
 import { desktopQuit, requestDesktopQuit } from "../DesktopShell";
+import { openIdeas } from "../Links";
 import { openWhatsNew } from "../WhatsNew";
 import { DemoFarewell } from "./DemoFarewell";
 import { NavNotificationsController } from "./NavNotificationsController";
@@ -169,6 +170,31 @@ export class NavUtilityIcons extends LitElement {
             <path d="M18 9.5a4 4 0 0 1 0 5" />
             <path d="M7 14.5 8.5 20h2.5l-1-4.7" />
             <path d="M20.5 4v3M19 5.5h3" class="text-capital" />
+          </svg>
+        </button>
+        <button
+          class="${this.buttonClass()}"
+          data-ideas-button
+          data-i18n-aria-label="links.suggest"
+          data-i18n-title="links.suggest"
+          @click=${() => openIdeas()}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="w-6 h-6 pointer-events-none"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M9 18h6M10 21h4" />
+            <path
+              d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
+            />
+            <path d="M12 7v3l1.5 1" class="text-capital" />
           </svg>
         </button>
         <div class="relative">
