@@ -1236,6 +1236,18 @@ class Client {
       console.log(`${spectate ? "spectating" : "joining"} lobby ${lobbyId}`);
       return;
     }
+    // A shared profile link (/joueur/<id>) that reached the app instead of the
+    // server-rendered page: open the same profile through the modal router.
+    const profileLink = window.location.pathname.match(
+      /^\/joueur\/([A-Za-z0-9_-]{1,64})\/?$/,
+    );
+    if (profileLink) {
+      history.replaceState(
+        null,
+        "",
+        `/#modal=profile&publicID=${encodeURIComponent(profileLink[1])}`,
+      );
+    }
     if (modalRouter.routeFromHash()) {
       return;
     }

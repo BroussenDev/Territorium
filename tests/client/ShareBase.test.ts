@@ -137,16 +137,14 @@ describe("deriveShareBase", () => {
 });
 
 describe("playerProfileUrl", () => {
-  it("hangs the profile hash off the share base, not off window.location", () => {
-    const shareBase = vi
-      .spyOn(ClientEnv, "shareBase")
-      .mockReturnValue("https://openfront.io/");
+  it("points at the site's profile page on the share origin, not window.location", () => {
+    const shareOrigin = vi
+      .spyOn(ClientEnv, "shareOrigin")
+      .mockReturnValue("https://openfront.io");
     try {
-      expect(playerProfileUrl("a+b")).toBe(
-        "https://openfront.io/#modal=profile&publicID=a%2Bb",
-      );
+      expect(playerProfileUrl("a+b")).toBe("https://openfront.io/joueur/a%2Bb");
     } finally {
-      shareBase.mockRestore();
+      shareOrigin.mockRestore();
     }
   });
 });

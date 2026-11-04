@@ -1,5 +1,11 @@
 # Territorium — Changelog
 
+## v0.1.184
+
+- Shareable public profile pages (territorium.gg/joueur/...) and public leaderboards (territorium.gg/classements).
+- New sites: help center support.territorium.gg, status page status.territorium.gg, game guide wiki.territorium.gg and press kit presse.territorium.gg.
+- Privacy policy: the help center's anti-bot check and its optional session cookie.
+
 ## v0.1.183
 
 - Highlights: big moments are announced during the game (domination, a giant falling, comeback, total war, killing spree), can be turned off in the settings.

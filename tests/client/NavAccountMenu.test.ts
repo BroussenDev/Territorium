@@ -149,9 +149,7 @@ describe("nav-account-menu", () => {
     await new Promise((r) => setTimeout(r, 0));
 
     expect(copyToClipboard).toHaveBeenCalledTimes(1);
-    expect(vi.mocked(copyToClipboard).mock.calls[0][0]).toContain(
-      "modal=profile&publicID=p",
-    );
+    expect(vi.mocked(copyToClipboard).mock.calls[0][0]).toContain("/joueur/p");
     expect(showToast).toHaveBeenCalledWith("common.copied", "green");
 
     // No publicId (older backend / unresolved player) — nothing to share.
