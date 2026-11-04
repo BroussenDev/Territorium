@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "En los juegos clasificados, los niveles son más bajos (SAM 3, silo y radar 2) y se desbloquean más tarde.",
     "upgrades_title": "Mejoras de edificios"
   },
+  "highlights": {
+    "comeback": "Remontada: {name} pasa del último puesto al top 3",
+    "domination": "¡Dominio! {name} controla el {percent} % del mapa",
+    "giant_fallen": "Cae un gigante: {name} ha sido eliminado",
+    "killing_spree": "Racha devastadora: {name} ha conquistado a {count} jugadores",
+    "lead_change": "¡Giro inesperado! {name} toma la delantera",
+    "total_war": "Guerra total: {a} y {b} se enfrentan"
+  },
   "host_modal": {
     "anonymous_players": "Jugadores anónimos",
     "assigned_teams": "Equipos asignados",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Plata",
     "tiers_title": "Niveles",
     "to_legend": "Termina en el top 5 de los Maestros para ser Leyenda",
-    "to_next_tier": "{points} Elo para {tier}"
+    "to_next_tier": "{points} Elo para {tier}",
+    "vote_ban": "Vetar",
+    "vote_ban_hint": "Veta un mapa. Se juega el mapa restante.",
+    "vote_banned": "Vetado",
+    "vote_count": "Votos: {count}",
+    "vote_mine": "Tu elección",
+    "vote_pick": "Votar",
+    "vote_pick_hint": "Vota por el mapa que quieres jugar. Gana el más votado.",
+    "vote_progress": "{voted}/{total} jugadores han elegido",
+    "vote_result": "Mapa: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "La partida está a punto de empezar...",
+    "vote_title": "Elige el mapa"
   },
   "relation": {
     "default": "Por defecto",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Recompensas"
+  },
+  "rival": {
+    "banner": "¡Tu rival {name} está en esta partida! ({you} – {them})",
+    "end_defeat": "Contra tu rival {name}: derrota",
+    "end_victory": "Contra tu rival {name}: victoria",
+    "profile_stats": "{games} partidas juntos · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Confirmar",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Mensajes de ayuda",
     "highlight_glow_strength_label": "Resaltar la fuerza",
     "highlight_small_players_desc": "Añade brillo a los jugadores pequeños para que sean fáciles de encontrar.",
+    "highlights_desc": "Muestra banners breves cuando ocurre algo notable en la partida: dominio, cambios de líder, eliminaciones.",
+    "highlights_label": "Momentos destacados",
     "keybind_conflict_error": "La clave {key} ya está vinculada a otra acción.",
     "keybinds_hint": "Haga clic en una clave para volver a vincularla. Puede asignar una sola tecla o una combinación de teclas Shift +.",
     "left_click_desc": "Cuando está activado, el clic izquierdo abre el menú y el botón de espada ataca. Cuando está desactivado, el clic izquierdo ataca directamente.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Siguiente",
     "ok": "A jugar",
+    "open_button": "Novedades",
     "previous": "Anterior",
     "title": "Novedades",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Consejos en partida",
       "video": "Al terminar una partida, crea un vídeo de toda la partida acelerada y descárgalo para compartirlo (formato cuadrado o vertical).",
       "video_title": "Tu partida en 30 segundos"
+    },
+    "v0_1_183": {
+      "highlights": "Los grandes momentos se anuncian ahora durante la partida: dominio, la caída de un gigante, una remontada, guerra total… Puedes desactivarlos en los ajustes.",
+      "highlights_title": "Momentos destacados",
+      "map_vote": "Antes de una partida clasificatoria, elige el mapa: vota entre tres mapas equilibrados.",
+      "map_vote_title": "Votación de mapa en clasificatoria",
+      "rivals": "El juego encuentra a tu rival, el jugador al que te enfrentas más a menudo, y te avisa cuando está en tu partida. Tu marcador cara a cara aparece en tu perfil.",
+      "rivals_title": "Rivalidades"
     }
   },
   "win_modal": {

@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "Dalam permainan berperingkat, levelnya lebih rendah (SAM 3, silo, dan radar 2) dan dibuka nanti.",
     "upgrades_title": "Peningkatan bangunan"
   },
+  "highlights": {
+    "comeback": "Kebangkitan: {name} naik dari posisi terakhir ke 3 besar",
+    "domination": "Dominasi! {name} menguasai {percent}% peta",
+    "giant_fallen": "Raksasa tumbang: {name} tereliminasi",
+    "killing_spree": "Rentetan dahsyat: {name} telah menaklukkan {count} pemain",
+    "lead_change": "Pembalikan keadaan! {name} merebut posisi teratas",
+    "total_war": "Perang total: {a} dan {b} saling berhadapan"
+  },
   "host_modal": {
     "anonymous_players": "Pemain anonim",
     "assigned_teams": "Tim yang Ditugaskan",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Perak",
     "tiers_title": "Tingkatan",
     "to_legend": "Selesaikan di 5 besar Master untuk menjadi Legenda",
-    "to_next_tier": "{points} Elo lagi ke {tier}"
+    "to_next_tier": "{points} Elo lagi ke {tier}",
+    "vote_ban": "Larang",
+    "vote_ban_hint": "Larang satu peta. Peta yang tersisa dimainkan.",
+    "vote_banned": "Dilarang",
+    "vote_count": "Suara: {count}",
+    "vote_mine": "Pilihanmu",
+    "vote_pick": "Pilih",
+    "vote_pick_hint": "Pilih peta yang ingin dimainkan. Peta dengan suara terbanyak menang.",
+    "vote_progress": "{voted}/{total} pemain sudah memilih",
+    "vote_result": "Peta: {map}",
+    "vote_seconds": "{seconds} dtk",
+    "vote_start_soon": "Permainan akan segera dimulai...",
+    "vote_title": "Pilih peta"
   },
   "relation": {
     "default": "Default",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Hadiah"
+  },
+  "rival": {
+    "banner": "Rival Anda {name} ada di permainan ini! ({you} – {them})",
+    "end_defeat": "Melawan rival Anda {name}: kalah",
+    "end_victory": "Melawan rival Anda {name}: menang",
+    "profile_stats": "{games} permainan bersama · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Konfirmasi",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Pesan Bantuan",
     "highlight_glow_strength_label": "Soroti kekuatan",
     "highlight_small_players_desc": "Tambahkan cahaya ke pemain kecil agar mudah ditemukan.",
+    "highlights_desc": "Menampilkan spanduk singkat saat terjadi hal penting dalam permainan: dominasi, pergantian pemimpin, eliminasi.",
+    "highlights_label": "Momen penting",
     "keybind_conflict_error": "Tombol {key} sudah terikat ke aksi lain.",
     "keybinds_hint": "Klik salah satu kunci untuk mengikatnya kembali. Anda dapat menetapkan satu tombol atau kombinasi tombol Shift +.",
     "left_click_desc": "Saat AKTIF, klik kiri membuka menu dan tombol pedang digunakan untuk menyerang. Saat NONAKTIF, klik kiri langsung melakukan serangan.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Berikutnya",
     "ok": "Ayo main",
+    "open_button": "Apa yang baru",
     "previous": "Sebelumnya",
     "title": "Yang baru",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tips dalam permainan",
       "video": "Di akhir permainan, buat video seluruh permainan dengan kecepatan dipercepat dan unduh untuk dibagikan (format persegi atau vertikal).",
       "video_title": "Permainanmu dalam 30 detik"
+    },
+    "v0_1_183": {
+      "highlights": "Momen besar kini diumumkan saat bermain: dominasi, raksasa tumbang, comeback, perang total… Kamu bisa mematikannya di pengaturan.",
+      "highlights_title": "Momen penting",
+      "map_vote": "Sebelum pertandingan peringkat, pilih peta: pilih satu dari tiga peta seimbang.",
+      "map_vote_title": "Voting peta di peringkat",
+      "rivals": "Game menemukan rivalmu, pemain yang paling sering kamu hadapi, dan memberitahumu saat dia ada di gamemu. Skor head-to-head kamu ada di profilmu.",
+      "rivals_title": "Rivalitas"
     }
   },
   "win_modal": {

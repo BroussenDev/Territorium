@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "ランク付けされたゲームではレベルが低く (SAM 3、サイロ、レーダー 2)、後でロックが解除されます。",
     "upgrades_title": "建物のアップグレード"
   },
+  "highlights": {
+    "comeback": "カムバック：{name} が最下位からトップ3へ浮上",
+    "domination": "支配！ {name} がマップの{percent}%を掌握",
+    "giant_fallen": "巨人、倒れる：{name} が脱落",
+    "killing_spree": "破竹の連勝：{name} が{count}人を征服",
+    "lead_change": "逆転！ {name} が首位に立つ",
+    "total_war": "全面戦争：{a} と {b} が激突"
+  },
   "host_modal": {
     "anonymous_players": "匿名のプレイヤー",
     "assigned_teams": "チーム編成",
@@ -2840,7 +2848,19 @@
     "tier_silver": "シルバー",
     "tiers_title": "ティア",
     "to_legend": "マスター上位5人に入るとレジェンドになれます",
-    "to_next_tier": "{tier}まであと{points} Elo"
+    "to_next_tier": "{tier}まであと{points} Elo",
+    "vote_ban": "BAN",
+    "vote_ban_hint": "マップを1つBANしてください。残ったマップでプレイします。",
+    "vote_banned": "BAN済み",
+    "vote_count": "票数：{count}",
+    "vote_mine": "あなたの選択",
+    "vote_pick": "投票",
+    "vote_pick_hint": "プレイしたいマップに投票してください。最多得票のマップが選ばれます。",
+    "vote_progress": "{total}人中{voted}人が選択済み",
+    "vote_result": "マップ：{map}",
+    "vote_seconds": "{seconds}秒",
+    "vote_start_soon": "まもなくゲームが始まります...",
+    "vote_title": "マップを選択"
   },
   "relation": {
     "default": "デフォルト",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "報酬"
+  },
+  "rival": {
+    "banner": "ライバルの {name} がこの試合にいます！（{you} – {them}）",
+    "end_defeat": "ライバル {name} との対戦：敗北",
+    "end_victory": "ライバル {name} との対戦：勝利",
+    "profile_stats": "一緒に戦った試合：{games} · {you} – {them}",
+    "profile_title": "ライバル"
   },
   "security_modal": {
     "code_confirm": "確認",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "ヘルプメッセージ",
     "highlight_glow_strength_label": "強調表示の強さ",
     "highlight_small_players_desc": "小さいプレイヤーを見つけやすくするため、発光エフェクトを追加します。",
+    "highlights_desc": "支配、首位の交代、脱落など、ゲーム内の注目すべき出来事を短いバナーで表示します。",
+    "highlights_label": "ハイライト",
     "keybind_conflict_error": "{key}は既に他のキーに割り当てられています。",
     "keybinds_hint": "キーをクリックして再割り当てします。一つのキーまたはShift + キーの組み合わせを割り当てられます。",
     "left_click_desc": "オンにすると左クリックでメニューを開くことができ、剣のアイコンで攻撃します。オフにすると左クリックでそのまま攻撃します。",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "次へ",
     "ok": "プレイしよう",
+    "open_button": "新着情報",
     "previous": "前へ",
     "title": "新着情報",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "ゲーム内のヒント",
       "video": "試合の終わりに、試合全体を早送りした動画を作って、ダウンロードして共有できます（正方形または縦長）。",
       "video_title": "30秒で見る、あなたの試合"
+    },
+    "v0_1_183": {
+      "highlights": "大きな局面がゲーム中にお知らせされるようになりました：支配、巨人の陥落、逆転、総力戦など…。設定でオフにできます。",
+      "highlights_title": "ハイライト",
+      "map_vote": "ランクマッチの前にマップを選びます。バランスの取れた3つのマップから投票してください。",
+      "map_vote_title": "ランクマッチのマップ投票",
+      "rivals": "よく対戦する相手をライバルとして見つけ、その人が同じ試合にいるとお知らせします。対戦成績はプロフィールに表示されます。",
+      "rivals_title": "ライバル"
     }
   },
   "win_modal": {

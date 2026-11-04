@@ -24,6 +24,7 @@ import { modalHeader } from "./components/ui/ModalHeader";
 import { pioneerBadge } from "./components/ui/PioneerBadge";
 import { usernameText } from "./components/ui/UsernameText";
 import { verifiedBadge } from "./components/ui/VerifiedBadge";
+import { crossedSwords } from "./RivalIcon";
 import { playerProfileUrl } from "./utilities/PlayerProfileUrl";
 import { currentPagePath, translateText } from "./Utils";
 
@@ -48,6 +49,7 @@ export class PlayerProfileModal extends BaseModal {
   @state() private seasonBadges: NonNullable<PlayerProfile["seasonBadges"]> =
     [];
   @state() private nations: NonNullable<PlayerProfile["nations"]> = [];
+  @state() private rival: PlayerProfile["rival"] = undefined;
   @state() private loading = false;
   private openedFrom: ProfileOrigin | null = null;
   // Mirrors the account modal's Games tab: keep the accumulated history list +
@@ -245,11 +247,37 @@ export class PlayerProfileModal extends BaseModal {
       return this.renderNotFound();
     }
     return html`
-      ${this.renderRanked()}
+      ${this.renderRanked()} ${this.renderRival()}
       <nations-profile-stats .nations=${this.nations}></nations-profile-stats>
       <player-stats-tree-view
         .statsTree=${this.statsTree}
       ></player-stats-tree-view>
+    `;
+  }
+
+  // The registered player met most often lately, with the head to head.
+  private renderRival() {
+    const r = this.rival;
+    if (!r) return nothing;
+    return html`
+      <section
+        class="mb-6 flex items-center gap-3 rounded-2xl border border-red-400/20 bg-red-500/5 p-4"
+      >
+        ${crossedSwords("size-11 shrink-0")}
+        <div class="flex min-w-0 flex-col">
+          <span class="text-xs font-bold uppercase tracking-wide text-red-300">
+            ${translateText("rival.profile_title")}
+          </span>
+          <span class="truncate font-bold text-white">${r.name}</span>
+          <span class="text-xs text-white/60">
+            ${translateText("rival.profile_stats", {
+              games: r.gamesTogether,
+              you: r.yourWins,
+              them: r.theirWins,
+            })}
+          </span>
+        </div>
+      </section>
     `;
   }
 
@@ -350,6 +378,7 @@ export class PlayerProfileModal extends BaseModal {
     this.ranked = undefined;
     this.seasonBadges = [];
     this.nations = [];
+    this.rival = undefined;
     this.gameHistoryCache = null;
     this.gamesScrollTop = 0;
     this.restoreGamesScrollAfterOpen = false;
@@ -377,6 +406,7 @@ export class PlayerProfileModal extends BaseModal {
     this.ranked = profile === false ? undefined : profile.ranked;
     this.seasonBadges = profile === false ? [] : (profile.seasonBadges ?? []);
     this.nations = profile === false ? [] : (profile.nations ?? []);
+    this.rival = profile === false ? undefined : profile.rival;
   }
 
   // Intentionally preserves publicId/statsTree/history cache/scroll: the page

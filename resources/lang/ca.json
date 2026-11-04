@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "En els jocs classificats, els nivells són més baixos (SAM 3, sitja i radar 2) i es desbloquegen més tard.",
     "upgrades_title": "Actualitzacions de l'edifici"
   },
+  "highlights": {
+    "comeback": "Remuntada: {name} passa de l'últim lloc al top 3",
+    "domination": "Domini! {name} controla el {percent} % del mapa",
+    "giant_fallen": "Cau un gegant: {name} ha estat eliminat",
+    "killing_spree": "Ratxa devastadora: {name} ha conquerit {count} jugadors",
+    "lead_change": "Gir inesperat! {name} pren el lideratge",
+    "total_war": "Guerra total: {a} i {b} s'enfronten"
+  },
   "host_modal": {
     "anonymous_players": "Jugadors anònims",
     "assigned_teams": "Equips Assignats",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Plata",
     "tiers_title": "Grades",
     "to_legend": "Acabeu al top 5 dels Mestres per esdevenir Llegenda",
-    "to_next_tier": "{points} Elo per a {tier}"
+    "to_next_tier": "{points} Elo per a {tier}",
+    "vote_ban": "Vetar",
+    "vote_ban_hint": "Veta un mapa. Es juga el mapa restant.",
+    "vote_banned": "Vetat",
+    "vote_count": "Vots: {count}",
+    "vote_mine": "La teva elecció",
+    "vote_pick": "Votar",
+    "vote_pick_hint": "Vota el mapa que vols jugar. Guanya el més votat.",
+    "vote_progress": "{voted}/{total} jugadors han triat",
+    "vote_result": "Mapa: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "La partida està a punt de començar...",
+    "vote_title": "Tria el mapa"
   },
   "relation": {
     "default": "Predeterminat",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Recompenses"
+  },
+  "rival": {
+    "banner": "El teu rival {name} és en aquesta partida! ({you} – {them})",
+    "end_defeat": "Contra el teu rival {name}: derrota",
+    "end_victory": "Contra el teu rival {name}: victòria",
+    "profile_stats": "{games} partides junts · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Confirma",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Missatges d'ajuda",
     "highlight_glow_strength_label": "Ressaltar la força",
     "highlight_small_players_desc": "Afegiu una brillantor als jugadors petits perquè siguin fàcils de trobar.",
+    "highlights_desc": "Mostra bàners breus quan passa alguna cosa notable a la partida: domini, canvis de líder, eliminacions.",
+    "highlights_label": "Moments destacats",
     "keybind_conflict_error": "La tecla {key} ja està vinculada amb una altra acció.",
     "keybinds_hint": "Feu clic a una tecla per tornar-la a vincular. Podeu assignar una sola tecla o una combinació de tecles Maj +.",
     "left_click_desc": "Quan està activat, fer clic amb el botó esquerre obre el menú i el botó d'espasa ataca. Quan està desactivat, fer clic amb el botó esquerre ataca directament.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Següent",
     "ok": "A jugar",
+    "open_button": "Novetats",
     "previous": "Anterior",
     "title": "Novetats",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Consells dins del joc",
       "video": "Al final d'una partida, crea un vídeo de tota la partida accelerada i descarrega'l per compartir-lo (format quadrat o vertical).",
       "video_title": "La teva partida en 30 segons"
+    },
+    "v0_1_183": {
+      "highlights": "Els grans moments s'anuncien ara durant la partida: dominació, la caiguda d'un gegant, una remuntada, guerra total… Els pots desactivar a la configuració.",
+      "highlights_title": "Moments destacats",
+      "map_vote": "Abans d'una partida classificatòria, tria el mapa: vota entre tres mapes equilibrats.",
+      "map_vote_title": "Votació del mapa en classificatòria",
+      "rivals": "El joc troba el teu rival, el jugador a qui t'enfrontes més sovint, i t'avisa quan és a la teva partida. El teu marcador cara a cara és al teu perfil.",
+      "rivals_title": "Rivalitats"
     }
   },
   "win_modal": {

@@ -27,6 +27,7 @@ import {
   UnitUpdate,
 } from "../../../core/game/GameUpdates";
 import { SURVIVAL_WAVES } from "../../../core/game/Survival";
+import type { Winner } from "../../../core/Schemas";
 import { responseHasLinkedIdentity } from "../../AccountIdentity";
 import {
   fetchChallenges,
@@ -67,6 +68,7 @@ import {
 } from "../../replayVideo/RenderVideo";
 import "../../replayVideo/ReplayVideoPanel";
 import type { TerritorySnapshotRecorder } from "../../replayVideo/TerritorySnapshots";
+import { getRivalPresence, rivalOutcome } from "../../Rivalry";
 import { PlaySoundEffectEvent } from "../../sound/Sounds";
 import { SendWinnerEvent } from "../../Transport";
 import { GameView } from "../../view";
@@ -130,6 +132,8 @@ export class WinModal extends LitElement implements Controller {
 
   private countdownTimer: ReturnType<typeof setInterval> | null = null;
   private resultRequested = false;
+  // How the game was won, for the line about the player's rival.
+  private winner: Winner | undefined;
 
   private _title: string;
 
@@ -189,10 +193,11 @@ export class WinModal extends LitElement implements Controller {
         ${this.renderPlace()}
         <div class="mt-3 min-h-0 flex-1 overflow-y-auto pr-0.5">
           ${this.renderRecords()} ${this.renderDemoWishlist()}
-          ${this.renderGameResult()} ${this.renderGoal()}
-          ${this.renderSurvivalReport()} ${this.renderRecap()}
-          ${this.renderHighlights()} ${this.renderReplayShare()}
-          ${this.renderVideo()} ${isDemo() ? null : this.innerHtml()}
+          ${this.renderGameResult()} ${this.renderRivalResult()}
+          ${this.renderGoal()} ${this.renderSurvivalReport()}
+          ${this.renderRecap()} ${this.renderHighlights()}
+          ${this.renderReplayShare()} ${this.renderVideo()}
+          ${isDemo() ? null : this.innerHtml()}
           <steam-promo
             variant="compact"
             campaign="winmodal"
@@ -586,6 +591,34 @@ export class WinModal extends LitElement implements Controller {
       : label;
   }
 
+  // Against the player's rival: victory or defeat, when the rival was in the
+  // game and one of the two won it.
+  private renderRivalResult() {
+    if (!this.game || this.winner === undefined) return null;
+    const presence = getRivalPresence(this.game.gameID());
+    if (presence === null) return null;
+    if (this.game.config().isSurvivalMode()) return null;
+    const winner = this.winner;
+    const rivalTeam = this.game.playerByClientID(presence.clientID)?.team();
+    const rivalWon =
+      winner[0] === "player"
+        ? winner[1] === presence.clientID
+        : winner[0] === "team" &&
+          rivalTeam !== undefined &&
+          rivalTeam === winner[1];
+    const outcome = rivalOutcome(this.isWin, rivalWon);
+    if (outcome === null) return null;
+    return html`<div
+      data-win-rival
+      class="mb-4 rounded-sm border border-red-400/30 bg-red-500/10 p-3 text-center font-bold text-white"
+    >
+      ${translateText(
+        outcome === "victory" ? "rival.end_victory" : "rival.end_defeat",
+        { name: presence.rival.name },
+      )}
+    </div>`;
+  }
+
   private renderGameResult() {
     if (this.gameResult === null) return null;
     if (this.gameResult === "pending") {
@@ -950,6 +983,7 @@ export class WinModal extends LitElement implements Controller {
     winUpdates.forEach((wu) => {
       // The game is decided: one more map snapshot for the end-screen video.
       this.territorySnapshots?.requestFinal();
+      this.winner = wu.winner;
       if (wu.winner !== undefined) {
         void this.loadGameResult();
         void this.offerReplayLink();

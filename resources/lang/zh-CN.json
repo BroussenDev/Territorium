@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "在排名游戏中，级别较低（SAM 3、筒仓和雷达 2）并且解锁较晚。",
     "upgrades_title": "建筑升级"
   },
+  "highlights": {
+    "comeback": "逆袭：{name} 从末位升至前三",
+    "domination": "统治！{name} 控制了地图的 {percent}%",
+    "giant_fallen": "巨人倒下：{name} 已被淘汰",
+    "killing_spree": "势不可挡：{name} 已征服 {count} 名玩家",
+    "lead_change": "大逆转！{name} 登上榜首",
+    "total_war": "全面战争：{a} 与 {b} 正面交锋"
+  },
   "host_modal": {
     "anonymous_players": "匿名玩家",
     "assigned_teams": "已分配的队伍",
@@ -2840,7 +2848,19 @@
     "tier_silver": "白银",
     "tiers_title": "段位",
     "to_legend": "在大师前 5 名中结束赛季即可成为传奇",
-    "to_next_tier": "距{tier}还差 {points} Elo"
+    "to_next_tier": "距{tier}还差 {points} Elo",
+    "vote_ban": "禁用",
+    "vote_ban_hint": "禁用一张地图，将使用剩下的地图。",
+    "vote_banned": "已禁用",
+    "vote_count": "票数：{count}",
+    "vote_mine": "你的选择",
+    "vote_pick": "投票",
+    "vote_pick_hint": "为你想玩的地图投票，得票最多的地图获胜。",
+    "vote_progress": "{total} 名玩家中已有 {voted} 人选择",
+    "vote_result": "地图：{map}",
+    "vote_seconds": "{seconds} 秒",
+    "vote_start_soon": "游戏即将开始...",
+    "vote_title": "选择地图"
   },
   "relation": {
     "default": "默认",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "奖励"
+  },
+  "rival": {
+    "banner": "你的宿敌 {name} 就在这局游戏中！（{you} – {them}）",
+    "end_defeat": "对阵宿敌 {name}：失败",
+    "end_victory": "对阵宿敌 {name}：胜利",
+    "profile_stats": "共同对局 {games} 场 · {you} – {them}",
+    "profile_title": "宿敌"
   },
   "security_modal": {
     "code_confirm": "确认",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "帮助信息",
     "highlight_glow_strength_label": "彰显实力",
     "highlight_small_players_desc": "为小玩家添加发光效果，以便轻松找到他们。",
+    "highlights_desc": "在游戏中出现重要事件时显示简短横幅：统治、领先易主、淘汰。",
+    "highlights_label": "精彩时刻",
     "keybind_conflict_error": "按键 {key} 已经绑定到另一动作上了。",
     "keybinds_hint": "按下一个按键，以绑定它。可以指定单个按键，或使用 Shift + 按键的组合。",
     "left_click_desc": "开启时，先左键单击打开菜单，然后再点进攻。关闭时，左键将直接进攻。",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "下一个",
     "ok": "开玩",
+    "open_button": "新内容",
     "previous": "上一个",
     "title": "新内容",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "游戏内提示",
       "video": "对局结束后，可以生成整局游戏的加速视频，下载后分享给朋友（方形或竖屏格式）。",
       "video_title": "30 秒看完你的这局游戏"
+    },
+    "v0_1_183": {
+      "highlights": "重要时刻现在会在对局中播报：统治、巨头倒下、逆转、全面战争……你可以在设置中关闭。",
+      "highlights_title": "精彩时刻",
+      "map_vote": "排位赛开始前选择地图：在三张平衡的地图中投票。",
+      "map_vote_title": "排位赛地图投票",
+      "rivals": "游戏会找出你最常交手的对手，当对方进入你的对局时通知你。你们的对战战绩显示在个人资料中。",
+      "rivals_title": "宿敌"
     }
   },
   "win_modal": {

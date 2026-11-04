@@ -49,6 +49,8 @@ import { SpawnTimer } from "./layers/SpawnTimer";
 import "./layers/AdminEffects";
 import { AdminEffects } from "./layers/AdminEffects";
 import { GameTips } from "./layers/GameTips";
+import { HighlightBanner } from "./layers/HighlightBanner";
+import { RivalBanner } from "./layers/RivalBanner";
 import "./layers/StaffReviewPanel";
 import { StaffReviewPanel } from "./layers/StaffReviewPanel";
 import { SteamAchievementsController } from "./layers/SteamAchievementsController";
@@ -384,6 +386,21 @@ export function createRenderer(
   gameTips.uiState = uiState;
   gameTips.userSettings = userSettings;
 
+  const highlightBanner = document.querySelector(
+    "highlight-banner",
+  ) as HighlightBanner;
+  if (!(highlightBanner instanceof HighlightBanner)) {
+    console.error("highlight banner not found");
+  }
+  highlightBanner.game = game;
+  highlightBanner.userSettings = userSettings;
+
+  const rivalBanner = document.querySelector("rival-banner") as RivalBanner;
+  if (!(rivalBanner instanceof RivalBanner)) {
+    console.error("rival banner not found");
+  }
+  rivalBanner.game = game;
+
   const layers: Controller[] = [
     new WarshipSelectionController(game, eventBus, transformHandler, view),
     new BuildPreviewController(
@@ -447,6 +464,8 @@ export function createRenderer(
     multiTabModal,
     tutorialPanel,
     gameTips,
+    rivalBanner,
+    highlightBanner,
     alertFrame,
     performanceOverlay,
   ];

@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "W grach rankingowych poziomy są niższe (SAM 3, silos i radar 2) i odblokowują się później.",
     "upgrades_title": "Ulepszenia budynków"
   },
+  "highlights": {
+    "comeback": "Powrót: {name} awansuje z ostatniego miejsca do top 3",
+    "domination": "Dominacja! {name} kontroluje {percent}% mapy",
+    "giant_fallen": "Upadek giganta: {name} został wyeliminowany",
+    "killing_spree": "Niszczycielska seria: {name} podbił {count} graczy",
+    "lead_change": "Zwrot akcji! {name} obejmuje prowadzenie",
+    "total_war": "Totalna wojna: {a} i {b} ścierają się"
+  },
   "host_modal": {
     "anonymous_players": "Anonimowi gracze",
     "assigned_teams": "Przydzielone zespoły",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Srebro",
     "tiers_title": "Schody",
     "to_legend": "Zakończ w top 5 Mistrzów, aby zostać Legendą",
-    "to_next_tier": "{points} Elo do {tier}"
+    "to_next_tier": "{points} Elo do {tier}",
+    "vote_ban": "Zbanuj",
+    "vote_ban_hint": "Zbanuj jedną mapę. Zostanie rozegrana pozostała mapa.",
+    "vote_banned": "Zbanowana",
+    "vote_count": "Głosy: {count}",
+    "vote_mine": "Twój wybór",
+    "vote_pick": "Głosuj",
+    "vote_pick_hint": "Zagłosuj na mapę, na której chcesz grać. Wygrywa mapa z największą liczbą głosów.",
+    "vote_progress": "{voted}/{total} graczy dokonało wyboru",
+    "vote_result": "Mapa: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Gra zaraz się rozpocznie...",
+    "vote_title": "Wybierz mapę"
   },
   "relation": {
     "default": "Domyślne",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Nagrody"
+  },
+  "rival": {
+    "banner": "Twój rywal {name} jest w tej grze! ({you} – {them})",
+    "end_defeat": "Przeciw rywalowi {name}: porażka",
+    "end_victory": "Przeciw rywalowi {name}: zwycięstwo",
+    "profile_stats": "{games} wspólnych gier · {you} – {them}",
+    "profile_title": "Rywal"
   },
   "security_modal": {
     "code_confirm": "Potwierdź",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Wiadomości pomocy",
     "highlight_glow_strength_label": "Podkreśl siłę",
     "highlight_small_players_desc": "Dodaj blasku małym graczom, aby łatwo było ich znaleźć.",
+    "highlights_desc": "Wyświetla krótkie banery, gdy w grze dzieje się coś ważnego: dominacja, zmiany lidera, eliminacje.",
+    "highlights_label": "Najważniejsze momenty",
     "keybind_conflict_error": "Klucz {key} jest już powiązany z inną akcją.",
     "keybinds_hint": "Kliknij klawisz, aby go ponownie powiązać. Możesz przypisać pojedynczy klawisz lub kombinację Shift + klawisz.",
     "left_click_desc": "Gdy WŁĄCZONE, lewy przycisk myszy otwiera menu, a przycisk z mieczem atakuje. Gdy WYŁĄCZONE, lewy przycisk myszy atakuje bezpośrednio.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Dalej",
     "ok": "Gramy",
+    "open_button": "Co nowego",
     "previous": "Wstecz",
     "title": "Co nowego",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Wskazówki w trakcie gry",
       "video": "Po zakończeniu gry stwórz przyspieszone wideo z całej gry i pobierz je, aby się nim podzielić (format kwadratowy lub pionowy).",
       "video_title": "Twoja gra w 30 sekund"
+    },
+    "v0_1_183": {
+      "highlights": "Najważniejsze momenty są teraz ogłaszane w trakcie gry: dominacja, upadek giganta, powrót do gry, totalna wojna… Możesz je wyłączyć w ustawieniach.",
+      "highlights_title": "Najciekawsze momenty",
+      "map_vote": "Przed meczem rankingowym wybierz mapę: głosuj na jedną z trzech zbalansowanych map.",
+      "map_vote_title": "Głosowanie na mapę w rankingowych",
+      "rivals": "Gra znajduje twojego rywala, gracza, z którym grasz najczęściej, i daje znać, gdy jest w twojej grze. Twój bilans bezpośrednich starć jest w profilu.",
+      "rivals_title": "Rywalizacje"
     }
   },
   "win_modal": {

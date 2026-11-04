@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "Ranking-peleissä tasot ovat alhaisemmat (SAM 3, siilo ja tutka 2) ja avautuvat myöhemmin.",
     "upgrades_title": "Rakennuspäivitykset"
   },
+  "highlights": {
+    "comeback": "Paluu: {name} nousee viimeiseltä sijalta kolmen parhaan joukkoon",
+    "domination": "Herruus! {name} hallitsee {percent} % kartasta",
+    "giant_fallen": "Jättiläinen kaatuu: {name} on eliminoitu",
+    "killing_spree": "Tuhoisa putki: {name} on valloittanut {count} pelaajaa",
+    "lead_change": "Käänne! {name} nousee johtoon",
+    "total_war": "Täysi sota: {a} ja {b} ottavat yhteen"
+  },
   "host_modal": {
     "anonymous_players": "Nimettömät pelaajat",
     "assigned_teams": "Määrätyt joukkueet",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Hopea",
     "tiers_title": "Tasot",
     "to_legend": "Sijoitu Mestareiden top 5:een tullaksesi Legendaksi",
-    "to_next_tier": "{points} Elo tasoon {tier}"
+    "to_next_tier": "{points} Elo tasoon {tier}",
+    "vote_ban": "Estä",
+    "vote_ban_hint": "Estä yksi kartta. Jäljelle jäävä kartta pelataan.",
+    "vote_banned": "Estetty",
+    "vote_count": "Ääniä: {count}",
+    "vote_mine": "Valintasi",
+    "vote_pick": "Äänestä",
+    "vote_pick_hint": "Äänestä karttaa, jota haluat pelata. Eniten ääniä saanut voittaa.",
+    "vote_progress": "{voted}/{total} pelaajaa on valinnut",
+    "vote_result": "Kartta: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Peli alkaa pian...",
+    "vote_title": "Valitse kartta"
   },
   "relation": {
     "default": "Oletus",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Palkinnot"
+  },
+  "rival": {
+    "banner": "Kilpakumppanisi {name} on tässä pelissä! ({you} – {them})",
+    "end_defeat": "Kilpakumppania {name} vastaan: tappio",
+    "end_victory": "Kilpakumppania {name} vastaan: voitto",
+    "profile_stats": "{games} yhteistä peliä · {you} – {them}",
+    "profile_title": "Kilpakumppani"
   },
   "security_modal": {
     "code_confirm": "Vahvista",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Apuviestit",
     "highlight_glow_strength_label": "Korosta vahvuus",
     "highlight_small_players_desc": "Lisää hehkua pieniin pelaajiin, jotta heidät on helppo löytää.",
+    "highlights_desc": "Näyttää lyhyitä bannereita, kun pelissä tapahtuu jotain merkittävää: herruus, johtajanvaihdokset, eliminoinnit.",
+    "highlights_label": "Huippuhetket",
     "keybind_conflict_error": "Avain {key} on jo sidottu toiseen toimintoon.",
     "keybinds_hint": "Napsauta avainta sitoaksesi sen uudelleen. Voit määrittää yhden näppäimen tai Shift + näppäinyhdistelmän.",
     "left_click_desc": "Kun päällä, hiiren vasen nappi avaa valikon, mistä voit hyökätä painamalla miekkaa. Kun pois päältä, vasen nappi hyökkää suoraan.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Seuraava",
     "ok": "Pelataan",
+    "open_button": "Mitä uutta",
     "previous": "Edellinen",
     "title": "Uutta",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Vinkit pelin aikana",
       "video": "Luo pelin lopussa nopeutettu video koko pelistä ja lataa se jaettavaksi (neliö tai pystysuora muoto).",
       "video_title": "Koko peli 30 sekunnissa"
+    },
+    "v0_1_183": {
+      "highlights": "Suuret hetket ilmoitetaan nyt pelin aikana: herruus, jättiläisen kaatuminen, paluu, täystuho… Voit kytkeä ne pois asetuksista.",
+      "highlights_title": "Huippuhetket",
+      "map_vote": "Ennen sijoitettua ottelua valitse kartta: äänestä kolmen tasapainoisen kartan välillä.",
+      "map_vote_title": "Karttaäänestys sijoitetuissa peleissä",
+      "rivals": "Peli löytää vastustajasi, pelaajan jota kohtaat useimmin, ja kertoo kun hän on pelissäsi. Keskinäinen tilanteenne näkyy profiilissasi.",
+      "rivals_title": "Kilpailut"
     }
   },
   "win_modal": {

@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "In gerangschikte spellen zijn de niveaus lager (SAM 3, silo en radar 2) en worden ze later ontgrendeld.",
     "upgrades_title": "Upgrades van gebouwen"
   },
+  "highlights": {
+    "comeback": "Comeback: {name} stijgt van de laatste plaats naar de top 3",
+    "domination": "Dominantie! {name} beheerst {percent}% van de kaart",
+    "giant_fallen": "Een gigant valt: {name} is uitgeschakeld",
+    "killing_spree": "Verwoestende reeks: {name} heeft {count} spelers veroverd",
+    "lead_change": "Ommekeer! {name} neemt de leiding",
+    "total_war": "Totale oorlog: {a} en {b} botsen"
+  },
   "host_modal": {
     "anonymous_players": "Anonieme spelers",
     "assigned_teams": "Toegewezen Teams",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Zilver",
     "tiers_title": "Niveaus",
     "to_legend": "Eindig in de top 5 van de Meesters om Legende te worden",
-    "to_next_tier": "{points} Elo tot {tier}"
+    "to_next_tier": "{points} Elo tot {tier}",
+    "vote_ban": "Verbannen",
+    "vote_ban_hint": "Verban één kaart. De overgebleven kaart wordt gespeeld.",
+    "vote_banned": "Verbannen",
+    "vote_count": "Stemmen: {count}",
+    "vote_mine": "Jouw keuze",
+    "vote_pick": "Stemmen",
+    "vote_pick_hint": "Stem op de kaart die je wilt spelen. De kaart met de meeste stemmen wint.",
+    "vote_progress": "{voted}/{total} spelers hebben gekozen",
+    "vote_result": "Kaart: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Het spel begint zo...",
+    "vote_title": "Kies de kaart"
   },
   "relation": {
     "default": "Standaard",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Beloningen"
+  },
+  "rival": {
+    "banner": "Je rivaal {name} zit in dit spel! ({you} – {them})",
+    "end_defeat": "Tegen je rivaal {name}: nederlaag",
+    "end_victory": "Tegen je rivaal {name}: overwinning",
+    "profile_stats": "{games} spellen samen · {you} – {them}",
+    "profile_title": "Rivaal"
   },
   "security_modal": {
     "code_confirm": "Bevestigen",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Help berichten",
     "highlight_glow_strength_label": "Highlight sterkte",
     "highlight_small_players_desc": "Voeg een gloed toe aan kleine spelers zodat ze makkelijk te vinden zijn.",
+    "highlights_desc": "Toont korte banners wanneer er iets opmerkelijks gebeurt in het spel: dominantie, wisselingen van leider, eliminaties.",
+    "highlights_label": "Hoogtepunten",
     "keybind_conflict_error": "De toets {key} is al verbonden aan een andere actie.",
     "keybinds_hint": "Klik op een toets om deze opnieuw te koppelen. U kunt één toets toewijzen of Shift + toets combinatie.",
     "left_click_desc": "Als AAN: linkermuisknop opent het Radiale menu met zwaard-aanvalsknop. Als UIT: linkermuisknop opent direct de aanval.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Volgende",
     "ok": "Spelen maar",
+    "open_button": "Wat is er nieuw",
     "previous": "Vorige",
     "title": "Wat is er nieuw",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tips tijdens het spel",
       "video": "Maak aan het eind van een game een video van de hele game, versneld, en download die om te delen (vierkant of verticaal formaat).",
       "video_title": "Je game in 30 seconden"
+    },
+    "v0_1_183": {
+      "highlights": "Grote momenten worden nu tijdens het spel aangekondigd: dominantie, de val van een reus, comeback, totale oorlog… Je kunt ze uitzetten in de instellingen.",
+      "highlights_title": "Hoogtepunten",
+      "map_vote": "Kies vóór een competitieve match de kaart: stem op een van drie evenwichtige kaarten.",
+      "map_vote_title": "Kaartstemming in competitief",
+      "rivals": "Het spel vindt je rivaal, de speler die je het vaakst tegenkomt, en laat je weten wanneer die in jouw spel zit. Je onderlinge score staat op je profiel.",
+      "rivals_title": "Rivaliteiten"
     }
   },
   "win_modal": {

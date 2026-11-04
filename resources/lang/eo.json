@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "En rangigitaj ludoj, niveloj estas pli malaltaj (SAM 3, silo kaj radaro 2) kaj malŝlosas poste.",
     "upgrades_title": "Konstruaj ĝisdatigoj"
   },
+  "highlights": {
+    "comeback": "Revenego: {name} leviĝas de la lasta loko al la supraj 3",
+    "domination": "Dominado! {name} regas {percent}% de la mapo",
+    "giant_fallen": "Gigantulo falas: {name} estas eliminita",
+    "killing_spree": "Ruiniga serio: {name} konkeris {count} ludantojn",
+    "lead_change": "Turniĝo! {name} prenas la gvidon",
+    "total_war": "Tuta milito: {a} kaj {b} kolizias"
+  },
   "host_modal": {
     "anonymous_players": "Anonimaj ludantoj",
     "assigned_teams": "Asignitaj Teamoj",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Arĝento",
     "tiers_title": "Tiers",
     "to_legend": "Finu inter la 5 plej bonaj Majstroj por iĝi Legendo",
-    "to_next_tier": "{points} Elo ĝis {tier}"
+    "to_next_tier": "{points} Elo ĝis {tier}",
+    "vote_ban": "Malpermesi",
+    "vote_ban_hint": "Malpermesu unu mapon. La restanta mapo estos ludata.",
+    "vote_banned": "Malpermesita",
+    "vote_count": "Voĉoj: {count}",
+    "vote_mine": "Via elekto",
+    "vote_pick": "Voĉdoni",
+    "vote_pick_hint": "Voĉdonu por la mapo, kiun vi volas ludi. La plej voĉdonita mapo venkas.",
+    "vote_progress": "{voted}/{total} ludantoj elektis",
+    "vote_result": "Mapo: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "La ludo baldaŭ komenciĝos...",
+    "vote_title": "Elektu la mapon"
   },
   "relation": {
     "default": "Defaŭlta",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Rekompencoj"
+  },
+  "rival": {
+    "banner": "Via rivalo {name} estas en ĉi tiu ludo! ({you} – {them})",
+    "end_defeat": "Kontraŭ via rivalo {name}: malvenko",
+    "end_victory": "Kontraŭ via rivalo {name}: venko",
+    "profile_stats": "{games} ludoj kune · {you} – {them}",
+    "profile_title": "Rivalo"
   },
   "security_modal": {
     "code_confirm": "Konfirmi",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Help Mesaĝoj",
     "highlight_glow_strength_label": "Emfazu forton",
     "highlight_small_players_desc": "Aldonu brilon al malgrandaj ludantoj, por ke ili estu facile troveblaj.",
+    "highlights_desc": "Montras mallongajn standardojn kiam io rimarkinda okazas en la ludo: dominado, ŝanĝoj de gvidanto, eliminoj.",
+    "highlights_label": "Plej gravaj momentoj",
     "keybind_conflict_error": "La klavo {key} jam estas ligita al alia ago.",
     "keybinds_hint": "Alklaku klavon por ligi ĝin kiel fulmoklavo. Eblas elekti klavon sole aŭ kombine kun la Majuskliga klavo.",
     "left_click_desc": "Kiam ŝaltita, maldekstra alklako malfermas menuon kaj glava atakbutono. Kiam malŝaltita, maldekstra alklako senpere atakas.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Sekva",
     "ok": "Ni ludu",
+    "open_button": "Kio novas",
     "previous": "Antaŭa",
     "title": "Kio novas",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Konsiloj en la ludo",
       "video": "Ĉe la fino de ludo, kreu rapidigitan filmeton de la tuta ludo kaj elŝutu ĝin por kunhavigi (kvadrata aŭ vertikala formato).",
       "video_title": "Via ludo en 30 sekundoj"
+    },
+    "v0_1_183": {
+      "highlights": "Grandaj momentoj nun estas anoncataj dum la ludo: dominado, falo de giganto, reveno, totala milito… Vi povas malŝalti ilin en la agordoj.",
+      "highlights_title": "Gravaj momentoj",
+      "map_vote": "Antaŭ ranginflua matĉo elektu la mapon: voĉdonu inter tri ekvilibraj mapoj.",
+      "map_vote_title": "Mapa voĉdono en ranginfluaj ludoj",
+      "rivals": "La ludo trovas vian rivalon, la ludanton kontraŭ kiu vi plej ofte ludas, kaj diras al vi kiam tiu estas en via ludo. Via rekordo kontraŭ tiu estas en via profilo.",
+      "rivals_title": "Rivalecoj"
     }
   },
   "win_modal": {

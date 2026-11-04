@@ -38,7 +38,7 @@ import { translateText } from "./Utils";
  *
  * The older `image` field (a still screenshot) still works.
  */
-export const WHATS_NEW_ID = "v0_1_180";
+export const WHATS_NEW_ID = "v0_1_183";
 
 export type WhatsNewIcon =
   | "video"
@@ -63,25 +63,9 @@ export type WhatsNewItem = {
 };
 
 export const WHATS_NEW_ITEMS: WhatsNewItem[] = [
-  {
-    key: "video",
-    icon: "video",
-    media: {
-      src: "images/whats-new/v0_1_180/video.webm",
-      kind: "video",
-      poster: "images/whats-new/v0_1_180/video.png",
-    },
-  },
-  {
-    key: "tips",
-    icon: "tips",
-    media: {
-      src: "images/whats-new/v0_1_180/tips.webm",
-      kind: "video",
-      poster: "images/whats-new/v0_1_180/tips.png",
-    },
-  },
-  { key: "ranked", icon: "ranked" },
+  { key: "highlights", icon: "star" },
+  { key: "rivals", icon: "shield" },
+  { key: "map_vote", icon: "ranked" },
 ];
 const SEEN_KEY = "territorium.whatsNewSeen";
 
@@ -118,6 +102,12 @@ export function showWhatsNewIfNeeded(): void {
     return;
   }
   if (show) document.body.appendChild(document.createElement("whats-new"));
+}
+
+/** Opens the window again on demand (the main menu button); one at a time. */
+export function openWhatsNew(): void {
+  if (document.querySelector("whats-new") !== null) return;
+  document.body.appendChild(document.createElement("whats-new"));
 }
 
 function prefersReducedMotion(): boolean {

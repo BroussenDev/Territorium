@@ -687,14 +687,22 @@ export class MapPlaylist {
 
   // Ranked free-for-all (the "Ranked game" button): the matched players only,
   // no nations and no tribes. The map comes from the pool for the match's
-  // size so everyone gets about the same land whatever the player count.
-  public getRankedFfaConfig(players: number): GameConfig {
+  // size so everyone gets about the same land whatever the player count. The
+  // matched players may have voted a map of that pool: it is used when valid.
+  public getRankedFfaConfig(
+    players: number,
+    votedMap?: GameMapType,
+  ): GameConfig {
     const pool = rankedFfaPool(players);
+    const gameMap =
+      votedMap !== undefined && pool.maps.includes(votedMap)
+        ? votedMap
+        : pool.maps[Math.floor(Math.random() * pool.maps.length)];
     const isCompact = pool.size === GameMapSize.Compact;
     return {
       donateGold: false,
       donateTroops: false,
-      gameMap: pool.maps[Math.floor(Math.random() * pool.maps.length)],
+      gameMap,
       maxPlayers: players,
       gameType: GameType.Public,
       gameMapSize: pool.size,

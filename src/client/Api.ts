@@ -46,12 +46,15 @@ import {
   RankedFfaLeaderboardResponseSchema,
   RankedLeaderboardResponse,
   RankedLeaderboardResponseSchema,
+  RankedMapVote,
+  RankedMapVoteSchema,
   RankedQueueState,
   RankedQueueStateSchema,
   RankedSeason,
   RankedSeasonSchema,
   RankedStatus,
   RankedStatusSchema,
+  RivalSchema,
   SoloLeaderboardResponse,
   SoloLeaderboardResponseSchema,
   SteamFinalizeResponseSchema,
@@ -174,6 +177,7 @@ const MyGameResultSchema = z.object({
   soft: z.number().int().min(0),
 });
 export type MyGameResult = z.infer<typeof MyGameResultSchema>;
+type Rival = z.infer<typeof RivalSchema>;
 
 // GET /users/@me/games/:gameId — what a finished multiplayer game gave the
 // signed-in player. The API only knows the game once the game server has
@@ -197,6 +201,28 @@ export async function fetchMyGameResult(
     if (res.status !== 200) return null;
     const parsed = MyGameResultSchema.safeParse(await res.json());
     return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
+}
+
+// GET /users/@me/rival — the registered player the signed-in player meets most
+// in recent games, or null (no rival yet, signed out, any error).
+export async function fetchMyRival(): Promise<Rival | null> {
+  try {
+    const userAuthResult = await userAuth();
+    if (!userAuthResult) return null;
+    const res = await fetch(`${getApiBase()}/users/@me/rival`, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${userAuthResult.jwt}`,
+      },
+    });
+    if (res.status !== 200) return null;
+    const parsed = z
+      .object({ rival: RivalSchema.nullable() })
+      .safeParse(await res.json());
+    return parsed.success ? parsed.data.rival : null;
   } catch {
     return null;
   }
@@ -2948,6 +2974,53 @@ export async function pollRankedQueue(): Promise<
     return parsed.success ? parsed.data : false;
   } catch (err) {
     console.error("pollRankedQueue: request failed", err);
+    return false;
+  }
+}
+
+// GET /ranked/match/:id/vote — the state of a ranked match's map vote, or
+// false when it could not be read (the caller simply asks again).
+export async function fetchRankedMapVote(
+  id: string,
+): Promise<RankedMapVote | false> {
+  try {
+    const res = await fetch(
+      `${getApiBase()}/ranked/match/${encodeURIComponent(id)}/vote`,
+      { headers: { Authorization: await getAuthHeader() } },
+    );
+    if (!res.ok) return false;
+    const parsed = RankedMapVoteSchema.safeParse(await res.json());
+    return parsed.success ? parsed.data : false;
+  } catch (err) {
+    console.error("fetchRankedMapVote: request failed", err);
+    return false;
+  }
+}
+
+// POST /ranked/match/:id/vote — bans (two players) or votes for (more) one
+// map. Returns the vote's new state, or false when refused.
+export async function postRankedMapVote(
+  id: string,
+  map: string,
+  action: "ban" | "vote",
+): Promise<RankedMapVote | false> {
+  try {
+    const res = await fetch(
+      `${getApiBase()}/ranked/match/${encodeURIComponent(id)}/vote`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: await getAuthHeader(),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ map, action }),
+      },
+    );
+    if (!res.ok) return false;
+    const parsed = RankedMapVoteSchema.safeParse(await res.json());
+    return parsed.success ? parsed.data : false;
+  } catch (err) {
+    console.error("postRankedMapVote: request failed", err);
     return false;
   }
 }

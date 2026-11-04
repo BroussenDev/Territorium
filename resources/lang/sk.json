@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "V hodnotených hrách sú úrovne nižšie (SAM 3, silo a radar 2) a odomknú sa neskôr.",
     "upgrades_title": "Vylepšenia budov"
   },
+  "highlights": {
+    "comeback": "Comeback: {name} stúpa z posledného miesta do top 3",
+    "domination": "Dominancia! {name} ovláda {percent} % mapy",
+    "giant_fallen": "Pád obra: {name} bol vyradený",
+    "killing_spree": "Ničivá séria: {name} dobyl {count} hráčov",
+    "lead_change": "Zvrat! {name} preberá vedenie",
+    "total_war": "Totálna vojna: {a} a {b} sa stretávajú"
+  },
   "host_modal": {
     "anonymous_players": "Anonymní hráči",
     "assigned_teams": "Priradené tímy",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Striebro",
     "tiers_title": "Vrstvy",
     "to_legend": "Skončite v top 5 Majstrov a staňte sa Legendou",
-    "to_next_tier": "{points} Elo do úrovne {tier}"
+    "to_next_tier": "{points} Elo do úrovne {tier}",
+    "vote_ban": "Zakázať",
+    "vote_ban_hint": "Zakážte jednu mapu. Hrá sa zostávajúca mapa.",
+    "vote_banned": "Zakázaná",
+    "vote_count": "Hlasy: {count}",
+    "vote_mine": "Vaša voľba",
+    "vote_pick": "Hlasovať",
+    "vote_pick_hint": "Hlasujte za mapu, ktorú chcete hrať. Vyhráva mapa s najviac hlasmi.",
+    "vote_progress": "{voted}/{total} hráčov už vybralo",
+    "vote_result": "Mapa: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Hra sa čoskoro začne...",
+    "vote_title": "Vyberte mapu"
   },
   "relation": {
     "default": "Základný",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Odmeny"
+  },
+  "rival": {
+    "banner": "Váš rival {name} je v tejto hre! ({you} – {them})",
+    "end_defeat": "Proti vášmu rivalovi {name}: prehra",
+    "end_victory": "Proti vášmu rivalovi {name}: víťazstvo",
+    "profile_stats": "{games} spoločných hier · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Potvrdiť",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Pomocné správy",
     "highlight_glow_strength_label": "Zvýraznite silu",
     "highlight_small_players_desc": "Pridajte žiaru malým prehrávačom, aby sa dali ľahko nájsť.",
+    "highlights_desc": "Zobrazuje krátke nápisy, keď sa v hre stane niečo významné: dominancia, zmeny lídra, vyradenia.",
+    "highlights_label": "Najlepšie momenty",
     "keybind_conflict_error": "Kláves {key} je už viazaný na inú akciu.",
     "keybinds_hint": "Kliknutím na kľúč ho znova spojíte. Môžete priradiť jeden kláves alebo kombináciu kláves Shift + kláves.",
     "left_click_desc": "Keď je toto zapnuté, ľavé ťuknutie otvorí ponuku a útočí sa cez tlačidlo mečov. Keď je toto vypnuté, ľavé ťuknutie útočí priamo.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Ďalej",
     "ok": "Ideme hrať",
+    "open_button": "Čo je nové",
     "previous": "Späť",
     "title": "Čo je nové",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tipy počas hry",
       "video": "Na konci hry vytvor zrýchlené video celej hry a stiahni si ho na zdieľanie (štvorcový alebo na výšku).",
       "video_title": "Tvoja hra za 30 sekúnd"
+    },
+    "v0_1_183": {
+      "highlights": "Veľké momenty sa teraz oznamujú počas hry: nadvláda, pád obra, comeback, totálna vojna… Môžete ich vypnúť v nastaveniach.",
+      "highlights_title": "Kľúčové momenty",
+      "map_vote": "Pred hodnoteným zápasom vyber mapu: hlasuj medzi tromi vyváženými mapami.",
+      "map_vote_title": "Hlasovanie o mape v hodnotených hrách",
+      "rivals": "Hra nájde tvojho rivala, hráča, proti ktorému hráš najčastejšie, a dá ti vedieť, keď je v tvojej hre. Tvoje vzájomné skóre je na tvojom profile.",
+      "rivals_title": "Rivalstvá"
     }
   },
   "win_modal": {

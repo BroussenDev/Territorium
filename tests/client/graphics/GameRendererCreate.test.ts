@@ -47,6 +47,8 @@ const HUD_TAGS = [
   "in-game-promo",
   "tutorial-panel",
   "game-tips",
+  "highlight-banner",
+  "rival-banner",
 ] as const;
 
 describe("createRenderer", () => {

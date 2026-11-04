@@ -1,9 +1,10 @@
 import type winston from "winston";
 import { z } from "zod";
+import type { GameMapType } from "../core/game/Game";
 import { isCommitLike, isSiteLike } from "../core/ServerList";
 import { registeredSite } from "./ClusterCheckin";
 import type { GameManager } from "./GameManager";
-import type { MapPlaylist } from "./MapPlaylist";
+import { RANKED_FFA_POOLS, type MapPlaylist } from "./MapPlaylist";
 import { startPolling } from "./PollingLoop";
 import { ServerEnv } from "./ServerEnv";
 
@@ -50,7 +51,30 @@ export const MatchmakingAssignmentSchema = z.object({
   // The matcher's team split ([[a],[b]] for 1v1). Optional for tolerance,
   // but the current API always sends it.
   teams: z.array(z.array(z.string())).optional(),
+  // The map the matched players chose, when the matchmaker put it to a vote.
+  map: z.string().optional(),
 });
+
+// The maps a ranked free-for-all may be played on, by match size, announced
+// at check-in so the matchmaker can let the matched players vote one.
+function rankedMapPools(): { maxPlayers: number; maps: string[] }[] {
+  return RANKED_FFA_POOLS.map((pool) => ({
+    maxPlayers: pool.maxPlayers,
+    maps: [...pool.maps],
+  }));
+}
+
+// The ranked free-for-all game for an assignment: sized to the match, on the
+// voted map when there is one, otherwise the playlist's own random pick.
+function rankedFfaConfig(
+  playlist: MapPlaylist,
+  assignment: z.infer<typeof MatchmakingAssignmentSchema> | null,
+) {
+  const players = assignment ? assignment.players.length : 16;
+  return assignment?.map !== undefined
+    ? playlist.getRankedFfaConfig(players, assignment.map as GameMapType)
+    : playlist.getRankedFfaConfig(players);
+}
 
 export const RANKED_PAUSED_LOG =
   "ranked matchmaking paused: deployment draining";
@@ -185,6 +209,7 @@ export async function rankedCheckinPass(
         ccu: gm.activeClients(),
         instanceId: process.env.INSTANCE_ID,
         mode,
+        ...(mode === "ffa" ? { mapPools: rankedMapPools() } : {}),
         ...buildVersionField(),
         ...buildSiteField(),
       }),
@@ -220,9 +245,7 @@ export async function rankedCheckinPass(
       }
       const baseConfig =
         mode === "ffa"
-          ? playlist.getRankedFfaConfig(
-              parsed.success ? parsed.data.players.length : 16,
-            )
+          ? rankedFfaConfig(playlist, parsed.success ? parsed.data : null)
           : mode === "2v2"
             ? playlist.get2v2Config()
             : playlist.get1v1Config();

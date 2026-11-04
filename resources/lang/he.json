@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "במשחקים המדורגים הרמות נמוכות יותר (SAM 3, סילו וראדאר 2) ונפתחות מאוחר יותר.",
     "upgrades_title": "שדרוגי בנייה"
   },
+  "highlights": {
+    "comeback": "קאמבק: {name} מזנק מהמקום האחרון לטופ 3",
+    "domination": "שליטה! {name} שולט ב-{percent}% מהמפה",
+    "giant_fallen": "ענק נופל: {name} הודח",
+    "killing_spree": "רצף הרסני: {name} כבש {count} שחקנים",
+    "lead_change": "תפנית! {name} תופס את ההובלה",
+    "total_war": "מלחמה טוטאלית: {a} ו-{b} מתעמתים"
+  },
   "host_modal": {
     "anonymous_players": "שחקנים אנונימיים",
     "assigned_teams": "צוותים שהוקצו",
@@ -2840,7 +2848,19 @@
     "tier_silver": "כסף",
     "tiers_title": "שכבות",
     "to_legend": "סיים בחמישייה הראשונה של המאסטרים כדי להפוך לאגדה",
-    "to_next_tier": "{points} Elo עד {tier}"
+    "to_next_tier": "{points} Elo עד {tier}",
+    "vote_ban": "חסימה",
+    "vote_ban_hint": "חסמו מפה אחת. המפה שנותרה תשוחק.",
+    "vote_banned": "חסומה",
+    "vote_count": "קולות: {count}",
+    "vote_mine": "הבחירה שלך",
+    "vote_pick": "הצבעה",
+    "vote_pick_hint": "הצביעו למפה שברצונכם לשחק. המפה עם הכי הרבה קולות מנצחת.",
+    "vote_progress": "{voted} מתוך {total} שחקנים בחרו",
+    "vote_result": "מפה: {map}",
+    "vote_seconds": "{seconds} שנ׳",
+    "vote_start_soon": "המשחק עומד להתחיל...",
+    "vote_title": "בחרו מפה"
   },
   "relation": {
     "default": "רגיל",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "תגמולים"
+  },
+  "rival": {
+    "banner": "היריב שלך {name} נמצא במשחק הזה! ({you} – {them})",
+    "end_defeat": "נגד היריב שלך {name}: הפסד",
+    "end_victory": "נגד היריב שלך {name}: ניצחון",
+    "profile_stats": "{games} משחקים יחד · {you} – {them}",
+    "profile_title": "יריב"
   },
   "security_modal": {
     "code_confirm": "אישור",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "הודעות עזרה",
     "highlight_glow_strength_label": "הדגש כוח",
     "highlight_small_players_desc": "הוסף זוהר לשחקנים קטנים כדי שיהיה קל למצוא אותם.",
+    "highlights_desc": "מציג כרזות קצרות כשקורה משהו בולט במשחק: שליטה, החלפת מוביל, הדחות.",
+    "highlights_label": "רגעים בולטים",
     "keybind_conflict_error": "המפתח {key} כבר קשור לפעולה אחרת.",
     "keybinds_hint": "Click a key to rebind it. ניתן להקצות מקש בודד או שילוב מקשים Shift +.",
     "left_click_desc": "כאשר מופעל, הלחצן השמאלי פותח את התפריט וכפתור החרב תוקף. כאשר מכובה, הלחצן השמאלי תוקף ישירות.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "הבא",
     "ok": "בואו נשחק",
+    "open_button": "מה חדש",
     "previous": "הקודם",
     "title": "מה חדש",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "טיפים במשחק",
       "video": "בסיום משחק, צרו סרטון מואץ של המשחק כולו והורידו אותו כדי לשתף (בפורמט ריבועי או אנכי).",
       "video_title": "המשחק שלכם ב-30 שניות"
+    },
+    "v0_1_183": {
+      "highlights": "רגעים גדולים מוכרזים עכשיו במהלך המשחק: שליטה, נפילת ענק, קאמבק, מלחמה טוטאלית… אפשר לכבות אותם בהגדרות.",
+      "highlights_title": "רגעי שיא",
+      "map_vote": "לפני משחק מדורג, בחרו את המפה: הצביעו בין שלוש מפות מאוזנות.",
+      "map_vote_title": "הצבעה על המפה במדורג",
+      "rivals": "המשחק מוצא את היריב שלך, השחקן שאתה נפגש איתו הכי הרבה, ומודיע לך כשהוא נמצא במשחק שלך. התוצאה שלכם אחד מול השני מוצגת בפרופיל שלך.",
+      "rivals_title": "יריבויות"
     }
   },
   "win_modal": {

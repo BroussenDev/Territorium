@@ -315,6 +315,21 @@ describe("ranked free-for-all check-in", () => {
     expect(config).toMatchObject({ maxPlayers: 5, allowedPublicIds: players });
   });
 
+  it("announces the ranked map pools and plays the voted map", async () => {
+    const fetchFn = okFetch({
+      assignment: { players: ["p1", "p2", "p3", "p4"], map: "Asia" },
+    });
+    const deps = makeDeps(() => true, fetchFn);
+    const gate = new RankedCheckinGate(deps.isActive, deps.log);
+    await rankedCheckinPass("ffa", gate, deps);
+
+    const [, init] = vi.mocked(fetchFn).mock.calls[0];
+    const body = JSON.parse(String((init as RequestInit).body));
+    expect(body.mapPools.length).toBeGreaterThan(0);
+    expect(body.mapPools[0]).toMatchObject({ maxPlayers: expect.any(Number) });
+    expect(deps.playlist.getRankedFfaConfig).toHaveBeenCalledWith(4, "Asia");
+  });
+
   it("creates nothing while the queue has no match", async () => {
     const deps = makeDeps(() => true, okFetch({ assignment: null }));
     const gate = new RankedCheckinGate(deps.isActive, deps.log);

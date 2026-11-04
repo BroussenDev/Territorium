@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "Järjestusmängudes on tasemed madalamad (SAM 3, silo ja radar 2) ja avanevad hiljem.",
     "upgrades_title": "Hoonete uuendused"
   },
+  "highlights": {
+    "comeback": "Tagasitulek: {name} tõuseb viimaselt kohalt kolme parima sekka",
+    "domination": "Domineerimine! {name} kontrollib {percent}% kaardist",
+    "giant_fallen": "Hiiglane langeb: {name} on elimineeritud",
+    "killing_spree": "Laastav seeria: {name} on vallutanud {count} mängijat",
+    "lead_change": "Pöördepunkt! {name} haarab liidrikoha",
+    "total_war": "Täielik sõda: {a} ja {b} põrkavad kokku"
+  },
   "host_modal": {
     "anonymous_players": "Anonüümsed mängijad",
     "assigned_teams": "Määratud Meeskonnad",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Hõbe",
     "tiers_title": "Tasemed",
     "to_legend": "Lõpeta Meistrite top 5 hulgas, et saada Legendiks",
-    "to_next_tier": "{points} Elo tasemeni {tier}"
+    "to_next_tier": "{points} Elo tasemeni {tier}",
+    "vote_ban": "Keela",
+    "vote_ban_hint": "Keela üks kaart. Mängitakse allesjäänud kaarti.",
+    "vote_banned": "Keelatud",
+    "vote_count": "Hääli: {count}",
+    "vote_mine": "Sinu valik",
+    "vote_pick": "Hääleta",
+    "vote_pick_hint": "Hääleta kaardi poolt, mida soovid mängida. Võidab enim hääli saanud kaart.",
+    "vote_progress": "{voted}/{total} mängijat on valinud",
+    "vote_result": "Kaart: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Mäng algab kohe...",
+    "vote_title": "Vali kaart"
   },
   "relation": {
     "default": "Tavaline",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Preemiad"
+  },
+  "rival": {
+    "banner": "Teie rivaal {name} on selles mängus! ({you} – {them})",
+    "end_defeat": "Teie rivaali {name} vastu: kaotus",
+    "end_victory": "Teie rivaali {name} vastu: võit",
+    "profile_stats": "{games} ühist mängu · {you} – {them}",
+    "profile_title": "Rivaal"
   },
   "security_modal": {
     "code_confirm": "Kinnita",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Abisõnumid",
     "highlight_glow_strength_label": "Tõstke esile tugevus",
     "highlight_small_players_desc": "Lisage väikestele mängijatele sära, et neid oleks lihtne leida.",
+    "highlights_desc": "Näitab lühikesi bännereid, kui mängus juhtub midagi märkimisväärset: domineerimine, liidrivahetused, elimineerimised.",
+    "highlights_label": "Tipphetked",
     "keybind_conflict_error": "Nupp {key} on juba määratud teisele tegevusele.",
     "keybinds_hint": "Klõpsa klahvi selle uuesti sidumiseks. Saate määrata ühe klahvi või Shift + klahvikombinatsiooni.",
     "left_click_desc": "Kui SEES, siis vasak klõps avab menüü ja mõõga nupp ründab. Kui VÄLJAS, siis vasak klõps ründab otse.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Järgmine",
     "ok": "Mängime",
+    "open_button": "Mis on uut",
     "previous": "Eelmine",
     "title": "Mis on uut",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Näpunäited mängu ajal",
       "video": "Mängu lõpus loo kogu mängust kiirendatud video ja laadi see alla, et seda jagada (ruudukujuline või vertikaalne formaat).",
       "video_title": "Sinu mäng 30 sekundis"
+    },
+    "v0_1_183": {
+      "highlights": "Suured hetked teatatakse nüüd mängu ajal: domineerimine, hiiglase langemine, tagasitulek, täielik sõda… Saate need seadetes välja lülitada.",
+      "highlights_title": "Tähtsamad hetked",
+      "map_vote": "Enne edetabelimängu algust vali kaart: hääleta kolme tasakaalustatud kaardi vahel.",
+      "map_vote_title": "Kaardi hääletus edetabelis",
+      "rivals": "Mäng leiab sinu rivaali, mängija, kellega kohtud kõige sagedamini, ning teatab, kui ta on sinu mängus. Teie omavahelise mängu tulemus on sinu profiilil.",
+      "rivals_title": "Rivaalid"
     }
   },
   "win_modal": {

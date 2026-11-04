@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "I rangerede spil er niveauerne lavere (SAM 3, silo og radar 2) og låses op senere.",
     "upgrades_title": "Bygningsopgraderinger"
   },
+  "highlights": {
+    "comeback": "Comeback: {name} rykker fra sidstepladsen til top 3",
+    "domination": "Dominans! {name} kontrollerer {percent} % af kortet",
+    "giant_fallen": "En kæmpe falder: {name} er elimineret",
+    "killing_spree": "Ødelæggende stime: {name} har erobret {count} spillere",
+    "lead_change": "Vendepunkt! {name} overtager føringen",
+    "total_war": "Total krig: {a} og {b} støder sammen"
+  },
   "host_modal": {
     "anonymous_players": "Anonyme spillere",
     "assigned_teams": "Tildelte Hold",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Sølv",
     "tiers_title": "Etager",
     "to_legend": "Slut i top 5 blandt Mestrene for at blive Legende",
-    "to_next_tier": "{points} Elo til {tier}"
+    "to_next_tier": "{points} Elo til {tier}",
+    "vote_ban": "Udeluk",
+    "vote_ban_hint": "Udeluk ét kort. Det resterende kort spilles.",
+    "vote_banned": "Udelukket",
+    "vote_count": "Stemmer: {count}",
+    "vote_mine": "Dit valg",
+    "vote_pick": "Stem",
+    "vote_pick_hint": "Stem på det kort, du vil spille. Kortet med flest stemmer vinder.",
+    "vote_progress": "{voted}/{total} spillere har valgt",
+    "vote_result": "Kort: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Spillet starter om lidt...",
+    "vote_title": "Vælg kortet"
   },
   "relation": {
     "default": "Standard",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Belønninger"
+  },
+  "rival": {
+    "banner": "Din rival {name} er med i dette spil! ({you} – {them})",
+    "end_defeat": "Mod din rival {name}: nederlag",
+    "end_victory": "Mod din rival {name}: sejr",
+    "profile_stats": "{games} spil sammen · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Bekræft",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Hjælpebeskeder",
     "highlight_glow_strength_label": "Fremhæv styrke",
     "highlight_small_players_desc": "Tilføj en glød til små spillere, så de er nemme at finde.",
+    "highlights_desc": "Viser korte bannere, når der sker noget bemærkelsesværdigt i spillet: dominans, lederskift, elimineringer.",
+    "highlights_label": "Højdepunkter",
     "keybind_conflict_error": "Tasten {key} er allerede tildelt en anden handling.",
     "keybinds_hint": "Klik på en tast for at tildele den. Du kan tildele en enkelt tast eller Shift + tast-kombination.",
     "left_click_desc": "Når den er TIL, åbner venstreklik menuen, og sværdknappen angriber. Når den er FRA, angriber venstreklik direkte.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Næste",
     "ok": "Lad os spille",
+    "open_button": "Hvad er nyt",
     "previous": "Forrige",
     "title": "Nyheder",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tips i spillet",
       "video": "Når et spil er slut, kan du lave en video af hele spillet i hurtigt tempo og hente den for at dele den (kvadratisk eller lodret format).",
       "video_title": "Dit spil på 30 sekunder"
+    },
+    "v0_1_183": {
+      "highlights": "Store øjeblikke annonceres nu under spillet: dominans, et kæmpes fald, comeback, total krig… Du kan slå dem fra i indstillingerne.",
+      "highlights_title": "Højdepunkter",
+      "map_vote": "Før en rangeret kamp vælger du kortet: stem mellem tre balancerede kort.",
+      "map_vote_title": "Kortafstemning i rangeret",
+      "rivals": "Spillet finder din rival, spilleren du oftest møder, og fortæller dig, når de er i dit spil. Din head-to-head-score vises på din profil.",
+      "rivals_title": "Rivaliseringer"
     }
   },
   "win_modal": {

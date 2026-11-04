@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "În jocurile clasate, nivelurile sunt mai mici (SAM 3, siloz și radar 2) și se deblochează mai târziu.",
     "upgrades_title": "Actualizări ale clădirii"
   },
+  "highlights": {
+    "comeback": "Revenire: {name} urcă de pe ultimul loc în top 3",
+    "domination": "Dominație! {name} controlează {percent}% din hartă",
+    "giant_fallen": "Un gigant cade: {name} a fost eliminat",
+    "killing_spree": "Serie devastatoare: {name} a cucerit {count} jucători",
+    "lead_change": "Răsturnare de situație! {name} preia conducerea",
+    "total_war": "Război total: {a} și {b} se înfruntă"
+  },
   "host_modal": {
     "anonymous_players": "Jucători anonimi",
     "assigned_teams": "Echipe alocate",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Argint",
     "tiers_title": "Niveluri",
     "to_legend": "Termină în top 5 Maeștri pentru a deveni Legendă",
-    "to_next_tier": "{points} Elo până la {tier}"
+    "to_next_tier": "{points} Elo până la {tier}",
+    "vote_ban": "Interzice",
+    "vote_ban_hint": "Interzice o hartă. Se joacă harta rămasă.",
+    "vote_banned": "Interzisă",
+    "vote_count": "Voturi: {count}",
+    "vote_mine": "Alegerea ta",
+    "vote_pick": "Votează",
+    "vote_pick_hint": "Votează harta pe care vrei să o joci. Câștigă cea mai votată.",
+    "vote_progress": "{voted}/{total} jucători au ales",
+    "vote_result": "Hartă: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Jocul urmează să înceapă...",
+    "vote_title": "Alege harta"
   },
   "relation": {
     "default": "Default",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Recompense"
+  },
+  "rival": {
+    "banner": "Rivalul tău {name} este în acest joc! ({you} – {them})",
+    "end_defeat": "Împotriva rivalului tău {name}: înfrângere",
+    "end_victory": "Împotriva rivalului tău {name}: victorie",
+    "profile_stats": "{games} jocuri împreună · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Confirmă",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Mesaj asistență",
     "highlight_glow_strength_label": "Putere evidențiere",
     "highlight_small_players_desc": "Adaugă o strălucire jucătorilor mici pentru a fi ușor de găsit.",
+    "highlights_desc": "Afișează bannere scurte când se întâmplă ceva notabil în joc: dominație, schimbări de lider, eliminări.",
+    "highlights_label": "Momente cheie",
     "keybind_conflict_error": "Tasta {key} este deja folosită de altă acțiune.",
     "keybinds_hint": "Faceți clic pe o cheie pentru a o restabili. Puteți atribui o singură cheie sau combinația de taste Shift.",
     "left_click_desc": "Când este pornit, clic stânga deschide meniul și butonul cu sabia atacă. Când este oprit, clic atacă direct.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Următorul",
     "ok": "Hai să jucăm",
+    "open_button": "Ce e nou",
     "previous": "Anterior",
     "title": "Ce e nou",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Sfaturi în timpul jocului",
       "video": "La sfârșitul unei partide, creează un videoclip cu toată partida accelerată și descarcă-l ca să-l poți distribui (format pătrat sau vertical).",
       "video_title": "Partida ta în 30 de secunde"
+    },
+    "v0_1_183": {
+      "highlights": "Momentele mari sunt acum anunțate în timpul jocului: dominație, căderea unui gigant, revenire, război total… Le poți dezactiva din setări.",
+      "highlights_title": "Momente importante",
+      "map_vote": "Înainte de un meci clasat, alege harta: votează între trei hărți echilibrate.",
+      "map_vote_title": "Vot pentru hartă în clasat",
+      "rivals": "Jocul îți găsește rivalul, jucătorul cu care te confrunți cel mai des, și te anunță când este în jocul tău. Scorul vostru direct este pe profilul tău.",
+      "rivals_title": "Rivalități"
     }
   },
   "win_modal": {

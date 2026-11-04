@@ -1,5 +1,12 @@
 # Territorium — Changelog
 
+## v0.1.183
+
+- Highlights: big moments are announced during the game (domination, a giant falling, comeback, total war, killing spree), can be turned off in the settings.
+- Rivalries: the game finds your rival and tells you when they are in your game; head-to-head on your profile and on the end screen.
+- Ranked map vote: choose the map among three balanced maps before a ranked match.
+- A What's new button on the main menu.
+
 ## v0.1.182
 
 - Fixed a troop duplication exploit when retreating from an attack that had already ended.

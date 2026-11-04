@@ -4,10 +4,11 @@ import {
   WHATS_NEW_ID,
   WHATS_NEW_ITEMS,
   WhatsNew,
-  type WhatsNewItem,
+  openWhatsNew,
   whatsNewDecision,
   whatsNewMediaOf,
   whatsNewVersionLabel,
+  type WhatsNewItem,
 } from "../../src/client/WhatsNew";
 
 const NEXT = translateText("whats_new.next");
@@ -87,7 +88,9 @@ describe("WhatsNew", () => {
 
   it("labels the release from its id", () => {
     expect(whatsNewVersionLabel("v0_1_180")).toBe("v0.1.180");
-    expect(whatsNewVersionLabel()).toBe("v0.1.180");
+    expect(whatsNewVersionLabel()).toBe(
+      `v${WHATS_NEW_ID.slice(1).replace(/_/g, ".")}`,
+    );
   });
 
   it("reads the old image field as a still image", () => {
@@ -315,5 +318,19 @@ describe("WhatsNew", () => {
     await ready(el);
     expect(el.querySelector("[role='group'] img[loading='lazy']")).toBeNull();
     expect(el.querySelector("svg[viewBox='0 0 64 64']")).not.toBeNull();
+  });
+
+  it("reopens on demand, one window at a time", async () => {
+    document.body.innerHTML = "";
+    openWhatsNew();
+    openWhatsNew();
+    expect(document.querySelectorAll("whats-new")).toHaveLength(1);
+    const el = document.querySelector("whats-new") as Mounted;
+    await ready(el);
+    expect(el.querySelector("[data-whats-new]")).not.toBeNull();
+    el.remove();
+    openWhatsNew();
+    expect(document.querySelectorAll("whats-new")).toHaveLength(1);
+    document.body.innerHTML = "";
   });
 });

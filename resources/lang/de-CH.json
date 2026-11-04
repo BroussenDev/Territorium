@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "In Ranglistenspielen sind die Level niedriger (SAM 3, Silo und Radar 2) und werden später freigeschaltet.",
     "upgrades_title": "Gebäude-Upgrades"
   },
+  "highlights": {
+    "comeback": "Comeback: {name} steigt vom letzten Platz in die Top 3 auf",
+    "domination": "Dominanz! {name} kontrolliert {percent} % der Karte",
+    "giant_fallen": "Ein Riese fällt: {name} wurde ausgeschaltet",
+    "killing_spree": "Verheerende Serie: {name} hat {count} Spieler erobert",
+    "lead_change": "Wendung! {name} übernimmt die Führung",
+    "total_war": "Totaler Krieg: {a} und {b} bekämpfen sich"
+  },
   "host_modal": {
     "anonymous_players": "Anonyme Spieler",
     "assigned_teams": "Zuegwiseni Teams",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Silber",
     "tiers_title": "Ebenen",
     "to_legend": "Beende die Saison unter den Top 5 der Meister, um Legende zu werden",
-    "to_next_tier": "{points} Elo bis {tier}"
+    "to_next_tier": "{points} Elo bis {tier}",
+    "vote_ban": "Sperre",
+    "vote_ban_hint": "Sperr e Charte. D'übrig Charte wird gspielt.",
+    "vote_banned": "Gsperrt",
+    "vote_count": "Stimme: {count}",
+    "vote_mine": "Dini Wahl",
+    "vote_pick": "Abstimme",
+    "vote_pick_hint": "Stimm für d'Charte, wo du wetsch spile. D'Charte mit de meischte Stimme gwünnt.",
+    "vote_progress": "{voted}/{total} Spieler hend gwählt",
+    "vote_result": "Charte: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "S'Spiel fangt gli aa...",
+    "vote_title": "Charte wähle"
   },
   "relation": {
     "default": "Normau",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Belohnungen"
+  },
+  "rival": {
+    "banner": "Dein Rivale {name} isch i däm Spiel! ({you} – {them})",
+    "end_defeat": "Gäge dä Rivale {name}: Niederlag",
+    "end_victory": "Gäge dä Rivale {name}: Sieg",
+    "profile_stats": "{games} gmeinsami Spiel · {you} – {them}",
+    "profile_title": "Rivale"
   },
   "security_modal": {
     "code_confirm": "Bestätigen",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Hilfemeldungen",
     "highlight_glow_strength_label": "Stärke hervorheben",
     "highlight_small_players_desc": "Verleihen Sie kleinen Spielern Glanz, damit sie leicht zu finden sind.",
+    "highlights_desc": "Zeigt kurze Banner, wenn im Spiel etwas Bemerkenswertes passiert: Dominanz, Führungswechsel, Ausschaltungen.",
+    "highlights_label": "Highlights",
     "keybind_conflict_error": "D Taste {key} isch bereits a e angeri Aktion bunde.",
     "keybinds_hint": "Klicken Sie auf eine Taste, um sie erneut zu binden. Sie können eine einzelne Taste oder eine Umschalt+Tastenkombination zuweisen.",
     "left_click_desc": "Wenn An, öffnet Linksklick s Menü und d Schwertattacke-Schautflächi. Wenn Us, grifft Linksklick direkt a.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Weiter",
     "ok": "Los geht's",
+    "open_button": "Was isch neu",
     "previous": "Zurück",
     "title": "Was ist neu",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tipps im Spiel",
       "video": "Erstelle am Ende einer Partie ein beschleunigtes Video der ganzen Partie und lade es herunter, um es zu teilen (quadratisches oder hochformatiges Format).",
       "video_title": "Deine Partie in 30 Sekunden"
+    },
+    "v0_1_183": {
+      "highlights": "Grosse Momente werden neu während des Spiels angekündigt: Dominanz, Fall eines Riesen, Comeback, totaler Krieg… Du kannst sie in den Einstellungen ausschalten.",
+      "highlights_title": "Highlights",
+      "map_vote": "Vor einem Rangspiel wählst du die Karte: Stimme zwischen drei ausgewogenen Karten ab.",
+      "map_vote_title": "Kartenabstimmung in der Rangliste",
+      "rivals": "Das Spiel findet deinen Rivalen, den Spieler, gegen den du am häufigsten antrittst, und sagt dir Bescheid, wenn er in deinem Spiel ist. Dein Direktvergleich steht in deinem Profil.",
+      "rivals_title": "Rivalitäten"
     }
   },
   "win_modal": {

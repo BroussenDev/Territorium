@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "U rangiranim igrama nivoi su niži (SAM 3, silos i radar 2) i otključavaju se kasnije.",
     "upgrades_title": "Nadogradnje zgrada"
   },
+  "highlights": {
+    "comeback": "Povratak: {name} se penje s posljednjeg mjesta u top 3",
+    "domination": "Dominacija! {name} kontroliše {percent}% mape",
+    "giant_fallen": "Pada div: {name} je eliminisan",
+    "killing_spree": "Razorna serija: {name} je osvojio {count} igrača",
+    "lead_change": "Preokret! {name} preuzima vodstvo",
+    "total_war": "Totalni rat: {a} i {b} se sukobljavaju"
+  },
   "host_modal": {
     "anonymous_players": "Anonimni igrači",
     "assigned_teams": "Dodeljeni timovi",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Srebro",
     "tiers_title": "Tiers",
     "to_legend": "Završi u top 5 Majstora da postaneš Legenda",
-    "to_next_tier": "{points} Elo do {tier}"
+    "to_next_tier": "{points} Elo do {tier}",
+    "vote_ban": "Zabrani",
+    "vote_ban_hint": "Zabranite jednu mapu. Igra se preostala mapa.",
+    "vote_banned": "Zabranjena",
+    "vote_count": "Glasovi: {count}",
+    "vote_mine": "Vaš izbor",
+    "vote_pick": "Glasaj",
+    "vote_pick_hint": "Glasajte za mapu na kojoj želite igrati. Pobjeđuje mapa s najviše glasova.",
+    "vote_progress": "{voted}/{total} igrača je izabralo",
+    "vote_result": "Mapa: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Igra uskoro počinje...",
+    "vote_title": "Izaberite mapu"
   },
   "relation": {
     "default": "Podrazumevan",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Nagrade"
+  },
+  "rival": {
+    "banner": "Tvoj rival {name} je u ovoj igri! ({you} – {them})",
+    "end_defeat": "Protiv tvog rivala {name}: poraz",
+    "end_victory": "Protiv tvog rivala {name}: pobjeda",
+    "profile_stats": "{games} zajedničkih igara · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Potvrdi",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Poruke pomoći",
     "highlight_glow_strength_label": "Jačina isticanja",
     "highlight_small_players_desc": "Dodajte sjaj malim igračima kako biste ih lakše pronašli.",
+    "highlights_desc": "Prikazuje kratke bannere kad se u igri desi nešto značajno: dominacija, promjene vođe, eliminacije.",
+    "highlights_label": "Najbolji trenuci",
     "keybind_conflict_error": "Taster {key} je već dodeljen drugoj akciji.",
     "keybinds_hint": "Pritisnite taster da biste ga promenili. Možete dodeliti pojedinačni taster ili kombinaciju Shift + taster.",
     "left_click_desc": "Kada je UKLJUČEN, lijevi klik otvara meni, a dugme sa mačem napada. Kada je ISKLJUČEN, lijevi klik napada direktno.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Sljedeće",
     "ok": "Igrajmo",
+    "open_button": "Šta je novo",
     "previous": "Prethodno",
     "title": "Šta je novo",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Savjeti tokom igre",
       "video": "Na kraju igre napravi ubrzani video cijele igre i preuzmi ga da ga podijeliš (kvadratni ili vertikalni format).",
       "video_title": "Tvoja igra za 30 sekundi"
+    },
+    "v0_1_183": {
+      "highlights": "Veliki trenuci se sada najavljuju tokom igre: dominacija, pad diva, povratak, totalni rat… Možete ih isključiti u postavkama.",
+      "highlights_title": "Važni trenuci",
+      "map_vote": "Prije rangiranog meča izaberi mapu: glasaj među trima uravnoteženim mapama.",
+      "map_vote_title": "Glasanje za mapu u rangiranom",
+      "rivals": "Igra pronalazi tvog rivala, igrača protiv kojeg najčešće igraš, i javlja ti kad je u tvojoj igri. Tvoj rezultat u direktnim sukobima je na profilu.",
+      "rivals_title": "Rivalstva"
     }
   },
   "win_modal": {

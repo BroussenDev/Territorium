@@ -60,4 +60,14 @@ describe("MapPlaylist ranked free-for-all", () => {
     expect(full.gameMapSize).toBe(GameMapSize.Normal);
     expect(rankedFfaPool(16).maps).toContain(full.gameMap);
   });
+
+  it("plays the voted map when it is in the pool for the match size", () => {
+    const voted = rankedFfaPool(4).maps[1];
+    expect(new MapPlaylist().getRankedFfaConfig(4, voted).gameMap).toBe(voted);
+  });
+
+  it("ignores a voted map outside the pool", () => {
+    const config = new MapPlaylist().getRankedFfaConfig(4, GameMapType.France);
+    expect(rankedFfaPool(4).maps).toContain(config.gameMap);
+  });
 });

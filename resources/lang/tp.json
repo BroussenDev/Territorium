@@ -196,6 +196,14 @@
     "ui_section": "ilo sona musi",
     "ui_troops_workers": "kulupu utala en kulupu pali - nanpa pi kulupu utala en nanpa pi kulupu pali. kulupu utala li utala li awen tan pakala. kulupu pali li kama jo e mani. sina ken ante e nanpa ni kepeken sike tawa."
   },
+  "highlights": {
+    "comeback": "kama pona: jan {name} li tawa sewi tan nanpa pini tawa nanpa wan tu wan",
+    "domination": "wawa! jan {name} li lawa e {percent}% pi ma ale",
+    "giant_fallen": "jan suli li kama anpa: jan {name} li weka",
+    "killing_spree": "pali ike mute: jan {name} li ante e jan {count}",
+    "lead_change": "ante suli! jan {name} li kama nanpa wan",
+    "total_war": "utala suli: jan {a} en jan {b} li utala"
+  },
   "host_modal": {
     "bots": "ilo: ",
     "bots_disabled": "pini",
@@ -294,7 +302,26 @@
     "recent_title": "musi pini",
     "rule_season": "tenpo musi li awen e mun 3. tenpo ni li pini la sina kama jo e sitelen pona e sitelen tenpo, en nanpa li kama lili.",
     "to_legend": "o lon kulupu 5 wawa pi jan lawa la sina kama jan nimi",
-    "to_next_tier": "{points} Elo la sina kama {tier}"
+    "to_next_tier": "{points} Elo la sina kama {tier}",
+    "vote_ban": "o weka",
+    "vote_ban_hint": "o weka e ma wan. ma ante li kama pali.",
+    "vote_banned": "ma weka",
+    "vote_count": "toki: {count}",
+    "vote_mine": "wile sina",
+    "vote_pick": "o toki",
+    "vote_pick_hint": "o toki e wile sina pi ma pali. ma pi toki mute li kama.",
+    "vote_progress": "jan pali {voted} la {total} li wile",
+    "vote_result": "ma: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "musi li kama open pi tenpo lili...",
+    "vote_title": "o wile e ma"
+  },
+  "rival": {
+    "banner": "jan utala sina {name} li lon musi ni! ({you} – {them})",
+    "end_defeat": "tawa jan utala sina {name}: ona anpa e sina",
+    "end_victory": "tawa jan utala sina {name}: sina anpa e ona",
+    "profile_stats": "musi {games} pi sina tu · {you} – {them}",
+    "profile_title": "jan utala"
   },
   "select_lang": {
     "title": "o wile e toki"
@@ -346,6 +373,8 @@
     "emojis_label": "😊 sitelen Emosi",
     "game_tips_desc": "sona lili pi lon tenpo ni. ona li lon tawa jan pi musi lili.",
     "game_tips_label": "sona pona lon musi",
+    "highlights_desc": "ilo ni li pana e toki lili lon tenpo pi ijo suli lon musi: wawa, ante pi jan lawa, weka jan.",
+    "highlights_label": "tenpo pona",
     "left_click_desc": "ni li lon la ilo luka soto li open e lipu ken la ilo luka utala li utala. ni li pini la ilo luka soto li utala taso.",
     "left_click_label": "ilo luka soto li open e lipu ken",
     "move_down": "o lukin anpa",
@@ -439,6 +468,7 @@
   },
   "whats_new": {
     "next": "tawa sinpin",
+    "open_button": "sin la seme",
     "previous": "tawa monsi",
     "v0_1_173": {
       "discord": "o kama lon kulupu Discord pi ma Territorium: o alasa e musi, o musi lon tenpo pimeja musi, o lukin e jan nanpa 10 pi tenpo esun, o toki tawa kulupu pali.",
@@ -455,6 +485,14 @@
       "tips_title": "sona pona lon musi",
       "video": "tenpo musi li pini la, o pali e vidio pi musi ale tenpo lili. o jo e ona, o pana e ona tawa jan ante. nasin: poki anu sewi.",
       "video_title": "musi sina lon tenpo 30 sekan"
+    },
+    "v0_1_183": {
+      "highlights": "tenpo suli li lon musi la, ilo li toki e ni: wan suli li kama, jan suli li moli, sina kama lon, utala suli li open… sina ken weka e ni lon ilo.",
+      "highlights_title": "tenpo suli",
+      "map_vote": "musi nanpa li open la, o wile e lipu. o pana e nanpa lon lipu tu wan.",
+      "map_vote_title": "o pana e lipu lon musi nanpa",
+      "rivals": "musi li alasa e jan ike sina: jan pi sina lukin e jan ni mute tawa sina. ona li kama lon musi sina la, ilo li toki e ni tawa sina. nanpa sina tawa ona li lon lipu sina.",
+      "rivals_title": "pilin ike"
     }
   }
 }

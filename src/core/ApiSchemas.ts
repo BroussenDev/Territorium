@@ -1001,6 +1001,8 @@ export type SeasonBadge = z.infer<typeof SeasonBadgeSchema>;
 // game once matched.
 export const RankedQueueStateSchema = z.union([
   z.object({ gameId: z.string() }),
+  // The match is formed and its players vote the map first.
+  z.object({ vote: z.object({ id: z.string() }) }),
   z.object({
     count: z.number(),
     min: z.number(),
@@ -1014,6 +1016,22 @@ export const RankedQueueStateSchema = z.union([
   }),
 ]);
 export type RankedQueueState = z.infer<typeof RankedQueueStateSchema>;
+
+// GET /ranked/match/:id/vote — the map vote of a ranked match. Two players
+// each ban a map; more players each vote for one. `tally` counts the bans or
+// votes per map so far; `result` is set once the map is settled.
+export const RankedMapVoteSchema = z.object({
+  id: z.string(),
+  mode: z.enum(["ban", "vote"]),
+  options: z.array(z.string()),
+  endsInMs: z.number(),
+  total: z.number(),
+  voted: z.number(),
+  tally: z.record(z.string(), z.number()),
+  mine: z.string().nullable(),
+  result: z.string().nullable(),
+});
+export type RankedMapVote = z.infer<typeof RankedMapVoteSchema>;
 
 // GET /public/tribe/:name — the public stats page for one custom tribe name.
 // No auth; the name goes URL-encoded in the path and lookup is case- and
@@ -1127,6 +1145,14 @@ export const PlayerStatsTreeSchema = z.object({
 });
 export type PlayerStatsTree = z.infer<typeof PlayerStatsTreeSchema>;
 
+export const RivalSchema = z.object({
+  publicId: z.string(),
+  name: z.string(),
+  gamesTogether: z.number().int().nonnegative(),
+  yourWins: z.number().int().nonnegative(),
+  theirWins: z.number().int().nonnegative(),
+});
+
 export const PlayerProfileSchema = z.object({
   createdAt: z.iso.datetime(),
   user: DiscordUserSchema.optional(),
@@ -1168,6 +1194,9 @@ export const PlayerProfileSchema = z.object({
   badge: z.string().max(32).optional(),
   // Owns the Deluxe edition: the Conquérant frame and animated banner.
   conquerant: z.boolean().optional(),
+  // The registered player met most often in recent games, with the head to
+  // head from this player's side. Absent without a rival.
+  rival: RivalSchema.optional(),
   // The countries this player played in Nations games (countries.json
   // index), most played first. Optional for an API without the field.
   nations: z

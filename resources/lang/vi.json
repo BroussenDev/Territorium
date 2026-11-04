@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "Trong trò chơi xếp hạng, cấp độ thấp hơn (SAM 3, silo và radar 2) và mở khóa sau.",
     "upgrades_title": "Nâng cấp tòa nhà"
   },
+  "highlights": {
+    "comeback": "Ngược dòng: {name} từ vị trí cuối lên top 3",
+    "domination": "Thống trị! {name} kiểm soát {percent}% bản đồ",
+    "giant_fallen": "Gã khổng lồ sụp đổ: {name} đã bị loại",
+    "killing_spree": "Chuỗi tàn phá: {name} đã chinh phục {count} người chơi",
+    "lead_change": "Lật ngược tình thế! {name} vươn lên dẫn đầu",
+    "total_war": "Chiến tranh toàn diện: {a} và {b} đối đầu"
+  },
   "host_modal": {
     "anonymous_players": "Người chơi ẩn danh",
     "assigned_teams": "Đội đã xếp người chơi vào",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Bạc",
     "tiers_title": "Bậc",
     "to_legend": "Kết thúc trong top 5 Cao thủ để trở thành Huyền thoại",
-    "to_next_tier": "Còn {points} Elo lên {tier}"
+    "to_next_tier": "Còn {points} Elo lên {tier}",
+    "vote_ban": "Cấm",
+    "vote_ban_hint": "Cấm một bản đồ. Bản đồ còn lại sẽ được chơi.",
+    "vote_banned": "Bị cấm",
+    "vote_count": "Phiếu: {count}",
+    "vote_mine": "Lựa chọn của bạn",
+    "vote_pick": "Bỏ phiếu",
+    "vote_pick_hint": "Bỏ phiếu cho bản đồ bạn muốn chơi. Bản đồ nhiều phiếu nhất sẽ thắng.",
+    "vote_progress": "{voted}/{total} người chơi đã chọn",
+    "vote_result": "Bản đồ: {map}",
+    "vote_seconds": "{seconds} giây",
+    "vote_start_soon": "Trận đấu sắp bắt đầu...",
+    "vote_title": "Chọn bản đồ"
   },
   "relation": {
     "default": "Mặc định",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Phần thưởng"
+  },
+  "rival": {
+    "banner": "Đối thủ {name} của bạn đang ở trong ván này! ({you} – {them})",
+    "end_defeat": "Đấu với đối thủ {name}: thua",
+    "end_victory": "Đấu với đối thủ {name}: thắng",
+    "profile_stats": "{games} ván cùng nhau · {you} – {them}",
+    "profile_title": "Đối thủ"
   },
   "security_modal": {
     "code_confirm": "Xác nhận",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Thông báo trợ giúp",
     "highlight_glow_strength_label": "Mức độ làm nổi bật",
     "highlight_small_players_desc": "Thêm hiệu ứng phát sáng cho các người chơi nhỏ để dễ nhận ra hơn.",
+    "highlights_desc": "Hiển thị biểu ngữ ngắn khi có điều đáng chú ý trong ván đấu: thống trị, đổi người dẫn đầu, loại người chơi.",
+    "highlights_label": "Khoảnh khắc nổi bật",
     "keybind_conflict_error": "Phím {key} đã được gán cho một hành động khác.",
     "keybinds_hint": "Nhấp vào một phím để thay đổi phím tắt. Bạn có thể gán một phím đơn hoặc tổ hợp Shift + phím.",
     "left_click_desc": "Khi bật, chuột trái sẽ mở menu và nút kiếm sẽ tấn công. Khi tắt, chuột trái sẽ tấn công trực tiếp.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Tiếp",
     "ok": "Chơi thôi",
+    "open_button": "Có gì mới",
     "previous": "Trước",
     "title": "Có gì mới",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Mẹo trong trận",
       "video": "Khi kết thúc ván chơi, hãy tạo video tua nhanh toàn bộ ván chơi rồi tải về để chia sẻ (định dạng vuông hoặc dọc).",
       "video_title": "Ván chơi của bạn trong 30 giây"
+    },
+    "v0_1_183": {
+      "highlights": "Các khoảnh khắc lớn giờ được thông báo trong trận: thống trị, một người khổng lồ sụp đổ, lội ngược dòng, chiến tranh toàn diện… Bạn có thể tắt trong cài đặt.",
+      "highlights_title": "Khoảnh khắc nổi bật",
+      "map_vote": "Trước trận xếp hạng, hãy chọn bản đồ: bình chọn giữa ba bản đồ cân bằng.",
+      "map_vote_title": "Bình chọn bản đồ trong xếp hạng",
+      "rivals": "Trò chơi tìm đối thủ của bạn, người bạn gặp nhiều nhất, và báo cho bạn khi họ có mặt trong trận. Thành tích đối đầu của bạn hiển thị trên hồ sơ.",
+      "rivals_title": "Đối thủ truyền kiếp"
     }
   },
   "win_modal": {

@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "I rankade spel är nivåerna lägre (SAM 3, silo och radar 2) och låses upp senare.",
     "upgrades_title": "Byggnadsuppgraderingar"
   },
+  "highlights": {
+    "comeback": "Comeback: {name} klättrar från sista plats till topp 3",
+    "domination": "Dominans! {name} kontrollerar {percent} % av kartan",
+    "giant_fallen": "En jätte faller: {name} har eliminerats",
+    "killing_spree": "Förödande svit: {name} har erövrat {count} spelare",
+    "lead_change": "Vändning! {name} tar ledningen",
+    "total_war": "Totalt krig: {a} och {b} drabbar samman"
+  },
   "host_modal": {
     "anonymous_players": "Anonyma spelare",
     "assigned_teams": "Tilldelade lag",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Silver",
     "tiers_title": "Nivåer",
     "to_legend": "Sluta bland topp 5 av Mästarna för att bli Legend",
-    "to_next_tier": "{points} Elo till {tier}"
+    "to_next_tier": "{points} Elo till {tier}",
+    "vote_ban": "Spärra",
+    "vote_ban_hint": "Spärra en karta. Den återstående kartan spelas.",
+    "vote_banned": "Spärrad",
+    "vote_count": "Röster: {count}",
+    "vote_mine": "Ditt val",
+    "vote_pick": "Rösta",
+    "vote_pick_hint": "Rösta på kartan du vill spela. Kartan med flest röster vinner.",
+    "vote_progress": "{voted}/{total} spelare har valt",
+    "vote_result": "Karta: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Spelet startar snart...",
+    "vote_title": "Välj karta"
   },
   "relation": {
     "default": "Standard",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Belöningar"
+  },
+  "rival": {
+    "banner": "Din rival {name} är med i det här spelet! ({you} – {them})",
+    "end_defeat": "Mot din rival {name}: förlust",
+    "end_victory": "Mot din rival {name}: seger",
+    "profile_stats": "{games} spel tillsammans · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Bekräfta",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Hjälpmeddelanden",
     "highlight_glow_strength_label": "Framhäv styrka",
     "highlight_small_players_desc": "Lägg till en glöd till små spelare så att de är lätta att hitta.",
+    "highlights_desc": "Visar korta banderoller när något anmärkningsvärt händer i spelet: dominans, ledarbyten, elimineringar.",
+    "highlights_label": "Höjdpunkter",
     "keybind_conflict_error": "Nyckeln {key} är redan bunden till en annan åtgärd.",
     "keybinds_hint": "Klicka på en nyckel för att binda om den. Du kan tilldela en enskild tangent eller Shift + tangentkombination.",
     "left_click_desc": "När det är PÅ öppnar vänsterklick en meny, och svärdknappen anfaller. När det är AV, anfaller vänster musknapp direkt.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Nästa",
     "ok": "Nu kör vi",
+    "open_button": "Nyheter",
     "previous": "Föregående",
     "title": "Nyheter",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tips under spelet",
       "video": "När en match är slut kan du skapa en snabbspelad video av hela spelet och ladda ner den för att dela den (kvadratiskt eller vertikalt format).",
       "video_title": "Ditt spel på 30 sekunder"
+    },
+    "v0_1_183": {
+      "highlights": "Stora ögonblick annonseras nu under spelet: dominans, en jätte faller, comeback, totalt krig… Du kan stänga av det i inställningarna.",
+      "highlights_title": "Höjdpunkter",
+      "map_vote": "Innan en rankad match väljer du karta: rösta bland tre balanserade kartor.",
+      "map_vote_title": "Kartröstning i rankat",
+      "rivals": "Spelet hittar din rival, spelaren du möter oftast, och säger till när hen är med i ditt spel. Din head-to-head-statistik visas på din profil.",
+      "rivals_title": "Rivaliteter"
     }
   },
   "win_modal": {

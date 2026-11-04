@@ -10,6 +10,7 @@ import {
   pollRankedQueue,
 } from "./Api";
 import { BaseModal } from "./components/BaseModal";
+import "./components/ranked/RankedMapVote";
 import { tierEmblem, tierLabel } from "./components/ranked/RankedTier";
 import { modalHeader } from "./components/ui/ModalHeader";
 import type { JoinLobbyEvent } from "./Main";
@@ -50,6 +51,8 @@ export class MatchmakingModal extends BaseModal {
   private queued = false;
   @state() private queue: QueueView | null = null;
   @state() private gameID: string | null = null;
+  // Set while the matched players vote the map, before the game exists.
+  @state() private voteId: string | null = null;
   @state() private status: RankedStatus | null = null;
 
   constructor() {
@@ -113,6 +116,9 @@ export class MatchmakingModal extends BaseModal {
         translateText("matchmaking_modal.waiting_for_game"),
         "yellow",
       );
+    }
+    if (this.voteId !== null) {
+      return html`<ranked-map-vote .voteId=${this.voteId}></ranked-map-vote>`;
     }
     const q = this.queue;
     if (q === null) {
@@ -196,6 +202,7 @@ export class MatchmakingModal extends BaseModal {
     const session = ++this.session;
     this.queue = null;
     this.gameID = null;
+    this.voteId = null;
     this.queued = false;
     // Redraws the countdowns between polls.
     this.tickInterval = setInterval(() => this.requestUpdate(), 1000);
@@ -221,12 +228,23 @@ export class MatchmakingModal extends BaseModal {
     if (result !== false && "gameId" in result) {
       console.log(`matchmaking: got game ID: ${result.gameId}`);
       this.stopTimers();
+      this.voteId = null;
       this.gameID = result.gameId;
       this.gameCheckInterval = setInterval(() => this.checkGame(), 1000);
       return;
     }
+    if (result !== false && "vote" in result) {
+      // Keep polling: it tells the API this player is still here, and
+      // brings the game once the vote is settled.
+      this.voteId = result.vote.id;
+      this.pollTimeout = setTimeout(() => this.poll(session), POLL_MS);
+      return;
+    }
     // A failed poll keeps the last state and simply tries again.
-    if (result !== false) this.queue = { ...result, receivedAt: Date.now() };
+    if (result !== false) {
+      this.voteId = null;
+      this.queue = { ...result, receivedAt: Date.now() };
+    }
     this.pollTimeout = setTimeout(() => this.poll(session), POLL_MS);
   }
 

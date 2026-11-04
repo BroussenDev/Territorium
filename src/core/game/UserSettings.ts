@@ -1,8 +1,18 @@
-import { Emoji, flattenedEmojiTable } from "../Util";
+import {
+  GraphicsOverrides,
+  GraphicsOverridesSchema,
+  GraphicsPresets,
+  GraphicsPresetsSchema,
+} from "../../client/render/gl/GraphicsOverrides";
+import {
+  COLUMN_IDS,
+  ColumnId,
+  DEFAULT_STATS_COLUMNS,
+  StatsTableKind,
+} from "../../client/StatsConstants";
 import { Cosmetics } from "../CosmeticSchemas";
 import { PlayerPattern } from "../Schemas";
-import { GraphicsOverrides, GraphicsOverridesSchema, GraphicsPresets, GraphicsPresetsSchema } from "../../client/render/gl/GraphicsOverrides";
-import { COLUMN_IDS, ColumnId, DEFAULT_STATS_COLUMNS, StatsTableKind } from "../../client/StatsConstants";
+import { Emoji, flattenedEmojiTable } from "../Util";
 // DesktopShell.ts imports nothing, so this cannot introduce an import cycle
 // (verified with madge: 58 cycles before and after, none involving it).
 import { isDesktopShell } from "../../client/DesktopShell";
@@ -613,6 +623,15 @@ export class UserSettings {
 
   toggleGameTips() {
     this.setGameTips(!this.gameTips());
+  }
+
+  /** "Moments forts": commentator banners for notable events (default on). */
+  highlights(): boolean {
+    return this.getBool("settings.highlights", true);
+  }
+
+  toggleHighlights() {
+    this.setBool("settings.highlights", !this.highlights());
   }
 
   tutorialDismissed() {

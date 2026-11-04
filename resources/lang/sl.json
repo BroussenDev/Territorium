@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "V uvrščenih igrah so ravni nižje (SAM 3, silos in radar 2) in se odklenejo pozneje.",
     "upgrades_title": "Gradbene nadgradnje"
   },
+  "highlights": {
+    "comeback": "Vrnitev: {name} se z zadnjega mesta povzpne med prve tri",
+    "domination": "Prevlada! {name} nadzoruje {percent} % zemljevida",
+    "giant_fallen": "Velikan pade: {name} je izločen",
+    "killing_spree": "Uničujoč niz: {name} je osvojil {count} igralcev",
+    "lead_change": "Preobrat! {name} prevzame vodstvo",
+    "total_war": "Totalna vojna: {a} in {b} se spopadata"
+  },
   "host_modal": {
     "anonymous_players": "Anonimni igralci",
     "assigned_teams": "Dodeljene ekipe",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Srebro",
     "tiers_title": "Stopnje",
     "to_legend": "Končaj med top 5 Mojstri in postani Legenda",
-    "to_next_tier": "{points} Elo do {tier}"
+    "to_next_tier": "{points} Elo do {tier}",
+    "vote_ban": "Prepovej",
+    "vote_ban_hint": "Prepovej en zemljevid. Igra se preostali zemljevid.",
+    "vote_banned": "Prepovedan",
+    "vote_count": "Glasovi: {count}",
+    "vote_mine": "Tvoja izbira",
+    "vote_pick": "Glasuj",
+    "vote_pick_hint": "Glasuj za zemljevid, ki ga želiš igrati. Zmaga zemljevid z največ glasovi.",
+    "vote_progress": "{voted}/{total} igralcev je izbralo",
+    "vote_result": "Zemljevid: {map}",
+    "vote_seconds": "{seconds}s",
+    "vote_start_soon": "Igra se bo kmalu začela...",
+    "vote_title": "Izberi zemljevid"
   },
   "relation": {
     "default": "Privzeto",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Nagrade"
+  },
+  "rival": {
+    "banner": "Vaš tekmec {name} je v tej igri! ({you} – {them})",
+    "end_defeat": "Proti vašemu tekmecu {name}: poraz",
+    "end_victory": "Proti vašemu tekmecu {name}: zmaga",
+    "profile_stats": "{games} skupnih iger · {you} – {them}",
+    "profile_title": "Tekmec"
   },
   "security_modal": {
     "code_confirm": "Potrdi",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Sporočila za pomoč",
     "highlight_glow_strength_label": "Poudarite moč",
     "highlight_small_players_desc": "Dodajte sijaj majhnim igralcem, da jih je enostavno najti.",
+    "highlights_desc": "Prikaže kratke pasice, ko se v igri zgodi kaj pomembnega: prevlada, menjave vodilnega, izločitve.",
+    "highlights_label": "Poudarki",
     "keybind_conflict_error": "Tipka {key} je že vezana na drugo dejanje.",
     "keybinds_hint": "Kliknite ključ, da ga ponovno povežete. Dodelite lahko eno tipko ali kombinacijo tipk Shift +.",
     "left_click_desc": "Ko je VKLOPLJEN, levi klik odpre meni, gumb za napad. Ko je IZKLOPLJEN, levi klik napada neposredno.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Naprej",
     "ok": "Igrajmo",
+    "open_button": "Kaj je novega",
     "previous": "Nazaj",
     "title": "Kaj je novega",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Nasveti med igro",
       "video": "Ob koncu igre ustvari pospešen video celotne igre in ga prenesi, da ga deliš (kvadratna ali navpična oblika).",
       "video_title": "Tvoja igra v 30 sekundah"
+    },
+    "v0_1_183": {
+      "highlights": "Velike trenutke zdaj napovemo med igro: prevlada, padec velikana, povratek, totalna vojna… Izključite jih lahko v nastavitvah.",
+      "highlights_title": "Ključni trenutki",
+      "map_vote": "Pred uvrščeno tekmo izberi zemljevid: glasuj med tremi uravnoteženimi zemljevidi.",
+      "map_vote_title": "Glasovanje o zemljevidu v uvrščenih igrah",
+      "rivals": "Igra najde tvojega rivala, igralca, s katerim se najpogosteje srečaš, in te obvesti, ko je v tvoji igri. Tvoj medsebojni izid je v tvojem profilu.",
+      "rivals_title": "Rivalstva"
     }
   },
   "win_modal": {

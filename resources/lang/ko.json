@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "순위 게임에서는 레벨이 더 낮고(SAM 3, 사일로 및 레이더 2) 나중에 잠금 해제됩니다.",
     "upgrades_title": "건물 업그레이드"
   },
+  "highlights": {
+    "comeback": "역전극: {name}이(가) 꼴찌에서 3위권으로 올라섰습니다",
+    "domination": "지배! {name}이(가) 지도의 {percent}%를 장악했습니다",
+    "giant_fallen": "거인의 몰락: {name}이(가) 탈락했습니다",
+    "killing_spree": "파죽지세: {name}이(가) {count}명을 정복했습니다",
+    "lead_change": "대역전! {name}이(가) 선두를 차지했습니다",
+    "total_war": "전면전: {a}와(과) {b}이(가) 맞붙습니다"
+  },
   "host_modal": {
     "anonymous_players": "익명 플레이어",
     "assigned_teams": "할당된 팀",
@@ -2840,7 +2848,19 @@
     "tier_silver": "실버",
     "tiers_title": "티어",
     "to_legend": "마스터 상위 5위 안에 들면 레전드가 됩니다",
-    "to_next_tier": "{tier}까지 {points} Elo"
+    "to_next_tier": "{tier}까지 {points} Elo",
+    "vote_ban": "밴",
+    "vote_ban_hint": "맵 하나를 밴하세요. 남은 맵으로 플레이합니다.",
+    "vote_banned": "밴됨",
+    "vote_count": "득표: {count}",
+    "vote_mine": "내 선택",
+    "vote_pick": "투표",
+    "vote_pick_hint": "플레이하고 싶은 맵에 투표하세요. 가장 많은 표를 얻은 맵이 선택됩니다.",
+    "vote_progress": "{total}명 중 {voted}명이 선택함",
+    "vote_result": "맵: {map}",
+    "vote_seconds": "{seconds}초",
+    "vote_start_soon": "곧 게임이 시작됩니다...",
+    "vote_title": "맵 선택"
   },
   "relation": {
     "default": "기본",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "보상"
+  },
+  "rival": {
+    "banner": "라이벌 {name}님이 이 게임에 있습니다! ({you} – {them})",
+    "end_defeat": "라이벌 {name}님과의 대결: 패배",
+    "end_victory": "라이벌 {name}님과의 대결: 승리",
+    "profile_stats": "함께한 게임 {games}판 · {you} – {them}",
+    "profile_title": "라이벌"
   },
   "security_modal": {
     "code_confirm": "확인",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "도움말 메시지",
     "highlight_glow_strength_label": "강조 강도",
     "highlight_small_players_desc": "작은 플레이어를 쉽게 찾을 수 있도록 발광 효과를 추가합니다.",
+    "highlights_desc": "지배, 선두 교체, 탈락 등 게임의 주요 순간에 짧은 배너를 표시합니다.",
+    "highlights_label": "하이라이트",
     "keybind_conflict_error": "키 {key}는 이미 다른 동작에 바인딩되어 있습니다.",
     "keybinds_hint": "변경할 키를 클릭하세요. 단일 키 또는 Shift + 키 조합을 지정할 수 있습니다.",
     "left_click_desc": "켜짐 상태에서는 마우스 왼쪽 클릭 시 메뉴가 열리고 검 버튼 공격이 활성화됩니다. 꺼짐 상태에서는 마우스 왼쪽 클릭 시 바로 공격이 활성화됩니다.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "다음",
     "ok": "플레이하기",
+    "open_button": "새로운 소식",
     "previous": "이전",
     "title": "새로운 소식",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "게임 중 팁",
       "video": "게임이 끝나면 전체 게임을 빠르게 재생한 영상을 만들어 다운로드하고 공유할 수 있습니다 (정사각형 또는 세로 형식).",
       "video_title": "30초로 보는 나의 게임"
+    },
+    "v0_1_183": {
+      "highlights": "이제 게임 중에 큰 순간을 알려줍니다: 지배, 거인의 몰락, 역전, 총력전 등… 설정에서 끌 수 있습니다.",
+      "highlights_title": "하이라이트",
+      "map_vote": "랭크전 시작 전에 맵을 고르세요. 균형 잡힌 맵 세 개 중에서 투표할 수 있습니다.",
+      "map_vote_title": "랭크전 맵 투표",
+      "rivals": "가장 자주 맞붙는 상대를 라이벌로 찾아주고, 같은 게임에 들어오면 알려 줍니다. 상대 전적은 프로필에서 볼 수 있습니다.",
+      "rivals_title": "라이벌"
     }
   },
   "win_modal": {

@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "En partie classée, les niveaux sont plus bas (SAM 3, silo et radar 2) et se débloquent plus tard.",
     "upgrades_title": "Amélioration des bâtiments"
   },
+  "highlights": {
+    "comeback": "Comeback : {name} remonte de la dernière place au top 3",
+    "domination": "Domination ! {name} contrôle {percent} % de la carte",
+    "giant_fallen": "Chute d'un géant : {name} a été éliminé",
+    "killing_spree": "Série dévastatrice : {name} a conquis {count} joueurs",
+    "lead_change": "Retournement de situation ! {name} prend la tête",
+    "total_war": "Guerre totale : {a} et {b} s'affrontent"
+  },
   "host_modal": {
     "anonymous_players": "Joueurs anonymes",
     "assigned_teams": "Équipes Attribuées",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Argent",
     "tiers_title": "Rangs",
     "to_legend": "Terminez dans le top 5 des Maîtres pour devenir Légende",
-    "to_next_tier": "{points} Elo avant {tier}"
+    "to_next_tier": "{points} Elo avant {tier}",
+    "vote_ban": "Bannir",
+    "vote_ban_hint": "Bannissez une carte. La carte restante est jouée.",
+    "vote_banned": "Bannie",
+    "vote_count": "Votes : {count}",
+    "vote_mine": "Votre choix",
+    "vote_pick": "Voter",
+    "vote_pick_hint": "Votez pour la carte que vous voulez jouer. La plus votée l'emporte.",
+    "vote_progress": "{voted}/{total} joueurs ont choisi",
+    "vote_result": "Carte : {map}",
+    "vote_seconds": "{seconds} s",
+    "vote_start_soon": "La partie va commencer...",
+    "vote_title": "Choisissez la carte"
   },
   "relation": {
     "default": "Défaut",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Récompenses"
+  },
+  "rival": {
+    "banner": "Votre rival {name} est dans cette partie ! ({you} – {them})",
+    "end_defeat": "Contre votre rival {name} : défaite",
+    "end_victory": "Contre votre rival {name} : victoire",
+    "profile_stats": "{games} parties ensemble · {you} – {them}",
+    "profile_title": "Rival"
   },
   "security_modal": {
     "code_confirm": "Confirmer",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Messages d'aide",
     "highlight_glow_strength_label": "Force de la surbrillance",
     "highlight_small_players_desc": "Mettre les joueurs les plus petits en surbrillance pour les rendre plus visibles.",
+    "highlights_desc": "Affiche de courts bandeaux quand il se passe quelque chose de marquant dans la partie : domination, changement de leader, éliminations.",
+    "highlights_label": "Moments forts",
     "keybind_conflict_error": "La touche {key} est déjà liée à une autre action.",
     "keybinds_hint": "Cliquez sur une touche pour la redéfinir. Vous pouvez assigner une seule touche ou Maj + la combinaison de touches.",
     "left_click_desc": "Activé, un clic gauche ouvre le menu et le bouton épée d'attaque. Désactivé, un clic gauche attaque directement.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Suivant",
     "ok": "C'est parti",
+    "open_button": "Quoi de neuf",
     "previous": "Précédent",
     "title": "Quoi de neuf",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Conseils en jeu",
       "video": "À la fin d'une partie, créez une vidéo de toute la partie en accéléré et téléchargez-la pour la partager (format carré ou vertical).",
       "video_title": "Votre partie en 30 secondes"
+    },
+    "v0_1_183": {
+      "highlights": "Les grands moments sont désormais annoncés pendant la partie : domination, chute d'un géant, comeback, guerre totale… Vous pouvez les désactiver dans les paramètres.",
+      "highlights_title": "Moments forts",
+      "map_vote": "Avant un match classé, choisissez la carte : votez parmi trois cartes équilibrées.",
+      "map_vote_title": "Vote de la carte en Classé",
+      "rivals": "Le jeu repère votre rival, le joueur que vous affrontez le plus, et vous prévient quand il est dans votre partie. Votre face-à-face est affiché dans votre profil.",
+      "rivals_title": "Rivalités"
     }
   },
   "win_modal": {

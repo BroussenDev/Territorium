@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "Sıralamalı oyunlarda seviyeler daha düşüktür (SAM 3, silo ve radar 2) ve kilidi daha sonra açılır.",
     "upgrades_title": "Bina yükseltmeleri"
   },
+  "highlights": {
+    "comeback": "Geri dönüş: {name} sondan ilk 3'e yükseliyor",
+    "domination": "Hâkimiyet! {name} haritanın %{percent} kadarını kontrol ediyor",
+    "giant_fallen": "Bir devin düşüşü: {name} elendi",
+    "killing_spree": "Yıkıcı seri: {name} {count} oyuncuyu fethetti",
+    "lead_change": "Dönüm noktası! {name} liderliği devralıyor",
+    "total_war": "Topyekûn savaş: {a} ve {b} çarpışıyor"
+  },
   "host_modal": {
     "anonymous_players": "Anonim oyuncular",
     "assigned_teams": "Atanmış Takımlar",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Gümüş",
     "tiers_title": "Katmanlar",
     "to_legend": "Efsane olmak için Ustaların ilk 5'inde bitir",
-    "to_next_tier": "{tier} için {points} Elo"
+    "to_next_tier": "{tier} için {points} Elo",
+    "vote_ban": "Yasakla",
+    "vote_ban_hint": "Bir haritayı yasakla. Kalan harita oynanır.",
+    "vote_banned": "Yasaklandı",
+    "vote_count": "Oylar: {count}",
+    "vote_mine": "Seçimin",
+    "vote_pick": "Oy ver",
+    "vote_pick_hint": "Oynamak istediğin haritaya oy ver. En çok oy alan harita kazanır.",
+    "vote_progress": "{voted}/{total} oyuncu seçti",
+    "vote_result": "Harita: {map}",
+    "vote_seconds": "{seconds} sn",
+    "vote_start_soon": "Oyun birazdan başlıyor...",
+    "vote_title": "Haritayı seç"
   },
   "relation": {
     "default": "Varsayılan",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Ödüller"
+  },
+  "rival": {
+    "banner": "Rakibin {name} bu oyunda! ({you} – {them})",
+    "end_defeat": "Rakibin {name} karşısında: yenilgi",
+    "end_victory": "Rakibin {name} karşısında: zafer",
+    "profile_stats": "Birlikte {games} oyun · {you} – {them}",
+    "profile_title": "Rakip"
   },
   "security_modal": {
     "code_confirm": "Onayla",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Yardım Mesajları",
     "highlight_glow_strength_label": "Gücü vurgulayın",
     "highlight_small_players_desc": "Küçük oynatıcılara bir parıltı ekleyin, böylece bulmaları kolay olsun.",
+    "highlights_desc": "Oyunda dikkate değer bir şey olduğunda kısa bantlar gösterir: hâkimiyet, lider değişimleri, elemeler.",
+    "highlights_label": "Öne çıkanlar",
     "keybind_conflict_error": "{key} tuşu zaten başka bir eyleme atanmış.",
     "keybinds_hint": "Yeniden bağlamak için bir tuşa tıklayın. Tek bir tuş veya Shift + tuş kombinasyonu atayabilirsiniz.",
     "left_click_desc": "AÇIK olduğunda, sol tıklama menüyü açar ve kılıç düğmesi saldırır. KAPALI olduğunda, sol tıklama doğrudan saldırır.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "İleri",
     "ok": "Hadi oynayalım",
+    "open_button": "Yenilikler",
     "previous": "Geri",
     "title": "Yenilikler",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Oyun içi ipuçları",
       "video": "Bir oyunun sonunda, tüm oyunun hızlandırılmış bir videosunu oluşturup paylaşmak için indirebilirsin (kare veya dikey format).",
       "video_title": "Oyununuz 30 saniyede"
+    },
+    "v0_1_183": {
+      "highlights": "Büyük anlar artık oyun sırasında duyurulur: hakimiyet, bir devin düşüşü, geri dönüş, topyekûn savaş… Bunları ayarlardan kapatabilirsin.",
+      "highlights_title": "Öne çıkanlar",
+      "map_vote": "Dereceli maçtan önce haritayı seç: üç dengeli harita arasından oy ver.",
+      "map_vote_title": "Dereceli maçta harita oylaması",
+      "rivals": "Oyun, en sık karşılaştığın oyuncu olan rakibini bulur ve o senin oyununda olduğunda sana haber verir. Karşılıklı skorun profilinde görünür.",
+      "rivals_title": "Rekabetler"
     }
   },
   "win_modal": {

@@ -1955,6 +1955,15 @@ export class UserSettingModal extends BaseModal {
         @change=${() => this.userSettings.toggleGameTips()}
       ></setting-toggle>
 
+      <!-- "Moments forts": commentator banners (HighlightBanner) -->
+      <setting-toggle
+        label="${translateText("user_setting.highlights_label")}"
+        description="${translateText("user_setting.highlights_desc")}"
+        id="highlights-toggle"
+        .checked=${this.userSettings.highlights()}
+        @change=${() => this.userSettings.toggleHighlights()}
+      ></setting-toggle>
+
       <!-- Attacking troops overlay (moved here from the in-game menu) -->
       <setting-toggle
         label="${translateText("user_setting.attacking_troops_overlay_label")}"

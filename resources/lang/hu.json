@@ -1904,6 +1904,14 @@
     "upgrades_ranked": "A rangsorolt játékokban a szintek alacsonyabbak (SAM 3, siló és radar 2), és később oldódnak fel.",
     "upgrades_title": "Épület korszerűsítése"
   },
+  "highlights": {
+    "comeback": "Visszatérés: {name} az utolsó helyről feljut a top 3-ba",
+    "domination": "Uralom! {name} a térkép {percent}%-át irányítja",
+    "giant_fallen": "Elesik egy óriás: {name} kiesett",
+    "killing_spree": "Pusztító sorozat: {name} {count} játékost győzött le",
+    "lead_change": "Fordulat! {name} átveszi a vezetést",
+    "total_war": "Totális háború: {a} és {b} összecsap"
+  },
   "host_modal": {
     "anonymous_players": "Névtelen játékosok",
     "assigned_teams": "Hozzárendelt csapatok",
@@ -2840,7 +2848,19 @@
     "tier_silver": "Ezüst",
     "tiers_title": "Szintek",
     "to_legend": "Végezz a Mesterek top 5-ében, hogy Legenda légy",
-    "to_next_tier": "{points} Elo a(z) {tier} szintig"
+    "to_next_tier": "{points} Elo a(z) {tier} szintig",
+    "vote_ban": "Letiltás",
+    "vote_ban_hint": "Tiltsd le az egyik pályát. A megmaradt pályán játszotok.",
+    "vote_banned": "Letiltva",
+    "vote_count": "Szavazatok: {count}",
+    "vote_mine": "A te választásod",
+    "vote_pick": "Szavazás",
+    "vote_pick_hint": "Szavazz a pályára, amelyen játszani szeretnél. A legtöbb szavazatot kapott pálya nyer.",
+    "vote_progress": "{voted}/{total} játékos választott",
+    "vote_result": "Pálya: {map}",
+    "vote_seconds": "{seconds} mp",
+    "vote_start_soon": "A játék mindjárt elindul...",
+    "vote_title": "Válassz pályát"
   },
   "relation": {
     "default": "Alapértelmezett",
@@ -2864,6 +2884,13 @@
   },
   "rewards_modal": {
     "title": "Jutalmak"
+  },
+  "rival": {
+    "banner": "A riválisod, {name}, ebben a játékban van! ({you} – {them})",
+    "end_defeat": "{name} riválisod ellen: vereség",
+    "end_victory": "{name} riválisod ellen: győzelem",
+    "profile_stats": "{games} közös játék · {you} – {them}",
+    "profile_title": "Rivális"
   },
   "security_modal": {
     "code_confirm": "Megerősítés",
@@ -3586,6 +3613,8 @@
     "help_messages_label": "Súgóüzenet",
     "highlight_glow_strength_label": "Az erősségek kiemelése",
     "highlight_small_players_desc": "Adj ragyogást a kis méretű játékosoknak, hogy könnyen megtalálhatók legyenek.",
+    "highlights_desc": "Rövid szalagokat mutat, ha figyelemre méltó dolog történik a játékban: uralom, vezetőváltás, kiesések.",
+    "highlights_label": "Kiemelt pillanatok",
     "keybind_conflict_error": "A(z) {key} már egy másik művelethez van rendelve.",
     "keybinds_hint": "Kattintson egy billentyűre az újbóli hozzárendeléshez. Hozzárendelhet egyetlen billentyűt vagy a Shift + billentyűkombinációt.",
     "left_click_desc": "Ha be van kapcsolva, a bal kattintás megnyitja a menüt, és a kard gomb támad. Ha ki van kapcsolva, a bal kattintás közvetlenül támad.",
@@ -3780,6 +3809,7 @@
   "whats_new": {
     "next": "Tovább",
     "ok": "Játsszunk",
+    "open_button": "Mi újság",
     "previous": "Vissza",
     "title": "Újdonságok",
     "v0_1_167": {
@@ -3807,6 +3837,14 @@
       "tips_title": "Tippek játék közben",
       "video": "Játék végén készíts gyorsított videót a teljes játékról, és töltsd le megosztásra (négyzetes vagy álló formátum).",
       "video_title": "A játékod 30 másodperben"
+    },
+    "v0_1_183": {
+      "highlights": "A nagy pillanatokat mostantól a játék közben jelezzük: dominancia, egy óriás bukása, comeback, totális háború… Ezeket a beállításokban kikapcsolhatod.",
+      "highlights_title": "Kiemelt pillanatok",
+      "map_vote": "Rangsorolt meccs előtt válassz pályát: szavazz három kiegyensúlyozott pálya közül.",
+      "map_vote_title": "Pályaszavazás rangsorolt meccsen",
+      "rivals": "A játék megtalálja a riválisodat, azt a játékost, akivel a leggyakrabban találkozol, és szól, ha a játékodban van. Az egymás elleni eredményed a profilodon látható.",
+      "rivals_title": "Rivalizálások"
     }
   },
   "win_modal": {
