@@ -168,7 +168,7 @@ export class ServerStatusBanner extends LitElement {
       class="size-4 shrink-0 ${cls}"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
+      stroke-width="1.8"
       stroke-linecap="round"
       stroke-linejoin="round"
       aria-hidden="true"

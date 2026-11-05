@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { isDemo } from "../Demo";
 import { desktopQuit, requestDesktopQuit } from "../DesktopShell";
 import { openIdeas } from "../Links";
+import { uiIcon } from "../ui/UiIcons";
 import { openWhatsNew } from "../WhatsNew";
 import { DemoFarewell } from "./DemoFarewell";
 import { NavNotificationsController } from "./NavNotificationsController";
@@ -88,20 +89,7 @@ export class NavUtilityIcons extends LitElement {
         data-i18n-title="main.quit"
         @click=${this.handleQuit}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="w-6 h-6 pointer-events-none"
-          aria-hidden="true"
-        >
-          <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
-          <line x1="12" y1="2" x2="12" y2="12" />
-        </svg>
+        ${uiIcon("power", "w-6 h-6 pointer-events-none")}
       </button>
     `;
   }
@@ -129,20 +117,7 @@ export class NavUtilityIcons extends LitElement {
             data-i18n-title="main.news"
             @click=${this._notifications.onNewsClick}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="w-6 h-6 pointer-events-none"
-              aria-hidden="true"
-            >
-              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-            </svg>
+            ${uiIcon("bell", "w-6 h-6 pointer-events-none")}
           </button>
           ${this._notifications.showNewsDot()
             ? this.renderDot("bg-red-500")
@@ -155,22 +130,7 @@ export class NavUtilityIcons extends LitElement {
           data-i18n-title="whats_new.open_button"
           @click=${() => openWhatsNew()}
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="w-6 h-6 pointer-events-none"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M4 10v4l3 .5L15 19V5L7 9.5z" />
-            <path d="M18 9.5a4 4 0 0 1 0 5" />
-            <path d="M7 14.5 8.5 20h2.5l-1-4.7" />
-            <path d="M20.5 4v3M19 5.5h3" class="text-capital" />
-          </svg>
+          ${uiIcon("megaphone", "w-6 h-6 pointer-events-none")}
         </button>
         <button
           class="${this.buttonClass()}"
@@ -179,23 +139,7 @@ export class NavUtilityIcons extends LitElement {
           data-i18n-title="links.suggest"
           @click=${() => openIdeas()}
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="w-6 h-6 pointer-events-none"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M9 18h6M10 21h4" />
-            <path
-              d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
-            />
-            <path d="M12 7v3l1.5 1" class="text-capital" />
-          </svg>
+          ${uiIcon("bulb", "w-6 h-6 pointer-events-none")}
         </button>
         <div class="relative">
           <button
@@ -207,21 +151,7 @@ export class NavUtilityIcons extends LitElement {
             data-i18n-title="main.help"
             @click=${this._notifications.onHelpClick}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="w-6 h-6 pointer-events-none"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <path d="M9.2 9.2a2.9 2.9 0 0 1 5.6 1c0 1.9-2.8 2.4-2.8 4" />
-              <line x1="12" y1="17.5" x2="12.01" y2="17.5" />
-            </svg>
+            ${uiIcon("help", "w-6 h-6 pointer-events-none")}
           </button>
           ${this._notifications.showHelpDot()
             ? this.renderDot("bg-yellow-400")
@@ -235,22 +165,7 @@ export class NavUtilityIcons extends LitElement {
           data-i18n-aria-label="main.settings"
           data-i18n-title="main.settings"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="w-6 h-6 pointer-events-none"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="3" />
-            <path
-              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"
-            />
-          </svg>
+          ${uiIcon("settings", "w-6 h-6 pointer-events-none")}
         </button>
         ${this.renderQuitButton()}
       </div>

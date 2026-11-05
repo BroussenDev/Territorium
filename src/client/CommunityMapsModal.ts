@@ -590,7 +590,7 @@ const ICON_EDIT = html`<svg
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
-  stroke-width="2"
+  stroke-width="1.8"
   stroke-linecap="round"
   stroke-linejoin="round"
 >
@@ -602,7 +602,7 @@ const ICON_EXTERNAL = html`<svg
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
-  stroke-width="2"
+  stroke-width="1.8"
   stroke-linecap="round"
   stroke-linejoin="round"
 >
@@ -613,7 +613,7 @@ const ICON_FLAG = html`<svg
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
-  stroke-width="2"
+  stroke-width="1.8"
   stroke-linecap="round"
 >
   ${svg`<path d="M5 21V4M5 4h12l-2 4 2 4H5"/>`}

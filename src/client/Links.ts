@@ -181,7 +181,7 @@ export class LinksModal extends LitElement {
               class="size-5"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.8"
               stroke-linecap="round"
               aria-hidden="true"
             >

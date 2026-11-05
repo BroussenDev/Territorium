@@ -220,7 +220,7 @@ function dialogIcon(danger: boolean) {
     class="size-6"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="1.8"
     stroke-linejoin="round"
     stroke-linecap="round"
     aria-hidden="true"
