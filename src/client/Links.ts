@@ -142,7 +142,11 @@ export class LinksModal extends LitElement {
   }
 
   private onKeydown(e: KeyboardEvent) {
-    if (e.key === "Escape") this.close();
+    if (e.key !== "Escape") return;
+    // Claimed, so the game does not also open its menu on the same press.
+    e.preventDefault();
+    e.stopPropagation();
+    this.close();
   }
 
   render() {

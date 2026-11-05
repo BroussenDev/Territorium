@@ -280,14 +280,28 @@ export class BugReportModal extends LitElement {
       class="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/20 p-3"
       data-bug-screenshot
     >
-      <label class="flex cursor-pointer items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          class="size-4 accent-emerald-500"
-          .checked=${this.attachShot}
-          @change=${(e: Event) =>
-            this.toggleShot((e.target as HTMLInputElement).checked)}
-        />
+      <label class="flex cursor-pointer items-center gap-2.5 text-sm">
+        <span class="relative flex size-5 shrink-0">
+          <input
+            type="checkbox"
+            class="peer size-5 cursor-pointer appearance-none rounded-md border border-white/25 bg-black/30 transition-colors checked:border-brand-bright checked:bg-brand hover:border-brand-bright/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-capital/80"
+            .checked=${this.attachShot}
+            @change=${(e: Event) =>
+              this.toggleShot((e.target as HTMLInputElement).checked)}
+          />
+          <svg
+            viewBox="0 0 24 24"
+            class="pointer-events-none absolute inset-0 m-auto hidden size-3.5 text-white peer-checked:block"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m5 12.5 4.5 4.5L19 7.5" />
+          </svg>
+        </span>
         ${translateText("bug_report.attach_screenshot")}
       </label>
       ${this.attachShot && this.shotState === "capturing"
@@ -356,11 +370,21 @@ export class BugReportModal extends LitElement {
           </h2>
           <button
             type="button"
-            class="text-2xl leading-none text-white/60 hover:text-white"
+            class="flex size-9 items-center justify-center rounded-lg text-white/60 transition-colors hover:bg-white/8 hover:text-white"
             aria-label=${translateText("common.close")}
             @click=${() => this.close()}
           >
-            ×
+            <svg
+              viewBox="0 0 24 24"
+              class="size-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
           </button>
         </div>
         ${this.status === "sent"

@@ -132,8 +132,12 @@ export class NavUtilityIcons extends LitElement {
         >
           ${uiIcon("megaphone", "w-6 h-6 pointer-events-none")}
         </button>
+        <!-- The mobile top bar is too narrow for every icon: ideas stay
+             reachable there through the footer's Links window. -->
         <button
-          class="${this.buttonClass()}"
+          class="${this.buttonClass()} ${this.size === "mobile"
+            ? "hidden"
+            : ""}"
           data-ideas-button
           data-i18n-aria-label="links.suggest"
           data-i18n-title="links.suggest"
