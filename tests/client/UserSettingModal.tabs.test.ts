@@ -44,6 +44,25 @@ describe("user-setting tabs", () => {
     ]);
   });
 
+  it("shows the Discord tab in a desktop app that keeps Discord's sign-in in its window, not in an older one", async () => {
+    const w = window as unknown as { openfrontDesktop?: unknown };
+    try {
+      w.openfrontDesktop = {};
+      const old = await mount(false);
+      expect(old.modalConfig().tabs?.map((t) => t.key)).not.toContain(
+        "discord",
+      );
+      document.body.innerHTML = "";
+      w.openfrontDesktop = { discordLinkInWindow: true };
+      const current = await mount(false);
+      expect(current.modalConfig().tabs?.map((t) => t.key)).toContain(
+        "discord",
+      );
+    } finally {
+      delete w.openfrontDesktop;
+    }
+  });
+
   it("has an en.json label for every tab, so none renders as a raw key", async () => {
     const el = await mount(false);
     const strings = en.user_setting as Record<string, string | undefined>;

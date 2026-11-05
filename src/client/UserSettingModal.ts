@@ -41,6 +41,7 @@ import {
 } from "./DesktopDisplay";
 import {
   composeVersionDisplay,
+  desktopDiscordLink,
   desktopVersion,
   isDesktopShell,
 } from "./DesktopShell";
@@ -665,8 +666,9 @@ export class UserSettingModal extends BaseModal {
             ]
           : []),
         { key: "audio", label: translateText("user_setting.tab_audio") },
-        // The desktop app signs in through Steam and offers no Discord link.
-        ...(isDesktopShell()
+        // Linking Discord needs its sign-in pages inside the window: a desktop
+        // app too old for that would show a link that cannot complete.
+        ...(isDesktopShell() && !desktopDiscordLink()
           ? []
           : [
               {

@@ -206,3 +206,17 @@ export function requestDesktopQuit(): void {
     // A bridge that throws synchronously rather than rejecting.
   }
 }
+
+/**
+ * Whether this desktop app keeps Discord's sign-in pages in its own window,
+ * which linking a Discord account needs (the link must finish in the browser
+ * it started in). Older apps send them to the system browser, where the link
+ * cannot complete, so the settings hide the Discord tab there.
+ */
+export function desktopDiscordLink(): boolean {
+  if (typeof window === "undefined") return false;
+  const desktop = window.openfrontDesktop as
+    | { discordLinkInWindow?: unknown }
+    | undefined;
+  return desktop?.discordLinkInWindow === true;
+}
