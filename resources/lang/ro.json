@@ -3882,6 +3882,16 @@
       "map_vote_title": "Vot pentru hartă în clasat",
       "rivals": "Jocul îți găsește rivalul, jucătorul cu care te confrunți cel mai des, și te anunță când este în jocul tău. Scorul vostru direct este pe profilul tău.",
       "rivals_title": "Rivalități"
+    },
+    "v0_1_185": {
+      "bug_report": "Raportează o eroare din meniu: o captură de ecran și detaliile partidei sunt atașate automat. Dacă ești conectat, urmărești răspunsul nostru în cererile tale de asistență.",
+      "bug_report_title": "Raportare mai bună a erorilor",
+      "game_menu": "Meniul din joc are un aspect nou. Apasă Esc ca să-l deschizi: întâi închide ce e deschis, apoi deschide meniul.",
+      "game_menu_title": "Meniu nou în joc",
+      "ideas": "Propune-ți ideile, votează-le pe cele care îți plac și urmărește ce este planificat, în lucru sau lansat.",
+      "ideas_title": "Idei și plan de dezvoltare",
+      "links": "O nouă fereastră Linkuri adună centrul de ajutor, wiki-ul, starea serverelor, clasamentele, API-ul pentru dezvoltatori, kitul de presă și Discord.",
+      "links_title": "Toate linkurile Territorium"
     }
   },
   "win_modal": {

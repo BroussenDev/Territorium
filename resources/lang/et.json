@@ -3882,6 +3882,16 @@
       "map_vote_title": "Kaardi hääletus edetabelis",
       "rivals": "Mäng leiab sinu rivaali, mängija, kellega kohtud kõige sagedamini, ning teatab, kui ta on sinu mängus. Teie omavahelise mängu tulemus on sinu profiilil.",
       "rivals_title": "Rivaalid"
+    },
+    "v0_1_185": {
+      "bug_report": "Teata veast menüüst: ekraanitõmmis ja mänguandmed lisatakse automaatselt. Sisselogituna näed meie vastust oma toetuspäringutes.",
+      "bug_report_title": "Paremad veateated",
+      "game_menu": "Mängusisene menüü on saanud uue ilme. Avamiseks vajuta klahvi Esc: see sulgeb kõigepealt avatud akna ja avab seejärel menüü.",
+      "game_menu_title": "Uus mängusisene menüü",
+      "ideas": "Paku välja oma ideed, hääleta nende poolt, mis sulle meeldivad, ja jälgi, mis on kavas, pooleli ja valmis.",
+      "ideas_title": "Ideed ja arendusplaan",
+      "links": "Uus Linkide aken koondab abikeskuse, vikipeedia, serverite oleku, edetabelid, arendajate API, pressikomplekti ja Discordi.",
+      "links_title": "Kõik Territoriumi lingid"
     }
   },
   "win_modal": {

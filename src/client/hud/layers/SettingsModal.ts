@@ -10,6 +10,7 @@ import {
   AlternateViewEvent,
   ToggleRenderDebugGuiEvent,
 } from "../../InputHandler";
+import { openIdeas, openLinks, renderLinkIcon } from "../../Links";
 import { navigateTo } from "../../PageTransition";
 import type { UserSettingModal } from "../../UserSettingModal";
 import { homeHref, translateText } from "../../Utils";
@@ -433,6 +434,26 @@ export class SettingsModal extends LitElement implements Controller {
                 onClick: () => {
                   this.closeModal();
                   openBugReport();
+                },
+                trailing: this.renderChevron(),
+              }),
+              this.renderRow({
+                icon: renderLinkIcon("ideas", "size-5"),
+                title: translateText("links.ideas_title"),
+                desc: translateText("links.ideas_desc"),
+                onClick: () => {
+                  this.closeModal();
+                  openIdeas();
+                },
+                trailing: this.renderChevron(),
+              }),
+              this.renderRow({
+                icon: renderLinkIcon("help", "size-5"),
+                title: translateText("links.title"),
+                desc: translateText("links.intro"),
+                onClick: () => {
+                  this.closeModal();
+                  openLinks();
                 },
                 trailing: this.renderChevron(),
               }),

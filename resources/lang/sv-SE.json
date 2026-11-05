@@ -3882,6 +3882,16 @@
       "map_vote_title": "Kartröstning i rankat",
       "rivals": "Spelet hittar din rival, spelaren du möter oftast, och säger till när hen är med i ditt spel. Din head-to-head-statistik visas på din profil.",
       "rivals_title": "Rivaliteter"
+    },
+    "v0_1_185": {
+      "bug_report": "Rapportera ett fel från menyn: en skärmbild och speldetaljerna bifogas automatiskt. När du är inloggad följer du vårt svar i dina supportärenden.",
+      "bug_report_title": "Bättre felrapporter",
+      "game_menu": "Menyn i spelet har fått ett nytt utseende. Tryck på Esc för att öppna den: först stängs det som är öppet och sedan öppnas menyn.",
+      "game_menu_title": "Ny meny i spelet",
+      "ideas": "Föreslå dina idéer, rösta på de du gillar och följ vad som är planerat, pågår och har släppts.",
+      "ideas_title": "Idéer och färdplan",
+      "links": "Ett nytt fönster Länkar samlar hjälpcentret, wikin, serverstatus, topplistor, utvecklar-API, pressmaterial och Discord.",
+      "links_title": "Alla Territorium-länkar"
     }
   },
   "win_modal": {

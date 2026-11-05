@@ -11,6 +11,17 @@
     "link_discord_success": "sijelo Discord sina li linja.",
     "link_discord_taken": "sijelo Discord ni li jo e linja tawa sijelo Territorium ante."
   },
+  "bug_report": {
+    "attach_screenshot": "pana e sitelen lipu",
+    "context_note": "ni li pana e nanpa pi musi, ilo sina, ma, en lon sina lon musi tawa kulupu pali. sina awen e sitelen lipu la, ona li lon kin.",
+    "follow_up": "toki sina li kin pi wile {ref} lon \"wile mi\": sina open lon support.territorium.gg la, sina ken lukin e toki pi kulupu pali lon ni.",
+    "open_requests": "wile mi",
+    "screenshot_alt": "lukin pi sitelen lipu pi toki sina",
+    "screenshot_capturing": "mi pali e sitelen lipu…",
+    "screenshot_failed": "mi ken ala pali e sitelen lipu. toki sina li tawa ala sitelen lipu.",
+    "screenshot_hint": "ma taso li lon sitelen. toki pi kulupu li lon ala.",
+    "screenshot_remove": "weka e sitelen lipu"
+  },
   "chat": {
     "attack": {
       "attack": "o utala e [P1] a!",
@@ -522,17 +533,16 @@
       "map_vote_title": "o pana e lipu lon musi nanpa",
       "rivals": "musi li alasa e jan ike sina: jan pi sina lukin e jan ni mute tawa sina. ona li kama lon musi sina la, ilo li toki e ni tawa sina. nanpa sina tawa ona li lon lipu sina.",
       "rivals_title": "pilin ike"
+    },
+    "v0_1_185": {
+      "bug_report": "o pana e toki pakala lon poki lawa: lipu musi en nimi musi li kama kin. sina open la, sina lukin e toki sina tawa lipu pona.",
+      "bug_report_title": "toki pi pakala pona",
+      "game_menu": "poki lawa li sin. sina luka e nasin Esc tawa ni: ni li weka e ijo li open lon ansa, li open e poki lawa.",
+      "game_menu_title": "poki lawa sin",
+      "ideas": "sina toki e pilin sin. sina pona e pilin pi wile sina. sina lukin e ijo tawa kama, ijo lon ilo, en ijo lon ma.",
+      "ideas_title": "pilin en lipu tawa kama",
+      "links": "poki lawa sin li lon e lipu pona, lipu sona, lipu ilo, lipu nanpa, lipu pali, lipu toki, en Discord.",
+      "links_title": "lipu ale pi Territorium"
     }
-  },
-  "bug_report": {
-    "attach_screenshot": "pana e sitelen lipu",
-    "context_note": "ni li pana e nanpa pi musi, ilo sina, ma, en lon sina lon musi tawa kulupu pali. sina awen e sitelen lipu la, ona li lon kin.",
-    "follow_up": "toki sina li kin pi wile {ref} lon \"wile mi\": sina open lon support.territorium.gg la, sina ken lukin e toki pi kulupu pali lon ni.",
-    "open_requests": "wile mi",
-    "screenshot_alt": "lukin pi sitelen lipu pi toki sina",
-    "screenshot_capturing": "mi pali e sitelen lipu…",
-    "screenshot_failed": "mi ken ala pali e sitelen lipu. toki sina li tawa ala sitelen lipu.",
-    "screenshot_hint": "ma taso li lon sitelen. toki pi kulupu li lon ala.",
-    "screenshot_remove": "weka e sitelen lipu"
   }
 }

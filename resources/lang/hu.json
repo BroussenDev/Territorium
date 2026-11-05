@@ -3882,6 +3882,16 @@
       "map_vote_title": "Pályaszavazás rangsorolt meccsen",
       "rivals": "A játék megtalálja a riválisodat, azt a játékost, akivel a leggyakrabban találkozol, és szól, ha a játékodban van. Az egymás elleni eredményed a profilodon látható.",
       "rivals_title": "Rivalizálások"
+    },
+    "v0_1_185": {
+      "bug_report": "Hibát a menüből is jelenthetsz: a képernyőkép és a játék adatai automatikusan csatolódnak. Bejelentkezve a támogatási kéréseidben követheted a válaszunkat.",
+      "bug_report_title": "Jobb hibajelentések",
+      "game_menu": "A játékon belüli menü új külsőt kapott. Megnyitásához nyomd meg az Esc gombot: először bezárja, ami nyitva van, majd megnyitja a menüt.",
+      "game_menu_title": "Új játékon belüli menü",
+      "ideas": "Javasolj ötleteket, szavazz a tetszőkre, és kövesd nyomon, mi van tervben, mi készül és mi jelent meg.",
+      "ideas_title": "Ötletek és ütemterv",
+      "links": "Az új Hivatkozások ablakban megtalálod a súgóközpontot, a wikit, a szerverek állapotát, a ranglistákat, a fejlesztői API-t, a sajtócsomagot és a Discordot.",
+      "links_title": "Az összes Territorium-hivatkozás"
     }
   },
   "win_modal": {

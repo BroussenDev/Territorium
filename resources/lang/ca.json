@@ -3882,6 +3882,16 @@
       "map_vote_title": "Votació del mapa en classificatòria",
       "rivals": "El joc troba el teu rival, el jugador a qui t'enfrontes més sovint, i t'avisa quan és a la teva partida. El teu marcador cara a cara és al teu perfil.",
       "rivals_title": "Rivalitats"
+    },
+    "v0_1_185": {
+      "bug_report": "Informa d'un error des del menú: una captura de pantalla i els detalls de la partida s'hi adjunten automàticament. Si has iniciat sessió, pots seguir la nostra resposta a les teves sol·licituds de suport.",
+      "bug_report_title": "Informes d'errors millorats",
+      "game_menu": "El menú de la partida té un aspecte nou. Prem Esc per obrir-lo: primer tanca el que hi hagi obert i després obre el menú.",
+      "game_menu_title": "Nou menú dins la partida",
+      "ideas": "Proposa les teves idees, vota les que t'agradin i segueix què està previst, en curs i ja publicat.",
+      "ideas_title": "Idees i full de ruta",
+      "links": "Una nova finestra d'enllaços reuneix el centre d'ajuda, la wiki, l'estat dels servidors, les classificacions, l'API per a desenvolupadors, el kit de premsa i Discord.",
+      "links_title": "Tots els enllaços de Territorium"
     }
   },
   "win_modal": {

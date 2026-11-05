@@ -3882,6 +3882,16 @@
       "map_vote_title": "Głosowanie na mapę w rankingowych",
       "rivals": "Gra znajduje twojego rywala, gracza, z którym grasz najczęściej, i daje znać, gdy jest w twojej grze. Twój bilans bezpośrednich starć jest w profilu.",
       "rivals_title": "Rywalizacje"
+    },
+    "v0_1_185": {
+      "bug_report": "Zgłoś błąd z menu: zrzut ekranu i szczegóły gry są dołączane automatycznie. Po zalogowaniu zobaczysz naszą odpowiedź w swoich zgłoszeniach do pomocy.",
+      "bug_report_title": "Lepsze zgłaszanie błędów",
+      "game_menu": "Menu w grze ma nowy wygląd. Naciśnij Esc, aby je otworzyć: najpierw zamknie to, co jest otwarte, a potem otworzy menu.",
+      "game_menu_title": "Nowe menu w grze",
+      "ideas": "Zgłaszaj pomysły, głosuj na te, które lubisz, i śledź, co jest zaplanowane, w realizacji i już wydane.",
+      "ideas_title": "Pomysły i plan rozwoju",
+      "links": "Nowe okno Linki zbiera centrum pomocy, wiki, status serwerów, tabele wyników, API dla deweloperów, zestaw prasowy i Discord.",
+      "links_title": "Wszystkie linki Territorium"
     }
   },
   "win_modal": {

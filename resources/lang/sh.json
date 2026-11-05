@@ -3882,6 +3882,16 @@
       "map_vote_title": "Glasanje za mapu u rangiranom",
       "rivals": "Igra pronalazi tvog rivala, igrača protiv kojeg najčešće igraš, i javlja ti kad je u tvojoj igri. Tvoj rezultat u direktnim sukobima je na profilu.",
       "rivals_title": "Rivalstva"
+    },
+    "v0_1_185": {
+      "bug_report": "Prijavi grešku iz menija: snimak ekrana i detalji o igri se automatski prilažu. Ako si prijavljen, pratiš naš odgovor u svojim zahtjevima za podršku.",
+      "bug_report_title": "Bolja prijava grešaka",
+      "game_menu": "Meni u igri ima novi izgled. Pritisni Esc da ga otvoriš: prvo zatvara što je otvoreno, pa onda otvara meni.",
+      "game_menu_title": "Novi meni u igri",
+      "ideas": "Predlažite svoje ideje, glasajte za one koje vam se sviđaju i pratite što je planirano, u izradi i objavljeno.",
+      "ideas_title": "Ideje i plan razvoja",
+      "links": "Novi prozor Linkovi okuplja centar za pomoć, wiki, status servera, ljestvice, API za programere, press kit i Discord.",
+      "links_title": "Svi linkovi Territoriuma"
     }
   },
   "win_modal": {

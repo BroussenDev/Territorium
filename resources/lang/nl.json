@@ -3882,6 +3882,16 @@
       "map_vote_title": "Kaartstemming in competitief",
       "rivals": "Het spel vindt je rivaal, de speler die je het vaakst tegenkomt, en laat je weten wanneer die in jouw spel zit. Je onderlinge score staat op je profiel.",
       "rivals_title": "Rivaliteiten"
+    },
+    "v0_1_185": {
+      "bug_report": "Meld een bug vanuit het menu: een screenshot en de spelgegevens worden automatisch meegestuurd. Als je bent ingelogd, volg je ons antwoord in je supportverzoeken.",
+      "bug_report_title": "Betere bugrapporten",
+      "game_menu": "Het menu in het spel heeft een nieuwe look. Druk op Esc om het te openen: eerst sluit het wat open staat, daarna opent het het menu.",
+      "game_menu_title": "Nieuw menu in het spel",
+      "ideas": "Stel je ideeën voor, stem op de ideeën die je leuk vindt en volg wat gepland, in uitvoering en uitgebracht is.",
+      "ideas_title": "Ideeën en roadmap",
+      "links": "Een nieuw venster Links bundelt het helpcentrum, de wiki, de serverstatus, de ranglijsten, de ontwikkelaars-API, het pressekit en Discord.",
+      "links_title": "Alle Territorium-links"
     }
   },
   "win_modal": {

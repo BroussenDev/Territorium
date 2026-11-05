@@ -3882,6 +3882,16 @@
       "map_vote_title": "Kartenabstimmung in der Rangliste",
       "rivals": "Das Spiel findet deinen Rivalen, den Spieler, gegen den du am häufigsten antrittst, und sagt dir Bescheid, wenn er in deinem Spiel ist. Dein Direktvergleich steht in deinem Profil.",
       "rivals_title": "Rivalitäten"
+    },
+    "v0_1_185": {
+      "bug_report": "Melde einen Fehler direkt aus dem Menü: Ein Screenshot und die Spieldetails werden automatisch angehängt. Wenn du angemeldet bist, verfolgst du unsere Antwort in deinen Supportanfragen.",
+      "bug_report_title": "Bessere Fehlerberichte",
+      "game_menu": "Das Spielmenü hat ein frisches Design. Drücke Esc, um es zu öffnen: Die Taste schliesst zuerst alles Offene und öffnet dann das Menü.",
+      "game_menu_title": "Neues Spielmenü",
+      "ideas": "Schlage deine Ideen vor, stimme für die ab, die dir gefallen, und verfolge, was geplant, in Arbeit und veröffentlicht ist.",
+      "ideas_title": "Ideen und Fahrplan",
+      "links": "Ein neues Fenster «Links» bündelt das Hilfecenter, das Wiki, den Serverstatus, die Ranglisten, die Entwickler-API, das Pressekit und Discord.",
+      "links_title": "Alle Territorium-Links"
     }
   },
   "win_modal": {

@@ -38,7 +38,7 @@ import { translateText } from "./Utils";
  *
  * The older `image` field (a still screenshot) still works.
  */
-export const WHATS_NEW_ID = "v0_1_183";
+export const WHATS_NEW_ID = "v0_1_185";
 
 export type WhatsNewIcon =
   | "video"
@@ -63,9 +63,10 @@ export type WhatsNewItem = {
 };
 
 export const WHATS_NEW_ITEMS: WhatsNewItem[] = [
-  { key: "highlights", icon: "star" },
-  { key: "rivals", icon: "shield" },
-  { key: "map_vote", icon: "ranked" },
+  { key: "game_menu", icon: "tips" },
+  { key: "bug_report", icon: "shield" },
+  { key: "ideas", icon: "star" },
+  { key: "links", icon: "discord" },
 ];
 const SEEN_KEY = "territorium.whatsNewSeen";
 

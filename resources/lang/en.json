@@ -3882,6 +3882,16 @@
       "map_vote_title": "Map vote in ranked",
       "rivals": "The game finds your rival, the player you face most often, and tells you when they are in your game. Your head-to-head score is on your profile.",
       "rivals_title": "Rivalries"
+    },
+    "v0_1_185": {
+      "bug_report": "Report a bug from the menu: a screenshot and the game details are attached for you. Signed in, you follow our answer in your support requests.",
+      "bug_report_title": "Better bug reports",
+      "game_menu": "The in-game menu has a fresh look. Press Esc to open it: it first closes whatever is open, then opens the menu.",
+      "game_menu_title": "New in-game menu",
+      "ideas": "Suggest your ideas, vote for the ones you like and follow what is planned, in progress and released.",
+      "ideas_title": "Ideas and roadmap",
+      "links": "A new Links window gathers the help center, wiki, server status, leaderboards, developer API, press kit and Discord.",
+      "links_title": "All Territorium links"
     }
   },
   "win_modal": {

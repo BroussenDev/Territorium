@@ -3882,6 +3882,16 @@
       "map_vote_title": "Voting peta di peringkat",
       "rivals": "Game menemukan rivalmu, pemain yang paling sering kamu hadapi, dan memberitahumu saat dia ada di gamemu. Skor head-to-head kamu ada di profilmu.",
       "rivals_title": "Rivalitas"
+    },
+    "v0_1_185": {
+      "bug_report": "Laporkan bug dari menu: tangkapan layar dan detail game otomatis dilampirkan. Jika sudah masuk, kamu bisa mengikuti balasan kami di permintaan dukunganmu.",
+      "bug_report_title": "Laporan bug yang lebih baik",
+      "game_menu": "Menu dalam game tampil dengan wajah baru. Tekan Esc untuk membukanya: tombol ini akan menutup dulu yang sedang terbuka, lalu membuka menu.",
+      "game_menu_title": "Menu dalam game yang baru",
+      "ideas": "Usulkan ide kamu, pilih ide yang kamu suka, dan pantau apa yang direncanakan, sedang dikerjakan, dan sudah dirilis.",
+      "ideas_title": "Ide dan peta jalan",
+      "links": "Jendela Tautan baru memuat pusat bantuan, wiki, status server, papan peringkat, API pengembang, kit pers, dan Discord.",
+      "links_title": "Semua tautan Territorium"
     }
   },
   "win_modal": {

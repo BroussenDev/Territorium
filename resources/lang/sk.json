@@ -3882,6 +3882,16 @@
       "map_vote_title": "Hlasovanie o mape v hodnotených hrách",
       "rivals": "Hra nájde tvojho rivala, hráča, proti ktorému hráš najčastejšie, a dá ti vedieť, keď je v tvojej hre. Tvoje vzájomné skóre je na tvojom profile.",
       "rivals_title": "Rivalstvá"
+    },
+    "v0_1_185": {
+      "bug_report": "Nahláste chybu z ponuky: snímka obrazovky a údaje o hre sa pripoja automaticky. Ak ste prihlásení, sledujte našu odpoveď vo svojich žiadostiach o podporu.",
+      "bug_report_title": "Lepšie hlásenia chýb",
+      "game_menu": "Ponuka v hre má nový vzhľad. Stlačte Esc, aby sa otvorila: najprv zavrie, čo je otvorené, a potom otvorí ponuku.",
+      "game_menu_title": "Nová ponuka v hre",
+      "ideas": "Navrhujte svoje nápady, hlasujte za tie, ktoré sa vám páčia, a sledujte, čo je naplánované, v práci a vydané.",
+      "ideas_title": "Nápady a plán vývoja",
+      "links": "Nové okno Odkazy zhromažďuje centrum pomoci, wiki, stav serverov, rebríčky, vývojárske API, tlačový balíček a Discord.",
+      "links_title": "Všetky odkazy Territorium"
     }
   },
   "win_modal": {

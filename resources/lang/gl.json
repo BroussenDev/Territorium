@@ -3882,6 +3882,16 @@
       "map_vote_title": "Votación do mapa en clasificatoria",
       "rivals": "O xogo atopa o teu rival, o xogador ao que te enfrontas máis a miúdo, e avísate cando está na túa partida. O teu marcador cara a cara móstrase no perfil.",
       "rivals_title": "Rivalidades"
+    },
+    "v0_1_185": {
+      "bug_report": "Informa dun erro desde o menú: unha captura de pantalla e os detalles do xogo engádense automaticamente. Se iniciaches sesión, podes seguir a nosa resposta nas túas peticións de asistencia.",
+      "bug_report_title": "Informes de erros máis útiles",
+      "game_menu": "O menú do xogo ten un aspecto novo. Preme Esc para abrilo: primeiro pecha o que estea aberto e despois abre o menú.",
+      "game_menu_title": "Novo menú do xogo",
+      "ideas": "Propón as túas ideas, vota polas que che gusten e segue o que está previsto, en curso e publicado.",
+      "ideas_title": "Ideas e hoxe de ruta",
+      "links": "Unha nova xanela de Ligazóns reúne o centro de axuda, a wiki, o estado dos servidores, as clasificacións, a API para desenvolvedores, o kit de prensa e Discord.",
+      "links_title": "Todas as ligazóns de Territorium"
     }
   },
   "win_modal": {

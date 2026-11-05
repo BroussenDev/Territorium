@@ -3882,6 +3882,16 @@
       "map_vote_title": "Bình chọn bản đồ trong xếp hạng",
       "rivals": "Trò chơi tìm đối thủ của bạn, người bạn gặp nhiều nhất, và báo cho bạn khi họ có mặt trong trận. Thành tích đối đầu của bạn hiển thị trên hồ sơ.",
       "rivals_title": "Đối thủ truyền kiếp"
+    },
+    "v0_1_185": {
+      "bug_report": "Báo lỗi ngay từ menu: ảnh chụp màn hình và thông tin trận đấu sẽ được đính kèm tự động. Khi đã đăng nhập, bạn có thể theo dõi phản hồi của chúng tôi trong các yêu cầu hỗ trợ.",
+      "bug_report_title": "Báo lỗi tốt hơn",
+      "game_menu": "Menu trong trò chơi đã được làm mới. Nhấn Esc để mở: phím này sẽ đóng những gì đang mở trước, rồi mới mở menu.",
+      "game_menu_title": "Menu trong trò chơi mới",
+      "ideas": "Đề xuất ý tưởng của bạn, bình chọn cho những ý tưởng bạn thích và theo dõi những gì đã lên kế hoạch, đang làm và đã phát hành.",
+      "ideas_title": "Ý tưởng và lộ trình phát triển",
+      "links": "Cửa sổ Liên kết mới tập hợp trung tâm trợ giúp, wiki, trạng thái máy chủ, bảng xếp hạng, API cho nhà phát triển, bộ tài liệu báo chí và Discord.",
+      "links_title": "Tất cả liên kết Territorium"
     }
   },
   "win_modal": {

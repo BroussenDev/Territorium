@@ -1,5 +1,13 @@
 # Territorium — Changelog
 
+## v0.1.185
+
+- Redesigned in-game menu; Escape opens it (after closing whatever is open), rebindable in the keybinds.
+- Bug reports attach a screenshot and the game details, and become a support request you can follow.
+- Ideas board with votes and a public roadmap (support.territorium.gg/idees), reachable from the game.
+- New Links window listing every Territorium site; What's new moved to the nav icons.
+- Developer portal developers.territorium.gg and public read-only API v1 (players, matches, leaderboards, clans, status, API keys).
+
 ## v0.1.184
 
 - Shareable public profile pages (territorium.gg/joueur/...) and public leaderboards (territorium.gg/classements).

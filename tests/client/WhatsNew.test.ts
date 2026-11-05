@@ -107,7 +107,7 @@ describe("WhatsNew", () => {
     );
   });
 
-  it("opens on the first item of three, as a labelled dialog", async () => {
+  it("opens on the first item of four, as a labelled dialog", async () => {
     const el = mount();
     await ready(el);
     const d = dialog(el);
@@ -116,7 +116,7 @@ describe("WhatsNew", () => {
     expect(el.querySelectorAll("[role='group']")).toHaveLength(
       WHATS_NEW_ITEMS.length,
     );
-    expect(currentSlide(el)).toBe("1 / 3");
+    expect(currentSlide(el)).toBe("1 / 4");
     expect(button(el, PREVIOUS).disabled).toBe(true);
     expect(button(el, NEXT)).toBeTruthy();
   });
@@ -126,24 +126,24 @@ describe("WhatsNew", () => {
     await ready(el);
     button(el, NEXT).click();
     await ready(el);
-    expect(currentSlide(el)).toBe("2 / 3");
+    expect(currentSlide(el)).toBe("2 / 4");
     expect(button(el, PREVIOUS).disabled).toBe(false);
 
     dialog(el).dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
     );
     await ready(el);
-    expect(currentSlide(el)).toBe("3 / 3");
+    expect(currentSlide(el)).toBe("3 / 4");
 
     dialog(el).dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
     );
     await ready(el);
-    expect(currentSlide(el)).toBe("2 / 3");
+    expect(currentSlide(el)).toBe("2 / 4");
 
-    el.querySelector<HTMLButtonElement>("button[aria-label='1 / 3']")?.click();
+    el.querySelector<HTMLButtonElement>("button[aria-label='1 / 4']")?.click();
     await ready(el);
-    expect(currentSlide(el)).toBe("1 / 3");
+    expect(currentSlide(el)).toBe("1 / 4");
   });
 
   it("stops at the last item and closes from its button", async () => {
@@ -189,17 +189,17 @@ describe("WhatsNew", () => {
     pointer(track, "pointerdown", 300, "mouse");
     pointer(track, "pointerup", 100, "mouse");
     await ready(el);
-    expect(currentSlide(el)).toBe("1 / 3");
+    expect(currentSlide(el)).toBe("1 / 4");
 
     pointer(track, "pointerdown", 300);
     pointer(track, "pointerup", 200);
     await ready(el);
-    expect(currentSlide(el)).toBe("2 / 3");
+    expect(currentSlide(el)).toBe("2 / 4");
 
     pointer(track, "pointerdown", 200);
     pointer(track, "pointerup", 230);
     await ready(el);
-    expect(currentSlide(el)).toBe("2 / 3");
+    expect(currentSlide(el)).toBe("2 / 4");
   });
 
   it("keeps focus inside the dialog with Tab", async () => {

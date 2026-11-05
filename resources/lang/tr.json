@@ -3882,6 +3882,16 @@
       "map_vote_title": "Dereceli maçta harita oylaması",
       "rivals": "Oyun, en sık karşılaştığın oyuncu olan rakibini bulur ve o senin oyununda olduğunda sana haber verir. Karşılıklı skorun profilinde görünür.",
       "rivals_title": "Rekabetler"
+    },
+    "v0_1_185": {
+      "bug_report": "Menüden hata bildirin: ekran görüntüsü ve oyun ayrıntıları otomatik olarak eklenir. Giriş yaptıysanız destek taleplerinizde yanıtımızı takip edebilirsiniz.",
+      "bug_report_title": "Daha iyi hata bildirimi",
+      "game_menu": "Oyun içi menü yepyeni bir görünüme kavuştu. Açmak için Esc tuşuna basın: önce açık olan ne varsa kapatır, sonra menüyü açar.",
+      "game_menu_title": "Yeni oyun içi menü",
+      "ideas": "Fikirlerini öner, beğendiklerine oy ver ve planlanan, geliştirilmekte olan ve yayımlanan şeyleri takip et.",
+      "ideas_title": "Fikirler ve yol haritası",
+      "links": "Yeni Bağlantılar penceresi yardım merkezini, wiki'yi, sunucu durumunu, liderlik tablolarını, geliştirici API'sini, basın kitini ve Discord'u bir araya getirir.",
+      "links_title": "Tüm Territorium bağlantıları"
     }
   },
   "win_modal": {

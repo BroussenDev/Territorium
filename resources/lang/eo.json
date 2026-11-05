@@ -3882,6 +3882,16 @@
       "map_vote_title": "Mapa voĉdono en ranginfluaj ludoj",
       "rivals": "La ludo trovas vian rivalon, la ludanton kontraŭ kiu vi plej ofte ludas, kaj diras al vi kiam tiu estas en via ludo. Via rekordo kontraŭ tiu estas en via profilo.",
       "rivals_title": "Rivalecoj"
+    },
+    "v0_1_185": {
+      "bug_report": "Raportu eraron el la menuo: ekrankopio kaj detaloj de la ludo estas aldonitaj aŭtomate. Se vi ensalutis, vi sekvas nian respondon en viaj petoj al subteno.",
+      "bug_report_title": "Pli bonaj raportoj de eraroj",
+      "game_menu": "La menuo en la ludo ricevis freŝan aspekton. Premu Esc por malfermi ĝin: ĝi unue fermas tion, kio estas malfermita, poste malfermas la menuon.",
+      "game_menu_title": "Nova menuo en la ludo",
+      "ideas": "Proponu viajn ideojn, voĉdonu por tiuj, kiuj plaĉas al vi, kaj sekvu tion, kio estas planita, farata kaj publikigita.",
+      "ideas_title": "Ideoj kaj vojmapo",
+      "links": "Nova fenestro Ligiloj kolektas la helpocentron, la vikion, la staton de la serviloj, la gvidtabelojn, la programisto-API, la gazetaron kaj Discord.",
+      "links_title": "Ĉiuj ligiloj de Territorium"
     }
   },
   "win_modal": {

@@ -3882,6 +3882,16 @@
       "map_vote_title": "Kortafstemning i rangeret",
       "rivals": "Spillet finder din rival, spilleren du oftest møder, og fortæller dig, når de er i dit spil. Din head-to-head-score vises på din profil.",
       "rivals_title": "Rivaliseringer"
+    },
+    "v0_1_185": {
+      "bug_report": "Rapportér en fejl fra menuen: et skærmbillede og spildetaljerne vedhæftes automatisk. Når du er logget ind, kan du følge vores svar i dine supportanmodninger.",
+      "bug_report_title": "Bedre fejlrapporter",
+      "game_menu": "Menuen i spillet har fået et nyt look. Tryk på Esc for at åbne den: den lukker først det, der er åbent, og åbner derefter menuen.",
+      "game_menu_title": "Ny menu i spillet",
+      "ideas": "Foreslå dine idéer, stem på dem du kan lide, og følg med i, hvad der er planlagt, i gang og udgivet.",
+      "ideas_title": "Idéer og køreplan",
+      "links": "Et nyt vindue med links samler hjælpecenteret, wikien, serverstatus, ranglister, udvikler-API, pressekit og Discord.",
+      "links_title": "Alle Territorium-links"
     }
   },
   "win_modal": {

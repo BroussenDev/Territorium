@@ -3882,6 +3882,16 @@
       "map_vote_title": "Karttaäänestys sijoitetuissa peleissä",
       "rivals": "Peli löytää vastustajasi, pelaajan jota kohtaat useimmin, ja kertoo kun hän on pelissäsi. Keskinäinen tilanteenne näkyy profiilissasi.",
       "rivals_title": "Kilpailut"
+    },
+    "v0_1_185": {
+      "bug_report": "Ilmoita virheestä valikosta: kuvakaappaus ja pelin tiedot liitetään automaattisesti mukaan. Kirjautuneena näet vastauksemme tukipyynnöissäsi.",
+      "bug_report_title": "Parempi virheilmoitus",
+      "game_menu": "Pelinsisäisellä valikolla on uusi ulkoasu. Avaa se painamalla Esc: näppäin sulkee ensin auki olevan ikkunan ja avaa sitten valikon.",
+      "game_menu_title": "Uusi pelinsisäinen valikko",
+      "ideas": "Ehdota ideoita, äänestä suosikkejasi ja seuraa, mitä on suunniteltu, mitä työn alla on ja mitä on julkaistu.",
+      "ideas_title": "Ideat ja tiekartta",
+      "links": "Uusi Linkit-ikkuna kokoaa yhteen ohjekeskuksen, wikin, palvelimien tilan, tulostaulut, kehittäjien API:n, lehdistöpaketin ja Discordin.",
+      "links_title": "Kaikki Territorium-linkit"
     }
   },
   "win_modal": {
