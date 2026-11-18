@@ -58,6 +58,9 @@ const PATHS = {
     <path d="M7 7h.01" class="text-capital" />`,
   card: svg`<rect x="2" y="5" width="20" height="14" rx="3" />
     <path d="M2 10h20" class="text-capital" />`,
+  history: svg`<path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5" />
+    <path d="M3.5 3.5v5h5" />
+    <path d="M12 7.5V12l3 2" class="text-capital" />`,
   logout: svg`<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
     <path d="m16 17 5-5-5-5M21 12H9" class="text-capital" />`,
 } satisfies Record<string, SVGTemplateResult>;

@@ -544,5 +544,15 @@
       "links": "poki lawa sin li lon e lipu pona, lipu sona, lipu ilo, lipu nanpa, lipu pali, lipu toki, en Discord.",
       "links_title": "lipu ale pi Territorium"
     }
+  },
+  "cosmetics": {
+    "history_days": "musi li awen {days} suno",
+    "history_days_info": "musi sina en musi pi pali sin li awen lon lipu pi tenpo pini lon suno {days}, ala suno {base}. o lukin e ona lon lipu sina, lipu musi.",
+    "view_game_history": "o lukin e lipu pi musi mi"
+  },
+  "map_editor": {
+    "publish_error_email_unverified": "o pona e nimi leko sina (email) la, sina ken pana e lipu ma.",
+    "publish_error_weekly_limit": "sina ken pana e lipu ma 3 lon esun pi suno 7: o pali sin tan tenpo kama.",
+    "publish_rule_gallery_only": "lipu li kama tan lipu kulupu la, ona li tawa ma lipu pi musi ni taso. ona li tawa Steam Workshop taso la, sina o pana e ona tan ilo Steam."
   }
 }

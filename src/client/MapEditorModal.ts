@@ -36,8 +36,10 @@ import { publishToWorkshop, workshop } from "./Workshop";
 // tiles, place nations, import an image, and try the map in a solo game. The
 // player keeps as many maps as they like ("My creations", EditorLibrary.ts),
 // saved as they draw and, signed in, synced with their account so the browser
-// and the Steam app show the same. Publishing happens in the Steam app only:
-// maps go to our gallery and to the Steam Workshop.
+// and the Steam app show the same. Signed-in accounts publish from the web
+// (our gallery, after review); the Steam app also puts the map on the Steam
+// Workshop. A map first published from the web reaches the Workshop later
+// through the same Publish button in the Steam app, which updates that map.
 
 type Tool = "water" | "land" | "void" | "fill" | "nation";
 
@@ -53,7 +55,6 @@ const MAX_BRUSH = 120;
 const DRAFT_DELAY_MS = 1500;
 // The account copy follows a little after the last change.
 const SYNC_DELAY_MS = 5000;
-const STEAM_STORE_URL = "https://store.steampowered.com/app/5369890/";
 
 // Editor colours: the thumbnail palette for land, a calm sea, void as the
 // background the game paints it with.
@@ -85,7 +86,6 @@ export class MapEditorModal extends BaseModal {
   @state() private libraryOpen = false;
   @state() private libraryMaps: LibraryMap[] = [];
   @state() private sync: EditorSyncStatus = "local";
-  @state() private steamOnly = false;
   // The Workshop item the open map was published as: publishing updates it.
   @state() private workshopId: string | null = null;
   @state() private publishing: "ask" | "sending" | null = null;
@@ -193,7 +193,6 @@ export class MapEditorModal extends BaseModal {
     this.resizeObserver = null;
     void this.flushDraft();
     this.libraryOpen = false;
-    this.steamOnly = false;
   }
 
   private sizeOf(width: number, height: number): SizeKey {
@@ -830,7 +829,8 @@ export class MapEditorModal extends BaseModal {
         "map too small": "too_small",
         banned: "banned",
         too_many: "too_many",
-        steam_only: "steam_only",
+        email_unverified: "email_unverified",
+        weekly_limit: "weekly_limit",
       };
       this.publishing = null;
       showToast(
@@ -855,49 +855,6 @@ export class MapEditorModal extends BaseModal {
       await putMap({ ...saved, workshopId: id, updatedAt: Date.now() });
     }
     void this.syncNow();
-  }
-
-  private renderSteamOnlyDialog() {
-    if (!this.steamOnly) return nothing;
-    return html`<div
-      class="fixed inset-0 z-[60] grid place-items-center bg-black/70 p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="editor-steam-only-title"
-      @click=${(e: Event) => {
-        if (e.target === e.currentTarget) this.steamOnly = false;
-      }}
-    >
-      <div
-        class="w-full max-w-md rounded-lg border border-white/10 bg-[#0a1512] p-5 flex flex-col gap-3 text-white"
-      >
-        <h3 id="editor-steam-only-title" class="font-display text-xl font-bold">
-          ${translateText("map_editor.steam_only_title")}
-        </h3>
-        <p class="text-sm text-white/80">
-          ${translateText("map_editor.steam_only_body")}
-        </p>
-        <p class="text-sm text-white/60">
-          ${translateText("map_editor.steam_only_sync")}
-        </p>
-        <div class="flex flex-wrap justify-end gap-2 pt-2">
-          <button
-            class="rounded-md border border-white/10 px-4 py-2 text-sm font-semibold text-white/80 hover:bg-white/5"
-            @click=${() => (this.steamOnly = false)}
-          >
-            ${translateText("map_editor.steam_only_close")}
-          </button>
-          <a
-            class="inline-flex items-center gap-2 rounded-md bg-[linear-gradient(160deg,#10b981,#059669_60%,#047857)] px-4 py-2 text-sm font-bold text-white hover:brightness-110"
-            href=${STEAM_STORE_URL}
-            target="_blank"
-            rel="noopener"
-          >
-            ${ICON_PUBLISH} ${translateText("map_editor.steam_only_open")}
-          </a>
-        </div>
-      </div>
-    </div>`;
   }
 
   private renderPublishDialog() {
@@ -932,11 +889,13 @@ export class MapEditorModal extends BaseModal {
           <li>${translateText("map_editor.publish_rule_review")}</li>
           <li>${translateText("map_editor.publish_rule_content")}</li>
           <li>${translateText("map_editor.publish_rule_play")}</li>
-          ${workshop() !== null
-            ? html`<li>
-                ${translateText("map_editor.publish_rule_workshop")}
-              </li>`
-            : nothing}
+          <li>
+            ${translateText(
+              workshop() !== null
+                ? "map_editor.publish_rule_workshop"
+                : "map_editor.publish_rule_gallery_only",
+            )}
+          </li>
         </ul>
         <div class="flex justify-end gap-2 pt-2">
           <button
@@ -1319,7 +1278,7 @@ export class MapEditorModal extends BaseModal {
           if (file) void this.importImage(file);
         }}
       />
-      ${this.renderPublishDialog()} ${this.renderSteamOnlyDialog()}
+      ${this.renderPublishDialog()}
       ${this.libraryOpen
         ? html`<editor-library-dialog
             .maps=${this.libraryMaps}
@@ -1401,11 +1360,6 @@ export class MapEditorModal extends BaseModal {
       <button
         class=${button}
         @click=${() => {
-          // Publishing goes through the Steam Workshop: the Steam app.
-          if (workshop() === null) {
-            this.steamOnly = true;
-            return;
-          }
           if (this.map.landShare() === 0) {
             showToast(translateText("map_editor.check_no_land"), "red");
             return;

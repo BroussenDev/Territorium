@@ -1,5 +1,5 @@
 import type { PropertyValues, TemplateResult } from "lit";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { isGrantedSubscription, UserMeResponse } from "../core/ApiSchemas";
 import {
@@ -7,6 +7,7 @@ import {
   Cosmetics,
   Pack,
   Product,
+  Subscription,
 } from "../core/CosmeticSchemas";
 import { packMoneyPrice } from "./CheckoutPrice";
 import { BaseModal } from "./components/BaseModal";
@@ -34,6 +35,7 @@ import {
   fetchCosmetics,
   findPackItem,
   groupCosmeticVariants,
+  openGameHistory,
   ownedPackItems,
   purchaseCosmetic,
   resolveCosmetics,
@@ -52,6 +54,7 @@ import {
   STORE_SORTS,
   StoreSort,
 } from "./StoreSort";
+import { uiIcon } from "./ui/UiIcons";
 import { translateText } from "./Utils";
 
 type StoreTab =
@@ -472,7 +475,20 @@ export class StoreModal extends BaseModal {
     userHasSubscription: boolean,
   ): TemplateResult {
     if (active.type === "subscription" && active.relationship === "owned") {
-      return this.renderStatus(translateText("store.subscribed"));
+      const longHistory =
+        ((active.cosmetic as Subscription).historyDays ?? 0) > 0;
+      return html`${this.renderStatus(translateText("store.subscribed"))}
+      ${longHistory
+        ? html`<button
+            type="button"
+            data-store-history
+            class="mt-2 flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 px-2 py-1.5 text-sm font-semibold text-white/85 hover:bg-white/10"
+            @click=${() => openGameHistory()}
+          >
+            ${uiIcon("history", "size-5")}
+            ${translateText("cosmetics.view_game_history")}
+          </button>`
+        : nothing}`;
     }
     if (active.type === "cosmeticPack") {
       if (active.relationship === "owned") {

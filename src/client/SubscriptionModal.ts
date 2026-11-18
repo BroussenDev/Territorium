@@ -1,11 +1,12 @@
-import { html, TemplateResult } from "lit";
+import { html, nothing, TemplateResult } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { UserMeResponse } from "../core/ApiSchemas";
 import { Cosmetics } from "../core/CosmeticSchemas";
 import { renderFreePlayPerks } from "./components/FreePlayPerks";
 import "./components/SubscriptionPanel";
-import { fetchCosmetics } from "./Cosmetics";
+import { fetchCosmetics, openGameHistory } from "./Cosmetics";
 import { ProfileMenuModal } from "./ProfileMenuModal";
+import { uiIcon } from "./ui/UiIcons";
 import { translateText } from "./Utils";
 
 /**
@@ -56,6 +57,19 @@ export class SubscriptionModal extends ProfileMenuModal {
             .cosmetic=${this.cosmetics?.subscriptions?.[sub.tier] ?? null}
             @request-close=${() => this.close()}
           ></subscription-panel>
+          ${(this.cosmetics?.subscriptions?.[sub.tier]?.historyDays ?? 0) > 0
+            ? html`<button
+                type="button"
+                class="mt-4 flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm font-semibold text-white/85 hover:bg-white/10"
+                @click=${() => {
+                  this.close();
+                  openGameHistory();
+                }}
+              >
+                ${uiIcon("history", "size-5")}
+                ${translateText("cosmetics.view_game_history")}
+              </button>`
+            : nothing}
         </div>
       </div>
     `;

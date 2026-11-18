@@ -944,6 +944,14 @@ async function purchasePack(
   }
 }
 
+/** Days every account keeps its games (the API's base history window). */
+export const BASE_HISTORY_DAYS = 30;
+
+/** Opens the Account modal straight on the games tab. */
+export function openGameHistory(): void {
+  window.location.hash = "modal=account&tab=games";
+}
+
 /**
  * The translated name of the cosmetic a flare refers to: "<type>:<name>",
  * or "pattern:<name>:<palette>" for a coloured pattern ("Camo (Crimson)").
@@ -985,7 +993,10 @@ export function subscriptionPerks(
   if (days > 0) {
     perks.push({
       label: translateText("cosmetics.history_days", { days }),
-      info: translateText("cosmetics.history_days_info", { days }),
+      info: translateText("cosmetics.history_days_info", {
+        days,
+        base: BASE_HISTORY_DAYS,
+      }),
     });
   }
   if (subscription.goldFrame) {
