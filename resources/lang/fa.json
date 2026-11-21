@@ -704,7 +704,12 @@
     "wars_open": "جنگ های باز",
     "wars_season": "رکورد فصل {season}",
     "wars_unavailable": "جنگ‌ها بارگیری نشدند.",
-    "wars_won": "جنگ ها پیروز شد"
+    "wars_won": "جنگ ها پیروز شد",
+    "copy_invite_link": "کپی پیوند دعوت",
+    "invite_link_copied": "پیوند دعوت کپی شد",
+    "invite_clan_not_found": "این کلن دیگر وجود ندارد.",
+    "invite_joined": "شما به [{tag}] پیوستید!",
+    "via_invite_link": "از طریق پیوند دعوت"
   },
   "close_reason": {
     "account_lookup_failed": "حساب شما پیدا نشد. لطفاً دوباره تلاش کنید.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "بزرگ‌نمایی",
     "zoom_in_desc": "نقشه را بزرگ‌نمایی کنید",
     "zoom_out": "کوچک‌نمایی",
-    "zoom_out_desc": "نقشه را کوچک‌نمایی کنید"
+    "zoom_out_desc": "نقشه را کوچک‌نمایی کنید",
+    "audio_world_sounds": "صداهای جهان",
+    "audio_world_sounds_desc": "صداهای ساخت‌وساز و فضای ملایم شهرها، بندرها، کارخانه‌ها و قطارها هنگام بزرگ‌نمایی.",
+    "audio_world_volume": "بلندی صداهای جهان",
+    "audio_world_volume_desc": "صداهای ساخت‌وساز و فضا چقدر بلند باشند."
   },
   "username": {
     "account_invalid_chars": "نام کاربری فقط می‌تواند شامل حروف، اعداد، خط زیر (_)، خط تیره (-) و یک فاصله بین کلمات باشد.",

@@ -704,7 +704,12 @@
     "wars_open": "Otvorené vojny",
     "wars_season": "Rekord sezóny {season}",
     "wars_unavailable": "Vojny sa nedali načítať.",
-    "wars_won": "Vyhrané vojny"
+    "wars_won": "Vyhrané vojny",
+    "copy_invite_link": "Kopírovať odkaz na pozvánku",
+    "invite_link_copied": "Odkaz na pozvánku skopírovaný",
+    "invite_clan_not_found": "Tento klan už neexistuje.",
+    "invite_joined": "Pripojili ste sa ku klanu [{tag}]!",
+    "via_invite_link": "cez odkaz na pozvánku"
   },
   "close_reason": {
     "account_lookup_failed": "Váš účet sa nepodarilo vyhľadať. Skúste to znova.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Priblížiť",
     "zoom_in_desc": "Priblížiť mapu",
     "zoom_out": "Oddialiť",
-    "zoom_out_desc": "Oddialiť mapu"
+    "zoom_out_desc": "Oddialiť mapu",
+    "audio_world_sounds": "Zvuky sveta",
+    "audio_world_sounds_desc": "Zvuky stavania a jemná atmosféra miest, prístavov, tovární a vlakov pri priblížení.",
+    "audio_world_volume": "Hlasitosť zvukov sveta",
+    "audio_world_volume_desc": "Aké hlasné sú zvuky stavania a atmosféra."
   },
   "username": {
     "account_invalid_chars": "Používateľské meno môže obsahovať iba písmená, čísla, podčiarkovníky, spojovníky a jednotlivé medzery medzi slovami.",

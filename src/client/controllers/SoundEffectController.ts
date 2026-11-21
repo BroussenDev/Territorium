@@ -1,8 +1,11 @@
 import { EventBus } from "../../core/EventBus";
 import { MessageType, PlayerType, UnitType } from "../../core/game/Game";
 import { GameUpdateType } from "../../core/game/GameUpdates";
+import { UserSettings } from "../../core/game/UserSettings";
 import { Controller } from "../Controller";
 import { PlaySoundEffectEvent, SoundEffect } from "../sound/Sounds";
+import { placementCueFor, stationCue } from "../sound/WorldSoundMath";
+import { PlayWorldPlacementEvent } from "../sound/WorldSounds";
 import { SendSpawnIntentEvent } from "../Transport";
 import { GameView, UnitView } from "../view";
 
@@ -56,6 +59,7 @@ export class SoundEffectController implements Controller {
   constructor(
     private readonly game: GameView,
     private readonly eventBus: EventBus,
+    private readonly userSettings: UserSettings = new UserSettings(),
   ) {}
 
   init(): void {
@@ -192,28 +196,14 @@ export class SoundEffectController implements Controller {
         this.emit("atom-launch");
         break;
       case UnitType.Warship:
-        if (unit.owner() === myPlayer) this.emit("build-warship");
-        break;
       case UnitType.City:
-        if (unit.owner() === myPlayer) this.emit("build-city");
-        break;
       case UnitType.Port:
-        if (unit.owner() === myPlayer) this.emit("build-port");
-        break;
       case UnitType.DefensePost:
-        if (unit.owner() === myPlayer) this.emit("build-defense-post");
-        break;
       case UnitType.SAMLauncher:
-        if (unit.owner() === myPlayer) this.emit("sam-built");
-        break;
       case UnitType.MissileSilo:
-        if (unit.owner() === myPlayer) this.emit("silo-built");
-        break;
       case UnitType.Radar:
-        if (unit.owner() === myPlayer) this.emit("sam-built");
-        break;
       case UnitType.Factory:
-        if (unit.owner() === myPlayer) this.emit("build-factory");
+        if (unit.owner() === myPlayer) this.emitPlacement(unit.type());
         break;
       case UnitType.TransportShip:
         if (unit.owner() === myPlayer) this.emit("transport-ship");
@@ -267,7 +257,7 @@ export class SoundEffectController implements Controller {
         TRAIN_STATION_SOUND_INTERVAL_TICKS
       ) {
         this.lastTrainStationSoundTick = tick;
-        this.emit("build-train-station");
+        this.emitCue(stationCue(this.userSettings.worldSounds()));
       }
     }
     this.hadTrainStation.set(unit.id(), hasStation);
@@ -277,6 +267,21 @@ export class SoundEffectController implements Controller {
     if (unit.isActive()) return;
     if (!unit.reachedTarget()) return;
     this.emit(sound);
+  }
+
+  // A placed structure: the synthesized world cue, or the recorded one when
+  // "World sounds" is off.
+  private emitPlacement(type: UnitType): void {
+    this.emitCue(placementCueFor(type, this.userSettings.worldSounds()));
+  }
+
+  private emitCue(cue: ReturnType<typeof placementCueFor>): void {
+    if (cue === null) return;
+    if (cue.kind === "world") {
+      this.eventBus.emit(new PlayWorldPlacementEvent(cue.sound));
+    } else {
+      this.emit(cue.effect);
+    }
   }
 
   private emit(sound: SoundEffect): void {

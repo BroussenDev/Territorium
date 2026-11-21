@@ -704,7 +704,12 @@
     "wars_open": "Chiến tranh mở",
     "wars_season": "Kỷ lục mùa {season}",
     "wars_unavailable": "Không thể tải chiến tranh.",
-    "wars_won": "Chiến tranh đã thắng"
+    "wars_won": "Chiến tranh đã thắng",
+    "copy_invite_link": "Sao chép liên kết mời",
+    "invite_link_copied": "Đã sao chép liên kết mời",
+    "invite_clan_not_found": "Bang hội này không còn tồn tại.",
+    "invite_joined": "Bạn đã tham gia [{tag}]!",
+    "via_invite_link": "qua liên kết mời"
   },
   "close_reason": {
     "account_lookup_failed": "Không thể tìm thấy tài khoản. Vui lòng thử lại.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Phóng to",
     "zoom_in_desc": "Phóng to bản đồ",
     "zoom_out": "Thu nhỏ",
-    "zoom_out_desc": "Thu nhỏ bản đồ"
+    "zoom_out_desc": "Thu nhỏ bản đồ",
+    "audio_world_sounds": "Âm thanh thế giới",
+    "audio_world_sounds_desc": "Âm thanh xây dựng và không khí nhẹ nhàng của thành phố, cảng, nhà máy và tàu hỏa khi phóng to.",
+    "audio_world_volume": "Âm lượng âm thanh thế giới",
+    "audio_world_volume_desc": "Âm thanh xây dựng và không khí to đến mức nào."
   },
   "username": {
     "account_invalid_chars": "Tên chỉ được chứa chữ cái, số, dấu gạch dưới, dấu gạch ngang và một dấu cách giữa các từ.",

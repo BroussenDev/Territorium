@@ -704,7 +704,12 @@
     "wars_open": "מלחמות פתוחות",
     "wars_season": "שיא עונה {season}",
     "wars_unavailable": "לא ניתן היה לטעון מלחמות.",
-    "wars_won": "מלחמות ניצחו"
+    "wars_won": "מלחמות ניצחו",
+    "copy_invite_link": "העתקת קישור הזמנה",
+    "invite_link_copied": "קישור ההזמנה הועתק",
+    "invite_clan_not_found": "החמולה הזו כבר לא קיימת.",
+    "invite_joined": "הצטרפת ל-[{tag}]!",
+    "via_invite_link": "דרך קישור הזמנה"
   },
   "close_reason": {
     "account_lookup_failed": "לא ניתן היה לחפש את החשבון שלך. אנא נסה שוב.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "זום פנימה",
     "zoom_in_desc": "התקרב אל המפה",
     "zoom_out": "זום החוצה",
-    "zoom_out_desc": "התרחק מהמפה"
+    "zoom_out_desc": "התרחק מהמפה",
+    "audio_world_sounds": "צלילי העולם",
+    "audio_world_sounds_desc": "צלילי בנייה ואווירה רכה של ערים, נמלים, מפעלים ורכבות כשמתקרבים.",
+    "audio_world_volume": "עוצמת צלילי העולם",
+    "audio_world_volume_desc": "עד כמה חזקים צלילי הבנייה והאווירה."
   },
   "username": {
     "account_invalid_chars": "שם משתמש יכול להכיל רק אותיות, מספרים, קווים תחתונים, מקפים ורווחים בודדים בין מילים.",

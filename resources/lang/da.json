@@ -704,7 +704,12 @@
     "wars_open": "Åbne krige",
     "wars_season": "Sæson {season} rekord",
     "wars_unavailable": "Wars kunne ikke indlæses.",
-    "wars_won": "Krige vundet"
+    "wars_won": "Krige vundet",
+    "copy_invite_link": "Kopiér invitationslink",
+    "invite_link_copied": "Invitationslink kopieret",
+    "invite_clan_not_found": "Denne klan findes ikke længere.",
+    "invite_joined": "Du er kommet med i [{tag}]!",
+    "via_invite_link": "via invitationslink"
   },
   "close_reason": {
     "account_lookup_failed": "Din konto kunne ikke slås op. Prøv venligst igen.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Zoom Ind",
     "zoom_in_desc": "Zoom ind på kortet",
     "zoom_out": "Zoom Ud",
-    "zoom_out_desc": "Zoom ud af kortet"
+    "zoom_out_desc": "Zoom ud af kortet",
+    "audio_world_sounds": "Verdenslyde",
+    "audio_world_sounds_desc": "Byggelyde og en blød stemning fra byer, havne, fabrikker og tog, når du zoomer ind.",
+    "audio_world_volume": "Lydstyrke for verdenslyde",
+    "audio_world_volume_desc": "Hvor høje byggelydene og stemningen er."
   },
   "username": {
     "account_invalid_chars": "Brugernavn kan kun indeholde bogstaver, tal, understregninger, bindestreger og enkelte mellemrum mellem ord.",

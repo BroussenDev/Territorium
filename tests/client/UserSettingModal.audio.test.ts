@@ -123,7 +123,7 @@ describe("user-setting audio tab", () => {
     setCuePlayer(null);
   });
 
-  it("renders the six channels in mixer order", async () => {
+  it("renders the six channels in mixer order, then the world sounds level", async () => {
     const el = await mountAudioTab();
     expect([...el.querySelectorAll("setting-slider")].map((s) => s.id)).toEqual(
       [
@@ -133,6 +133,7 @@ describe("user-setting audio tab", () => {
         "audio-alerts-slider",
         "audio-ambience-slider",
         "audio-interface-slider",
+        "audio-world-volume-slider",
       ],
     );
   });
@@ -322,7 +323,7 @@ describe("user-setting audio tab", () => {
     // "turn this channel up" would be wrong advice when nothing can play yet.
     const el = await mountAudioTab();
     expect(CATEGORIES.filter((c) => testButton(el, c) !== null)).toEqual([]);
-    expect(el.querySelectorAll("setting-slider")).toHaveLength(6);
+    expect(el.querySelectorAll("setting-slider")).toHaveLength(7);
   });
 
   it("stores both blur toggles", async () => {
@@ -427,6 +428,7 @@ describe("user-setting audio tab", () => {
         "audio-alerts-slider",
         "audio-ambience-slider",
         "audio-interface-slider",
+        "audio-world-volume-slider",
       ],
     );
     expect(CATEGORIES.filter((c) => testButton(el, c) !== null)).toEqual(

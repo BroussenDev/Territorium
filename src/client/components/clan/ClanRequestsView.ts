@@ -159,6 +159,14 @@ export class ClanRequestsView extends LitElement {
                             date: formatClanDate(req.createdAt),
                           })}
                         </span>
+                        ${req.viaInvite
+                          ? html`<span
+                              class="ml-2 text-[10px] font-bold text-amber-300/80"
+                              >${translateText(
+                                "clan_modal.via_invite_link",
+                              )}</span
+                            >`
+                          : ""}
                       </div>
                       <div class="flex items-center gap-2 shrink-0">
                         <button

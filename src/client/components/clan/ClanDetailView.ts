@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit";
+import { html, LitElement, svg } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { invalidateUserMe } from "../../Api";
 import {
@@ -13,7 +13,13 @@ import {
   joinClan,
   leaveClan,
 } from "../../ClanApi";
-import { translateText } from "../../Utils";
+import {
+  clanInviteUrl,
+  clearPendingInvite,
+  markPendingInviteForResume,
+  peekPendingInvite,
+} from "../../ClanInvite";
+import { copyToClipboard, currentLanguage, translateText } from "../../Utils";
 import "../ConfirmDialog";
 import "../CopyButton";
 import "./ClanDonateDialog";
@@ -292,7 +298,11 @@ export class ClanDetailView extends LitElement {
     if (!this.selectedClan || this.actionPending) return;
     this.actionPending = true;
     try {
-      const result = await joinClan(this.selectedClan.tag);
+      // A join that follows an invite link is flagged, so the leader sees it.
+      const viaInvite = peekPendingInvite() === this.selectedClan.tag;
+      const result = viaInvite
+        ? await joinClan(this.selectedClan.tag, "invite")
+        : await joinClan(this.selectedClan.tag);
       if ("error" in result) {
         if (result.error === "clan_modal.sign_in_for_clans") {
           window.showPage?.("page-account");
@@ -306,6 +316,7 @@ export class ClanDetailView extends LitElement {
         return;
       }
       invalidateUserMe();
+      if (viaInvite) clearPendingInvite();
       if (result.status === "joined") {
         // Joining an open clan should immediately switch this detail page into
         // member mode and refresh member-only data without requiring remount.
@@ -333,6 +344,19 @@ export class ClanDetailView extends LitElement {
       }
     } finally {
       this.actionPending = false;
+    }
+  }
+
+  private async copyInviteLink() {
+    const url = this.selectedClan
+      ? clanInviteUrl(this.selectedClan.tag, currentLanguage())
+      : null;
+    if (!url) return;
+    try {
+      await copyToClipboard(url);
+      showToast(translateText("clan_modal.invite_link_copied"), "green");
+    } catch {
+      showToast(translateText("clan_modal.error_failed"), "red");
     }
   }
 
@@ -799,7 +823,11 @@ export class ClanDetailView extends LitElement {
       // would only come back 401.
       buttons.push(html`
         <button
-          @click=${() => window.showPage?.("page-account")}
+          @click=${() => {
+            // Join (or apply) by itself once the sign-in is done.
+            if (peekPendingInvite() === clan.tag) markPendingInviteForResume();
+            window.showPage?.("page-account");
+          }}
           class="flex-1 px-6 py-3 text-sm font-bold text-white bg-brand hover:bg-brand-light active:bg-brand/80 rounded-xl transition-all"
         >
           ${translateText("clan_modal.sign_in_to_join")}
@@ -837,6 +865,25 @@ export class ClanDetailView extends LitElement {
     }
     if (isMember) {
       buttons.push(html`
+        <button
+          @click=${() => this.copyInviteLink()}
+          class="flex-1 px-6 py-3 text-sm font-bold text-white bg-white/10 hover:bg-white/15 rounded-xl transition-all border border-white/10 inline-flex items-center justify-center gap-2"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            ${svg`<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" /><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" /><circle cx="18.5" cy="5.5" r="1.2" stroke="#e0b64a" />`}
+          </svg>
+          ${translateText("clan_modal.copy_invite_link")}
+        </button>
         <button
           @click=${() => (this.donateOpen = true)}
           class="flex-1 px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-xl transition-all shadow-lg hover:shadow-amber-900/40 border border-white/5"

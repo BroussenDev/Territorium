@@ -704,7 +704,12 @@
     "wars_open": "Otvoreni ratovi",
     "wars_season": "Rekord sezone {season}",
     "wars_unavailable": "Ratovi se nisu mogli učitati.",
-    "wars_won": "Ratovi su pobedili"
+    "wars_won": "Ratovi su pobedili",
+    "copy_invite_link": "Kopiraj link za poziv",
+    "invite_link_copied": "Link za poziv je kopiran",
+    "invite_clan_not_found": "Ovaj klan više ne postoji.",
+    "invite_joined": "Pridružili ste se klanu [{tag}]!",
+    "via_invite_link": "putem linka za poziv"
   },
   "close_reason": {
     "account_lookup_failed": "Nije moguće pronaći vaš nalog. Pokušajte ponovo.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Približi",
     "zoom_in_desc": "Približava te mapi",
     "zoom_out": "Udalji",
-    "zoom_out_desc": "Udaljava te od mape"
+    "zoom_out_desc": "Udaljava te od mape",
+    "audio_world_sounds": "Zvukovi svijeta",
+    "audio_world_sounds_desc": "Zvukovi gradnje i tiha atmosfera gradova, luka, tvornica i vlakova pri zumiranju.",
+    "audio_world_volume": "Glasnoća zvukova svijeta",
+    "audio_world_volume_desc": "Koliko su glasni zvukovi gradnje i atmosfera."
   },
   "username": {
     "account_invalid_chars": "Korisničko ime može sadržati samo slova, brojeve, donje crte, crtice i pojedinačne razmake između reči.",

@@ -704,7 +704,12 @@
     "wars_open": "オープン戦",
     "wars_season": "シーズン{season}記録",
     "wars_unavailable": "戦争をロードできませんでした。",
-    "wars_won": "戦争に勝った"
+    "wars_won": "戦争に勝った",
+    "copy_invite_link": "招待リンクをコピー",
+    "invite_link_copied": "招待リンクをコピーしました",
+    "invite_clan_not_found": "このクランはもう存在しません。",
+    "invite_joined": "[{tag}] に参加しました！",
+    "via_invite_link": "招待リンク経由"
   },
   "close_reason": {
     "account_lookup_failed": "アカウントを確認できませんでした。もう一度お試しください。",
@@ -3719,7 +3724,11 @@
     "zoom_in": "拡大",
     "zoom_in_desc": "画面を拡大します。",
     "zoom_out": "縮小",
-    "zoom_out_desc": "画面を縮小します。"
+    "zoom_out_desc": "画面を縮小します。",
+    "audio_world_sounds": "ワールドサウンド",
+    "audio_world_sounds_desc": "建設音と、ズームしたときの都市・港・工場・列車のやわらかな環境音。",
+    "audio_world_volume": "ワールドサウンドの音量",
+    "audio_world_volume_desc": "建設音と環境音の大きさ。"
   },
   "username": {
     "account_invalid_chars": "ユーザー名は英字、数字、アンダースコア、ハイフンのみ使用できます。",

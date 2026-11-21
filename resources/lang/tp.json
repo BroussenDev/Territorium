@@ -440,7 +440,11 @@
     "zoom_in": "o lukin lili",
     "zoom_in_desc": "o lukin lili e sitelen ma",
     "zoom_out": "o lukin suli",
-    "zoom_out_desc": "o lukin suli e sitelen ma"
+    "zoom_out_desc": "o lukin suli e sitelen ma",
+    "audio_world_sounds": "kalama pi ma ale",
+    "audio_world_sounds_desc": "kalama pi pali tomo. kalama pi ma tomo, ma telo, ilo pali, tomo tawa lon tenpo sina lukin lon poka.",
+    "audio_world_volume": "wawa kalama pi ma ale",
+    "audio_world_volume_desc": "kalama pi pali tomo en kalama pi ma li wawa tan seme."
   },
   "username": {
     "enter_username": "o wile e nimi",
@@ -554,5 +558,12 @@
     "publish_error_email_unverified": "o pona e nimi leko sina (email) la, sina ken pana e lipu ma.",
     "publish_error_weekly_limit": "sina ken pana e lipu ma 3 lon esun pi suno 7: o pali sin tan tenpo kama.",
     "publish_rule_gallery_only": "lipu li kama tan lipu kulupu la, ona li tawa ma lipu pi musi ni taso. ona li tawa Steam Workshop taso la, sina o pana e ona tan ilo Steam."
+  },
+  "clan_modal": {
+    "copy_invite_link": "o kama jo e linja pi toki kama",
+    "invite_link_copied": "sina jo e linja pi toki kama",
+    "invite_clan_not_found": "kulupu ni li lon ala.",
+    "invite_joined": "sina kama lon [{tag}]!",
+    "via_invite_link": "tan linja pi toki kama"
   }
 }

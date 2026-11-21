@@ -1,5 +1,6 @@
 import { SoundEffectController } from "../../../src/client/controllers/SoundEffectController";
 import { PlaySoundEffectEvent } from "../../../src/client/sound/Sounds";
+import { PlayWorldPlacementEvent } from "../../../src/client/sound/WorldSounds";
 import { SendSpawnIntentEvent } from "../../../src/client/Transport";
 import { EventBus } from "../../../src/core/EventBus";
 import { MessageType, PlayerType, UnitType } from "../../../src/core/game/Game";
@@ -44,7 +45,9 @@ describe("SoundEffectController", () => {
       myPlayer: () => null,
       updatesSinceLastTick: () => undefined,
     };
-    controller = new SoundEffectController(game, eventBus);
+    controller = new SoundEffectController(game, eventBus, {
+      worldSounds: () => false,
+    } as any);
   });
 
   it("plays at most one warhead boom per interval", () => {
@@ -167,6 +170,24 @@ describe("SoundEffectController", () => {
     tick += 10;
     controller.tick();
     expect(played).toEqual(["nuke-warning", "nuke-warning"]);
+  });
+
+  it("plays the synthesized placement cues when world sounds are on", () => {
+    controller = new SoundEffectController(game, eventBus, {
+      worldSounds: () => true,
+    } as any);
+    const world: string[] = [];
+    eventBus.on(PlayWorldPlacementEvent, (e) => world.push(e.sound));
+    const me = {};
+    game.myPlayer = () => me;
+    game.inSpawnPhase = () => false;
+    tickWithUnits(
+      makeCreatedUnit(1, UnitType.Factory, me),
+      makeCreatedUnit(2, UnitType.Radar, me),
+      makeCreatedUnit(3, UnitType.Port, {}),
+    );
+    expect(world).toEqual(["factory", "radar"]);
+    expect(played).toEqual([]);
   });
 
   it("plays build sounds only for my own factory and transport ship", () => {

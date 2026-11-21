@@ -704,7 +704,12 @@
     "wars_open": "公开战争",
     "wars_season": "赛季{season}记录",
     "wars_unavailable": "战争无法加载。",
-    "wars_won": "战争获胜"
+    "wars_won": "战争获胜",
+    "copy_invite_link": "复制邀请链接",
+    "invite_link_copied": "邀请链接已复制",
+    "invite_clan_not_found": "该战队已不存在。",
+    "invite_joined": "你已加入 [{tag}]！",
+    "via_invite_link": "通过邀请链接"
   },
   "close_reason": {
     "account_lookup_failed": "无法查询您的帐户。请再试一次。",
@@ -3719,7 +3724,11 @@
     "zoom_in": "放大",
     "zoom_in_desc": "放大地图",
     "zoom_out": "缩小",
-    "zoom_out_desc": "缩小地图"
+    "zoom_out_desc": "缩小地图",
+    "audio_world_sounds": "世界音效",
+    "audio_world_sounds_desc": "建造音效，以及放大时城市、港口、工厂和火车的轻柔环境音。",
+    "audio_world_volume": "世界音效音量",
+    "audio_world_volume_desc": "建造音效和环境音的响度。"
   },
   "username": {
     "account_invalid_chars": "用户名只能包含字母、数字、下划线、连字符和单词之间的单个空格。",

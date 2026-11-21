@@ -704,7 +704,12 @@
     "wars_open": "Avoimet sodat",
     "wars_season": "Kauden {season} ennätys",
     "wars_unavailable": "Wars ei voitu ladata.",
-    "wars_won": "Sodat voittivat"
+    "wars_won": "Sodat voittivat",
+    "copy_invite_link": "Kopioi kutsulinkki",
+    "invite_link_copied": "Kutsulinkki kopioitu",
+    "invite_clan_not_found": "Tätä klaania ei enää ole.",
+    "invite_joined": "Liityit klaaniin [{tag}]!",
+    "via_invite_link": "kutsulinkin kautta"
   },
   "close_reason": {
     "account_lookup_failed": "Tiliäsi ei voitu etsiä. Yritä uudelleen.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Lähennä",
     "zoom_in_desc": "Lähennä karttaa",
     "zoom_out": "Loitonna",
-    "zoom_out_desc": "Loitonna karttaa"
+    "zoom_out_desc": "Loitonna karttaa",
+    "audio_world_sounds": "Maailman äänet",
+    "audio_world_sounds_desc": "Rakennusäänet sekä kaupunkien, satamien, tehtaiden ja junien hiljainen tunnelma lähennettäessä.",
+    "audio_world_volume": "Maailman äänten voimakkuus",
+    "audio_world_volume_desc": "Kuinka kovaa rakennusäänet ja tunnelma soivat."
   },
   "username": {
     "account_invalid_chars": "Käyttäjätunnus voi sisältää vain kirjaimia, numeroita, alaviivoja, yhdysmerkkejä ja yksittäisiä välilyöntejä sanojen välissä.",

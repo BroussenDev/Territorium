@@ -12,6 +12,7 @@ import { SoundEffectController } from "../controllers/SoundEffectController";
 import { StructureHighlightController } from "../controllers/StructureHighlightController";
 import { ViewModeController } from "../controllers/ViewModeController";
 import { WarshipSelectionController } from "../controllers/WarshipSelectionController";
+import { WorldSoundController } from "../controllers/WorldSoundController";
 import { GameStartingModal } from "../GameStartingModal";
 import { migrateLegacyGraphicsSettings } from "../GraphicsPresets";
 import { MapRenderer } from "../render/gl";
@@ -426,8 +427,9 @@ export function createRenderer(
     new StructureHighlightController(eventBus, view),
     new ViewModeController(eventBus, view),
     new AttackingTroopsController(game, eventBus, userSettings, view),
-    new SoundEffectController(game, eventBus),
-    new AmbienceController(game, eventBus, transformHandler),
+    new SoundEffectController(game, eventBus, userSettings),
+    new AmbienceController(game, eventBus, transformHandler, userSettings),
+    new WorldSoundController(game, eventBus, transformHandler, userSettings),
     ...(mapLayerController ? [mapLayerController] : []),
     eventsDisplay,
     actionableEvents,

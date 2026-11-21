@@ -704,7 +704,12 @@
     "wars_open": "Odprte vojne",
     "wars_season": "Rekord sezone {season}",
     "wars_unavailable": "Vojn ni bilo mogoče naložiti.",
-    "wars_won": "Zmagane vojne"
+    "wars_won": "Zmagane vojne",
+    "copy_invite_link": "Kopiraj povezavo povabila",
+    "invite_link_copied": "Povezava povabila kopirana",
+    "invite_clan_not_found": "Ta klan ne obstaja več.",
+    "invite_joined": "Pridružili ste se klanu [{tag}]!",
+    "via_invite_link": "prek povezave povabila"
   },
   "close_reason": {
     "account_lookup_failed": "Vašega računa ni bilo mogoče najti. prosim poskusite ponovno",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Približaj",
     "zoom_in_desc": "Približaj zemljevid",
     "zoom_out": "Pomanjšaj",
-    "zoom_out_desc": "Pomanjšaj zemljevid"
+    "zoom_out_desc": "Pomanjšaj zemljevid",
+    "audio_world_sounds": "Zvoki sveta",
+    "audio_world_sounds_desc": "Zvoki gradnje in nežno vzdušje mest, pristanišč, tovarn in vlakov ob približanju.",
+    "audio_world_volume": "Glasnost zvokov sveta",
+    "audio_world_volume_desc": "Kako glasni so zvoki gradnje in vzdušje."
   },
   "username": {
     "account_invalid_chars": "Uporabniško ime lahko vsebuje samo črke, številke, podčrtaje, vezaje in posamezne presledke med besedami.",

@@ -1,5 +1,6 @@
 import { EventBus } from "../../core/EventBus";
 import { UnitType } from "../../core/game/Game";
+import { UserSettings } from "../../core/game/UserSettings";
 import { Controller } from "../Controller";
 import { AmbienceTrack, SetAmbienceEvent } from "../sound/Sounds";
 import { TransformHandler } from "../TransformHandler";
@@ -71,6 +72,7 @@ export class AmbienceController implements Controller {
     private readonly game: GameView,
     private readonly eventBus: EventBus,
     private readonly transformHandler: TransformHandler,
+    private readonly userSettings: UserSettings = new UserSettings(),
   ) {}
 
   tick(): void {
@@ -99,6 +101,9 @@ export class AmbienceController implements Controller {
   }
 
   private desiredTrack(): AmbienceTrack | null {
+    // The synthesized world ambience (WorldSoundController) replaces these
+    // recorded loops while "World sounds" is on.
+    if (this.userSettings.worldSounds()) return null;
     if (this.transformHandler.scale < AMBIENCE_ZOOM_SCALE) return null;
     // Despite the field names, screenCenter() returns world coordinates
     // (see TransformHandler.goTo(), which compares it to a world Cell).

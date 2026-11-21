@@ -704,7 +704,12 @@
     "wars_open": "공개 전쟁",
     "wars_season": "시즌 {season} 기록",
     "wars_unavailable": "전쟁을 로드할 수 없습니다.",
-    "wars_won": "전쟁에서 승리"
+    "wars_won": "전쟁에서 승리",
+    "copy_invite_link": "초대 링크 복사",
+    "invite_link_copied": "초대 링크를 복사했습니다",
+    "invite_clan_not_found": "이 클랜은 더 이상 존재하지 않습니다.",
+    "invite_joined": "[{tag}]에 가입했습니다!",
+    "via_invite_link": "초대 링크로"
   },
   "close_reason": {
     "account_lookup_failed": "계정을 조회할 수 없습니다. 다시 시도해 주세요.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "확대",
     "zoom_in_desc": "지도로 확대",
     "zoom_out": "축소",
-    "zoom_out_desc": "지도로 축소"
+    "zoom_out_desc": "지도로 축소",
+    "audio_world_sounds": "월드 사운드",
+    "audio_world_sounds_desc": "건설 소리와 확대했을 때 도시, 항구, 공장, 기차의 부드러운 분위기 소리.",
+    "audio_world_volume": "월드 사운드 볼륨",
+    "audio_world_volume_desc": "건설 소리와 분위기 소리의 크기."
   },
   "username": {
     "account_invalid_chars": "사용자명에는 문자, 숫자, 밑줄, 하이픈 및 단어 사이의 단일 공백만 사용할 수 있습니다.",

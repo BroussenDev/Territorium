@@ -258,13 +258,19 @@ export async function fetchClanMembers(
 
 export async function joinClan(
   tag: string,
+  via?: "invite",
 ): Promise<
   { status: "joined" | "requested" } | { error: string; reason?: string }
 > {
   try {
     const res = await clanFetch(`/clans/${encodeURIComponent(tag)}/join`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(via ? { via } : {}),
     });
+    if (res.status === 404) {
+      return { error: "clan_modal.invite_clan_not_found" };
+    }
     if (res.status === 409) {
       const body = await res.json().catch(() => ({}));
       const msg = (body as { message?: string }).message ?? "";

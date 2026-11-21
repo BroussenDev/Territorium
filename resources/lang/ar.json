@@ -704,7 +704,12 @@
     "wars_open": "الحروب المفتوحة",
     "wars_season": "سجل الموسم {season}",
     "wars_unavailable": "لا يمكن تحميل الحروب.",
-    "wars_won": "فازت الحروب"
+    "wars_won": "فازت الحروب",
+    "copy_invite_link": "نسخ رابط الدعوة",
+    "invite_link_copied": "تم نسخ رابط الدعوة",
+    "invite_clan_not_found": "هذه العشيرة لم تعد موجودة.",
+    "invite_joined": "لقد انضممت إلى [{tag}]!",
+    "via_invite_link": "عبر رابط الدعوة"
   },
   "close_reason": {
     "account_lookup_failed": "لا يمكن البحث عن حسابك. يرجى المحاولة مرة أخرى.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "تكبير",
     "zoom_in_desc": "تكبير الخريطة",
     "zoom_out": "تصغير",
-    "zoom_out_desc": "تصغير الخريطة"
+    "zoom_out_desc": "تصغير الخريطة",
+    "audio_world_sounds": "أصوات العالم",
+    "audio_world_sounds_desc": "أصوات البناء وأجواء هادئة للمدن والموانئ والمصانع والقطارات عند التكبير.",
+    "audio_world_volume": "مستوى أصوات العالم",
+    "audio_world_volume_desc": "مدى علو أصوات البناء والأجواء."
   },
   "username": {
     "account_invalid_chars": "يمكن أن يحتوي اسم المستخدم فقط على أحرف وأرقام وشرطات سفلية وواصلات ومسافات مفردة بين الكلمات.",

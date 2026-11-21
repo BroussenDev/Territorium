@@ -704,7 +704,12 @@
     "wars_open": "Öppna krig",
     "wars_season": "Rekord för säsong {season}",
     "wars_unavailable": "Wars kunde inte laddas.",
-    "wars_won": "Krig vann"
+    "wars_won": "Krig vann",
+    "copy_invite_link": "Kopiera inbjudningslänk",
+    "invite_link_copied": "Inbjudningslänken kopierad",
+    "invite_clan_not_found": "Den här klanen finns inte längre.",
+    "invite_joined": "Du gick med i [{tag}]!",
+    "via_invite_link": "via inbjudningslänk"
   },
   "close_reason": {
     "account_lookup_failed": "Ditt konto kunde inte slås upp. Försök igen.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Zooma In",
     "zoom_in_desc": "Zooma in kartan",
     "zoom_out": "Zooma Ut",
-    "zoom_out_desc": "Zooma ut kartan"
+    "zoom_out_desc": "Zooma ut kartan",
+    "audio_world_sounds": "Världsljud",
+    "audio_world_sounds_desc": "Byggljud och en mjuk stämning från städer, hamnar, fabriker och tåg när du zoomar in.",
+    "audio_world_volume": "Volym för världsljud",
+    "audio_world_volume_desc": "Hur högt byggljuden och stämningen låter."
   },
   "username": {
     "account_invalid_chars": "Användarnamn kan bara innehålla bokstäver, siffror, understreck, bindestreck och enstaka mellanslag mellan ord.",

@@ -704,7 +704,12 @@
     "wars_open": "Perang terbuka",
     "wars_season": "Rekor musim {season}",
     "wars_unavailable": "Perang tidak dapat dimuat.",
-    "wars_won": "Perang dimenangkan"
+    "wars_won": "Perang dimenangkan",
+    "copy_invite_link": "Salin tautan undangan",
+    "invite_link_copied": "Tautan undangan disalin",
+    "invite_clan_not_found": "Klan ini sudah tidak ada.",
+    "invite_joined": "Anda bergabung dengan [{tag}]!",
+    "via_invite_link": "lewat tautan undangan"
   },
   "close_reason": {
     "account_lookup_failed": "Akun Anda tidak dapat dicari. Silakan coba lagi.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Perbesar",
     "zoom_in_desc": "Perbesar tampilan peta",
     "zoom_out": "Perkecil tampilan",
-    "zoom_out_desc": "Perkecil tampilan peta"
+    "zoom_out_desc": "Perkecil tampilan peta",
+    "audio_world_sounds": "Suara dunia",
+    "audio_world_sounds_desc": "Suara pembangunan dan suasana lembut kota, pelabuhan, pabrik, dan kereta saat memperbesar.",
+    "audio_world_volume": "Volume suara dunia",
+    "audio_world_volume_desc": "Seberapa keras suara pembangunan dan suasananya."
   },
   "username": {
     "account_invalid_chars": "Nama pengguna hanya boleh berisi huruf, angka, garis bawah, tanda hubung, dan spasi tunggal antar kata.",

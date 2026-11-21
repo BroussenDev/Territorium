@@ -704,7 +704,12 @@
     "wars_open": "Guerras abertas",
     "wars_season": "Recorde da época {season}",
     "wars_unavailable": "As guerras não podiam ser carregadas.",
-    "wars_won": "Guerras vencidas"
+    "wars_won": "Guerras vencidas",
+    "copy_invite_link": "Copiar ligação de convite",
+    "invite_link_copied": "Ligação de convite copiada",
+    "invite_clan_not_found": "Este clã já não existe.",
+    "invite_joined": "Entraste em [{tag}]!",
+    "via_invite_link": "por ligação de convite"
   },
   "close_reason": {
     "account_lookup_failed": "Não foi possível consultar a sua conta. Por favor, tente novamente.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Aumentar Ampliação",
     "zoom_in_desc": "Aumentar ampliação do mapa",
     "zoom_out": "Reduzir Ampliação",
-    "zoom_out_desc": "Reduzir ampliação do mapa"
+    "zoom_out_desc": "Reduzir ampliação do mapa",
+    "audio_world_sounds": "Sons do mundo",
+    "audio_world_sounds_desc": "Sons de construção e um ambiente suave de cidades, portos, fábricas e comboios ao aproximar o zoom.",
+    "audio_world_volume": "Volume dos sons do mundo",
+    "audio_world_volume_desc": "Quão altos são os sons de construção e o ambiente."
   },
   "username": {
     "account_invalid_chars": "O nome de utilizador só pode conter letras, números, sublinhados, hífens e espaços simples entre palavras.",

@@ -704,7 +704,12 @@
     "wars_open": "Açık savaşlar",
     "wars_season": "Sezon {season} rekoru",
     "wars_unavailable": "Savaşlar yüklenemedi.",
-    "wars_won": "Kazanılan savaşlar"
+    "wars_won": "Kazanılan savaşlar",
+    "copy_invite_link": "Davet bağlantısını kopyala",
+    "invite_link_copied": "Davet bağlantısı kopyalandı",
+    "invite_clan_not_found": "Bu klan artık mevcut değil.",
+    "invite_joined": "[{tag}] klanına katıldınız!",
+    "via_invite_link": "davet bağlantısı ile"
   },
   "close_reason": {
     "account_lookup_failed": "Hesabınız aranamadı. Lütfen tekrar deneyin.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Yakınlaştır",
     "zoom_in_desc": "Haritayı yakınlaştır",
     "zoom_out": "Uzaklaştır",
-    "zoom_out_desc": "Haritayı uzaklaştır"
+    "zoom_out_desc": "Haritayı uzaklaştır",
+    "audio_world_sounds": "Dünya sesleri",
+    "audio_world_sounds_desc": "İnşa sesleri ve yakınlaştırdığınızda şehirlerin, limanların, fabrikaların ve trenlerin yumuşak atmosferi.",
+    "audio_world_volume": "Dünya seslerinin ses düzeyi",
+    "audio_world_volume_desc": "İnşa seslerinin ve atmosferin ne kadar yüksek olacağı."
   },
   "username": {
     "account_invalid_chars": "Kullanıcı adı yalnızca harf, rakam, alt çizgi, kısa çizgi ve kelimeler arasında tek boşluk içerebilir.",

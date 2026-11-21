@@ -35,7 +35,9 @@ describe("AmbienceController", () => {
       scale: 10,
       screenCenter: () => ({ screenX: 5, screenY: 5 }),
     };
-    controller = new AmbienceController(game, eventBus, transformHandler);
+    controller = new AmbienceController(game, eventBus, transformHandler, {
+      worldSounds: () => false,
+    } as any);
   });
 
   it("emits the nearest structure's ambience when zoomed in", () => {

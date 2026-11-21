@@ -162,11 +162,19 @@ const AUDIO_CHANNELS = [
   "interface",
 ] as const;
 
+/** The synthesized building and world sounds: an on/off switch and a level. */
+export const WORLD_SOUNDS_KEY = "settings.audio.worldSounds";
+export const WORLD_SOUNDS_VOLUME_KEY = "settings.audio.worldSoundsVolume";
+/** Modest by default: the world sounds are texture, not information. */
+export const WORLD_SOUNDS_DEFAULT_VOLUME = 0.4;
+
 /** Everything "reset to defaults" clears, so the read-through sees a clean slate. */
 const AUDIO_RESET_KEYS: readonly string[] = [
   ...AUDIO_CHANNELS.map((category) => `settings.audio.${category}`),
   "settings.audio.muteOnBlur",
   "settings.audio.alertsWhenUnfocused",
+  WORLD_SOUNDS_KEY,
+  WORLD_SOUNDS_VOLUME_KEY,
   // The legacy keys too: leaving them would have the read-through hand the
   // old two-slider values straight back, which is not "defaults".
   "settings.backgroundMusicVolume",
@@ -1085,6 +1093,25 @@ export class UserSettings {
     return this.getBool("settings.audio.alertsWhenUnfocused", true);
   }
 
+  /** Placement cues and ambience synthesized by the client; on by default. */
+  worldSounds(): boolean {
+    return this.getBool(WORLD_SOUNDS_KEY, true);
+  }
+
+  setWorldSounds(value: boolean): void {
+    this.setBool(WORLD_SOUNDS_KEY, value);
+  }
+
+  worldSoundsVolume(): number {
+    return clampVolume(
+      this.getFloat(WORLD_SOUNDS_VOLUME_KEY, WORLD_SOUNDS_DEFAULT_VOLUME),
+    );
+  }
+
+  setWorldSoundsVolume(volume: number): void {
+    this.setFloat(WORLD_SOUNDS_VOLUME_KEY, clampVolume(volume));
+  }
+
   /**
    * Back to the fresh-install state for this platform: every stored audio key
    * is dropped, including the legacy pair, so the defaults and the master
@@ -1110,6 +1137,8 @@ export class UserSettings {
       "settings.audio.alertsWhenUnfocused",
       String(this.alertsWhenUnfocused()),
     );
+    this.emitChange(WORLD_SOUNDS_KEY, String(this.worldSounds()));
+    this.emitChange(WORLD_SOUNDS_VOLUME_KEY, String(this.worldSoundsVolume()));
   }
 
   /**

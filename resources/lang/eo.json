@@ -704,7 +704,12 @@
     "wars_open": "Malfermaj militoj",
     "wars_season": "Sezono {season} rekordo",
     "wars_unavailable": "Militoj ne povus esti ŝarĝitaj.",
-    "wars_won": "Militoj venkis"
+    "wars_won": "Militoj venkis",
+    "copy_invite_link": "Kopii invitan ligilon",
+    "invite_link_copied": "Invita ligilo kopiita",
+    "invite_clan_not_found": "Ĉi tiu klano ne plu ekzistas.",
+    "invite_joined": "Vi aliĝis al [{tag}]!",
+    "via_invite_link": "per invita ligilo"
   },
   "close_reason": {
     "account_lookup_failed": "Via konto ne povis esti serĉita. Bonvolu provi denove.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Zomi",
     "zoom_in_desc": "Zomi en la mapon",
     "zoom_out": "Malzomi",
-    "zoom_out_desc": "Malzomi la mapon"
+    "zoom_out_desc": "Malzomi la mapon",
+    "audio_world_sounds": "Mondaj sonoj",
+    "audio_world_sounds_desc": "Konstruaj sonoj kaj milda etoso de urboj, havenoj, fabrikoj kaj trajnoj kiam vi zomas.",
+    "audio_world_volume": "Laŭteco de mondaj sonoj",
+    "audio_world_volume_desc": "Kiom laŭtaj estas la konstruaj sonoj kaj la etoso."
   },
   "username": {
     "account_invalid_chars": "Uzantnomo povas enhavi nur literojn, ciferojn, substrekojn, streketojn kaj unuopajn spacojn inter vortoj.",

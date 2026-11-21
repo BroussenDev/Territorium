@@ -704,7 +704,12 @@
     "wars_open": "Nyílt háborúk",
     "wars_season": "{season} évad rekordja",
     "wars_unavailable": "A háborúkat nem lehetett betölteni.",
-    "wars_won": "A háborúk győztek"
+    "wars_won": "A háborúk győztek",
+    "copy_invite_link": "Meghívó link másolása",
+    "invite_link_copied": "Meghívó link kimásolva",
+    "invite_clan_not_found": "Ez a klán már nem létezik.",
+    "invite_joined": "Csatlakoztál a(z) [{tag}] klánhoz!",
+    "via_invite_link": "meghívó linken keresztül"
   },
   "close_reason": {
     "account_lookup_failed": "Nem sikerült lekérni a fiókodat. Kérlek, próbáld újra.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Nagyítás",
     "zoom_in_desc": "Térkép nagyítása",
     "zoom_out": "Kicsinyítés",
-    "zoom_out_desc": "Térkép kicsinyítése"
+    "zoom_out_desc": "Térkép kicsinyítése",
+    "audio_world_sounds": "Világhangok",
+    "audio_world_sounds_desc": "Építési hangok és a városok, kikötők, gyárak és vonatok halk hangulata nagyításkor.",
+    "audio_world_volume": "A világhangok hangereje",
+    "audio_world_volume_desc": "Mennyire hangosak az építési hangok és a hangulat."
   },
   "username": {
     "account_invalid_chars": "A felhasználónév csak betűket, számokat, alulvonásokat, kötőjeleket és a szavak között egyetlen szóközt tartalmazhat.",

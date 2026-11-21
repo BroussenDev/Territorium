@@ -704,7 +704,12 @@
     "wars_open": "公開戰爭",
     "wars_season": "賽季{season}記錄",
     "wars_unavailable": "戰爭無法加載。",
-    "wars_won": "戰爭獲勝"
+    "wars_won": "戰爭獲勝",
+    "copy_invite_link": "複製邀請連結",
+    "invite_link_copied": "邀請連結已複製",
+    "invite_clan_not_found": "該戰隊已不存在。",
+    "invite_joined": "你已加入 [{tag}]！",
+    "via_invite_link": "透過邀請連結"
   },
   "close_reason": {
     "account_lookup_failed": "您的帳號無法被查看。請再試一次。",
@@ -3719,7 +3724,11 @@
     "zoom_in": "放大",
     "zoom_in_desc": "放大地圖",
     "zoom_out": "縮小",
-    "zoom_out_desc": "縮小地圖"
+    "zoom_out_desc": "縮小地圖",
+    "audio_world_sounds": "世界音效",
+    "audio_world_sounds_desc": "建造音效，以及放大時城市、港口、工廠和火車的輕柔環境音。",
+    "audio_world_volume": "世界音效音量",
+    "audio_world_volume_desc": "建造音效和環境音的響度。"
   },
   "username": {
     "account_invalid_chars": "使用者名稱只能包含字母、數字、底線、連字號、和單字間的單格空格。",

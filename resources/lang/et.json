@@ -704,7 +704,12 @@
     "wars_open": "Avatud sõjad",
     "wars_season": "{season} hooaja rekord",
     "wars_unavailable": "Sõdasid ei saanud laadida.",
-    "wars_won": "Sõjad võidetud"
+    "wars_won": "Sõjad võidetud",
+    "copy_invite_link": "Kopeeri kutse link",
+    "invite_link_copied": "Kutse link kopeeritud",
+    "invite_clan_not_found": "Seda klanni enam ei ole.",
+    "invite_joined": "Liitusid klaaniga [{tag}]!",
+    "via_invite_link": "kutse lingi kaudu"
   },
   "close_reason": {
     "account_lookup_failed": "Teie kontot ei saanud otsida. Palun proovi uuesti.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Suumi sisse",
     "zoom_in_desc": "Suumi kaardi sisse",
     "zoom_out": "Suumi välja",
-    "zoom_out_desc": "Suumi välja kaardil"
+    "zoom_out_desc": "Suumi välja kaardil",
+    "audio_world_sounds": "Maailma helid",
+    "audio_world_sounds_desc": "Ehitushelid ja pehme õhkkond linnadest, sadamatest, tehastest ja rongidest sisse suumides.",
+    "audio_world_volume": "Maailma helide helitugevus",
+    "audio_world_volume_desc": "Kui valjud on ehitushelid ja õhkkond."
   },
   "username": {
     "account_invalid_chars": "Kasutajanimi võib sisaldada ainult tähti, numbreid, allkriipse, sidekriipse ja üksikuid tühikuid sõnade vahel.",

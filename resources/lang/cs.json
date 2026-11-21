@@ -704,7 +704,12 @@
     "wars_open": "Otevřené války",
     "wars_season": "Rekord sezóny {season}",
     "wars_unavailable": "Války nebylo možné načíst.",
-    "wars_won": "Vyhrané války"
+    "wars_won": "Vyhrané války",
+    "copy_invite_link": "Zkopírovat odkaz s pozvánkou",
+    "invite_link_copied": "Odkaz s pozvánkou zkopírován",
+    "invite_clan_not_found": "Tento klan už neexistuje.",
+    "invite_joined": "Připojili jste se ke klanu [{tag}]!",
+    "via_invite_link": "přes odkaz s pozvánkou"
   },
   "close_reason": {
     "account_lookup_failed": "Váš účet se nepodařilo vyhledat. Zkuste to prosím znovu.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Přiblížit",
     "zoom_in_desc": "Přiblížit mapu",
     "zoom_out": "Oddálit",
-    "zoom_out_desc": "Oddálit mapu"
+    "zoom_out_desc": "Oddálit mapu",
+    "audio_world_sounds": "Zvuky světa",
+    "audio_world_sounds_desc": "Zvuky stavění a jemná atmosféra měst, přístavů, továren a vlaků při přiblížení.",
+    "audio_world_volume": "Hlasitost zvuků světa",
+    "audio_world_volume_desc": "Jak hlasité jsou zvuky stavění a atmosféra."
   },
   "username": {
     "account_invalid_chars": "Uživatelské jméno smí obsahovat pouze písmena, číslice, podtržítka, spojovníky a mezi slovy vždy jen jednu mezeru.",

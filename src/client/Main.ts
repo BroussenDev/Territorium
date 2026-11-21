@@ -39,6 +39,12 @@ import {
   steamGrantStringsReady,
 } from "./BootInterrupts";
 import "./ChangeUsernameModal";
+import { joinClan } from "./ClanApi";
+import {
+  parseClanInvitePath,
+  rememberPendingInvite,
+  resumeInviteAfterSignIn,
+} from "./ClanInvite";
 import "./ClanModal";
 import { joinLobby, type JoinLobbyResult } from "./ClientGameRunner";
 import "./CommunityMapsModal";
@@ -151,6 +157,7 @@ import {
   incrementGamesPlayed,
   loadKeyboardLayout,
   presenceMapKey,
+  showToast,
   translateText,
   whenLanguageReady,
 } from "./Utils";
@@ -717,6 +724,7 @@ class Client {
     this.steamHandoffModal = document.querySelector("steam-handoff-modal");
 
     const onUserMe = async (userMeResponse: UserMeResponse | false) => {
+      void this.completeClanInvite(userMeResponse !== false);
       // A clan, the Pioneer badge: Steam achievements of the account.
       unlockAchievements(achievementsForAccount(userMeResponse));
       if (crazyGamesSDK.isOnCrazyGames()) {
@@ -1241,6 +1249,17 @@ class Client {
     const profileLink = window.location.pathname.match(
       /^\/joueur\/([A-Za-z0-9_-]{1,64})\/?$/,
     );
+    // A clan invite link (/clan/<TAG>/rejoindre or /join): remember it for the
+    // sign-in, then open the clan's page, where the Join button is.
+    const inviteTag = parseClanInvitePath(window.location.pathname);
+    if (inviteTag) {
+      rememberPendingInvite(inviteTag);
+      history.replaceState(
+        null,
+        "",
+        `/#modal=clan&clan=${encodeURIComponent(inviteTag)}`,
+      );
+    }
     if (profileLink) {
       history.replaceState(
         null,
@@ -1282,6 +1301,39 @@ class Client {
   }
 
   // "ffa" when the URL carries the requeue param ("/?requeue"), else null.
+  // Finishes a clan invite link opened while signed out: joins an open clan or
+  // sends a request to a closed one, then shows the clan's page.
+  private async completeClanInvite(signedIn: boolean): Promise<void> {
+    const done = await resumeInviteAfterSignIn(signedIn, joinClan);
+    if (!done) return;
+    const { tag, result } = done;
+    if ("error" in result) {
+      showToast(
+        result.reason
+          ? translateText(result.error, { reason: result.reason })
+          : translateText(result.error),
+        "red",
+      );
+    } else {
+      invalidateUserMe();
+      showToast(
+        translateText(
+          result.status === "joined"
+            ? "clan_modal.invite_joined"
+            : "clan_modal.join_request_sent",
+          { tag },
+        ),
+        "green",
+      );
+    }
+    history.replaceState(
+      null,
+      "",
+      `/#modal=clan&clan=${encodeURIComponent(tag)}`,
+    );
+    modalRouter.routeFromHash();
+  }
+
   private consumeRequeueUrl(): "ffa" | null {
     const searchParams = new URLSearchParams(window.location.search);
     if (!searchParams.has("requeue")) {

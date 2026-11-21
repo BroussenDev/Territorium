@@ -499,6 +499,18 @@ export class UserSettingModal extends BaseModal {
     this.requestUpdate();
   }
 
+  private toggleWorldSounds(e: Event) {
+    this.userSettings.setWorldSounds((e.target as HTMLInputElement).checked);
+    this.requestUpdate();
+  }
+
+  private sliderWorldSounds(e: CustomEvent<{ value: number }>) {
+    const value = e.detail?.value;
+    if (typeof value !== "number") return;
+    this.userSettings.setWorldSoundsVolume(value / 100);
+    this.requestUpdate();
+  }
+
   private toggleAlertsWhenUnfocused(e: Event) {
     this.userSettings.setAlertsWhenUnfocused(
       (e.target as HTMLInputElement).checked,
@@ -612,6 +624,24 @@ export class UserSettingModal extends BaseModal {
     const muteOnBlur = this.userSettings.muteOnBlur();
     return html`
       ${AUDIO_TAB_ORDER.map((category) => this.renderVolumeSlider(category))}
+
+      <setting-toggle
+        label="${translateText("user_setting.audio_world_sounds")}"
+        description="${translateText("user_setting.audio_world_sounds_desc")}"
+        id="audio-world-sounds-toggle"
+        .checked=${this.userSettings.worldSounds()}
+        @change=${this.toggleWorldSounds}
+      ></setting-toggle>
+      <setting-slider
+        label="${translateText("user_setting.audio_world_volume")}"
+        description="${translateText("user_setting.audio_world_volume_desc")}"
+        id="audio-world-volume-slider"
+        min="0"
+        max="100"
+        unit=""
+        .value=${Math.round(this.userSettings.worldSoundsVolume() * 100)}
+        @change=${this.sliderWorldSounds}
+      ></setting-slider>
 
       <setting-toggle
         label="${translateText("user_setting.audio_mute_on_blur")}"

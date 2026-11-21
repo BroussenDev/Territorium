@@ -221,6 +221,8 @@ export const ClanJoinRequestSchema = z.object({
   // Requester's account username (null = never set).
   username: z.string().nullable().optional(),
   createdAt: z.iso.datetime(),
+  // True when the applicant came through the clan's invite link.
+  viaInvite: z.boolean().optional(),
 });
 export type ClanJoinRequest = z.infer<typeof ClanJoinRequestSchema>;
 

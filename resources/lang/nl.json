@@ -704,7 +704,12 @@
     "wars_open": "Openlijke oorlogen",
     "wars_season": "Seizoen {season} record",
     "wars_unavailable": "Oorlogen konden niet worden geladen.",
-    "wars_won": "Oorlogen gewonnen"
+    "wars_won": "Oorlogen gewonnen",
+    "copy_invite_link": "Uitnodigingslink kopiëren",
+    "invite_link_copied": "Uitnodigingslink gekopieerd",
+    "invite_clan_not_found": "Deze clan bestaat niet meer.",
+    "invite_joined": "Je bent lid geworden van [{tag}]!",
+    "via_invite_link": "via uitnodigingslink"
   },
   "close_reason": {
     "account_lookup_failed": "Uw account kon niet worden opgezocht. Probeer het opnieuw.",
@@ -3719,7 +3724,11 @@
     "zoom_in": "Inzoomen",
     "zoom_in_desc": "Kaart inzoomen",
     "zoom_out": "Uitzoomen",
-    "zoom_out_desc": "Kaart uitzoomen"
+    "zoom_out_desc": "Kaart uitzoomen",
+    "audio_world_sounds": "Wereldgeluiden",
+    "audio_world_sounds_desc": "Bouwgeluiden en een zachte sfeer van steden, havens, fabrieken en treinen wanneer je inzoomt.",
+    "audio_world_volume": "Volume van wereldgeluiden",
+    "audio_world_volume_desc": "Hoe luid de bouwgeluiden en de sfeer zijn."
   },
   "username": {
     "account_invalid_chars": "Gebruikersnaam mag alleen letters, cijfers, onderstrepingstekens, koppeltekens en enkele spaties tussen woorden bevatten.",
